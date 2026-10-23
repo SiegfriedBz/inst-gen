@@ -43,7 +43,7 @@ Gate: CI green, and a page live on the production URL.
 | # | Item | Kind | Status |
 |---|---|---|---|
 | 0.1 | App stack and hosting | decision 0001 | done |
-| 0.2 | App tooling: lint, format, tests, i18n library | decision 0002 | in progress |
+| 0.2 | App tooling: lint, format, tests, i18n library | decision 0002 | done |
 | 0.3 | Text model and region rule | decision 0003 | todo |
 | 0.4 | Long-running work (streaming a ~1 minute run) | decision 0005 | todo |
 | 0.5 | `harness/app-scaffold`: Next.js app, tooling in hooks and CI, deployed to Vercel behind the pilot passphrase | spec | todo |

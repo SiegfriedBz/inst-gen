@@ -1,7 +1,8 @@
 ---
 title: "App tooling"
 description: "Biome for lint and format, Vitest for unit tests, Playwright for the main flow, next-intl for the three languages, run by lefthook and GitHub Actions."
-status: draft
+status: approved
+approved: { by: siegfried.bozza@protonmail.com, at: 2026-10-23T20:23:46Z }
 date: "2026-10-23"
 ---
 
