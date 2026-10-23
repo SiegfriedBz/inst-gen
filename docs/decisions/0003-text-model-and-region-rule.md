@@ -86,17 +86,23 @@ draw on a separate daily quota.
 
 **Free limits.** Google no longer publishes the free-tier numbers. They show
 in AI Studio for the project, per model, and can change. Daily quotas reset at
-midnight Pacific time, not 00:00 UTC. The numbers below are read from AI
-Studio before this decision is approved, and read again before public launch.
+midnight Pacific time, not 00:00 UTC. The numbers below come from
+third-party sources, not from AI Studio. They are checked in AI Studio before
+this decision is approved, and again before public launch.
 
-| Model | Requests per minute | Tokens per minute | Requests per day |
-|---|---|---|---|
-| `gemini-3.8-flash` | to read in AI Studio | to read in AI Studio | to read in AI Studio |
-| `gemini-3.5-flash-lite` | to read in AI Studio | to read in AI Studio | to read in AI Studio |
+| Model | Requests per minute | Tokens per minute | Requests per day | Source |
+|---|---|---|---|---|
+| `gemini-3.8-flash` | 5 | 250,000 | 20 | A video walkthrough of the free tier; unconfirmed |
+| `gemini-3.5-flash-lite` | 10 | 250,000 | 500 | Free-tier guides; unconfirmed |
 
 `platform/usage-counters` sizes the daily pool from these numbers: a new
 brand spends 2 Flash requests, a cached brand 1, a reply 1 Flash-Lite
 request.
+
+At 20 Flash requests a day, the whole app makes at most 10 new-brand runs or
+20 cached-brand runs a day. That is enough for two pilot owners, but evals
+share the same quota. One eval pass over the 20 site fixtures needs 40 Flash
+requests, or two days of the whole quota.
 
 **SDK**, because the AI SDK checks structured output against our zod schemas,
 streams into Next.js route handlers, and has a Workers AI provider, which
@@ -133,6 +139,10 @@ covers the terms' requirement for an app open to the public:
 - Good, because a model or provider change stays in one module and is checked
   by the eval set first.
 - Good, because the region check is free and runs before any model call.
+- Bad, because Flash's free quota is small (about 20 requests a day). A full eval
+  pass takes two days of the whole quota, so evals run on a few fixtures at
+  a time, off-peak, and never on a pilot day. Extra Google projects to get
+  around the limit are ruled out: the terms forbid working around API limits.
 - Bad, because the free-tier numbers aren't published and can shrink at any
   time. The usage bar and the daily pool must read them from config, not
   hard-code them, and the "back tomorrow" message must cover a Google 429.
