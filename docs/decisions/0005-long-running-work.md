@@ -93,6 +93,23 @@ again each time the page becomes visible. If the browser refuses it, the run
 goes on without it. This makes a screen lock less likely; switching apps
 still pauses the page, which resume covers.
 
+**Telling the owner.** Leaving mid-run wastes part of a small daily
+allowance, so the owner is told how to avoid it, in plain words and in her
+language:
+
+- On the run screen, while a run is in progress, one line: "Keep this page
+  open for about a minute while your posts are made."
+- In the owner guide (`guide/owner-guide`), a short "Making your posts"
+  section: stay on the page for about a minute; if you leave, the app carries
+  on where it stopped when you come back, but the part it was making is made
+  again and uses some of today's allowance; so start a run when you have a
+  minute to wait, not just before a call.
+- If a run resumed after an interruption, the usage bar shows what is left
+  today as usual, with no extra warning.
+
+The exact wording is set by `platform/i18n` and `guide/owner-guide`; this
+decision sets what must be said.
+
 ### Consequences
 
 - Good, because an interruption loses at most the steps in flight: one text
@@ -107,7 +124,8 @@ still pauses the page, which resume covers.
   already counted against Google's or Cloudflare's daily quota. A lost post
   plan costs one of about 20 daily Flash requests.
   `platform/usage-counters` decides whether our own counters charge for a
-  step the browser never received.
+  step the browser never received. The app and the owner guide explain this
+  in plain words, so owners wait out a run instead of leaving it.
 - Bad, because the browser holds the run's logic (order, retries, resume), so
   the client code is more than a single fetch, and needs tests of its own.
 - Bad, because nothing runs while the page is away: a run only finishes
@@ -127,6 +145,9 @@ still pauses the page, which resume covers.
   request becomes `pending` on resume, and that a `done` step is never
   re-requested.
 - No route handler writes run data to Upstash or any other store.
+- The run screen shows the "keep this page open" line during a run, and the
+  owner guide's "Making your posts" section covers leaving mid-run, in all
+  three languages.
 
 ## Pros and Cons of the Options
 
