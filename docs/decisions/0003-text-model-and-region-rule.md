@@ -104,6 +104,10 @@ At 20 Flash requests a day, the whole app makes at most 10 new-brand runs or
 share the same quota. One eval pass over the 20 site fixtures needs 40 Flash
 requests, or two days of the whole quota.
 
+To keep brand-panel edits from spending that quota one by one,
+`posts/generate-copy` batches them: the captions an edit affects are
+re-written in one Flash call, however many fields the owner changed.
+
 **SDK**, because the AI SDK checks structured output against our zod schemas,
 streams into Next.js route handlers, and has a Workers AI provider, which
 makes the fallback in the Global Plan a provider swap. The key is read from
