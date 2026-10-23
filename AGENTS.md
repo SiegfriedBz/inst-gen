@@ -1,13 +1,18 @@
 # inst-gen
 
-A Next.js app. The app code isn't scaffolded yet: this file currently covers the
-harness only.
+A Next.js app that turns a business's website link into ready-to-post Instagram
+posts and stories, and drafts replies to its Google Maps reviews. What to build
+next is in [`docs/roadmap.md`](docs/roadmap.md). The app code isn't scaffolded
+yet: this file currently covers the harness only.
 
 ## How agents work here
 
 This repo is developed with Superpowers (the working method) and Graft (an
 index of the code).
 
+- **Roadmap.** "Next roadmap item" means the first item in `docs/roadmap.md`
+  whose status isn't `done`. One item = one spec or decision = one branch = one
+  PR. The PR that ships an item also updates its status.
 - **Specs.** When brainstorming ends in a spec, it goes in
   `docs/specs/<area>/<slug>/spec.md`, written from `docs/templates/spec.md`.
   Never in `docs/superpowers/`.
@@ -48,6 +53,7 @@ index of the code).
 | Path | Role |
 |---|---|
 | `AGENTS.md` | This file: rules, commands, conventions |
+| `docs/roadmap.md` | The ordered list of decisions and specs to build, with their status |
 | `docs/specs/<area>/<slug>/` | `spec.md` (what), `plan.md` (how), `journal.md` (what happened) |
 | `docs/decisions/` | One `NNNN-<slug>.md` per technical decision (MADR) |
 | `docs/templates/` | Templates for specs, journals and decisions |
@@ -84,7 +90,9 @@ index of the code).
 
 ## Conventions
 
-- **Language:** English only, in code, UI, docs and commits.
+- **Language:** English in code, docs and commits. The app's screens and owner
+  guide are in English, Indonesian and Vietnamese; captions are generated in
+  English.
 - **Commits:** Conventional Commits, with a scope from `commitlint.config.mjs`.
 - **Branches:** `main` is production, `develop` is integration; work branches
   open PRs to `develop`.
