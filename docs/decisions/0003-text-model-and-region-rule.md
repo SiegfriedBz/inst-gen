@@ -1,7 +1,8 @@
 ---
 title: "Text model and region rule"
 description: "Gemini 3.8 Flash for the brand read and post plan, Gemini 3.5 Flash-Lite for replies and translations, both on the free tier through the AI SDK; visitors from the EEA, Switzerland and the UK are turned away from public launch."
-status: draft
+status: approved
+approved: { by: siegfried.bozza@protonmail.com, at: 2026-10-23T20:47:21Z }
 date: "2026-10-23"
 ---
 
