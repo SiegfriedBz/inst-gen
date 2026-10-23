@@ -22,8 +22,9 @@ Settled on 2026-10-23:
 
 - No database in the MVP. Brand, drafts and images live in the owner's
   browser; the server keeps only usage counters (Upstash Redis).
-- Hosting on Vercel Hobby. Images from Workers AI, text from Gemini (free
-  tiers, never a card on file).
+- Hosting on Vercel Hobby, functions in Singapore; allowed because the MVP is
+  free and non-commercial (decision 0001). Images from Workers AI, text from
+  Gemini (free tiers, never a card on file).
 - Portrait posts (1080×1350) with a story crop (1080×1920). Captions in
   English, each ending with a WhatsApp call to action.
 - App screens and the owner guide in English, Indonesian and Vietnamese. Every
@@ -41,7 +42,7 @@ Gate: CI green, and a page live on the production URL.
 
 | # | Item | Kind | Status |
 |---|---|---|---|
-| 0.1 | App stack and hosting | decision 0001 | todo |
+| 0.1 | App stack and hosting | decision 0001 | done |
 | 0.2 | App tooling: lint, format, tests, i18n library | decision 0002 | todo |
 | 0.3 | Text model and region rule | decision 0003 | todo |
 | 0.4 | Long-running work (streaming a ~1 minute run) | decision 0005 | todo |
