@@ -1,7 +1,8 @@
 ---
 title: "Long-running work"
 description: "A run is a chain of short streamed requests driven by the browser, which saves each finished step in IndexedDB and, after an interruption, re-asks only for the missing steps; no workflow service, no server-side run state."
-status: draft
+status: approved
+approved: { by: siegfried.bozza@protonmail.com, at: 2026-10-23T21:02:37Z }
 date: "2026-10-23"
 ---
 
