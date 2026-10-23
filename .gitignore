@@ -1,0 +1,13 @@
+# graft's local graph cache — regenerable, not committed (run `graft build --no-ignore`).
+/graft/
+
+# Superpowers scratch space
+.superpowers/
+
+# Claude Code: per-session worktrees and personal settings
+.claude/worktrees/
+.claude/settings.local.json
+CLAUDE.local.md
+
+# Dependencies
+node_modules/

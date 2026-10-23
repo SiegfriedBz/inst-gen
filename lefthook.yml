@@ -1,0 +1,12 @@
+pre-commit:
+  commands:
+    # Copy .agents/skills to .claude/skills from what is staged.
+    sync-skills:
+      run: node scripts/sync-skills.mjs
+    # Format, lint and typecheck of staged files come with the app (Part 2).
+
+commit-msg:
+  commands:
+    commitlint:
+      # Quoted: the repo path may contain spaces.
+      run: pnpm exec commitlint --edit "{1}"
