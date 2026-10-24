@@ -9,7 +9,7 @@ import { createFetcher, FetchError, type Fetched, type Transport } from './fetch
 import { choosePages, englishHome } from './pages';
 import type { BrandErrorCode, PartialProfile } from './profile';
 import { BRAND_PROMPT_VERSION, brandPrompt, brandUserText } from './prompt';
-import type { ReadLog } from './read-log';
+import { describeModelError, type ReadLog } from './read-log';
 import { robotsAllows } from './robots';
 import type { StreamLine } from './stream';
 import { cleanUrl } from './url';
@@ -109,7 +109,8 @@ export async function prepareRead(
         fetchMs: ms,
         firstPartialMs: null,
         totalMs: ms,
-        outcome: error.code,
+        // A client that left mid-fetch looks like an unreachable site.
+        outcome: signal.aborted ? 'aborted' : error.code,
       });
     }
     throw error;
@@ -291,7 +292,7 @@ export async function* streamProfile(
     } catch (error) {
       if (signal.aborted) return;
       deps.onModelError?.(error);
-      modelError = error instanceof Error ? error.message : String(error);
+      modelError = describeModelError(error);
       if (prepared.deadline.aborted) {
         outcome = 'model_timeout';
       } else if (error instanceof ModelError && error.kind === 'busy') {

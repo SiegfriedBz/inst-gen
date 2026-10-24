@@ -215,6 +215,19 @@ The final review's five findings, as tests written before the fixes:
 - The eval wasn't re-run: the prompt change touches one field the eval
   doesn't score, and a full pass takes the day's quota.
 
+- A fresh reviewer read the branch: no Critical, two Important, seven
+  Minor. Both Important were fixed, each with a test that failed first: a
+  client that leaves during the fetch is logged `aborted`, not
+  `unreachable`; and a model error's free text is no longer logged (it can
+  quote the model's output, so the owner's details): Gemini's own answer
+  keeps its status and message, any other error gives only its name.
+- Deferred (Minor): `text-model.ts` still says "the 30 s budget"; the spec's
+  Log line doesn't name the `aborted` outcome; a failure logs the host as
+  typed, a success the host after redirects; the service area jumps once from
+  JSON-LD's list to the model's streaming text (as the town does);
+  `fetchMs` also covers extraction; `formatReadLog` doesn't escape
+  backslashes; an unexpected bug in `prepare` isn't logged.
+
 ### RED
 
 `Tests  2 failed | 5 passed (7)` (the cut-off)
@@ -224,7 +237,9 @@ The final review's five findings, as tests written before the fixes:
 `Tests  5 failed | 16 passed (21)` (the log line; `brand-read-log.test.ts`
 failed to load)
 
+`Tests  3 failed | 20 passed (23)` (the review's two Important findings)
+
 ### GREEN
 
-`Tests  500 passed (500)`
+`Tests  502 passed (502)`
 

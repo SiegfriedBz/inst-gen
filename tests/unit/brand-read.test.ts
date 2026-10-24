@@ -1,5 +1,7 @@
+import { APICallError } from 'ai';
 import { describe, expect, test } from 'vitest';
 import { replayTextModel } from '@/lib/ai/replay';
+import { ModelError, type TextModel, toModelStream } from '@/lib/ai/text-model';
 import { BRAND_PROMPT_VERSION } from '@/lib/brand/prompt';
 import { BrandReadError, prepareRead, type ReadDeps, streamProfile } from '@/lib/brand/read';
 import type { ReadLog } from '@/lib/brand/read-log';
@@ -324,12 +326,61 @@ describe('the log line', () => {
     expectOnlyLogKeys(entries);
   });
 
-  test("a busy model logs model_busy with the model's message", async () => {
-    const { d, entries } = logged({ model: replayTextModel(recording, { error: 'busy' }) });
+  function failing(error: unknown): TextModel {
+    return {
+      streamBrandProfile() {
+        return toModelStream(
+          (async function* () {
+            // Fails before its first partial.
+            yield* [];
+            throw error;
+          })(),
+        );
+      },
+    };
+  }
+
+  test("a busy model logs model_busy with Gemini's status and message", async () => {
+    const api = new APICallError({
+      message: 'This model is currently experiencing high demand.',
+      url: 'https://generativelanguage.googleapis.com/',
+      requestBodyValues: {},
+      statusCode: 503,
+    });
+    const { d, entries } = logged({
+      model: failing(new ModelError('busy', api.message, { cause: api })),
+    });
     await read(SITE, d);
     expect(entries).toEqual([
-      expect.objectContaining({ outcome: 'model_busy', modelError: 'replayed busy' }),
+      expect.objectContaining({
+        outcome: 'model_busy',
+        modelError: 'AI_APICallError 503: This model is currently experiencing high demand.',
+      }),
     ]);
+  });
+
+  test("a model error that isn't Gemini's answer logs only its name", async () => {
+    const leaky = new Error('Invalid value: {"whatsapp":"+84905123456","name":"Sen Spa"}');
+    leaky.name = 'AI_NoObjectGeneratedError';
+    const { d, entries } = logged({
+      model: failing(new ModelError('failed', leaky.message, { cause: leaky })),
+    });
+    await read(SITE, d);
+    expect(entries).toEqual([
+      expect.objectContaining({ outcome: 'model_failed', modelError: 'AI_NoObjectGeneratedError' }),
+    ]);
+  });
+
+  test('a client that leaves during the fetch logs aborted, not unreachable', async () => {
+    const controller = new AbortController();
+    const entries: ReadLog[] = [];
+    const { deps: d } = deps(
+      { ...baseSite, [SITE]: { slowMs: 500, html: homeHtml } },
+      { log: (e) => entries.push(e) },
+    );
+    setTimeout(() => controller.abort(), 20);
+    await codeOf(prepareRead(SITE, d, controller.signal));
+    expect(entries.map((e) => e.outcome)).toEqual(['aborted']);
   });
 
   test('a hanging model logs model_timeout', async () => {

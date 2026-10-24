@@ -1,3 +1,4 @@
+import { APICallError } from 'ai';
 import type { BrandErrorCode } from './profile';
 
 // One line in the server log per brand read, so a timeout or a model failure
@@ -34,4 +35,16 @@ export function formatReadLog(log: ReadLog): string {
     fields.push(`model_error="${message.replaceAll('"', '\\"')}"`);
   }
   return `brand read ${fields.join(' ')}`;
+}
+
+// What a failed model call says in the log. Gemini's own answer (an API call
+// error) keeps its status and message; any other error gives only its name,
+// since its message can quote the model's output and so the owner's details.
+export function describeModelError(error: unknown): string {
+  let innermost: unknown = error;
+  for (let e = error; e instanceof Error; e = e.cause) {
+    if (APICallError.isInstance(e)) return `${e.name} ${e.statusCode ?? '-'}: ${e.message}`;
+    innermost = e;
+  }
+  return innermost instanceof Error ? innermost.name : typeof innermost;
 }
