@@ -2,6 +2,7 @@ import { describe, expect, test } from 'vitest';
 import { replayTextModel } from '@/lib/ai/replay';
 import { BRAND_PROMPT_VERSION } from '@/lib/brand/prompt';
 import { BrandReadError, prepareRead, type ReadDeps, streamProfile } from '@/lib/brand/read';
+import type { ReadLog } from '@/lib/brand/read-log';
 import type { StreamLine } from '@/lib/brand/stream';
 import { type SiteFile, siteTransport } from './helpers/site';
 
@@ -287,5 +288,84 @@ describe('brand read', () => {
     setTimeout(() => controller.abort(), 20);
     for await (const line of streamProfile(prepared, d, controller.signal)) lines.push(line);
     expect(lines.map((l) => l.type)).toEqual(['partial']);
+  });
+});
+
+describe('the log line', () => {
+  const KEYS = [
+    'fetchMs',
+    'firstPartialMs',
+    'host',
+    'modelError',
+    'outcome',
+    'pages',
+    'photos',
+    'totalMs',
+  ];
+
+  function logged(extra: Partial<ReadDeps> = {}) {
+    const entries: ReadLog[] = [];
+    const { deps: d } = deps(baseSite, { log: (e) => entries.push(e), ...extra });
+    return { d, entries };
+  }
+
+  function expectOnlyLogKeys(entries: ReadLog[]) {
+    for (const e of entries) for (const key of Object.keys(e)) expect(KEYS).toContain(key);
+  }
+
+  test('a finished read logs once, with its timings', async () => {
+    const { d, entries } = logged();
+    await read(SITE, d);
+    expect(entries).toHaveLength(1);
+    expect(entries[0]).toMatchObject({ host: 'sen.vn', pages: 3, photos: 2, outcome: 'final' });
+    expect(entries[0].firstPartialMs).toEqual(expect.any(Number));
+    expect(entries[0].totalMs).toBeGreaterThanOrEqual(entries[0].fetchMs);
+    expect(entries[0].modelError).toBeUndefined();
+    expectOnlyLogKeys(entries);
+  });
+
+  test("a busy model logs model_busy with the model's message", async () => {
+    const { d, entries } = logged({ model: replayTextModel(recording, { error: 'busy' }) });
+    await read(SITE, d);
+    expect(entries).toEqual([
+      expect.objectContaining({ outcome: 'model_busy', modelError: 'replayed busy' }),
+    ]);
+  });
+
+  test('a hanging model logs model_timeout', async () => {
+    const { d, entries } = logged({
+      model: replayTextModel(recording, { hang: true }),
+      limits: { fetchMs: 200, totalMs: 300 },
+    });
+    await read(SITE, d);
+    expect(entries.map((e) => e.outcome)).toEqual(['model_timeout']);
+  });
+
+  test('a client that leaves logs aborted', async () => {
+    const controller = new AbortController();
+    const { d, entries } = logged({ model: replayTextModel(recording, { hang: true }) });
+    const prepared = await prepareRead(SITE, d, controller.signal);
+    setTimeout(() => controller.abort(), 20);
+    for await (const _line of streamProfile(prepared, d, controller.signal));
+    expect(entries.map((e) => e.outcome)).toEqual(['aborted']);
+  });
+
+  test('an unreachable site logs its code and still throws', async () => {
+    const entries: ReadLog[] = [];
+    const { deps: d } = deps(
+      { ...baseSite, [SITE]: { status: 404 } },
+      { log: (e) => entries.push(e) },
+    );
+    expect(await codeOf(prepareRead(SITE, d, new AbortController().signal))).toBe('unreachable');
+    expect(entries).toEqual([
+      expect.objectContaining({
+        host: 'sen.vn',
+        pages: 0,
+        photos: 0,
+        firstPartialMs: null,
+        outcome: 'unreachable',
+      }),
+    ]);
+    expectOnlyLogKeys(entries);
   });
 });
