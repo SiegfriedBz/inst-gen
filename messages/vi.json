@@ -84,6 +84,58 @@
       "guess": "chúng tôi đoán từ ảnh của bạn",
       "suggestion": "gợi ý của chúng tôi",
       "owner": "do bạn thêm"
+    },
+    "edit": {
+      "save": "Lưu",
+      "cancel": "Hủy",
+      "discardTitle": "Bỏ các thay đổi của bạn?",
+      "discard": "Bỏ",
+      "keepEditing": "Tiếp tục sửa",
+      "englishHint": "Hãy viết bằng tiếng Anh: bài đăng của bạn bằng tiếng Anh.",
+      "wordsHint": "Tối đa {count} từ",
+      "itemsHint": "Tối đa {count}",
+      "errors": {
+        "required": "Không được để trống.",
+        "tooManyWords": "Quá nhiều từ.",
+        "tooMany": "Quá nhiều.",
+        "invalidEmail": "Đây không giống địa chỉ email.",
+        "invalidUrl": "Đây không giống một liên kết.",
+        "invalidPhone": "Đây không giống số điện thoại.",
+        "needCountryCode": "Hãy bắt đầu bằng mã quốc gia, như +84 hoặc +62.",
+        "styleIncomplete": "Điền đủ cả năm mục, hoặc để trống tất cả.",
+        "needColour": "Giữ lại ít nhất một màu.",
+        "invalid": "Hãy kiểm tra mục này."
+      },
+      "list": {
+        "remove": "Xóa",
+        "up": "Đưa lên",
+        "down": "Đưa xuống",
+        "addOffering": "Thêm dịch vụ",
+        "addHighlight": "Thêm điểm nổi bật",
+        "addMoment": "Thêm lý do",
+        "addColour": "Thêm màu"
+      },
+      "item": {
+        "service": "Dịch vụ",
+        "price": "Giá",
+        "duration": "Thời lượng",
+        "description": "Mô tả",
+        "claim": "Điểm nổi bật",
+        "reason": "Lý do",
+        "colour": "Màu",
+        "hex": "Mã màu",
+        "role": "Vai trò"
+      },
+      "chips": {
+        "add": "Thêm",
+        "addWord": "Thêm từ vào {label}",
+        "removeWord": "Xóa {word}"
+      },
+      "look": {
+        "removeLogo": "Xóa logo",
+        "removePhoto": "Xóa ảnh",
+        "noLogo": "Không có logo"
+      }
     }
   }
 }

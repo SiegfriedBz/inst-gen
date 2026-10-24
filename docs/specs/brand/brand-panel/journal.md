@@ -23,6 +23,8 @@
 - Task 4: ` Test Files  1 failed (1)` (`lib/brand/read-client` not found)
 - Task 5: ` Test Files  2 failed (2)` (`lib/brand/display` and
   `components/brand/panel` not found)
+- Task 6: ` Test Files  1 failed (1)` (`components/brand/section-sheet` not
+  found)
 
 ## GREEN
 
@@ -31,3 +33,4 @@
 - Task 3: ` Tests  24 passed (24)`
 - Task 4: ` Tests  11 passed (11)`
 - Task 5: ` Tests  19 passed (19)`
+- Task 6: ` Tests  9 passed (9)`

@@ -84,6 +84,58 @@
       "guess": "our guess from your photos",
       "suggestion": "our suggestion",
       "owner": "added by you"
+    },
+    "edit": {
+      "save": "Save",
+      "cancel": "Cancel",
+      "discardTitle": "Discard your changes?",
+      "discard": "Discard",
+      "keepEditing": "Keep editing",
+      "englishHint": "Write in English: your posts are in English.",
+      "wordsHint": "Up to {count} words",
+      "itemsHint": "Up to {count}",
+      "errors": {
+        "required": "This can't be empty.",
+        "tooManyWords": "That is too many words.",
+        "tooMany": "That is too many.",
+        "invalidEmail": "That doesn't look like an email address.",
+        "invalidUrl": "That doesn't look like a link.",
+        "invalidPhone": "That doesn't look like a phone number.",
+        "needCountryCode": "Start with your country code, like +84 or +62.",
+        "styleIncomplete": "Fill in all five, or leave them all empty.",
+        "needColour": "Keep at least one colour.",
+        "invalid": "Check this field."
+      },
+      "list": {
+        "remove": "Remove",
+        "up": "Move up",
+        "down": "Move down",
+        "addOffering": "Add a service",
+        "addHighlight": "Add a claim",
+        "addMoment": "Add a reason",
+        "addColour": "Add a colour"
+      },
+      "item": {
+        "service": "Service",
+        "price": "Price",
+        "duration": "Duration",
+        "description": "Description",
+        "claim": "Claim",
+        "reason": "Reason",
+        "colour": "Colour",
+        "hex": "Colour code",
+        "role": "Role"
+      },
+      "chips": {
+        "add": "Add",
+        "addWord": "Add a word to {label}",
+        "removeWord": "Remove {word}"
+      },
+      "look": {
+        "removeLogo": "Remove logo",
+        "removePhoto": "Remove photo",
+        "noLogo": "No logo"
+      }
     }
   }
 }

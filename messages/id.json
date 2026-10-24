@@ -84,6 +84,58 @@
       "guess": "tebakan kami dari foto Anda",
       "suggestion": "saran kami",
       "owner": "ditambahkan oleh Anda"
+    },
+    "edit": {
+      "save": "Simpan",
+      "cancel": "Batal",
+      "discardTitle": "Buang perubahan Anda?",
+      "discard": "Buang",
+      "keepEditing": "Lanjut mengubah",
+      "englishHint": "Tulis dalam bahasa Inggris: postingan Anda berbahasa Inggris.",
+      "wordsHint": "Paling banyak {count} kata",
+      "itemsHint": "Paling banyak {count}",
+      "errors": {
+        "required": "Ini tidak boleh kosong.",
+        "tooManyWords": "Terlalu banyak kata.",
+        "tooMany": "Terlalu banyak.",
+        "invalidEmail": "Itu tidak terlihat seperti alamat email.",
+        "invalidUrl": "Itu tidak terlihat seperti tautan.",
+        "invalidPhone": "Itu tidak terlihat seperti nomor telepon.",
+        "needCountryCode": "Awali dengan kode negara Anda, seperti +84 atau +62.",
+        "styleIncomplete": "Isi kelimanya, atau kosongkan semuanya.",
+        "needColour": "Sisakan setidaknya satu warna.",
+        "invalid": "Periksa isian ini."
+      },
+      "list": {
+        "remove": "Hapus",
+        "up": "Naikkan",
+        "down": "Turunkan",
+        "addOffering": "Tambah layanan",
+        "addHighlight": "Tambah keunggulan",
+        "addMoment": "Tambah alasan",
+        "addColour": "Tambah warna"
+      },
+      "item": {
+        "service": "Layanan",
+        "price": "Harga",
+        "duration": "Durasi",
+        "description": "Keterangan",
+        "claim": "Keunggulan",
+        "reason": "Alasan",
+        "colour": "Warna",
+        "hex": "Kode warna",
+        "role": "Peran"
+      },
+      "chips": {
+        "add": "Tambah",
+        "addWord": "Tambah kata ke {label}",
+        "removeWord": "Hapus {word}"
+      },
+      "look": {
+        "removeLogo": "Hapus logo",
+        "removePhoto": "Hapus foto",
+        "noLogo": "Tanpa logo"
+      }
     }
   }
 }
