@@ -30,6 +30,10 @@ export function defaultReadDeps(): ReadDeps {
 // Runs whose request is alive in this page.
 const live = new Set<string>();
 
+// A read lost this many times is given up, so a read that can't finish
+// doesn't spend the day's free quota over and over.
+const MAX_RESUMES = 2;
+
 function isErrorCode(value: unknown): value is BrandErrorCode {
   return (ERROR_CODES as readonly unknown[]).includes(value);
 }
@@ -56,7 +60,15 @@ function request(
 
   async function go(): Promise<void> {
     try {
-      await saveRun(isNew ? run : { ...run, steps: [{ name: 'brand', status: 'running' }] });
+      await saveRun(
+        isNew
+          ? run
+          : {
+              ...run,
+              steps: [{ name: 'brand', status: 'running' }],
+              resumes: (run.resumes ?? 0) + 1,
+            },
+      );
       if (controller.signal.aborted) return;
       const response = await deps.fetch('/api/brand/read', {
         method: 'POST',
@@ -91,8 +103,17 @@ function request(
       }
       // The stream ended with no final or error line: the connection dropped.
       if (!controller.signal.aborted) onEvent({ type: 'offline' });
-    } catch {
-      if (!controller.signal.aborted) onEvent({ type: 'offline' });
+    } catch (error) {
+      if (controller.signal.aborted) return;
+      // fetch and the stream reader fail with a TypeError when the network
+      // goes; anything else (a line that doesn't parse, a profile the phone
+      // can't keep) won't get better by asking again.
+      if (error instanceof TypeError) {
+        onEvent({ type: 'offline' });
+      } else {
+        await deleteRun(run.id);
+        onEvent({ type: 'error', code: 'model_failed' });
+      }
     } finally {
       live.delete(run.id);
       finished = true;
@@ -133,5 +154,11 @@ export async function resumeRead(
   // Claimed before any await, so two resumes can't both ask.
   if (live.has(run.id)) return null;
   live.add(run.id);
+  if ((run.resumes ?? 0) >= MAX_RESUMES) {
+    await deleteRun(run.id);
+    live.delete(run.id);
+    onEvent({ type: 'error', code: 'model_failed' });
+    return null;
+  }
   return { ...request(run, false, onEvent, deps), reread: run.reread, url: run.url };
 }

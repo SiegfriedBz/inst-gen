@@ -27,6 +27,17 @@
 - 2026-10-24: the phone tests ran on port 3457 through a scratch copy of
   `playwright.config.ts`, because another checkout's server held port 3000.
   The repo's config is unchanged.
+- 2026-10-24, final review: an email or booking link saved as it was read
+  is kept, even one the checks would refuse; a typed link with a scheme
+  other than http or https is refused rather than prefixed.
+- 2026-10-24, final review: fields with no source (category, tone, visual
+  style, feeling, place symbols, senses) record an owner's edit in
+  `BrandRecord.ownerEdited`, beside the profile. The panel then says "added
+  by you", and re-read counts them. The profile schema is unchanged.
+- 2026-10-24, final review: only a network `TypeError` makes a read
+  "offline"; a line that doesn't parse or a profile the phone can't keep ends
+  it as `model_failed`. A lost read is resumed at most twice, and the wake
+  lock is released while offline.
 
 ## RED
 
@@ -43,6 +54,8 @@
   not found); `stop after a dropped stream…` ` Tests  1 failed | 11 passed (12)`
 - Task 8: `  1 failed` (`getByText('Da Nang')` matched the summary too; the
   test now reads the Town field)
+- Final review fixes: ` Tests  2 failed | 24 passed (26)`, ` Failed Tests 8`,
+  ` Tests  4 failed | 27 passed (31)`
 
 ## GREEN
 
@@ -54,3 +67,4 @@
 - Task 6: ` Tests  9 passed (9)`
 - Task 7: ` Tests  474 passed (474)` (whole suite)
 - Task 8: `  24 passed (10.7s)` (whole Playwright suite)
+- Final review fixes: ` Tests  487 passed (487)`; Playwright `  24 passed (11.6s)`

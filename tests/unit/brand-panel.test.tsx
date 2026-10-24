@@ -9,11 +9,11 @@ import { svargaProfile } from './helpers/brand';
 
 afterEach(cleanup);
 
-function renderPanel(profile: PartialProfile, editable = true) {
+function renderPanel(profile: PartialProfile, editable = true, ownerEdited: string[] = []) {
   const onEdit = vi.fn();
   render(
     <NextIntlClientProvider locale="en" messages={messages}>
-      <BrandPanel profile={profile} editable={editable} onEdit={onEdit} />
+      <BrandPanel profile={profile} editable={editable} onEdit={onEdit} ownerEdited={ownerEdited} />
     </NextIntlClientProvider>,
   );
   return onEdit;
@@ -60,6 +60,15 @@ describe('BrandPanel', () => {
       .getByText('warm tropical, soft light, natural textures')
       .closest('[data-field]') as HTMLElement;
     expect(within(style).getByText('our guess from your photos')).toBeTruthy();
+  });
+
+  test("an owner's visual style says added by you, not our guess", () => {
+    renderPanel(svargaProfile(), true, ['visualStyle']);
+    const style = screen
+      .getByText('warm tropical, soft light, natural textures')
+      .closest('[data-field]') as HTMLElement;
+    expect(within(style).getByText('added by you')).toBeTruthy();
+    expect(within(style).queryByText('our guess from your photos')).toBeNull();
   });
 
   test("an owner's value says added by you", () => {

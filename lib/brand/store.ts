@@ -6,7 +6,14 @@ import { type Profile, profileSchema } from './profile';
 // "Stored on the phone"): one IndexedDB database, a brand per owner id and
 // the runs of decision 0005. Without IndexedDB everything here is a no-op.
 
-export type BrandRecord = { ownerId: string; profile: Profile; savedAt: string };
+// `ownerEdited` names the fields with no source of their own that the owner
+// changed (lib/brand/edit.ts, UNSOURCED_FIELDS).
+export type BrandRecord = {
+  ownerId: string;
+  profile: Profile;
+  savedAt: string;
+  ownerEdited: string[];
+};
 
 export type LoadResult =
   | { kind: 'none' }
@@ -15,7 +22,8 @@ export type LoadResult =
   | { kind: 'unavailable' };
 
 export interface ShopfrontDb extends DBSchema {
-  brands: { key: string; value: BrandRecord };
+  // Records saved before `ownerEdited` existed have none.
+  brands: { key: string; value: Omit<BrandRecord, 'ownerEdited'> & { ownerEdited?: string[] } };
   runs: { key: string; value: RunRecord; indexes: { ownerId: string } };
 }
 
@@ -57,7 +65,10 @@ export async function loadBrand(ownerId: string): Promise<LoadResult> {
   if (!record) return { kind: 'none' };
   const parsed = profileSchema.safeParse(record.profile);
   if (!parsed.success) return { kind: 'invalid' };
-  return { kind: 'saved', record: { ...record, profile: parsed.data } };
+  return {
+    kind: 'saved',
+    record: { ...record, profile: parsed.data, ownerEdited: record.ownerEdited ?? [] },
+  };
 }
 
 // Throws on a profile that fails the schema; false when nothing can be kept.
@@ -65,11 +76,12 @@ export async function saveBrand(
   ownerId: string,
   profile: Profile,
   now: Date = new Date(),
+  ownerEdited: string[] = [],
 ): Promise<boolean> {
   const checked = profileSchema.parse(profile);
   const db = await openStore();
   if (!db) return false;
-  await db.put('brands', { ownerId, profile: checked, savedAt: now.toISOString() });
+  await db.put('brands', { ownerId, profile: checked, savedAt: now.toISOString(), ownerEdited });
   return true;
 }
 

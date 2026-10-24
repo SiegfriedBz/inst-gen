@@ -37,8 +37,24 @@ describe('the brand store', () => {
     expect(await saveBrand('sen', svargaProfile(), new Date('2026-10-24T10:00:00Z'))).toBe(true);
     expect(await loadBrand('sen')).toEqual({
       kind: 'saved',
-      record: { ownerId: 'sen', profile: svargaProfile(), savedAt: '2026-10-24T10:00:00.000Z' },
+      record: {
+        ownerId: 'sen',
+        profile: svargaProfile(),
+        savedAt: '2026-10-24T10:00:00.000Z',
+        ownerEdited: [],
+      },
     });
+  });
+
+  test("keeps the owner's edits to fields without a source", async () => {
+    await saveBrand('sen', svargaProfile(), new Date(), ['tone']);
+    expect(await loadBrand('sen')).toMatchObject({ record: { ownerEdited: ['tone'] } });
+  });
+
+  test('a record saved before ownerEdited existed loads with none', async () => {
+    const db = await openStore();
+    await db?.put('brands', { ownerId: 'sen', profile: svargaProfile(), savedAt: '' } as never);
+    expect(await loadBrand('sen')).toMatchObject({ record: { ownerEdited: [] } });
   });
 
   test('another owner sees nothing', async () => {

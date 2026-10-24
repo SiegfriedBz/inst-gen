@@ -209,7 +209,8 @@ function instagramHandle(typed: string): string {
 function bookingLink(typed: string): string | FieldError {
   const value = typed.trim();
   if (!value) return '';
-  const withScheme = /^[a-z][a-z\d+.-]*:\/\//i.test(value) ? value : `https://${value}`;
+  if (/^[a-z][a-z\d+.-]*:/i.test(value) && !/^https?:\/\//i.test(value)) return 'invalidUrl';
+  const withScheme = /^https?:\/\//i.test(value) ? value : `https://${value}`;
   return z.url({ protocol: /^https?$/ }).safeParse(withScheme).success && !/\s/.test(value)
     ? withScheme
     : 'invalidUrl';
@@ -298,9 +299,14 @@ function build(profile: Profile, section: SectionId, values: SectionValues[Secti
     const phone = phoneField(profile, contact.phone, contact.whatsapp, v.phone);
     if (typeof whatsapp === 'string') errors.whatsapp = whatsapp;
     if (typeof phone === 'string') errors.phone = phone;
+    // A value saved as it was read is kept, even one the checks below would
+    // refuse: 1.1 takes the booking link as the site writes it.
+    const untouched = (old: Sourced, typed: string) => !!old && old.value === typed.trim();
     const email = v.email.trim();
-    if (email && !z.email().safeParse(email).success) errors.email = 'invalidEmail';
-    const booking = bookingLink(v.bookingUrl);
+    const emailKept = untouched(contact.email, email);
+    if (email && !emailKept && !z.email().safeParse(email).success) errors.email = 'invalidEmail';
+    const bookingKept = untouched(contact.bookingUrl, v.bookingUrl);
+    const booking = bookingKept ? (contact.bookingUrl?.value ?? '') : bookingLink(v.bookingUrl);
     if (booking === 'invalidUrl') errors.bookingUrl = booking;
     next = {
       ...profile,
@@ -363,9 +369,35 @@ export function applySection<S extends SectionId>(
   return { ok: false, errors: schemaErrors };
 }
 
-// How many values in the profile the owner typed: re-read asks before
-// replacing them.
-export function countOwnerEdits(profile: Profile): number {
+// Fields with no source of their own: an owner's edit to one is recorded
+// beside the profile (BrandRecord.ownerEdited), not in it.
+export const UNSOURCED_FIELDS = [
+  'category',
+  'tone',
+  'visualStyle',
+  'essence.feeling',
+  'essence.placeSymbols',
+  'essence.senses',
+] as const;
+
+export type UnsourcedField = (typeof UNSOURCED_FIELDS)[number];
+
+function unsourced(profile: Profile, field: UnsourcedField): unknown {
+  if (field === 'category') return profile.category;
+  if (field === 'tone') return profile.tone;
+  if (field === 'visualStyle') return profile.visualStyle;
+  return profile.essence[field.slice('essence.'.length) as 'feeling' | 'placeSymbols' | 'senses'];
+}
+
+export function changedUnsourced(before: Profile, after: Profile): UnsourcedField[] {
+  return UNSOURCED_FIELDS.filter(
+    (field) => JSON.stringify(unsourced(before, field)) !== JSON.stringify(unsourced(after, field)),
+  );
+}
+
+// How many values in the profile the owner typed, counting her edits to
+// fields with no source: re-read asks before replacing them.
+export function countOwnerEdits(profile: Profile, ownerEdited: readonly string[] = []): number {
   const sourced: (Sourced | { source: string })[] = [
     profile.name,
     profile.summary,
@@ -379,5 +411,5 @@ export function countOwnerEdits(profile: Profile): number {
     ...profile.colours,
     ...profile.essence.moments,
   ];
-  return sourced.filter((f) => f?.source === OWNER_SOURCE).length;
+  return sourced.filter((f) => f?.source === OWNER_SOURCE).length + ownerEdited.length;
 }

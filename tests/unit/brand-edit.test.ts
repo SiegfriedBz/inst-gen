@@ -3,6 +3,7 @@ import {
   applySection,
   type BusinessValues,
   type ContactValues,
+  changedUnsourced,
   countOwnerEdits,
   type LookValues,
   type PlaceValues,
@@ -153,6 +154,25 @@ describe('applying a section edit', () => {
     });
   });
 
+  test('an untouched booking link or email is kept exactly as read', () => {
+    for (const bookingUrl of ['svargabalimassage.com/book', 'Book on WhatsApp', 'mailto:x@y.com']) {
+      const profile: Profile = {
+        ...p,
+        contact: { ...p.contact, bookingUrl: { value: bookingUrl, source: SITE } },
+      };
+      const saved = ok(contact(profile, { whatsapp: '+6281234567891' }));
+      expect(saved.contact.bookingUrl).toEqual(profile.contact.bookingUrl);
+      expect(countOwnerEdits(saved)).toBe(1);
+    }
+  });
+
+  test('a typed link with another scheme is refused, not prefixed', () => {
+    expect(contact(p, { bookingUrl: 'mailto:x@y.com' })).toEqual({
+      ok: false,
+      errors: { bookingUrl: 'invalidUrl' },
+    });
+  });
+
   test('a bad email is refused', () => {
     expect(contact(p, { email: 'hello at svarga' })).toEqual({
       ok: false,
@@ -218,5 +238,19 @@ describe('applying a section edit', () => {
     const once = ok(place(p, { hours: '9am to midnight' }));
     const twice = ok(contact(once, { email: 'book@svarga.com' }));
     expect(countOwnerEdits(twice)).toBe(2);
+  });
+
+  test('names the fields without a source that the owner changed', () => {
+    const values = sectionValues(p, 'look') as LookValues;
+    const after = ok(look(p, { style: { ...values.style, mood: 'bright and lively' } }));
+    expect(changedUnsourced(p, after)).toEqual(['visualStyle']);
+    const feeling = sectionValues(p, 'feeling');
+    const toned = ok(applySection(p, 'feeling', { ...feeling, tone: ['playful'] }));
+    expect(changedUnsourced(p, toned)).toEqual(['tone']);
+    expect(changedUnsourced(p, p)).toEqual([]);
+  });
+
+  test('counts edits to fields without a source too', () => {
+    expect(countOwnerEdits(p, ['tone', 'visualStyle'])).toBe(2);
   });
 });

@@ -160,6 +160,26 @@ describe('BrandHome', () => {
     expect(fetchMock).not.toHaveBeenCalled();
   });
 
+  test('re-read counts an edit to a field without a source', async () => {
+    await saveBrand('sen', profile, new Date(), ['tone']);
+    renderHome();
+    fireEvent.click(await screen.findByRole('button', { name: 'Re-read my website' }));
+    expect(
+      await screen.findByText('Your 1 change will be replaced by what your site says now.'),
+    ).toBeTruthy();
+  });
+
+  test('editing the tone is remembered as an edit', async () => {
+    await saveBrand('sen', profile);
+    renderHome();
+    fireEvent.click(await screen.findByRole('button', { name: 'Edit Your feeling' }));
+    fireEvent.click(await screen.findByRole('button', { name: 'Remove calm' }));
+    fireEvent.click(screen.getByRole('button', { name: 'Save' }));
+    await waitFor(async () =>
+      expect(await loadBrand('sen')).toMatchObject({ record: { ownerEdited: ['tone'] } }),
+    );
+  });
+
   test('re-read without edits starts at once, from the saved site', async () => {
     await saveBrand('sen', profile);
     fetchMock.mockResolvedValue(ndjson([{ type: 'final', profile }]));
@@ -190,6 +210,21 @@ describe('BrandHome', () => {
     const field = (await screen.findByLabelText('Your website')) as HTMLInputElement;
     expect(field.value).toBe('');
     expect(await loadBrand('sen')).toEqual({ kind: 'none' });
+  });
+
+  test('going offline lets the screen sleep again', async () => {
+    const release = vi.fn().mockResolvedValue(undefined);
+    vi.stubGlobal('navigator', {
+      ...navigator,
+      wakeLock: { request: vi.fn().mockResolvedValue({ release }) },
+    });
+    fetchMock.mockResolvedValue(ndjson([{ type: 'partial', profile: { name: profile.name } }]));
+    renderHome();
+    await typeAndRead('svargabalimassage.com');
+    expect(
+      await screen.findByText("You're offline. We'll carry on when you're back."),
+    ).toBeTruthy();
+    await waitFor(() => expect(release).toHaveBeenCalled());
   });
 
   test('stop goes back to the field', async () => {

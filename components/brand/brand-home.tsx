@@ -14,7 +14,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { lastReadLabel } from '@/lib/brand/display';
-import { countOwnerEdits, type SectionId } from '@/lib/brand/edit';
+import { changedUnsourced, countOwnerEdits, type SectionId } from '@/lib/brand/edit';
 import type { BrandErrorCode, PartialProfile, Profile } from '@/lib/brand/profile';
 import { type ReadEvent, type RunningRead, resumeRead, startRead } from '@/lib/brand/read-client';
 import { forgetBrand, loadBrand, requestPersistence, saveBrand } from '@/lib/brand/store';
@@ -40,6 +40,7 @@ export function BrandHome({ ownerId }: { ownerId: string }) {
   const locale = useLocale();
   const [view, setView] = useState<View>({ kind: 'loading' });
   const [saved, setSaved] = useState<Profile | null>(null);
+  const [ownerEdited, setOwnerEdited] = useState<string[]>([]);
   const [url, setUrl] = useState('');
   const [error, setError] = useState<BrandErrorCode | 'offline' | null>(null);
   const [notice, setNotice] = useState<Notice>(null);
@@ -65,6 +66,7 @@ export function BrandHome({ ownerId }: { ownerId: string }) {
       } else if (event.type === 'final') {
         endRead();
         setSaved(event.profile);
+        setOwnerEdited([]);
         setError(null);
         setNotice(event.kept ? null : 'notKept');
         setView({ kind: 'panel' });
@@ -75,6 +77,9 @@ export function BrandHome({ ownerId }: { ownerId: string }) {
         setError(event.code);
         setView({ kind: savedRef.current ? 'panel' : 'empty' });
       } else if (event.type === 'offline') {
+        // The read waits for the owner to come back: let the screen sleep.
+        lock.current?.release();
+        lock.current = null;
         setError('offline');
       } else {
         window.location.assign('/enter');
@@ -106,6 +111,7 @@ export function BrandHome({ ownerId }: { ownerId: string }) {
       if (!active) return;
       if (result.kind === 'saved') {
         setSaved(result.record.profile);
+        setOwnerEdited(result.record.ownerEdited);
         setView({ kind: 'panel' });
       } else {
         setNotice(result.kind === 'invalid' ? 'invalidSaved' : null);
@@ -153,6 +159,7 @@ export function BrandHome({ ownerId }: { ownerId: string }) {
     setConfirm(null);
     await forgetBrand(ownerId);
     setSaved(null);
+    setOwnerEdited([]);
     setUrl('');
     setNotice(null);
     setError(null);
@@ -160,13 +167,17 @@ export function BrandHome({ ownerId }: { ownerId: string }) {
   }
 
   async function saveEdit(profile: Profile) {
-    const kept = await saveBrand(ownerId, profile);
+    const edited = saved
+      ? [...new Set([...ownerEdited, ...changedUnsourced(saved, profile)])]
+      : ownerEdited;
+    const kept = await saveBrand(ownerId, profile, new Date(), edited);
     setSaved(profile);
+    setOwnerEdited(edited);
     if (!kept) setNotice('notKept');
     setEditing(null);
   }
 
-  const edits = saved ? countOwnerEdits(saved) : 0;
+  const edits = saved ? countOwnerEdits(saved, ownerEdited) : 0;
   const message = (text: string, tone: 'error' | 'note') => (
     <p
       role={tone === 'error' ? 'alert' : 'note'}
@@ -223,7 +234,7 @@ export function BrandHome({ ownerId }: { ownerId: string }) {
           <p className="mb-4 text-[15px] leading-normal text-ink-secondary">
             {t('home.intro', { name: saved.name.value })}
           </p>
-          <BrandPanel profile={saved} editable onEdit={setEditing} />
+          <BrandPanel profile={saved} editable onEdit={setEditing} ownerEdited={ownerEdited} />
           <p className="mt-4 text-[13px] text-ink-secondary">{t('home.postsSoon')}</p>
           <div className="mt-6 flex flex-col gap-2 border-t border-edge pt-4">
             <p className="truncate text-[15px]">{saved.siteUrl}</p>

@@ -140,6 +140,36 @@ describe('a brand read from the browser', () => {
     await running.done;
   });
 
+  test('a malformed line ends the read as model_failed and keeps nothing', async () => {
+    fetchMock.mockResolvedValue(
+      new Response(`${encodeLine(partial)}not json\n`, {
+        headers: { 'content-type': 'application/x-ndjson' },
+      }),
+    );
+    const events = await read();
+    expect(events.at(-1)).toEqual({ type: 'error', code: 'model_failed' });
+    expect(await loadOpenRun('sen')).toBeNull();
+  });
+
+  test('each resume is counted on the run', async () => {
+    await saveRun(newBrandRun({ ownerId: 'sen', url: 'x.com', reread: false }, deps.now(), 'old'));
+    fetchMock.mockResolvedValue(ndjson([partial]));
+    await (await resumeRead('sen', () => {}, deps))?.done;
+    expect((await loadOpenRun('sen'))?.resumes).toBe(1);
+  });
+
+  test('a read that keeps dropping gives up after 2 resumes', async () => {
+    await saveRun({
+      ...newBrandRun({ ownerId: 'sen', url: 'x.com', reread: false }, deps.now(), 'old'),
+      resumes: 2,
+    });
+    const events: ReadEvent[] = [];
+    expect(await resumeRead('sen', (e) => events.push(e), deps)).toBeNull();
+    expect(events).toEqual([{ type: 'error', code: 'model_failed' }]);
+    expect(fetchMock).not.toHaveBeenCalled();
+    expect(await loadOpenRun('sen')).toBeNull();
+  });
+
   test('stop after a dropped stream deletes the run, so it is not resumed', async () => {
     fetchMock.mockResolvedValue(ndjson([partial]));
     const running = startRead({ ownerId: 'sen', url: 'x.com', reread: false }, () => {}, deps);

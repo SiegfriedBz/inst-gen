@@ -16,6 +16,8 @@ export type RunRecord = {
   url: string;
   startedAt: string;
   steps: RunStep[];
+  // How many times the read was asked for again after it was lost.
+  resumes?: number;
 };
 
 export function newBrandRun(

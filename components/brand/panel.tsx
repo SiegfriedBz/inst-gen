@@ -21,6 +21,7 @@ type PanelProps = {
   profile: PartialProfile;
   editable: boolean;
   onEdit: (section: SectionId) => void;
+  ownerEdited?: readonly string[];
 };
 
 type FieldProps = {
@@ -119,9 +120,11 @@ function Section({ id, children }: { id: SectionId; children: ReactNode }) {
   );
 }
 
-export function BrandPanel({ profile, editable, onEdit }: PanelProps) {
+export function BrandPanel({ profile, editable, onEdit, ownerEdited = [] }: PanelProps) {
   const t = useTranslations('brand.panel');
   const f = (key: string) => t(`fields.${key}` as 'fields.name');
+  // A field with no source says "added by you" once the owner changed it.
+  const madeBy = (field: string) => (ownerEdited.includes(field) ? 'owner' : 'model');
 
   const name = text(profile.name?.value);
   const offerings = (profile.offerings ?? []).filter((o) => text(o?.name) || text(o?.price));
@@ -151,6 +154,7 @@ export function BrandPanel({ profile, editable, onEdit }: PanelProps) {
           <SourcedField label={f('summary')} section="business" field={profile.summary} />
           <Field label={f('category')} section="business" filled={!!text(profile.category)}>
             {profile.category}
+            {ownerEdited.includes('category') && <SourceNote source="owner" />}
           </Field>
           <Field label={f('offerings')} section="business" filled={offerings.length > 0}>
             <ul className="flex flex-col gap-2">
@@ -268,7 +272,7 @@ export function BrandPanel({ profile, editable, onEdit }: PanelProps) {
                 ) : null,
               )}
             </dl>
-            <SourceNote source="model" kind="guess" />
+            <SourceNote source={madeBy('visualStyle')} kind="guess" />
           </Field>
           <Field label={f('photos')} section="look" filled={photos.length > 0}>
             <ul className="mt-1 grid grid-cols-3 gap-2">
@@ -327,6 +331,7 @@ export function BrandPanel({ profile, editable, onEdit }: PanelProps) {
           </Field>
           <Field label={f('tone')} section="feeling" filled={words(profile.tone).length > 0}>
             {words(profile.tone).join(', ')}
+            {ownerEdited.includes('tone') && <SourceNote source="owner" />}
           </Field>
         </Section>
       </div>
