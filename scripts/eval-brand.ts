@@ -28,7 +28,12 @@ const slugs = (wanted.length > 0 ? wanted : readdirSync(FIXTURES_DIR)).filter(
 let passed = 0;
 let scored = 0;
 let busy = false;
-for (const slug of slugs) {
+// A busy answer (a 503 "high demand", or the daily quota) is retried once,
+// 10 s later; a second one stops the run.
+const queue = [...slugs];
+const retried = new Set<string>();
+while (queue.length > 0) {
+  const slug = queue.shift() as string;
   const dir = join(FIXTURES_DIR, slug);
   const fixture = loadFixture(dir);
   const gemini = geminiTextModel({ modelId });
@@ -63,6 +68,10 @@ for (const slug of slugs) {
         outcome = `${score.pass ? 'PASS' : 'FAIL'}  ${score.failures.join(',') || '-'}  dropped=${streamed.profile.dropped.length}`;
         const p = streamed.profile;
         console.log(`    tone: ${p.tone.join(', ')} · style: ${p.visualStyle?.summary ?? 'none'}`);
+        const e = p.essence;
+        console.log(
+          `    essence: ${e.feeling.join(', ')} | place: ${e.placeSymbols.join(', ')} | senses: ${e.senses.join(', ')} | moments: ${e.moments.map((m) => m.value).join(', ')}`,
+        );
         if (verbose && !score.pass) {
           console.log(
             `    name=${p.name.value} town=${p.location.town?.value} wa=${p.contact.whatsapp?.value} colours=${p.colours.map((c) => `${c.hex}:${c.source}`).join(' ')}`,
@@ -71,6 +80,13 @@ for (const slug of slugs) {
           console.log(`    dropped=${p.dropped.map((d) => `${d.field}:${d.reason}`).join(' ')}`);
         }
       }
+    }
+    if (outcome === 'model_busy' && !retried.has(slug)) {
+      retried.add(slug);
+      console.log(`${slug.padEnd(24)}busy, retrying in 10 s`);
+      await new Promise((resolve) => setTimeout(resolve, 10_000));
+      queue.unshift(slug);
+      continue;
     }
     if (outcome === 'model_busy') busy = true;
     line += `${outcome ?? 'no final'}  ${Date.now() - started} ms`;

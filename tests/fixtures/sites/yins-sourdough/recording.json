@@ -1,26 +1,62 @@
 {
   "modelId": "gemini-3.5-flash-lite",
-  "promptVersion": "brand-3",
+  "promptVersion": "brand-4",
   "partials": [
-    {},
     {
-      "name": null,
-      "summary": null,
-      "category": "bakery"
+      "name": {}
     },
     {
-      "name": null,
-      "summary": null,
+      "name": {
+        "value": "Yin's Sourdough",
+        "source": "https://yinssourdough."
+      }
+    },
+    {
+      "name": {
+        "value": "Yin's Sourdough",
+        "source": "https://yinssourdough.com/"
+      },
+      "summary": {
+        "value": "Artisanal sourdough bakery crafting traditional"
+      }
+    },
+    {
+      "name": {
+        "value": "Yin's Sourdough",
+        "source": "https://yinssourdough.com/"
+      },
+      "summary": {
+        "value": "Artisanal sourdough bakery crafting traditional breads and pastries.",
+        "source": "https://yinssourdough.com/"
+      }
+    },
+    {
+      "name": {
+        "value": "Yin's Sourdough",
+        "source": "https://yinssourdough.com/"
+      },
+      "summary": {
+        "value": "Artisanal sourdough bakery crafting traditional breads and pastries.",
+        "source": "https://yinssourdough.com/"
+      },
       "category": "bakery",
       "offerings": [],
       "highlights": [],
       "location": {
-        "town": null
+        "town": null,
+        "area": null,
+        "address": null
       }
     },
     {
-      "name": null,
-      "summary": null,
+      "name": {
+        "value": "Yin's Sourdough",
+        "source": "https://yinssourdough.com/"
+      },
+      "summary": {
+        "value": "Artisanal sourdough bakery crafting traditional breads and pastries.",
+        "source": "https://yinssourdough.com/"
+      },
       "category": "bakery",
       "offerings": [],
       "highlights": [],
@@ -29,11 +65,20 @@
         "area": null,
         "address": null,
         "serviceArea": null
+      },
+      "contact": {
+        "whatsapp": null
       }
     },
     {
-      "name": null,
-      "summary": null,
+      "name": {
+        "value": "Yin's Sourdough",
+        "source": "https://yinssourdough.com/"
+      },
+      "summary": {
+        "value": "Artisanal sourdough bakery crafting traditional breads and pastries.",
+        "source": "https://yinssourdough.com/"
+      },
       "category": "bakery",
       "offerings": [],
       "highlights": [],
@@ -51,16 +96,25 @@
         "bookingUrl": null
       },
       "hours": null,
-      "tone": [],
+      "tone": [
+        "warm",
+        "artisanal"
+      ],
       "colours": [
         {
-          "hex": "#1e2229"
+          "hex": "#1a1d20"
         }
       ]
     },
     {
-      "name": null,
-      "summary": null,
+      "name": {
+        "value": "Yin's Sourdough",
+        "source": "https://yinssourdough.com/"
+      },
+      "summary": {
+        "value": "Artisanal sourdough bakery crafting traditional breads and pastries.",
+        "source": "https://yinssourdough.com/"
+      },
       "category": "bakery",
       "offerings": [],
       "highlights": [],
@@ -78,18 +132,28 @@
         "bookingUrl": null
       },
       "hours": null,
-      "tone": [],
+      "tone": [
+        "warm",
+        "artisanal"
+      ],
       "colours": [
         {
-          "hex": "#1e2229",
+          "hex": "#1a1d20",
           "role": "background",
           "source": "https://yinssourdough.com/"
-        }
+        },
+        {}
       ]
     },
     {
-      "name": null,
-      "summary": null,
+      "name": {
+        "value": "Yin's Sourdough",
+        "source": "https://yinssourdough.com/"
+      },
+      "summary": {
+        "value": "Artisanal sourdough bakery crafting traditional breads and pastries.",
+        "source": "https://yinssourdough.com/"
+      },
       "category": "bakery",
       "offerings": [],
       "highlights": [],
@@ -107,23 +171,32 @@
         "bookingUrl": null
       },
       "hours": null,
-      "tone": [],
+      "tone": [
+        "warm",
+        "artisanal"
+      ],
       "colours": [
         {
-          "hex": "#1e2229",
+          "hex": "#1a1d20",
           "role": "background",
           "source": "https://yinssourdough.com/"
         },
         {
           "hex": "#ffffff",
           "role": "text",
-          "source": "https"
+          "source": "https://"
         }
       ]
     },
     {
-      "name": null,
-      "summary": null,
+      "name": {
+        "value": "Yin's Sourdough",
+        "source": "https://yinssourdough.com/"
+      },
+      "summary": {
+        "value": "Artisanal sourdough bakery crafting traditional breads and pastries.",
+        "source": "https://yinssourdough.com/"
+      },
       "category": "bakery",
       "offerings": [],
       "highlights": [],
@@ -141,10 +214,13 @@
         "bookingUrl": null
       },
       "hours": null,
-      "tone": [],
+      "tone": [
+        "warm",
+        "artisanal"
+      ],
       "colours": [
         {
-          "hex": "#1e2229",
+          "hex": "#1a1d20",
           "role": "background",
           "source": "https://yinssourdough.com/"
         },
@@ -154,11 +230,17 @@
           "source": "https://yinssourdough.com/"
         }
       ],
-      "visualStyle": {}
+      "essence": {}
     },
     {
-      "name": null,
-      "summary": null,
+      "name": {
+        "value": "Yin's Sourdough",
+        "source": "https://yinssourdough.com/"
+      },
+      "summary": {
+        "value": "Artisanal sourdough bakery crafting traditional breads and pastries.",
+        "source": "https://yinssourdough.com/"
+      },
       "category": "bakery",
       "offerings": [],
       "highlights": [],
@@ -176,10 +258,13 @@
         "bookingUrl": null
       },
       "hours": null,
-      "tone": [],
+      "tone": [
+        "warm",
+        "artisanal"
+      ],
       "colours": [
         {
-          "hex": "#1e2229",
+          "hex": "#1a1d20",
           "role": "background",
           "source": "https://yinssourdough.com/"
         },
@@ -189,14 +274,135 @@
           "source": "https://yinssourdough.com/"
         }
       ],
+      "essence": {
+        "feeling": [
+          "cozy",
+          "satisfied"
+        ],
+        "placeSymbols": []
+      }
+    },
+    {
+      "name": {
+        "value": "Yin's Sourdough",
+        "source": "https://yinssourdough.com/"
+      },
+      "summary": {
+        "value": "Artisanal sourdough bakery crafting traditional breads and pastries.",
+        "source": "https://yinssourdough.com/"
+      },
+      "category": "bakery",
+      "offerings": [],
+      "highlights": [],
+      "location": {
+        "town": null,
+        "area": null,
+        "address": null,
+        "serviceArea": null
+      },
+      "contact": {
+        "whatsapp": null,
+        "phone": null,
+        "email": null,
+        "instagram": null,
+        "bookingUrl": null
+      },
+      "hours": null,
+      "tone": [
+        "warm",
+        "artisanal"
+      ],
+      "colours": [
+        {
+          "hex": "#1a1d20",
+          "role": "background",
+          "source": "https://yinssourdough.com/"
+        },
+        {
+          "hex": "#ffffff",
+          "role": "text",
+          "source": "https://yinssourdough.com/"
+        }
+      ],
+      "essence": {
+        "feeling": [
+          "cozy",
+          "satisfied"
+        ],
+        "placeSymbols": [],
+        "senses": [
+          "warm crust",
+          "freshly baked bread"
+        ]
+      }
+    },
+    {
+      "name": {
+        "value": "Yin's Sourdough",
+        "source": "https://yinssourdough.com/"
+      },
+      "summary": {
+        "value": "Artisanal sourdough bakery crafting traditional breads and pastries.",
+        "source": "https://yinssourdough.com/"
+      },
+      "category": "bakery",
+      "offerings": [],
+      "highlights": [],
+      "location": {
+        "town": null,
+        "area": null,
+        "address": null,
+        "serviceArea": null
+      },
+      "contact": {
+        "whatsapp": null,
+        "phone": null,
+        "email": null,
+        "instagram": null,
+        "bookingUrl": null
+      },
+      "hours": null,
+      "tone": [
+        "warm",
+        "artisanal"
+      ],
+      "colours": [
+        {
+          "hex": "#1a1d20",
+          "role": "background",
+          "source": "https://yinssourdough.com/"
+        },
+        {
+          "hex": "#ffffff",
+          "role": "text",
+          "source": "https://yinssourdough.com/"
+        }
+      ],
+      "essence": {
+        "feeling": [
+          "cozy",
+          "satisfied"
+        ],
+        "placeSymbols": [],
+        "senses": [
+          "warm crust",
+          "freshly baked bread"
+        ],
+        "moments": []
+      },
       "visualStyle": {
-        "summary": "dark round minimalist logo with white cursive letter",
-        "palette": "dark grey and white"
+        "summary": "dark minimalist, soft light, clean"
       }
     },
     {
-      "name": null,
-      "summary": null,
+      "name": {
+        "value": "Yin's Sourdough",
+        "source": "https://yinssourdough.com/"
+      },
+      "summary": {
+        "value": "Artisanal sourdough bakery crafting traditional breads and pastries.",
+        "source": "https://yinssourdough.com/"
+      },
       "category": "bakery",
       "offerings": [],
       "highlights": [],
@@ -214,10 +420,13 @@
         "bookingUrl": null
       },
       "hours": null,
-      "tone": [],
+      "tone": [
+        "warm",
+        "artisanal"
+      ],
       "colours": [
         {
-          "hex": "#1e2229",
+          "hex": "#1a1d20",
           "role": "background",
           "source": "https://yinssourdough.com/"
         },
@@ -227,18 +436,96 @@
           "source": "https://yinssourdough.com/"
         }
       ],
+      "essence": {
+        "feeling": [
+          "cozy",
+          "satisfied"
+        ],
+        "placeSymbols": [],
+        "senses": [
+          "warm crust",
+          "freshly baked bread"
+        ],
+        "moments": []
+      },
       "visualStyle": {
-        "summary": "dark round minimalist logo with white cursive letter",
+        "summary": "dark minimalist, soft light, clean textures",
         "palette": "dark grey and white",
-        "light": "even",
+        "light": "soft"
+      }
+    },
+    {
+      "name": {
+        "value": "Yin's Sourdough",
+        "source": "https://yinssourdough.com/"
+      },
+      "summary": {
+        "value": "Artisanal sourdough bakery crafting traditional breads and pastries.",
+        "source": "https://yinssourdough.com/"
+      },
+      "category": "bakery",
+      "offerings": [],
+      "highlights": [],
+      "location": {
+        "town": null,
+        "area": null,
+        "address": null,
+        "serviceArea": null
+      },
+      "contact": {
+        "whatsapp": null,
+        "phone": null,
+        "email": null,
+        "instagram": null,
+        "bookingUrl": null
+      },
+      "hours": null,
+      "tone": [
+        "warm",
+        "artisanal"
+      ],
+      "colours": [
+        {
+          "hex": "#1a1d20",
+          "role": "background",
+          "source": "https://yinssourdough.com/"
+        },
+        {
+          "hex": "#ffffff",
+          "role": "text",
+          "source": "https://yinssourdough.com/"
+        }
+      ],
+      "essence": {
+        "feeling": [
+          "cozy",
+          "satisfied"
+        ],
+        "placeSymbols": [],
+        "senses": [
+          "warm crust",
+          "freshly baked bread"
+        ],
+        "moments": []
+      },
+      "visualStyle": {
+        "summary": "dark minimalist, soft light, clean textures",
+        "palette": "dark grey and white",
+        "light": "soft",
         "textures": "smooth",
-        "mood": "simple"
+        "mood": "minimal"
       }
     }
   ],
   "final": {
-    "name": null,
-    "summary": null,
+    "name": {
+      "value": "Yin's Sourdough",
+      "source": "https://yinssourdough.com/"
+    },
+    "summary": {
+      "value": "Artisanal sourdough bakery crafting traditional breads and pastries.",
+      "source": "https://yinssourdough.com/"
+    },
     "category": "bakery",
     "offerings": [],
     "highlights": [],
@@ -256,10 +543,13 @@
       "bookingUrl": null
     },
     "hours": null,
-    "tone": [],
+    "tone": [
+      "warm",
+      "artisanal"
+    ],
     "colours": [
       {
-        "hex": "#1e2229",
+        "hex": "#1a1d20",
         "role": "background",
         "source": "https://yinssourdough.com/"
       },
@@ -269,12 +559,24 @@
         "source": "https://yinssourdough.com/"
       }
     ],
+    "essence": {
+      "feeling": [
+        "cozy",
+        "satisfied"
+      ],
+      "placeSymbols": [],
+      "senses": [
+        "warm crust",
+        "freshly baked bread"
+      ],
+      "moments": []
+    },
     "visualStyle": {
-      "summary": "dark round minimalist logo with white cursive letter",
+      "summary": "dark minimalist, soft light, clean textures",
       "palette": "dark grey and white",
-      "light": "even",
+      "light": "soft",
       "textures": "smooth",
-      "mood": "simple"
+      "mood": "minimal"
     }
   }
 }

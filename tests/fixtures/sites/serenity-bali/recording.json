@@ -1,775 +1,193 @@
 {
   "modelId": "gemini-3.5-flash-lite",
-  "promptVersion": "brand-3",
+  "promptVersion": "brand-4",
   "partials": [
     {
       "name": {}
     },
     {
       "name": {
-        "value": "Serenity Eco Guesthouse & Yoga",
-        "source": "https://www.serenitybali.com/"
+        "value": "Serenity Eco Guesthouse and Yoga",
+        "source": "https://www.serenity"
       }
     },
     {
       "name": {
-        "value": "Serenity Eco Guesthouse & Yoga",
+        "value": "Serenity Eco Guesthouse and Yoga",
         "source": "https://www.serenitybali.com/"
       },
       "summary": {
-        "value": "Family-owned eco-friendly guesthouse, yoga"
+        "value": "Family-owned eco-"
       }
     },
     {
       "name": {
-        "value": "Serenity Eco Guesthouse & Yoga",
+        "value": "Serenity Eco Guesthouse and Yoga",
         "source": "https://www.serenitybali.com/"
       },
       "summary": {
-        "value": "Family-owned eco-friendly guesthouse, yoga retreat, spa, and vegan restaurant in Canggu, Bali.",
-        "source": "https://www.serenitybali."
+        "value": "Family-owned eco-friendly guesthouse, yoga retreat, and vegan restaurant located in Canggu, Bali.",
+        "source": "https"
       }
     },
     {
       "name": {
-        "value": "Serenity Eco Guesthouse & Yoga",
+        "value": "Serenity Eco Guesthouse and Yoga",
         "source": "https://www.serenitybali.com/"
       },
       "summary": {
-        "value": "Family-owned eco-friendly guesthouse, yoga retreat, spa, and vegan restaurant in Canggu, Bali.",
+        "value": "Family-owned eco-friendly guesthouse, yoga retreat, and vegan restaurant located in Canggu, Bali.",
         "source": "https://www.serenitybali.com/"
       },
-      "category": "yoga retreat",
-      "offerings": [
-        {}
-      ]
+      "category": "yoga retreat"
     },
     {
       "name": {
-        "value": "Serenity Eco Guesthouse & Yoga",
+        "value": "Serenity Eco Guesthouse and Yoga",
         "source": "https://www.serenitybali.com/"
       },
       "summary": {
-        "value": "Family-owned eco-friendly guesthouse, yoga retreat, spa, and vegan restaurant in Canggu, Bali.",
+        "value": "Family-owned eco-friendly guesthouse, yoga retreat, and vegan restaurant located in Canggu, Bali.",
         "source": "https://www.serenitybali.com/"
       },
       "category": "yoga retreat",
-      "offerings": [
-        {
-          "name": "All Inclusive/Full Board Package",
-          "source": "https://www.serenitybali.com/"
-        }
-      ]
-    },
-    {
-      "name": {
-        "value": "Serenity Eco Guesthouse & Yoga",
-        "source": "https://www.serenitybali.com/"
-      },
-      "summary": {
-        "value": "Family-owned eco-friendly guesthouse, yoga retreat, spa, and vegan restaurant in Canggu, Bali.",
-        "source": "https://www.serenitybali.com/"
-      },
-      "category": "yoga retreat",
-      "offerings": [
-        {
-          "name": "All Inclusive/Full Board Package",
-          "source": "https://www.serenitybali.com/faq"
-        },
-        {
-          "name": "Balinese Massage",
-          "source": ""
-        }
-      ]
-    },
-    {
-      "name": {
-        "value": "Serenity Eco Guesthouse & Yoga",
-        "source": "https://www.serenitybali.com/"
-      },
-      "summary": {
-        "value": "Family-owned eco-friendly guesthouse, yoga retreat, spa, and vegan restaurant in Canggu, Bali.",
-        "source": "https://www.serenitybali.com/"
-      },
-      "category": "yoga retreat",
-      "offerings": [
-        {
-          "name": "All Inclusive/Full Board Package",
-          "source": "https://www.serenitybali.com/faq"
-        },
-        {
-          "name": "Balinese Massage",
-          "source": "https://www.serenitybali.com/our-spa-team"
-        },
-        {}
-      ]
-    },
-    {
-      "name": {
-        "value": "Serenity Eco Guesthouse & Yoga",
-        "source": "https://www.serenitybali.com/"
-      },
-      "summary": {
-        "value": "Family-owned eco-friendly guesthouse, yoga retreat, spa, and vegan restaurant in Canggu, Bali.",
-        "source": "https://www.serenitybali.com/"
-      },
-      "category": "yoga retreat",
-      "offerings": [
-        {
-          "name": "All Inclusive/Full Board Package",
-          "source": "https://www.serenitybali.com/faq"
-        },
-        {
-          "name": "Balinese Massage",
-          "source": "https://www.serenitybali.com/our-spa-team"
-        },
-        {
-          "name": "Deep Tissue",
-          "source": "https://www.serenitybali.com/our"
-        }
-      ]
-    },
-    {
-      "name": {
-        "value": "Serenity Eco Guesthouse & Yoga",
-        "source": "https://www.serenitybali.com/"
-      },
-      "summary": {
-        "value": "Family-owned eco-friendly guesthouse, yoga retreat, spa, and vegan restaurant in Canggu, Bali.",
-        "source": "https://www.serenitybali.com/"
-      },
-      "category": "yoga retreat",
-      "offerings": [
-        {
-          "name": "All Inclusive/Full Board Package",
-          "source": "https://www.serenitybali.com/faq"
-        },
-        {
-          "name": "Balinese Massage",
-          "source": "https://www.serenitybali.com/our-spa-team"
-        },
-        {
-          "name": "Deep Tissue",
-          "source": "https://www.serenitybali.com/our-spa-team"
-        },
-        {
-          "name": "Hot Stone"
-        }
-      ]
-    },
-    {
-      "name": {
-        "value": "Serenity Eco Guesthouse & Yoga",
-        "source": "https://www.serenitybali.com/"
-      },
-      "summary": {
-        "value": "Family-owned eco-friendly guesthouse, yoga retreat, spa, and vegan restaurant in Canggu, Bali.",
-        "source": "https://www.serenitybali.com/"
-      },
-      "category": "yoga retreat",
-      "offerings": [
-        {
-          "name": "All Inclusive/Full Board Package",
-          "source": "https://www.serenitybali.com/faq"
-        },
-        {
-          "name": "Balinese Massage",
-          "source": "https://www.serenitybali.com/our-spa-team"
-        },
-        {
-          "name": "Deep Tissue",
-          "source": "https://www.serenitybali.com/our-spa-team"
-        },
-        {
-          "name": "Hot Stone",
-          "source": "https://www.serenitybali.com/our-spa-team"
-        },
-        {}
-      ]
-    },
-    {
-      "name": {
-        "value": "Serenity Eco Guesthouse & Yoga",
-        "source": "https://www.serenitybali.com/"
-      },
-      "summary": {
-        "value": "Family-owned eco-friendly guesthouse, yoga retreat, spa, and vegan restaurant in Canggu, Bali.",
-        "source": "https://www.serenitybali.com/"
-      },
-      "category": "yoga retreat",
-      "offerings": [
-        {
-          "name": "All Inclusive/Full Board Package",
-          "source": "https://www.serenitybali.com/faq"
-        },
-        {
-          "name": "Balinese Massage",
-          "source": "https://www.serenitybali.com/our-spa-team"
-        },
-        {
-          "name": "Deep Tissue",
-          "source": "https://www.serenitybali.com/our-spa-team"
-        },
-        {
-          "name": "Hot Stone",
-          "source": "https://www.serenitybali.com/our-spa-team"
-        },
-        {
-          "name": "Shiatsu",
-          "source": "https://www.serenitybali.com"
-        }
-      ]
-    },
-    {
-      "name": {
-        "value": "Serenity Eco Guesthouse & Yoga",
-        "source": "https://www.serenitybali.com/"
-      },
-      "summary": {
-        "value": "Family-owned eco-friendly guesthouse, yoga retreat, spa, and vegan restaurant in Canggu, Bali.",
-        "source": "https://www.serenitybali.com/"
-      },
-      "category": "yoga retreat",
-      "offerings": [
-        {
-          "name": "All Inclusive/Full Board Package",
-          "source": "https://www.serenitybali.com/faq"
-        },
-        {
-          "name": "Balinese Massage",
-          "source": "https://www.serenitybali.com/our-spa-team"
-        },
-        {
-          "name": "Deep Tissue",
-          "source": "https://www.serenitybali.com/our-spa-team"
-        },
-        {
-          "name": "Hot Stone",
-          "source": "https://www.serenitybali.com/our-spa-team"
-        },
-        {
-          "name": "Shiatsu",
-          "source": "https://www.serenitybali.com/our-spa-team"
-        },
-        {
-          "name": "Thai Massage"
-        }
-      ]
-    },
-    {
-      "name": {
-        "value": "Serenity Eco Guesthouse & Yoga",
-        "source": "https://www.serenitybali.com/"
-      },
-      "summary": {
-        "value": "Family-owned eco-friendly guesthouse, yoga retreat, spa, and vegan restaurant in Canggu, Bali.",
-        "source": "https://www.serenitybali.com/"
-      },
-      "category": "yoga retreat",
-      "offerings": [
-        {
-          "name": "All Inclusive/Full Board Package",
-          "source": "https://www.serenitybali.com/faq"
-        },
-        {
-          "name": "Balinese Massage",
-          "source": "https://www.serenitybali.com/our-spa-team"
-        },
-        {
-          "name": "Deep Tissue",
-          "source": "https://www.serenitybali.com/our-spa-team"
-        },
-        {
-          "name": "Hot Stone",
-          "source": "https://www.serenitybali.com/our-spa-team"
-        },
-        {
-          "name": "Shiatsu",
-          "source": "https://www.serenitybali.com/our-spa-team"
-        },
-        {
-          "name": "Thai Massage",
-          "source": "https://www.serenitybali.com/our-spa-team"
-        },
-        {
-          "name": "Body Scrub",
-          "source": "https://www.serenitybali"
-        }
-      ]
-    },
-    {
-      "name": {
-        "value": "Serenity Eco Guesthouse & Yoga",
-        "source": "https://www.serenitybali.com/"
-      },
-      "summary": {
-        "value": "Family-owned eco-friendly guesthouse, yoga retreat, spa, and vegan restaurant in Canggu, Bali.",
-        "source": "https://www.serenitybali.com/"
-      },
-      "category": "yoga retreat",
-      "offerings": [
-        {
-          "name": "All Inclusive/Full Board Package",
-          "source": "https://www.serenitybali.com/faq"
-        },
-        {
-          "name": "Balinese Massage",
-          "source": "https://www.serenitybali.com/our-spa-team"
-        },
-        {
-          "name": "Deep Tissue",
-          "source": "https://www.serenitybali.com/our-spa-team"
-        },
-        {
-          "name": "Hot Stone",
-          "source": "https://www.serenitybali.com/our-spa-team"
-        },
-        {
-          "name": "Shiatsu",
-          "source": "https://www.serenitybali.com/our-spa-team"
-        },
-        {
-          "name": "Thai Massage",
-          "source": "https://www.serenitybali.com/our-spa-team"
-        },
-        {
-          "name": "Body Scrub",
-          "source": "https://www.serenitybali.com/our-spa-team"
-        },
-        {
-          "name": "Foot Massage"
-        }
-      ]
-    },
-    {
-      "name": {
-        "value": "Serenity Eco Guesthouse & Yoga",
-        "source": "https://www.serenitybali.com/"
-      },
-      "summary": {
-        "value": "Family-owned eco-friendly guesthouse, yoga retreat, spa, and vegan restaurant in Canggu, Bali.",
-        "source": "https://www.serenitybali.com/"
-      },
-      "category": "yoga retreat",
-      "offerings": [
-        {
-          "name": "All Inclusive/Full Board Package",
-          "source": "https://www.serenitybali.com/faq"
-        },
-        {
-          "name": "Balinese Massage",
-          "source": "https://www.serenitybali.com/our-spa-team"
-        },
-        {
-          "name": "Deep Tissue",
-          "source": "https://www.serenitybali.com/our-spa-team"
-        },
-        {
-          "name": "Hot Stone",
-          "source": "https://www.serenitybali.com/our-spa-team"
-        },
-        {
-          "name": "Shiatsu",
-          "source": "https://www.serenitybali.com/our-spa-team"
-        },
-        {
-          "name": "Thai Massage",
-          "source": "https://www.serenitybali.com/our-spa-team"
-        },
-        {
-          "name": "Body Scrub",
-          "source": "https://www.serenitybali.com/our-spa-team"
-        },
-        {
-          "name": "Foot Massage",
-          "source": "https://www.serenitybali.com/our-spa-team"
-        }
-      ]
-    },
-    {
-      "name": {
-        "value": "Serenity Eco Guesthouse & Yoga",
-        "source": "https://www.serenitybali.com/"
-      },
-      "summary": {
-        "value": "Family-owned eco-friendly guesthouse, yoga retreat, spa, and vegan restaurant in Canggu, Bali.",
-        "source": "https://www.serenitybali.com/"
-      },
-      "category": "yoga retreat",
-      "offerings": [
-        {
-          "name": "All Inclusive/Full Board Package",
-          "source": "https://www.serenitybali.com/faq"
-        },
-        {
-          "name": "Balinese Massage",
-          "source": "https://www.serenitybali.com/our-spa-team"
-        },
-        {
-          "name": "Deep Tissue",
-          "source": "https://www.serenitybali.com/our-spa-team"
-        },
-        {
-          "name": "Hot Stone",
-          "source": "https://www.serenitybali.com/our-spa-team"
-        },
-        {
-          "name": "Shiatsu",
-          "source": "https://www.serenitybali.com/our-spa-team"
-        },
-        {
-          "name": "Thai Massage",
-          "source": "https://www.serenitybali.com/our-spa-team"
-        },
-        {
-          "name": "Body Scrub",
-          "source": "https://www.serenitybali.com/our-spa-team"
-        },
-        {
-          "name": "Foot Massage",
-          "source": "https://www.serenitybali.com/our-spa-team"
-        }
-      ],
+      "offerings": [],
       "highlights": [
         {
-          "value": "Family-owned guesthouse,"
+          "value": "Top 10% Worldwide Trav"
         }
       ]
     },
     {
       "name": {
-        "value": "Serenity Eco Guesthouse & Yoga",
+        "value": "Serenity Eco Guesthouse and Yoga",
         "source": "https://www.serenitybali.com/"
       },
       "summary": {
-        "value": "Family-owned eco-friendly guesthouse, yoga retreat, spa, and vegan restaurant in Canggu, Bali.",
+        "value": "Family-owned eco-friendly guesthouse, yoga retreat, and vegan restaurant located in Canggu, Bali.",
         "source": "https://www.serenitybali.com/"
       },
       "category": "yoga retreat",
-      "offerings": [
-        {
-          "name": "All Inclusive/Full Board Package",
-          "source": "https://www.serenitybali.com/faq"
-        },
-        {
-          "name": "Balinese Massage",
-          "source": "https://www.serenitybali.com/our-spa-team"
-        },
-        {
-          "name": "Deep Tissue",
-          "source": "https://www.serenitybali.com/our-spa-team"
-        },
-        {
-          "name": "Hot Stone",
-          "source": "https://www.serenitybali.com/our-spa-team"
-        },
-        {
-          "name": "Shiatsu",
-          "source": "https://www.serenitybali.com/our-spa-team"
-        },
-        {
-          "name": "Thai Massage",
-          "source": "https://www.serenitybali.com/our-spa-team"
-        },
-        {
-          "name": "Body Scrub",
-          "source": "https://www.serenitybali.com/our-spa-team"
-        },
-        {
-          "name": "Foot Massage",
-          "source": "https://www.serenitybali.com/our-spa-team"
-        }
-      ],
+      "offerings": [],
       "highlights": [
         {
-          "value": "Family-owned guesthouse, yoga retreat, and eco-friendly haven",
-          "source": "https://www.serenitybali.com"
+          "value": "Top 10% Worldwide Travellers' Choices 2026 regarding to TripAdvisor",
+          "source": "https://www.serenity"
         }
       ]
     },
     {
       "name": {
-        "value": "Serenity Eco Guesthouse & Yoga",
+        "value": "Serenity Eco Guesthouse and Yoga",
         "source": "https://www.serenitybali.com/"
       },
       "summary": {
-        "value": "Family-owned eco-friendly guesthouse, yoga retreat, spa, and vegan restaurant in Canggu, Bali.",
+        "value": "Family-owned eco-friendly guesthouse, yoga retreat, and vegan restaurant located in Canggu, Bali.",
         "source": "https://www.serenitybali.com/"
       },
       "category": "yoga retreat",
-      "offerings": [
-        {
-          "name": "All Inclusive/Full Board Package",
-          "source": "https://www.serenitybali.com/faq"
-        },
-        {
-          "name": "Balinese Massage",
-          "source": "https://www.serenitybali.com/our-spa-team"
-        },
-        {
-          "name": "Deep Tissue",
-          "source": "https://www.serenitybali.com/our-spa-team"
-        },
-        {
-          "name": "Hot Stone",
-          "source": "https://www.serenitybali.com/our-spa-team"
-        },
-        {
-          "name": "Shiatsu",
-          "source": "https://www.serenitybali.com/our-spa-team"
-        },
-        {
-          "name": "Thai Massage",
-          "source": "https://www.serenitybali.com/our-spa-team"
-        },
-        {
-          "name": "Body Scrub",
-          "source": "https://www.serenitybali.com/our-spa-team"
-        },
-        {
-          "name": "Foot Massage",
-          "source": "https://www.serenitybali.com/our-spa-team"
-        }
-      ],
+      "offerings": [],
       "highlights": [
         {
-          "value": "Family-owned guesthouse, yoga retreat, and eco-friendly haven",
-          "source": "https://www.serenitybali.com/"
+          "value": "Top 10% Worldwide Travellers' Choices 2026 regarding to TripAdvisor",
+          "source": "https://www.serenitybali.com/our-story"
         },
         {
-          "value": "Alkaline Restaurant is 100% vegan"
+          "value": "Booking.com Traveller"
         }
       ]
     },
     {
       "name": {
-        "value": "Serenity Eco Guesthouse & Yoga",
+        "value": "Serenity Eco Guesthouse and Yoga",
         "source": "https://www.serenitybali.com/"
       },
       "summary": {
-        "value": "Family-owned eco-friendly guesthouse, yoga retreat, spa, and vegan restaurant in Canggu, Bali.",
+        "value": "Family-owned eco-friendly guesthouse, yoga retreat, and vegan restaurant located in Canggu, Bali.",
         "source": "https://www.serenitybali.com/"
       },
       "category": "yoga retreat",
-      "offerings": [
-        {
-          "name": "All Inclusive/Full Board Package",
-          "source": "https://www.serenitybali.com/faq"
-        },
-        {
-          "name": "Balinese Massage",
-          "source": "https://www.serenitybali.com/our-spa-team"
-        },
-        {
-          "name": "Deep Tissue",
-          "source": "https://www.serenitybali.com/our-spa-team"
-        },
-        {
-          "name": "Hot Stone",
-          "source": "https://www.serenitybali.com/our-spa-team"
-        },
-        {
-          "name": "Shiatsu",
-          "source": "https://www.serenitybali.com/our-spa-team"
-        },
-        {
-          "name": "Thai Massage",
-          "source": "https://www.serenitybali.com/our-spa-team"
-        },
-        {
-          "name": "Body Scrub",
-          "source": "https://www.serenitybali.com/our-spa-team"
-        },
-        {
-          "name": "Foot Massage",
-          "source": "https://www.serenitybali.com/our-spa-team"
-        }
-      ],
+      "offerings": [],
       "highlights": [
         {
-          "value": "Family-owned guesthouse, yoga retreat, and eco-friendly haven",
-          "source": "https://www.serenitybali.com/"
+          "value": "Top 10% Worldwide Travellers' Choices 2026 regarding to TripAdvisor",
+          "source": "https://www.serenitybali.com/our-story"
         },
         {
-          "value": "Alkaline Restaurant is 100% vegan with a broad variety of raw dishes",
-          "source": "https://www.serenitybali.com/"
+          "value": "Booking.com Traveller Award in 2025 & 2026",
+          "source": "https://www."
         }
       ]
     },
     {
       "name": {
-        "value": "Serenity Eco Guesthouse & Yoga",
+        "value": "Serenity Eco Guesthouse and Yoga",
         "source": "https://www.serenitybali.com/"
       },
       "summary": {
-        "value": "Family-owned eco-friendly guesthouse, yoga retreat, spa, and vegan restaurant in Canggu, Bali.",
+        "value": "Family-owned eco-friendly guesthouse, yoga retreat, and vegan restaurant located in Canggu, Bali.",
         "source": "https://www.serenitybali.com/"
       },
       "category": "yoga retreat",
-      "offerings": [
-        {
-          "name": "All Inclusive/Full Board Package",
-          "source": "https://www.serenitybali.com/faq"
-        },
-        {
-          "name": "Balinese Massage",
-          "source": "https://www.serenitybali.com/our-spa-team"
-        },
-        {
-          "name": "Deep Tissue",
-          "source": "https://www.serenitybali.com/our-spa-team"
-        },
-        {
-          "name": "Hot Stone",
-          "source": "https://www.serenitybali.com/our-spa-team"
-        },
-        {
-          "name": "Shiatsu",
-          "source": "https://www.serenitybali.com/our-spa-team"
-        },
-        {
-          "name": "Thai Massage",
-          "source": "https://www.serenitybali.com/our-spa-team"
-        },
-        {
-          "name": "Body Scrub",
-          "source": "https://www.serenitybali.com/our-spa-team"
-        },
-        {
-          "name": "Foot Massage",
-          "source": "https://www.serenitybali.com/our-spa-team"
-        }
-      ],
+      "offerings": [],
       "highlights": [
         {
-          "value": "Family-owned guesthouse, yoga retreat, and eco-friendly haven",
-          "source": "https://www.serenitybali.com/"
+          "value": "Top 10% Worldwide Travellers' Choices 2026 regarding to TripAdvisor",
+          "source": "https://www.serenitybali.com/our-story"
         },
         {
-          "value": "Alkaline Restaurant is 100% vegan with a broad variety of raw dishes",
+          "value": "Booking.com Traveller Award in 2025 & 2026",
           "source": "https://www.serenitybali.com/our-story"
         }
       ],
-      "location": {
-        "town": {}
-      }
+      "location": {}
     },
     {
       "name": {
-        "value": "Serenity Eco Guesthouse & Yoga",
+        "value": "Serenity Eco Guesthouse and Yoga",
         "source": "https://www.serenitybali.com/"
       },
       "summary": {
-        "value": "Family-owned eco-friendly guesthouse, yoga retreat, spa, and vegan restaurant in Canggu, Bali.",
+        "value": "Family-owned eco-friendly guesthouse, yoga retreat, and vegan restaurant located in Canggu, Bali.",
         "source": "https://www.serenitybali.com/"
       },
       "category": "yoga retreat",
-      "offerings": [
-        {
-          "name": "All Inclusive/Full Board Package",
-          "source": "https://www.serenitybali.com/faq"
-        },
-        {
-          "name": "Balinese Massage",
-          "source": "https://www.serenitybali.com/our-spa-team"
-        },
-        {
-          "name": "Deep Tissue",
-          "source": "https://www.serenitybali.com/our-spa-team"
-        },
-        {
-          "name": "Hot Stone",
-          "source": "https://www.serenitybali.com/our-spa-team"
-        },
-        {
-          "name": "Shiatsu",
-          "source": "https://www.serenitybali.com/our-spa-team"
-        },
-        {
-          "name": "Thai Massage",
-          "source": "https://www.serenitybali.com/our-spa-team"
-        },
-        {
-          "name": "Body Scrub",
-          "source": "https://www.serenitybali.com/our-spa-team"
-        },
-        {
-          "name": "Foot Massage",
-          "source": "https://www.serenitybali.com/our-spa-team"
-        }
-      ],
+      "offerings": [],
       "highlights": [
         {
-          "value": "Family-owned guesthouse, yoga retreat, and eco-friendly haven",
-          "source": "https://www.serenitybali.com/"
+          "value": "Top 10% Worldwide Travellers' Choices 2026 regarding to TripAdvisor",
+          "source": "https://www.serenitybali.com/our-story"
         },
         {
-          "value": "Alkaline Restaurant is 100% vegan with a broad variety of raw dishes",
+          "value": "Booking.com Traveller Award in 2025 & 2026",
           "source": "https://www.serenitybali.com/our-story"
         }
       ],
       "location": {
         "town": {
           "value": "Canggu",
-          "source": "https://www.serenitybali.com/"
-        },
-        "area": {
-          "value": "Badung",
           "source": "https://www."
         }
       }
     },
     {
       "name": {
-        "value": "Serenity Eco Guesthouse & Yoga",
+        "value": "Serenity Eco Guesthouse and Yoga",
         "source": "https://www.serenitybali.com/"
       },
       "summary": {
-        "value": "Family-owned eco-friendly guesthouse, yoga retreat, spa, and vegan restaurant in Canggu, Bali.",
+        "value": "Family-owned eco-friendly guesthouse, yoga retreat, and vegan restaurant located in Canggu, Bali.",
         "source": "https://www.serenitybali.com/"
       },
       "category": "yoga retreat",
-      "offerings": [
-        {
-          "name": "All Inclusive/Full Board Package",
-          "source": "https://www.serenitybali.com/faq"
-        },
-        {
-          "name": "Balinese Massage",
-          "source": "https://www.serenitybali.com/our-spa-team"
-        },
-        {
-          "name": "Deep Tissue",
-          "source": "https://www.serenitybali.com/our-spa-team"
-        },
-        {
-          "name": "Hot Stone",
-          "source": "https://www.serenitybali.com/our-spa-team"
-        },
-        {
-          "name": "Shiatsu",
-          "source": "https://www.serenitybali.com/our-spa-team"
-        },
-        {
-          "name": "Thai Massage",
-          "source": "https://www.serenitybali.com/our-spa-team"
-        },
-        {
-          "name": "Body Scrub",
-          "source": "https://www.serenitybali.com/our-spa-team"
-        },
-        {
-          "name": "Foot Massage",
-          "source": "https://www.serenitybali.com/our-spa-team"
-        }
-      ],
+      "offerings": [],
       "highlights": [
         {
-          "value": "Family-owned guesthouse, yoga retreat, and eco-friendly haven",
-          "source": "https://www.serenitybali.com/"
+          "value": "Top 10% Worldwide Travellers' Choices 2026 regarding to TripAdvisor",
+          "source": "https://www.serenitybali.com/our-story"
         },
         {
-          "value": "Alkaline Restaurant is 100% vegan with a broad variety of raw dishes",
+          "value": "Booking.com Traveller Award in 2025 & 2026",
           "source": "https://www.serenitybali.com/our-story"
         }
       ],
@@ -779,63 +197,28 @@
           "source": "https://www.serenitybali.com/"
         },
         "area": {
-          "value": "Badung",
-          "source": "https://www.serenitybali.com/contact-us"
-        },
-        "address": {}
+          "value": "Canggu"
+        }
       }
     },
     {
       "name": {
-        "value": "Serenity Eco Guesthouse & Yoga",
+        "value": "Serenity Eco Guesthouse and Yoga",
         "source": "https://www.serenitybali.com/"
       },
       "summary": {
-        "value": "Family-owned eco-friendly guesthouse, yoga retreat, spa, and vegan restaurant in Canggu, Bali.",
+        "value": "Family-owned eco-friendly guesthouse, yoga retreat, and vegan restaurant located in Canggu, Bali.",
         "source": "https://www.serenitybali.com/"
       },
       "category": "yoga retreat",
-      "offerings": [
-        {
-          "name": "All Inclusive/Full Board Package",
-          "source": "https://www.serenitybali.com/faq"
-        },
-        {
-          "name": "Balinese Massage",
-          "source": "https://www.serenitybali.com/our-spa-team"
-        },
-        {
-          "name": "Deep Tissue",
-          "source": "https://www.serenitybali.com/our-spa-team"
-        },
-        {
-          "name": "Hot Stone",
-          "source": "https://www.serenitybali.com/our-spa-team"
-        },
-        {
-          "name": "Shiatsu",
-          "source": "https://www.serenitybali.com/our-spa-team"
-        },
-        {
-          "name": "Thai Massage",
-          "source": "https://www.serenitybali.com/our-spa-team"
-        },
-        {
-          "name": "Body Scrub",
-          "source": "https://www.serenitybali.com/our-spa-team"
-        },
-        {
-          "name": "Foot Massage",
-          "source": "https://www.serenitybali.com/our-spa-team"
-        }
-      ],
+      "offerings": [],
       "highlights": [
         {
-          "value": "Family-owned guesthouse, yoga retreat, and eco-friendly haven",
-          "source": "https://www.serenitybali.com/"
+          "value": "Top 10% Worldwide Travellers' Choices 2026 regarding to TripAdvisor",
+          "source": "https://www.serenitybali.com/our-story"
         },
         {
-          "value": "Alkaline Restaurant is 100% vegan with a broad variety of raw dishes",
+          "value": "Booking.com Traveller Award in 2025 & 2026",
           "source": "https://www.serenitybali.com/our-story"
         }
       ],
@@ -845,66 +228,65 @@
           "source": "https://www.serenitybali.com/"
         },
         "area": {
-          "value": "Badung",
-          "source": "https://www.serenitybali.com/contact-us"
+          "value": "Canggu",
+          "source": "https://www.serenitybali.com/"
+        }
+      }
+    },
+    {
+      "name": {
+        "value": "Serenity Eco Guesthouse and Yoga",
+        "source": "https://www.serenitybali.com/"
+      },
+      "summary": {
+        "value": "Family-owned eco-friendly guesthouse, yoga retreat, and vegan restaurant located in Canggu, Bali.",
+        "source": "https://www.serenitybali.com/"
+      },
+      "category": "yoga retreat",
+      "offerings": [],
+      "highlights": [
+        {
+          "value": "Top 10% Worldwide Travellers' Choices 2026 regarding to TripAdvisor",
+          "source": "https://www.serenitybali.com/our-story"
+        },
+        {
+          "value": "Booking.com Traveller Award in 2025 & 2026",
+          "source": "https://www.serenitybali.com/our-story"
+        }
+      ],
+      "location": {
+        "town": {
+          "value": "Canggu",
+          "source": "https://www.serenitybali.com/"
+        },
+        "area": {
+          "value": "Canggu",
+          "source": "https://www.serenitybali.com/"
         },
         "address": {
           "value": "Jl. Nelayan, Banjar Canggu, Badung, Bali",
-          "source": "https://"
+          "source": "https://www.serenitybali.com/contact-us"
         }
       }
     },
     {
       "name": {
-        "value": "Serenity Eco Guesthouse & Yoga",
+        "value": "Serenity Eco Guesthouse and Yoga",
         "source": "https://www.serenitybali.com/"
       },
       "summary": {
-        "value": "Family-owned eco-friendly guesthouse, yoga retreat, spa, and vegan restaurant in Canggu, Bali.",
+        "value": "Family-owned eco-friendly guesthouse, yoga retreat, and vegan restaurant located in Canggu, Bali.",
         "source": "https://www.serenitybali.com/"
       },
       "category": "yoga retreat",
-      "offerings": [
-        {
-          "name": "All Inclusive/Full Board Package",
-          "source": "https://www.serenitybali.com/faq"
-        },
-        {
-          "name": "Balinese Massage",
-          "source": "https://www.serenitybali.com/our-spa-team"
-        },
-        {
-          "name": "Deep Tissue",
-          "source": "https://www.serenitybali.com/our-spa-team"
-        },
-        {
-          "name": "Hot Stone",
-          "source": "https://www.serenitybali.com/our-spa-team"
-        },
-        {
-          "name": "Shiatsu",
-          "source": "https://www.serenitybali.com/our-spa-team"
-        },
-        {
-          "name": "Thai Massage",
-          "source": "https://www.serenitybali.com/our-spa-team"
-        },
-        {
-          "name": "Body Scrub",
-          "source": "https://www.serenitybali.com/our-spa-team"
-        },
-        {
-          "name": "Foot Massage",
-          "source": "https://www.serenitybali.com/our-spa-team"
-        }
-      ],
+      "offerings": [],
       "highlights": [
         {
-          "value": "Family-owned guesthouse, yoga retreat, and eco-friendly haven",
-          "source": "https://www.serenitybali.com/"
+          "value": "Top 10% Worldwide Travellers' Choices 2026 regarding to TripAdvisor",
+          "source": "https://www.serenitybali.com/our-story"
         },
         {
-          "value": "Alkaline Restaurant is 100% vegan with a broad variety of raw dishes",
+          "value": "Booking.com Traveller Award in 2025 & 2026",
           "source": "https://www.serenitybali.com/our-story"
         }
       ],
@@ -914,67 +296,37 @@
           "source": "https://www.serenitybali.com/"
         },
         "area": {
-          "value": "Badung",
-          "source": "https://www.serenitybali.com/contact-us"
+          "value": "Canggu",
+          "source": "https://www.serenitybali.com/"
         },
         "address": {
           "value": "Jl. Nelayan, Banjar Canggu, Badung, Bali",
           "source": "https://www.serenitybali.com/contact-us"
         },
         "serviceArea": null
+      },
+      "contact": {
+        "whatsapp": {}
       }
     },
     {
       "name": {
-        "value": "Serenity Eco Guesthouse & Yoga",
+        "value": "Serenity Eco Guesthouse and Yoga",
         "source": "https://www.serenitybali.com/"
       },
       "summary": {
-        "value": "Family-owned eco-friendly guesthouse, yoga retreat, spa, and vegan restaurant in Canggu, Bali.",
+        "value": "Family-owned eco-friendly guesthouse, yoga retreat, and vegan restaurant located in Canggu, Bali.",
         "source": "https://www.serenitybali.com/"
       },
       "category": "yoga retreat",
-      "offerings": [
-        {
-          "name": "All Inclusive/Full Board Package",
-          "source": "https://www.serenitybali.com/faq"
-        },
-        {
-          "name": "Balinese Massage",
-          "source": "https://www.serenitybali.com/our-spa-team"
-        },
-        {
-          "name": "Deep Tissue",
-          "source": "https://www.serenitybali.com/our-spa-team"
-        },
-        {
-          "name": "Hot Stone",
-          "source": "https://www.serenitybali.com/our-spa-team"
-        },
-        {
-          "name": "Shiatsu",
-          "source": "https://www.serenitybali.com/our-spa-team"
-        },
-        {
-          "name": "Thai Massage",
-          "source": "https://www.serenitybali.com/our-spa-team"
-        },
-        {
-          "name": "Body Scrub",
-          "source": "https://www.serenitybali.com/our-spa-team"
-        },
-        {
-          "name": "Foot Massage",
-          "source": "https://www.serenitybali.com/our-spa-team"
-        }
-      ],
+      "offerings": [],
       "highlights": [
         {
-          "value": "Family-owned guesthouse, yoga retreat, and eco-friendly haven",
-          "source": "https://www.serenitybali.com/"
+          "value": "Top 10% Worldwide Travellers' Choices 2026 regarding to TripAdvisor",
+          "source": "https://www.serenitybali.com/our-story"
         },
         {
-          "value": "Alkaline Restaurant is 100% vegan with a broad variety of raw dishes",
+          "value": "Booking.com Traveller Award in 2025 & 2026",
           "source": "https://www.serenitybali.com/our-story"
         }
       ],
@@ -984,8 +336,8 @@
           "source": "https://www.serenitybali.com/"
         },
         "area": {
-          "value": "Badung",
-          "source": "https://www.serenitybali.com/contact-us"
+          "value": "Canggu",
+          "source": "https://www.serenitybali.com/"
         },
         "address": {
           "value": "Jl. Nelayan, Banjar Canggu, Badung, Bali",
@@ -995,61 +347,29 @@
       },
       "contact": {
         "whatsapp": {
-          "value": "+62 81"
+          "value": "628113888472",
+          "source": "https://www.ser"
         }
       }
     },
     {
       "name": {
-        "value": "Serenity Eco Guesthouse & Yoga",
+        "value": "Serenity Eco Guesthouse and Yoga",
         "source": "https://www.serenitybali.com/"
       },
       "summary": {
-        "value": "Family-owned eco-friendly guesthouse, yoga retreat, spa, and vegan restaurant in Canggu, Bali.",
+        "value": "Family-owned eco-friendly guesthouse, yoga retreat, and vegan restaurant located in Canggu, Bali.",
         "source": "https://www.serenitybali.com/"
       },
       "category": "yoga retreat",
-      "offerings": [
-        {
-          "name": "All Inclusive/Full Board Package",
-          "source": "https://www.serenitybali.com/faq"
-        },
-        {
-          "name": "Balinese Massage",
-          "source": "https://www.serenitybali.com/our-spa-team"
-        },
-        {
-          "name": "Deep Tissue",
-          "source": "https://www.serenitybali.com/our-spa-team"
-        },
-        {
-          "name": "Hot Stone",
-          "source": "https://www.serenitybali.com/our-spa-team"
-        },
-        {
-          "name": "Shiatsu",
-          "source": "https://www.serenitybali.com/our-spa-team"
-        },
-        {
-          "name": "Thai Massage",
-          "source": "https://www.serenitybali.com/our-spa-team"
-        },
-        {
-          "name": "Body Scrub",
-          "source": "https://www.serenitybali.com/our-spa-team"
-        },
-        {
-          "name": "Foot Massage",
-          "source": "https://www.serenitybali.com/our-spa-team"
-        }
-      ],
+      "offerings": [],
       "highlights": [
         {
-          "value": "Family-owned guesthouse, yoga retreat, and eco-friendly haven",
-          "source": "https://www.serenitybali.com/"
+          "value": "Top 10% Worldwide Travellers' Choices 2026 regarding to TripAdvisor",
+          "source": "https://www.serenitybali.com/our-story"
         },
         {
-          "value": "Alkaline Restaurant is 100% vegan with a broad variety of raw dishes",
+          "value": "Booking.com Traveller Award in 2025 & 2026",
           "source": "https://www.serenitybali.com/our-story"
         }
       ],
@@ -1059,8 +379,8 @@
           "source": "https://www.serenitybali.com/"
         },
         "area": {
-          "value": "Badung",
-          "source": "https://www.serenitybali.com/contact-us"
+          "value": "Canggu",
+          "source": "https://www.serenitybali.com/"
         },
         "address": {
           "value": "Jl. Nelayan, Banjar Canggu, Badung, Bali",
@@ -1070,62 +390,30 @@
       },
       "contact": {
         "whatsapp": {
-          "value": "+62 811-3888-472",
-          "source": "https://www.serenitybali"
-        }
+          "value": "628113888472",
+          "source": "https://www.serenitybali.com/contact-us"
+        },
+        "phone": null
       }
     },
     {
       "name": {
-        "value": "Serenity Eco Guesthouse & Yoga",
+        "value": "Serenity Eco Guesthouse and Yoga",
         "source": "https://www.serenitybali.com/"
       },
       "summary": {
-        "value": "Family-owned eco-friendly guesthouse, yoga retreat, spa, and vegan restaurant in Canggu, Bali.",
+        "value": "Family-owned eco-friendly guesthouse, yoga retreat, and vegan restaurant located in Canggu, Bali.",
         "source": "https://www.serenitybali.com/"
       },
       "category": "yoga retreat",
-      "offerings": [
-        {
-          "name": "All Inclusive/Full Board Package",
-          "source": "https://www.serenitybali.com/faq"
-        },
-        {
-          "name": "Balinese Massage",
-          "source": "https://www.serenitybali.com/our-spa-team"
-        },
-        {
-          "name": "Deep Tissue",
-          "source": "https://www.serenitybali.com/our-spa-team"
-        },
-        {
-          "name": "Hot Stone",
-          "source": "https://www.serenitybali.com/our-spa-team"
-        },
-        {
-          "name": "Shiatsu",
-          "source": "https://www.serenitybali.com/our-spa-team"
-        },
-        {
-          "name": "Thai Massage",
-          "source": "https://www.serenitybali.com/our-spa-team"
-        },
-        {
-          "name": "Body Scrub",
-          "source": "https://www.serenitybali.com/our-spa-team"
-        },
-        {
-          "name": "Foot Massage",
-          "source": "https://www.serenitybali.com/our-spa-team"
-        }
-      ],
+      "offerings": [],
       "highlights": [
         {
-          "value": "Family-owned guesthouse, yoga retreat, and eco-friendly haven",
-          "source": "https://www.serenitybali.com/"
+          "value": "Top 10% Worldwide Travellers' Choices 2026 regarding to TripAdvisor",
+          "source": "https://www.serenitybali.com/our-story"
         },
         {
-          "value": "Alkaline Restaurant is 100% vegan with a broad variety of raw dishes",
+          "value": "Booking.com Traveller Award in 2025 & 2026",
           "source": "https://www.serenitybali.com/our-story"
         }
       ],
@@ -1135,88 +423,9 @@
           "source": "https://www.serenitybali.com/"
         },
         "area": {
-          "value": "Badung",
-          "source": "https://www.serenitybali.com/contact-us"
-        },
-        "address": {
-          "value": "Jl. Nelayan, Banjar Canggu, Badung, Bali",
-          "source": "https://www.serenitybali.com/contact-us"
-        },
-        "serviceArea": null
-      },
-      "contact": {
-        "whatsapp": {
-          "value": "+62 811-3888-472",
-          "source": "https://www.serenitybali.com/contact-us"
-        },
-        "phone": {
-          "value": "+62 361"
-        }
-      }
-    },
-    {
-      "name": {
-        "value": "Serenity Eco Guesthouse & Yoga",
-        "source": "https://www.serenitybali.com/"
-      },
-      "summary": {
-        "value": "Family-owned eco-friendly guesthouse, yoga retreat, spa, and vegan restaurant in Canggu, Bali.",
-        "source": "https://www.serenitybali.com/"
-      },
-      "category": "yoga retreat",
-      "offerings": [
-        {
-          "name": "All Inclusive/Full Board Package",
-          "source": "https://www.serenitybali.com/faq"
-        },
-        {
-          "name": "Balinese Massage",
-          "source": "https://www.serenitybali.com/our-spa-team"
-        },
-        {
-          "name": "Deep Tissue",
-          "source": "https://www.serenitybali.com/our-spa-team"
-        },
-        {
-          "name": "Hot Stone",
-          "source": "https://www.serenitybali.com/our-spa-team"
-        },
-        {
-          "name": "Shiatsu",
-          "source": "https://www.serenitybali.com/our-spa-team"
-        },
-        {
-          "name": "Thai Massage",
-          "source": "https://www.serenitybali.com/our-spa-team"
-        },
-        {
-          "name": "Body Scrub",
-          "source": "https://www.serenitybali.com/our-spa-team"
-        },
-        {
-          "name": "Foot Massage",
-          "source": "https://www.serenitybali.com/our-spa-team"
-        }
-      ],
-      "highlights": [
-        {
-          "value": "Family-owned guesthouse, yoga retreat, and eco-friendly haven",
-          "source": "https://www.serenitybali.com/"
-        },
-        {
-          "value": "Alkaline Restaurant is 100% vegan with a broad variety of raw dishes",
-          "source": "https://www.serenitybali.com/our-story"
-        }
-      ],
-      "location": {
-        "town": {
           "value": "Canggu",
           "source": "https://www.serenitybali.com/"
         },
-        "area": {
-          "value": "Badung",
-          "source": "https://www.serenitybali.com/contact-us"
-        },
         "address": {
           "value": "Jl. Nelayan, Banjar Canggu, Badung, Bali",
           "source": "https://www.serenitybali.com/contact-us"
@@ -1225,149 +434,34 @@
       },
       "contact": {
         "whatsapp": {
-          "value": "+62 811-3888-472",
+          "value": "628113888472",
           "source": "https://www.serenitybali.com/contact-us"
         },
-        "phone": {
-          "value": "+62 361-846-9251",
-          "source": "https://www.serenitybali.com/"
-        }
-      }
-    },
-    {
-      "name": {
-        "value": "Serenity Eco Guesthouse & Yoga",
-        "source": "https://www.serenitybali.com/"
-      },
-      "summary": {
-        "value": "Family-owned eco-friendly guesthouse, yoga retreat, spa, and vegan restaurant in Canggu, Bali.",
-        "source": "https://www.serenitybali.com/"
-      },
-      "category": "yoga retreat",
-      "offerings": [
-        {
-          "name": "All Inclusive/Full Board Package",
-          "source": "https://www.serenitybali.com/faq"
-        },
-        {
-          "name": "Balinese Massage",
-          "source": "https://www.serenitybali.com/our-spa-team"
-        },
-        {
-          "name": "Deep Tissue",
-          "source": "https://www.serenitybali.com/our-spa-team"
-        },
-        {
-          "name": "Hot Stone",
-          "source": "https://www.serenitybali.com/our-spa-team"
-        },
-        {
-          "name": "Shiatsu",
-          "source": "https://www.serenitybali.com/our-spa-team"
-        },
-        {
-          "name": "Thai Massage",
-          "source": "https://www.serenitybali.com/our-spa-team"
-        },
-        {
-          "name": "Body Scrub",
-          "source": "https://www.serenitybali.com/our-spa-team"
-        },
-        {
-          "name": "Foot Massage",
-          "source": "https://www.serenitybali.com/our-spa-team"
-        }
-      ],
-      "highlights": [
-        {
-          "value": "Family-owned guesthouse, yoga retreat, and eco-friendly haven",
-          "source": "https://www.serenitybali.com/"
-        },
-        {
-          "value": "Alkaline Restaurant is 100% vegan with a broad variety of raw dishes",
-          "source": "https://www.serenitybali.com/our-story"
-        }
-      ],
-      "location": {
-        "town": {
-          "value": "Canggu",
-          "source": "https://www.serenitybali.com/"
-        },
-        "area": {
-          "value": "Badung",
-          "source": "https://www.serenitybali.com/contact-us"
-        },
-        "address": {
-          "value": "Jl. Nelayan, Banjar Canggu, Badung, Bali",
-          "source": "https://www.serenitybali.com/contact-us"
-        },
-        "serviceArea": null
-      },
-      "contact": {
-        "whatsapp": {
-          "value": "+62 811-3888-472",
-          "source": "https://www.serenitybali.com/contact-us"
-        },
-        "phone": {
-          "value": "+62 361-846-9251",
-          "source": "https://www.serenitybali.com/contact-us"
-        },
+        "phone": null,
         "email": {
-          "value": "info@serenitybali"
+          "value": "info@serenitybali.com",
+          "source": "https://www"
         }
       }
     },
     {
       "name": {
-        "value": "Serenity Eco Guesthouse & Yoga",
+        "value": "Serenity Eco Guesthouse and Yoga",
         "source": "https://www.serenitybali.com/"
       },
       "summary": {
-        "value": "Family-owned eco-friendly guesthouse, yoga retreat, spa, and vegan restaurant in Canggu, Bali.",
+        "value": "Family-owned eco-friendly guesthouse, yoga retreat, and vegan restaurant located in Canggu, Bali.",
         "source": "https://www.serenitybali.com/"
       },
       "category": "yoga retreat",
-      "offerings": [
-        {
-          "name": "All Inclusive/Full Board Package",
-          "source": "https://www.serenitybali.com/faq"
-        },
-        {
-          "name": "Balinese Massage",
-          "source": "https://www.serenitybali.com/our-spa-team"
-        },
-        {
-          "name": "Deep Tissue",
-          "source": "https://www.serenitybali.com/our-spa-team"
-        },
-        {
-          "name": "Hot Stone",
-          "source": "https://www.serenitybali.com/our-spa-team"
-        },
-        {
-          "name": "Shiatsu",
-          "source": "https://www.serenitybali.com/our-spa-team"
-        },
-        {
-          "name": "Thai Massage",
-          "source": "https://www.serenitybali.com/our-spa-team"
-        },
-        {
-          "name": "Body Scrub",
-          "source": "https://www.serenitybali.com/our-spa-team"
-        },
-        {
-          "name": "Foot Massage",
-          "source": "https://www.serenitybali.com/our-spa-team"
-        }
-      ],
+      "offerings": [],
       "highlights": [
         {
-          "value": "Family-owned guesthouse, yoga retreat, and eco-friendly haven",
-          "source": "https://www.serenitybali.com/"
+          "value": "Top 10% Worldwide Travellers' Choices 2026 regarding to TripAdvisor",
+          "source": "https://www.serenitybali.com/our-story"
         },
         {
-          "value": "Alkaline Restaurant is 100% vegan with a broad variety of raw dishes",
+          "value": "Booking.com Traveller Award in 2025 & 2026",
           "source": "https://www.serenitybali.com/our-story"
         }
       ],
@@ -1377,8 +471,8 @@
           "source": "https://www.serenitybali.com/"
         },
         "area": {
-          "value": "Badung",
-          "source": "https://www.serenitybali.com/contact-us"
+          "value": "Canggu",
+          "source": "https://www.serenitybali.com/"
         },
         "address": {
           "value": "Jl. Nelayan, Banjar Canggu, Badung, Bali",
@@ -1388,74 +482,87 @@
       },
       "contact": {
         "whatsapp": {
-          "value": "+62 811-3888-472",
+          "value": "628113888472",
           "source": "https://www.serenitybali.com/contact-us"
         },
-        "phone": {
-          "value": "+62 361-846-9251",
+        "phone": null,
+        "email": {
+          "value": "info@serenitybali.com",
           "source": "https://www.serenitybali.com/contact-us"
         },
+        "instagram": {}
+      }
+    },
+    {
+      "name": {
+        "value": "Serenity Eco Guesthouse and Yoga",
+        "source": "https://www.serenitybali.com/"
+      },
+      "summary": {
+        "value": "Family-owned eco-friendly guesthouse, yoga retreat, and vegan restaurant located in Canggu, Bali.",
+        "source": "https://www.serenitybali.com/"
+      },
+      "category": "yoga retreat",
+      "offerings": [],
+      "highlights": [
+        {
+          "value": "Top 10% Worldwide Travellers' Choices 2026 regarding to TripAdvisor",
+          "source": "https://www.serenitybali.com/our-story"
+        },
+        {
+          "value": "Booking.com Traveller Award in 2025 & 2026",
+          "source": "https://www.serenitybali.com/our-story"
+        }
+      ],
+      "location": {
+        "town": {
+          "value": "Canggu",
+          "source": "https://www.serenitybali.com/"
+        },
+        "area": {
+          "value": "Canggu",
+          "source": "https://www.serenitybali.com/"
+        },
+        "address": {
+          "value": "Jl. Nelayan, Banjar Canggu, Badung, Bali",
+          "source": "https://www.serenitybali.com/contact-us"
+        },
+        "serviceArea": null
+      },
+      "contact": {
+        "whatsapp": {
+          "value": "628113888472",
+          "source": "https://www.serenitybali.com/contact-us"
+        },
+        "phone": null,
         "email": {
           "value": "info@serenitybali.com",
           "source": "https://www.serenitybali.com/contact-us"
         },
         "instagram": {
           "value": "serenitybali",
-          "source": ""
+          "source": "https://www.serenitybali.com/"
         }
       }
     },
     {
       "name": {
-        "value": "Serenity Eco Guesthouse & Yoga",
+        "value": "Serenity Eco Guesthouse and Yoga",
         "source": "https://www.serenitybali.com/"
       },
       "summary": {
-        "value": "Family-owned eco-friendly guesthouse, yoga retreat, spa, and vegan restaurant in Canggu, Bali.",
+        "value": "Family-owned eco-friendly guesthouse, yoga retreat, and vegan restaurant located in Canggu, Bali.",
         "source": "https://www.serenitybali.com/"
       },
       "category": "yoga retreat",
-      "offerings": [
-        {
-          "name": "All Inclusive/Full Board Package",
-          "source": "https://www.serenitybali.com/faq"
-        },
-        {
-          "name": "Balinese Massage",
-          "source": "https://www.serenitybali.com/our-spa-team"
-        },
-        {
-          "name": "Deep Tissue",
-          "source": "https://www.serenitybali.com/our-spa-team"
-        },
-        {
-          "name": "Hot Stone",
-          "source": "https://www.serenitybali.com/our-spa-team"
-        },
-        {
-          "name": "Shiatsu",
-          "source": "https://www.serenitybali.com/our-spa-team"
-        },
-        {
-          "name": "Thai Massage",
-          "source": "https://www.serenitybali.com/our-spa-team"
-        },
-        {
-          "name": "Body Scrub",
-          "source": "https://www.serenitybali.com/our-spa-team"
-        },
-        {
-          "name": "Foot Massage",
-          "source": "https://www.serenitybali.com/our-spa-team"
-        }
-      ],
+      "offerings": [],
       "highlights": [
         {
-          "value": "Family-owned guesthouse, yoga retreat, and eco-friendly haven",
-          "source": "https://www.serenitybali.com/"
+          "value": "Top 10% Worldwide Travellers' Choices 2026 regarding to TripAdvisor",
+          "source": "https://www.serenitybali.com/our-story"
         },
         {
-          "value": "Alkaline Restaurant is 100% vegan with a broad variety of raw dishes",
+          "value": "Booking.com Traveller Award in 2025 & 2026",
           "source": "https://www.serenitybali.com/our-story"
         }
       ],
@@ -1465,8 +572,8 @@
           "source": "https://www.serenitybali.com/"
         },
         "area": {
-          "value": "Badung",
-          "source": "https://www.serenitybali.com/contact-us"
+          "value": "Canggu",
+          "source": "https://www.serenitybali.com/"
         },
         "address": {
           "value": "Jl. Nelayan, Banjar Canggu, Badung, Bali",
@@ -1476,13 +583,65 @@
       },
       "contact": {
         "whatsapp": {
-          "value": "+62 811-3888-472",
+          "value": "628113888472",
           "source": "https://www.serenitybali.com/contact-us"
         },
-        "phone": {
-          "value": "+62 361-846-9251",
+        "phone": null,
+        "email": {
+          "value": "info@serenitybali.com",
           "source": "https://www.serenitybali.com/contact-us"
         },
+        "instagram": {
+          "value": "serenitybali",
+          "source": "https://www.serenitybali.com/"
+        },
+        "bookingUrl": null
+      },
+      "hours": null,
+      "tone": []
+    },
+    {
+      "name": {
+        "value": "Serenity Eco Guesthouse and Yoga",
+        "source": "https://www.serenitybali.com/"
+      },
+      "summary": {
+        "value": "Family-owned eco-friendly guesthouse, yoga retreat, and vegan restaurant located in Canggu, Bali.",
+        "source": "https://www.serenitybali.com/"
+      },
+      "category": "yoga retreat",
+      "offerings": [],
+      "highlights": [
+        {
+          "value": "Top 10% Worldwide Travellers' Choices 2026 regarding to TripAdvisor",
+          "source": "https://www.serenitybali.com/our-story"
+        },
+        {
+          "value": "Booking.com Traveller Award in 2025 & 2026",
+          "source": "https://www.serenitybali.com/our-story"
+        }
+      ],
+      "location": {
+        "town": {
+          "value": "Canggu",
+          "source": "https://www.serenitybali.com/"
+        },
+        "area": {
+          "value": "Canggu",
+          "source": "https://www.serenitybali.com/"
+        },
+        "address": {
+          "value": "Jl. Nelayan, Banjar Canggu, Badung, Bali",
+          "source": "https://www.serenitybali.com/contact-us"
+        },
+        "serviceArea": null
+      },
+      "contact": {
+        "whatsapp": {
+          "value": "628113888472",
+          "source": "https://www.serenitybali.com/contact-us"
+        },
+        "phone": null,
         "email": {
           "value": "info@serenitybali.com",
           "source": "https://www.serenitybali.com/contact-us"
@@ -1496,61 +655,29 @@
       "hours": null,
       "tone": [
         "welcoming",
-        "calm",
-        "professional"
+        "tranquil",
+        "sustainable",
+        "warm"
       ]
     },
     {
       "name": {
-        "value": "Serenity Eco Guesthouse & Yoga",
+        "value": "Serenity Eco Guesthouse and Yoga",
         "source": "https://www.serenitybali.com/"
       },
       "summary": {
-        "value": "Family-owned eco-friendly guesthouse, yoga retreat, spa, and vegan restaurant in Canggu, Bali.",
+        "value": "Family-owned eco-friendly guesthouse, yoga retreat, and vegan restaurant located in Canggu, Bali.",
         "source": "https://www.serenitybali.com/"
       },
       "category": "yoga retreat",
-      "offerings": [
-        {
-          "name": "All Inclusive/Full Board Package",
-          "source": "https://www.serenitybali.com/faq"
-        },
-        {
-          "name": "Balinese Massage",
-          "source": "https://www.serenitybali.com/our-spa-team"
-        },
-        {
-          "name": "Deep Tissue",
-          "source": "https://www.serenitybali.com/our-spa-team"
-        },
-        {
-          "name": "Hot Stone",
-          "source": "https://www.serenitybali.com/our-spa-team"
-        },
-        {
-          "name": "Shiatsu",
-          "source": "https://www.serenitybali.com/our-spa-team"
-        },
-        {
-          "name": "Thai Massage",
-          "source": "https://www.serenitybali.com/our-spa-team"
-        },
-        {
-          "name": "Body Scrub",
-          "source": "https://www.serenitybali.com/our-spa-team"
-        },
-        {
-          "name": "Foot Massage",
-          "source": "https://www.serenitybali.com/our-spa-team"
-        }
-      ],
+      "offerings": [],
       "highlights": [
         {
-          "value": "Family-owned guesthouse, yoga retreat, and eco-friendly haven",
-          "source": "https://www.serenitybali.com/"
+          "value": "Top 10% Worldwide Travellers' Choices 2026 regarding to TripAdvisor",
+          "source": "https://www.serenitybali.com/our-story"
         },
         {
-          "value": "Alkaline Restaurant is 100% vegan with a broad variety of raw dishes",
+          "value": "Booking.com Traveller Award in 2025 & 2026",
           "source": "https://www.serenitybali.com/our-story"
         }
       ],
@@ -1560,8 +687,8 @@
           "source": "https://www.serenitybali.com/"
         },
         "area": {
-          "value": "Badung",
-          "source": "https://www.serenitybali.com/contact-us"
+          "value": "Canggu",
+          "source": "https://www.serenitybali.com/"
         },
         "address": {
           "value": "Jl. Nelayan, Banjar Canggu, Badung, Bali",
@@ -1571,13 +698,10 @@
       },
       "contact": {
         "whatsapp": {
-          "value": "+62 811-3888-472",
+          "value": "628113888472",
           "source": "https://www.serenitybali.com/contact-us"
         },
-        "phone": {
-          "value": "+62 361-846-9251",
-          "source": "https://www.serenitybali.com/contact-us"
-        },
+        "phone": null,
         "email": {
           "value": "info@serenitybali.com",
           "source": "https://www.serenitybali.com/contact-us"
@@ -1591,168 +715,37 @@
       "hours": null,
       "tone": [
         "welcoming",
-        "calm",
-        "professional"
+        "tranquil",
+        "sustainable",
+        "warm"
       ],
       "colours": [
         {
-          "hex": "#245837"
-        }
-      ]
-    },
-    {
-      "name": {
-        "value": "Serenity Eco Guesthouse & Yoga",
-        "source": "https://www.serenitybali.com/"
-      },
-      "summary": {
-        "value": "Family-owned eco-friendly guesthouse, yoga retreat, spa, and vegan restaurant in Canggu, Bali.",
-        "source": "https://www.serenitybali.com/"
-      },
-      "category": "yoga retreat",
-      "offerings": [
-        {
-          "name": "All Inclusive/Full Board Package",
-          "source": "https://www.serenitybali.com/faq"
-        },
-        {
-          "name": "Balinese Massage",
-          "source": "https://www.serenitybali.com/our-spa-team"
-        },
-        {
-          "name": "Deep Tissue",
-          "source": "https://www.serenitybali.com/our-spa-team"
-        },
-        {
-          "name": "Hot Stone",
-          "source": "https://www.serenitybali.com/our-spa-team"
-        },
-        {
-          "name": "Shiatsu",
-          "source": "https://www.serenitybali.com/our-spa-team"
-        },
-        {
-          "name": "Thai Massage",
-          "source": "https://www.serenitybali.com/our-spa-team"
-        },
-        {
-          "name": "Body Scrub",
-          "source": "https://www.serenitybali.com/our-spa-team"
-        },
-        {
-          "name": "Foot Massage",
-          "source": "https://www.serenitybali.com/our-spa-team"
-        }
-      ],
-      "highlights": [
-        {
-          "value": "Family-owned guesthouse, yoga retreat, and eco-friendly haven",
-          "source": "https://www.serenitybali.com/"
-        },
-        {
-          "value": "Alkaline Restaurant is 100% vegan with a broad variety of raw dishes",
-          "source": "https://www.serenitybali.com/our-story"
-        }
-      ],
-      "location": {
-        "town": {
-          "value": "Canggu",
-          "source": "https://www.serenitybali.com/"
-        },
-        "area": {
-          "value": "Badung",
-          "source": "https://www.serenitybali.com/contact-us"
-        },
-        "address": {
-          "value": "Jl. Nelayan, Banjar Canggu, Badung, Bali",
-          "source": "https://www.serenitybali.com/contact-us"
-        },
-        "serviceArea": null
-      },
-      "contact": {
-        "whatsapp": {
-          "value": "+62 811-3888-472",
-          "source": "https://www.serenitybali.com/contact-us"
-        },
-        "phone": {
-          "value": "+62 361-846-9251",
-          "source": "https://www.serenitybali.com/contact-us"
-        },
-        "email": {
-          "value": "info@serenitybali.com",
-          "source": "https://www.serenitybali.com/contact-us"
-        },
-        "instagram": {
-          "value": "serenitybali",
-          "source": "https://www.serenitybali.com/"
-        },
-        "bookingUrl": null
-      },
-      "hours": null,
-      "tone": [
-        "welcoming",
-        "calm",
-        "professional"
-      ],
-      "colours": [
-        {
-          "hex": "#245837",
+          "hex": "#27633b",
           "role": "primary",
-          "source": "https://www.serenitybali.com"
-        }
+          "source": "https://www.serenitybali.com/"
+        },
+        {}
       ]
     },
     {
       "name": {
-        "value": "Serenity Eco Guesthouse & Yoga",
+        "value": "Serenity Eco Guesthouse and Yoga",
         "source": "https://www.serenitybali.com/"
       },
       "summary": {
-        "value": "Family-owned eco-friendly guesthouse, yoga retreat, spa, and vegan restaurant in Canggu, Bali.",
+        "value": "Family-owned eco-friendly guesthouse, yoga retreat, and vegan restaurant located in Canggu, Bali.",
         "source": "https://www.serenitybali.com/"
       },
       "category": "yoga retreat",
-      "offerings": [
-        {
-          "name": "All Inclusive/Full Board Package",
-          "source": "https://www.serenitybali.com/faq"
-        },
-        {
-          "name": "Balinese Massage",
-          "source": "https://www.serenitybali.com/our-spa-team"
-        },
-        {
-          "name": "Deep Tissue",
-          "source": "https://www.serenitybali.com/our-spa-team"
-        },
-        {
-          "name": "Hot Stone",
-          "source": "https://www.serenitybali.com/our-spa-team"
-        },
-        {
-          "name": "Shiatsu",
-          "source": "https://www.serenitybali.com/our-spa-team"
-        },
-        {
-          "name": "Thai Massage",
-          "source": "https://www.serenitybali.com/our-spa-team"
-        },
-        {
-          "name": "Body Scrub",
-          "source": "https://www.serenitybali.com/our-spa-team"
-        },
-        {
-          "name": "Foot Massage",
-          "source": "https://www.serenitybali.com/our-spa-team"
-        }
-      ],
+      "offerings": [],
       "highlights": [
         {
-          "value": "Family-owned guesthouse, yoga retreat, and eco-friendly haven",
-          "source": "https://www.serenitybali.com/"
+          "value": "Top 10% Worldwide Travellers' Choices 2026 regarding to TripAdvisor",
+          "source": "https://www.serenitybali.com/our-story"
         },
         {
-          "value": "Alkaline Restaurant is 100% vegan with a broad variety of raw dishes",
+          "value": "Booking.com Traveller Award in 2025 & 2026",
           "source": "https://www.serenitybali.com/our-story"
         }
       ],
@@ -1762,8 +755,8 @@
           "source": "https://www.serenitybali.com/"
         },
         "area": {
-          "value": "Badung",
-          "source": "https://www.serenitybali.com/contact-us"
+          "value": "Canggu",
+          "source": "https://www.serenitybali.com/"
         },
         "address": {
           "value": "Jl. Nelayan, Banjar Canggu, Badung, Bali",
@@ -1773,13 +766,10 @@
       },
       "contact": {
         "whatsapp": {
-          "value": "+62 811-3888-472",
+          "value": "628113888472",
           "source": "https://www.serenitybali.com/contact-us"
         },
-        "phone": {
-          "value": "+62 361-846-9251",
-          "source": "https://www.serenitybali.com/contact-us"
-        },
+        "phone": null,
         "email": {
           "value": "info@serenitybali.com",
           "source": "https://www.serenitybali.com/contact-us"
@@ -1793,73 +783,41 @@
       "hours": null,
       "tone": [
         "welcoming",
-        "calm",
-        "professional"
+        "tranquil",
+        "sustainable",
+        "warm"
       ],
       "colours": [
         {
-          "hex": "#245837",
+          "hex": "#27633b",
           "role": "primary",
           "source": "https://www.serenitybali.com/"
         },
         {
           "hex": "#ffffff",
-          "role": "text",
-          "source": "https://www.serenitybali.com/"
+          "role": "background",
+          "source": "https://www.ser"
         }
       ]
     },
     {
       "name": {
-        "value": "Serenity Eco Guesthouse & Yoga",
+        "value": "Serenity Eco Guesthouse and Yoga",
         "source": "https://www.serenitybali.com/"
       },
       "summary": {
-        "value": "Family-owned eco-friendly guesthouse, yoga retreat, spa, and vegan restaurant in Canggu, Bali.",
+        "value": "Family-owned eco-friendly guesthouse, yoga retreat, and vegan restaurant located in Canggu, Bali.",
         "source": "https://www.serenitybali.com/"
       },
       "category": "yoga retreat",
-      "offerings": [
-        {
-          "name": "All Inclusive/Full Board Package",
-          "source": "https://www.serenitybali.com/faq"
-        },
-        {
-          "name": "Balinese Massage",
-          "source": "https://www.serenitybali.com/our-spa-team"
-        },
-        {
-          "name": "Deep Tissue",
-          "source": "https://www.serenitybali.com/our-spa-team"
-        },
-        {
-          "name": "Hot Stone",
-          "source": "https://www.serenitybali.com/our-spa-team"
-        },
-        {
-          "name": "Shiatsu",
-          "source": "https://www.serenitybali.com/our-spa-team"
-        },
-        {
-          "name": "Thai Massage",
-          "source": "https://www.serenitybali.com/our-spa-team"
-        },
-        {
-          "name": "Body Scrub",
-          "source": "https://www.serenitybali.com/our-spa-team"
-        },
-        {
-          "name": "Foot Massage",
-          "source": "https://www.serenitybali.com/our-spa-team"
-        }
-      ],
+      "offerings": [],
       "highlights": [
         {
-          "value": "Family-owned guesthouse, yoga retreat, and eco-friendly haven",
-          "source": "https://www.serenitybali.com/"
+          "value": "Top 10% Worldwide Travellers' Choices 2026 regarding to TripAdvisor",
+          "source": "https://www.serenitybali.com/our-story"
         },
         {
-          "value": "Alkaline Restaurant is 100% vegan with a broad variety of raw dishes",
+          "value": "Booking.com Traveller Award in 2025 & 2026",
           "source": "https://www.serenitybali.com/our-story"
         }
       ],
@@ -1869,8 +827,8 @@
           "source": "https://www.serenitybali.com/"
         },
         "area": {
-          "value": "Badung",
-          "source": "https://www.serenitybali.com/contact-us"
+          "value": "Canggu",
+          "source": "https://www.serenitybali.com/"
         },
         "address": {
           "value": "Jl. Nelayan, Banjar Canggu, Badung, Bali",
@@ -1880,13 +838,10 @@
       },
       "contact": {
         "whatsapp": {
-          "value": "+62 811-3888-472",
+          "value": "628113888472",
           "source": "https://www.serenitybali.com/contact-us"
         },
-        "phone": {
-          "value": "+62 361-846-9251",
-          "source": "https://www.serenitybali.com/contact-us"
-        },
+        "phone": null,
         "email": {
           "value": "info@serenitybali.com",
           "source": "https://www.serenitybali.com/contact-us"
@@ -1900,76 +855,784 @@
       "hours": null,
       "tone": [
         "welcoming",
-        "calm",
-        "professional"
+        "tranquil",
+        "sustainable",
+        "warm"
       ],
       "colours": [
         {
-          "hex": "#245837",
+          "hex": "#27633b",
           "role": "primary",
           "source": "https://www.serenitybali.com/"
         },
         {
           "hex": "#ffffff",
-          "role": "text",
+          "role": "background",
+          "source": "https://www.serenitybali.com/"
+        },
+        {
+          "hex": "#382414"
+        }
+      ]
+    },
+    {
+      "name": {
+        "value": "Serenity Eco Guesthouse and Yoga",
+        "source": "https://www.serenitybali.com/"
+      },
+      "summary": {
+        "value": "Family-owned eco-friendly guesthouse, yoga retreat, and vegan restaurant located in Canggu, Bali.",
+        "source": "https://www.serenitybali.com/"
+      },
+      "category": "yoga retreat",
+      "offerings": [],
+      "highlights": [
+        {
+          "value": "Top 10% Worldwide Travellers' Choices 2026 regarding to TripAdvisor",
+          "source": "https://www.serenitybali.com/our-story"
+        },
+        {
+          "value": "Booking.com Traveller Award in 2025 & 2026",
+          "source": "https://www.serenitybali.com/our-story"
+        }
+      ],
+      "location": {
+        "town": {
+          "value": "Canggu",
+          "source": "https://www.serenitybali.com/"
+        },
+        "area": {
+          "value": "Canggu",
+          "source": "https://www.serenitybali.com/"
+        },
+        "address": {
+          "value": "Jl. Nelayan, Banjar Canggu, Badung, Bali",
+          "source": "https://www.serenitybali.com/contact-us"
+        },
+        "serviceArea": null
+      },
+      "contact": {
+        "whatsapp": {
+          "value": "628113888472",
+          "source": "https://www.serenitybali.com/contact-us"
+        },
+        "phone": null,
+        "email": {
+          "value": "info@serenitybali.com",
+          "source": "https://www.serenitybali.com/contact-us"
+        },
+        "instagram": {
+          "value": "serenitybali",
+          "source": "https://www.serenitybali.com/"
+        },
+        "bookingUrl": null
+      },
+      "hours": null,
+      "tone": [
+        "welcoming",
+        "tranquil",
+        "sustainable",
+        "warm"
+      ],
+      "colours": [
+        {
+          "hex": "#27633b",
+          "role": "primary",
+          "source": "https://www.serenitybali.com/"
+        },
+        {
+          "hex": "#ffffff",
+          "role": "background",
+          "source": "https://www.serenitybali.com/"
+        },
+        {
+          "hex": "#382414",
+          "role": "accent",
+          "source": "https://www.serenitybali.com/"
+        }
+      ]
+    },
+    {
+      "name": {
+        "value": "Serenity Eco Guesthouse and Yoga",
+        "source": "https://www.serenitybali.com/"
+      },
+      "summary": {
+        "value": "Family-owned eco-friendly guesthouse, yoga retreat, and vegan restaurant located in Canggu, Bali.",
+        "source": "https://www.serenitybali.com/"
+      },
+      "category": "yoga retreat",
+      "offerings": [],
+      "highlights": [
+        {
+          "value": "Top 10% Worldwide Travellers' Choices 2026 regarding to TripAdvisor",
+          "source": "https://www.serenitybali.com/our-story"
+        },
+        {
+          "value": "Booking.com Traveller Award in 2025 & 2026",
+          "source": "https://www.serenitybali.com/our-story"
+        }
+      ],
+      "location": {
+        "town": {
+          "value": "Canggu",
+          "source": "https://www.serenitybali.com/"
+        },
+        "area": {
+          "value": "Canggu",
+          "source": "https://www.serenitybali.com/"
+        },
+        "address": {
+          "value": "Jl. Nelayan, Banjar Canggu, Badung, Bali",
+          "source": "https://www.serenitybali.com/contact-us"
+        },
+        "serviceArea": null
+      },
+      "contact": {
+        "whatsapp": {
+          "value": "628113888472",
+          "source": "https://www.serenitybali.com/contact-us"
+        },
+        "phone": null,
+        "email": {
+          "value": "info@serenitybali.com",
+          "source": "https://www.serenitybali.com/contact-us"
+        },
+        "instagram": {
+          "value": "serenitybali",
+          "source": "https://www.serenitybali.com/"
+        },
+        "bookingUrl": null
+      },
+      "hours": null,
+      "tone": [
+        "welcoming",
+        "tranquil",
+        "sustainable",
+        "warm"
+      ],
+      "colours": [
+        {
+          "hex": "#27633b",
+          "role": "primary",
+          "source": "https://www.serenitybali.com/"
+        },
+        {
+          "hex": "#ffffff",
+          "role": "background",
+          "source": "https://www.serenitybali.com/"
+        },
+        {
+          "hex": "#382414",
+          "role": "accent",
           "source": "https://www.serenitybali.com/"
         }
       ],
+      "essence": {
+        "feeling": [
+          "relaxed",
+          "re"
+        ]
+      }
+    },
+    {
+      "name": {
+        "value": "Serenity Eco Guesthouse and Yoga",
+        "source": "https://www.serenitybali.com/"
+      },
+      "summary": {
+        "value": "Family-owned eco-friendly guesthouse, yoga retreat, and vegan restaurant located in Canggu, Bali.",
+        "source": "https://www.serenitybali.com/"
+      },
+      "category": "yoga retreat",
+      "offerings": [],
+      "highlights": [
+        {
+          "value": "Top 10% Worldwide Travellers' Choices 2026 regarding to TripAdvisor",
+          "source": "https://www.serenitybali.com/our-story"
+        },
+        {
+          "value": "Booking.com Traveller Award in 2025 & 2026",
+          "source": "https://www.serenitybali.com/our-story"
+        }
+      ],
+      "location": {
+        "town": {
+          "value": "Canggu",
+          "source": "https://www.serenitybali.com/"
+        },
+        "area": {
+          "value": "Canggu",
+          "source": "https://www.serenitybali.com/"
+        },
+        "address": {
+          "value": "Jl. Nelayan, Banjar Canggu, Badung, Bali",
+          "source": "https://www.serenitybali.com/contact-us"
+        },
+        "serviceArea": null
+      },
+      "contact": {
+        "whatsapp": {
+          "value": "628113888472",
+          "source": "https://www.serenitybali.com/contact-us"
+        },
+        "phone": null,
+        "email": {
+          "value": "info@serenitybali.com",
+          "source": "https://www.serenitybali.com/contact-us"
+        },
+        "instagram": {
+          "value": "serenitybali",
+          "source": "https://www.serenitybali.com/"
+        },
+        "bookingUrl": null
+      },
+      "hours": null,
+      "tone": [
+        "welcoming",
+        "tranquil",
+        "sustainable",
+        "warm"
+      ],
+      "colours": [
+        {
+          "hex": "#27633b",
+          "role": "primary",
+          "source": "https://www.serenitybali.com/"
+        },
+        {
+          "hex": "#ffffff",
+          "role": "background",
+          "source": "https://www.serenitybali.com/"
+        },
+        {
+          "hex": "#382414",
+          "role": "accent",
+          "source": "https://www.serenitybali.com/"
+        }
+      ],
+      "essence": {
+        "feeling": [
+          "relaxed",
+          "rejuvenated",
+          "peaceful"
+        ],
+        "placeSymbols": [
+          "rice terraces"
+        ]
+      }
+    },
+    {
+      "name": {
+        "value": "Serenity Eco Guesthouse and Yoga",
+        "source": "https://www.serenitybali.com/"
+      },
+      "summary": {
+        "value": "Family-owned eco-friendly guesthouse, yoga retreat, and vegan restaurant located in Canggu, Bali.",
+        "source": "https://www.serenitybali.com/"
+      },
+      "category": "yoga retreat",
+      "offerings": [],
+      "highlights": [
+        {
+          "value": "Top 10% Worldwide Travellers' Choices 2026 regarding to TripAdvisor",
+          "source": "https://www.serenitybali.com/our-story"
+        },
+        {
+          "value": "Booking.com Traveller Award in 2025 & 2026",
+          "source": "https://www.serenitybali.com/our-story"
+        }
+      ],
+      "location": {
+        "town": {
+          "value": "Canggu",
+          "source": "https://www.serenitybali.com/"
+        },
+        "area": {
+          "value": "Canggu",
+          "source": "https://www.serenitybali.com/"
+        },
+        "address": {
+          "value": "Jl. Nelayan, Banjar Canggu, Badung, Bali",
+          "source": "https://www.serenitybali.com/contact-us"
+        },
+        "serviceArea": null
+      },
+      "contact": {
+        "whatsapp": {
+          "value": "628113888472",
+          "source": "https://www.serenitybali.com/contact-us"
+        },
+        "phone": null,
+        "email": {
+          "value": "info@serenitybali.com",
+          "source": "https://www.serenitybali.com/contact-us"
+        },
+        "instagram": {
+          "value": "serenitybali",
+          "source": "https://www.serenitybali.com/"
+        },
+        "bookingUrl": null
+      },
+      "hours": null,
+      "tone": [
+        "welcoming",
+        "tranquil",
+        "sustainable",
+        "warm"
+      ],
+      "colours": [
+        {
+          "hex": "#27633b",
+          "role": "primary",
+          "source": "https://www.serenitybali.com/"
+        },
+        {
+          "hex": "#ffffff",
+          "role": "background",
+          "source": "https://www.serenitybali.com/"
+        },
+        {
+          "hex": "#382414",
+          "role": "accent",
+          "source": "https://www.serenitybali.com/"
+        }
+      ],
+      "essence": {
+        "feeling": [
+          "relaxed",
+          "rejuvenated",
+          "peaceful"
+        ],
+        "placeSymbols": [
+          "rice terraces",
+          "frangipani",
+          "temple offerings"
+        ]
+      }
+    },
+    {
+      "name": {
+        "value": "Serenity Eco Guesthouse and Yoga",
+        "source": "https://www.serenitybali.com/"
+      },
+      "summary": {
+        "value": "Family-owned eco-friendly guesthouse, yoga retreat, and vegan restaurant located in Canggu, Bali.",
+        "source": "https://www.serenitybali.com/"
+      },
+      "category": "yoga retreat",
+      "offerings": [],
+      "highlights": [
+        {
+          "value": "Top 10% Worldwide Travellers' Choices 2026 regarding to TripAdvisor",
+          "source": "https://www.serenitybali.com/our-story"
+        },
+        {
+          "value": "Booking.com Traveller Award in 2025 & 2026",
+          "source": "https://www.serenitybali.com/our-story"
+        }
+      ],
+      "location": {
+        "town": {
+          "value": "Canggu",
+          "source": "https://www.serenitybali.com/"
+        },
+        "area": {
+          "value": "Canggu",
+          "source": "https://www.serenitybali.com/"
+        },
+        "address": {
+          "value": "Jl. Nelayan, Banjar Canggu, Badung, Bali",
+          "source": "https://www.serenitybali.com/contact-us"
+        },
+        "serviceArea": null
+      },
+      "contact": {
+        "whatsapp": {
+          "value": "628113888472",
+          "source": "https://www.serenitybali.com/contact-us"
+        },
+        "phone": null,
+        "email": {
+          "value": "info@serenitybali.com",
+          "source": "https://www.serenitybali.com/contact-us"
+        },
+        "instagram": {
+          "value": "serenitybali",
+          "source": "https://www.serenitybali.com/"
+        },
+        "bookingUrl": null
+      },
+      "hours": null,
+      "tone": [
+        "welcoming",
+        "tranquil",
+        "sustainable",
+        "warm"
+      ],
+      "colours": [
+        {
+          "hex": "#27633b",
+          "role": "primary",
+          "source": "https://www.serenitybali.com/"
+        },
+        {
+          "hex": "#ffffff",
+          "role": "background",
+          "source": "https://www.serenitybali.com/"
+        },
+        {
+          "hex": "#382414",
+          "role": "accent",
+          "source": "https://www.serenitybali.com/"
+        }
+      ],
+      "essence": {
+        "feeling": [
+          "relaxed",
+          "rejuvenated",
+          "peaceful"
+        ],
+        "placeSymbols": [
+          "rice terraces",
+          "frangipani",
+          "temple offerings"
+        ],
+        "senses": [
+          "fresh linens",
+          "warm coconut oil",
+          "soft lamp light"
+        ]
+      }
+    },
+    {
+      "name": {
+        "value": "Serenity Eco Guesthouse and Yoga",
+        "source": "https://www.serenitybali.com/"
+      },
+      "summary": {
+        "value": "Family-owned eco-friendly guesthouse, yoga retreat, and vegan restaurant located in Canggu, Bali.",
+        "source": "https://www.serenitybali.com/"
+      },
+      "category": "yoga retreat",
+      "offerings": [],
+      "highlights": [
+        {
+          "value": "Top 10% Worldwide Travellers' Choices 2026 regarding to TripAdvisor",
+          "source": "https://www.serenitybali.com/our-story"
+        },
+        {
+          "value": "Booking.com Traveller Award in 2025 & 2026",
+          "source": "https://www.serenitybali.com/our-story"
+        }
+      ],
+      "location": {
+        "town": {
+          "value": "Canggu",
+          "source": "https://www.serenitybali.com/"
+        },
+        "area": {
+          "value": "Canggu",
+          "source": "https://www.serenitybali.com/"
+        },
+        "address": {
+          "value": "Jl. Nelayan, Banjar Canggu, Badung, Bali",
+          "source": "https://www.serenitybali.com/contact-us"
+        },
+        "serviceArea": null
+      },
+      "contact": {
+        "whatsapp": {
+          "value": "628113888472",
+          "source": "https://www.serenitybali.com/contact-us"
+        },
+        "phone": null,
+        "email": {
+          "value": "info@serenitybali.com",
+          "source": "https://www.serenitybali.com/contact-us"
+        },
+        "instagram": {
+          "value": "serenitybali",
+          "source": "https://www.serenitybali.com/"
+        },
+        "bookingUrl": null
+      },
+      "hours": null,
+      "tone": [
+        "welcoming",
+        "tranquil",
+        "sustainable",
+        "warm"
+      ],
+      "colours": [
+        {
+          "hex": "#27633b",
+          "role": "primary",
+          "source": "https://www.serenitybali.com/"
+        },
+        {
+          "hex": "#ffffff",
+          "role": "background",
+          "source": "https://www.serenitybali.com/"
+        },
+        {
+          "hex": "#382414",
+          "role": "accent",
+          "source": "https://www.serenitybali.com/"
+        }
+      ],
+      "essence": {
+        "feeling": [
+          "relaxed",
+          "rejuvenated",
+          "peaceful"
+        ],
+        "placeSymbols": [
+          "rice terraces",
+          "frangipani",
+          "temple offerings"
+        ],
+        "senses": [
+          "fresh linens",
+          "warm coconut oil",
+          "soft lamp light"
+        ],
+        "moments": [
+          {
+            "value": "after a surf",
+            "source": ""
+          }
+        ]
+      }
+    },
+    {
+      "name": {
+        "value": "Serenity Eco Guesthouse and Yoga",
+        "source": "https://www.serenitybali.com/"
+      },
+      "summary": {
+        "value": "Family-owned eco-friendly guesthouse, yoga retreat, and vegan restaurant located in Canggu, Bali.",
+        "source": "https://www.serenitybali.com/"
+      },
+      "category": "yoga retreat",
+      "offerings": [],
+      "highlights": [
+        {
+          "value": "Top 10% Worldwide Travellers' Choices 2026 regarding to TripAdvisor",
+          "source": "https://www.serenitybali.com/our-story"
+        },
+        {
+          "value": "Booking.com Traveller Award in 2025 & 2026",
+          "source": "https://www.serenitybali.com/our-story"
+        }
+      ],
+      "location": {
+        "town": {
+          "value": "Canggu",
+          "source": "https://www.serenitybali.com/"
+        },
+        "area": {
+          "value": "Canggu",
+          "source": "https://www.serenitybali.com/"
+        },
+        "address": {
+          "value": "Jl. Nelayan, Banjar Canggu, Badung, Bali",
+          "source": "https://www.serenitybali.com/contact-us"
+        },
+        "serviceArea": null
+      },
+      "contact": {
+        "whatsapp": {
+          "value": "628113888472",
+          "source": "https://www.serenitybali.com/contact-us"
+        },
+        "phone": null,
+        "email": {
+          "value": "info@serenitybali.com",
+          "source": "https://www.serenitybali.com/contact-us"
+        },
+        "instagram": {
+          "value": "serenitybali",
+          "source": "https://www.serenitybali.com/"
+        },
+        "bookingUrl": null
+      },
+      "hours": null,
+      "tone": [
+        "welcoming",
+        "tranquil",
+        "sustainable",
+        "warm"
+      ],
+      "colours": [
+        {
+          "hex": "#27633b",
+          "role": "primary",
+          "source": "https://www.serenitybali.com/"
+        },
+        {
+          "hex": "#ffffff",
+          "role": "background",
+          "source": "https://www.serenitybali.com/"
+        },
+        {
+          "hex": "#382414",
+          "role": "accent",
+          "source": "https://www.serenitybali.com/"
+        }
+      ],
+      "essence": {
+        "feeling": [
+          "relaxed",
+          "rejuvenated",
+          "peaceful"
+        ],
+        "placeSymbols": [
+          "rice terraces",
+          "frangipani",
+          "temple offerings"
+        ],
+        "senses": [
+          "fresh linens",
+          "warm coconut oil",
+          "soft lamp light"
+        ],
+        "moments": [
+          {
+            "value": "after a surf",
+            "source": "https://www.serenitybali.com/faq"
+          },
+          {
+            "value": "after a long"
+          }
+        ]
+      }
+    },
+    {
+      "name": {
+        "value": "Serenity Eco Guesthouse and Yoga",
+        "source": "https://www.serenitybali.com/"
+      },
+      "summary": {
+        "value": "Family-owned eco-friendly guesthouse, yoga retreat, and vegan restaurant located in Canggu, Bali.",
+        "source": "https://www.serenitybali.com/"
+      },
+      "category": "yoga retreat",
+      "offerings": [],
+      "highlights": [
+        {
+          "value": "Top 10% Worldwide Travellers' Choices 2026 regarding to TripAdvisor",
+          "source": "https://www.serenitybali.com/our-story"
+        },
+        {
+          "value": "Booking.com Traveller Award in 2025 & 2026",
+          "source": "https://www.serenitybali.com/our-story"
+        }
+      ],
+      "location": {
+        "town": {
+          "value": "Canggu",
+          "source": "https://www.serenitybali.com/"
+        },
+        "area": {
+          "value": "Canggu",
+          "source": "https://www.serenitybali.com/"
+        },
+        "address": {
+          "value": "Jl. Nelayan, Banjar Canggu, Badung, Bali",
+          "source": "https://www.serenitybali.com/contact-us"
+        },
+        "serviceArea": null
+      },
+      "contact": {
+        "whatsapp": {
+          "value": "628113888472",
+          "source": "https://www.serenitybali.com/contact-us"
+        },
+        "phone": null,
+        "email": {
+          "value": "info@serenitybali.com",
+          "source": "https://www.serenitybali.com/contact-us"
+        },
+        "instagram": {
+          "value": "serenitybali",
+          "source": "https://www.serenitybali.com/"
+        },
+        "bookingUrl": null
+      },
+      "hours": null,
+      "tone": [
+        "welcoming",
+        "tranquil",
+        "sustainable",
+        "warm"
+      ],
+      "colours": [
+        {
+          "hex": "#27633b",
+          "role": "primary",
+          "source": "https://www.serenitybali.com/"
+        },
+        {
+          "hex": "#ffffff",
+          "role": "background",
+          "source": "https://www.serenitybali.com/"
+        },
+        {
+          "hex": "#382414",
+          "role": "accent",
+          "source": "https://www.serenitybali.com/"
+        }
+      ],
+      "essence": {
+        "feeling": [
+          "relaxed",
+          "rejuvenated",
+          "peaceful"
+        ],
+        "placeSymbols": [
+          "rice terraces",
+          "frangipani",
+          "temple offerings"
+        ],
+        "senses": [
+          "fresh linens",
+          "warm coconut oil",
+          "soft lamp light"
+        ],
+        "moments": [
+          {
+            "value": "after a surf",
+            "source": "https://www.serenitybali.com/faq"
+          },
+          {
+            "value": "after a long flight",
+            "source": "https://www.serenitybali.com/faq"
+          }
+        ]
+      },
       "visualStyle": {
-        "summary": "Warm tropical, soft light, natural textures"
+        "summary": "natural green, warm earth tones, soft"
       }
     },
     {
       "name": {
-        "value": "Serenity Eco Guesthouse & Yoga",
+        "value": "Serenity Eco Guesthouse and Yoga",
         "source": "https://www.serenitybali.com/"
       },
       "summary": {
-        "value": "Family-owned eco-friendly guesthouse, yoga retreat, spa, and vegan restaurant in Canggu, Bali.",
+        "value": "Family-owned eco-friendly guesthouse, yoga retreat, and vegan restaurant located in Canggu, Bali.",
         "source": "https://www.serenitybali.com/"
       },
       "category": "yoga retreat",
-      "offerings": [
-        {
-          "name": "All Inclusive/Full Board Package",
-          "source": "https://www.serenitybali.com/faq"
-        },
-        {
-          "name": "Balinese Massage",
-          "source": "https://www.serenitybali.com/our-spa-team"
-        },
-        {
-          "name": "Deep Tissue",
-          "source": "https://www.serenitybali.com/our-spa-team"
-        },
-        {
-          "name": "Hot Stone",
-          "source": "https://www.serenitybali.com/our-spa-team"
-        },
-        {
-          "name": "Shiatsu",
-          "source": "https://www.serenitybali.com/our-spa-team"
-        },
-        {
-          "name": "Thai Massage",
-          "source": "https://www.serenitybali.com/our-spa-team"
-        },
-        {
-          "name": "Body Scrub",
-          "source": "https://www.serenitybali.com/our-spa-team"
-        },
-        {
-          "name": "Foot Massage",
-          "source": "https://www.serenitybali.com/our-spa-team"
-        }
-      ],
+      "offerings": [],
       "highlights": [
         {
-          "value": "Family-owned guesthouse, yoga retreat, and eco-friendly haven",
-          "source": "https://www.serenitybali.com/"
+          "value": "Top 10% Worldwide Travellers' Choices 2026 regarding to TripAdvisor",
+          "source": "https://www.serenitybali.com/our-story"
         },
         {
-          "value": "Alkaline Restaurant is 100% vegan with a broad variety of raw dishes",
+          "value": "Booking.com Traveller Award in 2025 & 2026",
           "source": "https://www.serenitybali.com/our-story"
         }
       ],
@@ -1979,8 +1642,8 @@
           "source": "https://www.serenitybali.com/"
         },
         "area": {
-          "value": "Badung",
-          "source": "https://www.serenitybali.com/contact-us"
+          "value": "Canggu",
+          "source": "https://www.serenitybali.com/"
         },
         "address": {
           "value": "Jl. Nelayan, Banjar Canggu, Badung, Bali",
@@ -1990,13 +1653,10 @@
       },
       "contact": {
         "whatsapp": {
-          "value": "+62 811-3888-472",
+          "value": "628113888472",
           "source": "https://www.serenitybali.com/contact-us"
         },
-        "phone": {
-          "value": "+62 361-846-9251",
-          "source": "https://www.serenitybali.com/contact-us"
-        },
+        "phone": null,
         "email": {
           "value": "info@serenitybali.com",
           "source": "https://www.serenitybali.com/contact-us"
@@ -2010,79 +1670,77 @@
       "hours": null,
       "tone": [
         "welcoming",
-        "calm",
-        "professional"
+        "tranquil",
+        "sustainable",
+        "warm"
       ],
       "colours": [
         {
-          "hex": "#245837",
+          "hex": "#27633b",
           "role": "primary",
           "source": "https://www.serenitybali.com/"
         },
         {
           "hex": "#ffffff",
-          "role": "text",
+          "role": "background",
+          "source": "https://www.serenitybali.com/"
+        },
+        {
+          "hex": "#382414",
+          "role": "accent",
           "source": "https://www.serenitybali.com/"
         }
       ],
+      "essence": {
+        "feeling": [
+          "relaxed",
+          "rejuvenated",
+          "peaceful"
+        ],
+        "placeSymbols": [
+          "rice terraces",
+          "frangipani",
+          "temple offerings"
+        ],
+        "senses": [
+          "fresh linens",
+          "warm coconut oil",
+          "soft lamp light"
+        ],
+        "moments": [
+          {
+            "value": "after a surf",
+            "source": "https://www.serenitybali.com/faq"
+          },
+          {
+            "value": "after a long flight",
+            "source": "https://www.serenitybali.com/faq"
+          }
+        ]
+      },
       "visualStyle": {
-        "summary": "Warm tropical, soft light, natural textures",
-        "palette": "Green, brown, and white",
-        "light": "Soft natural sunlight",
-        "textures": "Natural wood"
+        "summary": "natural green, warm earth tones, soft organic light, calm mood",
+        "palette": "forest green, brown, white"
       }
     },
     {
       "name": {
-        "value": "Serenity Eco Guesthouse & Yoga",
+        "value": "Serenity Eco Guesthouse and Yoga",
         "source": "https://www.serenitybali.com/"
       },
       "summary": {
-        "value": "Family-owned eco-friendly guesthouse, yoga retreat, spa, and vegan restaurant in Canggu, Bali.",
+        "value": "Family-owned eco-friendly guesthouse, yoga retreat, and vegan restaurant located in Canggu, Bali.",
         "source": "https://www.serenitybali.com/"
       },
       "category": "yoga retreat",
-      "offerings": [
-        {
-          "name": "All Inclusive/Full Board Package",
-          "source": "https://www.serenitybali.com/faq"
-        },
-        {
-          "name": "Balinese Massage",
-          "source": "https://www.serenitybali.com/our-spa-team"
-        },
-        {
-          "name": "Deep Tissue",
-          "source": "https://www.serenitybali.com/our-spa-team"
-        },
-        {
-          "name": "Hot Stone",
-          "source": "https://www.serenitybali.com/our-spa-team"
-        },
-        {
-          "name": "Shiatsu",
-          "source": "https://www.serenitybali.com/our-spa-team"
-        },
-        {
-          "name": "Thai Massage",
-          "source": "https://www.serenitybali.com/our-spa-team"
-        },
-        {
-          "name": "Body Scrub",
-          "source": "https://www.serenitybali.com/our-spa-team"
-        },
-        {
-          "name": "Foot Massage",
-          "source": "https://www.serenitybali.com/our-spa-team"
-        }
-      ],
+      "offerings": [],
       "highlights": [
         {
-          "value": "Family-owned guesthouse, yoga retreat, and eco-friendly haven",
-          "source": "https://www.serenitybali.com/"
+          "value": "Top 10% Worldwide Travellers' Choices 2026 regarding to TripAdvisor",
+          "source": "https://www.serenitybali.com/our-story"
         },
         {
-          "value": "Alkaline Restaurant is 100% vegan with a broad variety of raw dishes",
+          "value": "Booking.com Traveller Award in 2025 & 2026",
           "source": "https://www.serenitybali.com/our-story"
         }
       ],
@@ -2092,8 +1750,8 @@
           "source": "https://www.serenitybali.com/"
         },
         "area": {
-          "value": "Badung",
-          "source": "https://www.serenitybali.com/contact-us"
+          "value": "Canggu",
+          "source": "https://www.serenitybali.com/"
         },
         "address": {
           "value": "Jl. Nelayan, Banjar Canggu, Badung, Bali",
@@ -2103,13 +1761,10 @@
       },
       "contact": {
         "whatsapp": {
-          "value": "+62 811-3888-472",
+          "value": "628113888472",
           "source": "https://www.serenitybali.com/contact-us"
         },
-        "phone": {
-          "value": "+62 361-846-9251",
-          "source": "https://www.serenitybali.com/contact-us"
-        },
+        "phone": null,
         "email": {
           "value": "info@serenitybali.com",
           "source": "https://www.serenitybali.com/contact-us"
@@ -2123,81 +1778,192 @@
       "hours": null,
       "tone": [
         "welcoming",
-        "calm",
-        "professional"
+        "tranquil",
+        "sustainable",
+        "warm"
       ],
       "colours": [
         {
-          "hex": "#245837",
+          "hex": "#27633b",
           "role": "primary",
           "source": "https://www.serenitybali.com/"
         },
         {
           "hex": "#ffffff",
-          "role": "text",
+          "role": "background",
+          "source": "https://www.serenitybali.com/"
+        },
+        {
+          "hex": "#382414",
+          "role": "accent",
           "source": "https://www.serenitybali.com/"
         }
       ],
+      "essence": {
+        "feeling": [
+          "relaxed",
+          "rejuvenated",
+          "peaceful"
+        ],
+        "placeSymbols": [
+          "rice terraces",
+          "frangipani",
+          "temple offerings"
+        ],
+        "senses": [
+          "fresh linens",
+          "warm coconut oil",
+          "soft lamp light"
+        ],
+        "moments": [
+          {
+            "value": "after a surf",
+            "source": "https://www.serenitybali.com/faq"
+          },
+          {
+            "value": "after a long flight",
+            "source": "https://www.serenitybali.com/faq"
+          }
+        ]
+      },
       "visualStyle": {
-        "summary": "Warm tropical, soft light, natural textures",
-        "palette": "Green, brown, and white",
-        "light": "Soft natural sunlight",
-        "textures": "Natural wood, leaves, and water",
-        "mood": "Calm and peaceful"
+        "summary": "natural green, warm earth tones, soft organic light, calm mood",
+        "palette": "forest green, brown, white",
+        "light": "soft natural light",
+        "textures": "wood, leaves, organic cotton",
+        "mood": ""
+      }
+    },
+    {
+      "name": {
+        "value": "Serenity Eco Guesthouse and Yoga",
+        "source": "https://www.serenitybali.com/"
+      },
+      "summary": {
+        "value": "Family-owned eco-friendly guesthouse, yoga retreat, and vegan restaurant located in Canggu, Bali.",
+        "source": "https://www.serenitybali.com/"
+      },
+      "category": "yoga retreat",
+      "offerings": [],
+      "highlights": [
+        {
+          "value": "Top 10% Worldwide Travellers' Choices 2026 regarding to TripAdvisor",
+          "source": "https://www.serenitybali.com/our-story"
+        },
+        {
+          "value": "Booking.com Traveller Award in 2025 & 2026",
+          "source": "https://www.serenitybali.com/our-story"
+        }
+      ],
+      "location": {
+        "town": {
+          "value": "Canggu",
+          "source": "https://www.serenitybali.com/"
+        },
+        "area": {
+          "value": "Canggu",
+          "source": "https://www.serenitybali.com/"
+        },
+        "address": {
+          "value": "Jl. Nelayan, Banjar Canggu, Badung, Bali",
+          "source": "https://www.serenitybali.com/contact-us"
+        },
+        "serviceArea": null
+      },
+      "contact": {
+        "whatsapp": {
+          "value": "628113888472",
+          "source": "https://www.serenitybali.com/contact-us"
+        },
+        "phone": null,
+        "email": {
+          "value": "info@serenitybali.com",
+          "source": "https://www.serenitybali.com/contact-us"
+        },
+        "instagram": {
+          "value": "serenitybali",
+          "source": "https://www.serenitybali.com/"
+        },
+        "bookingUrl": null
+      },
+      "hours": null,
+      "tone": [
+        "welcoming",
+        "tranquil",
+        "sustainable",
+        "warm"
+      ],
+      "colours": [
+        {
+          "hex": "#27633b",
+          "role": "primary",
+          "source": "https://www.serenitybali.com/"
+        },
+        {
+          "hex": "#ffffff",
+          "role": "background",
+          "source": "https://www.serenitybali.com/"
+        },
+        {
+          "hex": "#382414",
+          "role": "accent",
+          "source": "https://www.serenitybali.com/"
+        }
+      ],
+      "essence": {
+        "feeling": [
+          "relaxed",
+          "rejuvenated",
+          "peaceful"
+        ],
+        "placeSymbols": [
+          "rice terraces",
+          "frangipani",
+          "temple offerings"
+        ],
+        "senses": [
+          "fresh linens",
+          "warm coconut oil",
+          "soft lamp light"
+        ],
+        "moments": [
+          {
+            "value": "after a surf",
+            "source": "https://www.serenitybali.com/faq"
+          },
+          {
+            "value": "after a long flight",
+            "source": "https://www.serenitybali.com/faq"
+          }
+        ]
+      },
+      "visualStyle": {
+        "summary": "natural green, warm earth tones, soft organic light, calm mood",
+        "palette": "forest green, brown, white",
+        "light": "soft natural light",
+        "textures": "wood, leaves, organic cotton",
+        "mood": "calm and serene"
       }
     }
   ],
   "final": {
     "name": {
-      "value": "Serenity Eco Guesthouse & Yoga",
+      "value": "Serenity Eco Guesthouse and Yoga",
       "source": "https://www.serenitybali.com/"
     },
     "summary": {
-      "value": "Family-owned eco-friendly guesthouse, yoga retreat, spa, and vegan restaurant in Canggu, Bali.",
+      "value": "Family-owned eco-friendly guesthouse, yoga retreat, and vegan restaurant located in Canggu, Bali.",
       "source": "https://www.serenitybali.com/"
     },
     "category": "yoga retreat",
-    "offerings": [
-      {
-        "name": "All Inclusive/Full Board Package",
-        "source": "https://www.serenitybali.com/faq"
-      },
-      {
-        "name": "Balinese Massage",
-        "source": "https://www.serenitybali.com/our-spa-team"
-      },
-      {
-        "name": "Deep Tissue",
-        "source": "https://www.serenitybali.com/our-spa-team"
-      },
-      {
-        "name": "Hot Stone",
-        "source": "https://www.serenitybali.com/our-spa-team"
-      },
-      {
-        "name": "Shiatsu",
-        "source": "https://www.serenitybali.com/our-spa-team"
-      },
-      {
-        "name": "Thai Massage",
-        "source": "https://www.serenitybali.com/our-spa-team"
-      },
-      {
-        "name": "Body Scrub",
-        "source": "https://www.serenitybali.com/our-spa-team"
-      },
-      {
-        "name": "Foot Massage",
-        "source": "https://www.serenitybali.com/our-spa-team"
-      }
-    ],
+    "offerings": [],
     "highlights": [
       {
-        "value": "Family-owned guesthouse, yoga retreat, and eco-friendly haven",
-        "source": "https://www.serenitybali.com/"
+        "value": "Top 10% Worldwide Travellers' Choices 2026 regarding to TripAdvisor",
+        "source": "https://www.serenitybali.com/our-story"
       },
       {
-        "value": "Alkaline Restaurant is 100% vegan with a broad variety of raw dishes",
+        "value": "Booking.com Traveller Award in 2025 & 2026",
         "source": "https://www.serenitybali.com/our-story"
       }
     ],
@@ -2207,8 +1973,8 @@
         "source": "https://www.serenitybali.com/"
       },
       "area": {
-        "value": "Badung",
-        "source": "https://www.serenitybali.com/contact-us"
+        "value": "Canggu",
+        "source": "https://www.serenitybali.com/"
       },
       "address": {
         "value": "Jl. Nelayan, Banjar Canggu, Badung, Bali",
@@ -2218,13 +1984,10 @@
     },
     "contact": {
       "whatsapp": {
-        "value": "+62 811-3888-472",
+        "value": "628113888472",
         "source": "https://www.serenitybali.com/contact-us"
       },
-      "phone": {
-        "value": "+62 361-846-9251",
-        "source": "https://www.serenitybali.com/contact-us"
-      },
+      "phone": null,
       "email": {
         "value": "info@serenitybali.com",
         "source": "https://www.serenitybali.com/contact-us"
@@ -2238,27 +2001,60 @@
     "hours": null,
     "tone": [
       "welcoming",
-      "calm",
-      "professional"
+      "tranquil",
+      "sustainable",
+      "warm"
     ],
     "colours": [
       {
-        "hex": "#245837",
+        "hex": "#27633b",
         "role": "primary",
         "source": "https://www.serenitybali.com/"
       },
       {
         "hex": "#ffffff",
-        "role": "text",
+        "role": "background",
+        "source": "https://www.serenitybali.com/"
+      },
+      {
+        "hex": "#382414",
+        "role": "accent",
         "source": "https://www.serenitybali.com/"
       }
     ],
+    "essence": {
+      "feeling": [
+        "relaxed",
+        "rejuvenated",
+        "peaceful"
+      ],
+      "placeSymbols": [
+        "rice terraces",
+        "frangipani",
+        "temple offerings"
+      ],
+      "senses": [
+        "fresh linens",
+        "warm coconut oil",
+        "soft lamp light"
+      ],
+      "moments": [
+        {
+          "value": "after a surf",
+          "source": "https://www.serenitybali.com/faq"
+        },
+        {
+          "value": "after a long flight",
+          "source": "https://www.serenitybali.com/faq"
+        }
+      ]
+    },
     "visualStyle": {
-      "summary": "Warm tropical, soft light, natural textures",
-      "palette": "Green, brown, and white",
-      "light": "Soft natural sunlight",
-      "textures": "Natural wood, leaves, and water",
-      "mood": "Calm and peaceful"
+      "summary": "natural green, warm earth tones, soft organic light, calm mood",
+      "palette": "forest green, brown, white",
+      "light": "soft natural light",
+      "textures": "wood, leaves, organic cotton",
+      "mood": "calm and serene"
     }
   }
 }
