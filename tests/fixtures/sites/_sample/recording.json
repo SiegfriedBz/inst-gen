@@ -1,0 +1,51 @@
+{
+  "modelId": "gemini-3.8-flash",
+  "promptVersion": "brand-1",
+  "partials": [{ "category": "massage spa" }],
+  "final": {
+    "name": { "value": "Lotus Bay Spa", "source": "https://www.lotusbay.example/" },
+    "summary": {
+      "value": "Herbal massage by the river in Hoi An",
+      "source": "https://www.lotusbay.example/"
+    },
+    "category": "massage spa",
+    "offerings": [
+      {
+        "name": "Herbal massage",
+        "price": "350,000 VND",
+        "duration": "60 minutes",
+        "source": "https://www.lotusbay.example/prices"
+      },
+      {
+        "name": "Hot stone massage",
+        "price": "520,000 VND",
+        "duration": "90 minutes",
+        "source": "https://www.lotusbay.example/prices"
+      }
+    ],
+    "highlights": [],
+    "location": {
+      "town": { "value": "Hoi An", "source": "https://www.lotusbay.example/" },
+      "area": null,
+      "address": null,
+      "serviceArea": null
+    },
+    "contact": {
+      "whatsapp": null,
+      "phone": null,
+      "email": null,
+      "instagram": null,
+      "bookingUrl": null
+    },
+    "hours": null,
+    "tone": ["calm", "warm", "natural"],
+    "colours": [],
+    "visualStyle": {
+      "summary": "riverside calm, soft light, natural textures",
+      "palette": "green, sand",
+      "light": "soft daylight",
+      "textures": "wood, linen",
+      "mood": "calm"
+    }
+  }
+}

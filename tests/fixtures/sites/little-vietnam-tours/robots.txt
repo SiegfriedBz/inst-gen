@@ -1,0 +1,38 @@
+Sitemap: https://www.littlevietnamtours.com/sitemap.xml
+
+User-agent: NerdyBot
+Disallow: /
+
+User-agent: dotbot
+Crawl-delay: 10
+
+User-agent: *
+Disallow: /ajax/
+Disallow: /apps/
+Disallow: /where-to-visit.html
+Disallow: /special-promotion.html
+Disallow: /client-itineraries.html
+Disallow: /classic-itineraries.html
+Disallow: /itinerary-honeymoon-explorers-in-myanmar-and-thailand.html
+Disallow: /food--spa-itineraries.html
+Disallow: /family-itineraries.html
+Disallow: /news.html
+Disallow: /1/
+Disallow: /news/
+Disallow: /news
+Disallow: /relaxinghoneymoon-itineraries.html
+Disallow: /adventure-itineraries.html
+Disallow: /home-backup.html
+Disallow: /wildlife-itineraries.html
+Disallow: /experiences-backup.html
+Disallow: /complete-itinerary-request.html
+Disallow: /itinerary-myanmar-at-a-glance.html
+Disallow: /privacy-policy.html
+Disallow: /itinerary-amazing-world-of-golden-temples.html
+Disallow: /agency-itinerary-vietnam-photo.html
+Disallow: /itinerary-explore-myanmar-deeply.html
+Disallow: /agency-itinerary-vietnam-photo-detailed.html
+Disallow: /contact-us-agency.html
+Disallow: /itinerary-vietnam-photo-397593.html
+Disallow: /itinerary-wonderful-southeast-asia.html
+Disallow: /itinerary-explore-charming-southeast-asia.html

@@ -50,3 +50,10 @@ pnpm check
 ```
 
 Quick, and it changes nothing. CI runs the same command.
+
+## License
+
+Copyright (C) 2026 Siegfried Bozza.
+
+Licensed under the [GNU Affero General Public License, version 3](LICENSE)
+(`AGPL-3.0-only`). Why: [decision 0008](docs/decisions/0008-license.md).

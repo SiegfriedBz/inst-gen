@@ -23,3 +23,6 @@ test-results/
 # Local environment: only the example is committed
 .env*
 !.env.example
+
+# Brand fixtures: other businesses' photos, cached for the eval, never committed
+.fixtures-cache/
