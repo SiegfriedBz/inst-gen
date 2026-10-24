@@ -1,7 +1,7 @@
 import { describe, expect, test } from 'vitest';
 import { replayTextModel } from '@/lib/ai/replay';
 import { scoreFixture } from '@/lib/brand/eval/score';
-import { fixtureTransport, loadFixture } from '@/lib/brand/fixtures';
+import { fixtureTransport, imageCacheName, loadFixture } from '@/lib/brand/fixtures';
 import { prepareRead, streamProfile } from '@/lib/brand/read';
 
 const DIR = 'tests/fixtures/sites/_sample';
@@ -52,6 +52,15 @@ describe('fixtureTransport', () => {
     );
     expect(response.status).toBe(404);
     expect(asked).toBe(false);
+  });
+});
+
+describe('imageCacheName', () => {
+  test('stays short and stable for a very long image URL', () => {
+    const url = `https://static.wixstatic.com/media/${'x'.repeat(600)}.jpg`;
+    expect(imageCacheName(url).length).toBeLessThanOrEqual(64);
+    expect(imageCacheName(url)).toBe(imageCacheName(url));
+    expect(imageCacheName(url)).not.toBe(imageCacheName(`${url}?w=2`));
   });
 });
 

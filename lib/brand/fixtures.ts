@@ -1,3 +1,4 @@
+import { createHash } from 'node:crypto';
 import { existsSync, mkdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
 import * as cheerio from 'cheerio';
@@ -40,7 +41,8 @@ export function loadFixture(dir: string): Fixture {
   };
 }
 
-const imageFile = (url: string) => Buffer.from(url).toString('base64url');
+// A cached image's file name: a hash of its URL, short enough for any filesystem.
+export const imageCacheName = (url: string) => createHash('sha256').update(url).digest('hex');
 
 // Serves a saved site. Images come from the cache, else from `live` (the eval
 // only), else 404. Pages are never fetched live.
@@ -63,7 +65,7 @@ export function fixtureTransport(
     }
     const image = manifest.images.find((i) => i.url === href);
     if (image) {
-      const cached = opts.imageCache ? join(opts.imageCache, imageFile(href)) : null;
+      const cached = opts.imageCache ? join(opts.imageCache, imageCacheName(href)) : null;
       if (cached && existsSync(cached)) {
         return new Response(readFileSync(cached), {
           headers: { 'content-type': image.contentType },
@@ -126,7 +128,7 @@ export async function saveFixture(url: string, slug: string): Promise<Manifest> 
       writeFileSync(join(dir, path), text());
       manifest.files.push({ path, ...entry });
     } else if (f.contentType.startsWith('image/')) {
-      writeFileSync(join(cache, imageFile(f.finalUrl.href)), f.body);
+      writeFileSync(join(cache, imageCacheName(f.finalUrl.href)), f.body);
       manifest.images.push({ url: f.finalUrl.href, contentType: f.contentType });
     }
   }
