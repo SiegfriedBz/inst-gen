@@ -179,3 +179,52 @@ The final review's five findings, as tests written before the fixes:
 ## GREEN
 
 `Tests  380 passed (380)`
+
+## Amendment 2026-10-24: the brand read fixes
+
+- The first Svarga read on the Vercel preview failed with `model_failed`:
+  the preview had no `GOOGLE_GENERATIVE_AI_API_KEY`. The developer set it;
+  the read then worked. The route didn't log why the model failed, which is
+  why the log line was added.
+- "Where you go" showed JSON-LD `areaServed` as written ("Canggu, Bali,
+  Indonesia, Pererenan, Bali, Indonesia, …"), because code's value always
+  beat the model's. Both pilot home pages list neighbourhoods under each
+  area and a free-travel rule. The developer asked for them; the model's
+  service area now comes first.
+- A Sen read on the preview ended in `model_timeout` at 28 s, then worked on
+  the next try. Measured locally on 2026-10-24 with the real model: Sen
+  7.0 to 11.9 s over 7 reads, Svarga 11.7 to 17.4 s over 2, fetching 0.5 to
+  1.6 s; one more Sen read got Gemini's "high demand" (`model_busy`). Both
+  sites are on Vercel and answer in under 0.3 s. The developer asked why not
+  300 s: the route's `maxDuration` is now 300 and the read gives up at 60 s
+  (spec and decision 0005 amended, approved 2026-10-24T18:20:59Z).
+- Ruling: an `areaServed` given as one plain string is kept whole; only a
+  Place object's name is cut at its first comma, since a string may list
+  several areas.
+- Ruling: the read's start time is taken when `prepareRead` starts, which is
+  when the route has parsed the body: the same moment the deadline starts.
+- Real reads after the change (`brand-7`, `gemini-3.5-flash-lite`, two
+  requests):
+  - Sen: `My Khe (My Khe Beach, An Thuong, Phuoc My, Vo Nguyen Giap); Son Tra
+    (…); Hai Chau (…); Non Nuoc (…). Free travel within these areas; further
+    out (including Hoi An) we confirm any small fee on WhatsApp first.`
+    `brand read host=www.sendanangmassage.com pages=1 photos=2 fetch_ms=648 first_partial_ms=8002 total_ms=12426 outcome=final`
+  - Svarga: `Canggu (Batu Bolong, Echo Beach, Berawa, & Nelayan); Pererenan
+    (…); Seminyak (…); Kerobokan (…). Free travel within these areas.`
+    `brand read host=www.svargabalimassage.com pages=1 photos=2 fetch_ms=898 first_partial_ms=7937 total_ms=12307 outcome=final`
+- The eval wasn't re-run: the prompt change touches one field the eval
+  doesn't score, and a full pass takes the day's quota.
+
+### RED
+
+`Tests  2 failed | 5 passed (7)` (the cut-off)
+
+`Tests  5 failed | 73 passed (78)` (the service area)
+
+`Tests  5 failed | 16 passed (21)` (the log line; `brand-read-log.test.ts`
+failed to load)
+
+### GREEN
+
+`Tests  500 passed (500)`
+
