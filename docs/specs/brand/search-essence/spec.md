@@ -1,7 +1,8 @@
 ---
 title: "Search essence"
 description: "After a brand read, a short server step looks up what people search for around the business's trade and town through Tavily's free plan, and adds search terms, moments and place symbols to the essence, each marked as coming from search; a check that the free plan allows this comes before any code."
-status: draft
+status: approved
+approved: { by: siegfried.bozza@protonmail.com, at: 2026-10-24T18:46:49Z }
 date: "2026-10-24"
 ---
 
