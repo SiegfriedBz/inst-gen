@@ -15,6 +15,13 @@ describe('visibleText', () => {
     expect(visibleText(html)).toBe('Svarga Massage at your villa.');
   });
 
+  test('a cookie class on html, body or main does not remove the page', () => {
+    const html = `<html class="no-js supports-no-cookies"><body class="cookies-not-set">
+      <main class="has-cookie-bar"><p>Coffee from 7am</p></main>
+      <div class="cookie-notice">Accept cookies</div></body></html>`;
+    expect(visibleText(html)).toBe('Coffee from 7am');
+  });
+
   test('keeps text outside main when there is no main', () => {
     expect(visibleText('<body><div><p>Open every day</p></div></body>')).toBe('Open every day');
   });

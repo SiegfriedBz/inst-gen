@@ -15,8 +15,9 @@ const DROP = [
   'header',
   'footer',
   '[role="navigation"]',
-  '[id*="cookie" i]',
-  '[class*="cookie" i]',
+  // Cookie banners; html, body and main sometimes carry a cookie class too.
+  ':not(html, body, main)[id*="cookie" i]',
+  ':not(html, body, main)[class*="cookie" i]',
 ].join(',');
 
 const BLOCKS = 'p,div,section,article,li,h1,h2,h3,h4,h5,h6,td,th,br,dd,dt,blockquote,figcaption';
