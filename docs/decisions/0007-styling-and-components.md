@@ -1,7 +1,8 @@
 ---
 title: "Styling and components"
 description: "Tailwind CSS v4 for styling, shadcn/ui components on Radix primitives kept in the repo, Phosphor icons and the Be Vietnam Pro font."
-status: draft
+status: approved
+approved: { by: siegfried.bozza@protonmail.com, at: 2026-10-24T07:26:42Z }
 date: "2026-10-24"
 ---
 

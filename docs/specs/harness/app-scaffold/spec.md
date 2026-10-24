@@ -1,7 +1,8 @@
 ---
 title: "App scaffold"
 description: "The Shopfront Next.js app at the repo root, with its tooling in hooks and CI, deployed to Vercel Hobby in Singapore behind one passphrase per spa, showing a passphrase screen and a placeholder home page."
-status: draft
+status: approved
+approved: { by: siegfried.bozza@protonmail.com, at: 2026-10-24T07:26:42Z }
 date: "2026-10-24"
 ---
 
