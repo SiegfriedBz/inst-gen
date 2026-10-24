@@ -1,7 +1,8 @@
 ---
 title: "License"
 description: "The code is licensed under the GNU Affero General Public License, version 3 only (AGPL-3.0-only)."
-status: draft
+status: approved
+approved: { by: siegfried.bozza@protonmail.com, at: 2026-10-24T08:53:30Z }
 date: "2026-10-24"
 ---
 
