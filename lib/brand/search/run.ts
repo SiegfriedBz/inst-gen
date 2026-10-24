@@ -2,6 +2,7 @@ import { ModelError, type TextModel } from '@/lib/ai/text-model';
 import { SearchError, type SearchResult, type SearchTool } from '@/lib/search/search-tool';
 import { describeModelError } from '../read-log';
 import { type CheckedSearch, checkSearchAnswer } from './checks';
+import type { SearchErrorCode } from './errors';
 import type { SearchLog } from './log';
 import { SEARCH_PROMPT_VERSION, searchPrompt, searchUserText } from './prompt';
 import { buildQueries, type SearchBody, searchOptions } from './queries';
@@ -10,21 +11,7 @@ import { buildQueries, type SearchBody, searchOptions } from './queries';
 // call, then code's checks (docs/specs/brand/search-essence). It never
 // retries: a retry spends free credits.
 
-export const SEARCH_ERROR_CODES = [
-  'search_unavailable',
-  'search_busy',
-  'model_busy',
-  'search_failed',
-] as const;
-
-export type SearchErrorCode = (typeof SEARCH_ERROR_CODES)[number];
-
-export const SEARCH_ERROR_STATUS: Record<SearchErrorCode, number> = {
-  search_unavailable: 503,
-  search_busy: 503,
-  model_busy: 503,
-  search_failed: 502,
-};
+export { SEARCH_ERROR_CODES, SEARCH_ERROR_STATUS, type SearchErrorCode } from './errors';
 
 export type SearchAnswer = CheckedSearch & { searchedAt: string; searchPromptVersion: string };
 

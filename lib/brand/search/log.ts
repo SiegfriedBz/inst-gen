@@ -1,4 +1,4 @@
-import type { SearchErrorCode } from './run';
+import type { SearchErrorCode } from './errors';
 
 // One line in the server log per essence search, like the brand read's
 // (lib/brand/read-log.ts). It never holds the snippets, the model's answer or
