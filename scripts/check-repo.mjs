@@ -33,7 +33,8 @@ const copy = join(root, '.claude/skills');
 const sourceFiles = new Set(files(source).map((f) => relative(source, f)));
 const copyFiles = new Set(files(copy).map((f) => relative(copy, f)));
 for (const file of sourceFiles) {
-  if (!copyFiles.has(file)) problems.push(`.claude/skills/${file}: missing (run node scripts/sync-skills.mjs)`);
+  if (!copyFiles.has(file))
+    problems.push(`.claude/skills/${file}: missing (run node scripts/sync-skills.mjs)`);
   else if (!readFileSync(join(source, file)).equals(readFileSync(join(copy, file)))) {
     problems.push(`.claude/skills/${file}: differs from .agents/skills/${file}`);
   }
@@ -53,11 +54,16 @@ for (const file of skills) {
     continue;
   }
   if (!/^name:\s*\S/m.test(frontmatter)) problems.push(`${name}: no name`);
-  const description = frontmatter.match(/^description:\s*(.*)$/m)?.[1]?.trim().replace(/^["']|["']$/g, '');
+  const description = frontmatter
+    .match(/^description:\s*(.*)$/m)?.[1]
+    ?.trim()
+    .replace(/^["']|["']$/g, '');
   if (!description) problems.push(`${name}: no description`);
   else {
     if (description.length > MAX_DESCRIPTION) {
-      problems.push(`${name}: description is ${description.length} characters, max ${MAX_DESCRIPTION}`);
+      problems.push(
+        `${name}: description is ${description.length} characters, max ${MAX_DESCRIPTION}`,
+      );
     }
     if (/[<>]/.test(description)) problems.push(`${name}: description contains < or >`);
   }
@@ -72,8 +78,10 @@ for (const doc of ['AGENTS.md', 'README.md']) {
   if (!existsSync(path)) continue;
   for (const [, cited] of readFileSync(path, 'utf8').matchAll(/`([^`\s]+)`/g)) {
     const first = cited.replace(/^\.\//, '').split('/')[0];
-    if (!topLevel.has(first) || /[<>*]|NNNN/.test(cited) || ABSENT_ON_PURPOSE.includes(cited)) continue;
-    if (!existsSync(join(root, cited))) problems.push(`${doc}: cites ${cited}, which doesn't exist`);
+    if (!topLevel.has(first) || /[<>*]|NNNN/.test(cited) || ABSENT_ON_PURPOSE.includes(cited))
+      continue;
+    if (!existsSync(join(root, cited)))
+      problems.push(`${doc}: cites ${cited}, which doesn't exist`);
   }
 }
 

@@ -10,7 +10,8 @@ import { dirname, join } from 'node:path';
 const SOURCE = '.agents/skills/';
 const TARGET = '.claude/skills/';
 
-const git = (args, options = {}) => execFileSync('git', args, { maxBuffer: 64 * 1024 * 1024, ...options });
+const git = (args, options = {}) =>
+  execFileSync('git', args, { maxBuffer: 64 * 1024 * 1024, ...options });
 
 const staged = git(['ls-files', '-z', '--cached', '--', SOURCE], { encoding: 'utf8' })
   .split('\0')

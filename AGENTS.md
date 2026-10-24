@@ -1,9 +1,10 @@
 # inst-gen
 
-A Next.js app that turns a business's website link into ready-to-post Instagram
-posts and stories, and drafts replies to its Google Maps reviews. What to build
-next is in [`docs/roadmap.md`](docs/roadmap.md). The app code isn't scaffolded
-yet: this file currently covers the harness only.
+Shopfront, a Next.js app that turns a business's website link into
+ready-to-post Instagram posts and stories, and drafts replies to its Google
+Maps reviews. What to build next is in [`docs/roadmap.md`](docs/roadmap.md).
+The app sits at the repo root; the pilot is gated by one passphrase per spa
+(`docs/specs/harness/app-scaffold/spec.md`).
 
 ## How agents work here
 
@@ -60,6 +61,13 @@ index of the code).
 | `.agents/skills/` | Source of the repo's skills |
 | `.claude/skills/` | Copy of `.agents/skills/`, made by the pre-commit hook; never edit it |
 | `scripts/` | Repo checks and the skills copy |
+| `app/` | Next.js App Router: pages, the `/enter` sign-in, API routes |
+| `components/` | Shared components; `components/ui/` holds the shadcn/ui ones (decision 0007) |
+| `lib/pilot/` | The pilot gate: passphrases, signed session, gate decision |
+| `proxy.ts` | Runs the gate on every request |
+| `messages/` | next-intl message files; every visible string lives here |
+| `tests/unit/`, `tests/e2e/` | Vitest tests, and Playwright tests at a phone viewport |
+| `.env.example` | The environment variables the app needs, with made-up values |
 | `.claude/settings.json`, `.mcp.json` | Superpowers pin and Graft server |
 
 ## Which document wins
@@ -79,7 +87,14 @@ index of the code).
 | Command | What it does |
 |---|---|
 | `pnpm install` | Install dependencies and the git hooks |
-| `pnpm check` | Check everything: docs and repo checks. Changes nothing; run it as often as you like |
+| `pnpm check` | Check everything: docs and repo checks, `biome ci`, typecheck, Vitest. Changes nothing; run it as often as you like |
+| `pnpm dev` | Run the app locally; needs `.env.local` (copy `.env.example`) |
+| `pnpm build`, `pnpm start` | Build the app, and serve the build |
+| `pnpm lint` | Biome lint and format check, changing nothing |
+| `pnpm format` | Biome: write format and safe lint fixes |
+| `pnpm typecheck` | Generate Next.js route types, then `tsc --noEmit` |
+| `pnpm test` | Vitest unit tests |
+| `pnpm test:e2e` | Playwright tests; builds and starts the app with test passphrases. First run: `pnpm exec playwright install chromium` |
 
 ## What fails silently
 

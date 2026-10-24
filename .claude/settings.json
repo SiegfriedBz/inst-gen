@@ -1,7 +1,5 @@
 {
-  "enabledMcpjsonServers": [
-    "graft"
-  ],
+  "enabledMcpjsonServers": ["graft"],
   "enabledPlugins": {
     "superpowers@superpowers-dev": true
   },
