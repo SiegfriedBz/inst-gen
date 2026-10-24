@@ -1,0 +1,24 @@
+{
+  "meta": {
+    "title": "Shopfront",
+    "description": "Bài đăng và phản hồi đánh giá của bạn, được viết sẵn cho bạn."
+  },
+  "enter": {
+    "label": "Cụm mật khẩu",
+    "submit": "Vào",
+    "wrong": "Cụm mật khẩu không đúng. Hãy thử lại.",
+    "footer": "Chương trình thử nghiệm riêng cho các spa được mời."
+  },
+  "home": {
+    "welcome": "Chào mừng, {name}",
+    "soon": "Sắp tới, bạn có thể dán liên kết trang web của mình vào đây và nhận sáu bài đăng, mỗi bài kèm một story.",
+    "websiteLabel": "Trang web của bạn",
+    "websiteExample": "yourspa.com",
+    "comingSoon": "Sắp ra mắt",
+    "signedIn": "Đã đăng nhập trên điện thoại này trong 30 ngày."
+  },
+  "language": {
+    "label": "Ngôn ngữ"
+  },
+  "notConfigured": "Shopfront chưa được thiết lập."
+}

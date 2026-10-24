@@ -65,7 +65,8 @@ index of the code).
 | `components/` | Shared components; `components/ui/` holds the shadcn/ui ones (decision 0007) |
 | `lib/pilot/` | The pilot gate: passphrases, signed session, gate decision |
 | `proxy.ts` | Runs the gate on every request |
-| `messages/` | next-intl message files; every visible string lives here |
+| `messages/` | next-intl message files, `en.json`, `id.json` and `vi.json`; every visible string lives here |
+| `lib/i18n/` | Which language a screen uses, and the messages laid over English |
 | `tests/unit/`, `tests/e2e/` | Vitest tests, and Playwright tests at a phone viewport |
 | `.env.example` | The environment variables the app needs, with made-up values |
 | `.claude/settings.json`, `.mcp.json` | Superpowers pin and Graft server |
@@ -108,6 +109,9 @@ index of the code).
 - **Language:** English in code, docs and commits. The app's screens and owner
   guide are in English, Indonesian and Vietnamese; captions are generated in
   English.
+- **Strings:** every new visible string is added to `messages/en.json`,
+  `id.json` and `vi.json` in the same commit; a test in `pnpm check` fails
+  otherwise.
 - **Commits:** Conventional Commits, with a scope from `commitlint.config.mjs`.
 - **Branches:** `main` is production, `develop` is integration; work branches
   open PRs to `develop`.
