@@ -63,8 +63,10 @@ index of the code).
 | `scripts/` | Repo checks and the skills copy |
 | `app/` | Next.js App Router: pages, the `/enter` sign-in, API routes |
 | `components/` | Shared components; `components/ui/` holds the shadcn/ui ones (decision 0007) |
+| `components/brand/` | The home screen's brand read and panel: reading state, sections, edit forms |
 | `lib/pilot/` | The pilot gate: passphrases, signed session, gate decision |
-| `lib/brand/` | The brand read: safe fetching, extraction, checks, the profile schema, fixtures and eval scoring |
+| `lib/brand/` | The brand read: safe fetching, extraction, checks, the profile schema, fixtures and eval scoring; in the browser, the phone's store (IndexedDB), the read client and the owner's edits |
+| `lib/runs/` | Decision 0005's run record, kept on the phone, and its resume rule |
 | `lib/ai/` | The text-model module (the only importer of `@ai-sdk/google`) and the replayer for recorded calls |
 | `proxy.ts` | Runs the gate on every request |
 | `messages/` | next-intl message files, `en.json`, `id.json` and `vi.json`; every visible string lives here |

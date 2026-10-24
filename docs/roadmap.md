@@ -56,7 +56,7 @@ Gate: the right brand profile on 16 of the 20 saved site fixtures.
 | # | Item | Kind | Status |
 |---|---|---|---|
 | 1.1 | `brand/extract-site`: site reader, brand profile, fixtures and first eval set | spec | done |
-| 1.2 | `brand/brand-panel`: editable panel, stored on the phone, re-read and forget | spec | todo |
+| 1.2 | `brand/brand-panel`: editable panel, stored on the phone, re-read and forget | spec | done |
 | 1.3 | `brand/search-essence`: enrich the brand essence with what people search for; a check that a free search tool is allowed comes first | spec | todo |
 
 ## Phase 2: Posts and review replies (the MVP)

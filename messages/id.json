@@ -11,14 +11,167 @@
   },
   "home": {
     "welcome": "Selamat datang, {name}",
-    "soon": "Sebentar lagi Anda bisa menempelkan tautan situs web Anda di sini dan mendapatkan enam postingan, masing-masing dengan story.",
     "websiteLabel": "Situs web Anda",
-    "websiteExample": "yourspa.com",
-    "comingSoon": "Segera hadir",
     "signedIn": "Masuk di ponsel ini selama 30 hari."
   },
   "language": {
     "label": "Bahasa"
   },
-  "notConfigured": "Shopfront belum dikonfigurasi."
+  "notConfigured": "Shopfront belum dikonfigurasi.",
+  "brand": {
+    "panel": {
+      "sections": {
+        "business": "Usaha Anda",
+        "place": "Di mana dan kapan",
+        "contact": "Cara orang menghubungi Anda",
+        "look": "Tampilan Anda",
+        "feeling": "Suasana Anda"
+      },
+      "edit": "Ubah",
+      "editSection": "Ubah {section}",
+      "add": "Tambah",
+      "notFound": "Tidak ditemukan di situs Anda",
+      "warnWhatsapp": "Tambahkan nomor WhatsApp Anda: setiap postingan diakhiri dengan nomor ini.",
+      "warnTown": "Tambahkan kota Anda: postingan dan tagar memakainya.",
+      "thin": "Kami tidak bisa membaca banyak dari situs web Anda. Lengkapi yang kurang agar postingan Anda tepat.",
+      "fields": {
+        "name": "Nama",
+        "summary": "Apa yang Anda tawarkan",
+        "category": "Jenis usaha",
+        "offerings": "Layanan dan harga",
+        "highlights": "Apa kata situs Anda tentang Anda",
+        "town": "Kota",
+        "area": "Wilayah",
+        "address": "Alamat",
+        "serviceArea": "Ke mana Anda datang",
+        "hours": "Jam buka",
+        "whatsapp": "WhatsApp",
+        "phone": "Telepon",
+        "email": "Email",
+        "instagram": "Instagram",
+        "bookingUrl": "Tautan pemesanan",
+        "logo": "Logo",
+        "colours": "Warna",
+        "visualStyle": "Gaya visual",
+        "palette": "Palet",
+        "light": "Cahaya",
+        "textures": "Tekstur",
+        "mood": "Suasana",
+        "photos": "Foto yang kami lihat",
+        "promise": "Janji Anda",
+        "feeling": "Perasaan tamu",
+        "moments": "Mengapa orang datang",
+        "placeSymbols": "Simbol tempat Anda",
+        "senses": "Aroma, tekstur, dan cahaya",
+        "tone": "Gaya bahasa Anda"
+      },
+      "roles": {
+        "primary": "Utama",
+        "accent": "Aksen",
+        "background": "Latar",
+        "text": "Teks"
+      },
+      "logoAlt": "Logo {name}",
+      "photoAlt": "Foto dari situs web Anda"
+    },
+    "source": {
+      "page": "dari {path}",
+      "home": "dari halaman utama Anda",
+      "site": "dari situs web Anda",
+      "guess": "tebakan kami dari foto Anda",
+      "suggestion": "saran kami",
+      "owner": "ditambahkan oleh Anda"
+    },
+    "edit": {
+      "save": "Simpan",
+      "cancel": "Batal",
+      "discardTitle": "Buang perubahan Anda?",
+      "discard": "Buang",
+      "keepEditing": "Lanjut mengubah",
+      "englishHint": "Tulis dalam bahasa Inggris: postingan Anda berbahasa Inggris.",
+      "wordsHint": "Paling banyak {count} kata",
+      "itemsHint": "Paling banyak {count}",
+      "errors": {
+        "required": "Ini tidak boleh kosong.",
+        "tooManyWords": "Terlalu banyak kata.",
+        "tooMany": "Terlalu banyak.",
+        "invalidEmail": "Itu tidak terlihat seperti alamat email.",
+        "invalidUrl": "Itu tidak terlihat seperti tautan.",
+        "invalidPhone": "Itu tidak terlihat seperti nomor telepon.",
+        "needCountryCode": "Awali dengan kode negara Anda, seperti +84 atau +62.",
+        "styleIncomplete": "Isi kelimanya, atau kosongkan semuanya.",
+        "needColour": "Sisakan setidaknya satu warna.",
+        "invalid": "Periksa isian ini."
+      },
+      "list": {
+        "remove": "Hapus",
+        "up": "Naikkan",
+        "down": "Turunkan",
+        "addOffering": "Tambah layanan",
+        "addHighlight": "Tambah keunggulan",
+        "addMoment": "Tambah alasan",
+        "addColour": "Tambah warna"
+      },
+      "item": {
+        "service": "Layanan",
+        "price": "Harga",
+        "duration": "Durasi",
+        "description": "Keterangan",
+        "claim": "Keunggulan",
+        "reason": "Alasan",
+        "colour": "Warna",
+        "hex": "Kode warna",
+        "role": "Peran"
+      },
+      "chips": {
+        "add": "Tambah",
+        "addWord": "Tambah kata ke {label}",
+        "removeWord": "Hapus {word}"
+      },
+      "look": {
+        "removeLogo": "Hapus logo",
+        "removePhoto": "Hapus foto",
+        "noLogo": "Tanpa logo"
+      }
+    },
+    "home": {
+      "read": "Baca situs web saya",
+      "readHint": "Kami membaca beberapa halaman dan foto Anda. Butuh sekitar 20 detik.",
+      "placeholder": "spaanda.com",
+      "reading": "Membaca situs web Anda…",
+      "keepOpen": "Biarkan halaman ini terbuka sekitar 20 detik.",
+      "stop": "Berhenti",
+      "announceReading": "Membaca situs web Anda",
+      "announceDone": "Selesai: periksa apa yang kami pahami",
+      "intro": "Inilah yang kami pahami tentang {name}. Perbaiki yang salah: postingan Anda ditulis dari sini.",
+      "postsSoon": "Postingan Anda segera hadir.",
+      "lastRead": "Terakhir dibaca {when}",
+      "reread": "Baca ulang situs web saya",
+      "forget": "Lupakan usaha ini",
+      "invalidSaved": "Kami tidak bisa membuka usaha Anda yang tersimpan. Baca situs web Anda lagi.",
+      "notKept": "Browser ini tidak akan menyimpan usaha Anda: Anda perlu membaca situs Anda lagi lain kali."
+    },
+    "errors": {
+      "invalid_url": "Itu tidak terlihat seperti alamat situs web. Periksa dan coba lagi.",
+      "blocked_address": "Kami tidak bisa membaca alamat itu. Gunakan tautan publik situs web Anda.",
+      "unreachable": "Kami tidak bisa membuka situs web Anda. Periksa alamatnya, atau coba lagi beberapa menit lagi.",
+      "robots_disallowed": "Situs web Anda meminta aplikasi untuk tidak membacanya, jadi kami tidak bisa. Hubungi kami dan kami akan membantu Anda.",
+      "model_busy": "Shopfront sudah memakai jatah baca gratis hari ini. Coba lagi besok.",
+      "model_timeout": "Membaca situs web Anda terlalu lama. Coba lagi.",
+      "model_failed": "Terjadi masalah saat membaca situs web Anda. Coba lagi.",
+      "offline": "Anda sedang offline. Kami akan melanjutkan saat Anda kembali."
+    },
+    "reread": {
+      "title": "Baca situs web Anda lagi?",
+      "body": "{count, plural, other {# perubahan}} Anda akan diganti dengan isi situs Anda sekarang.",
+      "confirm": "Baca lagi",
+      "cancel": "Batal"
+    },
+    "forget": {
+      "title": "Lupakan {name}?",
+      "body": "Ini menghapus semua yang disimpan Shopfront di ponsel ini untuk usaha Anda. Anda bisa membaca situs web Anda lagi kapan saja.",
+      "confirm": "Lupakan",
+      "cancel": "Batal"
+    }
+  }
 }

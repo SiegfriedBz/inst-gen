@@ -11,14 +11,167 @@
   },
   "home": {
     "welcome": "Chào mừng, {name}",
-    "soon": "Sắp tới, bạn có thể dán liên kết trang web của mình vào đây và nhận sáu bài đăng, mỗi bài kèm một story.",
     "websiteLabel": "Trang web của bạn",
-    "websiteExample": "yourspa.com",
-    "comingSoon": "Sắp ra mắt",
     "signedIn": "Đã đăng nhập trên điện thoại này trong 30 ngày."
   },
   "language": {
     "label": "Ngôn ngữ"
   },
-  "notConfigured": "Shopfront chưa được thiết lập."
+  "notConfigured": "Shopfront chưa được thiết lập.",
+  "brand": {
+    "panel": {
+      "sections": {
+        "business": "Doanh nghiệp của bạn",
+        "place": "Ở đâu và khi nào",
+        "contact": "Cách khách liên hệ",
+        "look": "Phong cách của bạn",
+        "feeling": "Cảm xúc của bạn"
+      },
+      "edit": "Sửa",
+      "editSection": "Sửa {section}",
+      "add": "Thêm",
+      "notFound": "Không tìm thấy trên trang web của bạn",
+      "warnWhatsapp": "Thêm số WhatsApp của bạn: mọi bài đăng đều kết thúc bằng số này.",
+      "warnTown": "Thêm thành phố của bạn: bài đăng và hashtag sẽ dùng đến.",
+      "thin": "Chúng tôi không đọc được nhiều từ trang web của bạn. Hãy điền phần còn thiếu để bài đăng chính xác.",
+      "fields": {
+        "name": "Tên",
+        "summary": "Bạn cung cấp gì",
+        "category": "Loại hình kinh doanh",
+        "offerings": "Dịch vụ và giá",
+        "highlights": "Trang web nói gì về bạn",
+        "town": "Thành phố",
+        "area": "Khu vực",
+        "address": "Địa chỉ",
+        "serviceArea": "Nơi bạn phục vụ",
+        "hours": "Giờ mở cửa",
+        "whatsapp": "WhatsApp",
+        "phone": "Điện thoại",
+        "email": "Email",
+        "instagram": "Instagram",
+        "bookingUrl": "Liên kết đặt lịch",
+        "logo": "Logo",
+        "colours": "Màu sắc",
+        "visualStyle": "Phong cách hình ảnh",
+        "palette": "Bảng màu",
+        "light": "Ánh sáng",
+        "textures": "Chất liệu",
+        "mood": "Không khí",
+        "photos": "Ảnh chúng tôi đã xem",
+        "promise": "Lời hứa của bạn",
+        "feeling": "Khách nên cảm thấy thế nào",
+        "moments": "Vì sao khách đến",
+        "placeSymbols": "Biểu tượng của nơi bạn",
+        "senses": "Hương thơm, chất liệu và ánh sáng",
+        "tone": "Giọng điệu của bạn"
+      },
+      "roles": {
+        "primary": "Chính",
+        "accent": "Điểm nhấn",
+        "background": "Nền",
+        "text": "Chữ"
+      },
+      "logoAlt": "Logo của {name}",
+      "photoAlt": "Ảnh từ trang web của bạn"
+    },
+    "source": {
+      "page": "từ {path}",
+      "home": "từ trang chủ của bạn",
+      "site": "từ trang web của bạn",
+      "guess": "chúng tôi đoán từ ảnh của bạn",
+      "suggestion": "gợi ý của chúng tôi",
+      "owner": "do bạn thêm"
+    },
+    "edit": {
+      "save": "Lưu",
+      "cancel": "Hủy",
+      "discardTitle": "Bỏ các thay đổi của bạn?",
+      "discard": "Bỏ",
+      "keepEditing": "Tiếp tục sửa",
+      "englishHint": "Hãy viết bằng tiếng Anh: bài đăng của bạn bằng tiếng Anh.",
+      "wordsHint": "Tối đa {count} từ",
+      "itemsHint": "Tối đa {count}",
+      "errors": {
+        "required": "Không được để trống.",
+        "tooManyWords": "Quá nhiều từ.",
+        "tooMany": "Quá nhiều.",
+        "invalidEmail": "Đây không giống địa chỉ email.",
+        "invalidUrl": "Đây không giống một liên kết.",
+        "invalidPhone": "Đây không giống số điện thoại.",
+        "needCountryCode": "Hãy bắt đầu bằng mã quốc gia, như +84 hoặc +62.",
+        "styleIncomplete": "Điền đủ cả năm mục, hoặc để trống tất cả.",
+        "needColour": "Giữ lại ít nhất một màu.",
+        "invalid": "Hãy kiểm tra mục này."
+      },
+      "list": {
+        "remove": "Xóa",
+        "up": "Đưa lên",
+        "down": "Đưa xuống",
+        "addOffering": "Thêm dịch vụ",
+        "addHighlight": "Thêm điểm nổi bật",
+        "addMoment": "Thêm lý do",
+        "addColour": "Thêm màu"
+      },
+      "item": {
+        "service": "Dịch vụ",
+        "price": "Giá",
+        "duration": "Thời lượng",
+        "description": "Mô tả",
+        "claim": "Điểm nổi bật",
+        "reason": "Lý do",
+        "colour": "Màu",
+        "hex": "Mã màu",
+        "role": "Vai trò"
+      },
+      "chips": {
+        "add": "Thêm",
+        "addWord": "Thêm từ vào {label}",
+        "removeWord": "Xóa {word}"
+      },
+      "look": {
+        "removeLogo": "Xóa logo",
+        "removePhoto": "Xóa ảnh",
+        "noLogo": "Không có logo"
+      }
+    },
+    "home": {
+      "read": "Đọc trang web của tôi",
+      "readHint": "Chúng tôi đọc vài trang và ảnh của bạn. Mất khoảng 20 giây.",
+      "placeholder": "spacuaban.com",
+      "reading": "Đang đọc trang web của bạn…",
+      "keepOpen": "Hãy giữ trang này mở khoảng 20 giây.",
+      "stop": "Dừng",
+      "announceReading": "Đang đọc trang web của bạn",
+      "announceDone": "Xong: hãy kiểm tra những gì chúng tôi hiểu",
+      "intro": "Đây là những gì chúng tôi hiểu về {name}. Hãy sửa chỗ nào chưa đúng: bài đăng của bạn được viết từ đây.",
+      "postsSoon": "Bài đăng của bạn sắp có.",
+      "lastRead": "Đọc lần cuối {when}",
+      "reread": "Đọc lại trang web của tôi",
+      "forget": "Quên doanh nghiệp này",
+      "invalidSaved": "Chúng tôi không mở được doanh nghiệp đã lưu của bạn. Hãy đọc lại trang web.",
+      "notKept": "Trình duyệt này sẽ không lưu doanh nghiệp của bạn: lần sau bạn cần đọc lại trang web."
+    },
+    "errors": {
+      "invalid_url": "Đây không giống địa chỉ trang web. Hãy kiểm tra và thử lại.",
+      "blocked_address": "Chúng tôi không đọc được địa chỉ đó. Hãy dùng liên kết công khai của trang web.",
+      "unreachable": "Chúng tôi không mở được trang web của bạn. Hãy kiểm tra địa chỉ, hoặc thử lại sau vài phút.",
+      "robots_disallowed": "Trang web của bạn yêu cầu ứng dụng không đọc nó, nên chúng tôi không thể. Hãy liên hệ, chúng tôi sẽ giúp bạn thiết lập.",
+      "model_busy": "Shopfront đã dùng hết lượt đọc miễn phí hôm nay. Hãy thử lại vào ngày mai.",
+      "model_timeout": "Đọc trang web của bạn mất quá lâu. Hãy thử lại.",
+      "model_failed": "Đã có lỗi khi đọc trang web của bạn. Hãy thử lại.",
+      "offline": "Bạn đang ngoại tuyến. Chúng tôi sẽ tiếp tục khi bạn có mạng lại."
+    },
+    "reread": {
+      "title": "Đọc lại trang web của bạn?",
+      "body": "{count, plural, other {# thay đổi}} của bạn sẽ được thay bằng nội dung hiện tại của trang web.",
+      "confirm": "Đọc lại",
+      "cancel": "Hủy"
+    },
+    "forget": {
+      "title": "Quên {name}?",
+      "body": "Thao tác này xóa mọi thứ Shopfront lưu trên điện thoại này cho doanh nghiệp của bạn. Bạn có thể đọc lại trang web bất cứ lúc nào.",
+      "confirm": "Quên",
+      "cancel": "Hủy"
+    }
+  }
 }
