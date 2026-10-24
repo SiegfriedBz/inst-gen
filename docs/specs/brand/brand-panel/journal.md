@@ -24,6 +24,9 @@
   `brand-errors.test.ts` was written, so that test passed on its first run.
 - 2026-10-24: `pnpm-lock.yaml` is kept in Biome's format, as on `develop`;
   `pnpm add` had rewritten it in pnpm's.
+- 2026-10-24: the phone tests ran on port 3457 through a scratch copy of
+  `playwright.config.ts`, because another checkout's server held port 3000.
+  The repo's config is unchanged.
 
 ## RED
 
@@ -38,6 +41,8 @@
   found)
 - Task 7: ` Test Files  1 failed | 1 passed (2)` (`components/brand/brand-home`
   not found); `stop after a dropped stream…` ` Tests  1 failed | 11 passed (12)`
+- Task 8: `  1 failed` (`getByText('Da Nang')` matched the summary too; the
+  test now reads the Town field)
 
 ## GREEN
 
@@ -48,3 +53,4 @@
 - Task 5: ` Tests  19 passed (19)`
 - Task 6: ` Tests  9 passed (9)`
 - Task 7: ` Tests  474 passed (474)` (whole suite)
+- Task 8: `  24 passed (10.7s)` (whole Playwright suite)

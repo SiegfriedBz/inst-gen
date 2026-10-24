@@ -65,3 +65,50 @@ export function svargaProfile(): Profile {
     dropped: [],
   };
 }
+
+export const SEN_SITE = 'https://sendanangmassage.com/';
+export const SEN_CONTACT = 'https://sendanangmassage.com/contact';
+
+// Sen's profile, with the values of tests/fixtures/sites/sen/expected.json.
+export function senProfile(): Profile {
+  const base = svargaProfile();
+  return {
+    ...base,
+    siteUrl: SEN_SITE,
+    pagesRead: [SEN_SITE, SEN_CONTACT],
+    name: { value: 'Sen', source: SEN_SITE },
+    summary: { value: 'Massage at your hotel, apartment or villa in Da Nang', source: SEN_SITE },
+    offerings: [
+      { name: 'Vietnamese Traditional Massage', source: SEN_SITE },
+      { name: 'Foot Reflexology', source: SEN_SITE },
+    ],
+    highlights: [{ value: 'Therapists come to you', source: SEN_SITE }],
+    location: {
+      town: { value: 'Da Nang', source: SEN_CONTACT },
+      area: null,
+      address: null,
+      serviceArea: null,
+    },
+    contact: {
+      whatsapp: { value: '+84898661224', source: SEN_CONTACT },
+      phone: null,
+      email: null,
+      instagram: null,
+      bookingUrl: null,
+    },
+    hours: { value: 'Every day, 10am to 11pm', source: SEN_CONTACT },
+    colours: [{ hex: '#4a6b53', role: 'primary', source: 'theme-color' }],
+    logoUrl: null,
+    essence: {
+      promise: {
+        value: 'Our therapists come to your hotel, apartment or villa: book on WhatsApp and relax',
+        source: SEN_SITE,
+      },
+      feeling: ['relaxing', 'warm', 'cared for'],
+      placeSymbols: ['lotus flowers', 'My Khe beach at dusk'],
+      senses: ['warm natural oils', 'soft hotel lighting'],
+      moments: [{ value: 'after a surf at My Khe', source: SEN_SITE }],
+    },
+    photoUrls: [],
+  };
+}
