@@ -1,7 +1,10 @@
 import { z } from 'zod';
 import type { PageTexts } from '../checks';
 import { hexToRgb } from '../extract/colours';
+import { normaliseText } from '../normalise';
 import type { Profile } from '../profile';
+
+export { normaliseText };
 
 // Scores a brand profile against what a saved site really says
 // (spec, "The eval"). A fixture passes when every check passes.
@@ -20,16 +23,6 @@ export type Expected = z.infer<typeof expectedSchema>;
 
 export const OFFERINGS_RECALL = 0.7;
 export const COLOUR_DISTANCE = 60;
-
-export function normaliseText(value: string): string {
-  return value
-    .normalize('NFD')
-    .replace(/\p{M}/gu, '')
-    .replace(/[đĐ]/g, 'd')
-    .toLowerCase()
-    .replace(/[^\p{L}\p{N}]+/gu, ' ')
-    .trim();
-}
 
 const looseMatch = (a: string, b: string) => {
   const [x, y] = [normaliseText(a), normaliseText(b)];

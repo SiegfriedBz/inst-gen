@@ -147,7 +147,7 @@ describe('mergeAndCheck', () => {
       offerings: [
         { name: 'Aroma massage', price: '450,000 VND', source: PRICES },
         { name: 'Hot stone', price: 'VND 600.000', source: PRICES },
-        { name: 'Four hands', price: '900,000 VND', source: PRICES },
+        { name: 'Hot stone', price: '900,000 VND', source: PRICES },
       ],
     });
     expect(profile.offerings?.map((o) => o?.price)).toEqual([
@@ -156,6 +156,17 @@ describe('mergeAndCheck', () => {
       undefined,
     ]);
     expect(dropped).toContainEqual({ field: 'offerings[2].price', reason: 'not_on_page' });
+  });
+
+  test('an offering whose name is not on its page is dropped', () => {
+    const { profile, dropped } = run({
+      offerings: [
+        { name: 'Aroma Massage', source: PRICES },
+        { name: 'Bamboo massage', source: PRICES },
+      ],
+    });
+    expect(profile.offerings?.map((o) => o?.name)).toEqual(['Aroma Massage']);
+    expect(dropped).toContainEqual({ field: 'offerings[1]', reason: 'not_on_page' });
   });
 
   test('a fact with an unknown source is dropped', () => {

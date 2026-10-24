@@ -1,5 +1,6 @@
 import type { CodeColour } from './extract/colours';
 import { type CodeFacts, instagramHandle } from './extract/structured';
+import { normaliseText } from './normalise';
 import { phoneDigitVariants, toE164 } from './phone';
 import {
   type DeepPartial,
@@ -246,6 +247,11 @@ export function mergeAndCheck(
     const source = normaliseSource(offering.source, ctx.pagesRead);
     if (!source || source === MODEL) {
       dropped.push({ field: `offerings[${i}]`, reason: 'unknown_source' });
+      return [];
+    }
+    const page = normaliseText(ctx.pages.get(source) ?? '');
+    if (!page.includes(normaliseText(offering.name))) {
+      dropped.push({ field: `offerings[${i}]`, reason: 'not_on_page' });
       return [];
     }
     const kept = { ...offering, source };
