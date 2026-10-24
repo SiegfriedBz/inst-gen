@@ -157,6 +157,28 @@ describe('extractStructured: contact links', () => {
     expect(extractStructured(html, URL_).contact.instagram).toEqual([]);
   });
 
+  test.each([
+    ['<p>+84 358 358 353 Phone · WhatsApp · Zalo</p>', '84358358353'],
+    ['<p>WhatsApp: +62 811-3888-472</p>', '628113888472'],
+    ['<p>Whatsapp +855 12 766 234</p>', '85512766234'],
+  ])('reads a WhatsApp number written as text: %s', (body, digits) => {
+    expect(extractStructured(doc('', body), URL_).contact.whatsapp).toEqual([digits]);
+  });
+
+  test('a phone number far from the word WhatsApp is not taken', () => {
+    const body =
+      '<p>Call +84 358 358 353 for bookings. We reply to every message within a day, and on WhatsApp too.</p>';
+    expect(extractStructured(doc('', body), URL_).contact.whatsapp).toEqual([]);
+  });
+
+  test('a wa.me link comes before a number in the text', () => {
+    const body = '<a href="https://wa.me/6281234567890">Chat</a><p>WhatsApp: +62 811-3888-472</p>';
+    expect(extractStructured(doc('', body), URL_).contact.whatsapp).toEqual([
+      '6281234567890',
+      '628113888472',
+    ]);
+  });
+
   test('a link repeated in header and footer is counted once', () => {
     const link = '<a href="https://wa.me/6281234567890">WA</a>';
     expect(extractStructured(doc('', link + link), URL_).contact.whatsapp).toEqual([

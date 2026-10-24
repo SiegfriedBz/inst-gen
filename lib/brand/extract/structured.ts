@@ -220,6 +220,21 @@ export function instagramHandle(url: URL): string | undefined {
   return handle;
 }
 
+// A phone number next to the word WhatsApp (within 25 characters, with no
+// other digits between), as in "WhatsApp: +62 811-3888-472" or
+// "+84 358 358 353 Phone · WhatsApp · Zalo".
+const NUMBER = String.raw`\+?\d[\d\s().-]{6,}\d`;
+const WHATSAPP_IN_TEXT = new RegExp(
+  String.raw`(${NUMBER})[^\d+]{0,25}?whats\s?app|whats\s?app[^\d+]{0,25}?(${NUMBER})`,
+  'gi',
+);
+
+function whatsappInText(text: string): string[] {
+  return [...text.matchAll(WHATSAPP_IN_TEXT)]
+    .map((match) => (match[1] ?? match[2]).replace(/\D/g, ''))
+    .filter((digits) => digits.length >= 8);
+}
+
 function contactLinks($: cheerio.CheerioAPI): CodeFacts['contact'] {
   const contact = {
     whatsapp: [] as string[],
@@ -256,6 +271,8 @@ function contactLinks($: cheerio.CheerioAPI): CodeFacts['contact'] {
       add(contact.instagram, instagramHandle(url));
     }
   }
+  const text = $('body').text().replace(/\s+/g, ' ');
+  for (const digits of whatsappInText(text)) add(contact.whatsapp, digits);
   return contact;
 }
 
