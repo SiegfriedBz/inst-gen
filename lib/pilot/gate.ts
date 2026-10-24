@@ -10,12 +10,16 @@ export type GateDecision =
   | { kind: 'unauthorized' }
   | { kind: 'misconfigured' };
 
-const PUBLIC_EXACT = ['/robots.txt', '/favicon.ico'];
-const PUBLIC_PREFIXES = ['/_next/static/', '/_next/image', '/icon', '/apple-icon'];
+const PUBLIC_EXACT = ['/robots.txt', '/favicon.ico', '/_next/image'];
+const PUBLIC_PREFIXES = ['/_next/static/'];
+// Next.js icon routes: /icon, /icon.png, /icon1.png, /icon/small, and the same for apple-icon.
+const ICON_ROUTE = /^\/(apple-)?icon(\d*\.[a-z]+|\d+)?(\/|$)/;
 
 export function isPublicPath(pathname: string): boolean {
   return (
-    PUBLIC_EXACT.includes(pathname) || PUBLIC_PREFIXES.some((prefix) => pathname.startsWith(prefix))
+    PUBLIC_EXACT.includes(pathname) ||
+    PUBLIC_PREFIXES.some((prefix) => pathname.startsWith(prefix)) ||
+    ICON_ROUTE.test(pathname)
   );
 }
 

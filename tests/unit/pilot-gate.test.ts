@@ -44,10 +44,15 @@ describe('decide', () => {
   });
 
   test('a path that only starts like a public one is gated', async () => {
-    expect(await decide('/enterprise', undefined, good, now)).toEqual({
-      kind: 'redirect',
-      to: '/enter',
-    });
+    for (const path of ['/enterprise', '/iconography', '/icons-admin', '/apple-iconic']) {
+      expect(await decide(path, undefined, good, now)).toEqual({ kind: 'redirect', to: '/enter' });
+    }
+  });
+
+  test('icon routes Next.js generates stay public', async () => {
+    for (const path of ['/icon', '/icon.png', '/icon1.png', '/icon/small', '/apple-icon.png']) {
+      expect(await decide(path, undefined, good, now)).toEqual({ kind: 'pass' });
+    }
   });
 
   test('valid session passes, and /enter sends it home', async () => {

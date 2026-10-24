@@ -8,11 +8,11 @@
   --ink-secondary: #4a524c;
   --field: #ffffff;
   --field-muted: #eef0ee;
-  --edge: #c9cfca;
+  --edge: #858e87;
   --accent: #0f7b5f;
   --on-accent: #ffffff;
   --accent-tint: #e2f1eb;
-  --accent-tint-ink: #0f7b5f;
+  --accent-tint-ink: #0d7259;
   --error: #b42318;
 }
 
@@ -23,7 +23,7 @@
     --ink-secondary: #b4bdb6;
     --field: #1b201d;
     --field-muted: #171b19;
-    --edge: #39413c;
+    --edge: #646e67;
     --accent: #3fbf94;
     --on-accent: #0b1f18;
     --accent-tint: #173a2f;

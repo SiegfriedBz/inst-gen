@@ -141,9 +141,9 @@ contract:
 | Text | `#16181A` | `#ECEFEC` |
 | Secondary text | `#4A524C` | `#B4BDB6` |
 | Field background | `#FFFFFF` | `#1B201D` |
-| Field border | `#C9CFCA` | `#39413C` |
+| Field border | `#858E87` | `#646E67` |
 | Accent (button, mark) | `#0F7B5F`, white text | `#3FBF94`, text `#0B1F18` |
-| Accent tint (owner pill) | `#E2F1EB`, text `#0F7B5F` | the builder picks a matching dark tint |
+| Accent tint (owner pill) | `#E2F1EB`, text `#0D7259` | the builder picks a matching dark tint |
 | Error | the builder picks a red that passes AA on both backgrounds | |
 
 - Dark mode follows the phone's setting (`prefers-color-scheme`); there is no

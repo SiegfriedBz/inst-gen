@@ -5,7 +5,7 @@ import { cn } from '@/lib/utils';
 
 // shadcn/ui button, restyled to the Shopfront tokens. One variant for now.
 const buttonVariants = cva(
-  'press inline-flex h-12 w-full items-center justify-center rounded-control bg-accent px-4 text-[15px] font-medium text-on-accent outline-none focus-visible:ring-[3px] focus-visible:ring-accent/40 focus-visible:ring-offset-2 focus-visible:ring-offset-page disabled:opacity-60',
+  'press inline-flex h-12 w-full items-center justify-center rounded-control bg-accent px-4 text-[15px] font-medium text-on-accent outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-page disabled:opacity-60',
 );
 
 function Button({

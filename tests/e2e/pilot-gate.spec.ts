@@ -71,6 +71,12 @@ test('not indexed', async ({ request }) => {
   expect(await (await request.get('/robots.txt')).text()).toContain('Disallow: /');
   const enter = await request.get('/enter');
   expect(enter.headers()['x-robots-tag']).toBe('noindex, nofollow');
+  // Responses made by proxy.ts too: the redirect and the 401.
+  const redirect = await request.get('/', { maxRedirects: 0 });
+  expect(redirect.status()).toBe(307);
+  expect(redirect.headers()['x-robots-tag']).toBe('noindex, nofollow');
+  const unauthorized = await request.get('/api/health');
+  expect(unauthorized.headers()['x-robots-tag']).toBe('noindex, nofollow');
 });
 
 test.describe('dark mode', () => {
