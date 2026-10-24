@@ -1,0 +1,4612 @@
+{
+  "modelId": "gemini-3.5-flash-lite",
+  "promptVersion": "brand-2",
+  "partials": [
+    {
+      "name": {}
+    },
+    {
+      "name": {
+        "value": "Lulu Bistrot",
+        "source": "https://www.lulubistrot.com/"
+      },
+      "summary": {
+        "value": "Lulu Bistrot is a French restaurant and bar located in Bali"
+      }
+    },
+    {
+      "name": {
+        "value": "Lulu Bistrot",
+        "source": "https://www.lulubistrot.com/"
+      },
+      "summary": {
+        "value": "Lulu Bistrot is a French restaurant and bar located in Bali, serving French bistro favourites with Indonesian nostalgia.",
+        "source": "https://www.lulubistrot."
+      }
+    },
+    {
+      "name": {
+        "value": "Lulu Bistrot",
+        "source": "https://www.lulubistrot.com/"
+      },
+      "summary": {
+        "value": "Lulu Bistrot is a French restaurant and bar located in Bali, serving French bistro favourites with Indonesian nostalgia.",
+        "source": "https://www.lulubistrot.com/"
+      },
+      "category": "french restaurant",
+      "offerings": [
+        {}
+      ]
+    },
+    {
+      "name": {
+        "value": "Lulu Bistrot",
+        "source": "https://www.lulubistrot.com/"
+      },
+      "summary": {
+        "value": "Lulu Bistrot is a French restaurant and bar located in Bali, serving French bistro favourites with Indonesian nostalgia.",
+        "source": "https://www.lulubistrot.com/"
+      },
+      "category": "french restaurant",
+      "offerings": [
+        {
+          "name": "Tasting menu",
+          "price": "IDR 850.0"
+        }
+      ]
+    },
+    {
+      "name": {
+        "value": "Lulu Bistrot",
+        "source": "https://www.lulubistrot.com/"
+      },
+      "summary": {
+        "value": "Lulu Bistrot is a French restaurant and bar located in Bali, serving French bistro favourites with Indonesian nostalgia.",
+        "source": "https://www.lulubistrot.com/"
+      },
+      "category": "french restaurant",
+      "offerings": [
+        {
+          "name": "Tasting menu",
+          "price": "IDR 850.000 ++",
+          "source": "https://www.lulubistrot.com/"
+        },
+        {
+          "name": "Bread and Butter",
+          "price": "50",
+          "source": ""
+        }
+      ]
+    },
+    {
+      "name": {
+        "value": "Lulu Bistrot",
+        "source": "https://www.lulubistrot.com/"
+      },
+      "summary": {
+        "value": "Lulu Bistrot is a French restaurant and bar located in Bali, serving French bistro favourites with Indonesian nostalgia.",
+        "source": "https://www.lulubistrot.com/"
+      },
+      "category": "french restaurant",
+      "offerings": [
+        {
+          "name": "Tasting menu",
+          "price": "IDR 850.000 ++",
+          "source": "https://www.lulubistrot.com/"
+        },
+        {
+          "name": "Bread and Butter",
+          "price": "50",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {}
+      ]
+    },
+    {
+      "name": {
+        "value": "Lulu Bistrot",
+        "source": "https://www.lulubistrot.com/"
+      },
+      "summary": {
+        "value": "Lulu Bistrot is a French restaurant and bar located in Bali, serving French bistro favourites with Indonesian nostalgia.",
+        "source": "https://www.lulubistrot.com/"
+      },
+      "category": "french restaurant",
+      "offerings": [
+        {
+          "name": "Tasting menu",
+          "price": "IDR 850.000 ++",
+          "source": "https://www.lulubistrot.com/"
+        },
+        {
+          "name": "Bread and Butter",
+          "price": "50",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Onde-Onde Croquettes",
+          "price": "80",
+          "source": ""
+        }
+      ]
+    },
+    {
+      "name": {
+        "value": "Lulu Bistrot",
+        "source": "https://www.lulubistrot.com/"
+      },
+      "summary": {
+        "value": "Lulu Bistrot is a French restaurant and bar located in Bali, serving French bistro favourites with Indonesian nostalgia.",
+        "source": "https://www.lulubistrot.com/"
+      },
+      "category": "french restaurant",
+      "offerings": [
+        {
+          "name": "Tasting menu",
+          "price": "IDR 850.000 ++",
+          "source": "https://www.lulubistrot.com/"
+        },
+        {
+          "name": "Bread and Butter",
+          "price": "50",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Onde-Onde Croquettes",
+          "price": "80",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {}
+      ]
+    },
+    {
+      "name": {
+        "value": "Lulu Bistrot",
+        "source": "https://www.lulubistrot.com/"
+      },
+      "summary": {
+        "value": "Lulu Bistrot is a French restaurant and bar located in Bali, serving French bistro favourites with Indonesian nostalgia.",
+        "source": "https://www.lulubistrot.com/"
+      },
+      "category": "french restaurant",
+      "offerings": [
+        {
+          "name": "Tasting menu",
+          "price": "IDR 850.000 ++",
+          "source": "https://www.lulubistrot.com/"
+        },
+        {
+          "name": "Bread and Butter",
+          "price": "50",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Onde-Onde Croquettes",
+          "price": "80",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Oyster au Naturel",
+          "price": "80 ea",
+          "source": "https"
+        }
+      ]
+    },
+    {
+      "name": {
+        "value": "Lulu Bistrot",
+        "source": "https://www.lulubistrot.com/"
+      },
+      "summary": {
+        "value": "Lulu Bistrot is a French restaurant and bar located in Bali, serving French bistro favourites with Indonesian nostalgia.",
+        "source": "https://www.lulubistrot.com/"
+      },
+      "category": "french restaurant",
+      "offerings": [
+        {
+          "name": "Tasting menu",
+          "price": "IDR 850.000 ++",
+          "source": "https://www.lulubistrot.com/"
+        },
+        {
+          "name": "Bread and Butter",
+          "price": "50",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Onde-Onde Croquettes",
+          "price": "80",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Oyster au Naturel",
+          "price": "80 ea",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": ""
+        }
+      ]
+    },
+    {
+      "name": {
+        "value": "Lulu Bistrot",
+        "source": "https://www.lulubistrot.com/"
+      },
+      "summary": {
+        "value": "Lulu Bistrot is a French restaurant and bar located in Bali, serving French bistro favourites with Indonesian nostalgia.",
+        "source": "https://www.lulubistrot.com/"
+      },
+      "category": "french restaurant",
+      "offerings": [
+        {
+          "name": "Tasting menu",
+          "price": "IDR 850.000 ++",
+          "source": "https://www.lulubistrot.com/"
+        },
+        {
+          "name": "Bread and Butter",
+          "price": "50",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Onde-Onde Croquettes",
+          "price": "80",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Oyster au Naturel",
+          "price": "80 ea",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Roasted Scallop",
+          "price": "180 ea",
+          "source": "https://"
+        }
+      ]
+    },
+    {
+      "name": {
+        "value": "Lulu Bistrot",
+        "source": "https://www.lulubistrot.com/"
+      },
+      "summary": {
+        "value": "Lulu Bistrot is a French restaurant and bar located in Bali, serving French bistro favourites with Indonesian nostalgia.",
+        "source": "https://www.lulubistrot.com/"
+      },
+      "category": "french restaurant",
+      "offerings": [
+        {
+          "name": "Tasting menu",
+          "price": "IDR 850.000 ++",
+          "source": "https://www.lulubistrot.com/"
+        },
+        {
+          "name": "Bread and Butter",
+          "price": "50",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Onde-Onde Croquettes",
+          "price": "80",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Oyster au Naturel",
+          "price": "80 ea",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Roasted Scallop",
+          "price": "180 ea",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Chicken"
+        }
+      ]
+    },
+    {
+      "name": {
+        "value": "Lulu Bistrot",
+        "source": "https://www.lulubistrot.com/"
+      },
+      "summary": {
+        "value": "Lulu Bistrot is a French restaurant and bar located in Bali, serving French bistro favourites with Indonesian nostalgia.",
+        "source": "https://www.lulubistrot.com/"
+      },
+      "category": "french restaurant",
+      "offerings": [
+        {
+          "name": "Tasting menu",
+          "price": "IDR 850.000 ++",
+          "source": "https://www.lulubistrot.com/"
+        },
+        {
+          "name": "Bread and Butter",
+          "price": "50",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Onde-Onde Croquettes",
+          "price": "80",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Oyster au Naturel",
+          "price": "80 ea",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Roasted Scallop",
+          "price": "180 ea",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Chicken Liver Pâté",
+          "price": "150",
+          "source": "https://www"
+        }
+      ]
+    },
+    {
+      "name": {
+        "value": "Lulu Bistrot",
+        "source": "https://www.lulubistrot.com/"
+      },
+      "summary": {
+        "value": "Lulu Bistrot is a French restaurant and bar located in Bali, serving French bistro favourites with Indonesian nostalgia.",
+        "source": "https://www.lulubistrot.com/"
+      },
+      "category": "french restaurant",
+      "offerings": [
+        {
+          "name": "Tasting menu",
+          "price": "IDR 850.000 ++",
+          "source": "https://www.lulubistrot.com/"
+        },
+        {
+          "name": "Bread and Butter",
+          "price": "50",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Onde-Onde Croquettes",
+          "price": "80",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Oyster au Naturel",
+          "price": "80 ea",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Roasted Scallop",
+          "price": "180 ea",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Chicken Liver Pâté",
+          "price": "150",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Stir"
+        }
+      ]
+    },
+    {
+      "name": {
+        "value": "Lulu Bistrot",
+        "source": "https://www.lulubistrot.com/"
+      },
+      "summary": {
+        "value": "Lulu Bistrot is a French restaurant and bar located in Bali, serving French bistro favourites with Indonesian nostalgia.",
+        "source": "https://www.lulubistrot.com/"
+      },
+      "category": "french restaurant",
+      "offerings": [
+        {
+          "name": "Tasting menu",
+          "price": "IDR 850.000 ++",
+          "source": "https://www.lulubistrot.com/"
+        },
+        {
+          "name": "Bread and Butter",
+          "price": "50",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Onde-Onde Croquettes",
+          "price": "80",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Oyster au Naturel",
+          "price": "80 ea",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Roasted Scallop",
+          "price": "180 ea",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Chicken Liver Pâté",
+          "price": "150",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Stir Fried Calamari",
+          "price": "170",
+          "source": "https://www"
+        }
+      ]
+    },
+    {
+      "name": {
+        "value": "Lulu Bistrot",
+        "source": "https://www.lulubistrot.com/"
+      },
+      "summary": {
+        "value": "Lulu Bistrot is a French restaurant and bar located in Bali, serving French bistro favourites with Indonesian nostalgia.",
+        "source": "https://www.lulubistrot.com/"
+      },
+      "category": "french restaurant",
+      "offerings": [
+        {
+          "name": "Tasting menu",
+          "price": "IDR 850.000 ++",
+          "source": "https://www.lulubistrot.com/"
+        },
+        {
+          "name": "Bread and Butter",
+          "price": "50",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Onde-Onde Croquettes",
+          "price": "80",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Oyster au Naturel",
+          "price": "80 ea",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Roasted Scallop",
+          "price": "180 ea",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Chicken Liver Pâté",
+          "price": "150",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Stir Fried Calamari",
+          "price": "170",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Wag"
+        }
+      ]
+    },
+    {
+      "name": {
+        "value": "Lulu Bistrot",
+        "source": "https://www.lulubistrot.com/"
+      },
+      "summary": {
+        "value": "Lulu Bistrot is a French restaurant and bar located in Bali, serving French bistro favourites with Indonesian nostalgia.",
+        "source": "https://www.lulubistrot.com/"
+      },
+      "category": "french restaurant",
+      "offerings": [
+        {
+          "name": "Tasting menu",
+          "price": "IDR 850.000 ++",
+          "source": "https://www.lulubistrot.com/"
+        },
+        {
+          "name": "Bread and Butter",
+          "price": "50",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Onde-Onde Croquettes",
+          "price": "80",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Oyster au Naturel",
+          "price": "80 ea",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Roasted Scallop",
+          "price": "180 ea",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Chicken Liver Pâté",
+          "price": "150",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Stir Fried Calamari",
+          "price": "170",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Wagyu Beef Tartare",
+          "price": "160",
+          "source": "https://www"
+        }
+      ]
+    },
+    {
+      "name": {
+        "value": "Lulu Bistrot",
+        "source": "https://www.lulubistrot.com/"
+      },
+      "summary": {
+        "value": "Lulu Bistrot is a French restaurant and bar located in Bali, serving French bistro favourites with Indonesian nostalgia.",
+        "source": "https://www.lulubistrot.com/"
+      },
+      "category": "french restaurant",
+      "offerings": [
+        {
+          "name": "Tasting menu",
+          "price": "IDR 850.000 ++",
+          "source": "https://www.lulubistrot.com/"
+        },
+        {
+          "name": "Bread and Butter",
+          "price": "50",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Onde-Onde Croquettes",
+          "price": "80",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Oyster au Naturel",
+          "price": "80 ea",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Roasted Scallop",
+          "price": "180 ea",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Chicken Liver Pâté",
+          "price": "150",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Stir Fried Calamari",
+          "price": "170",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Wagyu Beef Tartare",
+          "price": "160",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Onion"
+        }
+      ]
+    },
+    {
+      "name": {
+        "value": "Lulu Bistrot",
+        "source": "https://www.lulubistrot.com/"
+      },
+      "summary": {
+        "value": "Lulu Bistrot is a French restaurant and bar located in Bali, serving French bistro favourites with Indonesian nostalgia.",
+        "source": "https://www.lulubistrot.com/"
+      },
+      "category": "french restaurant",
+      "offerings": [
+        {
+          "name": "Tasting menu",
+          "price": "IDR 850.000 ++",
+          "source": "https://www.lulubistrot.com/"
+        },
+        {
+          "name": "Bread and Butter",
+          "price": "50",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Onde-Onde Croquettes",
+          "price": "80",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Oyster au Naturel",
+          "price": "80 ea",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Roasted Scallop",
+          "price": "180 ea",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Chicken Liver Pâté",
+          "price": "150",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Stir Fried Calamari",
+          "price": "170",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Wagyu Beef Tartare",
+          "price": "160",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Onion Tarte Tatin",
+          "price": "200",
+          "source": "https://www"
+        }
+      ]
+    },
+    {
+      "name": {
+        "value": "Lulu Bistrot",
+        "source": "https://www.lulubistrot.com/"
+      },
+      "summary": {
+        "value": "Lulu Bistrot is a French restaurant and bar located in Bali, serving French bistro favourites with Indonesian nostalgia.",
+        "source": "https://www.lulubistrot.com/"
+      },
+      "category": "french restaurant",
+      "offerings": [
+        {
+          "name": "Tasting menu",
+          "price": "IDR 850.000 ++",
+          "source": "https://www.lulubistrot.com/"
+        },
+        {
+          "name": "Bread and Butter",
+          "price": "50",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Onde-Onde Croquettes",
+          "price": "80",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Oyster au Naturel",
+          "price": "80 ea",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Roasted Scallop",
+          "price": "180 ea",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Chicken Liver Pâté",
+          "price": "150",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Stir Fried Calamari",
+          "price": "170",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Wagyu Beef Tartare",
+          "price": "160",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Onion Tarte Tatin",
+          "price": "200",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Seafood"
+        }
+      ]
+    },
+    {
+      "name": {
+        "value": "Lulu Bistrot",
+        "source": "https://www.lulubistrot.com/"
+      },
+      "summary": {
+        "value": "Lulu Bistrot is a French restaurant and bar located in Bali, serving French bistro favourites with Indonesian nostalgia.",
+        "source": "https://www.lulubistrot.com/"
+      },
+      "category": "french restaurant",
+      "offerings": [
+        {
+          "name": "Tasting menu",
+          "price": "IDR 850.000 ++",
+          "source": "https://www.lulubistrot.com/"
+        },
+        {
+          "name": "Bread and Butter",
+          "price": "50",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Onde-Onde Croquettes",
+          "price": "80",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Oyster au Naturel",
+          "price": "80 ea",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Roasted Scallop",
+          "price": "180 ea",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Chicken Liver Pâté",
+          "price": "150",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Stir Fried Calamari",
+          "price": "170",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Wagyu Beef Tartare",
+          "price": "160",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Onion Tarte Tatin",
+          "price": "200",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Seafood Pasta",
+          "price": "220",
+          "source": "https://www.lulub"
+        }
+      ]
+    },
+    {
+      "name": {
+        "value": "Lulu Bistrot",
+        "source": "https://www.lulubistrot.com/"
+      },
+      "summary": {
+        "value": "Lulu Bistrot is a French restaurant and bar located in Bali, serving French bistro favourites with Indonesian nostalgia.",
+        "source": "https://www.lulubistrot.com/"
+      },
+      "category": "french restaurant",
+      "offerings": [
+        {
+          "name": "Tasting menu",
+          "price": "IDR 850.000 ++",
+          "source": "https://www.lulubistrot.com/"
+        },
+        {
+          "name": "Bread and Butter",
+          "price": "50",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Onde-Onde Croquettes",
+          "price": "80",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Oyster au Naturel",
+          "price": "80 ea",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Roasted Scallop",
+          "price": "180 ea",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Chicken Liver Pâté",
+          "price": "150",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Stir Fried Calamari",
+          "price": "170",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Wagyu Beef Tartare",
+          "price": "160",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Onion Tarte Tatin",
+          "price": "200",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Seafood Pasta",
+          "price": "220",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Roasted Chicken"
+        }
+      ]
+    },
+    {
+      "name": {
+        "value": "Lulu Bistrot",
+        "source": "https://www.lulubistrot.com/"
+      },
+      "summary": {
+        "value": "Lulu Bistrot is a French restaurant and bar located in Bali, serving French bistro favourites with Indonesian nostalgia.",
+        "source": "https://www.lulubistrot.com/"
+      },
+      "category": "french restaurant",
+      "offerings": [
+        {
+          "name": "Tasting menu",
+          "price": "IDR 850.000 ++",
+          "source": "https://www.lulubistrot.com/"
+        },
+        {
+          "name": "Bread and Butter",
+          "price": "50",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Onde-Onde Croquettes",
+          "price": "80",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Oyster au Naturel",
+          "price": "80 ea",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Roasted Scallop",
+          "price": "180 ea",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Chicken Liver Pâté",
+          "price": "150",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Stir Fried Calamari",
+          "price": "170",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Wagyu Beef Tartare",
+          "price": "160",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Onion Tarte Tatin",
+          "price": "200",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Seafood Pasta",
+          "price": "220",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Roasted Chicken",
+          "price": "240",
+          "source": "https://www.lulubistrot.com"
+        }
+      ]
+    },
+    {
+      "name": {
+        "value": "Lulu Bistrot",
+        "source": "https://www.lulubistrot.com/"
+      },
+      "summary": {
+        "value": "Lulu Bistrot is a French restaurant and bar located in Bali, serving French bistro favourites with Indonesian nostalgia.",
+        "source": "https://www.lulubistrot.com/"
+      },
+      "category": "french restaurant",
+      "offerings": [
+        {
+          "name": "Tasting menu",
+          "price": "IDR 850.000 ++",
+          "source": "https://www.lulubistrot.com/"
+        },
+        {
+          "name": "Bread and Butter",
+          "price": "50",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Onde-Onde Croquettes",
+          "price": "80",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Oyster au Naturel",
+          "price": "80 ea",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Roasted Scallop",
+          "price": "180 ea",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Chicken Liver Pâté",
+          "price": "150",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Stir Fried Calamari",
+          "price": "170",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Wagyu Beef Tartare",
+          "price": "160",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Onion Tarte Tatin",
+          "price": "200",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Seafood Pasta",
+          "price": "220",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Roasted Chicken",
+          "price": "240",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Local Market Fish"
+        }
+      ]
+    },
+    {
+      "name": {
+        "value": "Lulu Bistrot",
+        "source": "https://www.lulubistrot.com/"
+      },
+      "summary": {
+        "value": "Lulu Bistrot is a French restaurant and bar located in Bali, serving French bistro favourites with Indonesian nostalgia.",
+        "source": "https://www.lulubistrot.com/"
+      },
+      "category": "french restaurant",
+      "offerings": [
+        {
+          "name": "Tasting menu",
+          "price": "IDR 850.000 ++",
+          "source": "https://www.lulubistrot.com/"
+        },
+        {
+          "name": "Bread and Butter",
+          "price": "50",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Onde-Onde Croquettes",
+          "price": "80",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Oyster au Naturel",
+          "price": "80 ea",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Roasted Scallop",
+          "price": "180 ea",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Chicken Liver Pâté",
+          "price": "150",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Stir Fried Calamari",
+          "price": "170",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Wagyu Beef Tartare",
+          "price": "160",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Onion Tarte Tatin",
+          "price": "200",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Seafood Pasta",
+          "price": "220",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Roasted Chicken",
+          "price": "240",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Local Market Fish",
+          "price": "280",
+          "source": "https://www.lulubistrot.com/menu"
+        }
+      ]
+    },
+    {
+      "name": {
+        "value": "Lulu Bistrot",
+        "source": "https://www.lulubistrot.com/"
+      },
+      "summary": {
+        "value": "Lulu Bistrot is a French restaurant and bar located in Bali, serving French bistro favourites with Indonesian nostalgia.",
+        "source": "https://www.lulubistrot.com/"
+      },
+      "category": "french restaurant",
+      "offerings": [
+        {
+          "name": "Tasting menu",
+          "price": "IDR 850.000 ++",
+          "source": "https://www.lulubistrot.com/"
+        },
+        {
+          "name": "Bread and Butter",
+          "price": "50",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Onde-Onde Croquettes",
+          "price": "80",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Oyster au Naturel",
+          "price": "80 ea",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Roasted Scallop",
+          "price": "180 ea",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Chicken Liver Pâté",
+          "price": "150",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Stir Fried Calamari",
+          "price": "170",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Wagyu Beef Tartare",
+          "price": "160",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Onion Tarte Tatin",
+          "price": "200",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Seafood Pasta",
+          "price": "220",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Roasted Chicken",
+          "price": "240",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Local Market Fish",
+          "price": "280",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Créole Risotto",
+          "price": "3"
+        }
+      ]
+    },
+    {
+      "name": {
+        "value": "Lulu Bistrot",
+        "source": "https://www.lulubistrot.com/"
+      },
+      "summary": {
+        "value": "Lulu Bistrot is a French restaurant and bar located in Bali, serving French bistro favourites with Indonesian nostalgia.",
+        "source": "https://www.lulubistrot.com/"
+      },
+      "category": "french restaurant",
+      "offerings": [
+        {
+          "name": "Tasting menu",
+          "price": "IDR 850.000 ++",
+          "source": "https://www.lulubistrot.com/"
+        },
+        {
+          "name": "Bread and Butter",
+          "price": "50",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Onde-Onde Croquettes",
+          "price": "80",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Oyster au Naturel",
+          "price": "80 ea",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Roasted Scallop",
+          "price": "180 ea",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Chicken Liver Pâté",
+          "price": "150",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Stir Fried Calamari",
+          "price": "170",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Wagyu Beef Tartare",
+          "price": "160",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Onion Tarte Tatin",
+          "price": "200",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Seafood Pasta",
+          "price": "220",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Roasted Chicken",
+          "price": "240",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Local Market Fish",
+          "price": "280",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Créole Risotto",
+          "price": "320",
+          "source": "https://www.lulubistrot.com/menu"
+        }
+      ]
+    },
+    {
+      "name": {
+        "value": "Lulu Bistrot",
+        "source": "https://www.lulubistrot.com/"
+      },
+      "summary": {
+        "value": "Lulu Bistrot is a French restaurant and bar located in Bali, serving French bistro favourites with Indonesian nostalgia.",
+        "source": "https://www.lulubistrot.com/"
+      },
+      "category": "french restaurant",
+      "offerings": [
+        {
+          "name": "Tasting menu",
+          "price": "IDR 850.000 ++",
+          "source": "https://www.lulubistrot.com/"
+        },
+        {
+          "name": "Bread and Butter",
+          "price": "50",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Onde-Onde Croquettes",
+          "price": "80",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Oyster au Naturel",
+          "price": "80 ea",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Roasted Scallop",
+          "price": "180 ea",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Chicken Liver Pâté",
+          "price": "150",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Stir Fried Calamari",
+          "price": "170",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Wagyu Beef Tartare",
+          "price": "160",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Onion Tarte Tatin",
+          "price": "200",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Seafood Pasta",
+          "price": "220",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Roasted Chicken",
+          "price": "240",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Local Market Fish",
+          "price": "280",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Créole Risotto",
+          "price": "320",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Steak & Frites",
+          "price": "60"
+        }
+      ]
+    },
+    {
+      "name": {
+        "value": "Lulu Bistrot",
+        "source": "https://www.lulubistrot.com/"
+      },
+      "summary": {
+        "value": "Lulu Bistrot is a French restaurant and bar located in Bali, serving French bistro favourites with Indonesian nostalgia.",
+        "source": "https://www.lulubistrot.com/"
+      },
+      "category": "french restaurant",
+      "offerings": [
+        {
+          "name": "Tasting menu",
+          "price": "IDR 850.000 ++",
+          "source": "https://www.lulubistrot.com/"
+        },
+        {
+          "name": "Bread and Butter",
+          "price": "50",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Onde-Onde Croquettes",
+          "price": "80",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Oyster au Naturel",
+          "price": "80 ea",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Roasted Scallop",
+          "price": "180 ea",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Chicken Liver Pâté",
+          "price": "150",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Stir Fried Calamari",
+          "price": "170",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Wagyu Beef Tartare",
+          "price": "160",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Onion Tarte Tatin",
+          "price": "200",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Seafood Pasta",
+          "price": "220",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Roasted Chicken",
+          "price": "240",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Local Market Fish",
+          "price": "280",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Créole Risotto",
+          "price": "320",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Steak & Frites",
+          "price": "600",
+          "source": "https://www.lulubistrot.com/menu"
+        }
+      ]
+    },
+    {
+      "name": {
+        "value": "Lulu Bistrot",
+        "source": "https://www.lulubistrot.com/"
+      },
+      "summary": {
+        "value": "Lulu Bistrot is a French restaurant and bar located in Bali, serving French bistro favourites with Indonesian nostalgia.",
+        "source": "https://www.lulubistrot.com/"
+      },
+      "category": "french restaurant",
+      "offerings": [
+        {
+          "name": "Tasting menu",
+          "price": "IDR 850.000 ++",
+          "source": "https://www.lulubistrot.com/"
+        },
+        {
+          "name": "Bread and Butter",
+          "price": "50",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Onde-Onde Croquettes",
+          "price": "80",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Oyster au Naturel",
+          "price": "80 ea",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Roasted Scallop",
+          "price": "180 ea",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Chicken Liver Pâté",
+          "price": "150",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Stir Fried Calamari",
+          "price": "170",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Wagyu Beef Tartare",
+          "price": "160",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Onion Tarte Tatin",
+          "price": "200",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Seafood Pasta",
+          "price": "220",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Roasted Chicken",
+          "price": "240",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Local Market Fish",
+          "price": "280",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Créole Risotto",
+          "price": "320",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Steak & Frites",
+          "price": "600",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Entrecôte Café de Paris",
+          "price": "1"
+        }
+      ]
+    },
+    {
+      "name": {
+        "value": "Lulu Bistrot",
+        "source": "https://www.lulubistrot.com/"
+      },
+      "summary": {
+        "value": "Lulu Bistrot is a French restaurant and bar located in Bali, serving French bistro favourites with Indonesian nostalgia.",
+        "source": "https://www.lulubistrot.com/"
+      },
+      "category": "french restaurant",
+      "offerings": [
+        {
+          "name": "Tasting menu",
+          "price": "IDR 850.000 ++",
+          "source": "https://www.lulubistrot.com/"
+        },
+        {
+          "name": "Bread and Butter",
+          "price": "50",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Onde-Onde Croquettes",
+          "price": "80",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Oyster au Naturel",
+          "price": "80 ea",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Roasted Scallop",
+          "price": "180 ea",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Chicken Liver Pâté",
+          "price": "150",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Stir Fried Calamari",
+          "price": "170",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Wagyu Beef Tartare",
+          "price": "160",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Onion Tarte Tatin",
+          "price": "200",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Seafood Pasta",
+          "price": "220",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Roasted Chicken",
+          "price": "240",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Local Market Fish",
+          "price": "280",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Créole Risotto",
+          "price": "320",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Steak & Frites",
+          "price": "600",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Entrecôte Café de Paris",
+          "price": "1.200",
+          "source": "https://www.lulubistrot.com/menu"
+        }
+      ]
+    },
+    {
+      "name": {
+        "value": "Lulu Bistrot",
+        "source": "https://www.lulubistrot.com/"
+      },
+      "summary": {
+        "value": "Lulu Bistrot is a French restaurant and bar located in Bali, serving French bistro favourites with Indonesian nostalgia.",
+        "source": "https://www.lulubistrot.com/"
+      },
+      "category": "french restaurant",
+      "offerings": [
+        {
+          "name": "Tasting menu",
+          "price": "IDR 850.000 ++",
+          "source": "https://www.lulubistrot.com/"
+        },
+        {
+          "name": "Bread and Butter",
+          "price": "50",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Onde-Onde Croquettes",
+          "price": "80",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Oyster au Naturel",
+          "price": "80 ea",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Roasted Scallop",
+          "price": "180 ea",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Chicken Liver Pâté",
+          "price": "150",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Stir Fried Calamari",
+          "price": "170",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Wagyu Beef Tartare",
+          "price": "160",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Onion Tarte Tatin",
+          "price": "200",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Seafood Pasta",
+          "price": "220",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Roasted Chicken",
+          "price": "240",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Local Market Fish",
+          "price": "280",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Créole Risotto",
+          "price": "320",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Steak & Frites",
+          "price": "600",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Entrecôte Café de Paris",
+          "price": "1.200",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Côte de Boeuf",
+          "price": ""
+        }
+      ]
+    },
+    {
+      "name": {
+        "value": "Lulu Bistrot",
+        "source": "https://www.lulubistrot.com/"
+      },
+      "summary": {
+        "value": "Lulu Bistrot is a French restaurant and bar located in Bali, serving French bistro favourites with Indonesian nostalgia.",
+        "source": "https://www.lulubistrot.com/"
+      },
+      "category": "french restaurant",
+      "offerings": [
+        {
+          "name": "Tasting menu",
+          "price": "IDR 850.000 ++",
+          "source": "https://www.lulubistrot.com/"
+        },
+        {
+          "name": "Bread and Butter",
+          "price": "50",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Onde-Onde Croquettes",
+          "price": "80",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Oyster au Naturel",
+          "price": "80 ea",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Roasted Scallop",
+          "price": "180 ea",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Chicken Liver Pâté",
+          "price": "150",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Stir Fried Calamari",
+          "price": "170",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Wagyu Beef Tartare",
+          "price": "160",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Onion Tarte Tatin",
+          "price": "200",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Seafood Pasta",
+          "price": "220",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Roasted Chicken",
+          "price": "240",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Local Market Fish",
+          "price": "280",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Créole Risotto",
+          "price": "320",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Steak & Frites",
+          "price": "600",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Entrecôte Café de Paris",
+          "price": "1.200",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Côte de Boeuf",
+          "price": "1.400",
+          "source": "https://www.lulubistrot.com/menu"
+        }
+      ]
+    },
+    {
+      "name": {
+        "value": "Lulu Bistrot",
+        "source": "https://www.lulubistrot.com/"
+      },
+      "summary": {
+        "value": "Lulu Bistrot is a French restaurant and bar located in Bali, serving French bistro favourites with Indonesian nostalgia.",
+        "source": "https://www.lulubistrot.com/"
+      },
+      "category": "french restaurant",
+      "offerings": [
+        {
+          "name": "Tasting menu",
+          "price": "IDR 850.000 ++",
+          "source": "https://www.lulubistrot.com/"
+        },
+        {
+          "name": "Bread and Butter",
+          "price": "50",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Onde-Onde Croquettes",
+          "price": "80",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Oyster au Naturel",
+          "price": "80 ea",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Roasted Scallop",
+          "price": "180 ea",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Chicken Liver Pâté",
+          "price": "150",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Stir Fried Calamari",
+          "price": "170",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Wagyu Beef Tartare",
+          "price": "160",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Onion Tarte Tatin",
+          "price": "200",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Seafood Pasta",
+          "price": "220",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Roasted Chicken",
+          "price": "240",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Local Market Fish",
+          "price": "280",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Créole Risotto",
+          "price": "320",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Steak & Frites",
+          "price": "600",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Entrecôte Café de Paris",
+          "price": "1.200",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Côte de Boeuf",
+          "price": "1.400",
+          "source": "https://www.lulubistrot.com/menu"
+        }
+      ],
+      "highlights": [
+        {
+          "value": "Chef'"
+        }
+      ]
+    },
+    {
+      "name": {
+        "value": "Lulu Bistrot",
+        "source": "https://www.lulubistrot.com/"
+      },
+      "summary": {
+        "value": "Lulu Bistrot is a French restaurant and bar located in Bali, serving French bistro favourites with Indonesian nostalgia.",
+        "source": "https://www.lulubistrot.com/"
+      },
+      "category": "french restaurant",
+      "offerings": [
+        {
+          "name": "Tasting menu",
+          "price": "IDR 850.000 ++",
+          "source": "https://www.lulubistrot.com/"
+        },
+        {
+          "name": "Bread and Butter",
+          "price": "50",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Onde-Onde Croquettes",
+          "price": "80",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Oyster au Naturel",
+          "price": "80 ea",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Roasted Scallop",
+          "price": "180 ea",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Chicken Liver Pâté",
+          "price": "150",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Stir Fried Calamari",
+          "price": "170",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Wagyu Beef Tartare",
+          "price": "160",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Onion Tarte Tatin",
+          "price": "200",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Seafood Pasta",
+          "price": "220",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Roasted Chicken",
+          "price": "240",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Local Market Fish",
+          "price": "280",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Créole Risotto",
+          "price": "320",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Steak & Frites",
+          "price": "600",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Entrecôte Café de Paris",
+          "price": "1.200",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Côte de Boeuf",
+          "price": "1.400",
+          "source": "https://www.lulubistrot.com/menu"
+        }
+      ],
+      "highlights": [
+        {
+          "value": "Chef's Counter 6 seats only overlooking the kitchen in action",
+          "source": "https://www.lulubistrot.com/"
+        }
+      ]
+    },
+    {
+      "name": {
+        "value": "Lulu Bistrot",
+        "source": "https://www.lulubistrot.com/"
+      },
+      "summary": {
+        "value": "Lulu Bistrot is a French restaurant and bar located in Bali, serving French bistro favourites with Indonesian nostalgia.",
+        "source": "https://www.lulubistrot.com/"
+      },
+      "category": "french restaurant",
+      "offerings": [
+        {
+          "name": "Tasting menu",
+          "price": "IDR 850.000 ++",
+          "source": "https://www.lulubistrot.com/"
+        },
+        {
+          "name": "Bread and Butter",
+          "price": "50",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Onde-Onde Croquettes",
+          "price": "80",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Oyster au Naturel",
+          "price": "80 ea",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Roasted Scallop",
+          "price": "180 ea",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Chicken Liver Pâté",
+          "price": "150",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Stir Fried Calamari",
+          "price": "170",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Wagyu Beef Tartare",
+          "price": "160",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Onion Tarte Tatin",
+          "price": "200",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Seafood Pasta",
+          "price": "220",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Roasted Chicken",
+          "price": "240",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Local Market Fish",
+          "price": "280",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Créole Risotto",
+          "price": "320",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Steak & Frites",
+          "price": "600",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Entrecôte Café de Paris",
+          "price": "1.200",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Côte de Boeuf",
+          "price": "1.400",
+          "source": "https://www.lulubistrot.com/menu"
+        }
+      ],
+      "highlights": [
+        {
+          "value": "Chef's Counter 6 seats only overlooking the kitchen in action",
+          "source": "https://www.lulubistrot.com/"
+        },
+        {
+          "value": "Inventive twist on classic cocktails celebrating the rich heritage of French colonies"
+        }
+      ]
+    },
+    {
+      "name": {
+        "value": "Lulu Bistrot",
+        "source": "https://www.lulubistrot.com/"
+      },
+      "summary": {
+        "value": "Lulu Bistrot is a French restaurant and bar located in Bali, serving French bistro favourites with Indonesian nostalgia.",
+        "source": "https://www.lulubistrot.com/"
+      },
+      "category": "french restaurant",
+      "offerings": [
+        {
+          "name": "Tasting menu",
+          "price": "IDR 850.000 ++",
+          "source": "https://www.lulubistrot.com/"
+        },
+        {
+          "name": "Bread and Butter",
+          "price": "50",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Onde-Onde Croquettes",
+          "price": "80",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Oyster au Naturel",
+          "price": "80 ea",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Roasted Scallop",
+          "price": "180 ea",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Chicken Liver Pâté",
+          "price": "150",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Stir Fried Calamari",
+          "price": "170",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Wagyu Beef Tartare",
+          "price": "160",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Onion Tarte Tatin",
+          "price": "200",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Seafood Pasta",
+          "price": "220",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Roasted Chicken",
+          "price": "240",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Local Market Fish",
+          "price": "280",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Créole Risotto",
+          "price": "320",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Steak & Frites",
+          "price": "600",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Entrecôte Café de Paris",
+          "price": "1.200",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Côte de Boeuf",
+          "price": "1.400",
+          "source": "https://www.lulubistrot.com/menu"
+        }
+      ],
+      "highlights": [
+        {
+          "value": "Chef's Counter 6 seats only overlooking the kitchen in action",
+          "source": "https://www.lulubistrot.com/"
+        },
+        {
+          "value": "Inventive twist on classic cocktails celebrating the rich heritage of French colonies",
+          "source": "https://www.lulubistrot.com/"
+        }
+      ]
+    },
+    {
+      "name": {
+        "value": "Lulu Bistrot",
+        "source": "https://www.lulubistrot.com/"
+      },
+      "summary": {
+        "value": "Lulu Bistrot is a French restaurant and bar located in Bali, serving French bistro favourites with Indonesian nostalgia.",
+        "source": "https://www.lulubistrot.com/"
+      },
+      "category": "french restaurant",
+      "offerings": [
+        {
+          "name": "Tasting menu",
+          "price": "IDR 850.000 ++",
+          "source": "https://www.lulubistrot.com/"
+        },
+        {
+          "name": "Bread and Butter",
+          "price": "50",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Onde-Onde Croquettes",
+          "price": "80",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Oyster au Naturel",
+          "price": "80 ea",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Roasted Scallop",
+          "price": "180 ea",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Chicken Liver Pâté",
+          "price": "150",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Stir Fried Calamari",
+          "price": "170",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Wagyu Beef Tartare",
+          "price": "160",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Onion Tarte Tatin",
+          "price": "200",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Seafood Pasta",
+          "price": "220",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Roasted Chicken",
+          "price": "240",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Local Market Fish",
+          "price": "280",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Créole Risotto",
+          "price": "320",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Steak & Frites",
+          "price": "600",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Entrecôte Café de Paris",
+          "price": "1.200",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Côte de Boeuf",
+          "price": "1.400",
+          "source": "https://www.lulubistrot.com/menu"
+        }
+      ],
+      "highlights": [
+        {
+          "value": "Chef's Counter 6 seats only overlooking the kitchen in action",
+          "source": "https://www.lulubistrot.com/"
+        },
+        {
+          "value": "Inventive twist on classic cocktails celebrating the rich heritage of French colonies",
+          "source": "https://www.lulubistrot.com/"
+        }
+      ],
+      "location": {
+        "town": {
+          "value": "Canggu"
+        }
+      }
+    },
+    {
+      "name": {
+        "value": "Lulu Bistrot",
+        "source": "https://www.lulubistrot.com/"
+      },
+      "summary": {
+        "value": "Lulu Bistrot is a French restaurant and bar located in Bali, serving French bistro favourites with Indonesian nostalgia.",
+        "source": "https://www.lulubistrot.com/"
+      },
+      "category": "french restaurant",
+      "offerings": [
+        {
+          "name": "Tasting menu",
+          "price": "IDR 850.000 ++",
+          "source": "https://www.lulubistrot.com/"
+        },
+        {
+          "name": "Bread and Butter",
+          "price": "50",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Onde-Onde Croquettes",
+          "price": "80",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Oyster au Naturel",
+          "price": "80 ea",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Roasted Scallop",
+          "price": "180 ea",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Chicken Liver Pâté",
+          "price": "150",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Stir Fried Calamari",
+          "price": "170",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Wagyu Beef Tartare",
+          "price": "160",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Onion Tarte Tatin",
+          "price": "200",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Seafood Pasta",
+          "price": "220",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Roasted Chicken",
+          "price": "240",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Local Market Fish",
+          "price": "280",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Créole Risotto",
+          "price": "320",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Steak & Frites",
+          "price": "600",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Entrecôte Café de Paris",
+          "price": "1.200",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Côte de Boeuf",
+          "price": "1.400",
+          "source": "https://www.lulubistrot.com/menu"
+        }
+      ],
+      "highlights": [
+        {
+          "value": "Chef's Counter 6 seats only overlooking the kitchen in action",
+          "source": "https://www.lulubistrot.com/"
+        },
+        {
+          "value": "Inventive twist on classic cocktails celebrating the rich heritage of French colonies",
+          "source": "https://www.lulubistrot.com/"
+        }
+      ],
+      "location": {
+        "town": {
+          "value": "Canggu",
+          "source": "https://www.lulubistrot.com/"
+        },
+        "area": null
+      }
+    },
+    {
+      "name": {
+        "value": "Lulu Bistrot",
+        "source": "https://www.lulubistrot.com/"
+      },
+      "summary": {
+        "value": "Lulu Bistrot is a French restaurant and bar located in Bali, serving French bistro favourites with Indonesian nostalgia.",
+        "source": "https://www.lulubistrot.com/"
+      },
+      "category": "french restaurant",
+      "offerings": [
+        {
+          "name": "Tasting menu",
+          "price": "IDR 850.000 ++",
+          "source": "https://www.lulubistrot.com/"
+        },
+        {
+          "name": "Bread and Butter",
+          "price": "50",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Onde-Onde Croquettes",
+          "price": "80",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Oyster au Naturel",
+          "price": "80 ea",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Roasted Scallop",
+          "price": "180 ea",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Chicken Liver Pâté",
+          "price": "150",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Stir Fried Calamari",
+          "price": "170",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Wagyu Beef Tartare",
+          "price": "160",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Onion Tarte Tatin",
+          "price": "200",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Seafood Pasta",
+          "price": "220",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Roasted Chicken",
+          "price": "240",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Local Market Fish",
+          "price": "280",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Créole Risotto",
+          "price": "320",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Steak & Frites",
+          "price": "600",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Entrecôte Café de Paris",
+          "price": "1.200",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Côte de Boeuf",
+          "price": "1.400",
+          "source": "https://www.lulubistrot.com/menu"
+        }
+      ],
+      "highlights": [
+        {
+          "value": "Chef's Counter 6 seats only overlooking the kitchen in action",
+          "source": "https://www.lulubistrot.com/"
+        },
+        {
+          "value": "Inventive twist on classic cocktails celebrating the rich heritage of French colonies",
+          "source": "https://www.lulubistrot.com/"
+        }
+      ],
+      "location": {
+        "town": {
+          "value": "Canggu",
+          "source": "https://www.lulubistrot.com/"
+        },
+        "area": null,
+        "address": null,
+        "serviceArea": null
+      },
+      "contact": {}
+    },
+    {
+      "name": {
+        "value": "Lulu Bistrot",
+        "source": "https://www.lulubistrot.com/"
+      },
+      "summary": {
+        "value": "Lulu Bistrot is a French restaurant and bar located in Bali, serving French bistro favourites with Indonesian nostalgia.",
+        "source": "https://www.lulubistrot.com/"
+      },
+      "category": "french restaurant",
+      "offerings": [
+        {
+          "name": "Tasting menu",
+          "price": "IDR 850.000 ++",
+          "source": "https://www.lulubistrot.com/"
+        },
+        {
+          "name": "Bread and Butter",
+          "price": "50",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Onde-Onde Croquettes",
+          "price": "80",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Oyster au Naturel",
+          "price": "80 ea",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Roasted Scallop",
+          "price": "180 ea",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Chicken Liver Pâté",
+          "price": "150",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Stir Fried Calamari",
+          "price": "170",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Wagyu Beef Tartare",
+          "price": "160",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Onion Tarte Tatin",
+          "price": "200",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Seafood Pasta",
+          "price": "220",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Roasted Chicken",
+          "price": "240",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Local Market Fish",
+          "price": "280",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Créole Risotto",
+          "price": "320",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Steak & Frites",
+          "price": "600",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Entrecôte Café de Paris",
+          "price": "1.200",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Côte de Boeuf",
+          "price": "1.400",
+          "source": "https://www.lulubistrot.com/menu"
+        }
+      ],
+      "highlights": [
+        {
+          "value": "Chef's Counter 6 seats only overlooking the kitchen in action",
+          "source": "https://www.lulubistrot.com/"
+        },
+        {
+          "value": "Inventive twist on classic cocktails celebrating the rich heritage of French colonies",
+          "source": "https://www.lulubistrot.com/"
+        }
+      ],
+      "location": {
+        "town": {
+          "value": "Canggu",
+          "source": "https://www.lulubistrot.com/"
+        },
+        "area": null,
+        "address": null,
+        "serviceArea": null
+      },
+      "contact": {
+        "whatsapp": {
+          "value": "628133792086"
+        }
+      }
+    },
+    {
+      "name": {
+        "value": "Lulu Bistrot",
+        "source": "https://www.lulubistrot.com/"
+      },
+      "summary": {
+        "value": "Lulu Bistrot is a French restaurant and bar located in Bali, serving French bistro favourites with Indonesian nostalgia.",
+        "source": "https://www.lulubistrot.com/"
+      },
+      "category": "french restaurant",
+      "offerings": [
+        {
+          "name": "Tasting menu",
+          "price": "IDR 850.000 ++",
+          "source": "https://www.lulubistrot.com/"
+        },
+        {
+          "name": "Bread and Butter",
+          "price": "50",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Onde-Onde Croquettes",
+          "price": "80",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Oyster au Naturel",
+          "price": "80 ea",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Roasted Scallop",
+          "price": "180 ea",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Chicken Liver Pâté",
+          "price": "150",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Stir Fried Calamari",
+          "price": "170",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Wagyu Beef Tartare",
+          "price": "160",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Onion Tarte Tatin",
+          "price": "200",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Seafood Pasta",
+          "price": "220",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Roasted Chicken",
+          "price": "240",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Local Market Fish",
+          "price": "280",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Créole Risotto",
+          "price": "320",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Steak & Frites",
+          "price": "600",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Entrecôte Café de Paris",
+          "price": "1.200",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Côte de Boeuf",
+          "price": "1.400",
+          "source": "https://www.lulubistrot.com/menu"
+        }
+      ],
+      "highlights": [
+        {
+          "value": "Chef's Counter 6 seats only overlooking the kitchen in action",
+          "source": "https://www.lulubistrot.com/"
+        },
+        {
+          "value": "Inventive twist on classic cocktails celebrating the rich heritage of French colonies",
+          "source": "https://www.lulubistrot.com/"
+        }
+      ],
+      "location": {
+        "town": {
+          "value": "Canggu",
+          "source": "https://www.lulubistrot.com/"
+        },
+        "area": null,
+        "address": null,
+        "serviceArea": null
+      },
+      "contact": {
+        "whatsapp": {
+          "value": "6281337920869",
+          "source": "https://www.lulubistrot.com/group-bookings"
+        },
+        "phone": null,
+        "email": {
+          "value": "contact@lul"
+        }
+      }
+    },
+    {
+      "name": {
+        "value": "Lulu Bistrot",
+        "source": "https://www.lulubistrot.com/"
+      },
+      "summary": {
+        "value": "Lulu Bistrot is a French restaurant and bar located in Bali, serving French bistro favourites with Indonesian nostalgia.",
+        "source": "https://www.lulubistrot.com/"
+      },
+      "category": "french restaurant",
+      "offerings": [
+        {
+          "name": "Tasting menu",
+          "price": "IDR 850.000 ++",
+          "source": "https://www.lulubistrot.com/"
+        },
+        {
+          "name": "Bread and Butter",
+          "price": "50",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Onde-Onde Croquettes",
+          "price": "80",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Oyster au Naturel",
+          "price": "80 ea",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Roasted Scallop",
+          "price": "180 ea",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Chicken Liver Pâté",
+          "price": "150",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Stir Fried Calamari",
+          "price": "170",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Wagyu Beef Tartare",
+          "price": "160",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Onion Tarte Tatin",
+          "price": "200",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Seafood Pasta",
+          "price": "220",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Roasted Chicken",
+          "price": "240",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Local Market Fish",
+          "price": "280",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Créole Risotto",
+          "price": "320",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Steak & Frites",
+          "price": "600",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Entrecôte Café de Paris",
+          "price": "1.200",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Côte de Boeuf",
+          "price": "1.400",
+          "source": "https://www.lulubistrot.com/menu"
+        }
+      ],
+      "highlights": [
+        {
+          "value": "Chef's Counter 6 seats only overlooking the kitchen in action",
+          "source": "https://www.lulubistrot.com/"
+        },
+        {
+          "value": "Inventive twist on classic cocktails celebrating the rich heritage of French colonies",
+          "source": "https://www.lulubistrot.com/"
+        }
+      ],
+      "location": {
+        "town": {
+          "value": "Canggu",
+          "source": "https://www.lulubistrot.com/"
+        },
+        "area": null,
+        "address": null,
+        "serviceArea": null
+      },
+      "contact": {
+        "whatsapp": {
+          "value": "6281337920869",
+          "source": "https://www.lulubistrot.com/group-bookings"
+        },
+        "phone": null,
+        "email": {
+          "value": "contact@lulubistrot.com",
+          "source": "https://www.lulubistrot.com/"
+        },
+        "instagram": {
+          "value": "lulu.bistrot"
+        }
+      }
+    },
+    {
+      "name": {
+        "value": "Lulu Bistrot",
+        "source": "https://www.lulubistrot.com/"
+      },
+      "summary": {
+        "value": "Lulu Bistrot is a French restaurant and bar located in Bali, serving French bistro favourites with Indonesian nostalgia.",
+        "source": "https://www.lulubistrot.com/"
+      },
+      "category": "french restaurant",
+      "offerings": [
+        {
+          "name": "Tasting menu",
+          "price": "IDR 850.000 ++",
+          "source": "https://www.lulubistrot.com/"
+        },
+        {
+          "name": "Bread and Butter",
+          "price": "50",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Onde-Onde Croquettes",
+          "price": "80",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Oyster au Naturel",
+          "price": "80 ea",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Roasted Scallop",
+          "price": "180 ea",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Chicken Liver Pâté",
+          "price": "150",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Stir Fried Calamari",
+          "price": "170",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Wagyu Beef Tartare",
+          "price": "160",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Onion Tarte Tatin",
+          "price": "200",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Seafood Pasta",
+          "price": "220",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Roasted Chicken",
+          "price": "240",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Local Market Fish",
+          "price": "280",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Créole Risotto",
+          "price": "320",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Steak & Frites",
+          "price": "600",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Entrecôte Café de Paris",
+          "price": "1.200",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Côte de Boeuf",
+          "price": "1.400",
+          "source": "https://www.lulubistrot.com/menu"
+        }
+      ],
+      "highlights": [
+        {
+          "value": "Chef's Counter 6 seats only overlooking the kitchen in action",
+          "source": "https://www.lulubistrot.com/"
+        },
+        {
+          "value": "Inventive twist on classic cocktails celebrating the rich heritage of French colonies",
+          "source": "https://www.lulubistrot.com/"
+        }
+      ],
+      "location": {
+        "town": {
+          "value": "Canggu",
+          "source": "https://www.lulubistrot.com/"
+        },
+        "area": null,
+        "address": null,
+        "serviceArea": null
+      },
+      "contact": {
+        "whatsapp": {
+          "value": "6281337920869",
+          "source": "https://www.lulubistrot.com/group-bookings"
+        },
+        "phone": null,
+        "email": {
+          "value": "contact@lulubistrot.com",
+          "source": "https://www.lulubistrot.com/"
+        },
+        "instagram": {
+          "value": "lulu.bistrot",
+          "source": "https://www.lulubistrot.com/"
+        },
+        "bookingUrl": null
+      }
+    },
+    {
+      "name": {
+        "value": "Lulu Bistrot",
+        "source": "https://www.lulubistrot.com/"
+      },
+      "summary": {
+        "value": "Lulu Bistrot is a French restaurant and bar located in Bali, serving French bistro favourites with Indonesian nostalgia.",
+        "source": "https://www.lulubistrot.com/"
+      },
+      "category": "french restaurant",
+      "offerings": [
+        {
+          "name": "Tasting menu",
+          "price": "IDR 850.000 ++",
+          "source": "https://www.lulubistrot.com/"
+        },
+        {
+          "name": "Bread and Butter",
+          "price": "50",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Onde-Onde Croquettes",
+          "price": "80",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Oyster au Naturel",
+          "price": "80 ea",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Roasted Scallop",
+          "price": "180 ea",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Chicken Liver Pâté",
+          "price": "150",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Stir Fried Calamari",
+          "price": "170",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Wagyu Beef Tartare",
+          "price": "160",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Onion Tarte Tatin",
+          "price": "200",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Seafood Pasta",
+          "price": "220",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Roasted Chicken",
+          "price": "240",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Local Market Fish",
+          "price": "280",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Créole Risotto",
+          "price": "320",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Steak & Frites",
+          "price": "600",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Entrecôte Café de Paris",
+          "price": "1.200",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Côte de Boeuf",
+          "price": "1.400",
+          "source": "https://www.lulubistrot.com/menu"
+        }
+      ],
+      "highlights": [
+        {
+          "value": "Chef's Counter 6 seats only overlooking the kitchen in action",
+          "source": "https://www.lulubistrot.com/"
+        },
+        {
+          "value": "Inventive twist on classic cocktails celebrating the rich heritage of French colonies",
+          "source": "https://www.lulubistrot.com/"
+        }
+      ],
+      "location": {
+        "town": {
+          "value": "Canggu",
+          "source": "https://www.lulubistrot.com/"
+        },
+        "area": null,
+        "address": null,
+        "serviceArea": null
+      },
+      "contact": {
+        "whatsapp": {
+          "value": "6281337920869",
+          "source": "https://www.lulubistrot.com/group-bookings"
+        },
+        "phone": null,
+        "email": {
+          "value": "contact@lulubistrot.com",
+          "source": "https://www.lulubistrot.com/"
+        },
+        "instagram": {
+          "value": "lulu.bistrot",
+          "source": "https://www.lulubistrot.com/"
+        },
+        "bookingUrl": null
+      },
+      "hours": null,
+      "tone": [
+        "welcoming"
+      ]
+    },
+    {
+      "name": {
+        "value": "Lulu Bistrot",
+        "source": "https://www.lulubistrot.com/"
+      },
+      "summary": {
+        "value": "Lulu Bistrot is a French restaurant and bar located in Bali, serving French bistro favourites with Indonesian nostalgia.",
+        "source": "https://www.lulubistrot.com/"
+      },
+      "category": "french restaurant",
+      "offerings": [
+        {
+          "name": "Tasting menu",
+          "price": "IDR 850.000 ++",
+          "source": "https://www.lulubistrot.com/"
+        },
+        {
+          "name": "Bread and Butter",
+          "price": "50",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Onde-Onde Croquettes",
+          "price": "80",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Oyster au Naturel",
+          "price": "80 ea",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Roasted Scallop",
+          "price": "180 ea",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Chicken Liver Pâté",
+          "price": "150",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Stir Fried Calamari",
+          "price": "170",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Wagyu Beef Tartare",
+          "price": "160",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Onion Tarte Tatin",
+          "price": "200",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Seafood Pasta",
+          "price": "220",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Roasted Chicken",
+          "price": "240",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Local Market Fish",
+          "price": "280",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Créole Risotto",
+          "price": "320",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Steak & Frites",
+          "price": "600",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Entrecôte Café de Paris",
+          "price": "1.200",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Côte de Boeuf",
+          "price": "1.400",
+          "source": "https://www.lulubistrot.com/menu"
+        }
+      ],
+      "highlights": [
+        {
+          "value": "Chef's Counter 6 seats only overlooking the kitchen in action",
+          "source": "https://www.lulubistrot.com/"
+        },
+        {
+          "value": "Inventive twist on classic cocktails celebrating the rich heritage of French colonies",
+          "source": "https://www.lulubistrot.com/"
+        }
+      ],
+      "location": {
+        "town": {
+          "value": "Canggu",
+          "source": "https://www.lulubistrot.com/"
+        },
+        "area": null,
+        "address": null,
+        "serviceArea": null
+      },
+      "contact": {
+        "whatsapp": {
+          "value": "6281337920869",
+          "source": "https://www.lulubistrot.com/group-bookings"
+        },
+        "phone": null,
+        "email": {
+          "value": "contact@lulubistrot.com",
+          "source": "https://www.lulubistrot.com/"
+        },
+        "instagram": {
+          "value": "lulu.bistrot",
+          "source": "https://www.lulubistrot.com/"
+        },
+        "bookingUrl": null
+      },
+      "hours": null,
+      "tone": [
+        "welcoming",
+        "sophisticated",
+        "inviting"
+      ],
+      "colours": [
+        {}
+      ]
+    },
+    {
+      "name": {
+        "value": "Lulu Bistrot",
+        "source": "https://www.lulubistrot.com/"
+      },
+      "summary": {
+        "value": "Lulu Bistrot is a French restaurant and bar located in Bali, serving French bistro favourites with Indonesian nostalgia.",
+        "source": "https://www.lulubistrot.com/"
+      },
+      "category": "french restaurant",
+      "offerings": [
+        {
+          "name": "Tasting menu",
+          "price": "IDR 850.000 ++",
+          "source": "https://www.lulubistrot.com/"
+        },
+        {
+          "name": "Bread and Butter",
+          "price": "50",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Onde-Onde Croquettes",
+          "price": "80",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Oyster au Naturel",
+          "price": "80 ea",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Roasted Scallop",
+          "price": "180 ea",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Chicken Liver Pâté",
+          "price": "150",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Stir Fried Calamari",
+          "price": "170",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Wagyu Beef Tartare",
+          "price": "160",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Onion Tarte Tatin",
+          "price": "200",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Seafood Pasta",
+          "price": "220",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Roasted Chicken",
+          "price": "240",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Local Market Fish",
+          "price": "280",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Créole Risotto",
+          "price": "320",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Steak & Frites",
+          "price": "600",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Entrecôte Café de Paris",
+          "price": "1.200",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Côte de Boeuf",
+          "price": "1.400",
+          "source": "https://www.lulubistrot.com/menu"
+        }
+      ],
+      "highlights": [
+        {
+          "value": "Chef's Counter 6 seats only overlooking the kitchen in action",
+          "source": "https://www.lulubistrot.com/"
+        },
+        {
+          "value": "Inventive twist on classic cocktails celebrating the rich heritage of French colonies",
+          "source": "https://www.lulubistrot.com/"
+        }
+      ],
+      "location": {
+        "town": {
+          "value": "Canggu",
+          "source": "https://www.lulubistrot.com/"
+        },
+        "area": null,
+        "address": null,
+        "serviceArea": null
+      },
+      "contact": {
+        "whatsapp": {
+          "value": "6281337920869",
+          "source": "https://www.lulubistrot.com/group-bookings"
+        },
+        "phone": null,
+        "email": {
+          "value": "contact@lulubistrot.com",
+          "source": "https://www.lulubistrot.com/"
+        },
+        "instagram": {
+          "value": "lulu.bistrot",
+          "source": "https://www.lulubistrot.com/"
+        },
+        "bookingUrl": null
+      },
+      "hours": null,
+      "tone": [
+        "welcoming",
+        "sophisticated",
+        "inviting"
+      ],
+      "colours": [
+        {
+          "hex": "#3b4d3c",
+          "role": "primary",
+          "source": "https://www"
+        }
+      ]
+    },
+    {
+      "name": {
+        "value": "Lulu Bistrot",
+        "source": "https://www.lulubistrot.com/"
+      },
+      "summary": {
+        "value": "Lulu Bistrot is a French restaurant and bar located in Bali, serving French bistro favourites with Indonesian nostalgia.",
+        "source": "https://www.lulubistrot.com/"
+      },
+      "category": "french restaurant",
+      "offerings": [
+        {
+          "name": "Tasting menu",
+          "price": "IDR 850.000 ++",
+          "source": "https://www.lulubistrot.com/"
+        },
+        {
+          "name": "Bread and Butter",
+          "price": "50",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Onde-Onde Croquettes",
+          "price": "80",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Oyster au Naturel",
+          "price": "80 ea",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Roasted Scallop",
+          "price": "180 ea",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Chicken Liver Pâté",
+          "price": "150",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Stir Fried Calamari",
+          "price": "170",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Wagyu Beef Tartare",
+          "price": "160",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Onion Tarte Tatin",
+          "price": "200",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Seafood Pasta",
+          "price": "220",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Roasted Chicken",
+          "price": "240",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Local Market Fish",
+          "price": "280",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Créole Risotto",
+          "price": "320",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Steak & Frites",
+          "price": "600",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Entrecôte Café de Paris",
+          "price": "1.200",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Côte de Boeuf",
+          "price": "1.400",
+          "source": "https://www.lulubistrot.com/menu"
+        }
+      ],
+      "highlights": [
+        {
+          "value": "Chef's Counter 6 seats only overlooking the kitchen in action",
+          "source": "https://www.lulubistrot.com/"
+        },
+        {
+          "value": "Inventive twist on classic cocktails celebrating the rich heritage of French colonies",
+          "source": "https://www.lulubistrot.com/"
+        }
+      ],
+      "location": {
+        "town": {
+          "value": "Canggu",
+          "source": "https://www.lulubistrot.com/"
+        },
+        "area": null,
+        "address": null,
+        "serviceArea": null
+      },
+      "contact": {
+        "whatsapp": {
+          "value": "6281337920869",
+          "source": "https://www.lulubistrot.com/group-bookings"
+        },
+        "phone": null,
+        "email": {
+          "value": "contact@lulubistrot.com",
+          "source": "https://www.lulubistrot.com/"
+        },
+        "instagram": {
+          "value": "lulu.bistrot",
+          "source": "https://www.lulubistrot.com/"
+        },
+        "bookingUrl": null
+      },
+      "hours": null,
+      "tone": [
+        "welcoming",
+        "sophisticated",
+        "inviting"
+      ],
+      "colours": [
+        {
+          "hex": "#3b4d3c",
+          "role": "primary",
+          "source": "https://www.lulubistrot.com/"
+        },
+        {
+          "hex": "#ffffff"
+        }
+      ]
+    },
+    {
+      "name": {
+        "value": "Lulu Bistrot",
+        "source": "https://www.lulubistrot.com/"
+      },
+      "summary": {
+        "value": "Lulu Bistrot is a French restaurant and bar located in Bali, serving French bistro favourites with Indonesian nostalgia.",
+        "source": "https://www.lulubistrot.com/"
+      },
+      "category": "french restaurant",
+      "offerings": [
+        {
+          "name": "Tasting menu",
+          "price": "IDR 850.000 ++",
+          "source": "https://www.lulubistrot.com/"
+        },
+        {
+          "name": "Bread and Butter",
+          "price": "50",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Onde-Onde Croquettes",
+          "price": "80",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Oyster au Naturel",
+          "price": "80 ea",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Roasted Scallop",
+          "price": "180 ea",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Chicken Liver Pâté",
+          "price": "150",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Stir Fried Calamari",
+          "price": "170",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Wagyu Beef Tartare",
+          "price": "160",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Onion Tarte Tatin",
+          "price": "200",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Seafood Pasta",
+          "price": "220",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Roasted Chicken",
+          "price": "240",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Local Market Fish",
+          "price": "280",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Créole Risotto",
+          "price": "320",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Steak & Frites",
+          "price": "600",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Entrecôte Café de Paris",
+          "price": "1.200",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Côte de Boeuf",
+          "price": "1.400",
+          "source": "https://www.lulubistrot.com/menu"
+        }
+      ],
+      "highlights": [
+        {
+          "value": "Chef's Counter 6 seats only overlooking the kitchen in action",
+          "source": "https://www.lulubistrot.com/"
+        },
+        {
+          "value": "Inventive twist on classic cocktails celebrating the rich heritage of French colonies",
+          "source": "https://www.lulubistrot.com/"
+        }
+      ],
+      "location": {
+        "town": {
+          "value": "Canggu",
+          "source": "https://www.lulubistrot.com/"
+        },
+        "area": null,
+        "address": null,
+        "serviceArea": null
+      },
+      "contact": {
+        "whatsapp": {
+          "value": "6281337920869",
+          "source": "https://www.lulubistrot.com/group-bookings"
+        },
+        "phone": null,
+        "email": {
+          "value": "contact@lulubistrot.com",
+          "source": "https://www.lulubistrot.com/"
+        },
+        "instagram": {
+          "value": "lulu.bistrot",
+          "source": "https://www.lulubistrot.com/"
+        },
+        "bookingUrl": null
+      },
+      "hours": null,
+      "tone": [
+        "welcoming",
+        "sophisticated",
+        "inviting"
+      ],
+      "colours": [
+        {
+          "hex": "#3b4d3c",
+          "role": "primary",
+          "source": "https://www.lulubistrot.com/"
+        },
+        {
+          "hex": "#ffffff",
+          "role": "background",
+          "source": "https://www.lulubistrot.com/"
+        },
+        {
+          "hex": "#222222",
+          "role": "text"
+        }
+      ]
+    },
+    {
+      "name": {
+        "value": "Lulu Bistrot",
+        "source": "https://www.lulubistrot.com/"
+      },
+      "summary": {
+        "value": "Lulu Bistrot is a French restaurant and bar located in Bali, serving French bistro favourites with Indonesian nostalgia.",
+        "source": "https://www.lulubistrot.com/"
+      },
+      "category": "french restaurant",
+      "offerings": [
+        {
+          "name": "Tasting menu",
+          "price": "IDR 850.000 ++",
+          "source": "https://www.lulubistrot.com/"
+        },
+        {
+          "name": "Bread and Butter",
+          "price": "50",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Onde-Onde Croquettes",
+          "price": "80",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Oyster au Naturel",
+          "price": "80 ea",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Roasted Scallop",
+          "price": "180 ea",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Chicken Liver Pâté",
+          "price": "150",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Stir Fried Calamari",
+          "price": "170",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Wagyu Beef Tartare",
+          "price": "160",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Onion Tarte Tatin",
+          "price": "200",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Seafood Pasta",
+          "price": "220",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Roasted Chicken",
+          "price": "240",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Local Market Fish",
+          "price": "280",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Créole Risotto",
+          "price": "320",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Steak & Frites",
+          "price": "600",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Entrecôte Café de Paris",
+          "price": "1.200",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Côte de Boeuf",
+          "price": "1.400",
+          "source": "https://www.lulubistrot.com/menu"
+        }
+      ],
+      "highlights": [
+        {
+          "value": "Chef's Counter 6 seats only overlooking the kitchen in action",
+          "source": "https://www.lulubistrot.com/"
+        },
+        {
+          "value": "Inventive twist on classic cocktails celebrating the rich heritage of French colonies",
+          "source": "https://www.lulubistrot.com/"
+        }
+      ],
+      "location": {
+        "town": {
+          "value": "Canggu",
+          "source": "https://www.lulubistrot.com/"
+        },
+        "area": null,
+        "address": null,
+        "serviceArea": null
+      },
+      "contact": {
+        "whatsapp": {
+          "value": "6281337920869",
+          "source": "https://www.lulubistrot.com/group-bookings"
+        },
+        "phone": null,
+        "email": {
+          "value": "contact@lulubistrot.com",
+          "source": "https://www.lulubistrot.com/"
+        },
+        "instagram": {
+          "value": "lulu.bistrot",
+          "source": "https://www.lulubistrot.com/"
+        },
+        "bookingUrl": null
+      },
+      "hours": null,
+      "tone": [
+        "welcoming",
+        "sophisticated",
+        "inviting"
+      ],
+      "colours": [
+        {
+          "hex": "#3b4d3c",
+          "role": "primary",
+          "source": "https://www.lulubistrot.com/"
+        },
+        {
+          "hex": "#ffffff",
+          "role": "background",
+          "source": "https://www.lulubistrot.com/"
+        },
+        {
+          "hex": "#222222",
+          "role": "text",
+          "source": "https://www.lulubistrot.com/"
+        }
+      ]
+    },
+    {
+      "name": {
+        "value": "Lulu Bistrot",
+        "source": "https://www.lulubistrot.com/"
+      },
+      "summary": {
+        "value": "Lulu Bistrot is a French restaurant and bar located in Bali, serving French bistro favourites with Indonesian nostalgia.",
+        "source": "https://www.lulubistrot.com/"
+      },
+      "category": "french restaurant",
+      "offerings": [
+        {
+          "name": "Tasting menu",
+          "price": "IDR 850.000 ++",
+          "source": "https://www.lulubistrot.com/"
+        },
+        {
+          "name": "Bread and Butter",
+          "price": "50",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Onde-Onde Croquettes",
+          "price": "80",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Oyster au Naturel",
+          "price": "80 ea",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Roasted Scallop",
+          "price": "180 ea",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Chicken Liver Pâté",
+          "price": "150",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Stir Fried Calamari",
+          "price": "170",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Wagyu Beef Tartare",
+          "price": "160",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Onion Tarte Tatin",
+          "price": "200",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Seafood Pasta",
+          "price": "220",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Roasted Chicken",
+          "price": "240",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Local Market Fish",
+          "price": "280",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Créole Risotto",
+          "price": "320",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Steak & Frites",
+          "price": "600",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Entrecôte Café de Paris",
+          "price": "1.200",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Côte de Boeuf",
+          "price": "1.400",
+          "source": "https://www.lulubistrot.com/menu"
+        }
+      ],
+      "highlights": [
+        {
+          "value": "Chef's Counter 6 seats only overlooking the kitchen in action",
+          "source": "https://www.lulubistrot.com/"
+        },
+        {
+          "value": "Inventive twist on classic cocktails celebrating the rich heritage of French colonies",
+          "source": "https://www.lulubistrot.com/"
+        }
+      ],
+      "location": {
+        "town": {
+          "value": "Canggu",
+          "source": "https://www.lulubistrot.com/"
+        },
+        "area": null,
+        "address": null,
+        "serviceArea": null
+      },
+      "contact": {
+        "whatsapp": {
+          "value": "6281337920869",
+          "source": "https://www.lulubistrot.com/group-bookings"
+        },
+        "phone": null,
+        "email": {
+          "value": "contact@lulubistrot.com",
+          "source": "https://www.lulubistrot.com/"
+        },
+        "instagram": {
+          "value": "lulu.bistrot",
+          "source": "https://www.lulubistrot.com/"
+        },
+        "bookingUrl": null
+      },
+      "hours": null,
+      "tone": [
+        "welcoming",
+        "sophisticated",
+        "inviting"
+      ],
+      "colours": [
+        {
+          "hex": "#3b4d3c",
+          "role": "primary",
+          "source": "https://www.lulubistrot.com/"
+        },
+        {
+          "hex": "#ffffff",
+          "role": "background",
+          "source": "https://www.lulubistrot.com/"
+        },
+        {
+          "hex": "#222222",
+          "role": "text",
+          "source": "https://www.lulubistrot.com/"
+        }
+      ],
+      "visualStyle": {
+        "summary": "Warm bistro palette, natural soft light, dark wood textures, sophisticated"
+      }
+    },
+    {
+      "name": {
+        "value": "Lulu Bistrot",
+        "source": "https://www.lulubistrot.com/"
+      },
+      "summary": {
+        "value": "Lulu Bistrot is a French restaurant and bar located in Bali, serving French bistro favourites with Indonesian nostalgia.",
+        "source": "https://www.lulubistrot.com/"
+      },
+      "category": "french restaurant",
+      "offerings": [
+        {
+          "name": "Tasting menu",
+          "price": "IDR 850.000 ++",
+          "source": "https://www.lulubistrot.com/"
+        },
+        {
+          "name": "Bread and Butter",
+          "price": "50",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Onde-Onde Croquettes",
+          "price": "80",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Oyster au Naturel",
+          "price": "80 ea",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Roasted Scallop",
+          "price": "180 ea",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Chicken Liver Pâté",
+          "price": "150",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Stir Fried Calamari",
+          "price": "170",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Wagyu Beef Tartare",
+          "price": "160",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Onion Tarte Tatin",
+          "price": "200",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Seafood Pasta",
+          "price": "220",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Roasted Chicken",
+          "price": "240",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Local Market Fish",
+          "price": "280",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Créole Risotto",
+          "price": "320",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Steak & Frites",
+          "price": "600",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Entrecôte Café de Paris",
+          "price": "1.200",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Côte de Boeuf",
+          "price": "1.400",
+          "source": "https://www.lulubistrot.com/menu"
+        }
+      ],
+      "highlights": [
+        {
+          "value": "Chef's Counter 6 seats only overlooking the kitchen in action",
+          "source": "https://www.lulubistrot.com/"
+        },
+        {
+          "value": "Inventive twist on classic cocktails celebrating the rich heritage of French colonies",
+          "source": "https://www.lulubistrot.com/"
+        }
+      ],
+      "location": {
+        "town": {
+          "value": "Canggu",
+          "source": "https://www.lulubistrot.com/"
+        },
+        "area": null,
+        "address": null,
+        "serviceArea": null
+      },
+      "contact": {
+        "whatsapp": {
+          "value": "6281337920869",
+          "source": "https://www.lulubistrot.com/group-bookings"
+        },
+        "phone": null,
+        "email": {
+          "value": "contact@lulubistrot.com",
+          "source": "https://www.lulubistrot.com/"
+        },
+        "instagram": {
+          "value": "lulu.bistrot",
+          "source": "https://www.lulubistrot.com/"
+        },
+        "bookingUrl": null
+      },
+      "hours": null,
+      "tone": [
+        "welcoming",
+        "sophisticated",
+        "inviting"
+      ],
+      "colours": [
+        {
+          "hex": "#3b4d3c",
+          "role": "primary",
+          "source": "https://www.lulubistrot.com/"
+        },
+        {
+          "hex": "#ffffff",
+          "role": "background",
+          "source": "https://www.lulubistrot.com/"
+        },
+        {
+          "hex": "#222222",
+          "role": "text",
+          "source": "https://www.lulubistrot.com/"
+        }
+      ],
+      "visualStyle": {
+        "summary": "Warm bistro palette, natural soft light, dark wood textures, sophisticated mood",
+        "palette": "dark green, white, warm wood tones",
+        "light": "soft"
+      }
+    },
+    {
+      "name": {
+        "value": "Lulu Bistrot",
+        "source": "https://www.lulubistrot.com/"
+      },
+      "summary": {
+        "value": "Lulu Bistrot is a French restaurant and bar located in Bali, serving French bistro favourites with Indonesian nostalgia.",
+        "source": "https://www.lulubistrot.com/"
+      },
+      "category": "french restaurant",
+      "offerings": [
+        {
+          "name": "Tasting menu",
+          "price": "IDR 850.000 ++",
+          "source": "https://www.lulubistrot.com/"
+        },
+        {
+          "name": "Bread and Butter",
+          "price": "50",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Onde-Onde Croquettes",
+          "price": "80",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Oyster au Naturel",
+          "price": "80 ea",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Roasted Scallop",
+          "price": "180 ea",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Chicken Liver Pâté",
+          "price": "150",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Stir Fried Calamari",
+          "price": "170",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Wagyu Beef Tartare",
+          "price": "160",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Onion Tarte Tatin",
+          "price": "200",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Seafood Pasta",
+          "price": "220",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Roasted Chicken",
+          "price": "240",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Local Market Fish",
+          "price": "280",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Créole Risotto",
+          "price": "320",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Steak & Frites",
+          "price": "600",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Entrecôte Café de Paris",
+          "price": "1.200",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Côte de Boeuf",
+          "price": "1.400",
+          "source": "https://www.lulubistrot.com/menu"
+        }
+      ],
+      "highlights": [
+        {
+          "value": "Chef's Counter 6 seats only overlooking the kitchen in action",
+          "source": "https://www.lulubistrot.com/"
+        },
+        {
+          "value": "Inventive twist on classic cocktails celebrating the rich heritage of French colonies",
+          "source": "https://www.lulubistrot.com/"
+        }
+      ],
+      "location": {
+        "town": {
+          "value": "Canggu",
+          "source": "https://www.lulubistrot.com/"
+        },
+        "area": null,
+        "address": null,
+        "serviceArea": null
+      },
+      "contact": {
+        "whatsapp": {
+          "value": "6281337920869",
+          "source": "https://www.lulubistrot.com/group-bookings"
+        },
+        "phone": null,
+        "email": {
+          "value": "contact@lulubistrot.com",
+          "source": "https://www.lulubistrot.com/"
+        },
+        "instagram": {
+          "value": "lulu.bistrot",
+          "source": "https://www.lulubistrot.com/"
+        },
+        "bookingUrl": null
+      },
+      "hours": null,
+      "tone": [
+        "welcoming",
+        "sophisticated",
+        "inviting"
+      ],
+      "colours": [
+        {
+          "hex": "#3b4d3c",
+          "role": "primary",
+          "source": "https://www.lulubistrot.com/"
+        },
+        {
+          "hex": "#ffffff",
+          "role": "background",
+          "source": "https://www.lulubistrot.com/"
+        },
+        {
+          "hex": "#222222",
+          "role": "text",
+          "source": "https://www.lulubistrot.com/"
+        }
+      ],
+      "visualStyle": {
+        "summary": "Warm bistro palette, natural soft light, dark wood textures, sophisticated mood",
+        "palette": "dark green, white, warm wood tones",
+        "light": "soft natural light and warm indoor lighting",
+        "textures": "wood, fabric aprons, smooth glass"
+      }
+    },
+    {
+      "name": {
+        "value": "Lulu Bistrot",
+        "source": "https://www.lulubistrot.com/"
+      },
+      "summary": {
+        "value": "Lulu Bistrot is a French restaurant and bar located in Bali, serving French bistro favourites with Indonesian nostalgia.",
+        "source": "https://www.lulubistrot.com/"
+      },
+      "category": "french restaurant",
+      "offerings": [
+        {
+          "name": "Tasting menu",
+          "price": "IDR 850.000 ++",
+          "source": "https://www.lulubistrot.com/"
+        },
+        {
+          "name": "Bread and Butter",
+          "price": "50",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Onde-Onde Croquettes",
+          "price": "80",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Oyster au Naturel",
+          "price": "80 ea",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Roasted Scallop",
+          "price": "180 ea",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Chicken Liver Pâté",
+          "price": "150",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Stir Fried Calamari",
+          "price": "170",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Wagyu Beef Tartare",
+          "price": "160",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Onion Tarte Tatin",
+          "price": "200",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Seafood Pasta",
+          "price": "220",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Roasted Chicken",
+          "price": "240",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Local Market Fish",
+          "price": "280",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Créole Risotto",
+          "price": "320",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Steak & Frites",
+          "price": "600",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Entrecôte Café de Paris",
+          "price": "1.200",
+          "source": "https://www.lulubistrot.com/menu"
+        },
+        {
+          "name": "Côte de Boeuf",
+          "price": "1.400",
+          "source": "https://www.lulubistrot.com/menu"
+        }
+      ],
+      "highlights": [
+        {
+          "value": "Chef's Counter 6 seats only overlooking the kitchen in action",
+          "source": "https://www.lulubistrot.com/"
+        },
+        {
+          "value": "Inventive twist on classic cocktails celebrating the rich heritage of French colonies",
+          "source": "https://www.lulubistrot.com/"
+        }
+      ],
+      "location": {
+        "town": {
+          "value": "Canggu",
+          "source": "https://www.lulubistrot.com/"
+        },
+        "area": null,
+        "address": null,
+        "serviceArea": null
+      },
+      "contact": {
+        "whatsapp": {
+          "value": "6281337920869",
+          "source": "https://www.lulubistrot.com/group-bookings"
+        },
+        "phone": null,
+        "email": {
+          "value": "contact@lulubistrot.com",
+          "source": "https://www.lulubistrot.com/"
+        },
+        "instagram": {
+          "value": "lulu.bistrot",
+          "source": "https://www.lulubistrot.com/"
+        },
+        "bookingUrl": null
+      },
+      "hours": null,
+      "tone": [
+        "welcoming",
+        "sophisticated",
+        "inviting"
+      ],
+      "colours": [
+        {
+          "hex": "#3b4d3c",
+          "role": "primary",
+          "source": "https://www.lulubistrot.com/"
+        },
+        {
+          "hex": "#ffffff",
+          "role": "background",
+          "source": "https://www.lulubistrot.com/"
+        },
+        {
+          "hex": "#222222",
+          "role": "text",
+          "source": "https://www.lulubistrot.com/"
+        }
+      ],
+      "visualStyle": {
+        "summary": "Warm bistro palette, natural soft light, dark wood textures, sophisticated mood",
+        "palette": "dark green, white, warm wood tones",
+        "light": "soft natural light and warm indoor lighting",
+        "textures": "wood, fabric aprons, smooth glass",
+        "mood": "sophisticated, intimate, relaxed"
+      }
+    }
+  ],
+  "final": {
+    "name": {
+      "value": "Lulu Bistrot",
+      "source": "https://www.lulubistrot.com/"
+    },
+    "summary": {
+      "value": "Lulu Bistrot is a French restaurant and bar located in Bali, serving French bistro favourites with Indonesian nostalgia.",
+      "source": "https://www.lulubistrot.com/"
+    },
+    "category": "french restaurant",
+    "offerings": [
+      {
+        "name": "Tasting menu",
+        "price": "IDR 850.000 ++",
+        "source": "https://www.lulubistrot.com/"
+      },
+      {
+        "name": "Bread and Butter",
+        "price": "50",
+        "source": "https://www.lulubistrot.com/menu"
+      },
+      {
+        "name": "Onde-Onde Croquettes",
+        "price": "80",
+        "source": "https://www.lulubistrot.com/menu"
+      },
+      {
+        "name": "Oyster au Naturel",
+        "price": "80 ea",
+        "source": "https://www.lulubistrot.com/menu"
+      },
+      {
+        "name": "Roasted Scallop",
+        "price": "180 ea",
+        "source": "https://www.lulubistrot.com/menu"
+      },
+      {
+        "name": "Chicken Liver Pâté",
+        "price": "150",
+        "source": "https://www.lulubistrot.com/menu"
+      },
+      {
+        "name": "Stir Fried Calamari",
+        "price": "170",
+        "source": "https://www.lulubistrot.com/menu"
+      },
+      {
+        "name": "Wagyu Beef Tartare",
+        "price": "160",
+        "source": "https://www.lulubistrot.com/menu"
+      },
+      {
+        "name": "Onion Tarte Tatin",
+        "price": "200",
+        "source": "https://www.lulubistrot.com/menu"
+      },
+      {
+        "name": "Seafood Pasta",
+        "price": "220",
+        "source": "https://www.lulubistrot.com/menu"
+      },
+      {
+        "name": "Roasted Chicken",
+        "price": "240",
+        "source": "https://www.lulubistrot.com/menu"
+      },
+      {
+        "name": "Local Market Fish",
+        "price": "280",
+        "source": "https://www.lulubistrot.com/menu"
+      },
+      {
+        "name": "Créole Risotto",
+        "price": "320",
+        "source": "https://www.lulubistrot.com/menu"
+      },
+      {
+        "name": "Steak & Frites",
+        "price": "600",
+        "source": "https://www.lulubistrot.com/menu"
+      },
+      {
+        "name": "Entrecôte Café de Paris",
+        "price": "1.200",
+        "source": "https://www.lulubistrot.com/menu"
+      },
+      {
+        "name": "Côte de Boeuf",
+        "price": "1.400",
+        "source": "https://www.lulubistrot.com/menu"
+      }
+    ],
+    "highlights": [
+      {
+        "value": "Chef's Counter 6 seats only overlooking the kitchen in action",
+        "source": "https://www.lulubistrot.com/"
+      },
+      {
+        "value": "Inventive twist on classic cocktails celebrating the rich heritage of French colonies",
+        "source": "https://www.lulubistrot.com/"
+      }
+    ],
+    "location": {
+      "town": {
+        "value": "Canggu",
+        "source": "https://www.lulubistrot.com/"
+      },
+      "area": null,
+      "address": null,
+      "serviceArea": null
+    },
+    "contact": {
+      "whatsapp": {
+        "value": "6281337920869",
+        "source": "https://www.lulubistrot.com/group-bookings"
+      },
+      "phone": null,
+      "email": {
+        "value": "contact@lulubistrot.com",
+        "source": "https://www.lulubistrot.com/"
+      },
+      "instagram": {
+        "value": "lulu.bistrot",
+        "source": "https://www.lulubistrot.com/"
+      },
+      "bookingUrl": null
+    },
+    "hours": null,
+    "tone": [
+      "welcoming",
+      "sophisticated",
+      "inviting"
+    ],
+    "colours": [
+      {
+        "hex": "#3b4d3c",
+        "role": "primary",
+        "source": "https://www.lulubistrot.com/"
+      },
+      {
+        "hex": "#ffffff",
+        "role": "background",
+        "source": "https://www.lulubistrot.com/"
+      },
+      {
+        "hex": "#222222",
+        "role": "text",
+        "source": "https://www.lulubistrot.com/"
+      }
+    ],
+    "visualStyle": {
+      "summary": "Warm bistro palette, natural soft light, dark wood textures, sophisticated mood",
+      "palette": "dark green, white, warm wood tones",
+      "light": "soft natural light and warm indoor lighting",
+      "textures": "wood, fabric aprons, smooth glass",
+      "mood": "sophisticated, intimate, relaxed"
+    }
+  }
+}

@@ -1,0 +1,5402 @@
+{
+  "modelId": "gemini-3.5-flash-lite",
+  "promptVersion": "brand-2",
+  "partials": [
+    {
+      "name": {
+        "value": "Fah Lanna Spa",
+        "source": "https://fahlanna.com"
+      }
+    },
+    {
+      "name": {
+        "value": "Fah Lanna Spa",
+        "source": "https://fahlanna.com/"
+      },
+      "summary": {
+        "value": "Multi award winning day spa in Chiang Mai"
+      }
+    },
+    {
+      "name": {
+        "value": "Fah Lanna Spa",
+        "source": "https://fahlanna.com/"
+      },
+      "summary": {
+        "value": "Multi award winning day spa in Chiang Mai offering traditional massages, signature Lanna treatments, and beauty services.",
+        "source": "https://fahlanna"
+      }
+    },
+    {
+      "name": {
+        "value": "Fah Lanna Spa",
+        "source": "https://fahlanna.com/"
+      },
+      "summary": {
+        "value": "Multi award winning day spa in Chiang Mai offering traditional massages, signature Lanna treatments, and beauty services.",
+        "source": "https://fahlanna.com/"
+      },
+      "category": "day spa",
+      "offerings": []
+    },
+    {
+      "name": {
+        "value": "Fah Lanna Spa",
+        "source": "https://fahlanna.com/"
+      },
+      "summary": {
+        "value": "Multi award winning day spa in Chiang Mai offering traditional massages, signature Lanna treatments, and beauty services.",
+        "source": "https://fahlanna.com/"
+      },
+      "category": "day spa",
+      "offerings": [
+        {
+          "name": "Traditional Thai Massage",
+          "price": "800 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna."
+        }
+      ]
+    },
+    {
+      "name": {
+        "value": "Fah Lanna Spa",
+        "source": "https://fahlanna.com/"
+      },
+      "summary": {
+        "value": "Multi award winning day spa in Chiang Mai offering traditional massages, signature Lanna treatments, and beauty services.",
+        "source": "https://fahlanna.com/"
+      },
+      "category": "day spa",
+      "offerings": [
+        {
+          "name": "Traditional Thai Massage",
+          "price": "800 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Foot Massage"
+        }
+      ]
+    },
+    {
+      "name": {
+        "value": "Fah Lanna Spa",
+        "source": "https://fahlanna.com/"
+      },
+      "summary": {
+        "value": "Multi award winning day spa in Chiang Mai offering traditional massages, signature Lanna treatments, and beauty services.",
+        "source": "https://fahlanna.com/"
+      },
+      "category": "day spa",
+      "offerings": [
+        {
+          "name": "Traditional Thai Massage",
+          "price": "800 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Foot Massage",
+          "price": "900 Baht",
+          "duration": "01:00 Hours"
+        }
+      ]
+    },
+    {
+      "name": {
+        "value": "Fah Lanna Spa",
+        "source": "https://fahlanna.com/"
+      },
+      "summary": {
+        "value": "Multi award winning day spa in Chiang Mai offering traditional massages, signature Lanna treatments, and beauty services.",
+        "source": "https://fahlanna.com/"
+      },
+      "category": "day spa",
+      "offerings": [
+        {
+          "name": "Traditional Thai Massage",
+          "price": "800 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Foot Massage",
+          "price": "900 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {}
+      ]
+    },
+    {
+      "name": {
+        "value": "Fah Lanna Spa",
+        "source": "https://fahlanna.com/"
+      },
+      "summary": {
+        "value": "Multi award winning day spa in Chiang Mai offering traditional massages, signature Lanna treatments, and beauty services.",
+        "source": "https://fahlanna.com/"
+      },
+      "category": "day spa",
+      "offerings": [
+        {
+          "name": "Traditional Thai Massage",
+          "price": "800 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Foot Massage",
+          "price": "900 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Head, Back & Shoulder Massage",
+          "price": "1,000 Baht"
+        }
+      ]
+    },
+    {
+      "name": {
+        "value": "Fah Lanna Spa",
+        "source": "https://fahlanna.com/"
+      },
+      "summary": {
+        "value": "Multi award winning day spa in Chiang Mai offering traditional massages, signature Lanna treatments, and beauty services.",
+        "source": "https://fahlanna.com/"
+      },
+      "category": "day spa",
+      "offerings": [
+        {
+          "name": "Traditional Thai Massage",
+          "price": "800 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Foot Massage",
+          "price": "900 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Head, Back & Shoulder Massage",
+          "price": "1,000 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahl"
+        }
+      ]
+    },
+    {
+      "name": {
+        "value": "Fah Lanna Spa",
+        "source": "https://fahlanna.com/"
+      },
+      "summary": {
+        "value": "Multi award winning day spa in Chiang Mai offering traditional massages, signature Lanna treatments, and beauty services.",
+        "source": "https://fahlanna.com/"
+      },
+      "category": "day spa",
+      "offerings": [
+        {
+          "name": "Traditional Thai Massage",
+          "price": "800 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Foot Massage",
+          "price": "900 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Head, Back & Shoulder Massage",
+          "price": "1,000 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Thai Balm Massage"
+        }
+      ]
+    },
+    {
+      "name": {
+        "value": "Fah Lanna Spa",
+        "source": "https://fahlanna.com/"
+      },
+      "summary": {
+        "value": "Multi award winning day spa in Chiang Mai offering traditional massages, signature Lanna treatments, and beauty services.",
+        "source": "https://fahlanna.com/"
+      },
+      "category": "day spa",
+      "offerings": [
+        {
+          "name": "Traditional Thai Massage",
+          "price": "800 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Foot Massage",
+          "price": "900 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Head, Back & Shoulder Massage",
+          "price": "1,000 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Thai Balm Massage",
+          "price": "1,000 Baht",
+          "duration": "01:0"
+        }
+      ]
+    },
+    {
+      "name": {
+        "value": "Fah Lanna Spa",
+        "source": "https://fahlanna.com/"
+      },
+      "summary": {
+        "value": "Multi award winning day spa in Chiang Mai offering traditional massages, signature Lanna treatments, and beauty services.",
+        "source": "https://fahlanna.com/"
+      },
+      "category": "day spa",
+      "offerings": [
+        {
+          "name": "Traditional Thai Massage",
+          "price": "800 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Foot Massage",
+          "price": "900 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Head, Back & Shoulder Massage",
+          "price": "1,000 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Thai Balm Massage",
+          "price": "1,000 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        }
+      ]
+    },
+    {
+      "name": {
+        "value": "Fah Lanna Spa",
+        "source": "https://fahlanna.com/"
+      },
+      "summary": {
+        "value": "Multi award winning day spa in Chiang Mai offering traditional massages, signature Lanna treatments, and beauty services.",
+        "source": "https://fahlanna.com/"
+      },
+      "category": "day spa",
+      "offerings": [
+        {
+          "name": "Traditional Thai Massage",
+          "price": "800 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Foot Massage",
+          "price": "900 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Head, Back & Shoulder Massage",
+          "price": "1,000 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Thai Balm Massage",
+          "price": "1,000 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Aromatherapy Oil Massage",
+          "price": "1,5"
+        }
+      ]
+    },
+    {
+      "name": {
+        "value": "Fah Lanna Spa",
+        "source": "https://fahlanna.com/"
+      },
+      "summary": {
+        "value": "Multi award winning day spa in Chiang Mai offering traditional massages, signature Lanna treatments, and beauty services.",
+        "source": "https://fahlanna.com/"
+      },
+      "category": "day spa",
+      "offerings": [
+        {
+          "name": "Traditional Thai Massage",
+          "price": "800 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Foot Massage",
+          "price": "900 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Head, Back & Shoulder Massage",
+          "price": "1,000 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Thai Balm Massage",
+          "price": "1,000 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Aromatherapy Oil Massage",
+          "price": "1,500 Baht",
+          "duration": "01:00 Hours",
+          "source": ""
+        }
+      ]
+    },
+    {
+      "name": {
+        "value": "Fah Lanna Spa",
+        "source": "https://fahlanna.com/"
+      },
+      "summary": {
+        "value": "Multi award winning day spa in Chiang Mai offering traditional massages, signature Lanna treatments, and beauty services.",
+        "source": "https://fahlanna.com/"
+      },
+      "category": "day spa",
+      "offerings": [
+        {
+          "name": "Traditional Thai Massage",
+          "price": "800 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Foot Massage",
+          "price": "900 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Head, Back & Shoulder Massage",
+          "price": "1,000 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Thai Balm Massage",
+          "price": "1,000 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Aromatherapy Oil Massage",
+          "price": "1,500 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": ""
+        }
+      ]
+    },
+    {
+      "name": {
+        "value": "Fah Lanna Spa",
+        "source": "https://fahlanna.com/"
+      },
+      "summary": {
+        "value": "Multi award winning day spa in Chiang Mai offering traditional massages, signature Lanna treatments, and beauty services.",
+        "source": "https://fahlanna.com/"
+      },
+      "category": "day spa",
+      "offerings": [
+        {
+          "name": "Traditional Thai Massage",
+          "price": "800 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Foot Massage",
+          "price": "900 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Head, Back & Shoulder Massage",
+          "price": "1,000 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Thai Balm Massage",
+          "price": "1,000 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Aromatherapy Oil Massage",
+          "price": "1,500 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Hot Oil Massage",
+          "price": "1,500 Baht",
+          "duration": ""
+        }
+      ]
+    },
+    {
+      "name": {
+        "value": "Fah Lanna Spa",
+        "source": "https://fahlanna.com/"
+      },
+      "summary": {
+        "value": "Multi award winning day spa in Chiang Mai offering traditional massages, signature Lanna treatments, and beauty services.",
+        "source": "https://fahlanna.com/"
+      },
+      "category": "day spa",
+      "offerings": [
+        {
+          "name": "Traditional Thai Massage",
+          "price": "800 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Foot Massage",
+          "price": "900 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Head, Back & Shoulder Massage",
+          "price": "1,000 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Thai Balm Massage",
+          "price": "1,000 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Aromatherapy Oil Massage",
+          "price": "1,500 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Hot Oil Massage",
+          "price": "1,500 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu"
+        }
+      ]
+    },
+    {
+      "name": {
+        "value": "Fah Lanna Spa",
+        "source": "https://fahlanna.com/"
+      },
+      "summary": {
+        "value": "Multi award winning day spa in Chiang Mai offering traditional massages, signature Lanna treatments, and beauty services.",
+        "source": "https://fahlanna.com/"
+      },
+      "category": "day spa",
+      "offerings": [
+        {
+          "name": "Traditional Thai Massage",
+          "price": "800 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Foot Massage",
+          "price": "900 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Head, Back & Shoulder Massage",
+          "price": "1,000 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Thai Balm Massage",
+          "price": "1,000 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Aromatherapy Oil Massage",
+          "price": "1,500 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Hot Oil Massage",
+          "price": "1,500 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Moisturising Cream Massage",
+          "price": "1,5"
+        }
+      ]
+    },
+    {
+      "name": {
+        "value": "Fah Lanna Spa",
+        "source": "https://fahlanna.com/"
+      },
+      "summary": {
+        "value": "Multi award winning day spa in Chiang Mai offering traditional massages, signature Lanna treatments, and beauty services.",
+        "source": "https://fahlanna.com/"
+      },
+      "category": "day spa",
+      "offerings": [
+        {
+          "name": "Traditional Thai Massage",
+          "price": "800 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Foot Massage",
+          "price": "900 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Head, Back & Shoulder Massage",
+          "price": "1,000 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Thai Balm Massage",
+          "price": "1,000 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Aromatherapy Oil Massage",
+          "price": "1,500 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Hot Oil Massage",
+          "price": "1,500 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Moisturising Cream Massage",
+          "price": "1,500 Baht",
+          "duration": "01:00 Hours",
+          "source": ""
+        }
+      ]
+    },
+    {
+      "name": {
+        "value": "Fah Lanna Spa",
+        "source": "https://fahlanna.com/"
+      },
+      "summary": {
+        "value": "Multi award winning day spa in Chiang Mai offering traditional massages, signature Lanna treatments, and beauty services.",
+        "source": "https://fahlanna.com/"
+      },
+      "category": "day spa",
+      "offerings": [
+        {
+          "name": "Traditional Thai Massage",
+          "price": "800 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Foot Massage",
+          "price": "900 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Head, Back & Shoulder Massage",
+          "price": "1,000 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Thai Balm Massage",
+          "price": "1,000 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Aromatherapy Oil Massage",
+          "price": "1,500 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Hot Oil Massage",
+          "price": "1,500 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Moisturising Cream Massage",
+          "price": "1,500 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": ""
+        }
+      ]
+    },
+    {
+      "name": {
+        "value": "Fah Lanna Spa",
+        "source": "https://fahlanna.com/"
+      },
+      "summary": {
+        "value": "Multi award winning day spa in Chiang Mai offering traditional massages, signature Lanna treatments, and beauty services.",
+        "source": "https://fahlanna.com/"
+      },
+      "category": "day spa",
+      "offerings": [
+        {
+          "name": "Traditional Thai Massage",
+          "price": "800 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Foot Massage",
+          "price": "900 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Head, Back & Shoulder Massage",
+          "price": "1,000 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Thai Balm Massage",
+          "price": "1,000 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Aromatherapy Oil Massage",
+          "price": "1,500 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Hot Oil Massage",
+          "price": "1,500 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Moisturising Cream Massage",
+          "price": "1,500 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Fah Lanna Wisdom",
+          "price": "4,800 Baht"
+        }
+      ]
+    },
+    {
+      "name": {
+        "value": "Fah Lanna Spa",
+        "source": "https://fahlanna.com/"
+      },
+      "summary": {
+        "value": "Multi award winning day spa in Chiang Mai offering traditional massages, signature Lanna treatments, and beauty services.",
+        "source": "https://fahlanna.com/"
+      },
+      "category": "day spa",
+      "offerings": [
+        {
+          "name": "Traditional Thai Massage",
+          "price": "800 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Foot Massage",
+          "price": "900 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Head, Back & Shoulder Massage",
+          "price": "1,000 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Thai Balm Massage",
+          "price": "1,000 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Aromatherapy Oil Massage",
+          "price": "1,500 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Hot Oil Massage",
+          "price": "1,500 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Moisturising Cream Massage",
+          "price": "1,500 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Fah Lanna Wisdom",
+          "price": "4,800 Baht",
+          "duration": "03:00 Hours",
+          "source": "https://fahlanna.com/spa"
+        }
+      ]
+    },
+    {
+      "name": {
+        "value": "Fah Lanna Spa",
+        "source": "https://fahlanna.com/"
+      },
+      "summary": {
+        "value": "Multi award winning day spa in Chiang Mai offering traditional massages, signature Lanna treatments, and beauty services.",
+        "source": "https://fahlanna.com/"
+      },
+      "category": "day spa",
+      "offerings": [
+        {
+          "name": "Traditional Thai Massage",
+          "price": "800 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Foot Massage",
+          "price": "900 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Head, Back & Shoulder Massage",
+          "price": "1,000 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Thai Balm Massage",
+          "price": "1,000 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Aromatherapy Oil Massage",
+          "price": "1,500 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Hot Oil Massage",
+          "price": "1,500 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Moisturising Cream Massage",
+          "price": "1,500 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Fah Lanna Wisdom",
+          "price": "4,800 Baht",
+          "duration": "03:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Fah Lanna Karma (Reiki Healing"
+        }
+      ]
+    },
+    {
+      "name": {
+        "value": "Fah Lanna Spa",
+        "source": "https://fahlanna.com/"
+      },
+      "summary": {
+        "value": "Multi award winning day spa in Chiang Mai offering traditional massages, signature Lanna treatments, and beauty services.",
+        "source": "https://fahlanna.com/"
+      },
+      "category": "day spa",
+      "offerings": [
+        {
+          "name": "Traditional Thai Massage",
+          "price": "800 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Foot Massage",
+          "price": "900 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Head, Back & Shoulder Massage",
+          "price": "1,000 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Thai Balm Massage",
+          "price": "1,000 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Aromatherapy Oil Massage",
+          "price": "1,500 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Hot Oil Massage",
+          "price": "1,500 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Moisturising Cream Massage",
+          "price": "1,500 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Fah Lanna Wisdom",
+          "price": "4,800 Baht",
+          "duration": "03:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Fah Lanna Karma (Reiki Healing)",
+          "price": "2,000 Baht",
+          "duration": "01:"
+        }
+      ]
+    },
+    {
+      "name": {
+        "value": "Fah Lanna Spa",
+        "source": "https://fahlanna.com/"
+      },
+      "summary": {
+        "value": "Multi award winning day spa in Chiang Mai offering traditional massages, signature Lanna treatments, and beauty services.",
+        "source": "https://fahlanna.com/"
+      },
+      "category": "day spa",
+      "offerings": [
+        {
+          "name": "Traditional Thai Massage",
+          "price": "800 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Foot Massage",
+          "price": "900 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Head, Back & Shoulder Massage",
+          "price": "1,000 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Thai Balm Massage",
+          "price": "1,000 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Aromatherapy Oil Massage",
+          "price": "1,500 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Hot Oil Massage",
+          "price": "1,500 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Moisturising Cream Massage",
+          "price": "1,500 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Fah Lanna Wisdom",
+          "price": "4,800 Baht",
+          "duration": "03:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Fah Lanna Karma (Reiki Healing)",
+          "price": "2,000 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        }
+      ]
+    },
+    {
+      "name": {
+        "value": "Fah Lanna Spa",
+        "source": "https://fahlanna.com/"
+      },
+      "summary": {
+        "value": "Multi award winning day spa in Chiang Mai offering traditional massages, signature Lanna treatments, and beauty services.",
+        "source": "https://fahlanna.com/"
+      },
+      "category": "day spa",
+      "offerings": [
+        {
+          "name": "Traditional Thai Massage",
+          "price": "800 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Foot Massage",
+          "price": "900 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Head, Back & Shoulder Massage",
+          "price": "1,000 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Thai Balm Massage",
+          "price": "1,000 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Aromatherapy Oil Massage",
+          "price": "1,500 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Hot Oil Massage",
+          "price": "1,500 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Moisturising Cream Massage",
+          "price": "1,500 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Fah Lanna Wisdom",
+          "price": "4,800 Baht",
+          "duration": "03:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Fah Lanna Karma (Reiki Healing)",
+          "price": "2,000 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Fah Lanna Exotic",
+          "price": "5,"
+        }
+      ]
+    },
+    {
+      "name": {
+        "value": "Fah Lanna Spa",
+        "source": "https://fahlanna.com/"
+      },
+      "summary": {
+        "value": "Multi award winning day spa in Chiang Mai offering traditional massages, signature Lanna treatments, and beauty services.",
+        "source": "https://fahlanna.com/"
+      },
+      "category": "day spa",
+      "offerings": [
+        {
+          "name": "Traditional Thai Massage",
+          "price": "800 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Foot Massage",
+          "price": "900 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Head, Back & Shoulder Massage",
+          "price": "1,000 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Thai Balm Massage",
+          "price": "1,000 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Aromatherapy Oil Massage",
+          "price": "1,500 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Hot Oil Massage",
+          "price": "1,500 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Moisturising Cream Massage",
+          "price": "1,500 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Fah Lanna Wisdom",
+          "price": "4,800 Baht",
+          "duration": "03:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Fah Lanna Karma (Reiki Healing)",
+          "price": "2,000 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Fah Lanna Exotic",
+          "price": "5,400 Baht",
+          "duration": "04:00 Hours"
+        }
+      ]
+    },
+    {
+      "name": {
+        "value": "Fah Lanna Spa",
+        "source": "https://fahlanna.com/"
+      },
+      "summary": {
+        "value": "Multi award winning day spa in Chiang Mai offering traditional massages, signature Lanna treatments, and beauty services.",
+        "source": "https://fahlanna.com/"
+      },
+      "category": "day spa",
+      "offerings": [
+        {
+          "name": "Traditional Thai Massage",
+          "price": "800 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Foot Massage",
+          "price": "900 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Head, Back & Shoulder Massage",
+          "price": "1,000 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Thai Balm Massage",
+          "price": "1,000 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Aromatherapy Oil Massage",
+          "price": "1,500 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Hot Oil Massage",
+          "price": "1,500 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Moisturising Cream Massage",
+          "price": "1,500 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Fah Lanna Wisdom",
+          "price": "4,800 Baht",
+          "duration": "03:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Fah Lanna Karma (Reiki Healing)",
+          "price": "2,000 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Fah Lanna Exotic",
+          "price": "5,400 Baht",
+          "duration": "04:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {}
+      ]
+    },
+    {
+      "name": {
+        "value": "Fah Lanna Spa",
+        "source": "https://fahlanna.com/"
+      },
+      "summary": {
+        "value": "Multi award winning day spa in Chiang Mai offering traditional massages, signature Lanna treatments, and beauty services.",
+        "source": "https://fahlanna.com/"
+      },
+      "category": "day spa",
+      "offerings": [
+        {
+          "name": "Traditional Thai Massage",
+          "price": "800 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Foot Massage",
+          "price": "900 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Head, Back & Shoulder Massage",
+          "price": "1,000 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Thai Balm Massage",
+          "price": "1,000 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Aromatherapy Oil Massage",
+          "price": "1,500 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Hot Oil Massage",
+          "price": "1,500 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Moisturising Cream Massage",
+          "price": "1,500 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Fah Lanna Wisdom",
+          "price": "4,800 Baht",
+          "duration": "03:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Fah Lanna Karma (Reiki Healing)",
+          "price": "2,000 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Fah Lanna Exotic",
+          "price": "5,400 Baht",
+          "duration": "04:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Manicure",
+          "price": "600 Baht",
+          "duration": "01"
+        }
+      ]
+    },
+    {
+      "name": {
+        "value": "Fah Lanna Spa",
+        "source": "https://fahlanna.com/"
+      },
+      "summary": {
+        "value": "Multi award winning day spa in Chiang Mai offering traditional massages, signature Lanna treatments, and beauty services.",
+        "source": "https://fahlanna.com/"
+      },
+      "category": "day spa",
+      "offerings": [
+        {
+          "name": "Traditional Thai Massage",
+          "price": "800 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Foot Massage",
+          "price": "900 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Head, Back & Shoulder Massage",
+          "price": "1,000 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Thai Balm Massage",
+          "price": "1,000 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Aromatherapy Oil Massage",
+          "price": "1,500 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Hot Oil Massage",
+          "price": "1,500 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Moisturising Cream Massage",
+          "price": "1,500 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Fah Lanna Wisdom",
+          "price": "4,800 Baht",
+          "duration": "03:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Fah Lanna Karma (Reiki Healing)",
+          "price": "2,000 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Fah Lanna Exotic",
+          "price": "5,400 Baht",
+          "duration": "04:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Manicure",
+          "price": "600 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/beauty"
+        }
+      ]
+    },
+    {
+      "name": {
+        "value": "Fah Lanna Spa",
+        "source": "https://fahlanna.com/"
+      },
+      "summary": {
+        "value": "Multi award winning day spa in Chiang Mai offering traditional massages, signature Lanna treatments, and beauty services.",
+        "source": "https://fahlanna.com/"
+      },
+      "category": "day spa",
+      "offerings": [
+        {
+          "name": "Traditional Thai Massage",
+          "price": "800 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Foot Massage",
+          "price": "900 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Head, Back & Shoulder Massage",
+          "price": "1,000 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Thai Balm Massage",
+          "price": "1,000 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Aromatherapy Oil Massage",
+          "price": "1,500 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Hot Oil Massage",
+          "price": "1,500 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Moisturising Cream Massage",
+          "price": "1,500 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Fah Lanna Wisdom",
+          "price": "4,800 Baht",
+          "duration": "03:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Fah Lanna Karma (Reiki Healing)",
+          "price": "2,000 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Fah Lanna Exotic",
+          "price": "5,400 Baht",
+          "duration": "04:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Manicure",
+          "price": "600 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/beauty-treatments-11/"
+        },
+        {
+          "name": "Pedicure"
+        }
+      ]
+    },
+    {
+      "name": {
+        "value": "Fah Lanna Spa",
+        "source": "https://fahlanna.com/"
+      },
+      "summary": {
+        "value": "Multi award winning day spa in Chiang Mai offering traditional massages, signature Lanna treatments, and beauty services.",
+        "source": "https://fahlanna.com/"
+      },
+      "category": "day spa",
+      "offerings": [
+        {
+          "name": "Traditional Thai Massage",
+          "price": "800 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Foot Massage",
+          "price": "900 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Head, Back & Shoulder Massage",
+          "price": "1,000 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Thai Balm Massage",
+          "price": "1,000 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Aromatherapy Oil Massage",
+          "price": "1,500 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Hot Oil Massage",
+          "price": "1,500 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Moisturising Cream Massage",
+          "price": "1,500 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Fah Lanna Wisdom",
+          "price": "4,800 Baht",
+          "duration": "03:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Fah Lanna Karma (Reiki Healing)",
+          "price": "2,000 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Fah Lanna Exotic",
+          "price": "5,400 Baht",
+          "duration": "04:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Manicure",
+          "price": "600 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/beauty-treatments-11/"
+        },
+        {
+          "name": "Pedicure",
+          "price": "600 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/beauty-treatments-11"
+        }
+      ]
+    },
+    {
+      "name": {
+        "value": "Fah Lanna Spa",
+        "source": "https://fahlanna.com/"
+      },
+      "summary": {
+        "value": "Multi award winning day spa in Chiang Mai offering traditional massages, signature Lanna treatments, and beauty services.",
+        "source": "https://fahlanna.com/"
+      },
+      "category": "day spa",
+      "offerings": [
+        {
+          "name": "Traditional Thai Massage",
+          "price": "800 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Foot Massage",
+          "price": "900 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Head, Back & Shoulder Massage",
+          "price": "1,000 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Thai Balm Massage",
+          "price": "1,000 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Aromatherapy Oil Massage",
+          "price": "1,500 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Hot Oil Massage",
+          "price": "1,500 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Moisturising Cream Massage",
+          "price": "1,500 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Fah Lanna Wisdom",
+          "price": "4,800 Baht",
+          "duration": "03:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Fah Lanna Karma (Reiki Healing)",
+          "price": "2,000 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Fah Lanna Exotic",
+          "price": "5,400 Baht",
+          "duration": "04:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Manicure",
+          "price": "600 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/beauty-treatments-11/"
+        },
+        {
+          "name": "Pedicure",
+          "price": "600 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/beauty-treatments-11/"
+        },
+        {
+          "name": "Facial Treatment",
+          "price": "1"
+        }
+      ]
+    },
+    {
+      "name": {
+        "value": "Fah Lanna Spa",
+        "source": "https://fahlanna.com/"
+      },
+      "summary": {
+        "value": "Multi award winning day spa in Chiang Mai offering traditional massages, signature Lanna treatments, and beauty services.",
+        "source": "https://fahlanna.com/"
+      },
+      "category": "day spa",
+      "offerings": [
+        {
+          "name": "Traditional Thai Massage",
+          "price": "800 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Foot Massage",
+          "price": "900 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Head, Back & Shoulder Massage",
+          "price": "1,000 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Thai Balm Massage",
+          "price": "1,000 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Aromatherapy Oil Massage",
+          "price": "1,500 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Hot Oil Massage",
+          "price": "1,500 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Moisturising Cream Massage",
+          "price": "1,500 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Fah Lanna Wisdom",
+          "price": "4,800 Baht",
+          "duration": "03:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Fah Lanna Karma (Reiki Healing)",
+          "price": "2,000 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Fah Lanna Exotic",
+          "price": "5,400 Baht",
+          "duration": "04:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Manicure",
+          "price": "600 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/beauty-treatments-11/"
+        },
+        {
+          "name": "Pedicure",
+          "price": "600 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/beauty-treatments-11/"
+        },
+        {
+          "name": "Facial Treatment",
+          "price": "1,500 Baht",
+          "duration": "01:00 Hours"
+        }
+      ]
+    },
+    {
+      "name": {
+        "value": "Fah Lanna Spa",
+        "source": "https://fahlanna.com/"
+      },
+      "summary": {
+        "value": "Multi award winning day spa in Chiang Mai offering traditional massages, signature Lanna treatments, and beauty services.",
+        "source": "https://fahlanna.com/"
+      },
+      "category": "day spa",
+      "offerings": [
+        {
+          "name": "Traditional Thai Massage",
+          "price": "800 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Foot Massage",
+          "price": "900 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Head, Back & Shoulder Massage",
+          "price": "1,000 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Thai Balm Massage",
+          "price": "1,000 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Aromatherapy Oil Massage",
+          "price": "1,500 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Hot Oil Massage",
+          "price": "1,500 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Moisturising Cream Massage",
+          "price": "1,500 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Fah Lanna Wisdom",
+          "price": "4,800 Baht",
+          "duration": "03:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Fah Lanna Karma (Reiki Healing)",
+          "price": "2,000 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Fah Lanna Exotic",
+          "price": "5,400 Baht",
+          "duration": "04:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Manicure",
+          "price": "600 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/beauty-treatments-11/"
+        },
+        {
+          "name": "Pedicure",
+          "price": "600 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/beauty-treatments-11/"
+        },
+        {
+          "name": "Facial Treatment",
+          "price": "1,500 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/beauty-treatments-11/"
+        }
+      ]
+    },
+    {
+      "name": {
+        "value": "Fah Lanna Spa",
+        "source": "https://fahlanna.com/"
+      },
+      "summary": {
+        "value": "Multi award winning day spa in Chiang Mai offering traditional massages, signature Lanna treatments, and beauty services.",
+        "source": "https://fahlanna.com/"
+      },
+      "category": "day spa",
+      "offerings": [
+        {
+          "name": "Traditional Thai Massage",
+          "price": "800 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Foot Massage",
+          "price": "900 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Head, Back & Shoulder Massage",
+          "price": "1,000 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Thai Balm Massage",
+          "price": "1,000 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Aromatherapy Oil Massage",
+          "price": "1,500 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Hot Oil Massage",
+          "price": "1,500 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Moisturising Cream Massage",
+          "price": "1,500 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Fah Lanna Wisdom",
+          "price": "4,800 Baht",
+          "duration": "03:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Fah Lanna Karma (Reiki Healing)",
+          "price": "2,000 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Fah Lanna Exotic",
+          "price": "5,400 Baht",
+          "duration": "04:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Manicure",
+          "price": "600 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/beauty-treatments-11/"
+        },
+        {
+          "name": "Pedicure",
+          "price": "600 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/beauty-treatments-11/"
+        },
+        {
+          "name": "Facial Treatment",
+          "price": "1,500 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/beauty-treatments-11/"
+        },
+        {
+          "name": "Body Scrub",
+          "price": "1,500"
+        }
+      ]
+    },
+    {
+      "name": {
+        "value": "Fah Lanna Spa",
+        "source": "https://fahlanna.com/"
+      },
+      "summary": {
+        "value": "Multi award winning day spa in Chiang Mai offering traditional massages, signature Lanna treatments, and beauty services.",
+        "source": "https://fahlanna.com/"
+      },
+      "category": "day spa",
+      "offerings": [
+        {
+          "name": "Traditional Thai Massage",
+          "price": "800 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Foot Massage",
+          "price": "900 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Head, Back & Shoulder Massage",
+          "price": "1,000 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Thai Balm Massage",
+          "price": "1,000 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Aromatherapy Oil Massage",
+          "price": "1,500 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Hot Oil Massage",
+          "price": "1,500 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Moisturising Cream Massage",
+          "price": "1,500 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Fah Lanna Wisdom",
+          "price": "4,800 Baht",
+          "duration": "03:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Fah Lanna Karma (Reiki Healing)",
+          "price": "2,000 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Fah Lanna Exotic",
+          "price": "5,400 Baht",
+          "duration": "04:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Manicure",
+          "price": "600 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/beauty-treatments-11/"
+        },
+        {
+          "name": "Pedicure",
+          "price": "600 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/beauty-treatments-11/"
+        },
+        {
+          "name": "Facial Treatment",
+          "price": "1,500 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/beauty-treatments-11/"
+        },
+        {
+          "name": "Body Scrub",
+          "price": "1,500 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://"
+        }
+      ]
+    },
+    {
+      "name": {
+        "value": "Fah Lanna Spa",
+        "source": "https://fahlanna.com/"
+      },
+      "summary": {
+        "value": "Multi award winning day spa in Chiang Mai offering traditional massages, signature Lanna treatments, and beauty services.",
+        "source": "https://fahlanna.com/"
+      },
+      "category": "day spa",
+      "offerings": [
+        {
+          "name": "Traditional Thai Massage",
+          "price": "800 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Foot Massage",
+          "price": "900 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Head, Back & Shoulder Massage",
+          "price": "1,000 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Thai Balm Massage",
+          "price": "1,000 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Aromatherapy Oil Massage",
+          "price": "1,500 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Hot Oil Massage",
+          "price": "1,500 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Moisturising Cream Massage",
+          "price": "1,500 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Fah Lanna Wisdom",
+          "price": "4,800 Baht",
+          "duration": "03:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Fah Lanna Karma (Reiki Healing)",
+          "price": "2,000 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Fah Lanna Exotic",
+          "price": "5,400 Baht",
+          "duration": "04:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Manicure",
+          "price": "600 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/beauty-treatments-11/"
+        },
+        {
+          "name": "Pedicure",
+          "price": "600 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/beauty-treatments-11/"
+        },
+        {
+          "name": "Facial Treatment",
+          "price": "1,500 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/beauty-treatments-11/"
+        },
+        {
+          "name": "Body Scrub",
+          "price": "1,500 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/beauty-treatments-11/"
+        },
+        {}
+      ]
+    },
+    {
+      "name": {
+        "value": "Fah Lanna Spa",
+        "source": "https://fahlanna.com/"
+      },
+      "summary": {
+        "value": "Multi award winning day spa in Chiang Mai offering traditional massages, signature Lanna treatments, and beauty services.",
+        "source": "https://fahlanna.com/"
+      },
+      "category": "day spa",
+      "offerings": [
+        {
+          "name": "Traditional Thai Massage",
+          "price": "800 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Foot Massage",
+          "price": "900 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Head, Back & Shoulder Massage",
+          "price": "1,000 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Thai Balm Massage",
+          "price": "1,000 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Aromatherapy Oil Massage",
+          "price": "1,500 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Hot Oil Massage",
+          "price": "1,500 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Moisturising Cream Massage",
+          "price": "1,500 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Fah Lanna Wisdom",
+          "price": "4,800 Baht",
+          "duration": "03:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Fah Lanna Karma (Reiki Healing)",
+          "price": "2,000 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Fah Lanna Exotic",
+          "price": "5,400 Baht",
+          "duration": "04:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Manicure",
+          "price": "600 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/beauty-treatments-11/"
+        },
+        {
+          "name": "Pedicure",
+          "price": "600 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/beauty-treatments-11/"
+        },
+        {
+          "name": "Facial Treatment",
+          "price": "1,500 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/beauty-treatments-11/"
+        },
+        {
+          "name": "Body Scrub",
+          "price": "1,500 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/beauty-treatments-11/"
+        },
+        {
+          "name": "Body Mask",
+          "price": "1,500 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna."
+        }
+      ]
+    },
+    {
+      "name": {
+        "value": "Fah Lanna Spa",
+        "source": "https://fahlanna.com/"
+      },
+      "summary": {
+        "value": "Multi award winning day spa in Chiang Mai offering traditional massages, signature Lanna treatments, and beauty services.",
+        "source": "https://fahlanna.com/"
+      },
+      "category": "day spa",
+      "offerings": [
+        {
+          "name": "Traditional Thai Massage",
+          "price": "800 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Foot Massage",
+          "price": "900 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Head, Back & Shoulder Massage",
+          "price": "1,000 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Thai Balm Massage",
+          "price": "1,000 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Aromatherapy Oil Massage",
+          "price": "1,500 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Hot Oil Massage",
+          "price": "1,500 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Moisturising Cream Massage",
+          "price": "1,500 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Fah Lanna Wisdom",
+          "price": "4,800 Baht",
+          "duration": "03:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Fah Lanna Karma (Reiki Healing)",
+          "price": "2,000 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Fah Lanna Exotic",
+          "price": "5,400 Baht",
+          "duration": "04:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Manicure",
+          "price": "600 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/beauty-treatments-11/"
+        },
+        {
+          "name": "Pedicure",
+          "price": "600 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/beauty-treatments-11/"
+        },
+        {
+          "name": "Facial Treatment",
+          "price": "1,500 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/beauty-treatments-11/"
+        },
+        {
+          "name": "Body Scrub",
+          "price": "1,500 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/beauty-treatments-11/"
+        },
+        {
+          "name": "Body Mask",
+          "price": "1,500 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/beauty-treatments-11/"
+        }
+      ]
+    },
+    {
+      "name": {
+        "value": "Fah Lanna Spa",
+        "source": "https://fahlanna.com/"
+      },
+      "summary": {
+        "value": "Multi award winning day spa in Chiang Mai offering traditional massages, signature Lanna treatments, and beauty services.",
+        "source": "https://fahlanna.com/"
+      },
+      "category": "day spa",
+      "offerings": [
+        {
+          "name": "Traditional Thai Massage",
+          "price": "800 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Foot Massage",
+          "price": "900 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Head, Back & Shoulder Massage",
+          "price": "1,000 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Thai Balm Massage",
+          "price": "1,000 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Aromatherapy Oil Massage",
+          "price": "1,500 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Hot Oil Massage",
+          "price": "1,500 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Moisturising Cream Massage",
+          "price": "1,500 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Fah Lanna Wisdom",
+          "price": "4,800 Baht",
+          "duration": "03:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Fah Lanna Karma (Reiki Healing)",
+          "price": "2,000 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Fah Lanna Exotic",
+          "price": "5,400 Baht",
+          "duration": "04:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Manicure",
+          "price": "600 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/beauty-treatments-11/"
+        },
+        {
+          "name": "Pedicure",
+          "price": "600 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/beauty-treatments-11/"
+        },
+        {
+          "name": "Facial Treatment",
+          "price": "1,500 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/beauty-treatments-11/"
+        },
+        {
+          "name": "Body Scrub",
+          "price": "1,500 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/beauty-treatments-11/"
+        },
+        {
+          "name": "Body Mask",
+          "price": "1,500 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/beauty-treatments-11/"
+        }
+      ],
+      "highlights": [
+        {
+          "value": "Multi award winning day spa in Chiang Mai, Thailand"
+        }
+      ]
+    },
+    {
+      "name": {
+        "value": "Fah Lanna Spa",
+        "source": "https://fahlanna.com/"
+      },
+      "summary": {
+        "value": "Multi award winning day spa in Chiang Mai offering traditional massages, signature Lanna treatments, and beauty services.",
+        "source": "https://fahlanna.com/"
+      },
+      "category": "day spa",
+      "offerings": [
+        {
+          "name": "Traditional Thai Massage",
+          "price": "800 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Foot Massage",
+          "price": "900 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Head, Back & Shoulder Massage",
+          "price": "1,000 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Thai Balm Massage",
+          "price": "1,000 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Aromatherapy Oil Massage",
+          "price": "1,500 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Hot Oil Massage",
+          "price": "1,500 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Moisturising Cream Massage",
+          "price": "1,500 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Fah Lanna Wisdom",
+          "price": "4,800 Baht",
+          "duration": "03:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Fah Lanna Karma (Reiki Healing)",
+          "price": "2,000 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Fah Lanna Exotic",
+          "price": "5,400 Baht",
+          "duration": "04:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Manicure",
+          "price": "600 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/beauty-treatments-11/"
+        },
+        {
+          "name": "Pedicure",
+          "price": "600 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/beauty-treatments-11/"
+        },
+        {
+          "name": "Facial Treatment",
+          "price": "1,500 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/beauty-treatments-11/"
+        },
+        {
+          "name": "Body Scrub",
+          "price": "1,500 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/beauty-treatments-11/"
+        },
+        {
+          "name": "Body Mask",
+          "price": "1,500 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/beauty-treatments-11/"
+        }
+      ],
+      "highlights": [
+        {
+          "value": "Multi award winning day spa in Chiang Mai, Thailand",
+          "source": "https://fahlanna.com/"
+        }
+      ],
+      "location": {}
+    },
+    {
+      "name": {
+        "value": "Fah Lanna Spa",
+        "source": "https://fahlanna.com/"
+      },
+      "summary": {
+        "value": "Multi award winning day spa in Chiang Mai offering traditional massages, signature Lanna treatments, and beauty services.",
+        "source": "https://fahlanna.com/"
+      },
+      "category": "day spa",
+      "offerings": [
+        {
+          "name": "Traditional Thai Massage",
+          "price": "800 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Foot Massage",
+          "price": "900 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Head, Back & Shoulder Massage",
+          "price": "1,000 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Thai Balm Massage",
+          "price": "1,000 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Aromatherapy Oil Massage",
+          "price": "1,500 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Hot Oil Massage",
+          "price": "1,500 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Moisturising Cream Massage",
+          "price": "1,500 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Fah Lanna Wisdom",
+          "price": "4,800 Baht",
+          "duration": "03:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Fah Lanna Karma (Reiki Healing)",
+          "price": "2,000 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Fah Lanna Exotic",
+          "price": "5,400 Baht",
+          "duration": "04:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Manicure",
+          "price": "600 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/beauty-treatments-11/"
+        },
+        {
+          "name": "Pedicure",
+          "price": "600 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/beauty-treatments-11/"
+        },
+        {
+          "name": "Facial Treatment",
+          "price": "1,500 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/beauty-treatments-11/"
+        },
+        {
+          "name": "Body Scrub",
+          "price": "1,500 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/beauty-treatments-11/"
+        },
+        {
+          "name": "Body Mask",
+          "price": "1,500 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/beauty-treatments-11/"
+        }
+      ],
+      "highlights": [
+        {
+          "value": "Multi award winning day spa in Chiang Mai, Thailand",
+          "source": "https://fahlanna.com/"
+        }
+      ],
+      "location": {
+        "town": {
+          "value": "Chiang Mai",
+          "source": "https://fahlanna"
+        }
+      }
+    },
+    {
+      "name": {
+        "value": "Fah Lanna Spa",
+        "source": "https://fahlanna.com/"
+      },
+      "summary": {
+        "value": "Multi award winning day spa in Chiang Mai offering traditional massages, signature Lanna treatments, and beauty services.",
+        "source": "https://fahlanna.com/"
+      },
+      "category": "day spa",
+      "offerings": [
+        {
+          "name": "Traditional Thai Massage",
+          "price": "800 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Foot Massage",
+          "price": "900 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Head, Back & Shoulder Massage",
+          "price": "1,000 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Thai Balm Massage",
+          "price": "1,000 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Aromatherapy Oil Massage",
+          "price": "1,500 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Hot Oil Massage",
+          "price": "1,500 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Moisturising Cream Massage",
+          "price": "1,500 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Fah Lanna Wisdom",
+          "price": "4,800 Baht",
+          "duration": "03:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Fah Lanna Karma (Reiki Healing)",
+          "price": "2,000 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Fah Lanna Exotic",
+          "price": "5,400 Baht",
+          "duration": "04:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Manicure",
+          "price": "600 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/beauty-treatments-11/"
+        },
+        {
+          "name": "Pedicure",
+          "price": "600 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/beauty-treatments-11/"
+        },
+        {
+          "name": "Facial Treatment",
+          "price": "1,500 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/beauty-treatments-11/"
+        },
+        {
+          "name": "Body Scrub",
+          "price": "1,500 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/beauty-treatments-11/"
+        },
+        {
+          "name": "Body Mask",
+          "price": "1,500 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/beauty-treatments-11/"
+        }
+      ],
+      "highlights": [
+        {
+          "value": "Multi award winning day spa in Chiang Mai, Thailand",
+          "source": "https://fahlanna.com/"
+        }
+      ],
+      "location": {
+        "town": {
+          "value": "Chiang Mai",
+          "source": "https://fahlanna.com/"
+        },
+        "area": null,
+        "address": {}
+      }
+    },
+    {
+      "name": {
+        "value": "Fah Lanna Spa",
+        "source": "https://fahlanna.com/"
+      },
+      "summary": {
+        "value": "Multi award winning day spa in Chiang Mai offering traditional massages, signature Lanna treatments, and beauty services.",
+        "source": "https://fahlanna.com/"
+      },
+      "category": "day spa",
+      "offerings": [
+        {
+          "name": "Traditional Thai Massage",
+          "price": "800 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Foot Massage",
+          "price": "900 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Head, Back & Shoulder Massage",
+          "price": "1,000 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Thai Balm Massage",
+          "price": "1,000 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Aromatherapy Oil Massage",
+          "price": "1,500 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Hot Oil Massage",
+          "price": "1,500 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Moisturising Cream Massage",
+          "price": "1,500 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Fah Lanna Wisdom",
+          "price": "4,800 Baht",
+          "duration": "03:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Fah Lanna Karma (Reiki Healing)",
+          "price": "2,000 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Fah Lanna Exotic",
+          "price": "5,400 Baht",
+          "duration": "04:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Manicure",
+          "price": "600 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/beauty-treatments-11/"
+        },
+        {
+          "name": "Pedicure",
+          "price": "600 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/beauty-treatments-11/"
+        },
+        {
+          "name": "Facial Treatment",
+          "price": "1,500 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/beauty-treatments-11/"
+        },
+        {
+          "name": "Body Scrub",
+          "price": "1,500 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/beauty-treatments-11/"
+        },
+        {
+          "name": "Body Mask",
+          "price": "1,500 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/beauty-treatments-11/"
+        }
+      ],
+      "highlights": [
+        {
+          "value": "Multi award winning day spa in Chiang Mai, Thailand",
+          "source": "https://fahlanna.com/"
+        }
+      ],
+      "location": {
+        "town": {
+          "value": "Chiang Mai",
+          "source": "https://fahlanna.com/"
+        },
+        "area": null,
+        "address": {
+          "value": "57 Wiang Kaew Road Sripoom, A. Muang, Chiang Mai 50200"
+        }
+      }
+    },
+    {
+      "name": {
+        "value": "Fah Lanna Spa",
+        "source": "https://fahlanna.com/"
+      },
+      "summary": {
+        "value": "Multi award winning day spa in Chiang Mai offering traditional massages, signature Lanna treatments, and beauty services.",
+        "source": "https://fahlanna.com/"
+      },
+      "category": "day spa",
+      "offerings": [
+        {
+          "name": "Traditional Thai Massage",
+          "price": "800 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Foot Massage",
+          "price": "900 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Head, Back & Shoulder Massage",
+          "price": "1,000 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Thai Balm Massage",
+          "price": "1,000 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Aromatherapy Oil Massage",
+          "price": "1,500 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Hot Oil Massage",
+          "price": "1,500 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Moisturising Cream Massage",
+          "price": "1,500 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Fah Lanna Wisdom",
+          "price": "4,800 Baht",
+          "duration": "03:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Fah Lanna Karma (Reiki Healing)",
+          "price": "2,000 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Fah Lanna Exotic",
+          "price": "5,400 Baht",
+          "duration": "04:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Manicure",
+          "price": "600 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/beauty-treatments-11/"
+        },
+        {
+          "name": "Pedicure",
+          "price": "600 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/beauty-treatments-11/"
+        },
+        {
+          "name": "Facial Treatment",
+          "price": "1,500 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/beauty-treatments-11/"
+        },
+        {
+          "name": "Body Scrub",
+          "price": "1,500 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/beauty-treatments-11/"
+        },
+        {
+          "name": "Body Mask",
+          "price": "1,500 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/beauty-treatments-11/"
+        }
+      ],
+      "highlights": [
+        {
+          "value": "Multi award winning day spa in Chiang Mai, Thailand",
+          "source": "https://fahlanna.com/"
+        }
+      ],
+      "location": {
+        "town": {
+          "value": "Chiang Mai",
+          "source": "https://fahlanna.com/"
+        },
+        "area": null,
+        "address": {
+          "value": "57 Wiang Kaew Road Sripoom, A. Muang, Chiang Mai 50200",
+          "source": "https://fahlanna.com/"
+        },
+        "serviceArea": null
+      }
+    },
+    {
+      "name": {
+        "value": "Fah Lanna Spa",
+        "source": "https://fahlanna.com/"
+      },
+      "summary": {
+        "value": "Multi award winning day spa in Chiang Mai offering traditional massages, signature Lanna treatments, and beauty services.",
+        "source": "https://fahlanna.com/"
+      },
+      "category": "day spa",
+      "offerings": [
+        {
+          "name": "Traditional Thai Massage",
+          "price": "800 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Foot Massage",
+          "price": "900 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Head, Back & Shoulder Massage",
+          "price": "1,000 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Thai Balm Massage",
+          "price": "1,000 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Aromatherapy Oil Massage",
+          "price": "1,500 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Hot Oil Massage",
+          "price": "1,500 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Moisturising Cream Massage",
+          "price": "1,500 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Fah Lanna Wisdom",
+          "price": "4,800 Baht",
+          "duration": "03:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Fah Lanna Karma (Reiki Healing)",
+          "price": "2,000 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Fah Lanna Exotic",
+          "price": "5,400 Baht",
+          "duration": "04:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Manicure",
+          "price": "600 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/beauty-treatments-11/"
+        },
+        {
+          "name": "Pedicure",
+          "price": "600 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/beauty-treatments-11/"
+        },
+        {
+          "name": "Facial Treatment",
+          "price": "1,500 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/beauty-treatments-11/"
+        },
+        {
+          "name": "Body Scrub",
+          "price": "1,500 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/beauty-treatments-11/"
+        },
+        {
+          "name": "Body Mask",
+          "price": "1,500 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/beauty-treatments-11/"
+        }
+      ],
+      "highlights": [
+        {
+          "value": "Multi award winning day spa in Chiang Mai, Thailand",
+          "source": "https://fahlanna.com/"
+        }
+      ],
+      "location": {
+        "town": {
+          "value": "Chiang Mai",
+          "source": "https://fahlanna.com/"
+        },
+        "area": null,
+        "address": {
+          "value": "57 Wiang Kaew Road Sripoom, A. Muang, Chiang Mai 50200",
+          "source": "https://fahlanna.com/"
+        },
+        "serviceArea": null
+      },
+      "contact": {
+        "whatsapp": {
+          "value": "668880"
+        }
+      }
+    },
+    {
+      "name": {
+        "value": "Fah Lanna Spa",
+        "source": "https://fahlanna.com/"
+      },
+      "summary": {
+        "value": "Multi award winning day spa in Chiang Mai offering traditional massages, signature Lanna treatments, and beauty services.",
+        "source": "https://fahlanna.com/"
+      },
+      "category": "day spa",
+      "offerings": [
+        {
+          "name": "Traditional Thai Massage",
+          "price": "800 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Foot Massage",
+          "price": "900 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Head, Back & Shoulder Massage",
+          "price": "1,000 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Thai Balm Massage",
+          "price": "1,000 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Aromatherapy Oil Massage",
+          "price": "1,500 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Hot Oil Massage",
+          "price": "1,500 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Moisturising Cream Massage",
+          "price": "1,500 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Fah Lanna Wisdom",
+          "price": "4,800 Baht",
+          "duration": "03:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Fah Lanna Karma (Reiki Healing)",
+          "price": "2,000 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Fah Lanna Exotic",
+          "price": "5,400 Baht",
+          "duration": "04:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Manicure",
+          "price": "600 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/beauty-treatments-11/"
+        },
+        {
+          "name": "Pedicure",
+          "price": "600 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/beauty-treatments-11/"
+        },
+        {
+          "name": "Facial Treatment",
+          "price": "1,500 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/beauty-treatments-11/"
+        },
+        {
+          "name": "Body Scrub",
+          "price": "1,500 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/beauty-treatments-11/"
+        },
+        {
+          "name": "Body Mask",
+          "price": "1,500 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/beauty-treatments-11/"
+        }
+      ],
+      "highlights": [
+        {
+          "value": "Multi award winning day spa in Chiang Mai, Thailand",
+          "source": "https://fahlanna.com/"
+        }
+      ],
+      "location": {
+        "town": {
+          "value": "Chiang Mai",
+          "source": "https://fahlanna.com/"
+        },
+        "area": null,
+        "address": {
+          "value": "57 Wiang Kaew Road Sripoom, A. Muang, Chiang Mai 50200",
+          "source": "https://fahlanna.com/"
+        },
+        "serviceArea": null
+      },
+      "contact": {
+        "whatsapp": {
+          "value": "66888049984",
+          "source": "https://fahlanna.com/"
+        },
+        "phone": {
+          "value": "+66 (0)88 804 998"
+        }
+      }
+    },
+    {
+      "name": {
+        "value": "Fah Lanna Spa",
+        "source": "https://fahlanna.com/"
+      },
+      "summary": {
+        "value": "Multi award winning day spa in Chiang Mai offering traditional massages, signature Lanna treatments, and beauty services.",
+        "source": "https://fahlanna.com/"
+      },
+      "category": "day spa",
+      "offerings": [
+        {
+          "name": "Traditional Thai Massage",
+          "price": "800 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Foot Massage",
+          "price": "900 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Head, Back & Shoulder Massage",
+          "price": "1,000 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Thai Balm Massage",
+          "price": "1,000 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Aromatherapy Oil Massage",
+          "price": "1,500 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Hot Oil Massage",
+          "price": "1,500 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Moisturising Cream Massage",
+          "price": "1,500 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Fah Lanna Wisdom",
+          "price": "4,800 Baht",
+          "duration": "03:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Fah Lanna Karma (Reiki Healing)",
+          "price": "2,000 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Fah Lanna Exotic",
+          "price": "5,400 Baht",
+          "duration": "04:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Manicure",
+          "price": "600 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/beauty-treatments-11/"
+        },
+        {
+          "name": "Pedicure",
+          "price": "600 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/beauty-treatments-11/"
+        },
+        {
+          "name": "Facial Treatment",
+          "price": "1,500 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/beauty-treatments-11/"
+        },
+        {
+          "name": "Body Scrub",
+          "price": "1,500 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/beauty-treatments-11/"
+        },
+        {
+          "name": "Body Mask",
+          "price": "1,500 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/beauty-treatments-11/"
+        }
+      ],
+      "highlights": [
+        {
+          "value": "Multi award winning day spa in Chiang Mai, Thailand",
+          "source": "https://fahlanna.com/"
+        }
+      ],
+      "location": {
+        "town": {
+          "value": "Chiang Mai",
+          "source": "https://fahlanna.com/"
+        },
+        "area": null,
+        "address": {
+          "value": "57 Wiang Kaew Road Sripoom, A. Muang, Chiang Mai 50200",
+          "source": "https://fahlanna.com/"
+        },
+        "serviceArea": null
+      },
+      "contact": {
+        "whatsapp": {
+          "value": "66888049984",
+          "source": "https://fahlanna.com/"
+        },
+        "phone": {
+          "value": "+66 (0)88 804 9984",
+          "source": "https://fahlanna.com/"
+        }
+      }
+    },
+    {
+      "name": {
+        "value": "Fah Lanna Spa",
+        "source": "https://fahlanna.com/"
+      },
+      "summary": {
+        "value": "Multi award winning day spa in Chiang Mai offering traditional massages, signature Lanna treatments, and beauty services.",
+        "source": "https://fahlanna.com/"
+      },
+      "category": "day spa",
+      "offerings": [
+        {
+          "name": "Traditional Thai Massage",
+          "price": "800 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Foot Massage",
+          "price": "900 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Head, Back & Shoulder Massage",
+          "price": "1,000 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Thai Balm Massage",
+          "price": "1,000 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Aromatherapy Oil Massage",
+          "price": "1,500 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Hot Oil Massage",
+          "price": "1,500 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Moisturising Cream Massage",
+          "price": "1,500 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Fah Lanna Wisdom",
+          "price": "4,800 Baht",
+          "duration": "03:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Fah Lanna Karma (Reiki Healing)",
+          "price": "2,000 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Fah Lanna Exotic",
+          "price": "5,400 Baht",
+          "duration": "04:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Manicure",
+          "price": "600 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/beauty-treatments-11/"
+        },
+        {
+          "name": "Pedicure",
+          "price": "600 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/beauty-treatments-11/"
+        },
+        {
+          "name": "Facial Treatment",
+          "price": "1,500 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/beauty-treatments-11/"
+        },
+        {
+          "name": "Body Scrub",
+          "price": "1,500 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/beauty-treatments-11/"
+        },
+        {
+          "name": "Body Mask",
+          "price": "1,500 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/beauty-treatments-11/"
+        }
+      ],
+      "highlights": [
+        {
+          "value": "Multi award winning day spa in Chiang Mai, Thailand",
+          "source": "https://fahlanna.com/"
+        }
+      ],
+      "location": {
+        "town": {
+          "value": "Chiang Mai",
+          "source": "https://fahlanna.com/"
+        },
+        "area": null,
+        "address": {
+          "value": "57 Wiang Kaew Road Sripoom, A. Muang, Chiang Mai 50200",
+          "source": "https://fahlanna.com/"
+        },
+        "serviceArea": null
+      },
+      "contact": {
+        "whatsapp": {
+          "value": "66888049984",
+          "source": "https://fahlanna.com/"
+        },
+        "phone": {
+          "value": "+66 (0)88 804 9984",
+          "source": "https://fahlanna.com/"
+        },
+        "email": {
+          "value": "fahlannaspa@gmail.com",
+          "source": "https"
+        }
+      }
+    },
+    {
+      "name": {
+        "value": "Fah Lanna Spa",
+        "source": "https://fahlanna.com/"
+      },
+      "summary": {
+        "value": "Multi award winning day spa in Chiang Mai offering traditional massages, signature Lanna treatments, and beauty services.",
+        "source": "https://fahlanna.com/"
+      },
+      "category": "day spa",
+      "offerings": [
+        {
+          "name": "Traditional Thai Massage",
+          "price": "800 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Foot Massage",
+          "price": "900 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Head, Back & Shoulder Massage",
+          "price": "1,000 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Thai Balm Massage",
+          "price": "1,000 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Aromatherapy Oil Massage",
+          "price": "1,500 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Hot Oil Massage",
+          "price": "1,500 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Moisturising Cream Massage",
+          "price": "1,500 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Fah Lanna Wisdom",
+          "price": "4,800 Baht",
+          "duration": "03:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Fah Lanna Karma (Reiki Healing)",
+          "price": "2,000 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Fah Lanna Exotic",
+          "price": "5,400 Baht",
+          "duration": "04:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Manicure",
+          "price": "600 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/beauty-treatments-11/"
+        },
+        {
+          "name": "Pedicure",
+          "price": "600 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/beauty-treatments-11/"
+        },
+        {
+          "name": "Facial Treatment",
+          "price": "1,500 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/beauty-treatments-11/"
+        },
+        {
+          "name": "Body Scrub",
+          "price": "1,500 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/beauty-treatments-11/"
+        },
+        {
+          "name": "Body Mask",
+          "price": "1,500 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/beauty-treatments-11/"
+        }
+      ],
+      "highlights": [
+        {
+          "value": "Multi award winning day spa in Chiang Mai, Thailand",
+          "source": "https://fahlanna.com/"
+        }
+      ],
+      "location": {
+        "town": {
+          "value": "Chiang Mai",
+          "source": "https://fahlanna.com/"
+        },
+        "area": null,
+        "address": {
+          "value": "57 Wiang Kaew Road Sripoom, A. Muang, Chiang Mai 50200",
+          "source": "https://fahlanna.com/"
+        },
+        "serviceArea": null
+      },
+      "contact": {
+        "whatsapp": {
+          "value": "66888049984",
+          "source": "https://fahlanna.com/"
+        },
+        "phone": {
+          "value": "+66 (0)88 804 9984",
+          "source": "https://fahlanna.com/"
+        },
+        "email": {
+          "value": "fahlannaspa@gmail.com",
+          "source": "https://fahlanna.com/"
+        },
+        "instagram": {
+          "value": "fahl"
+        }
+      }
+    },
+    {
+      "name": {
+        "value": "Fah Lanna Spa",
+        "source": "https://fahlanna.com/"
+      },
+      "summary": {
+        "value": "Multi award winning day spa in Chiang Mai offering traditional massages, signature Lanna treatments, and beauty services.",
+        "source": "https://fahlanna.com/"
+      },
+      "category": "day spa",
+      "offerings": [
+        {
+          "name": "Traditional Thai Massage",
+          "price": "800 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Foot Massage",
+          "price": "900 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Head, Back & Shoulder Massage",
+          "price": "1,000 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Thai Balm Massage",
+          "price": "1,000 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Aromatherapy Oil Massage",
+          "price": "1,500 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Hot Oil Massage",
+          "price": "1,500 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Moisturising Cream Massage",
+          "price": "1,500 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Fah Lanna Wisdom",
+          "price": "4,800 Baht",
+          "duration": "03:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Fah Lanna Karma (Reiki Healing)",
+          "price": "2,000 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Fah Lanna Exotic",
+          "price": "5,400 Baht",
+          "duration": "04:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Manicure",
+          "price": "600 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/beauty-treatments-11/"
+        },
+        {
+          "name": "Pedicure",
+          "price": "600 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/beauty-treatments-11/"
+        },
+        {
+          "name": "Facial Treatment",
+          "price": "1,500 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/beauty-treatments-11/"
+        },
+        {
+          "name": "Body Scrub",
+          "price": "1,500 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/beauty-treatments-11/"
+        },
+        {
+          "name": "Body Mask",
+          "price": "1,500 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/beauty-treatments-11/"
+        }
+      ],
+      "highlights": [
+        {
+          "value": "Multi award winning day spa in Chiang Mai, Thailand",
+          "source": "https://fahlanna.com/"
+        }
+      ],
+      "location": {
+        "town": {
+          "value": "Chiang Mai",
+          "source": "https://fahlanna.com/"
+        },
+        "area": null,
+        "address": {
+          "value": "57 Wiang Kaew Road Sripoom, A. Muang, Chiang Mai 50200",
+          "source": "https://fahlanna.com/"
+        },
+        "serviceArea": null
+      },
+      "contact": {
+        "whatsapp": {
+          "value": "66888049984",
+          "source": "https://fahlanna.com/"
+        },
+        "phone": {
+          "value": "+66 (0)88 804 9984",
+          "source": "https://fahlanna.com/"
+        },
+        "email": {
+          "value": "fahlannaspa@gmail.com",
+          "source": "https://fahlanna.com/"
+        },
+        "instagram": {
+          "value": "fahlannaspa",
+          "source": "https://fahlanna.com/"
+        }
+      }
+    },
+    {
+      "name": {
+        "value": "Fah Lanna Spa",
+        "source": "https://fahlanna.com/"
+      },
+      "summary": {
+        "value": "Multi award winning day spa in Chiang Mai offering traditional massages, signature Lanna treatments, and beauty services.",
+        "source": "https://fahlanna.com/"
+      },
+      "category": "day spa",
+      "offerings": [
+        {
+          "name": "Traditional Thai Massage",
+          "price": "800 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Foot Massage",
+          "price": "900 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Head, Back & Shoulder Massage",
+          "price": "1,000 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Thai Balm Massage",
+          "price": "1,000 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Aromatherapy Oil Massage",
+          "price": "1,500 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Hot Oil Massage",
+          "price": "1,500 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Moisturising Cream Massage",
+          "price": "1,500 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Fah Lanna Wisdom",
+          "price": "4,800 Baht",
+          "duration": "03:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Fah Lanna Karma (Reiki Healing)",
+          "price": "2,000 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Fah Lanna Exotic",
+          "price": "5,400 Baht",
+          "duration": "04:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Manicure",
+          "price": "600 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/beauty-treatments-11/"
+        },
+        {
+          "name": "Pedicure",
+          "price": "600 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/beauty-treatments-11/"
+        },
+        {
+          "name": "Facial Treatment",
+          "price": "1,500 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/beauty-treatments-11/"
+        },
+        {
+          "name": "Body Scrub",
+          "price": "1,500 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/beauty-treatments-11/"
+        },
+        {
+          "name": "Body Mask",
+          "price": "1,500 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/beauty-treatments-11/"
+        }
+      ],
+      "highlights": [
+        {
+          "value": "Multi award winning day spa in Chiang Mai, Thailand",
+          "source": "https://fahlanna.com/"
+        }
+      ],
+      "location": {
+        "town": {
+          "value": "Chiang Mai",
+          "source": "https://fahlanna.com/"
+        },
+        "area": null,
+        "address": {
+          "value": "57 Wiang Kaew Road Sripoom, A. Muang, Chiang Mai 50200",
+          "source": "https://fahlanna.com/"
+        },
+        "serviceArea": null
+      },
+      "contact": {
+        "whatsapp": {
+          "value": "66888049984",
+          "source": "https://fahlanna.com/"
+        },
+        "phone": {
+          "value": "+66 (0)88 804 9984",
+          "source": "https://fahlanna.com/"
+        },
+        "email": {
+          "value": "fahlannaspa@gmail.com",
+          "source": "https://fahlanna.com/"
+        },
+        "instagram": {
+          "value": "fahlannaspa",
+          "source": "https://fahlanna.com/"
+        },
+        "bookingUrl": null
+      },
+      "hours": {
+        "value": "12 pm - "
+      }
+    },
+    {
+      "name": {
+        "value": "Fah Lanna Spa",
+        "source": "https://fahlanna.com/"
+      },
+      "summary": {
+        "value": "Multi award winning day spa in Chiang Mai offering traditional massages, signature Lanna treatments, and beauty services.",
+        "source": "https://fahlanna.com/"
+      },
+      "category": "day spa",
+      "offerings": [
+        {
+          "name": "Traditional Thai Massage",
+          "price": "800 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Foot Massage",
+          "price": "900 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Head, Back & Shoulder Massage",
+          "price": "1,000 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Thai Balm Massage",
+          "price": "1,000 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Aromatherapy Oil Massage",
+          "price": "1,500 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Hot Oil Massage",
+          "price": "1,500 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Moisturising Cream Massage",
+          "price": "1,500 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Fah Lanna Wisdom",
+          "price": "4,800 Baht",
+          "duration": "03:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Fah Lanna Karma (Reiki Healing)",
+          "price": "2,000 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Fah Lanna Exotic",
+          "price": "5,400 Baht",
+          "duration": "04:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Manicure",
+          "price": "600 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/beauty-treatments-11/"
+        },
+        {
+          "name": "Pedicure",
+          "price": "600 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/beauty-treatments-11/"
+        },
+        {
+          "name": "Facial Treatment",
+          "price": "1,500 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/beauty-treatments-11/"
+        },
+        {
+          "name": "Body Scrub",
+          "price": "1,500 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/beauty-treatments-11/"
+        },
+        {
+          "name": "Body Mask",
+          "price": "1,500 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/beauty-treatments-11/"
+        }
+      ],
+      "highlights": [
+        {
+          "value": "Multi award winning day spa in Chiang Mai, Thailand",
+          "source": "https://fahlanna.com/"
+        }
+      ],
+      "location": {
+        "town": {
+          "value": "Chiang Mai",
+          "source": "https://fahlanna.com/"
+        },
+        "area": null,
+        "address": {
+          "value": "57 Wiang Kaew Road Sripoom, A. Muang, Chiang Mai 50200",
+          "source": "https://fahlanna.com/"
+        },
+        "serviceArea": null
+      },
+      "contact": {
+        "whatsapp": {
+          "value": "66888049984",
+          "source": "https://fahlanna.com/"
+        },
+        "phone": {
+          "value": "+66 (0)88 804 9984",
+          "source": "https://fahlanna.com/"
+        },
+        "email": {
+          "value": "fahlannaspa@gmail.com",
+          "source": "https://fahlanna.com/"
+        },
+        "instagram": {
+          "value": "fahlannaspa",
+          "source": "https://fahlanna.com/"
+        },
+        "bookingUrl": null
+      },
+      "hours": {
+        "value": "12 pm - 9 pm",
+        "source": "https://fahlanna.com/"
+      }
+    },
+    {
+      "name": {
+        "value": "Fah Lanna Spa",
+        "source": "https://fahlanna.com/"
+      },
+      "summary": {
+        "value": "Multi award winning day spa in Chiang Mai offering traditional massages, signature Lanna treatments, and beauty services.",
+        "source": "https://fahlanna.com/"
+      },
+      "category": "day spa",
+      "offerings": [
+        {
+          "name": "Traditional Thai Massage",
+          "price": "800 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Foot Massage",
+          "price": "900 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Head, Back & Shoulder Massage",
+          "price": "1,000 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Thai Balm Massage",
+          "price": "1,000 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Aromatherapy Oil Massage",
+          "price": "1,500 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Hot Oil Massage",
+          "price": "1,500 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Moisturising Cream Massage",
+          "price": "1,500 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Fah Lanna Wisdom",
+          "price": "4,800 Baht",
+          "duration": "03:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Fah Lanna Karma (Reiki Healing)",
+          "price": "2,000 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Fah Lanna Exotic",
+          "price": "5,400 Baht",
+          "duration": "04:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Manicure",
+          "price": "600 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/beauty-treatments-11/"
+        },
+        {
+          "name": "Pedicure",
+          "price": "600 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/beauty-treatments-11/"
+        },
+        {
+          "name": "Facial Treatment",
+          "price": "1,500 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/beauty-treatments-11/"
+        },
+        {
+          "name": "Body Scrub",
+          "price": "1,500 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/beauty-treatments-11/"
+        },
+        {
+          "name": "Body Mask",
+          "price": "1,500 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/beauty-treatments-11/"
+        }
+      ],
+      "highlights": [
+        {
+          "value": "Multi award winning day spa in Chiang Mai, Thailand",
+          "source": "https://fahlanna.com/"
+        }
+      ],
+      "location": {
+        "town": {
+          "value": "Chiang Mai",
+          "source": "https://fahlanna.com/"
+        },
+        "area": null,
+        "address": {
+          "value": "57 Wiang Kaew Road Sripoom, A. Muang, Chiang Mai 50200",
+          "source": "https://fahlanna.com/"
+        },
+        "serviceArea": null
+      },
+      "contact": {
+        "whatsapp": {
+          "value": "66888049984",
+          "source": "https://fahlanna.com/"
+        },
+        "phone": {
+          "value": "+66 (0)88 804 9984",
+          "source": "https://fahlanna.com/"
+        },
+        "email": {
+          "value": "fahlannaspa@gmail.com",
+          "source": "https://fahlanna.com/"
+        },
+        "instagram": {
+          "value": "fahlannaspa",
+          "source": "https://fahlanna.com/"
+        },
+        "bookingUrl": null
+      },
+      "hours": {
+        "value": "12 pm - 9 pm",
+        "source": "https://fahlanna.com/"
+      },
+      "tone": [
+        "welcoming",
+        "professional",
+        "calm"
+      ],
+      "colours": [
+        {
+          "hex": "#2e4a3b",
+          "role": "background"
+        }
+      ]
+    },
+    {
+      "name": {
+        "value": "Fah Lanna Spa",
+        "source": "https://fahlanna.com/"
+      },
+      "summary": {
+        "value": "Multi award winning day spa in Chiang Mai offering traditional massages, signature Lanna treatments, and beauty services.",
+        "source": "https://fahlanna.com/"
+      },
+      "category": "day spa",
+      "offerings": [
+        {
+          "name": "Traditional Thai Massage",
+          "price": "800 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Foot Massage",
+          "price": "900 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Head, Back & Shoulder Massage",
+          "price": "1,000 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Thai Balm Massage",
+          "price": "1,000 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Aromatherapy Oil Massage",
+          "price": "1,500 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Hot Oil Massage",
+          "price": "1,500 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Moisturising Cream Massage",
+          "price": "1,500 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Fah Lanna Wisdom",
+          "price": "4,800 Baht",
+          "duration": "03:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Fah Lanna Karma (Reiki Healing)",
+          "price": "2,000 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Fah Lanna Exotic",
+          "price": "5,400 Baht",
+          "duration": "04:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Manicure",
+          "price": "600 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/beauty-treatments-11/"
+        },
+        {
+          "name": "Pedicure",
+          "price": "600 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/beauty-treatments-11/"
+        },
+        {
+          "name": "Facial Treatment",
+          "price": "1,500 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/beauty-treatments-11/"
+        },
+        {
+          "name": "Body Scrub",
+          "price": "1,500 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/beauty-treatments-11/"
+        },
+        {
+          "name": "Body Mask",
+          "price": "1,500 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/beauty-treatments-11/"
+        }
+      ],
+      "highlights": [
+        {
+          "value": "Multi award winning day spa in Chiang Mai, Thailand",
+          "source": "https://fahlanna.com/"
+        }
+      ],
+      "location": {
+        "town": {
+          "value": "Chiang Mai",
+          "source": "https://fahlanna.com/"
+        },
+        "area": null,
+        "address": {
+          "value": "57 Wiang Kaew Road Sripoom, A. Muang, Chiang Mai 50200",
+          "source": "https://fahlanna.com/"
+        },
+        "serviceArea": null
+      },
+      "contact": {
+        "whatsapp": {
+          "value": "66888049984",
+          "source": "https://fahlanna.com/"
+        },
+        "phone": {
+          "value": "+66 (0)88 804 9984",
+          "source": "https://fahlanna.com/"
+        },
+        "email": {
+          "value": "fahlannaspa@gmail.com",
+          "source": "https://fahlanna.com/"
+        },
+        "instagram": {
+          "value": "fahlannaspa",
+          "source": "https://fahlanna.com/"
+        },
+        "bookingUrl": null
+      },
+      "hours": {
+        "value": "12 pm - 9 pm",
+        "source": "https://fahlanna.com/"
+      },
+      "tone": [
+        "welcoming",
+        "professional",
+        "calm"
+      ],
+      "colours": [
+        {
+          "hex": "#2e4a3b",
+          "role": "background",
+          "source": "https://fahlanna.com/"
+        },
+        {
+          "hex": "#d4af"
+        }
+      ]
+    },
+    {
+      "name": {
+        "value": "Fah Lanna Spa",
+        "source": "https://fahlanna.com/"
+      },
+      "summary": {
+        "value": "Multi award winning day spa in Chiang Mai offering traditional massages, signature Lanna treatments, and beauty services.",
+        "source": "https://fahlanna.com/"
+      },
+      "category": "day spa",
+      "offerings": [
+        {
+          "name": "Traditional Thai Massage",
+          "price": "800 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Foot Massage",
+          "price": "900 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Head, Back & Shoulder Massage",
+          "price": "1,000 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Thai Balm Massage",
+          "price": "1,000 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Aromatherapy Oil Massage",
+          "price": "1,500 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Hot Oil Massage",
+          "price": "1,500 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Moisturising Cream Massage",
+          "price": "1,500 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Fah Lanna Wisdom",
+          "price": "4,800 Baht",
+          "duration": "03:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Fah Lanna Karma (Reiki Healing)",
+          "price": "2,000 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Fah Lanna Exotic",
+          "price": "5,400 Baht",
+          "duration": "04:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Manicure",
+          "price": "600 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/beauty-treatments-11/"
+        },
+        {
+          "name": "Pedicure",
+          "price": "600 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/beauty-treatments-11/"
+        },
+        {
+          "name": "Facial Treatment",
+          "price": "1,500 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/beauty-treatments-11/"
+        },
+        {
+          "name": "Body Scrub",
+          "price": "1,500 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/beauty-treatments-11/"
+        },
+        {
+          "name": "Body Mask",
+          "price": "1,500 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/beauty-treatments-11/"
+        }
+      ],
+      "highlights": [
+        {
+          "value": "Multi award winning day spa in Chiang Mai, Thailand",
+          "source": "https://fahlanna.com/"
+        }
+      ],
+      "location": {
+        "town": {
+          "value": "Chiang Mai",
+          "source": "https://fahlanna.com/"
+        },
+        "area": null,
+        "address": {
+          "value": "57 Wiang Kaew Road Sripoom, A. Muang, Chiang Mai 50200",
+          "source": "https://fahlanna.com/"
+        },
+        "serviceArea": null
+      },
+      "contact": {
+        "whatsapp": {
+          "value": "66888049984",
+          "source": "https://fahlanna.com/"
+        },
+        "phone": {
+          "value": "+66 (0)88 804 9984",
+          "source": "https://fahlanna.com/"
+        },
+        "email": {
+          "value": "fahlannaspa@gmail.com",
+          "source": "https://fahlanna.com/"
+        },
+        "instagram": {
+          "value": "fahlannaspa",
+          "source": "https://fahlanna.com/"
+        },
+        "bookingUrl": null
+      },
+      "hours": {
+        "value": "12 pm - 9 pm",
+        "source": "https://fahlanna.com/"
+      },
+      "tone": [
+        "welcoming",
+        "professional",
+        "calm"
+      ],
+      "colours": [
+        {
+          "hex": "#2e4a3b",
+          "role": "background",
+          "source": "https://fahlanna.com/"
+        },
+        {
+          "hex": "#d4af37",
+          "role": "accent",
+          "source": "https://fahlanna.com"
+        }
+      ]
+    },
+    {
+      "name": {
+        "value": "Fah Lanna Spa",
+        "source": "https://fahlanna.com/"
+      },
+      "summary": {
+        "value": "Multi award winning day spa in Chiang Mai offering traditional massages, signature Lanna treatments, and beauty services.",
+        "source": "https://fahlanna.com/"
+      },
+      "category": "day spa",
+      "offerings": [
+        {
+          "name": "Traditional Thai Massage",
+          "price": "800 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Foot Massage",
+          "price": "900 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Head, Back & Shoulder Massage",
+          "price": "1,000 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Thai Balm Massage",
+          "price": "1,000 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Aromatherapy Oil Massage",
+          "price": "1,500 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Hot Oil Massage",
+          "price": "1,500 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Moisturising Cream Massage",
+          "price": "1,500 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Fah Lanna Wisdom",
+          "price": "4,800 Baht",
+          "duration": "03:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Fah Lanna Karma (Reiki Healing)",
+          "price": "2,000 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Fah Lanna Exotic",
+          "price": "5,400 Baht",
+          "duration": "04:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Manicure",
+          "price": "600 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/beauty-treatments-11/"
+        },
+        {
+          "name": "Pedicure",
+          "price": "600 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/beauty-treatments-11/"
+        },
+        {
+          "name": "Facial Treatment",
+          "price": "1,500 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/beauty-treatments-11/"
+        },
+        {
+          "name": "Body Scrub",
+          "price": "1,500 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/beauty-treatments-11/"
+        },
+        {
+          "name": "Body Mask",
+          "price": "1,500 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/beauty-treatments-11/"
+        }
+      ],
+      "highlights": [
+        {
+          "value": "Multi award winning day spa in Chiang Mai, Thailand",
+          "source": "https://fahlanna.com/"
+        }
+      ],
+      "location": {
+        "town": {
+          "value": "Chiang Mai",
+          "source": "https://fahlanna.com/"
+        },
+        "area": null,
+        "address": {
+          "value": "57 Wiang Kaew Road Sripoom, A. Muang, Chiang Mai 50200",
+          "source": "https://fahlanna.com/"
+        },
+        "serviceArea": null
+      },
+      "contact": {
+        "whatsapp": {
+          "value": "66888049984",
+          "source": "https://fahlanna.com/"
+        },
+        "phone": {
+          "value": "+66 (0)88 804 9984",
+          "source": "https://fahlanna.com/"
+        },
+        "email": {
+          "value": "fahlannaspa@gmail.com",
+          "source": "https://fahlanna.com/"
+        },
+        "instagram": {
+          "value": "fahlannaspa",
+          "source": "https://fahlanna.com/"
+        },
+        "bookingUrl": null
+      },
+      "hours": {
+        "value": "12 pm - 9 pm",
+        "source": "https://fahlanna.com/"
+      },
+      "tone": [
+        "welcoming",
+        "professional",
+        "calm"
+      ],
+      "colours": [
+        {
+          "hex": "#2e4a3b",
+          "role": "background",
+          "source": "https://fahlanna.com/"
+        },
+        {
+          "hex": "#d4af37",
+          "role": "accent",
+          "source": "https://fahlanna.com/"
+        }
+      ],
+      "visualStyle": {
+        "summary": "lush tropical foliage, warm ambient"
+      }
+    },
+    {
+      "name": {
+        "value": "Fah Lanna Spa",
+        "source": "https://fahlanna.com/"
+      },
+      "summary": {
+        "value": "Multi award winning day spa in Chiang Mai offering traditional massages, signature Lanna treatments, and beauty services.",
+        "source": "https://fahlanna.com/"
+      },
+      "category": "day spa",
+      "offerings": [
+        {
+          "name": "Traditional Thai Massage",
+          "price": "800 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Foot Massage",
+          "price": "900 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Head, Back & Shoulder Massage",
+          "price": "1,000 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Thai Balm Massage",
+          "price": "1,000 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Aromatherapy Oil Massage",
+          "price": "1,500 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Hot Oil Massage",
+          "price": "1,500 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Moisturising Cream Massage",
+          "price": "1,500 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Fah Lanna Wisdom",
+          "price": "4,800 Baht",
+          "duration": "03:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Fah Lanna Karma (Reiki Healing)",
+          "price": "2,000 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Fah Lanna Exotic",
+          "price": "5,400 Baht",
+          "duration": "04:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Manicure",
+          "price": "600 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/beauty-treatments-11/"
+        },
+        {
+          "name": "Pedicure",
+          "price": "600 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/beauty-treatments-11/"
+        },
+        {
+          "name": "Facial Treatment",
+          "price": "1,500 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/beauty-treatments-11/"
+        },
+        {
+          "name": "Body Scrub",
+          "price": "1,500 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/beauty-treatments-11/"
+        },
+        {
+          "name": "Body Mask",
+          "price": "1,500 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/beauty-treatments-11/"
+        }
+      ],
+      "highlights": [
+        {
+          "value": "Multi award winning day spa in Chiang Mai, Thailand",
+          "source": "https://fahlanna.com/"
+        }
+      ],
+      "location": {
+        "town": {
+          "value": "Chiang Mai",
+          "source": "https://fahlanna.com/"
+        },
+        "area": null,
+        "address": {
+          "value": "57 Wiang Kaew Road Sripoom, A. Muang, Chiang Mai 50200",
+          "source": "https://fahlanna.com/"
+        },
+        "serviceArea": null
+      },
+      "contact": {
+        "whatsapp": {
+          "value": "66888049984",
+          "source": "https://fahlanna.com/"
+        },
+        "phone": {
+          "value": "+66 (0)88 804 9984",
+          "source": "https://fahlanna.com/"
+        },
+        "email": {
+          "value": "fahlannaspa@gmail.com",
+          "source": "https://fahlanna.com/"
+        },
+        "instagram": {
+          "value": "fahlannaspa",
+          "source": "https://fahlanna.com/"
+        },
+        "bookingUrl": null
+      },
+      "hours": {
+        "value": "12 pm - 9 pm",
+        "source": "https://fahlanna.com/"
+      },
+      "tone": [
+        "welcoming",
+        "professional",
+        "calm"
+      ],
+      "colours": [
+        {
+          "hex": "#2e4a3b",
+          "role": "background",
+          "source": "https://fahlanna.com/"
+        },
+        {
+          "hex": "#d4af37",
+          "role": "accent",
+          "source": "https://fahlanna.com/"
+        }
+      ],
+      "visualStyle": {
+        "summary": "lush tropical foliage, warm ambient lighting, natural wood, serene mood",
+        "palette": "deep greens, rich browns, warm amber",
+        "light": ""
+      }
+    },
+    {
+      "name": {
+        "value": "Fah Lanna Spa",
+        "source": "https://fahlanna.com/"
+      },
+      "summary": {
+        "value": "Multi award winning day spa in Chiang Mai offering traditional massages, signature Lanna treatments, and beauty services.",
+        "source": "https://fahlanna.com/"
+      },
+      "category": "day spa",
+      "offerings": [
+        {
+          "name": "Traditional Thai Massage",
+          "price": "800 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Foot Massage",
+          "price": "900 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Head, Back & Shoulder Massage",
+          "price": "1,000 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Thai Balm Massage",
+          "price": "1,000 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Aromatherapy Oil Massage",
+          "price": "1,500 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Hot Oil Massage",
+          "price": "1,500 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Moisturising Cream Massage",
+          "price": "1,500 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Fah Lanna Wisdom",
+          "price": "4,800 Baht",
+          "duration": "03:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Fah Lanna Karma (Reiki Healing)",
+          "price": "2,000 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Fah Lanna Exotic",
+          "price": "5,400 Baht",
+          "duration": "04:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Manicure",
+          "price": "600 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/beauty-treatments-11/"
+        },
+        {
+          "name": "Pedicure",
+          "price": "600 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/beauty-treatments-11/"
+        },
+        {
+          "name": "Facial Treatment",
+          "price": "1,500 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/beauty-treatments-11/"
+        },
+        {
+          "name": "Body Scrub",
+          "price": "1,500 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/beauty-treatments-11/"
+        },
+        {
+          "name": "Body Mask",
+          "price": "1,500 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/beauty-treatments-11/"
+        }
+      ],
+      "highlights": [
+        {
+          "value": "Multi award winning day spa in Chiang Mai, Thailand",
+          "source": "https://fahlanna.com/"
+        }
+      ],
+      "location": {
+        "town": {
+          "value": "Chiang Mai",
+          "source": "https://fahlanna.com/"
+        },
+        "area": null,
+        "address": {
+          "value": "57 Wiang Kaew Road Sripoom, A. Muang, Chiang Mai 50200",
+          "source": "https://fahlanna.com/"
+        },
+        "serviceArea": null
+      },
+      "contact": {
+        "whatsapp": {
+          "value": "66888049984",
+          "source": "https://fahlanna.com/"
+        },
+        "phone": {
+          "value": "+66 (0)88 804 9984",
+          "source": "https://fahlanna.com/"
+        },
+        "email": {
+          "value": "fahlannaspa@gmail.com",
+          "source": "https://fahlanna.com/"
+        },
+        "instagram": {
+          "value": "fahlannaspa",
+          "source": "https://fahlanna.com/"
+        },
+        "bookingUrl": null
+      },
+      "hours": {
+        "value": "12 pm - 9 pm",
+        "source": "https://fahlanna.com/"
+      },
+      "tone": [
+        "welcoming",
+        "professional",
+        "calm"
+      ],
+      "colours": [
+        {
+          "hex": "#2e4a3b",
+          "role": "background",
+          "source": "https://fahlanna.com/"
+        },
+        {
+          "hex": "#d4af37",
+          "role": "accent",
+          "source": "https://fahlanna.com/"
+        }
+      ],
+      "visualStyle": {
+        "summary": "lush tropical foliage, warm ambient lighting, natural wood, serene mood",
+        "palette": "deep greens, rich browns, warm amber",
+        "light": "soft evening ambient light with warm lantern glows",
+        "textures": "wooden walkways, tropical plants, tranquil water features"
+      }
+    },
+    {
+      "name": {
+        "value": "Fah Lanna Spa",
+        "source": "https://fahlanna.com/"
+      },
+      "summary": {
+        "value": "Multi award winning day spa in Chiang Mai offering traditional massages, signature Lanna treatments, and beauty services.",
+        "source": "https://fahlanna.com/"
+      },
+      "category": "day spa",
+      "offerings": [
+        {
+          "name": "Traditional Thai Massage",
+          "price": "800 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Foot Massage",
+          "price": "900 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Head, Back & Shoulder Massage",
+          "price": "1,000 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Thai Balm Massage",
+          "price": "1,000 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Aromatherapy Oil Massage",
+          "price": "1,500 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Hot Oil Massage",
+          "price": "1,500 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Moisturising Cream Massage",
+          "price": "1,500 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Fah Lanna Wisdom",
+          "price": "4,800 Baht",
+          "duration": "03:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Fah Lanna Karma (Reiki Healing)",
+          "price": "2,000 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Fah Lanna Exotic",
+          "price": "5,400 Baht",
+          "duration": "04:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/"
+        },
+        {
+          "name": "Manicure",
+          "price": "600 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/beauty-treatments-11/"
+        },
+        {
+          "name": "Pedicure",
+          "price": "600 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/beauty-treatments-11/"
+        },
+        {
+          "name": "Facial Treatment",
+          "price": "1,500 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/beauty-treatments-11/"
+        },
+        {
+          "name": "Body Scrub",
+          "price": "1,500 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/beauty-treatments-11/"
+        },
+        {
+          "name": "Body Mask",
+          "price": "1,500 Baht",
+          "duration": "01:00 Hours",
+          "source": "https://fahlanna.com/spa-menu/beauty-treatments-11/"
+        }
+      ],
+      "highlights": [
+        {
+          "value": "Multi award winning day spa in Chiang Mai, Thailand",
+          "source": "https://fahlanna.com/"
+        }
+      ],
+      "location": {
+        "town": {
+          "value": "Chiang Mai",
+          "source": "https://fahlanna.com/"
+        },
+        "area": null,
+        "address": {
+          "value": "57 Wiang Kaew Road Sripoom, A. Muang, Chiang Mai 50200",
+          "source": "https://fahlanna.com/"
+        },
+        "serviceArea": null
+      },
+      "contact": {
+        "whatsapp": {
+          "value": "66888049984",
+          "source": "https://fahlanna.com/"
+        },
+        "phone": {
+          "value": "+66 (0)88 804 9984",
+          "source": "https://fahlanna.com/"
+        },
+        "email": {
+          "value": "fahlannaspa@gmail.com",
+          "source": "https://fahlanna.com/"
+        },
+        "instagram": {
+          "value": "fahlannaspa",
+          "source": "https://fahlanna.com/"
+        },
+        "bookingUrl": null
+      },
+      "hours": {
+        "value": "12 pm - 9 pm",
+        "source": "https://fahlanna.com/"
+      },
+      "tone": [
+        "welcoming",
+        "professional",
+        "calm"
+      ],
+      "colours": [
+        {
+          "hex": "#2e4a3b",
+          "role": "background",
+          "source": "https://fahlanna.com/"
+        },
+        {
+          "hex": "#d4af37",
+          "role": "accent",
+          "source": "https://fahlanna.com/"
+        }
+      ],
+      "visualStyle": {
+        "summary": "lush tropical foliage, warm ambient lighting, natural wood, serene mood",
+        "palette": "deep greens, rich browns, warm amber",
+        "light": "soft evening ambient light with warm lantern glows",
+        "textures": "wooden walkways, tropical plants, tranquil water features",
+        "mood": "tranquil, luxurious, relaxing"
+      }
+    }
+  ],
+  "final": {
+    "name": {
+      "value": "Fah Lanna Spa",
+      "source": "https://fahlanna.com/"
+    },
+    "summary": {
+      "value": "Multi award winning day spa in Chiang Mai offering traditional massages, signature Lanna treatments, and beauty services.",
+      "source": "https://fahlanna.com/"
+    },
+    "category": "day spa",
+    "offerings": [
+      {
+        "name": "Traditional Thai Massage",
+        "price": "800 Baht",
+        "duration": "01:00 Hours",
+        "source": "https://fahlanna.com/spa-menu/"
+      },
+      {
+        "name": "Foot Massage",
+        "price": "900 Baht",
+        "duration": "01:00 Hours",
+        "source": "https://fahlanna.com/spa-menu/"
+      },
+      {
+        "name": "Head, Back & Shoulder Massage",
+        "price": "1,000 Baht",
+        "duration": "01:00 Hours",
+        "source": "https://fahlanna.com/spa-menu/"
+      },
+      {
+        "name": "Thai Balm Massage",
+        "price": "1,000 Baht",
+        "duration": "01:00 Hours",
+        "source": "https://fahlanna.com/spa-menu/"
+      },
+      {
+        "name": "Aromatherapy Oil Massage",
+        "price": "1,500 Baht",
+        "duration": "01:00 Hours",
+        "source": "https://fahlanna.com/spa-menu/"
+      },
+      {
+        "name": "Hot Oil Massage",
+        "price": "1,500 Baht",
+        "duration": "01:00 Hours",
+        "source": "https://fahlanna.com/spa-menu/"
+      },
+      {
+        "name": "Moisturising Cream Massage",
+        "price": "1,500 Baht",
+        "duration": "01:00 Hours",
+        "source": "https://fahlanna.com/spa-menu/"
+      },
+      {
+        "name": "Fah Lanna Wisdom",
+        "price": "4,800 Baht",
+        "duration": "03:00 Hours",
+        "source": "https://fahlanna.com/spa-menu/"
+      },
+      {
+        "name": "Fah Lanna Karma (Reiki Healing)",
+        "price": "2,000 Baht",
+        "duration": "01:00 Hours",
+        "source": "https://fahlanna.com/spa-menu/"
+      },
+      {
+        "name": "Fah Lanna Exotic",
+        "price": "5,400 Baht",
+        "duration": "04:00 Hours",
+        "source": "https://fahlanna.com/spa-menu/"
+      },
+      {
+        "name": "Manicure",
+        "price": "600 Baht",
+        "duration": "01:00 Hours",
+        "source": "https://fahlanna.com/spa-menu/beauty-treatments-11/"
+      },
+      {
+        "name": "Pedicure",
+        "price": "600 Baht",
+        "duration": "01:00 Hours",
+        "source": "https://fahlanna.com/spa-menu/beauty-treatments-11/"
+      },
+      {
+        "name": "Facial Treatment",
+        "price": "1,500 Baht",
+        "duration": "01:00 Hours",
+        "source": "https://fahlanna.com/spa-menu/beauty-treatments-11/"
+      },
+      {
+        "name": "Body Scrub",
+        "price": "1,500 Baht",
+        "duration": "01:00 Hours",
+        "source": "https://fahlanna.com/spa-menu/beauty-treatments-11/"
+      },
+      {
+        "name": "Body Mask",
+        "price": "1,500 Baht",
+        "duration": "01:00 Hours",
+        "source": "https://fahlanna.com/spa-menu/beauty-treatments-11/"
+      }
+    ],
+    "highlights": [
+      {
+        "value": "Multi award winning day spa in Chiang Mai, Thailand",
+        "source": "https://fahlanna.com/"
+      }
+    ],
+    "location": {
+      "town": {
+        "value": "Chiang Mai",
+        "source": "https://fahlanna.com/"
+      },
+      "area": null,
+      "address": {
+        "value": "57 Wiang Kaew Road Sripoom, A. Muang, Chiang Mai 50200",
+        "source": "https://fahlanna.com/"
+      },
+      "serviceArea": null
+    },
+    "contact": {
+      "whatsapp": {
+        "value": "66888049984",
+        "source": "https://fahlanna.com/"
+      },
+      "phone": {
+        "value": "+66 (0)88 804 9984",
+        "source": "https://fahlanna.com/"
+      },
+      "email": {
+        "value": "fahlannaspa@gmail.com",
+        "source": "https://fahlanna.com/"
+      },
+      "instagram": {
+        "value": "fahlannaspa",
+        "source": "https://fahlanna.com/"
+      },
+      "bookingUrl": null
+    },
+    "hours": {
+      "value": "12 pm - 9 pm",
+      "source": "https://fahlanna.com/"
+    },
+    "tone": [
+      "welcoming",
+      "professional",
+      "calm"
+    ],
+    "colours": [
+      {
+        "hex": "#2e4a3b",
+        "role": "background",
+        "source": "https://fahlanna.com/"
+      },
+      {
+        "hex": "#d4af37",
+        "role": "accent",
+        "source": "https://fahlanna.com/"
+      }
+    ],
+    "visualStyle": {
+      "summary": "lush tropical foliage, warm ambient lighting, natural wood, serene mood",
+      "palette": "deep greens, rich browns, warm amber",
+      "light": "soft evening ambient light with warm lantern glows",
+      "textures": "wooden walkways, tropical plants, tranquil water features",
+      "mood": "tranquil, luxurious, relaxing"
+    }
+  }
+}

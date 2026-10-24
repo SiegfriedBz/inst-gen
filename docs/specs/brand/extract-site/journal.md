@@ -87,6 +87,40 @@ brixandbaume.com (redirects to google.com).
   "Phone · WhatsApp · Zalo" without a wa.me link, so only the model can find
   it. Town is null for Naki (no town given) and Revolver (many venues).
 
+### The eval
+
+- 2026-10-24: `gemini-3.8-flash` is far too slow on the free tier for a
+  30 s step. A two-line prompt took 103 s, and Svarga 114 s with the first
+  partial at 105 s, while fetching took 81 ms. Thinking level `minimal` is
+  refused by this model ("not supported"); `low` is its floor.
+  `gemini-3.5-flash-lite` reads Svarga in 10 s (first partial at 3 s). The
+  eval below ran on flash-lite through `pnpm eval:brand --model=…`; the
+  app's constant still names `gemini-3.8-flash` until the developer decides.
+- 2026-10-24: Flash-lite sometimes returned more items or words than the
+  profile allows, and the read failed with "response did not match schema".
+  The model's schema now has no limits; code trims to them. A profile may
+  have fewer than 3 tone words, against the spec's "3 to 5".
+- 2026-10-24: CSS variables named for interface states (`--color-error`,
+  `--color-instock`, `--color-add-to-wishlist-background`) are no longer
+  read as brand colours.
+- 2026-10-24: Five expected colours were mine from CSS frequency and wrong
+  (Phin's logo is black and white; Orient's is beige). Phin now expects
+  `#211b1b`; Orient, Fah Lanna, Neyuh and Better Than Blouses expect none.
+- 2026-10-24: Prompt `brand-2`: core offerings first, the town rather than a
+  district, a WhatsApp number written as text.
+- 2026-10-24: Eval runs, all on `gemini-3.5-flash-lite`:
+
+  | Prompt | Result | Failing |
+  |---|---|---|
+  | brand-1 | 12/19 scored, 1 `model_failed` | colours, offerings, towns, a schema mismatch |
+  | brand-2 | **16/20** | little-vietnam-tours and naki (offerings: product lines listed instead of items), neyuh (WhatsApp written as text), serenity-bali (colour: black) |
+
+  `brand eval: 16/20 passed · prompt brand-2 · model gemini-3.5-flash-lite`
+  Reads took 3 to 11 s. The `recording.json` files are from this run.
+- 2026-10-24: Two runs of the same prompt differ (Libra and Two Face failed
+  once, then passed): flash-lite isn't deterministic, so the gate is a
+  snapshot, not a guarantee.
+
 ## RED
 
 ## GREEN
