@@ -71,6 +71,12 @@ describe('brandColours', () => {
     ]);
   });
 
+  test('ignores colours named for interface states', () => {
+    const css =
+      ':root{--color-error:#8b0000;--color-success:#006400;--color-instock:#3ed660;--color-add-to-wishlist-background:#333333;--color-sale-badge:#e02f2f;--color-link-hover:#1f6f5c;--color-brand:#108474}';
+    expect(brandColours(undefined, [css]).map((c) => c.source)).toEqual(['css:--color-brand']);
+  });
+
   test('keeps at most 5, without duplicates', () => {
     const css = `:root{${[
       '#111111',

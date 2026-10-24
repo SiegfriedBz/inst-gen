@@ -90,6 +90,10 @@ function lightnessSaturation(hex: string): { l: number; s: number } {
 const CUSTOM_PROPERTY = /(?<![\w-])(--[\w-]+)\s*:\s*([^;}]+)/g;
 const BRAND_NAME = /^--(?:primary|brand|accent|color-|wp--preset--color--)/;
 
+// Colours named for interface states or widgets, not for the brand.
+const INTERFACE_STATE =
+  /(?:error|success|warning|danger|info|notice|instock|lowstock|outofstock|stock|sale|badge|wishlist|estimate|hover|focus|active|disabled|shadow|overlay|border|link)/;
+
 // WordPress's default block-editor palette, present on most WordPress sites.
 const WORDPRESS_PALETTE =
   /^--wp--preset--color--(?:black|white|cyan-bluish-gray|pale-pink|vivid-red|luminous-vivid-orange|luminous-vivid-amber|light-green-cyan|vivid-green-cyan|pale-cyan-blue|vivid-cyan-blue|vivid-purple)$/;
@@ -108,7 +112,13 @@ export function brandColours(themeColor: string | undefined, css: string[]): Cod
     for (const match of sheet.matchAll(CUSTOM_PROPERTY)) {
       const property = match[1].toLowerCase();
       if (!BRAND_NAME.test(property)) continue;
-      if (TAILWIND_PALETTE.test(property) || WORDPRESS_PALETTE.test(property)) continue;
+      if (
+        TAILWIND_PALETTE.test(property) ||
+        WORDPRESS_PALETTE.test(property) ||
+        INTERFACE_STATE.test(property)
+      ) {
+        continue;
+      }
       const hex = toHex(match[2].replace(/!important/i, ''));
       if (hex) found.push({ hex, source: `css:${property}` });
     }
