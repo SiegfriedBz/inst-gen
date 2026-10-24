@@ -63,7 +63,8 @@
         "moments": "Mengapa orang datang",
         "placeSymbols": "Simbol tempat Anda",
         "senses": "Aroma, tekstur, dan cahaya",
-        "tone": "Gaya bahasa Anda"
+        "tone": "Gaya bahasa Anda",
+        "searchTerms": "Yang dicari orang"
       },
       "roles": {
         "primary": "Utama",
@@ -72,7 +73,11 @@
         "text": "Teks"
       },
       "logoAlt": "Logo {name}",
-      "photoAlt": "Foto dari situs web Anda"
+      "photoAlt": "Foto dari situs web Anda",
+      "searching": "Mencari tahu apa yang dicari orang…",
+      "searchFailed": "Kami belum bisa mencarinya hari ini. Kami akan mencoba lagi lain kali.",
+      "searchEmpty": "Tidak ada yang ditemukan untuk kota Anda.",
+      "notFoundYet": "Belum ditemukan"
     },
     "source": {
       "page": "dari {path}",
@@ -80,7 +85,9 @@
       "site": "dari situs web Anda",
       "guess": "tebakan kami dari foto Anda",
       "suggestion": "saran kami",
-      "owner": "ditambahkan oleh Anda"
+      "owner": "ditambahkan oleh Anda",
+      "elsewhere": "dilihat di {host}",
+      "search": "dari yang dicari orang"
     },
     "edit": {
       "save": "Simpan",

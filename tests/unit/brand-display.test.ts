@@ -29,6 +29,17 @@ describe('where a fact came from', () => {
     expect(sourceOf('owner', 'fact')).toEqual({ kind: 'owner' });
   });
 
+  test('a source on another host shows as seen on', () => {
+    const site = 'https://sendanangmassage.com/';
+    expect(sourceOf('https://vietnam.travel/da-nang', 'fact', site)).toEqual({
+      kind: 'elsewhere',
+      host: 'vietnam.travel',
+      href: 'https://vietnam.travel/da-nang',
+    });
+    expect(sourceOf('https://www.sendanangmassage.com/contact', 'fact', site)?.kind).toBe('page');
+    expect(sourceOf('https://vietnam.travel/da-nang', 'fact')?.kind).toBe('page');
+  });
+
   test('no source yet, as in a partial, shows nothing', () => {
     expect(sourceOf(undefined, 'fact')).toBeNull();
     expect(sourceOf('', 'fact')).toBeNull();

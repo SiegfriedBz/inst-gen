@@ -2,22 +2,36 @@
 import { cleanup, fireEvent, render, screen, within } from '@testing-library/react';
 import { NextIntlClientProvider } from 'next-intl';
 import { afterEach, describe, expect, test, vi } from 'vitest';
-import { BrandPanel } from '@/components/brand/panel';
+import { BrandPanel, type SearchState } from '@/components/brand/panel';
 import type { PartialProfile, Profile } from '@/lib/brand/profile';
 import messages from '@/messages/en.json';
 import { svargaProfile } from './helpers/brand';
 
 afterEach(cleanup);
 
-function renderPanel(profile: PartialProfile, editable = true, ownerEdited: string[] = []) {
+function renderPanel(
+  profile: PartialProfile,
+  editable = true,
+  ownerEdited: string[] = [],
+  search: SearchState = null,
+) {
   const onEdit = vi.fn();
   render(
     <NextIntlClientProvider locale="en" messages={messages}>
-      <BrandPanel profile={profile} editable={editable} onEdit={onEdit} ownerEdited={ownerEdited} />
+      <BrandPanel
+        profile={profile}
+        editable={editable}
+        onEdit={onEdit}
+        ownerEdited={ownerEdited}
+        search={search}
+      />
     </NextIntlClientProvider>,
   );
   return onEdit;
 }
+
+const searchRow = () =>
+  screen.getByText('What people search for').closest('[data-field]') as HTMLElement;
 
 const withContact = (change: Partial<Profile['contact']>): Profile => {
   const p = svargaProfile();
@@ -126,5 +140,50 @@ describe('BrandPanel', () => {
     const onEdit = renderPanel(svargaProfile());
     fireEvent.click(screen.getByRole('button', { name: 'Edit How people reach you' }));
     expect(onEdit).toHaveBeenCalledWith('contact');
+  });
+
+  test('shows search terms as chips with their note', () => {
+    const p = svargaProfile();
+    p.essence.searchTerms = ['hotel massage canggu', 'massage after surfing'];
+    renderPanel(p);
+    const row = searchRow();
+    expect(within(row).getByText('hotel massage canggu')).toBeTruthy();
+    expect(within(row).getByText('massage after surfing')).toBeTruthy();
+    expect(within(row).getByText('from what people search for')).toBeTruthy();
+  });
+
+  test('shows Not found yet with Add for empty search terms, and no warning', () => {
+    const onEdit = renderPanel(svargaProfile());
+    const row = searchRow();
+    expect(within(row).getByText('Not found yet')).toBeTruthy();
+    fireEvent.click(within(row).getByRole('button', { name: 'Add' }));
+    expect(onEdit).toHaveBeenCalledWith('feeling');
+    expect(row.querySelector('.text-error')).toBeNull();
+  });
+
+  test('shows the searching line while search runs', () => {
+    renderPanel(svargaProfile(), true, [], 'running');
+    expect(within(searchRow()).getByText('Looking up what people search for…')).toBeTruthy();
+  });
+
+  test('shows the failed and the empty line', () => {
+    renderPanel(svargaProfile(), true, [], 'failed');
+    expect(
+      within(searchRow()).getByText("We couldn't look this up today. We'll try again next time."),
+    ).toBeTruthy();
+    cleanup();
+    renderPanel(svargaProfile(), true, [], 'empty');
+    expect(within(searchRow()).getByText('Nothing found for your town.')).toBeTruthy();
+  });
+
+  test('a moment from search says seen on its host, with a link', () => {
+    const p = svargaProfile();
+    p.essence.moments.push({
+      value: 'after a Mount Batur hike',
+      source: 'https://bali.travel/batur',
+    });
+    renderPanel(p);
+    const link = screen.getByRole('link', { name: 'seen on bali.travel' });
+    expect(link.getAttribute('href')).toBe('https://bali.travel/batur');
   });
 });
