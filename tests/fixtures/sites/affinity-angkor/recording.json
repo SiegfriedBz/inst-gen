@@ -1,10 +1,14 @@
 {
   "modelId": "gemini-3.5-flash-lite",
-  "promptVersion": "brand-5",
+  "promptVersion": "brand-6",
   "partials": [
     {
+      "name": {}
+    },
+    {
       "name": {
-        "value": ""
+        "value": "Affinity Angkor",
+        "source": "https://www.affinityangkor."
       }
     },
     {
@@ -13,7 +17,7 @@
         "source": "https://www.affinityangkor.com/"
       },
       "summary": {
-        "value": "Locally run, quality boutique tour operation offering customized private tours and"
+        "value": "Locally run boutique tour operator offering"
       }
     },
     {
@@ -22,15 +26,9 @@
         "source": "https://www.affinityangkor.com/"
       },
       "summary": {
-        "value": "Locally run, quality boutique tour operation offering customized private tours and authentic guides around Angkor Wat and Cambodia.",
-        "source": "https://www.affinityangkor.com/"
-      },
-      "category": "tour operator",
-      "offerings": [
-        {
-          "name": "Authent"
-        }
-      ]
+        "value": "Locally run boutique tour operator offering bespoke, private tours around Angkor Wat and Cambodia.",
+        "source": "https://www.affinityangkor."
+      }
     },
     {
       "name": {
@@ -38,60 +36,11 @@
         "source": "https://www.affinityangkor.com/"
       },
       "summary": {
-        "value": "Locally run, quality boutique tour operation offering customized private tours and authentic guides around Angkor Wat and Cambodia.",
+        "value": "Locally run boutique tour operator offering bespoke, private tours around Angkor Wat and Cambodia.",
         "source": "https://www.affinityangkor.com/"
       },
       "category": "tour operator",
       "offerings": [
-        {
-          "name": "Authentic Tour Guide Service",
-          "source": "https://www.affinityangkor.com/"
-        }
-      ]
-    },
-    {
-      "name": {
-        "value": "Affinity Angkor",
-        "source": "https://www.affinityangkor.com/"
-      },
-      "summary": {
-        "value": "Locally run, quality boutique tour operation offering customized private tours and authentic guides around Angkor Wat and Cambodia.",
-        "source": "https://www.affinityangkor.com/"
-      },
-      "category": "tour operator",
-      "offerings": [
-        {
-          "name": "Authentic Tour Guide Service",
-          "source": "https://www.affinityangkor.com/"
-        }
-      ],
-      "highlights": [
-        {
-          "value": "Locally run, Quality Boutique Tour Operation in Angkor"
-        }
-      ]
-    },
-    {
-      "name": {
-        "value": "Affinity Angkor",
-        "source": "https://www.affinityangkor.com/"
-      },
-      "summary": {
-        "value": "Locally run, quality boutique tour operation offering customized private tours and authentic guides around Angkor Wat and Cambodia.",
-        "source": "https://www.affinityangkor.com/"
-      },
-      "category": "tour operator",
-      "offerings": [
-        {
-          "name": "Authentic Tour Guide Service",
-          "source": "https://www.affinityangkor.com/"
-        }
-      ],
-      "highlights": [
-        {
-          "value": "Locally run, Quality Boutique Tour Operation in Angkor Wat",
-          "source": "https://www.affinityangkor.com/"
-        },
         {}
       ]
     },
@@ -101,24 +50,14 @@
         "source": "https://www.affinityangkor.com/"
       },
       "summary": {
-        "value": "Locally run, quality boutique tour operation offering customized private tours and authentic guides around Angkor Wat and Cambodia.",
+        "value": "Locally run boutique tour operator offering bespoke, private tours around Angkor Wat and Cambodia.",
         "source": "https://www.affinityangkor.com/"
       },
       "category": "tour operator",
       "offerings": [
         {
           "name": "Authentic Tour Guide Service",
-          "source": "https://www.affinityangkor.com/"
-        }
-      ],
-      "highlights": [
-        {
-          "value": "Locally run, Quality Boutique Tour Operation in Angkor Wat",
-          "source": "https://www.affinityangkor.com/"
-        },
-        {
-          "value": "We will tailor your private tour to your needs and interests",
-          "source": "https://www.affinityang"
+          "source": "https://www.affinityangkor"
         }
       ]
     },
@@ -128,7 +67,7 @@
         "source": "https://www.affinityangkor.com/"
       },
       "summary": {
-        "value": "Locally run, quality boutique tour operation offering customized private tours and authentic guides around Angkor Wat and Cambodia.",
+        "value": "Locally run boutique tour operator offering bespoke, private tours around Angkor Wat and Cambodia.",
         "source": "https://www.affinityangkor.com/"
       },
       "category": "tour operator",
@@ -140,16 +79,101 @@
       ],
       "highlights": [
         {
-          "value": "Locally run, Quality Boutique Tour Operation in Angkor Wat",
-          "source": "https://www.affinityangkor.com/"
-        },
+          "value": ""
+        }
+      ]
+    },
+    {
+      "name": {
+        "value": "Affinity Angkor",
+        "source": "https://www.affinityangkor.com/"
+      },
+      "summary": {
+        "value": "Locally run boutique tour operator offering bespoke, private tours around Angkor Wat and Cambodia.",
+        "source": "https://www.affinityangkor.com/"
+      },
+      "category": "tour operator",
+      "offerings": [
         {
-          "value": "We will tailor your private tour to your needs and interests",
+          "name": "Authentic Tour Guide Service",
           "source": "https://www.affinityangkor.com/"
         }
       ],
+      "highlights": [
+        {
+          "value": "Avoiding crowds at Angkor Wat",
+          "source": "https://www.affinityangkor.com/"
+        },
+        {
+          "value": "Certified, friendly tour guides",
+          "source": "https://www."
+        }
+      ]
+    },
+    {
+      "name": {
+        "value": "Affinity Angkor",
+        "source": "https://www.affinityangkor.com/"
+      },
+      "summary": {
+        "value": "Locally run boutique tour operator offering bespoke, private tours around Angkor Wat and Cambodia.",
+        "source": "https://www.affinityangkor.com/"
+      },
+      "category": "tour operator",
+      "offerings": [
+        {
+          "name": "Authentic Tour Guide Service",
+          "source": "https://www.affinityangkor.com/"
+        }
+      ],
+      "highlights": [
+        {
+          "value": "Avoiding crowds at Angkor Wat",
+          "source": "https://www.affinityangkor.com/"
+        },
+        {
+          "value": "Certified, friendly tour guides",
+          "source": "https://www.affinityangkor.com/"
+        },
+        {
+          "value": "Air-conditioned van with cold"
+        }
+      ]
+    },
+    {
+      "name": {
+        "value": "Affinity Angkor",
+        "source": "https://www.affinityangkor.com/"
+      },
+      "summary": {
+        "value": "Locally run boutique tour operator offering bespoke, private tours around Angkor Wat and Cambodia.",
+        "source": "https://www.affinityangkor.com/"
+      },
+      "category": "tour operator",
+      "offerings": [
+        {
+          "name": "Authentic Tour Guide Service",
+          "source": "https://www.affinityangkor.com/"
+        }
+      ],
+      "highlights": [
+        {
+          "value": "Avoiding crowds at Angkor Wat",
+          "source": "https://www.affinityangkor.com/"
+        },
+        {
+          "value": "Certified, friendly tour guides",
+          "source": "https://www.affinityangkor.com/"
+        },
+        {
+          "value": "Air-conditioned van with cold towels and water",
+          "source": "https://www.affinityangkor.com/about-2-guides"
+        }
+      ],
       "location": {
-        "town": {}
+        "town": {
+          "value": "Siem"
+        }
       }
     },
     {
@@ -158,7 +182,7 @@
         "source": "https://www.affinityangkor.com/"
       },
       "summary": {
-        "value": "Locally run, quality boutique tour operation offering customized private tours and authentic guides around Angkor Wat and Cambodia.",
+        "value": "Locally run boutique tour operator offering bespoke, private tours around Angkor Wat and Cambodia.",
         "source": "https://www.affinityangkor.com/"
       },
       "category": "tour operator",
@@ -170,17 +194,345 @@
       ],
       "highlights": [
         {
-          "value": "Locally run, Quality Boutique Tour Operation in Angkor Wat",
+          "value": "Avoiding crowds at Angkor Wat",
           "source": "https://www.affinityangkor.com/"
         },
         {
-          "value": "We will tailor your private tour to your needs and interests",
+          "value": "Certified, friendly tour guides",
           "source": "https://www.affinityangkor.com/"
+        },
+        {
+          "value": "Air-conditioned van with cold towels and water",
+          "source": "https://www.affinityangkor.com/about-2-guides"
         }
       ],
       "location": {
         "town": {
           "value": "Siem Reap",
+          "source": "https://www.affinityangkor.com/contact-us-1"
+        }
+      }
+    },
+    {
+      "name": {
+        "value": "Affinity Angkor",
+        "source": "https://www.affinityangkor.com/"
+      },
+      "summary": {
+        "value": "Locally run boutique tour operator offering bespoke, private tours around Angkor Wat and Cambodia.",
+        "source": "https://www.affinityangkor.com/"
+      },
+      "category": "tour operator",
+      "offerings": [
+        {
+          "name": "Authentic Tour Guide Service",
+          "source": "https://www.affinityangkor.com/"
+        }
+      ],
+      "highlights": [
+        {
+          "value": "Avoiding crowds at Angkor Wat",
+          "source": "https://www.affinityangkor.com/"
+        },
+        {
+          "value": "Certified, friendly tour guides",
+          "source": "https://www.affinityangkor.com/"
+        },
+        {
+          "value": "Air-conditioned van with cold towels and water",
+          "source": "https://www.affinityangkor.com/about-2-guides"
+        }
+      ],
+      "location": {
+        "town": {
+          "value": "Siem Reap",
+          "source": "https://www.affinityangkor.com/contact-us-1"
+        },
+        "area": {
+          "value": "Savy Dangkum Commune",
+          "source": "https://www.affinityang"
+        }
+      }
+    },
+    {
+      "name": {
+        "value": "Affinity Angkor",
+        "source": "https://www.affinityangkor.com/"
+      },
+      "summary": {
+        "value": "Locally run boutique tour operator offering bespoke, private tours around Angkor Wat and Cambodia.",
+        "source": "https://www.affinityangkor.com/"
+      },
+      "category": "tour operator",
+      "offerings": [
+        {
+          "name": "Authentic Tour Guide Service",
+          "source": "https://www.affinityangkor.com/"
+        }
+      ],
+      "highlights": [
+        {
+          "value": "Avoiding crowds at Angkor Wat",
+          "source": "https://www.affinityangkor.com/"
+        },
+        {
+          "value": "Certified, friendly tour guides",
+          "source": "https://www.affinityangkor.com/"
+        },
+        {
+          "value": "Air-conditioned van with cold towels and water",
+          "source": "https://www.affinityangkor.com/about-2-guides"
+        }
+      ],
+      "location": {
+        "town": {
+          "value": "Siem Reap",
+          "source": "https://www.affinityangkor.com/contact-us-1"
+        },
+        "area": {
+          "value": "Savy Dangkum Commune",
+          "source": "https://www.affinityangkor.com/contact-us-1"
+        },
+        "address": {}
+      }
+    },
+    {
+      "name": {
+        "value": "Affinity Angkor",
+        "source": "https://www.affinityangkor.com/"
+      },
+      "summary": {
+        "value": "Locally run boutique tour operator offering bespoke, private tours around Angkor Wat and Cambodia.",
+        "source": "https://www.affinityangkor.com/"
+      },
+      "category": "tour operator",
+      "offerings": [
+        {
+          "name": "Authentic Tour Guide Service",
+          "source": "https://www.affinityangkor.com/"
+        }
+      ],
+      "highlights": [
+        {
+          "value": "Avoiding crowds at Angkor Wat",
+          "source": "https://www.affinityangkor.com/"
+        },
+        {
+          "value": "Certified, friendly tour guides",
+          "source": "https://www.affinityangkor.com/"
+        },
+        {
+          "value": "Air-conditioned van with cold towels and water",
+          "source": "https://www.affinityangkor.com/about-2-guides"
+        }
+      ],
+      "location": {
+        "town": {
+          "value": "Siem Reap",
+          "source": "https://www.affinityangkor.com/contact-us-1"
+        },
+        "area": {
+          "value": "Savy Dangkum Commune",
+          "source": "https://www.affinityangkor.com/contact-us-1"
+        },
+        "address": {
+          "value": "#533, St. Funky Ln, Steng Thmey Village, Savy Dangkum Commune,"
+        }
+      }
+    },
+    {
+      "name": {
+        "value": "Affinity Angkor",
+        "source": "https://www.affinityangkor.com/"
+      },
+      "summary": {
+        "value": "Locally run boutique tour operator offering bespoke, private tours around Angkor Wat and Cambodia.",
+        "source": "https://www.affinityangkor.com/"
+      },
+      "category": "tour operator",
+      "offerings": [
+        {
+          "name": "Authentic Tour Guide Service",
+          "source": "https://www.affinityangkor.com/"
+        }
+      ],
+      "highlights": [
+        {
+          "value": "Avoiding crowds at Angkor Wat",
+          "source": "https://www.affinityangkor.com/"
+        },
+        {
+          "value": "Certified, friendly tour guides",
+          "source": "https://www.affinityangkor.com/"
+        },
+        {
+          "value": "Air-conditioned van with cold towels and water",
+          "source": "https://www.affinityangkor.com/about-2-guides"
+        }
+      ],
+      "location": {
+        "town": {
+          "value": "Siem Reap",
+          "source": "https://www.affinityangkor.com/contact-us-1"
+        },
+        "area": {
+          "value": "Savy Dangkum Commune",
+          "source": "https://www.affinityangkor.com/contact-us-1"
+        },
+        "address": {
+          "value": "#533, St. Funky Ln, Steng Thmey Village, Savy Dangkum Commune, Siem Reap City",
+          "source": "https://www.affinityangkor.com/contact-us-"
+        }
+      }
+    },
+    {
+      "name": {
+        "value": "Affinity Angkor",
+        "source": "https://www.affinityangkor.com/"
+      },
+      "summary": {
+        "value": "Locally run boutique tour operator offering bespoke, private tours around Angkor Wat and Cambodia.",
+        "source": "https://www.affinityangkor.com/"
+      },
+      "category": "tour operator",
+      "offerings": [
+        {
+          "name": "Authentic Tour Guide Service",
+          "source": "https://www.affinityangkor.com/"
+        }
+      ],
+      "highlights": [
+        {
+          "value": "Avoiding crowds at Angkor Wat",
+          "source": "https://www.affinityangkor.com/"
+        },
+        {
+          "value": "Certified, friendly tour guides",
+          "source": "https://www.affinityangkor.com/"
+        },
+        {
+          "value": "Air-conditioned van with cold towels and water",
+          "source": "https://www.affinityangkor.com/about-2-guides"
+        }
+      ],
+      "location": {
+        "town": {
+          "value": "Siem Reap",
+          "source": "https://www.affinityangkor.com/contact-us-1"
+        },
+        "area": {
+          "value": "Savy Dangkum Commune",
+          "source": "https://www.affinityangkor.com/contact-us-1"
+        },
+        "address": {
+          "value": "#533, St. Funky Ln, Steng Thmey Village, Savy Dangkum Commune, Siem Reap City",
+          "source": "https://www.affinityangkor.com/contact-us-1"
+        },
+        "serviceArea": null
+      },
+      "contact": {}
+    },
+    {
+      "name": {
+        "value": "Affinity Angkor",
+        "source": "https://www.affinityangkor.com/"
+      },
+      "summary": {
+        "value": "Locally run boutique tour operator offering bespoke, private tours around Angkor Wat and Cambodia.",
+        "source": "https://www.affinityangkor.com/"
+      },
+      "category": "tour operator",
+      "offerings": [
+        {
+          "name": "Authentic Tour Guide Service",
+          "source": "https://www.affinityangkor.com/"
+        }
+      ],
+      "highlights": [
+        {
+          "value": "Avoiding crowds at Angkor Wat",
+          "source": "https://www.affinityangkor.com/"
+        },
+        {
+          "value": "Certified, friendly tour guides",
+          "source": "https://www.affinityangkor.com/"
+        },
+        {
+          "value": "Air-conditioned van with cold towels and water",
+          "source": "https://www.affinityangkor.com/about-2-guides"
+        }
+      ],
+      "location": {
+        "town": {
+          "value": "Siem Reap",
+          "source": "https://www.affinityangkor.com/contact-us-1"
+        },
+        "area": {
+          "value": "Savy Dangkum Commune",
+          "source": "https://www.affinityangkor.com/contact-us-1"
+        },
+        "address": {
+          "value": "#533, St. Funky Ln, Steng Thmey Village, Savy Dangkum Commune, Siem Reap City",
+          "source": "https://www.affinityangkor.com/contact-us-1"
+        },
+        "serviceArea": null
+      },
+      "contact": {
+        "whatsapp": null,
+        "phone": {
+          "value": "+855 12 2"
+        }
+      }
+    },
+    {
+      "name": {
+        "value": "Affinity Angkor",
+        "source": "https://www.affinityangkor.com/"
+      },
+      "summary": {
+        "value": "Locally run boutique tour operator offering bespoke, private tours around Angkor Wat and Cambodia.",
+        "source": "https://www.affinityangkor.com/"
+      },
+      "category": "tour operator",
+      "offerings": [
+        {
+          "name": "Authentic Tour Guide Service",
+          "source": "https://www.affinityangkor.com/"
+        }
+      ],
+      "highlights": [
+        {
+          "value": "Avoiding crowds at Angkor Wat",
+          "source": "https://www.affinityangkor.com/"
+        },
+        {
+          "value": "Certified, friendly tour guides",
+          "source": "https://www.affinityangkor.com/"
+        },
+        {
+          "value": "Air-conditioned van with cold towels and water",
+          "source": "https://www.affinityangkor.com/about-2-guides"
+        }
+      ],
+      "location": {
+        "town": {
+          "value": "Siem Reap",
+          "source": "https://www.affinityangkor.com/contact-us-1"
+        },
+        "area": {
+          "value": "Savy Dangkum Commune",
+          "source": "https://www.affinityangkor.com/contact-us-1"
+        },
+        "address": {
+          "value": "#533, St. Funky Ln, Steng Thmey Village, Savy Dangkum Commune, Siem Reap City",
+          "source": "https://www.affinityangkor.com/contact-us-1"
+        },
+        "serviceArea": null
+      },
+      "contact": {
+        "whatsapp": null,
+        "phone": {
+          "value": "+855 12 254 554",
           "source": "https://www.affinityangkor.com/contact"
         }
       }
@@ -191,7 +543,7 @@
         "source": "https://www.affinityangkor.com/"
       },
       "summary": {
-        "value": "Locally run, quality boutique tour operation offering customized private tours and authentic guides around Angkor Wat and Cambodia.",
+        "value": "Locally run boutique tour operator offering bespoke, private tours around Angkor Wat and Cambodia.",
         "source": "https://www.affinityangkor.com/"
       },
       "category": "tour operator",
@@ -203,218 +555,16 @@
       ],
       "highlights": [
         {
-          "value": "Locally run, Quality Boutique Tour Operation in Angkor Wat",
+          "value": "Avoiding crowds at Angkor Wat",
           "source": "https://www.affinityangkor.com/"
         },
         {
-          "value": "We will tailor your private tour to your needs and interests",
-          "source": "https://www.affinityangkor.com/"
-        }
-      ],
-      "location": {
-        "town": {
-          "value": "Siem Reap",
-          "source": "https://www.affinityangkor.com/contact-us-1"
-        },
-        "area": {
-          "value": "Savy Dangkum Commune"
-        }
-      }
-    },
-    {
-      "name": {
-        "value": "Affinity Angkor",
-        "source": "https://www.affinityangkor.com/"
-      },
-      "summary": {
-        "value": "Locally run, quality boutique tour operation offering customized private tours and authentic guides around Angkor Wat and Cambodia.",
-        "source": "https://www.affinityangkor.com/"
-      },
-      "category": "tour operator",
-      "offerings": [
-        {
-          "name": "Authentic Tour Guide Service",
-          "source": "https://www.affinityangkor.com/"
-        }
-      ],
-      "highlights": [
-        {
-          "value": "Locally run, Quality Boutique Tour Operation in Angkor Wat",
+          "value": "Certified, friendly tour guides",
           "source": "https://www.affinityangkor.com/"
         },
         {
-          "value": "We will tailor your private tour to your needs and interests",
-          "source": "https://www.affinityangkor.com/"
-        }
-      ],
-      "location": {
-        "town": {
-          "value": "Siem Reap",
-          "source": "https://www.affinityangkor.com/contact-us-1"
-        },
-        "area": {
-          "value": "Savy Dangkum Commune",
-          "source": "https://www.affinityangkor.com/contact-us-1"
-        },
-        "address": {
-          "value": "#533, St. Funky Ln,"
-        }
-      }
-    },
-    {
-      "name": {
-        "value": "Affinity Angkor",
-        "source": "https://www.affinityangkor.com/"
-      },
-      "summary": {
-        "value": "Locally run, quality boutique tour operation offering customized private tours and authentic guides around Angkor Wat and Cambodia.",
-        "source": "https://www.affinityangkor.com/"
-      },
-      "category": "tour operator",
-      "offerings": [
-        {
-          "name": "Authentic Tour Guide Service",
-          "source": "https://www.affinityangkor.com/"
-        }
-      ],
-      "highlights": [
-        {
-          "value": "Locally run, Quality Boutique Tour Operation in Angkor Wat",
-          "source": "https://www.affinityangkor.com/"
-        },
-        {
-          "value": "We will tailor your private tour to your needs and interests",
-          "source": "https://www.affinityangkor.com/"
-        }
-      ],
-      "location": {
-        "town": {
-          "value": "Siem Reap",
-          "source": "https://www.affinityangkor.com/contact-us-1"
-        },
-        "area": {
-          "value": "Savy Dangkum Commune",
-          "source": "https://www.affinityangkor.com/contact-us-1"
-        },
-        "address": {
-          "value": "#533, St. Funky Ln, Steng Thmey Village, Savy Dangkum Commune, Siem Reap City",
-          "source": "https"
-        }
-      }
-    },
-    {
-      "name": {
-        "value": "Affinity Angkor",
-        "source": "https://www.affinityangkor.com/"
-      },
-      "summary": {
-        "value": "Locally run, quality boutique tour operation offering customized private tours and authentic guides around Angkor Wat and Cambodia.",
-        "source": "https://www.affinityangkor.com/"
-      },
-      "category": "tour operator",
-      "offerings": [
-        {
-          "name": "Authentic Tour Guide Service",
-          "source": "https://www.affinityangkor.com/"
-        }
-      ],
-      "highlights": [
-        {
-          "value": "Locally run, Quality Boutique Tour Operation in Angkor Wat",
-          "source": "https://www.affinityangkor.com/"
-        },
-        {
-          "value": "We will tailor your private tour to your needs and interests",
-          "source": "https://www.affinityangkor.com/"
-        }
-      ],
-      "location": {
-        "town": {
-          "value": "Siem Reap",
-          "source": "https://www.affinityangkor.com/contact-us-1"
-        },
-        "area": {
-          "value": "Savy Dangkum Commune",
-          "source": "https://www.affinityangkor.com/contact-us-1"
-        },
-        "address": {
-          "value": "#533, St. Funky Ln, Steng Thmey Village, Savy Dangkum Commune, Siem Reap City",
-          "source": "https://www.affinityangkor.com/contact-us-1"
-        }
-      }
-    },
-    {
-      "name": {
-        "value": "Affinity Angkor",
-        "source": "https://www.affinityangkor.com/"
-      },
-      "summary": {
-        "value": "Locally run, quality boutique tour operation offering customized private tours and authentic guides around Angkor Wat and Cambodia.",
-        "source": "https://www.affinityangkor.com/"
-      },
-      "category": "tour operator",
-      "offerings": [
-        {
-          "name": "Authentic Tour Guide Service",
-          "source": "https://www.affinityangkor.com/"
-        }
-      ],
-      "highlights": [
-        {
-          "value": "Locally run, Quality Boutique Tour Operation in Angkor Wat",
-          "source": "https://www.affinityangkor.com/"
-        },
-        {
-          "value": "We will tailor your private tour to your needs and interests",
-          "source": "https://www.affinityangkor.com/"
-        }
-      ],
-      "location": {
-        "town": {
-          "value": "Siem Reap",
-          "source": "https://www.affinityangkor.com/contact-us-1"
-        },
-        "area": {
-          "value": "Savy Dangkum Commune",
-          "source": "https://www.affinityangkor.com/contact-us-1"
-        },
-        "address": {
-          "value": "#533, St. Funky Ln, Steng Thmey Village, Savy Dangkum Commune, Siem Reap City",
-          "source": "https://www.affinityangkor.com/contact-us-1"
-        },
-        "serviceArea": null
-      },
-      "contact": {
-        "whatsapp": null,
-        "phone": {
-          "value": "+855 12 254 554"
-        }
-      }
-    },
-    {
-      "name": {
-        "value": "Affinity Angkor",
-        "source": "https://www.affinityangkor.com/"
-      },
-      "summary": {
-        "value": "Locally run, quality boutique tour operation offering customized private tours and authentic guides around Angkor Wat and Cambodia.",
-        "source": "https://www.affinityangkor.com/"
-      },
-      "category": "tour operator",
-      "offerings": [
-        {
-          "name": "Authentic Tour Guide Service",
-          "source": "https://www.affinityangkor.com/"
-        }
-      ],
-      "highlights": [
-        {
-          "value": "Locally run, Quality Boutique Tour Operation in Angkor Wat",
-          "source": "https://www.affinityangkor.com/"
-        },
-        {
-          "value": "We will tailor your private tour to your needs and interests",
-          "source": "https://www.affinityangkor.com/"
+          "value": "Air-conditioned van with cold towels and water",
+          "source": "https://www.affinityangkor.com/about-2-guides"
         }
       ],
       "location": {
@@ -437,6 +587,9 @@
         "phone": {
           "value": "+855 12 254 554",
           "source": "https://www.affinityangkor.com/contact-us-1"
+        },
+        "email": {
+          "value": "affinityangkor@"
         }
       }
     },
@@ -446,7 +599,7 @@
         "source": "https://www.affinityangkor.com/"
       },
       "summary": {
-        "value": "Locally run, quality boutique tour operation offering customized private tours and authentic guides around Angkor Wat and Cambodia.",
+        "value": "Locally run boutique tour operator offering bespoke, private tours around Angkor Wat and Cambodia.",
         "source": "https://www.affinityangkor.com/"
       },
       "category": "tour operator",
@@ -458,12 +611,16 @@
       ],
       "highlights": [
         {
-          "value": "Locally run, Quality Boutique Tour Operation in Angkor Wat",
+          "value": "Avoiding crowds at Angkor Wat",
           "source": "https://www.affinityangkor.com/"
         },
         {
-          "value": "We will tailor your private tour to your needs and interests",
+          "value": "Certified, friendly tour guides",
           "source": "https://www.affinityangkor.com/"
+        },
+        {
+          "value": "Air-conditioned van with cold towels and water",
+          "source": "https://www.affinityangkor.com/about-2-guides"
         }
       ],
       "location": {
@@ -489,7 +646,7 @@
         },
         "email": {
           "value": "affinityangkor@hotmail.com",
-          "source": "https"
+          "source": "https://www.affinityangkor.com/contact-us-"
         }
       }
     },
@@ -499,7 +656,7 @@
         "source": "https://www.affinityangkor.com/"
       },
       "summary": {
-        "value": "Locally run, quality boutique tour operation offering customized private tours and authentic guides around Angkor Wat and Cambodia.",
+        "value": "Locally run boutique tour operator offering bespoke, private tours around Angkor Wat and Cambodia.",
         "source": "https://www.affinityangkor.com/"
       },
       "category": "tour operator",
@@ -511,12 +668,16 @@
       ],
       "highlights": [
         {
-          "value": "Locally run, Quality Boutique Tour Operation in Angkor Wat",
+          "value": "Avoiding crowds at Angkor Wat",
           "source": "https://www.affinityangkor.com/"
         },
         {
-          "value": "We will tailor your private tour to your needs and interests",
+          "value": "Certified, friendly tour guides",
           "source": "https://www.affinityangkor.com/"
+        },
+        {
+          "value": "Air-conditioned van with cold towels and water",
+          "source": "https://www.affinityangkor.com/about-2-guides"
         }
       ],
       "location": {
@@ -544,7 +705,8 @@
           "value": "affinityangkor@hotmail.com",
           "source": "https://www.affinityangkor.com/contact-us-1"
         },
-        "instagram": null
+        "instagram": null,
+        "bookingUrl": null
       }
     },
     {
@@ -553,7 +715,7 @@
         "source": "https://www.affinityangkor.com/"
       },
       "summary": {
-        "value": "Locally run, quality boutique tour operation offering customized private tours and authentic guides around Angkor Wat and Cambodia.",
+        "value": "Locally run boutique tour operator offering bespoke, private tours around Angkor Wat and Cambodia.",
         "source": "https://www.affinityangkor.com/"
       },
       "category": "tour operator",
@@ -565,12 +727,16 @@
       ],
       "highlights": [
         {
-          "value": "Locally run, Quality Boutique Tour Operation in Angkor Wat",
+          "value": "Avoiding crowds at Angkor Wat",
           "source": "https://www.affinityangkor.com/"
         },
         {
-          "value": "We will tailor your private tour to your needs and interests",
+          "value": "Certified, friendly tour guides",
           "source": "https://www.affinityangkor.com/"
+        },
+        {
+          "value": "Air-conditioned van with cold towels and water",
+          "source": "https://www.affinityangkor.com/about-2-guides"
         }
       ],
       "location": {
@@ -602,7 +768,7 @@
         "bookingUrl": null
       },
       "hours": {
-        "value": "Monday"
+        "value": "Monday - Friday: 9am - 6pm Saturday: 10am -"
       }
     },
     {
@@ -611,7 +777,7 @@
         "source": "https://www.affinityangkor.com/"
       },
       "summary": {
-        "value": "Locally run, quality boutique tour operation offering customized private tours and authentic guides around Angkor Wat and Cambodia.",
+        "value": "Locally run boutique tour operator offering bespoke, private tours around Angkor Wat and Cambodia.",
         "source": "https://www.affinityangkor.com/"
       },
       "category": "tour operator",
@@ -623,70 +789,16 @@
       ],
       "highlights": [
         {
-          "value": "Locally run, Quality Boutique Tour Operation in Angkor Wat",
+          "value": "Avoiding crowds at Angkor Wat",
           "source": "https://www.affinityangkor.com/"
         },
         {
-          "value": "We will tailor your private tour to your needs and interests",
-          "source": "https://www.affinityangkor.com/"
-        }
-      ],
-      "location": {
-        "town": {
-          "value": "Siem Reap",
-          "source": "https://www.affinityangkor.com/contact-us-1"
-        },
-        "area": {
-          "value": "Savy Dangkum Commune",
-          "source": "https://www.affinityangkor.com/contact-us-1"
-        },
-        "address": {
-          "value": "#533, St. Funky Ln, Steng Thmey Village, Savy Dangkum Commune, Siem Reap City",
-          "source": "https://www.affinityangkor.com/contact-us-1"
-        },
-        "serviceArea": null
-      },
-      "contact": {
-        "whatsapp": null,
-        "phone": {
-          "value": "+855 12 254 554",
-          "source": "https://www.affinityangkor.com/contact-us-1"
-        },
-        "email": {
-          "value": "affinityangkor@hotmail.com",
-          "source": "https://www.affinityangkor.com/contact-us-1"
-        },
-        "instagram": null,
-        "bookingUrl": null
-      },
-      "hours": {
-        "value": "Monday - Friday: 9am - 6pm Saturday: 10am - 2pm Sunday: Closed"
-      }
-    },
-    {
-      "name": {
-        "value": "Affinity Angkor",
-        "source": "https://www.affinityangkor.com/"
-      },
-      "summary": {
-        "value": "Locally run, quality boutique tour operation offering customized private tours and authentic guides around Angkor Wat and Cambodia.",
-        "source": "https://www.affinityangkor.com/"
-      },
-      "category": "tour operator",
-      "offerings": [
-        {
-          "name": "Authentic Tour Guide Service",
-          "source": "https://www.affinityangkor.com/"
-        }
-      ],
-      "highlights": [
-        {
-          "value": "Locally run, Quality Boutique Tour Operation in Angkor Wat",
+          "value": "Certified, friendly tour guides",
           "source": "https://www.affinityangkor.com/"
         },
         {
-          "value": "We will tailor your private tour to your needs and interests",
-          "source": "https://www.affinityangkor.com/"
+          "value": "Air-conditioned van with cold towels and water",
+          "source": "https://www.affinityangkor.com/about-2-guides"
         }
       ],
       "location": {
@@ -719,7 +831,7 @@
       },
       "hours": {
         "value": "Monday - Friday: 9am - 6pm Saturday: 10am - 2pm Sunday: Closed",
-        "source": "https://www.affinityangkor.com/contact-us-1"
+        "source": "https://www.affinityangkor.com/contact"
       }
     },
     {
@@ -728,7 +840,7 @@
         "source": "https://www.affinityangkor.com/"
       },
       "summary": {
-        "value": "Locally run, quality boutique tour operation offering customized private tours and authentic guides around Angkor Wat and Cambodia.",
+        "value": "Locally run boutique tour operator offering bespoke, private tours around Angkor Wat and Cambodia.",
         "source": "https://www.affinityangkor.com/"
       },
       "category": "tour operator",
@@ -740,12 +852,16 @@
       ],
       "highlights": [
         {
-          "value": "Locally run, Quality Boutique Tour Operation in Angkor Wat",
+          "value": "Avoiding crowds at Angkor Wat",
           "source": "https://www.affinityangkor.com/"
         },
         {
-          "value": "We will tailor your private tour to your needs and interests",
+          "value": "Certified, friendly tour guides",
           "source": "https://www.affinityangkor.com/"
+        },
+        {
+          "value": "Air-conditioned van with cold towels and water",
+          "source": "https://www.affinityangkor.com/about-2-guides"
         }
       ],
       "location": {
@@ -783,8 +899,11 @@
       "tone": [
         "welcoming",
         "professional",
-        "informative",
-        "friendly"
+        "friendly",
+        "authentic"
+      ],
+      "colours": [
+        {}
       ]
     },
     {
@@ -793,7 +912,7 @@
         "source": "https://www.affinityangkor.com/"
       },
       "summary": {
-        "value": "Locally run, quality boutique tour operation offering customized private tours and authentic guides around Angkor Wat and Cambodia.",
+        "value": "Locally run boutique tour operator offering bespoke, private tours around Angkor Wat and Cambodia.",
         "source": "https://www.affinityangkor.com/"
       },
       "category": "tour operator",
@@ -805,12 +924,16 @@
       ],
       "highlights": [
         {
-          "value": "Locally run, Quality Boutique Tour Operation in Angkor Wat",
+          "value": "Avoiding crowds at Angkor Wat",
           "source": "https://www.affinityangkor.com/"
         },
         {
-          "value": "We will tailor your private tour to your needs and interests",
+          "value": "Certified, friendly tour guides",
           "source": "https://www.affinityangkor.com/"
+        },
+        {
+          "value": "Air-conditioned van with cold towels and water",
+          "source": "https://www.affinityangkor.com/about-2-guides"
         }
       ],
       "location": {
@@ -848,13 +971,14 @@
       "tone": [
         "welcoming",
         "professional",
-        "informative",
-        "friendly"
+        "friendly",
+        "authentic"
       ],
       "colours": [
         {
           "hex": "#ffffff",
-          "role": "text"
+          "role": "text",
+          "source": "logo"
         }
       ]
     },
@@ -864,7 +988,7 @@
         "source": "https://www.affinityangkor.com/"
       },
       "summary": {
-        "value": "Locally run, quality boutique tour operation offering customized private tours and authentic guides around Angkor Wat and Cambodia.",
+        "value": "Locally run boutique tour operator offering bespoke, private tours around Angkor Wat and Cambodia.",
         "source": "https://www.affinityangkor.com/"
       },
       "category": "tour operator",
@@ -876,12 +1000,16 @@
       ],
       "highlights": [
         {
-          "value": "Locally run, Quality Boutique Tour Operation in Angkor Wat",
+          "value": "Avoiding crowds at Angkor Wat",
           "source": "https://www.affinityangkor.com/"
         },
         {
-          "value": "We will tailor your private tour to your needs and interests",
+          "value": "Certified, friendly tour guides",
           "source": "https://www.affinityangkor.com/"
+        },
+        {
+          "value": "Air-conditioned van with cold towels and water",
+          "source": "https://www.affinityangkor.com/about-2-guides"
         }
       ],
       "location": {
@@ -919,8 +1047,8 @@
       "tone": [
         "welcoming",
         "professional",
-        "informative",
-        "friendly"
+        "friendly",
+        "authentic"
       ],
       "colours": [
         {
@@ -929,7 +1057,7 @@
           "source": "logo"
         },
         {
-          "hex": "#ffffff",
+          "hex": "#000000",
           "role": "background"
         }
       ]
@@ -940,7 +1068,7 @@
         "source": "https://www.affinityangkor.com/"
       },
       "summary": {
-        "value": "Locally run, quality boutique tour operation offering customized private tours and authentic guides around Angkor Wat and Cambodia.",
+        "value": "Locally run boutique tour operator offering bespoke, private tours around Angkor Wat and Cambodia.",
         "source": "https://www.affinityangkor.com/"
       },
       "category": "tour operator",
@@ -952,12 +1080,16 @@
       ],
       "highlights": [
         {
-          "value": "Locally run, Quality Boutique Tour Operation in Angkor Wat",
+          "value": "Avoiding crowds at Angkor Wat",
           "source": "https://www.affinityangkor.com/"
         },
         {
-          "value": "We will tailor your private tour to your needs and interests",
+          "value": "Certified, friendly tour guides",
           "source": "https://www.affinityangkor.com/"
+        },
+        {
+          "value": "Air-conditioned van with cold towels and water",
+          "source": "https://www.affinityangkor.com/about-2-guides"
         }
       ],
       "location": {
@@ -995,8 +1127,8 @@
       "tone": [
         "welcoming",
         "professional",
-        "informative",
-        "friendly"
+        "friendly",
+        "authentic"
       ],
       "colours": [
         {
@@ -1005,12 +1137,14 @@
           "source": "logo"
         },
         {
-          "hex": "#ffffff",
+          "hex": "#000000",
           "role": "background",
           "source": "logo"
         }
       ],
-      "essence": {}
+      "essence": {
+        "promise": {}
+      }
     },
     {
       "name": {
@@ -1018,7 +1152,7 @@
         "source": "https://www.affinityangkor.com/"
       },
       "summary": {
-        "value": "Locally run, quality boutique tour operation offering customized private tours and authentic guides around Angkor Wat and Cambodia.",
+        "value": "Locally run boutique tour operator offering bespoke, private tours around Angkor Wat and Cambodia.",
         "source": "https://www.affinityangkor.com/"
       },
       "category": "tour operator",
@@ -1030,12 +1164,16 @@
       ],
       "highlights": [
         {
-          "value": "Locally run, Quality Boutique Tour Operation in Angkor Wat",
+          "value": "Avoiding crowds at Angkor Wat",
           "source": "https://www.affinityangkor.com/"
         },
         {
-          "value": "We will tailor your private tour to your needs and interests",
+          "value": "Certified, friendly tour guides",
           "source": "https://www.affinityangkor.com/"
+        },
+        {
+          "value": "Air-conditioned van with cold towels and water",
+          "source": "https://www.affinityangkor.com/about-2-guides"
         }
       ],
       "location": {
@@ -1073,8 +1211,8 @@
       "tone": [
         "welcoming",
         "professional",
-        "informative",
-        "friendly"
+        "friendly",
+        "authentic"
       ],
       "colours": [
         {
@@ -1083,20 +1221,406 @@
           "source": "logo"
         },
         {
-          "hex": "#ffffff",
+          "hex": "#000000",
           "role": "background",
           "source": "logo"
         }
       ],
       "essence": {
+        "promise": {
+          "value": "We will tailor your private tour to your needs and interests around Angkor Wat to make sure you have an exceptional, exclusive"
+        }
+      }
+    },
+    {
+      "name": {
+        "value": "Affinity Angkor",
+        "source": "https://www.affinityangkor.com/"
+      },
+      "summary": {
+        "value": "Locally run boutique tour operator offering bespoke, private tours around Angkor Wat and Cambodia.",
+        "source": "https://www.affinityangkor.com/"
+      },
+      "category": "tour operator",
+      "offerings": [
+        {
+          "name": "Authentic Tour Guide Service",
+          "source": "https://www.affinityangkor.com/"
+        }
+      ],
+      "highlights": [
+        {
+          "value": "Avoiding crowds at Angkor Wat",
+          "source": "https://www.affinityangkor.com/"
+        },
+        {
+          "value": "Certified, friendly tour guides",
+          "source": "https://www.affinityangkor.com/"
+        },
+        {
+          "value": "Air-conditioned van with cold towels and water",
+          "source": "https://www.affinityangkor.com/about-2-guides"
+        }
+      ],
+      "location": {
+        "town": {
+          "value": "Siem Reap",
+          "source": "https://www.affinityangkor.com/contact-us-1"
+        },
+        "area": {
+          "value": "Savy Dangkum Commune",
+          "source": "https://www.affinityangkor.com/contact-us-1"
+        },
+        "address": {
+          "value": "#533, St. Funky Ln, Steng Thmey Village, Savy Dangkum Commune, Siem Reap City",
+          "source": "https://www.affinityangkor.com/contact-us-1"
+        },
+        "serviceArea": null
+      },
+      "contact": {
+        "whatsapp": null,
+        "phone": {
+          "value": "+855 12 254 554",
+          "source": "https://www.affinityangkor.com/contact-us-1"
+        },
+        "email": {
+          "value": "affinityangkor@hotmail.com",
+          "source": "https://www.affinityangkor.com/contact-us-1"
+        },
+        "instagram": null,
+        "bookingUrl": null
+      },
+      "hours": {
+        "value": "Monday - Friday: 9am - 6pm Saturday: 10am - 2pm Sunday: Closed",
+        "source": "https://www.affinityangkor.com/contact-us-1"
+      },
+      "tone": [
+        "welcoming",
+        "professional",
+        "friendly",
+        "authentic"
+      ],
+      "colours": [
+        {
+          "hex": "#ffffff",
+          "role": "text",
+          "source": "logo"
+        },
+        {
+          "hex": "#000000",
+          "role": "background",
+          "source": "logo"
+        }
+      ],
+      "essence": {
+        "promise": {
+          "value": "We will tailor your private tour to your needs and interests around Angkor Wat to make sure you have an exceptional, exclusive experience in Cambodia.",
+          "source": "https://www.affinityangkor.com/"
+        },
         "feeling": [
-          "enlightened",
-          "refreshed",
-          "unforgettable"
+          "unforgettable",
+          "cared for",
+          "inspired"
+        ]
+      }
+    },
+    {
+      "name": {
+        "value": "Affinity Angkor",
+        "source": "https://www.affinityangkor.com/"
+      },
+      "summary": {
+        "value": "Locally run boutique tour operator offering bespoke, private tours around Angkor Wat and Cambodia.",
+        "source": "https://www.affinityangkor.com/"
+      },
+      "category": "tour operator",
+      "offerings": [
+        {
+          "name": "Authentic Tour Guide Service",
+          "source": "https://www.affinityangkor.com/"
+        }
+      ],
+      "highlights": [
+        {
+          "value": "Avoiding crowds at Angkor Wat",
+          "source": "https://www.affinityangkor.com/"
+        },
+        {
+          "value": "Certified, friendly tour guides",
+          "source": "https://www.affinityangkor.com/"
+        },
+        {
+          "value": "Air-conditioned van with cold towels and water",
+          "source": "https://www.affinityangkor.com/about-2-guides"
+        }
+      ],
+      "location": {
+        "town": {
+          "value": "Siem Reap",
+          "source": "https://www.affinityangkor.com/contact-us-1"
+        },
+        "area": {
+          "value": "Savy Dangkum Commune",
+          "source": "https://www.affinityangkor.com/contact-us-1"
+        },
+        "address": {
+          "value": "#533, St. Funky Ln, Steng Thmey Village, Savy Dangkum Commune, Siem Reap City",
+          "source": "https://www.affinityangkor.com/contact-us-1"
+        },
+        "serviceArea": null
+      },
+      "contact": {
+        "whatsapp": null,
+        "phone": {
+          "value": "+855 12 254 554",
+          "source": "https://www.affinityangkor.com/contact-us-1"
+        },
+        "email": {
+          "value": "affinityangkor@hotmail.com",
+          "source": "https://www.affinityangkor.com/contact-us-1"
+        },
+        "instagram": null,
+        "bookingUrl": null
+      },
+      "hours": {
+        "value": "Monday - Friday: 9am - 6pm Saturday: 10am - 2pm Sunday: Closed",
+        "source": "https://www.affinityangkor.com/contact-us-1"
+      },
+      "tone": [
+        "welcoming",
+        "professional",
+        "friendly",
+        "authentic"
+      ],
+      "colours": [
+        {
+          "hex": "#ffffff",
+          "role": "text",
+          "source": "logo"
+        },
+        {
+          "hex": "#000000",
+          "role": "background",
+          "source": "logo"
+        }
+      ],
+      "essence": {
+        "promise": {
+          "value": "We will tailor your private tour to your needs and interests around Angkor Wat to make sure you have an exceptional, exclusive experience in Cambodia.",
+          "source": "https://www.affinityangkor.com/"
+        },
+        "feeling": [
+          "unforgettable",
+          "cared for",
+          "inspired"
         ],
         "placeSymbols": [
-          "Angkor Wat temples",
+          "Angkor Wat temple spires",
+          "stone carvings",
+          "j"
+        ]
+      }
+    },
+    {
+      "name": {
+        "value": "Affinity Angkor",
+        "source": "https://www.affinityangkor.com/"
+      },
+      "summary": {
+        "value": "Locally run boutique tour operator offering bespoke, private tours around Angkor Wat and Cambodia.",
+        "source": "https://www.affinityangkor.com/"
+      },
+      "category": "tour operator",
+      "offerings": [
+        {
+          "name": "Authentic Tour Guide Service",
+          "source": "https://www.affinityangkor.com/"
+        }
+      ],
+      "highlights": [
+        {
+          "value": "Avoiding crowds at Angkor Wat",
+          "source": "https://www.affinityangkor.com/"
+        },
+        {
+          "value": "Certified, friendly tour guides",
+          "source": "https://www.affinityangkor.com/"
+        },
+        {
+          "value": "Air-conditioned van with cold towels and water",
+          "source": "https://www.affinityangkor.com/about-2-guides"
+        }
+      ],
+      "location": {
+        "town": {
+          "value": "Siem Reap",
+          "source": "https://www.affinityangkor.com/contact-us-1"
+        },
+        "area": {
+          "value": "Savy Dangkum Commune",
+          "source": "https://www.affinityangkor.com/contact-us-1"
+        },
+        "address": {
+          "value": "#533, St. Funky Ln, Steng Thmey Village, Savy Dangkum Commune, Siem Reap City",
+          "source": "https://www.affinityangkor.com/contact-us-1"
+        },
+        "serviceArea": null
+      },
+      "contact": {
+        "whatsapp": null,
+        "phone": {
+          "value": "+855 12 254 554",
+          "source": "https://www.affinityangkor.com/contact-us-1"
+        },
+        "email": {
+          "value": "affinityangkor@hotmail.com",
+          "source": "https://www.affinityangkor.com/contact-us-1"
+        },
+        "instagram": null,
+        "bookingUrl": null
+      },
+      "hours": {
+        "value": "Monday - Friday: 9am - 6pm Saturday: 10am - 2pm Sunday: Closed",
+        "source": "https://www.affinityangkor.com/contact-us-1"
+      },
+      "tone": [
+        "welcoming",
+        "professional",
+        "friendly",
+        "authentic"
+      ],
+      "colours": [
+        {
+          "hex": "#ffffff",
+          "role": "text",
+          "source": "logo"
+        },
+        {
+          "hex": "#000000",
+          "role": "background",
+          "source": "logo"
+        }
+      ],
+      "essence": {
+        "promise": {
+          "value": "We will tailor your private tour to your needs and interests around Angkor Wat to make sure you have an exceptional, exclusive experience in Cambodia.",
+          "source": "https://www.affinityangkor.com/"
+        },
+        "feeling": [
+          "unforgettable",
+          "cared for",
+          "inspired"
+        ],
+        "placeSymbols": [
+          "Angkor Wat temple spires",
+          "stone carvings",
+          "jungle roots at Ta Prohm",
           "palm trees",
+          "lotus ponds"
+        ]
+      }
+    },
+    {
+      "name": {
+        "value": "Affinity Angkor",
+        "source": "https://www.affinityangkor.com/"
+      },
+      "summary": {
+        "value": "Locally run boutique tour operator offering bespoke, private tours around Angkor Wat and Cambodia.",
+        "source": "https://www.affinityangkor.com/"
+      },
+      "category": "tour operator",
+      "offerings": [
+        {
+          "name": "Authentic Tour Guide Service",
+          "source": "https://www.affinityangkor.com/"
+        }
+      ],
+      "highlights": [
+        {
+          "value": "Avoiding crowds at Angkor Wat",
+          "source": "https://www.affinityangkor.com/"
+        },
+        {
+          "value": "Certified, friendly tour guides",
+          "source": "https://www.affinityangkor.com/"
+        },
+        {
+          "value": "Air-conditioned van with cold towels and water",
+          "source": "https://www.affinityangkor.com/about-2-guides"
+        }
+      ],
+      "location": {
+        "town": {
+          "value": "Siem Reap",
+          "source": "https://www.affinityangkor.com/contact-us-1"
+        },
+        "area": {
+          "value": "Savy Dangkum Commune",
+          "source": "https://www.affinityangkor.com/contact-us-1"
+        },
+        "address": {
+          "value": "#533, St. Funky Ln, Steng Thmey Village, Savy Dangkum Commune, Siem Reap City",
+          "source": "https://www.affinityangkor.com/contact-us-1"
+        },
+        "serviceArea": null
+      },
+      "contact": {
+        "whatsapp": null,
+        "phone": {
+          "value": "+855 12 254 554",
+          "source": "https://www.affinityangkor.com/contact-us-1"
+        },
+        "email": {
+          "value": "affinityangkor@hotmail.com",
+          "source": "https://www.affinityangkor.com/contact-us-1"
+        },
+        "instagram": null,
+        "bookingUrl": null
+      },
+      "hours": {
+        "value": "Monday - Friday: 9am - 6pm Saturday: 10am - 2pm Sunday: Closed",
+        "source": "https://www.affinityangkor.com/contact-us-1"
+      },
+      "tone": [
+        "welcoming",
+        "professional",
+        "friendly",
+        "authentic"
+      ],
+      "colours": [
+        {
+          "hex": "#ffffff",
+          "role": "text",
+          "source": "logo"
+        },
+        {
+          "hex": "#000000",
+          "role": "background",
+          "source": "logo"
+        }
+      ],
+      "essence": {
+        "promise": {
+          "value": "We will tailor your private tour to your needs and interests around Angkor Wat to make sure you have an exceptional, exclusive experience in Cambodia.",
+          "source": "https://www.affinityangkor.com/"
+        },
+        "feeling": [
+          "unforgettable",
+          "cared for",
+          "inspired"
+        ],
+        "placeSymbols": [
+          "Angkor Wat temple spires",
+          "stone carvings",
+          "jungle roots at Ta Prohm",
+          "palm trees",
+          "lotus ponds"
+        ],
+        "senses": [
+          "cold wet towel",
+          "cool air conditioning in the van",
+          "morning jungle humidity",
           "ancient"
         ]
       }
@@ -1107,7 +1631,7 @@
         "source": "https://www.affinityangkor.com/"
       },
       "summary": {
-        "value": "Locally run, quality boutique tour operation offering customized private tours and authentic guides around Angkor Wat and Cambodia.",
+        "value": "Locally run boutique tour operator offering bespoke, private tours around Angkor Wat and Cambodia.",
         "source": "https://www.affinityangkor.com/"
       },
       "category": "tour operator",
@@ -1119,12 +1643,16 @@
       ],
       "highlights": [
         {
-          "value": "Locally run, Quality Boutique Tour Operation in Angkor Wat",
+          "value": "Avoiding crowds at Angkor Wat",
           "source": "https://www.affinityangkor.com/"
         },
         {
-          "value": "We will tailor your private tour to your needs and interests",
+          "value": "Certified, friendly tour guides",
           "source": "https://www.affinityangkor.com/"
+        },
+        {
+          "value": "Air-conditioned van with cold towels and water",
+          "source": "https://www.affinityangkor.com/about-2-guides"
         }
       ],
       "location": {
@@ -1162,8 +1690,8 @@
       "tone": [
         "welcoming",
         "professional",
-        "informative",
-        "friendly"
+        "friendly",
+        "authentic"
       ],
       "colours": [
         {
@@ -1172,325 +1700,37 @@
           "source": "logo"
         },
         {
-          "hex": "#ffffff",
+          "hex": "#000000",
           "role": "background",
           "source": "logo"
         }
       ],
       "essence": {
+        "promise": {
+          "value": "We will tailor your private tour to your needs and interests around Angkor Wat to make sure you have an exceptional, exclusive experience in Cambodia.",
+          "source": "https://www.affinityangkor.com/"
+        },
         "feeling": [
-          "enlightened",
-          "refreshed",
-          "unforgettable"
+          "unforgettable",
+          "cared for",
+          "inspired"
         ],
         "placeSymbols": [
-          "Angkor Wat temples",
+          "Angkor Wat temple spires",
+          "stone carvings",
+          "jungle roots at Ta Prohm",
           "palm trees",
-          "ancient stone carvings",
-          "jungle ruins",
-          "waterfalls"
-        ],
-        "senses": []
-      }
-    },
-    {
-      "name": {
-        "value": "Affinity Angkor",
-        "source": "https://www.affinityangkor.com/"
-      },
-      "summary": {
-        "value": "Locally run, quality boutique tour operation offering customized private tours and authentic guides around Angkor Wat and Cambodia.",
-        "source": "https://www.affinityangkor.com/"
-      },
-      "category": "tour operator",
-      "offerings": [
-        {
-          "name": "Authentic Tour Guide Service",
-          "source": "https://www.affinityangkor.com/"
-        }
-      ],
-      "highlights": [
-        {
-          "value": "Locally run, Quality Boutique Tour Operation in Angkor Wat",
-          "source": "https://www.affinityangkor.com/"
-        },
-        {
-          "value": "We will tailor your private tour to your needs and interests",
-          "source": "https://www.affinityangkor.com/"
-        }
-      ],
-      "location": {
-        "town": {
-          "value": "Siem Reap",
-          "source": "https://www.affinityangkor.com/contact-us-1"
-        },
-        "area": {
-          "value": "Savy Dangkum Commune",
-          "source": "https://www.affinityangkor.com/contact-us-1"
-        },
-        "address": {
-          "value": "#533, St. Funky Ln, Steng Thmey Village, Savy Dangkum Commune, Siem Reap City",
-          "source": "https://www.affinityangkor.com/contact-us-1"
-        },
-        "serviceArea": null
-      },
-      "contact": {
-        "whatsapp": null,
-        "phone": {
-          "value": "+855 12 254 554",
-          "source": "https://www.affinityangkor.com/contact-us-1"
-        },
-        "email": {
-          "value": "affinityangkor@hotmail.com",
-          "source": "https://www.affinityangkor.com/contact-us-1"
-        },
-        "instagram": null,
-        "bookingUrl": null
-      },
-      "hours": {
-        "value": "Monday - Friday: 9am - 6pm Saturday: 10am - 2pm Sunday: Closed",
-        "source": "https://www.affinityangkor.com/contact-us-1"
-      },
-      "tone": [
-        "welcoming",
-        "professional",
-        "informative",
-        "friendly"
-      ],
-      "colours": [
-        {
-          "hex": "#ffffff",
-          "role": "text",
-          "source": "logo"
-        },
-        {
-          "hex": "#ffffff",
-          "role": "background",
-          "source": "logo"
-        }
-      ],
-      "essence": {
-        "feeling": [
-          "enlightened",
-          "refreshed",
-          "unforgettable"
-        ],
-        "placeSymbols": [
-          "Angkor Wat temples",
-          "palm trees",
-          "ancient stone carvings",
-          "jungle ruins",
-          "waterfalls"
+          "lotus ponds"
         ],
         "senses": [
-          "scorching heat",
-          "cold refreshing towels",
-          "cool bottled water",
-          ""
-        ]
-      }
-    },
-    {
-      "name": {
-        "value": "Affinity Angkor",
-        "source": "https://www.affinityangkor.com/"
-      },
-      "summary": {
-        "value": "Locally run, quality boutique tour operation offering customized private tours and authentic guides around Angkor Wat and Cambodia.",
-        "source": "https://www.affinityangkor.com/"
-      },
-      "category": "tour operator",
-      "offerings": [
-        {
-          "name": "Authentic Tour Guide Service",
-          "source": "https://www.affinityangkor.com/"
-        }
-      ],
-      "highlights": [
-        {
-          "value": "Locally run, Quality Boutique Tour Operation in Angkor Wat",
-          "source": "https://www.affinityangkor.com/"
-        },
-        {
-          "value": "We will tailor your private tour to your needs and interests",
-          "source": "https://www.affinityangkor.com/"
-        }
-      ],
-      "location": {
-        "town": {
-          "value": "Siem Reap",
-          "source": "https://www.affinityangkor.com/contact-us-1"
-        },
-        "area": {
-          "value": "Savy Dangkum Commune",
-          "source": "https://www.affinityangkor.com/contact-us-1"
-        },
-        "address": {
-          "value": "#533, St. Funky Ln, Steng Thmey Village, Savy Dangkum Commune, Siem Reap City",
-          "source": "https://www.affinityangkor.com/contact-us-1"
-        },
-        "serviceArea": null
-      },
-      "contact": {
-        "whatsapp": null,
-        "phone": {
-          "value": "+855 12 254 554",
-          "source": "https://www.affinityangkor.com/contact-us-1"
-        },
-        "email": {
-          "value": "affinityangkor@hotmail.com",
-          "source": "https://www.affinityangkor.com/contact-us-1"
-        },
-        "instagram": null,
-        "bookingUrl": null
-      },
-      "hours": {
-        "value": "Monday - Friday: 9am - 6pm Saturday: 10am - 2pm Sunday: Closed",
-        "source": "https://www.affinityangkor.com/contact-us-1"
-      },
-      "tone": [
-        "welcoming",
-        "professional",
-        "informative",
-        "friendly"
-      ],
-      "colours": [
-        {
-          "hex": "#ffffff",
-          "role": "text",
-          "source": "logo"
-        },
-        {
-          "hex": "#ffffff",
-          "role": "background",
-          "source": "logo"
-        }
-      ],
-      "essence": {
-        "feeling": [
-          "enlightened",
-          "refreshed",
-          "unforgettable"
-        ],
-        "placeSymbols": [
-          "Angkor Wat temples",
-          "palm trees",
-          "ancient stone carvings",
-          "jungle ruins",
-          "waterfalls"
-        ],
-        "senses": [
-          "scorching heat",
-          "cold refreshing towels",
-          "cool bottled water",
-          "air-conditioned van",
-          "ancient stone textures"
-        ],
-        "moments": [
-          {}
-        ]
-      }
-    },
-    {
-      "name": {
-        "value": "Affinity Angkor",
-        "source": "https://www.affinityangkor.com/"
-      },
-      "summary": {
-        "value": "Locally run, quality boutique tour operation offering customized private tours and authentic guides around Angkor Wat and Cambodia.",
-        "source": "https://www.affinityangkor.com/"
-      },
-      "category": "tour operator",
-      "offerings": [
-        {
-          "name": "Authentic Tour Guide Service",
-          "source": "https://www.affinityangkor.com/"
-        }
-      ],
-      "highlights": [
-        {
-          "value": "Locally run, Quality Boutique Tour Operation in Angkor Wat",
-          "source": "https://www.affinityangkor.com/"
-        },
-        {
-          "value": "We will tailor your private tour to your needs and interests",
-          "source": "https://www.affinityangkor.com/"
-        }
-      ],
-      "location": {
-        "town": {
-          "value": "Siem Reap",
-          "source": "https://www.affinityangkor.com/contact-us-1"
-        },
-        "area": {
-          "value": "Savy Dangkum Commune",
-          "source": "https://www.affinityangkor.com/contact-us-1"
-        },
-        "address": {
-          "value": "#533, St. Funky Ln, Steng Thmey Village, Savy Dangkum Commune, Siem Reap City",
-          "source": "https://www.affinityangkor.com/contact-us-1"
-        },
-        "serviceArea": null
-      },
-      "contact": {
-        "whatsapp": null,
-        "phone": {
-          "value": "+855 12 254 554",
-          "source": "https://www.affinityangkor.com/contact-us-1"
-        },
-        "email": {
-          "value": "affinityangkor@hotmail.com",
-          "source": "https://www.affinityangkor.com/contact-us-1"
-        },
-        "instagram": null,
-        "bookingUrl": null
-      },
-      "hours": {
-        "value": "Monday - Friday: 9am - 6pm Saturday: 10am - 2pm Sunday: Closed",
-        "source": "https://www.affinityangkor.com/contact-us-1"
-      },
-      "tone": [
-        "welcoming",
-        "professional",
-        "informative",
-        "friendly"
-      ],
-      "colours": [
-        {
-          "hex": "#ffffff",
-          "role": "text",
-          "source": "logo"
-        },
-        {
-          "hex": "#ffffff",
-          "role": "background",
-          "source": "logo"
-        }
-      ],
-      "essence": {
-        "feeling": [
-          "enlightened",
-          "refreshed",
-          "unforgettable"
-        ],
-        "placeSymbols": [
-          "Angkor Wat temples",
-          "palm trees",
-          "ancient stone carvings",
-          "jungle ruins",
-          "waterfalls"
-        ],
-        "senses": [
-          "scorching heat",
-          "cold refreshing towels",
-          "cool bottled water",
-          "air-conditioned van",
+          "cold wet towel",
+          "cool air conditioning in the van",
+          "morning jungle humidity",
           "ancient stone textures"
         ],
         "moments": [
           {
-            "value": "private sunrise around Angkor Wat",
-            "source": "https://www.affinityangkor.com"
+            "value": "watching sunrise"
           }
         ]
       }
@@ -1501,7 +1741,7 @@
         "source": "https://www.affinityangkor.com/"
       },
       "summary": {
-        "value": "Locally run, quality boutique tour operation offering customized private tours and authentic guides around Angkor Wat and Cambodia.",
+        "value": "Locally run boutique tour operator offering bespoke, private tours around Angkor Wat and Cambodia.",
         "source": "https://www.affinityangkor.com/"
       },
       "category": "tour operator",
@@ -1513,12 +1753,16 @@
       ],
       "highlights": [
         {
-          "value": "Locally run, Quality Boutique Tour Operation in Angkor Wat",
+          "value": "Avoiding crowds at Angkor Wat",
           "source": "https://www.affinityangkor.com/"
         },
         {
-          "value": "We will tailor your private tour to your needs and interests",
+          "value": "Certified, friendly tour guides",
           "source": "https://www.affinityangkor.com/"
+        },
+        {
+          "value": "Air-conditioned van with cold towels and water",
+          "source": "https://www.affinityangkor.com/about-2-guides"
         }
       ],
       "location": {
@@ -1556,8 +1800,8 @@
       "tone": [
         "welcoming",
         "professional",
-        "informative",
-        "friendly"
+        "friendly",
+        "authentic"
       ],
       "colours": [
         {
@@ -1566,38 +1810,38 @@
           "source": "logo"
         },
         {
-          "hex": "#ffffff",
+          "hex": "#000000",
           "role": "background",
           "source": "logo"
         }
       ],
       "essence": {
+        "promise": {
+          "value": "We will tailor your private tour to your needs and interests around Angkor Wat to make sure you have an exceptional, exclusive experience in Cambodia.",
+          "source": "https://www.affinityangkor.com/"
+        },
         "feeling": [
-          "enlightened",
-          "refreshed",
-          "unforgettable"
+          "unforgettable",
+          "cared for",
+          "inspired"
         ],
         "placeSymbols": [
-          "Angkor Wat temples",
+          "Angkor Wat temple spires",
+          "stone carvings",
+          "jungle roots at Ta Prohm",
           "palm trees",
-          "ancient stone carvings",
-          "jungle ruins",
-          "waterfalls"
+          "lotus ponds"
         ],
         "senses": [
-          "scorching heat",
-          "cold refreshing towels",
-          "cool bottled water",
-          "air-conditioned van",
+          "cold wet towel",
+          "cool air conditioning in the van",
+          "morning jungle humidity",
           "ancient stone textures"
         ],
         "moments": [
           {
-            "value": "private sunrise around Angkor Wat",
-            "source": "https://www.affinityangkor.com/about-2-guides"
-          },
-          {
-            "value": "after touring each temple"
+            "value": "watching sunrise at Angkor Wat",
+            "source": "https://www.affinityangkor.com/about-2-"
           }
         ]
       }
@@ -1608,7 +1852,7 @@
         "source": "https://www.affinityangkor.com/"
       },
       "summary": {
-        "value": "Locally run, quality boutique tour operation offering customized private tours and authentic guides around Angkor Wat and Cambodia.",
+        "value": "Locally run boutique tour operator offering bespoke, private tours around Angkor Wat and Cambodia.",
         "source": "https://www.affinityangkor.com/"
       },
       "category": "tour operator",
@@ -1620,12 +1864,16 @@
       ],
       "highlights": [
         {
-          "value": "Locally run, Quality Boutique Tour Operation in Angkor Wat",
+          "value": "Avoiding crowds at Angkor Wat",
           "source": "https://www.affinityangkor.com/"
         },
         {
-          "value": "We will tailor your private tour to your needs and interests",
+          "value": "Certified, friendly tour guides",
           "source": "https://www.affinityangkor.com/"
+        },
+        {
+          "value": "Air-conditioned van with cold towels and water",
+          "source": "https://www.affinityangkor.com/about-2-guides"
         }
       ],
       "location": {
@@ -1663,8 +1911,8 @@
       "tone": [
         "welcoming",
         "professional",
-        "informative",
-        "friendly"
+        "friendly",
+        "authentic"
       ],
       "colours": [
         {
@@ -1673,39 +1921,41 @@
           "source": "logo"
         },
         {
-          "hex": "#ffffff",
+          "hex": "#000000",
           "role": "background",
           "source": "logo"
         }
       ],
       "essence": {
+        "promise": {
+          "value": "We will tailor your private tour to your needs and interests around Angkor Wat to make sure you have an exceptional, exclusive experience in Cambodia.",
+          "source": "https://www.affinityangkor.com/"
+        },
         "feeling": [
-          "enlightened",
-          "refreshed",
-          "unforgettable"
+          "unforgettable",
+          "cared for",
+          "inspired"
         ],
         "placeSymbols": [
-          "Angkor Wat temples",
+          "Angkor Wat temple spires",
+          "stone carvings",
+          "jungle roots at Ta Prohm",
           "palm trees",
-          "ancient stone carvings",
-          "jungle ruins",
-          "waterfalls"
+          "lotus ponds"
         ],
         "senses": [
-          "scorching heat",
-          "cold refreshing towels",
-          "cool bottled water",
-          "air-conditioned van",
+          "cold wet towel",
+          "cool air conditioning in the van",
+          "morning jungle humidity",
           "ancient stone textures"
         ],
         "moments": [
           {
-            "value": "private sunrise around Angkor Wat",
+            "value": "watching sunrise at Angkor Wat",
             "source": "https://www.affinityangkor.com/about-2-guides"
           },
           {
-            "value": "after touring each temple",
-            "source": "https://www.affinityangkor.com/"
+            "value": "recovering in the air-conditioned van after touring in"
           }
         ]
       }
@@ -1716,7 +1966,7 @@
         "source": "https://www.affinityangkor.com/"
       },
       "summary": {
-        "value": "Locally run, quality boutique tour operation offering customized private tours and authentic guides around Angkor Wat and Cambodia.",
+        "value": "Locally run boutique tour operator offering bespoke, private tours around Angkor Wat and Cambodia.",
         "source": "https://www.affinityangkor.com/"
       },
       "category": "tour operator",
@@ -1728,12 +1978,16 @@
       ],
       "highlights": [
         {
-          "value": "Locally run, Quality Boutique Tour Operation in Angkor Wat",
+          "value": "Avoiding crowds at Angkor Wat",
           "source": "https://www.affinityangkor.com/"
         },
         {
-          "value": "We will tailor your private tour to your needs and interests",
+          "value": "Certified, friendly tour guides",
           "source": "https://www.affinityangkor.com/"
+        },
+        {
+          "value": "Air-conditioned van with cold towels and water",
+          "source": "https://www.affinityangkor.com/about-2-guides"
         }
       ],
       "location": {
@@ -1771,8 +2025,8 @@
       "tone": [
         "welcoming",
         "professional",
-        "informative",
-        "friendly"
+        "friendly",
+        "authentic"
       ],
       "colours": [
         {
@@ -1781,44 +2035,47 @@
           "source": "logo"
         },
         {
-          "hex": "#ffffff",
+          "hex": "#000000",
           "role": "background",
           "source": "logo"
         }
       ],
       "essence": {
+        "promise": {
+          "value": "We will tailor your private tour to your needs and interests around Angkor Wat to make sure you have an exceptional, exclusive experience in Cambodia.",
+          "source": "https://www.affinityangkor.com/"
+        },
         "feeling": [
-          "enlightened",
-          "refreshed",
-          "unforgettable"
+          "unforgettable",
+          "cared for",
+          "inspired"
         ],
         "placeSymbols": [
-          "Angkor Wat temples",
+          "Angkor Wat temple spires",
+          "stone carvings",
+          "jungle roots at Ta Prohm",
           "palm trees",
-          "ancient stone carvings",
-          "jungle ruins",
-          "waterfalls"
+          "lotus ponds"
         ],
         "senses": [
-          "scorching heat",
-          "cold refreshing towels",
-          "cool bottled water",
-          "air-conditioned van",
+          "cold wet towel",
+          "cool air conditioning in the van",
+          "morning jungle humidity",
           "ancient stone textures"
         ],
         "moments": [
           {
-            "value": "private sunrise around Angkor Wat",
+            "value": "watching sunrise at Angkor Wat",
             "source": "https://www.affinityangkor.com/about-2-guides"
           },
           {
-            "value": "after touring each temple",
+            "value": "recovering in the air-conditioned van after touring in heat",
             "source": "https://www.affinityangkor.com/"
           }
         ]
       },
       "visualStyle": {
-        "summary": "Warm tropical, bright daylight, ancient stone and lush palm textures, awe"
+        "summary": "warm tropical, soft light, natural stone textures"
       }
     },
     {
@@ -1827,7 +2084,7 @@
         "source": "https://www.affinityangkor.com/"
       },
       "summary": {
-        "value": "Locally run, quality boutique tour operation offering customized private tours and authentic guides around Angkor Wat and Cambodia.",
+        "value": "Locally run boutique tour operator offering bespoke, private tours around Angkor Wat and Cambodia.",
         "source": "https://www.affinityangkor.com/"
       },
       "category": "tour operator",
@@ -1839,12 +2096,16 @@
       ],
       "highlights": [
         {
-          "value": "Locally run, Quality Boutique Tour Operation in Angkor Wat",
+          "value": "Avoiding crowds at Angkor Wat",
           "source": "https://www.affinityangkor.com/"
         },
         {
-          "value": "We will tailor your private tour to your needs and interests",
+          "value": "Certified, friendly tour guides",
           "source": "https://www.affinityangkor.com/"
+        },
+        {
+          "value": "Air-conditioned van with cold towels and water",
+          "source": "https://www.affinityangkor.com/about-2-guides"
         }
       ],
       "location": {
@@ -1882,8 +2143,8 @@
       "tone": [
         "welcoming",
         "professional",
-        "informative",
-        "friendly"
+        "friendly",
+        "authentic"
       ],
       "colours": [
         {
@@ -1892,45 +2153,49 @@
           "source": "logo"
         },
         {
-          "hex": "#ffffff",
+          "hex": "#000000",
           "role": "background",
           "source": "logo"
         }
       ],
       "essence": {
+        "promise": {
+          "value": "We will tailor your private tour to your needs and interests around Angkor Wat to make sure you have an exceptional, exclusive experience in Cambodia.",
+          "source": "https://www.affinityangkor.com/"
+        },
         "feeling": [
-          "enlightened",
-          "refreshed",
-          "unforgettable"
+          "unforgettable",
+          "cared for",
+          "inspired"
         ],
         "placeSymbols": [
-          "Angkor Wat temples",
+          "Angkor Wat temple spires",
+          "stone carvings",
+          "jungle roots at Ta Prohm",
           "palm trees",
-          "ancient stone carvings",
-          "jungle ruins",
-          "waterfalls"
+          "lotus ponds"
         ],
         "senses": [
-          "scorching heat",
-          "cold refreshing towels",
-          "cool bottled water",
-          "air-conditioned van",
+          "cold wet towel",
+          "cool air conditioning in the van",
+          "morning jungle humidity",
           "ancient stone textures"
         ],
         "moments": [
           {
-            "value": "private sunrise around Angkor Wat",
+            "value": "watching sunrise at Angkor Wat",
             "source": "https://www.affinityangkor.com/about-2-guides"
           },
           {
-            "value": "after touring each temple",
+            "value": "recovering in the air-conditioned van after touring in heat",
             "source": "https://www.affinityangkor.com/"
           }
         ]
       },
       "visualStyle": {
-        "summary": "Warm tropical, bright daylight, ancient stone and lush palm textures, awe-inspiring mood",
-        "palette": "natural greens, stone grays, earthy browns, bright blue sky"
+        "summary": "warm tropical, soft light, natural stone textures",
+        "palette": "natural stone greys, vibrant greens, sky blues",
+        "light": "bright daylight, soft morning"
       }
     },
     {
@@ -1939,7 +2204,7 @@
         "source": "https://www.affinityangkor.com/"
       },
       "summary": {
-        "value": "Locally run, quality boutique tour operation offering customized private tours and authentic guides around Angkor Wat and Cambodia.",
+        "value": "Locally run boutique tour operator offering bespoke, private tours around Angkor Wat and Cambodia.",
         "source": "https://www.affinityangkor.com/"
       },
       "category": "tour operator",
@@ -1951,12 +2216,16 @@
       ],
       "highlights": [
         {
-          "value": "Locally run, Quality Boutique Tour Operation in Angkor Wat",
+          "value": "Avoiding crowds at Angkor Wat",
           "source": "https://www.affinityangkor.com/"
         },
         {
-          "value": "We will tailor your private tour to your needs and interests",
+          "value": "Certified, friendly tour guides",
           "source": "https://www.affinityangkor.com/"
+        },
+        {
+          "value": "Air-conditioned van with cold towels and water",
+          "source": "https://www.affinityangkor.com/about-2-guides"
         }
       ],
       "location": {
@@ -1994,8 +2263,8 @@
       "tone": [
         "welcoming",
         "professional",
-        "informative",
-        "friendly"
+        "friendly",
+        "authentic"
       ],
       "colours": [
         {
@@ -2004,47 +2273,51 @@
           "source": "logo"
         },
         {
-          "hex": "#ffffff",
+          "hex": "#000000",
           "role": "background",
           "source": "logo"
         }
       ],
       "essence": {
+        "promise": {
+          "value": "We will tailor your private tour to your needs and interests around Angkor Wat to make sure you have an exceptional, exclusive experience in Cambodia.",
+          "source": "https://www.affinityangkor.com/"
+        },
         "feeling": [
-          "enlightened",
-          "refreshed",
-          "unforgettable"
+          "unforgettable",
+          "cared for",
+          "inspired"
         ],
         "placeSymbols": [
-          "Angkor Wat temples",
+          "Angkor Wat temple spires",
+          "stone carvings",
+          "jungle roots at Ta Prohm",
           "palm trees",
-          "ancient stone carvings",
-          "jungle ruins",
-          "waterfalls"
+          "lotus ponds"
         ],
         "senses": [
-          "scorching heat",
-          "cold refreshing towels",
-          "cool bottled water",
-          "air-conditioned van",
+          "cold wet towel",
+          "cool air conditioning in the van",
+          "morning jungle humidity",
           "ancient stone textures"
         ],
         "moments": [
           {
-            "value": "private sunrise around Angkor Wat",
+            "value": "watching sunrise at Angkor Wat",
             "source": "https://www.affinityangkor.com/about-2-guides"
           },
           {
-            "value": "after touring each temple",
+            "value": "recovering in the air-conditioned van after touring in heat",
             "source": "https://www.affinityangkor.com/"
           }
         ]
       },
       "visualStyle": {
-        "summary": "Warm tropical, bright daylight, ancient stone and lush palm textures, awe-inspiring mood",
-        "palette": "natural greens, stone grays, earthy browns, bright blue sky",
-        "light": "bright tropical sunlight",
-        "textures": "weathered stone blocks, palm leaves, calm reflective water"
+        "summary": "warm tropical, soft light, natural stone textures",
+        "palette": "natural stone greys, vibrant greens, sky blues",
+        "light": "bright daylight, soft morning light",
+        "textures": "ancient carved stone, palm leaves, calm water",
+        "mood": "expl"
       }
     },
     {
@@ -2053,7 +2326,7 @@
         "source": "https://www.affinityangkor.com/"
       },
       "summary": {
-        "value": "Locally run, quality boutique tour operation offering customized private tours and authentic guides around Angkor Wat and Cambodia.",
+        "value": "Locally run boutique tour operator offering bespoke, private tours around Angkor Wat and Cambodia.",
         "source": "https://www.affinityangkor.com/"
       },
       "category": "tour operator",
@@ -2065,12 +2338,16 @@
       ],
       "highlights": [
         {
-          "value": "Locally run, Quality Boutique Tour Operation in Angkor Wat",
+          "value": "Avoiding crowds at Angkor Wat",
           "source": "https://www.affinityangkor.com/"
         },
         {
-          "value": "We will tailor your private tour to your needs and interests",
+          "value": "Certified, friendly tour guides",
           "source": "https://www.affinityangkor.com/"
+        },
+        {
+          "value": "Air-conditioned van with cold towels and water",
+          "source": "https://www.affinityangkor.com/about-2-guides"
         }
       ],
       "location": {
@@ -2108,8 +2385,8 @@
       "tone": [
         "welcoming",
         "professional",
-        "informative",
-        "friendly"
+        "friendly",
+        "authentic"
       ],
       "colours": [
         {
@@ -2118,48 +2395,51 @@
           "source": "logo"
         },
         {
-          "hex": "#ffffff",
+          "hex": "#000000",
           "role": "background",
           "source": "logo"
         }
       ],
       "essence": {
+        "promise": {
+          "value": "We will tailor your private tour to your needs and interests around Angkor Wat to make sure you have an exceptional, exclusive experience in Cambodia.",
+          "source": "https://www.affinityangkor.com/"
+        },
         "feeling": [
-          "enlightened",
-          "refreshed",
-          "unforgettable"
+          "unforgettable",
+          "cared for",
+          "inspired"
         ],
         "placeSymbols": [
-          "Angkor Wat temples",
+          "Angkor Wat temple spires",
+          "stone carvings",
+          "jungle roots at Ta Prohm",
           "palm trees",
-          "ancient stone carvings",
-          "jungle ruins",
-          "waterfalls"
+          "lotus ponds"
         ],
         "senses": [
-          "scorching heat",
-          "cold refreshing towels",
-          "cool bottled water",
-          "air-conditioned van",
+          "cold wet towel",
+          "cool air conditioning in the van",
+          "morning jungle humidity",
           "ancient stone textures"
         ],
         "moments": [
           {
-            "value": "private sunrise around Angkor Wat",
+            "value": "watching sunrise at Angkor Wat",
             "source": "https://www.affinityangkor.com/about-2-guides"
           },
           {
-            "value": "after touring each temple",
+            "value": "recovering in the air-conditioned van after touring in heat",
             "source": "https://www.affinityangkor.com/"
           }
         ]
       },
       "visualStyle": {
-        "summary": "Warm tropical, bright daylight, ancient stone and lush palm textures, awe-inspiring mood",
-        "palette": "natural greens, stone grays, earthy browns, bright blue sky",
-        "light": "bright tropical sunlight",
-        "textures": "weathered stone blocks, palm leaves, calm reflective water",
-        "mood": "exploratory, majestic, welcoming"
+        "summary": "warm tropical, soft light, natural stone textures",
+        "palette": "natural stone greys, vibrant greens, sky blues",
+        "light": "bright daylight, soft morning light",
+        "textures": "ancient carved stone, palm leaves, calm water",
+        "mood": "exploratory, majestic, tranquil"
       }
     }
   ],
@@ -2169,7 +2449,7 @@
       "source": "https://www.affinityangkor.com/"
     },
     "summary": {
-      "value": "Locally run, quality boutique tour operation offering customized private tours and authentic guides around Angkor Wat and Cambodia.",
+      "value": "Locally run boutique tour operator offering bespoke, private tours around Angkor Wat and Cambodia.",
       "source": "https://www.affinityangkor.com/"
     },
     "category": "tour operator",
@@ -2181,12 +2461,16 @@
     ],
     "highlights": [
       {
-        "value": "Locally run, Quality Boutique Tour Operation in Angkor Wat",
+        "value": "Avoiding crowds at Angkor Wat",
         "source": "https://www.affinityangkor.com/"
       },
       {
-        "value": "We will tailor your private tour to your needs and interests",
+        "value": "Certified, friendly tour guides",
         "source": "https://www.affinityangkor.com/"
+      },
+      {
+        "value": "Air-conditioned van with cold towels and water",
+        "source": "https://www.affinityangkor.com/about-2-guides"
       }
     ],
     "location": {
@@ -2224,8 +2508,8 @@
     "tone": [
       "welcoming",
       "professional",
-      "informative",
-      "friendly"
+      "friendly",
+      "authentic"
     ],
     "colours": [
       {
@@ -2234,48 +2518,51 @@
         "source": "logo"
       },
       {
-        "hex": "#ffffff",
+        "hex": "#000000",
         "role": "background",
         "source": "logo"
       }
     ],
     "essence": {
+      "promise": {
+        "value": "We will tailor your private tour to your needs and interests around Angkor Wat to make sure you have an exceptional, exclusive experience in Cambodia.",
+        "source": "https://www.affinityangkor.com/"
+      },
       "feeling": [
-        "enlightened",
-        "refreshed",
-        "unforgettable"
+        "unforgettable",
+        "cared for",
+        "inspired"
       ],
       "placeSymbols": [
-        "Angkor Wat temples",
+        "Angkor Wat temple spires",
+        "stone carvings",
+        "jungle roots at Ta Prohm",
         "palm trees",
-        "ancient stone carvings",
-        "jungle ruins",
-        "waterfalls"
+        "lotus ponds"
       ],
       "senses": [
-        "scorching heat",
-        "cold refreshing towels",
-        "cool bottled water",
-        "air-conditioned van",
+        "cold wet towel",
+        "cool air conditioning in the van",
+        "morning jungle humidity",
         "ancient stone textures"
       ],
       "moments": [
         {
-          "value": "private sunrise around Angkor Wat",
+          "value": "watching sunrise at Angkor Wat",
           "source": "https://www.affinityangkor.com/about-2-guides"
         },
         {
-          "value": "after touring each temple",
+          "value": "recovering in the air-conditioned van after touring in heat",
           "source": "https://www.affinityangkor.com/"
         }
       ]
     },
     "visualStyle": {
-      "summary": "Warm tropical, bright daylight, ancient stone and lush palm textures, awe-inspiring mood",
-      "palette": "natural greens, stone grays, earthy browns, bright blue sky",
-      "light": "bright tropical sunlight",
-      "textures": "weathered stone blocks, palm leaves, calm reflective water",
-      "mood": "exploratory, majestic, welcoming"
+      "summary": "warm tropical, soft light, natural stone textures",
+      "palette": "natural stone greys, vibrant greens, sky blues",
+      "light": "bright daylight, soft morning light",
+      "textures": "ancient carved stone, palm leaves, calm water",
+      "mood": "exploratory, majestic, tranquil"
     }
   }
 }

@@ -1,6 +1,6 @@
 {
   "modelId": "gemini-3.5-flash-lite",
-  "promptVersion": "brand-5",
+  "promptVersion": "brand-6",
   "partials": [
     {
       "name": {}
@@ -17,7 +17,7 @@
         "source": "https://www.librahousechiangmai.com/"
       },
       "summary": {
-        "value": "Chiang Mai's friendliest"
+        "value": "Friendly family-run"
       }
     },
     {
@@ -26,7 +26,7 @@
         "source": "https://www.librahousechiangmai.com/"
       },
       "summary": {
-        "value": "Chiang Mai's friendliest family-run guesthouse offering comfortable rooms, a swimming pool, and custom treks and tours in Northern Thailand."
+        "value": "Friendly family-run guesthouse in Chiang Mai's Old City offering comfortable rooms, a swimming pool, and trekking tours."
       }
     },
     {
@@ -35,10 +35,10 @@
         "source": "https://www.librahousechiangmai.com/"
       },
       "summary": {
-        "value": "Chiang Mai's friendliest family-run guesthouse offering comfortable rooms, a swimming pool, and custom treks and tours in Northern Thailand.",
+        "value": "Friendly family-run guesthouse in Chiang Mai's Old City offering comfortable rooms, a swimming pool, and trekking tours.",
         "source": "https://www.librahousechiangmai.com/"
       },
-      "category": ""
+      "category": "g"
     },
     {
       "name": {
@@ -46,7 +46,7 @@
         "source": "https://www.librahousechiangmai.com/"
       },
       "summary": {
-        "value": "Chiang Mai's friendliest family-run guesthouse offering comfortable rooms, a swimming pool, and custom treks and tours in Northern Thailand.",
+        "value": "Friendly family-run guesthouse in Chiang Mai's Old City offering comfortable rooms, a swimming pool, and trekking tours.",
         "source": "https://www.librahousechiangmai.com/"
       },
       "category": "guesthouse",
@@ -62,7 +62,7 @@
         "source": "https://www.librahousechiangmai.com/"
       },
       "summary": {
-        "value": "Chiang Mai's friendliest family-run guesthouse offering comfortable rooms, a swimming pool, and custom treks and tours in Northern Thailand.",
+        "value": "Friendly family-run guesthouse in Chiang Mai's Old City offering comfortable rooms, a swimming pool, and trekking tours.",
         "source": "https://www.librahousechiangmai.com/"
       },
       "category": "guesthouse",
@@ -80,7 +80,7 @@
         "source": "https://www.librahousechiangmai.com/"
       },
       "summary": {
-        "value": "Chiang Mai's friendliest family-run guesthouse offering comfortable rooms, a swimming pool, and custom treks and tours in Northern Thailand.",
+        "value": "Friendly family-run guesthouse in Chiang Mai's Old City offering comfortable rooms, a swimming pool, and trekking tours.",
         "source": "https://www.librahousechiangmai.com/"
       },
       "category": "guesthouse",
@@ -91,7 +91,7 @@
         },
         {
           "name": "Treks and tours",
-          "source": "https://www.librahousechiang"
+          "source": "https://www.librahousechiangmai"
         }
       ]
     },
@@ -101,7 +101,7 @@
         "source": "https://www.librahousechiangmai.com/"
       },
       "summary": {
-        "value": "Chiang Mai's friendliest family-run guesthouse offering comfortable rooms, a swimming pool, and custom treks and tours in Northern Thailand.",
+        "value": "Friendly family-run guesthouse in Chiang Mai's Old City offering comfortable rooms, a swimming pool, and trekking tours.",
         "source": "https://www.librahousechiangmai.com/"
       },
       "category": "guesthouse",
@@ -112,66 +112,38 @@
         },
         {
           "name": "Treks and tours",
-          "source": "https://www.librahousechiangmai.com/"
-        },
-        {
-          "name": "Swimming pool",
-          "source": ""
-        }
-      ]
-    },
-    {
-      "name": {
-        "value": "Libra Guesthouse",
-        "source": "https://www.librahousechiangmai.com/"
-      },
-      "summary": {
-        "value": "Chiang Mai's friendliest family-run guesthouse offering comfortable rooms, a swimming pool, and custom treks and tours in Northern Thailand.",
-        "source": "https://www.librahousechiangmai.com/"
-      },
-      "category": "guesthouse",
-      "offerings": [
-        {
-          "name": "Rooms",
-          "source": "https://www.librahousechiangmai.com/"
-        },
-        {
-          "name": "Treks and tours",
-          "source": "https://www.librahousechiangmai.com/"
-        },
-        {
-          "name": "Swimming pool",
-          "source": "https://www.librahousechiangmai.com/"
-        }
-      ]
-    },
-    {
-      "name": {
-        "value": "Libra Guesthouse",
-        "source": "https://www.librahousechiangmai.com/"
-      },
-      "summary": {
-        "value": "Chiang Mai's friendliest family-run guesthouse offering comfortable rooms, a swimming pool, and custom treks and tours in Northern Thailand.",
-        "source": "https://www.librahousechiangmai.com/"
-      },
-      "category": "guesthouse",
-      "offerings": [
-        {
-          "name": "Rooms",
-          "source": "https://www.librahousechiangmai.com/"
-        },
-        {
-          "name": "Treks and tours",
-          "source": "https://www.librahousechiangmai.com/"
-        },
-        {
-          "name": "Swimming pool",
           "source": "https://www.librahousechiangmai.com/"
         }
       ],
       "highlights": [
         {
-          "value": "Family-run place to stay and hang out",
+          "value": ""
+        }
+      ]
+    },
+    {
+      "name": {
+        "value": "Libra Guesthouse",
+        "source": "https://www.librahousechiangmai.com/"
+      },
+      "summary": {
+        "value": "Friendly family-run guesthouse in Chiang Mai's Old City offering comfortable rooms, a swimming pool, and trekking tours.",
+        "source": "https://www.librahousechiangmai.com/"
+      },
+      "category": "guesthouse",
+      "offerings": [
+        {
+          "name": "Rooms",
+          "source": "https://www.librahousechiangmai.com/"
+        },
+        {
+          "name": "Treks and tours",
+          "source": "https://www.librahousechiangmai.com/"
+        }
+      ],
+      "highlights": [
+        {
+          "value": "Chiang Mai's friendliest family-run place to stay and hang out",
           "source": "https://www"
         }
       ]
@@ -182,7 +154,7 @@
         "source": "https://www.librahousechiangmai.com/"
       },
       "summary": {
-        "value": "Chiang Mai's friendliest family-run guesthouse offering comfortable rooms, a swimming pool, and custom treks and tours in Northern Thailand.",
+        "value": "Friendly family-run guesthouse in Chiang Mai's Old City offering comfortable rooms, a swimming pool, and trekking tours.",
         "source": "https://www.librahousechiangmai.com/"
       },
       "category": "guesthouse",
@@ -194,15 +166,11 @@
         {
           "name": "Treks and tours",
           "source": "https://www.librahousechiangmai.com/"
-        },
-        {
-          "name": "Swimming pool",
-          "source": "https://www.librahousechiangmai.com/"
         }
       ],
       "highlights": [
         {
-          "value": "Family-run place to stay and hang out",
+          "value": "Chiang Mai's friendliest family-run place to stay and hang out",
           "source": "https://www.librahousechiangmai.com/"
         },
         {
@@ -216,7 +184,7 @@
         "source": "https://www.librahousechiangmai.com/"
       },
       "summary": {
-        "value": "Chiang Mai's friendliest family-run guesthouse offering comfortable rooms, a swimming pool, and custom treks and tours in Northern Thailand.",
+        "value": "Friendly family-run guesthouse in Chiang Mai's Old City offering comfortable rooms, a swimming pool, and trekking tours.",
         "source": "https://www.librahousechiangmai.com/"
       },
       "category": "guesthouse",
@@ -228,15 +196,11 @@
         {
           "name": "Treks and tours",
           "source": "https://www.librahousechiangmai.com/"
-        },
-        {
-          "name": "Swimming pool",
-          "source": "https://www.librahousechiangmai.com/"
         }
       ],
       "highlights": [
         {
-          "value": "Family-run place to stay and hang out",
+          "value": "Chiang Mai's friendliest family-run place to stay and hang out",
           "source": "https://www.librahousechiangmai.com/"
         },
         {
@@ -251,7 +215,7 @@
         "source": "https://www.librahousechiangmai.com/"
       },
       "summary": {
-        "value": "Chiang Mai's friendliest family-run guesthouse offering comfortable rooms, a swimming pool, and custom treks and tours in Northern Thailand.",
+        "value": "Friendly family-run guesthouse in Chiang Mai's Old City offering comfortable rooms, a swimming pool, and trekking tours.",
         "source": "https://www.librahousechiangmai.com/"
       },
       "category": "guesthouse",
@@ -263,15 +227,11 @@
         {
           "name": "Treks and tours",
           "source": "https://www.librahousechiangmai.com/"
-        },
-        {
-          "name": "Swimming pool",
-          "source": "https://www.librahousechiangmai.com/"
         }
       ],
       "highlights": [
         {
-          "value": "Family-run place to stay and hang out",
+          "value": "Chiang Mai's friendliest family-run place to stay and hang out",
           "source": "https://www.librahousechiangmai.com/"
         },
         {
@@ -289,7 +249,7 @@
         "source": "https://www.librahousechiangmai.com/"
       },
       "summary": {
-        "value": "Chiang Mai's friendliest family-run guesthouse offering comfortable rooms, a swimming pool, and custom treks and tours in Northern Thailand.",
+        "value": "Friendly family-run guesthouse in Chiang Mai's Old City offering comfortable rooms, a swimming pool, and trekking tours.",
         "source": "https://www.librahousechiangmai.com/"
       },
       "category": "guesthouse",
@@ -301,15 +261,11 @@
         {
           "name": "Treks and tours",
           "source": "https://www.librahousechiangmai.com/"
-        },
-        {
-          "name": "Swimming pool",
-          "source": "https://www.librahousechiangmai.com/"
         }
       ],
       "highlights": [
         {
-          "value": "Family-run place to stay and hang out",
+          "value": "Chiang Mai's friendliest family-run place to stay and hang out",
           "source": "https://www.librahousechiangmai.com/"
         },
         {
@@ -328,7 +284,7 @@
         "source": "https://www.librahousechiangmai.com/"
       },
       "summary": {
-        "value": "Chiang Mai's friendliest family-run guesthouse offering comfortable rooms, a swimming pool, and custom treks and tours in Northern Thailand.",
+        "value": "Friendly family-run guesthouse in Chiang Mai's Old City offering comfortable rooms, a swimming pool, and trekking tours.",
         "source": "https://www.librahousechiangmai.com/"
       },
       "category": "guesthouse",
@@ -340,15 +296,11 @@
         {
           "name": "Treks and tours",
           "source": "https://www.librahousechiangmai.com/"
-        },
-        {
-          "name": "Swimming pool",
-          "source": "https://www.librahousechiangmai.com/"
         }
       ],
       "highlights": [
         {
-          "value": "Family-run place to stay and hang out",
+          "value": "Chiang Mai's friendliest family-run place to stay and hang out",
           "source": "https://www.librahousechiangmai.com/"
         },
         {
@@ -360,7 +312,7 @@
           "source": "https://www.librahousechiangmai.com/"
         },
         {
-          "value": "Accommodation of choice for travelers visiting Chiang Mai since "
+          "value": "Welcoming everyone from solo travelers to families since"
         }
       ]
     },
@@ -370,7 +322,7 @@
         "source": "https://www.librahousechiangmai.com/"
       },
       "summary": {
-        "value": "Chiang Mai's friendliest family-run guesthouse offering comfortable rooms, a swimming pool, and custom treks and tours in Northern Thailand.",
+        "value": "Friendly family-run guesthouse in Chiang Mai's Old City offering comfortable rooms, a swimming pool, and trekking tours.",
         "source": "https://www.librahousechiangmai.com/"
       },
       "category": "guesthouse",
@@ -382,15 +334,11 @@
         {
           "name": "Treks and tours",
           "source": "https://www.librahousechiangmai.com/"
-        },
-        {
-          "name": "Swimming pool",
-          "source": "https://www.librahousechiangmai.com/"
         }
       ],
       "highlights": [
         {
-          "value": "Family-run place to stay and hang out",
+          "value": "Chiang Mai's friendliest family-run place to stay and hang out",
           "source": "https://www.librahousechiangmai.com/"
         },
         {
@@ -402,8 +350,8 @@
           "source": "https://www.librahousechiangmai.com/"
         },
         {
-          "value": "Accommodation of choice for travelers visiting Chiang Mai since 1987",
-          "source": "https://www.librahousechiangmai.com/"
+          "value": "Welcoming everyone from solo travelers to families since 1987",
+          "source": "https://www.librahousechiangmai.com"
         }
       ]
     },
@@ -413,7 +361,7 @@
         "source": "https://www.librahousechiangmai.com/"
       },
       "summary": {
-        "value": "Chiang Mai's friendliest family-run guesthouse offering comfortable rooms, a swimming pool, and custom treks and tours in Northern Thailand.",
+        "value": "Friendly family-run guesthouse in Chiang Mai's Old City offering comfortable rooms, a swimming pool, and trekking tours.",
         "source": "https://www.librahousechiangmai.com/"
       },
       "category": "guesthouse",
@@ -425,15 +373,11 @@
         {
           "name": "Treks and tours",
           "source": "https://www.librahousechiangmai.com/"
-        },
-        {
-          "name": "Swimming pool",
-          "source": "https://www.librahousechiangmai.com/"
         }
       ],
       "highlights": [
         {
-          "value": "Family-run place to stay and hang out",
+          "value": "Chiang Mai's friendliest family-run place to stay and hang out",
           "source": "https://www.librahousechiangmai.com/"
         },
         {
@@ -445,13 +389,56 @@
           "source": "https://www.librahousechiangmai.com/"
         },
         {
-          "value": "Accommodation of choice for travelers visiting Chiang Mai since 1987",
+          "value": "Welcoming everyone from solo travelers to families since 1987",
+          "source": "https://www.librahousechiangmai.com/"
+        }
+      ],
+      "location": {
+        "town": {}
+      }
+    },
+    {
+      "name": {
+        "value": "Libra Guesthouse",
+        "source": "https://www.librahousechiangmai.com/"
+      },
+      "summary": {
+        "value": "Friendly family-run guesthouse in Chiang Mai's Old City offering comfortable rooms, a swimming pool, and trekking tours.",
+        "source": "https://www.librahousechiangmai.com/"
+      },
+      "category": "guesthouse",
+      "offerings": [
+        {
+          "name": "Rooms",
+          "source": "https://www.librahousechiangmai.com/"
+        },
+        {
+          "name": "Treks and tours",
+          "source": "https://www.librahousechiangmai.com/"
+        }
+      ],
+      "highlights": [
+        {
+          "value": "Chiang Mai's friendliest family-run place to stay and hang out",
+          "source": "https://www.librahousechiangmai.com/"
+        },
+        {
+          "value": "Recommended by Lonely Planet, Rough Guide, and Frommer’s Travel Guides",
+          "source": "https://www.librahousechiangmai.com/"
+        },
+        {
+          "value": "Situated on a quiet street in the heart of the Old City",
+          "source": "https://www.librahousechiangmai.com/"
+        },
+        {
+          "value": "Welcoming everyone from solo travelers to families since 1987",
           "source": "https://www.librahousechiangmai.com/"
         }
       ],
       "location": {
         "town": {
-          "value": ""
+          "value": "Chiang Mai",
+          "source": "https://www.librahousechiangmai.com/"
         }
       }
     },
@@ -461,7 +448,7 @@
         "source": "https://www.librahousechiangmai.com/"
       },
       "summary": {
-        "value": "Chiang Mai's friendliest family-run guesthouse offering comfortable rooms, a swimming pool, and custom treks and tours in Northern Thailand.",
+        "value": "Friendly family-run guesthouse in Chiang Mai's Old City offering comfortable rooms, a swimming pool, and trekking tours.",
         "source": "https://www.librahousechiangmai.com/"
       },
       "category": "guesthouse",
@@ -473,15 +460,11 @@
         {
           "name": "Treks and tours",
           "source": "https://www.librahousechiangmai.com/"
-        },
-        {
-          "name": "Swimming pool",
-          "source": "https://www.librahousechiangmai.com/"
         }
       ],
       "highlights": [
         {
-          "value": "Family-run place to stay and hang out",
+          "value": "Chiang Mai's friendliest family-run place to stay and hang out",
           "source": "https://www.librahousechiangmai.com/"
         },
         {
@@ -493,66 +476,18 @@
           "source": "https://www.librahousechiangmai.com/"
         },
         {
-          "value": "Accommodation of choice for travelers visiting Chiang Mai since 1987",
+          "value": "Welcoming everyone from solo travelers to families since 1987",
           "source": "https://www.librahousechiangmai.com/"
         }
       ],
       "location": {
         "town": {
           "value": "Chiang Mai",
-          "source": "https://www.librahousechiangmai.com/contact"
-        }
-      }
-    },
-    {
-      "name": {
-        "value": "Libra Guesthouse",
-        "source": "https://www.librahousechiangmai.com/"
-      },
-      "summary": {
-        "value": "Chiang Mai's friendliest family-run guesthouse offering comfortable rooms, a swimming pool, and custom treks and tours in Northern Thailand.",
-        "source": "https://www.librahousechiangmai.com/"
-      },
-      "category": "guesthouse",
-      "offerings": [
-        {
-          "name": "Rooms",
           "source": "https://www.librahousechiangmai.com/"
-        },
-        {
-          "name": "Treks and tours",
-          "source": "https://www.librahousechiangmai.com/"
-        },
-        {
-          "name": "Swimming pool",
-          "source": "https://www.librahousechiangmai.com/"
-        }
-      ],
-      "highlights": [
-        {
-          "value": "Family-run place to stay and hang out",
-          "source": "https://www.librahousechiangmai.com/"
-        },
-        {
-          "value": "Recommended by Lonely Planet, Rough Guide, and Frommer’s Travel Guides",
-          "source": "https://www.librahousechiangmai.com/"
-        },
-        {
-          "value": "Situated on a quiet street in the heart of the Old City",
-          "source": "https://www.librahousechiangmai.com/"
-        },
-        {
-          "value": "Accommodation of choice for travelers visiting Chiang Mai since 1987",
-          "source": "https://www.librahousechiangmai.com/"
-        }
-      ],
-      "location": {
-        "town": {
-          "value": "Chiang Mai",
-          "source": "https://www.librahousechiangmai.com/contact.php"
         },
         "area": {
-          "value": "Old City"
+          "value": "Old City",
+          "source": "https://www"
         }
       }
     },
@@ -562,7 +497,7 @@
         "source": "https://www.librahousechiangmai.com/"
       },
       "summary": {
-        "value": "Chiang Mai's friendliest family-run guesthouse offering comfortable rooms, a swimming pool, and custom treks and tours in Northern Thailand.",
+        "value": "Friendly family-run guesthouse in Chiang Mai's Old City offering comfortable rooms, a swimming pool, and trekking tours.",
         "source": "https://www.librahousechiangmai.com/"
       },
       "category": "guesthouse",
@@ -574,15 +509,11 @@
         {
           "name": "Treks and tours",
           "source": "https://www.librahousechiangmai.com/"
-        },
-        {
-          "name": "Swimming pool",
-          "source": "https://www.librahousechiangmai.com/"
         }
       ],
       "highlights": [
         {
-          "value": "Family-run place to stay and hang out",
+          "value": "Chiang Mai's friendliest family-run place to stay and hang out",
           "source": "https://www.librahousechiangmai.com/"
         },
         {
@@ -594,19 +525,20 @@
           "source": "https://www.librahousechiangmai.com/"
         },
         {
-          "value": "Accommodation of choice for travelers visiting Chiang Mai since 1987",
+          "value": "Welcoming everyone from solo travelers to families since 1987",
           "source": "https://www.librahousechiangmai.com/"
         }
       ],
       "location": {
         "town": {
           "value": "Chiang Mai",
-          "source": "https://www.librahousechiangmai.com/contact.php"
+          "source": "https://www.librahousechiangmai.com/"
         },
         "area": {
           "value": "Old City",
           "source": "https://www.librahousechiangmai.com/"
-        }
+        },
+        "address": {}
       }
     },
     {
@@ -615,7 +547,7 @@
         "source": "https://www.librahousechiangmai.com/"
       },
       "summary": {
-        "value": "Chiang Mai's friendliest family-run guesthouse offering comfortable rooms, a swimming pool, and custom treks and tours in Northern Thailand.",
+        "value": "Friendly family-run guesthouse in Chiang Mai's Old City offering comfortable rooms, a swimming pool, and trekking tours.",
         "source": "https://www.librahousechiangmai.com/"
       },
       "category": "guesthouse",
@@ -627,15 +559,11 @@
         {
           "name": "Treks and tours",
           "source": "https://www.librahousechiangmai.com/"
-        },
-        {
-          "name": "Swimming pool",
-          "source": "https://www.librahousechiangmai.com/"
         }
       ],
       "highlights": [
         {
-          "value": "Family-run place to stay and hang out",
+          "value": "Chiang Mai's friendliest family-run place to stay and hang out",
           "source": "https://www.librahousechiangmai.com/"
         },
         {
@@ -647,21 +575,22 @@
           "source": "https://www.librahousechiangmai.com/"
         },
         {
-          "value": "Accommodation of choice for travelers visiting Chiang Mai since 1987",
+          "value": "Welcoming everyone from solo travelers to families since 1987",
           "source": "https://www.librahousechiangmai.com/"
         }
       ],
       "location": {
         "town": {
           "value": "Chiang Mai",
-          "source": "https://www.librahousechiangmai.com/contact.php"
+          "source": "https://www.librahousechiangmai.com/"
         },
         "area": {
           "value": "Old City",
           "source": "https://www.librahousechiangmai.com/"
         },
         "address": {
-          "value": "28 Moon Muang Rd, Soi 9, Chiang Mai, Thailand"
+          "value": "28 Moon Muang Rd, Soi 9, Chiang Mai, Thailand",
+          "source": ""
         }
       }
     },
@@ -671,7 +600,7 @@
         "source": "https://www.librahousechiangmai.com/"
       },
       "summary": {
-        "value": "Chiang Mai's friendliest family-run guesthouse offering comfortable rooms, a swimming pool, and custom treks and tours in Northern Thailand.",
+        "value": "Friendly family-run guesthouse in Chiang Mai's Old City offering comfortable rooms, a swimming pool, and trekking tours.",
         "source": "https://www.librahousechiangmai.com/"
       },
       "category": "guesthouse",
@@ -683,15 +612,11 @@
         {
           "name": "Treks and tours",
           "source": "https://www.librahousechiangmai.com/"
-        },
-        {
-          "name": "Swimming pool",
-          "source": "https://www.librahousechiangmai.com/"
         }
       ],
       "highlights": [
         {
-          "value": "Family-run place to stay and hang out",
+          "value": "Chiang Mai's friendliest family-run place to stay and hang out",
           "source": "https://www.librahousechiangmai.com/"
         },
         {
@@ -703,14 +628,67 @@
           "source": "https://www.librahousechiangmai.com/"
         },
         {
-          "value": "Accommodation of choice for travelers visiting Chiang Mai since 1987",
+          "value": "Welcoming everyone from solo travelers to families since 1987",
           "source": "https://www.librahousechiangmai.com/"
         }
       ],
       "location": {
         "town": {
           "value": "Chiang Mai",
+          "source": "https://www.librahousechiangmai.com/"
+        },
+        "area": {
+          "value": "Old City",
+          "source": "https://www.librahousechiangmai.com/"
+        },
+        "address": {
+          "value": "28 Moon Muang Rd, Soi 9, Chiang Mai, Thailand",
           "source": "https://www.librahousechiangmai.com/contact.php"
+        }
+      }
+    },
+    {
+      "name": {
+        "value": "Libra Guesthouse",
+        "source": "https://www.librahousechiangmai.com/"
+      },
+      "summary": {
+        "value": "Friendly family-run guesthouse in Chiang Mai's Old City offering comfortable rooms, a swimming pool, and trekking tours.",
+        "source": "https://www.librahousechiangmai.com/"
+      },
+      "category": "guesthouse",
+      "offerings": [
+        {
+          "name": "Rooms",
+          "source": "https://www.librahousechiangmai.com/"
+        },
+        {
+          "name": "Treks and tours",
+          "source": "https://www.librahousechiangmai.com/"
+        }
+      ],
+      "highlights": [
+        {
+          "value": "Chiang Mai's friendliest family-run place to stay and hang out",
+          "source": "https://www.librahousechiangmai.com/"
+        },
+        {
+          "value": "Recommended by Lonely Planet, Rough Guide, and Frommer’s Travel Guides",
+          "source": "https://www.librahousechiangmai.com/"
+        },
+        {
+          "value": "Situated on a quiet street in the heart of the Old City",
+          "source": "https://www.librahousechiangmai.com/"
+        },
+        {
+          "value": "Welcoming everyone from solo travelers to families since 1987",
+          "source": "https://www.librahousechiangmai.com/"
+        }
+      ],
+      "location": {
+        "town": {
+          "value": "Chiang Mai",
+          "source": "https://www.librahousechiangmai.com/"
         },
         "area": {
           "value": "Old City",
@@ -732,7 +710,7 @@
         "source": "https://www.librahousechiangmai.com/"
       },
       "summary": {
-        "value": "Chiang Mai's friendliest family-run guesthouse offering comfortable rooms, a swimming pool, and custom treks and tours in Northern Thailand.",
+        "value": "Friendly family-run guesthouse in Chiang Mai's Old City offering comfortable rooms, a swimming pool, and trekking tours.",
         "source": "https://www.librahousechiangmai.com/"
       },
       "category": "guesthouse",
@@ -744,15 +722,11 @@
         {
           "name": "Treks and tours",
           "source": "https://www.librahousechiangmai.com/"
-        },
-        {
-          "name": "Swimming pool",
-          "source": "https://www.librahousechiangmai.com/"
         }
       ],
       "highlights": [
         {
-          "value": "Family-run place to stay and hang out",
+          "value": "Chiang Mai's friendliest family-run place to stay and hang out",
           "source": "https://www.librahousechiangmai.com/"
         },
         {
@@ -764,14 +738,14 @@
           "source": "https://www.librahousechiangmai.com/"
         },
         {
-          "value": "Accommodation of choice for travelers visiting Chiang Mai since 1987",
+          "value": "Welcoming everyone from solo travelers to families since 1987",
           "source": "https://www.librahousechiangmai.com/"
         }
       ],
       "location": {
         "town": {
           "value": "Chiang Mai",
-          "source": "https://www.librahousechiangmai.com/contact.php"
+          "source": "https://www.librahousechiangmai.com/"
         },
         "area": {
           "value": "Old City",
@@ -786,7 +760,7 @@
       "contact": {
         "whatsapp": null,
         "phone": {
-          "value": "+66 (0) 5321 068"
+          "value": "+66 (0) 5321 0687"
         }
       }
     },
@@ -796,7 +770,7 @@
         "source": "https://www.librahousechiangmai.com/"
       },
       "summary": {
-        "value": "Chiang Mai's friendliest family-run guesthouse offering comfortable rooms, a swimming pool, and custom treks and tours in Northern Thailand.",
+        "value": "Friendly family-run guesthouse in Chiang Mai's Old City offering comfortable rooms, a swimming pool, and trekking tours.",
         "source": "https://www.librahousechiangmai.com/"
       },
       "category": "guesthouse",
@@ -808,15 +782,11 @@
         {
           "name": "Treks and tours",
           "source": "https://www.librahousechiangmai.com/"
-        },
-        {
-          "name": "Swimming pool",
-          "source": "https://www.librahousechiangmai.com/"
         }
       ],
       "highlights": [
         {
-          "value": "Family-run place to stay and hang out",
+          "value": "Chiang Mai's friendliest family-run place to stay and hang out",
           "source": "https://www.librahousechiangmai.com/"
         },
         {
@@ -828,14 +798,14 @@
           "source": "https://www.librahousechiangmai.com/"
         },
         {
-          "value": "Accommodation of choice for travelers visiting Chiang Mai since 1987",
+          "value": "Welcoming everyone from solo travelers to families since 1987",
           "source": "https://www.librahousechiangmai.com/"
         }
       ],
       "location": {
         "town": {
           "value": "Chiang Mai",
-          "source": "https://www.librahousechiangmai.com/contact.php"
+          "source": "https://www.librahousechiangmai.com/"
         },
         "area": {
           "value": "Old City",
@@ -861,7 +831,7 @@
         "source": "https://www.librahousechiangmai.com/"
       },
       "summary": {
-        "value": "Chiang Mai's friendliest family-run guesthouse offering comfortable rooms, a swimming pool, and custom treks and tours in Northern Thailand.",
+        "value": "Friendly family-run guesthouse in Chiang Mai's Old City offering comfortable rooms, a swimming pool, and trekking tours.",
         "source": "https://www.librahousechiangmai.com/"
       },
       "category": "guesthouse",
@@ -873,15 +843,11 @@
         {
           "name": "Treks and tours",
           "source": "https://www.librahousechiangmai.com/"
-        },
-        {
-          "name": "Swimming pool",
-          "source": "https://www.librahousechiangmai.com/"
         }
       ],
       "highlights": [
         {
-          "value": "Family-run place to stay and hang out",
+          "value": "Chiang Mai's friendliest family-run place to stay and hang out",
           "source": "https://www.librahousechiangmai.com/"
         },
         {
@@ -893,14 +859,14 @@
           "source": "https://www.librahousechiangmai.com/"
         },
         {
-          "value": "Accommodation of choice for travelers visiting Chiang Mai since 1987",
+          "value": "Welcoming everyone from solo travelers to families since 1987",
           "source": "https://www.librahousechiangmai.com/"
         }
       ],
       "location": {
         "town": {
           "value": "Chiang Mai",
-          "source": "https://www.librahousechiangmai.com/contact.php"
+          "source": "https://www.librahousechiangmai.com/"
         },
         "area": {
           "value": "Old City",
@@ -919,7 +885,7 @@
           "source": "https://www.librahousechiangmai.com/contact.php"
         },
         "email": {
-          "value": "librahouse@hotmail.com"
+          "value": "librahousechiangmai@gmail.com"
         }
       }
     },
@@ -929,7 +895,7 @@
         "source": "https://www.librahousechiangmai.com/"
       },
       "summary": {
-        "value": "Chiang Mai's friendliest family-run guesthouse offering comfortable rooms, a swimming pool, and custom treks and tours in Northern Thailand.",
+        "value": "Friendly family-run guesthouse in Chiang Mai's Old City offering comfortable rooms, a swimming pool, and trekking tours.",
         "source": "https://www.librahousechiangmai.com/"
       },
       "category": "guesthouse",
@@ -941,15 +907,11 @@
         {
           "name": "Treks and tours",
           "source": "https://www.librahousechiangmai.com/"
-        },
-        {
-          "name": "Swimming pool",
-          "source": "https://www.librahousechiangmai.com/"
         }
       ],
       "highlights": [
         {
-          "value": "Family-run place to stay and hang out",
+          "value": "Chiang Mai's friendliest family-run place to stay and hang out",
           "source": "https://www.librahousechiangmai.com/"
         },
         {
@@ -961,14 +923,14 @@
           "source": "https://www.librahousechiangmai.com/"
         },
         {
-          "value": "Accommodation of choice for travelers visiting Chiang Mai since 1987",
+          "value": "Welcoming everyone from solo travelers to families since 1987",
           "source": "https://www.librahousechiangmai.com/"
         }
       ],
       "location": {
         "town": {
           "value": "Chiang Mai",
-          "source": "https://www.librahousechiangmai.com/contact.php"
+          "source": "https://www.librahousechiangmai.com/"
         },
         "area": {
           "value": "Old City",
@@ -987,8 +949,8 @@
           "source": "https://www.librahousechiangmai.com/contact.php"
         },
         "email": {
-          "value": "librahouse@hotmail.com",
-          "source": "https://www.librahousechiangmai.com/"
+          "value": "librahousechiangmai@gmail.com",
+          "source": "https://www.librahousechiangmai.com/contact.php"
         }
       }
     },
@@ -998,7 +960,7 @@
         "source": "https://www.librahousechiangmai.com/"
       },
       "summary": {
-        "value": "Chiang Mai's friendliest family-run guesthouse offering comfortable rooms, a swimming pool, and custom treks and tours in Northern Thailand.",
+        "value": "Friendly family-run guesthouse in Chiang Mai's Old City offering comfortable rooms, a swimming pool, and trekking tours.",
         "source": "https://www.librahousechiangmai.com/"
       },
       "category": "guesthouse",
@@ -1010,15 +972,11 @@
         {
           "name": "Treks and tours",
           "source": "https://www.librahousechiangmai.com/"
-        },
-        {
-          "name": "Swimming pool",
-          "source": "https://www.librahousechiangmai.com/"
         }
       ],
       "highlights": [
         {
-          "value": "Family-run place to stay and hang out",
+          "value": "Chiang Mai's friendliest family-run place to stay and hang out",
           "source": "https://www.librahousechiangmai.com/"
         },
         {
@@ -1030,14 +988,14 @@
           "source": "https://www.librahousechiangmai.com/"
         },
         {
-          "value": "Accommodation of choice for travelers visiting Chiang Mai since 1987",
+          "value": "Welcoming everyone from solo travelers to families since 1987",
           "source": "https://www.librahousechiangmai.com/"
         }
       ],
       "location": {
         "town": {
           "value": "Chiang Mai",
-          "source": "https://www.librahousechiangmai.com/contact.php"
+          "source": "https://www.librahousechiangmai.com/"
         },
         "area": {
           "value": "Old City",
@@ -1056,8 +1014,8 @@
           "source": "https://www.librahousechiangmai.com/contact.php"
         },
         "email": {
-          "value": "librahouse@hotmail.com",
-          "source": "https://www.librahousechiangmai.com/"
+          "value": "librahousechiangmai@gmail.com",
+          "source": "https://www.librahousechiangmai.com/contact.php"
         },
         "instagram": null,
         "bookingUrl": null
@@ -1070,7 +1028,7 @@
         "source": "https://www.librahousechiangmai.com/"
       },
       "summary": {
-        "value": "Chiang Mai's friendliest family-run guesthouse offering comfortable rooms, a swimming pool, and custom treks and tours in Northern Thailand.",
+        "value": "Friendly family-run guesthouse in Chiang Mai's Old City offering comfortable rooms, a swimming pool, and trekking tours.",
         "source": "https://www.librahousechiangmai.com/"
       },
       "category": "guesthouse",
@@ -1082,15 +1040,11 @@
         {
           "name": "Treks and tours",
           "source": "https://www.librahousechiangmai.com/"
-        },
-        {
-          "name": "Swimming pool",
-          "source": "https://www.librahousechiangmai.com/"
         }
       ],
       "highlights": [
         {
-          "value": "Family-run place to stay and hang out",
+          "value": "Chiang Mai's friendliest family-run place to stay and hang out",
           "source": "https://www.librahousechiangmai.com/"
         },
         {
@@ -1102,14 +1056,14 @@
           "source": "https://www.librahousechiangmai.com/"
         },
         {
-          "value": "Accommodation of choice for travelers visiting Chiang Mai since 1987",
+          "value": "Welcoming everyone from solo travelers to families since 1987",
           "source": "https://www.librahousechiangmai.com/"
         }
       ],
       "location": {
         "town": {
           "value": "Chiang Mai",
-          "source": "https://www.librahousechiangmai.com/contact.php"
+          "source": "https://www.librahousechiangmai.com/"
         },
         "area": {
           "value": "Old City",
@@ -1128,18 +1082,18 @@
           "source": "https://www.librahousechiangmai.com/contact.php"
         },
         "email": {
-          "value": "librahouse@hotmail.com",
-          "source": "https://www.librahousechiangmai.com/"
+          "value": "librahousechiangmai@gmail.com",
+          "source": "https://www.librahousechiangmai.com/contact.php"
         },
         "instagram": null,
         "bookingUrl": null
       },
       "hours": null,
       "tone": [
-        "welcoming",
         "friendly",
         "warm",
-        "hospitable"
+        "welcoming",
+        "informative"
       ]
     },
     {
@@ -1148,7 +1102,7 @@
         "source": "https://www.librahousechiangmai.com/"
       },
       "summary": {
-        "value": "Chiang Mai's friendliest family-run guesthouse offering comfortable rooms, a swimming pool, and custom treks and tours in Northern Thailand.",
+        "value": "Friendly family-run guesthouse in Chiang Mai's Old City offering comfortable rooms, a swimming pool, and trekking tours.",
         "source": "https://www.librahousechiangmai.com/"
       },
       "category": "guesthouse",
@@ -1160,15 +1114,11 @@
         {
           "name": "Treks and tours",
           "source": "https://www.librahousechiangmai.com/"
-        },
-        {
-          "name": "Swimming pool",
-          "source": "https://www.librahousechiangmai.com/"
         }
       ],
       "highlights": [
         {
-          "value": "Family-run place to stay and hang out",
+          "value": "Chiang Mai's friendliest family-run place to stay and hang out",
           "source": "https://www.librahousechiangmai.com/"
         },
         {
@@ -1180,14 +1130,14 @@
           "source": "https://www.librahousechiangmai.com/"
         },
         {
-          "value": "Accommodation of choice for travelers visiting Chiang Mai since 1987",
+          "value": "Welcoming everyone from solo travelers to families since 1987",
           "source": "https://www.librahousechiangmai.com/"
         }
       ],
       "location": {
         "town": {
           "value": "Chiang Mai",
-          "source": "https://www.librahousechiangmai.com/contact.php"
+          "source": "https://www.librahousechiangmai.com/"
         },
         "area": {
           "value": "Old City",
@@ -1206,22 +1156,22 @@
           "source": "https://www.librahousechiangmai.com/contact.php"
         },
         "email": {
-          "value": "librahouse@hotmail.com",
-          "source": "https://www.librahousechiangmai.com/"
+          "value": "librahousechiangmai@gmail.com",
+          "source": "https://www.librahousechiangmai.com/contact.php"
         },
         "instagram": null,
         "bookingUrl": null
       },
       "hours": null,
       "tone": [
-        "welcoming",
         "friendly",
         "warm",
-        "hospitable"
+        "welcoming",
+        "informative"
       ],
       "colours": [
         {
-          "hex": "#8B4513"
+          "hex": "#b25939"
         }
       ]
     },
@@ -1231,7 +1181,7 @@
         "source": "https://www.librahousechiangmai.com/"
       },
       "summary": {
-        "value": "Chiang Mai's friendliest family-run guesthouse offering comfortable rooms, a swimming pool, and custom treks and tours in Northern Thailand.",
+        "value": "Friendly family-run guesthouse in Chiang Mai's Old City offering comfortable rooms, a swimming pool, and trekking tours.",
         "source": "https://www.librahousechiangmai.com/"
       },
       "category": "guesthouse",
@@ -1243,15 +1193,11 @@
         {
           "name": "Treks and tours",
           "source": "https://www.librahousechiangmai.com/"
-        },
-        {
-          "name": "Swimming pool",
-          "source": "https://www.librahousechiangmai.com/"
         }
       ],
       "highlights": [
         {
-          "value": "Family-run place to stay and hang out",
+          "value": "Chiang Mai's friendliest family-run place to stay and hang out",
           "source": "https://www.librahousechiangmai.com/"
         },
         {
@@ -1263,14 +1209,14 @@
           "source": "https://www.librahousechiangmai.com/"
         },
         {
-          "value": "Accommodation of choice for travelers visiting Chiang Mai since 1987",
+          "value": "Welcoming everyone from solo travelers to families since 1987",
           "source": "https://www.librahousechiangmai.com/"
         }
       ],
       "location": {
         "town": {
           "value": "Chiang Mai",
-          "source": "https://www.librahousechiangmai.com/contact.php"
+          "source": "https://www.librahousechiangmai.com/"
         },
         "area": {
           "value": "Old City",
@@ -1289,27 +1235,108 @@
           "source": "https://www.librahousechiangmai.com/contact.php"
         },
         "email": {
-          "value": "librahouse@hotmail.com",
-          "source": "https://www.librahousechiangmai.com/"
+          "value": "librahousechiangmai@gmail.com",
+          "source": "https://www.librahousechiangmai.com/contact.php"
         },
         "instagram": null,
         "bookingUrl": null
       },
       "hours": null,
       "tone": [
-        "welcoming",
         "friendly",
         "warm",
-        "hospitable"
+        "welcoming",
+        "informative"
       ],
       "colours": [
         {
-          "hex": "#8B4513",
+          "hex": "#b25939",
+          "role": "primary",
+          "source": "https://www.librahousechiangmai.com/"
+        }
+      ]
+    },
+    {
+      "name": {
+        "value": "Libra Guesthouse",
+        "source": "https://www.librahousechiangmai.com/"
+      },
+      "summary": {
+        "value": "Friendly family-run guesthouse in Chiang Mai's Old City offering comfortable rooms, a swimming pool, and trekking tours.",
+        "source": "https://www.librahousechiangmai.com/"
+      },
+      "category": "guesthouse",
+      "offerings": [
+        {
+          "name": "Rooms",
+          "source": "https://www.librahousechiangmai.com/"
+        },
+        {
+          "name": "Treks and tours",
+          "source": "https://www.librahousechiangmai.com/"
+        }
+      ],
+      "highlights": [
+        {
+          "value": "Chiang Mai's friendliest family-run place to stay and hang out",
+          "source": "https://www.librahousechiangmai.com/"
+        },
+        {
+          "value": "Recommended by Lonely Planet, Rough Guide, and Frommer’s Travel Guides",
+          "source": "https://www.librahousechiangmai.com/"
+        },
+        {
+          "value": "Situated on a quiet street in the heart of the Old City",
+          "source": "https://www.librahousechiangmai.com/"
+        },
+        {
+          "value": "Welcoming everyone from solo travelers to families since 1987",
+          "source": "https://www.librahousechiangmai.com/"
+        }
+      ],
+      "location": {
+        "town": {
+          "value": "Chiang Mai",
+          "source": "https://www.librahousechiangmai.com/"
+        },
+        "area": {
+          "value": "Old City",
+          "source": "https://www.librahousechiangmai.com/"
+        },
+        "address": {
+          "value": "28 Moon Muang Rd, Soi 9, Chiang Mai, Thailand",
+          "source": "https://www.librahousechiangmai.com/contact.php"
+        },
+        "serviceArea": null
+      },
+      "contact": {
+        "whatsapp": null,
+        "phone": {
+          "value": "+66 (0) 5321 0687",
+          "source": "https://www.librahousechiangmai.com/contact.php"
+        },
+        "email": {
+          "value": "librahousechiangmai@gmail.com",
+          "source": "https://www.librahousechiangmai.com/contact.php"
+        },
+        "instagram": null,
+        "bookingUrl": null
+      },
+      "hours": null,
+      "tone": [
+        "friendly",
+        "warm",
+        "welcoming",
+        "informative"
+      ],
+      "colours": [
+        {
+          "hex": "#b25939",
           "role": "primary",
           "source": "https://www.librahousechiangmai.com/"
         },
         {
-          "hex": "#FFFFFF",
+          "hex": "#ffffff",
           "role": "background"
         }
       ]
@@ -1320,7 +1347,7 @@
         "source": "https://www.librahousechiangmai.com/"
       },
       "summary": {
-        "value": "Chiang Mai's friendliest family-run guesthouse offering comfortable rooms, a swimming pool, and custom treks and tours in Northern Thailand.",
+        "value": "Friendly family-run guesthouse in Chiang Mai's Old City offering comfortable rooms, a swimming pool, and trekking tours.",
         "source": "https://www.librahousechiangmai.com/"
       },
       "category": "guesthouse",
@@ -1332,15 +1359,11 @@
         {
           "name": "Treks and tours",
           "source": "https://www.librahousechiangmai.com/"
-        },
-        {
-          "name": "Swimming pool",
-          "source": "https://www.librahousechiangmai.com/"
         }
       ],
       "highlights": [
         {
-          "value": "Family-run place to stay and hang out",
+          "value": "Chiang Mai's friendliest family-run place to stay and hang out",
           "source": "https://www.librahousechiangmai.com/"
         },
         {
@@ -1352,14 +1375,14 @@
           "source": "https://www.librahousechiangmai.com/"
         },
         {
-          "value": "Accommodation of choice for travelers visiting Chiang Mai since 1987",
+          "value": "Welcoming everyone from solo travelers to families since 1987",
           "source": "https://www.librahousechiangmai.com/"
         }
       ],
       "location": {
         "town": {
           "value": "Chiang Mai",
-          "source": "https://www.librahousechiangmai.com/contact.php"
+          "source": "https://www.librahousechiangmai.com/"
         },
         "area": {
           "value": "Old City",
@@ -1378,27 +1401,27 @@
           "source": "https://www.librahousechiangmai.com/contact.php"
         },
         "email": {
-          "value": "librahouse@hotmail.com",
-          "source": "https://www.librahousechiangmai.com/"
+          "value": "librahousechiangmai@gmail.com",
+          "source": "https://www.librahousechiangmai.com/contact.php"
         },
         "instagram": null,
         "bookingUrl": null
       },
       "hours": null,
       "tone": [
-        "welcoming",
         "friendly",
         "warm",
-        "hospitable"
+        "welcoming",
+        "informative"
       ],
       "colours": [
         {
-          "hex": "#8B4513",
+          "hex": "#b25939",
           "role": "primary",
           "source": "https://www.librahousechiangmai.com/"
         },
         {
-          "hex": "#FFFFFF",
+          "hex": "#ffffff",
           "role": "background",
           "source": "https://www.librahousechiangmai.com/"
         },
@@ -1411,7 +1434,7 @@
         "source": "https://www.librahousechiangmai.com/"
       },
       "summary": {
-        "value": "Chiang Mai's friendliest family-run guesthouse offering comfortable rooms, a swimming pool, and custom treks and tours in Northern Thailand.",
+        "value": "Friendly family-run guesthouse in Chiang Mai's Old City offering comfortable rooms, a swimming pool, and trekking tours.",
         "source": "https://www.librahousechiangmai.com/"
       },
       "category": "guesthouse",
@@ -1423,15 +1446,11 @@
         {
           "name": "Treks and tours",
           "source": "https://www.librahousechiangmai.com/"
-        },
-        {
-          "name": "Swimming pool",
-          "source": "https://www.librahousechiangmai.com/"
         }
       ],
       "highlights": [
         {
-          "value": "Family-run place to stay and hang out",
+          "value": "Chiang Mai's friendliest family-run place to stay and hang out",
           "source": "https://www.librahousechiangmai.com/"
         },
         {
@@ -1443,14 +1462,14 @@
           "source": "https://www.librahousechiangmai.com/"
         },
         {
-          "value": "Accommodation of choice for travelers visiting Chiang Mai since 1987",
+          "value": "Welcoming everyone from solo travelers to families since 1987",
           "source": "https://www.librahousechiangmai.com/"
         }
       ],
       "location": {
         "town": {
           "value": "Chiang Mai",
-          "source": "https://www.librahousechiangmai.com/contact.php"
+          "source": "https://www.librahousechiangmai.com/"
         },
         "area": {
           "value": "Old City",
@@ -1469,34 +1488,34 @@
           "source": "https://www.librahousechiangmai.com/contact.php"
         },
         "email": {
-          "value": "librahouse@hotmail.com",
-          "source": "https://www.librahousechiangmai.com/"
+          "value": "librahousechiangmai@gmail.com",
+          "source": "https://www.librahousechiangmai.com/contact.php"
         },
         "instagram": null,
         "bookingUrl": null
       },
       "hours": null,
       "tone": [
-        "welcoming",
         "friendly",
         "warm",
-        "hospitable"
+        "welcoming",
+        "informative"
       ],
       "colours": [
         {
-          "hex": "#8B4513",
+          "hex": "#b25939",
           "role": "primary",
           "source": "https://www.librahousechiangmai.com/"
         },
         {
-          "hex": "#FFFFFF",
+          "hex": "#ffffff",
           "role": "background",
           "source": "https://www.librahousechiangmai.com/"
         },
         {
-          "hex": "#228B22",
+          "hex": "#2d688c",
           "role": "accent",
-          "source": "https"
+          "source": "https://www"
         }
       ]
     },
@@ -1506,7 +1525,7 @@
         "source": "https://www.librahousechiangmai.com/"
       },
       "summary": {
-        "value": "Chiang Mai's friendliest family-run guesthouse offering comfortable rooms, a swimming pool, and custom treks and tours in Northern Thailand.",
+        "value": "Friendly family-run guesthouse in Chiang Mai's Old City offering comfortable rooms, a swimming pool, and trekking tours.",
         "source": "https://www.librahousechiangmai.com/"
       },
       "category": "guesthouse",
@@ -1518,15 +1537,11 @@
         {
           "name": "Treks and tours",
           "source": "https://www.librahousechiangmai.com/"
-        },
-        {
-          "name": "Swimming pool",
-          "source": "https://www.librahousechiangmai.com/"
         }
       ],
       "highlights": [
         {
-          "value": "Family-run place to stay and hang out",
+          "value": "Chiang Mai's friendliest family-run place to stay and hang out",
           "source": "https://www.librahousechiangmai.com/"
         },
         {
@@ -1538,14 +1553,14 @@
           "source": "https://www.librahousechiangmai.com/"
         },
         {
-          "value": "Accommodation of choice for travelers visiting Chiang Mai since 1987",
+          "value": "Welcoming everyone from solo travelers to families since 1987",
           "source": "https://www.librahousechiangmai.com/"
         }
       ],
       "location": {
         "town": {
           "value": "Chiang Mai",
-          "source": "https://www.librahousechiangmai.com/contact.php"
+          "source": "https://www.librahousechiangmai.com/"
         },
         "area": {
           "value": "Old City",
@@ -1564,32 +1579,32 @@
           "source": "https://www.librahousechiangmai.com/contact.php"
         },
         "email": {
-          "value": "librahouse@hotmail.com",
-          "source": "https://www.librahousechiangmai.com/"
+          "value": "librahousechiangmai@gmail.com",
+          "source": "https://www.librahousechiangmai.com/contact.php"
         },
         "instagram": null,
         "bookingUrl": null
       },
       "hours": null,
       "tone": [
-        "welcoming",
         "friendly",
         "warm",
-        "hospitable"
+        "welcoming",
+        "informative"
       ],
       "colours": [
         {
-          "hex": "#8B4513",
+          "hex": "#b25939",
           "role": "primary",
           "source": "https://www.librahousechiangmai.com/"
         },
         {
-          "hex": "#FFFFFF",
+          "hex": "#ffffff",
           "role": "background",
           "source": "https://www.librahousechiangmai.com/"
         },
         {
-          "hex": "#228B22",
+          "hex": "#2d688c",
           "role": "accent",
           "source": "https://www.librahousechiangmai.com/"
         }
@@ -1602,7 +1617,7 @@
         "source": "https://www.librahousechiangmai.com/"
       },
       "summary": {
-        "value": "Chiang Mai's friendliest family-run guesthouse offering comfortable rooms, a swimming pool, and custom treks and tours in Northern Thailand.",
+        "value": "Friendly family-run guesthouse in Chiang Mai's Old City offering comfortable rooms, a swimming pool, and trekking tours.",
         "source": "https://www.librahousechiangmai.com/"
       },
       "category": "guesthouse",
@@ -1614,15 +1629,11 @@
         {
           "name": "Treks and tours",
           "source": "https://www.librahousechiangmai.com/"
-        },
-        {
-          "name": "Swimming pool",
-          "source": "https://www.librahousechiangmai.com/"
         }
       ],
       "highlights": [
         {
-          "value": "Family-run place to stay and hang out",
+          "value": "Chiang Mai's friendliest family-run place to stay and hang out",
           "source": "https://www.librahousechiangmai.com/"
         },
         {
@@ -1634,14 +1645,14 @@
           "source": "https://www.librahousechiangmai.com/"
         },
         {
-          "value": "Accommodation of choice for travelers visiting Chiang Mai since 1987",
+          "value": "Welcoming everyone from solo travelers to families since 1987",
           "source": "https://www.librahousechiangmai.com/"
         }
       ],
       "location": {
         "town": {
           "value": "Chiang Mai",
-          "source": "https://www.librahousechiangmai.com/contact.php"
+          "source": "https://www.librahousechiangmai.com/"
         },
         "area": {
           "value": "Old City",
@@ -1660,47 +1671,238 @@
           "source": "https://www.librahousechiangmai.com/contact.php"
         },
         "email": {
-          "value": "librahouse@hotmail.com",
-          "source": "https://www.librahousechiangmai.com/"
+          "value": "librahousechiangmai@gmail.com",
+          "source": "https://www.librahousechiangmai.com/contact.php"
         },
         "instagram": null,
         "bookingUrl": null
       },
       "hours": null,
       "tone": [
-        "welcoming",
         "friendly",
         "warm",
-        "hospitable"
+        "welcoming",
+        "informative"
       ],
       "colours": [
         {
-          "hex": "#8B4513",
+          "hex": "#b25939",
           "role": "primary",
           "source": "https://www.librahousechiangmai.com/"
         },
         {
-          "hex": "#FFFFFF",
+          "hex": "#ffffff",
           "role": "background",
           "source": "https://www.librahousechiangmai.com/"
         },
         {
-          "hex": "#228B22",
+          "hex": "#2d688c",
           "role": "accent",
           "source": "https://www.librahousechiangmai.com/"
         }
       ],
       "essence": {
+        "promise": {
+          "value": "Stay in the heart of the Old City at our family-run guesthouse"
+        }
+      }
+    },
+    {
+      "name": {
+        "value": "Libra Guesthouse",
+        "source": "https://www.librahousechiangmai.com/"
+      },
+      "summary": {
+        "value": "Friendly family-run guesthouse in Chiang Mai's Old City offering comfortable rooms, a swimming pool, and trekking tours.",
+        "source": "https://www.librahousechiangmai.com/"
+      },
+      "category": "guesthouse",
+      "offerings": [
+        {
+          "name": "Rooms",
+          "source": "https://www.librahousechiangmai.com/"
+        },
+        {
+          "name": "Treks and tours",
+          "source": "https://www.librahousechiangmai.com/"
+        }
+      ],
+      "highlights": [
+        {
+          "value": "Chiang Mai's friendliest family-run place to stay and hang out",
+          "source": "https://www.librahousechiangmai.com/"
+        },
+        {
+          "value": "Recommended by Lonely Planet, Rough Guide, and Frommer’s Travel Guides",
+          "source": "https://www.librahousechiangmai.com/"
+        },
+        {
+          "value": "Situated on a quiet street in the heart of the Old City",
+          "source": "https://www.librahousechiangmai.com/"
+        },
+        {
+          "value": "Welcoming everyone from solo travelers to families since 1987",
+          "source": "https://www.librahousechiangmai.com/"
+        }
+      ],
+      "location": {
+        "town": {
+          "value": "Chiang Mai",
+          "source": "https://www.librahousechiangmai.com/"
+        },
+        "area": {
+          "value": "Old City",
+          "source": "https://www.librahousechiangmai.com/"
+        },
+        "address": {
+          "value": "28 Moon Muang Rd, Soi 9, Chiang Mai, Thailand",
+          "source": "https://www.librahousechiangmai.com/contact.php"
+        },
+        "serviceArea": null
+      },
+      "contact": {
+        "whatsapp": null,
+        "phone": {
+          "value": "+66 (0) 5321 0687",
+          "source": "https://www.librahousechiangmai.com/contact.php"
+        },
+        "email": {
+          "value": "librahousechiangmai@gmail.com",
+          "source": "https://www.librahousechiangmai.com/contact.php"
+        },
+        "instagram": null,
+        "bookingUrl": null
+      },
+      "hours": null,
+      "tone": [
+        "friendly",
+        "warm",
+        "welcoming",
+        "informative"
+      ],
+      "colours": [
+        {
+          "hex": "#b25939",
+          "role": "primary",
+          "source": "https://www.librahousechiangmai.com/"
+        },
+        {
+          "hex": "#ffffff",
+          "role": "background",
+          "source": "https://www.librahousechiangmai.com/"
+        },
+        {
+          "hex": "#2d688c",
+          "role": "accent",
+          "source": "https://www.librahousechiangmai.com/"
+        }
+      ],
+      "essence": {
+        "promise": {
+          "value": "Stay in the heart of the Old City at our family-run guesthouse and explore northern Thailand with our expert treks and tours.",
+          "source": "https://www.librahouse"
+        }
+      }
+    },
+    {
+      "name": {
+        "value": "Libra Guesthouse",
+        "source": "https://www.librahousechiangmai.com/"
+      },
+      "summary": {
+        "value": "Friendly family-run guesthouse in Chiang Mai's Old City offering comfortable rooms, a swimming pool, and trekking tours.",
+        "source": "https://www.librahousechiangmai.com/"
+      },
+      "category": "guesthouse",
+      "offerings": [
+        {
+          "name": "Rooms",
+          "source": "https://www.librahousechiangmai.com/"
+        },
+        {
+          "name": "Treks and tours",
+          "source": "https://www.librahousechiangmai.com/"
+        }
+      ],
+      "highlights": [
+        {
+          "value": "Chiang Mai's friendliest family-run place to stay and hang out",
+          "source": "https://www.librahousechiangmai.com/"
+        },
+        {
+          "value": "Recommended by Lonely Planet, Rough Guide, and Frommer’s Travel Guides",
+          "source": "https://www.librahousechiangmai.com/"
+        },
+        {
+          "value": "Situated on a quiet street in the heart of the Old City",
+          "source": "https://www.librahousechiangmai.com/"
+        },
+        {
+          "value": "Welcoming everyone from solo travelers to families since 1987",
+          "source": "https://www.librahousechiangmai.com/"
+        }
+      ],
+      "location": {
+        "town": {
+          "value": "Chiang Mai",
+          "source": "https://www.librahousechiangmai.com/"
+        },
+        "area": {
+          "value": "Old City",
+          "source": "https://www.librahousechiangmai.com/"
+        },
+        "address": {
+          "value": "28 Moon Muang Rd, Soi 9, Chiang Mai, Thailand",
+          "source": "https://www.librahousechiangmai.com/contact.php"
+        },
+        "serviceArea": null
+      },
+      "contact": {
+        "whatsapp": null,
+        "phone": {
+          "value": "+66 (0) 5321 0687",
+          "source": "https://www.librahousechiangmai.com/contact.php"
+        },
+        "email": {
+          "value": "librahousechiangmai@gmail.com",
+          "source": "https://www.librahousechiangmai.com/contact.php"
+        },
+        "instagram": null,
+        "bookingUrl": null
+      },
+      "hours": null,
+      "tone": [
+        "friendly",
+        "warm",
+        "welcoming",
+        "informative"
+      ],
+      "colours": [
+        {
+          "hex": "#b25939",
+          "role": "primary",
+          "source": "https://www.librahousechiangmai.com/"
+        },
+        {
+          "hex": "#ffffff",
+          "role": "background",
+          "source": "https://www.librahousechiangmai.com/"
+        },
+        {
+          "hex": "#2d688c",
+          "role": "accent",
+          "source": "https://www.librahousechiangmai.com/"
+        }
+      ],
+      "essence": {
+        "promise": {
+          "value": "Stay in the heart of the Old City at our family-run guesthouse and explore northern Thailand with our expert treks and tours.",
+          "source": "https://www.librahousechiangmai.com/"
+        },
         "feeling": [
           "welcomed",
           "relaxed",
-          "at home"
-        ],
-        "placeSymbols": [
-          "ancient temples",
-          "mountain mist",
-          "tropical foliage",
-          "Old"
+          ""
         ]
       }
     },
@@ -1710,7 +1912,7 @@
         "source": "https://www.librahousechiangmai.com/"
       },
       "summary": {
-        "value": "Chiang Mai's friendliest family-run guesthouse offering comfortable rooms, a swimming pool, and custom treks and tours in Northern Thailand.",
+        "value": "Friendly family-run guesthouse in Chiang Mai's Old City offering comfortable rooms, a swimming pool, and trekking tours.",
         "source": "https://www.librahousechiangmai.com/"
       },
       "category": "guesthouse",
@@ -1722,15 +1924,11 @@
         {
           "name": "Treks and tours",
           "source": "https://www.librahousechiangmai.com/"
-        },
-        {
-          "name": "Swimming pool",
-          "source": "https://www.librahousechiangmai.com/"
         }
       ],
       "highlights": [
         {
-          "value": "Family-run place to stay and hang out",
+          "value": "Chiang Mai's friendliest family-run place to stay and hang out",
           "source": "https://www.librahousechiangmai.com/"
         },
         {
@@ -1742,14 +1940,14 @@
           "source": "https://www.librahousechiangmai.com/"
         },
         {
-          "value": "Accommodation of choice for travelers visiting Chiang Mai since 1987",
+          "value": "Welcoming everyone from solo travelers to families since 1987",
           "source": "https://www.librahousechiangmai.com/"
         }
       ],
       "location": {
         "town": {
           "value": "Chiang Mai",
-          "source": "https://www.librahousechiangmai.com/contact.php"
+          "source": "https://www.librahousechiangmai.com/"
         },
         "area": {
           "value": "Old City",
@@ -1768,51 +1966,49 @@
           "source": "https://www.librahousechiangmai.com/contact.php"
         },
         "email": {
-          "value": "librahouse@hotmail.com",
-          "source": "https://www.librahousechiangmai.com/"
+          "value": "librahousechiangmai@gmail.com",
+          "source": "https://www.librahousechiangmai.com/contact.php"
         },
         "instagram": null,
         "bookingUrl": null
       },
       "hours": null,
       "tone": [
-        "welcoming",
         "friendly",
         "warm",
-        "hospitable"
+        "welcoming",
+        "informative"
       ],
       "colours": [
         {
-          "hex": "#8B4513",
+          "hex": "#b25939",
           "role": "primary",
           "source": "https://www.librahousechiangmai.com/"
         },
         {
-          "hex": "#FFFFFF",
+          "hex": "#ffffff",
           "role": "background",
           "source": "https://www.librahousechiangmai.com/"
         },
         {
-          "hex": "#228B22",
+          "hex": "#2d688c",
           "role": "accent",
           "source": "https://www.librahousechiangmai.com/"
         }
       ],
       "essence": {
+        "promise": {
+          "value": "Stay in the heart of the Old City at our family-run guesthouse and explore northern Thailand with our expert treks and tours.",
+          "source": "https://www.librahousechiangmai.com/"
+        },
         "feeling": [
           "welcomed",
           "relaxed",
-          "at home"
+          "cared for"
         ],
         "placeSymbols": [
-          "ancient temples",
-          "mountain mist",
-          "tropical foliage",
-          "Old City lanterns"
-        ],
-        "senses": [
-          "lush green leaves",
-          "cool"
+          "temples of the Old City",
+          ""
         ]
       }
     },
@@ -1822,7 +2018,7 @@
         "source": "https://www.librahousechiangmai.com/"
       },
       "summary": {
-        "value": "Chiang Mai's friendliest family-run guesthouse offering comfortable rooms, a swimming pool, and custom treks and tours in Northern Thailand.",
+        "value": "Friendly family-run guesthouse in Chiang Mai's Old City offering comfortable rooms, a swimming pool, and trekking tours.",
         "source": "https://www.librahousechiangmai.com/"
       },
       "category": "guesthouse",
@@ -1834,15 +2030,11 @@
         {
           "name": "Treks and tours",
           "source": "https://www.librahousechiangmai.com/"
-        },
-        {
-          "name": "Swimming pool",
-          "source": "https://www.librahousechiangmai.com/"
         }
       ],
       "highlights": [
         {
-          "value": "Family-run place to stay and hang out",
+          "value": "Chiang Mai's friendliest family-run place to stay and hang out",
           "source": "https://www.librahousechiangmai.com/"
         },
         {
@@ -1854,14 +2046,14 @@
           "source": "https://www.librahousechiangmai.com/"
         },
         {
-          "value": "Accommodation of choice for travelers visiting Chiang Mai since 1987",
+          "value": "Welcoming everyone from solo travelers to families since 1987",
           "source": "https://www.librahousechiangmai.com/"
         }
       ],
       "location": {
         "town": {
           "value": "Chiang Mai",
-          "source": "https://www.librahousechiangmai.com/contact.php"
+          "source": "https://www.librahousechiangmai.com/"
         },
         "area": {
           "value": "Old City",
@@ -1880,53 +2072,52 @@
           "source": "https://www.librahousechiangmai.com/contact.php"
         },
         "email": {
-          "value": "librahouse@hotmail.com",
-          "source": "https://www.librahousechiangmai.com/"
+          "value": "librahousechiangmai@gmail.com",
+          "source": "https://www.librahousechiangmai.com/contact.php"
         },
         "instagram": null,
         "bookingUrl": null
       },
       "hours": null,
       "tone": [
-        "welcoming",
         "friendly",
         "warm",
-        "hospitable"
+        "welcoming",
+        "informative"
       ],
       "colours": [
         {
-          "hex": "#8B4513",
+          "hex": "#b25939",
           "role": "primary",
           "source": "https://www.librahousechiangmai.com/"
         },
         {
-          "hex": "#FFFFFF",
+          "hex": "#ffffff",
           "role": "background",
           "source": "https://www.librahousechiangmai.com/"
         },
         {
-          "hex": "#228B22",
+          "hex": "#2d688c",
           "role": "accent",
           "source": "https://www.librahousechiangmai.com/"
         }
       ],
       "essence": {
+        "promise": {
+          "value": "Stay in the heart of the Old City at our family-run guesthouse and explore northern Thailand with our expert treks and tours.",
+          "source": "https://www.librahousechiangmai.com/"
+        },
         "feeling": [
           "welcomed",
           "relaxed",
-          "at home"
+          "cared for"
         ],
         "placeSymbols": [
-          "ancient temples",
-          "mountain mist",
-          "tropical foliage",
-          "Old City lanterns"
-        ],
-        "senses": [
-          "lush green leaves",
-          "cool pool water",
-          "warm wood textures",
-          "soft morning light"
+          "temples of the Old City",
+          "mountain jungles",
+          "elephants",
+          "night markets",
+          "traditional lanterns"
         ]
       }
     },
@@ -1936,7 +2127,7 @@
         "source": "https://www.librahousechiangmai.com/"
       },
       "summary": {
-        "value": "Chiang Mai's friendliest family-run guesthouse offering comfortable rooms, a swimming pool, and custom treks and tours in Northern Thailand.",
+        "value": "Friendly family-run guesthouse in Chiang Mai's Old City offering comfortable rooms, a swimming pool, and trekking tours.",
         "source": "https://www.librahousechiangmai.com/"
       },
       "category": "guesthouse",
@@ -1948,15 +2139,11 @@
         {
           "name": "Treks and tours",
           "source": "https://www.librahousechiangmai.com/"
-        },
-        {
-          "name": "Swimming pool",
-          "source": "https://www.librahousechiangmai.com/"
         }
       ],
       "highlights": [
         {
-          "value": "Family-run place to stay and hang out",
+          "value": "Chiang Mai's friendliest family-run place to stay and hang out",
           "source": "https://www.librahousechiangmai.com/"
         },
         {
@@ -1968,14 +2155,14 @@
           "source": "https://www.librahousechiangmai.com/"
         },
         {
-          "value": "Accommodation of choice for travelers visiting Chiang Mai since 1987",
+          "value": "Welcoming everyone from solo travelers to families since 1987",
           "source": "https://www.librahousechiangmai.com/"
         }
       ],
       "location": {
         "town": {
           "value": "Chiang Mai",
-          "source": "https://www.librahousechiangmai.com/contact.php"
+          "source": "https://www.librahousechiangmai.com/"
         },
         "area": {
           "value": "Old City",
@@ -1994,58 +2181,178 @@
           "source": "https://www.librahousechiangmai.com/contact.php"
         },
         "email": {
-          "value": "librahouse@hotmail.com",
-          "source": "https://www.librahousechiangmai.com/"
+          "value": "librahousechiangmai@gmail.com",
+          "source": "https://www.librahousechiangmai.com/contact.php"
         },
         "instagram": null,
         "bookingUrl": null
       },
       "hours": null,
       "tone": [
-        "welcoming",
         "friendly",
         "warm",
-        "hospitable"
+        "welcoming",
+        "informative"
       ],
       "colours": [
         {
-          "hex": "#8B4513",
+          "hex": "#b25939",
           "role": "primary",
           "source": "https://www.librahousechiangmai.com/"
         },
         {
-          "hex": "#FFFFFF",
+          "hex": "#ffffff",
           "role": "background",
           "source": "https://www.librahousechiangmai.com/"
         },
         {
-          "hex": "#228B22",
+          "hex": "#2d688c",
           "role": "accent",
           "source": "https://www.librahousechiangmai.com/"
         }
       ],
       "essence": {
+        "promise": {
+          "value": "Stay in the heart of the Old City at our family-run guesthouse and explore northern Thailand with our expert treks and tours.",
+          "source": "https://www.librahousechiangmai.com/"
+        },
         "feeling": [
           "welcomed",
           "relaxed",
-          "at home"
+          "cared for"
         ],
         "placeSymbols": [
-          "ancient temples",
-          "mountain mist",
-          "tropical foliage",
-          "Old City lanterns"
+          "temples of the Old City",
+          "mountain jungles",
+          "elephants",
+          "night markets",
+          "traditional lanterns"
         ],
         "senses": [
-          "lush green leaves",
-          "cool pool water",
-          "warm wood textures",
-          "soft morning light"
+          "poolside shade",
+          "lush green foliage",
+          "warm tropical air"
+        ]
+      }
+    },
+    {
+      "name": {
+        "value": "Libra Guesthouse",
+        "source": "https://www.librahousechiangmai.com/"
+      },
+      "summary": {
+        "value": "Friendly family-run guesthouse in Chiang Mai's Old City offering comfortable rooms, a swimming pool, and trekking tours.",
+        "source": "https://www.librahousechiangmai.com/"
+      },
+      "category": "guesthouse",
+      "offerings": [
+        {
+          "name": "Rooms",
+          "source": "https://www.librahousechiangmai.com/"
+        },
+        {
+          "name": "Treks and tours",
+          "source": "https://www.librahousechiangmai.com/"
+        }
+      ],
+      "highlights": [
+        {
+          "value": "Chiang Mai's friendliest family-run place to stay and hang out",
+          "source": "https://www.librahousechiangmai.com/"
+        },
+        {
+          "value": "Recommended by Lonely Planet, Rough Guide, and Frommer’s Travel Guides",
+          "source": "https://www.librahousechiangmai.com/"
+        },
+        {
+          "value": "Situated on a quiet street in the heart of the Old City",
+          "source": "https://www.librahousechiangmai.com/"
+        },
+        {
+          "value": "Welcoming everyone from solo travelers to families since 1987",
+          "source": "https://www.librahousechiangmai.com/"
+        }
+      ],
+      "location": {
+        "town": {
+          "value": "Chiang Mai",
+          "source": "https://www.librahousechiangmai.com/"
+        },
+        "area": {
+          "value": "Old City",
+          "source": "https://www.librahousechiangmai.com/"
+        },
+        "address": {
+          "value": "28 Moon Muang Rd, Soi 9, Chiang Mai, Thailand",
+          "source": "https://www.librahousechiangmai.com/contact.php"
+        },
+        "serviceArea": null
+      },
+      "contact": {
+        "whatsapp": null,
+        "phone": {
+          "value": "+66 (0) 5321 0687",
+          "source": "https://www.librahousechiangmai.com/contact.php"
+        },
+        "email": {
+          "value": "librahousechiangmai@gmail.com",
+          "source": "https://www.librahousechiangmai.com/contact.php"
+        },
+        "instagram": null,
+        "bookingUrl": null
+      },
+      "hours": null,
+      "tone": [
+        "friendly",
+        "warm",
+        "welcoming",
+        "informative"
+      ],
+      "colours": [
+        {
+          "hex": "#b25939",
+          "role": "primary",
+          "source": "https://www.librahousechiangmai.com/"
+        },
+        {
+          "hex": "#ffffff",
+          "role": "background",
+          "source": "https://www.librahousechiangmai.com/"
+        },
+        {
+          "hex": "#2d688c",
+          "role": "accent",
+          "source": "https://www.librahousechiangmai.com/"
+        }
+      ],
+      "essence": {
+        "promise": {
+          "value": "Stay in the heart of the Old City at our family-run guesthouse and explore northern Thailand with our expert treks and tours.",
+          "source": "https://www.librahousechiangmai.com/"
+        },
+        "feeling": [
+          "welcomed",
+          "relaxed",
+          "cared for"
+        ],
+        "placeSymbols": [
+          "temples of the Old City",
+          "mountain jungles",
+          "elephants",
+          "night markets",
+          "traditional lanterns"
+        ],
+        "senses": [
+          "poolside shade",
+          "lush green foliage",
+          "warm tropical air",
+          "wooden balcony textures",
+          "quiet courtyard ambiance"
         ],
         "moments": [
           {
-            "value": "exploring the Old City",
-            "source": "https://www.librahouse"
+            "value": "arriving in Chiang Mai after a long journey",
+            "source": "https://www.lib"
           }
         ]
       }
@@ -2056,7 +2363,7 @@
         "source": "https://www.librahousechiangmai.com/"
       },
       "summary": {
-        "value": "Chiang Mai's friendliest family-run guesthouse offering comfortable rooms, a swimming pool, and custom treks and tours in Northern Thailand.",
+        "value": "Friendly family-run guesthouse in Chiang Mai's Old City offering comfortable rooms, a swimming pool, and trekking tours.",
         "source": "https://www.librahousechiangmai.com/"
       },
       "category": "guesthouse",
@@ -2068,15 +2375,11 @@
         {
           "name": "Treks and tours",
           "source": "https://www.librahousechiangmai.com/"
-        },
-        {
-          "name": "Swimming pool",
-          "source": "https://www.librahousechiangmai.com/"
         }
       ],
       "highlights": [
         {
-          "value": "Family-run place to stay and hang out",
+          "value": "Chiang Mai's friendliest family-run place to stay and hang out",
           "source": "https://www.librahousechiangmai.com/"
         },
         {
@@ -2088,14 +2391,14 @@
           "source": "https://www.librahousechiangmai.com/"
         },
         {
-          "value": "Accommodation of choice for travelers visiting Chiang Mai since 1987",
+          "value": "Welcoming everyone from solo travelers to families since 1987",
           "source": "https://www.librahousechiangmai.com/"
         }
       ],
       "location": {
         "town": {
           "value": "Chiang Mai",
-          "source": "https://www.librahousechiangmai.com/contact.php"
+          "source": "https://www.librahousechiangmai.com/"
         },
         "area": {
           "value": "Old City",
@@ -2114,61 +2417,192 @@
           "source": "https://www.librahousechiangmai.com/contact.php"
         },
         "email": {
-          "value": "librahouse@hotmail.com",
-          "source": "https://www.librahousechiangmai.com/"
+          "value": "librahousechiangmai@gmail.com",
+          "source": "https://www.librahousechiangmai.com/contact.php"
         },
         "instagram": null,
         "bookingUrl": null
       },
       "hours": null,
       "tone": [
-        "welcoming",
         "friendly",
         "warm",
-        "hospitable"
+        "welcoming",
+        "informative"
       ],
       "colours": [
         {
-          "hex": "#8B4513",
+          "hex": "#b25939",
           "role": "primary",
           "source": "https://www.librahousechiangmai.com/"
         },
         {
-          "hex": "#FFFFFF",
+          "hex": "#ffffff",
           "role": "background",
           "source": "https://www.librahousechiangmai.com/"
         },
         {
-          "hex": "#228B22",
+          "hex": "#2d688c",
           "role": "accent",
           "source": "https://www.librahousechiangmai.com/"
         }
       ],
       "essence": {
+        "promise": {
+          "value": "Stay in the heart of the Old City at our family-run guesthouse and explore northern Thailand with our expert treks and tours.",
+          "source": "https://www.librahousechiangmai.com/"
+        },
         "feeling": [
           "welcomed",
           "relaxed",
-          "at home"
+          "cared for"
         ],
         "placeSymbols": [
-          "ancient temples",
-          "mountain mist",
-          "tropical foliage",
-          "Old City lanterns"
+          "temples of the Old City",
+          "mountain jungles",
+          "elephants",
+          "night markets",
+          "traditional lanterns"
         ],
         "senses": [
-          "lush green leaves",
-          "cool pool water",
-          "warm wood textures",
-          "soft morning light"
+          "poolside shade",
+          "lush green foliage",
+          "warm tropical air",
+          "wooden balcony textures",
+          "quiet courtyard ambiance"
         ],
         "moments": [
           {
-            "value": "exploring the Old City",
+            "value": "arriving in Chiang Mai after a long journey",
             "source": "https://www.librahousechiangmai.com/"
           },
           {
-            "value": "returning from a trek",
+            "value": "planning a trek into"
+          }
+        ]
+      }
+    },
+    {
+      "name": {
+        "value": "Libra Guesthouse",
+        "source": "https://www.librahousechiangmai.com/"
+      },
+      "summary": {
+        "value": "Friendly family-run guesthouse in Chiang Mai's Old City offering comfortable rooms, a swimming pool, and trekking tours.",
+        "source": "https://www.librahousechiangmai.com/"
+      },
+      "category": "guesthouse",
+      "offerings": [
+        {
+          "name": "Rooms",
+          "source": "https://www.librahousechiangmai.com/"
+        },
+        {
+          "name": "Treks and tours",
+          "source": "https://www.librahousechiangmai.com/"
+        }
+      ],
+      "highlights": [
+        {
+          "value": "Chiang Mai's friendliest family-run place to stay and hang out",
+          "source": "https://www.librahousechiangmai.com/"
+        },
+        {
+          "value": "Recommended by Lonely Planet, Rough Guide, and Frommer’s Travel Guides",
+          "source": "https://www.librahousechiangmai.com/"
+        },
+        {
+          "value": "Situated on a quiet street in the heart of the Old City",
+          "source": "https://www.librahousechiangmai.com/"
+        },
+        {
+          "value": "Welcoming everyone from solo travelers to families since 1987",
+          "source": "https://www.librahousechiangmai.com/"
+        }
+      ],
+      "location": {
+        "town": {
+          "value": "Chiang Mai",
+          "source": "https://www.librahousechiangmai.com/"
+        },
+        "area": {
+          "value": "Old City",
+          "source": "https://www.librahousechiangmai.com/"
+        },
+        "address": {
+          "value": "28 Moon Muang Rd, Soi 9, Chiang Mai, Thailand",
+          "source": "https://www.librahousechiangmai.com/contact.php"
+        },
+        "serviceArea": null
+      },
+      "contact": {
+        "whatsapp": null,
+        "phone": {
+          "value": "+66 (0) 5321 0687",
+          "source": "https://www.librahousechiangmai.com/contact.php"
+        },
+        "email": {
+          "value": "librahousechiangmai@gmail.com",
+          "source": "https://www.librahousechiangmai.com/contact.php"
+        },
+        "instagram": null,
+        "bookingUrl": null
+      },
+      "hours": null,
+      "tone": [
+        "friendly",
+        "warm",
+        "welcoming",
+        "informative"
+      ],
+      "colours": [
+        {
+          "hex": "#b25939",
+          "role": "primary",
+          "source": "https://www.librahousechiangmai.com/"
+        },
+        {
+          "hex": "#ffffff",
+          "role": "background",
+          "source": "https://www.librahousechiangmai.com/"
+        },
+        {
+          "hex": "#2d688c",
+          "role": "accent",
+          "source": "https://www.librahousechiangmai.com/"
+        }
+      ],
+      "essence": {
+        "promise": {
+          "value": "Stay in the heart of the Old City at our family-run guesthouse and explore northern Thailand with our expert treks and tours.",
+          "source": "https://www.librahousechiangmai.com/"
+        },
+        "feeling": [
+          "welcomed",
+          "relaxed",
+          "cared for"
+        ],
+        "placeSymbols": [
+          "temples of the Old City",
+          "mountain jungles",
+          "elephants",
+          "night markets",
+          "traditional lanterns"
+        ],
+        "senses": [
+          "poolside shade",
+          "lush green foliage",
+          "warm tropical air",
+          "wooden balcony textures",
+          "quiet courtyard ambiance"
+        ],
+        "moments": [
+          {
+            "value": "arriving in Chiang Mai after a long journey",
+            "source": "https://www.librahousechiangmai.com/"
+          },
+          {
+            "value": "planning a trek into northern Thailand",
             "source": "https://www.librahousechiangmai.com/"
           }
         ]
@@ -2180,7 +2614,7 @@
         "source": "https://www.librahousechiangmai.com/"
       },
       "summary": {
-        "value": "Chiang Mai's friendliest family-run guesthouse offering comfortable rooms, a swimming pool, and custom treks and tours in Northern Thailand.",
+        "value": "Friendly family-run guesthouse in Chiang Mai's Old City offering comfortable rooms, a swimming pool, and trekking tours.",
         "source": "https://www.librahousechiangmai.com/"
       },
       "category": "guesthouse",
@@ -2192,15 +2626,11 @@
         {
           "name": "Treks and tours",
           "source": "https://www.librahousechiangmai.com/"
-        },
-        {
-          "name": "Swimming pool",
-          "source": "https://www.librahousechiangmai.com/"
         }
       ],
       "highlights": [
         {
-          "value": "Family-run place to stay and hang out",
+          "value": "Chiang Mai's friendliest family-run place to stay and hang out",
           "source": "https://www.librahousechiangmai.com/"
         },
         {
@@ -2212,14 +2642,14 @@
           "source": "https://www.librahousechiangmai.com/"
         },
         {
-          "value": "Accommodation of choice for travelers visiting Chiang Mai since 1987",
+          "value": "Welcoming everyone from solo travelers to families since 1987",
           "source": "https://www.librahousechiangmai.com/"
         }
       ],
       "location": {
         "town": {
           "value": "Chiang Mai",
-          "source": "https://www.librahousechiangmai.com/contact.php"
+          "source": "https://www.librahousechiangmai.com/"
         },
         "area": {
           "value": "Old City",
@@ -2238,67 +2668,338 @@
           "source": "https://www.librahousechiangmai.com/contact.php"
         },
         "email": {
-          "value": "librahouse@hotmail.com",
-          "source": "https://www.librahousechiangmai.com/"
+          "value": "librahousechiangmai@gmail.com",
+          "source": "https://www.librahousechiangmai.com/contact.php"
         },
         "instagram": null,
         "bookingUrl": null
       },
       "hours": null,
       "tone": [
-        "welcoming",
         "friendly",
         "warm",
-        "hospitable"
+        "welcoming",
+        "informative"
       ],
       "colours": [
         {
-          "hex": "#8B4513",
+          "hex": "#b25939",
           "role": "primary",
           "source": "https://www.librahousechiangmai.com/"
         },
         {
-          "hex": "#FFFFFF",
+          "hex": "#ffffff",
           "role": "background",
           "source": "https://www.librahousechiangmai.com/"
         },
         {
-          "hex": "#228B22",
+          "hex": "#2d688c",
           "role": "accent",
           "source": "https://www.librahousechiangmai.com/"
         }
       ],
       "essence": {
+        "promise": {
+          "value": "Stay in the heart of the Old City at our family-run guesthouse and explore northern Thailand with our expert treks and tours.",
+          "source": "https://www.librahousechiangmai.com/"
+        },
         "feeling": [
           "welcomed",
           "relaxed",
-          "at home"
+          "cared for"
         ],
         "placeSymbols": [
-          "ancient temples",
-          "mountain mist",
-          "tropical foliage",
-          "Old City lanterns"
+          "temples of the Old City",
+          "mountain jungles",
+          "elephants",
+          "night markets",
+          "traditional lanterns"
         ],
         "senses": [
-          "lush green leaves",
-          "cool pool water",
-          "warm wood textures",
-          "soft morning light"
+          "poolside shade",
+          "lush green foliage",
+          "warm tropical air",
+          "wooden balcony textures",
+          "quiet courtyard ambiance"
         ],
         "moments": [
           {
-            "value": "exploring the Old City",
+            "value": "arriving in Chiang Mai after a long journey",
             "source": "https://www.librahousechiangmai.com/"
           },
           {
-            "value": "returning from a trek",
+            "value": "planning a trek into northern Thailand",
+            "source": "https://www.librahousechiangmai.com/"
+          },
+          {
+            "value": "relaxing by the pool in the afternoon",
+            "source": "https://www"
+          }
+        ]
+      }
+    },
+    {
+      "name": {
+        "value": "Libra Guesthouse",
+        "source": "https://www.librahousechiangmai.com/"
+      },
+      "summary": {
+        "value": "Friendly family-run guesthouse in Chiang Mai's Old City offering comfortable rooms, a swimming pool, and trekking tours.",
+        "source": "https://www.librahousechiangmai.com/"
+      },
+      "category": "guesthouse",
+      "offerings": [
+        {
+          "name": "Rooms",
+          "source": "https://www.librahousechiangmai.com/"
+        },
+        {
+          "name": "Treks and tours",
+          "source": "https://www.librahousechiangmai.com/"
+        }
+      ],
+      "highlights": [
+        {
+          "value": "Chiang Mai's friendliest family-run place to stay and hang out",
+          "source": "https://www.librahousechiangmai.com/"
+        },
+        {
+          "value": "Recommended by Lonely Planet, Rough Guide, and Frommer’s Travel Guides",
+          "source": "https://www.librahousechiangmai.com/"
+        },
+        {
+          "value": "Situated on a quiet street in the heart of the Old City",
+          "source": "https://www.librahousechiangmai.com/"
+        },
+        {
+          "value": "Welcoming everyone from solo travelers to families since 1987",
+          "source": "https://www.librahousechiangmai.com/"
+        }
+      ],
+      "location": {
+        "town": {
+          "value": "Chiang Mai",
+          "source": "https://www.librahousechiangmai.com/"
+        },
+        "area": {
+          "value": "Old City",
+          "source": "https://www.librahousechiangmai.com/"
+        },
+        "address": {
+          "value": "28 Moon Muang Rd, Soi 9, Chiang Mai, Thailand",
+          "source": "https://www.librahousechiangmai.com/contact.php"
+        },
+        "serviceArea": null
+      },
+      "contact": {
+        "whatsapp": null,
+        "phone": {
+          "value": "+66 (0) 5321 0687",
+          "source": "https://www.librahousechiangmai.com/contact.php"
+        },
+        "email": {
+          "value": "librahousechiangmai@gmail.com",
+          "source": "https://www.librahousechiangmai.com/contact.php"
+        },
+        "instagram": null,
+        "bookingUrl": null
+      },
+      "hours": null,
+      "tone": [
+        "friendly",
+        "warm",
+        "welcoming",
+        "informative"
+      ],
+      "colours": [
+        {
+          "hex": "#b25939",
+          "role": "primary",
+          "source": "https://www.librahousechiangmai.com/"
+        },
+        {
+          "hex": "#ffffff",
+          "role": "background",
+          "source": "https://www.librahousechiangmai.com/"
+        },
+        {
+          "hex": "#2d688c",
+          "role": "accent",
+          "source": "https://www.librahousechiangmai.com/"
+        }
+      ],
+      "essence": {
+        "promise": {
+          "value": "Stay in the heart of the Old City at our family-run guesthouse and explore northern Thailand with our expert treks and tours.",
+          "source": "https://www.librahousechiangmai.com/"
+        },
+        "feeling": [
+          "welcomed",
+          "relaxed",
+          "cared for"
+        ],
+        "placeSymbols": [
+          "temples of the Old City",
+          "mountain jungles",
+          "elephants",
+          "night markets",
+          "traditional lanterns"
+        ],
+        "senses": [
+          "poolside shade",
+          "lush green foliage",
+          "warm tropical air",
+          "wooden balcony textures",
+          "quiet courtyard ambiance"
+        ],
+        "moments": [
+          {
+            "value": "arriving in Chiang Mai after a long journey",
+            "source": "https://www.librahousechiangmai.com/"
+          },
+          {
+            "value": "planning a trek into northern Thailand",
+            "source": "https://www.librahousechiangmai.com/"
+          },
+          {
+            "value": "relaxing by the pool in the afternoon",
+            "source": "https://www.librahousechiangmai.com/"
+          }
+        ]
+      }
+    },
+    {
+      "name": {
+        "value": "Libra Guesthouse",
+        "source": "https://www.librahousechiangmai.com/"
+      },
+      "summary": {
+        "value": "Friendly family-run guesthouse in Chiang Mai's Old City offering comfortable rooms, a swimming pool, and trekking tours.",
+        "source": "https://www.librahousechiangmai.com/"
+      },
+      "category": "guesthouse",
+      "offerings": [
+        {
+          "name": "Rooms",
+          "source": "https://www.librahousechiangmai.com/"
+        },
+        {
+          "name": "Treks and tours",
+          "source": "https://www.librahousechiangmai.com/"
+        }
+      ],
+      "highlights": [
+        {
+          "value": "Chiang Mai's friendliest family-run place to stay and hang out",
+          "source": "https://www.librahousechiangmai.com/"
+        },
+        {
+          "value": "Recommended by Lonely Planet, Rough Guide, and Frommer’s Travel Guides",
+          "source": "https://www.librahousechiangmai.com/"
+        },
+        {
+          "value": "Situated on a quiet street in the heart of the Old City",
+          "source": "https://www.librahousechiangmai.com/"
+        },
+        {
+          "value": "Welcoming everyone from solo travelers to families since 1987",
+          "source": "https://www.librahousechiangmai.com/"
+        }
+      ],
+      "location": {
+        "town": {
+          "value": "Chiang Mai",
+          "source": "https://www.librahousechiangmai.com/"
+        },
+        "area": {
+          "value": "Old City",
+          "source": "https://www.librahousechiangmai.com/"
+        },
+        "address": {
+          "value": "28 Moon Muang Rd, Soi 9, Chiang Mai, Thailand",
+          "source": "https://www.librahousechiangmai.com/contact.php"
+        },
+        "serviceArea": null
+      },
+      "contact": {
+        "whatsapp": null,
+        "phone": {
+          "value": "+66 (0) 5321 0687",
+          "source": "https://www.librahousechiangmai.com/contact.php"
+        },
+        "email": {
+          "value": "librahousechiangmai@gmail.com",
+          "source": "https://www.librahousechiangmai.com/contact.php"
+        },
+        "instagram": null,
+        "bookingUrl": null
+      },
+      "hours": null,
+      "tone": [
+        "friendly",
+        "warm",
+        "welcoming",
+        "informative"
+      ],
+      "colours": [
+        {
+          "hex": "#b25939",
+          "role": "primary",
+          "source": "https://www.librahousechiangmai.com/"
+        },
+        {
+          "hex": "#ffffff",
+          "role": "background",
+          "source": "https://www.librahousechiangmai.com/"
+        },
+        {
+          "hex": "#2d688c",
+          "role": "accent",
+          "source": "https://www.librahousechiangmai.com/"
+        }
+      ],
+      "essence": {
+        "promise": {
+          "value": "Stay in the heart of the Old City at our family-run guesthouse and explore northern Thailand with our expert treks and tours.",
+          "source": "https://www.librahousechiangmai.com/"
+        },
+        "feeling": [
+          "welcomed",
+          "relaxed",
+          "cared for"
+        ],
+        "placeSymbols": [
+          "temples of the Old City",
+          "mountain jungles",
+          "elephants",
+          "night markets",
+          "traditional lanterns"
+        ],
+        "senses": [
+          "poolside shade",
+          "lush green foliage",
+          "warm tropical air",
+          "wooden balcony textures",
+          "quiet courtyard ambiance"
+        ],
+        "moments": [
+          {
+            "value": "arriving in Chiang Mai after a long journey",
+            "source": "https://www.librahousechiangmai.com/"
+          },
+          {
+            "value": "planning a trek into northern Thailand",
+            "source": "https://www.librahousechiangmai.com/"
+          },
+          {
+            "value": "relaxing by the pool in the afternoon",
             "source": "https://www.librahousechiangmai.com/"
           }
         ]
       },
       "visualStyle": {
-        "summary": "warm tropical, natural wood, lush greenery, inviting natural"
+        "summary": "Warm tropical, soft daylight, rich wood and lush green foliage.",
+        "palette": ""
       }
     },
     {
@@ -2307,7 +3008,7 @@
         "source": "https://www.librahousechiangmai.com/"
       },
       "summary": {
-        "value": "Chiang Mai's friendliest family-run guesthouse offering comfortable rooms, a swimming pool, and custom treks and tours in Northern Thailand.",
+        "value": "Friendly family-run guesthouse in Chiang Mai's Old City offering comfortable rooms, a swimming pool, and trekking tours.",
         "source": "https://www.librahousechiangmai.com/"
       },
       "category": "guesthouse",
@@ -2319,15 +3020,11 @@
         {
           "name": "Treks and tours",
           "source": "https://www.librahousechiangmai.com/"
-        },
-        {
-          "name": "Swimming pool",
-          "source": "https://www.librahousechiangmai.com/"
         }
       ],
       "highlights": [
         {
-          "value": "Family-run place to stay and hang out",
+          "value": "Chiang Mai's friendliest family-run place to stay and hang out",
           "source": "https://www.librahousechiangmai.com/"
         },
         {
@@ -2339,14 +3036,14 @@
           "source": "https://www.librahousechiangmai.com/"
         },
         {
-          "value": "Accommodation of choice for travelers visiting Chiang Mai since 1987",
+          "value": "Welcoming everyone from solo travelers to families since 1987",
           "source": "https://www.librahousechiangmai.com/"
         }
       ],
       "location": {
         "town": {
           "value": "Chiang Mai",
-          "source": "https://www.librahousechiangmai.com/contact.php"
+          "source": "https://www.librahousechiangmai.com/"
         },
         "area": {
           "value": "Old City",
@@ -2365,69 +3062,79 @@
           "source": "https://www.librahousechiangmai.com/contact.php"
         },
         "email": {
-          "value": "librahouse@hotmail.com",
-          "source": "https://www.librahousechiangmai.com/"
+          "value": "librahousechiangmai@gmail.com",
+          "source": "https://www.librahousechiangmai.com/contact.php"
         },
         "instagram": null,
         "bookingUrl": null
       },
       "hours": null,
       "tone": [
-        "welcoming",
         "friendly",
         "warm",
-        "hospitable"
+        "welcoming",
+        "informative"
       ],
       "colours": [
         {
-          "hex": "#8B4513",
+          "hex": "#b25939",
           "role": "primary",
           "source": "https://www.librahousechiangmai.com/"
         },
         {
-          "hex": "#FFFFFF",
+          "hex": "#ffffff",
           "role": "background",
           "source": "https://www.librahousechiangmai.com/"
         },
         {
-          "hex": "#228B22",
+          "hex": "#2d688c",
           "role": "accent",
           "source": "https://www.librahousechiangmai.com/"
         }
       ],
       "essence": {
+        "promise": {
+          "value": "Stay in the heart of the Old City at our family-run guesthouse and explore northern Thailand with our expert treks and tours.",
+          "source": "https://www.librahousechiangmai.com/"
+        },
         "feeling": [
           "welcomed",
           "relaxed",
-          "at home"
+          "cared for"
         ],
         "placeSymbols": [
-          "ancient temples",
-          "mountain mist",
-          "tropical foliage",
-          "Old City lanterns"
+          "temples of the Old City",
+          "mountain jungles",
+          "elephants",
+          "night markets",
+          "traditional lanterns"
         ],
         "senses": [
-          "lush green leaves",
-          "cool pool water",
-          "warm wood textures",
-          "soft morning light"
+          "poolside shade",
+          "lush green foliage",
+          "warm tropical air",
+          "wooden balcony textures",
+          "quiet courtyard ambiance"
         ],
         "moments": [
           {
-            "value": "exploring the Old City",
+            "value": "arriving in Chiang Mai after a long journey",
             "source": "https://www.librahousechiangmai.com/"
           },
           {
-            "value": "returning from a trek",
+            "value": "planning a trek into northern Thailand",
+            "source": "https://www.librahousechiangmai.com/"
+          },
+          {
+            "value": "relaxing by the pool in the afternoon",
             "source": "https://www.librahousechiangmai.com/"
           }
         ]
       },
       "visualStyle": {
-        "summary": "warm tropical, natural wood, lush greenery, inviting natural light",
-        "palette": "earthy browns, vibrant greens, crisp white",
-        "light": "soft"
+        "summary": "Warm tropical, soft daylight, rich wood and lush green foliage.",
+        "palette": "natural browns, crisp whites, warm terracotta, and vibrant pool blues",
+        "light": "soft dappled sunlight through trees"
       }
     },
     {
@@ -2436,7 +3143,7 @@
         "source": "https://www.librahousechiangmai.com/"
       },
       "summary": {
-        "value": "Chiang Mai's friendliest family-run guesthouse offering comfortable rooms, a swimming pool, and custom treks and tours in Northern Thailand.",
+        "value": "Friendly family-run guesthouse in Chiang Mai's Old City offering comfortable rooms, a swimming pool, and trekking tours.",
         "source": "https://www.librahousechiangmai.com/"
       },
       "category": "guesthouse",
@@ -2448,15 +3155,11 @@
         {
           "name": "Treks and tours",
           "source": "https://www.librahousechiangmai.com/"
-        },
-        {
-          "name": "Swimming pool",
-          "source": "https://www.librahousechiangmai.com/"
         }
       ],
       "highlights": [
         {
-          "value": "Family-run place to stay and hang out",
+          "value": "Chiang Mai's friendliest family-run place to stay and hang out",
           "source": "https://www.librahousechiangmai.com/"
         },
         {
@@ -2468,14 +3171,14 @@
           "source": "https://www.librahousechiangmai.com/"
         },
         {
-          "value": "Accommodation of choice for travelers visiting Chiang Mai since 1987",
+          "value": "Welcoming everyone from solo travelers to families since 1987",
           "source": "https://www.librahousechiangmai.com/"
         }
       ],
       "location": {
         "town": {
           "value": "Chiang Mai",
-          "source": "https://www.librahousechiangmai.com/contact.php"
+          "source": "https://www.librahousechiangmai.com/"
         },
         "area": {
           "value": "Old City",
@@ -2494,70 +3197,80 @@
           "source": "https://www.librahousechiangmai.com/contact.php"
         },
         "email": {
-          "value": "librahouse@hotmail.com",
-          "source": "https://www.librahousechiangmai.com/"
+          "value": "librahousechiangmai@gmail.com",
+          "source": "https://www.librahousechiangmai.com/contact.php"
         },
         "instagram": null,
         "bookingUrl": null
       },
       "hours": null,
       "tone": [
-        "welcoming",
         "friendly",
         "warm",
-        "hospitable"
+        "welcoming",
+        "informative"
       ],
       "colours": [
         {
-          "hex": "#8B4513",
+          "hex": "#b25939",
           "role": "primary",
           "source": "https://www.librahousechiangmai.com/"
         },
         {
-          "hex": "#FFFFFF",
+          "hex": "#ffffff",
           "role": "background",
           "source": "https://www.librahousechiangmai.com/"
         },
         {
-          "hex": "#228B22",
+          "hex": "#2d688c",
           "role": "accent",
           "source": "https://www.librahousechiangmai.com/"
         }
       ],
       "essence": {
+        "promise": {
+          "value": "Stay in the heart of the Old City at our family-run guesthouse and explore northern Thailand with our expert treks and tours.",
+          "source": "https://www.librahousechiangmai.com/"
+        },
         "feeling": [
           "welcomed",
           "relaxed",
-          "at home"
+          "cared for"
         ],
         "placeSymbols": [
-          "ancient temples",
-          "mountain mist",
-          "tropical foliage",
-          "Old City lanterns"
+          "temples of the Old City",
+          "mountain jungles",
+          "elephants",
+          "night markets",
+          "traditional lanterns"
         ],
         "senses": [
-          "lush green leaves",
-          "cool pool water",
-          "warm wood textures",
-          "soft morning light"
+          "poolside shade",
+          "lush green foliage",
+          "warm tropical air",
+          "wooden balcony textures",
+          "quiet courtyard ambiance"
         ],
         "moments": [
           {
-            "value": "exploring the Old City",
+            "value": "arriving in Chiang Mai after a long journey",
             "source": "https://www.librahousechiangmai.com/"
           },
           {
-            "value": "returning from a trek",
+            "value": "planning a trek into northern Thailand",
+            "source": "https://www.librahousechiangmai.com/"
+          },
+          {
+            "value": "relaxing by the pool in the afternoon",
             "source": "https://www.librahousechiangmai.com/"
           }
         ]
       },
       "visualStyle": {
-        "summary": "warm tropical, natural wood, lush greenery, inviting natural light",
-        "palette": "earthy browns, vibrant greens, crisp white",
-        "light": "soft natural tropical daylight filtering through trees",
-        "textures": "carved wood, brick, polished stone, woven hamm"
+        "summary": "Warm tropical, soft daylight, rich wood and lush green foliage.",
+        "palette": "natural browns, crisp whites, warm terracotta, and vibrant pool blues",
+        "light": "soft dappled sunlight through trees and gentle courtyard shade",
+        "textures": "carved wood, handmade textiles, woven hammocks, and stone"
       }
     },
     {
@@ -2566,7 +3279,7 @@
         "source": "https://www.librahousechiangmai.com/"
       },
       "summary": {
-        "value": "Chiang Mai's friendliest family-run guesthouse offering comfortable rooms, a swimming pool, and custom treks and tours in Northern Thailand.",
+        "value": "Friendly family-run guesthouse in Chiang Mai's Old City offering comfortable rooms, a swimming pool, and trekking tours.",
         "source": "https://www.librahousechiangmai.com/"
       },
       "category": "guesthouse",
@@ -2578,15 +3291,11 @@
         {
           "name": "Treks and tours",
           "source": "https://www.librahousechiangmai.com/"
-        },
-        {
-          "name": "Swimming pool",
-          "source": "https://www.librahousechiangmai.com/"
         }
       ],
       "highlights": [
         {
-          "value": "Family-run place to stay and hang out",
+          "value": "Chiang Mai's friendliest family-run place to stay and hang out",
           "source": "https://www.librahousechiangmai.com/"
         },
         {
@@ -2598,14 +3307,14 @@
           "source": "https://www.librahousechiangmai.com/"
         },
         {
-          "value": "Accommodation of choice for travelers visiting Chiang Mai since 1987",
+          "value": "Welcoming everyone from solo travelers to families since 1987",
           "source": "https://www.librahousechiangmai.com/"
         }
       ],
       "location": {
         "town": {
           "value": "Chiang Mai",
-          "source": "https://www.librahousechiangmai.com/contact.php"
+          "source": "https://www.librahousechiangmai.com/"
         },
         "area": {
           "value": "Old City",
@@ -2624,71 +3333,81 @@
           "source": "https://www.librahousechiangmai.com/contact.php"
         },
         "email": {
-          "value": "librahouse@hotmail.com",
-          "source": "https://www.librahousechiangmai.com/"
+          "value": "librahousechiangmai@gmail.com",
+          "source": "https://www.librahousechiangmai.com/contact.php"
         },
         "instagram": null,
         "bookingUrl": null
       },
       "hours": null,
       "tone": [
-        "welcoming",
         "friendly",
         "warm",
-        "hospitable"
+        "welcoming",
+        "informative"
       ],
       "colours": [
         {
-          "hex": "#8B4513",
+          "hex": "#b25939",
           "role": "primary",
           "source": "https://www.librahousechiangmai.com/"
         },
         {
-          "hex": "#FFFFFF",
+          "hex": "#ffffff",
           "role": "background",
           "source": "https://www.librahousechiangmai.com/"
         },
         {
-          "hex": "#228B22",
+          "hex": "#2d688c",
           "role": "accent",
           "source": "https://www.librahousechiangmai.com/"
         }
       ],
       "essence": {
+        "promise": {
+          "value": "Stay in the heart of the Old City at our family-run guesthouse and explore northern Thailand with our expert treks and tours.",
+          "source": "https://www.librahousechiangmai.com/"
+        },
         "feeling": [
           "welcomed",
           "relaxed",
-          "at home"
+          "cared for"
         ],
         "placeSymbols": [
-          "ancient temples",
-          "mountain mist",
-          "tropical foliage",
-          "Old City lanterns"
+          "temples of the Old City",
+          "mountain jungles",
+          "elephants",
+          "night markets",
+          "traditional lanterns"
         ],
         "senses": [
-          "lush green leaves",
-          "cool pool water",
-          "warm wood textures",
-          "soft morning light"
+          "poolside shade",
+          "lush green foliage",
+          "warm tropical air",
+          "wooden balcony textures",
+          "quiet courtyard ambiance"
         ],
         "moments": [
           {
-            "value": "exploring the Old City",
+            "value": "arriving in Chiang Mai after a long journey",
             "source": "https://www.librahousechiangmai.com/"
           },
           {
-            "value": "returning from a trek",
+            "value": "planning a trek into northern Thailand",
+            "source": "https://www.librahousechiangmai.com/"
+          },
+          {
+            "value": "relaxing by the pool in the afternoon",
             "source": "https://www.librahousechiangmai.com/"
           }
         ]
       },
       "visualStyle": {
-        "summary": "warm tropical, natural wood, lush greenery, inviting natural light",
-        "palette": "earthy browns, vibrant greens, crisp white",
-        "light": "soft natural tropical daylight filtering through trees",
-        "textures": "carved wood, brick, polished stone, woven hammocks",
-        "mood": "relaxing, friendly, cozy, peaceful"
+        "summary": "Warm tropical, soft daylight, rich wood and lush green foliage.",
+        "palette": "natural browns, crisp whites, warm terracotta, and vibrant pool blues",
+        "light": "soft dappled sunlight through trees and gentle courtyard shade",
+        "textures": "carved wood, handmade textiles, woven hammocks, and stone tiles",
+        "mood": "calm, welcoming, relaxed, and intimately familiar"
       }
     }
   ],
@@ -2698,7 +3417,7 @@
       "source": "https://www.librahousechiangmai.com/"
     },
     "summary": {
-      "value": "Chiang Mai's friendliest family-run guesthouse offering comfortable rooms, a swimming pool, and custom treks and tours in Northern Thailand.",
+      "value": "Friendly family-run guesthouse in Chiang Mai's Old City offering comfortable rooms, a swimming pool, and trekking tours.",
       "source": "https://www.librahousechiangmai.com/"
     },
     "category": "guesthouse",
@@ -2710,15 +3429,11 @@
       {
         "name": "Treks and tours",
         "source": "https://www.librahousechiangmai.com/"
-      },
-      {
-        "name": "Swimming pool",
-        "source": "https://www.librahousechiangmai.com/"
       }
     ],
     "highlights": [
       {
-        "value": "Family-run place to stay and hang out",
+        "value": "Chiang Mai's friendliest family-run place to stay and hang out",
         "source": "https://www.librahousechiangmai.com/"
       },
       {
@@ -2730,14 +3445,14 @@
         "source": "https://www.librahousechiangmai.com/"
       },
       {
-        "value": "Accommodation of choice for travelers visiting Chiang Mai since 1987",
+        "value": "Welcoming everyone from solo travelers to families since 1987",
         "source": "https://www.librahousechiangmai.com/"
       }
     ],
     "location": {
       "town": {
         "value": "Chiang Mai",
-        "source": "https://www.librahousechiangmai.com/contact.php"
+        "source": "https://www.librahousechiangmai.com/"
       },
       "area": {
         "value": "Old City",
@@ -2756,71 +3471,81 @@
         "source": "https://www.librahousechiangmai.com/contact.php"
       },
       "email": {
-        "value": "librahouse@hotmail.com",
-        "source": "https://www.librahousechiangmai.com/"
+        "value": "librahousechiangmai@gmail.com",
+        "source": "https://www.librahousechiangmai.com/contact.php"
       },
       "instagram": null,
       "bookingUrl": null
     },
     "hours": null,
     "tone": [
-      "welcoming",
       "friendly",
       "warm",
-      "hospitable"
+      "welcoming",
+      "informative"
     ],
     "colours": [
       {
-        "hex": "#8B4513",
+        "hex": "#b25939",
         "role": "primary",
         "source": "https://www.librahousechiangmai.com/"
       },
       {
-        "hex": "#FFFFFF",
+        "hex": "#ffffff",
         "role": "background",
         "source": "https://www.librahousechiangmai.com/"
       },
       {
-        "hex": "#228B22",
+        "hex": "#2d688c",
         "role": "accent",
         "source": "https://www.librahousechiangmai.com/"
       }
     ],
     "essence": {
+      "promise": {
+        "value": "Stay in the heart of the Old City at our family-run guesthouse and explore northern Thailand with our expert treks and tours.",
+        "source": "https://www.librahousechiangmai.com/"
+      },
       "feeling": [
         "welcomed",
         "relaxed",
-        "at home"
+        "cared for"
       ],
       "placeSymbols": [
-        "ancient temples",
-        "mountain mist",
-        "tropical foliage",
-        "Old City lanterns"
+        "temples of the Old City",
+        "mountain jungles",
+        "elephants",
+        "night markets",
+        "traditional lanterns"
       ],
       "senses": [
-        "lush green leaves",
-        "cool pool water",
-        "warm wood textures",
-        "soft morning light"
+        "poolside shade",
+        "lush green foliage",
+        "warm tropical air",
+        "wooden balcony textures",
+        "quiet courtyard ambiance"
       ],
       "moments": [
         {
-          "value": "exploring the Old City",
+          "value": "arriving in Chiang Mai after a long journey",
           "source": "https://www.librahousechiangmai.com/"
         },
         {
-          "value": "returning from a trek",
+          "value": "planning a trek into northern Thailand",
+          "source": "https://www.librahousechiangmai.com/"
+        },
+        {
+          "value": "relaxing by the pool in the afternoon",
           "source": "https://www.librahousechiangmai.com/"
         }
       ]
     },
     "visualStyle": {
-      "summary": "warm tropical, natural wood, lush greenery, inviting natural light",
-      "palette": "earthy browns, vibrant greens, crisp white",
-      "light": "soft natural tropical daylight filtering through trees",
-      "textures": "carved wood, brick, polished stone, woven hammocks",
-      "mood": "relaxing, friendly, cozy, peaceful"
+      "summary": "Warm tropical, soft daylight, rich wood and lush green foliage.",
+      "palette": "natural browns, crisp whites, warm terracotta, and vibrant pool blues",
+      "light": "soft dappled sunlight through trees and gentle courtyard shade",
+      "textures": "carved wood, handmade textiles, woven hammocks, and stone tiles",
+      "mood": "calm, welcoming, relaxed, and intimately familiar"
     }
   }
 }

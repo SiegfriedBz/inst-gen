@@ -140,6 +140,13 @@ brixandbaume.com (redirects to google.com).
   `brand eval: 18/20 passed · prompt brand-5 · model gemini-3.5-flash-lite`
   The recordings are from this run. The eval retries a busy (503) answer
   once after 10 s.
+- 2026-10-24: The developer: Sen and Svarga are mobile; therapists come to
+  the client's hotel or villa, who just books and relaxes. The essence
+  gained a sourced `promise` (spec approved again), and senses now describe
+  where the service happens. `brand-6`:
+  `brand eval: 17/20 passed · prompt brand-6 · model gemini-3.5-flash-lite`
+  Sen's promise: "Our therapists come to your hotel or villa in Da Nang:
+  book on WhatsApp and relax." The recordings are from this run.
 - 2026-10-24: Two runs of the same prompt differ (Libra and Two Face failed
   once, then passed): flash-lite isn't deterministic, so the gate is a
   snapshot, not a guarantee.

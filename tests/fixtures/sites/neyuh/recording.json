@@ -1,10 +1,32 @@
 {
   "modelId": "gemini-3.5-flash-lite",
-  "promptVersion": "brand-5",
+  "promptVersion": "brand-6",
   "partials": [
     {
+      "name": {}
+    },
+    {
       "name": {
         "value": "Gallery de Neyuh",
+        "source": "https://neyuhleather.com"
+      }
+    },
+    {
+      "name": {
+        "value": "Gallery de Neyuh",
+        "source": "https://neyuhleather.com/"
+      },
+      "summary": {
+        "value": "Premium handcrafted leather bags, travel goods, home accessories and"
+      }
+    },
+    {
+      "name": {
+        "value": "Gallery de Neyuh",
+        "source": "https://neyuhleather.com/"
+      },
+      "summary": {
+        "value": "Premium handcrafted leather bags, travel goods, home accessories and corporate gifts from Saigon.",
         "source": "https://neyuhleather.com/"
       }
     },
@@ -14,8 +36,15 @@
         "source": "https://neyuhleather.com/"
       },
       "summary": {
-        "value": "Premium handcrafted leather bags, home goods, and"
-      }
+        "value": "Premium handcrafted leather bags, travel goods, home accessories and corporate gifts from Saigon.",
+        "source": "https://neyuhleather.com/"
+      },
+      "category": "leather goods store",
+      "offerings": [
+        {
+          "name": ""
+        }
+      ]
     },
     {
       "name": {
@@ -23,17 +52,7 @@
         "source": "https://neyuhleather.com/"
       },
       "summary": {
-        "value": "Premium handcrafted leather bags, home goods, and corporate gifts from Saigon, made by skilled artisans since 2008.",
-        "source": "https://neyuh"
-      }
-    },
-    {
-      "name": {
-        "value": "Gallery de Neyuh",
-        "source": "https://neyuhleather.com/"
-      },
-      "summary": {
-        "value": "Premium handcrafted leather bags, home goods, and corporate gifts from Saigon, made by skilled artisans since 2008.",
+        "value": "Premium handcrafted leather bags, travel goods, home accessories and corporate gifts from Saigon.",
         "source": "https://neyuhleather.com/"
       },
       "category": "leather goods store",
@@ -50,7 +69,7 @@
         "source": "https://neyuhleather.com/"
       },
       "summary": {
-        "value": "Premium handcrafted leather bags, home goods, and corporate gifts from Saigon, made by skilled artisans since 2008.",
+        "value": "Premium handcrafted leather bags, travel goods, home accessories and corporate gifts from Saigon.",
         "source": "https://neyuhleather.com/"
       },
       "category": "leather goods store",
@@ -60,7 +79,9 @@
           "price": "$391.69",
           "source": "https://neyuhleather.com/"
         },
-        {}
+        {
+          "name": "MARTHA B"
+        }
       ]
     },
     {
@@ -69,7 +90,7 @@
         "source": "https://neyuhleather.com/"
       },
       "summary": {
-        "value": "Premium handcrafted leather bags, home goods, and corporate gifts from Saigon, made by skilled artisans since 2008.",
+        "value": "Premium handcrafted leather bags, travel goods, home accessories and corporate gifts from Saigon.",
         "source": "https://neyuhleather.com/"
       },
       "category": "leather goods store",
@@ -81,7 +102,8 @@
         },
         {
           "name": "MARTHA BUCKET BAG",
-          "price": "$536.00"
+          "price": "$536.00",
+          "source": "https"
         }
       ]
     },
@@ -91,7 +113,7 @@
         "source": "https://neyuhleather.com/"
       },
       "summary": {
-        "value": "Premium handcrafted leather bags, home goods, and corporate gifts from Saigon, made by skilled artisans since 2008.",
+        "value": "Premium handcrafted leather bags, travel goods, home accessories and corporate gifts from Saigon.",
         "source": "https://neyuhleather.com/"
       },
       "category": "leather goods store",
@@ -107,7 +129,7 @@
           "source": "https://neyuhleather.com/"
         },
         {
-          "name": ""
+          "name": "THE SAIGON CH"
         }
       ]
     },
@@ -117,7 +139,7 @@
         "source": "https://neyuhleather.com/"
       },
       "summary": {
-        "value": "Premium handcrafted leather bags, home goods, and corporate gifts from Saigon, made by skilled artisans since 2008.",
+        "value": "Premium handcrafted leather bags, travel goods, home accessories and corporate gifts from Saigon.",
         "source": "https://neyuhleather.com/"
       },
       "category": "leather goods store",
@@ -134,7 +156,8 @@
         },
         {
           "name": "THE SAIGON CHIC CLUTCH",
-          "price": "$166.40"
+          "price": "$166.40",
+          "source": "https://ney"
         }
       ]
     },
@@ -144,7 +167,7 @@
         "source": "https://neyuhleather.com/"
       },
       "summary": {
-        "value": "Premium handcrafted leather bags, home goods, and corporate gifts from Saigon, made by skilled artisans since 2008.",
+        "value": "Premium handcrafted leather bags, travel goods, home accessories and corporate gifts from Saigon.",
         "source": "https://neyuhleather.com/"
       },
       "category": "leather goods store",
@@ -165,7 +188,7 @@
           "source": "https://neyuhleather.com/"
         },
         {
-          "name": "SA"
+          "name": "SAIGON ROCK THE TRAVEL BAG"
         }
       ]
     },
@@ -175,7 +198,7 @@
         "source": "https://neyuhleather.com/"
       },
       "summary": {
-        "value": "Premium handcrafted leather bags, home goods, and corporate gifts from Saigon, made by skilled artisans since 2008.",
+        "value": "Premium handcrafted leather bags, travel goods, home accessories and corporate gifts from Saigon.",
         "source": "https://neyuhleather.com/"
       },
       "category": "leather goods store",
@@ -197,7 +220,8 @@
         },
         {
           "name": "SAIGON ROCK THE TRAVEL BAG",
-          "price": "$756.37"
+          "price": "$756.37",
+          "source": "https://neyuh"
         }
       ]
     },
@@ -207,7 +231,7 @@
         "source": "https://neyuhleather.com/"
       },
       "summary": {
-        "value": "Premium handcrafted leather bags, home goods, and corporate gifts from Saigon, made by skilled artisans since 2008.",
+        "value": "Premium handcrafted leather bags, travel goods, home accessories and corporate gifts from Saigon.",
         "source": "https://neyuhleather.com/"
       },
       "category": "leather goods store",
@@ -233,7 +257,7 @@
           "source": "https://neyuhleather.com/"
         },
         {
-          "name": "THE OFFICE"
+          "name": "THE OFFICE MEN BAG"
         }
       ]
     },
@@ -243,45 +267,7 @@
         "source": "https://neyuhleather.com/"
       },
       "summary": {
-        "value": "Premium handcrafted leather bags, home goods, and corporate gifts from Saigon, made by skilled artisans since 2008.",
-        "source": "https://neyuhleather.com/"
-      },
-      "category": "leather goods store",
-      "offerings": [
-        {
-          "name": "THE SEPTEMBER MINI TOTE",
-          "price": "$391.69",
-          "source": "https://neyuhleather.com/"
-        },
-        {
-          "name": "MARTHA BUCKET BAG",
-          "price": "$536.00",
-          "source": "https://neyuhleather.com/"
-        },
-        {
-          "name": "THE SAIGON CHIC CLUTCH",
-          "price": "$166.40",
-          "source": "https://neyuhleather.com/"
-        },
-        {
-          "name": "SAIGON ROCK THE TRAVEL BAG",
-          "price": "$756.37",
-          "source": "https://neyuhleather.com/"
-        },
-        {
-          "name": "THE OFFICE MEN BAG",
-          "price": "$548.37",
-          "source": "https://neyuhleather."
-        }
-      ]
-    },
-    {
-      "name": {
-        "value": "Gallery de Neyuh",
-        "source": "https://neyuhleather.com/"
-      },
-      "summary": {
-        "value": "Premium handcrafted leather bags, home goods, and corporate gifts from Saigon, made by skilled artisans since 2008.",
+        "value": "Premium handcrafted leather bags, travel goods, home accessories and corporate gifts from Saigon.",
         "source": "https://neyuhleather.com/"
       },
       "category": "leather goods store",
@@ -312,7 +298,8 @@
           "source": "https://neyuhleather.com/"
         },
         {
-          "name": "THE WESTERN GUY TOTE"
+          "name": "THE WESTERN GUY TOTE",
+          "price": "$41"
         }
       ]
     },
@@ -322,7 +309,7 @@
         "source": "https://neyuhleather.com/"
       },
       "summary": {
-        "value": "Premium handcrafted leather bags, home goods, and corporate gifts from Saigon, made by skilled artisans since 2008.",
+        "value": "Premium handcrafted leather bags, travel goods, home accessories and corporate gifts from Saigon.",
         "source": "https://neyuhleather.com/"
       },
       "category": "leather goods store",
@@ -355,7 +342,7 @@
         {
           "name": "THE WESTERN GUY TOTE",
           "price": "$413.30",
-          "source": "https://neyuhleather.com"
+          "source": "https://neyuhleather.com/"
         }
       ]
     },
@@ -365,7 +352,7 @@
         "source": "https://neyuhleather.com/"
       },
       "summary": {
-        "value": "Premium handcrafted leather bags, home goods, and corporate gifts from Saigon, made by skilled artisans since 2008.",
+        "value": "Premium handcrafted leather bags, travel goods, home accessories and corporate gifts from Saigon.",
         "source": "https://neyuhleather.com/"
       },
       "category": "leather goods store",
@@ -401,7 +388,8 @@
           "source": "https://neyuhleather.com/"
         },
         {
-          "name": "THE FAST MOVE CLUTCH"
+          "name": "THE FAST MOVE CLUTCH",
+          "price": "$399."
         }
       ]
     },
@@ -411,7 +399,7 @@
         "source": "https://neyuhleather.com/"
       },
       "summary": {
-        "value": "Premium handcrafted leather bags, home goods, and corporate gifts from Saigon, made by skilled artisans since 2008.",
+        "value": "Premium handcrafted leather bags, travel goods, home accessories and corporate gifts from Saigon.",
         "source": "https://neyuhleather.com/"
       },
       "category": "leather goods store",
@@ -453,7 +441,7 @@
         },
         {
           "name": "MED TOTE",
-          "price": "$275"
+          "price": "$275.54"
         }
       ]
     },
@@ -463,7 +451,7 @@
         "source": "https://neyuhleather.com/"
       },
       "summary": {
-        "value": "Premium handcrafted leather bags, home goods, and corporate gifts from Saigon, made by skilled artisans since 2008.",
+        "value": "Premium handcrafted leather bags, travel goods, home accessories and corporate gifts from Saigon.",
         "source": "https://neyuhleather.com/"
       },
       "category": "leather goods store",
@@ -508,7 +496,9 @@
           "price": "$275.54",
           "source": "https://neyuhleather.com/"
         },
-        {}
+        {
+          "name": ""
+        }
       ]
     },
     {
@@ -517,7 +507,7 @@
         "source": "https://neyuhleather.com/"
       },
       "summary": {
-        "value": "Premium handcrafted leather bags, home goods, and corporate gifts from Saigon, made by skilled artisans since 2008.",
+        "value": "Premium handcrafted leather bags, travel goods, home accessories and corporate gifts from Saigon.",
         "source": "https://neyuhleather.com/"
       },
       "category": "leather goods store",
@@ -574,7 +564,7 @@
         "source": "https://neyuhleather.com/"
       },
       "summary": {
-        "value": "Premium handcrafted leather bags, home goods, and corporate gifts from Saigon, made by skilled artisans since 2008.",
+        "value": "Premium handcrafted leather bags, travel goods, home accessories and corporate gifts from Saigon.",
         "source": "https://neyuhleather.com/"
       },
       "category": "leather goods store",
@@ -624,7 +614,9 @@
           "price": "$162.50",
           "source": "https://neyuhleather.com/"
         },
-        {}
+        {
+          "name": "LUXURY"
+        }
       ]
     },
     {
@@ -633,7 +625,7 @@
         "source": "https://neyuhleather.com/"
       },
       "summary": {
-        "value": "Premium handcrafted leather bags, home goods, and corporate gifts from Saigon, made by skilled artisans since 2008.",
+        "value": "Premium handcrafted leather bags, travel goods, home accessories and corporate gifts from Saigon.",
         "source": "https://neyuhleather.com/"
       },
       "category": "leather goods store",
@@ -685,7 +677,7 @@
         },
         {
           "name": "LUXURY HANDWOVEN LAUNDRY & STORAGE BASKET",
-          "price": "$5"
+          "price": "$532.51"
         }
       ]
     },
@@ -695,7 +687,73 @@
         "source": "https://neyuhleather.com/"
       },
       "summary": {
-        "value": "Premium handcrafted leather bags, home goods, and corporate gifts from Saigon, made by skilled artisans since 2008.",
+        "value": "Premium handcrafted leather bags, travel goods, home accessories and corporate gifts from Saigon.",
+        "source": "https://neyuhleather.com/"
+      },
+      "category": "leather goods store",
+      "offerings": [
+        {
+          "name": "THE SEPTEMBER MINI TOTE",
+          "price": "$391.69",
+          "source": "https://neyuhleather.com/"
+        },
+        {
+          "name": "MARTHA BUCKET BAG",
+          "price": "$536.00",
+          "source": "https://neyuhleather.com/"
+        },
+        {
+          "name": "THE SAIGON CHIC CLUTCH",
+          "price": "$166.40",
+          "source": "https://neyuhleather.com/"
+        },
+        {
+          "name": "SAIGON ROCK THE TRAVEL BAG",
+          "price": "$756.37",
+          "source": "https://neyuhleather.com/"
+        },
+        {
+          "name": "THE OFFICE MEN BAG",
+          "price": "$548.37",
+          "source": "https://neyuhleather.com/"
+        },
+        {
+          "name": "THE WESTERN GUY TOTE",
+          "price": "$413.30",
+          "source": "https://neyuhleather.com/"
+        },
+        {
+          "name": "THE FAST MOVE CLUTCH",
+          "price": "$399.79",
+          "source": "https://neyuhleather.com/"
+        },
+        {
+          "name": "MED TOTE",
+          "price": "$275.54",
+          "source": "https://neyuhleather.com/"
+        },
+        {
+          "name": "SINGLE LEATHER WATCH BOX",
+          "price": "$162.50",
+          "source": "https://neyuhleather.com/"
+        },
+        {
+          "name": "LUXURY HANDWOVEN LAUNDRY & STORAGE BASKET",
+          "price": "$532.51",
+          "source": "https://neyuhleather.com/"
+        },
+        {
+          "name": "HANDC"
+        }
+      ]
+    },
+    {
+      "name": {
+        "value": "Gallery de Neyuh",
+        "source": "https://neyuhleather.com/"
+      },
+      "summary": {
+        "value": "Premium handcrafted leather bags, travel goods, home accessories and corporate gifts from Saigon.",
         "source": "https://neyuhleather.com/"
       },
       "category": "leather goods store",
@@ -752,6 +810,551 @@
         },
         {
           "name": "HANDCRAFTED ROUND LEATHER TRAY",
+          "price": "$351.00"
+        }
+      ]
+    },
+    {
+      "name": {
+        "value": "Gallery de Neyuh",
+        "source": "https://neyuhleather.com/"
+      },
+      "summary": {
+        "value": "Premium handcrafted leather bags, travel goods, home accessories and corporate gifts from Saigon.",
+        "source": "https://neyuhleather.com/"
+      },
+      "category": "leather goods store",
+      "offerings": [
+        {
+          "name": "THE SEPTEMBER MINI TOTE",
+          "price": "$391.69",
+          "source": "https://neyuhleather.com/"
+        },
+        {
+          "name": "MARTHA BUCKET BAG",
+          "price": "$536.00",
+          "source": "https://neyuhleather.com/"
+        },
+        {
+          "name": "THE SAIGON CHIC CLUTCH",
+          "price": "$166.40",
+          "source": "https://neyuhleather.com/"
+        },
+        {
+          "name": "SAIGON ROCK THE TRAVEL BAG",
+          "price": "$756.37",
+          "source": "https://neyuhleather.com/"
+        },
+        {
+          "name": "THE OFFICE MEN BAG",
+          "price": "$548.37",
+          "source": "https://neyuhleather.com/"
+        },
+        {
+          "name": "THE WESTERN GUY TOTE",
+          "price": "$413.30",
+          "source": "https://neyuhleather.com/"
+        },
+        {
+          "name": "THE FAST MOVE CLUTCH",
+          "price": "$399.79",
+          "source": "https://neyuhleather.com/"
+        },
+        {
+          "name": "MED TOTE",
+          "price": "$275.54",
+          "source": "https://neyuhleather.com/"
+        },
+        {
+          "name": "SINGLE LEATHER WATCH BOX",
+          "price": "$162.50",
+          "source": "https://neyuhleather.com/"
+        },
+        {
+          "name": "LUXURY HANDWOVEN LAUNDRY & STORAGE BASKET",
+          "price": "$532.51",
+          "source": "https://neyuhleather.com/"
+        },
+        {
+          "name": "HANDCRAFTED ROUND LEATHER TRAY",
+          "price": "$351.00",
+          "source": "https://neyuhleather.com/"
+        },
+        {
+          "name": "HAND"
+        }
+      ]
+    },
+    {
+      "name": {
+        "value": "Gallery de Neyuh",
+        "source": "https://neyuhleather.com/"
+      },
+      "summary": {
+        "value": "Premium handcrafted leather bags, travel goods, home accessories and corporate gifts from Saigon.",
+        "source": "https://neyuhleather.com/"
+      },
+      "category": "leather goods store",
+      "offerings": [
+        {
+          "name": "THE SEPTEMBER MINI TOTE",
+          "price": "$391.69",
+          "source": "https://neyuhleather.com/"
+        },
+        {
+          "name": "MARTHA BUCKET BAG",
+          "price": "$536.00",
+          "source": "https://neyuhleather.com/"
+        },
+        {
+          "name": "THE SAIGON CHIC CLUTCH",
+          "price": "$166.40",
+          "source": "https://neyuhleather.com/"
+        },
+        {
+          "name": "SAIGON ROCK THE TRAVEL BAG",
+          "price": "$756.37",
+          "source": "https://neyuhleather.com/"
+        },
+        {
+          "name": "THE OFFICE MEN BAG",
+          "price": "$548.37",
+          "source": "https://neyuhleather.com/"
+        },
+        {
+          "name": "THE WESTERN GUY TOTE",
+          "price": "$413.30",
+          "source": "https://neyuhleather.com/"
+        },
+        {
+          "name": "THE FAST MOVE CLUTCH",
+          "price": "$399.79",
+          "source": "https://neyuhleather.com/"
+        },
+        {
+          "name": "MED TOTE",
+          "price": "$275.54",
+          "source": "https://neyuhleather.com/"
+        },
+        {
+          "name": "SINGLE LEATHER WATCH BOX",
+          "price": "$162.50",
+          "source": "https://neyuhleather.com/"
+        },
+        {
+          "name": "LUXURY HANDWOVEN LAUNDRY & STORAGE BASKET",
+          "price": "$532.51",
+          "source": "https://neyuhleather.com/"
+        },
+        {
+          "name": "HANDCRAFTED ROUND LEATHER TRAY",
+          "price": "$351.00",
+          "source": "https://neyuhleather.com/"
+        },
+        {
+          "name": "HANDCRAFTED LEATHER TEA & COFFEE BOX WITH WOVEN LID",
+          "price": "$361.8"
+        }
+      ]
+    },
+    {
+      "name": {
+        "value": "Gallery de Neyuh",
+        "source": "https://neyuhleather.com/"
+      },
+      "summary": {
+        "value": "Premium handcrafted leather bags, travel goods, home accessories and corporate gifts from Saigon.",
+        "source": "https://neyuhleather.com/"
+      },
+      "category": "leather goods store",
+      "offerings": [
+        {
+          "name": "THE SEPTEMBER MINI TOTE",
+          "price": "$391.69",
+          "source": "https://neyuhleather.com/"
+        },
+        {
+          "name": "MARTHA BUCKET BAG",
+          "price": "$536.00",
+          "source": "https://neyuhleather.com/"
+        },
+        {
+          "name": "THE SAIGON CHIC CLUTCH",
+          "price": "$166.40",
+          "source": "https://neyuhleather.com/"
+        },
+        {
+          "name": "SAIGON ROCK THE TRAVEL BAG",
+          "price": "$756.37",
+          "source": "https://neyuhleather.com/"
+        },
+        {
+          "name": "THE OFFICE MEN BAG",
+          "price": "$548.37",
+          "source": "https://neyuhleather.com/"
+        },
+        {
+          "name": "THE WESTERN GUY TOTE",
+          "price": "$413.30",
+          "source": "https://neyuhleather.com/"
+        },
+        {
+          "name": "THE FAST MOVE CLUTCH",
+          "price": "$399.79",
+          "source": "https://neyuhleather.com/"
+        },
+        {
+          "name": "MED TOTE",
+          "price": "$275.54",
+          "source": "https://neyuhleather.com/"
+        },
+        {
+          "name": "SINGLE LEATHER WATCH BOX",
+          "price": "$162.50",
+          "source": "https://neyuhleather.com/"
+        },
+        {
+          "name": "LUXURY HANDWOVEN LAUNDRY & STORAGE BASKET",
+          "price": "$532.51",
+          "source": "https://neyuhleather.com/"
+        },
+        {
+          "name": "HANDCRAFTED ROUND LEATHER TRAY",
+          "price": "$351.00",
+          "source": "https://neyuhleather.com/"
+        },
+        {
+          "name": "HANDCRAFTED LEATHER TEA & COFFEE BOX WITH WOVEN LID",
+          "price": "$361.80",
+          "source": "https://neyuhleather.com/"
+        },
+        {}
+      ]
+    },
+    {
+      "name": {
+        "value": "Gallery de Neyuh",
+        "source": "https://neyuhleather.com/"
+      },
+      "summary": {
+        "value": "Premium handcrafted leather bags, travel goods, home accessories and corporate gifts from Saigon.",
+        "source": "https://neyuhleather.com/"
+      },
+      "category": "leather goods store",
+      "offerings": [
+        {
+          "name": "THE SEPTEMBER MINI TOTE",
+          "price": "$391.69",
+          "source": "https://neyuhleather.com/"
+        },
+        {
+          "name": "MARTHA BUCKET BAG",
+          "price": "$536.00",
+          "source": "https://neyuhleather.com/"
+        },
+        {
+          "name": "THE SAIGON CHIC CLUTCH",
+          "price": "$166.40",
+          "source": "https://neyuhleather.com/"
+        },
+        {
+          "name": "SAIGON ROCK THE TRAVEL BAG",
+          "price": "$756.37",
+          "source": "https://neyuhleather.com/"
+        },
+        {
+          "name": "THE OFFICE MEN BAG",
+          "price": "$548.37",
+          "source": "https://neyuhleather.com/"
+        },
+        {
+          "name": "THE WESTERN GUY TOTE",
+          "price": "$413.30",
+          "source": "https://neyuhleather.com/"
+        },
+        {
+          "name": "THE FAST MOVE CLUTCH",
+          "price": "$399.79",
+          "source": "https://neyuhleather.com/"
+        },
+        {
+          "name": "MED TOTE",
+          "price": "$275.54",
+          "source": "https://neyuhleather.com/"
+        },
+        {
+          "name": "SINGLE LEATHER WATCH BOX",
+          "price": "$162.50",
+          "source": "https://neyuhleather.com/"
+        },
+        {
+          "name": "LUXURY HANDWOVEN LAUNDRY & STORAGE BASKET",
+          "price": "$532.51",
+          "source": "https://neyuhleather.com/"
+        },
+        {
+          "name": "HANDCRAFTED ROUND LEATHER TRAY",
+          "price": "$351.00",
+          "source": "https://neyuhleather.com/"
+        },
+        {
+          "name": "HANDCRAFTED LEATHER TEA & COFFEE BOX WITH WOVEN LID",
+          "price": "$361.80",
+          "source": "https://neyuhleather.com/"
+        },
+        {
+          "name": "SET #1 - PASSPORT HOLDER & SLIM CARD WALLET",
+          "price": "$105."
+        }
+      ]
+    },
+    {
+      "name": {
+        "value": "Gallery de Neyuh",
+        "source": "https://neyuhleather.com/"
+      },
+      "summary": {
+        "value": "Premium handcrafted leather bags, travel goods, home accessories and corporate gifts from Saigon.",
+        "source": "https://neyuhleather.com/"
+      },
+      "category": "leather goods store",
+      "offerings": [
+        {
+          "name": "THE SEPTEMBER MINI TOTE",
+          "price": "$391.69",
+          "source": "https://neyuhleather.com/"
+        },
+        {
+          "name": "MARTHA BUCKET BAG",
+          "price": "$536.00",
+          "source": "https://neyuhleather.com/"
+        },
+        {
+          "name": "THE SAIGON CHIC CLUTCH",
+          "price": "$166.40",
+          "source": "https://neyuhleather.com/"
+        },
+        {
+          "name": "SAIGON ROCK THE TRAVEL BAG",
+          "price": "$756.37",
+          "source": "https://neyuhleather.com/"
+        },
+        {
+          "name": "THE OFFICE MEN BAG",
+          "price": "$548.37",
+          "source": "https://neyuhleather.com/"
+        },
+        {
+          "name": "THE WESTERN GUY TOTE",
+          "price": "$413.30",
+          "source": "https://neyuhleather.com/"
+        },
+        {
+          "name": "THE FAST MOVE CLUTCH",
+          "price": "$399.79",
+          "source": "https://neyuhleather.com/"
+        },
+        {
+          "name": "MED TOTE",
+          "price": "$275.54",
+          "source": "https://neyuhleather.com/"
+        },
+        {
+          "name": "SINGLE LEATHER WATCH BOX",
+          "price": "$162.50",
+          "source": "https://neyuhleather.com/"
+        },
+        {
+          "name": "LUXURY HANDWOVEN LAUNDRY & STORAGE BASKET",
+          "price": "$532.51",
+          "source": "https://neyuhleather.com/"
+        },
+        {
+          "name": "HANDCRAFTED ROUND LEATHER TRAY",
+          "price": "$351.00",
+          "source": "https://neyuhleather.com/"
+        },
+        {
+          "name": "HANDCRAFTED LEATHER TEA & COFFEE BOX WITH WOVEN LID",
+          "price": "$361.80",
+          "source": "https://neyuhleather.com/"
+        },
+        {
+          "name": "SET #1 - PASSPORT HOLDER & SLIM CARD WALLET",
+          "price": "$105.30",
+          "source": "https://neyuhleather.com/"
+        },
+        {
+          "name": "SET #2 - PASSPORT HOLDER & LUGGAGE TAG"
+        }
+      ]
+    },
+    {
+      "name": {
+        "value": "Gallery de Neyuh",
+        "source": "https://neyuhleather.com/"
+      },
+      "summary": {
+        "value": "Premium handcrafted leather bags, travel goods, home accessories and corporate gifts from Saigon.",
+        "source": "https://neyuhleather.com/"
+      },
+      "category": "leather goods store",
+      "offerings": [
+        {
+          "name": "THE SEPTEMBER MINI TOTE",
+          "price": "$391.69",
+          "source": "https://neyuhleather.com/"
+        },
+        {
+          "name": "MARTHA BUCKET BAG",
+          "price": "$536.00",
+          "source": "https://neyuhleather.com/"
+        },
+        {
+          "name": "THE SAIGON CHIC CLUTCH",
+          "price": "$166.40",
+          "source": "https://neyuhleather.com/"
+        },
+        {
+          "name": "SAIGON ROCK THE TRAVEL BAG",
+          "price": "$756.37",
+          "source": "https://neyuhleather.com/"
+        },
+        {
+          "name": "THE OFFICE MEN BAG",
+          "price": "$548.37",
+          "source": "https://neyuhleather.com/"
+        },
+        {
+          "name": "THE WESTERN GUY TOTE",
+          "price": "$413.30",
+          "source": "https://neyuhleather.com/"
+        },
+        {
+          "name": "THE FAST MOVE CLUTCH",
+          "price": "$399.79",
+          "source": "https://neyuhleather.com/"
+        },
+        {
+          "name": "MED TOTE",
+          "price": "$275.54",
+          "source": "https://neyuhleather.com/"
+        },
+        {
+          "name": "SINGLE LEATHER WATCH BOX",
+          "price": "$162.50",
+          "source": "https://neyuhleather.com/"
+        },
+        {
+          "name": "LUXURY HANDWOVEN LAUNDRY & STORAGE BASKET",
+          "price": "$532.51",
+          "source": "https://neyuhleather.com/"
+        },
+        {
+          "name": "HANDCRAFTED ROUND LEATHER TRAY",
+          "price": "$351.00",
+          "source": "https://neyuhleather.com/"
+        },
+        {
+          "name": "HANDCRAFTED LEATHER TEA & COFFEE BOX WITH WOVEN LID",
+          "price": "$361.80",
+          "source": "https://neyuhleather.com/"
+        },
+        {
+          "name": "SET #1 - PASSPORT HOLDER & SLIM CARD WALLET",
+          "price": "$105.30",
+          "source": "https://neyuhleather.com/"
+        },
+        {
+          "name": "SET #2 - PASSPORT HOLDER & LUGGAGE TAG",
+          "price": "$105.30",
+          "source": "https://neyuhleather.com/"
+        }
+      ]
+    },
+    {
+      "name": {
+        "value": "Gallery de Neyuh",
+        "source": "https://neyuhleather.com/"
+      },
+      "summary": {
+        "value": "Premium handcrafted leather bags, travel goods, home accessories and corporate gifts from Saigon.",
+        "source": "https://neyuhleather.com/"
+      },
+      "category": "leather goods store",
+      "offerings": [
+        {
+          "name": "THE SEPTEMBER MINI TOTE",
+          "price": "$391.69",
+          "source": "https://neyuhleather.com/"
+        },
+        {
+          "name": "MARTHA BUCKET BAG",
+          "price": "$536.00",
+          "source": "https://neyuhleather.com/"
+        },
+        {
+          "name": "THE SAIGON CHIC CLUTCH",
+          "price": "$166.40",
+          "source": "https://neyuhleather.com/"
+        },
+        {
+          "name": "SAIGON ROCK THE TRAVEL BAG",
+          "price": "$756.37",
+          "source": "https://neyuhleather.com/"
+        },
+        {
+          "name": "THE OFFICE MEN BAG",
+          "price": "$548.37",
+          "source": "https://neyuhleather.com/"
+        },
+        {
+          "name": "THE WESTERN GUY TOTE",
+          "price": "$413.30",
+          "source": "https://neyuhleather.com/"
+        },
+        {
+          "name": "THE FAST MOVE CLUTCH",
+          "price": "$399.79",
+          "source": "https://neyuhleather.com/"
+        },
+        {
+          "name": "MED TOTE",
+          "price": "$275.54",
+          "source": "https://neyuhleather.com/"
+        },
+        {
+          "name": "SINGLE LEATHER WATCH BOX",
+          "price": "$162.50",
+          "source": "https://neyuhleather.com/"
+        },
+        {
+          "name": "LUXURY HANDWOVEN LAUNDRY & STORAGE BASKET",
+          "price": "$532.51",
+          "source": "https://neyuhleather.com/"
+        },
+        {
+          "name": "HANDCRAFTED ROUND LEATHER TRAY",
+          "price": "$351.00",
+          "source": "https://neyuhleather.com/"
+        },
+        {
+          "name": "HANDCRAFTED LEATHER TEA & COFFEE BOX WITH WOVEN LID",
+          "price": "$361.80",
+          "source": "https://neyuhleather.com/"
+        },
+        {
+          "name": "SET #1 - PASSPORT HOLDER & SLIM CARD WALLET",
+          "price": "$105.30",
+          "source": "https://neyuhleather.com/"
+        },
+        {
+          "name": "SET #2 - PASSPORT HOLDER & LUGGAGE TAG",
+          "price": "$105.30",
+          "source": "https://neyuhleather.com/"
+        },
+        {
+          "name": "SET #3 - PHONE WALLET AND LUGGAGE TAG",
           "price": "$"
         }
       ]
@@ -762,708 +1365,7 @@
         "source": "https://neyuhleather.com/"
       },
       "summary": {
-        "value": "Premium handcrafted leather bags, home goods, and corporate gifts from Saigon, made by skilled artisans since 2008.",
-        "source": "https://neyuhleather.com/"
-      },
-      "category": "leather goods store",
-      "offerings": [
-        {
-          "name": "THE SEPTEMBER MINI TOTE",
-          "price": "$391.69",
-          "source": "https://neyuhleather.com/"
-        },
-        {
-          "name": "MARTHA BUCKET BAG",
-          "price": "$536.00",
-          "source": "https://neyuhleather.com/"
-        },
-        {
-          "name": "THE SAIGON CHIC CLUTCH",
-          "price": "$166.40",
-          "source": "https://neyuhleather.com/"
-        },
-        {
-          "name": "SAIGON ROCK THE TRAVEL BAG",
-          "price": "$756.37",
-          "source": "https://neyuhleather.com/"
-        },
-        {
-          "name": "THE OFFICE MEN BAG",
-          "price": "$548.37",
-          "source": "https://neyuhleather.com/"
-        },
-        {
-          "name": "THE WESTERN GUY TOTE",
-          "price": "$413.30",
-          "source": "https://neyuhleather.com/"
-        },
-        {
-          "name": "THE FAST MOVE CLUTCH",
-          "price": "$399.79",
-          "source": "https://neyuhleather.com/"
-        },
-        {
-          "name": "MED TOTE",
-          "price": "$275.54",
-          "source": "https://neyuhleather.com/"
-        },
-        {
-          "name": "SINGLE LEATHER WATCH BOX",
-          "price": "$162.50",
-          "source": "https://neyuhleather.com/"
-        },
-        {
-          "name": "LUXURY HANDWOVEN LAUNDRY & STORAGE BASKET",
-          "price": "$532.51",
-          "source": "https://neyuhleather.com/"
-        },
-        {
-          "name": "HANDCRAFTED ROUND LEATHER TRAY",
-          "price": "$351.00",
-          "source": "https://neyuhleather.com/"
-        }
-      ]
-    },
-    {
-      "name": {
-        "value": "Gallery de Neyuh",
-        "source": "https://neyuhleather.com/"
-      },
-      "summary": {
-        "value": "Premium handcrafted leather bags, home goods, and corporate gifts from Saigon, made by skilled artisans since 2008.",
-        "source": "https://neyuhleather.com/"
-      },
-      "category": "leather goods store",
-      "offerings": [
-        {
-          "name": "THE SEPTEMBER MINI TOTE",
-          "price": "$391.69",
-          "source": "https://neyuhleather.com/"
-        },
-        {
-          "name": "MARTHA BUCKET BAG",
-          "price": "$536.00",
-          "source": "https://neyuhleather.com/"
-        },
-        {
-          "name": "THE SAIGON CHIC CLUTCH",
-          "price": "$166.40",
-          "source": "https://neyuhleather.com/"
-        },
-        {
-          "name": "SAIGON ROCK THE TRAVEL BAG",
-          "price": "$756.37",
-          "source": "https://neyuhleather.com/"
-        },
-        {
-          "name": "THE OFFICE MEN BAG",
-          "price": "$548.37",
-          "source": "https://neyuhleather.com/"
-        },
-        {
-          "name": "THE WESTERN GUY TOTE",
-          "price": "$413.30",
-          "source": "https://neyuhleather.com/"
-        },
-        {
-          "name": "THE FAST MOVE CLUTCH",
-          "price": "$399.79",
-          "source": "https://neyuhleather.com/"
-        },
-        {
-          "name": "MED TOTE",
-          "price": "$275.54",
-          "source": "https://neyuhleather.com/"
-        },
-        {
-          "name": "SINGLE LEATHER WATCH BOX",
-          "price": "$162.50",
-          "source": "https://neyuhleather.com/"
-        },
-        {
-          "name": "LUXURY HANDWOVEN LAUNDRY & STORAGE BASKET",
-          "price": "$532.51",
-          "source": "https://neyuhleather.com/"
-        },
-        {
-          "name": "HANDCRAFTED ROUND LEATHER TRAY",
-          "price": "$351.00",
-          "source": "https://neyuhleather.com/"
-        },
-        {
-          "name": "HANDCRAFTED LEATHER TEA & COFFEE BOX WITH WOVEN LID"
-        }
-      ]
-    },
-    {
-      "name": {
-        "value": "Gallery de Neyuh",
-        "source": "https://neyuhleather.com/"
-      },
-      "summary": {
-        "value": "Premium handcrafted leather bags, home goods, and corporate gifts from Saigon, made by skilled artisans since 2008.",
-        "source": "https://neyuhleather.com/"
-      },
-      "category": "leather goods store",
-      "offerings": [
-        {
-          "name": "THE SEPTEMBER MINI TOTE",
-          "price": "$391.69",
-          "source": "https://neyuhleather.com/"
-        },
-        {
-          "name": "MARTHA BUCKET BAG",
-          "price": "$536.00",
-          "source": "https://neyuhleather.com/"
-        },
-        {
-          "name": "THE SAIGON CHIC CLUTCH",
-          "price": "$166.40",
-          "source": "https://neyuhleather.com/"
-        },
-        {
-          "name": "SAIGON ROCK THE TRAVEL BAG",
-          "price": "$756.37",
-          "source": "https://neyuhleather.com/"
-        },
-        {
-          "name": "THE OFFICE MEN BAG",
-          "price": "$548.37",
-          "source": "https://neyuhleather.com/"
-        },
-        {
-          "name": "THE WESTERN GUY TOTE",
-          "price": "$413.30",
-          "source": "https://neyuhleather.com/"
-        },
-        {
-          "name": "THE FAST MOVE CLUTCH",
-          "price": "$399.79",
-          "source": "https://neyuhleather.com/"
-        },
-        {
-          "name": "MED TOTE",
-          "price": "$275.54",
-          "source": "https://neyuhleather.com/"
-        },
-        {
-          "name": "SINGLE LEATHER WATCH BOX",
-          "price": "$162.50",
-          "source": "https://neyuhleather.com/"
-        },
-        {
-          "name": "LUXURY HANDWOVEN LAUNDRY & STORAGE BASKET",
-          "price": "$532.51",
-          "source": "https://neyuhleather.com/"
-        },
-        {
-          "name": "HANDCRAFTED ROUND LEATHER TRAY",
-          "price": "$351.00",
-          "source": "https://neyuhleather.com/"
-        },
-        {
-          "name": "HANDCRAFTED LEATHER TEA & COFFEE BOX WITH WOVEN LID",
-          "price": "$361.80",
-          "source": "https://neyuh"
-        }
-      ]
-    },
-    {
-      "name": {
-        "value": "Gallery de Neyuh",
-        "source": "https://neyuhleather.com/"
-      },
-      "summary": {
-        "value": "Premium handcrafted leather bags, home goods, and corporate gifts from Saigon, made by skilled artisans since 2008.",
-        "source": "https://neyuhleather.com/"
-      },
-      "category": "leather goods store",
-      "offerings": [
-        {
-          "name": "THE SEPTEMBER MINI TOTE",
-          "price": "$391.69",
-          "source": "https://neyuhleather.com/"
-        },
-        {
-          "name": "MARTHA BUCKET BAG",
-          "price": "$536.00",
-          "source": "https://neyuhleather.com/"
-        },
-        {
-          "name": "THE SAIGON CHIC CLUTCH",
-          "price": "$166.40",
-          "source": "https://neyuhleather.com/"
-        },
-        {
-          "name": "SAIGON ROCK THE TRAVEL BAG",
-          "price": "$756.37",
-          "source": "https://neyuhleather.com/"
-        },
-        {
-          "name": "THE OFFICE MEN BAG",
-          "price": "$548.37",
-          "source": "https://neyuhleather.com/"
-        },
-        {
-          "name": "THE WESTERN GUY TOTE",
-          "price": "$413.30",
-          "source": "https://neyuhleather.com/"
-        },
-        {
-          "name": "THE FAST MOVE CLUTCH",
-          "price": "$399.79",
-          "source": "https://neyuhleather.com/"
-        },
-        {
-          "name": "MED TOTE",
-          "price": "$275.54",
-          "source": "https://neyuhleather.com/"
-        },
-        {
-          "name": "SINGLE LEATHER WATCH BOX",
-          "price": "$162.50",
-          "source": "https://neyuhleather.com/"
-        },
-        {
-          "name": "LUXURY HANDWOVEN LAUNDRY & STORAGE BASKET",
-          "price": "$532.51",
-          "source": "https://neyuhleather.com/"
-        },
-        {
-          "name": "HANDCRAFTED ROUND LEATHER TRAY",
-          "price": "$351.00",
-          "source": "https://neyuhleather.com/"
-        },
-        {
-          "name": "HANDCRAFTED LEATHER TEA & COFFEE BOX WITH WOVEN LID",
-          "price": "$361.80",
-          "source": "https://neyuhleather.com/"
-        },
-        {
-          "name": "SET #1 - PASSPORT HOLDER"
-        }
-      ]
-    },
-    {
-      "name": {
-        "value": "Gallery de Neyuh",
-        "source": "https://neyuhleather.com/"
-      },
-      "summary": {
-        "value": "Premium handcrafted leather bags, home goods, and corporate gifts from Saigon, made by skilled artisans since 2008.",
-        "source": "https://neyuhleather.com/"
-      },
-      "category": "leather goods store",
-      "offerings": [
-        {
-          "name": "THE SEPTEMBER MINI TOTE",
-          "price": "$391.69",
-          "source": "https://neyuhleather.com/"
-        },
-        {
-          "name": "MARTHA BUCKET BAG",
-          "price": "$536.00",
-          "source": "https://neyuhleather.com/"
-        },
-        {
-          "name": "THE SAIGON CHIC CLUTCH",
-          "price": "$166.40",
-          "source": "https://neyuhleather.com/"
-        },
-        {
-          "name": "SAIGON ROCK THE TRAVEL BAG",
-          "price": "$756.37",
-          "source": "https://neyuhleather.com/"
-        },
-        {
-          "name": "THE OFFICE MEN BAG",
-          "price": "$548.37",
-          "source": "https://neyuhleather.com/"
-        },
-        {
-          "name": "THE WESTERN GUY TOTE",
-          "price": "$413.30",
-          "source": "https://neyuhleather.com/"
-        },
-        {
-          "name": "THE FAST MOVE CLUTCH",
-          "price": "$399.79",
-          "source": "https://neyuhleather.com/"
-        },
-        {
-          "name": "MED TOTE",
-          "price": "$275.54",
-          "source": "https://neyuhleather.com/"
-        },
-        {
-          "name": "SINGLE LEATHER WATCH BOX",
-          "price": "$162.50",
-          "source": "https://neyuhleather.com/"
-        },
-        {
-          "name": "LUXURY HANDWOVEN LAUNDRY & STORAGE BASKET",
-          "price": "$532.51",
-          "source": "https://neyuhleather.com/"
-        },
-        {
-          "name": "HANDCRAFTED ROUND LEATHER TRAY",
-          "price": "$351.00",
-          "source": "https://neyuhleather.com/"
-        },
-        {
-          "name": "HANDCRAFTED LEATHER TEA & COFFEE BOX WITH WOVEN LID",
-          "price": "$361.80",
-          "source": "https://neyuhleather.com/"
-        },
-        {
-          "name": "SET #1 - PASSPORT HOLDER & SLIM CARD WALLET",
-          "price": "$105.30"
-        }
-      ]
-    },
-    {
-      "name": {
-        "value": "Gallery de Neyuh",
-        "source": "https://neyuhleather.com/"
-      },
-      "summary": {
-        "value": "Premium handcrafted leather bags, home goods, and corporate gifts from Saigon, made by skilled artisans since 2008.",
-        "source": "https://neyuhleather.com/"
-      },
-      "category": "leather goods store",
-      "offerings": [
-        {
-          "name": "THE SEPTEMBER MINI TOTE",
-          "price": "$391.69",
-          "source": "https://neyuhleather.com/"
-        },
-        {
-          "name": "MARTHA BUCKET BAG",
-          "price": "$536.00",
-          "source": "https://neyuhleather.com/"
-        },
-        {
-          "name": "THE SAIGON CHIC CLUTCH",
-          "price": "$166.40",
-          "source": "https://neyuhleather.com/"
-        },
-        {
-          "name": "SAIGON ROCK THE TRAVEL BAG",
-          "price": "$756.37",
-          "source": "https://neyuhleather.com/"
-        },
-        {
-          "name": "THE OFFICE MEN BAG",
-          "price": "$548.37",
-          "source": "https://neyuhleather.com/"
-        },
-        {
-          "name": "THE WESTERN GUY TOTE",
-          "price": "$413.30",
-          "source": "https://neyuhleather.com/"
-        },
-        {
-          "name": "THE FAST MOVE CLUTCH",
-          "price": "$399.79",
-          "source": "https://neyuhleather.com/"
-        },
-        {
-          "name": "MED TOTE",
-          "price": "$275.54",
-          "source": "https://neyuhleather.com/"
-        },
-        {
-          "name": "SINGLE LEATHER WATCH BOX",
-          "price": "$162.50",
-          "source": "https://neyuhleather.com/"
-        },
-        {
-          "name": "LUXURY HANDWOVEN LAUNDRY & STORAGE BASKET",
-          "price": "$532.51",
-          "source": "https://neyuhleather.com/"
-        },
-        {
-          "name": "HANDCRAFTED ROUND LEATHER TRAY",
-          "price": "$351.00",
-          "source": "https://neyuhleather.com/"
-        },
-        {
-          "name": "HANDCRAFTED LEATHER TEA & COFFEE BOX WITH WOVEN LID",
-          "price": "$361.80",
-          "source": "https://neyuhleather.com/"
-        },
-        {
-          "name": "SET #1 - PASSPORT HOLDER & SLIM CARD WALLET",
-          "price": "$105.30",
-          "source": "https://neyuhleather.com/"
-        },
-        {
-          "name": "SET #"
-        }
-      ]
-    },
-    {
-      "name": {
-        "value": "Gallery de Neyuh",
-        "source": "https://neyuhleather.com/"
-      },
-      "summary": {
-        "value": "Premium handcrafted leather bags, home goods, and corporate gifts from Saigon, made by skilled artisans since 2008.",
-        "source": "https://neyuhleather.com/"
-      },
-      "category": "leather goods store",
-      "offerings": [
-        {
-          "name": "THE SEPTEMBER MINI TOTE",
-          "price": "$391.69",
-          "source": "https://neyuhleather.com/"
-        },
-        {
-          "name": "MARTHA BUCKET BAG",
-          "price": "$536.00",
-          "source": "https://neyuhleather.com/"
-        },
-        {
-          "name": "THE SAIGON CHIC CLUTCH",
-          "price": "$166.40",
-          "source": "https://neyuhleather.com/"
-        },
-        {
-          "name": "SAIGON ROCK THE TRAVEL BAG",
-          "price": "$756.37",
-          "source": "https://neyuhleather.com/"
-        },
-        {
-          "name": "THE OFFICE MEN BAG",
-          "price": "$548.37",
-          "source": "https://neyuhleather.com/"
-        },
-        {
-          "name": "THE WESTERN GUY TOTE",
-          "price": "$413.30",
-          "source": "https://neyuhleather.com/"
-        },
-        {
-          "name": "THE FAST MOVE CLUTCH",
-          "price": "$399.79",
-          "source": "https://neyuhleather.com/"
-        },
-        {
-          "name": "MED TOTE",
-          "price": "$275.54",
-          "source": "https://neyuhleather.com/"
-        },
-        {
-          "name": "SINGLE LEATHER WATCH BOX",
-          "price": "$162.50",
-          "source": "https://neyuhleather.com/"
-        },
-        {
-          "name": "LUXURY HANDWOVEN LAUNDRY & STORAGE BASKET",
-          "price": "$532.51",
-          "source": "https://neyuhleather.com/"
-        },
-        {
-          "name": "HANDCRAFTED ROUND LEATHER TRAY",
-          "price": "$351.00",
-          "source": "https://neyuhleather.com/"
-        },
-        {
-          "name": "HANDCRAFTED LEATHER TEA & COFFEE BOX WITH WOVEN LID",
-          "price": "$361.80",
-          "source": "https://neyuhleather.com/"
-        },
-        {
-          "name": "SET #1 - PASSPORT HOLDER & SLIM CARD WALLET",
-          "price": "$105.30",
-          "source": "https://neyuhleather.com/"
-        },
-        {
-          "name": "SET #2 - PASSPORT HOLDER & LUGGAGE TAG",
-          "price": "$105.30"
-        }
-      ]
-    },
-    {
-      "name": {
-        "value": "Gallery de Neyuh",
-        "source": "https://neyuhleather.com/"
-      },
-      "summary": {
-        "value": "Premium handcrafted leather bags, home goods, and corporate gifts from Saigon, made by skilled artisans since 2008.",
-        "source": "https://neyuhleather.com/"
-      },
-      "category": "leather goods store",
-      "offerings": [
-        {
-          "name": "THE SEPTEMBER MINI TOTE",
-          "price": "$391.69",
-          "source": "https://neyuhleather.com/"
-        },
-        {
-          "name": "MARTHA BUCKET BAG",
-          "price": "$536.00",
-          "source": "https://neyuhleather.com/"
-        },
-        {
-          "name": "THE SAIGON CHIC CLUTCH",
-          "price": "$166.40",
-          "source": "https://neyuhleather.com/"
-        },
-        {
-          "name": "SAIGON ROCK THE TRAVEL BAG",
-          "price": "$756.37",
-          "source": "https://neyuhleather.com/"
-        },
-        {
-          "name": "THE OFFICE MEN BAG",
-          "price": "$548.37",
-          "source": "https://neyuhleather.com/"
-        },
-        {
-          "name": "THE WESTERN GUY TOTE",
-          "price": "$413.30",
-          "source": "https://neyuhleather.com/"
-        },
-        {
-          "name": "THE FAST MOVE CLUTCH",
-          "price": "$399.79",
-          "source": "https://neyuhleather.com/"
-        },
-        {
-          "name": "MED TOTE",
-          "price": "$275.54",
-          "source": "https://neyuhleather.com/"
-        },
-        {
-          "name": "SINGLE LEATHER WATCH BOX",
-          "price": "$162.50",
-          "source": "https://neyuhleather.com/"
-        },
-        {
-          "name": "LUXURY HANDWOVEN LAUNDRY & STORAGE BASKET",
-          "price": "$532.51",
-          "source": "https://neyuhleather.com/"
-        },
-        {
-          "name": "HANDCRAFTED ROUND LEATHER TRAY",
-          "price": "$351.00",
-          "source": "https://neyuhleather.com/"
-        },
-        {
-          "name": "HANDCRAFTED LEATHER TEA & COFFEE BOX WITH WOVEN LID",
-          "price": "$361.80",
-          "source": "https://neyuhleather.com/"
-        },
-        {
-          "name": "SET #1 - PASSPORT HOLDER & SLIM CARD WALLET",
-          "price": "$105.30",
-          "source": "https://neyuhleather.com/"
-        },
-        {
-          "name": "SET #2 - PASSPORT HOLDER & LUGGAGE TAG",
-          "price": "$105.30",
-          "source": "https://neyuhleather.com/"
-        },
-        {
-          "name": "SET #"
-        }
-      ]
-    },
-    {
-      "name": {
-        "value": "Gallery de Neyuh",
-        "source": "https://neyuhleather.com/"
-      },
-      "summary": {
-        "value": "Premium handcrafted leather bags, home goods, and corporate gifts from Saigon, made by skilled artisans since 2008.",
-        "source": "https://neyuhleather.com/"
-      },
-      "category": "leather goods store",
-      "offerings": [
-        {
-          "name": "THE SEPTEMBER MINI TOTE",
-          "price": "$391.69",
-          "source": "https://neyuhleather.com/"
-        },
-        {
-          "name": "MARTHA BUCKET BAG",
-          "price": "$536.00",
-          "source": "https://neyuhleather.com/"
-        },
-        {
-          "name": "THE SAIGON CHIC CLUTCH",
-          "price": "$166.40",
-          "source": "https://neyuhleather.com/"
-        },
-        {
-          "name": "SAIGON ROCK THE TRAVEL BAG",
-          "price": "$756.37",
-          "source": "https://neyuhleather.com/"
-        },
-        {
-          "name": "THE OFFICE MEN BAG",
-          "price": "$548.37",
-          "source": "https://neyuhleather.com/"
-        },
-        {
-          "name": "THE WESTERN GUY TOTE",
-          "price": "$413.30",
-          "source": "https://neyuhleather.com/"
-        },
-        {
-          "name": "THE FAST MOVE CLUTCH",
-          "price": "$399.79",
-          "source": "https://neyuhleather.com/"
-        },
-        {
-          "name": "MED TOTE",
-          "price": "$275.54",
-          "source": "https://neyuhleather.com/"
-        },
-        {
-          "name": "SINGLE LEATHER WATCH BOX",
-          "price": "$162.50",
-          "source": "https://neyuhleather.com/"
-        },
-        {
-          "name": "LUXURY HANDWOVEN LAUNDRY & STORAGE BASKET",
-          "price": "$532.51",
-          "source": "https://neyuhleather.com/"
-        },
-        {
-          "name": "HANDCRAFTED ROUND LEATHER TRAY",
-          "price": "$351.00",
-          "source": "https://neyuhleather.com/"
-        },
-        {
-          "name": "HANDCRAFTED LEATHER TEA & COFFEE BOX WITH WOVEN LID",
-          "price": "$361.80",
-          "source": "https://neyuhleather.com/"
-        },
-        {
-          "name": "SET #1 - PASSPORT HOLDER & SLIM CARD WALLET",
-          "price": "$105.30",
-          "source": "https://neyuhleather.com/"
-        },
-        {
-          "name": "SET #2 - PASSPORT HOLDER & LUGGAGE TAG",
-          "price": "$105.30",
-          "source": "https://neyuhleather.com/"
-        },
-        {
-          "name": "SET #3 - PHONE WALLET AND LUGGAGE TAG",
-          "price": "$128.70"
-        }
-      ]
-    },
-    {
-      "name": {
-        "value": "Gallery de Neyuh",
-        "source": "https://neyuhleather.com/"
-      },
-      "summary": {
-        "value": "Premium handcrafted leather bags, home goods, and corporate gifts from Saigon, made by skilled artisans since 2008.",
+        "value": "Premium handcrafted leather bags, travel goods, home accessories and corporate gifts from Saigon.",
         "source": "https://neyuhleather.com/"
       },
       "category": "leather goods store",
@@ -1542,9 +1444,6 @@
           "name": "SET #3 - PHONE WALLET AND LUGGAGE TAG",
           "price": "$128.70",
           "source": "https://neyuhleather.com/"
-        },
-        {
-          "name": "SET #4"
         }
       ]
     },
@@ -1554,7 +1453,7 @@
         "source": "https://neyuhleather.com/"
       },
       "summary": {
-        "value": "Premium handcrafted leather bags, home goods, and corporate gifts from Saigon, made by skilled artisans since 2008.",
+        "value": "Premium handcrafted leather bags, travel goods, home accessories and corporate gifts from Saigon.",
         "source": "https://neyuhleather.com/"
       },
       "category": "leather goods store",
@@ -1636,8 +1535,7 @@
         },
         {
           "name": "SET #4 - NOTEBOOK & SLIM CARD WALLET",
-          "price": "$128.70",
-          "source": "https://neyuhleather.com/"
+          "price": "$1"
         }
       ]
     },
@@ -1647,7 +1545,7 @@
         "source": "https://neyuhleather.com/"
       },
       "summary": {
-        "value": "Premium handcrafted leather bags, home goods, and corporate gifts from Saigon, made by skilled artisans since 2008.",
+        "value": "Premium handcrafted leather bags, travel goods, home accessories and corporate gifts from Saigon.",
         "source": "https://neyuhleather.com/"
       },
       "category": "leather goods store",
@@ -1735,7 +1633,7 @@
       ],
       "highlights": [
         {
-          "value": "Fine leather from Saigon, crafted by hand since 2008"
+          "value": "Fine leather from Saigon, crafted by hand since 2"
         }
       ]
     },
@@ -1745,7 +1643,7 @@
         "source": "https://neyuhleather.com/"
       },
       "summary": {
-        "value": "Premium handcrafted leather bags, home goods, and corporate gifts from Saigon, made by skilled artisans since 2008.",
+        "value": "Premium handcrafted leather bags, travel goods, home accessories and corporate gifts from Saigon.",
         "source": "https://neyuhleather.com/"
       },
       "category": "leather goods store",
@@ -1833,7 +1731,7 @@
       ],
       "highlights": [
         {
-          "value": "Fine leather from Saigon, crafted by hand since 2008.",
+          "value": "Fine leather from Saigon, crafted by hand since 2008",
           "source": "https://neyuhleather.com/"
         },
         {}
@@ -1845,7 +1743,7 @@
         "source": "https://neyuhleather.com/"
       },
       "summary": {
-        "value": "Premium handcrafted leather bags, home goods, and corporate gifts from Saigon, made by skilled artisans since 2008.",
+        "value": "Premium handcrafted leather bags, travel goods, home accessories and corporate gifts from Saigon.",
         "source": "https://neyuhleather.com/"
       },
       "category": "leather goods store",
@@ -1933,12 +1831,12 @@
       ],
       "highlights": [
         {
-          "value": "Fine leather from Saigon, crafted by hand since 2008.",
+          "value": "Fine leather from Saigon, crafted by hand since 2008",
           "source": "https://neyuhleather.com/"
         },
         {
-          "value": "Free delivery on all orders within Vietnam.",
-          "source": "https://neyuhleather.com"
+          "value": "Free delivery on all orders within Vietnam",
+          "source": "https://neyuh"
         }
       ]
     },
@@ -1948,7 +1846,7 @@
         "source": "https://neyuhleather.com/"
       },
       "summary": {
-        "value": "Premium handcrafted leather bags, home goods, and corporate gifts from Saigon, made by skilled artisans since 2008.",
+        "value": "Premium handcrafted leather bags, travel goods, home accessories and corporate gifts from Saigon.",
         "source": "https://neyuhleather.com/"
       },
       "category": "leather goods store",
@@ -2036,121 +1934,15 @@
       ],
       "highlights": [
         {
-          "value": "Fine leather from Saigon, crafted by hand since 2008.",
+          "value": "Fine leather from Saigon, crafted by hand since 2008",
           "source": "https://neyuhleather.com/"
         },
         {
-          "value": "Free delivery on all orders within Vietnam.",
+          "value": "Free delivery on all orders within Vietnam",
           "source": "https://neyuhleather.com/"
         },
         {
-          "value": "Provide free worldwide shipping on all orders."
-        }
-      ]
-    },
-    {
-      "name": {
-        "value": "Gallery de Neyuh",
-        "source": "https://neyuhleather.com/"
-      },
-      "summary": {
-        "value": "Premium handcrafted leather bags, home goods, and corporate gifts from Saigon, made by skilled artisans since 2008.",
-        "source": "https://neyuhleather.com/"
-      },
-      "category": "leather goods store",
-      "offerings": [
-        {
-          "name": "THE SEPTEMBER MINI TOTE",
-          "price": "$391.69",
-          "source": "https://neyuhleather.com/"
-        },
-        {
-          "name": "MARTHA BUCKET BAG",
-          "price": "$536.00",
-          "source": "https://neyuhleather.com/"
-        },
-        {
-          "name": "THE SAIGON CHIC CLUTCH",
-          "price": "$166.40",
-          "source": "https://neyuhleather.com/"
-        },
-        {
-          "name": "SAIGON ROCK THE TRAVEL BAG",
-          "price": "$756.37",
-          "source": "https://neyuhleather.com/"
-        },
-        {
-          "name": "THE OFFICE MEN BAG",
-          "price": "$548.37",
-          "source": "https://neyuhleather.com/"
-        },
-        {
-          "name": "THE WESTERN GUY TOTE",
-          "price": "$413.30",
-          "source": "https://neyuhleather.com/"
-        },
-        {
-          "name": "THE FAST MOVE CLUTCH",
-          "price": "$399.79",
-          "source": "https://neyuhleather.com/"
-        },
-        {
-          "name": "MED TOTE",
-          "price": "$275.54",
-          "source": "https://neyuhleather.com/"
-        },
-        {
-          "name": "SINGLE LEATHER WATCH BOX",
-          "price": "$162.50",
-          "source": "https://neyuhleather.com/"
-        },
-        {
-          "name": "LUXURY HANDWOVEN LAUNDRY & STORAGE BASKET",
-          "price": "$532.51",
-          "source": "https://neyuhleather.com/"
-        },
-        {
-          "name": "HANDCRAFTED ROUND LEATHER TRAY",
-          "price": "$351.00",
-          "source": "https://neyuhleather.com/"
-        },
-        {
-          "name": "HANDCRAFTED LEATHER TEA & COFFEE BOX WITH WOVEN LID",
-          "price": "$361.80",
-          "source": "https://neyuhleather.com/"
-        },
-        {
-          "name": "SET #1 - PASSPORT HOLDER & SLIM CARD WALLET",
-          "price": "$105.30",
-          "source": "https://neyuhleather.com/"
-        },
-        {
-          "name": "SET #2 - PASSPORT HOLDER & LUGGAGE TAG",
-          "price": "$105.30",
-          "source": "https://neyuhleather.com/"
-        },
-        {
-          "name": "SET #3 - PHONE WALLET AND LUGGAGE TAG",
-          "price": "$128.70",
-          "source": "https://neyuhleather.com/"
-        },
-        {
-          "name": "SET #4 - NOTEBOOK & SLIM CARD WALLET",
-          "price": "$128.70",
-          "source": "https://neyuhleather.com/"
-        }
-      ],
-      "highlights": [
-        {
-          "value": "Fine leather from Saigon, crafted by hand since 2008.",
-          "source": "https://neyuhleather.com/"
-        },
-        {
-          "value": "Free delivery on all orders within Vietnam.",
-          "source": "https://neyuhleather.com/"
-        },
-        {
-          "value": "Provide free worldwide shipping on all orders.",
+          "value": "Free worldwide shipping on all orders",
           "source": "https://neyuhleather.com/pages/faqs"
         }
       ]
@@ -2161,7 +1953,7 @@
         "source": "https://neyuhleather.com/"
       },
       "summary": {
-        "value": "Premium handcrafted leather bags, home goods, and corporate gifts from Saigon, made by skilled artisans since 2008.",
+        "value": "Premium handcrafted leather bags, travel goods, home accessories and corporate gifts from Saigon.",
         "source": "https://neyuhleather.com/"
       },
       "category": "leather goods store",
@@ -2249,127 +2041,15 @@
       ],
       "highlights": [
         {
-          "value": "Fine leather from Saigon, crafted by hand since 2008.",
+          "value": "Fine leather from Saigon, crafted by hand since 2008",
           "source": "https://neyuhleather.com/"
         },
         {
-          "value": "Free delivery on all orders within Vietnam.",
+          "value": "Free delivery on all orders within Vietnam",
           "source": "https://neyuhleather.com/"
         },
         {
-          "value": "Provide free worldwide shipping on all orders.",
-          "source": "https://neyuhleather.com/pages/faqs"
-        }
-      ],
-      "location": {
-        "town": {
-          "value": "Ho Chi Minh City"
-        }
-      }
-    },
-    {
-      "name": {
-        "value": "Gallery de Neyuh",
-        "source": "https://neyuhleather.com/"
-      },
-      "summary": {
-        "value": "Premium handcrafted leather bags, home goods, and corporate gifts from Saigon, made by skilled artisans since 2008.",
-        "source": "https://neyuhleather.com/"
-      },
-      "category": "leather goods store",
-      "offerings": [
-        {
-          "name": "THE SEPTEMBER MINI TOTE",
-          "price": "$391.69",
-          "source": "https://neyuhleather.com/"
-        },
-        {
-          "name": "MARTHA BUCKET BAG",
-          "price": "$536.00",
-          "source": "https://neyuhleather.com/"
-        },
-        {
-          "name": "THE SAIGON CHIC CLUTCH",
-          "price": "$166.40",
-          "source": "https://neyuhleather.com/"
-        },
-        {
-          "name": "SAIGON ROCK THE TRAVEL BAG",
-          "price": "$756.37",
-          "source": "https://neyuhleather.com/"
-        },
-        {
-          "name": "THE OFFICE MEN BAG",
-          "price": "$548.37",
-          "source": "https://neyuhleather.com/"
-        },
-        {
-          "name": "THE WESTERN GUY TOTE",
-          "price": "$413.30",
-          "source": "https://neyuhleather.com/"
-        },
-        {
-          "name": "THE FAST MOVE CLUTCH",
-          "price": "$399.79",
-          "source": "https://neyuhleather.com/"
-        },
-        {
-          "name": "MED TOTE",
-          "price": "$275.54",
-          "source": "https://neyuhleather.com/"
-        },
-        {
-          "name": "SINGLE LEATHER WATCH BOX",
-          "price": "$162.50",
-          "source": "https://neyuhleather.com/"
-        },
-        {
-          "name": "LUXURY HANDWOVEN LAUNDRY & STORAGE BASKET",
-          "price": "$532.51",
-          "source": "https://neyuhleather.com/"
-        },
-        {
-          "name": "HANDCRAFTED ROUND LEATHER TRAY",
-          "price": "$351.00",
-          "source": "https://neyuhleather.com/"
-        },
-        {
-          "name": "HANDCRAFTED LEATHER TEA & COFFEE BOX WITH WOVEN LID",
-          "price": "$361.80",
-          "source": "https://neyuhleather.com/"
-        },
-        {
-          "name": "SET #1 - PASSPORT HOLDER & SLIM CARD WALLET",
-          "price": "$105.30",
-          "source": "https://neyuhleather.com/"
-        },
-        {
-          "name": "SET #2 - PASSPORT HOLDER & LUGGAGE TAG",
-          "price": "$105.30",
-          "source": "https://neyuhleather.com/"
-        },
-        {
-          "name": "SET #3 - PHONE WALLET AND LUGGAGE TAG",
-          "price": "$128.70",
-          "source": "https://neyuhleather.com/"
-        },
-        {
-          "name": "SET #4 - NOTEBOOK & SLIM CARD WALLET",
-          "price": "$128.70",
-          "source": "https://neyuhleather.com/"
-        }
-      ],
-      "highlights": [
-        {
-          "value": "Fine leather from Saigon, crafted by hand since 2008.",
-          "source": "https://neyuhleather.com/"
-        },
-        {
-          "value": "Free delivery on all orders within Vietnam.",
-          "source": "https://neyuhleather.com/"
-        },
-        {
-          "value": "Provide free worldwide shipping on all orders.",
+          "value": "Free worldwide shipping on all orders",
           "source": "https://neyuhleather.com/pages/faqs"
         }
       ],
@@ -2377,8 +2057,7 @@
         "town": {
           "value": "Ho Chi Minh City",
           "source": "https://neyuhleather.com/pages/contact"
-        },
-        "area": {}
+        }
       }
     },
     {
@@ -2387,7 +2066,7 @@
         "source": "https://neyuhleather.com/"
       },
       "summary": {
-        "value": "Premium handcrafted leather bags, home goods, and corporate gifts from Saigon, made by skilled artisans since 2008.",
+        "value": "Premium handcrafted leather bags, travel goods, home accessories and corporate gifts from Saigon.",
         "source": "https://neyuhleather.com/"
       },
       "category": "leather goods store",
@@ -2475,15 +2154,15 @@
       ],
       "highlights": [
         {
-          "value": "Fine leather from Saigon, crafted by hand since 2008.",
+          "value": "Fine leather from Saigon, crafted by hand since 2008",
           "source": "https://neyuhleather.com/"
         },
         {
-          "value": "Free delivery on all orders within Vietnam.",
+          "value": "Free delivery on all orders within Vietnam",
           "source": "https://neyuhleather.com/"
         },
         {
-          "value": "Provide free worldwide shipping on all orders.",
+          "value": "Free worldwide shipping on all orders",
           "source": "https://neyuhleather.com/pages/faqs"
         }
       ],
@@ -2493,8 +2172,8 @@
           "source": "https://neyuhleather.com/pages/contact"
         },
         "area": {
-          "value": "Ben Thanh Ward",
-          "source": "https://neyuhleather.com/"
+          "value": "Ben Thanh Ward (District 1)",
+          "source": "https://"
         }
       }
     },
@@ -2504,7 +2183,7 @@
         "source": "https://neyuhleather.com/"
       },
       "summary": {
-        "value": "Premium handcrafted leather bags, home goods, and corporate gifts from Saigon, made by skilled artisans since 2008.",
+        "value": "Premium handcrafted leather bags, travel goods, home accessories and corporate gifts from Saigon.",
         "source": "https://neyuhleather.com/"
       },
       "category": "leather goods store",
@@ -2592,15 +2271,15 @@
       ],
       "highlights": [
         {
-          "value": "Fine leather from Saigon, crafted by hand since 2008.",
+          "value": "Fine leather from Saigon, crafted by hand since 2008",
           "source": "https://neyuhleather.com/"
         },
         {
-          "value": "Free delivery on all orders within Vietnam.",
+          "value": "Free delivery on all orders within Vietnam",
           "source": "https://neyuhleather.com/"
         },
         {
-          "value": "Provide free worldwide shipping on all orders.",
+          "value": "Free worldwide shipping on all orders",
           "source": "https://neyuhleather.com/pages/faqs"
         }
       ],
@@ -2610,11 +2289,129 @@
           "source": "https://neyuhleather.com/pages/contact"
         },
         "area": {
-          "value": "Ben Thanh Ward",
+          "value": "Ben Thanh Ward (District 1)",
+          "source": "https://neyuhleather.com/pages/contact"
+        },
+        "address": {}
+      }
+    },
+    {
+      "name": {
+        "value": "Gallery de Neyuh",
+        "source": "https://neyuhleather.com/"
+      },
+      "summary": {
+        "value": "Premium handcrafted leather bags, travel goods, home accessories and corporate gifts from Saigon.",
+        "source": "https://neyuhleather.com/"
+      },
+      "category": "leather goods store",
+      "offerings": [
+        {
+          "name": "THE SEPTEMBER MINI TOTE",
+          "price": "$391.69",
+          "source": "https://neyuhleather.com/"
+        },
+        {
+          "name": "MARTHA BUCKET BAG",
+          "price": "$536.00",
+          "source": "https://neyuhleather.com/"
+        },
+        {
+          "name": "THE SAIGON CHIC CLUTCH",
+          "price": "$166.40",
+          "source": "https://neyuhleather.com/"
+        },
+        {
+          "name": "SAIGON ROCK THE TRAVEL BAG",
+          "price": "$756.37",
+          "source": "https://neyuhleather.com/"
+        },
+        {
+          "name": "THE OFFICE MEN BAG",
+          "price": "$548.37",
+          "source": "https://neyuhleather.com/"
+        },
+        {
+          "name": "THE WESTERN GUY TOTE",
+          "price": "$413.30",
+          "source": "https://neyuhleather.com/"
+        },
+        {
+          "name": "THE FAST MOVE CLUTCH",
+          "price": "$399.79",
+          "source": "https://neyuhleather.com/"
+        },
+        {
+          "name": "MED TOTE",
+          "price": "$275.54",
+          "source": "https://neyuhleather.com/"
+        },
+        {
+          "name": "SINGLE LEATHER WATCH BOX",
+          "price": "$162.50",
+          "source": "https://neyuhleather.com/"
+        },
+        {
+          "name": "LUXURY HANDWOVEN LAUNDRY & STORAGE BASKET",
+          "price": "$532.51",
+          "source": "https://neyuhleather.com/"
+        },
+        {
+          "name": "HANDCRAFTED ROUND LEATHER TRAY",
+          "price": "$351.00",
+          "source": "https://neyuhleather.com/"
+        },
+        {
+          "name": "HANDCRAFTED LEATHER TEA & COFFEE BOX WITH WOVEN LID",
+          "price": "$361.80",
+          "source": "https://neyuhleather.com/"
+        },
+        {
+          "name": "SET #1 - PASSPORT HOLDER & SLIM CARD WALLET",
+          "price": "$105.30",
+          "source": "https://neyuhleather.com/"
+        },
+        {
+          "name": "SET #2 - PASSPORT HOLDER & LUGGAGE TAG",
+          "price": "$105.30",
+          "source": "https://neyuhleather.com/"
+        },
+        {
+          "name": "SET #3 - PHONE WALLET AND LUGGAGE TAG",
+          "price": "$128.70",
+          "source": "https://neyuhleather.com/"
+        },
+        {
+          "name": "SET #4 - NOTEBOOK & SLIM CARD WALLET",
+          "price": "$128.70",
+          "source": "https://neyuhleather.com/"
+        }
+      ],
+      "highlights": [
+        {
+          "value": "Fine leather from Saigon, crafted by hand since 2008",
+          "source": "https://neyuhleather.com/"
+        },
+        {
+          "value": "Free delivery on all orders within Vietnam",
+          "source": "https://neyuhleather.com/"
+        },
+        {
+          "value": "Free worldwide shipping on all orders",
+          "source": "https://neyuhleather.com/pages/faqs"
+        }
+      ],
+      "location": {
+        "town": {
+          "value": "Ho Chi Minh City",
+          "source": "https://neyuhleather.com/pages/contact"
+        },
+        "area": {
+          "value": "Ben Thanh Ward (District 1)",
           "source": "https://neyuhleather.com/pages/contact"
         },
         "address": {
-          "value": "168 Ly Tu"
+          "value": "168 Ly Tu Trong, Ben Thanh Ward (District 1), Ho Chi Minh City, Vietnam"
         }
       }
     },
@@ -2624,7 +2421,7 @@
         "source": "https://neyuhleather.com/"
       },
       "summary": {
-        "value": "Premium handcrafted leather bags, home goods, and corporate gifts from Saigon, made by skilled artisans since 2008.",
+        "value": "Premium handcrafted leather bags, travel goods, home accessories and corporate gifts from Saigon.",
         "source": "https://neyuhleather.com/"
       },
       "category": "leather goods store",
@@ -2712,15 +2509,15 @@
       ],
       "highlights": [
         {
-          "value": "Fine leather from Saigon, crafted by hand since 2008.",
+          "value": "Fine leather from Saigon, crafted by hand since 2008",
           "source": "https://neyuhleather.com/"
         },
         {
-          "value": "Free delivery on all orders within Vietnam.",
+          "value": "Free delivery on all orders within Vietnam",
           "source": "https://neyuhleather.com/"
         },
         {
-          "value": "Provide free worldwide shipping on all orders.",
+          "value": "Free worldwide shipping on all orders",
           "source": "https://neyuhleather.com/pages/faqs"
         }
       ],
@@ -2730,135 +2527,13 @@
           "source": "https://neyuhleather.com/pages/contact"
         },
         "area": {
-          "value": "Ben Thanh Ward",
-          "source": "https://neyuhleather.com/pages/contact"
-        },
-        "address": {
-          "value": "168 Ly Tu Trong, Ben Thanh Ward (District 1), Ho Chi Minh City, Vietnam",
-          "source": "https://ney"
-        }
-      }
-    },
-    {
-      "name": {
-        "value": "Gallery de Neyuh",
-        "source": "https://neyuhleather.com/"
-      },
-      "summary": {
-        "value": "Premium handcrafted leather bags, home goods, and corporate gifts from Saigon, made by skilled artisans since 2008.",
-        "source": "https://neyuhleather.com/"
-      },
-      "category": "leather goods store",
-      "offerings": [
-        {
-          "name": "THE SEPTEMBER MINI TOTE",
-          "price": "$391.69",
-          "source": "https://neyuhleather.com/"
-        },
-        {
-          "name": "MARTHA BUCKET BAG",
-          "price": "$536.00",
-          "source": "https://neyuhleather.com/"
-        },
-        {
-          "name": "THE SAIGON CHIC CLUTCH",
-          "price": "$166.40",
-          "source": "https://neyuhleather.com/"
-        },
-        {
-          "name": "SAIGON ROCK THE TRAVEL BAG",
-          "price": "$756.37",
-          "source": "https://neyuhleather.com/"
-        },
-        {
-          "name": "THE OFFICE MEN BAG",
-          "price": "$548.37",
-          "source": "https://neyuhleather.com/"
-        },
-        {
-          "name": "THE WESTERN GUY TOTE",
-          "price": "$413.30",
-          "source": "https://neyuhleather.com/"
-        },
-        {
-          "name": "THE FAST MOVE CLUTCH",
-          "price": "$399.79",
-          "source": "https://neyuhleather.com/"
-        },
-        {
-          "name": "MED TOTE",
-          "price": "$275.54",
-          "source": "https://neyuhleather.com/"
-        },
-        {
-          "name": "SINGLE LEATHER WATCH BOX",
-          "price": "$162.50",
-          "source": "https://neyuhleather.com/"
-        },
-        {
-          "name": "LUXURY HANDWOVEN LAUNDRY & STORAGE BASKET",
-          "price": "$532.51",
-          "source": "https://neyuhleather.com/"
-        },
-        {
-          "name": "HANDCRAFTED ROUND LEATHER TRAY",
-          "price": "$351.00",
-          "source": "https://neyuhleather.com/"
-        },
-        {
-          "name": "HANDCRAFTED LEATHER TEA & COFFEE BOX WITH WOVEN LID",
-          "price": "$361.80",
-          "source": "https://neyuhleather.com/"
-        },
-        {
-          "name": "SET #1 - PASSPORT HOLDER & SLIM CARD WALLET",
-          "price": "$105.30",
-          "source": "https://neyuhleather.com/"
-        },
-        {
-          "name": "SET #2 - PASSPORT HOLDER & LUGGAGE TAG",
-          "price": "$105.30",
-          "source": "https://neyuhleather.com/"
-        },
-        {
-          "name": "SET #3 - PHONE WALLET AND LUGGAGE TAG",
-          "price": "$128.70",
-          "source": "https://neyuhleather.com/"
-        },
-        {
-          "name": "SET #4 - NOTEBOOK & SLIM CARD WALLET",
-          "price": "$128.70",
-          "source": "https://neyuhleather.com/"
-        }
-      ],
-      "highlights": [
-        {
-          "value": "Fine leather from Saigon, crafted by hand since 2008.",
-          "source": "https://neyuhleather.com/"
-        },
-        {
-          "value": "Free delivery on all orders within Vietnam.",
-          "source": "https://neyuhleather.com/"
-        },
-        {
-          "value": "Provide free worldwide shipping on all orders.",
-          "source": "https://neyuhleather.com/pages/faqs"
-        }
-      ],
-      "location": {
-        "town": {
-          "value": "Ho Chi Minh City",
-          "source": "https://neyuhleather.com/pages/contact"
-        },
-        "area": {
-          "value": "Ben Thanh Ward",
+          "value": "Ben Thanh Ward (District 1)",
           "source": "https://neyuhleather.com/pages/contact"
         },
         "address": {
           "value": "168 Ly Tu Trong, Ben Thanh Ward (District 1), Ho Chi Minh City, Vietnam",
           "source": "https://neyuhleather.com/pages/contact"
-        },
-        "serviceArea": null
+        }
       }
     },
     {
@@ -2867,7 +2542,7 @@
         "source": "https://neyuhleather.com/"
       },
       "summary": {
-        "value": "Premium handcrafted leather bags, home goods, and corporate gifts from Saigon, made by skilled artisans since 2008.",
+        "value": "Premium handcrafted leather bags, travel goods, home accessories and corporate gifts from Saigon.",
         "source": "https://neyuhleather.com/"
       },
       "category": "leather goods store",
@@ -2955,15 +2630,15 @@
       ],
       "highlights": [
         {
-          "value": "Fine leather from Saigon, crafted by hand since 2008.",
+          "value": "Fine leather from Saigon, crafted by hand since 2008",
           "source": "https://neyuhleather.com/"
         },
         {
-          "value": "Free delivery on all orders within Vietnam.",
+          "value": "Free delivery on all orders within Vietnam",
           "source": "https://neyuhleather.com/"
         },
         {
-          "value": "Provide free worldwide shipping on all orders.",
+          "value": "Free worldwide shipping on all orders",
           "source": "https://neyuhleather.com/pages/faqs"
         }
       ],
@@ -2973,7 +2648,7 @@
           "source": "https://neyuhleather.com/pages/contact"
         },
         "area": {
-          "value": "Ben Thanh Ward",
+          "value": "Ben Thanh Ward (District 1)",
           "source": "https://neyuhleather.com/pages/contact"
         },
         "address": {
@@ -2984,7 +2659,7 @@
       },
       "contact": {
         "whatsapp": {
-          "value": "+84 358 3"
+          "value": "843583"
         }
       }
     },
@@ -2994,7 +2669,7 @@
         "source": "https://neyuhleather.com/"
       },
       "summary": {
-        "value": "Premium handcrafted leather bags, home goods, and corporate gifts from Saigon, made by skilled artisans since 2008.",
+        "value": "Premium handcrafted leather bags, travel goods, home accessories and corporate gifts from Saigon.",
         "source": "https://neyuhleather.com/"
       },
       "category": "leather goods store",
@@ -3082,15 +2757,15 @@
       ],
       "highlights": [
         {
-          "value": "Fine leather from Saigon, crafted by hand since 2008.",
+          "value": "Fine leather from Saigon, crafted by hand since 2008",
           "source": "https://neyuhleather.com/"
         },
         {
-          "value": "Free delivery on all orders within Vietnam.",
+          "value": "Free delivery on all orders within Vietnam",
           "source": "https://neyuhleather.com/"
         },
         {
-          "value": "Provide free worldwide shipping on all orders.",
+          "value": "Free worldwide shipping on all orders",
           "source": "https://neyuhleather.com/pages/faqs"
         }
       ],
@@ -3100,7 +2775,7 @@
           "source": "https://neyuhleather.com/pages/contact"
         },
         "area": {
-          "value": "Ben Thanh Ward",
+          "value": "Ben Thanh Ward (District 1)",
           "source": "https://neyuhleather.com/pages/contact"
         },
         "address": {
@@ -3111,7 +2786,7 @@
       },
       "contact": {
         "whatsapp": {
-          "value": "+84 358 358 353",
+          "value": "84358358353",
           "source": "https://neyuhleather.com/pages/contact"
         }
       }
@@ -3122,7 +2797,7 @@
         "source": "https://neyuhleather.com/"
       },
       "summary": {
-        "value": "Premium handcrafted leather bags, home goods, and corporate gifts from Saigon, made by skilled artisans since 2008.",
+        "value": "Premium handcrafted leather bags, travel goods, home accessories and corporate gifts from Saigon.",
         "source": "https://neyuhleather.com/"
       },
       "category": "leather goods store",
@@ -3210,15 +2885,15 @@
       ],
       "highlights": [
         {
-          "value": "Fine leather from Saigon, crafted by hand since 2008.",
+          "value": "Fine leather from Saigon, crafted by hand since 2008",
           "source": "https://neyuhleather.com/"
         },
         {
-          "value": "Free delivery on all orders within Vietnam.",
+          "value": "Free delivery on all orders within Vietnam",
           "source": "https://neyuhleather.com/"
         },
         {
-          "value": "Provide free worldwide shipping on all orders.",
+          "value": "Free worldwide shipping on all orders",
           "source": "https://neyuhleather.com/pages/faqs"
         }
       ],
@@ -3228,7 +2903,7 @@
           "source": "https://neyuhleather.com/pages/contact"
         },
         "area": {
-          "value": "Ben Thanh Ward",
+          "value": "Ben Thanh Ward (District 1)",
           "source": "https://neyuhleather.com/pages/contact"
         },
         "address": {
@@ -3239,11 +2914,11 @@
       },
       "contact": {
         "whatsapp": {
-          "value": "+84 358 358 353",
+          "value": "84358358353",
           "source": "https://neyuhleather.com/pages/contact"
         },
         "phone": {
-          "value": "+84 358 3"
+          "value": "+84 358 35"
         }
       }
     },
@@ -3253,7 +2928,7 @@
         "source": "https://neyuhleather.com/"
       },
       "summary": {
-        "value": "Premium handcrafted leather bags, home goods, and corporate gifts from Saigon, made by skilled artisans since 2008.",
+        "value": "Premium handcrafted leather bags, travel goods, home accessories and corporate gifts from Saigon.",
         "source": "https://neyuhleather.com/"
       },
       "category": "leather goods store",
@@ -3341,15 +3016,15 @@
       ],
       "highlights": [
         {
-          "value": "Fine leather from Saigon, crafted by hand since 2008.",
+          "value": "Fine leather from Saigon, crafted by hand since 2008",
           "source": "https://neyuhleather.com/"
         },
         {
-          "value": "Free delivery on all orders within Vietnam.",
+          "value": "Free delivery on all orders within Vietnam",
           "source": "https://neyuhleather.com/"
         },
         {
-          "value": "Provide free worldwide shipping on all orders.",
+          "value": "Free worldwide shipping on all orders",
           "source": "https://neyuhleather.com/pages/faqs"
         }
       ],
@@ -3359,7 +3034,7 @@
           "source": "https://neyuhleather.com/pages/contact"
         },
         "area": {
-          "value": "Ben Thanh Ward",
+          "value": "Ben Thanh Ward (District 1)",
           "source": "https://neyuhleather.com/pages/contact"
         },
         "address": {
@@ -3370,7 +3045,7 @@
       },
       "contact": {
         "whatsapp": {
-          "value": "+84 358 358 353",
+          "value": "84358358353",
           "source": "https://neyuhleather.com/pages/contact"
         },
         "phone": {
@@ -3385,7 +3060,7 @@
         "source": "https://neyuhleather.com/"
       },
       "summary": {
-        "value": "Premium handcrafted leather bags, home goods, and corporate gifts from Saigon, made by skilled artisans since 2008.",
+        "value": "Premium handcrafted leather bags, travel goods, home accessories and corporate gifts from Saigon.",
         "source": "https://neyuhleather.com/"
       },
       "category": "leather goods store",
@@ -3473,15 +3148,15 @@
       ],
       "highlights": [
         {
-          "value": "Fine leather from Saigon, crafted by hand since 2008.",
+          "value": "Fine leather from Saigon, crafted by hand since 2008",
           "source": "https://neyuhleather.com/"
         },
         {
-          "value": "Free delivery on all orders within Vietnam.",
+          "value": "Free delivery on all orders within Vietnam",
           "source": "https://neyuhleather.com/"
         },
         {
-          "value": "Provide free worldwide shipping on all orders.",
+          "value": "Free worldwide shipping on all orders",
           "source": "https://neyuhleather.com/pages/faqs"
         }
       ],
@@ -3491,7 +3166,7 @@
           "source": "https://neyuhleather.com/pages/contact"
         },
         "area": {
-          "value": "Ben Thanh Ward",
+          "value": "Ben Thanh Ward (District 1)",
           "source": "https://neyuhleather.com/pages/contact"
         },
         "address": {
@@ -3502,142 +3177,7 @@
       },
       "contact": {
         "whatsapp": {
-          "value": "+84 358 358 353",
-          "source": "https://neyuhleather.com/pages/contact"
-        },
-        "phone": {
-          "value": "+84 358 358 353",
-          "source": "https://neyuhleather.com/pages/contact"
-        },
-        "email": {
-          "value": "cs@neyuhleather.com"
-        }
-      }
-    },
-    {
-      "name": {
-        "value": "Gallery de Neyuh",
-        "source": "https://neyuhleather.com/"
-      },
-      "summary": {
-        "value": "Premium handcrafted leather bags, home goods, and corporate gifts from Saigon, made by skilled artisans since 2008.",
-        "source": "https://neyuhleather.com/"
-      },
-      "category": "leather goods store",
-      "offerings": [
-        {
-          "name": "THE SEPTEMBER MINI TOTE",
-          "price": "$391.69",
-          "source": "https://neyuhleather.com/"
-        },
-        {
-          "name": "MARTHA BUCKET BAG",
-          "price": "$536.00",
-          "source": "https://neyuhleather.com/"
-        },
-        {
-          "name": "THE SAIGON CHIC CLUTCH",
-          "price": "$166.40",
-          "source": "https://neyuhleather.com/"
-        },
-        {
-          "name": "SAIGON ROCK THE TRAVEL BAG",
-          "price": "$756.37",
-          "source": "https://neyuhleather.com/"
-        },
-        {
-          "name": "THE OFFICE MEN BAG",
-          "price": "$548.37",
-          "source": "https://neyuhleather.com/"
-        },
-        {
-          "name": "THE WESTERN GUY TOTE",
-          "price": "$413.30",
-          "source": "https://neyuhleather.com/"
-        },
-        {
-          "name": "THE FAST MOVE CLUTCH",
-          "price": "$399.79",
-          "source": "https://neyuhleather.com/"
-        },
-        {
-          "name": "MED TOTE",
-          "price": "$275.54",
-          "source": "https://neyuhleather.com/"
-        },
-        {
-          "name": "SINGLE LEATHER WATCH BOX",
-          "price": "$162.50",
-          "source": "https://neyuhleather.com/"
-        },
-        {
-          "name": "LUXURY HANDWOVEN LAUNDRY & STORAGE BASKET",
-          "price": "$532.51",
-          "source": "https://neyuhleather.com/"
-        },
-        {
-          "name": "HANDCRAFTED ROUND LEATHER TRAY",
-          "price": "$351.00",
-          "source": "https://neyuhleather.com/"
-        },
-        {
-          "name": "HANDCRAFTED LEATHER TEA & COFFEE BOX WITH WOVEN LID",
-          "price": "$361.80",
-          "source": "https://neyuhleather.com/"
-        },
-        {
-          "name": "SET #1 - PASSPORT HOLDER & SLIM CARD WALLET",
-          "price": "$105.30",
-          "source": "https://neyuhleather.com/"
-        },
-        {
-          "name": "SET #2 - PASSPORT HOLDER & LUGGAGE TAG",
-          "price": "$105.30",
-          "source": "https://neyuhleather.com/"
-        },
-        {
-          "name": "SET #3 - PHONE WALLET AND LUGGAGE TAG",
-          "price": "$128.70",
-          "source": "https://neyuhleather.com/"
-        },
-        {
-          "name": "SET #4 - NOTEBOOK & SLIM CARD WALLET",
-          "price": "$128.70",
-          "source": "https://neyuhleather.com/"
-        }
-      ],
-      "highlights": [
-        {
-          "value": "Fine leather from Saigon, crafted by hand since 2008.",
-          "source": "https://neyuhleather.com/"
-        },
-        {
-          "value": "Free delivery on all orders within Vietnam.",
-          "source": "https://neyuhleather.com/"
-        },
-        {
-          "value": "Provide free worldwide shipping on all orders.",
-          "source": "https://neyuhleather.com/pages/faqs"
-        }
-      ],
-      "location": {
-        "town": {
-          "value": "Ho Chi Minh City",
-          "source": "https://neyuhleather.com/pages/contact"
-        },
-        "area": {
-          "value": "Ben Thanh Ward",
-          "source": "https://neyuhleather.com/pages/contact"
-        },
-        "address": {
-          "value": "168 Ly Tu Trong, Ben Thanh Ward (District 1), Ho Chi Minh City, Vietnam",
-          "source": "https://neyuhleather.com/pages/contact"
-        },
-        "serviceArea": null
-      },
-      "contact": {
-        "whatsapp": {
-          "value": "+84 358 358 353",
+          "value": "84358358353",
           "source": "https://neyuhleather.com/pages/contact"
         },
         "phone": {
@@ -3656,7 +3196,7 @@
         "source": "https://neyuhleather.com/"
       },
       "summary": {
-        "value": "Premium handcrafted leather bags, home goods, and corporate gifts from Saigon, made by skilled artisans since 2008.",
+        "value": "Premium handcrafted leather bags, travel goods, home accessories and corporate gifts from Saigon.",
         "source": "https://neyuhleather.com/"
       },
       "category": "leather goods store",
@@ -3744,15 +3284,15 @@
       ],
       "highlights": [
         {
-          "value": "Fine leather from Saigon, crafted by hand since 2008.",
+          "value": "Fine leather from Saigon, crafted by hand since 2008",
           "source": "https://neyuhleather.com/"
         },
         {
-          "value": "Free delivery on all orders within Vietnam.",
+          "value": "Free delivery on all orders within Vietnam",
           "source": "https://neyuhleather.com/"
         },
         {
-          "value": "Provide free worldwide shipping on all orders.",
+          "value": "Free worldwide shipping on all orders",
           "source": "https://neyuhleather.com/pages/faqs"
         }
       ],
@@ -3762,7 +3302,7 @@
           "source": "https://neyuhleather.com/pages/contact"
         },
         "area": {
-          "value": "Ben Thanh Ward",
+          "value": "Ben Thanh Ward (District 1)",
           "source": "https://neyuhleather.com/pages/contact"
         },
         "address": {
@@ -3773,7 +3313,7 @@
       },
       "contact": {
         "whatsapp": {
-          "value": "+84 358 358 353",
+          "value": "84358358353",
           "source": "https://neyuhleather.com/pages/contact"
         },
         "phone": {
@@ -3786,7 +3326,7 @@
         },
         "instagram": {
           "value": "neyuhbag",
-          "source": "https://neyuhleather"
+          "source": "https://neyuhleather."
         }
       }
     },
@@ -3796,7 +3336,7 @@
         "source": "https://neyuhleather.com/"
       },
       "summary": {
-        "value": "Premium handcrafted leather bags, home goods, and corporate gifts from Saigon, made by skilled artisans since 2008.",
+        "value": "Premium handcrafted leather bags, travel goods, home accessories and corporate gifts from Saigon.",
         "source": "https://neyuhleather.com/"
       },
       "category": "leather goods store",
@@ -3884,15 +3424,15 @@
       ],
       "highlights": [
         {
-          "value": "Fine leather from Saigon, crafted by hand since 2008.",
+          "value": "Fine leather from Saigon, crafted by hand since 2008",
           "source": "https://neyuhleather.com/"
         },
         {
-          "value": "Free delivery on all orders within Vietnam.",
+          "value": "Free delivery on all orders within Vietnam",
           "source": "https://neyuhleather.com/"
         },
         {
-          "value": "Provide free worldwide shipping on all orders.",
+          "value": "Free worldwide shipping on all orders",
           "source": "https://neyuhleather.com/pages/faqs"
         }
       ],
@@ -3902,7 +3442,7 @@
           "source": "https://neyuhleather.com/pages/contact"
         },
         "area": {
-          "value": "Ben Thanh Ward",
+          "value": "Ben Thanh Ward (District 1)",
           "source": "https://neyuhleather.com/pages/contact"
         },
         "address": {
@@ -3913,7 +3453,7 @@
       },
       "contact": {
         "whatsapp": {
-          "value": "+84 358 358 353",
+          "value": "84358358353",
           "source": "https://neyuhleather.com/pages/contact"
         },
         "phone": {
@@ -3938,7 +3478,7 @@
         "source": "https://neyuhleather.com/"
       },
       "summary": {
-        "value": "Premium handcrafted leather bags, home goods, and corporate gifts from Saigon, made by skilled artisans since 2008.",
+        "value": "Premium handcrafted leather bags, travel goods, home accessories and corporate gifts from Saigon.",
         "source": "https://neyuhleather.com/"
       },
       "category": "leather goods store",
@@ -4026,15 +3566,15 @@
       ],
       "highlights": [
         {
-          "value": "Fine leather from Saigon, crafted by hand since 2008.",
+          "value": "Fine leather from Saigon, crafted by hand since 2008",
           "source": "https://neyuhleather.com/"
         },
         {
-          "value": "Free delivery on all orders within Vietnam.",
+          "value": "Free delivery on all orders within Vietnam",
           "source": "https://neyuhleather.com/"
         },
         {
-          "value": "Provide free worldwide shipping on all orders.",
+          "value": "Free worldwide shipping on all orders",
           "source": "https://neyuhleather.com/pages/faqs"
         }
       ],
@@ -4044,7 +3584,7 @@
           "source": "https://neyuhleather.com/pages/contact"
         },
         "area": {
-          "value": "Ben Thanh Ward",
+          "value": "Ben Thanh Ward (District 1)",
           "source": "https://neyuhleather.com/pages/contact"
         },
         "address": {
@@ -4055,7 +3595,7 @@
       },
       "contact": {
         "whatsapp": {
-          "value": "+84 358 358 353",
+          "value": "84358358353",
           "source": "https://neyuhleather.com/pages/contact"
         },
         "phone": {
@@ -4082,7 +3622,7 @@
         "source": "https://neyuhleather.com/"
       },
       "summary": {
-        "value": "Premium handcrafted leather bags, home goods, and corporate gifts from Saigon, made by skilled artisans since 2008.",
+        "value": "Premium handcrafted leather bags, travel goods, home accessories and corporate gifts from Saigon.",
         "source": "https://neyuhleather.com/"
       },
       "category": "leather goods store",
@@ -4170,15 +3710,15 @@
       ],
       "highlights": [
         {
-          "value": "Fine leather from Saigon, crafted by hand since 2008.",
+          "value": "Fine leather from Saigon, crafted by hand since 2008",
           "source": "https://neyuhleather.com/"
         },
         {
-          "value": "Free delivery on all orders within Vietnam.",
+          "value": "Free delivery on all orders within Vietnam",
           "source": "https://neyuhleather.com/"
         },
         {
-          "value": "Provide free worldwide shipping on all orders.",
+          "value": "Free worldwide shipping on all orders",
           "source": "https://neyuhleather.com/pages/faqs"
         }
       ],
@@ -4188,7 +3728,7 @@
           "source": "https://neyuhleather.com/pages/contact"
         },
         "area": {
-          "value": "Ben Thanh Ward",
+          "value": "Ben Thanh Ward (District 1)",
           "source": "https://neyuhleather.com/pages/contact"
         },
         "address": {
@@ -4199,7 +3739,7 @@
       },
       "contact": {
         "whatsapp": {
-          "value": "+84 358 358 353",
+          "value": "84358358353",
           "source": "https://neyuhleather.com/pages/contact"
         },
         "phone": {
@@ -4227,7 +3767,7 @@
         "source": "https://neyuhleather.com/"
       },
       "summary": {
-        "value": "Premium handcrafted leather bags, home goods, and corporate gifts from Saigon, made by skilled artisans since 2008.",
+        "value": "Premium handcrafted leather bags, travel goods, home accessories and corporate gifts from Saigon.",
         "source": "https://neyuhleather.com/"
       },
       "category": "leather goods store",
@@ -4315,15 +3855,15 @@
       ],
       "highlights": [
         {
-          "value": "Fine leather from Saigon, crafted by hand since 2008.",
+          "value": "Fine leather from Saigon, crafted by hand since 2008",
           "source": "https://neyuhleather.com/"
         },
         {
-          "value": "Free delivery on all orders within Vietnam.",
+          "value": "Free delivery on all orders within Vietnam",
           "source": "https://neyuhleather.com/"
         },
         {
-          "value": "Provide free worldwide shipping on all orders.",
+          "value": "Free worldwide shipping on all orders",
           "source": "https://neyuhleather.com/pages/faqs"
         }
       ],
@@ -4333,7 +3873,7 @@
           "source": "https://neyuhleather.com/pages/contact"
         },
         "area": {
-          "value": "Ben Thanh Ward",
+          "value": "Ben Thanh Ward (District 1)",
           "source": "https://neyuhleather.com/pages/contact"
         },
         "address": {
@@ -4344,7 +3884,7 @@
       },
       "contact": {
         "whatsapp": {
-          "value": "+84 358 358 353",
+          "value": "84358358353",
           "source": "https://neyuhleather.com/pages/contact"
         },
         "phone": {
@@ -4366,7 +3906,6 @@
         "source": "https://neyuhleather.com/pages/contact"
       },
       "tone": [
-        "professional",
         "sophisticated",
         "warm"
       ]
@@ -4377,7 +3916,7 @@
         "source": "https://neyuhleather.com/"
       },
       "summary": {
-        "value": "Premium handcrafted leather bags, home goods, and corporate gifts from Saigon, made by skilled artisans since 2008.",
+        "value": "Premium handcrafted leather bags, travel goods, home accessories and corporate gifts from Saigon.",
         "source": "https://neyuhleather.com/"
       },
       "category": "leather goods store",
@@ -4465,15 +4004,15 @@
       ],
       "highlights": [
         {
-          "value": "Fine leather from Saigon, crafted by hand since 2008.",
+          "value": "Fine leather from Saigon, crafted by hand since 2008",
           "source": "https://neyuhleather.com/"
         },
         {
-          "value": "Free delivery on all orders within Vietnam.",
+          "value": "Free delivery on all orders within Vietnam",
           "source": "https://neyuhleather.com/"
         },
         {
-          "value": "Provide free worldwide shipping on all orders.",
+          "value": "Free worldwide shipping on all orders",
           "source": "https://neyuhleather.com/pages/faqs"
         }
       ],
@@ -4483,7 +4022,7 @@
           "source": "https://neyuhleather.com/pages/contact"
         },
         "area": {
-          "value": "Ben Thanh Ward",
+          "value": "Ben Thanh Ward (District 1)",
           "source": "https://neyuhleather.com/pages/contact"
         },
         "address": {
@@ -4494,7 +4033,7 @@
       },
       "contact": {
         "whatsapp": {
-          "value": "+84 358 358 353",
+          "value": "84358358353",
           "source": "https://neyuhleather.com/pages/contact"
         },
         "phone": {
@@ -4516,497 +4055,12 @@
         "source": "https://neyuhleather.com/pages/contact"
       },
       "tone": [
-        "professional",
         "sophisticated",
         "warm",
-        "reassuring"
-      ],
-      "colours": [
-        {
-          "hex": "#c6"
-        }
-      ]
-    },
-    {
-      "name": {
-        "value": "Gallery de Neyuh",
-        "source": "https://neyuhleather.com/"
-      },
-      "summary": {
-        "value": "Premium handcrafted leather bags, home goods, and corporate gifts from Saigon, made by skilled artisans since 2008.",
-        "source": "https://neyuhleather.com/"
-      },
-      "category": "leather goods store",
-      "offerings": [
-        {
-          "name": "THE SEPTEMBER MINI TOTE",
-          "price": "$391.69",
-          "source": "https://neyuhleather.com/"
-        },
-        {
-          "name": "MARTHA BUCKET BAG",
-          "price": "$536.00",
-          "source": "https://neyuhleather.com/"
-        },
-        {
-          "name": "THE SAIGON CHIC CLUTCH",
-          "price": "$166.40",
-          "source": "https://neyuhleather.com/"
-        },
-        {
-          "name": "SAIGON ROCK THE TRAVEL BAG",
-          "price": "$756.37",
-          "source": "https://neyuhleather.com/"
-        },
-        {
-          "name": "THE OFFICE MEN BAG",
-          "price": "$548.37",
-          "source": "https://neyuhleather.com/"
-        },
-        {
-          "name": "THE WESTERN GUY TOTE",
-          "price": "$413.30",
-          "source": "https://neyuhleather.com/"
-        },
-        {
-          "name": "THE FAST MOVE CLUTCH",
-          "price": "$399.79",
-          "source": "https://neyuhleather.com/"
-        },
-        {
-          "name": "MED TOTE",
-          "price": "$275.54",
-          "source": "https://neyuhleather.com/"
-        },
-        {
-          "name": "SINGLE LEATHER WATCH BOX",
-          "price": "$162.50",
-          "source": "https://neyuhleather.com/"
-        },
-        {
-          "name": "LUXURY HANDWOVEN LAUNDRY & STORAGE BASKET",
-          "price": "$532.51",
-          "source": "https://neyuhleather.com/"
-        },
-        {
-          "name": "HANDCRAFTED ROUND LEATHER TRAY",
-          "price": "$351.00",
-          "source": "https://neyuhleather.com/"
-        },
-        {
-          "name": "HANDCRAFTED LEATHER TEA & COFFEE BOX WITH WOVEN LID",
-          "price": "$361.80",
-          "source": "https://neyuhleather.com/"
-        },
-        {
-          "name": "SET #1 - PASSPORT HOLDER & SLIM CARD WALLET",
-          "price": "$105.30",
-          "source": "https://neyuhleather.com/"
-        },
-        {
-          "name": "SET #2 - PASSPORT HOLDER & LUGGAGE TAG",
-          "price": "$105.30",
-          "source": "https://neyuhleather.com/"
-        },
-        {
-          "name": "SET #3 - PHONE WALLET AND LUGGAGE TAG",
-          "price": "$128.70",
-          "source": "https://neyuhleather.com/"
-        },
-        {
-          "name": "SET #4 - NOTEBOOK & SLIM CARD WALLET",
-          "price": "$128.70",
-          "source": "https://neyuhleather.com/"
-        }
-      ],
-      "highlights": [
-        {
-          "value": "Fine leather from Saigon, crafted by hand since 2008.",
-          "source": "https://neyuhleather.com/"
-        },
-        {
-          "value": "Free delivery on all orders within Vietnam.",
-          "source": "https://neyuhleather.com/"
-        },
-        {
-          "value": "Provide free worldwide shipping on all orders.",
-          "source": "https://neyuhleather.com/pages/faqs"
-        }
-      ],
-      "location": {
-        "town": {
-          "value": "Ho Chi Minh City",
-          "source": "https://neyuhleather.com/pages/contact"
-        },
-        "area": {
-          "value": "Ben Thanh Ward",
-          "source": "https://neyuhleather.com/pages/contact"
-        },
-        "address": {
-          "value": "168 Ly Tu Trong, Ben Thanh Ward (District 1), Ho Chi Minh City, Vietnam",
-          "source": "https://neyuhleather.com/pages/contact"
-        },
-        "serviceArea": null
-      },
-      "contact": {
-        "whatsapp": {
-          "value": "+84 358 358 353",
-          "source": "https://neyuhleather.com/pages/contact"
-        },
-        "phone": {
-          "value": "+84 358 358 353",
-          "source": "https://neyuhleather.com/pages/contact"
-        },
-        "email": {
-          "value": "cs@neyuhleather.com",
-          "source": "https://neyuhleather.com/pages/contact"
-        },
-        "instagram": {
-          "value": "neyuhbag",
-          "source": "https://neyuhleather.com/"
-        },
-        "bookingUrl": null
-      },
-      "hours": {
-        "value": "Monday – Friday · 9:00 AM – 8:00 PM Saturday – Sunday · 9:00 AM – 9:00 PM",
-        "source": "https://neyuhleather.com/pages/contact"
-      },
-      "tone": [
         "professional",
-        "sophisticated",
-        "warm",
-        "reassuring"
+        "appreciative"
       ],
       "colours": [
-        {
-          "hex": "#c67d3e",
-          "role": "primary",
-          "source": "https://neyuhleather.com"
-        }
-      ]
-    },
-    {
-      "name": {
-        "value": "Gallery de Neyuh",
-        "source": "https://neyuhleather.com/"
-      },
-      "summary": {
-        "value": "Premium handcrafted leather bags, home goods, and corporate gifts from Saigon, made by skilled artisans since 2008.",
-        "source": "https://neyuhleather.com/"
-      },
-      "category": "leather goods store",
-      "offerings": [
-        {
-          "name": "THE SEPTEMBER MINI TOTE",
-          "price": "$391.69",
-          "source": "https://neyuhleather.com/"
-        },
-        {
-          "name": "MARTHA BUCKET BAG",
-          "price": "$536.00",
-          "source": "https://neyuhleather.com/"
-        },
-        {
-          "name": "THE SAIGON CHIC CLUTCH",
-          "price": "$166.40",
-          "source": "https://neyuhleather.com/"
-        },
-        {
-          "name": "SAIGON ROCK THE TRAVEL BAG",
-          "price": "$756.37",
-          "source": "https://neyuhleather.com/"
-        },
-        {
-          "name": "THE OFFICE MEN BAG",
-          "price": "$548.37",
-          "source": "https://neyuhleather.com/"
-        },
-        {
-          "name": "THE WESTERN GUY TOTE",
-          "price": "$413.30",
-          "source": "https://neyuhleather.com/"
-        },
-        {
-          "name": "THE FAST MOVE CLUTCH",
-          "price": "$399.79",
-          "source": "https://neyuhleather.com/"
-        },
-        {
-          "name": "MED TOTE",
-          "price": "$275.54",
-          "source": "https://neyuhleather.com/"
-        },
-        {
-          "name": "SINGLE LEATHER WATCH BOX",
-          "price": "$162.50",
-          "source": "https://neyuhleather.com/"
-        },
-        {
-          "name": "LUXURY HANDWOVEN LAUNDRY & STORAGE BASKET",
-          "price": "$532.51",
-          "source": "https://neyuhleather.com/"
-        },
-        {
-          "name": "HANDCRAFTED ROUND LEATHER TRAY",
-          "price": "$351.00",
-          "source": "https://neyuhleather.com/"
-        },
-        {
-          "name": "HANDCRAFTED LEATHER TEA & COFFEE BOX WITH WOVEN LID",
-          "price": "$361.80",
-          "source": "https://neyuhleather.com/"
-        },
-        {
-          "name": "SET #1 - PASSPORT HOLDER & SLIM CARD WALLET",
-          "price": "$105.30",
-          "source": "https://neyuhleather.com/"
-        },
-        {
-          "name": "SET #2 - PASSPORT HOLDER & LUGGAGE TAG",
-          "price": "$105.30",
-          "source": "https://neyuhleather.com/"
-        },
-        {
-          "name": "SET #3 - PHONE WALLET AND LUGGAGE TAG",
-          "price": "$128.70",
-          "source": "https://neyuhleather.com/"
-        },
-        {
-          "name": "SET #4 - NOTEBOOK & SLIM CARD WALLET",
-          "price": "$128.70",
-          "source": "https://neyuhleather.com/"
-        }
-      ],
-      "highlights": [
-        {
-          "value": "Fine leather from Saigon, crafted by hand since 2008.",
-          "source": "https://neyuhleather.com/"
-        },
-        {
-          "value": "Free delivery on all orders within Vietnam.",
-          "source": "https://neyuhleather.com/"
-        },
-        {
-          "value": "Provide free worldwide shipping on all orders.",
-          "source": "https://neyuhleather.com/pages/faqs"
-        }
-      ],
-      "location": {
-        "town": {
-          "value": "Ho Chi Minh City",
-          "source": "https://neyuhleather.com/pages/contact"
-        },
-        "area": {
-          "value": "Ben Thanh Ward",
-          "source": "https://neyuhleather.com/pages/contact"
-        },
-        "address": {
-          "value": "168 Ly Tu Trong, Ben Thanh Ward (District 1), Ho Chi Minh City, Vietnam",
-          "source": "https://neyuhleather.com/pages/contact"
-        },
-        "serviceArea": null
-      },
-      "contact": {
-        "whatsapp": {
-          "value": "+84 358 358 353",
-          "source": "https://neyuhleather.com/pages/contact"
-        },
-        "phone": {
-          "value": "+84 358 358 353",
-          "source": "https://neyuhleather.com/pages/contact"
-        },
-        "email": {
-          "value": "cs@neyuhleather.com",
-          "source": "https://neyuhleather.com/pages/contact"
-        },
-        "instagram": {
-          "value": "neyuhbag",
-          "source": "https://neyuhleather.com/"
-        },
-        "bookingUrl": null
-      },
-      "hours": {
-        "value": "Monday – Friday · 9:00 AM – 8:00 PM Saturday – Sunday · 9:00 AM – 9:00 PM",
-        "source": "https://neyuhleather.com/pages/contact"
-      },
-      "tone": [
-        "professional",
-        "sophisticated",
-        "warm",
-        "reassuring"
-      ],
-      "colours": [
-        {
-          "hex": "#c67d3e",
-          "role": "primary",
-          "source": "https://neyuhleather.com/"
-        },
-        {
-          "hex": "#2c3e35"
-        }
-      ]
-    },
-    {
-      "name": {
-        "value": "Gallery de Neyuh",
-        "source": "https://neyuhleather.com/"
-      },
-      "summary": {
-        "value": "Premium handcrafted leather bags, home goods, and corporate gifts from Saigon, made by skilled artisans since 2008.",
-        "source": "https://neyuhleather.com/"
-      },
-      "category": "leather goods store",
-      "offerings": [
-        {
-          "name": "THE SEPTEMBER MINI TOTE",
-          "price": "$391.69",
-          "source": "https://neyuhleather.com/"
-        },
-        {
-          "name": "MARTHA BUCKET BAG",
-          "price": "$536.00",
-          "source": "https://neyuhleather.com/"
-        },
-        {
-          "name": "THE SAIGON CHIC CLUTCH",
-          "price": "$166.40",
-          "source": "https://neyuhleather.com/"
-        },
-        {
-          "name": "SAIGON ROCK THE TRAVEL BAG",
-          "price": "$756.37",
-          "source": "https://neyuhleather.com/"
-        },
-        {
-          "name": "THE OFFICE MEN BAG",
-          "price": "$548.37",
-          "source": "https://neyuhleather.com/"
-        },
-        {
-          "name": "THE WESTERN GUY TOTE",
-          "price": "$413.30",
-          "source": "https://neyuhleather.com/"
-        },
-        {
-          "name": "THE FAST MOVE CLUTCH",
-          "price": "$399.79",
-          "source": "https://neyuhleather.com/"
-        },
-        {
-          "name": "MED TOTE",
-          "price": "$275.54",
-          "source": "https://neyuhleather.com/"
-        },
-        {
-          "name": "SINGLE LEATHER WATCH BOX",
-          "price": "$162.50",
-          "source": "https://neyuhleather.com/"
-        },
-        {
-          "name": "LUXURY HANDWOVEN LAUNDRY & STORAGE BASKET",
-          "price": "$532.51",
-          "source": "https://neyuhleather.com/"
-        },
-        {
-          "name": "HANDCRAFTED ROUND LEATHER TRAY",
-          "price": "$351.00",
-          "source": "https://neyuhleather.com/"
-        },
-        {
-          "name": "HANDCRAFTED LEATHER TEA & COFFEE BOX WITH WOVEN LID",
-          "price": "$361.80",
-          "source": "https://neyuhleather.com/"
-        },
-        {
-          "name": "SET #1 - PASSPORT HOLDER & SLIM CARD WALLET",
-          "price": "$105.30",
-          "source": "https://neyuhleather.com/"
-        },
-        {
-          "name": "SET #2 - PASSPORT HOLDER & LUGGAGE TAG",
-          "price": "$105.30",
-          "source": "https://neyuhleather.com/"
-        },
-        {
-          "name": "SET #3 - PHONE WALLET AND LUGGAGE TAG",
-          "price": "$128.70",
-          "source": "https://neyuhleather.com/"
-        },
-        {
-          "name": "SET #4 - NOTEBOOK & SLIM CARD WALLET",
-          "price": "$128.70",
-          "source": "https://neyuhleather.com/"
-        }
-      ],
-      "highlights": [
-        {
-          "value": "Fine leather from Saigon, crafted by hand since 2008.",
-          "source": "https://neyuhleather.com/"
-        },
-        {
-          "value": "Free delivery on all orders within Vietnam.",
-          "source": "https://neyuhleather.com/"
-        },
-        {
-          "value": "Provide free worldwide shipping on all orders.",
-          "source": "https://neyuhleather.com/pages/faqs"
-        }
-      ],
-      "location": {
-        "town": {
-          "value": "Ho Chi Minh City",
-          "source": "https://neyuhleather.com/pages/contact"
-        },
-        "area": {
-          "value": "Ben Thanh Ward",
-          "source": "https://neyuhleather.com/pages/contact"
-        },
-        "address": {
-          "value": "168 Ly Tu Trong, Ben Thanh Ward (District 1), Ho Chi Minh City, Vietnam",
-          "source": "https://neyuhleather.com/pages/contact"
-        },
-        "serviceArea": null
-      },
-      "contact": {
-        "whatsapp": {
-          "value": "+84 358 358 353",
-          "source": "https://neyuhleather.com/pages/contact"
-        },
-        "phone": {
-          "value": "+84 358 358 353",
-          "source": "https://neyuhleather.com/pages/contact"
-        },
-        "email": {
-          "value": "cs@neyuhleather.com",
-          "source": "https://neyuhleather.com/pages/contact"
-        },
-        "instagram": {
-          "value": "neyuhbag",
-          "source": "https://neyuhleather.com/"
-        },
-        "bookingUrl": null
-      },
-      "hours": {
-        "value": "Monday – Friday · 9:00 AM – 8:00 PM Saturday – Sunday · 9:00 AM – 9:00 PM",
-        "source": "https://neyuhleather.com/pages/contact"
-      },
-      "tone": [
-        "professional",
-        "sophisticated",
-        "warm",
-        "reassuring"
-      ],
-      "colours": [
-        {
-          "hex": "#c67d3e",
-          "role": "primary",
-          "source": "https://neyuhleather.com/"
-        },
-        {
-          "hex": "#2c3e35",
-          "role": "accent",
-          "source": "https://neyuhleather.com/"
-        },
         {}
       ]
     },
@@ -5016,7 +4070,7 @@
         "source": "https://neyuhleather.com/"
       },
       "summary": {
-        "value": "Premium handcrafted leather bags, home goods, and corporate gifts from Saigon, made by skilled artisans since 2008.",
+        "value": "Premium handcrafted leather bags, travel goods, home accessories and corporate gifts from Saigon.",
         "source": "https://neyuhleather.com/"
       },
       "category": "leather goods store",
@@ -5104,15 +4158,15 @@
       ],
       "highlights": [
         {
-          "value": "Fine leather from Saigon, crafted by hand since 2008.",
+          "value": "Fine leather from Saigon, crafted by hand since 2008",
           "source": "https://neyuhleather.com/"
         },
         {
-          "value": "Free delivery on all orders within Vietnam.",
+          "value": "Free delivery on all orders within Vietnam",
           "source": "https://neyuhleather.com/"
         },
         {
-          "value": "Provide free worldwide shipping on all orders.",
+          "value": "Free worldwide shipping on all orders",
           "source": "https://neyuhleather.com/pages/faqs"
         }
       ],
@@ -5122,7 +4176,7 @@
           "source": "https://neyuhleather.com/pages/contact"
         },
         "area": {
-          "value": "Ben Thanh Ward",
+          "value": "Ben Thanh Ward (District 1)",
           "source": "https://neyuhleather.com/pages/contact"
         },
         "address": {
@@ -5133,7 +4187,7 @@
       },
       "contact": {
         "whatsapp": {
-          "value": "+84 358 358 353",
+          "value": "84358358353",
           "source": "https://neyuhleather.com/pages/contact"
         },
         "phone": {
@@ -5155,26 +4209,16 @@
         "source": "https://neyuhleather.com/pages/contact"
       },
       "tone": [
-        "professional",
         "sophisticated",
         "warm",
-        "reassuring"
+        "professional",
+        "appreciative"
       ],
       "colours": [
         {
-          "hex": "#c67d3e",
+          "hex": "#b36b39",
           "role": "primary",
-          "source": "https://neyuhleather.com/"
-        },
-        {
-          "hex": "#2c3e35",
-          "role": "accent",
-          "source": "https://neyuhleather.com/"
-        },
-        {
-          "hex": "#f4ede2",
-          "role": "background",
-          "source": "https://ney"
+          "source": "photo"
         }
       ]
     },
@@ -5184,7 +4228,7 @@
         "source": "https://neyuhleather.com/"
       },
       "summary": {
-        "value": "Premium handcrafted leather bags, home goods, and corporate gifts from Saigon, made by skilled artisans since 2008.",
+        "value": "Premium handcrafted leather bags, travel goods, home accessories and corporate gifts from Saigon.",
         "source": "https://neyuhleather.com/"
       },
       "category": "leather goods store",
@@ -5272,15 +4316,15 @@
       ],
       "highlights": [
         {
-          "value": "Fine leather from Saigon, crafted by hand since 2008.",
+          "value": "Fine leather from Saigon, crafted by hand since 2008",
           "source": "https://neyuhleather.com/"
         },
         {
-          "value": "Free delivery on all orders within Vietnam.",
+          "value": "Free delivery on all orders within Vietnam",
           "source": "https://neyuhleather.com/"
         },
         {
-          "value": "Provide free worldwide shipping on all orders.",
+          "value": "Free worldwide shipping on all orders",
           "source": "https://neyuhleather.com/pages/faqs"
         }
       ],
@@ -5290,7 +4334,7 @@
           "source": "https://neyuhleather.com/pages/contact"
         },
         "area": {
-          "value": "Ben Thanh Ward",
+          "value": "Ben Thanh Ward (District 1)",
           "source": "https://neyuhleather.com/pages/contact"
         },
         "address": {
@@ -5301,7 +4345,7 @@
       },
       "contact": {
         "whatsapp": {
-          "value": "+84 358 358 353",
+          "value": "84358358353",
           "source": "https://neyuhleather.com/pages/contact"
         },
         "phone": {
@@ -5323,31 +4367,24 @@
         "source": "https://neyuhleather.com/pages/contact"
       },
       "tone": [
-        "professional",
         "sophisticated",
         "warm",
-        "reassuring"
+        "professional",
+        "appreciative"
       ],
       "colours": [
         {
-          "hex": "#c67d3e",
+          "hex": "#b36b39",
           "role": "primary",
-          "source": "https://neyuhleather.com/"
+          "source": "photo"
         },
         {
-          "hex": "#2c3e35",
+          "hex": "#4a5d4e",
           "role": "accent",
-          "source": "https://neyuhleather.com/"
+          "source": "photo"
         },
         {
-          "hex": "#f4ede2",
-          "role": "background",
-          "source": "https://neyuhleather.com/"
-        },
-        {
-          "hex": "#333333",
-          "role": "text",
-          "source": "https://neyuhleather.com/"
+          "hex": "#f2eee9"
         }
       ]
     },
@@ -5357,7 +4394,7 @@
         "source": "https://neyuhleather.com/"
       },
       "summary": {
-        "value": "Premium handcrafted leather bags, home goods, and corporate gifts from Saigon, made by skilled artisans since 2008.",
+        "value": "Premium handcrafted leather bags, travel goods, home accessories and corporate gifts from Saigon.",
         "source": "https://neyuhleather.com/"
       },
       "category": "leather goods store",
@@ -5445,15 +4482,15 @@
       ],
       "highlights": [
         {
-          "value": "Fine leather from Saigon, crafted by hand since 2008.",
+          "value": "Fine leather from Saigon, crafted by hand since 2008",
           "source": "https://neyuhleather.com/"
         },
         {
-          "value": "Free delivery on all orders within Vietnam.",
+          "value": "Free delivery on all orders within Vietnam",
           "source": "https://neyuhleather.com/"
         },
         {
-          "value": "Provide free worldwide shipping on all orders.",
+          "value": "Free worldwide shipping on all orders",
           "source": "https://neyuhleather.com/pages/faqs"
         }
       ],
@@ -5463,7 +4500,7 @@
           "source": "https://neyuhleather.com/pages/contact"
         },
         "area": {
-          "value": "Ben Thanh Ward",
+          "value": "Ben Thanh Ward (District 1)",
           "source": "https://neyuhleather.com/pages/contact"
         },
         "address": {
@@ -5474,7 +4511,7 @@
       },
       "contact": {
         "whatsapp": {
-          "value": "+84 358 358 353",
+          "value": "84358358353",
           "source": "https://neyuhleather.com/pages/contact"
         },
         "phone": {
@@ -5496,37 +4533,570 @@
         "source": "https://neyuhleather.com/pages/contact"
       },
       "tone": [
-        "professional",
         "sophisticated",
         "warm",
-        "reassuring"
+        "professional",
+        "appreciative"
       ],
       "colours": [
         {
-          "hex": "#c67d3e",
+          "hex": "#b36b39",
           "role": "primary",
-          "source": "https://neyuhleather.com/"
+          "source": "photo"
         },
         {
-          "hex": "#2c3e35",
+          "hex": "#4a5d4e",
           "role": "accent",
-          "source": "https://neyuhleather.com/"
+          "source": "photo"
         },
         {
-          "hex": "#f4ede2",
+          "hex": "#f2eee9",
           "role": "background",
+          "source": "photo"
+        },
+        {
+          "hex": "#2"
+        }
+      ]
+    },
+    {
+      "name": {
+        "value": "Gallery de Neyuh",
+        "source": "https://neyuhleather.com/"
+      },
+      "summary": {
+        "value": "Premium handcrafted leather bags, travel goods, home accessories and corporate gifts from Saigon.",
+        "source": "https://neyuhleather.com/"
+      },
+      "category": "leather goods store",
+      "offerings": [
+        {
+          "name": "THE SEPTEMBER MINI TOTE",
+          "price": "$391.69",
           "source": "https://neyuhleather.com/"
         },
         {
-          "hex": "#333333",
-          "role": "text",
+          "name": "MARTHA BUCKET BAG",
+          "price": "$536.00",
+          "source": "https://neyuhleather.com/"
+        },
+        {
+          "name": "THE SAIGON CHIC CLUTCH",
+          "price": "$166.40",
+          "source": "https://neyuhleather.com/"
+        },
+        {
+          "name": "SAIGON ROCK THE TRAVEL BAG",
+          "price": "$756.37",
+          "source": "https://neyuhleather.com/"
+        },
+        {
+          "name": "THE OFFICE MEN BAG",
+          "price": "$548.37",
+          "source": "https://neyuhleather.com/"
+        },
+        {
+          "name": "THE WESTERN GUY TOTE",
+          "price": "$413.30",
+          "source": "https://neyuhleather.com/"
+        },
+        {
+          "name": "THE FAST MOVE CLUTCH",
+          "price": "$399.79",
+          "source": "https://neyuhleather.com/"
+        },
+        {
+          "name": "MED TOTE",
+          "price": "$275.54",
+          "source": "https://neyuhleather.com/"
+        },
+        {
+          "name": "SINGLE LEATHER WATCH BOX",
+          "price": "$162.50",
+          "source": "https://neyuhleather.com/"
+        },
+        {
+          "name": "LUXURY HANDWOVEN LAUNDRY & STORAGE BASKET",
+          "price": "$532.51",
+          "source": "https://neyuhleather.com/"
+        },
+        {
+          "name": "HANDCRAFTED ROUND LEATHER TRAY",
+          "price": "$351.00",
+          "source": "https://neyuhleather.com/"
+        },
+        {
+          "name": "HANDCRAFTED LEATHER TEA & COFFEE BOX WITH WOVEN LID",
+          "price": "$361.80",
+          "source": "https://neyuhleather.com/"
+        },
+        {
+          "name": "SET #1 - PASSPORT HOLDER & SLIM CARD WALLET",
+          "price": "$105.30",
+          "source": "https://neyuhleather.com/"
+        },
+        {
+          "name": "SET #2 - PASSPORT HOLDER & LUGGAGE TAG",
+          "price": "$105.30",
+          "source": "https://neyuhleather.com/"
+        },
+        {
+          "name": "SET #3 - PHONE WALLET AND LUGGAGE TAG",
+          "price": "$128.70",
+          "source": "https://neyuhleather.com/"
+        },
+        {
+          "name": "SET #4 - NOTEBOOK & SLIM CARD WALLET",
+          "price": "$128.70",
           "source": "https://neyuhleather.com/"
         }
       ],
+      "highlights": [
+        {
+          "value": "Fine leather from Saigon, crafted by hand since 2008",
+          "source": "https://neyuhleather.com/"
+        },
+        {
+          "value": "Free delivery on all orders within Vietnam",
+          "source": "https://neyuhleather.com/"
+        },
+        {
+          "value": "Free worldwide shipping on all orders",
+          "source": "https://neyuhleather.com/pages/faqs"
+        }
+      ],
+      "location": {
+        "town": {
+          "value": "Ho Chi Minh City",
+          "source": "https://neyuhleather.com/pages/contact"
+        },
+        "area": {
+          "value": "Ben Thanh Ward (District 1)",
+          "source": "https://neyuhleather.com/pages/contact"
+        },
+        "address": {
+          "value": "168 Ly Tu Trong, Ben Thanh Ward (District 1), Ho Chi Minh City, Vietnam",
+          "source": "https://neyuhleather.com/pages/contact"
+        },
+        "serviceArea": null
+      },
+      "contact": {
+        "whatsapp": {
+          "value": "84358358353",
+          "source": "https://neyuhleather.com/pages/contact"
+        },
+        "phone": {
+          "value": "+84 358 358 353",
+          "source": "https://neyuhleather.com/pages/contact"
+        },
+        "email": {
+          "value": "cs@neyuhleather.com",
+          "source": "https://neyuhleather.com/pages/contact"
+        },
+        "instagram": {
+          "value": "neyuhbag",
+          "source": "https://neyuhleather.com/"
+        },
+        "bookingUrl": null
+      },
+      "hours": {
+        "value": "Monday – Friday · 9:00 AM – 8:00 PM Saturday – Sunday · 9:00 AM – 9:00 PM",
+        "source": "https://neyuhleather.com/pages/contact"
+      },
+      "tone": [
+        "sophisticated",
+        "warm",
+        "professional",
+        "appreciative"
+      ],
+      "colours": [
+        {
+          "hex": "#b36b39",
+          "role": "primary",
+          "source": "photo"
+        },
+        {
+          "hex": "#4a5d4e",
+          "role": "accent",
+          "source": "photo"
+        },
+        {
+          "hex": "#f2eee9",
+          "role": "background",
+          "source": "photo"
+        },
+        {
+          "hex": "#2c2c2c",
+          "role": "text",
+          "source": "photo"
+        }
+      ],
       "essence": {
+        "promise": {
+          "value": "Handcrafted leather goods from Saigon, made"
+        }
+      }
+    },
+    {
+      "name": {
+        "value": "Gallery de Neyuh",
+        "source": "https://neyuhleather.com/"
+      },
+      "summary": {
+        "value": "Premium handcrafted leather bags, travel goods, home accessories and corporate gifts from Saigon.",
+        "source": "https://neyuhleather.com/"
+      },
+      "category": "leather goods store",
+      "offerings": [
+        {
+          "name": "THE SEPTEMBER MINI TOTE",
+          "price": "$391.69",
+          "source": "https://neyuhleather.com/"
+        },
+        {
+          "name": "MARTHA BUCKET BAG",
+          "price": "$536.00",
+          "source": "https://neyuhleather.com/"
+        },
+        {
+          "name": "THE SAIGON CHIC CLUTCH",
+          "price": "$166.40",
+          "source": "https://neyuhleather.com/"
+        },
+        {
+          "name": "SAIGON ROCK THE TRAVEL BAG",
+          "price": "$756.37",
+          "source": "https://neyuhleather.com/"
+        },
+        {
+          "name": "THE OFFICE MEN BAG",
+          "price": "$548.37",
+          "source": "https://neyuhleather.com/"
+        },
+        {
+          "name": "THE WESTERN GUY TOTE",
+          "price": "$413.30",
+          "source": "https://neyuhleather.com/"
+        },
+        {
+          "name": "THE FAST MOVE CLUTCH",
+          "price": "$399.79",
+          "source": "https://neyuhleather.com/"
+        },
+        {
+          "name": "MED TOTE",
+          "price": "$275.54",
+          "source": "https://neyuhleather.com/"
+        },
+        {
+          "name": "SINGLE LEATHER WATCH BOX",
+          "price": "$162.50",
+          "source": "https://neyuhleather.com/"
+        },
+        {
+          "name": "LUXURY HANDWOVEN LAUNDRY & STORAGE BASKET",
+          "price": "$532.51",
+          "source": "https://neyuhleather.com/"
+        },
+        {
+          "name": "HANDCRAFTED ROUND LEATHER TRAY",
+          "price": "$351.00",
+          "source": "https://neyuhleather.com/"
+        },
+        {
+          "name": "HANDCRAFTED LEATHER TEA & COFFEE BOX WITH WOVEN LID",
+          "price": "$361.80",
+          "source": "https://neyuhleather.com/"
+        },
+        {
+          "name": "SET #1 - PASSPORT HOLDER & SLIM CARD WALLET",
+          "price": "$105.30",
+          "source": "https://neyuhleather.com/"
+        },
+        {
+          "name": "SET #2 - PASSPORT HOLDER & LUGGAGE TAG",
+          "price": "$105.30",
+          "source": "https://neyuhleather.com/"
+        },
+        {
+          "name": "SET #3 - PHONE WALLET AND LUGGAGE TAG",
+          "price": "$128.70",
+          "source": "https://neyuhleather.com/"
+        },
+        {
+          "name": "SET #4 - NOTEBOOK & SLIM CARD WALLET",
+          "price": "$128.70",
+          "source": "https://neyuhleather.com/"
+        }
+      ],
+      "highlights": [
+        {
+          "value": "Fine leather from Saigon, crafted by hand since 2008",
+          "source": "https://neyuhleather.com/"
+        },
+        {
+          "value": "Free delivery on all orders within Vietnam",
+          "source": "https://neyuhleather.com/"
+        },
+        {
+          "value": "Free worldwide shipping on all orders",
+          "source": "https://neyuhleather.com/pages/faqs"
+        }
+      ],
+      "location": {
+        "town": {
+          "value": "Ho Chi Minh City",
+          "source": "https://neyuhleather.com/pages/contact"
+        },
+        "area": {
+          "value": "Ben Thanh Ward (District 1)",
+          "source": "https://neyuhleather.com/pages/contact"
+        },
+        "address": {
+          "value": "168 Ly Tu Trong, Ben Thanh Ward (District 1), Ho Chi Minh City, Vietnam",
+          "source": "https://neyuhleather.com/pages/contact"
+        },
+        "serviceArea": null
+      },
+      "contact": {
+        "whatsapp": {
+          "value": "84358358353",
+          "source": "https://neyuhleather.com/pages/contact"
+        },
+        "phone": {
+          "value": "+84 358 358 353",
+          "source": "https://neyuhleather.com/pages/contact"
+        },
+        "email": {
+          "value": "cs@neyuhleather.com",
+          "source": "https://neyuhleather.com/pages/contact"
+        },
+        "instagram": {
+          "value": "neyuhbag",
+          "source": "https://neyuhleather.com/"
+        },
+        "bookingUrl": null
+      },
+      "hours": {
+        "value": "Monday – Friday · 9:00 AM – 8:00 PM Saturday – Sunday · 9:00 AM – 9:00 PM",
+        "source": "https://neyuhleather.com/pages/contact"
+      },
+      "tone": [
+        "sophisticated",
+        "warm",
+        "professional",
+        "appreciative"
+      ],
+      "colours": [
+        {
+          "hex": "#b36b39",
+          "role": "primary",
+          "source": "photo"
+        },
+        {
+          "hex": "#4a5d4e",
+          "role": "accent",
+          "source": "photo"
+        },
+        {
+          "hex": "#f2eee9",
+          "role": "background",
+          "source": "photo"
+        },
+        {
+          "hex": "#2c2c2c",
+          "role": "text",
+          "source": "photo"
+        }
+      ],
+      "essence": {
+        "promise": {
+          "value": "Handcrafted leather goods from Saigon, made to age beautifully and accompany you for years.",
+          "source": "https://neyuhleather.com/"
+        }
+      }
+    },
+    {
+      "name": {
+        "value": "Gallery de Neyuh",
+        "source": "https://neyuhleather.com/"
+      },
+      "summary": {
+        "value": "Premium handcrafted leather bags, travel goods, home accessories and corporate gifts from Saigon.",
+        "source": "https://neyuhleather.com/"
+      },
+      "category": "leather goods store",
+      "offerings": [
+        {
+          "name": "THE SEPTEMBER MINI TOTE",
+          "price": "$391.69",
+          "source": "https://neyuhleather.com/"
+        },
+        {
+          "name": "MARTHA BUCKET BAG",
+          "price": "$536.00",
+          "source": "https://neyuhleather.com/"
+        },
+        {
+          "name": "THE SAIGON CHIC CLUTCH",
+          "price": "$166.40",
+          "source": "https://neyuhleather.com/"
+        },
+        {
+          "name": "SAIGON ROCK THE TRAVEL BAG",
+          "price": "$756.37",
+          "source": "https://neyuhleather.com/"
+        },
+        {
+          "name": "THE OFFICE MEN BAG",
+          "price": "$548.37",
+          "source": "https://neyuhleather.com/"
+        },
+        {
+          "name": "THE WESTERN GUY TOTE",
+          "price": "$413.30",
+          "source": "https://neyuhleather.com/"
+        },
+        {
+          "name": "THE FAST MOVE CLUTCH",
+          "price": "$399.79",
+          "source": "https://neyuhleather.com/"
+        },
+        {
+          "name": "MED TOTE",
+          "price": "$275.54",
+          "source": "https://neyuhleather.com/"
+        },
+        {
+          "name": "SINGLE LEATHER WATCH BOX",
+          "price": "$162.50",
+          "source": "https://neyuhleather.com/"
+        },
+        {
+          "name": "LUXURY HANDWOVEN LAUNDRY & STORAGE BASKET",
+          "price": "$532.51",
+          "source": "https://neyuhleather.com/"
+        },
+        {
+          "name": "HANDCRAFTED ROUND LEATHER TRAY",
+          "price": "$351.00",
+          "source": "https://neyuhleather.com/"
+        },
+        {
+          "name": "HANDCRAFTED LEATHER TEA & COFFEE BOX WITH WOVEN LID",
+          "price": "$361.80",
+          "source": "https://neyuhleather.com/"
+        },
+        {
+          "name": "SET #1 - PASSPORT HOLDER & SLIM CARD WALLET",
+          "price": "$105.30",
+          "source": "https://neyuhleather.com/"
+        },
+        {
+          "name": "SET #2 - PASSPORT HOLDER & LUGGAGE TAG",
+          "price": "$105.30",
+          "source": "https://neyuhleather.com/"
+        },
+        {
+          "name": "SET #3 - PHONE WALLET AND LUGGAGE TAG",
+          "price": "$128.70",
+          "source": "https://neyuhleather.com/"
+        },
+        {
+          "name": "SET #4 - NOTEBOOK & SLIM CARD WALLET",
+          "price": "$128.70",
+          "source": "https://neyuhleather.com/"
+        }
+      ],
+      "highlights": [
+        {
+          "value": "Fine leather from Saigon, crafted by hand since 2008",
+          "source": "https://neyuhleather.com/"
+        },
+        {
+          "value": "Free delivery on all orders within Vietnam",
+          "source": "https://neyuhleather.com/"
+        },
+        {
+          "value": "Free worldwide shipping on all orders",
+          "source": "https://neyuhleather.com/pages/faqs"
+        }
+      ],
+      "location": {
+        "town": {
+          "value": "Ho Chi Minh City",
+          "source": "https://neyuhleather.com/pages/contact"
+        },
+        "area": {
+          "value": "Ben Thanh Ward (District 1)",
+          "source": "https://neyuhleather.com/pages/contact"
+        },
+        "address": {
+          "value": "168 Ly Tu Trong, Ben Thanh Ward (District 1), Ho Chi Minh City, Vietnam",
+          "source": "https://neyuhleather.com/pages/contact"
+        },
+        "serviceArea": null
+      },
+      "contact": {
+        "whatsapp": {
+          "value": "84358358353",
+          "source": "https://neyuhleather.com/pages/contact"
+        },
+        "phone": {
+          "value": "+84 358 358 353",
+          "source": "https://neyuhleather.com/pages/contact"
+        },
+        "email": {
+          "value": "cs@neyuhleather.com",
+          "source": "https://neyuhleather.com/pages/contact"
+        },
+        "instagram": {
+          "value": "neyuhbag",
+          "source": "https://neyuhleather.com/"
+        },
+        "bookingUrl": null
+      },
+      "hours": {
+        "value": "Monday – Friday · 9:00 AM – 8:00 PM Saturday – Sunday · 9:00 AM – 9:00 PM",
+        "source": "https://neyuhleather.com/pages/contact"
+      },
+      "tone": [
+        "sophisticated",
+        "warm",
+        "professional",
+        "appreciative"
+      ],
+      "colours": [
+        {
+          "hex": "#b36b39",
+          "role": "primary",
+          "source": "photo"
+        },
+        {
+          "hex": "#4a5d4e",
+          "role": "accent",
+          "source": "photo"
+        },
+        {
+          "hex": "#f2eee9",
+          "role": "background",
+          "source": "photo"
+        },
+        {
+          "hex": "#2c2c2c",
+          "role": "text",
+          "source": "photo"
+        }
+      ],
+      "essence": {
+        "promise": {
+          "value": "Handcrafted leather goods from Saigon, made to age beautifully and accompany you for years.",
+          "source": "https://neyuhleather.com/"
+        },
         "feeling": [
           "refined",
-          "confident"
+          "confident",
+          "steady"
         ]
       }
     },
@@ -5536,7 +5106,7 @@
         "source": "https://neyuhleather.com/"
       },
       "summary": {
-        "value": "Premium handcrafted leather bags, home goods, and corporate gifts from Saigon, made by skilled artisans since 2008.",
+        "value": "Premium handcrafted leather bags, travel goods, home accessories and corporate gifts from Saigon.",
         "source": "https://neyuhleather.com/"
       },
       "category": "leather goods store",
@@ -5624,15 +5194,15 @@
       ],
       "highlights": [
         {
-          "value": "Fine leather from Saigon, crafted by hand since 2008.",
+          "value": "Fine leather from Saigon, crafted by hand since 2008",
           "source": "https://neyuhleather.com/"
         },
         {
-          "value": "Free delivery on all orders within Vietnam.",
+          "value": "Free delivery on all orders within Vietnam",
           "source": "https://neyuhleather.com/"
         },
         {
-          "value": "Provide free worldwide shipping on all orders.",
+          "value": "Free worldwide shipping on all orders",
           "source": "https://neyuhleather.com/pages/faqs"
         }
       ],
@@ -5642,7 +5212,7 @@
           "source": "https://neyuhleather.com/pages/contact"
         },
         "area": {
-          "value": "Ben Thanh Ward",
+          "value": "Ben Thanh Ward (District 1)",
           "source": "https://neyuhleather.com/pages/contact"
         },
         "address": {
@@ -5653,7 +5223,7 @@
       },
       "contact": {
         "whatsapp": {
-          "value": "+84 358 358 353",
+          "value": "84358358353",
           "source": "https://neyuhleather.com/pages/contact"
         },
         "phone": {
@@ -5675,42 +5245,46 @@
         "source": "https://neyuhleather.com/pages/contact"
       },
       "tone": [
-        "professional",
         "sophisticated",
         "warm",
-        "reassuring"
+        "professional",
+        "appreciative"
       ],
       "colours": [
         {
-          "hex": "#c67d3e",
+          "hex": "#b36b39",
           "role": "primary",
-          "source": "https://neyuhleather.com/"
+          "source": "photo"
         },
         {
-          "hex": "#2c3e35",
+          "hex": "#4a5d4e",
           "role": "accent",
-          "source": "https://neyuhleather.com/"
+          "source": "photo"
         },
         {
-          "hex": "#f4ede2",
+          "hex": "#f2eee9",
           "role": "background",
-          "source": "https://neyuhleather.com/"
+          "source": "photo"
         },
         {
-          "hex": "#333333",
+          "hex": "#2c2c2c",
           "role": "text",
-          "source": "https://neyuhleather.com/"
+          "source": "photo"
         }
       ],
       "essence": {
+        "promise": {
+          "value": "Handcrafted leather goods from Saigon, made to age beautifully and accompany you for years.",
+          "source": "https://neyuhleather.com/"
+        },
         "feeling": [
           "refined",
           "confident",
-          "appreciated"
+          "steady"
         ],
         "placeSymbols": [
-          "Saigon street corners",
-          "traditional craft"
+          "Saigon streets",
+          "local artisan workshops"
         ]
       }
     },
@@ -5720,7 +5294,7 @@
         "source": "https://neyuhleather.com/"
       },
       "summary": {
-        "value": "Premium handcrafted leather bags, home goods, and corporate gifts from Saigon, made by skilled artisans since 2008.",
+        "value": "Premium handcrafted leather bags, travel goods, home accessories and corporate gifts from Saigon.",
         "source": "https://neyuhleather.com/"
       },
       "category": "leather goods store",
@@ -5808,15 +5382,15 @@
       ],
       "highlights": [
         {
-          "value": "Fine leather from Saigon, crafted by hand since 2008.",
+          "value": "Fine leather from Saigon, crafted by hand since 2008",
           "source": "https://neyuhleather.com/"
         },
         {
-          "value": "Free delivery on all orders within Vietnam.",
+          "value": "Free delivery on all orders within Vietnam",
           "source": "https://neyuhleather.com/"
         },
         {
-          "value": "Provide free worldwide shipping on all orders.",
+          "value": "Free worldwide shipping on all orders",
           "source": "https://neyuhleather.com/pages/faqs"
         }
       ],
@@ -5826,7 +5400,7 @@
           "source": "https://neyuhleather.com/pages/contact"
         },
         "area": {
-          "value": "Ben Thanh Ward",
+          "value": "Ben Thanh Ward (District 1)",
           "source": "https://neyuhleather.com/pages/contact"
         },
         "address": {
@@ -5837,7 +5411,7 @@
       },
       "contact": {
         "whatsapp": {
-          "value": "+84 358 358 353",
+          "value": "84358358353",
           "source": "https://neyuhleather.com/pages/contact"
         },
         "phone": {
@@ -5859,46 +5433,51 @@
         "source": "https://neyuhleather.com/pages/contact"
       },
       "tone": [
-        "professional",
         "sophisticated",
         "warm",
-        "reassuring"
+        "professional",
+        "appreciative"
       ],
       "colours": [
         {
-          "hex": "#c67d3e",
+          "hex": "#b36b39",
           "role": "primary",
-          "source": "https://neyuhleather.com/"
+          "source": "photo"
         },
         {
-          "hex": "#2c3e35",
+          "hex": "#4a5d4e",
           "role": "accent",
-          "source": "https://neyuhleather.com/"
+          "source": "photo"
         },
         {
-          "hex": "#f4ede2",
+          "hex": "#f2eee9",
           "role": "background",
-          "source": "https://neyuhleather.com/"
+          "source": "photo"
         },
         {
-          "hex": "#333333",
+          "hex": "#2c2c2c",
           "role": "text",
-          "source": "https://neyuhleather.com/"
+          "source": "photo"
         }
       ],
       "essence": {
+        "promise": {
+          "value": "Handcrafted leather goods from Saigon, made to age beautifully and accompany you for years.",
+          "source": "https://neyuhleather.com/"
+        },
         "feeling": [
           "refined",
           "confident",
-          "appreciated"
+          "steady"
         ],
         "placeSymbols": [
-          "Saigon street corners",
-          "traditional craft workshops",
-          "local artisan hands"
+          "Saigon streets",
+          "local artisan workshops",
+          "white orchids",
+          "traditional ceramics"
         ],
         "senses": [
-          "rich scent"
+          "rich aroma"
         ]
       }
     },
@@ -5908,7 +5487,7 @@
         "source": "https://neyuhleather.com/"
       },
       "summary": {
-        "value": "Premium handcrafted leather bags, home goods, and corporate gifts from Saigon, made by skilled artisans since 2008.",
+        "value": "Premium handcrafted leather bags, travel goods, home accessories and corporate gifts from Saigon.",
         "source": "https://neyuhleather.com/"
       },
       "category": "leather goods store",
@@ -5996,15 +5575,15 @@
       ],
       "highlights": [
         {
-          "value": "Fine leather from Saigon, crafted by hand since 2008.",
+          "value": "Fine leather from Saigon, crafted by hand since 2008",
           "source": "https://neyuhleather.com/"
         },
         {
-          "value": "Free delivery on all orders within Vietnam.",
+          "value": "Free delivery on all orders within Vietnam",
           "source": "https://neyuhleather.com/"
         },
         {
-          "value": "Provide free worldwide shipping on all orders.",
+          "value": "Free worldwide shipping on all orders",
           "source": "https://neyuhleather.com/pages/faqs"
         }
       ],
@@ -6014,7 +5593,7 @@
           "source": "https://neyuhleather.com/pages/contact"
         },
         "area": {
-          "value": "Ben Thanh Ward",
+          "value": "Ben Thanh Ward (District 1)",
           "source": "https://neyuhleather.com/pages/contact"
         },
         "address": {
@@ -6025,7 +5604,7 @@
       },
       "contact": {
         "whatsapp": {
-          "value": "+84 358 358 353",
+          "value": "84358358353",
           "source": "https://neyuhleather.com/pages/contact"
         },
         "phone": {
@@ -6047,48 +5626,53 @@
         "source": "https://neyuhleather.com/pages/contact"
       },
       "tone": [
-        "professional",
         "sophisticated",
         "warm",
-        "reassuring"
+        "professional",
+        "appreciative"
       ],
       "colours": [
         {
-          "hex": "#c67d3e",
+          "hex": "#b36b39",
           "role": "primary",
-          "source": "https://neyuhleather.com/"
+          "source": "photo"
         },
         {
-          "hex": "#2c3e35",
+          "hex": "#4a5d4e",
           "role": "accent",
-          "source": "https://neyuhleather.com/"
+          "source": "photo"
         },
         {
-          "hex": "#f4ede2",
+          "hex": "#f2eee9",
           "role": "background",
-          "source": "https://neyuhleather.com/"
+          "source": "photo"
         },
         {
-          "hex": "#333333",
+          "hex": "#2c2c2c",
           "role": "text",
-          "source": "https://neyuhleather.com/"
+          "source": "photo"
         }
       ],
       "essence": {
+        "promise": {
+          "value": "Handcrafted leather goods from Saigon, made to age beautifully and accompany you for years.",
+          "source": "https://neyuhleather.com/"
+        },
         "feeling": [
           "refined",
           "confident",
-          "appreciated"
+          "steady"
         ],
         "placeSymbols": [
-          "Saigon street corners",
-          "traditional craft workshops",
-          "local artisan hands"
+          "Saigon streets",
+          "local artisan workshops",
+          "white orchids",
+          "traditional ceramics"
         ],
         "senses": [
-          "rich scent of full-grain cowhide",
+          "rich aroma of full-grain leather",
           "smooth burnished edges",
-          "soft linen textures",
+          "soft natural linen",
           "warm"
         ]
       }
@@ -6099,7 +5683,7 @@
         "source": "https://neyuhleather.com/"
       },
       "summary": {
-        "value": "Premium handcrafted leather bags, home goods, and corporate gifts from Saigon, made by skilled artisans since 2008.",
+        "value": "Premium handcrafted leather bags, travel goods, home accessories and corporate gifts from Saigon.",
         "source": "https://neyuhleather.com/"
       },
       "category": "leather goods store",
@@ -6187,15 +5771,15 @@
       ],
       "highlights": [
         {
-          "value": "Fine leather from Saigon, crafted by hand since 2008.",
+          "value": "Fine leather from Saigon, crafted by hand since 2008",
           "source": "https://neyuhleather.com/"
         },
         {
-          "value": "Free delivery on all orders within Vietnam.",
+          "value": "Free delivery on all orders within Vietnam",
           "source": "https://neyuhleather.com/"
         },
         {
-          "value": "Provide free worldwide shipping on all orders.",
+          "value": "Free worldwide shipping on all orders",
           "source": "https://neyuhleather.com/pages/faqs"
         }
       ],
@@ -6205,7 +5789,7 @@
           "source": "https://neyuhleather.com/pages/contact"
         },
         "area": {
-          "value": "Ben Thanh Ward",
+          "value": "Ben Thanh Ward (District 1)",
           "source": "https://neyuhleather.com/pages/contact"
         },
         "address": {
@@ -6216,7 +5800,7 @@
       },
       "contact": {
         "whatsapp": {
-          "value": "+84 358 358 353",
+          "value": "84358358353",
           "source": "https://neyuhleather.com/pages/contact"
         },
         "phone": {
@@ -6238,53 +5822,58 @@
         "source": "https://neyuhleather.com/pages/contact"
       },
       "tone": [
-        "professional",
         "sophisticated",
         "warm",
-        "reassuring"
+        "professional",
+        "appreciative"
       ],
       "colours": [
         {
-          "hex": "#c67d3e",
+          "hex": "#b36b39",
           "role": "primary",
-          "source": "https://neyuhleather.com/"
+          "source": "photo"
         },
         {
-          "hex": "#2c3e35",
+          "hex": "#4a5d4e",
           "role": "accent",
-          "source": "https://neyuhleather.com/"
+          "source": "photo"
         },
         {
-          "hex": "#f4ede2",
+          "hex": "#f2eee9",
           "role": "background",
-          "source": "https://neyuhleather.com/"
+          "source": "photo"
         },
         {
-          "hex": "#333333",
+          "hex": "#2c2c2c",
           "role": "text",
-          "source": "https://neyuhleather.com/"
+          "source": "photo"
         }
       ],
       "essence": {
+        "promise": {
+          "value": "Handcrafted leather goods from Saigon, made to age beautifully and accompany you for years.",
+          "source": "https://neyuhleather.com/"
+        },
         "feeling": [
           "refined",
           "confident",
-          "appreciated"
+          "steady"
         ],
         "placeSymbols": [
-          "Saigon street corners",
-          "traditional craft workshops",
-          "local artisan hands"
+          "Saigon streets",
+          "local artisan workshops",
+          "white orchids",
+          "traditional ceramics"
         ],
         "senses": [
-          "rich scent of full-grain cowhide",
+          "rich aroma of full-grain leather",
           "smooth burnished edges",
-          "soft linen textures",
-          "warm golden foil stamping"
+          "soft natural linen",
+          "warm studio lighting"
         ],
         "moments": [
           {
-            "value": "carrying"
+            "value": "preparing Tet"
           }
         ]
       }
@@ -6295,7 +5884,7 @@
         "source": "https://neyuhleather.com/"
       },
       "summary": {
-        "value": "Premium handcrafted leather bags, home goods, and corporate gifts from Saigon, made by skilled artisans since 2008.",
+        "value": "Premium handcrafted leather bags, travel goods, home accessories and corporate gifts from Saigon.",
         "source": "https://neyuhleather.com/"
       },
       "category": "leather goods store",
@@ -6383,15 +5972,15 @@
       ],
       "highlights": [
         {
-          "value": "Fine leather from Saigon, crafted by hand since 2008.",
+          "value": "Fine leather from Saigon, crafted by hand since 2008",
           "source": "https://neyuhleather.com/"
         },
         {
-          "value": "Free delivery on all orders within Vietnam.",
+          "value": "Free delivery on all orders within Vietnam",
           "source": "https://neyuhleather.com/"
         },
         {
-          "value": "Provide free worldwide shipping on all orders.",
+          "value": "Free worldwide shipping on all orders",
           "source": "https://neyuhleather.com/pages/faqs"
         }
       ],
@@ -6401,7 +5990,7 @@
           "source": "https://neyuhleather.com/pages/contact"
         },
         "area": {
-          "value": "Ben Thanh Ward",
+          "value": "Ben Thanh Ward (District 1)",
           "source": "https://neyuhleather.com/pages/contact"
         },
         "address": {
@@ -6412,7 +6001,7 @@
       },
       "contact": {
         "whatsapp": {
-          "value": "+84 358 358 353",
+          "value": "84358358353",
           "source": "https://neyuhleather.com/pages/contact"
         },
         "phone": {
@@ -6434,53 +6023,267 @@
         "source": "https://neyuhleather.com/pages/contact"
       },
       "tone": [
-        "professional",
         "sophisticated",
         "warm",
-        "reassuring"
+        "professional",
+        "appreciative"
       ],
       "colours": [
         {
-          "hex": "#c67d3e",
+          "hex": "#b36b39",
           "role": "primary",
-          "source": "https://neyuhleather.com/"
+          "source": "photo"
         },
         {
-          "hex": "#2c3e35",
+          "hex": "#4a5d4e",
           "role": "accent",
-          "source": "https://neyuhleather.com/"
+          "source": "photo"
         },
         {
-          "hex": "#f4ede2",
+          "hex": "#f2eee9",
           "role": "background",
-          "source": "https://neyuhleather.com/"
+          "source": "photo"
         },
         {
-          "hex": "#333333",
+          "hex": "#2c2c2c",
           "role": "text",
-          "source": "https://neyuhleather.com/"
+          "source": "photo"
         }
       ],
       "essence": {
+        "promise": {
+          "value": "Handcrafted leather goods from Saigon, made to age beautifully and accompany you for years.",
+          "source": "https://neyuhleather.com/"
+        },
         "feeling": [
           "refined",
           "confident",
-          "appreciated"
+          "steady"
         ],
         "placeSymbols": [
-          "Saigon street corners",
-          "traditional craft workshops",
-          "local artisan hands"
+          "Saigon streets",
+          "local artisan workshops",
+          "white orchids",
+          "traditional ceramics"
         ],
         "senses": [
-          "rich scent of full-grain cowhide",
+          "rich aroma of full-grain leather",
           "smooth burnished edges",
-          "soft linen textures",
-          "warm golden foil stamping"
+          "soft natural linen",
+          "warm studio lighting"
         ],
         "moments": [
           {
-            "value": "carrying work papers and responsibilities to the office every day",
+            "value": "preparing Tet corporate gifts",
+            "source": "https://neyuhleather.com/"
+          },
+          {
+            "value": ""
+          }
+        ]
+      }
+    },
+    {
+      "name": {
+        "value": "Gallery de Neyuh",
+        "source": "https://neyuhleather.com/"
+      },
+      "summary": {
+        "value": "Premium handcrafted leather bags, travel goods, home accessories and corporate gifts from Saigon.",
+        "source": "https://neyuhleather.com/"
+      },
+      "category": "leather goods store",
+      "offerings": [
+        {
+          "name": "THE SEPTEMBER MINI TOTE",
+          "price": "$391.69",
+          "source": "https://neyuhleather.com/"
+        },
+        {
+          "name": "MARTHA BUCKET BAG",
+          "price": "$536.00",
+          "source": "https://neyuhleather.com/"
+        },
+        {
+          "name": "THE SAIGON CHIC CLUTCH",
+          "price": "$166.40",
+          "source": "https://neyuhleather.com/"
+        },
+        {
+          "name": "SAIGON ROCK THE TRAVEL BAG",
+          "price": "$756.37",
+          "source": "https://neyuhleather.com/"
+        },
+        {
+          "name": "THE OFFICE MEN BAG",
+          "price": "$548.37",
+          "source": "https://neyuhleather.com/"
+        },
+        {
+          "name": "THE WESTERN GUY TOTE",
+          "price": "$413.30",
+          "source": "https://neyuhleather.com/"
+        },
+        {
+          "name": "THE FAST MOVE CLUTCH",
+          "price": "$399.79",
+          "source": "https://neyuhleather.com/"
+        },
+        {
+          "name": "MED TOTE",
+          "price": "$275.54",
+          "source": "https://neyuhleather.com/"
+        },
+        {
+          "name": "SINGLE LEATHER WATCH BOX",
+          "price": "$162.50",
+          "source": "https://neyuhleather.com/"
+        },
+        {
+          "name": "LUXURY HANDWOVEN LAUNDRY & STORAGE BASKET",
+          "price": "$532.51",
+          "source": "https://neyuhleather.com/"
+        },
+        {
+          "name": "HANDCRAFTED ROUND LEATHER TRAY",
+          "price": "$351.00",
+          "source": "https://neyuhleather.com/"
+        },
+        {
+          "name": "HANDCRAFTED LEATHER TEA & COFFEE BOX WITH WOVEN LID",
+          "price": "$361.80",
+          "source": "https://neyuhleather.com/"
+        },
+        {
+          "name": "SET #1 - PASSPORT HOLDER & SLIM CARD WALLET",
+          "price": "$105.30",
+          "source": "https://neyuhleather.com/"
+        },
+        {
+          "name": "SET #2 - PASSPORT HOLDER & LUGGAGE TAG",
+          "price": "$105.30",
+          "source": "https://neyuhleather.com/"
+        },
+        {
+          "name": "SET #3 - PHONE WALLET AND LUGGAGE TAG",
+          "price": "$128.70",
+          "source": "https://neyuhleather.com/"
+        },
+        {
+          "name": "SET #4 - NOTEBOOK & SLIM CARD WALLET",
+          "price": "$128.70",
+          "source": "https://neyuhleather.com/"
+        }
+      ],
+      "highlights": [
+        {
+          "value": "Fine leather from Saigon, crafted by hand since 2008",
+          "source": "https://neyuhleather.com/"
+        },
+        {
+          "value": "Free delivery on all orders within Vietnam",
+          "source": "https://neyuhleather.com/"
+        },
+        {
+          "value": "Free worldwide shipping on all orders",
+          "source": "https://neyuhleather.com/pages/faqs"
+        }
+      ],
+      "location": {
+        "town": {
+          "value": "Ho Chi Minh City",
+          "source": "https://neyuhleather.com/pages/contact"
+        },
+        "area": {
+          "value": "Ben Thanh Ward (District 1)",
+          "source": "https://neyuhleather.com/pages/contact"
+        },
+        "address": {
+          "value": "168 Ly Tu Trong, Ben Thanh Ward (District 1), Ho Chi Minh City, Vietnam",
+          "source": "https://neyuhleather.com/pages/contact"
+        },
+        "serviceArea": null
+      },
+      "contact": {
+        "whatsapp": {
+          "value": "84358358353",
+          "source": "https://neyuhleather.com/pages/contact"
+        },
+        "phone": {
+          "value": "+84 358 358 353",
+          "source": "https://neyuhleather.com/pages/contact"
+        },
+        "email": {
+          "value": "cs@neyuhleather.com",
+          "source": "https://neyuhleather.com/pages/contact"
+        },
+        "instagram": {
+          "value": "neyuhbag",
+          "source": "https://neyuhleather.com/"
+        },
+        "bookingUrl": null
+      },
+      "hours": {
+        "value": "Monday – Friday · 9:00 AM – 8:00 PM Saturday – Sunday · 9:00 AM – 9:00 PM",
+        "source": "https://neyuhleather.com/pages/contact"
+      },
+      "tone": [
+        "sophisticated",
+        "warm",
+        "professional",
+        "appreciative"
+      ],
+      "colours": [
+        {
+          "hex": "#b36b39",
+          "role": "primary",
+          "source": "photo"
+        },
+        {
+          "hex": "#4a5d4e",
+          "role": "accent",
+          "source": "photo"
+        },
+        {
+          "hex": "#f2eee9",
+          "role": "background",
+          "source": "photo"
+        },
+        {
+          "hex": "#2c2c2c",
+          "role": "text",
+          "source": "photo"
+        }
+      ],
+      "essence": {
+        "promise": {
+          "value": "Handcrafted leather goods from Saigon, made to age beautifully and accompany you for years.",
+          "source": "https://neyuhleather.com/"
+        },
+        "feeling": [
+          "refined",
+          "confident",
+          "steady"
+        ],
+        "placeSymbols": [
+          "Saigon streets",
+          "local artisan workshops",
+          "white orchids",
+          "traditional ceramics"
+        ],
+        "senses": [
+          "rich aroma of full-grain leather",
+          "smooth burnished edges",
+          "soft natural linen",
+          "warm studio lighting"
+        ],
+        "moments": [
+          {
+            "value": "preparing Tet corporate gifts",
+            "source": "https://neyuhleather.com/"
+          },
+          {
+            "value": "transitioning to a high-stakes client presentation",
             "source": "https://neyuhleather.com/pages"
           }
         ]
@@ -6492,7 +6295,7 @@
         "source": "https://neyuhleather.com/"
       },
       "summary": {
-        "value": "Premium handcrafted leather bags, home goods, and corporate gifts from Saigon, made by skilled artisans since 2008.",
+        "value": "Premium handcrafted leather bags, travel goods, home accessories and corporate gifts from Saigon.",
         "source": "https://neyuhleather.com/"
       },
       "category": "leather goods store",
@@ -6580,15 +6383,15 @@
       ],
       "highlights": [
         {
-          "value": "Fine leather from Saigon, crafted by hand since 2008.",
+          "value": "Fine leather from Saigon, crafted by hand since 2008",
           "source": "https://neyuhleather.com/"
         },
         {
-          "value": "Free delivery on all orders within Vietnam.",
+          "value": "Free delivery on all orders within Vietnam",
           "source": "https://neyuhleather.com/"
         },
         {
-          "value": "Provide free worldwide shipping on all orders.",
+          "value": "Free worldwide shipping on all orders",
           "source": "https://neyuhleather.com/pages/faqs"
         }
       ],
@@ -6598,7 +6401,7 @@
           "source": "https://neyuhleather.com/pages/contact"
         },
         "area": {
-          "value": "Ben Thanh Ward",
+          "value": "Ben Thanh Ward (District 1)",
           "source": "https://neyuhleather.com/pages/contact"
         },
         "address": {
@@ -6609,7 +6412,7 @@
       },
       "contact": {
         "whatsapp": {
-          "value": "+84 358 358 353",
+          "value": "84358358353",
           "source": "https://neyuhleather.com/pages/contact"
         },
         "phone": {
@@ -6631,65 +6434,67 @@
         "source": "https://neyuhleather.com/pages/contact"
       },
       "tone": [
-        "professional",
         "sophisticated",
         "warm",
-        "reassuring"
+        "professional",
+        "appreciative"
       ],
       "colours": [
         {
-          "hex": "#c67d3e",
+          "hex": "#b36b39",
           "role": "primary",
-          "source": "https://neyuhleather.com/"
+          "source": "photo"
         },
         {
-          "hex": "#2c3e35",
+          "hex": "#4a5d4e",
           "role": "accent",
-          "source": "https://neyuhleather.com/"
+          "source": "photo"
         },
         {
-          "hex": "#f4ede2",
+          "hex": "#f2eee9",
           "role": "background",
-          "source": "https://neyuhleather.com/"
+          "source": "photo"
         },
         {
-          "hex": "#333333",
+          "hex": "#2c2c2c",
           "role": "text",
-          "source": "https://neyuhleather.com/"
+          "source": "photo"
         }
       ],
       "essence": {
+        "promise": {
+          "value": "Handcrafted leather goods from Saigon, made to age beautifully and accompany you for years.",
+          "source": "https://neyuhleather.com/"
+        },
         "feeling": [
           "refined",
           "confident",
-          "appreciated"
+          "steady"
         ],
         "placeSymbols": [
-          "Saigon street corners",
-          "traditional craft workshops",
-          "local artisan hands"
+          "Saigon streets",
+          "local artisan workshops",
+          "white orchids",
+          "traditional ceramics"
         ],
         "senses": [
-          "rich scent of full-grain cowhide",
+          "rich aroma of full-grain leather",
           "smooth burnished edges",
-          "soft linen textures",
-          "warm golden foil stamping"
+          "soft natural linen",
+          "warm studio lighting"
         ],
         "moments": [
           {
-            "value": "carrying work papers and responsibilities to the office every day",
-            "source": "https://neyuhleather.com/pages/stories"
+            "value": "preparing Tet corporate gifts",
+            "source": "https://neyuhleather.com/"
           },
           {
-            "value": "traveling on distant business trips through sleepless nights at airports",
+            "value": "transitioning to a high-stakes client presentation",
             "source": "https://neyuhleather.com/pages/stories"
-          },
-          {
-            "value": "transitioning seamlessly from a cramped flight to a high-stakes client presentation",
-            "source": "https://ney"
           }
         ]
-      }
+      },
+      "visualStyle": {}
     },
     {
       "name": {
@@ -6697,7 +6502,7 @@
         "source": "https://neyuhleather.com/"
       },
       "summary": {
-        "value": "Premium handcrafted leather bags, home goods, and corporate gifts from Saigon, made by skilled artisans since 2008.",
+        "value": "Premium handcrafted leather bags, travel goods, home accessories and corporate gifts from Saigon.",
         "source": "https://neyuhleather.com/"
       },
       "category": "leather goods store",
@@ -6785,15 +6590,15 @@
       ],
       "highlights": [
         {
-          "value": "Fine leather from Saigon, crafted by hand since 2008.",
+          "value": "Fine leather from Saigon, crafted by hand since 2008",
           "source": "https://neyuhleather.com/"
         },
         {
-          "value": "Free delivery on all orders within Vietnam.",
+          "value": "Free delivery on all orders within Vietnam",
           "source": "https://neyuhleather.com/"
         },
         {
-          "value": "Provide free worldwide shipping on all orders.",
+          "value": "Free worldwide shipping on all orders",
           "source": "https://neyuhleather.com/pages/faqs"
         }
       ],
@@ -6803,7 +6608,7 @@
           "source": "https://neyuhleather.com/pages/contact"
         },
         "area": {
-          "value": "Ben Thanh Ward",
+          "value": "Ben Thanh Ward (District 1)",
           "source": "https://neyuhleather.com/pages/contact"
         },
         "address": {
@@ -6814,7 +6619,7 @@
       },
       "contact": {
         "whatsapp": {
-          "value": "+84 358 358 353",
+          "value": "84358358353",
           "source": "https://neyuhleather.com/pages/contact"
         },
         "phone": {
@@ -6836,273 +6641,69 @@
         "source": "https://neyuhleather.com/pages/contact"
       },
       "tone": [
-        "professional",
         "sophisticated",
         "warm",
-        "reassuring"
+        "professional",
+        "appreciative"
       ],
       "colours": [
         {
-          "hex": "#c67d3e",
+          "hex": "#b36b39",
           "role": "primary",
-          "source": "https://neyuhleather.com/"
+          "source": "photo"
         },
         {
-          "hex": "#2c3e35",
+          "hex": "#4a5d4e",
           "role": "accent",
-          "source": "https://neyuhleather.com/"
+          "source": "photo"
         },
         {
-          "hex": "#f4ede2",
+          "hex": "#f2eee9",
           "role": "background",
-          "source": "https://neyuhleather.com/"
+          "source": "photo"
         },
         {
-          "hex": "#333333",
+          "hex": "#2c2c2c",
           "role": "text",
-          "source": "https://neyuhleather.com/"
+          "source": "photo"
         }
       ],
       "essence": {
+        "promise": {
+          "value": "Handcrafted leather goods from Saigon, made to age beautifully and accompany you for years.",
+          "source": "https://neyuhleather.com/"
+        },
         "feeling": [
           "refined",
           "confident",
-          "appreciated"
+          "steady"
         ],
         "placeSymbols": [
-          "Saigon street corners",
-          "traditional craft workshops",
-          "local artisan hands"
+          "Saigon streets",
+          "local artisan workshops",
+          "white orchids",
+          "traditional ceramics"
         ],
         "senses": [
-          "rich scent of full-grain cowhide",
+          "rich aroma of full-grain leather",
           "smooth burnished edges",
-          "soft linen textures",
-          "warm golden foil stamping"
+          "soft natural linen",
+          "warm studio lighting"
         ],
         "moments": [
           {
-            "value": "carrying work papers and responsibilities to the office every day",
-            "source": "https://neyuhleather.com/pages/stories"
+            "value": "preparing Tet corporate gifts",
+            "source": "https://neyuhleather.com/"
           },
           {
-            "value": "traveling on distant business trips through sleepless nights at airports",
-            "source": "https://neyuhleather.com/pages/stories"
-          },
-          {
-            "value": "transitioning seamlessly from a cramped flight to a high-stakes client presentation",
-            "source": "https://neyuhleather.com/pages/stories"
-          }
-        ]
-      }
-    },
-    {
-      "name": {
-        "value": "Gallery de Neyuh",
-        "source": "https://neyuhleather.com/"
-      },
-      "summary": {
-        "value": "Premium handcrafted leather bags, home goods, and corporate gifts from Saigon, made by skilled artisans since 2008.",
-        "source": "https://neyuhleather.com/"
-      },
-      "category": "leather goods store",
-      "offerings": [
-        {
-          "name": "THE SEPTEMBER MINI TOTE",
-          "price": "$391.69",
-          "source": "https://neyuhleather.com/"
-        },
-        {
-          "name": "MARTHA BUCKET BAG",
-          "price": "$536.00",
-          "source": "https://neyuhleather.com/"
-        },
-        {
-          "name": "THE SAIGON CHIC CLUTCH",
-          "price": "$166.40",
-          "source": "https://neyuhleather.com/"
-        },
-        {
-          "name": "SAIGON ROCK THE TRAVEL BAG",
-          "price": "$756.37",
-          "source": "https://neyuhleather.com/"
-        },
-        {
-          "name": "THE OFFICE MEN BAG",
-          "price": "$548.37",
-          "source": "https://neyuhleather.com/"
-        },
-        {
-          "name": "THE WESTERN GUY TOTE",
-          "price": "$413.30",
-          "source": "https://neyuhleather.com/"
-        },
-        {
-          "name": "THE FAST MOVE CLUTCH",
-          "price": "$399.79",
-          "source": "https://neyuhleather.com/"
-        },
-        {
-          "name": "MED TOTE",
-          "price": "$275.54",
-          "source": "https://neyuhleather.com/"
-        },
-        {
-          "name": "SINGLE LEATHER WATCH BOX",
-          "price": "$162.50",
-          "source": "https://neyuhleather.com/"
-        },
-        {
-          "name": "LUXURY HANDWOVEN LAUNDRY & STORAGE BASKET",
-          "price": "$532.51",
-          "source": "https://neyuhleather.com/"
-        },
-        {
-          "name": "HANDCRAFTED ROUND LEATHER TRAY",
-          "price": "$351.00",
-          "source": "https://neyuhleather.com/"
-        },
-        {
-          "name": "HANDCRAFTED LEATHER TEA & COFFEE BOX WITH WOVEN LID",
-          "price": "$361.80",
-          "source": "https://neyuhleather.com/"
-        },
-        {
-          "name": "SET #1 - PASSPORT HOLDER & SLIM CARD WALLET",
-          "price": "$105.30",
-          "source": "https://neyuhleather.com/"
-        },
-        {
-          "name": "SET #2 - PASSPORT HOLDER & LUGGAGE TAG",
-          "price": "$105.30",
-          "source": "https://neyuhleather.com/"
-        },
-        {
-          "name": "SET #3 - PHONE WALLET AND LUGGAGE TAG",
-          "price": "$128.70",
-          "source": "https://neyuhleather.com/"
-        },
-        {
-          "name": "SET #4 - NOTEBOOK & SLIM CARD WALLET",
-          "price": "$128.70",
-          "source": "https://neyuhleather.com/"
-        }
-      ],
-      "highlights": [
-        {
-          "value": "Fine leather from Saigon, crafted by hand since 2008.",
-          "source": "https://neyuhleather.com/"
-        },
-        {
-          "value": "Free delivery on all orders within Vietnam.",
-          "source": "https://neyuhleather.com/"
-        },
-        {
-          "value": "Provide free worldwide shipping on all orders.",
-          "source": "https://neyuhleather.com/pages/faqs"
-        }
-      ],
-      "location": {
-        "town": {
-          "value": "Ho Chi Minh City",
-          "source": "https://neyuhleather.com/pages/contact"
-        },
-        "area": {
-          "value": "Ben Thanh Ward",
-          "source": "https://neyuhleather.com/pages/contact"
-        },
-        "address": {
-          "value": "168 Ly Tu Trong, Ben Thanh Ward (District 1), Ho Chi Minh City, Vietnam",
-          "source": "https://neyuhleather.com/pages/contact"
-        },
-        "serviceArea": null
-      },
-      "contact": {
-        "whatsapp": {
-          "value": "+84 358 358 353",
-          "source": "https://neyuhleather.com/pages/contact"
-        },
-        "phone": {
-          "value": "+84 358 358 353",
-          "source": "https://neyuhleather.com/pages/contact"
-        },
-        "email": {
-          "value": "cs@neyuhleather.com",
-          "source": "https://neyuhleather.com/pages/contact"
-        },
-        "instagram": {
-          "value": "neyuhbag",
-          "source": "https://neyuhleather.com/"
-        },
-        "bookingUrl": null
-      },
-      "hours": {
-        "value": "Monday – Friday · 9:00 AM – 8:00 PM Saturday – Sunday · 9:00 AM – 9:00 PM",
-        "source": "https://neyuhleather.com/pages/contact"
-      },
-      "tone": [
-        "professional",
-        "sophisticated",
-        "warm",
-        "reassuring"
-      ],
-      "colours": [
-        {
-          "hex": "#c67d3e",
-          "role": "primary",
-          "source": "https://neyuhleather.com/"
-        },
-        {
-          "hex": "#2c3e35",
-          "role": "accent",
-          "source": "https://neyuhleather.com/"
-        },
-        {
-          "hex": "#f4ede2",
-          "role": "background",
-          "source": "https://neyuhleather.com/"
-        },
-        {
-          "hex": "#333333",
-          "role": "text",
-          "source": "https://neyuhleather.com/"
-        }
-      ],
-      "essence": {
-        "feeling": [
-          "refined",
-          "confident",
-          "appreciated"
-        ],
-        "placeSymbols": [
-          "Saigon street corners",
-          "traditional craft workshops",
-          "local artisan hands"
-        ],
-        "senses": [
-          "rich scent of full-grain cowhide",
-          "smooth burnished edges",
-          "soft linen textures",
-          "warm golden foil stamping"
-        ],
-        "moments": [
-          {
-            "value": "carrying work papers and responsibilities to the office every day",
-            "source": "https://neyuhleather.com/pages/stories"
-          },
-          {
-            "value": "traveling on distant business trips through sleepless nights at airports",
-            "source": "https://neyuhleather.com/pages/stories"
-          },
-          {
-            "value": "transitioning seamlessly from a cramped flight to a high-stakes client presentation",
+            "value": "transitioning to a high-stakes client presentation",
             "source": "https://neyuhleather.com/pages/stories"
           }
         ]
       },
       "visualStyle": {
-        "summary": "Warm cognac leather, soft directional light, natural textures, quiet luxury mood.",
-        "palette": ""
+        "summary": "Warm terracotta, rich tan leather, soft neutral light, natural textures",
+        "palette": "terracotta,"
       }
     },
     {
@@ -7111,7 +6712,7 @@
         "source": "https://neyuhleather.com/"
       },
       "summary": {
-        "value": "Premium handcrafted leather bags, home goods, and corporate gifts from Saigon, made by skilled artisans since 2008.",
+        "value": "Premium handcrafted leather bags, travel goods, home accessories and corporate gifts from Saigon.",
         "source": "https://neyuhleather.com/"
       },
       "category": "leather goods store",
@@ -7199,15 +6800,15 @@
       ],
       "highlights": [
         {
-          "value": "Fine leather from Saigon, crafted by hand since 2008.",
+          "value": "Fine leather from Saigon, crafted by hand since 2008",
           "source": "https://neyuhleather.com/"
         },
         {
-          "value": "Free delivery on all orders within Vietnam.",
+          "value": "Free delivery on all orders within Vietnam",
           "source": "https://neyuhleather.com/"
         },
         {
-          "value": "Provide free worldwide shipping on all orders.",
+          "value": "Free worldwide shipping on all orders",
           "source": "https://neyuhleather.com/pages/faqs"
         }
       ],
@@ -7217,7 +6818,7 @@
           "source": "https://neyuhleather.com/pages/contact"
         },
         "area": {
-          "value": "Ben Thanh Ward",
+          "value": "Ben Thanh Ward (District 1)",
           "source": "https://neyuhleather.com/pages/contact"
         },
         "address": {
@@ -7228,7 +6829,7 @@
       },
       "contact": {
         "whatsapp": {
-          "value": "+84 358 358 353",
+          "value": "84358358353",
           "source": "https://neyuhleather.com/pages/contact"
         },
         "phone": {
@@ -7250,69 +6851,71 @@
         "source": "https://neyuhleather.com/pages/contact"
       },
       "tone": [
-        "professional",
         "sophisticated",
         "warm",
-        "reassuring"
+        "professional",
+        "appreciative"
       ],
       "colours": [
         {
-          "hex": "#c67d3e",
+          "hex": "#b36b39",
           "role": "primary",
-          "source": "https://neyuhleather.com/"
+          "source": "photo"
         },
         {
-          "hex": "#2c3e35",
+          "hex": "#4a5d4e",
           "role": "accent",
-          "source": "https://neyuhleather.com/"
+          "source": "photo"
         },
         {
-          "hex": "#f4ede2",
+          "hex": "#f2eee9",
           "role": "background",
-          "source": "https://neyuhleather.com/"
+          "source": "photo"
         },
         {
-          "hex": "#333333",
+          "hex": "#2c2c2c",
           "role": "text",
-          "source": "https://neyuhleather.com/"
+          "source": "photo"
         }
       ],
       "essence": {
+        "promise": {
+          "value": "Handcrafted leather goods from Saigon, made to age beautifully and accompany you for years.",
+          "source": "https://neyuhleather.com/"
+        },
         "feeling": [
           "refined",
           "confident",
-          "appreciated"
+          "steady"
         ],
         "placeSymbols": [
-          "Saigon street corners",
-          "traditional craft workshops",
-          "local artisan hands"
+          "Saigon streets",
+          "local artisan workshops",
+          "white orchids",
+          "traditional ceramics"
         ],
         "senses": [
-          "rich scent of full-grain cowhide",
+          "rich aroma of full-grain leather",
           "smooth burnished edges",
-          "soft linen textures",
-          "warm golden foil stamping"
+          "soft natural linen",
+          "warm studio lighting"
         ],
         "moments": [
           {
-            "value": "carrying work papers and responsibilities to the office every day",
-            "source": "https://neyuhleather.com/pages/stories"
+            "value": "preparing Tet corporate gifts",
+            "source": "https://neyuhleather.com/"
           },
           {
-            "value": "traveling on distant business trips through sleepless nights at airports",
-            "source": "https://neyuhleather.com/pages/stories"
-          },
-          {
-            "value": "transitioning seamlessly from a cramped flight to a high-stakes client presentation",
+            "value": "transitioning to a high-stakes client presentation",
             "source": "https://neyuhleather.com/pages/stories"
           }
         ]
       },
       "visualStyle": {
-        "summary": "Warm cognac leather, soft directional light, natural textures, quiet luxury mood.",
-        "palette": "cognac, warm caramel, olive green, charcoal",
-        "light": "soft directional daylight"
+        "summary": "Warm terracotta, rich tan leather, soft neutral light, natural textures",
+        "palette": "terracotta, tan, muted green, charcoal",
+        "light": "soft warm studio lighting",
+        "textures": "full-grain"
       }
     },
     {
@@ -7321,7 +6924,7 @@
         "source": "https://neyuhleather.com/"
       },
       "summary": {
-        "value": "Premium handcrafted leather bags, home goods, and corporate gifts from Saigon, made by skilled artisans since 2008.",
+        "value": "Premium handcrafted leather bags, travel goods, home accessories and corporate gifts from Saigon.",
         "source": "https://neyuhleather.com/"
       },
       "category": "leather goods store",
@@ -7409,15 +7012,15 @@
       ],
       "highlights": [
         {
-          "value": "Fine leather from Saigon, crafted by hand since 2008.",
+          "value": "Fine leather from Saigon, crafted by hand since 2008",
           "source": "https://neyuhleather.com/"
         },
         {
-          "value": "Free delivery on all orders within Vietnam.",
+          "value": "Free delivery on all orders within Vietnam",
           "source": "https://neyuhleather.com/"
         },
         {
-          "value": "Provide free worldwide shipping on all orders.",
+          "value": "Free worldwide shipping on all orders",
           "source": "https://neyuhleather.com/pages/faqs"
         }
       ],
@@ -7427,7 +7030,7 @@
           "source": "https://neyuhleather.com/pages/contact"
         },
         "area": {
-          "value": "Ben Thanh Ward",
+          "value": "Ben Thanh Ward (District 1)",
           "source": "https://neyuhleather.com/pages/contact"
         },
         "address": {
@@ -7438,7 +7041,7 @@
       },
       "contact": {
         "whatsapp": {
-          "value": "+84 358 358 353",
+          "value": "84358358353",
           "source": "https://neyuhleather.com/pages/contact"
         },
         "phone": {
@@ -7460,71 +7063,72 @@
         "source": "https://neyuhleather.com/pages/contact"
       },
       "tone": [
-        "professional",
         "sophisticated",
         "warm",
-        "reassuring"
+        "professional",
+        "appreciative"
       ],
       "colours": [
         {
-          "hex": "#c67d3e",
+          "hex": "#b36b39",
           "role": "primary",
-          "source": "https://neyuhleather.com/"
+          "source": "photo"
         },
         {
-          "hex": "#2c3e35",
+          "hex": "#4a5d4e",
           "role": "accent",
-          "source": "https://neyuhleather.com/"
+          "source": "photo"
         },
         {
-          "hex": "#f4ede2",
+          "hex": "#f2eee9",
           "role": "background",
-          "source": "https://neyuhleather.com/"
+          "source": "photo"
         },
         {
-          "hex": "#333333",
+          "hex": "#2c2c2c",
           "role": "text",
-          "source": "https://neyuhleather.com/"
+          "source": "photo"
         }
       ],
       "essence": {
+        "promise": {
+          "value": "Handcrafted leather goods from Saigon, made to age beautifully and accompany you for years.",
+          "source": "https://neyuhleather.com/"
+        },
         "feeling": [
           "refined",
           "confident",
-          "appreciated"
+          "steady"
         ],
         "placeSymbols": [
-          "Saigon street corners",
-          "traditional craft workshops",
-          "local artisan hands"
+          "Saigon streets",
+          "local artisan workshops",
+          "white orchids",
+          "traditional ceramics"
         ],
         "senses": [
-          "rich scent of full-grain cowhide",
+          "rich aroma of full-grain leather",
           "smooth burnished edges",
-          "soft linen textures",
-          "warm golden foil stamping"
+          "soft natural linen",
+          "warm studio lighting"
         ],
         "moments": [
           {
-            "value": "carrying work papers and responsibilities to the office every day",
-            "source": "https://neyuhleather.com/pages/stories"
+            "value": "preparing Tet corporate gifts",
+            "source": "https://neyuhleather.com/"
           },
           {
-            "value": "traveling on distant business trips through sleepless nights at airports",
-            "source": "https://neyuhleather.com/pages/stories"
-          },
-          {
-            "value": "transitioning seamlessly from a cramped flight to a high-stakes client presentation",
+            "value": "transitioning to a high-stakes client presentation",
             "source": "https://neyuhleather.com/pages/stories"
           }
         ]
       },
       "visualStyle": {
-        "summary": "Warm cognac leather, soft directional light, natural textures, quiet luxury mood.",
-        "palette": "cognac, warm caramel, olive green, charcoal",
-        "light": "soft directional daylight",
-        "textures": "full-grain cowhide, fine paper, linen",
-        "mood": "quiet luxury, professional elegance"
+        "summary": "Warm terracotta, rich tan leather, soft neutral light, natural textures",
+        "palette": "terracotta, tan, muted green, charcoal",
+        "light": "soft warm studio lighting",
+        "textures": "full-grain cowhide, kraft paper, ceramic, woven textiles",
+        "mood": "quiet luxury, professional, grounded"
       }
     }
   ],
@@ -7534,7 +7138,7 @@
       "source": "https://neyuhleather.com/"
     },
     "summary": {
-      "value": "Premium handcrafted leather bags, home goods, and corporate gifts from Saigon, made by skilled artisans since 2008.",
+      "value": "Premium handcrafted leather bags, travel goods, home accessories and corporate gifts from Saigon.",
       "source": "https://neyuhleather.com/"
     },
     "category": "leather goods store",
@@ -7622,15 +7226,15 @@
     ],
     "highlights": [
       {
-        "value": "Fine leather from Saigon, crafted by hand since 2008.",
+        "value": "Fine leather from Saigon, crafted by hand since 2008",
         "source": "https://neyuhleather.com/"
       },
       {
-        "value": "Free delivery on all orders within Vietnam.",
+        "value": "Free delivery on all orders within Vietnam",
         "source": "https://neyuhleather.com/"
       },
       {
-        "value": "Provide free worldwide shipping on all orders.",
+        "value": "Free worldwide shipping on all orders",
         "source": "https://neyuhleather.com/pages/faqs"
       }
     ],
@@ -7640,7 +7244,7 @@
         "source": "https://neyuhleather.com/pages/contact"
       },
       "area": {
-        "value": "Ben Thanh Ward",
+        "value": "Ben Thanh Ward (District 1)",
         "source": "https://neyuhleather.com/pages/contact"
       },
       "address": {
@@ -7651,7 +7255,7 @@
     },
     "contact": {
       "whatsapp": {
-        "value": "+84 358 358 353",
+        "value": "84358358353",
         "source": "https://neyuhleather.com/pages/contact"
       },
       "phone": {
@@ -7673,71 +7277,72 @@
       "source": "https://neyuhleather.com/pages/contact"
     },
     "tone": [
-      "professional",
       "sophisticated",
       "warm",
-      "reassuring"
+      "professional",
+      "appreciative"
     ],
     "colours": [
       {
-        "hex": "#c67d3e",
+        "hex": "#b36b39",
         "role": "primary",
-        "source": "https://neyuhleather.com/"
+        "source": "photo"
       },
       {
-        "hex": "#2c3e35",
+        "hex": "#4a5d4e",
         "role": "accent",
-        "source": "https://neyuhleather.com/"
+        "source": "photo"
       },
       {
-        "hex": "#f4ede2",
+        "hex": "#f2eee9",
         "role": "background",
-        "source": "https://neyuhleather.com/"
+        "source": "photo"
       },
       {
-        "hex": "#333333",
+        "hex": "#2c2c2c",
         "role": "text",
-        "source": "https://neyuhleather.com/"
+        "source": "photo"
       }
     ],
     "essence": {
+      "promise": {
+        "value": "Handcrafted leather goods from Saigon, made to age beautifully and accompany you for years.",
+        "source": "https://neyuhleather.com/"
+      },
       "feeling": [
         "refined",
         "confident",
-        "appreciated"
+        "steady"
       ],
       "placeSymbols": [
-        "Saigon street corners",
-        "traditional craft workshops",
-        "local artisan hands"
+        "Saigon streets",
+        "local artisan workshops",
+        "white orchids",
+        "traditional ceramics"
       ],
       "senses": [
-        "rich scent of full-grain cowhide",
+        "rich aroma of full-grain leather",
         "smooth burnished edges",
-        "soft linen textures",
-        "warm golden foil stamping"
+        "soft natural linen",
+        "warm studio lighting"
       ],
       "moments": [
         {
-          "value": "carrying work papers and responsibilities to the office every day",
-          "source": "https://neyuhleather.com/pages/stories"
+          "value": "preparing Tet corporate gifts",
+          "source": "https://neyuhleather.com/"
         },
         {
-          "value": "traveling on distant business trips through sleepless nights at airports",
-          "source": "https://neyuhleather.com/pages/stories"
-        },
-        {
-          "value": "transitioning seamlessly from a cramped flight to a high-stakes client presentation",
+          "value": "transitioning to a high-stakes client presentation",
           "source": "https://neyuhleather.com/pages/stories"
         }
       ]
     },
     "visualStyle": {
-      "summary": "Warm cognac leather, soft directional light, natural textures, quiet luxury mood.",
-      "palette": "cognac, warm caramel, olive green, charcoal",
-      "light": "soft directional daylight",
-      "textures": "full-grain cowhide, fine paper, linen",
-      "mood": "quiet luxury, professional elegance"
+      "summary": "Warm terracotta, rich tan leather, soft neutral light, natural textures",
+      "palette": "terracotta, tan, muted green, charcoal",
+      "light": "soft warm studio lighting",
+      "textures": "full-grain cowhide, kraft paper, ceramic, woven textiles",
+      "mood": "quiet luxury, professional, grounded"
     }
   }
 }

@@ -1,6 +1,6 @@
 {
   "modelId": "gemini-3.5-flash-lite",
-  "promptVersion": "brand-5",
+  "promptVersion": "brand-6",
   "partials": [
     {
       "name": {}
@@ -8,7 +8,7 @@
     {
       "name": {
         "value": "Little Vietnam Tours",
-        "source": "https://www.littlevietnamtours."
+        "source": "https://www.littlevietnamt"
       }
     },
     {
@@ -17,7 +17,7 @@
         "source": "https://www.littlevietnamtours.com/"
       },
       "summary": {
-        "value": "Personalized, private, and custom"
+        "value": "Private, custom, personalized itineraries"
       }
     },
     {
@@ -26,8 +26,8 @@
         "source": "https://www.littlevietnamtours.com/"
       },
       "summary": {
-        "value": "Personalized, private, and custom guided tours and holiday planning in Vietnam and Southeast Asia.",
-        "source": "https://www.littlevietnamtours.com"
+        "value": "Private, custom, personalized itineraries and guided tours in Vietnam and Southeast Asia.",
+        "source": "https://www.littlevietnamtours"
       }
     },
     {
@@ -36,14 +36,26 @@
         "source": "https://www.littlevietnamtours.com/"
       },
       "summary": {
-        "value": "Personalized, private, and custom guided tours and holiday planning in Vietnam and Southeast Asia.",
+        "value": "Private, custom, personalized itineraries and guided tours in Vietnam and Southeast Asia.",
+        "source": "https://www.littlevietnamtours.com/"
+      },
+      "category": "tour operator",
+      "offerings": []
+    },
+    {
+      "name": {
+        "value": "Little Vietnam Tours",
+        "source": "https://www.littlevietnamtours.com/"
+      },
+      "summary": {
+        "value": "Private, custom, personalized itineraries and guided tours in Vietnam and Southeast Asia.",
         "source": "https://www.littlevietnamtours.com/"
       },
       "category": "tour operator",
       "offerings": [
         {
-          "name": "Ha Giang Motorbike Loop",
-          "description": "An epic Northern Vietnam adventure through rural hill-tribe villages."
+          "name": "Amazing Vietnam",
+          "source": "https://www.littlevietnamtours."
         }
       ]
     },
@@ -53,14 +65,98 @@
         "source": "https://www.littlevietnamtours.com/"
       },
       "summary": {
-        "value": "Personalized, private, and custom guided tours and holiday planning in Vietnam and Southeast Asia.",
+        "value": "Private, custom, personalized itineraries and guided tours in Vietnam and Southeast Asia.",
         "source": "https://www.littlevietnamtours.com/"
       },
       "category": "tour operator",
       "offerings": [
         {
-          "name": "Ha Giang Motorbike Loop",
-          "description": "An epic Northern Vietnam adventure through rural hill-tribe villages.",
+          "name": "Amazing Vietnam",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        {
+          "name": "Epic Northern Vietnam Adventure including Motorbiking the Ha Giang"
+        }
+      ]
+    },
+    {
+      "name": {
+        "value": "Little Vietnam Tours",
+        "source": "https://www.littlevietnamtours.com/"
+      },
+      "summary": {
+        "value": "Private, custom, personalized itineraries and guided tours in Vietnam and Southeast Asia.",
+        "source": "https://www.littlevietnamtours.com/"
+      },
+      "category": "tour operator",
+      "offerings": [
+        {
+          "name": "Amazing Vietnam",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        {
+          "name": "Epic Northern Vietnam Adventure including Motorbiking the Ha Giang Loop",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        {
+          "name": "Michelin Bib Gourmand Tour Vietnam",
+          "source": "https://"
+        }
+      ]
+    },
+    {
+      "name": {
+        "value": "Little Vietnam Tours",
+        "source": "https://www.littlevietnamtours.com/"
+      },
+      "summary": {
+        "value": "Private, custom, personalized itineraries and guided tours in Vietnam and Southeast Asia.",
+        "source": "https://www.littlevietnamtours.com/"
+      },
+      "category": "tour operator",
+      "offerings": [
+        {
+          "name": "Amazing Vietnam",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        {
+          "name": "Epic Northern Vietnam Adventure including Motorbiking the Ha Giang Loop",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        {
+          "name": "Michelin Bib Gourmand Tour Vietnam",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        {
+          "name": "Active Family"
+        }
+      ]
+    },
+    {
+      "name": {
+        "value": "Little Vietnam Tours",
+        "source": "https://www.littlevietnamtours.com/"
+      },
+      "summary": {
+        "value": "Private, custom, personalized itineraries and guided tours in Vietnam and Southeast Asia.",
+        "source": "https://www.littlevietnamtours.com/"
+      },
+      "category": "tour operator",
+      "offerings": [
+        {
+          "name": "Amazing Vietnam",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        {
+          "name": "Epic Northern Vietnam Adventure including Motorbiking the Ha Giang Loop",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        {
+          "name": "Michelin Bib Gourmand Tour Vietnam",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        {
+          "name": "Active Family Tour of Vietnam",
           "source": "https://www.littlevietnamtours.com/"
         }
       ]
@@ -71,20 +167,108 @@
         "source": "https://www.littlevietnamtours.com/"
       },
       "summary": {
-        "value": "Personalized, private, and custom guided tours and holiday planning in Vietnam and Southeast Asia.",
+        "value": "Private, custom, personalized itineraries and guided tours in Vietnam and Southeast Asia.",
         "source": "https://www.littlevietnamtours.com/"
       },
       "category": "tour operator",
       "offerings": [
         {
-          "name": "Ha Giang Motorbike Loop",
-          "description": "An epic Northern Vietnam adventure through rural hill-tribe villages.",
+          "name": "Amazing Vietnam",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        {
+          "name": "Epic Northern Vietnam Adventure including Motorbiking the Ha Giang Loop",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        {
+          "name": "Michelin Bib Gourmand Tour Vietnam",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        {
+          "name": "Active Family Tour of Vietnam",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        {
+          "name": "Sweet Honeymoon In Vietnam",
+          "source": "https://"
+        }
+      ]
+    },
+    {
+      "name": {
+        "value": "Little Vietnam Tours",
+        "source": "https://www.littlevietnamtours.com/"
+      },
+      "summary": {
+        "value": "Private, custom, personalized itineraries and guided tours in Vietnam and Southeast Asia.",
+        "source": "https://www.littlevietnamtours.com/"
+      },
+      "category": "tour operator",
+      "offerings": [
+        {
+          "name": "Amazing Vietnam",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        {
+          "name": "Epic Northern Vietnam Adventure including Motorbiking the Ha Giang Loop",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        {
+          "name": "Michelin Bib Gourmand Tour Vietnam",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        {
+          "name": "Active Family Tour of Vietnam",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        {
+          "name": "Sweet Honeymoon In Vietnam",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        {
+          "name": "In the World"
+        }
+      ]
+    },
+    {
+      "name": {
+        "value": "Little Vietnam Tours",
+        "source": "https://www.littlevietnamtours.com/"
+      },
+      "summary": {
+        "value": "Private, custom, personalized itineraries and guided tours in Vietnam and Southeast Asia.",
+        "source": "https://www.littlevietnamtours.com/"
+      },
+      "category": "tour operator",
+      "offerings": [
+        {
+          "name": "Amazing Vietnam",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        {
+          "name": "Epic Northern Vietnam Adventure including Motorbiking the Ha Giang Loop",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        {
+          "name": "Michelin Bib Gourmand Tour Vietnam",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        {
+          "name": "Active Family Tour of Vietnam",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        {
+          "name": "Sweet Honeymoon In Vietnam",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        {
+          "name": "In the World of Endangered Primates",
           "source": "https://www.littlevietnamtours.com/"
         }
       ],
       "highlights": [
         {
-          "value": "TripAdvisor Travelers Choice 4 years in a row"
+          "value": "TripAdvisor Travelers' Choice 4 years"
         }
       ]
     },
@@ -94,20 +278,81 @@
         "source": "https://www.littlevietnamtours.com/"
       },
       "summary": {
-        "value": "Personalized, private, and custom guided tours and holiday planning in Vietnam and Southeast Asia.",
+        "value": "Private, custom, personalized itineraries and guided tours in Vietnam and Southeast Asia.",
         "source": "https://www.littlevietnamtours.com/"
       },
       "category": "tour operator",
       "offerings": [
         {
-          "name": "Ha Giang Motorbike Loop",
-          "description": "An epic Northern Vietnam adventure through rural hill-tribe villages.",
+          "name": "Amazing Vietnam",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        {
+          "name": "Epic Northern Vietnam Adventure including Motorbiking the Ha Giang Loop",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        {
+          "name": "Michelin Bib Gourmand Tour Vietnam",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        {
+          "name": "Active Family Tour of Vietnam",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        {
+          "name": "Sweet Honeymoon In Vietnam",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        {
+          "name": "In the World of Endangered Primates",
           "source": "https://www.littlevietnamtours.com/"
         }
       ],
       "highlights": [
         {
-          "value": "TripAdvisor Travelers Choice 4 years in a row",
+          "value": "TripAdvisor Travelers' Choice 4 years in a row - 2023, 2024, 2025, 2026"
+        }
+      ]
+    },
+    {
+      "name": {
+        "value": "Little Vietnam Tours",
+        "source": "https://www.littlevietnamtours.com/"
+      },
+      "summary": {
+        "value": "Private, custom, personalized itineraries and guided tours in Vietnam and Southeast Asia.",
+        "source": "https://www.littlevietnamtours.com/"
+      },
+      "category": "tour operator",
+      "offerings": [
+        {
+          "name": "Amazing Vietnam",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        {
+          "name": "Epic Northern Vietnam Adventure including Motorbiking the Ha Giang Loop",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        {
+          "name": "Michelin Bib Gourmand Tour Vietnam",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        {
+          "name": "Active Family Tour of Vietnam",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        {
+          "name": "Sweet Honeymoon In Vietnam",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        {
+          "name": "In the World of Endangered Primates",
+          "source": "https://www.littlevietnamtours.com/"
+        }
+      ],
+      "highlights": [
+        {
+          "value": "TripAdvisor Travelers' Choice 4 years in a row - 2023, 2024, 2025, 2026",
           "source": "https://www.littlevietnamtours.com/"
         },
         {}
@@ -119,25 +364,43 @@
         "source": "https://www.littlevietnamtours.com/"
       },
       "summary": {
-        "value": "Personalized, private, and custom guided tours and holiday planning in Vietnam and Southeast Asia.",
+        "value": "Private, custom, personalized itineraries and guided tours in Vietnam and Southeast Asia.",
         "source": "https://www.littlevietnamtours.com/"
       },
       "category": "tour operator",
       "offerings": [
         {
-          "name": "Ha Giang Motorbike Loop",
-          "description": "An epic Northern Vietnam adventure through rural hill-tribe villages.",
+          "name": "Amazing Vietnam",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        {
+          "name": "Epic Northern Vietnam Adventure including Motorbiking the Ha Giang Loop",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        {
+          "name": "Michelin Bib Gourmand Tour Vietnam",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        {
+          "name": "Active Family Tour of Vietnam",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        {
+          "name": "Sweet Honeymoon In Vietnam",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        {
+          "name": "In the World of Endangered Primates",
           "source": "https://www.littlevietnamtours.com/"
         }
       ],
       "highlights": [
         {
-          "value": "TripAdvisor Travelers Choice 4 years in a row",
+          "value": "TripAdvisor Travelers' Choice 4 years in a row - 2023, 2024, 2025, 2026",
           "source": "https://www.littlevietnamtours.com/"
         },
         {
-          "value": "Licensed international tour operator",
-          "source": "https://www.littlevietnamtours.com/"
+          "value": "Licensed international tour operator #01-1359/2019 T"
         }
       ]
     },
@@ -147,1114 +410,43 @@
         "source": "https://www.littlevietnamtours.com/"
       },
       "summary": {
-        "value": "Personalized, private, and custom guided tours and holiday planning in Vietnam and Southeast Asia.",
+        "value": "Private, custom, personalized itineraries and guided tours in Vietnam and Southeast Asia.",
         "source": "https://www.littlevietnamtours.com/"
       },
       "category": "tour operator",
       "offerings": [
         {
-          "name": "Ha Giang Motorbike Loop",
-          "description": "An epic Northern Vietnam adventure through rural hill-tribe villages.",
+          "name": "Amazing Vietnam",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        {
+          "name": "Epic Northern Vietnam Adventure including Motorbiking the Ha Giang Loop",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        {
+          "name": "Michelin Bib Gourmand Tour Vietnam",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        {
+          "name": "Active Family Tour of Vietnam",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        {
+          "name": "Sweet Honeymoon In Vietnam",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        {
+          "name": "In the World of Endangered Primates",
           "source": "https://www.littlevietnamtours.com/"
         }
       ],
       "highlights": [
         {
-          "value": "TripAdvisor Travelers Choice 4 years in a row",
+          "value": "TripAdvisor Travelers' Choice 4 years in a row - 2023, 2024, 2025, 2026",
           "source": "https://www.littlevietnamtours.com/"
         },
         {
-          "value": "Licensed international tour operator",
-          "source": "https://www.littlevietnamtours.com/"
-        },
-        {
-          "value": "Planning trips for UK, US, Australian and Canadian travelers for "
-        }
-      ]
-    },
-    {
-      "name": {
-        "value": "Little Vietnam Tours",
-        "source": "https://www.littlevietnamtours.com/"
-      },
-      "summary": {
-        "value": "Personalized, private, and custom guided tours and holiday planning in Vietnam and Southeast Asia.",
-        "source": "https://www.littlevietnamtours.com/"
-      },
-      "category": "tour operator",
-      "offerings": [
-        {
-          "name": "Ha Giang Motorbike Loop",
-          "description": "An epic Northern Vietnam adventure through rural hill-tribe villages.",
-          "source": "https://www.littlevietnamtours.com/"
-        }
-      ],
-      "highlights": [
-        {
-          "value": "TripAdvisor Travelers Choice 4 years in a row",
-          "source": "https://www.littlevietnamtours.com/"
-        },
-        {
-          "value": "Licensed international tour operator",
-          "source": "https://www.littlevietnamtours.com/"
-        },
-        {
-          "value": "Planning trips for UK, US, Australian and Canadian travelers for 16 years",
-          "source": "https://www.littlevietnamtours.com/"
-        }
-      ]
-    },
-    {
-      "name": {
-        "value": "Little Vietnam Tours",
-        "source": "https://www.littlevietnamtours.com/"
-      },
-      "summary": {
-        "value": "Personalized, private, and custom guided tours and holiday planning in Vietnam and Southeast Asia.",
-        "source": "https://www.littlevietnamtours.com/"
-      },
-      "category": "tour operator",
-      "offerings": [
-        {
-          "name": "Ha Giang Motorbike Loop",
-          "description": "An epic Northern Vietnam adventure through rural hill-tribe villages.",
-          "source": "https://www.littlevietnamtours.com/"
-        }
-      ],
-      "highlights": [
-        {
-          "value": "TripAdvisor Travelers Choice 4 years in a row",
-          "source": "https://www.littlevietnamtours.com/"
-        },
-        {
-          "value": "Licensed international tour operator",
-          "source": "https://www.littlevietnamtours.com/"
-        },
-        {
-          "value": "Planning trips for UK, US, Australian and Canadian travelers for 16 years",
-          "source": "https://www.littlevietnamtours.com/"
-        }
-      ],
-      "location": {
-        "town": {
-          "value": "Hanoi"
-        }
-      }
-    },
-    {
-      "name": {
-        "value": "Little Vietnam Tours",
-        "source": "https://www.littlevietnamtours.com/"
-      },
-      "summary": {
-        "value": "Personalized, private, and custom guided tours and holiday planning in Vietnam and Southeast Asia.",
-        "source": "https://www.littlevietnamtours.com/"
-      },
-      "category": "tour operator",
-      "offerings": [
-        {
-          "name": "Ha Giang Motorbike Loop",
-          "description": "An epic Northern Vietnam adventure through rural hill-tribe villages.",
-          "source": "https://www.littlevietnamtours.com/"
-        }
-      ],
-      "highlights": [
-        {
-          "value": "TripAdvisor Travelers Choice 4 years in a row",
-          "source": "https://www.littlevietnamtours.com/"
-        },
-        {
-          "value": "Licensed international tour operator",
-          "source": "https://www.littlevietnamtours.com/"
-        },
-        {
-          "value": "Planning trips for UK, US, Australian and Canadian travelers for 16 years",
-          "source": "https://www.littlevietnamtours.com/"
-        }
-      ],
-      "location": {
-        "town": {
-          "value": "Hanoi",
-          "source": "https://www.littlevietnamtours.com/"
-        }
-      }
-    },
-    {
-      "name": {
-        "value": "Little Vietnam Tours",
-        "source": "https://www.littlevietnamtours.com/"
-      },
-      "summary": {
-        "value": "Personalized, private, and custom guided tours and holiday planning in Vietnam and Southeast Asia.",
-        "source": "https://www.littlevietnamtours.com/"
-      },
-      "category": "tour operator",
-      "offerings": [
-        {
-          "name": "Ha Giang Motorbike Loop",
-          "description": "An epic Northern Vietnam adventure through rural hill-tribe villages.",
-          "source": "https://www.littlevietnamtours.com/"
-        }
-      ],
-      "highlights": [
-        {
-          "value": "TripAdvisor Travelers Choice 4 years in a row",
-          "source": "https://www.littlevietnamtours.com/"
-        },
-        {
-          "value": "Licensed international tour operator",
-          "source": "https://www.littlevietnamtours.com/"
-        },
-        {
-          "value": "Planning trips for UK, US, Australian and Canadian travelers for 16 years",
-          "source": "https://www.littlevietnamtours.com/"
-        }
-      ],
-      "location": {
-        "town": {
-          "value": "Hanoi",
-          "source": "https://www.littlevietnamtours.com/"
-        },
-        "area": {
-          "value": "Cau Giay District",
-          "source": "https://www"
-        }
-      }
-    },
-    {
-      "name": {
-        "value": "Little Vietnam Tours",
-        "source": "https://www.littlevietnamtours.com/"
-      },
-      "summary": {
-        "value": "Personalized, private, and custom guided tours and holiday planning in Vietnam and Southeast Asia.",
-        "source": "https://www.littlevietnamtours.com/"
-      },
-      "category": "tour operator",
-      "offerings": [
-        {
-          "name": "Ha Giang Motorbike Loop",
-          "description": "An epic Northern Vietnam adventure through rural hill-tribe villages.",
-          "source": "https://www.littlevietnamtours.com/"
-        }
-      ],
-      "highlights": [
-        {
-          "value": "TripAdvisor Travelers Choice 4 years in a row",
-          "source": "https://www.littlevietnamtours.com/"
-        },
-        {
-          "value": "Licensed international tour operator",
-          "source": "https://www.littlevietnamtours.com/"
-        },
-        {
-          "value": "Planning trips for UK, US, Australian and Canadian travelers for 16 years",
-          "source": "https://www.littlevietnamtours.com/"
-        }
-      ],
-      "location": {
-        "town": {
-          "value": "Hanoi",
-          "source": "https://www.littlevietnamtours.com/"
-        },
-        "area": {
-          "value": "Cau Giay District",
-          "source": "https://www.littlevietnamtours.com/"
-        },
-        "address": {
-          "value": ""
-        }
-      }
-    },
-    {
-      "name": {
-        "value": "Little Vietnam Tours",
-        "source": "https://www.littlevietnamtours.com/"
-      },
-      "summary": {
-        "value": "Personalized, private, and custom guided tours and holiday planning in Vietnam and Southeast Asia.",
-        "source": "https://www.littlevietnamtours.com/"
-      },
-      "category": "tour operator",
-      "offerings": [
-        {
-          "name": "Ha Giang Motorbike Loop",
-          "description": "An epic Northern Vietnam adventure through rural hill-tribe villages.",
-          "source": "https://www.littlevietnamtours.com/"
-        }
-      ],
-      "highlights": [
-        {
-          "value": "TripAdvisor Travelers Choice 4 years in a row",
-          "source": "https://www.littlevietnamtours.com/"
-        },
-        {
-          "value": "Licensed international tour operator",
-          "source": "https://www.littlevietnamtours.com/"
-        },
-        {
-          "value": "Planning trips for UK, US, Australian and Canadian travelers for 16 years",
-          "source": "https://www.littlevietnamtours.com/"
-        }
-      ],
-      "location": {
-        "town": {
-          "value": "Hanoi",
-          "source": "https://www.littlevietnamtours.com/"
-        },
-        "area": {
-          "value": "Cau Giay District",
-          "source": "https://www.littlevietnamtours.com/"
-        },
-        "address": {
-          "value": "4th floor, Block A6/D6, Cau Giay Urban Area, Tho Thap Street, Hanoi, VN"
-        }
-      }
-    },
-    {
-      "name": {
-        "value": "Little Vietnam Tours",
-        "source": "https://www.littlevietnamtours.com/"
-      },
-      "summary": {
-        "value": "Personalized, private, and custom guided tours and holiday planning in Vietnam and Southeast Asia.",
-        "source": "https://www.littlevietnamtours.com/"
-      },
-      "category": "tour operator",
-      "offerings": [
-        {
-          "name": "Ha Giang Motorbike Loop",
-          "description": "An epic Northern Vietnam adventure through rural hill-tribe villages.",
-          "source": "https://www.littlevietnamtours.com/"
-        }
-      ],
-      "highlights": [
-        {
-          "value": "TripAdvisor Travelers Choice 4 years in a row",
-          "source": "https://www.littlevietnamtours.com/"
-        },
-        {
-          "value": "Licensed international tour operator",
-          "source": "https://www.littlevietnamtours.com/"
-        },
-        {
-          "value": "Planning trips for UK, US, Australian and Canadian travelers for 16 years",
-          "source": "https://www.littlevietnamtours.com/"
-        }
-      ],
-      "location": {
-        "town": {
-          "value": "Hanoi",
-          "source": "https://www.littlevietnamtours.com/"
-        },
-        "area": {
-          "value": "Cau Giay District",
-          "source": "https://www.littlevietnamtours.com/"
-        },
-        "address": {
-          "value": "4th floor, Block A6/D6, Cau Giay Urban Area, Tho Thap Street, Hanoi, VN",
-          "source": "https://www.littlevietnamtours.com/"
-        }
-      }
-    },
-    {
-      "name": {
-        "value": "Little Vietnam Tours",
-        "source": "https://www.littlevietnamtours.com/"
-      },
-      "summary": {
-        "value": "Personalized, private, and custom guided tours and holiday planning in Vietnam and Southeast Asia.",
-        "source": "https://www.littlevietnamtours.com/"
-      },
-      "category": "tour operator",
-      "offerings": [
-        {
-          "name": "Ha Giang Motorbike Loop",
-          "description": "An epic Northern Vietnam adventure through rural hill-tribe villages.",
-          "source": "https://www.littlevietnamtours.com/"
-        }
-      ],
-      "highlights": [
-        {
-          "value": "TripAdvisor Travelers Choice 4 years in a row",
-          "source": "https://www.littlevietnamtours.com/"
-        },
-        {
-          "value": "Licensed international tour operator",
-          "source": "https://www.littlevietnamtours.com/"
-        },
-        {
-          "value": "Planning trips for UK, US, Australian and Canadian travelers for 16 years",
-          "source": "https://www.littlevietnamtours.com/"
-        }
-      ],
-      "location": {
-        "town": {
-          "value": "Hanoi",
-          "source": "https://www.littlevietnamtours.com/"
-        },
-        "area": {
-          "value": "Cau Giay District",
-          "source": "https://www.littlevietnamtours.com/"
-        },
-        "address": {
-          "value": "4th floor, Block A6/D6, Cau Giay Urban Area, Tho Thap Street, Hanoi, VN",
-          "source": "https://www.littlevietnamtours.com/"
-        },
-        "serviceArea": {
-          "value": "Vietnam, Southeast Asia",
-          "source": "https://www.littleviet"
-        }
-      }
-    },
-    {
-      "name": {
-        "value": "Little Vietnam Tours",
-        "source": "https://www.littlevietnamtours.com/"
-      },
-      "summary": {
-        "value": "Personalized, private, and custom guided tours and holiday planning in Vietnam and Southeast Asia.",
-        "source": "https://www.littlevietnamtours.com/"
-      },
-      "category": "tour operator",
-      "offerings": [
-        {
-          "name": "Ha Giang Motorbike Loop",
-          "description": "An epic Northern Vietnam adventure through rural hill-tribe villages.",
-          "source": "https://www.littlevietnamtours.com/"
-        }
-      ],
-      "highlights": [
-        {
-          "value": "TripAdvisor Travelers Choice 4 years in a row",
-          "source": "https://www.littlevietnamtours.com/"
-        },
-        {
-          "value": "Licensed international tour operator",
-          "source": "https://www.littlevietnamtours.com/"
-        },
-        {
-          "value": "Planning trips for UK, US, Australian and Canadian travelers for 16 years",
-          "source": "https://www.littlevietnamtours.com/"
-        }
-      ],
-      "location": {
-        "town": {
-          "value": "Hanoi",
-          "source": "https://www.littlevietnamtours.com/"
-        },
-        "area": {
-          "value": "Cau Giay District",
-          "source": "https://www.littlevietnamtours.com/"
-        },
-        "address": {
-          "value": "4th floor, Block A6/D6, Cau Giay Urban Area, Tho Thap Street, Hanoi, VN",
-          "source": "https://www.littlevietnamtours.com/"
-        },
-        "serviceArea": {
-          "value": "Vietnam, Southeast Asia",
-          "source": "https://www.littlevietnamtours.com/"
-        }
-      },
-      "contact": {
-        "whatsapp": null
-      }
-    },
-    {
-      "name": {
-        "value": "Little Vietnam Tours",
-        "source": "https://www.littlevietnamtours.com/"
-      },
-      "summary": {
-        "value": "Personalized, private, and custom guided tours and holiday planning in Vietnam and Southeast Asia.",
-        "source": "https://www.littlevietnamtours.com/"
-      },
-      "category": "tour operator",
-      "offerings": [
-        {
-          "name": "Ha Giang Motorbike Loop",
-          "description": "An epic Northern Vietnam adventure through rural hill-tribe villages.",
-          "source": "https://www.littlevietnamtours.com/"
-        }
-      ],
-      "highlights": [
-        {
-          "value": "TripAdvisor Travelers Choice 4 years in a row",
-          "source": "https://www.littlevietnamtours.com/"
-        },
-        {
-          "value": "Licensed international tour operator",
-          "source": "https://www.littlevietnamtours.com/"
-        },
-        {
-          "value": "Planning trips for UK, US, Australian and Canadian travelers for 16 years",
-          "source": "https://www.littlevietnamtours.com/"
-        }
-      ],
-      "location": {
-        "town": {
-          "value": "Hanoi",
-          "source": "https://www.littlevietnamtours.com/"
-        },
-        "area": {
-          "value": "Cau Giay District",
-          "source": "https://www.littlevietnamtours.com/"
-        },
-        "address": {
-          "value": "4th floor, Block A6/D6, Cau Giay Urban Area, Tho Thap Street, Hanoi, VN",
-          "source": "https://www.littlevietnamtours.com/"
-        },
-        "serviceArea": {
-          "value": "Vietnam, Southeast Asia",
-          "source": "https://www.littlevietnamtours.com/"
-        }
-      },
-      "contact": {
-        "whatsapp": null,
-        "phone": {
-          "value": "+84-989-964-"
-        }
-      }
-    },
-    {
-      "name": {
-        "value": "Little Vietnam Tours",
-        "source": "https://www.littlevietnamtours.com/"
-      },
-      "summary": {
-        "value": "Personalized, private, and custom guided tours and holiday planning in Vietnam and Southeast Asia.",
-        "source": "https://www.littlevietnamtours.com/"
-      },
-      "category": "tour operator",
-      "offerings": [
-        {
-          "name": "Ha Giang Motorbike Loop",
-          "description": "An epic Northern Vietnam adventure through rural hill-tribe villages.",
-          "source": "https://www.littlevietnamtours.com/"
-        }
-      ],
-      "highlights": [
-        {
-          "value": "TripAdvisor Travelers Choice 4 years in a row",
-          "source": "https://www.littlevietnamtours.com/"
-        },
-        {
-          "value": "Licensed international tour operator",
-          "source": "https://www.littlevietnamtours.com/"
-        },
-        {
-          "value": "Planning trips for UK, US, Australian and Canadian travelers for 16 years",
-          "source": "https://www.littlevietnamtours.com/"
-        }
-      ],
-      "location": {
-        "town": {
-          "value": "Hanoi",
-          "source": "https://www.littlevietnamtours.com/"
-        },
-        "area": {
-          "value": "Cau Giay District",
-          "source": "https://www.littlevietnamtours.com/"
-        },
-        "address": {
-          "value": "4th floor, Block A6/D6, Cau Giay Urban Area, Tho Thap Street, Hanoi, VN",
-          "source": "https://www.littlevietnamtours.com/"
-        },
-        "serviceArea": {
-          "value": "Vietnam, Southeast Asia",
-          "source": "https://www.littlevietnamtours.com/"
-        }
-      },
-      "contact": {
-        "whatsapp": null,
-        "phone": {
-          "value": "+84-989-964-668",
-          "source": "https://www.littlevietnamtours.com/"
-        }
-      }
-    },
-    {
-      "name": {
-        "value": "Little Vietnam Tours",
-        "source": "https://www.littlevietnamtours.com/"
-      },
-      "summary": {
-        "value": "Personalized, private, and custom guided tours and holiday planning in Vietnam and Southeast Asia.",
-        "source": "https://www.littlevietnamtours.com/"
-      },
-      "category": "tour operator",
-      "offerings": [
-        {
-          "name": "Ha Giang Motorbike Loop",
-          "description": "An epic Northern Vietnam adventure through rural hill-tribe villages.",
-          "source": "https://www.littlevietnamtours.com/"
-        }
-      ],
-      "highlights": [
-        {
-          "value": "TripAdvisor Travelers Choice 4 years in a row",
-          "source": "https://www.littlevietnamtours.com/"
-        },
-        {
-          "value": "Licensed international tour operator",
-          "source": "https://www.littlevietnamtours.com/"
-        },
-        {
-          "value": "Planning trips for UK, US, Australian and Canadian travelers for 16 years",
-          "source": "https://www.littlevietnamtours.com/"
-        }
-      ],
-      "location": {
-        "town": {
-          "value": "Hanoi",
-          "source": "https://www.littlevietnamtours.com/"
-        },
-        "area": {
-          "value": "Cau Giay District",
-          "source": "https://www.littlevietnamtours.com/"
-        },
-        "address": {
-          "value": "4th floor, Block A6/D6, Cau Giay Urban Area, Tho Thap Street, Hanoi, VN",
-          "source": "https://www.littlevietnamtours.com/"
-        },
-        "serviceArea": {
-          "value": "Vietnam, Southeast Asia",
-          "source": "https://www.littlevietnamtours.com/"
-        }
-      },
-      "contact": {
-        "whatsapp": null,
-        "phone": {
-          "value": "+84-989-964-668",
-          "source": "https://www.littlevietnamtours.com/"
-        },
-        "email": {
-          "value": "letsgo@littlevietnamtours.com"
-        }
-      }
-    },
-    {
-      "name": {
-        "value": "Little Vietnam Tours",
-        "source": "https://www.littlevietnamtours.com/"
-      },
-      "summary": {
-        "value": "Personalized, private, and custom guided tours and holiday planning in Vietnam and Southeast Asia.",
-        "source": "https://www.littlevietnamtours.com/"
-      },
-      "category": "tour operator",
-      "offerings": [
-        {
-          "name": "Ha Giang Motorbike Loop",
-          "description": "An epic Northern Vietnam adventure through rural hill-tribe villages.",
-          "source": "https://www.littlevietnamtours.com/"
-        }
-      ],
-      "highlights": [
-        {
-          "value": "TripAdvisor Travelers Choice 4 years in a row",
-          "source": "https://www.littlevietnamtours.com/"
-        },
-        {
-          "value": "Licensed international tour operator",
-          "source": "https://www.littlevietnamtours.com/"
-        },
-        {
-          "value": "Planning trips for UK, US, Australian and Canadian travelers for 16 years",
-          "source": "https://www.littlevietnamtours.com/"
-        }
-      ],
-      "location": {
-        "town": {
-          "value": "Hanoi",
-          "source": "https://www.littlevietnamtours.com/"
-        },
-        "area": {
-          "value": "Cau Giay District",
-          "source": "https://www.littlevietnamtours.com/"
-        },
-        "address": {
-          "value": "4th floor, Block A6/D6, Cau Giay Urban Area, Tho Thap Street, Hanoi, VN",
-          "source": "https://www.littlevietnamtours.com/"
-        },
-        "serviceArea": {
-          "value": "Vietnam, Southeast Asia",
-          "source": "https://www.littlevietnamtours.com/"
-        }
-      },
-      "contact": {
-        "whatsapp": null,
-        "phone": {
-          "value": "+84-989-964-668",
-          "source": "https://www.littlevietnamtours.com/"
-        },
-        "email": {
-          "value": "letsgo@littlevietnamtours.com",
-          "source": "https://www.littlevietnamtours.com/"
-        }
-      }
-    },
-    {
-      "name": {
-        "value": "Little Vietnam Tours",
-        "source": "https://www.littlevietnamtours.com/"
-      },
-      "summary": {
-        "value": "Personalized, private, and custom guided tours and holiday planning in Vietnam and Southeast Asia.",
-        "source": "https://www.littlevietnamtours.com/"
-      },
-      "category": "tour operator",
-      "offerings": [
-        {
-          "name": "Ha Giang Motorbike Loop",
-          "description": "An epic Northern Vietnam adventure through rural hill-tribe villages.",
-          "source": "https://www.littlevietnamtours.com/"
-        }
-      ],
-      "highlights": [
-        {
-          "value": "TripAdvisor Travelers Choice 4 years in a row",
-          "source": "https://www.littlevietnamtours.com/"
-        },
-        {
-          "value": "Licensed international tour operator",
-          "source": "https://www.littlevietnamtours.com/"
-        },
-        {
-          "value": "Planning trips for UK, US, Australian and Canadian travelers for 16 years",
-          "source": "https://www.littlevietnamtours.com/"
-        }
-      ],
-      "location": {
-        "town": {
-          "value": "Hanoi",
-          "source": "https://www.littlevietnamtours.com/"
-        },
-        "area": {
-          "value": "Cau Giay District",
-          "source": "https://www.littlevietnamtours.com/"
-        },
-        "address": {
-          "value": "4th floor, Block A6/D6, Cau Giay Urban Area, Tho Thap Street, Hanoi, VN",
-          "source": "https://www.littlevietnamtours.com/"
-        },
-        "serviceArea": {
-          "value": "Vietnam, Southeast Asia",
-          "source": "https://www.littlevietnamtours.com/"
-        }
-      },
-      "contact": {
-        "whatsapp": null,
-        "phone": {
-          "value": "+84-989-964-668",
-          "source": "https://www.littlevietnamtours.com/"
-        },
-        "email": {
-          "value": "letsgo@littlevietnamtours.com",
-          "source": "https://www.littlevietnamtours.com/"
-        },
-        "instagram": null,
-        "bookingUrl": null
-      },
-      "hours": null
-    },
-    {
-      "name": {
-        "value": "Little Vietnam Tours",
-        "source": "https://www.littlevietnamtours.com/"
-      },
-      "summary": {
-        "value": "Personalized, private, and custom guided tours and holiday planning in Vietnam and Southeast Asia.",
-        "source": "https://www.littlevietnamtours.com/"
-      },
-      "category": "tour operator",
-      "offerings": [
-        {
-          "name": "Ha Giang Motorbike Loop",
-          "description": "An epic Northern Vietnam adventure through rural hill-tribe villages.",
-          "source": "https://www.littlevietnamtours.com/"
-        }
-      ],
-      "highlights": [
-        {
-          "value": "TripAdvisor Travelers Choice 4 years in a row",
-          "source": "https://www.littlevietnamtours.com/"
-        },
-        {
-          "value": "Licensed international tour operator",
-          "source": "https://www.littlevietnamtours.com/"
-        },
-        {
-          "value": "Planning trips for UK, US, Australian and Canadian travelers for 16 years",
-          "source": "https://www.littlevietnamtours.com/"
-        }
-      ],
-      "location": {
-        "town": {
-          "value": "Hanoi",
-          "source": "https://www.littlevietnamtours.com/"
-        },
-        "area": {
-          "value": "Cau Giay District",
-          "source": "https://www.littlevietnamtours.com/"
-        },
-        "address": {
-          "value": "4th floor, Block A6/D6, Cau Giay Urban Area, Tho Thap Street, Hanoi, VN",
-          "source": "https://www.littlevietnamtours.com/"
-        },
-        "serviceArea": {
-          "value": "Vietnam, Southeast Asia",
-          "source": "https://www.littlevietnamtours.com/"
-        }
-      },
-      "contact": {
-        "whatsapp": null,
-        "phone": {
-          "value": "+84-989-964-668",
-          "source": "https://www.littlevietnamtours.com/"
-        },
-        "email": {
-          "value": "letsgo@littlevietnamtours.com",
-          "source": "https://www.littlevietnamtours.com/"
-        },
-        "instagram": null,
-        "bookingUrl": null
-      },
-      "hours": null,
-      "tone": [
-        "warm",
-        "personal",
-        "professional",
-        "friendly"
-      ]
-    },
-    {
-      "name": {
-        "value": "Little Vietnam Tours",
-        "source": "https://www.littlevietnamtours.com/"
-      },
-      "summary": {
-        "value": "Personalized, private, and custom guided tours and holiday planning in Vietnam and Southeast Asia.",
-        "source": "https://www.littlevietnamtours.com/"
-      },
-      "category": "tour operator",
-      "offerings": [
-        {
-          "name": "Ha Giang Motorbike Loop",
-          "description": "An epic Northern Vietnam adventure through rural hill-tribe villages.",
-          "source": "https://www.littlevietnamtours.com/"
-        }
-      ],
-      "highlights": [
-        {
-          "value": "TripAdvisor Travelers Choice 4 years in a row",
-          "source": "https://www.littlevietnamtours.com/"
-        },
-        {
-          "value": "Licensed international tour operator",
-          "source": "https://www.littlevietnamtours.com/"
-        },
-        {
-          "value": "Planning trips for UK, US, Australian and Canadian travelers for 16 years",
-          "source": "https://www.littlevietnamtours.com/"
-        }
-      ],
-      "location": {
-        "town": {
-          "value": "Hanoi",
-          "source": "https://www.littlevietnamtours.com/"
-        },
-        "area": {
-          "value": "Cau Giay District",
-          "source": "https://www.littlevietnamtours.com/"
-        },
-        "address": {
-          "value": "4th floor, Block A6/D6, Cau Giay Urban Area, Tho Thap Street, Hanoi, VN",
-          "source": "https://www.littlevietnamtours.com/"
-        },
-        "serviceArea": {
-          "value": "Vietnam, Southeast Asia",
-          "source": "https://www.littlevietnamtours.com/"
-        }
-      },
-      "contact": {
-        "whatsapp": null,
-        "phone": {
-          "value": "+84-989-964-668",
-          "source": "https://www.littlevietnamtours.com/"
-        },
-        "email": {
-          "value": "letsgo@littlevietnamtours.com",
-          "source": "https://www.littlevietnamtours.com/"
-        },
-        "instagram": null,
-        "bookingUrl": null
-      },
-      "hours": null,
-      "tone": [
-        "warm",
-        "personal",
-        "professional",
-        "friendly"
-      ],
-      "colours": [
-        {
-          "hex": "#00a680"
-        }
-      ]
-    },
-    {
-      "name": {
-        "value": "Little Vietnam Tours",
-        "source": "https://www.littlevietnamtours.com/"
-      },
-      "summary": {
-        "value": "Personalized, private, and custom guided tours and holiday planning in Vietnam and Southeast Asia.",
-        "source": "https://www.littlevietnamtours.com/"
-      },
-      "category": "tour operator",
-      "offerings": [
-        {
-          "name": "Ha Giang Motorbike Loop",
-          "description": "An epic Northern Vietnam adventure through rural hill-tribe villages.",
-          "source": "https://www.littlevietnamtours.com/"
-        }
-      ],
-      "highlights": [
-        {
-          "value": "TripAdvisor Travelers Choice 4 years in a row",
-          "source": "https://www.littlevietnamtours.com/"
-        },
-        {
-          "value": "Licensed international tour operator",
-          "source": "https://www.littlevietnamtours.com/"
-        },
-        {
-          "value": "Planning trips for UK, US, Australian and Canadian travelers for 16 years",
-          "source": "https://www.littlevietnamtours.com/"
-        }
-      ],
-      "location": {
-        "town": {
-          "value": "Hanoi",
-          "source": "https://www.littlevietnamtours.com/"
-        },
-        "area": {
-          "value": "Cau Giay District",
-          "source": "https://www.littlevietnamtours.com/"
-        },
-        "address": {
-          "value": "4th floor, Block A6/D6, Cau Giay Urban Area, Tho Thap Street, Hanoi, VN",
-          "source": "https://www.littlevietnamtours.com/"
-        },
-        "serviceArea": {
-          "value": "Vietnam, Southeast Asia",
-          "source": "https://www.littlevietnamtours.com/"
-        }
-      },
-      "contact": {
-        "whatsapp": null,
-        "phone": {
-          "value": "+84-989-964-668",
-          "source": "https://www.littlevietnamtours.com/"
-        },
-        "email": {
-          "value": "letsgo@littlevietnamtours.com",
-          "source": "https://www.littlevietnamtours.com/"
-        },
-        "instagram": null,
-        "bookingUrl": null
-      },
-      "hours": null,
-      "tone": [
-        "warm",
-        "personal",
-        "professional",
-        "friendly"
-      ],
-      "colours": [
-        {
-          "hex": "#00a680",
-          "role": "background",
-          "source": "https://www.littlevietnamtours.com/"
-        }
-      ]
-    },
-    {
-      "name": {
-        "value": "Little Vietnam Tours",
-        "source": "https://www.littlevietnamtours.com/"
-      },
-      "summary": {
-        "value": "Personalized, private, and custom guided tours and holiday planning in Vietnam and Southeast Asia.",
-        "source": "https://www.littlevietnamtours.com/"
-      },
-      "category": "tour operator",
-      "offerings": [
-        {
-          "name": "Ha Giang Motorbike Loop",
-          "description": "An epic Northern Vietnam adventure through rural hill-tribe villages.",
-          "source": "https://www.littlevietnamtours.com/"
-        }
-      ],
-      "highlights": [
-        {
-          "value": "TripAdvisor Travelers Choice 4 years in a row",
-          "source": "https://www.littlevietnamtours.com/"
-        },
-        {
-          "value": "Licensed international tour operator",
-          "source": "https://www.littlevietnamtours.com/"
-        },
-        {
-          "value": "Planning trips for UK, US, Australian and Canadian travelers for 16 years",
-          "source": "https://www.littlevietnamtours.com/"
-        }
-      ],
-      "location": {
-        "town": {
-          "value": "Hanoi",
-          "source": "https://www.littlevietnamtours.com/"
-        },
-        "area": {
-          "value": "Cau Giay District",
-          "source": "https://www.littlevietnamtours.com/"
-        },
-        "address": {
-          "value": "4th floor, Block A6/D6, Cau Giay Urban Area, Tho Thap Street, Hanoi, VN",
-          "source": "https://www.littlevietnamtours.com/"
-        },
-        "serviceArea": {
-          "value": "Vietnam, Southeast Asia",
-          "source": "https://www.littlevietnamtours.com/"
-        }
-      },
-      "contact": {
-        "whatsapp": null,
-        "phone": {
-          "value": "+84-989-964-668",
-          "source": "https://www.littlevietnamtours.com/"
-        },
-        "email": {
-          "value": "letsgo@littlevietnamtours.com",
-          "source": "https://www.littlevietnamtours.com/"
-        },
-        "instagram": null,
-        "bookingUrl": null
-      },
-      "hours": null,
-      "tone": [
-        "warm",
-        "personal",
-        "professional",
-        "friendly"
-      ],
-      "colours": [
-        {
-          "hex": "#00a680",
-          "role": "background",
-          "source": "https://www.littlevietnamtours.com/"
-        },
-        {
-          "hex": "#145a32",
-          "role": "primary",
-          "source": "https://www.littlevietnamtours.com/"
-        },
-        {
-          "hex": "#ff00ff",
-          "role": "accent",
-          "source": ""
-        }
-      ]
-    },
-    {
-      "name": {
-        "value": "Little Vietnam Tours",
-        "source": "https://www.littlevietnamtours.com/"
-      },
-      "summary": {
-        "value": "Personalized, private, and custom guided tours and holiday planning in Vietnam and Southeast Asia.",
-        "source": "https://www.littlevietnamtours.com/"
-      },
-      "category": "tour operator",
-      "offerings": [
-        {
-          "name": "Ha Giang Motorbike Loop",
-          "description": "An epic Northern Vietnam adventure through rural hill-tribe villages.",
-          "source": "https://www.littlevietnamtours.com/"
-        }
-      ],
-      "highlights": [
-        {
-          "value": "TripAdvisor Travelers Choice 4 years in a row",
-          "source": "https://www.littlevietnamtours.com/"
-        },
-        {
-          "value": "Licensed international tour operator",
-          "source": "https://www.littlevietnamtours.com/"
-        },
-        {
-          "value": "Planning trips for UK, US, Australian and Canadian travelers for 16 years",
-          "source": "https://www.littlevietnamtours.com/"
-        }
-      ],
-      "location": {
-        "town": {
-          "value": "Hanoi",
-          "source": "https://www.littlevietnamtours.com/"
-        },
-        "area": {
-          "value": "Cau Giay District",
-          "source": "https://www.littlevietnamtours.com/"
-        },
-        "address": {
-          "value": "4th floor, Block A6/D6, Cau Giay Urban Area, Tho Thap Street, Hanoi, VN",
-          "source": "https://www.littlevietnamtours.com/"
-        },
-        "serviceArea": {
-          "value": "Vietnam, Southeast Asia",
-          "source": "https://www.littlevietnamtours.com/"
-        }
-      },
-      "contact": {
-        "whatsapp": null,
-        "phone": {
-          "value": "+84-989-964-668",
-          "source": "https://www.littlevietnamtours.com/"
-        },
-        "email": {
-          "value": "letsgo@littlevietnamtours.com",
-          "source": "https://www.littlevietnamtours.com/"
-        },
-        "instagram": null,
-        "bookingUrl": null
-      },
-      "hours": null,
-      "tone": [
-        "warm",
-        "personal",
-        "professional",
-        "friendly"
-      ],
-      "colours": [
-        {
-          "hex": "#00a680",
-          "role": "background",
-          "source": "https://www.littlevietnamtours.com/"
-        },
-        {
-          "hex": "#145a32",
-          "role": "primary",
-          "source": "https://www.littlevietnamtours.com/"
-        },
-        {
-          "hex": "#ff00ff",
-          "role": "accent",
-          "source": "https://www.littlevietnamtours.com/"
-        },
-        {
-          "hex": "#ffffff",
-          "role": "text",
+          "value": "Licensed international tour operator #01-1359/2019 TCDL-GP LHQT",
           "source": "https://www.littlevietnamtours.com"
         }
       ]
@@ -1265,24 +457,380 @@
         "source": "https://www.littlevietnamtours.com/"
       },
       "summary": {
-        "value": "Personalized, private, and custom guided tours and holiday planning in Vietnam and Southeast Asia.",
+        "value": "Private, custom, personalized itineraries and guided tours in Vietnam and Southeast Asia.",
         "source": "https://www.littlevietnamtours.com/"
       },
       "category": "tour operator",
       "offerings": [
         {
-          "name": "Ha Giang Motorbike Loop",
-          "description": "An epic Northern Vietnam adventure through rural hill-tribe villages.",
+          "name": "Amazing Vietnam",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        {
+          "name": "Epic Northern Vietnam Adventure including Motorbiking the Ha Giang Loop",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        {
+          "name": "Michelin Bib Gourmand Tour Vietnam",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        {
+          "name": "Active Family Tour of Vietnam",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        {
+          "name": "Sweet Honeymoon In Vietnam",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        {
+          "name": "In the World of Endangered Primates",
           "source": "https://www.littlevietnamtours.com/"
         }
       ],
       "highlights": [
         {
-          "value": "TripAdvisor Travelers Choice 4 years in a row",
+          "value": "TripAdvisor Travelers' Choice 4 years in a row - 2023, 2024, 2025, 2026",
           "source": "https://www.littlevietnamtours.com/"
         },
         {
-          "value": "Licensed international tour operator",
+          "value": "Licensed international tour operator #01-1359/2019 TCDL-GP LHQT",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        {
+          "value": "Planning trips for UK, US, Australian and Canadian travelers"
+        }
+      ]
+    },
+    {
+      "name": {
+        "value": "Little Vietnam Tours",
+        "source": "https://www.littlevietnamtours.com/"
+      },
+      "summary": {
+        "value": "Private, custom, personalized itineraries and guided tours in Vietnam and Southeast Asia.",
+        "source": "https://www.littlevietnamtours.com/"
+      },
+      "category": "tour operator",
+      "offerings": [
+        {
+          "name": "Amazing Vietnam",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        {
+          "name": "Epic Northern Vietnam Adventure including Motorbiking the Ha Giang Loop",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        {
+          "name": "Michelin Bib Gourmand Tour Vietnam",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        {
+          "name": "Active Family Tour of Vietnam",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        {
+          "name": "Sweet Honeymoon In Vietnam",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        {
+          "name": "In the World of Endangered Primates",
+          "source": "https://www.littlevietnamtours.com/"
+        }
+      ],
+      "highlights": [
+        {
+          "value": "TripAdvisor Travelers' Choice 4 years in a row - 2023, 2024, 2025, 2026",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        {
+          "value": "Licensed international tour operator #01-1359/2019 TCDL-GP LHQT",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        {
+          "value": "Planning trips for UK, US, Australian and Canadian travelers for 16 years",
+          "source": "https://www.littlevietnamtours.com/"
+        }
+      ]
+    },
+    {
+      "name": {
+        "value": "Little Vietnam Tours",
+        "source": "https://www.littlevietnamtours.com/"
+      },
+      "summary": {
+        "value": "Private, custom, personalized itineraries and guided tours in Vietnam and Southeast Asia.",
+        "source": "https://www.littlevietnamtours.com/"
+      },
+      "category": "tour operator",
+      "offerings": [
+        {
+          "name": "Amazing Vietnam",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        {
+          "name": "Epic Northern Vietnam Adventure including Motorbiking the Ha Giang Loop",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        {
+          "name": "Michelin Bib Gourmand Tour Vietnam",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        {
+          "name": "Active Family Tour of Vietnam",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        {
+          "name": "Sweet Honeymoon In Vietnam",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        {
+          "name": "In the World of Endangered Primates",
+          "source": "https://www.littlevietnamtours.com/"
+        }
+      ],
+      "highlights": [
+        {
+          "value": "TripAdvisor Travelers' Choice 4 years in a row - 2023, 2024, 2025, 2026",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        {
+          "value": "Licensed international tour operator #01-1359/2019 TCDL-GP LHQT",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        {
+          "value": "Planning trips for UK, US, Australian and Canadian travelers for 16 years",
+          "source": "https://www.littlevietnamtours.com/"
+        }
+      ],
+      "location": {
+        "town": {
+          "value": ""
+        }
+      }
+    },
+    {
+      "name": {
+        "value": "Little Vietnam Tours",
+        "source": "https://www.littlevietnamtours.com/"
+      },
+      "summary": {
+        "value": "Private, custom, personalized itineraries and guided tours in Vietnam and Southeast Asia.",
+        "source": "https://www.littlevietnamtours.com/"
+      },
+      "category": "tour operator",
+      "offerings": [
+        {
+          "name": "Amazing Vietnam",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        {
+          "name": "Epic Northern Vietnam Adventure including Motorbiking the Ha Giang Loop",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        {
+          "name": "Michelin Bib Gourmand Tour Vietnam",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        {
+          "name": "Active Family Tour of Vietnam",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        {
+          "name": "Sweet Honeymoon In Vietnam",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        {
+          "name": "In the World of Endangered Primates",
+          "source": "https://www.littlevietnamtours.com/"
+        }
+      ],
+      "highlights": [
+        {
+          "value": "TripAdvisor Travelers' Choice 4 years in a row - 2023, 2024, 2025, 2026",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        {
+          "value": "Licensed international tour operator #01-1359/2019 TCDL-GP LHQT",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        {
+          "value": "Planning trips for UK, US, Australian and Canadian travelers for 16 years",
+          "source": "https://www.littlevietnamtours.com/"
+        }
+      ],
+      "location": {
+        "town": {
+          "value": "Hanoi",
+          "source": "https://www.littlevietnamtours.com/"
+        }
+      }
+    },
+    {
+      "name": {
+        "value": "Little Vietnam Tours",
+        "source": "https://www.littlevietnamtours.com/"
+      },
+      "summary": {
+        "value": "Private, custom, personalized itineraries and guided tours in Vietnam and Southeast Asia.",
+        "source": "https://www.littlevietnamtours.com/"
+      },
+      "category": "tour operator",
+      "offerings": [
+        {
+          "name": "Amazing Vietnam",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        {
+          "name": "Epic Northern Vietnam Adventure including Motorbiking the Ha Giang Loop",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        {
+          "name": "Michelin Bib Gourmand Tour Vietnam",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        {
+          "name": "Active Family Tour of Vietnam",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        {
+          "name": "Sweet Honeymoon In Vietnam",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        {
+          "name": "In the World of Endangered Primates",
+          "source": "https://www.littlevietnamtours.com/"
+        }
+      ],
+      "highlights": [
+        {
+          "value": "TripAdvisor Travelers' Choice 4 years in a row - 2023, 2024, 2025, 2026",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        {
+          "value": "Licensed international tour operator #01-1359/2019 TCDL-GP LHQT",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        {
+          "value": "Planning trips for UK, US, Australian and Canadian travelers for 16 years",
+          "source": "https://www.littlevietnamtours.com/"
+        }
+      ],
+      "location": {
+        "town": {
+          "value": "Hanoi",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        "area": {
+          "value": "Cau Giay District",
+          "source": "https"
+        }
+      }
+    },
+    {
+      "name": {
+        "value": "Little Vietnam Tours",
+        "source": "https://www.littlevietnamtours.com/"
+      },
+      "summary": {
+        "value": "Private, custom, personalized itineraries and guided tours in Vietnam and Southeast Asia.",
+        "source": "https://www.littlevietnamtours.com/"
+      },
+      "category": "tour operator",
+      "offerings": [
+        {
+          "name": "Amazing Vietnam",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        {
+          "name": "Epic Northern Vietnam Adventure including Motorbiking the Ha Giang Loop",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        {
+          "name": "Michelin Bib Gourmand Tour Vietnam",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        {
+          "name": "Active Family Tour of Vietnam",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        {
+          "name": "Sweet Honeymoon In Vietnam",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        {
+          "name": "In the World of Endangered Primates",
+          "source": "https://www.littlevietnamtours.com/"
+        }
+      ],
+      "highlights": [
+        {
+          "value": "TripAdvisor Travelers' Choice 4 years in a row - 2023, 2024, 2025, 2026",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        {
+          "value": "Licensed international tour operator #01-1359/2019 TCDL-GP LHQT",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        {
+          "value": "Planning trips for UK, US, Australian and Canadian travelers for 16 years",
+          "source": "https://www.littlevietnamtours.com/"
+        }
+      ],
+      "location": {
+        "town": {
+          "value": "Hanoi",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        "area": {
+          "value": "Cau Giay District",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        "address": {}
+      }
+    },
+    {
+      "name": {
+        "value": "Little Vietnam Tours",
+        "source": "https://www.littlevietnamtours.com/"
+      },
+      "summary": {
+        "value": "Private, custom, personalized itineraries and guided tours in Vietnam and Southeast Asia.",
+        "source": "https://www.littlevietnamtours.com/"
+      },
+      "category": "tour operator",
+      "offerings": [
+        {
+          "name": "Amazing Vietnam",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        {
+          "name": "Epic Northern Vietnam Adventure including Motorbiking the Ha Giang Loop",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        {
+          "name": "Michelin Bib Gourmand Tour Vietnam",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        {
+          "name": "Active Family Tour of Vietnam",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        {
+          "name": "Sweet Honeymoon In Vietnam",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        {
+          "name": "In the World of Endangered Primates",
+          "source": "https://www.littlevietnamtours.com/"
+        }
+      ],
+      "highlights": [
+        {
+          "value": "TripAdvisor Travelers' Choice 4 years in a row - 2023, 2024, 2025, 2026",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        {
+          "value": "Licensed international tour operator #01-1359/2019 TCDL-GP LHQT",
           "source": "https://www.littlevietnamtours.com/"
         },
         {
@@ -1300,11 +848,522 @@
           "source": "https://www.littlevietnamtours.com/"
         },
         "address": {
-          "value": "4th floor, Block A6/D6, Cau Giay Urban Area, Tho Thap Street, Hanoi, VN",
+          "value": "4th floor, Block A6/D6, Cau Giay Urban Area, Tho Thap Street, Cau Giay District"
+        }
+      }
+    },
+    {
+      "name": {
+        "value": "Little Vietnam Tours",
+        "source": "https://www.littlevietnamtours.com/"
+      },
+      "summary": {
+        "value": "Private, custom, personalized itineraries and guided tours in Vietnam and Southeast Asia.",
+        "source": "https://www.littlevietnamtours.com/"
+      },
+      "category": "tour operator",
+      "offerings": [
+        {
+          "name": "Amazing Vietnam",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        {
+          "name": "Epic Northern Vietnam Adventure including Motorbiking the Ha Giang Loop",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        {
+          "name": "Michelin Bib Gourmand Tour Vietnam",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        {
+          "name": "Active Family Tour of Vietnam",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        {
+          "name": "Sweet Honeymoon In Vietnam",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        {
+          "name": "In the World of Endangered Primates",
+          "source": "https://www.littlevietnamtours.com/"
+        }
+      ],
+      "highlights": [
+        {
+          "value": "TripAdvisor Travelers' Choice 4 years in a row - 2023, 2024, 2025, 2026",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        {
+          "value": "Licensed international tour operator #01-1359/2019 TCDL-GP LHQT",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        {
+          "value": "Planning trips for UK, US, Australian and Canadian travelers for 16 years",
+          "source": "https://www.littlevietnamtours.com/"
+        }
+      ],
+      "location": {
+        "town": {
+          "value": "Hanoi",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        "area": {
+          "value": "Cau Giay District",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        "address": {
+          "value": "4th floor, Block A6/D6, Cau Giay Urban Area, Tho Thap Street, Cau Giay District, Hanoi, VN",
           "source": "https://www.littlevietnamtours.com/"
         },
         "serviceArea": {
-          "value": "Vietnam, Southeast Asia",
+          "value": "Vietnam, Cambodia, Laos, Thailand, Myanmar"
+        }
+      }
+    },
+    {
+      "name": {
+        "value": "Little Vietnam Tours",
+        "source": "https://www.littlevietnamtours.com/"
+      },
+      "summary": {
+        "value": "Private, custom, personalized itineraries and guided tours in Vietnam and Southeast Asia.",
+        "source": "https://www.littlevietnamtours.com/"
+      },
+      "category": "tour operator",
+      "offerings": [
+        {
+          "name": "Amazing Vietnam",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        {
+          "name": "Epic Northern Vietnam Adventure including Motorbiking the Ha Giang Loop",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        {
+          "name": "Michelin Bib Gourmand Tour Vietnam",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        {
+          "name": "Active Family Tour of Vietnam",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        {
+          "name": "Sweet Honeymoon In Vietnam",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        {
+          "name": "In the World of Endangered Primates",
+          "source": "https://www.littlevietnamtours.com/"
+        }
+      ],
+      "highlights": [
+        {
+          "value": "TripAdvisor Travelers' Choice 4 years in a row - 2023, 2024, 2025, 2026",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        {
+          "value": "Licensed international tour operator #01-1359/2019 TCDL-GP LHQT",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        {
+          "value": "Planning trips for UK, US, Australian and Canadian travelers for 16 years",
+          "source": "https://www.littlevietnamtours.com/"
+        }
+      ],
+      "location": {
+        "town": {
+          "value": "Hanoi",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        "area": {
+          "value": "Cau Giay District",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        "address": {
+          "value": "4th floor, Block A6/D6, Cau Giay Urban Area, Tho Thap Street, Cau Giay District, Hanoi, VN",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        "serviceArea": {
+          "value": "Vietnam, Cambodia, Laos, Thailand, Myanmar",
+          "source": "https://www.littlevietnamtours.com/"
+        }
+      }
+    },
+    {
+      "name": {
+        "value": "Little Vietnam Tours",
+        "source": "https://www.littlevietnamtours.com/"
+      },
+      "summary": {
+        "value": "Private, custom, personalized itineraries and guided tours in Vietnam and Southeast Asia.",
+        "source": "https://www.littlevietnamtours.com/"
+      },
+      "category": "tour operator",
+      "offerings": [
+        {
+          "name": "Amazing Vietnam",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        {
+          "name": "Epic Northern Vietnam Adventure including Motorbiking the Ha Giang Loop",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        {
+          "name": "Michelin Bib Gourmand Tour Vietnam",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        {
+          "name": "Active Family Tour of Vietnam",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        {
+          "name": "Sweet Honeymoon In Vietnam",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        {
+          "name": "In the World of Endangered Primates",
+          "source": "https://www.littlevietnamtours.com/"
+        }
+      ],
+      "highlights": [
+        {
+          "value": "TripAdvisor Travelers' Choice 4 years in a row - 2023, 2024, 2025, 2026",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        {
+          "value": "Licensed international tour operator #01-1359/2019 TCDL-GP LHQT",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        {
+          "value": "Planning trips for UK, US, Australian and Canadian travelers for 16 years",
+          "source": "https://www.littlevietnamtours.com/"
+        }
+      ],
+      "location": {
+        "town": {
+          "value": "Hanoi",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        "area": {
+          "value": "Cau Giay District",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        "address": {
+          "value": "4th floor, Block A6/D6, Cau Giay Urban Area, Tho Thap Street, Cau Giay District, Hanoi, VN",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        "serviceArea": {
+          "value": "Vietnam, Cambodia, Laos, Thailand, Myanmar",
+          "source": "https://www.littlevietnamtours.com/"
+        }
+      },
+      "contact": {
+        "whatsapp": null,
+        "phone": {
+          "value": "+84"
+        }
+      }
+    },
+    {
+      "name": {
+        "value": "Little Vietnam Tours",
+        "source": "https://www.littlevietnamtours.com/"
+      },
+      "summary": {
+        "value": "Private, custom, personalized itineraries and guided tours in Vietnam and Southeast Asia.",
+        "source": "https://www.littlevietnamtours.com/"
+      },
+      "category": "tour operator",
+      "offerings": [
+        {
+          "name": "Amazing Vietnam",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        {
+          "name": "Epic Northern Vietnam Adventure including Motorbiking the Ha Giang Loop",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        {
+          "name": "Michelin Bib Gourmand Tour Vietnam",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        {
+          "name": "Active Family Tour of Vietnam",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        {
+          "name": "Sweet Honeymoon In Vietnam",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        {
+          "name": "In the World of Endangered Primates",
+          "source": "https://www.littlevietnamtours.com/"
+        }
+      ],
+      "highlights": [
+        {
+          "value": "TripAdvisor Travelers' Choice 4 years in a row - 2023, 2024, 2025, 2026",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        {
+          "value": "Licensed international tour operator #01-1359/2019 TCDL-GP LHQT",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        {
+          "value": "Planning trips for UK, US, Australian and Canadian travelers for 16 years",
+          "source": "https://www.littlevietnamtours.com/"
+        }
+      ],
+      "location": {
+        "town": {
+          "value": "Hanoi",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        "area": {
+          "value": "Cau Giay District",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        "address": {
+          "value": "4th floor, Block A6/D6, Cau Giay Urban Area, Tho Thap Street, Cau Giay District, Hanoi, VN",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        "serviceArea": {
+          "value": "Vietnam, Cambodia, Laos, Thailand, Myanmar",
+          "source": "https://www.littlevietnamtours.com/"
+        }
+      },
+      "contact": {
+        "whatsapp": null,
+        "phone": {
+          "value": "+84-989-964-668",
+          "source": "https://www.little"
+        }
+      }
+    },
+    {
+      "name": {
+        "value": "Little Vietnam Tours",
+        "source": "https://www.littlevietnamtours.com/"
+      },
+      "summary": {
+        "value": "Private, custom, personalized itineraries and guided tours in Vietnam and Southeast Asia.",
+        "source": "https://www.littlevietnamtours.com/"
+      },
+      "category": "tour operator",
+      "offerings": [
+        {
+          "name": "Amazing Vietnam",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        {
+          "name": "Epic Northern Vietnam Adventure including Motorbiking the Ha Giang Loop",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        {
+          "name": "Michelin Bib Gourmand Tour Vietnam",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        {
+          "name": "Active Family Tour of Vietnam",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        {
+          "name": "Sweet Honeymoon In Vietnam",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        {
+          "name": "In the World of Endangered Primates",
+          "source": "https://www.littlevietnamtours.com/"
+        }
+      ],
+      "highlights": [
+        {
+          "value": "TripAdvisor Travelers' Choice 4 years in a row - 2023, 2024, 2025, 2026",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        {
+          "value": "Licensed international tour operator #01-1359/2019 TCDL-GP LHQT",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        {
+          "value": "Planning trips for UK, US, Australian and Canadian travelers for 16 years",
+          "source": "https://www.littlevietnamtours.com/"
+        }
+      ],
+      "location": {
+        "town": {
+          "value": "Hanoi",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        "area": {
+          "value": "Cau Giay District",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        "address": {
+          "value": "4th floor, Block A6/D6, Cau Giay Urban Area, Tho Thap Street, Cau Giay District, Hanoi, VN",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        "serviceArea": {
+          "value": "Vietnam, Cambodia, Laos, Thailand, Myanmar",
+          "source": "https://www.littlevietnamtours.com/"
+        }
+      },
+      "contact": {
+        "whatsapp": null,
+        "phone": {
+          "value": "+84-989-964-668",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        "email": {
+          "value": "letsgo"
+        }
+      }
+    },
+    {
+      "name": {
+        "value": "Little Vietnam Tours",
+        "source": "https://www.littlevietnamtours.com/"
+      },
+      "summary": {
+        "value": "Private, custom, personalized itineraries and guided tours in Vietnam and Southeast Asia.",
+        "source": "https://www.littlevietnamtours.com/"
+      },
+      "category": "tour operator",
+      "offerings": [
+        {
+          "name": "Amazing Vietnam",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        {
+          "name": "Epic Northern Vietnam Adventure including Motorbiking the Ha Giang Loop",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        {
+          "name": "Michelin Bib Gourmand Tour Vietnam",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        {
+          "name": "Active Family Tour of Vietnam",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        {
+          "name": "Sweet Honeymoon In Vietnam",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        {
+          "name": "In the World of Endangered Primates",
+          "source": "https://www.littlevietnamtours.com/"
+        }
+      ],
+      "highlights": [
+        {
+          "value": "TripAdvisor Travelers' Choice 4 years in a row - 2023, 2024, 2025, 2026",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        {
+          "value": "Licensed international tour operator #01-1359/2019 TCDL-GP LHQT",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        {
+          "value": "Planning trips for UK, US, Australian and Canadian travelers for 16 years",
+          "source": "https://www.littlevietnamtours.com/"
+        }
+      ],
+      "location": {
+        "town": {
+          "value": "Hanoi",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        "area": {
+          "value": "Cau Giay District",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        "address": {
+          "value": "4th floor, Block A6/D6, Cau Giay Urban Area, Tho Thap Street, Cau Giay District, Hanoi, VN",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        "serviceArea": {
+          "value": "Vietnam, Cambodia, Laos, Thailand, Myanmar",
+          "source": "https://www.littlevietnamtours.com/"
+        }
+      },
+      "contact": {
+        "whatsapp": null,
+        "phone": {
+          "value": "+84-989-964-668",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        "email": {
+          "value": "letsgo@littlevietnamtours.com",
+          "source": "https://www.littlevietnamtours"
+        }
+      }
+    },
+    {
+      "name": {
+        "value": "Little Vietnam Tours",
+        "source": "https://www.littlevietnamtours.com/"
+      },
+      "summary": {
+        "value": "Private, custom, personalized itineraries and guided tours in Vietnam and Southeast Asia.",
+        "source": "https://www.littlevietnamtours.com/"
+      },
+      "category": "tour operator",
+      "offerings": [
+        {
+          "name": "Amazing Vietnam",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        {
+          "name": "Epic Northern Vietnam Adventure including Motorbiking the Ha Giang Loop",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        {
+          "name": "Michelin Bib Gourmand Tour Vietnam",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        {
+          "name": "Active Family Tour of Vietnam",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        {
+          "name": "Sweet Honeymoon In Vietnam",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        {
+          "name": "In the World of Endangered Primates",
+          "source": "https://www.littlevietnamtours.com/"
+        }
+      ],
+      "highlights": [
+        {
+          "value": "TripAdvisor Travelers' Choice 4 years in a row - 2023, 2024, 2025, 2026",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        {
+          "value": "Licensed international tour operator #01-1359/2019 TCDL-GP LHQT",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        {
+          "value": "Planning trips for UK, US, Australian and Canadian travelers for 16 years",
+          "source": "https://www.littlevietnamtours.com/"
+        }
+      ],
+      "location": {
+        "town": {
+          "value": "Hanoi",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        "area": {
+          "value": "Cau Giay District",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        "address": {
+          "value": "4th floor, Block A6/D6, Cau Giay Urban Area, Tho Thap Street, Cau Giay District, Hanoi, VN",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        "serviceArea": {
+          "value": "Vietnam, Cambodia, Laos, Thailand, Myanmar",
           "source": "https://www.littlevietnamtours.com/"
         }
       },
@@ -1323,37 +1382,1185 @@
       },
       "hours": null,
       "tone": [
-        "warm",
         "personal",
-        "professional",
-        "friendly"
-      ],
-      "colours": [
+        "professional"
+      ]
+    },
+    {
+      "name": {
+        "value": "Little Vietnam Tours",
+        "source": "https://www.littlevietnamtours.com/"
+      },
+      "summary": {
+        "value": "Private, custom, personalized itineraries and guided tours in Vietnam and Southeast Asia.",
+        "source": "https://www.littlevietnamtours.com/"
+      },
+      "category": "tour operator",
+      "offerings": [
         {
-          "hex": "#00a680",
-          "role": "background",
+          "name": "Amazing Vietnam",
           "source": "https://www.littlevietnamtours.com/"
         },
         {
-          "hex": "#145a32",
+          "name": "Epic Northern Vietnam Adventure including Motorbiking the Ha Giang Loop",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        {
+          "name": "Michelin Bib Gourmand Tour Vietnam",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        {
+          "name": "Active Family Tour of Vietnam",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        {
+          "name": "Sweet Honeymoon In Vietnam",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        {
+          "name": "In the World of Endangered Primates",
+          "source": "https://www.littlevietnamtours.com/"
+        }
+      ],
+      "highlights": [
+        {
+          "value": "TripAdvisor Travelers' Choice 4 years in a row - 2023, 2024, 2025, 2026",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        {
+          "value": "Licensed international tour operator #01-1359/2019 TCDL-GP LHQT",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        {
+          "value": "Planning trips for UK, US, Australian and Canadian travelers for 16 years",
+          "source": "https://www.littlevietnamtours.com/"
+        }
+      ],
+      "location": {
+        "town": {
+          "value": "Hanoi",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        "area": {
+          "value": "Cau Giay District",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        "address": {
+          "value": "4th floor, Block A6/D6, Cau Giay Urban Area, Tho Thap Street, Cau Giay District, Hanoi, VN",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        "serviceArea": {
+          "value": "Vietnam, Cambodia, Laos, Thailand, Myanmar",
+          "source": "https://www.littlevietnamtours.com/"
+        }
+      },
+      "contact": {
+        "whatsapp": null,
+        "phone": {
+          "value": "+84-989-964-668",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        "email": {
+          "value": "letsgo@littlevietnamtours.com",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        "instagram": null,
+        "bookingUrl": null
+      },
+      "hours": null,
+      "tone": [
+        "personal",
+        "professional",
+        "down to earth",
+        "warm",
+        "informative"
+      ],
+      "colours": []
+    },
+    {
+      "name": {
+        "value": "Little Vietnam Tours",
+        "source": "https://www.littlevietnamtours.com/"
+      },
+      "summary": {
+        "value": "Private, custom, personalized itineraries and guided tours in Vietnam and Southeast Asia.",
+        "source": "https://www.littlevietnamtours.com/"
+      },
+      "category": "tour operator",
+      "offerings": [
+        {
+          "name": "Amazing Vietnam",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        {
+          "name": "Epic Northern Vietnam Adventure including Motorbiking the Ha Giang Loop",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        {
+          "name": "Michelin Bib Gourmand Tour Vietnam",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        {
+          "name": "Active Family Tour of Vietnam",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        {
+          "name": "Sweet Honeymoon In Vietnam",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        {
+          "name": "In the World of Endangered Primates",
+          "source": "https://www.littlevietnamtours.com/"
+        }
+      ],
+      "highlights": [
+        {
+          "value": "TripAdvisor Travelers' Choice 4 years in a row - 2023, 2024, 2025, 2026",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        {
+          "value": "Licensed international tour operator #01-1359/2019 TCDL-GP LHQT",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        {
+          "value": "Planning trips for UK, US, Australian and Canadian travelers for 16 years",
+          "source": "https://www.littlevietnamtours.com/"
+        }
+      ],
+      "location": {
+        "town": {
+          "value": "Hanoi",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        "area": {
+          "value": "Cau Giay District",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        "address": {
+          "value": "4th floor, Block A6/D6, Cau Giay Urban Area, Tho Thap Street, Cau Giay District, Hanoi, VN",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        "serviceArea": {
+          "value": "Vietnam, Cambodia, Laos, Thailand, Myanmar",
+          "source": "https://www.littlevietnamtours.com/"
+        }
+      },
+      "contact": {
+        "whatsapp": null,
+        "phone": {
+          "value": "+84-989-964-668",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        "email": {
+          "value": "letsgo@littlevietnamtours.com",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        "instagram": null,
+        "bookingUrl": null
+      },
+      "hours": null,
+      "tone": [
+        "personal",
+        "professional",
+        "down to earth",
+        "warm",
+        "informative"
+      ],
+      "colours": [
+        {
+          "hex": "#1b5e20",
+          "role": "primary"
+        }
+      ]
+    },
+    {
+      "name": {
+        "value": "Little Vietnam Tours",
+        "source": "https://www.littlevietnamtours.com/"
+      },
+      "summary": {
+        "value": "Private, custom, personalized itineraries and guided tours in Vietnam and Southeast Asia.",
+        "source": "https://www.littlevietnamtours.com/"
+      },
+      "category": "tour operator",
+      "offerings": [
+        {
+          "name": "Amazing Vietnam",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        {
+          "name": "Epic Northern Vietnam Adventure including Motorbiking the Ha Giang Loop",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        {
+          "name": "Michelin Bib Gourmand Tour Vietnam",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        {
+          "name": "Active Family Tour of Vietnam",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        {
+          "name": "Sweet Honeymoon In Vietnam",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        {
+          "name": "In the World of Endangered Primates",
+          "source": "https://www.littlevietnamtours.com/"
+        }
+      ],
+      "highlights": [
+        {
+          "value": "TripAdvisor Travelers' Choice 4 years in a row - 2023, 2024, 2025, 2026",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        {
+          "value": "Licensed international tour operator #01-1359/2019 TCDL-GP LHQT",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        {
+          "value": "Planning trips for UK, US, Australian and Canadian travelers for 16 years",
+          "source": "https://www.littlevietnamtours.com/"
+        }
+      ],
+      "location": {
+        "town": {
+          "value": "Hanoi",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        "area": {
+          "value": "Cau Giay District",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        "address": {
+          "value": "4th floor, Block A6/D6, Cau Giay Urban Area, Tho Thap Street, Cau Giay District, Hanoi, VN",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        "serviceArea": {
+          "value": "Vietnam, Cambodia, Laos, Thailand, Myanmar",
+          "source": "https://www.littlevietnamtours.com/"
+        }
+      },
+      "contact": {
+        "whatsapp": null,
+        "phone": {
+          "value": "+84-989-964-668",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        "email": {
+          "value": "letsgo@littlevietnamtours.com",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        "instagram": null,
+        "bookingUrl": null
+      },
+      "hours": null,
+      "tone": [
+        "personal",
+        "professional",
+        "down to earth",
+        "warm",
+        "informative"
+      ],
+      "colours": [
+        {
+          "hex": "#1b5e20",
+          "role": "primary",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        {}
+      ]
+    },
+    {
+      "name": {
+        "value": "Little Vietnam Tours",
+        "source": "https://www.littlevietnamtours.com/"
+      },
+      "summary": {
+        "value": "Private, custom, personalized itineraries and guided tours in Vietnam and Southeast Asia.",
+        "source": "https://www.littlevietnamtours.com/"
+      },
+      "category": "tour operator",
+      "offerings": [
+        {
+          "name": "Amazing Vietnam",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        {
+          "name": "Epic Northern Vietnam Adventure including Motorbiking the Ha Giang Loop",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        {
+          "name": "Michelin Bib Gourmand Tour Vietnam",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        {
+          "name": "Active Family Tour of Vietnam",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        {
+          "name": "Sweet Honeymoon In Vietnam",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        {
+          "name": "In the World of Endangered Primates",
+          "source": "https://www.littlevietnamtours.com/"
+        }
+      ],
+      "highlights": [
+        {
+          "value": "TripAdvisor Travelers' Choice 4 years in a row - 2023, 2024, 2025, 2026",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        {
+          "value": "Licensed international tour operator #01-1359/2019 TCDL-GP LHQT",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        {
+          "value": "Planning trips for UK, US, Australian and Canadian travelers for 16 years",
+          "source": "https://www.littlevietnamtours.com/"
+        }
+      ],
+      "location": {
+        "town": {
+          "value": "Hanoi",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        "area": {
+          "value": "Cau Giay District",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        "address": {
+          "value": "4th floor, Block A6/D6, Cau Giay Urban Area, Tho Thap Street, Cau Giay District, Hanoi, VN",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        "serviceArea": {
+          "value": "Vietnam, Cambodia, Laos, Thailand, Myanmar",
+          "source": "https://www.littlevietnamtours.com/"
+        }
+      },
+      "contact": {
+        "whatsapp": null,
+        "phone": {
+          "value": "+84-989-964-668",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        "email": {
+          "value": "letsgo@littlevietnamtours.com",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        "instagram": null,
+        "bookingUrl": null
+      },
+      "hours": null,
+      "tone": [
+        "personal",
+        "professional",
+        "down to earth",
+        "warm",
+        "informative"
+      ],
+      "colours": [
+        {
+          "hex": "#1b5e20",
           "role": "primary",
           "source": "https://www.littlevietnamtours.com/"
         },
         {
-          "hex": "#ff00ff",
+          "hex": "#e91e63",
+          "role": "accent",
+          "source": "https"
+        }
+      ]
+    },
+    {
+      "name": {
+        "value": "Little Vietnam Tours",
+        "source": "https://www.littlevietnamtours.com/"
+      },
+      "summary": {
+        "value": "Private, custom, personalized itineraries and guided tours in Vietnam and Southeast Asia.",
+        "source": "https://www.littlevietnamtours.com/"
+      },
+      "category": "tour operator",
+      "offerings": [
+        {
+          "name": "Amazing Vietnam",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        {
+          "name": "Epic Northern Vietnam Adventure including Motorbiking the Ha Giang Loop",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        {
+          "name": "Michelin Bib Gourmand Tour Vietnam",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        {
+          "name": "Active Family Tour of Vietnam",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        {
+          "name": "Sweet Honeymoon In Vietnam",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        {
+          "name": "In the World of Endangered Primates",
+          "source": "https://www.littlevietnamtours.com/"
+        }
+      ],
+      "highlights": [
+        {
+          "value": "TripAdvisor Travelers' Choice 4 years in a row - 2023, 2024, 2025, 2026",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        {
+          "value": "Licensed international tour operator #01-1359/2019 TCDL-GP LHQT",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        {
+          "value": "Planning trips for UK, US, Australian and Canadian travelers for 16 years",
+          "source": "https://www.littlevietnamtours.com/"
+        }
+      ],
+      "location": {
+        "town": {
+          "value": "Hanoi",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        "area": {
+          "value": "Cau Giay District",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        "address": {
+          "value": "4th floor, Block A6/D6, Cau Giay Urban Area, Tho Thap Street, Cau Giay District, Hanoi, VN",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        "serviceArea": {
+          "value": "Vietnam, Cambodia, Laos, Thailand, Myanmar",
+          "source": "https://www.littlevietnamtours.com/"
+        }
+      },
+      "contact": {
+        "whatsapp": null,
+        "phone": {
+          "value": "+84-989-964-668",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        "email": {
+          "value": "letsgo@littlevietnamtours.com",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        "instagram": null,
+        "bookingUrl": null
+      },
+      "hours": null,
+      "tone": [
+        "personal",
+        "professional",
+        "down to earth",
+        "warm",
+        "informative"
+      ],
+      "colours": [
+        {
+          "hex": "#1b5e20",
+          "role": "primary",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        {
+          "hex": "#e91e63",
+          "role": "accent",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        {
+          "hex": "#ffffff"
+        }
+      ]
+    },
+    {
+      "name": {
+        "value": "Little Vietnam Tours",
+        "source": "https://www.littlevietnamtours.com/"
+      },
+      "summary": {
+        "value": "Private, custom, personalized itineraries and guided tours in Vietnam and Southeast Asia.",
+        "source": "https://www.littlevietnamtours.com/"
+      },
+      "category": "tour operator",
+      "offerings": [
+        {
+          "name": "Amazing Vietnam",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        {
+          "name": "Epic Northern Vietnam Adventure including Motorbiking the Ha Giang Loop",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        {
+          "name": "Michelin Bib Gourmand Tour Vietnam",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        {
+          "name": "Active Family Tour of Vietnam",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        {
+          "name": "Sweet Honeymoon In Vietnam",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        {
+          "name": "In the World of Endangered Primates",
+          "source": "https://www.littlevietnamtours.com/"
+        }
+      ],
+      "highlights": [
+        {
+          "value": "TripAdvisor Travelers' Choice 4 years in a row - 2023, 2024, 2025, 2026",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        {
+          "value": "Licensed international tour operator #01-1359/2019 TCDL-GP LHQT",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        {
+          "value": "Planning trips for UK, US, Australian and Canadian travelers for 16 years",
+          "source": "https://www.littlevietnamtours.com/"
+        }
+      ],
+      "location": {
+        "town": {
+          "value": "Hanoi",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        "area": {
+          "value": "Cau Giay District",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        "address": {
+          "value": "4th floor, Block A6/D6, Cau Giay Urban Area, Tho Thap Street, Cau Giay District, Hanoi, VN",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        "serviceArea": {
+          "value": "Vietnam, Cambodia, Laos, Thailand, Myanmar",
+          "source": "https://www.littlevietnamtours.com/"
+        }
+      },
+      "contact": {
+        "whatsapp": null,
+        "phone": {
+          "value": "+84-989-964-668",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        "email": {
+          "value": "letsgo@littlevietnamtours.com",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        "instagram": null,
+        "bookingUrl": null
+      },
+      "hours": null,
+      "tone": [
+        "personal",
+        "professional",
+        "down to earth",
+        "warm",
+        "informative"
+      ],
+      "colours": [
+        {
+          "hex": "#1b5e20",
+          "role": "primary",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        {
+          "hex": "#e91e63",
           "role": "accent",
           "source": "https://www.littlevietnamtours.com/"
         },
         {
           "hex": "#ffffff",
+          "role": "background",
+          "source": "https://www.littlevietnamtours"
+        }
+      ]
+    },
+    {
+      "name": {
+        "value": "Little Vietnam Tours",
+        "source": "https://www.littlevietnamtours.com/"
+      },
+      "summary": {
+        "value": "Private, custom, personalized itineraries and guided tours in Vietnam and Southeast Asia.",
+        "source": "https://www.littlevietnamtours.com/"
+      },
+      "category": "tour operator",
+      "offerings": [
+        {
+          "name": "Amazing Vietnam",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        {
+          "name": "Epic Northern Vietnam Adventure including Motorbiking the Ha Giang Loop",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        {
+          "name": "Michelin Bib Gourmand Tour Vietnam",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        {
+          "name": "Active Family Tour of Vietnam",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        {
+          "name": "Sweet Honeymoon In Vietnam",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        {
+          "name": "In the World of Endangered Primates",
+          "source": "https://www.littlevietnamtours.com/"
+        }
+      ],
+      "highlights": [
+        {
+          "value": "TripAdvisor Travelers' Choice 4 years in a row - 2023, 2024, 2025, 2026",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        {
+          "value": "Licensed international tour operator #01-1359/2019 TCDL-GP LHQT",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        {
+          "value": "Planning trips for UK, US, Australian and Canadian travelers for 16 years",
+          "source": "https://www.littlevietnamtours.com/"
+        }
+      ],
+      "location": {
+        "town": {
+          "value": "Hanoi",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        "area": {
+          "value": "Cau Giay District",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        "address": {
+          "value": "4th floor, Block A6/D6, Cau Giay Urban Area, Tho Thap Street, Cau Giay District, Hanoi, VN",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        "serviceArea": {
+          "value": "Vietnam, Cambodia, Laos, Thailand, Myanmar",
+          "source": "https://www.littlevietnamtours.com/"
+        }
+      },
+      "contact": {
+        "whatsapp": null,
+        "phone": {
+          "value": "+84-989-964-668",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        "email": {
+          "value": "letsgo@littlevietnamtours.com",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        "instagram": null,
+        "bookingUrl": null
+      },
+      "hours": null,
+      "tone": [
+        "personal",
+        "professional",
+        "down to earth",
+        "warm",
+        "informative"
+      ],
+      "colours": [
+        {
+          "hex": "#1b5e20",
+          "role": "primary",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        {
+          "hex": "#e91e63",
+          "role": "accent",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        {
+          "hex": "#ffffff",
+          "role": "background",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        {
+          "hex": "#1b5e20"
+        }
+      ]
+    },
+    {
+      "name": {
+        "value": "Little Vietnam Tours",
+        "source": "https://www.littlevietnamtours.com/"
+      },
+      "summary": {
+        "value": "Private, custom, personalized itineraries and guided tours in Vietnam and Southeast Asia.",
+        "source": "https://www.littlevietnamtours.com/"
+      },
+      "category": "tour operator",
+      "offerings": [
+        {
+          "name": "Amazing Vietnam",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        {
+          "name": "Epic Northern Vietnam Adventure including Motorbiking the Ha Giang Loop",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        {
+          "name": "Michelin Bib Gourmand Tour Vietnam",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        {
+          "name": "Active Family Tour of Vietnam",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        {
+          "name": "Sweet Honeymoon In Vietnam",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        {
+          "name": "In the World of Endangered Primates",
+          "source": "https://www.littlevietnamtours.com/"
+        }
+      ],
+      "highlights": [
+        {
+          "value": "TripAdvisor Travelers' Choice 4 years in a row - 2023, 2024, 2025, 2026",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        {
+          "value": "Licensed international tour operator #01-1359/2019 TCDL-GP LHQT",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        {
+          "value": "Planning trips for UK, US, Australian and Canadian travelers for 16 years",
+          "source": "https://www.littlevietnamtours.com/"
+        }
+      ],
+      "location": {
+        "town": {
+          "value": "Hanoi",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        "area": {
+          "value": "Cau Giay District",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        "address": {
+          "value": "4th floor, Block A6/D6, Cau Giay Urban Area, Tho Thap Street, Cau Giay District, Hanoi, VN",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        "serviceArea": {
+          "value": "Vietnam, Cambodia, Laos, Thailand, Myanmar",
+          "source": "https://www.littlevietnamtours.com/"
+        }
+      },
+      "contact": {
+        "whatsapp": null,
+        "phone": {
+          "value": "+84-989-964-668",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        "email": {
+          "value": "letsgo@littlevietnamtours.com",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        "instagram": null,
+        "bookingUrl": null
+      },
+      "hours": null,
+      "tone": [
+        "personal",
+        "professional",
+        "down to earth",
+        "warm",
+        "informative"
+      ],
+      "colours": [
+        {
+          "hex": "#1b5e20",
+          "role": "primary",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        {
+          "hex": "#e91e63",
+          "role": "accent",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        {
+          "hex": "#ffffff",
+          "role": "background",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        {
+          "hex": "#1b5e20",
+          "role": "text",
+          "source": "https://www.littlevietnamtours.com/"
+        }
+      ]
+    },
+    {
+      "name": {
+        "value": "Little Vietnam Tours",
+        "source": "https://www.littlevietnamtours.com/"
+      },
+      "summary": {
+        "value": "Private, custom, personalized itineraries and guided tours in Vietnam and Southeast Asia.",
+        "source": "https://www.littlevietnamtours.com/"
+      },
+      "category": "tour operator",
+      "offerings": [
+        {
+          "name": "Amazing Vietnam",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        {
+          "name": "Epic Northern Vietnam Adventure including Motorbiking the Ha Giang Loop",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        {
+          "name": "Michelin Bib Gourmand Tour Vietnam",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        {
+          "name": "Active Family Tour of Vietnam",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        {
+          "name": "Sweet Honeymoon In Vietnam",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        {
+          "name": "In the World of Endangered Primates",
+          "source": "https://www.littlevietnamtours.com/"
+        }
+      ],
+      "highlights": [
+        {
+          "value": "TripAdvisor Travelers' Choice 4 years in a row - 2023, 2024, 2025, 2026",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        {
+          "value": "Licensed international tour operator #01-1359/2019 TCDL-GP LHQT",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        {
+          "value": "Planning trips for UK, US, Australian and Canadian travelers for 16 years",
+          "source": "https://www.littlevietnamtours.com/"
+        }
+      ],
+      "location": {
+        "town": {
+          "value": "Hanoi",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        "area": {
+          "value": "Cau Giay District",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        "address": {
+          "value": "4th floor, Block A6/D6, Cau Giay Urban Area, Tho Thap Street, Cau Giay District, Hanoi, VN",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        "serviceArea": {
+          "value": "Vietnam, Cambodia, Laos, Thailand, Myanmar",
+          "source": "https://www.littlevietnamtours.com/"
+        }
+      },
+      "contact": {
+        "whatsapp": null,
+        "phone": {
+          "value": "+84-989-964-668",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        "email": {
+          "value": "letsgo@littlevietnamtours.com",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        "instagram": null,
+        "bookingUrl": null
+      },
+      "hours": null,
+      "tone": [
+        "personal",
+        "professional",
+        "down to earth",
+        "warm",
+        "informative"
+      ],
+      "colours": [
+        {
+          "hex": "#1b5e20",
+          "role": "primary",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        {
+          "hex": "#e91e63",
+          "role": "accent",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        {
+          "hex": "#ffffff",
+          "role": "background",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        {
+          "hex": "#1b5e20",
           "role": "text",
           "source": "https://www.littlevietnamtours.com/"
         }
       ],
       "essence": {
+        "promise": {
+          "value": ""
+        }
+      }
+    },
+    {
+      "name": {
+        "value": "Little Vietnam Tours",
+        "source": "https://www.littlevietnamtours.com/"
+      },
+      "summary": {
+        "value": "Private, custom, personalized itineraries and guided tours in Vietnam and Southeast Asia.",
+        "source": "https://www.littlevietnamtours.com/"
+      },
+      "category": "tour operator",
+      "offerings": [
+        {
+          "name": "Amazing Vietnam",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        {
+          "name": "Epic Northern Vietnam Adventure including Motorbiking the Ha Giang Loop",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        {
+          "name": "Michelin Bib Gourmand Tour Vietnam",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        {
+          "name": "Active Family Tour of Vietnam",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        {
+          "name": "Sweet Honeymoon In Vietnam",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        {
+          "name": "In the World of Endangered Primates",
+          "source": "https://www.littlevietnamtours.com/"
+        }
+      ],
+      "highlights": [
+        {
+          "value": "TripAdvisor Travelers' Choice 4 years in a row - 2023, 2024, 2025, 2026",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        {
+          "value": "Licensed international tour operator #01-1359/2019 TCDL-GP LHQT",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        {
+          "value": "Planning trips for UK, US, Australian and Canadian travelers for 16 years",
+          "source": "https://www.littlevietnamtours.com/"
+        }
+      ],
+      "location": {
+        "town": {
+          "value": "Hanoi",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        "area": {
+          "value": "Cau Giay District",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        "address": {
+          "value": "4th floor, Block A6/D6, Cau Giay Urban Area, Tho Thap Street, Cau Giay District, Hanoi, VN",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        "serviceArea": {
+          "value": "Vietnam, Cambodia, Laos, Thailand, Myanmar",
+          "source": "https://www.littlevietnamtours.com/"
+        }
+      },
+      "contact": {
+        "whatsapp": null,
+        "phone": {
+          "value": "+84-989-964-668",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        "email": {
+          "value": "letsgo@littlevietnamtours.com",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        "instagram": null,
+        "bookingUrl": null
+      },
+      "hours": null,
+      "tone": [
+        "personal",
+        "professional",
+        "down to earth",
+        "warm",
+        "informative"
+      ],
+      "colours": [
+        {
+          "hex": "#1b5e20",
+          "role": "primary",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        {
+          "hex": "#e91e63",
+          "role": "accent",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        {
+          "hex": "#ffffff",
+          "role": "background",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        {
+          "hex": "#1b5e20",
+          "role": "text",
+          "source": "https://www.littlevietnamtours.com/"
+        }
+      ],
+      "essence": {
+        "promise": {
+          "value": "Contact us to create a Free Customized Tour Itinerary with no commitment.",
+          "source": "https://www.littleviet"
+        }
+      }
+    },
+    {
+      "name": {
+        "value": "Little Vietnam Tours",
+        "source": "https://www.littlevietnamtours.com/"
+      },
+      "summary": {
+        "value": "Private, custom, personalized itineraries and guided tours in Vietnam and Southeast Asia.",
+        "source": "https://www.littlevietnamtours.com/"
+      },
+      "category": "tour operator",
+      "offerings": [
+        {
+          "name": "Amazing Vietnam",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        {
+          "name": "Epic Northern Vietnam Adventure including Motorbiking the Ha Giang Loop",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        {
+          "name": "Michelin Bib Gourmand Tour Vietnam",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        {
+          "name": "Active Family Tour of Vietnam",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        {
+          "name": "Sweet Honeymoon In Vietnam",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        {
+          "name": "In the World of Endangered Primates",
+          "source": "https://www.littlevietnamtours.com/"
+        }
+      ],
+      "highlights": [
+        {
+          "value": "TripAdvisor Travelers' Choice 4 years in a row - 2023, 2024, 2025, 2026",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        {
+          "value": "Licensed international tour operator #01-1359/2019 TCDL-GP LHQT",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        {
+          "value": "Planning trips for UK, US, Australian and Canadian travelers for 16 years",
+          "source": "https://www.littlevietnamtours.com/"
+        }
+      ],
+      "location": {
+        "town": {
+          "value": "Hanoi",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        "area": {
+          "value": "Cau Giay District",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        "address": {
+          "value": "4th floor, Block A6/D6, Cau Giay Urban Area, Tho Thap Street, Cau Giay District, Hanoi, VN",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        "serviceArea": {
+          "value": "Vietnam, Cambodia, Laos, Thailand, Myanmar",
+          "source": "https://www.littlevietnamtours.com/"
+        }
+      },
+      "contact": {
+        "whatsapp": null,
+        "phone": {
+          "value": "+84-989-964-668",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        "email": {
+          "value": "letsgo@littlevietnamtours.com",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        "instagram": null,
+        "bookingUrl": null
+      },
+      "hours": null,
+      "tone": [
+        "personal",
+        "professional",
+        "down to earth",
+        "warm",
+        "informative"
+      ],
+      "colours": [
+        {
+          "hex": "#1b5e20",
+          "role": "primary",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        {
+          "hex": "#e91e63",
+          "role": "accent",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        {
+          "hex": "#ffffff",
+          "role": "background",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        {
+          "hex": "#1b5e20",
+          "role": "text",
+          "source": "https://www.littlevietnamtours.com/"
+        }
+      ],
+      "essence": {
+        "promise": {
+          "value": "Contact us to create a Free Customized Tour Itinerary with no commitment.",
+          "source": "https://www.littlevietnamtours.com/"
+        },
         "feeling": [
-          "inspired",
-          "cared"
+          "welcomed",
+          "safe"
         ]
       }
     },
@@ -1363,24 +2570,43 @@
         "source": "https://www.littlevietnamtours.com/"
       },
       "summary": {
-        "value": "Personalized, private, and custom guided tours and holiday planning in Vietnam and Southeast Asia.",
+        "value": "Private, custom, personalized itineraries and guided tours in Vietnam and Southeast Asia.",
         "source": "https://www.littlevietnamtours.com/"
       },
       "category": "tour operator",
       "offerings": [
         {
-          "name": "Ha Giang Motorbike Loop",
-          "description": "An epic Northern Vietnam adventure through rural hill-tribe villages.",
+          "name": "Amazing Vietnam",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        {
+          "name": "Epic Northern Vietnam Adventure including Motorbiking the Ha Giang Loop",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        {
+          "name": "Michelin Bib Gourmand Tour Vietnam",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        {
+          "name": "Active Family Tour of Vietnam",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        {
+          "name": "Sweet Honeymoon In Vietnam",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        {
+          "name": "In the World of Endangered Primates",
           "source": "https://www.littlevietnamtours.com/"
         }
       ],
       "highlights": [
         {
-          "value": "TripAdvisor Travelers Choice 4 years in a row",
+          "value": "TripAdvisor Travelers' Choice 4 years in a row - 2023, 2024, 2025, 2026",
           "source": "https://www.littlevietnamtours.com/"
         },
         {
-          "value": "Licensed international tour operator",
+          "value": "Licensed international tour operator #01-1359/2019 TCDL-GP LHQT",
           "source": "https://www.littlevietnamtours.com/"
         },
         {
@@ -1398,11 +2624,11 @@
           "source": "https://www.littlevietnamtours.com/"
         },
         "address": {
-          "value": "4th floor, Block A6/D6, Cau Giay Urban Area, Tho Thap Street, Hanoi, VN",
+          "value": "4th floor, Block A6/D6, Cau Giay Urban Area, Tho Thap Street, Cau Giay District, Hanoi, VN",
           "source": "https://www.littlevietnamtours.com/"
         },
         "serviceArea": {
-          "value": "Vietnam, Southeast Asia",
+          "value": "Vietnam, Cambodia, Laos, Thailand, Myanmar",
           "source": "https://www.littlevietnamtours.com/"
         }
       },
@@ -1421,146 +2647,321 @@
       },
       "hours": null,
       "tone": [
-        "warm",
         "personal",
         "professional",
-        "friendly"
+        "down to earth",
+        "warm",
+        "informative"
       ],
       "colours": [
         {
-          "hex": "#00a680",
-          "role": "background",
-          "source": "https://www.littlevietnamtours.com/"
-        },
-        {
-          "hex": "#145a32",
+          "hex": "#1b5e20",
           "role": "primary",
           "source": "https://www.littlevietnamtours.com/"
         },
         {
-          "hex": "#ff00ff",
+          "hex": "#e91e63",
           "role": "accent",
           "source": "https://www.littlevietnamtours.com/"
         },
         {
           "hex": "#ffffff",
-          "role": "text",
-          "source": "https://www.littlevietnamtours.com/"
-        }
-      ],
-      "essence": {
-        "feeling": [
-          "inspired",
-          "cared for",
-          "welcomed"
-        ],
-        "placeSymbols": [
-          "lotus flowers"
-        ]
-      }
-    },
-    {
-      "name": {
-        "value": "Little Vietnam Tours",
-        "source": "https://www.littlevietnamtours.com/"
-      },
-      "summary": {
-        "value": "Personalized, private, and custom guided tours and holiday planning in Vietnam and Southeast Asia.",
-        "source": "https://www.littlevietnamtours.com/"
-      },
-      "category": "tour operator",
-      "offerings": [
-        {
-          "name": "Ha Giang Motorbike Loop",
-          "description": "An epic Northern Vietnam adventure through rural hill-tribe villages.",
-          "source": "https://www.littlevietnamtours.com/"
-        }
-      ],
-      "highlights": [
-        {
-          "value": "TripAdvisor Travelers Choice 4 years in a row",
-          "source": "https://www.littlevietnamtours.com/"
-        },
-        {
-          "value": "Licensed international tour operator",
-          "source": "https://www.littlevietnamtours.com/"
-        },
-        {
-          "value": "Planning trips for UK, US, Australian and Canadian travelers for 16 years",
-          "source": "https://www.littlevietnamtours.com/"
-        }
-      ],
-      "location": {
-        "town": {
-          "value": "Hanoi",
-          "source": "https://www.littlevietnamtours.com/"
-        },
-        "area": {
-          "value": "Cau Giay District",
-          "source": "https://www.littlevietnamtours.com/"
-        },
-        "address": {
-          "value": "4th floor, Block A6/D6, Cau Giay Urban Area, Tho Thap Street, Hanoi, VN",
-          "source": "https://www.littlevietnamtours.com/"
-        },
-        "serviceArea": {
-          "value": "Vietnam, Southeast Asia",
-          "source": "https://www.littlevietnamtours.com/"
-        }
-      },
-      "contact": {
-        "whatsapp": null,
-        "phone": {
-          "value": "+84-989-964-668",
-          "source": "https://www.littlevietnamtours.com/"
-        },
-        "email": {
-          "value": "letsgo@littlevietnamtours.com",
-          "source": "https://www.littlevietnamtours.com/"
-        },
-        "instagram": null,
-        "bookingUrl": null
-      },
-      "hours": null,
-      "tone": [
-        "warm",
-        "personal",
-        "professional",
-        "friendly"
-      ],
-      "colours": [
-        {
-          "hex": "#00a680",
           "role": "background",
           "source": "https://www.littlevietnamtours.com/"
         },
         {
-          "hex": "#145a32",
-          "role": "primary",
-          "source": "https://www.littlevietnamtours.com/"
-        },
-        {
-          "hex": "#ff00ff",
-          "role": "accent",
-          "source": "https://www.littlevietnamtours.com/"
-        },
-        {
-          "hex": "#ffffff",
+          "hex": "#1b5e20",
           "role": "text",
           "source": "https://www.littlevietnamtours.com/"
         }
       ],
       "essence": {
+        "promise": {
+          "value": "Contact us to create a Free Customized Tour Itinerary with no commitment.",
+          "source": "https://www.littlevietnamtours.com/"
+        },
         "feeling": [
-          "inspired",
+          "welcomed",
+          "safe",
           "cared for",
-          "welcomed"
+          "inspired"
         ],
         "placeSymbols": [
           "lotus flowers",
-          "winding mountain roads",
+          "Ha Giang mountain passes",
           "rice terraces",
-          "Halong Bay limestone karsts",
+          "Hal"
+        ]
+      }
+    },
+    {
+      "name": {
+        "value": "Little Vietnam Tours",
+        "source": "https://www.littlevietnamtours.com/"
+      },
+      "summary": {
+        "value": "Private, custom, personalized itineraries and guided tours in Vietnam and Southeast Asia.",
+        "source": "https://www.littlevietnamtours.com/"
+      },
+      "category": "tour operator",
+      "offerings": [
+        {
+          "name": "Amazing Vietnam",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        {
+          "name": "Epic Northern Vietnam Adventure including Motorbiking the Ha Giang Loop",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        {
+          "name": "Michelin Bib Gourmand Tour Vietnam",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        {
+          "name": "Active Family Tour of Vietnam",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        {
+          "name": "Sweet Honeymoon In Vietnam",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        {
+          "name": "In the World of Endangered Primates",
+          "source": "https://www.littlevietnamtours.com/"
+        }
+      ],
+      "highlights": [
+        {
+          "value": "TripAdvisor Travelers' Choice 4 years in a row - 2023, 2024, 2025, 2026",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        {
+          "value": "Licensed international tour operator #01-1359/2019 TCDL-GP LHQT",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        {
+          "value": "Planning trips for UK, US, Australian and Canadian travelers for 16 years",
+          "source": "https://www.littlevietnamtours.com/"
+        }
+      ],
+      "location": {
+        "town": {
+          "value": "Hanoi",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        "area": {
+          "value": "Cau Giay District",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        "address": {
+          "value": "4th floor, Block A6/D6, Cau Giay Urban Area, Tho Thap Street, Cau Giay District, Hanoi, VN",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        "serviceArea": {
+          "value": "Vietnam, Cambodia, Laos, Thailand, Myanmar",
+          "source": "https://www.littlevietnamtours.com/"
+        }
+      },
+      "contact": {
+        "whatsapp": null,
+        "phone": {
+          "value": "+84-989-964-668",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        "email": {
+          "value": "letsgo@littlevietnamtours.com",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        "instagram": null,
+        "bookingUrl": null
+      },
+      "hours": null,
+      "tone": [
+        "personal",
+        "professional",
+        "down to earth",
+        "warm",
+        "informative"
+      ],
+      "colours": [
+        {
+          "hex": "#1b5e20",
+          "role": "primary",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        {
+          "hex": "#e91e63",
+          "role": "accent",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        {
+          "hex": "#ffffff",
+          "role": "background",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        {
+          "hex": "#1b5e20",
+          "role": "text",
+          "source": "https://www.littlevietnamtours.com/"
+        }
+      ],
+      "essence": {
+        "promise": {
+          "value": "Contact us to create a Free Customized Tour Itinerary with no commitment.",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        "feeling": [
+          "welcomed",
+          "safe",
+          "cared for",
+          "inspired"
+        ],
+        "placeSymbols": [
+          "lotus flowers",
+          "Ha Giang mountain passes",
+          "rice terraces",
+          "Halong Bay karst peaks",
+          "lanterns of Hoi An"
+        ],
+        "senses": [
+          "motor"
+        ]
+      }
+    },
+    {
+      "name": {
+        "value": "Little Vietnam Tours",
+        "source": "https://www.littlevietnamtours.com/"
+      },
+      "summary": {
+        "value": "Private, custom, personalized itineraries and guided tours in Vietnam and Southeast Asia.",
+        "source": "https://www.littlevietnamtours.com/"
+      },
+      "category": "tour operator",
+      "offerings": [
+        {
+          "name": "Amazing Vietnam",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        {
+          "name": "Epic Northern Vietnam Adventure including Motorbiking the Ha Giang Loop",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        {
+          "name": "Michelin Bib Gourmand Tour Vietnam",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        {
+          "name": "Active Family Tour of Vietnam",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        {
+          "name": "Sweet Honeymoon In Vietnam",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        {
+          "name": "In the World of Endangered Primates",
+          "source": "https://www.littlevietnamtours.com/"
+        }
+      ],
+      "highlights": [
+        {
+          "value": "TripAdvisor Travelers' Choice 4 years in a row - 2023, 2024, 2025, 2026",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        {
+          "value": "Licensed international tour operator #01-1359/2019 TCDL-GP LHQT",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        {
+          "value": "Planning trips for UK, US, Australian and Canadian travelers for 16 years",
+          "source": "https://www.littlevietnamtours.com/"
+        }
+      ],
+      "location": {
+        "town": {
+          "value": "Hanoi",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        "area": {
+          "value": "Cau Giay District",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        "address": {
+          "value": "4th floor, Block A6/D6, Cau Giay Urban Area, Tho Thap Street, Cau Giay District, Hanoi, VN",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        "serviceArea": {
+          "value": "Vietnam, Cambodia, Laos, Thailand, Myanmar",
+          "source": "https://www.littlevietnamtours.com/"
+        }
+      },
+      "contact": {
+        "whatsapp": null,
+        "phone": {
+          "value": "+84-989-964-668",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        "email": {
+          "value": "letsgo@littlevietnamtours.com",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        "instagram": null,
+        "bookingUrl": null
+      },
+      "hours": null,
+      "tone": [
+        "personal",
+        "professional",
+        "down to earth",
+        "warm",
+        "informative"
+      ],
+      "colours": [
+        {
+          "hex": "#1b5e20",
+          "role": "primary",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        {
+          "hex": "#e91e63",
+          "role": "accent",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        {
+          "hex": "#ffffff",
+          "role": "background",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        {
+          "hex": "#1b5e20",
+          "role": "text",
+          "source": "https://www.littlevietnamtours.com/"
+        }
+      ],
+      "essence": {
+        "promise": {
+          "value": "Contact us to create a Free Customized Tour Itinerary with no commitment.",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        "feeling": [
+          "welcomed",
+          "safe",
+          "cared for",
+          "inspired"
+        ],
+        "placeSymbols": [
+          "lotus flowers",
+          "Ha Giang mountain passes",
+          "rice terraces",
+          "Halong Bay karst peaks",
+          "lanterns of Hoi An"
+        ],
+        "senses": [
+          "motorcycle engines humming",
+          "steaming bowls of pho",
+          "mountain air",
+          "warm tropical breeze",
           ""
         ]
       }
@@ -1571,24 +2972,43 @@
         "source": "https://www.littlevietnamtours.com/"
       },
       "summary": {
-        "value": "Personalized, private, and custom guided tours and holiday planning in Vietnam and Southeast Asia.",
+        "value": "Private, custom, personalized itineraries and guided tours in Vietnam and Southeast Asia.",
         "source": "https://www.littlevietnamtours.com/"
       },
       "category": "tour operator",
       "offerings": [
         {
-          "name": "Ha Giang Motorbike Loop",
-          "description": "An epic Northern Vietnam adventure through rural hill-tribe villages.",
+          "name": "Amazing Vietnam",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        {
+          "name": "Epic Northern Vietnam Adventure including Motorbiking the Ha Giang Loop",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        {
+          "name": "Michelin Bib Gourmand Tour Vietnam",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        {
+          "name": "Active Family Tour of Vietnam",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        {
+          "name": "Sweet Honeymoon In Vietnam",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        {
+          "name": "In the World of Endangered Primates",
           "source": "https://www.littlevietnamtours.com/"
         }
       ],
       "highlights": [
         {
-          "value": "TripAdvisor Travelers Choice 4 years in a row",
+          "value": "TripAdvisor Travelers' Choice 4 years in a row - 2023, 2024, 2025, 2026",
           "source": "https://www.littlevietnamtours.com/"
         },
         {
-          "value": "Licensed international tour operator",
+          "value": "Licensed international tour operator #01-1359/2019 TCDL-GP LHQT",
           "source": "https://www.littlevietnamtours.com/"
         },
         {
@@ -1606,11 +3026,11 @@
           "source": "https://www.littlevietnamtours.com/"
         },
         "address": {
-          "value": "4th floor, Block A6/D6, Cau Giay Urban Area, Tho Thap Street, Hanoi, VN",
+          "value": "4th floor, Block A6/D6, Cau Giay Urban Area, Tho Thap Street, Cau Giay District, Hanoi, VN",
           "source": "https://www.littlevietnamtours.com/"
         },
         "serviceArea": {
-          "value": "Vietnam, Southeast Asia",
+          "value": "Vietnam, Cambodia, Laos, Thailand, Myanmar",
           "source": "https://www.littlevietnamtours.com/"
         }
       },
@@ -1629,48 +3049,63 @@
       },
       "hours": null,
       "tone": [
-        "warm",
         "personal",
         "professional",
-        "friendly"
+        "down to earth",
+        "warm",
+        "informative"
       ],
       "colours": [
         {
-          "hex": "#00a680",
-          "role": "background",
-          "source": "https://www.littlevietnamtours.com/"
-        },
-        {
-          "hex": "#145a32",
+          "hex": "#1b5e20",
           "role": "primary",
           "source": "https://www.littlevietnamtours.com/"
         },
         {
-          "hex": "#ff00ff",
+          "hex": "#e91e63",
           "role": "accent",
           "source": "https://www.littlevietnamtours.com/"
         },
         {
           "hex": "#ffffff",
+          "role": "background",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        {
+          "hex": "#1b5e20",
           "role": "text",
           "source": "https://www.littlevietnamtours.com/"
         }
       ],
       "essence": {
+        "promise": {
+          "value": "Contact us to create a Free Customized Tour Itinerary with no commitment.",
+          "source": "https://www.littlevietnamtours.com/"
+        },
         "feeling": [
-          "inspired",
+          "welcomed",
+          "safe",
           "cared for",
-          "welcomed"
+          "inspired"
         ],
         "placeSymbols": [
           "lotus flowers",
-          "winding mountain roads",
+          "Ha Giang mountain passes",
           "rice terraces",
-          "Halong Bay limestone karsts",
+          "Halong Bay karst peaks",
           "lanterns of Hoi An"
         ],
         "senses": [
-          "scent of local herbs"
+          "motorcycle engines humming",
+          "steaming bowls of pho",
+          "mountain air",
+          "warm tropical breeze",
+          "chatter of local markets"
+        ],
+        "moments": [
+          {
+            "value": "planning a"
+          }
         ]
       }
     },
@@ -1680,24 +3115,43 @@
         "source": "https://www.littlevietnamtours.com/"
       },
       "summary": {
-        "value": "Personalized, private, and custom guided tours and holiday planning in Vietnam and Southeast Asia.",
+        "value": "Private, custom, personalized itineraries and guided tours in Vietnam and Southeast Asia.",
         "source": "https://www.littlevietnamtours.com/"
       },
       "category": "tour operator",
       "offerings": [
         {
-          "name": "Ha Giang Motorbike Loop",
-          "description": "An epic Northern Vietnam adventure through rural hill-tribe villages.",
+          "name": "Amazing Vietnam",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        {
+          "name": "Epic Northern Vietnam Adventure including Motorbiking the Ha Giang Loop",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        {
+          "name": "Michelin Bib Gourmand Tour Vietnam",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        {
+          "name": "Active Family Tour of Vietnam",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        {
+          "name": "Sweet Honeymoon In Vietnam",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        {
+          "name": "In the World of Endangered Primates",
           "source": "https://www.littlevietnamtours.com/"
         }
       ],
       "highlights": [
         {
-          "value": "TripAdvisor Travelers Choice 4 years in a row",
+          "value": "TripAdvisor Travelers' Choice 4 years in a row - 2023, 2024, 2025, 2026",
           "source": "https://www.littlevietnamtours.com/"
         },
         {
-          "value": "Licensed international tour operator",
+          "value": "Licensed international tour operator #01-1359/2019 TCDL-GP LHQT",
           "source": "https://www.littlevietnamtours.com/"
         },
         {
@@ -1715,11 +3169,11 @@
           "source": "https://www.littlevietnamtours.com/"
         },
         "address": {
-          "value": "4th floor, Block A6/D6, Cau Giay Urban Area, Tho Thap Street, Hanoi, VN",
+          "value": "4th floor, Block A6/D6, Cau Giay Urban Area, Tho Thap Street, Cau Giay District, Hanoi, VN",
           "source": "https://www.littlevietnamtours.com/"
         },
         "serviceArea": {
-          "value": "Vietnam, Southeast Asia",
+          "value": "Vietnam, Cambodia, Laos, Thailand, Myanmar",
           "source": "https://www.littlevietnamtours.com/"
         }
       },
@@ -1738,51 +3192,64 @@
       },
       "hours": null,
       "tone": [
-        "warm",
         "personal",
         "professional",
-        "friendly"
+        "down to earth",
+        "warm",
+        "informative"
       ],
       "colours": [
         {
-          "hex": "#00a680",
-          "role": "background",
-          "source": "https://www.littlevietnamtours.com/"
-        },
-        {
-          "hex": "#145a32",
+          "hex": "#1b5e20",
           "role": "primary",
           "source": "https://www.littlevietnamtours.com/"
         },
         {
-          "hex": "#ff00ff",
+          "hex": "#e91e63",
           "role": "accent",
           "source": "https://www.littlevietnamtours.com/"
         },
         {
           "hex": "#ffffff",
+          "role": "background",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        {
+          "hex": "#1b5e20",
           "role": "text",
           "source": "https://www.littlevietnamtours.com/"
         }
       ],
       "essence": {
+        "promise": {
+          "value": "Contact us to create a Free Customized Tour Itinerary with no commitment.",
+          "source": "https://www.littlevietnamtours.com/"
+        },
         "feeling": [
-          "inspired",
+          "welcomed",
+          "safe",
           "cared for",
-          "welcomed"
+          "inspired"
         ],
         "placeSymbols": [
           "lotus flowers",
-          "winding mountain roads",
+          "Ha Giang mountain passes",
           "rice terraces",
-          "Halong Bay limestone karsts",
+          "Halong Bay karst peaks",
           "lanterns of Hoi An"
         ],
         "senses": [
-          "scent of local herbs and street food",
-          "sound of motorbike horns",
-          "fresh mountain air",
-          "humid tropical"
+          "motorcycle engines humming",
+          "steaming bowls of pho",
+          "mountain air",
+          "warm tropical breeze",
+          "chatter of local markets"
+        ],
+        "moments": [
+          {
+            "value": "planning a custom holiday",
+            "source": "https://www.littlevietnamtours.com/"
+          }
         ]
       }
     },
@@ -1792,24 +3259,43 @@
         "source": "https://www.littlevietnamtours.com/"
       },
       "summary": {
-        "value": "Personalized, private, and custom guided tours and holiday planning in Vietnam and Southeast Asia.",
+        "value": "Private, custom, personalized itineraries and guided tours in Vietnam and Southeast Asia.",
         "source": "https://www.littlevietnamtours.com/"
       },
       "category": "tour operator",
       "offerings": [
         {
-          "name": "Ha Giang Motorbike Loop",
-          "description": "An epic Northern Vietnam adventure through rural hill-tribe villages.",
+          "name": "Amazing Vietnam",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        {
+          "name": "Epic Northern Vietnam Adventure including Motorbiking the Ha Giang Loop",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        {
+          "name": "Michelin Bib Gourmand Tour Vietnam",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        {
+          "name": "Active Family Tour of Vietnam",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        {
+          "name": "Sweet Honeymoon In Vietnam",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        {
+          "name": "In the World of Endangered Primates",
           "source": "https://www.littlevietnamtours.com/"
         }
       ],
       "highlights": [
         {
-          "value": "TripAdvisor Travelers Choice 4 years in a row",
+          "value": "TripAdvisor Travelers' Choice 4 years in a row - 2023, 2024, 2025, 2026",
           "source": "https://www.littlevietnamtours.com/"
         },
         {
-          "value": "Licensed international tour operator",
+          "value": "Licensed international tour operator #01-1359/2019 TCDL-GP LHQT",
           "source": "https://www.littlevietnamtours.com/"
         },
         {
@@ -1827,11 +3313,11 @@
           "source": "https://www.littlevietnamtours.com/"
         },
         "address": {
-          "value": "4th floor, Block A6/D6, Cau Giay Urban Area, Tho Thap Street, Hanoi, VN",
+          "value": "4th floor, Block A6/D6, Cau Giay Urban Area, Tho Thap Street, Cau Giay District, Hanoi, VN",
           "source": "https://www.littlevietnamtours.com/"
         },
         "serviceArea": {
-          "value": "Vietnam, Southeast Asia",
+          "value": "Vietnam, Cambodia, Laos, Thailand, Myanmar",
           "source": "https://www.littlevietnamtours.com/"
         }
       },
@@ -1850,53 +3336,217 @@
       },
       "hours": null,
       "tone": [
-        "warm",
         "personal",
         "professional",
-        "friendly"
+        "down to earth",
+        "warm",
+        "informative"
       ],
       "colours": [
         {
-          "hex": "#00a680",
-          "role": "background",
-          "source": "https://www.littlevietnamtours.com/"
-        },
-        {
-          "hex": "#145a32",
+          "hex": "#1b5e20",
           "role": "primary",
           "source": "https://www.littlevietnamtours.com/"
         },
         {
-          "hex": "#ff00ff",
+          "hex": "#e91e63",
           "role": "accent",
           "source": "https://www.littlevietnamtours.com/"
         },
         {
           "hex": "#ffffff",
+          "role": "background",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        {
+          "hex": "#1b5e20",
           "role": "text",
           "source": "https://www.littlevietnamtours.com/"
         }
       ],
       "essence": {
+        "promise": {
+          "value": "Contact us to create a Free Customized Tour Itinerary with no commitment.",
+          "source": "https://www.littlevietnamtours.com/"
+        },
         "feeling": [
-          "inspired",
+          "welcomed",
+          "safe",
           "cared for",
-          "welcomed"
+          "inspired"
         ],
         "placeSymbols": [
           "lotus flowers",
-          "winding mountain roads",
+          "Ha Giang mountain passes",
           "rice terraces",
-          "Halong Bay limestone karsts",
+          "Halong Bay karst peaks",
           "lanterns of Hoi An"
         ],
         "senses": [
-          "scent of local herbs and street food",
-          "sound of motorbike horns",
-          "fresh mountain air",
-          "humid tropical breeze"
+          "motorcycle engines humming",
+          "steaming bowls of pho",
+          "mountain air",
+          "warm tropical breeze",
+          "chatter of local markets"
         ],
-        "moments": []
+        "moments": [
+          {
+            "value": "planning a custom holiday",
+            "source": "https://www.littlevietnamtours.com/"
+          },
+          {
+            "value": "arriving in Hanoi",
+            "source": "https://www.littleviet"
+          }
+        ]
+      }
+    },
+    {
+      "name": {
+        "value": "Little Vietnam Tours",
+        "source": "https://www.littlevietnamtours.com/"
+      },
+      "summary": {
+        "value": "Private, custom, personalized itineraries and guided tours in Vietnam and Southeast Asia.",
+        "source": "https://www.littlevietnamtours.com/"
+      },
+      "category": "tour operator",
+      "offerings": [
+        {
+          "name": "Amazing Vietnam",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        {
+          "name": "Epic Northern Vietnam Adventure including Motorbiking the Ha Giang Loop",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        {
+          "name": "Michelin Bib Gourmand Tour Vietnam",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        {
+          "name": "Active Family Tour of Vietnam",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        {
+          "name": "Sweet Honeymoon In Vietnam",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        {
+          "name": "In the World of Endangered Primates",
+          "source": "https://www.littlevietnamtours.com/"
+        }
+      ],
+      "highlights": [
+        {
+          "value": "TripAdvisor Travelers' Choice 4 years in a row - 2023, 2024, 2025, 2026",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        {
+          "value": "Licensed international tour operator #01-1359/2019 TCDL-GP LHQT",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        {
+          "value": "Planning trips for UK, US, Australian and Canadian travelers for 16 years",
+          "source": "https://www.littlevietnamtours.com/"
+        }
+      ],
+      "location": {
+        "town": {
+          "value": "Hanoi",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        "area": {
+          "value": "Cau Giay District",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        "address": {
+          "value": "4th floor, Block A6/D6, Cau Giay Urban Area, Tho Thap Street, Cau Giay District, Hanoi, VN",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        "serviceArea": {
+          "value": "Vietnam, Cambodia, Laos, Thailand, Myanmar",
+          "source": "https://www.littlevietnamtours.com/"
+        }
+      },
+      "contact": {
+        "whatsapp": null,
+        "phone": {
+          "value": "+84-989-964-668",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        "email": {
+          "value": "letsgo@littlevietnamtours.com",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        "instagram": null,
+        "bookingUrl": null
+      },
+      "hours": null,
+      "tone": [
+        "personal",
+        "professional",
+        "down to earth",
+        "warm",
+        "informative"
+      ],
+      "colours": [
+        {
+          "hex": "#1b5e20",
+          "role": "primary",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        {
+          "hex": "#e91e63",
+          "role": "accent",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        {
+          "hex": "#ffffff",
+          "role": "background",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        {
+          "hex": "#1b5e20",
+          "role": "text",
+          "source": "https://www.littlevietnamtours.com/"
+        }
+      ],
+      "essence": {
+        "promise": {
+          "value": "Contact us to create a Free Customized Tour Itinerary with no commitment.",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        "feeling": [
+          "welcomed",
+          "safe",
+          "cared for",
+          "inspired"
+        ],
+        "placeSymbols": [
+          "lotus flowers",
+          "Ha Giang mountain passes",
+          "rice terraces",
+          "Halong Bay karst peaks",
+          "lanterns of Hoi An"
+        ],
+        "senses": [
+          "motorcycle engines humming",
+          "steaming bowls of pho",
+          "mountain air",
+          "warm tropical breeze",
+          "chatter of local markets"
+        ],
+        "moments": [
+          {
+            "value": "planning a custom holiday",
+            "source": "https://www.littlevietnamtours.com/"
+          },
+          {
+            "value": "arriving in Hanoi",
+            "source": "https://www.littlevietnamtours.com/"
+          }
+        ]
       },
       "visualStyle": {}
     },
@@ -1906,24 +3556,43 @@
         "source": "https://www.littlevietnamtours.com/"
       },
       "summary": {
-        "value": "Personalized, private, and custom guided tours and holiday planning in Vietnam and Southeast Asia.",
+        "value": "Private, custom, personalized itineraries and guided tours in Vietnam and Southeast Asia.",
         "source": "https://www.littlevietnamtours.com/"
       },
       "category": "tour operator",
       "offerings": [
         {
-          "name": "Ha Giang Motorbike Loop",
-          "description": "An epic Northern Vietnam adventure through rural hill-tribe villages.",
+          "name": "Amazing Vietnam",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        {
+          "name": "Epic Northern Vietnam Adventure including Motorbiking the Ha Giang Loop",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        {
+          "name": "Michelin Bib Gourmand Tour Vietnam",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        {
+          "name": "Active Family Tour of Vietnam",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        {
+          "name": "Sweet Honeymoon In Vietnam",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        {
+          "name": "In the World of Endangered Primates",
           "source": "https://www.littlevietnamtours.com/"
         }
       ],
       "highlights": [
         {
-          "value": "TripAdvisor Travelers Choice 4 years in a row",
+          "value": "TripAdvisor Travelers' Choice 4 years in a row - 2023, 2024, 2025, 2026",
           "source": "https://www.littlevietnamtours.com/"
         },
         {
-          "value": "Licensed international tour operator",
+          "value": "Licensed international tour operator #01-1359/2019 TCDL-GP LHQT",
           "source": "https://www.littlevietnamtours.com/"
         },
         {
@@ -1941,11 +3610,11 @@
           "source": "https://www.littlevietnamtours.com/"
         },
         "address": {
-          "value": "4th floor, Block A6/D6, Cau Giay Urban Area, Tho Thap Street, Hanoi, VN",
+          "value": "4th floor, Block A6/D6, Cau Giay Urban Area, Tho Thap Street, Cau Giay District, Hanoi, VN",
           "source": "https://www.littlevietnamtours.com/"
         },
         "serviceArea": {
-          "value": "Vietnam, Southeast Asia",
+          "value": "Vietnam, Cambodia, Laos, Thailand, Myanmar",
           "source": "https://www.littlevietnamtours.com/"
         }
       },
@@ -1964,56 +3633,73 @@
       },
       "hours": null,
       "tone": [
-        "warm",
         "personal",
         "professional",
-        "friendly"
+        "down to earth",
+        "warm",
+        "informative"
       ],
       "colours": [
         {
-          "hex": "#00a680",
-          "role": "background",
-          "source": "https://www.littlevietnamtours.com/"
-        },
-        {
-          "hex": "#145a32",
+          "hex": "#1b5e20",
           "role": "primary",
           "source": "https://www.littlevietnamtours.com/"
         },
         {
-          "hex": "#ff00ff",
+          "hex": "#e91e63",
           "role": "accent",
           "source": "https://www.littlevietnamtours.com/"
         },
         {
           "hex": "#ffffff",
+          "role": "background",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        {
+          "hex": "#1b5e20",
           "role": "text",
           "source": "https://www.littlevietnamtours.com/"
         }
       ],
       "essence": {
+        "promise": {
+          "value": "Contact us to create a Free Customized Tour Itinerary with no commitment.",
+          "source": "https://www.littlevietnamtours.com/"
+        },
         "feeling": [
-          "inspired",
+          "welcomed",
+          "safe",
           "cared for",
-          "welcomed"
+          "inspired"
         ],
         "placeSymbols": [
           "lotus flowers",
-          "winding mountain roads",
+          "Ha Giang mountain passes",
           "rice terraces",
-          "Halong Bay limestone karsts",
+          "Halong Bay karst peaks",
           "lanterns of Hoi An"
         ],
         "senses": [
-          "scent of local herbs and street food",
-          "sound of motorbike horns",
-          "fresh mountain air",
-          "humid tropical breeze"
+          "motorcycle engines humming",
+          "steaming bowls of pho",
+          "mountain air",
+          "warm tropical breeze",
+          "chatter of local markets"
         ],
-        "moments": []
+        "moments": [
+          {
+            "value": "planning a custom holiday",
+            "source": "https://www.littlevietnamtours.com/"
+          },
+          {
+            "value": "arriving in Hanoi",
+            "source": "https://www.littlevietnamtours.com/"
+          }
+        ]
       },
       "visualStyle": {
-        "summary": "Warm tropical hues, lush green landscapes, soft natural light, and winding mountain roads."
+        "summary": "warm tropical, vibrant green, natural textures, adventurous mood",
+        "palette": "vibrant green, magenta"
       }
     },
     {
@@ -2022,24 +3708,43 @@
         "source": "https://www.littlevietnamtours.com/"
       },
       "summary": {
-        "value": "Personalized, private, and custom guided tours and holiday planning in Vietnam and Southeast Asia.",
+        "value": "Private, custom, personalized itineraries and guided tours in Vietnam and Southeast Asia.",
         "source": "https://www.littlevietnamtours.com/"
       },
       "category": "tour operator",
       "offerings": [
         {
-          "name": "Ha Giang Motorbike Loop",
-          "description": "An epic Northern Vietnam adventure through rural hill-tribe villages.",
+          "name": "Amazing Vietnam",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        {
+          "name": "Epic Northern Vietnam Adventure including Motorbiking the Ha Giang Loop",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        {
+          "name": "Michelin Bib Gourmand Tour Vietnam",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        {
+          "name": "Active Family Tour of Vietnam",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        {
+          "name": "Sweet Honeymoon In Vietnam",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        {
+          "name": "In the World of Endangered Primates",
           "source": "https://www.littlevietnamtours.com/"
         }
       ],
       "highlights": [
         {
-          "value": "TripAdvisor Travelers Choice 4 years in a row",
+          "value": "TripAdvisor Travelers' Choice 4 years in a row - 2023, 2024, 2025, 2026",
           "source": "https://www.littlevietnamtours.com/"
         },
         {
-          "value": "Licensed international tour operator",
+          "value": "Licensed international tour operator #01-1359/2019 TCDL-GP LHQT",
           "source": "https://www.littlevietnamtours.com/"
         },
         {
@@ -2057,11 +3762,11 @@
           "source": "https://www.littlevietnamtours.com/"
         },
         "address": {
-          "value": "4th floor, Block A6/D6, Cau Giay Urban Area, Tho Thap Street, Hanoi, VN",
+          "value": "4th floor, Block A6/D6, Cau Giay Urban Area, Tho Thap Street, Cau Giay District, Hanoi, VN",
           "source": "https://www.littlevietnamtours.com/"
         },
         "serviceArea": {
-          "value": "Vietnam, Southeast Asia",
+          "value": "Vietnam, Cambodia, Laos, Thailand, Myanmar",
           "source": "https://www.littlevietnamtours.com/"
         }
       },
@@ -2080,58 +3785,75 @@
       },
       "hours": null,
       "tone": [
-        "warm",
         "personal",
         "professional",
-        "friendly"
+        "down to earth",
+        "warm",
+        "informative"
       ],
       "colours": [
         {
-          "hex": "#00a680",
-          "role": "background",
-          "source": "https://www.littlevietnamtours.com/"
-        },
-        {
-          "hex": "#145a32",
+          "hex": "#1b5e20",
           "role": "primary",
           "source": "https://www.littlevietnamtours.com/"
         },
         {
-          "hex": "#ff00ff",
+          "hex": "#e91e63",
           "role": "accent",
           "source": "https://www.littlevietnamtours.com/"
         },
         {
           "hex": "#ffffff",
+          "role": "background",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        {
+          "hex": "#1b5e20",
           "role": "text",
           "source": "https://www.littlevietnamtours.com/"
         }
       ],
       "essence": {
+        "promise": {
+          "value": "Contact us to create a Free Customized Tour Itinerary with no commitment.",
+          "source": "https://www.littlevietnamtours.com/"
+        },
         "feeling": [
-          "inspired",
+          "welcomed",
+          "safe",
           "cared for",
-          "welcomed"
+          "inspired"
         ],
         "placeSymbols": [
           "lotus flowers",
-          "winding mountain roads",
+          "Ha Giang mountain passes",
           "rice terraces",
-          "Halong Bay limestone karsts",
+          "Halong Bay karst peaks",
           "lanterns of Hoi An"
         ],
         "senses": [
-          "scent of local herbs and street food",
-          "sound of motorbike horns",
-          "fresh mountain air",
-          "humid tropical breeze"
+          "motorcycle engines humming",
+          "steaming bowls of pho",
+          "mountain air",
+          "warm tropical breeze",
+          "chatter of local markets"
         ],
-        "moments": []
+        "moments": [
+          {
+            "value": "planning a custom holiday",
+            "source": "https://www.littlevietnamtours.com/"
+          },
+          {
+            "value": "arriving in Hanoi",
+            "source": "https://www.littlevietnamtours.com/"
+          }
+        ]
       },
       "visualStyle": {
-        "summary": "Warm tropical hues, lush green landscapes, soft natural light, and winding mountain roads.",
-        "palette": "vibrant greens, pink accents, and earthy tones",
-        "light": "natural daylight"
+        "summary": "warm tropical, vibrant green, natural textures, adventurous mood",
+        "palette": "vibrant green, magenta, earthy brown",
+        "light": "bright daylight, natural sunlight",
+        "textures": "winding mountain roads, lush foliage"
       }
     },
     {
@@ -2140,24 +3862,43 @@
         "source": "https://www.littlevietnamtours.com/"
       },
       "summary": {
-        "value": "Personalized, private, and custom guided tours and holiday planning in Vietnam and Southeast Asia.",
+        "value": "Private, custom, personalized itineraries and guided tours in Vietnam and Southeast Asia.",
         "source": "https://www.littlevietnamtours.com/"
       },
       "category": "tour operator",
       "offerings": [
         {
-          "name": "Ha Giang Motorbike Loop",
-          "description": "An epic Northern Vietnam adventure through rural hill-tribe villages.",
+          "name": "Amazing Vietnam",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        {
+          "name": "Epic Northern Vietnam Adventure including Motorbiking the Ha Giang Loop",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        {
+          "name": "Michelin Bib Gourmand Tour Vietnam",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        {
+          "name": "Active Family Tour of Vietnam",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        {
+          "name": "Sweet Honeymoon In Vietnam",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        {
+          "name": "In the World of Endangered Primates",
           "source": "https://www.littlevietnamtours.com/"
         }
       ],
       "highlights": [
         {
-          "value": "TripAdvisor Travelers Choice 4 years in a row",
+          "value": "TripAdvisor Travelers' Choice 4 years in a row - 2023, 2024, 2025, 2026",
           "source": "https://www.littlevietnamtours.com/"
         },
         {
-          "value": "Licensed international tour operator",
+          "value": "Licensed international tour operator #01-1359/2019 TCDL-GP LHQT",
           "source": "https://www.littlevietnamtours.com/"
         },
         {
@@ -2175,11 +3916,11 @@
           "source": "https://www.littlevietnamtours.com/"
         },
         "address": {
-          "value": "4th floor, Block A6/D6, Cau Giay Urban Area, Tho Thap Street, Hanoi, VN",
+          "value": "4th floor, Block A6/D6, Cau Giay Urban Area, Tho Thap Street, Cau Giay District, Hanoi, VN",
           "source": "https://www.littlevietnamtours.com/"
         },
         "serviceArea": {
-          "value": "Vietnam, Southeast Asia",
+          "value": "Vietnam, Cambodia, Laos, Thailand, Myanmar",
           "source": "https://www.littlevietnamtours.com/"
         }
       },
@@ -2198,60 +3939,76 @@
       },
       "hours": null,
       "tone": [
-        "warm",
         "personal",
         "professional",
-        "friendly"
+        "down to earth",
+        "warm",
+        "informative"
       ],
       "colours": [
         {
-          "hex": "#00a680",
-          "role": "background",
-          "source": "https://www.littlevietnamtours.com/"
-        },
-        {
-          "hex": "#145a32",
+          "hex": "#1b5e20",
           "role": "primary",
           "source": "https://www.littlevietnamtours.com/"
         },
         {
-          "hex": "#ff00ff",
+          "hex": "#e91e63",
           "role": "accent",
           "source": "https://www.littlevietnamtours.com/"
         },
         {
           "hex": "#ffffff",
+          "role": "background",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        {
+          "hex": "#1b5e20",
           "role": "text",
           "source": "https://www.littlevietnamtours.com/"
         }
       ],
       "essence": {
+        "promise": {
+          "value": "Contact us to create a Free Customized Tour Itinerary with no commitment.",
+          "source": "https://www.littlevietnamtours.com/"
+        },
         "feeling": [
-          "inspired",
+          "welcomed",
+          "safe",
           "cared for",
-          "welcomed"
+          "inspired"
         ],
         "placeSymbols": [
           "lotus flowers",
-          "winding mountain roads",
+          "Ha Giang mountain passes",
           "rice terraces",
-          "Halong Bay limestone karsts",
+          "Halong Bay karst peaks",
           "lanterns of Hoi An"
         ],
         "senses": [
-          "scent of local herbs and street food",
-          "sound of motorbike horns",
-          "fresh mountain air",
-          "humid tropical breeze"
+          "motorcycle engines humming",
+          "steaming bowls of pho",
+          "mountain air",
+          "warm tropical breeze",
+          "chatter of local markets"
         ],
-        "moments": []
+        "moments": [
+          {
+            "value": "planning a custom holiday",
+            "source": "https://www.littlevietnamtours.com/"
+          },
+          {
+            "value": "arriving in Hanoi",
+            "source": "https://www.littlevietnamtours.com/"
+          }
+        ]
       },
       "visualStyle": {
-        "summary": "Warm tropical hues, lush green landscapes, soft natural light, and winding mountain roads.",
-        "palette": "vibrant greens, pink accents, and earthy tones",
-        "light": "natural daylight",
-        "textures": "paved mountain roads, dense vegetation, and rustic village details",
-        "mood": "adventurous and welcoming"
+        "summary": "warm tropical, vibrant green, natural textures, adventurous mood",
+        "palette": "vibrant green, magenta, earthy brown",
+        "light": "bright daylight, natural sunlight",
+        "textures": "winding mountain roads, lush foliage",
+        "mood": "adventurous, welcoming, authentic"
       }
     }
   ],
@@ -2261,24 +4018,43 @@
       "source": "https://www.littlevietnamtours.com/"
     },
     "summary": {
-      "value": "Personalized, private, and custom guided tours and holiday planning in Vietnam and Southeast Asia.",
+      "value": "Private, custom, personalized itineraries and guided tours in Vietnam and Southeast Asia.",
       "source": "https://www.littlevietnamtours.com/"
     },
     "category": "tour operator",
     "offerings": [
       {
-        "name": "Ha Giang Motorbike Loop",
-        "description": "An epic Northern Vietnam adventure through rural hill-tribe villages.",
+        "name": "Amazing Vietnam",
+        "source": "https://www.littlevietnamtours.com/"
+      },
+      {
+        "name": "Epic Northern Vietnam Adventure including Motorbiking the Ha Giang Loop",
+        "source": "https://www.littlevietnamtours.com/"
+      },
+      {
+        "name": "Michelin Bib Gourmand Tour Vietnam",
+        "source": "https://www.littlevietnamtours.com/"
+      },
+      {
+        "name": "Active Family Tour of Vietnam",
+        "source": "https://www.littlevietnamtours.com/"
+      },
+      {
+        "name": "Sweet Honeymoon In Vietnam",
+        "source": "https://www.littlevietnamtours.com/"
+      },
+      {
+        "name": "In the World of Endangered Primates",
         "source": "https://www.littlevietnamtours.com/"
       }
     ],
     "highlights": [
       {
-        "value": "TripAdvisor Travelers Choice 4 years in a row",
+        "value": "TripAdvisor Travelers' Choice 4 years in a row - 2023, 2024, 2025, 2026",
         "source": "https://www.littlevietnamtours.com/"
       },
       {
-        "value": "Licensed international tour operator",
+        "value": "Licensed international tour operator #01-1359/2019 TCDL-GP LHQT",
         "source": "https://www.littlevietnamtours.com/"
       },
       {
@@ -2296,11 +4072,11 @@
         "source": "https://www.littlevietnamtours.com/"
       },
       "address": {
-        "value": "4th floor, Block A6/D6, Cau Giay Urban Area, Tho Thap Street, Hanoi, VN",
+        "value": "4th floor, Block A6/D6, Cau Giay Urban Area, Tho Thap Street, Cau Giay District, Hanoi, VN",
         "source": "https://www.littlevietnamtours.com/"
       },
       "serviceArea": {
-        "value": "Vietnam, Southeast Asia",
+        "value": "Vietnam, Cambodia, Laos, Thailand, Myanmar",
         "source": "https://www.littlevietnamtours.com/"
       }
     },
@@ -2319,60 +4095,76 @@
     },
     "hours": null,
     "tone": [
-      "warm",
       "personal",
       "professional",
-      "friendly"
+      "down to earth",
+      "warm",
+      "informative"
     ],
     "colours": [
       {
-        "hex": "#00a680",
-        "role": "background",
-        "source": "https://www.littlevietnamtours.com/"
-      },
-      {
-        "hex": "#145a32",
+        "hex": "#1b5e20",
         "role": "primary",
         "source": "https://www.littlevietnamtours.com/"
       },
       {
-        "hex": "#ff00ff",
+        "hex": "#e91e63",
         "role": "accent",
         "source": "https://www.littlevietnamtours.com/"
       },
       {
         "hex": "#ffffff",
+        "role": "background",
+        "source": "https://www.littlevietnamtours.com/"
+      },
+      {
+        "hex": "#1b5e20",
         "role": "text",
         "source": "https://www.littlevietnamtours.com/"
       }
     ],
     "essence": {
+      "promise": {
+        "value": "Contact us to create a Free Customized Tour Itinerary with no commitment.",
+        "source": "https://www.littlevietnamtours.com/"
+      },
       "feeling": [
-        "inspired",
+        "welcomed",
+        "safe",
         "cared for",
-        "welcomed"
+        "inspired"
       ],
       "placeSymbols": [
         "lotus flowers",
-        "winding mountain roads",
+        "Ha Giang mountain passes",
         "rice terraces",
-        "Halong Bay limestone karsts",
+        "Halong Bay karst peaks",
         "lanterns of Hoi An"
       ],
       "senses": [
-        "scent of local herbs and street food",
-        "sound of motorbike horns",
-        "fresh mountain air",
-        "humid tropical breeze"
+        "motorcycle engines humming",
+        "steaming bowls of pho",
+        "mountain air",
+        "warm tropical breeze",
+        "chatter of local markets"
       ],
-      "moments": []
+      "moments": [
+        {
+          "value": "planning a custom holiday",
+          "source": "https://www.littlevietnamtours.com/"
+        },
+        {
+          "value": "arriving in Hanoi",
+          "source": "https://www.littlevietnamtours.com/"
+        }
+      ]
     },
     "visualStyle": {
-      "summary": "Warm tropical hues, lush green landscapes, soft natural light, and winding mountain roads.",
-      "palette": "vibrant greens, pink accents, and earthy tones",
-      "light": "natural daylight",
-      "textures": "paved mountain roads, dense vegetation, and rustic village details",
-      "mood": "adventurous and welcoming"
+      "summary": "warm tropical, vibrant green, natural textures, adventurous mood",
+      "palette": "vibrant green, magenta, earthy brown",
+      "light": "bright daylight, natural sunlight",
+      "textures": "winding mountain roads, lush foliage",
+      "mood": "adventurous, welcoming, authentic"
     }
   }
 }
