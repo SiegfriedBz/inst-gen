@@ -17,3 +17,39 @@ export type RunRecord = {
   startedAt: string;
   steps: RunStep[];
 };
+
+export function newBrandRun(
+  input: { ownerId: string; url: string; reread: boolean },
+  now: Date,
+  id: string,
+): RunRecord {
+  return {
+    id,
+    ownerId: input.ownerId,
+    kind: 'brand-read',
+    reread: input.reread,
+    url: input.url,
+    startedAt: now.toISOString(),
+    steps: [{ name: 'brand', status: 'running' }],
+  };
+}
+
+// Decision 0005, "Resume": a step marked running whose request is no
+// longer alive goes back to pending. Done and failed steps stay as they are.
+export function resumeRun(run: RunRecord, isLive: (runId: string) => boolean): RunRecord {
+  if (isLive(run.id)) return run;
+  return {
+    ...run,
+    steps: run.steps.map((step) =>
+      step.status === 'running' ? { ...step, status: 'pending' } : step,
+    ),
+  };
+}
+
+export function stepsToRequest(run: RunRecord): RunStep['name'][] {
+  return run.steps.filter((step) => step.status === 'pending').map((step) => step.name);
+}
+
+export function isFinished(run: RunRecord): boolean {
+  return run.steps.every((step) => step.status === 'done' || step.status === 'failed');
+}

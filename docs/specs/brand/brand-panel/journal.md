@@ -11,6 +11,9 @@
 
 - Task 1: ` Test Files  1 failed (1)` (`lib/brand/store.ts` not found)
 
+- Task 2: ` Test Files  2 failed (2)` (`newBrandRun is not a function`, `lib/runs/store` not found)
+
 ## GREEN
 
 - Task 1: ` Tests  8 passed (8)`
+- Task 2: ` Tests  8 passed (8)`
