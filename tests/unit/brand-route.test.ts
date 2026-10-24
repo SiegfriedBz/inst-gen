@@ -37,13 +37,14 @@ const post = (body: string) =>
   POST(new Request('http://localhost/api/brand/read', { method: 'POST', body }));
 
 describe('POST /api/brand/read', () => {
-  test('runs on Node.js with a 30 s cap', () => {
+  test('runs on Node.js with a 300 s ceiling', () => {
     expect(runtime).toBe('nodejs');
-    expect(maxDuration).toBe(30);
+    expect(maxDuration).toBe(300);
   });
 
-  test('the read gives up before the platform cap, so the error line arrives', async () => {
+  test('the read gives up at 60 s, before the platform cap, so the error line arrives', async () => {
     const { DEFAULT_LIMITS } = await import('@/lib/brand/read');
+    expect(DEFAULT_LIMITS).toEqual({ fetchMs: 10_000, totalMs: 60_000 });
     expect(DEFAULT_LIMITS.totalMs).toBeLessThanOrEqual(maxDuration * 1000 - 2_000);
   });
 

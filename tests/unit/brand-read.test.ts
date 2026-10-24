@@ -1,7 +1,10 @@
+import { APICallError } from 'ai';
 import { describe, expect, test } from 'vitest';
 import { replayTextModel } from '@/lib/ai/replay';
+import { ModelError, type TextModel, toModelStream } from '@/lib/ai/text-model';
 import { BRAND_PROMPT_VERSION } from '@/lib/brand/prompt';
 import { BrandReadError, prepareRead, type ReadDeps, streamProfile } from '@/lib/brand/read';
+import type { ReadLog } from '@/lib/brand/read-log';
 import type { StreamLine } from '@/lib/brand/stream';
 import { type SiteFile, siteTransport } from './helpers/site';
 
@@ -287,5 +290,133 @@ describe('brand read', () => {
     setTimeout(() => controller.abort(), 20);
     for await (const line of streamProfile(prepared, d, controller.signal)) lines.push(line);
     expect(lines.map((l) => l.type)).toEqual(['partial']);
+  });
+});
+
+describe('the log line', () => {
+  const KEYS = [
+    'fetchMs',
+    'firstPartialMs',
+    'host',
+    'modelError',
+    'outcome',
+    'pages',
+    'photos',
+    'totalMs',
+  ];
+
+  function logged(extra: Partial<ReadDeps> = {}) {
+    const entries: ReadLog[] = [];
+    const { deps: d } = deps(baseSite, { log: (e) => entries.push(e), ...extra });
+    return { d, entries };
+  }
+
+  function expectOnlyLogKeys(entries: ReadLog[]) {
+    for (const e of entries) for (const key of Object.keys(e)) expect(KEYS).toContain(key);
+  }
+
+  test('a finished read logs once, with its timings', async () => {
+    const { d, entries } = logged();
+    await read(SITE, d);
+    expect(entries).toHaveLength(1);
+    expect(entries[0]).toMatchObject({ host: 'sen.vn', pages: 3, photos: 2, outcome: 'final' });
+    expect(entries[0].firstPartialMs).toEqual(expect.any(Number));
+    expect(entries[0].totalMs).toBeGreaterThanOrEqual(entries[0].fetchMs);
+    expect(entries[0].modelError).toBeUndefined();
+    expectOnlyLogKeys(entries);
+  });
+
+  function failing(error: unknown): TextModel {
+    return {
+      streamBrandProfile() {
+        return toModelStream(
+          (async function* () {
+            // Fails before its first partial.
+            yield* [];
+            throw error;
+          })(),
+        );
+      },
+    };
+  }
+
+  test("a busy model logs model_busy with Gemini's status and message", async () => {
+    const api = new APICallError({
+      message: 'This model is currently experiencing high demand.',
+      url: 'https://generativelanguage.googleapis.com/',
+      requestBodyValues: {},
+      statusCode: 503,
+    });
+    const { d, entries } = logged({
+      model: failing(new ModelError('busy', api.message, { cause: api })),
+    });
+    await read(SITE, d);
+    expect(entries).toEqual([
+      expect.objectContaining({
+        outcome: 'model_busy',
+        modelError: 'AI_APICallError 503: This model is currently experiencing high demand.',
+      }),
+    ]);
+  });
+
+  test("a model error that isn't Gemini's answer logs only its name", async () => {
+    const leaky = new Error('Invalid value: {"whatsapp":"+84905123456","name":"Sen Spa"}');
+    leaky.name = 'AI_NoObjectGeneratedError';
+    const { d, entries } = logged({
+      model: failing(new ModelError('failed', leaky.message, { cause: leaky })),
+    });
+    await read(SITE, d);
+    expect(entries).toEqual([
+      expect.objectContaining({ outcome: 'model_failed', modelError: 'AI_NoObjectGeneratedError' }),
+    ]);
+  });
+
+  test('a client that leaves during the fetch logs aborted, not unreachable', async () => {
+    const controller = new AbortController();
+    const entries: ReadLog[] = [];
+    const { deps: d } = deps(
+      { ...baseSite, [SITE]: { slowMs: 500, html: homeHtml } },
+      { log: (e) => entries.push(e) },
+    );
+    setTimeout(() => controller.abort(), 20);
+    await codeOf(prepareRead(SITE, d, controller.signal));
+    expect(entries.map((e) => e.outcome)).toEqual(['aborted']);
+  });
+
+  test('a hanging model logs model_timeout', async () => {
+    const { d, entries } = logged({
+      model: replayTextModel(recording, { hang: true }),
+      limits: { fetchMs: 200, totalMs: 300 },
+    });
+    await read(SITE, d);
+    expect(entries.map((e) => e.outcome)).toEqual(['model_timeout']);
+  });
+
+  test('a client that leaves logs aborted', async () => {
+    const controller = new AbortController();
+    const { d, entries } = logged({ model: replayTextModel(recording, { hang: true }) });
+    const prepared = await prepareRead(SITE, d, controller.signal);
+    setTimeout(() => controller.abort(), 20);
+    for await (const _line of streamProfile(prepared, d, controller.signal));
+    expect(entries.map((e) => e.outcome)).toEqual(['aborted']);
+  });
+
+  test('an unreachable site logs its code and still throws', async () => {
+    const entries: ReadLog[] = [];
+    const { deps: d } = deps(
+      { ...baseSite, [SITE]: { status: 404 } },
+      { log: (e) => entries.push(e) },
+    );
+    expect(await codeOf(prepareRead(SITE, d, new AbortController().signal))).toBe('unreachable');
+    expect(entries).toEqual([
+      expect.objectContaining({
+        host: 'sen.vn',
+        pages: 0,
+        photos: 0,
+        firstPartialMs: null,
+        outcome: 'unreachable',
+      }),
+    ]);
+    expectOnlyLogKeys(entries);
   });
 });

@@ -9,6 +9,7 @@ import { createFetcher, FetchError, type Fetched, type Transport } from './fetch
 import { choosePages, englishHome } from './pages';
 import type { BrandErrorCode, PartialProfile } from './profile';
 import { BRAND_PROMPT_VERSION, brandPrompt, brandUserText } from './prompt';
+import { describeModelError, type ReadLog } from './read-log';
 import { robotsAllows } from './robots';
 import type { StreamLine } from './stream';
 import { cleanUrl } from './url';
@@ -32,11 +33,13 @@ export type ReadDeps = {
   record?: (fetched: Fetched) => void;
   // Told why a model step failed; the stream itself only carries the code.
   onModelError?: (error: unknown) => void;
+  // Told once, when the read ends, how it went.
+  log?: (entry: ReadLog) => void;
 };
 
-// The read gives up 2 s before the route's 30 s maxDuration, so the client
-// still gets its model_timeout line.
-export const DEFAULT_LIMITS = { fetchMs: 10_000, totalMs: 28_000 };
+// The read gives up at 60 s, well before the route's 300 s maxDuration, so the
+// client still gets its model_timeout line (decision 0005 as amended).
+export const DEFAULT_LIMITS = { fetchMs: 10_000, totalMs: 60_000 };
 const PAGE_CONCURRENCY = 4;
 const THIN_CHARS = 300;
 // Gemini reads these; an SVG logo stays in the profile but isn't sent.
@@ -53,6 +56,11 @@ export type PreparedRead = {
   photoCount: number;
   // Fires when the whole request's time is up.
   deadline: AbortSignal;
+  // For the log line: when the read started (Date.now()), how long fetching
+  // took, and the site's host.
+  startedAt: number;
+  fetchMs: number;
+  host: string;
 };
 
 async function mapLimit<T, R>(
@@ -87,6 +95,33 @@ export async function prepareRead(
   rawUrl: string,
   deps: ReadDeps,
   signal: AbortSignal,
+): Promise<PreparedRead> {
+  const startedAt = Date.now();
+  try {
+    return await prepare(rawUrl, deps, signal, startedAt);
+  } catch (error) {
+    if (error instanceof BrandReadError) {
+      const ms = Date.now() - startedAt;
+      deps.log?.({
+        host: cleanUrl(rawUrl)?.hostname ?? '',
+        pages: 0,
+        photos: 0,
+        fetchMs: ms,
+        firstPartialMs: null,
+        totalMs: ms,
+        // A client that left mid-fetch looks like an unreachable site.
+        outcome: signal.aborted ? 'aborted' : error.code,
+      });
+    }
+    throw error;
+  }
+}
+
+async function prepare(
+  rawUrl: string,
+  deps: ReadDeps,
+  signal: AbortSignal,
+  startedAt: number,
 ): Promise<PreparedRead> {
   const limits = deps.limits ?? DEFAULT_LIMITS;
   const deadline = AbortSignal.any([signal, AbortSignal.timeout(limits.totalMs)]);
@@ -207,6 +242,9 @@ export async function prepareRead(
     thin,
     photoCount: photos.length,
     deadline,
+    startedAt,
+    fetchMs: Date.now() - startedAt,
+    host: homeUrl.hostname,
   };
 }
 
@@ -222,37 +260,58 @@ export async function* streamProfile(
     pagesRead: prepared.pagesRead,
     photos: prepared.photoCount,
   };
-  yield { type: 'partial', profile: prepared.first };
-  if (signal.aborted) return;
-
-  const modelSignal = AbortSignal.any([signal, prepared.deadline]);
-  let last = JSON.stringify(prepared.first);
+  // Stays 'aborted' unless the read reaches its last line: the client left.
+  let outcome: ReadLog['outcome'] = 'aborted';
+  let firstPartialMs: number | null = null;
+  let modelError: string | undefined;
   try {
-    const stream = deps.model.streamBrandProfile(prepared.modelInput, modelSignal);
-    for await (const partial of stream) {
-      const { profile } = mergeAndCheck(prepared.first, partial, ctx);
-      const encoded = JSON.stringify(profile);
-      if (encoded === last) continue;
-      last = encoded;
-      yield { type: 'partial', profile };
-    }
-    const { profile, dropped } = mergeAndCheck(prepared.first, await stream.final, ctx);
-    const final = finalise(profile, {
-      readAt: now().toISOString(),
-      promptVersion: BRAND_PROMPT_VERSION,
-      thin: prepared.thin,
-      dropped,
-    });
-    yield { type: 'final', profile: final };
-  } catch (error) {
+    yield { type: 'partial', profile: prepared.first };
     if (signal.aborted) return;
-    deps.onModelError?.(error);
-    if (prepared.deadline.aborted) {
-      yield { type: 'error', code: 'model_timeout' };
-    } else if (error instanceof ModelError && error.kind === 'busy') {
-      yield { type: 'error', code: 'model_busy' };
-    } else {
-      yield { type: 'error', code: 'model_failed' };
+
+    const modelSignal = AbortSignal.any([signal, prepared.deadline]);
+    let last = JSON.stringify(prepared.first);
+    try {
+      const stream = deps.model.streamBrandProfile(prepared.modelInput, modelSignal);
+      for await (const partial of stream) {
+        firstPartialMs ??= Date.now() - prepared.startedAt;
+        const { profile } = mergeAndCheck(prepared.first, partial, ctx);
+        const encoded = JSON.stringify(profile);
+        if (encoded === last) continue;
+        last = encoded;
+        yield { type: 'partial', profile };
+      }
+      const { profile, dropped } = mergeAndCheck(prepared.first, await stream.final, ctx);
+      const final = finalise(profile, {
+        readAt: now().toISOString(),
+        promptVersion: BRAND_PROMPT_VERSION,
+        thin: prepared.thin,
+        dropped,
+      });
+      outcome = 'final';
+      yield { type: 'final', profile: final };
+    } catch (error) {
+      if (signal.aborted) return;
+      deps.onModelError?.(error);
+      modelError = describeModelError(error);
+      if (prepared.deadline.aborted) {
+        outcome = 'model_timeout';
+      } else if (error instanceof ModelError && error.kind === 'busy') {
+        outcome = 'model_busy';
+      } else {
+        outcome = 'model_failed';
+      }
+      yield { type: 'error', code: outcome };
     }
+  } finally {
+    deps.log?.({
+      host: prepared.host,
+      pages: prepared.pagesRead.length,
+      photos: prepared.photoCount,
+      fetchMs: prepared.fetchMs,
+      firstPartialMs,
+      totalMs: Date.now() - prepared.startedAt,
+      outcome,
+      ...(modelError === undefined ? {} : { modelError }),
+    });
   }
 }

@@ -2,7 +2,7 @@
 title: "Brand profile from a website"
 description: "A server step that reads a business's website and streams back a grounded brand profile (facts, colours, logo, visual style, essence), with 20 saved site fixtures, recorded model calls and a first eval set."
 status: approved
-approved: { by: siegfried.bozza@protonmail.com, at: 2026-10-24T12:40:32Z }
+approved: { by: siegfried.bozza@protonmail.com, at: 2026-10-24T18:20:59Z }
 date: "2026-10-24"
 ---
 
@@ -190,16 +190,31 @@ route's own stream (see "The response"), never the browser directly.
     people come and how they should feel, for images, captions and replies.
   - Tone words describe how the site talks (for example "calm", "warm",
     "professional"), not what it sells.
+  - The service area, for a business that comes to its clients, lists each
+    area the site names with the neighbourhoods it lists for that area in
+    brackets, then the travel rule if the site gives one, for example
+    "Canggu (Batu Bolong, Echo Beach, Berawa, Nelayan); Pererenan; Seminyak
+    (Petitenget, Oberoi, Kayu Aya, Double Six, Drupadi). Free travel within
+    these areas; further out, a small fee agreed on WhatsApp." Names are
+    copied as the site writes them, without the region or country.
   - Write in English, whatever the site's language.
 - **Thinking:** low, to stay inside the time budget. The builder may raise it
   if the eval shows a gain and the time stays under 20 s.
-- **Time budget:** the whole request has one cap of 30 s, from its arrival
-  to the last byte (the route's `maxDuration` is 30, the per-step limit in
-  decision 0005). Fetching takes at most the first 10 s; the model call gets
-  what is left, up to 20 s for the complete answer, not just its first
-  token. Past the cap the call is aborted and the read fails with
-  `model_timeout`. A typical read should take about 20 s; the eval prints
-  each read's time so the photo count and thinking level can be tuned.
+- **Time budget:** the read gives up 60 s after the request arrives, and the
+  route's `maxDuration` is 300 s, Vercel Hobby's maximum, so the function is
+  never killed before the read can say why it stopped. Fetching takes at most
+  the first 10 s; the model call gets what is left, for the complete answer,
+  not just its first token. Past 60 s the call is aborted and the read fails
+  with `model_timeout`. Reads measured on 2026-10-24 took 7 to 17 s; the
+  60 s leaves room for the free tier's slow moments without leaving the owner
+  in front of a spinner for minutes. The eval prints each read's time so the
+  photo count and thinking level can be tuned.
+- **Log line:** each read writes one line to the server log when it ends:
+  the site's host, pages and photos read, the time to fetch, to the model's
+  first partial and to the end, and the outcome (`final` or the error code),
+  with the model's error message when the model failed. No page text, no
+  profile, nothing about the owner. It is how a `model_timeout` or
+  `model_failed` seen on Vercel gets a cause.
 - The model's own answer for address, phone, WhatsApp, email, Instagram and
   hours never replaces a value code found in JSON-LD or a contact link: code
   wins, and its source is kept.
@@ -209,6 +224,12 @@ route's own stream (see "The response"), never the browser directly.
   inside the JSON-LD `name`, `og:site_name` or `<title>` of its source page.
   Otherwise code falls back to the JSON-LD `name`, then `og:site_name`, cut at
   the first `|`, `-` or `–` separator.
+- **The service area** is the other exception: JSON-LD `areaServed` holds
+  bare place names ("Canggu, Bali, Indonesia"), without the neighbourhoods or
+  travel rule the page text gives. The model's service area, checked against
+  its source page like the town, comes first. Code falls back to JSON-LD
+  `areaServed`, keeping each place's name up to its first comma and joining
+  them with ", " ("Canggu, Pererenan, Seminyak, Kerobokan").
 
 ### Checks after the model call
 
@@ -331,7 +352,7 @@ owner's edits) are not in this schema; their specs add them with a new
 | `unreachable` | 502 | The home page can't be fetched (DNS, timeout, status ≥ 400, not HTML) |
 | `robots_disallowed` | 403 | `robots.txt` disallows the home page |
 | `model_busy` | 503 | Gemini answered 429 (free quota used up) or 503 |
-| `model_timeout` | 504 | The call ran past 20 s |
+| `model_timeout` | 504 | The read ran past 60 s |
 | `model_failed` | 502 | Any other model error, or output that fails the schema |
 
 The fetch errors (`invalid_url`, `blocked_address`, `unreachable`,
@@ -449,10 +470,33 @@ Scenario: The profile streams as it fills
   And no partial holds a number or price that isn't on its source page
   And the final profile passes the profile schema
 
-Scenario: A read that runs too long stops at 30 seconds
+Scenario: A read that runs too long stops at 60 seconds
   Given a model replayer that stops answering
   When the brand read runs
-  Then the stream ends with an "error" line with code "model_timeout" within 30 s
+  Then the stream ends with an "error" line with code "model_timeout" within 60 s
+  And the route's maxDuration is 300
+
+Scenario: A read writes one log line with its timings
+  Given a recorded response for "svarga"
+  When the brand read ends
+  Then one log line gives the host, pages and photos read, the fetch, first-partial and total times, and "final"
+  And it holds no page text and no profile
+
+Scenario: A failed model call logs its reason
+  Given a model replayer that fails with "high demand"
+  When the brand read ends
+  Then the log line gives "model_busy" and the model's message
+
+Scenario: The service area keeps the neighbourhoods from the page text
+  Given Svarga's saved home page, whose JSON-LD areaServed is "Canggu, Bali, Indonesia" and three other places
+  And a model response whose service area names Canggu with Batu Bolong, Echo Beach, Berawa and Nelayan, sourced to the home page
+  When the checks run
+  Then the profile's service area is the model's
+
+Scenario: Without the model's service area, JSON-LD's is trimmed
+  Given the same page and a model response with no service area
+  When the checks run
+  Then the profile's service area is "Canggu, Pererenan, Seminyak, Kerobokan", sourced to the home page
 
 Scenario: A fact the site doesn't show is dropped
   Given a recorded model response that gives a price not written on its source page

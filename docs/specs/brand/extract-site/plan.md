@@ -873,3 +873,173 @@ never on a pilot day.
   - Give the developer a full, paste-ready PR body for a PR to `develop`. It
     names both the license (decision 0008) and roadmap 1.1, since this branch
     carries both.
+
+---
+
+# Amendment 2026-10-24: the brand read fixes
+
+> **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:executing-plans
+> (inline, per `AGENTS.md`). Steps use checkbox (`- [ ]`) syntax.
+
+**Goal:** the three changes the spec gained on 2026-10-24: a 60 s cut-off
+under a 300 s `maxDuration`, one log line per read, and a service area that
+keeps the neighbourhoods and travel rule from the page text.
+
+**Architecture:** the limits are two constants. The service area changes in
+three places: JSON-LD extraction trims each place's name, the merge puts the
+checked model value before code's, and the prompt (`brand-7`) asks for
+neighbourhoods. The log line is a `ReadLog` object the read builds and hands
+to a new `deps.log`; `defaultDeps` prints it with `formatReadLog`.
+
+**Spec:** `docs/specs/brand/extract-site/spec.md` ("Time budget", "Log line",
+"The service area", the five new scenarios); decision 0005 as amended.
+
+## Global Constraints
+
+- Cut-off 60 s (`DEFAULT_LIMITS.totalMs = 60_000`), fetch budget stays 10 s,
+  route `maxDuration = 300`.
+- The log line holds no page text, no profile, nothing about the owner.
+- No new dependency. Commit scope `brand`.
+
+## Review Focus
+
+- A client that closes the page mid-read: the log line still appears, with
+  outcome `aborted`. Test in Task 3.
+- A read that fails before the model (unreachable site): it logs too, with
+  its code and no first-partial time. Test in Task 3.
+- A model error message with newlines or 2 KB of text: the log stays one
+  line, cut to 300 characters. Test in Task 3.
+- `areaServed` given as one plain string ("Canggu, Seminyak"): kept whole,
+  not cut at its first comma; only names of Place objects are cut. Test in
+  Task 2.
+- Two places trimming to the same name: listed once. Test in Task 2.
+
+---
+
+### Task A: The 60 s cut-off under a 300 s ceiling
+
+**Files:** Modify `lib/brand/read.ts` (`DEFAULT_LIMITS` and its comment),
+`app/api/brand/read/route.ts`; Test `tests/unit/brand-route.test.ts`.
+
+- [ ] **Step 1: Change the route tests**
+
+  `'runs on Node.js with a 300 s ceiling'`: `expect(maxDuration).toBe(300)`.
+  `'the read gives up at 60 s'`: `expect(DEFAULT_LIMITS).toEqual({ fetchMs:
+  10_000, totalMs: 60_000 })`, and keep the existing
+  `totalMs <= maxDuration * 1000 - 2_000` assertion.
+- [ ] **Step 2:** `pnpm test tests/unit/brand-route.test.ts`: FAIL (30, 28 000).
+- [ ] **Step 3:** set the two constants; rewrite the comment above
+  `DEFAULT_LIMITS` to say the read gives up at 60 s, well before the route's
+  300 s `maxDuration` (decision 0005 as amended).
+- [ ] **Step 4:** same command: PASS.
+- [ ] **Step 5:** commit `fix(brand): give the brand read 60 s under a 300 s ceiling`.
+
+### Task B: The service area keeps the neighbourhoods
+
+**Files:** Modify `lib/brand/extract/structured.ts` (`business`),
+`lib/brand/checks.ts` (`mergeAndCheck`, location), `lib/brand/prompt.ts`;
+Test `tests/unit/brand-extract-structured.test.ts`,
+`tests/unit/brand-checks.test.ts`, `tests/unit/brand-prompt.test.ts`.
+
+- [ ] **Step 1: Write the failing tests**
+  - structured: `areaServed` of four Place objects named
+    `"Canggu, Bali, Indonesia"`, `"Pererenan, Bali, Indonesia"`,
+    `"Seminyak, Bali, Indonesia"`, `"Kerobokan, Bali, Indonesia"` gives
+    `'Canggu, Pererenan, Seminyak, Kerobokan'`; the plain string
+    `'Canggu, Seminyak'` stays `'Canggu, Seminyak'`; Places
+    `"Canggu, Bali"` and `"Canggu"` give `'Canggu'`.
+  - checks, `"the model's service area beats JSON-LD's"`: code facts with
+    `areaServed: 'Canggu, Pererenan, Seminyak, Kerobokan'` and a model
+    `serviceArea` `{ value: 'Canggu (Batu Bolong, Echo Beach, Berawa, Nelayan); Pererenan', source: HOME }`
+    give the model's; with `run({}, codeFacts)` the value is JSON-LD's,
+    sourced to `HOME`; a model service area with an unknown source falls
+    back to JSON-LD's.
+  - prompt: `BRAND_PROMPT_VERSION` is `'brand-7'`; the rules mention
+    `'neighbourhoods'` and `'travel rule'`.
+- [ ] **Step 2:** `pnpm test tests/unit/brand-extract-structured.test.ts tests/unit/brand-checks.test.ts tests/unit/brand-prompt.test.ts`: FAIL on those.
+- [ ] **Step 3: Implement**
+  - `business()`: an `areaServed` item that is an object takes
+    `nameOf(item)` cut at its first comma and trimmed; a string item stays
+    whole; duplicates dropped; joined with `', '`.
+  - `mergeAndCheck`: `serviceArea: checked('location.serviceArea', mLoc.serviceArea) ?? (cLoc.serviceArea?.value ? (cLoc.serviceArea as Sourced) : null)`,
+    with a comment like the town's (JSON-LD has bare names; the page text has
+    the neighbourhoods).
+  - `prompt.ts`: version `brand-7`; replace the `location.serviceArea` note
+    with the spec's wording: each area the site names, with the
+    neighbourhoods it lists for that area in brackets, then the travel rule
+    if the site gives one; names as the site writes them, without region or
+    country; the Svarga example from the spec.
+- [ ] **Step 4:** same command: PASS; then `pnpm test`: all pass (replayed
+  recordings still carry `brand-6`, which nothing compares).
+- [ ] **Step 5:** commit `fix(brand): keep the neighbourhoods in the service area`.
+
+### Task C: One log line per read
+
+**Files:** Create `lib/brand/read-log.ts`; Modify `lib/brand/read.ts`
+(`ReadDeps`, `PreparedRead`, `prepareRead`, `streamProfile`),
+`lib/brand/deps.ts`; Test `tests/unit/brand-read-log.test.ts`,
+`tests/unit/brand-read.test.ts`.
+
+**Interfaces (produced):**
+
+```ts
+// lib/brand/read-log.ts
+export type ReadLog = {
+  host: string;              // '' when the URL didn't parse
+  pages: number;
+  photos: number;
+  fetchMs: number;
+  firstPartialMs: number | null; // first model partial, from the request's start
+  totalMs: number;
+  outcome: 'final' | 'aborted' | BrandErrorCode;
+  modelError?: string;
+};
+export function formatReadLog(log: ReadLog): string;
+// ReadDeps gains: log?: (entry: ReadLog) => void
+// PreparedRead gains: startedAt: number; fetchMs: number; host: string
+```
+
+- [ ] **Step 1: Write the failing tests**
+  - `formatReadLog`: gives
+    `brand read host=svargabalimassage.com pages=1 photos=3 fetch_ms=876 first_partial_ms=9817 total_ms=17381 outcome=final`;
+    `first_partial_ms=-` when null; a `modelError` of `'high\ndemand'`
+    plus 2 000 characters is appended as `model_error="high demand…"`, on one
+    line, the message cut to 300 characters.
+  - read, with a `log` spy and the replayer: a final read logs once with
+    `outcome: 'final'`, `pages` and `photos` from the read, and
+    `firstPartialMs` and `totalMs` as numbers; `replayTextModel(rec, { error: 'busy' })`
+    logs `outcome: 'model_busy'` with the replayer's message as
+    `modelError`; a hanging replayer with `limits.totalMs: 300` logs
+    `model_timeout`; aborting the request signal mid-stream logs `aborted`;
+    an unreachable home page logs `unreachable` with `firstPartialMs: null`
+    and the read still throws `BrandReadError`. No entry has a key other than
+    the eight in `ReadLog`.
+- [ ] **Step 2:** `pnpm test tests/unit/brand-read-log.test.ts tests/unit/brand-read.test.ts`: FAIL.
+- [ ] **Step 3: Implement**
+  - `read-log.ts`: `formatReadLog` collapses whitespace in `modelError` and
+    cuts it to 300 characters, escaping `"`.
+  - `prepareRead`: record `startedAt = Date.now()` first; on success put
+    `startedAt`, `fetchMs` and `host` in `PreparedRead`; on a
+    `BrandReadError` call `deps.log` with that code, zero pages and photos,
+    then rethrow.
+  - `streamProfile`: note the time of the first model partial; call
+    `deps.log` exactly once in a `finally`, with `final`, `aborted` (request
+    signal aborted) or the error code yielded, and the model error's message
+    when it failed.
+  - `deps.ts`: `log: (entry) => console.info(formatReadLog(entry))`.
+- [ ] **Step 4:** same command: PASS.
+- [ ] **Step 5:** commit `feat(brand): log one line per brand read`.
+
+### Task D: Check with the real model, record, open the PR
+
+- [ ] **Step 1:** `pnpm check`: all green.
+- [ ] **Step 2:** read Sen and Svarga once each with the real model (needs
+  `.env.local`; two of the day's requests). Expected: each `serviceArea` names
+  its areas with neighbourhoods and a travel rule; each read under 60 s; one
+  log line printed per read.
+- [ ] **Step 3:** journal: the timings measured on 2026-10-24, the Vercel
+  preview missing its Gemini key, the decisions taken, the RED and GREEN lines
+  as Vitest prints them, and both service areas from Step 2. Remove the
+  "colours 1 to 5" open item only if the spec now says it (it doesn't: leave it).
+- [ ] **Step 4:** commit `docs(brand): record the brand read fixes`; push
+  `claude/brand-read-fixes`; open the PR to `develop` on github.com.

@@ -9,7 +9,7 @@ import { encodeLine } from '@/lib/brand/stream';
 // session: proxy.ts answers 401 otherwise.
 
 export const runtime = 'nodejs';
-export const maxDuration = 30;
+export const maxDuration = 300;
 
 const bodySchema = z.object({ url: z.string() });
 

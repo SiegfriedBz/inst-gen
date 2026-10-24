@@ -2,7 +2,7 @@
 title: "Long-running work"
 description: "A run is a chain of short streamed requests driven by the browser, which saves each finished step in IndexedDB and, after an interruption, re-asks only for the missing steps; no workflow service, no server-side run state."
 status: approved
-approved: { by: siegfried.bozza@protonmail.com, at: 2026-10-23T21:02:37Z }
+approved: { by: siegfried.bozza@protonmail.com, at: 2026-10-24T18:20:59Z }
 date: "2026-10-23"
 ---
 
@@ -70,7 +70,12 @@ its input, with no run state kept between them:
 
 The specs that build each step (`brand/extract-site`, `posts/generate-copy`,
 `posts/generate-images`) set its route, schema and exact boundaries. A step
-that would run longer than about 30 s is split.
+that would typically run longer than about 30 s is split. Each step's route
+sets `maxDuration` to 300 s, Hobby's maximum, and gives up by itself at a
+cut-off its spec sets, at most 60 s, so the free tier's slow moments don't
+fail a step that usually takes 10 s (amended 2026-10-24: a brand read for
+Sen ran past the first 30 s cap on the free tier, while measured reads took
+7 to 17 s).
 
 **The run lives in the browser.** A run record in IndexedDB holds each step's
 status (`pending`, `running`, `done`, `failed`) and its output. A step's
@@ -117,8 +122,8 @@ decision sets what must be said.
   step, or up to six image calls running in parallel.
 - Good, because no new service, account or server-side store is added, and
   drafts never leave the owner's phone.
-- Good, because each request is short (under 30 s), far from Hobby's 300 s
-  limit, and an image response stays well under 4.5 MB.
+- Good, because each request is short (typically under 30 s, cut off at
+  60 s at most), far from Hobby's 300 s limit, and an image response stays well under 4.5 MB.
 - Good, because each step is a plain route handler, so a spec can test it on
   its own with recorded model calls.
 - Bad, because the step that was in flight is lost and its model call has
@@ -138,7 +143,7 @@ decision sets what must be said.
 ### Confirmation
 
 - Each spec that adds a step lists its route, its input and output schemas,
-  and a time budget under 30 s.
+  a typical time under 30 s, and a cut-off of at most 60 s.
 - A Playwright test starts a run, takes the page offline after the brand read,
   brings it back, and checks that the run finishes with exactly one brand
   read request.
