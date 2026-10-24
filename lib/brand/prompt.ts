@@ -1,7 +1,7 @@
 import type { CodeFacts } from './extract/structured';
 
 // Bump with every change to the prompt, so eval scores trace back to it.
-export const BRAND_PROMPT_VERSION = 'brand-3';
+export const BRAND_PROMPT_VERSION = 'brand-4';
 
 export function brandPrompt(): string {
   return `You read a small business's website and describe its brand, for an app that writes its Instagram posts and review replies.
@@ -15,6 +15,7 @@ Rules:
 4. Tone words describe how the site talks (for example calm, warm, playful, professional), not what it sells.
 5. The name is the one the business calls itself, without taglines or the town, as one of the pages writes it.
 6. Write every field in English, whatever the language of the site.
+7. The essence says what the business is really about, where it is, why people come and how they should feel, so its posts and replies sound like someone who understands it. Think beyond the website, which may be poor: start from the trade and the place.
 
 Field notes:
 - summary: what they sell and to whom, in at most 25 words.
@@ -26,6 +27,10 @@ Field notes:
 - contact.whatsapp: a number the site links to WhatsApp or says is on WhatsApp.
 - contact.instagram: the handle without "@".
 - colours: only when you can see them in the logo or photos; use roles primary, accent, background or text.
+- essence.feeling: 2 to 4 words for how a customer should feel after (for a massage: relaxing, warm, cared for).
+- essence.placeSymbols: up to 5 symbols of the place tied to the trade, which images can show (for a massage in Da Nang: lotus flowers, Hoi An lanterns, My Khe beach at dusk; in Bali: frangipani, temple offerings, rice terraces). Use what the place is known for, even when the site doesn't say it.
+- essence.senses: up to 5 scents, textures, lights or sounds of the experience (warm coconut oil, fresh linens, soft lamp light).
+- essence.moments: up to 6 moments when people need the business, as the pages say them (after a surf at My Khe, after a long flight), each with its page URL. Leave it empty when no page names one.
 - visualStyle.summary: at most 12 words, like "warm tropical, soft light, natural textures".`;
 }
 

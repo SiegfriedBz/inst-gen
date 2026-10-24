@@ -62,6 +62,10 @@ export const LIMITS = {
   highlights: 8,
   tone: 5,
   colours: 5,
+  feeling: 4,
+  placeSymbols: 5,
+  senses: 5,
+  moments: 6,
 } as const;
 
 // What the model fills in. It has no limits: a model answer a word or an item
@@ -99,6 +103,14 @@ export const modelProfileSchema = z.object({
   hours: looseSourced,
   tone: z.array(loose),
   colours: z.array(z.object({ hex: loose, role: z.enum(COLOUR_ROLES), source: loose })),
+  essence: z
+    .object({
+      feeling: z.array(loose),
+      placeSymbols: z.array(loose),
+      senses: z.array(loose),
+      moments: z.array(z.object({ value: loose, source: loose })),
+    })
+    .nullable(),
   visualStyle: z
     .object({ summary: loose, palette: loose, light: loose, textures: loose, mood: loose })
     .nullable(),
@@ -123,6 +135,14 @@ export const profileSchema = z.object({
   tone: z.array(text).max(LIMITS.tone),
   colours: z.array(colour).max(LIMITS.colours),
   logoUrl: sourced(z.url()).nullable(),
+  // What the business is about, where, why people come and how they should
+  // feel. Only moments are facts; the rest is interpretation (spec, "The essence").
+  essence: z.object({
+    feeling: z.array(text).max(LIMITS.feeling),
+    placeSymbols: z.array(text).max(LIMITS.placeSymbols),
+    senses: z.array(text).max(LIMITS.senses),
+    moments: z.array(sourced(text)).max(LIMITS.moments),
+  }),
   visualStyle: visualStyle.nullable(),
   photoUrls: z.array(z.url()),
   promptVersion: text,

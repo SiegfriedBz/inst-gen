@@ -267,6 +267,22 @@ export function mergeAndCheck(
     return kept ? [kept] : [];
   });
 
+  const words = (list: (string | undefined)[] | undefined, max: number) =>
+    (list ?? []).filter((w): w is string => Boolean(w)).slice(0, max);
+  const essence = model.essence
+    ? {
+        feeling: words(model.essence.feeling, LIMITS.feeling),
+        placeSymbols: words(model.essence.placeSymbols, LIMITS.placeSymbols),
+        senses: words(model.essence.senses, LIMITS.senses),
+        moments: (model.essence.moments ?? [])
+          .flatMap((moment, i) => {
+            const kept = checked(`essence.moments[${i}]`, moment);
+            return kept ? [kept] : [];
+          })
+          .slice(0, LIMITS.moments),
+      }
+    : undefined;
+
   const codeColours = code.colours ?? [];
   const colours =
     codeColours.length >= 2
@@ -315,6 +331,7 @@ export function mergeAndCheck(
     hours: codeWins(code.hours, checked('hours', model.hours)),
     tone: model.tone?.filter((t): t is string => Boolean(t)).slice(0, LIMITS.tone),
     colours,
+    essence,
     visualStyle: visualStyleOf(model.visualStyle, ctx.photos),
   };
   return { profile, dropped };
@@ -353,6 +370,12 @@ export function finalise(
     hours: profile.hours ?? null,
     logoUrl: profile.logoUrl ?? null,
     photoUrls: profile.photoUrls ?? [],
+    essence: {
+      feeling: profile.essence?.feeling ?? [],
+      placeSymbols: profile.essence?.placeSymbols ?? [],
+      senses: profile.essence?.senses ?? [],
+      moments: profile.essence?.moments ?? [],
+    },
     visualStyle: profile.visualStyle ?? null,
   });
 }

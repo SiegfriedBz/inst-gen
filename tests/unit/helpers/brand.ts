@@ -43,6 +43,12 @@ export function svargaProfile(): Profile {
       { hex: '#ffffff', role: 'background', source: 'css:--color-bg' },
     ],
     logoUrl: { value: 'https://svargabalimassage.com/logo.png', source: SITE },
+    essence: {
+      feeling: ['relaxing', 'warm', 'cared for'],
+      placeSymbols: ['frangipani', 'temple offerings'],
+      senses: ['warm coconut oil', 'villa deck at sunset'],
+      moments: [{ value: 'after a surf in Canggu', source: SITE }],
+    },
     visualStyle: {
       summary: 'warm tropical, soft light, natural textures',
       palette: 'jade green, sand, white',

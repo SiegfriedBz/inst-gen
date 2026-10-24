@@ -248,6 +248,56 @@ describe('mergeAndCheck', () => {
   });
 });
 
+describe('the essence', () => {
+  const essence = {
+    feeling: ['relaxing', 'warm', 'cared for'],
+    placeSymbols: ['lotus flowers', 'Hoi An lanterns'],
+    senses: ['warm natural oils', 'fresh linens'],
+    moments: [
+      { value: 'after a long flight', source: ABOUT },
+      { value: 'after a wedding', source: 'https://sen.vn/blog' },
+    ],
+  };
+
+  test('keeps interpretation, and moments whose page was read', () => {
+    const { profile, dropped } = run({ essence });
+    expect(profile.essence).toEqual({
+      feeling: ['relaxing', 'warm', 'cared for'],
+      placeSymbols: ['lotus flowers', 'Hoi An lanterns'],
+      senses: ['warm natural oils', 'fresh linens'],
+      moments: [{ value: 'after a long flight', source: ABOUT }],
+    });
+    expect(dropped).toContainEqual({ field: 'essence.moments[1]', reason: 'unknown_source' });
+  });
+
+  test('is trimmed to its limits', () => {
+    const many = (n: number) => Array.from({ length: n }, (_, i) => `item ${i}`);
+    const { profile } = run({
+      essence: {
+        feeling: many(6),
+        placeSymbols: many(8),
+        senses: many(8),
+        moments: Array.from({ length: 9 }, () => ({ value: 'after a surf', source: HOME })),
+      },
+    });
+    expect(profile.essence?.feeling).toHaveLength(4);
+    expect(profile.essence?.placeSymbols).toHaveLength(5);
+    expect(profile.essence?.senses).toHaveLength(5);
+    expect(profile.essence?.moments).toHaveLength(6);
+  });
+
+  test('finalise gives an empty essence when the model gave none', () => {
+    const { profile } = run({ category: 'spa', tone: ['calm'] });
+    const final = finalise(profile, {
+      readAt: '2026-10-24T09:00:00.000Z',
+      promptVersion: 'p',
+      thin: false,
+      dropped: [],
+    });
+    expect(final.essence).toEqual({ feeling: [], placeSymbols: [], senses: [], moments: [] });
+  });
+});
+
 describe('a model answer past the limits', () => {
   test('is accepted by the model schema', async () => {
     const { modelProfileSchema } = await import('@/lib/brand/profile');
@@ -262,6 +312,7 @@ describe('a model answer past the limits', () => {
       hours: null,
       tone: ['calm', 'warm', 'kind', 'gentle', 'quiet', 'soft', 'local'],
       colours: [],
+      essence: null,
       visualStyle: {
         summary: Array.from({ length: 15 }, () => 'soft').join(' '),
         palette: 'green',
