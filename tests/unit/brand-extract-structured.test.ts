@@ -144,6 +144,19 @@ describe('extractStructured: contact links', () => {
     });
   });
 
+  test('a doubled Instagram link gives the real handle', () => {
+    const html = doc(
+      '',
+      '<a href="https://instagram.com/https://www.instagram.com/svargaspa.bali">IG</a>',
+    );
+    expect(extractStructured(html, URL_).contact.instagram).toEqual(['svargaspa.bali']);
+  });
+
+  test('an Instagram path that is not a handle is ignored', () => {
+    const html = doc('', '<a href="https://instagram.com/%3Cyour-handle%3E">IG</a>');
+    expect(extractStructured(html, URL_).contact.instagram).toEqual([]);
+  });
+
   test('a link repeated in header and footer is counted once', () => {
     const link = '<a href="https://wa.me/6281234567890">WA</a>';
     expect(extractStructured(doc('', link + link), URL_).contact.whatsapp).toEqual([

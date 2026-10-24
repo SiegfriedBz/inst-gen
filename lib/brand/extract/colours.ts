@@ -89,6 +89,11 @@ function lightnessSaturation(hex: string): { l: number; s: number } {
 
 const BRAND_PROPERTY = /(--(?:primary|brand|accent|color-[\w-]+)[\w-]*)\s*:\s*([^;}]+)/gi;
 
+// Tailwind v4 declares its whole default palette as --color-* variables; they
+// say nothing about the brand.
+const TAILWIND_PALETTE =
+  /^--color-(?:(?:slate|gray|zinc|neutral|stone|red|orange|amber|yellow|lime|green|emerald|teal|cyan|sky|blue|indigo|violet|purple|fuchsia|pink|rose|mauve|olive|mist|taupe)-\d+|black|white)$/;
+
 // Near-white, near-black and greys are background or text, never primary.
 export function brandColours(themeColor: string | undefined, css: string[]): CodeColour[] {
   const found: { hex: string; source: string }[] = [];
@@ -96,8 +101,10 @@ export function brandColours(themeColor: string | undefined, css: string[]): Cod
   if (theme) found.push({ hex: theme, source: 'theme-color' });
   for (const sheet of css) {
     for (const match of sheet.matchAll(BRAND_PROPERTY)) {
+      const property = match[1].toLowerCase();
+      if (TAILWIND_PALETTE.test(property)) continue;
       const hex = toHex(match[2].replace(/!important/i, ''));
-      if (hex) found.push({ hex, source: `css:${match[1].toLowerCase()}` });
+      if (hex) found.push({ hex, source: `css:${property}` });
     }
   }
   const colours: CodeColour[] = [];

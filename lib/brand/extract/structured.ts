@@ -208,6 +208,17 @@ function jsonLdBusiness($: cheerio.CheerioAPI, base: URL): Business | null {
 }
 
 const INSTAGRAM_RESERVED = new Set(['p', 'reel', 'reels', 'tv', 'stories', 'explore', 'accounts']);
+const INSTAGRAM_HANDLE = /^[a-z0-9._]{1,30}$/;
+
+// The profile handle in an instagram.com link. A doubled link
+// (instagram.com/https://www.instagram.com/<handle>) gives its last segment.
+export function instagramHandle(url: URL): string | undefined {
+  const segments = url.pathname.split('/').filter(Boolean);
+  const doubled = segments[0]?.startsWith('http');
+  const handle = (doubled ? segments.at(-1) : segments[0])?.toLowerCase();
+  if (!handle || INSTAGRAM_RESERVED.has(handle) || !INSTAGRAM_HANDLE.test(handle)) return undefined;
+  return handle;
+}
 
 function contactLinks($: cheerio.CheerioAPI): CodeFacts['contact'] {
   const contact = {
@@ -242,8 +253,7 @@ function contactLinks($: cheerio.CheerioAPI): CodeFacts['contact'] {
     } else if (url.hostname.endsWith('whatsapp.com')) {
       add(contact.whatsapp, digits(url.searchParams.get('phone')));
     } else if (url.hostname.replace(/^www\./, '') === 'instagram.com') {
-      const handle = url.pathname.split('/').filter(Boolean)[0];
-      if (handle && !INSTAGRAM_RESERVED.has(handle)) add(contact.instagram, handle.toLowerCase());
+      add(contact.instagram, instagramHandle(url));
     }
   }
   return contact;

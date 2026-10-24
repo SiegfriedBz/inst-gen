@@ -49,6 +49,15 @@ describe('brandColours', () => {
     expect(brandColours(undefined, [css]).map((c) => c.role)).toEqual(['primary', 'accent']);
   });
 
+  test("ignores Tailwind's default palette, keeps the site's own names", () => {
+    const css =
+      ':root,:host{--color-amber-50:oklch(98.7% .022 95.277);--color-slate-200:#e2e8f0;--color-gray-600:#4a5565;--color-white:#fff;--color-jade:#4a6b53;--color-sand-100:#efe6d6}';
+    expect(brandColours(undefined, [css]).map((c) => c.source)).toEqual([
+      'css:--color-jade',
+      'css:--color-sand-100',
+    ]);
+  });
+
   test('keeps at most 5, without duplicates', () => {
     const css = `:root{${[
       '#111111',

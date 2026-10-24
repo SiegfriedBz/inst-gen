@@ -1,5 +1,5 @@
 import type { CodeColour } from './extract/colours';
-import type { CodeFacts } from './extract/structured';
+import { type CodeFacts, instagramHandle } from './extract/structured';
 import { phoneDigitVariants, toE164 } from './phone';
 import {
   type DeepPartial,
@@ -99,8 +99,8 @@ function instagramFromSameAs(sameAs: string[]): string | undefined {
     try {
       const url = new URL(link);
       if (url.hostname.replace(/^www\./, '') !== 'instagram.com') continue;
-      const handle = url.pathname.split('/').filter(Boolean)[0];
-      if (handle) return handle.toLowerCase();
+      const handle = instagramHandle(url);
+      if (handle) return handle;
     } catch {}
   }
   return undefined;
