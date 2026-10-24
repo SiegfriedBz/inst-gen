@@ -57,6 +57,28 @@ describe('extractStructured: JSON-LD', () => {
     expect(facts.source).toBe('https://svargabalimassage.com/');
   });
 
+  test("keeps each place's name up to its first comma, once", () => {
+    const place = (name: string) => ({ '@type': 'Place', name });
+    const areas = (areaServed: unknown) =>
+      extractStructured(doc(ld({ ...spa, areaServed })), URL_).business?.areaServed;
+    expect(
+      areas(
+        [
+          'Canggu, Bali, Indonesia',
+          'Pererenan, Bali, Indonesia',
+          'Seminyak, Bali, Indonesia',
+          'Kerobokan, Bali, Indonesia',
+        ].map(place),
+      ),
+    ).toBe('Canggu, Pererenan, Seminyak, Kerobokan');
+    expect(areas([place('Canggu, Bali'), place('Canggu')])).toBe('Canggu');
+  });
+
+  test('keeps an area given as one plain string whole', () => {
+    const facts = extractStructured(doc(ld({ ...spa, areaServed: 'Canggu, Seminyak' })), URL_);
+    expect(facts.business?.areaServed).toBe('Canggu, Seminyak');
+  });
+
   test('reads @type given as an array', () => {
     const facts = extractStructured(
       doc(ld({ ...spa, '@type': ['LocalBusiness', 'DaySpa'] })),

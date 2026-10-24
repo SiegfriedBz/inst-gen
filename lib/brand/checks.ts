@@ -318,9 +318,11 @@ export function mergeAndCheck(
         checked('location.town', mLoc.town) ?? (cLoc.town?.value ? (cLoc.town as Sourced) : null),
       area: cLoc.area?.value ? cLoc.area : checked('location.area', mLoc.area),
       address: codeWins(cLoc.address, checked('location.address', mLoc.address)),
-      serviceArea: cLoc.serviceArea?.value
-        ? cLoc.serviceArea
-        : checked('location.serviceArea', mLoc.serviceArea),
+      // JSON-LD's areaServed holds bare place names; the page text gives the
+      // neighbourhoods and the travel rule, so the model's comes first.
+      serviceArea:
+        checked('location.serviceArea', mLoc.serviceArea) ??
+        (cLoc.serviceArea?.value ? (cLoc.serviceArea as Sourced) : null),
     },
     contact: {
       whatsapp: codeWins(

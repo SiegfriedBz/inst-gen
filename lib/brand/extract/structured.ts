@@ -174,11 +174,21 @@ function offers(node: Json): { name: string; price?: string }[] {
     .filter((o): o is { name: string; price?: string } => o !== undefined);
 }
 
+// A Place's name often carries its region and country ("Canggu, Bali,
+// Indonesia"): only the part before the first comma is kept. A plain string
+// may list several areas, so it stays whole.
+function areasServed(value: unknown): string | undefined {
+  const names = asArray(value)
+    .map((item) => (isObject(item) ? nameOf(item)?.split(',')[0]?.trim() : str(item)))
+    .filter((name): name is string => Boolean(name));
+  return [...new Set(names)].join(', ') || undefined;
+}
+
 function business(node: Json, base: URL): Business {
   return {
     name: str(node.name),
     address: address(node.address),
-    areaServed: asArray(node.areaServed).map(nameOf).filter(Boolean).join(', ') || undefined,
+    areaServed: areasServed(node.areaServed),
     telephone: str(node.telephone),
     email: str(node.email)
       ?.replace(/^mailto:/i, '')

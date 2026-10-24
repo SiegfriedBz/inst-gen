@@ -124,6 +124,26 @@ describe('mergeAndCheck', () => {
     expect(run({}, codeFacts).profile.location?.town?.value).toBe('Son Tra District');
   });
 
+  test("the model's service area beats JSON-LD's", () => {
+    const codeFacts = [
+      facts({
+        business: {
+          name: 'Svarga',
+          areaServed: 'Canggu, Pererenan, Seminyak, Kerobokan',
+          offers: [],
+          sameAs: [],
+        },
+      }),
+    ];
+    const value = 'Canggu (Batu Bolong, Echo Beach, Berawa, Nelayan); Pererenan';
+    const { profile } = run({ location: { serviceArea: { value, source: HOME } } }, codeFacts);
+    expect(profile.location?.serviceArea).toEqual({ value, source: HOME });
+    const jsonLd = { value: 'Canggu, Pererenan, Seminyak, Kerobokan', source: HOME };
+    expect(run({}, codeFacts).profile.location?.serviceArea).toEqual(jsonLd);
+    const unknown = { serviceArea: { value, source: 'https://elsewhere.com/' } };
+    expect(run({ location: unknown }, codeFacts).profile.location?.serviceArea).toEqual(jsonLd);
+  });
+
   test('a model phone that is on its page is kept; without a country it stays as written', () => {
     const { profile } = run({ contact: { phone: { value: '0905 123 456', source: HOME } } });
     expect(profile.contact?.phone?.value).toBe('0905 123 456');
