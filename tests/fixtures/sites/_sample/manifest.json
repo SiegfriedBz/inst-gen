@@ -1,0 +1,34 @@
+{
+  "siteUrl": "https://lotusbay.example/",
+  "savedAt": "2026-10-24T10:00:00.000Z",
+  "files": [
+    {
+      "path": "robots.txt",
+      "url": "https://lotusbay.example/robots.txt",
+      "finalUrl": "https://lotusbay.example/robots.txt",
+      "contentType": "text/plain"
+    },
+    {
+      "path": "pages/0.html",
+      "url": "https://lotusbay.example/",
+      "finalUrl": "https://www.lotusbay.example/",
+      "contentType": "text/html"
+    },
+    {
+      "path": "pages/1.html",
+      "url": "https://www.lotusbay.example/prices",
+      "finalUrl": "https://www.lotusbay.example/prices",
+      "contentType": "text/html"
+    },
+    {
+      "path": "css/0.css",
+      "url": "https://www.lotusbay.example/site.css",
+      "finalUrl": "https://www.lotusbay.example/site.css",
+      "contentType": "text/css"
+    }
+  ],
+  "images": [
+    { "url": "https://www.lotusbay.example/logo.png", "contentType": "image/png" },
+    { "url": "https://www.lotusbay.example/river.jpg", "contentType": "image/jpeg" }
+  ]
+}

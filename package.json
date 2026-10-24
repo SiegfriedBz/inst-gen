@@ -1,6 +1,7 @@
 {
   "name": "inst-gen",
   "private": true,
+  "license": "AGPL-3.0-only",
   "type": "module",
   "packageManager": "pnpm@10.17.1",
   "engines": {
@@ -15,21 +16,32 @@
     "typecheck": "next typegen && tsc --noEmit",
     "test": "vitest run",
     "test:e2e": "playwright test",
+    "fixtures:save": "tsx scripts/save-fixture.ts",
+    "eval:brand": "tsx scripts/eval-brand.ts",
+    "eval:search": "tsx scripts/eval-search.ts",
     "check": "node scripts/check-docs.mjs && node scripts/check-repo.mjs && biome ci && pnpm typecheck && vitest run",
     "prepare": "lefthook install"
   },
   "dependencies": {
+    "@ai-sdk/google": "4.0.93",
     "@phosphor-icons/react": "2.1.10",
     "@tailwindcss/postcss": "4.3.3",
+    "ai": "7.0.137",
+    "cheerio": "1.2.0",
     "class-variance-authority": "0.7.1",
     "clsx": "2.1.1",
+    "idb": "8.0.3",
+    "ipaddr.js": "2.5.0",
+    "libphonenumber-js": "1.13.15",
     "next": "16.4.3",
     "next-intl": "4.14.9",
     "radix-ui": "1.8.1",
     "react": "19.3.1",
     "react-dom": "19.3.1",
+    "robots-parser": "3.0.1",
     "tailwind-merge": "3.7.0",
     "tailwindcss": "4.3.3",
+    "undici": "8.11.2",
     "zod": "4.6.7"
   },
   "devDependencies": {
@@ -43,9 +55,11 @@
     "@types/react": "19.3.0",
     "@types/react-dom": "19.3.0",
     "@vitejs/plugin-react": "6.1.2",
+    "fake-indexeddb": "6.2.5",
     "jsdom": "30.1.3",
     "lefthook": "2.2.2",
     "postcss": "8.5.31",
+    "tsx": "4.23.15",
     "typescript": "6.0.3",
     "vite-tsconfig-paths": "6.1.1",
     "vitest": "5.0.5"

@@ -64,7 +64,7 @@ describe('messagesFor', () => {
     const overlay = { home: { welcome: 'Chào mừng, {name}' } };
     const messages = messagesFor('vi', overlay);
     expect(messages.home.welcome).toBe('Chào mừng, {name}');
-    expect(messages.home.soon).toBe(en.home.soon);
+    expect(messages.home.signedIn).toBe(en.home.signedIn);
     expect(messages.enter.label).toBe(en.enter.label);
   });
 

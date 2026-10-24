@@ -1,0 +1,89 @@
+# ==================================================================
+# serenitybali.com - robots.txt
+#
+# WHERE THIS GOES
+#   Wix dashboard > Marketing & SEO > SEO Tools > Robots.txt Editor
+#   Replace the whole file with everything below, then Save.
+#
+# WHAT WAS KEPT
+#   Every rule Wix generates for this site was read from the live
+#   file on 22 Sep 2026 and is preserved below unchanged: the
+#   lightbox disallow, the AdsBot group, the PetalBot block and the
+#   two crawl-delays. Pasting a hand-written robots.txt over the
+#   generated one is the usual way those quietly disappear.
+#
+# WHAT WAS ADDED
+#   1. An explicit group for the AI assistants that send referral
+#      traffic. They are allowed, deliberately: a guesthouse gains
+#      from being quotable when someone asks an assistant where to
+#      stay in Canggu. Remove a line here to opt that one out.
+#   2. A group for the AI crawlers that only harvest training data
+#      and send nothing back. Blocked.
+#   3. A disallow for the two duplicate and scratch pages found in
+#      the sitemap, so they stop competing with the real ones.
+#
+# ONE RULE THAT MATTERS MORE THAN IT LOOKS (RFC 9309 s2.2)
+#   A line placed before the first "User-agent:" belongs to no group
+#   and every compliant crawler discards it. Nothing below floats
+#   above a group header for that reason. Groups with the same agent
+#   name are merged by the crawler (s2.2.1), so the layout here is
+#   safe but should not be rearranged casually.
+#
+# WHAT ROBOTS.TXT CANNOT DO
+#   It does not remove a page from Google. A disallowed URL can still
+#   be indexed from links elsewhere, just without its content. To get
+#   a page out of the index, mark it noindex in Wix's SEO panel and
+#   leave it crawlable so the tag can be seen.
+# ==================================================================
+
+User-agent: *
+Allow: /
+Disallow: *?lightbox=
+Disallow: /copy-of-home-1
+Disallow: /blank
+
+# Optimization for Google Ads Bot
+User-agent: AdsBot-Google-Mobile
+User-agent: AdsBot-Google
+Disallow: /_partials*
+Disallow: /pro-gallery-webapp/v1/galleries/*
+
+# Block PetalBot
+User-agent: PetalBot
+Disallow: /
+
+# Crawl delay for overly enthusiastic bots
+User-agent: dotbot
+Crawl-delay: 10
+User-agent: AhrefsBot
+Crawl-delay: 10
+
+# ------------------------------------------------------------------
+# AI assistants that cite sources and send readers back. Allowed.
+# ------------------------------------------------------------------
+User-agent: OAI-SearchBot
+User-agent: ChatGPT-User
+User-agent: PerplexityBot
+User-agent: Perplexity-User
+User-agent: Claude-User
+User-agent: Claude-SearchBot
+User-agent: Google-Extended
+Allow: /
+Disallow: *?lightbox=
+
+# ------------------------------------------------------------------
+# Training-data crawlers with no referral path back. Blocked.
+# ------------------------------------------------------------------
+User-agent: GPTBot
+User-agent: ClaudeBot
+User-agent: CCBot
+User-agent: Bytespider
+User-agent: Amazonbot
+User-agent: Applebot-Extended
+User-agent: meta-externalagent
+User-agent: Diffbot
+User-agent: Omgilibot
+User-agent: ImagesiftBot
+Disallow: /
+
+Sitemap: https://www.serenitybali.com/sitemap.xml

@@ -63,11 +63,16 @@ index of the code).
 | `scripts/` | Repo checks and the skills copy |
 | `app/` | Next.js App Router: pages, the `/enter` sign-in, API routes |
 | `components/` | Shared components; `components/ui/` holds the shadcn/ui ones (decision 0007) |
+| `components/brand/` | The home screen's brand read and panel: reading state, sections, edit forms |
 | `lib/pilot/` | The pilot gate: passphrases, signed session, gate decision |
+| `lib/brand/` | The brand read: safe fetching, extraction, checks, the profile schema, fixtures and eval scoring; in the browser, the phone's store (IndexedDB), the read client and the owner's edits |
+| `lib/runs/` | Decision 0005's run record, kept on the phone, and its resume rule |
+| `lib/ai/` | The text-model module (the only importer of `@ai-sdk/google`) and the replayer for recorded calls |
 | `proxy.ts` | Runs the gate on every request |
 | `messages/` | next-intl message files, `en.json`, `id.json` and `vi.json`; every visible string lives here |
 | `lib/i18n/` | Which language a screen uses, and the messages laid over English |
 | `tests/unit/`, `tests/e2e/` | Vitest tests, and Playwright tests at a phone viewport |
+| `tests/fixtures/sites/` | Saved websites for the brand read: pages, stylesheets, robots.txt, recorded model calls, expected profiles |
 | `.env.example` | The environment variables the app needs, with made-up values |
 | `.claude/settings.json`, `.mcp.json` | Superpowers pin and Graft server |
 
@@ -96,6 +101,9 @@ index of the code).
 | `pnpm typecheck` | Generate Next.js route types, then `tsc --noEmit` |
 | `pnpm test` | Vitest unit tests |
 | `pnpm test:e2e` | Playwright tests; builds and starts the app with test passphrases. First run: `pnpm exec playwright install chromium` |
+| `pnpm fixtures:save <url> <slug>` | Save a site fixture with the real reader; no model call |
+| `pnpm eval:brand [slug…] [--record]` | Score brand reads on the fixtures with the real model. ⚠️ Spends Gemini quota (about 20 reads a day for the whole app): run a few slugs at a time, never on a pilot day |
+| `pnpm eval:search [slug…] [--record]` | Run the essence search on five fixtures with the real Tavily and Gemini, and print each essence before and after. ⚠️ Spends 3 Tavily credits (1,000 a month) and 1 Flash-Lite request per fixture |
 
 ## What fails silently
 

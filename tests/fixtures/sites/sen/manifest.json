@@ -1,0 +1,38 @@
+{
+  "siteUrl": "https://sendanangmassage.com/",
+  "savedAt": "2026-10-24T09:41:55.174Z",
+  "files": [
+    {
+      "path": "robots.txt",
+      "url": "https://sendanangmassage.com/robots.txt",
+      "finalUrl": "https://www.sendanangmassage.com/robots.txt",
+      "contentType": "text/plain"
+    },
+    {
+      "path": "pages/0.html",
+      "url": "https://sendanangmassage.com/",
+      "finalUrl": "https://www.sendanangmassage.com/",
+      "contentType": "text/html"
+    },
+    {
+      "path": "css/0.css",
+      "url": "https://www.sendanangmassage.com/_next/static/immutable/chunks/3bm9gila2vhrv.css",
+      "finalUrl": "https://www.sendanangmassage.com/_next/static/immutable/chunks/3bm9gila2vhrv.css",
+      "contentType": "text/css"
+    }
+  ],
+  "images": [
+    {
+      "url": "https://www.sendanangmassage.com/_next/image?url=%2Fimages%2Fhero.jpg&w=1920&q=75",
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://www.sendanangmassage.com/images/og-share.jpg",
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://www.sendanangmassage.com/android-chrome-512x512.png",
+      "contentType": "image/png"
+    }
+  ]
+}

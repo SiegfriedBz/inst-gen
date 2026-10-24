@@ -1,0 +1,5932 @@
+{
+  "modelId": "gemini-3.5-flash-lite",
+  "promptVersion": "brand-6",
+  "partials": [
+    {
+      "name": {}
+    },
+    {
+      "name": {
+        "value": "Phin Coffee Hoi An",
+        "source": "https://phincoffeehoian"
+      }
+    },
+    {
+      "name": {
+        "value": "Phin Coffee Hoi An",
+        "source": "https://phincoffeehoian.com/"
+      },
+      "summary": {
+        "value": "Award-winning specialty coffee,"
+      }
+    },
+    {
+      "name": {
+        "value": "Phin Coffee Hoi An",
+        "source": "https://phincoffeehoian.com/"
+      },
+      "summary": {
+        "value": "Award-winning specialty coffee, authentic Vietnamese coffee classes, garden restaurants and local experiences in the heart of Hoi An.",
+        "source": "https://phincoffeehoian"
+      }
+    },
+    {
+      "name": {
+        "value": "Phin Coffee Hoi An",
+        "source": "https://phincoffeehoian.com/"
+      },
+      "summary": {
+        "value": "Award-winning specialty coffee, authentic Vietnamese coffee classes, garden restaurants and local experiences in the heart of Hoi An.",
+        "source": "https://phincoffeehoian.com/"
+      },
+      "category": "coffee shop",
+      "offerings": []
+    },
+    {
+      "name": {
+        "value": "Phin Coffee Hoi An",
+        "source": "https://phincoffeehoian.com/"
+      },
+      "summary": {
+        "value": "Award-winning specialty coffee, authentic Vietnamese coffee classes, garden restaurants and local experiences in the heart of Hoi An.",
+        "source": "https://phincoffeehoian.com/"
+      },
+      "category": "coffee shop",
+      "offerings": [
+        {
+          "name": "Granola Bowl",
+          "price": "120,000"
+        }
+      ]
+    },
+    {
+      "name": {
+        "value": "Phin Coffee Hoi An",
+        "source": "https://phincoffeehoian.com/"
+      },
+      "summary": {
+        "value": "Award-winning specialty coffee, authentic Vietnamese coffee classes, garden restaurants and local experiences in the heart of Hoi An.",
+        "source": "https://phincoffeehoian.com/"
+      },
+      "category": "coffee shop",
+      "offerings": [
+        {
+          "name": "Granola Bowl",
+          "price": "120,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an"
+        }
+      ]
+    },
+    {
+      "name": {
+        "value": "Phin Coffee Hoi An",
+        "source": "https://phincoffeehoian.com/"
+      },
+      "summary": {
+        "value": "Award-winning specialty coffee, authentic Vietnamese coffee classes, garden restaurants and local experiences in the heart of Hoi An.",
+        "source": "https://phincoffeehoian.com/"
+      },
+      "category": "coffee shop",
+      "offerings": [
+        {
+          "name": "Granola Bowl",
+          "price": "120,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Smoothie Bowl"
+        }
+      ]
+    },
+    {
+      "name": {
+        "value": "Phin Coffee Hoi An",
+        "source": "https://phincoffeehoian.com/"
+      },
+      "summary": {
+        "value": "Award-winning specialty coffee, authentic Vietnamese coffee classes, garden restaurants and local experiences in the heart of Hoi An.",
+        "source": "https://phincoffeehoian.com/"
+      },
+      "category": "coffee shop",
+      "offerings": [
+        {
+          "name": "Granola Bowl",
+          "price": "120,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Smoothie Bowl",
+          "price": "120,000",
+          "source": "https://phincoffeehoian.com/"
+        }
+      ]
+    },
+    {
+      "name": {
+        "value": "Phin Coffee Hoi An",
+        "source": "https://phincoffeehoian.com/"
+      },
+      "summary": {
+        "value": "Award-winning specialty coffee, authentic Vietnamese coffee classes, garden restaurants and local experiences in the heart of Hoi An.",
+        "source": "https://phincoffeehoian.com/"
+      },
+      "category": "coffee shop",
+      "offerings": [
+        {
+          "name": "Granola Bowl",
+          "price": "120,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Smoothie Bowl",
+          "price": "120,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Fruit"
+        }
+      ]
+    },
+    {
+      "name": {
+        "value": "Phin Coffee Hoi An",
+        "source": "https://phincoffeehoian.com/"
+      },
+      "summary": {
+        "value": "Award-winning specialty coffee, authentic Vietnamese coffee classes, garden restaurants and local experiences in the heart of Hoi An.",
+        "source": "https://phincoffeehoian.com/"
+      },
+      "category": "coffee shop",
+      "offerings": [
+        {
+          "name": "Granola Bowl",
+          "price": "120,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Smoothie Bowl",
+          "price": "120,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Fruit Bowl",
+          "price": "120,000",
+          "source": "https://"
+        }
+      ]
+    },
+    {
+      "name": {
+        "value": "Phin Coffee Hoi An",
+        "source": "https://phincoffeehoian.com/"
+      },
+      "summary": {
+        "value": "Award-winning specialty coffee, authentic Vietnamese coffee classes, garden restaurants and local experiences in the heart of Hoi An.",
+        "source": "https://phincoffeehoian.com/"
+      },
+      "category": "coffee shop",
+      "offerings": [
+        {
+          "name": "Granola Bowl",
+          "price": "120,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Smoothie Bowl",
+          "price": "120,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Fruit Bowl",
+          "price": "120,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {}
+      ]
+    },
+    {
+      "name": {
+        "value": "Phin Coffee Hoi An",
+        "source": "https://phincoffeehoian.com/"
+      },
+      "summary": {
+        "value": "Award-winning specialty coffee, authentic Vietnamese coffee classes, garden restaurants and local experiences in the heart of Hoi An.",
+        "source": "https://phincoffeehoian.com/"
+      },
+      "category": "coffee shop",
+      "offerings": [
+        {
+          "name": "Granola Bowl",
+          "price": "120,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Smoothie Bowl",
+          "price": "120,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Fruit Bowl",
+          "price": "120,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Phin’s Plate",
+          "price": "160,00"
+        }
+      ]
+    },
+    {
+      "name": {
+        "value": "Phin Coffee Hoi An",
+        "source": "https://phincoffeehoian.com/"
+      },
+      "summary": {
+        "value": "Award-winning specialty coffee, authentic Vietnamese coffee classes, garden restaurants and local experiences in the heart of Hoi An.",
+        "source": "https://phincoffeehoian.com/"
+      },
+      "category": "coffee shop",
+      "offerings": [
+        {
+          "name": "Granola Bowl",
+          "price": "120,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Smoothie Bowl",
+          "price": "120,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Fruit Bowl",
+          "price": "120,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Phin’s Plate",
+          "price": "160,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-"
+        }
+      ]
+    },
+    {
+      "name": {
+        "value": "Phin Coffee Hoi An",
+        "source": "https://phincoffeehoian.com/"
+      },
+      "summary": {
+        "value": "Award-winning specialty coffee, authentic Vietnamese coffee classes, garden restaurants and local experiences in the heart of Hoi An.",
+        "source": "https://phincoffeehoian.com/"
+      },
+      "category": "coffee shop",
+      "offerings": [
+        {
+          "name": "Granola Bowl",
+          "price": "120,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Smoothie Bowl",
+          "price": "120,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Fruit Bowl",
+          "price": "120,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Phin’s Plate",
+          "price": "160,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Avocado and Egg of Your Choice"
+        }
+      ]
+    },
+    {
+      "name": {
+        "value": "Phin Coffee Hoi An",
+        "source": "https://phincoffeehoian.com/"
+      },
+      "summary": {
+        "value": "Award-winning specialty coffee, authentic Vietnamese coffee classes, garden restaurants and local experiences in the heart of Hoi An.",
+        "source": "https://phincoffeehoian.com/"
+      },
+      "category": "coffee shop",
+      "offerings": [
+        {
+          "name": "Granola Bowl",
+          "price": "120,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Smoothie Bowl",
+          "price": "120,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Fruit Bowl",
+          "price": "120,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Phin’s Plate",
+          "price": "160,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Avocado and Egg of Your Choice",
+          "price": "130,000",
+          "source": "https://phincoffee"
+        }
+      ]
+    },
+    {
+      "name": {
+        "value": "Phin Coffee Hoi An",
+        "source": "https://phincoffeehoian.com/"
+      },
+      "summary": {
+        "value": "Award-winning specialty coffee, authentic Vietnamese coffee classes, garden restaurants and local experiences in the heart of Hoi An.",
+        "source": "https://phincoffeehoian.com/"
+      },
+      "category": "coffee shop",
+      "offerings": [
+        {
+          "name": "Granola Bowl",
+          "price": "120,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Smoothie Bowl",
+          "price": "120,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Fruit Bowl",
+          "price": "120,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Phin’s Plate",
+          "price": "160,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Avocado and Egg of Your Choice",
+          "price": "130,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {}
+      ]
+    },
+    {
+      "name": {
+        "value": "Phin Coffee Hoi An",
+        "source": "https://phincoffeehoian.com/"
+      },
+      "summary": {
+        "value": "Award-winning specialty coffee, authentic Vietnamese coffee classes, garden restaurants and local experiences in the heart of Hoi An.",
+        "source": "https://phincoffeehoian.com/"
+      },
+      "category": "coffee shop",
+      "offerings": [
+        {
+          "name": "Granola Bowl",
+          "price": "120,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Smoothie Bowl",
+          "price": "120,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Fruit Bowl",
+          "price": "120,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Phin’s Plate",
+          "price": "160,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Avocado and Egg of Your Choice",
+          "price": "130,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Ham Cheese Egg Sandwich",
+          "price": "150,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang"
+        }
+      ]
+    },
+    {
+      "name": {
+        "value": "Phin Coffee Hoi An",
+        "source": "https://phincoffeehoian.com/"
+      },
+      "summary": {
+        "value": "Award-winning specialty coffee, authentic Vietnamese coffee classes, garden restaurants and local experiences in the heart of Hoi An.",
+        "source": "https://phincoffeehoian.com/"
+      },
+      "category": "coffee shop",
+      "offerings": [
+        {
+          "name": "Granola Bowl",
+          "price": "120,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Smoothie Bowl",
+          "price": "120,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Fruit Bowl",
+          "price": "120,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Phin’s Plate",
+          "price": "160,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Avocado and Egg of Your Choice",
+          "price": "130,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Ham Cheese Egg Sandwich",
+          "price": "150,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Baker Choice",
+          "price": "95"
+        }
+      ]
+    },
+    {
+      "name": {
+        "value": "Phin Coffee Hoi An",
+        "source": "https://phincoffeehoian.com/"
+      },
+      "summary": {
+        "value": "Award-winning specialty coffee, authentic Vietnamese coffee classes, garden restaurants and local experiences in the heart of Hoi An.",
+        "source": "https://phincoffeehoian.com/"
+      },
+      "category": "coffee shop",
+      "offerings": [
+        {
+          "name": "Granola Bowl",
+          "price": "120,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Smoothie Bowl",
+          "price": "120,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Fruit Bowl",
+          "price": "120,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Phin’s Plate",
+          "price": "160,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Avocado and Egg of Your Choice",
+          "price": "130,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Ham Cheese Egg Sandwich",
+          "price": "150,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Baker Choice",
+          "price": "95,000",
+          "source": "https://phincoffeehoian.com/location/phin-"
+        }
+      ]
+    },
+    {
+      "name": {
+        "value": "Phin Coffee Hoi An",
+        "source": "https://phincoffeehoian.com/"
+      },
+      "summary": {
+        "value": "Award-winning specialty coffee, authentic Vietnamese coffee classes, garden restaurants and local experiences in the heart of Hoi An.",
+        "source": "https://phincoffeehoian.com/"
+      },
+      "category": "coffee shop",
+      "offerings": [
+        {
+          "name": "Granola Bowl",
+          "price": "120,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Smoothie Bowl",
+          "price": "120,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Fruit Bowl",
+          "price": "120,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Phin’s Plate",
+          "price": "160,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Avocado and Egg of Your Choice",
+          "price": "130,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Ham Cheese Egg Sandwich",
+          "price": "150,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Baker Choice",
+          "price": "95,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Avocado on Toast"
+        }
+      ]
+    },
+    {
+      "name": {
+        "value": "Phin Coffee Hoi An",
+        "source": "https://phincoffeehoian.com/"
+      },
+      "summary": {
+        "value": "Award-winning specialty coffee, authentic Vietnamese coffee classes, garden restaurants and local experiences in the heart of Hoi An.",
+        "source": "https://phincoffeehoian.com/"
+      },
+      "category": "coffee shop",
+      "offerings": [
+        {
+          "name": "Granola Bowl",
+          "price": "120,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Smoothie Bowl",
+          "price": "120,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Fruit Bowl",
+          "price": "120,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Phin’s Plate",
+          "price": "160,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Avocado and Egg of Your Choice",
+          "price": "130,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Ham Cheese Egg Sandwich",
+          "price": "150,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Baker Choice",
+          "price": "95,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Avocado on Toast",
+          "price": "100,000",
+          "source": "https://phincoffee"
+        }
+      ]
+    },
+    {
+      "name": {
+        "value": "Phin Coffee Hoi An",
+        "source": "https://phincoffeehoian.com/"
+      },
+      "summary": {
+        "value": "Award-winning specialty coffee, authentic Vietnamese coffee classes, garden restaurants and local experiences in the heart of Hoi An.",
+        "source": "https://phincoffeehoian.com/"
+      },
+      "category": "coffee shop",
+      "offerings": [
+        {
+          "name": "Granola Bowl",
+          "price": "120,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Smoothie Bowl",
+          "price": "120,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Fruit Bowl",
+          "price": "120,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Phin’s Plate",
+          "price": "160,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Avocado and Egg of Your Choice",
+          "price": "130,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Ham Cheese Egg Sandwich",
+          "price": "150,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Baker Choice",
+          "price": "95,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Avocado on Toast",
+          "price": "100,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {}
+      ]
+    },
+    {
+      "name": {
+        "value": "Phin Coffee Hoi An",
+        "source": "https://phincoffeehoian.com/"
+      },
+      "summary": {
+        "value": "Award-winning specialty coffee, authentic Vietnamese coffee classes, garden restaurants and local experiences in the heart of Hoi An.",
+        "source": "https://phincoffeehoian.com/"
+      },
+      "category": "coffee shop",
+      "offerings": [
+        {
+          "name": "Granola Bowl",
+          "price": "120,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Smoothie Bowl",
+          "price": "120,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Fruit Bowl",
+          "price": "120,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Phin’s Plate",
+          "price": "160,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Avocado and Egg of Your Choice",
+          "price": "130,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Ham Cheese Egg Sandwich",
+          "price": "150,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Baker Choice",
+          "price": "95,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Avocado on Toast",
+          "price": "100,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Peanut Butter, Banana, and Toast",
+          "price": "100,0"
+        }
+      ]
+    },
+    {
+      "name": {
+        "value": "Phin Coffee Hoi An",
+        "source": "https://phincoffeehoian.com/"
+      },
+      "summary": {
+        "value": "Award-winning specialty coffee, authentic Vietnamese coffee classes, garden restaurants and local experiences in the heart of Hoi An.",
+        "source": "https://phincoffeehoian.com/"
+      },
+      "category": "coffee shop",
+      "offerings": [
+        {
+          "name": "Granola Bowl",
+          "price": "120,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Smoothie Bowl",
+          "price": "120,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Fruit Bowl",
+          "price": "120,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Phin’s Plate",
+          "price": "160,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Avocado and Egg of Your Choice",
+          "price": "130,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Ham Cheese Egg Sandwich",
+          "price": "150,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Baker Choice",
+          "price": "95,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Avocado on Toast",
+          "price": "100,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Peanut Butter, Banana, and Toast",
+          "price": "100,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge"
+        }
+      ]
+    },
+    {
+      "name": {
+        "value": "Phin Coffee Hoi An",
+        "source": "https://phincoffeehoian.com/"
+      },
+      "summary": {
+        "value": "Award-winning specialty coffee, authentic Vietnamese coffee classes, garden restaurants and local experiences in the heart of Hoi An.",
+        "source": "https://phincoffeehoian.com/"
+      },
+      "category": "coffee shop",
+      "offerings": [
+        {
+          "name": "Granola Bowl",
+          "price": "120,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Smoothie Bowl",
+          "price": "120,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Fruit Bowl",
+          "price": "120,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Phin’s Plate",
+          "price": "160,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Avocado and Egg of Your Choice",
+          "price": "130,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Ham Cheese Egg Sandwich",
+          "price": "150,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Baker Choice",
+          "price": "95,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Avocado on Toast",
+          "price": "100,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Peanut Butter, Banana, and Toast",
+          "price": "100,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Vegan Plate"
+        }
+      ]
+    },
+    {
+      "name": {
+        "value": "Phin Coffee Hoi An",
+        "source": "https://phincoffeehoian.com/"
+      },
+      "summary": {
+        "value": "Award-winning specialty coffee, authentic Vietnamese coffee classes, garden restaurants and local experiences in the heart of Hoi An.",
+        "source": "https://phincoffeehoian.com/"
+      },
+      "category": "coffee shop",
+      "offerings": [
+        {
+          "name": "Granola Bowl",
+          "price": "120,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Smoothie Bowl",
+          "price": "120,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Fruit Bowl",
+          "price": "120,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Phin’s Plate",
+          "price": "160,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Avocado and Egg of Your Choice",
+          "price": "130,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Ham Cheese Egg Sandwich",
+          "price": "150,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Baker Choice",
+          "price": "95,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Avocado on Toast",
+          "price": "100,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Peanut Butter, Banana, and Toast",
+          "price": "100,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Vegan Plate",
+          "price": "135,000",
+          "source": "https://phincoffeehoian.com"
+        }
+      ]
+    },
+    {
+      "name": {
+        "value": "Phin Coffee Hoi An",
+        "source": "https://phincoffeehoian.com/"
+      },
+      "summary": {
+        "value": "Award-winning specialty coffee, authentic Vietnamese coffee classes, garden restaurants and local experiences in the heart of Hoi An.",
+        "source": "https://phincoffeehoian.com/"
+      },
+      "category": "coffee shop",
+      "offerings": [
+        {
+          "name": "Granola Bowl",
+          "price": "120,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Smoothie Bowl",
+          "price": "120,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Fruit Bowl",
+          "price": "120,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Phin’s Plate",
+          "price": "160,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Avocado and Egg of Your Choice",
+          "price": "130,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Ham Cheese Egg Sandwich",
+          "price": "150,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Baker Choice",
+          "price": "95,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Avocado on Toast",
+          "price": "100,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Peanut Butter, Banana, and Toast",
+          "price": "100,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Vegan Plate",
+          "price": "135,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": ""
+        }
+      ]
+    },
+    {
+      "name": {
+        "value": "Phin Coffee Hoi An",
+        "source": "https://phincoffeehoian.com/"
+      },
+      "summary": {
+        "value": "Award-winning specialty coffee, authentic Vietnamese coffee classes, garden restaurants and local experiences in the heart of Hoi An.",
+        "source": "https://phincoffeehoian.com/"
+      },
+      "category": "coffee shop",
+      "offerings": [
+        {
+          "name": "Granola Bowl",
+          "price": "120,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Smoothie Bowl",
+          "price": "120,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Fruit Bowl",
+          "price": "120,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Phin’s Plate",
+          "price": "160,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Avocado and Egg of Your Choice",
+          "price": "130,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Ham Cheese Egg Sandwich",
+          "price": "150,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Baker Choice",
+          "price": "95,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Avocado on Toast",
+          "price": "100,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Peanut Butter, Banana, and Toast",
+          "price": "100,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Vegan Plate",
+          "price": "135,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "French Toast",
+          "price": "140,000",
+          "source": "https"
+        }
+      ]
+    },
+    {
+      "name": {
+        "value": "Phin Coffee Hoi An",
+        "source": "https://phincoffeehoian.com/"
+      },
+      "summary": {
+        "value": "Award-winning specialty coffee, authentic Vietnamese coffee classes, garden restaurants and local experiences in the heart of Hoi An.",
+        "source": "https://phincoffeehoian.com/"
+      },
+      "category": "coffee shop",
+      "offerings": [
+        {
+          "name": "Granola Bowl",
+          "price": "120,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Smoothie Bowl",
+          "price": "120,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Fruit Bowl",
+          "price": "120,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Phin’s Plate",
+          "price": "160,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Avocado and Egg of Your Choice",
+          "price": "130,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Ham Cheese Egg Sandwich",
+          "price": "150,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Baker Choice",
+          "price": "95,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Avocado on Toast",
+          "price": "100,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Peanut Butter, Banana, and Toast",
+          "price": "100,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Vegan Plate",
+          "price": "135,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "French Toast",
+          "price": "140,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        }
+      ]
+    },
+    {
+      "name": {
+        "value": "Phin Coffee Hoi An",
+        "source": "https://phincoffeehoian.com/"
+      },
+      "summary": {
+        "value": "Award-winning specialty coffee, authentic Vietnamese coffee classes, garden restaurants and local experiences in the heart of Hoi An.",
+        "source": "https://phincoffeehoian.com/"
+      },
+      "category": "coffee shop",
+      "offerings": [
+        {
+          "name": "Granola Bowl",
+          "price": "120,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Smoothie Bowl",
+          "price": "120,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Fruit Bowl",
+          "price": "120,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Phin’s Plate",
+          "price": "160,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Avocado and Egg of Your Choice",
+          "price": "130,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Ham Cheese Egg Sandwich",
+          "price": "150,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Baker Choice",
+          "price": "95,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Avocado on Toast",
+          "price": "100,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Peanut Butter, Banana, and Toast",
+          "price": "100,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Vegan Plate",
+          "price": "135,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "French Toast",
+          "price": "140,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        }
+      ],
+      "highlights": [
+        {
+          "value": "Since 2017, Phin Coffee Hoi An"
+        }
+      ]
+    },
+    {
+      "name": {
+        "value": "Phin Coffee Hoi An",
+        "source": "https://phincoffeehoian.com/"
+      },
+      "summary": {
+        "value": "Award-winning specialty coffee, authentic Vietnamese coffee classes, garden restaurants and local experiences in the heart of Hoi An.",
+        "source": "https://phincoffeehoian.com/"
+      },
+      "category": "coffee shop",
+      "offerings": [
+        {
+          "name": "Granola Bowl",
+          "price": "120,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Smoothie Bowl",
+          "price": "120,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Fruit Bowl",
+          "price": "120,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Phin’s Plate",
+          "price": "160,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Avocado and Egg of Your Choice",
+          "price": "130,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Ham Cheese Egg Sandwich",
+          "price": "150,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Baker Choice",
+          "price": "95,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Avocado on Toast",
+          "price": "100,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Peanut Butter, Banana, and Toast",
+          "price": "100,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Vegan Plate",
+          "price": "135,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "French Toast",
+          "price": "140,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        }
+      ],
+      "highlights": [
+        {
+          "value": "Since 2017, Phin Coffee Hoi An has grown from a small hidden café in the Ancient Town into one of Hoi An’s most loved coffee and restaurant destinations."
+        }
+      ]
+    },
+    {
+      "name": {
+        "value": "Phin Coffee Hoi An",
+        "source": "https://phincoffeehoian.com/"
+      },
+      "summary": {
+        "value": "Award-winning specialty coffee, authentic Vietnamese coffee classes, garden restaurants and local experiences in the heart of Hoi An.",
+        "source": "https://phincoffeehoian.com/"
+      },
+      "category": "coffee shop",
+      "offerings": [
+        {
+          "name": "Granola Bowl",
+          "price": "120,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Smoothie Bowl",
+          "price": "120,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Fruit Bowl",
+          "price": "120,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Phin’s Plate",
+          "price": "160,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Avocado and Egg of Your Choice",
+          "price": "130,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Ham Cheese Egg Sandwich",
+          "price": "150,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Baker Choice",
+          "price": "95,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Avocado on Toast",
+          "price": "100,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Peanut Butter, Banana, and Toast",
+          "price": "100,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Vegan Plate",
+          "price": "135,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "French Toast",
+          "price": "140,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        }
+      ],
+      "highlights": [
+        {
+          "value": "Since 2017, Phin Coffee Hoi An has grown from a small hidden café in the Ancient Town into one of Hoi An’s most loved coffee and restaurant destinations.",
+          "source": "https://phincoffeehoian.com/"
+        },
+        {
+          "value": "We"
+        }
+      ]
+    },
+    {
+      "name": {
+        "value": "Phin Coffee Hoi An",
+        "source": "https://phincoffeehoian.com/"
+      },
+      "summary": {
+        "value": "Award-winning specialty coffee, authentic Vietnamese coffee classes, garden restaurants and local experiences in the heart of Hoi An.",
+        "source": "https://phincoffeehoian.com/"
+      },
+      "category": "coffee shop",
+      "offerings": [
+        {
+          "name": "Granola Bowl",
+          "price": "120,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Smoothie Bowl",
+          "price": "120,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Fruit Bowl",
+          "price": "120,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Phin’s Plate",
+          "price": "160,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Avocado and Egg of Your Choice",
+          "price": "130,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Ham Cheese Egg Sandwich",
+          "price": "150,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Baker Choice",
+          "price": "95,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Avocado on Toast",
+          "price": "100,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Peanut Butter, Banana, and Toast",
+          "price": "100,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Vegan Plate",
+          "price": "135,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "French Toast",
+          "price": "140,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        }
+      ],
+      "highlights": [
+        {
+          "value": "Since 2017, Phin Coffee Hoi An has grown from a small hidden café in the Ancient Town into one of Hoi An’s most loved coffee and restaurant destinations.",
+          "source": "https://phincoffeehoian.com/"
+        },
+        {
+          "value": "We roast our own coffee and welcome guests across our cafés and restaurants in Hoi An",
+          "source": "https://"
+        }
+      ]
+    },
+    {
+      "name": {
+        "value": "Phin Coffee Hoi An",
+        "source": "https://phincoffeehoian.com/"
+      },
+      "summary": {
+        "value": "Award-winning specialty coffee, authentic Vietnamese coffee classes, garden restaurants and local experiences in the heart of Hoi An.",
+        "source": "https://phincoffeehoian.com/"
+      },
+      "category": "coffee shop",
+      "offerings": [
+        {
+          "name": "Granola Bowl",
+          "price": "120,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Smoothie Bowl",
+          "price": "120,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Fruit Bowl",
+          "price": "120,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Phin’s Plate",
+          "price": "160,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Avocado and Egg of Your Choice",
+          "price": "130,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Ham Cheese Egg Sandwich",
+          "price": "150,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Baker Choice",
+          "price": "95,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Avocado on Toast",
+          "price": "100,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Peanut Butter, Banana, and Toast",
+          "price": "100,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Vegan Plate",
+          "price": "135,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "French Toast",
+          "price": "140,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        }
+      ],
+      "highlights": [
+        {
+          "value": "Since 2017, Phin Coffee Hoi An has grown from a small hidden café in the Ancient Town into one of Hoi An’s most loved coffee and restaurant destinations.",
+          "source": "https://phincoffeehoian.com/"
+        },
+        {
+          "value": "We roast our own coffee and welcome guests across our cafés and restaurants in Hoi An",
+          "source": "https://phincoffeehoian.com/"
+        }
+      ],
+      "location": {}
+    },
+    {
+      "name": {
+        "value": "Phin Coffee Hoi An",
+        "source": "https://phincoffeehoian.com/"
+      },
+      "summary": {
+        "value": "Award-winning specialty coffee, authentic Vietnamese coffee classes, garden restaurants and local experiences in the heart of Hoi An.",
+        "source": "https://phincoffeehoian.com/"
+      },
+      "category": "coffee shop",
+      "offerings": [
+        {
+          "name": "Granola Bowl",
+          "price": "120,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Smoothie Bowl",
+          "price": "120,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Fruit Bowl",
+          "price": "120,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Phin’s Plate",
+          "price": "160,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Avocado and Egg of Your Choice",
+          "price": "130,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Ham Cheese Egg Sandwich",
+          "price": "150,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Baker Choice",
+          "price": "95,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Avocado on Toast",
+          "price": "100,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Peanut Butter, Banana, and Toast",
+          "price": "100,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Vegan Plate",
+          "price": "135,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "French Toast",
+          "price": "140,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        }
+      ],
+      "highlights": [
+        {
+          "value": "Since 2017, Phin Coffee Hoi An has grown from a small hidden café in the Ancient Town into one of Hoi An’s most loved coffee and restaurant destinations.",
+          "source": "https://phincoffeehoian.com/"
+        },
+        {
+          "value": "We roast our own coffee and welcome guests across our cafés and restaurants in Hoi An",
+          "source": "https://phincoffeehoian.com/"
+        }
+      ],
+      "location": {
+        "town": {
+          "value": "Hoi An",
+          "source": "https://phincoffeehoian.com/"
+        },
+        "area": {
+          "value": "An Bang",
+          "source": "https://phin"
+        }
+      }
+    },
+    {
+      "name": {
+        "value": "Phin Coffee Hoi An",
+        "source": "https://phincoffeehoian.com/"
+      },
+      "summary": {
+        "value": "Award-winning specialty coffee, authentic Vietnamese coffee classes, garden restaurants and local experiences in the heart of Hoi An.",
+        "source": "https://phincoffeehoian.com/"
+      },
+      "category": "coffee shop",
+      "offerings": [
+        {
+          "name": "Granola Bowl",
+          "price": "120,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Smoothie Bowl",
+          "price": "120,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Fruit Bowl",
+          "price": "120,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Phin’s Plate",
+          "price": "160,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Avocado and Egg of Your Choice",
+          "price": "130,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Ham Cheese Egg Sandwich",
+          "price": "150,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Baker Choice",
+          "price": "95,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Avocado on Toast",
+          "price": "100,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Peanut Butter, Banana, and Toast",
+          "price": "100,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Vegan Plate",
+          "price": "135,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "French Toast",
+          "price": "140,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        }
+      ],
+      "highlights": [
+        {
+          "value": "Since 2017, Phin Coffee Hoi An has grown from a small hidden café in the Ancient Town into one of Hoi An’s most loved coffee and restaurant destinations.",
+          "source": "https://phincoffeehoian.com/"
+        },
+        {
+          "value": "We roast our own coffee and welcome guests across our cafés and restaurants in Hoi An",
+          "source": "https://phincoffeehoian.com/"
+        }
+      ],
+      "location": {
+        "town": {
+          "value": "Hoi An",
+          "source": "https://phincoffeehoian.com/"
+        },
+        "area": {
+          "value": "An Bang",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        }
+      }
+    },
+    {
+      "name": {
+        "value": "Phin Coffee Hoi An",
+        "source": "https://phincoffeehoian.com/"
+      },
+      "summary": {
+        "value": "Award-winning specialty coffee, authentic Vietnamese coffee classes, garden restaurants and local experiences in the heart of Hoi An.",
+        "source": "https://phincoffeehoian.com/"
+      },
+      "category": "coffee shop",
+      "offerings": [
+        {
+          "name": "Granola Bowl",
+          "price": "120,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Smoothie Bowl",
+          "price": "120,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Fruit Bowl",
+          "price": "120,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Phin’s Plate",
+          "price": "160,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Avocado and Egg of Your Choice",
+          "price": "130,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Ham Cheese Egg Sandwich",
+          "price": "150,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Baker Choice",
+          "price": "95,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Avocado on Toast",
+          "price": "100,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Peanut Butter, Banana, and Toast",
+          "price": "100,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Vegan Plate",
+          "price": "135,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "French Toast",
+          "price": "140,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        }
+      ],
+      "highlights": [
+        {
+          "value": "Since 2017, Phin Coffee Hoi An has grown from a small hidden café in the Ancient Town into one of Hoi An’s most loved coffee and restaurant destinations.",
+          "source": "https://phincoffeehoian.com/"
+        },
+        {
+          "value": "We roast our own coffee and welcome guests across our cafés and restaurants in Hoi An",
+          "source": "https://phincoffeehoian.com/"
+        }
+      ],
+      "location": {
+        "town": {
+          "value": "Hoi An",
+          "source": "https://phincoffeehoian.com/"
+        },
+        "area": {
+          "value": "An Bang",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        "address": {
+          "value": "End of Alley, 128 Nguyễn Phan Vinh, An Bang, Hoi"
+        }
+      }
+    },
+    {
+      "name": {
+        "value": "Phin Coffee Hoi An",
+        "source": "https://phincoffeehoian.com/"
+      },
+      "summary": {
+        "value": "Award-winning specialty coffee, authentic Vietnamese coffee classes, garden restaurants and local experiences in the heart of Hoi An.",
+        "source": "https://phincoffeehoian.com/"
+      },
+      "category": "coffee shop",
+      "offerings": [
+        {
+          "name": "Granola Bowl",
+          "price": "120,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Smoothie Bowl",
+          "price": "120,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Fruit Bowl",
+          "price": "120,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Phin’s Plate",
+          "price": "160,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Avocado and Egg of Your Choice",
+          "price": "130,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Ham Cheese Egg Sandwich",
+          "price": "150,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Baker Choice",
+          "price": "95,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Avocado on Toast",
+          "price": "100,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Peanut Butter, Banana, and Toast",
+          "price": "100,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Vegan Plate",
+          "price": "135,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "French Toast",
+          "price": "140,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        }
+      ],
+      "highlights": [
+        {
+          "value": "Since 2017, Phin Coffee Hoi An has grown from a small hidden café in the Ancient Town into one of Hoi An’s most loved coffee and restaurant destinations.",
+          "source": "https://phincoffeehoian.com/"
+        },
+        {
+          "value": "We roast our own coffee and welcome guests across our cafés and restaurants in Hoi An",
+          "source": "https://phincoffeehoian.com/"
+        }
+      ],
+      "location": {
+        "town": {
+          "value": "Hoi An",
+          "source": "https://phincoffeehoian.com/"
+        },
+        "area": {
+          "value": "An Bang",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        "address": {
+          "value": "End of Alley, 128 Nguyễn Phan Vinh, An Bang, Hoi An",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-"
+        }
+      }
+    },
+    {
+      "name": {
+        "value": "Phin Coffee Hoi An",
+        "source": "https://phincoffeehoian.com/"
+      },
+      "summary": {
+        "value": "Award-winning specialty coffee, authentic Vietnamese coffee classes, garden restaurants and local experiences in the heart of Hoi An.",
+        "source": "https://phincoffeehoian.com/"
+      },
+      "category": "coffee shop",
+      "offerings": [
+        {
+          "name": "Granola Bowl",
+          "price": "120,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Smoothie Bowl",
+          "price": "120,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Fruit Bowl",
+          "price": "120,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Phin’s Plate",
+          "price": "160,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Avocado and Egg of Your Choice",
+          "price": "130,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Ham Cheese Egg Sandwich",
+          "price": "150,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Baker Choice",
+          "price": "95,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Avocado on Toast",
+          "price": "100,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Peanut Butter, Banana, and Toast",
+          "price": "100,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Vegan Plate",
+          "price": "135,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "French Toast",
+          "price": "140,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        }
+      ],
+      "highlights": [
+        {
+          "value": "Since 2017, Phin Coffee Hoi An has grown from a small hidden café in the Ancient Town into one of Hoi An’s most loved coffee and restaurant destinations.",
+          "source": "https://phincoffeehoian.com/"
+        },
+        {
+          "value": "We roast our own coffee and welcome guests across our cafés and restaurants in Hoi An",
+          "source": "https://phincoffeehoian.com/"
+        }
+      ],
+      "location": {
+        "town": {
+          "value": "Hoi An",
+          "source": "https://phincoffeehoian.com/"
+        },
+        "area": {
+          "value": "An Bang",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        "address": {
+          "value": "End of Alley, 128 Nguyễn Phan Vinh, An Bang, Hoi An",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        "serviceArea": null
+      },
+      "contact": {
+        "whatsapp": {
+          "value": "84919882783"
+        }
+      }
+    },
+    {
+      "name": {
+        "value": "Phin Coffee Hoi An",
+        "source": "https://phincoffeehoian.com/"
+      },
+      "summary": {
+        "value": "Award-winning specialty coffee, authentic Vietnamese coffee classes, garden restaurants and local experiences in the heart of Hoi An.",
+        "source": "https://phincoffeehoian.com/"
+      },
+      "category": "coffee shop",
+      "offerings": [
+        {
+          "name": "Granola Bowl",
+          "price": "120,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Smoothie Bowl",
+          "price": "120,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Fruit Bowl",
+          "price": "120,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Phin’s Plate",
+          "price": "160,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Avocado and Egg of Your Choice",
+          "price": "130,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Ham Cheese Egg Sandwich",
+          "price": "150,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Baker Choice",
+          "price": "95,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Avocado on Toast",
+          "price": "100,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Peanut Butter, Banana, and Toast",
+          "price": "100,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Vegan Plate",
+          "price": "135,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "French Toast",
+          "price": "140,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        }
+      ],
+      "highlights": [
+        {
+          "value": "Since 2017, Phin Coffee Hoi An has grown from a small hidden café in the Ancient Town into one of Hoi An’s most loved coffee and restaurant destinations.",
+          "source": "https://phincoffeehoian.com/"
+        },
+        {
+          "value": "We roast our own coffee and welcome guests across our cafés and restaurants in Hoi An",
+          "source": "https://phincoffeehoian.com/"
+        }
+      ],
+      "location": {
+        "town": {
+          "value": "Hoi An",
+          "source": "https://phincoffeehoian.com/"
+        },
+        "area": {
+          "value": "An Bang",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        "address": {
+          "value": "End of Alley, 128 Nguyễn Phan Vinh, An Bang, Hoi An",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        "serviceArea": null
+      },
+      "contact": {
+        "whatsapp": {
+          "value": "84919882783",
+          "source": "https://phincoffeehoian.com/"
+        },
+        "phone": null
+      }
+    },
+    {
+      "name": {
+        "value": "Phin Coffee Hoi An",
+        "source": "https://phincoffeehoian.com/"
+      },
+      "summary": {
+        "value": "Award-winning specialty coffee, authentic Vietnamese coffee classes, garden restaurants and local experiences in the heart of Hoi An.",
+        "source": "https://phincoffeehoian.com/"
+      },
+      "category": "coffee shop",
+      "offerings": [
+        {
+          "name": "Granola Bowl",
+          "price": "120,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Smoothie Bowl",
+          "price": "120,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Fruit Bowl",
+          "price": "120,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Phin’s Plate",
+          "price": "160,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Avocado and Egg of Your Choice",
+          "price": "130,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Ham Cheese Egg Sandwich",
+          "price": "150,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Baker Choice",
+          "price": "95,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Avocado on Toast",
+          "price": "100,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Peanut Butter, Banana, and Toast",
+          "price": "100,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Vegan Plate",
+          "price": "135,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "French Toast",
+          "price": "140,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        }
+      ],
+      "highlights": [
+        {
+          "value": "Since 2017, Phin Coffee Hoi An has grown from a small hidden café in the Ancient Town into one of Hoi An’s most loved coffee and restaurant destinations.",
+          "source": "https://phincoffeehoian.com/"
+        },
+        {
+          "value": "We roast our own coffee and welcome guests across our cafés and restaurants in Hoi An",
+          "source": "https://phincoffeehoian.com/"
+        }
+      ],
+      "location": {
+        "town": {
+          "value": "Hoi An",
+          "source": "https://phincoffeehoian.com/"
+        },
+        "area": {
+          "value": "An Bang",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        "address": {
+          "value": "End of Alley, 128 Nguyễn Phan Vinh, An Bang, Hoi An",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        "serviceArea": null
+      },
+      "contact": {
+        "whatsapp": {
+          "value": "84919882783",
+          "source": "https://phincoffeehoian.com/"
+        },
+        "phone": null,
+        "email": {
+          "value": "phincoffeehoian@gmail.com",
+          "source": "https"
+        }
+      }
+    },
+    {
+      "name": {
+        "value": "Phin Coffee Hoi An",
+        "source": "https://phincoffeehoian.com/"
+      },
+      "summary": {
+        "value": "Award-winning specialty coffee, authentic Vietnamese coffee classes, garden restaurants and local experiences in the heart of Hoi An.",
+        "source": "https://phincoffeehoian.com/"
+      },
+      "category": "coffee shop",
+      "offerings": [
+        {
+          "name": "Granola Bowl",
+          "price": "120,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Smoothie Bowl",
+          "price": "120,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Fruit Bowl",
+          "price": "120,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Phin’s Plate",
+          "price": "160,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Avocado and Egg of Your Choice",
+          "price": "130,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Ham Cheese Egg Sandwich",
+          "price": "150,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Baker Choice",
+          "price": "95,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Avocado on Toast",
+          "price": "100,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Peanut Butter, Banana, and Toast",
+          "price": "100,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Vegan Plate",
+          "price": "135,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "French Toast",
+          "price": "140,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        }
+      ],
+      "highlights": [
+        {
+          "value": "Since 2017, Phin Coffee Hoi An has grown from a small hidden café in the Ancient Town into one of Hoi An’s most loved coffee and restaurant destinations.",
+          "source": "https://phincoffeehoian.com/"
+        },
+        {
+          "value": "We roast our own coffee and welcome guests across our cafés and restaurants in Hoi An",
+          "source": "https://phincoffeehoian.com/"
+        }
+      ],
+      "location": {
+        "town": {
+          "value": "Hoi An",
+          "source": "https://phincoffeehoian.com/"
+        },
+        "area": {
+          "value": "An Bang",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        "address": {
+          "value": "End of Alley, 128 Nguyễn Phan Vinh, An Bang, Hoi An",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        "serviceArea": null
+      },
+      "contact": {
+        "whatsapp": {
+          "value": "84919882783",
+          "source": "https://phincoffeehoian.com/"
+        },
+        "phone": null,
+        "email": {
+          "value": "phincoffeehoian@gmail.com",
+          "source": "https://phincoffeehoian.com/"
+        },
+        "instagram": null,
+        "bookingUrl": null
+      },
+      "hours": {
+        "value": "8:00 AM – 9:00 PM daily"
+      }
+    },
+    {
+      "name": {
+        "value": "Phin Coffee Hoi An",
+        "source": "https://phincoffeehoian.com/"
+      },
+      "summary": {
+        "value": "Award-winning specialty coffee, authentic Vietnamese coffee classes, garden restaurants and local experiences in the heart of Hoi An.",
+        "source": "https://phincoffeehoian.com/"
+      },
+      "category": "coffee shop",
+      "offerings": [
+        {
+          "name": "Granola Bowl",
+          "price": "120,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Smoothie Bowl",
+          "price": "120,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Fruit Bowl",
+          "price": "120,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Phin’s Plate",
+          "price": "160,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Avocado and Egg of Your Choice",
+          "price": "130,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Ham Cheese Egg Sandwich",
+          "price": "150,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Baker Choice",
+          "price": "95,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Avocado on Toast",
+          "price": "100,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Peanut Butter, Banana, and Toast",
+          "price": "100,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Vegan Plate",
+          "price": "135,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "French Toast",
+          "price": "140,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        }
+      ],
+      "highlights": [
+        {
+          "value": "Since 2017, Phin Coffee Hoi An has grown from a small hidden café in the Ancient Town into one of Hoi An’s most loved coffee and restaurant destinations.",
+          "source": "https://phincoffeehoian.com/"
+        },
+        {
+          "value": "We roast our own coffee and welcome guests across our cafés and restaurants in Hoi An",
+          "source": "https://phincoffeehoian.com/"
+        }
+      ],
+      "location": {
+        "town": {
+          "value": "Hoi An",
+          "source": "https://phincoffeehoian.com/"
+        },
+        "area": {
+          "value": "An Bang",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        "address": {
+          "value": "End of Alley, 128 Nguyễn Phan Vinh, An Bang, Hoi An",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        "serviceArea": null
+      },
+      "contact": {
+        "whatsapp": {
+          "value": "84919882783",
+          "source": "https://phincoffeehoian.com/"
+        },
+        "phone": null,
+        "email": {
+          "value": "phincoffeehoian@gmail.com",
+          "source": "https://phincoffeehoian.com/"
+        },
+        "instagram": null,
+        "bookingUrl": null
+      },
+      "hours": {
+        "value": "8:00 AM – 9:00 PM daily",
+        "source": "https://phincoffeehoian.com/location/phin-lounge-an"
+      }
+    },
+    {
+      "name": {
+        "value": "Phin Coffee Hoi An",
+        "source": "https://phincoffeehoian.com/"
+      },
+      "summary": {
+        "value": "Award-winning specialty coffee, authentic Vietnamese coffee classes, garden restaurants and local experiences in the heart of Hoi An.",
+        "source": "https://phincoffeehoian.com/"
+      },
+      "category": "coffee shop",
+      "offerings": [
+        {
+          "name": "Granola Bowl",
+          "price": "120,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Smoothie Bowl",
+          "price": "120,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Fruit Bowl",
+          "price": "120,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Phin’s Plate",
+          "price": "160,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Avocado and Egg of Your Choice",
+          "price": "130,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Ham Cheese Egg Sandwich",
+          "price": "150,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Baker Choice",
+          "price": "95,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Avocado on Toast",
+          "price": "100,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Peanut Butter, Banana, and Toast",
+          "price": "100,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Vegan Plate",
+          "price": "135,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "French Toast",
+          "price": "140,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        }
+      ],
+      "highlights": [
+        {
+          "value": "Since 2017, Phin Coffee Hoi An has grown from a small hidden café in the Ancient Town into one of Hoi An’s most loved coffee and restaurant destinations.",
+          "source": "https://phincoffeehoian.com/"
+        },
+        {
+          "value": "We roast our own coffee and welcome guests across our cafés and restaurants in Hoi An",
+          "source": "https://phincoffeehoian.com/"
+        }
+      ],
+      "location": {
+        "town": {
+          "value": "Hoi An",
+          "source": "https://phincoffeehoian.com/"
+        },
+        "area": {
+          "value": "An Bang",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        "address": {
+          "value": "End of Alley, 128 Nguyễn Phan Vinh, An Bang, Hoi An",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        "serviceArea": null
+      },
+      "contact": {
+        "whatsapp": {
+          "value": "84919882783",
+          "source": "https://phincoffeehoian.com/"
+        },
+        "phone": null,
+        "email": {
+          "value": "phincoffeehoian@gmail.com",
+          "source": "https://phincoffeehoian.com/"
+        },
+        "instagram": null,
+        "bookingUrl": null
+      },
+      "hours": {
+        "value": "8:00 AM – 9:00 PM daily",
+        "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+      },
+      "tone": [
+        "warm",
+        "welcoming",
+        "authentic"
+      ]
+    },
+    {
+      "name": {
+        "value": "Phin Coffee Hoi An",
+        "source": "https://phincoffeehoian.com/"
+      },
+      "summary": {
+        "value": "Award-winning specialty coffee, authentic Vietnamese coffee classes, garden restaurants and local experiences in the heart of Hoi An.",
+        "source": "https://phincoffeehoian.com/"
+      },
+      "category": "coffee shop",
+      "offerings": [
+        {
+          "name": "Granola Bowl",
+          "price": "120,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Smoothie Bowl",
+          "price": "120,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Fruit Bowl",
+          "price": "120,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Phin’s Plate",
+          "price": "160,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Avocado and Egg of Your Choice",
+          "price": "130,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Ham Cheese Egg Sandwich",
+          "price": "150,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Baker Choice",
+          "price": "95,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Avocado on Toast",
+          "price": "100,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Peanut Butter, Banana, and Toast",
+          "price": "100,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Vegan Plate",
+          "price": "135,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "French Toast",
+          "price": "140,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        }
+      ],
+      "highlights": [
+        {
+          "value": "Since 2017, Phin Coffee Hoi An has grown from a small hidden café in the Ancient Town into one of Hoi An’s most loved coffee and restaurant destinations.",
+          "source": "https://phincoffeehoian.com/"
+        },
+        {
+          "value": "We roast our own coffee and welcome guests across our cafés and restaurants in Hoi An",
+          "source": "https://phincoffeehoian.com/"
+        }
+      ],
+      "location": {
+        "town": {
+          "value": "Hoi An",
+          "source": "https://phincoffeehoian.com/"
+        },
+        "area": {
+          "value": "An Bang",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        "address": {
+          "value": "End of Alley, 128 Nguyễn Phan Vinh, An Bang, Hoi An",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        "serviceArea": null
+      },
+      "contact": {
+        "whatsapp": {
+          "value": "84919882783",
+          "source": "https://phincoffeehoian.com/"
+        },
+        "phone": null,
+        "email": {
+          "value": "phincoffeehoian@gmail.com",
+          "source": "https://phincoffeehoian.com/"
+        },
+        "instagram": null,
+        "bookingUrl": null
+      },
+      "hours": {
+        "value": "8:00 AM – 9:00 PM daily",
+        "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+      },
+      "tone": [
+        "warm",
+        "welcoming",
+        "authentic",
+        "relaxed"
+      ],
+      "colours": [
+        {
+          "hex": "#00000"
+        }
+      ]
+    },
+    {
+      "name": {
+        "value": "Phin Coffee Hoi An",
+        "source": "https://phincoffeehoian.com/"
+      },
+      "summary": {
+        "value": "Award-winning specialty coffee, authentic Vietnamese coffee classes, garden restaurants and local experiences in the heart of Hoi An.",
+        "source": "https://phincoffeehoian.com/"
+      },
+      "category": "coffee shop",
+      "offerings": [
+        {
+          "name": "Granola Bowl",
+          "price": "120,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Smoothie Bowl",
+          "price": "120,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Fruit Bowl",
+          "price": "120,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Phin’s Plate",
+          "price": "160,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Avocado and Egg of Your Choice",
+          "price": "130,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Ham Cheese Egg Sandwich",
+          "price": "150,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Baker Choice",
+          "price": "95,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Avocado on Toast",
+          "price": "100,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Peanut Butter, Banana, and Toast",
+          "price": "100,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Vegan Plate",
+          "price": "135,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "French Toast",
+          "price": "140,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        }
+      ],
+      "highlights": [
+        {
+          "value": "Since 2017, Phin Coffee Hoi An has grown from a small hidden café in the Ancient Town into one of Hoi An’s most loved coffee and restaurant destinations.",
+          "source": "https://phincoffeehoian.com/"
+        },
+        {
+          "value": "We roast our own coffee and welcome guests across our cafés and restaurants in Hoi An",
+          "source": "https://phincoffeehoian.com/"
+        }
+      ],
+      "location": {
+        "town": {
+          "value": "Hoi An",
+          "source": "https://phincoffeehoian.com/"
+        },
+        "area": {
+          "value": "An Bang",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        "address": {
+          "value": "End of Alley, 128 Nguyễn Phan Vinh, An Bang, Hoi An",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        "serviceArea": null
+      },
+      "contact": {
+        "whatsapp": {
+          "value": "84919882783",
+          "source": "https://phincoffeehoian.com/"
+        },
+        "phone": null,
+        "email": {
+          "value": "phincoffeehoian@gmail.com",
+          "source": "https://phincoffeehoian.com/"
+        },
+        "instagram": null,
+        "bookingUrl": null
+      },
+      "hours": {
+        "value": "8:00 AM – 9:00 PM daily",
+        "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+      },
+      "tone": [
+        "warm",
+        "welcoming",
+        "authentic",
+        "relaxed"
+      ],
+      "colours": [
+        {
+          "hex": "#000000",
+          "role": "primary",
+          "source": "logo"
+        },
+        {}
+      ]
+    },
+    {
+      "name": {
+        "value": "Phin Coffee Hoi An",
+        "source": "https://phincoffeehoian.com/"
+      },
+      "summary": {
+        "value": "Award-winning specialty coffee, authentic Vietnamese coffee classes, garden restaurants and local experiences in the heart of Hoi An.",
+        "source": "https://phincoffeehoian.com/"
+      },
+      "category": "coffee shop",
+      "offerings": [
+        {
+          "name": "Granola Bowl",
+          "price": "120,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Smoothie Bowl",
+          "price": "120,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Fruit Bowl",
+          "price": "120,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Phin’s Plate",
+          "price": "160,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Avocado and Egg of Your Choice",
+          "price": "130,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Ham Cheese Egg Sandwich",
+          "price": "150,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Baker Choice",
+          "price": "95,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Avocado on Toast",
+          "price": "100,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Peanut Butter, Banana, and Toast",
+          "price": "100,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Vegan Plate",
+          "price": "135,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "French Toast",
+          "price": "140,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        }
+      ],
+      "highlights": [
+        {
+          "value": "Since 2017, Phin Coffee Hoi An has grown from a small hidden café in the Ancient Town into one of Hoi An’s most loved coffee and restaurant destinations.",
+          "source": "https://phincoffeehoian.com/"
+        },
+        {
+          "value": "We roast our own coffee and welcome guests across our cafés and restaurants in Hoi An",
+          "source": "https://phincoffeehoian.com/"
+        }
+      ],
+      "location": {
+        "town": {
+          "value": "Hoi An",
+          "source": "https://phincoffeehoian.com/"
+        },
+        "area": {
+          "value": "An Bang",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        "address": {
+          "value": "End of Alley, 128 Nguyễn Phan Vinh, An Bang, Hoi An",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        "serviceArea": null
+      },
+      "contact": {
+        "whatsapp": {
+          "value": "84919882783",
+          "source": "https://phincoffeehoian.com/"
+        },
+        "phone": null,
+        "email": {
+          "value": "phincoffeehoian@gmail.com",
+          "source": "https://phincoffeehoian.com/"
+        },
+        "instagram": null,
+        "bookingUrl": null
+      },
+      "hours": {
+        "value": "8:00 AM – 9:00 PM daily",
+        "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+      },
+      "tone": [
+        "warm",
+        "welcoming",
+        "authentic",
+        "relaxed"
+      ],
+      "colours": [
+        {
+          "hex": "#000000",
+          "role": "primary",
+          "source": "logo"
+        },
+        {
+          "hex": "#ffffff",
+          "role": "background",
+          "source": "logo"
+        }
+      ]
+    },
+    {
+      "name": {
+        "value": "Phin Coffee Hoi An",
+        "source": "https://phincoffeehoian.com/"
+      },
+      "summary": {
+        "value": "Award-winning specialty coffee, authentic Vietnamese coffee classes, garden restaurants and local experiences in the heart of Hoi An.",
+        "source": "https://phincoffeehoian.com/"
+      },
+      "category": "coffee shop",
+      "offerings": [
+        {
+          "name": "Granola Bowl",
+          "price": "120,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Smoothie Bowl",
+          "price": "120,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Fruit Bowl",
+          "price": "120,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Phin’s Plate",
+          "price": "160,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Avocado and Egg of Your Choice",
+          "price": "130,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Ham Cheese Egg Sandwich",
+          "price": "150,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Baker Choice",
+          "price": "95,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Avocado on Toast",
+          "price": "100,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Peanut Butter, Banana, and Toast",
+          "price": "100,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Vegan Plate",
+          "price": "135,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "French Toast",
+          "price": "140,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        }
+      ],
+      "highlights": [
+        {
+          "value": "Since 2017, Phin Coffee Hoi An has grown from a small hidden café in the Ancient Town into one of Hoi An’s most loved coffee and restaurant destinations.",
+          "source": "https://phincoffeehoian.com/"
+        },
+        {
+          "value": "We roast our own coffee and welcome guests across our cafés and restaurants in Hoi An",
+          "source": "https://phincoffeehoian.com/"
+        }
+      ],
+      "location": {
+        "town": {
+          "value": "Hoi An",
+          "source": "https://phincoffeehoian.com/"
+        },
+        "area": {
+          "value": "An Bang",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        "address": {
+          "value": "End of Alley, 128 Nguyễn Phan Vinh, An Bang, Hoi An",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        "serviceArea": null
+      },
+      "contact": {
+        "whatsapp": {
+          "value": "84919882783",
+          "source": "https://phincoffeehoian.com/"
+        },
+        "phone": null,
+        "email": {
+          "value": "phincoffeehoian@gmail.com",
+          "source": "https://phincoffeehoian.com/"
+        },
+        "instagram": null,
+        "bookingUrl": null
+      },
+      "hours": {
+        "value": "8:00 AM – 9:00 PM daily",
+        "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+      },
+      "tone": [
+        "warm",
+        "welcoming",
+        "authentic",
+        "relaxed"
+      ],
+      "colours": [
+        {
+          "hex": "#000000",
+          "role": "primary",
+          "source": "logo"
+        },
+        {
+          "hex": "#ffffff",
+          "role": "background",
+          "source": "logo"
+        },
+        {
+          "hex": "#f5a623",
+          "role": "accent"
+        }
+      ]
+    },
+    {
+      "name": {
+        "value": "Phin Coffee Hoi An",
+        "source": "https://phincoffeehoian.com/"
+      },
+      "summary": {
+        "value": "Award-winning specialty coffee, authentic Vietnamese coffee classes, garden restaurants and local experiences in the heart of Hoi An.",
+        "source": "https://phincoffeehoian.com/"
+      },
+      "category": "coffee shop",
+      "offerings": [
+        {
+          "name": "Granola Bowl",
+          "price": "120,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Smoothie Bowl",
+          "price": "120,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Fruit Bowl",
+          "price": "120,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Phin’s Plate",
+          "price": "160,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Avocado and Egg of Your Choice",
+          "price": "130,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Ham Cheese Egg Sandwich",
+          "price": "150,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Baker Choice",
+          "price": "95,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Avocado on Toast",
+          "price": "100,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Peanut Butter, Banana, and Toast",
+          "price": "100,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Vegan Plate",
+          "price": "135,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "French Toast",
+          "price": "140,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        }
+      ],
+      "highlights": [
+        {
+          "value": "Since 2017, Phin Coffee Hoi An has grown from a small hidden café in the Ancient Town into one of Hoi An’s most loved coffee and restaurant destinations.",
+          "source": "https://phincoffeehoian.com/"
+        },
+        {
+          "value": "We roast our own coffee and welcome guests across our cafés and restaurants in Hoi An",
+          "source": "https://phincoffeehoian.com/"
+        }
+      ],
+      "location": {
+        "town": {
+          "value": "Hoi An",
+          "source": "https://phincoffeehoian.com/"
+        },
+        "area": {
+          "value": "An Bang",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        "address": {
+          "value": "End of Alley, 128 Nguyễn Phan Vinh, An Bang, Hoi An",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        "serviceArea": null
+      },
+      "contact": {
+        "whatsapp": {
+          "value": "84919882783",
+          "source": "https://phincoffeehoian.com/"
+        },
+        "phone": null,
+        "email": {
+          "value": "phincoffeehoian@gmail.com",
+          "source": "https://phincoffeehoian.com/"
+        },
+        "instagram": null,
+        "bookingUrl": null
+      },
+      "hours": {
+        "value": "8:00 AM – 9:00 PM daily",
+        "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+      },
+      "tone": [
+        "warm",
+        "welcoming",
+        "authentic",
+        "relaxed"
+      ],
+      "colours": [
+        {
+          "hex": "#000000",
+          "role": "primary",
+          "source": "logo"
+        },
+        {
+          "hex": "#ffffff",
+          "role": "background",
+          "source": "logo"
+        },
+        {
+          "hex": "#f5a623",
+          "role": "accent",
+          "source": "photos"
+        },
+        {
+          "hex": "#333333"
+        }
+      ]
+    },
+    {
+      "name": {
+        "value": "Phin Coffee Hoi An",
+        "source": "https://phincoffeehoian.com/"
+      },
+      "summary": {
+        "value": "Award-winning specialty coffee, authentic Vietnamese coffee classes, garden restaurants and local experiences in the heart of Hoi An.",
+        "source": "https://phincoffeehoian.com/"
+      },
+      "category": "coffee shop",
+      "offerings": [
+        {
+          "name": "Granola Bowl",
+          "price": "120,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Smoothie Bowl",
+          "price": "120,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Fruit Bowl",
+          "price": "120,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Phin’s Plate",
+          "price": "160,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Avocado and Egg of Your Choice",
+          "price": "130,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Ham Cheese Egg Sandwich",
+          "price": "150,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Baker Choice",
+          "price": "95,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Avocado on Toast",
+          "price": "100,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Peanut Butter, Banana, and Toast",
+          "price": "100,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Vegan Plate",
+          "price": "135,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "French Toast",
+          "price": "140,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        }
+      ],
+      "highlights": [
+        {
+          "value": "Since 2017, Phin Coffee Hoi An has grown from a small hidden café in the Ancient Town into one of Hoi An’s most loved coffee and restaurant destinations.",
+          "source": "https://phincoffeehoian.com/"
+        },
+        {
+          "value": "We roast our own coffee and welcome guests across our cafés and restaurants in Hoi An",
+          "source": "https://phincoffeehoian.com/"
+        }
+      ],
+      "location": {
+        "town": {
+          "value": "Hoi An",
+          "source": "https://phincoffeehoian.com/"
+        },
+        "area": {
+          "value": "An Bang",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        "address": {
+          "value": "End of Alley, 128 Nguyễn Phan Vinh, An Bang, Hoi An",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        "serviceArea": null
+      },
+      "contact": {
+        "whatsapp": {
+          "value": "84919882783",
+          "source": "https://phincoffeehoian.com/"
+        },
+        "phone": null,
+        "email": {
+          "value": "phincoffeehoian@gmail.com",
+          "source": "https://phincoffeehoian.com/"
+        },
+        "instagram": null,
+        "bookingUrl": null
+      },
+      "hours": {
+        "value": "8:00 AM – 9:00 PM daily",
+        "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+      },
+      "tone": [
+        "warm",
+        "welcoming",
+        "authentic",
+        "relaxed"
+      ],
+      "colours": [
+        {
+          "hex": "#000000",
+          "role": "primary",
+          "source": "logo"
+        },
+        {
+          "hex": "#ffffff",
+          "role": "background",
+          "source": "logo"
+        },
+        {
+          "hex": "#f5a623",
+          "role": "accent",
+          "source": "photos"
+        },
+        {
+          "hex": "#333333",
+          "role": "text",
+          "source": "logo"
+        }
+      ]
+    },
+    {
+      "name": {
+        "value": "Phin Coffee Hoi An",
+        "source": "https://phincoffeehoian.com/"
+      },
+      "summary": {
+        "value": "Award-winning specialty coffee, authentic Vietnamese coffee classes, garden restaurants and local experiences in the heart of Hoi An.",
+        "source": "https://phincoffeehoian.com/"
+      },
+      "category": "coffee shop",
+      "offerings": [
+        {
+          "name": "Granola Bowl",
+          "price": "120,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Smoothie Bowl",
+          "price": "120,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Fruit Bowl",
+          "price": "120,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Phin’s Plate",
+          "price": "160,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Avocado and Egg of Your Choice",
+          "price": "130,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Ham Cheese Egg Sandwich",
+          "price": "150,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Baker Choice",
+          "price": "95,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Avocado on Toast",
+          "price": "100,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Peanut Butter, Banana, and Toast",
+          "price": "100,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Vegan Plate",
+          "price": "135,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "French Toast",
+          "price": "140,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        }
+      ],
+      "highlights": [
+        {
+          "value": "Since 2017, Phin Coffee Hoi An has grown from a small hidden café in the Ancient Town into one of Hoi An’s most loved coffee and restaurant destinations.",
+          "source": "https://phincoffeehoian.com/"
+        },
+        {
+          "value": "We roast our own coffee and welcome guests across our cafés and restaurants in Hoi An",
+          "source": "https://phincoffeehoian.com/"
+        }
+      ],
+      "location": {
+        "town": {
+          "value": "Hoi An",
+          "source": "https://phincoffeehoian.com/"
+        },
+        "area": {
+          "value": "An Bang",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        "address": {
+          "value": "End of Alley, 128 Nguyễn Phan Vinh, An Bang, Hoi An",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        "serviceArea": null
+      },
+      "contact": {
+        "whatsapp": {
+          "value": "84919882783",
+          "source": "https://phincoffeehoian.com/"
+        },
+        "phone": null,
+        "email": {
+          "value": "phincoffeehoian@gmail.com",
+          "source": "https://phincoffeehoian.com/"
+        },
+        "instagram": null,
+        "bookingUrl": null
+      },
+      "hours": {
+        "value": "8:00 AM – 9:00 PM daily",
+        "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+      },
+      "tone": [
+        "warm",
+        "welcoming",
+        "authentic",
+        "relaxed"
+      ],
+      "colours": [
+        {
+          "hex": "#000000",
+          "role": "primary",
+          "source": "logo"
+        },
+        {
+          "hex": "#ffffff",
+          "role": "background",
+          "source": "logo"
+        },
+        {
+          "hex": "#f5a623",
+          "role": "accent",
+          "source": "photos"
+        },
+        {
+          "hex": "#333333",
+          "role": "text",
+          "source": "logo"
+        }
+      ],
+      "essence": {
+        "promise": {
+          "value": "Join us for specialty Vietnamese coffee, breakfast, and authentic"
+        }
+      }
+    },
+    {
+      "name": {
+        "value": "Phin Coffee Hoi An",
+        "source": "https://phincoffeehoian.com/"
+      },
+      "summary": {
+        "value": "Award-winning specialty coffee, authentic Vietnamese coffee classes, garden restaurants and local experiences in the heart of Hoi An.",
+        "source": "https://phincoffeehoian.com/"
+      },
+      "category": "coffee shop",
+      "offerings": [
+        {
+          "name": "Granola Bowl",
+          "price": "120,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Smoothie Bowl",
+          "price": "120,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Fruit Bowl",
+          "price": "120,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Phin’s Plate",
+          "price": "160,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Avocado and Egg of Your Choice",
+          "price": "130,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Ham Cheese Egg Sandwich",
+          "price": "150,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Baker Choice",
+          "price": "95,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Avocado on Toast",
+          "price": "100,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Peanut Butter, Banana, and Toast",
+          "price": "100,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Vegan Plate",
+          "price": "135,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "French Toast",
+          "price": "140,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        }
+      ],
+      "highlights": [
+        {
+          "value": "Since 2017, Phin Coffee Hoi An has grown from a small hidden café in the Ancient Town into one of Hoi An’s most loved coffee and restaurant destinations.",
+          "source": "https://phincoffeehoian.com/"
+        },
+        {
+          "value": "We roast our own coffee and welcome guests across our cafés and restaurants in Hoi An",
+          "source": "https://phincoffeehoian.com/"
+        }
+      ],
+      "location": {
+        "town": {
+          "value": "Hoi An",
+          "source": "https://phincoffeehoian.com/"
+        },
+        "area": {
+          "value": "An Bang",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        "address": {
+          "value": "End of Alley, 128 Nguyễn Phan Vinh, An Bang, Hoi An",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        "serviceArea": null
+      },
+      "contact": {
+        "whatsapp": {
+          "value": "84919882783",
+          "source": "https://phincoffeehoian.com/"
+        },
+        "phone": null,
+        "email": {
+          "value": "phincoffeehoian@gmail.com",
+          "source": "https://phincoffeehoian.com/"
+        },
+        "instagram": null,
+        "bookingUrl": null
+      },
+      "hours": {
+        "value": "8:00 AM – 9:00 PM daily",
+        "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+      },
+      "tone": [
+        "warm",
+        "welcoming",
+        "authentic",
+        "relaxed"
+      ],
+      "colours": [
+        {
+          "hex": "#000000",
+          "role": "primary",
+          "source": "logo"
+        },
+        {
+          "hex": "#ffffff",
+          "role": "background",
+          "source": "logo"
+        },
+        {
+          "hex": "#f5a623",
+          "role": "accent",
+          "source": "photos"
+        },
+        {
+          "hex": "#333333",
+          "role": "text",
+          "source": "logo"
+        }
+      ],
+      "essence": {
+        "promise": {
+          "value": "Join us for specialty Vietnamese coffee, breakfast, and authentic local cuisine in our leafy garden restaurants across Hoi An.",
+          "source": "https://phincoffeehoian.com/"
+        }
+      }
+    },
+    {
+      "name": {
+        "value": "Phin Coffee Hoi An",
+        "source": "https://phincoffeehoian.com/"
+      },
+      "summary": {
+        "value": "Award-winning specialty coffee, authentic Vietnamese coffee classes, garden restaurants and local experiences in the heart of Hoi An.",
+        "source": "https://phincoffeehoian.com/"
+      },
+      "category": "coffee shop",
+      "offerings": [
+        {
+          "name": "Granola Bowl",
+          "price": "120,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Smoothie Bowl",
+          "price": "120,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Fruit Bowl",
+          "price": "120,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Phin’s Plate",
+          "price": "160,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Avocado and Egg of Your Choice",
+          "price": "130,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Ham Cheese Egg Sandwich",
+          "price": "150,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Baker Choice",
+          "price": "95,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Avocado on Toast",
+          "price": "100,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Peanut Butter, Banana, and Toast",
+          "price": "100,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Vegan Plate",
+          "price": "135,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "French Toast",
+          "price": "140,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        }
+      ],
+      "highlights": [
+        {
+          "value": "Since 2017, Phin Coffee Hoi An has grown from a small hidden café in the Ancient Town into one of Hoi An’s most loved coffee and restaurant destinations.",
+          "source": "https://phincoffeehoian.com/"
+        },
+        {
+          "value": "We roast our own coffee and welcome guests across our cafés and restaurants in Hoi An",
+          "source": "https://phincoffeehoian.com/"
+        }
+      ],
+      "location": {
+        "town": {
+          "value": "Hoi An",
+          "source": "https://phincoffeehoian.com/"
+        },
+        "area": {
+          "value": "An Bang",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        "address": {
+          "value": "End of Alley, 128 Nguyễn Phan Vinh, An Bang, Hoi An",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        "serviceArea": null
+      },
+      "contact": {
+        "whatsapp": {
+          "value": "84919882783",
+          "source": "https://phincoffeehoian.com/"
+        },
+        "phone": null,
+        "email": {
+          "value": "phincoffeehoian@gmail.com",
+          "source": "https://phincoffeehoian.com/"
+        },
+        "instagram": null,
+        "bookingUrl": null
+      },
+      "hours": {
+        "value": "8:00 AM – 9:00 PM daily",
+        "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+      },
+      "tone": [
+        "warm",
+        "welcoming",
+        "authentic",
+        "relaxed"
+      ],
+      "colours": [
+        {
+          "hex": "#000000",
+          "role": "primary",
+          "source": "logo"
+        },
+        {
+          "hex": "#ffffff",
+          "role": "background",
+          "source": "logo"
+        },
+        {
+          "hex": "#f5a623",
+          "role": "accent",
+          "source": "photos"
+        },
+        {
+          "hex": "#333333",
+          "role": "text",
+          "source": "logo"
+        }
+      ],
+      "essence": {
+        "promise": {
+          "value": "Join us for specialty Vietnamese coffee, breakfast, and authentic local cuisine in our leafy garden restaurants across Hoi An.",
+          "source": "https://phincoffeehoian.com/"
+        },
+        "feeling": [
+          "relaxed",
+          "welcomed",
+          "ref"
+        ]
+      }
+    },
+    {
+      "name": {
+        "value": "Phin Coffee Hoi An",
+        "source": "https://phincoffeehoian.com/"
+      },
+      "summary": {
+        "value": "Award-winning specialty coffee, authentic Vietnamese coffee classes, garden restaurants and local experiences in the heart of Hoi An.",
+        "source": "https://phincoffeehoian.com/"
+      },
+      "category": "coffee shop",
+      "offerings": [
+        {
+          "name": "Granola Bowl",
+          "price": "120,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Smoothie Bowl",
+          "price": "120,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Fruit Bowl",
+          "price": "120,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Phin’s Plate",
+          "price": "160,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Avocado and Egg of Your Choice",
+          "price": "130,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Ham Cheese Egg Sandwich",
+          "price": "150,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Baker Choice",
+          "price": "95,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Avocado on Toast",
+          "price": "100,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Peanut Butter, Banana, and Toast",
+          "price": "100,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Vegan Plate",
+          "price": "135,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "French Toast",
+          "price": "140,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        }
+      ],
+      "highlights": [
+        {
+          "value": "Since 2017, Phin Coffee Hoi An has grown from a small hidden café in the Ancient Town into one of Hoi An’s most loved coffee and restaurant destinations.",
+          "source": "https://phincoffeehoian.com/"
+        },
+        {
+          "value": "We roast our own coffee and welcome guests across our cafés and restaurants in Hoi An",
+          "source": "https://phincoffeehoian.com/"
+        }
+      ],
+      "location": {
+        "town": {
+          "value": "Hoi An",
+          "source": "https://phincoffeehoian.com/"
+        },
+        "area": {
+          "value": "An Bang",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        "address": {
+          "value": "End of Alley, 128 Nguyễn Phan Vinh, An Bang, Hoi An",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        "serviceArea": null
+      },
+      "contact": {
+        "whatsapp": {
+          "value": "84919882783",
+          "source": "https://phincoffeehoian.com/"
+        },
+        "phone": null,
+        "email": {
+          "value": "phincoffeehoian@gmail.com",
+          "source": "https://phincoffeehoian.com/"
+        },
+        "instagram": null,
+        "bookingUrl": null
+      },
+      "hours": {
+        "value": "8:00 AM – 9:00 PM daily",
+        "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+      },
+      "tone": [
+        "warm",
+        "welcoming",
+        "authentic",
+        "relaxed"
+      ],
+      "colours": [
+        {
+          "hex": "#000000",
+          "role": "primary",
+          "source": "logo"
+        },
+        {
+          "hex": "#ffffff",
+          "role": "background",
+          "source": "logo"
+        },
+        {
+          "hex": "#f5a623",
+          "role": "accent",
+          "source": "photos"
+        },
+        {
+          "hex": "#333333",
+          "role": "text",
+          "source": "logo"
+        }
+      ],
+      "essence": {
+        "promise": {
+          "value": "Join us for specialty Vietnamese coffee, breakfast, and authentic local cuisine in our leafy garden restaurants across Hoi An.",
+          "source": "https://phincoffeehoian.com/"
+        },
+        "feeling": [
+          "relaxed",
+          "welcomed",
+          "refreshed",
+          "connected"
+        ],
+        "placeSymbols": [
+          "Ancient Town lanterns"
+        ]
+      }
+    },
+    {
+      "name": {
+        "value": "Phin Coffee Hoi An",
+        "source": "https://phincoffeehoian.com/"
+      },
+      "summary": {
+        "value": "Award-winning specialty coffee, authentic Vietnamese coffee classes, garden restaurants and local experiences in the heart of Hoi An.",
+        "source": "https://phincoffeehoian.com/"
+      },
+      "category": "coffee shop",
+      "offerings": [
+        {
+          "name": "Granola Bowl",
+          "price": "120,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Smoothie Bowl",
+          "price": "120,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Fruit Bowl",
+          "price": "120,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Phin’s Plate",
+          "price": "160,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Avocado and Egg of Your Choice",
+          "price": "130,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Ham Cheese Egg Sandwich",
+          "price": "150,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Baker Choice",
+          "price": "95,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Avocado on Toast",
+          "price": "100,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Peanut Butter, Banana, and Toast",
+          "price": "100,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Vegan Plate",
+          "price": "135,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "French Toast",
+          "price": "140,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        }
+      ],
+      "highlights": [
+        {
+          "value": "Since 2017, Phin Coffee Hoi An has grown from a small hidden café in the Ancient Town into one of Hoi An’s most loved coffee and restaurant destinations.",
+          "source": "https://phincoffeehoian.com/"
+        },
+        {
+          "value": "We roast our own coffee and welcome guests across our cafés and restaurants in Hoi An",
+          "source": "https://phincoffeehoian.com/"
+        }
+      ],
+      "location": {
+        "town": {
+          "value": "Hoi An",
+          "source": "https://phincoffeehoian.com/"
+        },
+        "area": {
+          "value": "An Bang",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        "address": {
+          "value": "End of Alley, 128 Nguyễn Phan Vinh, An Bang, Hoi An",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        "serviceArea": null
+      },
+      "contact": {
+        "whatsapp": {
+          "value": "84919882783",
+          "source": "https://phincoffeehoian.com/"
+        },
+        "phone": null,
+        "email": {
+          "value": "phincoffeehoian@gmail.com",
+          "source": "https://phincoffeehoian.com/"
+        },
+        "instagram": null,
+        "bookingUrl": null
+      },
+      "hours": {
+        "value": "8:00 AM – 9:00 PM daily",
+        "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+      },
+      "tone": [
+        "warm",
+        "welcoming",
+        "authentic",
+        "relaxed"
+      ],
+      "colours": [
+        {
+          "hex": "#000000",
+          "role": "primary",
+          "source": "logo"
+        },
+        {
+          "hex": "#ffffff",
+          "role": "background",
+          "source": "logo"
+        },
+        {
+          "hex": "#f5a623",
+          "role": "accent",
+          "source": "photos"
+        },
+        {
+          "hex": "#333333",
+          "role": "text",
+          "source": "logo"
+        }
+      ],
+      "essence": {
+        "promise": {
+          "value": "Join us for specialty Vietnamese coffee, breakfast, and authentic local cuisine in our leafy garden restaurants across Hoi An.",
+          "source": "https://phincoffeehoian.com/"
+        },
+        "feeling": [
+          "relaxed",
+          "welcomed",
+          "refreshed",
+          "connected"
+        ],
+        "placeSymbols": [
+          "Ancient Town lanterns",
+          "An Bang beach",
+          "traditional phin filters",
+          "yellow walls",
+          "lush"
+        ]
+      }
+    },
+    {
+      "name": {
+        "value": "Phin Coffee Hoi An",
+        "source": "https://phincoffeehoian.com/"
+      },
+      "summary": {
+        "value": "Award-winning specialty coffee, authentic Vietnamese coffee classes, garden restaurants and local experiences in the heart of Hoi An.",
+        "source": "https://phincoffeehoian.com/"
+      },
+      "category": "coffee shop",
+      "offerings": [
+        {
+          "name": "Granola Bowl",
+          "price": "120,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Smoothie Bowl",
+          "price": "120,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Fruit Bowl",
+          "price": "120,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Phin’s Plate",
+          "price": "160,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Avocado and Egg of Your Choice",
+          "price": "130,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Ham Cheese Egg Sandwich",
+          "price": "150,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Baker Choice",
+          "price": "95,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Avocado on Toast",
+          "price": "100,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Peanut Butter, Banana, and Toast",
+          "price": "100,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Vegan Plate",
+          "price": "135,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "French Toast",
+          "price": "140,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        }
+      ],
+      "highlights": [
+        {
+          "value": "Since 2017, Phin Coffee Hoi An has grown from a small hidden café in the Ancient Town into one of Hoi An’s most loved coffee and restaurant destinations.",
+          "source": "https://phincoffeehoian.com/"
+        },
+        {
+          "value": "We roast our own coffee and welcome guests across our cafés and restaurants in Hoi An",
+          "source": "https://phincoffeehoian.com/"
+        }
+      ],
+      "location": {
+        "town": {
+          "value": "Hoi An",
+          "source": "https://phincoffeehoian.com/"
+        },
+        "area": {
+          "value": "An Bang",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        "address": {
+          "value": "End of Alley, 128 Nguyễn Phan Vinh, An Bang, Hoi An",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        "serviceArea": null
+      },
+      "contact": {
+        "whatsapp": {
+          "value": "84919882783",
+          "source": "https://phincoffeehoian.com/"
+        },
+        "phone": null,
+        "email": {
+          "value": "phincoffeehoian@gmail.com",
+          "source": "https://phincoffeehoian.com/"
+        },
+        "instagram": null,
+        "bookingUrl": null
+      },
+      "hours": {
+        "value": "8:00 AM – 9:00 PM daily",
+        "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+      },
+      "tone": [
+        "warm",
+        "welcoming",
+        "authentic",
+        "relaxed"
+      ],
+      "colours": [
+        {
+          "hex": "#000000",
+          "role": "primary",
+          "source": "logo"
+        },
+        {
+          "hex": "#ffffff",
+          "role": "background",
+          "source": "logo"
+        },
+        {
+          "hex": "#f5a623",
+          "role": "accent",
+          "source": "photos"
+        },
+        {
+          "hex": "#333333",
+          "role": "text",
+          "source": "logo"
+        }
+      ],
+      "essence": {
+        "promise": {
+          "value": "Join us for specialty Vietnamese coffee, breakfast, and authentic local cuisine in our leafy garden restaurants across Hoi An.",
+          "source": "https://phincoffeehoian.com/"
+        },
+        "feeling": [
+          "relaxed",
+          "welcomed",
+          "refreshed",
+          "connected"
+        ],
+        "placeSymbols": [
+          "Ancient Town lanterns",
+          "An Bang beach",
+          "traditional phin filters",
+          "yellow walls",
+          "lush green gardens"
+        ],
+        "senses": [
+          "aroma of freshly roasted coffee beans",
+          "warm"
+        ]
+      }
+    },
+    {
+      "name": {
+        "value": "Phin Coffee Hoi An",
+        "source": "https://phincoffeehoian.com/"
+      },
+      "summary": {
+        "value": "Award-winning specialty coffee, authentic Vietnamese coffee classes, garden restaurants and local experiences in the heart of Hoi An.",
+        "source": "https://phincoffeehoian.com/"
+      },
+      "category": "coffee shop",
+      "offerings": [
+        {
+          "name": "Granola Bowl",
+          "price": "120,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Smoothie Bowl",
+          "price": "120,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Fruit Bowl",
+          "price": "120,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Phin’s Plate",
+          "price": "160,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Avocado and Egg of Your Choice",
+          "price": "130,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Ham Cheese Egg Sandwich",
+          "price": "150,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Baker Choice",
+          "price": "95,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Avocado on Toast",
+          "price": "100,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Peanut Butter, Banana, and Toast",
+          "price": "100,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Vegan Plate",
+          "price": "135,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "French Toast",
+          "price": "140,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        }
+      ],
+      "highlights": [
+        {
+          "value": "Since 2017, Phin Coffee Hoi An has grown from a small hidden café in the Ancient Town into one of Hoi An’s most loved coffee and restaurant destinations.",
+          "source": "https://phincoffeehoian.com/"
+        },
+        {
+          "value": "We roast our own coffee and welcome guests across our cafés and restaurants in Hoi An",
+          "source": "https://phincoffeehoian.com/"
+        }
+      ],
+      "location": {
+        "town": {
+          "value": "Hoi An",
+          "source": "https://phincoffeehoian.com/"
+        },
+        "area": {
+          "value": "An Bang",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        "address": {
+          "value": "End of Alley, 128 Nguyễn Phan Vinh, An Bang, Hoi An",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        "serviceArea": null
+      },
+      "contact": {
+        "whatsapp": {
+          "value": "84919882783",
+          "source": "https://phincoffeehoian.com/"
+        },
+        "phone": null,
+        "email": {
+          "value": "phincoffeehoian@gmail.com",
+          "source": "https://phincoffeehoian.com/"
+        },
+        "instagram": null,
+        "bookingUrl": null
+      },
+      "hours": {
+        "value": "8:00 AM – 9:00 PM daily",
+        "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+      },
+      "tone": [
+        "warm",
+        "welcoming",
+        "authentic",
+        "relaxed"
+      ],
+      "colours": [
+        {
+          "hex": "#000000",
+          "role": "primary",
+          "source": "logo"
+        },
+        {
+          "hex": "#ffffff",
+          "role": "background",
+          "source": "logo"
+        },
+        {
+          "hex": "#f5a623",
+          "role": "accent",
+          "source": "photos"
+        },
+        {
+          "hex": "#333333",
+          "role": "text",
+          "source": "logo"
+        }
+      ],
+      "essence": {
+        "promise": {
+          "value": "Join us for specialty Vietnamese coffee, breakfast, and authentic local cuisine in our leafy garden restaurants across Hoi An.",
+          "source": "https://phincoffeehoian.com/"
+        },
+        "feeling": [
+          "relaxed",
+          "welcomed",
+          "refreshed",
+          "connected"
+        ],
+        "placeSymbols": [
+          "Ancient Town lanterns",
+          "An Bang beach",
+          "traditional phin filters",
+          "yellow walls",
+          "lush green gardens"
+        ],
+        "senses": [
+          "aroma of freshly roasted coffee beans",
+          "warm tropical sunlight",
+          "sound of gentle chatter under lanterns",
+          "leafy garden textures",
+          "cool coastal"
+        ]
+      }
+    },
+    {
+      "name": {
+        "value": "Phin Coffee Hoi An",
+        "source": "https://phincoffeehoian.com/"
+      },
+      "summary": {
+        "value": "Award-winning specialty coffee, authentic Vietnamese coffee classes, garden restaurants and local experiences in the heart of Hoi An.",
+        "source": "https://phincoffeehoian.com/"
+      },
+      "category": "coffee shop",
+      "offerings": [
+        {
+          "name": "Granola Bowl",
+          "price": "120,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Smoothie Bowl",
+          "price": "120,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Fruit Bowl",
+          "price": "120,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Phin’s Plate",
+          "price": "160,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Avocado and Egg of Your Choice",
+          "price": "130,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Ham Cheese Egg Sandwich",
+          "price": "150,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Baker Choice",
+          "price": "95,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Avocado on Toast",
+          "price": "100,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Peanut Butter, Banana, and Toast",
+          "price": "100,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Vegan Plate",
+          "price": "135,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "French Toast",
+          "price": "140,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        }
+      ],
+      "highlights": [
+        {
+          "value": "Since 2017, Phin Coffee Hoi An has grown from a small hidden café in the Ancient Town into one of Hoi An’s most loved coffee and restaurant destinations.",
+          "source": "https://phincoffeehoian.com/"
+        },
+        {
+          "value": "We roast our own coffee and welcome guests across our cafés and restaurants in Hoi An",
+          "source": "https://phincoffeehoian.com/"
+        }
+      ],
+      "location": {
+        "town": {
+          "value": "Hoi An",
+          "source": "https://phincoffeehoian.com/"
+        },
+        "area": {
+          "value": "An Bang",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        "address": {
+          "value": "End of Alley, 128 Nguyễn Phan Vinh, An Bang, Hoi An",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        "serviceArea": null
+      },
+      "contact": {
+        "whatsapp": {
+          "value": "84919882783",
+          "source": "https://phincoffeehoian.com/"
+        },
+        "phone": null,
+        "email": {
+          "value": "phincoffeehoian@gmail.com",
+          "source": "https://phincoffeehoian.com/"
+        },
+        "instagram": null,
+        "bookingUrl": null
+      },
+      "hours": {
+        "value": "8:00 AM – 9:00 PM daily",
+        "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+      },
+      "tone": [
+        "warm",
+        "welcoming",
+        "authentic",
+        "relaxed"
+      ],
+      "colours": [
+        {
+          "hex": "#000000",
+          "role": "primary",
+          "source": "logo"
+        },
+        {
+          "hex": "#ffffff",
+          "role": "background",
+          "source": "logo"
+        },
+        {
+          "hex": "#f5a623",
+          "role": "accent",
+          "source": "photos"
+        },
+        {
+          "hex": "#333333",
+          "role": "text",
+          "source": "logo"
+        }
+      ],
+      "essence": {
+        "promise": {
+          "value": "Join us for specialty Vietnamese coffee, breakfast, and authentic local cuisine in our leafy garden restaurants across Hoi An.",
+          "source": "https://phincoffeehoian.com/"
+        },
+        "feeling": [
+          "relaxed",
+          "welcomed",
+          "refreshed",
+          "connected"
+        ],
+        "placeSymbols": [
+          "Ancient Town lanterns",
+          "An Bang beach",
+          "traditional phin filters",
+          "yellow walls",
+          "lush green gardens"
+        ],
+        "senses": [
+          "aroma of freshly roasted coffee beans",
+          "warm tropical sunlight",
+          "sound of gentle chatter under lanterns",
+          "leafy garden textures",
+          "cool coastal breeze"
+        ],
+        "moments": [
+          {
+            "value": "after a walk along"
+          }
+        ]
+      }
+    },
+    {
+      "name": {
+        "value": "Phin Coffee Hoi An",
+        "source": "https://phincoffeehoian.com/"
+      },
+      "summary": {
+        "value": "Award-winning specialty coffee, authentic Vietnamese coffee classes, garden restaurants and local experiences in the heart of Hoi An.",
+        "source": "https://phincoffeehoian.com/"
+      },
+      "category": "coffee shop",
+      "offerings": [
+        {
+          "name": "Granola Bowl",
+          "price": "120,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Smoothie Bowl",
+          "price": "120,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Fruit Bowl",
+          "price": "120,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Phin’s Plate",
+          "price": "160,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Avocado and Egg of Your Choice",
+          "price": "130,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Ham Cheese Egg Sandwich",
+          "price": "150,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Baker Choice",
+          "price": "95,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Avocado on Toast",
+          "price": "100,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Peanut Butter, Banana, and Toast",
+          "price": "100,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Vegan Plate",
+          "price": "135,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "French Toast",
+          "price": "140,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        }
+      ],
+      "highlights": [
+        {
+          "value": "Since 2017, Phin Coffee Hoi An has grown from a small hidden café in the Ancient Town into one of Hoi An’s most loved coffee and restaurant destinations.",
+          "source": "https://phincoffeehoian.com/"
+        },
+        {
+          "value": "We roast our own coffee and welcome guests across our cafés and restaurants in Hoi An",
+          "source": "https://phincoffeehoian.com/"
+        }
+      ],
+      "location": {
+        "town": {
+          "value": "Hoi An",
+          "source": "https://phincoffeehoian.com/"
+        },
+        "area": {
+          "value": "An Bang",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        "address": {
+          "value": "End of Alley, 128 Nguyễn Phan Vinh, An Bang, Hoi An",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        "serviceArea": null
+      },
+      "contact": {
+        "whatsapp": {
+          "value": "84919882783",
+          "source": "https://phincoffeehoian.com/"
+        },
+        "phone": null,
+        "email": {
+          "value": "phincoffeehoian@gmail.com",
+          "source": "https://phincoffeehoian.com/"
+        },
+        "instagram": null,
+        "bookingUrl": null
+      },
+      "hours": {
+        "value": "8:00 AM – 9:00 PM daily",
+        "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+      },
+      "tone": [
+        "warm",
+        "welcoming",
+        "authentic",
+        "relaxed"
+      ],
+      "colours": [
+        {
+          "hex": "#000000",
+          "role": "primary",
+          "source": "logo"
+        },
+        {
+          "hex": "#ffffff",
+          "role": "background",
+          "source": "logo"
+        },
+        {
+          "hex": "#f5a623",
+          "role": "accent",
+          "source": "photos"
+        },
+        {
+          "hex": "#333333",
+          "role": "text",
+          "source": "logo"
+        }
+      ],
+      "essence": {
+        "promise": {
+          "value": "Join us for specialty Vietnamese coffee, breakfast, and authentic local cuisine in our leafy garden restaurants across Hoi An.",
+          "source": "https://phincoffeehoian.com/"
+        },
+        "feeling": [
+          "relaxed",
+          "welcomed",
+          "refreshed",
+          "connected"
+        ],
+        "placeSymbols": [
+          "Ancient Town lanterns",
+          "An Bang beach",
+          "traditional phin filters",
+          "yellow walls",
+          "lush green gardens"
+        ],
+        "senses": [
+          "aroma of freshly roasted coffee beans",
+          "warm tropical sunlight",
+          "sound of gentle chatter under lanterns",
+          "leafy garden textures",
+          "cool coastal breeze"
+        ],
+        "moments": [
+          {
+            "value": "after a walk along An Bang Beach",
+            "source": "https://phincoffeehoian.com/location/phin-lounge-an"
+          }
+        ]
+      }
+    },
+    {
+      "name": {
+        "value": "Phin Coffee Hoi An",
+        "source": "https://phincoffeehoian.com/"
+      },
+      "summary": {
+        "value": "Award-winning specialty coffee, authentic Vietnamese coffee classes, garden restaurants and local experiences in the heart of Hoi An.",
+        "source": "https://phincoffeehoian.com/"
+      },
+      "category": "coffee shop",
+      "offerings": [
+        {
+          "name": "Granola Bowl",
+          "price": "120,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Smoothie Bowl",
+          "price": "120,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Fruit Bowl",
+          "price": "120,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Phin’s Plate",
+          "price": "160,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Avocado and Egg of Your Choice",
+          "price": "130,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Ham Cheese Egg Sandwich",
+          "price": "150,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Baker Choice",
+          "price": "95,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Avocado on Toast",
+          "price": "100,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Peanut Butter, Banana, and Toast",
+          "price": "100,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Vegan Plate",
+          "price": "135,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "French Toast",
+          "price": "140,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        }
+      ],
+      "highlights": [
+        {
+          "value": "Since 2017, Phin Coffee Hoi An has grown from a small hidden café in the Ancient Town into one of Hoi An’s most loved coffee and restaurant destinations.",
+          "source": "https://phincoffeehoian.com/"
+        },
+        {
+          "value": "We roast our own coffee and welcome guests across our cafés and restaurants in Hoi An",
+          "source": "https://phincoffeehoian.com/"
+        }
+      ],
+      "location": {
+        "town": {
+          "value": "Hoi An",
+          "source": "https://phincoffeehoian.com/"
+        },
+        "area": {
+          "value": "An Bang",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        "address": {
+          "value": "End of Alley, 128 Nguyễn Phan Vinh, An Bang, Hoi An",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        "serviceArea": null
+      },
+      "contact": {
+        "whatsapp": {
+          "value": "84919882783",
+          "source": "https://phincoffeehoian.com/"
+        },
+        "phone": null,
+        "email": {
+          "value": "phincoffeehoian@gmail.com",
+          "source": "https://phincoffeehoian.com/"
+        },
+        "instagram": null,
+        "bookingUrl": null
+      },
+      "hours": {
+        "value": "8:00 AM – 9:00 PM daily",
+        "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+      },
+      "tone": [
+        "warm",
+        "welcoming",
+        "authentic",
+        "relaxed"
+      ],
+      "colours": [
+        {
+          "hex": "#000000",
+          "role": "primary",
+          "source": "logo"
+        },
+        {
+          "hex": "#ffffff",
+          "role": "background",
+          "source": "logo"
+        },
+        {
+          "hex": "#f5a623",
+          "role": "accent",
+          "source": "photos"
+        },
+        {
+          "hex": "#333333",
+          "role": "text",
+          "source": "logo"
+        }
+      ],
+      "essence": {
+        "promise": {
+          "value": "Join us for specialty Vietnamese coffee, breakfast, and authentic local cuisine in our leafy garden restaurants across Hoi An.",
+          "source": "https://phincoffeehoian.com/"
+        },
+        "feeling": [
+          "relaxed",
+          "welcomed",
+          "refreshed",
+          "connected"
+        ],
+        "placeSymbols": [
+          "Ancient Town lanterns",
+          "An Bang beach",
+          "traditional phin filters",
+          "yellow walls",
+          "lush green gardens"
+        ],
+        "senses": [
+          "aroma of freshly roasted coffee beans",
+          "warm tropical sunlight",
+          "sound of gentle chatter under lanterns",
+          "leafy garden textures",
+          "cool coastal breeze"
+        ],
+        "moments": [
+          {
+            "value": "after a walk along An Bang Beach",
+            "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+          },
+          {
+            "value": "starting your morning with us"
+          }
+        ]
+      }
+    },
+    {
+      "name": {
+        "value": "Phin Coffee Hoi An",
+        "source": "https://phincoffeehoian.com/"
+      },
+      "summary": {
+        "value": "Award-winning specialty coffee, authentic Vietnamese coffee classes, garden restaurants and local experiences in the heart of Hoi An.",
+        "source": "https://phincoffeehoian.com/"
+      },
+      "category": "coffee shop",
+      "offerings": [
+        {
+          "name": "Granola Bowl",
+          "price": "120,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Smoothie Bowl",
+          "price": "120,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Fruit Bowl",
+          "price": "120,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Phin’s Plate",
+          "price": "160,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Avocado and Egg of Your Choice",
+          "price": "130,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Ham Cheese Egg Sandwich",
+          "price": "150,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Baker Choice",
+          "price": "95,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Avocado on Toast",
+          "price": "100,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Peanut Butter, Banana, and Toast",
+          "price": "100,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Vegan Plate",
+          "price": "135,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "French Toast",
+          "price": "140,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        }
+      ],
+      "highlights": [
+        {
+          "value": "Since 2017, Phin Coffee Hoi An has grown from a small hidden café in the Ancient Town into one of Hoi An’s most loved coffee and restaurant destinations.",
+          "source": "https://phincoffeehoian.com/"
+        },
+        {
+          "value": "We roast our own coffee and welcome guests across our cafés and restaurants in Hoi An",
+          "source": "https://phincoffeehoian.com/"
+        }
+      ],
+      "location": {
+        "town": {
+          "value": "Hoi An",
+          "source": "https://phincoffeehoian.com/"
+        },
+        "area": {
+          "value": "An Bang",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        "address": {
+          "value": "End of Alley, 128 Nguyễn Phan Vinh, An Bang, Hoi An",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        "serviceArea": null
+      },
+      "contact": {
+        "whatsapp": {
+          "value": "84919882783",
+          "source": "https://phincoffeehoian.com/"
+        },
+        "phone": null,
+        "email": {
+          "value": "phincoffeehoian@gmail.com",
+          "source": "https://phincoffeehoian.com/"
+        },
+        "instagram": null,
+        "bookingUrl": null
+      },
+      "hours": {
+        "value": "8:00 AM – 9:00 PM daily",
+        "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+      },
+      "tone": [
+        "warm",
+        "welcoming",
+        "authentic",
+        "relaxed"
+      ],
+      "colours": [
+        {
+          "hex": "#000000",
+          "role": "primary",
+          "source": "logo"
+        },
+        {
+          "hex": "#ffffff",
+          "role": "background",
+          "source": "logo"
+        },
+        {
+          "hex": "#f5a623",
+          "role": "accent",
+          "source": "photos"
+        },
+        {
+          "hex": "#333333",
+          "role": "text",
+          "source": "logo"
+        }
+      ],
+      "essence": {
+        "promise": {
+          "value": "Join us for specialty Vietnamese coffee, breakfast, and authentic local cuisine in our leafy garden restaurants across Hoi An.",
+          "source": "https://phincoffeehoian.com/"
+        },
+        "feeling": [
+          "relaxed",
+          "welcomed",
+          "refreshed",
+          "connected"
+        ],
+        "placeSymbols": [
+          "Ancient Town lanterns",
+          "An Bang beach",
+          "traditional phin filters",
+          "yellow walls",
+          "lush green gardens"
+        ],
+        "senses": [
+          "aroma of freshly roasted coffee beans",
+          "warm tropical sunlight",
+          "sound of gentle chatter under lanterns",
+          "leafy garden textures",
+          "cool coastal breeze"
+        ],
+        "moments": [
+          {
+            "value": "after a walk along An Bang Beach",
+            "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+          },
+          {
+            "value": "starting your morning with us",
+            "source": "https://phincoffeehoian.com/"
+          }
+        ]
+      }
+    },
+    {
+      "name": {
+        "value": "Phin Coffee Hoi An",
+        "source": "https://phincoffeehoian.com/"
+      },
+      "summary": {
+        "value": "Award-winning specialty coffee, authentic Vietnamese coffee classes, garden restaurants and local experiences in the heart of Hoi An.",
+        "source": "https://phincoffeehoian.com/"
+      },
+      "category": "coffee shop",
+      "offerings": [
+        {
+          "name": "Granola Bowl",
+          "price": "120,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Smoothie Bowl",
+          "price": "120,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Fruit Bowl",
+          "price": "120,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Phin’s Plate",
+          "price": "160,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Avocado and Egg of Your Choice",
+          "price": "130,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Ham Cheese Egg Sandwich",
+          "price": "150,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Baker Choice",
+          "price": "95,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Avocado on Toast",
+          "price": "100,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Peanut Butter, Banana, and Toast",
+          "price": "100,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Vegan Plate",
+          "price": "135,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "French Toast",
+          "price": "140,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        }
+      ],
+      "highlights": [
+        {
+          "value": "Since 2017, Phin Coffee Hoi An has grown from a small hidden café in the Ancient Town into one of Hoi An’s most loved coffee and restaurant destinations.",
+          "source": "https://phincoffeehoian.com/"
+        },
+        {
+          "value": "We roast our own coffee and welcome guests across our cafés and restaurants in Hoi An",
+          "source": "https://phincoffeehoian.com/"
+        }
+      ],
+      "location": {
+        "town": {
+          "value": "Hoi An",
+          "source": "https://phincoffeehoian.com/"
+        },
+        "area": {
+          "value": "An Bang",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        "address": {
+          "value": "End of Alley, 128 Nguyễn Phan Vinh, An Bang, Hoi An",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        "serviceArea": null
+      },
+      "contact": {
+        "whatsapp": {
+          "value": "84919882783",
+          "source": "https://phincoffeehoian.com/"
+        },
+        "phone": null,
+        "email": {
+          "value": "phincoffeehoian@gmail.com",
+          "source": "https://phincoffeehoian.com/"
+        },
+        "instagram": null,
+        "bookingUrl": null
+      },
+      "hours": {
+        "value": "8:00 AM – 9:00 PM daily",
+        "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+      },
+      "tone": [
+        "warm",
+        "welcoming",
+        "authentic",
+        "relaxed"
+      ],
+      "colours": [
+        {
+          "hex": "#000000",
+          "role": "primary",
+          "source": "logo"
+        },
+        {
+          "hex": "#ffffff",
+          "role": "background",
+          "source": "logo"
+        },
+        {
+          "hex": "#f5a623",
+          "role": "accent",
+          "source": "photos"
+        },
+        {
+          "hex": "#333333",
+          "role": "text",
+          "source": "logo"
+        }
+      ],
+      "essence": {
+        "promise": {
+          "value": "Join us for specialty Vietnamese coffee, breakfast, and authentic local cuisine in our leafy garden restaurants across Hoi An.",
+          "source": "https://phincoffeehoian.com/"
+        },
+        "feeling": [
+          "relaxed",
+          "welcomed",
+          "refreshed",
+          "connected"
+        ],
+        "placeSymbols": [
+          "Ancient Town lanterns",
+          "An Bang beach",
+          "traditional phin filters",
+          "yellow walls",
+          "lush green gardens"
+        ],
+        "senses": [
+          "aroma of freshly roasted coffee beans",
+          "warm tropical sunlight",
+          "sound of gentle chatter under lanterns",
+          "leafy garden textures",
+          "cool coastal breeze"
+        ],
+        "moments": [
+          {
+            "value": "after a walk along An Bang Beach",
+            "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+          },
+          {
+            "value": "starting your morning with us",
+            "source": "https://phincoffeehoian.com/"
+          }
+        ]
+      },
+      "visualStyle": {
+        "summary": "Warm tropical garden, soft daylight, vibrant yellow walls, rich natural wood textures."
+      }
+    },
+    {
+      "name": {
+        "value": "Phin Coffee Hoi An",
+        "source": "https://phincoffeehoian.com/"
+      },
+      "summary": {
+        "value": "Award-winning specialty coffee, authentic Vietnamese coffee classes, garden restaurants and local experiences in the heart of Hoi An.",
+        "source": "https://phincoffeehoian.com/"
+      },
+      "category": "coffee shop",
+      "offerings": [
+        {
+          "name": "Granola Bowl",
+          "price": "120,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Smoothie Bowl",
+          "price": "120,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Fruit Bowl",
+          "price": "120,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Phin’s Plate",
+          "price": "160,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Avocado and Egg of Your Choice",
+          "price": "130,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Ham Cheese Egg Sandwich",
+          "price": "150,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Baker Choice",
+          "price": "95,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Avocado on Toast",
+          "price": "100,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Peanut Butter, Banana, and Toast",
+          "price": "100,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Vegan Plate",
+          "price": "135,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "French Toast",
+          "price": "140,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        }
+      ],
+      "highlights": [
+        {
+          "value": "Since 2017, Phin Coffee Hoi An has grown from a small hidden café in the Ancient Town into one of Hoi An’s most loved coffee and restaurant destinations.",
+          "source": "https://phincoffeehoian.com/"
+        },
+        {
+          "value": "We roast our own coffee and welcome guests across our cafés and restaurants in Hoi An",
+          "source": "https://phincoffeehoian.com/"
+        }
+      ],
+      "location": {
+        "town": {
+          "value": "Hoi An",
+          "source": "https://phincoffeehoian.com/"
+        },
+        "area": {
+          "value": "An Bang",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        "address": {
+          "value": "End of Alley, 128 Nguyễn Phan Vinh, An Bang, Hoi An",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        "serviceArea": null
+      },
+      "contact": {
+        "whatsapp": {
+          "value": "84919882783",
+          "source": "https://phincoffeehoian.com/"
+        },
+        "phone": null,
+        "email": {
+          "value": "phincoffeehoian@gmail.com",
+          "source": "https://phincoffeehoian.com/"
+        },
+        "instagram": null,
+        "bookingUrl": null
+      },
+      "hours": {
+        "value": "8:00 AM – 9:00 PM daily",
+        "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+      },
+      "tone": [
+        "warm",
+        "welcoming",
+        "authentic",
+        "relaxed"
+      ],
+      "colours": [
+        {
+          "hex": "#000000",
+          "role": "primary",
+          "source": "logo"
+        },
+        {
+          "hex": "#ffffff",
+          "role": "background",
+          "source": "logo"
+        },
+        {
+          "hex": "#f5a623",
+          "role": "accent",
+          "source": "photos"
+        },
+        {
+          "hex": "#333333",
+          "role": "text",
+          "source": "logo"
+        }
+      ],
+      "essence": {
+        "promise": {
+          "value": "Join us for specialty Vietnamese coffee, breakfast, and authentic local cuisine in our leafy garden restaurants across Hoi An.",
+          "source": "https://phincoffeehoian.com/"
+        },
+        "feeling": [
+          "relaxed",
+          "welcomed",
+          "refreshed",
+          "connected"
+        ],
+        "placeSymbols": [
+          "Ancient Town lanterns",
+          "An Bang beach",
+          "traditional phin filters",
+          "yellow walls",
+          "lush green gardens"
+        ],
+        "senses": [
+          "aroma of freshly roasted coffee beans",
+          "warm tropical sunlight",
+          "sound of gentle chatter under lanterns",
+          "leafy garden textures",
+          "cool coastal breeze"
+        ],
+        "moments": [
+          {
+            "value": "after a walk along An Bang Beach",
+            "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+          },
+          {
+            "value": "starting your morning with us",
+            "source": "https://phincoffeehoian.com/"
+          }
+        ]
+      },
+      "visualStyle": {
+        "summary": "Warm tropical garden, soft daylight, vibrant yellow walls, rich natural wood textures.",
+        "palette": "Yellow, warm wood brown, black, white, leafy green",
+        "light": "Soft natural daylight filtered through foliage"
+      }
+    },
+    {
+      "name": {
+        "value": "Phin Coffee Hoi An",
+        "source": "https://phincoffeehoian.com/"
+      },
+      "summary": {
+        "value": "Award-winning specialty coffee, authentic Vietnamese coffee classes, garden restaurants and local experiences in the heart of Hoi An.",
+        "source": "https://phincoffeehoian.com/"
+      },
+      "category": "coffee shop",
+      "offerings": [
+        {
+          "name": "Granola Bowl",
+          "price": "120,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Smoothie Bowl",
+          "price": "120,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Fruit Bowl",
+          "price": "120,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Phin’s Plate",
+          "price": "160,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Avocado and Egg of Your Choice",
+          "price": "130,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Ham Cheese Egg Sandwich",
+          "price": "150,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Baker Choice",
+          "price": "95,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Avocado on Toast",
+          "price": "100,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Peanut Butter, Banana, and Toast",
+          "price": "100,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Vegan Plate",
+          "price": "135,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "French Toast",
+          "price": "140,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        }
+      ],
+      "highlights": [
+        {
+          "value": "Since 2017, Phin Coffee Hoi An has grown from a small hidden café in the Ancient Town into one of Hoi An’s most loved coffee and restaurant destinations.",
+          "source": "https://phincoffeehoian.com/"
+        },
+        {
+          "value": "We roast our own coffee and welcome guests across our cafés and restaurants in Hoi An",
+          "source": "https://phincoffeehoian.com/"
+        }
+      ],
+      "location": {
+        "town": {
+          "value": "Hoi An",
+          "source": "https://phincoffeehoian.com/"
+        },
+        "area": {
+          "value": "An Bang",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        "address": {
+          "value": "End of Alley, 128 Nguyễn Phan Vinh, An Bang, Hoi An",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        "serviceArea": null
+      },
+      "contact": {
+        "whatsapp": {
+          "value": "84919882783",
+          "source": "https://phincoffeehoian.com/"
+        },
+        "phone": null,
+        "email": {
+          "value": "phincoffeehoian@gmail.com",
+          "source": "https://phincoffeehoian.com/"
+        },
+        "instagram": null,
+        "bookingUrl": null
+      },
+      "hours": {
+        "value": "8:00 AM – 9:00 PM daily",
+        "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+      },
+      "tone": [
+        "warm",
+        "welcoming",
+        "authentic",
+        "relaxed"
+      ],
+      "colours": [
+        {
+          "hex": "#000000",
+          "role": "primary",
+          "source": "logo"
+        },
+        {
+          "hex": "#ffffff",
+          "role": "background",
+          "source": "logo"
+        },
+        {
+          "hex": "#f5a623",
+          "role": "accent",
+          "source": "photos"
+        },
+        {
+          "hex": "#333333",
+          "role": "text",
+          "source": "logo"
+        }
+      ],
+      "essence": {
+        "promise": {
+          "value": "Join us for specialty Vietnamese coffee, breakfast, and authentic local cuisine in our leafy garden restaurants across Hoi An.",
+          "source": "https://phincoffeehoian.com/"
+        },
+        "feeling": [
+          "relaxed",
+          "welcomed",
+          "refreshed",
+          "connected"
+        ],
+        "placeSymbols": [
+          "Ancient Town lanterns",
+          "An Bang beach",
+          "traditional phin filters",
+          "yellow walls",
+          "lush green gardens"
+        ],
+        "senses": [
+          "aroma of freshly roasted coffee beans",
+          "warm tropical sunlight",
+          "sound of gentle chatter under lanterns",
+          "leafy garden textures",
+          "cool coastal breeze"
+        ],
+        "moments": [
+          {
+            "value": "after a walk along An Bang Beach",
+            "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+          },
+          {
+            "value": "starting your morning with us",
+            "source": "https://phincoffeehoian.com/"
+          }
+        ]
+      },
+      "visualStyle": {
+        "summary": "Warm tropical garden, soft daylight, vibrant yellow walls, rich natural wood textures.",
+        "palette": "Yellow, warm wood brown, black, white, leafy green",
+        "light": "Soft natural daylight filtered through foliage and hanging lanterns",
+        "textures": "Stucco yellow walls, polished wood tables, woven lanterns, lush tropical"
+      }
+    },
+    {
+      "name": {
+        "value": "Phin Coffee Hoi An",
+        "source": "https://phincoffeehoian.com/"
+      },
+      "summary": {
+        "value": "Award-winning specialty coffee, authentic Vietnamese coffee classes, garden restaurants and local experiences in the heart of Hoi An.",
+        "source": "https://phincoffeehoian.com/"
+      },
+      "category": "coffee shop",
+      "offerings": [
+        {
+          "name": "Granola Bowl",
+          "price": "120,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Smoothie Bowl",
+          "price": "120,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Fruit Bowl",
+          "price": "120,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Phin’s Plate",
+          "price": "160,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Avocado and Egg of Your Choice",
+          "price": "130,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Ham Cheese Egg Sandwich",
+          "price": "150,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Baker Choice",
+          "price": "95,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Avocado on Toast",
+          "price": "100,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Peanut Butter, Banana, and Toast",
+          "price": "100,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "Vegan Plate",
+          "price": "135,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "name": "French Toast",
+          "price": "140,000",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        }
+      ],
+      "highlights": [
+        {
+          "value": "Since 2017, Phin Coffee Hoi An has grown from a small hidden café in the Ancient Town into one of Hoi An’s most loved coffee and restaurant destinations.",
+          "source": "https://phincoffeehoian.com/"
+        },
+        {
+          "value": "We roast our own coffee and welcome guests across our cafés and restaurants in Hoi An",
+          "source": "https://phincoffeehoian.com/"
+        }
+      ],
+      "location": {
+        "town": {
+          "value": "Hoi An",
+          "source": "https://phincoffeehoian.com/"
+        },
+        "area": {
+          "value": "An Bang",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        "address": {
+          "value": "End of Alley, 128 Nguyễn Phan Vinh, An Bang, Hoi An",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        "serviceArea": null
+      },
+      "contact": {
+        "whatsapp": {
+          "value": "84919882783",
+          "source": "https://phincoffeehoian.com/"
+        },
+        "phone": null,
+        "email": {
+          "value": "phincoffeehoian@gmail.com",
+          "source": "https://phincoffeehoian.com/"
+        },
+        "instagram": null,
+        "bookingUrl": null
+      },
+      "hours": {
+        "value": "8:00 AM – 9:00 PM daily",
+        "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+      },
+      "tone": [
+        "warm",
+        "welcoming",
+        "authentic",
+        "relaxed"
+      ],
+      "colours": [
+        {
+          "hex": "#000000",
+          "role": "primary",
+          "source": "logo"
+        },
+        {
+          "hex": "#ffffff",
+          "role": "background",
+          "source": "logo"
+        },
+        {
+          "hex": "#f5a623",
+          "role": "accent",
+          "source": "photos"
+        },
+        {
+          "hex": "#333333",
+          "role": "text",
+          "source": "logo"
+        }
+      ],
+      "essence": {
+        "promise": {
+          "value": "Join us for specialty Vietnamese coffee, breakfast, and authentic local cuisine in our leafy garden restaurants across Hoi An.",
+          "source": "https://phincoffeehoian.com/"
+        },
+        "feeling": [
+          "relaxed",
+          "welcomed",
+          "refreshed",
+          "connected"
+        ],
+        "placeSymbols": [
+          "Ancient Town lanterns",
+          "An Bang beach",
+          "traditional phin filters",
+          "yellow walls",
+          "lush green gardens"
+        ],
+        "senses": [
+          "aroma of freshly roasted coffee beans",
+          "warm tropical sunlight",
+          "sound of gentle chatter under lanterns",
+          "leafy garden textures",
+          "cool coastal breeze"
+        ],
+        "moments": [
+          {
+            "value": "after a walk along An Bang Beach",
+            "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+          },
+          {
+            "value": "starting your morning with us",
+            "source": "https://phincoffeehoian.com/"
+          }
+        ]
+      },
+      "visualStyle": {
+        "summary": "Warm tropical garden, soft daylight, vibrant yellow walls, rich natural wood textures.",
+        "palette": "Yellow, warm wood brown, black, white, leafy green",
+        "light": "Soft natural daylight filtered through foliage and hanging lanterns",
+        "textures": "Stucco yellow walls, polished wood tables, woven lanterns, lush tropical plants",
+        "mood": "Relaxed, welcoming, peaceful, authentic"
+      }
+    }
+  ],
+  "final": {
+    "name": {
+      "value": "Phin Coffee Hoi An",
+      "source": "https://phincoffeehoian.com/"
+    },
+    "summary": {
+      "value": "Award-winning specialty coffee, authentic Vietnamese coffee classes, garden restaurants and local experiences in the heart of Hoi An.",
+      "source": "https://phincoffeehoian.com/"
+    },
+    "category": "coffee shop",
+    "offerings": [
+      {
+        "name": "Granola Bowl",
+        "price": "120,000",
+        "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+      },
+      {
+        "name": "Smoothie Bowl",
+        "price": "120,000",
+        "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+      },
+      {
+        "name": "Fruit Bowl",
+        "price": "120,000",
+        "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+      },
+      {
+        "name": "Phin’s Plate",
+        "price": "160,000",
+        "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+      },
+      {
+        "name": "Avocado and Egg of Your Choice",
+        "price": "130,000",
+        "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+      },
+      {
+        "name": "Ham Cheese Egg Sandwich",
+        "price": "150,000",
+        "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+      },
+      {
+        "name": "Baker Choice",
+        "price": "95,000",
+        "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+      },
+      {
+        "name": "Avocado on Toast",
+        "price": "100,000",
+        "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+      },
+      {
+        "name": "Peanut Butter, Banana, and Toast",
+        "price": "100,000",
+        "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+      },
+      {
+        "name": "Vegan Plate",
+        "price": "135,000",
+        "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+      },
+      {
+        "name": "French Toast",
+        "price": "140,000",
+        "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+      }
+    ],
+    "highlights": [
+      {
+        "value": "Since 2017, Phin Coffee Hoi An has grown from a small hidden café in the Ancient Town into one of Hoi An’s most loved coffee and restaurant destinations.",
+        "source": "https://phincoffeehoian.com/"
+      },
+      {
+        "value": "We roast our own coffee and welcome guests across our cafés and restaurants in Hoi An",
+        "source": "https://phincoffeehoian.com/"
+      }
+    ],
+    "location": {
+      "town": {
+        "value": "Hoi An",
+        "source": "https://phincoffeehoian.com/"
+      },
+      "area": {
+        "value": "An Bang",
+        "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+      },
+      "address": {
+        "value": "End of Alley, 128 Nguyễn Phan Vinh, An Bang, Hoi An",
+        "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+      },
+      "serviceArea": null
+    },
+    "contact": {
+      "whatsapp": {
+        "value": "84919882783",
+        "source": "https://phincoffeehoian.com/"
+      },
+      "phone": null,
+      "email": {
+        "value": "phincoffeehoian@gmail.com",
+        "source": "https://phincoffeehoian.com/"
+      },
+      "instagram": null,
+      "bookingUrl": null
+    },
+    "hours": {
+      "value": "8:00 AM – 9:00 PM daily",
+      "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+    },
+    "tone": [
+      "warm",
+      "welcoming",
+      "authentic",
+      "relaxed"
+    ],
+    "colours": [
+      {
+        "hex": "#000000",
+        "role": "primary",
+        "source": "logo"
+      },
+      {
+        "hex": "#ffffff",
+        "role": "background",
+        "source": "logo"
+      },
+      {
+        "hex": "#f5a623",
+        "role": "accent",
+        "source": "photos"
+      },
+      {
+        "hex": "#333333",
+        "role": "text",
+        "source": "logo"
+      }
+    ],
+    "essence": {
+      "promise": {
+        "value": "Join us for specialty Vietnamese coffee, breakfast, and authentic local cuisine in our leafy garden restaurants across Hoi An.",
+        "source": "https://phincoffeehoian.com/"
+      },
+      "feeling": [
+        "relaxed",
+        "welcomed",
+        "refreshed",
+        "connected"
+      ],
+      "placeSymbols": [
+        "Ancient Town lanterns",
+        "An Bang beach",
+        "traditional phin filters",
+        "yellow walls",
+        "lush green gardens"
+      ],
+      "senses": [
+        "aroma of freshly roasted coffee beans",
+        "warm tropical sunlight",
+        "sound of gentle chatter under lanterns",
+        "leafy garden textures",
+        "cool coastal breeze"
+      ],
+      "moments": [
+        {
+          "value": "after a walk along An Bang Beach",
+          "source": "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+        },
+        {
+          "value": "starting your morning with us",
+          "source": "https://phincoffeehoian.com/"
+        }
+      ]
+    },
+    "visualStyle": {
+      "summary": "Warm tropical garden, soft daylight, vibrant yellow walls, rich natural wood textures.",
+      "palette": "Yellow, warm wood brown, black, white, leafy green",
+      "light": "Soft natural daylight filtered through foliage and hanging lanterns",
+      "textures": "Stucco yellow walls, polished wood tables, woven lanterns, lush tropical plants",
+      "mood": "Relaxed, welcoming, peaceful, authentic"
+    }
+  }
+}

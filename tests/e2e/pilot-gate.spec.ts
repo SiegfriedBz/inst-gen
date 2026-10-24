@@ -67,6 +67,22 @@ test('api health', async ({ page, request }) => {
   expect(await signedIn.json()).toEqual({ ok: true });
 });
 
+test('brand read without a session is 401', async ({ request }) => {
+  const response = await request.post('/api/brand/read', { data: { url: 'https://example.com' } });
+  expect(response.status()).toBe(401);
+  expect(await response.json()).toEqual({ error: 'unauthorized' });
+});
+
+test('brand read with a session refuses a private address', async ({ page }) => {
+  await signIn(page, SEN);
+  await expect(page).toHaveURL('/');
+  const response = await page.request.post('/api/brand/read', {
+    data: { url: 'http://127.0.0.1/' },
+  });
+  expect(response.status()).toBe(400);
+  expect(await response.json()).toEqual({ error: 'blocked_address' });
+});
+
 test('not indexed', async ({ request }) => {
   expect(await (await request.get('/robots.txt')).text()).toContain('Disallow: /');
   const enter = await request.get('/enter');
