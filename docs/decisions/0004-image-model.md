@@ -132,7 +132,9 @@ Criteria for a postable image:
 3. **No text** in the image, including labels on bottles; text goes in the
    caption or an overlay.
 4. **Right size:** 9:16, at least 1080 px wide, sharp on a phone.
-5. **Tasteful:** relaxing and professional, never suggestive.
+5. **Tasteful and calm:** relaxing and professional, never suggestive. The
+   light is low, soft and warm, never bright or harsh: the mood invites
+   introspection.
 6. **Varied:** across one brand's images, people at rest, treatments, details
    and places, not one scene repeated.
 7. **Tourists and expats would book it:** a holiday treat or a well-earned
