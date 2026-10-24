@@ -3,7 +3,13 @@ pre-commit:
     # Copy .agents/skills to .claude/skills from what is staged.
     sync-skills:
       run: node scripts/sync-skills.mjs
-    # Format, lint and typecheck of staged files come with the app (Part 2).
+    # Format and lint staged files, writing Biome's fixes and restaging them.
+    biome:
+      glob: "*.{js,mjs,ts,tsx,json,jsonc,css}"
+      run: pnpm exec biome check --write --no-errors-on-unmatched {staged_files}
+      stage_fixed: true
+    typecheck:
+      run: pnpm typecheck
 
 commit-msg:
   commands:

@@ -11,3 +11,15 @@ CLAUDE.local.md
 
 # Dependencies
 node_modules/
+
+# Next.js, Vercel and test output
+.next/
+next-env.d.ts
+.vercel/
+playwright-report/
+test-results/
+*.tsbuildinfo
+
+# Local environment: only the example is committed
+.env*
+!.env.example
