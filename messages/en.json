@@ -11,10 +11,7 @@
   },
   "home": {
     "welcome": "Welcome, {name}",
-    "soon": "Soon you'll paste your website link here and get six posts, each with a story.",
     "websiteLabel": "Your website",
-    "websiteExample": "yourspa.com",
-    "comingSoon": "Coming soon",
     "signedIn": "Signed in on this phone for 30 days."
   },
   "language": {
@@ -136,6 +133,45 @@
         "removePhoto": "Remove photo",
         "noLogo": "No logo"
       }
+    },
+    "home": {
+      "read": "Read my website",
+      "readHint": "We read a few pages and your photos. It takes about 20 seconds.",
+      "placeholder": "yourspa.com",
+      "reading": "Reading your website…",
+      "keepOpen": "Keep this page open for about 20 seconds.",
+      "stop": "Stop",
+      "announceReading": "Reading your website",
+      "announceDone": "Done: check what we understood",
+      "intro": "This is what we understood about {name}. Fix anything that's wrong: your posts are written from it.",
+      "postsSoon": "Your posts are coming soon.",
+      "lastRead": "Last read {when}",
+      "reread": "Re-read my website",
+      "forget": "Forget this business",
+      "invalidSaved": "We couldn't open your saved business. Read your website again.",
+      "notKept": "This browser won't keep your business: you'll need to read your site again next time."
+    },
+    "errors": {
+      "invalid_url": "That doesn't look like a website address. Check it and try again.",
+      "blocked_address": "We can't read that address. Use your website's public link.",
+      "unreachable": "We couldn't open your website. Check the address, or try again in a few minutes.",
+      "robots_disallowed": "Your website asks apps not to read it, so we can't. Contact us and we'll help you set up.",
+      "model_busy": "Shopfront has used today's free reading. Try again tomorrow.",
+      "model_timeout": "Reading your website took too long. Try again.",
+      "model_failed": "Something went wrong while reading your website. Try again.",
+      "offline": "You're offline. We'll carry on when you're back."
+    },
+    "reread": {
+      "title": "Read your website again?",
+      "body": "Your {count, plural, one {# change} other {# changes}} will be replaced by what your site says now.",
+      "confirm": "Read again",
+      "cancel": "Cancel"
+    },
+    "forget": {
+      "title": "Forget {name}?",
+      "body": "This deletes everything Shopfront keeps on this phone for your business. You can read your website again any time.",
+      "confirm": "Forget",
+      "cancel": "Cancel"
     }
   }
 }

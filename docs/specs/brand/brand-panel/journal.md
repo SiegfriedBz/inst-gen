@@ -13,6 +13,17 @@
 - 2026-10-24: "Last read" just after a read says "this minute": that is
   what `Intl.RelativeTimeFormat` gives with `numeric: 'auto'`; the test
   expected "now" and was corrected.
+- 2026-10-24: stopping a read whose connection already dropped now forgets
+  its run too (found while building the home's Stop; test first in
+  `brand-read-client.test.ts`).
+- 2026-10-24: `resumeRead` also returns the run's `url`, so a resumed read
+  shows the address it is reading.
+- 2026-10-24: the re-read question uses an ICU plural ("Your 1 change",
+  "Your 2 changes"); the spec's wording otherwise.
+- 2026-10-24: the error messages were added with the other strings before
+  `brand-errors.test.ts` was written, so that test passed on its first run.
+- 2026-10-24: `pnpm-lock.yaml` is kept in Biome's format, as on `develop`;
+  `pnpm add` had rewritten it in pnpm's.
 
 ## RED
 
@@ -25,6 +36,8 @@
   `components/brand/panel` not found)
 - Task 6: ` Test Files  1 failed (1)` (`components/brand/section-sheet` not
   found)
+- Task 7: ` Test Files  1 failed | 1 passed (2)` (`components/brand/brand-home`
+  not found); `stop after a dropped stream…` ` Tests  1 failed | 11 passed (12)`
 
 ## GREEN
 
@@ -34,3 +47,4 @@
 - Task 4: ` Tests  11 passed (11)`
 - Task 5: ` Tests  19 passed (19)`
 - Task 6: ` Tests  9 passed (9)`
+- Task 7: ` Tests  474 passed (474)` (whole suite)

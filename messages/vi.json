@@ -11,10 +11,7 @@
   },
   "home": {
     "welcome": "Chào mừng, {name}",
-    "soon": "Sắp tới, bạn có thể dán liên kết trang web của mình vào đây và nhận sáu bài đăng, mỗi bài kèm một story.",
     "websiteLabel": "Trang web của bạn",
-    "websiteExample": "yourspa.com",
-    "comingSoon": "Sắp ra mắt",
     "signedIn": "Đã đăng nhập trên điện thoại này trong 30 ngày."
   },
   "language": {
@@ -136,6 +133,45 @@
         "removePhoto": "Xóa ảnh",
         "noLogo": "Không có logo"
       }
+    },
+    "home": {
+      "read": "Đọc trang web của tôi",
+      "readHint": "Chúng tôi đọc vài trang và ảnh của bạn. Mất khoảng 20 giây.",
+      "placeholder": "spacuaban.com",
+      "reading": "Đang đọc trang web của bạn…",
+      "keepOpen": "Hãy giữ trang này mở khoảng 20 giây.",
+      "stop": "Dừng",
+      "announceReading": "Đang đọc trang web của bạn",
+      "announceDone": "Xong: hãy kiểm tra những gì chúng tôi hiểu",
+      "intro": "Đây là những gì chúng tôi hiểu về {name}. Hãy sửa chỗ nào chưa đúng: bài đăng của bạn được viết từ đây.",
+      "postsSoon": "Bài đăng của bạn sắp có.",
+      "lastRead": "Đọc lần cuối {when}",
+      "reread": "Đọc lại trang web của tôi",
+      "forget": "Quên doanh nghiệp này",
+      "invalidSaved": "Chúng tôi không mở được doanh nghiệp đã lưu của bạn. Hãy đọc lại trang web.",
+      "notKept": "Trình duyệt này sẽ không lưu doanh nghiệp của bạn: lần sau bạn cần đọc lại trang web."
+    },
+    "errors": {
+      "invalid_url": "Đây không giống địa chỉ trang web. Hãy kiểm tra và thử lại.",
+      "blocked_address": "Chúng tôi không đọc được địa chỉ đó. Hãy dùng liên kết công khai của trang web.",
+      "unreachable": "Chúng tôi không mở được trang web của bạn. Hãy kiểm tra địa chỉ, hoặc thử lại sau vài phút.",
+      "robots_disallowed": "Trang web của bạn yêu cầu ứng dụng không đọc nó, nên chúng tôi không thể. Hãy liên hệ, chúng tôi sẽ giúp bạn thiết lập.",
+      "model_busy": "Shopfront đã dùng hết lượt đọc miễn phí hôm nay. Hãy thử lại vào ngày mai.",
+      "model_timeout": "Đọc trang web của bạn mất quá lâu. Hãy thử lại.",
+      "model_failed": "Đã có lỗi khi đọc trang web của bạn. Hãy thử lại.",
+      "offline": "Bạn đang ngoại tuyến. Chúng tôi sẽ tiếp tục khi bạn có mạng lại."
+    },
+    "reread": {
+      "title": "Đọc lại trang web của bạn?",
+      "body": "{count, plural, other {# thay đổi}} của bạn sẽ được thay bằng nội dung hiện tại của trang web.",
+      "confirm": "Đọc lại",
+      "cancel": "Hủy"
+    },
+    "forget": {
+      "title": "Quên {name}?",
+      "body": "Thao tác này xóa mọi thứ Shopfront lưu trên điện thoại này cho doanh nghiệp của bạn. Bạn có thể đọc lại trang web bất cứ lúc nào.",
+      "confirm": "Quên",
+      "cancel": "Hủy"
     }
   }
 }

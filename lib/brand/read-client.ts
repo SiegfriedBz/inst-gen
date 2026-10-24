@@ -52,6 +52,7 @@ function request(
   deps: ReadDeps,
 ): RunningRead {
   const controller = new AbortController();
+  let finished = false;
 
   async function go(): Promise<void> {
     try {
@@ -94,11 +95,18 @@ function request(
       if (!controller.signal.aborted) onEvent({ type: 'offline' });
     } finally {
       live.delete(run.id);
+      finished = true;
       if (controller.signal.aborted) await deleteRun(run.id);
     }
   }
 
-  return { stop: () => controller.abort(), done: go() };
+  // Stopping a read whose connection already dropped forgets it too, so it
+  // isn't resumed later.
+  const stop = () => {
+    if (finished) void deleteRun(run.id);
+    else controller.abort();
+  };
+  return { stop, done: go() };
 }
 
 export function startRead(
@@ -117,7 +125,7 @@ export async function resumeRead(
   ownerId: string,
   onEvent: (e: ReadEvent) => void,
   deps: ReadDeps = defaultReadDeps(),
-): Promise<(RunningRead & { reread: boolean }) | null> {
+): Promise<(RunningRead & { reread: boolean; url: string }) | null> {
   const open = await loadOpenRun(ownerId);
   if (!open) return null;
   const run = resumeRun(open, (id) => live.has(id));
@@ -125,5 +133,5 @@ export async function resumeRead(
   // Claimed before any await, so two resumes can't both ask.
   if (live.has(run.id)) return null;
   live.add(run.id);
-  return { ...request(run, false, onEvent, deps), reread: run.reread };
+  return { ...request(run, false, onEvent, deps), reread: run.reread, url: run.url };
 }

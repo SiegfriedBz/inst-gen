@@ -140,6 +140,14 @@ describe('a brand read from the browser', () => {
     await running.done;
   });
 
+  test('stop after a dropped stream deletes the run, so it is not resumed', async () => {
+    fetchMock.mockResolvedValue(ndjson([partial]));
+    const running = startRead({ ownerId: 'sen', url: 'x.com', reread: false }, () => {}, deps);
+    await running.done;
+    running.stop();
+    await vi.waitFor(async () => expect(await loadOpenRun('sen')).toBeNull());
+  });
+
   test('stop aborts, deletes the run and sends nothing', async () => {
     fetchMock.mockImplementation(
       (_url: string, init: RequestInit) =>
