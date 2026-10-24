@@ -78,7 +78,6 @@ export const profileSchema = modelProfileSchema.extend({
   pagesRead: z.array(z.url()).min(1).max(8),
   thin: z.boolean(),
   name: sourced(text),
-  colours: z.array(colour).min(1).max(5),
   logoUrl: sourced(z.url()).nullable(),
   photoUrls: z.array(z.url()),
   promptVersion: text,
