@@ -237,6 +237,68 @@ describe('mergeAndCheck', () => {
   });
 });
 
+describe('a model answer past the limits', () => {
+  test('is accepted by the model schema', async () => {
+    const { modelProfileSchema } = await import('@/lib/brand/profile');
+    const long = {
+      name: { value: 'Sen Spa', source: HOME },
+      summary: { value: Array.from({ length: 30 }, () => 'calm').join(' '), source: HOME },
+      category: 'massage spa',
+      offerings: Array.from({ length: 25 }, (_, i) => ({ name: `Massage ${i}`, source: HOME })),
+      highlights: Array.from({ length: 10 }, (_, i) => ({ value: `Claim ${i}`, source: HOME })),
+      location: { town: null, area: null, address: null, serviceArea: null },
+      contact: { whatsapp: null, phone: null, email: null, instagram: null, bookingUrl: null },
+      hours: null,
+      tone: ['calm', 'warm', 'kind', 'gentle', 'quiet', 'soft', 'local'],
+      colours: [],
+      visualStyle: {
+        summary: Array.from({ length: 15 }, () => 'soft').join(' '),
+        palette: 'green',
+        light: 'soft',
+        textures: 'linen',
+        mood: 'calm',
+      },
+    };
+    expect(modelProfileSchema.safeParse(long).success).toBe(true);
+  });
+
+  test('is trimmed to the limits before the final profile', () => {
+    const { profile, dropped } = run({
+      summary: { value: Array.from({ length: 30 }, (_, i) => `w${i}`).join(' '), source: HOME },
+      offerings: Array.from({ length: 25 }, () => ({ name: 'Aroma massage', source: PRICES })),
+      highlights: Array.from({ length: 10 }, () => ({
+        value: 'Therapists come to you',
+        source: ABOUT,
+      })),
+      tone: ['calm', 'warm', 'kind', 'gentle', 'quiet', 'soft', 'local'],
+      visualStyle: {
+        summary: Array.from({ length: 15 }, () => 'soft').join(' '),
+        palette: 'green',
+        light: 'soft',
+        textures: 'linen',
+        mood: 'calm',
+      },
+    });
+    expect(profile.summary?.value?.split(' ')).toHaveLength(25);
+    expect(profile.offerings).toHaveLength(20);
+    expect(profile.highlights).toHaveLength(8);
+    expect(profile.tone).toHaveLength(5);
+    expect(profile.visualStyle?.summary?.split(' ')).toHaveLength(12);
+    expect(dropped).toEqual([]);
+  });
+
+  test('two tone words still give a final profile', () => {
+    const { profile } = run({ category: 'spa', tone: ['calm', 'warm'] });
+    const final = finalise(profile, {
+      readAt: '2026-10-24T09:00:00.000Z',
+      promptVersion: 'brand-1',
+      thin: false,
+      dropped: [],
+    });
+    expect(final.tone).toEqual(['calm', 'warm']);
+  });
+});
+
 describe('finalise', () => {
   const meta = {
     readAt: '2026-10-24T09:00:00.000Z',

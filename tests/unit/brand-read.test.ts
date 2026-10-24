@@ -269,7 +269,11 @@ describe('brand read', () => {
   });
 
   test('a final that fails the schema: error line model_failed', async () => {
-    const bad = replayTextModel({ ...recording, partials: [], final: { ...modelFinal, tone: [] } });
+    const bad = replayTextModel({
+      ...recording,
+      partials: [],
+      final: { ...modelFinal, category: '' },
+    });
     const { deps: d } = deps(baseSite, { model: bad });
     expect((await read(SITE, d)).at(-1)).toEqual({ type: 'error', code: 'model_failed' });
   });

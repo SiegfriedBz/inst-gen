@@ -30,6 +30,8 @@ export type ReadDeps = {
   now?: () => Date;
   limits?: { fetchMs: number; totalMs: number };
   record?: (fetched: Fetched) => void;
+  // Told why a model step failed; the stream itself only carries the code.
+  onModelError?: (error: unknown) => void;
 };
 
 export const DEFAULT_LIMITS = { fetchMs: 10_000, totalMs: 30_000 };
@@ -242,6 +244,7 @@ export async function* streamProfile(
     yield { type: 'final', profile: final };
   } catch (error) {
     if (signal.aborted) return;
+    deps.onModelError?.(error);
     if (prepared.deadline.aborted) {
       yield { type: 'error', code: 'model_timeout' };
     } else if (error instanceof ModelError && error.kind === 'busy') {

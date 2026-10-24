@@ -72,7 +72,12 @@ function toModelError(error: unknown): ModelError {
   });
 }
 
-export function geminiTextModel(): TextModel {
+export type ThinkingLevel = 'minimal' | 'low' | 'medium' | 'high';
+
+export function geminiTextModel(
+  opts: { thinkingLevel?: ThinkingLevel; modelId?: string } = {},
+): TextModel {
+  const { thinkingLevel = 'low', modelId = TEXT_MODELS.brand } = opts;
   return {
     streamBrandProfile(input, signal) {
       async function* run(): AsyncGenerator<DeepPartial<ModelProfile>, ModelProfile> {
@@ -81,7 +86,7 @@ export function geminiTextModel(): TextModel {
         const google = createGoogleGenerativeAI({ apiKey });
         let streamError: unknown;
         const result = streamText({
-          model: google(TEXT_MODELS.brand),
+          model: google(modelId),
           system: input.system,
           messages: [
             {
@@ -89,8 +94,8 @@ export function geminiTextModel(): TextModel {
               content: [
                 { type: 'text', text: input.text },
                 ...input.images.map((image) => ({
-                  type: 'image' as const,
-                  image: image.data,
+                  type: 'file' as const,
+                  data: image.data,
                   mediaType: image.mediaType,
                 })),
               ],
@@ -99,7 +104,7 @@ export function geminiTextModel(): TextModel {
           output: Output.object({ schema: modelProfileSchema }),
           providerOptions: {
             google: {
-              thinkingConfig: { thinkingLevel: 'low' },
+              thinkingConfig: { thinkingLevel },
             } satisfies GoogleLanguageModelOptions,
           },
           abortSignal: signal,

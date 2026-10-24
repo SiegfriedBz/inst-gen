@@ -29,9 +29,9 @@ describe('profileSchema', () => {
     expect(profileSchema.safeParse(p).success).toBe(false);
   });
 
-  test('rejects tone with 2 words', () => {
+  test('rejects tone with 6 words', () => {
     const p = svargaProfile();
-    p.tone = ['calm', 'warm'];
+    p.tone = ['calm', 'warm', 'kind', 'soft', 'quiet', 'local'];
     expect(profileSchema.safeParse(p).success).toBe(false);
   });
 

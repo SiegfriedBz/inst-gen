@@ -3,6 +3,7 @@ import { type CodeFacts, instagramHandle } from './extract/structured';
 import { phoneDigitVariants, toE164 } from './phone';
 import {
   type DeepPartial,
+  LIMITS,
   type ModelProfile,
   type PartialProfile,
   type Profile,
@@ -157,6 +158,22 @@ type Ctx = { facts: CodeFacts[]; pages: PageTexts; pagesRead: string[]; photos: 
 
 type Check = 'phone' | 'email' | 'none';
 
+const firstWords = (value: string, max: number) =>
+  value.trim().split(/\s+/).slice(0, max).join(' ');
+
+// No photos, no style; a style summary is cut to its word limit.
+function visualStyleOf(
+  style: DeepPartial<ModelProfile['visualStyle']> | undefined,
+  photos: number,
+): PartialProfile['visualStyle'] {
+  if (style === undefined) return undefined;
+  if (style === null || photos === 0) return null;
+  return {
+    ...style,
+    summary: style.summary && firstWords(style.summary, LIMITS.styleSummaryWords),
+  };
+}
+
 export function mergeAndCheck(
   code: PartialProfile,
   model: DeepPartial<ModelProfile>,
@@ -189,6 +206,9 @@ export function mergeAndCheck(
     }
     return { value: fact.value, source };
   }
+
+  const trimmedSummary = (fact: Sourced | null) =>
+    fact ? { value: firstWords(fact.value, LIMITS.summaryWords), source: fact.source } : undefined;
 
   const codeWins = (
     codeFact: DeepPartial<Sourced> | null | undefined,
@@ -261,10 +281,10 @@ export function mergeAndCheck(
   const profile: PartialProfile = {
     ...code,
     name,
-    summary: checked('summary', model.summary) ?? undefined,
-    category: model.category,
-    offerings,
-    highlights,
+    summary: trimmedSummary(checked('summary', model.summary)),
+    category: model.category || undefined,
+    offerings: offerings.slice(0, LIMITS.offerings),
+    highlights: highlights.slice(0, LIMITS.highlights),
     location: {
       // JSON-LD's addressLocality is often a district; the model's town, checked
       // against its page, comes first.
@@ -287,9 +307,9 @@ export function mergeAndCheck(
       bookingUrl: checked('contact.bookingUrl', mContact.bookingUrl),
     },
     hours: codeWins(code.hours, checked('hours', model.hours)),
-    tone: model.tone?.filter((t): t is string => Boolean(t)),
+    tone: model.tone?.filter((t): t is string => Boolean(t)).slice(0, LIMITS.tone),
     colours,
-    visualStyle: ctx.photos === 0 ? null : model.visualStyle,
+    visualStyle: visualStyleOf(model.visualStyle, ctx.photos),
   };
   return { profile, dropped };
 }

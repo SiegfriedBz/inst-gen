@@ -54,31 +54,76 @@ const visualStyle = z.object({
   mood: text,
 });
 
-// What the model fills in.
+// Limits of the final profile; code trims the model's answer to them.
+export const LIMITS = {
+  summaryWords: 25,
+  styleSummaryWords: 12,
+  offerings: 20,
+  highlights: 8,
+  tone: 5,
+  colours: 5,
+} as const;
+
+// What the model fills in. It has no limits: a model answer a word or an item
+// over a limit is trimmed by code (lib/brand/checks.ts), not refused.
+const loose = z.string();
+const looseSourced = z.object({ value: loose, source: loose }).nullable();
+
 export const modelProfileSchema = z.object({
-  name: sourced(text).nullable(),
-  summary: sourced(maxWords(25)).nullable(),
-  category: text,
-  offerings: z.array(offering).max(20),
-  highlights: z.array(sourced(text)).max(8),
-  location,
-  contact,
-  hours: sourced(text).nullable(),
-  tone: z.array(text).min(3).max(5),
-  colours: z.array(colour).max(5),
-  visualStyle: visualStyle.nullable(),
+  name: looseSourced,
+  summary: looseSourced,
+  category: loose,
+  offerings: z.array(
+    z.object({
+      name: loose,
+      description: loose.optional(),
+      price: loose.optional(),
+      duration: loose.optional(),
+      source: loose,
+    }),
+  ),
+  highlights: z.array(z.object({ value: loose, source: loose })),
+  location: z.object({
+    town: looseSourced,
+    area: looseSourced,
+    address: looseSourced,
+    serviceArea: looseSourced,
+  }),
+  contact: z.object({
+    whatsapp: looseSourced,
+    phone: looseSourced,
+    email: looseSourced,
+    instagram: looseSourced,
+    bookingUrl: looseSourced,
+  }),
+  hours: looseSourced,
+  tone: z.array(loose),
+  colours: z.array(z.object({ hex: loose, role: z.enum(COLOUR_ROLES), source: loose })),
+  visualStyle: z
+    .object({ summary: loose, palette: loose, light: loose, textures: loose, mood: loose })
+    .nullable(),
 });
 
 export type ModelProfile = z.infer<typeof modelProfileSchema>;
 
-export const profileSchema = modelProfileSchema.extend({
+export const profileSchema = z.object({
   schemaVersion: z.literal(1),
   siteUrl: z.url(),
   readAt: z.iso.datetime(),
   pagesRead: z.array(z.url()).min(1).max(8),
   thin: z.boolean(),
   name: sourced(text),
+  summary: sourced(maxWords(LIMITS.summaryWords)).nullable(),
+  category: text,
+  offerings: z.array(offering).max(LIMITS.offerings),
+  highlights: z.array(sourced(text)).max(LIMITS.highlights),
+  location,
+  contact,
+  hours: sourced(text).nullable(),
+  tone: z.array(text).max(LIMITS.tone),
+  colours: z.array(colour).max(LIMITS.colours),
   logoUrl: sourced(z.url()).nullable(),
+  visualStyle: visualStyle.nullable(),
   photoUrls: z.array(z.url()),
   promptVersion: text,
   dropped: z.array(z.object({ field: text, reason: text })),
