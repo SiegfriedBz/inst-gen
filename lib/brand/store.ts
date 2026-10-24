@@ -1,6 +1,6 @@
 import { type DBSchema, type IDBPDatabase, openDB } from 'idb';
 import type { RunRecord } from '@/lib/runs/run-record';
-import { type Profile, profileSchema } from './profile';
+import { type Profile, profileSchema, upgradeProfile } from './profile';
 
 // The owner's business kept on the phone (docs/specs/brand/brand-panel,
 // "Stored on the phone"): one IndexedDB database, a brand per owner id and
@@ -63,7 +63,7 @@ export async function loadBrand(ownerId: string): Promise<LoadResult> {
   if (!db) return { kind: 'unavailable' };
   const record = await db.get('brands', ownerId);
   if (!record) return { kind: 'none' };
-  const parsed = profileSchema.safeParse(record.profile);
+  const parsed = profileSchema.safeParse(upgradeProfile(record.profile));
   if (!parsed.success) return { kind: 'invalid' };
   return {
     kind: 'saved',

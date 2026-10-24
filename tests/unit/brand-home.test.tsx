@@ -123,7 +123,7 @@ describe('BrandHome', () => {
     const db = await openStore();
     await db?.put('brands', {
       ownerId: 'sen',
-      profile: { schemaVersion: 2 } as never,
+      profile: { schemaVersion: 3 } as never,
       savedAt: '',
     });
     renderHome();

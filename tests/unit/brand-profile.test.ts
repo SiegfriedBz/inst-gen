@@ -1,6 +1,6 @@
 import { describe, expect, test } from 'vitest';
-import { ERROR_STATUS, profileSchema } from '@/lib/brand/profile';
-import { SITE, svargaProfile } from './helpers/brand';
+import { ERROR_STATUS, profileSchema, upgradeProfile } from '@/lib/brand/profile';
+import { SITE, senProfile, svargaProfile } from './helpers/brand';
 
 describe('profileSchema', () => {
   test('accepts a full Svarga-like profile', () => {
@@ -70,5 +70,34 @@ describe('ERROR_STATUS', () => {
 
   test('has exactly the seven codes', () => {
     expect(Object.keys(ERROR_STATUS)).toHaveLength(7);
+  });
+});
+
+describe('profile version 2', () => {
+  test('upgrades a v1 profile to v2 with empty search fields', () => {
+    const { searchedAt: _a, searchPromptVersion: _b, ...rest } = senProfile();
+    const { searchTerms: _c, ...essence } = rest.essence;
+    const v1 = { ...rest, schemaVersion: 1, essence };
+    const up = profileSchema.parse(upgradeProfile(v1));
+    expect(up.schemaVersion).toBe(2);
+    expect(up.essence.searchTerms).toEqual([]);
+    expect(up.searchedAt).toBeNull();
+    expect(up.searchPromptVersion).toBeNull();
+  });
+
+  test('leaves a v2 profile as it is', () => {
+    expect(upgradeProfile(senProfile())).toEqual(senProfile());
+  });
+
+  test('refuses a search term over 6 words', () => {
+    const p = senProfile();
+    p.essence.searchTerms = ['one two three four five six seven'];
+    expect(profileSchema.safeParse(p).success).toBe(false);
+  });
+
+  test('refuses a ninth search term', () => {
+    const p = senProfile();
+    p.essence.searchTerms = Array.from({ length: 9 }, (_, i) => `term ${i}`);
+    expect(profileSchema.safeParse(p).success).toBe(false);
   });
 });

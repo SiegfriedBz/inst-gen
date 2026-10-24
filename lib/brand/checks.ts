@@ -352,7 +352,7 @@ export function finalise(
   const contact = profile.contact ?? {};
   return profileSchema.parse({
     ...profile,
-    schemaVersion: 1,
+    schemaVersion: 2,
     readAt: meta.readAt,
     promptVersion: meta.promptVersion,
     thin: meta.thin,
@@ -382,7 +382,10 @@ export function finalise(
       placeSymbols: profile.essence?.placeSymbols ?? [],
       senses: profile.essence?.senses ?? [],
       moments: profile.essence?.moments ?? [],
+      searchTerms: [],
     },
     visualStyle: profile.visualStyle ?? null,
+    searchedAt: null,
+    searchPromptVersion: null,
   });
 }
