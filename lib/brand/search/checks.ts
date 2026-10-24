@@ -24,30 +24,54 @@ const FIELD = {
 
 // "Sen Massage | Da Nang" → "sen massage": the part of a title that is most
 // often the business's name.
-const TITLE_SEPARATOR = / [|\-–·] |: /;
+const TITLE_SEPARATOR = / [|\-–—·] |: /;
+// Words that, with the trade and the place, make a title part generic rather
+// than a name ("Best Ubud Spa").
+const COMMON_WORDS = ['best', 'top', 'the', 'a', 'in', 'near', 'and', 'of'];
 
 const words = (value: string) => value.split(/\s+/).filter(Boolean).length;
 
 export function checkSearchAnswer(
   answer: SearchModelAnswer,
-  ctx: { results: SearchResult[]; essence: SearchBody['essence'] },
+  ctx: { results: SearchResult[]; body: SearchBody },
 ): CheckedSearch {
+  const { essence } = ctx.body;
   const dropped: Dropped[] = [];
   const drop = (field: keyof typeof FIELD, reason: string) =>
     dropped.push({ field: FIELD[field], reason });
 
   const known = new Set(
     [
-      ...ctx.essence.feeling,
-      ...ctx.essence.placeSymbols,
-      ...ctx.essence.senses,
-      ...ctx.essence.moments,
-      ...ctx.essence.searchTerms,
+      ...essence.feeling,
+      ...essence.placeSymbols,
+      ...essence.senses,
+      ...essence.moments,
+      ...essence.searchTerms,
     ].map(normaliseText),
   );
-  const names = new Set(
-    ctx.results.map((r) => normaliseText(r.title.split(TITLE_SEPARATOR)[0] ?? '')).filter(Boolean),
+  const generic = new Set(
+    [
+      ctx.body.category,
+      ctx.body.town,
+      ctx.body.area ?? '',
+      ctx.body.serviceArea ?? '',
+      ...COMMON_WORDS,
+    ]
+      .flatMap((text) => normaliseText(text).split(' '))
+      .filter(Boolean),
   );
+  // Title parts with a word that is neither trade, place nor common: names.
+  const names = [
+    ...new Set(
+      ctx.results
+        .map((r) => normaliseText(r.title.split(TITLE_SEPARATOR)[0] ?? ''))
+        .filter((part) => part.split(' ').some((word) => word && !generic.has(word))),
+    ),
+  ];
+  const holdsName = (term: string) => {
+    const padded = ` ${normaliseText(term)} `;
+    return names.some((name) => padded.includes(` ${name} `));
+  };
   const resultUrls = ctx.results.map((r) => r.url);
 
   // Drops a repeat of the essence or of an item kept earlier in this answer.
@@ -86,7 +110,7 @@ export function checkSearchAnswer(
   for (const raw of answer.searchTerms) {
     const term = raw.trim().replace(/^#+/, '').toLowerCase().replace(/\s+/g, ' ');
     if (!term) continue;
-    if (names.has(normaliseText(term))) {
+    if (holdsName(term)) {
       drop('searchTerms', 'business name');
       continue;
     }

@@ -83,7 +83,7 @@ export async function runSearch(
         step,
       );
       entry.modelMs = Date.now() - modelStarted;
-      checked = checkSearchAnswer(answer, { results, essence: body.essence });
+      checked = checkSearchAnswer(answer, { results, body });
     }
     entry.outcome = 'answered';
     return {

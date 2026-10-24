@@ -1,6 +1,6 @@
 {
   "modelId": "gemini-3.5-flash-lite",
-  "promptVersion": "search-1",
+  "promptVersion": "search-2",
   "body": {
     "siteUrl": "https://www.svargabalimassage.com/",
     "category": "massage spa",
@@ -129,21 +129,29 @@
   ],
   "answer": {
     "searchTerms": [
-      "massage in canggu",
-      "best spa canggu bali",
+      "massage canggu",
       "balinese massage canggu",
-      "luxury spa batu bolong",
-      "massage near echo beach"
+      "best spa canggu",
+      "luxury spa canggu",
+      "day spa canggu bali"
     ],
     "moments": [
       {
         "value": "after a surf",
-        "source": "https://www.midnightblueelephant.com/guide-canggu-bali"
+        "source": "https://www.beachhousebytonic.com"
+      },
+      {
+        "value": "after a yoga class",
+        "source": "https://baliuntold.com/things-to-do/best-spas"
+      },
+      {
+        "value": "escaping the canggu heat",
+        "source": "https://www.beachhousebytonic.com"
       }
     ],
     "placeSymbols": [
-      "terrazzo soaking bath",
-      "leafy garden"
+      "rice terraces",
+      "surf beaches"
     ]
   }
 }

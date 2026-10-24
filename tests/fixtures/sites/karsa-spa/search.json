@@ -1,6 +1,6 @@
 {
   "modelId": "gemini-3.5-flash-lite",
-  "promptVersion": "search-1",
+  "promptVersion": "search-2",
   "body": {
     "siteUrl": "https://karsaspa.com/",
     "category": "massage spa",
@@ -129,28 +129,25 @@
   ],
   "answer": {
     "searchTerms": [
-      "ubud traditional spa",
-      "best spa in ubud",
       "traditional balinese massage ubud",
-      "couples spa ubud",
-      "karsa spa bangkiang sidem",
-      "flower bath ubud",
-      "ubud massage and scrub",
-      "best massage in bali"
+      "best spa in ubud",
+      "couples massage ubud",
+      "body scrub ubud",
+      "flower bath ubud"
     ],
     "moments": [
       {
-        "value": "after walking the campuhan ridge walk",
+        "value": "after walking the Campuhan Ridge Walk",
         "source": "https://accessiapass.com/tl/blog/karsa-spa-ubud-pijat-tradisional-bali-di-tepi-sawah-campuhan"
       },
       {
-        "value": "after climbing mount batur",
+        "value": "after climbing Mount Batur",
         "source": "https://littlegreybox.net/22-awesome-things-you-absolutely-must-do-in-ubud"
       }
     ],
     "placeSymbols": [
-      "open-air spa perched beside rice paddies",
-      "village road of bangkiang sidem"
+      "jungle canopy",
+      "lush paddy fields"
     ]
   }
 }

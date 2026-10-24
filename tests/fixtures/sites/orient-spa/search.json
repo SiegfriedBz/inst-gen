@@ -1,6 +1,6 @@
 {
   "modelId": "gemini-3.5-flash-lite",
-  "promptVersion": "search-1",
+  "promptVersion": "search-2",
   "body": {
     "siteUrl": "https://www.orientspahanoi.com/",
     "category": "massage spa",
@@ -133,28 +133,28 @@
   "answer": {
     "searchTerms": [
       "massage old quarter hanoi",
-      "best spa treatment hanoi",
-      "vietnamese massage near me",
-      "aromatherapy massage hanoi",
-      "spa hanoi old quarter"
+      "spa old quarter hanoi",
+      "vietnamese massage hanoi",
+      "best spa hanoi",
+      "body massage hanoi"
     ],
     "moments": [
       {
-        "value": "back from a strenuous hike in sapa",
+        "value": "back from a strenuous hike in Sapa",
         "source": "https://www.spashanoi.com"
       },
       {
-        "value": "long bus ride from halong bay",
+        "value": "long bus ride from Halong Bay",
         "source": "https://www.spashanoi.com"
       },
       {
-        "value": "after a long day of exploring",
+        "value": "unwind after a long day of exploring",
         "source": "https://www.hanoilocaltour.com/hanoi-nightlife-massage-red-light-area-all-information-updated-2025"
       }
     ],
     "placeSymbols": [
       "scooter-filled streets",
-      "temple architecture"
+      "water puppet show"
     ]
   }
 }

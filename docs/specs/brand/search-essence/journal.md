@@ -22,6 +22,18 @@
   orient-spa and phin-coffee (`pnpm eval:search --record`), 3.0 to 4.9 s
   each:
   `essence search: 5/5 answered · prompt search-1 · model gemini-3.5-flash-lite`
+- 2026-10-24: Developer's verdict on `search-1`: close to each business,
+  but fix three things. Karsa got its own name as a term ("karsa spa
+  bangkiang sidem"), Sen got "traditional lanterns" (Hoi An's, not Da
+  Nang's), and moments lost their capitals ("ba na hills"). `search-2`
+  tells the model to keep capitals in moments, take symbols from the town
+  itself, and leave out a business's name even inside a phrase. Code now
+  drops a term holding a result title's name part when that part has a
+  word outside the trade, the place and a few common words. Re-recorded:
+  `essence search: 5/5 answered · prompt search-2 · model gemini-3.5-flash-lite`
+  No business name in any term, Sen gets "Lady Buddha", capitals kept
+  ("Ba Na Hills", "Mount Batur", "Sapa"). One left: Svarga's "escaping the
+  canggu heat" has a lower-case town.
 - 2026-10-24: `pnpm test:e2e` couldn't start on port 3000, which another
   project's Next server held; it ran on a free port through a throwaway
   config, not committed: 26 passed.
@@ -34,6 +46,6 @@ Task 1, the first tests of this work:
 
 ## GREEN
 
-`pnpm check` after Task 9:
+`pnpm check` after `search-2`:
 
-`Tests  598 passed (598)`
+`Tests  601 passed (601)`

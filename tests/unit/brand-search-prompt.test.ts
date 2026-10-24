@@ -24,8 +24,13 @@ const sen: SearchBody = {
 };
 
 describe('the essence search prompt', () => {
-  test('has the version search-1', () => {
-    expect(SEARCH_PROMPT_VERSION).toBe('search-1');
+  test('has the version search-2', () => {
+    expect(SEARCH_PROMPT_VERSION).toBe('search-2');
+  });
+
+  test('keeps capitals in moments, and symbols to the town itself', () => {
+    expect(searchPrompt()).toMatch(/capital/i);
+    expect(searchPrompt()).toMatch(/another town/i);
   });
 
   test('heads each result by its URL', () => {

@@ -14,7 +14,16 @@ const essence = {
   moments: ['after a surf at My Khe'],
   searchTerms: [],
 };
-const ctx = { results, essence };
+const body = {
+  siteUrl: 'https://sendanangmassage.com/',
+  category: 'massage spa',
+  town: 'Da Nang',
+  area: null,
+  serviceArea: null,
+  country: 'VN' as const,
+  essence,
+};
+const ctx = { results, body };
 
 const answer = (part: Partial<SearchModelAnswer>): SearchModelAnswer => ({
   searchTerms: [],
@@ -117,5 +126,28 @@ describe('checking the essence search answer', () => {
       placeSymbols: [],
       dropped: [],
     });
+  });
+
+  test('drops a term that holds a business name from a result title', () => {
+    const checked = checkSearchAnswer(
+      answer({ searchTerms: ['sen massage near my khe', 'hotel massage da nang'] }),
+      {
+        ...ctx,
+        results: [
+          ...results,
+          { title: 'Sen Massage — Da Nang', url: 'https://b.example/', content: '' },
+        ],
+      },
+    );
+    expect(checked.searchTerms).toEqual(['hotel massage da nang']);
+    expect(checked.dropped).toEqual([{ field: 'essence.searchTerms', reason: 'business name' }]);
+  });
+
+  test('keeps a term that only shares the trade and the place with a title', () => {
+    const checked = checkSearchAnswer(answer({ searchTerms: ['best massage spa da nang'] }), {
+      ...ctx,
+      results: [{ title: 'Massage Spa Da Nang | Top 10', url: GUIDE, content: '' }],
+    });
+    expect(checked.searchTerms).toEqual(['best massage spa da nang']);
   });
 });

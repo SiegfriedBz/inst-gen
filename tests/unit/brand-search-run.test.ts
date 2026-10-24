@@ -2,6 +2,7 @@ import { describe, expect, test, vi } from 'vitest';
 import { replayTextModel } from '@/lib/ai/replay';
 import { ModelError, type TextModel } from '@/lib/ai/text-model';
 import { formatSearchLog, type SearchLog } from '@/lib/brand/search/log';
+import { SEARCH_PROMPT_VERSION } from '@/lib/brand/search/prompt';
 import type { SearchBody } from '@/lib/brand/search/queries';
 import { runSearch, SEARCH_ERROR_STATUS, SearchStepError } from '@/lib/brand/search/run';
 import { replaySearchTool, type SearchRecording } from '@/lib/search/replay';
@@ -59,7 +60,7 @@ describe('the essence search step', () => {
       ...answer,
       dropped: [],
       searchedAt: NOW.toISOString(),
-      searchPromptVersion: 'search-1',
+      searchPromptVersion: SEARCH_PROMPT_VERSION,
     });
   });
 

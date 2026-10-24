@@ -1,6 +1,6 @@
 {
   "modelId": "gemini-3.5-flash-lite",
-  "promptVersion": "search-1",
+  "promptVersion": "search-2",
   "body": {
     "siteUrl": "https://phincoffeehoian.com/",
     "category": "coffee shop",
@@ -130,26 +130,26 @@
   ],
   "answer": {
     "searchTerms": [
-      "best coffee in an bang beach",
-      "cafes in hoi an old town",
-      "salt coffee in vietnam",
+      "best coffee an bang beach",
+      "cafe an bang hoi an",
+      "salt coffee hoi an",
+      "specialty coffee hoi an",
       "cafes near an bang beach",
-      "working cafes hoi an",
-      "specialty coffee hoi an"
+      "hoi an coffee guide"
     ],
     "moments": [
       {
-        "value": "after cycling through the paddy fields",
-        "source": "https://www.thegonegoat.com/vietnam/best-things-to-do-in-hoi-an"
+        "value": "working near the beach",
+        "source": "https://www.thingsnomadsdo.com/blog/best-cafes-to-work-from-hoi-an"
       },
       {
-        "value": "wandering the historic streets",
-        "source": "https://snaphappytravel.com/things-to-do-hoi-an"
+        "value": "cycling through the paddy fields",
+        "source": "https://www.thegonegoat.com/vietnam/best-things-to-do-in-hoi-an"
       }
     ],
     "placeSymbols": [
-      "paddy fields",
-      "hidden alleyways"
+      "rice paddy fields",
+      "Japanese Covered Bridge"
     ]
   }
 }
