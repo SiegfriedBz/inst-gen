@@ -151,6 +151,31 @@ brixandbaume.com (redirects to google.com).
   once, then passed): flash-lite isn't deterministic, so the gate is a
   snapshot, not a guarantee.
 
+### Final review
+
+- 2026-10-24: A fresh reviewer read the whole branch: no Critical, five
+  Important, seven Minor. The five were fixed, each with a test that failed
+  first: URLs found in pages now keep to default ports and no credentials;
+  a bad escape in a link (`tel:%`) no longer crashes the read; the WhatsApp
+  scan is linear (it took 6.1 s on 80 KB); the read gives up at 28 s, 2 s
+  before the route's 30 s cap, so `model_timeout` arrives; and the shared
+  NDJSON parser reads with `getReader()`, since Safari's streams aren't
+  async-iterable.
+- Deferred (Minor): closing the page stops the model only through
+  `request.signal`; a slow robots.txt can use the whole 10 s fetch budget; a
+  half-streamed price or source can flicker in a partial; the model's
+  `bookingUrl` is checked for its source only; `::/96` addresses count as
+  public; an uppercase model hex is rejected; `checkedLookup` ignores
+  `options.family`.
+- Open: the spec's profile table still says colours "1 to 5"; the code
+  allows 0 (see the ruling above). To amend with the next spec change.
+
 ## RED
 
+The final review's five findings, as tests written before the fixes:
+
+`Tests  7 failed | 373 passed (380)`
+
 ## GREEN
+
+`Tests  380 passed (380)`
