@@ -1,7 +1,8 @@
 ---
 title: "Brand profile from a website"
 description: "A server step that reads a business's website and streams back a grounded brand profile (facts, colours, logo, visual style), with 20 saved site fixtures, recorded model calls and a first eval set."
-status: draft
+status: approved
+approved: { by: siegfried.bozza@protonmail.com, at: 2026-10-24T09:02:54Z }
 date: "2026-10-24"
 ---
 
