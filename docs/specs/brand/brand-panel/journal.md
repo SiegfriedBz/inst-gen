@@ -7,13 +7,19 @@
 - 2026-10-24: the run record's types live in `lib/runs/run-record.ts` from
   Task 1, because the store's IndexedDB schema needs them.
 
+- 2026-10-24: `FieldError` gains `invalid`, a fallback for a schema issue
+  no other code names (a bad hex from the text field), so a form never
+  shows nothing.
+
 ## RED
 
 - Task 1: ` Test Files  1 failed (1)` (`lib/brand/store.ts` not found)
 
 - Task 2: ` Test Files  2 failed (2)` (`newBrandRun is not a function`, `lib/runs/store` not found)
+- Task 3: ` Test Files  1 failed (1)` (`lib/brand/edit` not found)
 
 ## GREEN
 
 - Task 1: ` Tests  8 passed (8)`
 - Task 2: ` Tests  8 passed (8)`
+- Task 3: ` Tests  24 passed (24)`
