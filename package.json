@@ -20,8 +20,10 @@
     "prepare": "lefthook install"
   },
   "dependencies": {
+    "@ai-sdk/google": "4.0.93",
     "@phosphor-icons/react": "2.1.10",
     "@tailwindcss/postcss": "4.3.3",
+    "ai": "7.0.137",
     "cheerio": "1.2.0",
     "class-variance-authority": "0.7.1",
     "clsx": "2.1.1",
