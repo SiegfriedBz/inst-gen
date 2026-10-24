@@ -34,9 +34,9 @@ export type ReadDeps = {
   onModelError?: (error: unknown) => void;
 };
 
-// The read gives up 2 s before the route's 30 s maxDuration, so the client
-// still gets its model_timeout line.
-export const DEFAULT_LIMITS = { fetchMs: 10_000, totalMs: 28_000 };
+// The read gives up at 60 s, well before the route's 300 s maxDuration, so the
+// client still gets its model_timeout line (decision 0005 as amended).
+export const DEFAULT_LIMITS = { fetchMs: 10_000, totalMs: 60_000 };
 const PAGE_CONCURRENCY = 4;
 const THIN_CHARS = 300;
 // Gemini reads these; an SVG logo stays in the profile but isn't sent.
