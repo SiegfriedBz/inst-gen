@@ -1,65 +1,95 @@
 {
   "modelId": "gemini-3.5-flash-lite",
-  "promptVersion": "brand-2",
+  "promptVersion": "brand-3",
   "partials": [
     {
       "name": {}
     },
     {
       "name": {
-        "value": "Orient Spa",
-        "source": "https://www.orientspahanoi.com/"
+        "value": "Orient Spa Hanoi",
+        "source": "https://www.orientspahanoi"
       }
     },
     {
       "name": {
-        "value": "Orient Spa",
+        "value": "Orient Spa Hanoi",
         "source": "https://www.orientspahanoi.com/"
       },
       "summary": {
-        "value": "Relaxing spa experience offering foot and body massage, nail"
+        "value": "A relaxing spa in Hanoi Old Quarter offering foot and"
       }
     },
     {
       "name": {
-        "value": "Orient Spa",
+        "value": "Orient Spa Hanoi",
         "source": "https://www.orientspahanoi.com/"
       },
       "summary": {
-        "value": "Relaxing spa experience offering foot and body massage, nail care, shampoo, and holistic spa packages in Hanoi Old Quarter.",
-        "source": "https://www.orientspahanoi.com"
+        "value": "A relaxing spa in Hanoi Old Quarter offering foot and body massages, nail care, and hair treatments for visitors and locals.",
+        "source": "https://www.or"
       }
     },
     {
       "name": {
-        "value": "Orient Spa",
+        "value": "Orient Spa Hanoi",
         "source": "https://www.orientspahanoi.com/"
       },
       "summary": {
-        "value": "Relaxing spa experience offering foot and body massage, nail care, shampoo, and holistic spa packages in Hanoi Old Quarter.",
+        "value": "A relaxing spa in Hanoi Old Quarter offering foot and body massages, nail care, and hair treatments for visitors and locals.",
+        "source": "https://www.orientspahanoi.com/"
+      },
+      "category": "massage spa"
+    },
+    {
+      "name": {
+        "value": "Orient Spa Hanoi",
+        "source": "https://www.orientspahanoi.com/"
+      },
+      "summary": {
+        "value": "A relaxing spa in Hanoi Old Quarter offering foot and body massages, nail care, and hair treatments for visitors and locals.",
         "source": "https://www.orientspahanoi.com/"
       },
       "category": "massage spa",
       "offerings": [
         {
-          "name": "Total Hair & Head Spa - 90min",
+          "name": "Total Hair & Head Spa",
+          "description": "Scalp"
+        }
+      ]
+    },
+    {
+      "name": {
+        "value": "Orient Spa Hanoi",
+        "source": "https://www.orientspahanoi.com/"
+      },
+      "summary": {
+        "value": "A relaxing spa in Hanoi Old Quarter offering foot and body massages, nail care, and hair treatments for visitors and locals.",
+        "source": "https://www.orientspahanoi.com/"
+      },
+      "category": "massage spa",
+      "offerings": [
+        {
+          "name": "Total Hair & Head Spa",
+          "description": "Scalp exfoliation Double shampoo cleanse Hair mask therapy Blow-dry finish",
           "price": "720,000"
         }
       ]
     },
     {
       "name": {
-        "value": "Orient Spa",
+        "value": "Orient Spa Hanoi",
         "source": "https://www.orientspahanoi.com/"
       },
       "summary": {
-        "value": "Relaxing spa experience offering foot and body massage, nail care, shampoo, and holistic spa packages in Hanoi Old Quarter.",
+        "value": "A relaxing spa in Hanoi Old Quarter offering foot and body massages, nail care, and hair treatments for visitors and locals.",
         "source": "https://www.orientspahanoi.com/"
       },
       "category": "massage spa",
       "offerings": [
         {
-          "name": "Total Hair & Head Spa - 90min",
+          "name": "Total Hair & Head Spa",
+          "description": "Scalp exfoliation Double shampoo cleanse Hair mask therapy Blow-dry finish",
           "price": "720,000 VND",
           "duration": "90 min",
           "source": "https://www.orients"
@@ -68,566 +98,533 @@
     },
     {
       "name": {
-        "value": "Orient Spa",
+        "value": "Orient Spa Hanoi",
         "source": "https://www.orientspahanoi.com/"
       },
       "summary": {
-        "value": "Relaxing spa experience offering foot and body massage, nail care, shampoo, and holistic spa packages in Hanoi Old Quarter.",
+        "value": "A relaxing spa in Hanoi Old Quarter offering foot and body massages, nail care, and hair treatments for visitors and locals.",
         "source": "https://www.orientspahanoi.com/"
       },
       "category": "massage spa",
       "offerings": [
         {
-          "name": "Total Hair & Head Spa - 90min",
+          "name": "Total Hair & Head Spa",
+          "description": "Scalp exfoliation Double shampoo cleanse Hair mask therapy Blow-dry finish",
           "price": "720,000 VND",
           "duration": "90 min",
           "source": "https://www.orientspahanoi.com/"
         },
         {
-          "name": "Total Foot Care - 60min"
+          "name": "Total Foot Care"
         }
       ]
     },
     {
       "name": {
-        "value": "Orient Spa",
+        "value": "Orient Spa Hanoi",
         "source": "https://www.orientspahanoi.com/"
       },
       "summary": {
-        "value": "Relaxing spa experience offering foot and body massage, nail care, shampoo, and holistic spa packages in Hanoi Old Quarter.",
+        "value": "A relaxing spa in Hanoi Old Quarter offering foot and body massages, nail care, and hair treatments for visitors and locals.",
         "source": "https://www.orientspahanoi.com/"
       },
       "category": "massage spa",
       "offerings": [
         {
-          "name": "Total Hair & Head Spa - 90min",
+          "name": "Total Hair & Head Spa",
+          "description": "Scalp exfoliation Double shampoo cleanse Hair mask therapy Blow-dry finish",
           "price": "720,000 VND",
           "duration": "90 min",
           "source": "https://www.orientspahanoi.com/"
         },
         {
-          "name": "Total Foot Care - 60min",
+          "name": "Total Foot Care",
+          "description": "Foot Bath 5 Minutes Foot Scrub 25 Minutes Foot Mask 10 Minutes Basic Pedicure 20 Minutes"
+        }
+      ]
+    },
+    {
+      "name": {
+        "value": "Orient Spa Hanoi",
+        "source": "https://www.orientspahanoi.com/"
+      },
+      "summary": {
+        "value": "A relaxing spa in Hanoi Old Quarter offering foot and body massages, nail care, and hair treatments for visitors and locals.",
+        "source": "https://www.orientspahanoi.com/"
+      },
+      "category": "massage spa",
+      "offerings": [
+        {
+          "name": "Total Hair & Head Spa",
+          "description": "Scalp exfoliation Double shampoo cleanse Hair mask therapy Blow-dry finish",
+          "price": "720,000 VND",
+          "duration": "90 min",
+          "source": "https://www.orientspahanoi.com/"
+        },
+        {
+          "name": "Total Foot Care",
+          "description": "Foot Bath 5 Minutes Foot Scrub 25 Minutes Foot Mask 10 Minutes Basic Pedicure 20 Minutes",
           "price": "390,000 VND",
-          "duration": "60"
+          "duration": "60 min"
         }
       ]
     },
     {
       "name": {
-        "value": "Orient Spa",
+        "value": "Orient Spa Hanoi",
         "source": "https://www.orientspahanoi.com/"
       },
       "summary": {
-        "value": "Relaxing spa experience offering foot and body massage, nail care, shampoo, and holistic spa packages in Hanoi Old Quarter.",
+        "value": "A relaxing spa in Hanoi Old Quarter offering foot and body massages, nail care, and hair treatments for visitors and locals.",
         "source": "https://www.orientspahanoi.com/"
       },
       "category": "massage spa",
       "offerings": [
         {
-          "name": "Total Hair & Head Spa - 90min",
+          "name": "Total Hair & Head Spa",
+          "description": "Scalp exfoliation Double shampoo cleanse Hair mask therapy Blow-dry finish",
           "price": "720,000 VND",
           "duration": "90 min",
           "source": "https://www.orientspahanoi.com/"
         },
         {
-          "name": "Total Foot Care - 60min",
-          "price": "390,000 VND",
-          "duration": "60 min",
-          "source": "https://www.orientspahanoi.com/"
-        }
-      ]
-    },
-    {
-      "name": {
-        "value": "Orient Spa",
-        "source": "https://www.orientspahanoi.com/"
-      },
-      "summary": {
-        "value": "Relaxing spa experience offering foot and body massage, nail care, shampoo, and holistic spa packages in Hanoi Old Quarter.",
-        "source": "https://www.orientspahanoi.com/"
-      },
-      "category": "massage spa",
-      "offerings": [
-        {
-          "name": "Total Hair & Head Spa - 90min",
-          "price": "720,000 VND",
-          "duration": "90 min",
-          "source": "https://www.orientspahanoi.com/"
-        },
-        {
-          "name": "Total Foot Care - 60min",
-          "price": "390,000 VND",
-          "duration": "60 min",
-          "source": "https://www.orientspahanoi.com/"
-        },
-        {
-          "name": "Body & Foot Massage - 105min",
-          "price": "690,"
-        }
-      ]
-    },
-    {
-      "name": {
-        "value": "Orient Spa",
-        "source": "https://www.orientspahanoi.com/"
-      },
-      "summary": {
-        "value": "Relaxing spa experience offering foot and body massage, nail care, shampoo, and holistic spa packages in Hanoi Old Quarter.",
-        "source": "https://www.orientspahanoi.com/"
-      },
-      "category": "massage spa",
-      "offerings": [
-        {
-          "name": "Total Hair & Head Spa - 90min",
-          "price": "720,000 VND",
-          "duration": "90 min",
-          "source": "https://www.orientspahanoi.com/"
-        },
-        {
-          "name": "Total Foot Care - 60min",
+          "name": "Total Foot Care",
+          "description": "Foot Bath 5 Minutes Foot Scrub 25 Minutes Foot Mask 10 Minutes Basic Pedicure 20 Minutes",
           "price": "390,000 VND",
           "duration": "60 min",
           "source": "https://www.orientspahanoi.com/"
         },
+        {}
+      ]
+    },
+    {
+      "name": {
+        "value": "Orient Spa Hanoi",
+        "source": "https://www.orientspahanoi.com/"
+      },
+      "summary": {
+        "value": "A relaxing spa in Hanoi Old Quarter offering foot and body massages, nail care, and hair treatments for visitors and locals.",
+        "source": "https://www.orientspahanoi.com/"
+      },
+      "category": "massage spa",
+      "offerings": [
         {
-          "name": "Body & Foot Massage - 105min",
+          "name": "Total Hair & Head Spa",
+          "description": "Scalp exfoliation Double shampoo cleanse Hair mask therapy Blow-dry finish",
+          "price": "720,000 VND",
+          "duration": "90 min",
+          "source": "https://www.orientspahanoi.com/"
+        },
+        {
+          "name": "Total Foot Care",
+          "description": "Foot Bath 5 Minutes Foot Scrub 25 Minutes Foot Mask 10 Minutes Basic Pedicure 20 Minutes",
+          "price": "390,000 VND",
+          "duration": "60 min",
+          "source": "https://www.orientspahanoi.com/"
+        },
+        {
+          "name": "Body & Foot Massage",
+          "description": "Body Massage 75 minutes Foot"
+        }
+      ]
+    },
+    {
+      "name": {
+        "value": "Orient Spa Hanoi",
+        "source": "https://www.orientspahanoi.com/"
+      },
+      "summary": {
+        "value": "A relaxing spa in Hanoi Old Quarter offering foot and body massages, nail care, and hair treatments for visitors and locals.",
+        "source": "https://www.orientspahanoi.com/"
+      },
+      "category": "massage spa",
+      "offerings": [
+        {
+          "name": "Total Hair & Head Spa",
+          "description": "Scalp exfoliation Double shampoo cleanse Hair mask therapy Blow-dry finish",
+          "price": "720,000 VND",
+          "duration": "90 min",
+          "source": "https://www.orientspahanoi.com/"
+        },
+        {
+          "name": "Total Foot Care",
+          "description": "Foot Bath 5 Minutes Foot Scrub 25 Minutes Foot Mask 10 Minutes Basic Pedicure 20 Minutes",
+          "price": "390,000 VND",
+          "duration": "60 min",
+          "source": "https://www.orientspahanoi.com/"
+        },
+        {
+          "name": "Body & Foot Massage",
+          "description": "Body Massage 75 minutes Foot massage/treatment 30 minutes Choice of Aroma, Thai, Deep Tissue or Hotstone Massage"
+        }
+      ]
+    },
+    {
+      "name": {
+        "value": "Orient Spa Hanoi",
+        "source": "https://www.orientspahanoi.com/"
+      },
+      "summary": {
+        "value": "A relaxing spa in Hanoi Old Quarter offering foot and body massages, nail care, and hair treatments for visitors and locals.",
+        "source": "https://www.orientspahanoi.com/"
+      },
+      "category": "massage spa",
+      "offerings": [
+        {
+          "name": "Total Hair & Head Spa",
+          "description": "Scalp exfoliation Double shampoo cleanse Hair mask therapy Blow-dry finish",
+          "price": "720,000 VND",
+          "duration": "90 min",
+          "source": "https://www.orientspahanoi.com/"
+        },
+        {
+          "name": "Total Foot Care",
+          "description": "Foot Bath 5 Minutes Foot Scrub 25 Minutes Foot Mask 10 Minutes Basic Pedicure 20 Minutes",
+          "price": "390,000 VND",
+          "duration": "60 min",
+          "source": "https://www.orientspahanoi.com/"
+        },
+        {
+          "name": "Body & Foot Massage",
+          "description": "Body Massage 75 minutes Foot massage/treatment 30 minutes Choice of Aroma, Thai, Deep Tissue or Hotstone Massage",
+          "price": "690,000 VND",
+          "duration": "105 min"
+        }
+      ]
+    },
+    {
+      "name": {
+        "value": "Orient Spa Hanoi",
+        "source": "https://www.orientspahanoi.com/"
+      },
+      "summary": {
+        "value": "A relaxing spa in Hanoi Old Quarter offering foot and body massages, nail care, and hair treatments for visitors and locals.",
+        "source": "https://www.orientspahanoi.com/"
+      },
+      "category": "massage spa",
+      "offerings": [
+        {
+          "name": "Total Hair & Head Spa",
+          "description": "Scalp exfoliation Double shampoo cleanse Hair mask therapy Blow-dry finish",
+          "price": "720,000 VND",
+          "duration": "90 min",
+          "source": "https://www.orientspahanoi.com/"
+        },
+        {
+          "name": "Total Foot Care",
+          "description": "Foot Bath 5 Minutes Foot Scrub 25 Minutes Foot Mask 10 Minutes Basic Pedicure 20 Minutes",
+          "price": "390,000 VND",
+          "duration": "60 min",
+          "source": "https://www.orientspahanoi.com/"
+        },
+        {
+          "name": "Body & Foot Massage",
+          "description": "Body Massage 75 minutes Foot massage/treatment 30 minutes Choice of Aroma, Thai, Deep Tissue or Hotstone Massage",
           "price": "690,000 VND",
           "duration": "105 min",
-          "source": "https://"
-        }
+          "source": "https://www.orientspahanoi.com/"
+        },
+        {}
       ]
     },
     {
       "name": {
-        "value": "Orient Spa",
+        "value": "Orient Spa Hanoi",
         "source": "https://www.orientspahanoi.com/"
       },
       "summary": {
-        "value": "Relaxing spa experience offering foot and body massage, nail care, shampoo, and holistic spa packages in Hanoi Old Quarter.",
+        "value": "A relaxing spa in Hanoi Old Quarter offering foot and body massages, nail care, and hair treatments for visitors and locals.",
         "source": "https://www.orientspahanoi.com/"
       },
       "category": "massage spa",
       "offerings": [
         {
-          "name": "Total Hair & Head Spa - 90min",
+          "name": "Total Hair & Head Spa",
+          "description": "Scalp exfoliation Double shampoo cleanse Hair mask therapy Blow-dry finish",
           "price": "720,000 VND",
           "duration": "90 min",
           "source": "https://www.orientspahanoi.com/"
         },
         {
-          "name": "Total Foot Care - 60min",
+          "name": "Total Foot Care",
+          "description": "Foot Bath 5 Minutes Foot Scrub 25 Minutes Foot Mask 10 Minutes Basic Pedicure 20 Minutes",
           "price": "390,000 VND",
           "duration": "60 min",
           "source": "https://www.orientspahanoi.com/"
         },
         {
-          "name": "Body & Foot Massage - 105min",
+          "name": "Body & Foot Massage",
+          "description": "Body Massage 75 minutes Foot massage/treatment 30 minutes Choice of Aroma, Thai, Deep Tissue or Hotstone Massage",
           "price": "690,000 VND",
           "duration": "105 min",
           "source": "https://www.orientspahanoi.com/"
         },
         {
-          "name": "Body Massage &"
+          "name": "Body Massage & Mini Facial",
+          "description": "Body Massage 75 minutes Mini Facial Care"
         }
       ]
     },
     {
       "name": {
-        "value": "Orient Spa",
+        "value": "Orient Spa Hanoi",
         "source": "https://www.orientspahanoi.com/"
       },
       "summary": {
-        "value": "Relaxing spa experience offering foot and body massage, nail care, shampoo, and holistic spa packages in Hanoi Old Quarter.",
+        "value": "A relaxing spa in Hanoi Old Quarter offering foot and body massages, nail care, and hair treatments for visitors and locals.",
         "source": "https://www.orientspahanoi.com/"
       },
       "category": "massage spa",
       "offerings": [
         {
-          "name": "Total Hair & Head Spa - 90min",
+          "name": "Total Hair & Head Spa",
+          "description": "Scalp exfoliation Double shampoo cleanse Hair mask therapy Blow-dry finish",
           "price": "720,000 VND",
           "duration": "90 min",
           "source": "https://www.orientspahanoi.com/"
         },
         {
-          "name": "Total Foot Care - 60min",
+          "name": "Total Foot Care",
+          "description": "Foot Bath 5 Minutes Foot Scrub 25 Minutes Foot Mask 10 Minutes Basic Pedicure 20 Minutes",
           "price": "390,000 VND",
           "duration": "60 min",
           "source": "https://www.orientspahanoi.com/"
         },
         {
-          "name": "Body & Foot Massage - 105min",
+          "name": "Body & Foot Massage",
+          "description": "Body Massage 75 minutes Foot massage/treatment 30 minutes Choice of Aroma, Thai, Deep Tissue or Hotstone Massage",
           "price": "690,000 VND",
           "duration": "105 min",
           "source": "https://www.orientspahanoi.com/"
         },
         {
-          "name": "Body Massage & Mini Facial - 105min",
-          "price": "790,000 VND"
+          "name": "Body Massage & Mini Facial",
+          "description": "Body Massage 75 minutes Mini Facial Care 30 minutes Choice of Aroma, Thai, Deep Tissue or Hotstone Massage",
+          "price": "7"
         }
       ]
     },
     {
       "name": {
-        "value": "Orient Spa",
+        "value": "Orient Spa Hanoi",
         "source": "https://www.orientspahanoi.com/"
       },
       "summary": {
-        "value": "Relaxing spa experience offering foot and body massage, nail care, shampoo, and holistic spa packages in Hanoi Old Quarter.",
+        "value": "A relaxing spa in Hanoi Old Quarter offering foot and body massages, nail care, and hair treatments for visitors and locals.",
         "source": "https://www.orientspahanoi.com/"
       },
       "category": "massage spa",
       "offerings": [
         {
-          "name": "Total Hair & Head Spa - 90min",
+          "name": "Total Hair & Head Spa",
+          "description": "Scalp exfoliation Double shampoo cleanse Hair mask therapy Blow-dry finish",
           "price": "720,000 VND",
           "duration": "90 min",
           "source": "https://www.orientspahanoi.com/"
         },
         {
-          "name": "Total Foot Care - 60min",
+          "name": "Total Foot Care",
+          "description": "Foot Bath 5 Minutes Foot Scrub 25 Minutes Foot Mask 10 Minutes Basic Pedicure 20 Minutes",
           "price": "390,000 VND",
           "duration": "60 min",
           "source": "https://www.orientspahanoi.com/"
         },
         {
-          "name": "Body & Foot Massage - 105min",
+          "name": "Body & Foot Massage",
+          "description": "Body Massage 75 minutes Foot massage/treatment 30 minutes Choice of Aroma, Thai, Deep Tissue or Hotstone Massage",
           "price": "690,000 VND",
           "duration": "105 min",
           "source": "https://www.orientspahanoi.com/"
         },
         {
-          "name": "Body Massage & Mini Facial - 105min",
+          "name": "Body Massage & Mini Facial",
+          "description": "Body Massage 75 minutes Mini Facial Care 30 minutes Choice of Aroma, Thai, Deep Tissue or Hotstone Massage",
           "price": "790,000 VND",
-          "duration": "105 min",
-          "source": "https://www.orientspah"
+          "duration": "105 min"
         }
       ]
     },
     {
       "name": {
-        "value": "Orient Spa",
+        "value": "Orient Spa Hanoi",
         "source": "https://www.orientspahanoi.com/"
       },
       "summary": {
-        "value": "Relaxing spa experience offering foot and body massage, nail care, shampoo, and holistic spa packages in Hanoi Old Quarter.",
+        "value": "A relaxing spa in Hanoi Old Quarter offering foot and body massages, nail care, and hair treatments for visitors and locals.",
         "source": "https://www.orientspahanoi.com/"
       },
       "category": "massage spa",
       "offerings": [
         {
-          "name": "Total Hair & Head Spa - 90min",
+          "name": "Total Hair & Head Spa",
+          "description": "Scalp exfoliation Double shampoo cleanse Hair mask therapy Blow-dry finish",
           "price": "720,000 VND",
           "duration": "90 min",
           "source": "https://www.orientspahanoi.com/"
         },
         {
-          "name": "Total Foot Care - 60min",
+          "name": "Total Foot Care",
+          "description": "Foot Bath 5 Minutes Foot Scrub 25 Minutes Foot Mask 10 Minutes Basic Pedicure 20 Minutes",
           "price": "390,000 VND",
           "duration": "60 min",
           "source": "https://www.orientspahanoi.com/"
         },
         {
-          "name": "Body & Foot Massage - 105min",
+          "name": "Body & Foot Massage",
+          "description": "Body Massage 75 minutes Foot massage/treatment 30 minutes Choice of Aroma, Thai, Deep Tissue or Hotstone Massage",
           "price": "690,000 VND",
           "duration": "105 min",
           "source": "https://www.orientspahanoi.com/"
         },
         {
-          "name": "Body Massage & Mini Facial - 105min",
-          "price": "790,000 VND",
-          "duration": "105 min",
-          "source": "https://www.orientspahanoi.com/"
-        },
-        {
-          "name": "Aroma Therapy Massage"
-        }
-      ]
-    },
-    {
-      "name": {
-        "value": "Orient Spa",
-        "source": "https://www.orientspahanoi.com/"
-      },
-      "summary": {
-        "value": "Relaxing spa experience offering foot and body massage, nail care, shampoo, and holistic spa packages in Hanoi Old Quarter.",
-        "source": "https://www.orientspahanoi.com/"
-      },
-      "category": "massage spa",
-      "offerings": [
-        {
-          "name": "Total Hair & Head Spa - 90min",
-          "price": "720,000 VND",
-          "duration": "90 min",
-          "source": "https://www.orientspahanoi.com/"
-        },
-        {
-          "name": "Total Foot Care - 60min",
-          "price": "390,000 VND",
-          "duration": "60 min",
-          "source": "https://www.orientspahanoi.com/"
-        },
-        {
-          "name": "Body & Foot Massage - 105min",
-          "price": "690,000 VND",
-          "duration": "105 min",
-          "source": "https://www.orientspahanoi.com/"
-        },
-        {
-          "name": "Body Massage & Mini Facial - 105min",
-          "price": "790,000 VND",
-          "duration": "105 min",
-          "source": "https://www.orientspahanoi.com/"
-        },
-        {
-          "name": "Aroma Therapy Massage",
-          "source": "https://www.orientspahanoi.com/services-prices.html"
-        }
-      ]
-    },
-    {
-      "name": {
-        "value": "Orient Spa",
-        "source": "https://www.orientspahanoi.com/"
-      },
-      "summary": {
-        "value": "Relaxing spa experience offering foot and body massage, nail care, shampoo, and holistic spa packages in Hanoi Old Quarter.",
-        "source": "https://www.orientspahanoi.com/"
-      },
-      "category": "massage spa",
-      "offerings": [
-        {
-          "name": "Total Hair & Head Spa - 90min",
-          "price": "720,000 VND",
-          "duration": "90 min",
-          "source": "https://www.orientspahanoi.com/"
-        },
-        {
-          "name": "Total Foot Care - 60min",
-          "price": "390,000 VND",
-          "duration": "60 min",
-          "source": "https://www.orientspahanoi.com/"
-        },
-        {
-          "name": "Body & Foot Massage - 105min",
-          "price": "690,000 VND",
-          "duration": "105 min",
-          "source": "https://www.orientspahanoi.com/"
-        },
-        {
-          "name": "Body Massage & Mini Facial - 105min",
-          "price": "790,000 VND",
-          "duration": "105 min",
-          "source": "https://www.orientspahanoi.com/"
-        },
-        {
-          "name": "Aroma Therapy Massage",
-          "source": "https://www.orientspahanoi.com/services-prices.html"
-        },
-        {
-          "name": "Thai Massage",
-          "source": "https://www.orientspahanoi"
-        }
-      ]
-    },
-    {
-      "name": {
-        "value": "Orient Spa",
-        "source": "https://www.orientspahanoi.com/"
-      },
-      "summary": {
-        "value": "Relaxing spa experience offering foot and body massage, nail care, shampoo, and holistic spa packages in Hanoi Old Quarter.",
-        "source": "https://www.orientspahanoi.com/"
-      },
-      "category": "massage spa",
-      "offerings": [
-        {
-          "name": "Total Hair & Head Spa - 90min",
-          "price": "720,000 VND",
-          "duration": "90 min",
-          "source": "https://www.orientspahanoi.com/"
-        },
-        {
-          "name": "Total Foot Care - 60min",
-          "price": "390,000 VND",
-          "duration": "60 min",
-          "source": "https://www.orientspahanoi.com/"
-        },
-        {
-          "name": "Body & Foot Massage - 105min",
-          "price": "690,000 VND",
-          "duration": "105 min",
-          "source": "https://www.orientspahanoi.com/"
-        },
-        {
-          "name": "Body Massage & Mini Facial - 105min",
+          "name": "Body Massage & Mini Facial",
+          "description": "Body Massage 75 minutes Mini Facial Care 30 minutes Choice of Aroma, Thai, Deep Tissue or Hotstone Massage",
           "price": "790,000 VND",
           "duration": "105 min",
           "source": "https://www.orientspahanoi.com/"
         },
         {
-          "name": "Aroma Therapy Massage",
-          "source": "https://www.orientspahanoi.com/services-prices.html"
-        },
-        {
-          "name": "Thai Massage",
-          "source": "https://www.orientspahanoi.com/services-prices.html"
-        },
-        {
-          "name": "Hot Stone Massage"
+          "name": ""
         }
       ]
     },
     {
       "name": {
-        "value": "Orient Spa",
+        "value": "Orient Spa Hanoi",
         "source": "https://www.orientspahanoi.com/"
       },
       "summary": {
-        "value": "Relaxing spa experience offering foot and body massage, nail care, shampoo, and holistic spa packages in Hanoi Old Quarter.",
+        "value": "A relaxing spa in Hanoi Old Quarter offering foot and body massages, nail care, and hair treatments for visitors and locals.",
         "source": "https://www.orientspahanoi.com/"
       },
       "category": "massage spa",
       "offerings": [
         {
-          "name": "Total Hair & Head Spa - 90min",
+          "name": "Total Hair & Head Spa",
+          "description": "Scalp exfoliation Double shampoo cleanse Hair mask therapy Blow-dry finish",
           "price": "720,000 VND",
           "duration": "90 min",
           "source": "https://www.orientspahanoi.com/"
         },
         {
-          "name": "Total Foot Care - 60min",
+          "name": "Total Foot Care",
+          "description": "Foot Bath 5 Minutes Foot Scrub 25 Minutes Foot Mask 10 Minutes Basic Pedicure 20 Minutes",
           "price": "390,000 VND",
           "duration": "60 min",
           "source": "https://www.orientspahanoi.com/"
         },
         {
-          "name": "Body & Foot Massage - 105min",
+          "name": "Body & Foot Massage",
+          "description": "Body Massage 75 minutes Foot massage/treatment 30 minutes Choice of Aroma, Thai, Deep Tissue or Hotstone Massage",
           "price": "690,000 VND",
           "duration": "105 min",
           "source": "https://www.orientspahanoi.com/"
         },
         {
-          "name": "Body Massage & Mini Facial - 105min",
+          "name": "Body Massage & Mini Facial",
+          "description": "Body Massage 75 minutes Mini Facial Care 30 minutes Choice of Aroma, Thai, Deep Tissue or Hotstone Massage",
           "price": "790,000 VND",
           "duration": "105 min",
           "source": "https://www.orientspahanoi.com/"
         },
         {
-          "name": "Aroma Therapy Massage",
-          "source": "https://www.orientspahanoi.com/services-prices.html"
-        },
-        {
-          "name": "Thai Massage",
-          "source": "https://www.orientspahanoi.com/services-prices.html"
-        },
-        {
-          "name": "Hot Stone Massage",
-          "source": "https://www.orientspahanoi.com/services-prices.html"
+          "name": "Back & Shoulder Massage",
+          "description": "Reduce stiffness & improve circulation in back & shoulder area",
+          "price": ""
         }
       ]
     },
     {
       "name": {
-        "value": "Orient Spa",
+        "value": "Orient Spa Hanoi",
         "source": "https://www.orientspahanoi.com/"
       },
       "summary": {
-        "value": "Relaxing spa experience offering foot and body massage, nail care, shampoo, and holistic spa packages in Hanoi Old Quarter.",
+        "value": "A relaxing spa in Hanoi Old Quarter offering foot and body massages, nail care, and hair treatments for visitors and locals.",
         "source": "https://www.orientspahanoi.com/"
       },
       "category": "massage spa",
       "offerings": [
         {
-          "name": "Total Hair & Head Spa - 90min",
+          "name": "Total Hair & Head Spa",
+          "description": "Scalp exfoliation Double shampoo cleanse Hair mask therapy Blow-dry finish",
           "price": "720,000 VND",
           "duration": "90 min",
           "source": "https://www.orientspahanoi.com/"
         },
         {
-          "name": "Total Foot Care - 60min",
+          "name": "Total Foot Care",
+          "description": "Foot Bath 5 Minutes Foot Scrub 25 Minutes Foot Mask 10 Minutes Basic Pedicure 20 Minutes",
           "price": "390,000 VND",
           "duration": "60 min",
           "source": "https://www.orientspahanoi.com/"
         },
         {
-          "name": "Body & Foot Massage - 105min",
+          "name": "Body & Foot Massage",
+          "description": "Body Massage 75 minutes Foot massage/treatment 30 minutes Choice of Aroma, Thai, Deep Tissue or Hotstone Massage",
           "price": "690,000 VND",
           "duration": "105 min",
           "source": "https://www.orientspahanoi.com/"
         },
         {
-          "name": "Body Massage & Mini Facial - 105min",
+          "name": "Body Massage & Mini Facial",
+          "description": "Body Massage 75 minutes Mini Facial Care 30 minutes Choice of Aroma, Thai, Deep Tissue or Hotstone Massage",
           "price": "790,000 VND",
           "duration": "105 min",
           "source": "https://www.orientspahanoi.com/"
         },
         {
-          "name": "Aroma Therapy Massage",
-          "source": "https://www.orientspahanoi.com/services-prices.html"
-        },
-        {
-          "name": "Thai Massage",
-          "source": "https://www.orientspahanoi.com/services-prices.html"
-        },
-        {
-          "name": "Hot Stone Massage",
-          "source": "https://www.orientspahanoi.com/services-prices.html"
-        },
-        {
-          "name": "Deep Tissue Massage",
-          "source": "https://"
+          "name": "Back & Shoulder Massage",
+          "description": "Reduce stiffness & improve circulation in back & shoulder area",
+          "price": "360,000 VND",
+          "duration": "45 min"
         }
       ]
     },
     {
       "name": {
-        "value": "Orient Spa",
+        "value": "Orient Spa Hanoi",
         "source": "https://www.orientspahanoi.com/"
       },
       "summary": {
-        "value": "Relaxing spa experience offering foot and body massage, nail care, shampoo, and holistic spa packages in Hanoi Old Quarter.",
+        "value": "A relaxing spa in Hanoi Old Quarter offering foot and body massages, nail care, and hair treatments for visitors and locals.",
         "source": "https://www.orientspahanoi.com/"
       },
       "category": "massage spa",
       "offerings": [
         {
-          "name": "Total Hair & Head Spa - 90min",
+          "name": "Total Hair & Head Spa",
+          "description": "Scalp exfoliation Double shampoo cleanse Hair mask therapy Blow-dry finish",
           "price": "720,000 VND",
           "duration": "90 min",
           "source": "https://www.orientspahanoi.com/"
         },
         {
-          "name": "Total Foot Care - 60min",
+          "name": "Total Foot Care",
+          "description": "Foot Bath 5 Minutes Foot Scrub 25 Minutes Foot Mask 10 Minutes Basic Pedicure 20 Minutes",
           "price": "390,000 VND",
           "duration": "60 min",
           "source": "https://www.orientspahanoi.com/"
         },
         {
-          "name": "Body & Foot Massage - 105min",
+          "name": "Body & Foot Massage",
+          "description": "Body Massage 75 minutes Foot massage/treatment 30 minutes Choice of Aroma, Thai, Deep Tissue or Hotstone Massage",
           "price": "690,000 VND",
           "duration": "105 min",
           "source": "https://www.orientspahanoi.com/"
         },
         {
-          "name": "Body Massage & Mini Facial - 105min",
+          "name": "Body Massage & Mini Facial",
+          "description": "Body Massage 75 minutes Mini Facial Care 30 minutes Choice of Aroma, Thai, Deep Tissue or Hotstone Massage",
           "price": "790,000 VND",
           "duration": "105 min",
           "source": "https://www.orientspahanoi.com/"
         },
         {
-          "name": "Aroma Therapy Massage",
-          "source": "https://www.orientspahanoi.com/services-prices.html"
-        },
-        {
-          "name": "Thai Massage",
-          "source": "https://www.orientspahanoi.com/services-prices.html"
-        },
-        {
-          "name": "Hot Stone Massage",
-          "source": "https://www.orientspahanoi.com/services-prices.html"
-        },
-        {
-          "name": "Deep Tissue Massage",
+          "name": "Back & Shoulder Massage",
+          "description": "Reduce stiffness & improve circulation in back & shoulder area",
+          "price": "360,000 VND",
+          "duration": "45 min",
           "source": "https://www.orientspahanoi.com/services-prices.html"
         },
         {}
@@ -635,311 +632,466 @@
     },
     {
       "name": {
-        "value": "Orient Spa",
+        "value": "Orient Spa Hanoi",
         "source": "https://www.orientspahanoi.com/"
       },
       "summary": {
-        "value": "Relaxing spa experience offering foot and body massage, nail care, shampoo, and holistic spa packages in Hanoi Old Quarter.",
+        "value": "A relaxing spa in Hanoi Old Quarter offering foot and body massages, nail care, and hair treatments for visitors and locals.",
         "source": "https://www.orientspahanoi.com/"
       },
       "category": "massage spa",
       "offerings": [
         {
-          "name": "Total Hair & Head Spa - 90min",
+          "name": "Total Hair & Head Spa",
+          "description": "Scalp exfoliation Double shampoo cleanse Hair mask therapy Blow-dry finish",
           "price": "720,000 VND",
           "duration": "90 min",
           "source": "https://www.orientspahanoi.com/"
         },
         {
-          "name": "Total Foot Care - 60min",
+          "name": "Total Foot Care",
+          "description": "Foot Bath 5 Minutes Foot Scrub 25 Minutes Foot Mask 10 Minutes Basic Pedicure 20 Minutes",
           "price": "390,000 VND",
           "duration": "60 min",
           "source": "https://www.orientspahanoi.com/"
         },
         {
-          "name": "Body & Foot Massage - 105min",
+          "name": "Body & Foot Massage",
+          "description": "Body Massage 75 minutes Foot massage/treatment 30 minutes Choice of Aroma, Thai, Deep Tissue or Hotstone Massage",
           "price": "690,000 VND",
           "duration": "105 min",
           "source": "https://www.orientspahanoi.com/"
         },
         {
-          "name": "Body Massage & Mini Facial - 105min",
+          "name": "Body Massage & Mini Facial",
+          "description": "Body Massage 75 minutes Mini Facial Care 30 minutes Choice of Aroma, Thai, Deep Tissue or Hotstone Massage",
           "price": "790,000 VND",
           "duration": "105 min",
           "source": "https://www.orientspahanoi.com/"
         },
         {
-          "name": "Aroma Therapy Massage",
+          "name": "Back & Shoulder Massage",
+          "description": "Reduce stiffness & improve circulation in back & shoulder area",
+          "price": "360,000 VND",
+          "duration": "45 min",
           "source": "https://www.orientspahanoi.com/services-prices.html"
         },
         {
-          "name": "Thai Massage",
+          "name": "Head massage",
+          "description": "Using a warm salt pillow as base, this"
+        }
+      ]
+    },
+    {
+      "name": {
+        "value": "Orient Spa Hanoi",
+        "source": "https://www.orientspahanoi.com/"
+      },
+      "summary": {
+        "value": "A relaxing spa in Hanoi Old Quarter offering foot and body massages, nail care, and hair treatments for visitors and locals.",
+        "source": "https://www.orientspahanoi.com/"
+      },
+      "category": "massage spa",
+      "offerings": [
+        {
+          "name": "Total Hair & Head Spa",
+          "description": "Scalp exfoliation Double shampoo cleanse Hair mask therapy Blow-dry finish",
+          "price": "720,000 VND",
+          "duration": "90 min",
+          "source": "https://www.orientspahanoi.com/"
+        },
+        {
+          "name": "Total Foot Care",
+          "description": "Foot Bath 5 Minutes Foot Scrub 25 Minutes Foot Mask 10 Minutes Basic Pedicure 20 Minutes",
+          "price": "390,000 VND",
+          "duration": "60 min",
+          "source": "https://www.orientspahanoi.com/"
+        },
+        {
+          "name": "Body & Foot Massage",
+          "description": "Body Massage 75 minutes Foot massage/treatment 30 minutes Choice of Aroma, Thai, Deep Tissue or Hotstone Massage",
+          "price": "690,000 VND",
+          "duration": "105 min",
+          "source": "https://www.orientspahanoi.com/"
+        },
+        {
+          "name": "Body Massage & Mini Facial",
+          "description": "Body Massage 75 minutes Mini Facial Care 30 minutes Choice of Aroma, Thai, Deep Tissue or Hotstone Massage",
+          "price": "790,000 VND",
+          "duration": "105 min",
+          "source": "https://www.orientspahanoi.com/"
+        },
+        {
+          "name": "Back & Shoulder Massage",
+          "description": "Reduce stiffness & improve circulation in back & shoulder area",
+          "price": "360,000 VND",
+          "duration": "45 min",
           "source": "https://www.orientspahanoi.com/services-prices.html"
         },
         {
-          "name": "Hot Stone Massage",
+          "name": "Head massage",
+          "description": "Using a warm salt pillow as base, this treatment will relax your neck and head area completely.",
+          "price": "320,000 VND"
+        }
+      ]
+    },
+    {
+      "name": {
+        "value": "Orient Spa Hanoi",
+        "source": "https://www.orientspahanoi.com/"
+      },
+      "summary": {
+        "value": "A relaxing spa in Hanoi Old Quarter offering foot and body massages, nail care, and hair treatments for visitors and locals.",
+        "source": "https://www.orientspahanoi.com/"
+      },
+      "category": "massage spa",
+      "offerings": [
+        {
+          "name": "Total Hair & Head Spa",
+          "description": "Scalp exfoliation Double shampoo cleanse Hair mask therapy Blow-dry finish",
+          "price": "720,000 VND",
+          "duration": "90 min",
+          "source": "https://www.orientspahanoi.com/"
+        },
+        {
+          "name": "Total Foot Care",
+          "description": "Foot Bath 5 Minutes Foot Scrub 25 Minutes Foot Mask 10 Minutes Basic Pedicure 20 Minutes",
+          "price": "390,000 VND",
+          "duration": "60 min",
+          "source": "https://www.orientspahanoi.com/"
+        },
+        {
+          "name": "Body & Foot Massage",
+          "description": "Body Massage 75 minutes Foot massage/treatment 30 minutes Choice of Aroma, Thai, Deep Tissue or Hotstone Massage",
+          "price": "690,000 VND",
+          "duration": "105 min",
+          "source": "https://www.orientspahanoi.com/"
+        },
+        {
+          "name": "Body Massage & Mini Facial",
+          "description": "Body Massage 75 minutes Mini Facial Care 30 minutes Choice of Aroma, Thai, Deep Tissue or Hotstone Massage",
+          "price": "790,000 VND",
+          "duration": "105 min",
+          "source": "https://www.orientspahanoi.com/"
+        },
+        {
+          "name": "Back & Shoulder Massage",
+          "description": "Reduce stiffness & improve circulation in back & shoulder area",
+          "price": "360,000 VND",
+          "duration": "45 min",
           "source": "https://www.orientspahanoi.com/services-prices.html"
         },
         {
-          "name": "Deep Tissue Massage",
+          "name": "Head massage",
+          "description": "Using a warm salt pillow as base, this treatment will relax your neck and head area completely.",
+          "price": "320,000 VND",
+          "duration": "30 min",
+          "source": "https://www.orientspah"
+        }
+      ]
+    },
+    {
+      "name": {
+        "value": "Orient Spa Hanoi",
+        "source": "https://www.orientspahanoi.com/"
+      },
+      "summary": {
+        "value": "A relaxing spa in Hanoi Old Quarter offering foot and body massages, nail care, and hair treatments for visitors and locals.",
+        "source": "https://www.orientspahanoi.com/"
+      },
+      "category": "massage spa",
+      "offerings": [
+        {
+          "name": "Total Hair & Head Spa",
+          "description": "Scalp exfoliation Double shampoo cleanse Hair mask therapy Blow-dry finish",
+          "price": "720,000 VND",
+          "duration": "90 min",
+          "source": "https://www.orientspahanoi.com/"
+        },
+        {
+          "name": "Total Foot Care",
+          "description": "Foot Bath 5 Minutes Foot Scrub 25 Minutes Foot Mask 10 Minutes Basic Pedicure 20 Minutes",
+          "price": "390,000 VND",
+          "duration": "60 min",
+          "source": "https://www.orientspahanoi.com/"
+        },
+        {
+          "name": "Body & Foot Massage",
+          "description": "Body Massage 75 minutes Foot massage/treatment 30 minutes Choice of Aroma, Thai, Deep Tissue or Hotstone Massage",
+          "price": "690,000 VND",
+          "duration": "105 min",
+          "source": "https://www.orientspahanoi.com/"
+        },
+        {
+          "name": "Body Massage & Mini Facial",
+          "description": "Body Massage 75 minutes Mini Facial Care 30 minutes Choice of Aroma, Thai, Deep Tissue or Hotstone Massage",
+          "price": "790,000 VND",
+          "duration": "105 min",
+          "source": "https://www.orientspahanoi.com/"
+        },
+        {
+          "name": "Back & Shoulder Massage",
+          "description": "Reduce stiffness & improve circulation in back & shoulder area",
+          "price": "360,000 VND",
+          "duration": "45 min",
           "source": "https://www.orientspahanoi.com/services-prices.html"
         },
         {
-          "name": "Manicure & Pedicure",
+          "name": "Head massage",
+          "description": "Using a warm salt pillow as base, this treatment will relax your neck and head area completely.",
+          "price": "320,000 VND",
+          "duration": "30 min",
+          "source": "https://www.orientspahanoi.com/services-prices.html"
+        }
+      ],
+      "highlights": [
+        {}
+      ]
+    },
+    {
+      "name": {
+        "value": "Orient Spa Hanoi",
+        "source": "https://www.orientspahanoi.com/"
+      },
+      "summary": {
+        "value": "A relaxing spa in Hanoi Old Quarter offering foot and body massages, nail care, and hair treatments for visitors and locals.",
+        "source": "https://www.orientspahanoi.com/"
+      },
+      "category": "massage spa",
+      "offerings": [
+        {
+          "name": "Total Hair & Head Spa",
+          "description": "Scalp exfoliation Double shampoo cleanse Hair mask therapy Blow-dry finish",
+          "price": "720,000 VND",
+          "duration": "90 min",
+          "source": "https://www.orientspahanoi.com/"
+        },
+        {
+          "name": "Total Foot Care",
+          "description": "Foot Bath 5 Minutes Foot Scrub 25 Minutes Foot Mask 10 Minutes Basic Pedicure 20 Minutes",
+          "price": "390,000 VND",
+          "duration": "60 min",
+          "source": "https://www.orientspahanoi.com/"
+        },
+        {
+          "name": "Body & Foot Massage",
+          "description": "Body Massage 75 minutes Foot massage/treatment 30 minutes Choice of Aroma, Thai, Deep Tissue or Hotstone Massage",
+          "price": "690,000 VND",
+          "duration": "105 min",
+          "source": "https://www.orientspahanoi.com/"
+        },
+        {
+          "name": "Body Massage & Mini Facial",
+          "description": "Body Massage 75 minutes Mini Facial Care 30 minutes Choice of Aroma, Thai, Deep Tissue or Hotstone Massage",
+          "price": "790,000 VND",
+          "duration": "105 min",
+          "source": "https://www.orientspahanoi.com/"
+        },
+        {
+          "name": "Back & Shoulder Massage",
+          "description": "Reduce stiffness & improve circulation in back & shoulder area",
+          "price": "360,000 VND",
+          "duration": "45 min",
+          "source": "https://www.orientspahanoi.com/services-prices.html"
+        },
+        {
+          "name": "Head massage",
+          "description": "Using a warm salt pillow as base, this treatment will relax your neck and head area completely.",
+          "price": "320,000 VND",
+          "duration": "30 min",
+          "source": "https://www.orientspahanoi.com/services-prices.html"
+        }
+      ],
+      "highlights": [
+        {
+          "value": "Founded in 2017 with 4 spas in the heart of Hanoi Old Quarter"
+        }
+      ]
+    },
+    {
+      "name": {
+        "value": "Orient Spa Hanoi",
+        "source": "https://www.orientspahanoi.com/"
+      },
+      "summary": {
+        "value": "A relaxing spa in Hanoi Old Quarter offering foot and body massages, nail care, and hair treatments for visitors and locals.",
+        "source": "https://www.orientspahanoi.com/"
+      },
+      "category": "massage spa",
+      "offerings": [
+        {
+          "name": "Total Hair & Head Spa",
+          "description": "Scalp exfoliation Double shampoo cleanse Hair mask therapy Blow-dry finish",
+          "price": "720,000 VND",
+          "duration": "90 min",
+          "source": "https://www.orientspahanoi.com/"
+        },
+        {
+          "name": "Total Foot Care",
+          "description": "Foot Bath 5 Minutes Foot Scrub 25 Minutes Foot Mask 10 Minutes Basic Pedicure 20 Minutes",
+          "price": "390,000 VND",
+          "duration": "60 min",
+          "source": "https://www.orientspahanoi.com/"
+        },
+        {
+          "name": "Body & Foot Massage",
+          "description": "Body Massage 75 minutes Foot massage/treatment 30 minutes Choice of Aroma, Thai, Deep Tissue or Hotstone Massage",
+          "price": "690,000 VND",
+          "duration": "105 min",
+          "source": "https://www.orientspahanoi.com/"
+        },
+        {
+          "name": "Body Massage & Mini Facial",
+          "description": "Body Massage 75 minutes Mini Facial Care 30 minutes Choice of Aroma, Thai, Deep Tissue or Hotstone Massage",
+          "price": "790,000 VND",
+          "duration": "105 min",
+          "source": "https://www.orientspahanoi.com/"
+        },
+        {
+          "name": "Back & Shoulder Massage",
+          "description": "Reduce stiffness & improve circulation in back & shoulder area",
+          "price": "360,000 VND",
+          "duration": "45 min",
+          "source": "https://www.orientspahanoi.com/services-prices.html"
+        },
+        {
+          "name": "Head massage",
+          "description": "Using a warm salt pillow as base, this treatment will relax your neck and head area completely.",
+          "price": "320,000 VND",
+          "duration": "30 min",
+          "source": "https://www.orientspahanoi.com/services-prices.html"
+        }
+      ],
+      "highlights": [
+        {
+          "value": "Founded in 2017 with 4 spas in the heart of Hanoi Old Quarter",
+          "source": "https://www.orientspahanoi.com/"
+        },
+        {}
+      ]
+    },
+    {
+      "name": {
+        "value": "Orient Spa Hanoi",
+        "source": "https://www.orientspahanoi.com/"
+      },
+      "summary": {
+        "value": "A relaxing spa in Hanoi Old Quarter offering foot and body massages, nail care, and hair treatments for visitors and locals.",
+        "source": "https://www.orientspahanoi.com/"
+      },
+      "category": "massage spa",
+      "offerings": [
+        {
+          "name": "Total Hair & Head Spa",
+          "description": "Scalp exfoliation Double shampoo cleanse Hair mask therapy Blow-dry finish",
+          "price": "720,000 VND",
+          "duration": "90 min",
+          "source": "https://www.orientspahanoi.com/"
+        },
+        {
+          "name": "Total Foot Care",
+          "description": "Foot Bath 5 Minutes Foot Scrub 25 Minutes Foot Mask 10 Minutes Basic Pedicure 20 Minutes",
+          "price": "390,000 VND",
+          "duration": "60 min",
+          "source": "https://www.orientspahanoi.com/"
+        },
+        {
+          "name": "Body & Foot Massage",
+          "description": "Body Massage 75 minutes Foot massage/treatment 30 minutes Choice of Aroma, Thai, Deep Tissue or Hotstone Massage",
+          "price": "690,000 VND",
+          "duration": "105 min",
+          "source": "https://www.orientspahanoi.com/"
+        },
+        {
+          "name": "Body Massage & Mini Facial",
+          "description": "Body Massage 75 minutes Mini Facial Care 30 minutes Choice of Aroma, Thai, Deep Tissue or Hotstone Massage",
+          "price": "790,000 VND",
+          "duration": "105 min",
+          "source": "https://www.orientspahanoi.com/"
+        },
+        {
+          "name": "Back & Shoulder Massage",
+          "description": "Reduce stiffness & improve circulation in back & shoulder area",
+          "price": "360,000 VND",
+          "duration": "45 min",
+          "source": "https://www.orientspahanoi.com/services-prices.html"
+        },
+        {
+          "name": "Head massage",
+          "description": "Using a warm salt pillow as base, this treatment will relax your neck and head area completely.",
+          "price": "320,000 VND",
+          "duration": "30 min",
+          "source": "https://www.orientspahanoi.com/services-prices.html"
+        }
+      ],
+      "highlights": [
+        {
+          "value": "Founded in 2017 with 4 spas in the heart of Hanoi Old Quarter",
+          "source": "https://www.orientspahanoi.com/"
+        },
+        {
+          "value": "Skilled therapists and attentive receptionists",
           "source": "https://www.orientspahanoi."
         }
       ]
     },
     {
       "name": {
-        "value": "Orient Spa",
+        "value": "Orient Spa Hanoi",
         "source": "https://www.orientspahanoi.com/"
       },
       "summary": {
-        "value": "Relaxing spa experience offering foot and body massage, nail care, shampoo, and holistic spa packages in Hanoi Old Quarter.",
+        "value": "A relaxing spa in Hanoi Old Quarter offering foot and body massages, nail care, and hair treatments for visitors and locals.",
         "source": "https://www.orientspahanoi.com/"
       },
       "category": "massage spa",
       "offerings": [
         {
-          "name": "Total Hair & Head Spa - 90min",
+          "name": "Total Hair & Head Spa",
+          "description": "Scalp exfoliation Double shampoo cleanse Hair mask therapy Blow-dry finish",
           "price": "720,000 VND",
           "duration": "90 min",
           "source": "https://www.orientspahanoi.com/"
         },
         {
-          "name": "Total Foot Care - 60min",
+          "name": "Total Foot Care",
+          "description": "Foot Bath 5 Minutes Foot Scrub 25 Minutes Foot Mask 10 Minutes Basic Pedicure 20 Minutes",
           "price": "390,000 VND",
           "duration": "60 min",
           "source": "https://www.orientspahanoi.com/"
         },
         {
-          "name": "Body & Foot Massage - 105min",
+          "name": "Body & Foot Massage",
+          "description": "Body Massage 75 minutes Foot massage/treatment 30 minutes Choice of Aroma, Thai, Deep Tissue or Hotstone Massage",
           "price": "690,000 VND",
           "duration": "105 min",
           "source": "https://www.orientspahanoi.com/"
         },
         {
-          "name": "Body Massage & Mini Facial - 105min",
+          "name": "Body Massage & Mini Facial",
+          "description": "Body Massage 75 minutes Mini Facial Care 30 minutes Choice of Aroma, Thai, Deep Tissue or Hotstone Massage",
           "price": "790,000 VND",
           "duration": "105 min",
           "source": "https://www.orientspahanoi.com/"
         },
         {
-          "name": "Aroma Therapy Massage",
+          "name": "Back & Shoulder Massage",
+          "description": "Reduce stiffness & improve circulation in back & shoulder area",
+          "price": "360,000 VND",
+          "duration": "45 min",
           "source": "https://www.orientspahanoi.com/services-prices.html"
         },
         {
-          "name": "Thai Massage",
+          "name": "Head massage",
+          "description": "Using a warm salt pillow as base, this treatment will relax your neck and head area completely.",
+          "price": "320,000 VND",
+          "duration": "30 min",
           "source": "https://www.orientspahanoi.com/services-prices.html"
-        },
-        {
-          "name": "Hot Stone Massage",
-          "source": "https://www.orientspahanoi.com/services-prices.html"
-        },
-        {
-          "name": "Deep Tissue Massage",
-          "source": "https://www.orientspahanoi.com/services-prices.html"
-        },
-        {
-          "name": "Manicure & Pedicure",
-          "source": "https://www.orientspahanoi.com/services.html"
         }
       ],
       "highlights": [
         {
-          "value": "Founded"
-        }
-      ]
-    },
-    {
-      "name": {
-        "value": "Orient Spa",
-        "source": "https://www.orientspahanoi.com/"
-      },
-      "summary": {
-        "value": "Relaxing spa experience offering foot and body massage, nail care, shampoo, and holistic spa packages in Hanoi Old Quarter.",
-        "source": "https://www.orientspahanoi.com/"
-      },
-      "category": "massage spa",
-      "offerings": [
-        {
-          "name": "Total Hair & Head Spa - 90min",
-          "price": "720,000 VND",
-          "duration": "90 min",
-          "source": "https://www.orientspahanoi.com/"
-        },
-        {
-          "name": "Total Foot Care - 60min",
-          "price": "390,000 VND",
-          "duration": "60 min",
-          "source": "https://www.orientspahanoi.com/"
-        },
-        {
-          "name": "Body & Foot Massage - 105min",
-          "price": "690,000 VND",
-          "duration": "105 min",
-          "source": "https://www.orientspahanoi.com/"
-        },
-        {
-          "name": "Body Massage & Mini Facial - 105min",
-          "price": "790,000 VND",
-          "duration": "105 min",
-          "source": "https://www.orientspahanoi.com/"
-        },
-        {
-          "name": "Aroma Therapy Massage",
-          "source": "https://www.orientspahanoi.com/services-prices.html"
-        },
-        {
-          "name": "Thai Massage",
-          "source": "https://www.orientspahanoi.com/services-prices.html"
-        },
-        {
-          "name": "Hot Stone Massage",
-          "source": "https://www.orientspahanoi.com/services-prices.html"
-        },
-        {
-          "name": "Deep Tissue Massage",
-          "source": "https://www.orientspahanoi.com/services-prices.html"
-        },
-        {
-          "name": "Manicure & Pedicure",
-          "source": "https://www.orientspahanoi.com/services.html"
-        }
-      ],
-      "highlights": [
-        {
-          "value": "Founded in 2017 with the aim to provide visitors and locals with a relaxing spa experience",
-          "source": ""
-        }
-      ]
-    },
-    {
-      "name": {
-        "value": "Orient Spa",
-        "source": "https://www.orientspahanoi.com/"
-      },
-      "summary": {
-        "value": "Relaxing spa experience offering foot and body massage, nail care, shampoo, and holistic spa packages in Hanoi Old Quarter.",
-        "source": "https://www.orientspahanoi.com/"
-      },
-      "category": "massage spa",
-      "offerings": [
-        {
-          "name": "Total Hair & Head Spa - 90min",
-          "price": "720,000 VND",
-          "duration": "90 min",
-          "source": "https://www.orientspahanoi.com/"
-        },
-        {
-          "name": "Total Foot Care - 60min",
-          "price": "390,000 VND",
-          "duration": "60 min",
-          "source": "https://www.orientspahanoi.com/"
-        },
-        {
-          "name": "Body & Foot Massage - 105min",
-          "price": "690,000 VND",
-          "duration": "105 min",
-          "source": "https://www.orientspahanoi.com/"
-        },
-        {
-          "name": "Body Massage & Mini Facial - 105min",
-          "price": "790,000 VND",
-          "duration": "105 min",
-          "source": "https://www.orientspahanoi.com/"
-        },
-        {
-          "name": "Aroma Therapy Massage",
-          "source": "https://www.orientspahanoi.com/services-prices.html"
-        },
-        {
-          "name": "Thai Massage",
-          "source": "https://www.orientspahanoi.com/services-prices.html"
-        },
-        {
-          "name": "Hot Stone Massage",
-          "source": "https://www.orientspahanoi.com/services-prices.html"
-        },
-        {
-          "name": "Deep Tissue Massage",
-          "source": "https://www.orientspahanoi.com/services-prices.html"
-        },
-        {
-          "name": "Manicure & Pedicure",
-          "source": "https://www.orientspahanoi.com/services.html"
-        }
-      ],
-      "highlights": [
-        {
-          "value": "Founded in 2017 with the aim to provide visitors and locals with a relaxing spa experience",
-          "source": "https://www.orientspahanoi.com/"
-        },
-        {
-          "value": "Sk"
-        }
-      ]
-    },
-    {
-      "name": {
-        "value": "Orient Spa",
-        "source": "https://www.orientspahanoi.com/"
-      },
-      "summary": {
-        "value": "Relaxing spa experience offering foot and body massage, nail care, shampoo, and holistic spa packages in Hanoi Old Quarter.",
-        "source": "https://www.orientspahanoi.com/"
-      },
-      "category": "massage spa",
-      "offerings": [
-        {
-          "name": "Total Hair & Head Spa - 90min",
-          "price": "720,000 VND",
-          "duration": "90 min",
-          "source": "https://www.orientspahanoi.com/"
-        },
-        {
-          "name": "Total Foot Care - 60min",
-          "price": "390,000 VND",
-          "duration": "60 min",
-          "source": "https://www.orientspahanoi.com/"
-        },
-        {
-          "name": "Body & Foot Massage - 105min",
-          "price": "690,000 VND",
-          "duration": "105 min",
-          "source": "https://www.orientspahanoi.com/"
-        },
-        {
-          "name": "Body Massage & Mini Facial - 105min",
-          "price": "790,000 VND",
-          "duration": "105 min",
-          "source": "https://www.orientspahanoi.com/"
-        },
-        {
-          "name": "Aroma Therapy Massage",
-          "source": "https://www.orientspahanoi.com/services-prices.html"
-        },
-        {
-          "name": "Thai Massage",
-          "source": "https://www.orientspahanoi.com/services-prices.html"
-        },
-        {
-          "name": "Hot Stone Massage",
-          "source": "https://www.orientspahanoi.com/services-prices.html"
-        },
-        {
-          "name": "Deep Tissue Massage",
-          "source": "https://www.orientspahanoi.com/services-prices.html"
-        },
-        {
-          "name": "Manicure & Pedicure",
-          "source": "https://www.orientspahanoi.com/services.html"
-        }
-      ],
-      "highlights": [
-        {
-          "value": "Founded in 2017 with the aim to provide visitors and locals with a relaxing spa experience",
+          "value": "Founded in 2017 with 4 spas in the heart of Hanoi Old Quarter",
           "source": "https://www.orientspahanoi.com/"
         },
         {
@@ -947,70 +1099,68 @@
           "source": "https://www.orientspahanoi.com/"
         },
         {
-          "value": "Convenient and central location in Hanoi Old Quarter",
-          "source": ""
+          "value": "Convenient and central location near Hoan Kiem Lake",
+          "source": "https://www.orientspahanoi.com/"
         }
       ]
     },
     {
       "name": {
-        "value": "Orient Spa",
+        "value": "Orient Spa Hanoi",
         "source": "https://www.orientspahanoi.com/"
       },
       "summary": {
-        "value": "Relaxing spa experience offering foot and body massage, nail care, shampoo, and holistic spa packages in Hanoi Old Quarter.",
+        "value": "A relaxing spa in Hanoi Old Quarter offering foot and body massages, nail care, and hair treatments for visitors and locals.",
         "source": "https://www.orientspahanoi.com/"
       },
       "category": "massage spa",
       "offerings": [
         {
-          "name": "Total Hair & Head Spa - 90min",
+          "name": "Total Hair & Head Spa",
+          "description": "Scalp exfoliation Double shampoo cleanse Hair mask therapy Blow-dry finish",
           "price": "720,000 VND",
           "duration": "90 min",
           "source": "https://www.orientspahanoi.com/"
         },
         {
-          "name": "Total Foot Care - 60min",
+          "name": "Total Foot Care",
+          "description": "Foot Bath 5 Minutes Foot Scrub 25 Minutes Foot Mask 10 Minutes Basic Pedicure 20 Minutes",
           "price": "390,000 VND",
           "duration": "60 min",
           "source": "https://www.orientspahanoi.com/"
         },
         {
-          "name": "Body & Foot Massage - 105min",
+          "name": "Body & Foot Massage",
+          "description": "Body Massage 75 minutes Foot massage/treatment 30 minutes Choice of Aroma, Thai, Deep Tissue or Hotstone Massage",
           "price": "690,000 VND",
           "duration": "105 min",
           "source": "https://www.orientspahanoi.com/"
         },
         {
-          "name": "Body Massage & Mini Facial - 105min",
+          "name": "Body Massage & Mini Facial",
+          "description": "Body Massage 75 minutes Mini Facial Care 30 minutes Choice of Aroma, Thai, Deep Tissue or Hotstone Massage",
           "price": "790,000 VND",
           "duration": "105 min",
           "source": "https://www.orientspahanoi.com/"
         },
         {
-          "name": "Aroma Therapy Massage",
+          "name": "Back & Shoulder Massage",
+          "description": "Reduce stiffness & improve circulation in back & shoulder area",
+          "price": "360,000 VND",
+          "duration": "45 min",
           "source": "https://www.orientspahanoi.com/services-prices.html"
         },
         {
-          "name": "Thai Massage",
+          "name": "Head massage",
+          "description": "Using a warm salt pillow as base, this treatment will relax your neck and head area completely.",
+          "price": "320,000 VND",
+          "duration": "30 min",
           "source": "https://www.orientspahanoi.com/services-prices.html"
-        },
-        {
-          "name": "Hot Stone Massage",
-          "source": "https://www.orientspahanoi.com/services-prices.html"
-        },
-        {
-          "name": "Deep Tissue Massage",
-          "source": "https://www.orientspahanoi.com/services-prices.html"
-        },
-        {
-          "name": "Manicure & Pedicure",
-          "source": "https://www.orientspahanoi.com/services.html"
         }
       ],
       "highlights": [
         {
-          "value": "Founded in 2017 with the aim to provide visitors and locals with a relaxing spa experience",
+          "value": "Founded in 2017 with 4 spas in the heart of Hanoi Old Quarter",
           "source": "https://www.orientspahanoi.com/"
         },
         {
@@ -1018,76 +1168,73 @@
           "source": "https://www.orientspahanoi.com/"
         },
         {
-          "value": "Convenient and central location in Hanoi Old Quarter",
+          "value": "Convenient and central location near Hoan Kiem Lake",
           "source": "https://www.orientspahanoi.com/"
         }
       ],
       "location": {
         "town": {
-          "value": "Hanoi",
-          "source": "https://www."
+          "value": "Hanoi"
         }
       }
     },
     {
       "name": {
-        "value": "Orient Spa",
+        "value": "Orient Spa Hanoi",
         "source": "https://www.orientspahanoi.com/"
       },
       "summary": {
-        "value": "Relaxing spa experience offering foot and body massage, nail care, shampoo, and holistic spa packages in Hanoi Old Quarter.",
+        "value": "A relaxing spa in Hanoi Old Quarter offering foot and body massages, nail care, and hair treatments for visitors and locals.",
         "source": "https://www.orientspahanoi.com/"
       },
       "category": "massage spa",
       "offerings": [
         {
-          "name": "Total Hair & Head Spa - 90min",
+          "name": "Total Hair & Head Spa",
+          "description": "Scalp exfoliation Double shampoo cleanse Hair mask therapy Blow-dry finish",
           "price": "720,000 VND",
           "duration": "90 min",
           "source": "https://www.orientspahanoi.com/"
         },
         {
-          "name": "Total Foot Care - 60min",
+          "name": "Total Foot Care",
+          "description": "Foot Bath 5 Minutes Foot Scrub 25 Minutes Foot Mask 10 Minutes Basic Pedicure 20 Minutes",
           "price": "390,000 VND",
           "duration": "60 min",
           "source": "https://www.orientspahanoi.com/"
         },
         {
-          "name": "Body & Foot Massage - 105min",
+          "name": "Body & Foot Massage",
+          "description": "Body Massage 75 minutes Foot massage/treatment 30 minutes Choice of Aroma, Thai, Deep Tissue or Hotstone Massage",
           "price": "690,000 VND",
           "duration": "105 min",
           "source": "https://www.orientspahanoi.com/"
         },
         {
-          "name": "Body Massage & Mini Facial - 105min",
+          "name": "Body Massage & Mini Facial",
+          "description": "Body Massage 75 minutes Mini Facial Care 30 minutes Choice of Aroma, Thai, Deep Tissue or Hotstone Massage",
           "price": "790,000 VND",
           "duration": "105 min",
           "source": "https://www.orientspahanoi.com/"
         },
         {
-          "name": "Aroma Therapy Massage",
+          "name": "Back & Shoulder Massage",
+          "description": "Reduce stiffness & improve circulation in back & shoulder area",
+          "price": "360,000 VND",
+          "duration": "45 min",
           "source": "https://www.orientspahanoi.com/services-prices.html"
         },
         {
-          "name": "Thai Massage",
+          "name": "Head massage",
+          "description": "Using a warm salt pillow as base, this treatment will relax your neck and head area completely.",
+          "price": "320,000 VND",
+          "duration": "30 min",
           "source": "https://www.orientspahanoi.com/services-prices.html"
-        },
-        {
-          "name": "Hot Stone Massage",
-          "source": "https://www.orientspahanoi.com/services-prices.html"
-        },
-        {
-          "name": "Deep Tissue Massage",
-          "source": "https://www.orientspahanoi.com/services-prices.html"
-        },
-        {
-          "name": "Manicure & Pedicure",
-          "source": "https://www.orientspahanoi.com/services.html"
         }
       ],
       "highlights": [
         {
-          "value": "Founded in 2017 with the aim to provide visitors and locals with a relaxing spa experience",
+          "value": "Founded in 2017 with 4 spas in the heart of Hanoi Old Quarter",
           "source": "https://www.orientspahanoi.com/"
         },
         {
@@ -1095,7 +1242,7 @@
           "source": "https://www.orientspahanoi.com/"
         },
         {
-          "value": "Convenient and central location in Hanoi Old Quarter",
+          "value": "Convenient and central location near Hoan Kiem Lake",
           "source": "https://www.orientspahanoi.com/"
         }
       ],
@@ -1111,63 +1258,61 @@
     },
     {
       "name": {
-        "value": "Orient Spa",
+        "value": "Orient Spa Hanoi",
         "source": "https://www.orientspahanoi.com/"
       },
       "summary": {
-        "value": "Relaxing spa experience offering foot and body massage, nail care, shampoo, and holistic spa packages in Hanoi Old Quarter.",
+        "value": "A relaxing spa in Hanoi Old Quarter offering foot and body massages, nail care, and hair treatments for visitors and locals.",
         "source": "https://www.orientspahanoi.com/"
       },
       "category": "massage spa",
       "offerings": [
         {
-          "name": "Total Hair & Head Spa - 90min",
+          "name": "Total Hair & Head Spa",
+          "description": "Scalp exfoliation Double shampoo cleanse Hair mask therapy Blow-dry finish",
           "price": "720,000 VND",
           "duration": "90 min",
           "source": "https://www.orientspahanoi.com/"
         },
         {
-          "name": "Total Foot Care - 60min",
+          "name": "Total Foot Care",
+          "description": "Foot Bath 5 Minutes Foot Scrub 25 Minutes Foot Mask 10 Minutes Basic Pedicure 20 Minutes",
           "price": "390,000 VND",
           "duration": "60 min",
           "source": "https://www.orientspahanoi.com/"
         },
         {
-          "name": "Body & Foot Massage - 105min",
+          "name": "Body & Foot Massage",
+          "description": "Body Massage 75 minutes Foot massage/treatment 30 minutes Choice of Aroma, Thai, Deep Tissue or Hotstone Massage",
           "price": "690,000 VND",
           "duration": "105 min",
           "source": "https://www.orientspahanoi.com/"
         },
         {
-          "name": "Body Massage & Mini Facial - 105min",
+          "name": "Body Massage & Mini Facial",
+          "description": "Body Massage 75 minutes Mini Facial Care 30 minutes Choice of Aroma, Thai, Deep Tissue or Hotstone Massage",
           "price": "790,000 VND",
           "duration": "105 min",
           "source": "https://www.orientspahanoi.com/"
         },
         {
-          "name": "Aroma Therapy Massage",
+          "name": "Back & Shoulder Massage",
+          "description": "Reduce stiffness & improve circulation in back & shoulder area",
+          "price": "360,000 VND",
+          "duration": "45 min",
           "source": "https://www.orientspahanoi.com/services-prices.html"
         },
         {
-          "name": "Thai Massage",
+          "name": "Head massage",
+          "description": "Using a warm salt pillow as base, this treatment will relax your neck and head area completely.",
+          "price": "320,000 VND",
+          "duration": "30 min",
           "source": "https://www.orientspahanoi.com/services-prices.html"
-        },
-        {
-          "name": "Hot Stone Massage",
-          "source": "https://www.orientspahanoi.com/services-prices.html"
-        },
-        {
-          "name": "Deep Tissue Massage",
-          "source": "https://www.orientspahanoi.com/services-prices.html"
-        },
-        {
-          "name": "Manicure & Pedicure",
-          "source": "https://www.orientspahanoi.com/services.html"
         }
       ],
       "highlights": [
         {
-          "value": "Founded in 2017 with the aim to provide visitors and locals with a relaxing spa experience",
+          "value": "Founded in 2017 with 4 spas in the heart of Hanoi Old Quarter",
           "source": "https://www.orientspahanoi.com/"
         },
         {
@@ -1175,7 +1320,86 @@
           "source": "https://www.orientspahanoi.com/"
         },
         {
-          "value": "Convenient and central location in Hanoi Old Quarter",
+          "value": "Convenient and central location near Hoan Kiem Lake",
+          "source": "https://www.orientspahanoi.com/"
+        }
+      ],
+      "location": {
+        "town": {
+          "value": "Hanoi",
+          "source": "https://www.orientspahanoi.com/"
+        },
+        "area": {
+          "value": "Old Quarter",
+          "source": "https://www.orientspahanoi.com/"
+        }
+      }
+    },
+    {
+      "name": {
+        "value": "Orient Spa Hanoi",
+        "source": "https://www.orientspahanoi.com/"
+      },
+      "summary": {
+        "value": "A relaxing spa in Hanoi Old Quarter offering foot and body massages, nail care, and hair treatments for visitors and locals.",
+        "source": "https://www.orientspahanoi.com/"
+      },
+      "category": "massage spa",
+      "offerings": [
+        {
+          "name": "Total Hair & Head Spa",
+          "description": "Scalp exfoliation Double shampoo cleanse Hair mask therapy Blow-dry finish",
+          "price": "720,000 VND",
+          "duration": "90 min",
+          "source": "https://www.orientspahanoi.com/"
+        },
+        {
+          "name": "Total Foot Care",
+          "description": "Foot Bath 5 Minutes Foot Scrub 25 Minutes Foot Mask 10 Minutes Basic Pedicure 20 Minutes",
+          "price": "390,000 VND",
+          "duration": "60 min",
+          "source": "https://www.orientspahanoi.com/"
+        },
+        {
+          "name": "Body & Foot Massage",
+          "description": "Body Massage 75 minutes Foot massage/treatment 30 minutes Choice of Aroma, Thai, Deep Tissue or Hotstone Massage",
+          "price": "690,000 VND",
+          "duration": "105 min",
+          "source": "https://www.orientspahanoi.com/"
+        },
+        {
+          "name": "Body Massage & Mini Facial",
+          "description": "Body Massage 75 minutes Mini Facial Care 30 minutes Choice of Aroma, Thai, Deep Tissue or Hotstone Massage",
+          "price": "790,000 VND",
+          "duration": "105 min",
+          "source": "https://www.orientspahanoi.com/"
+        },
+        {
+          "name": "Back & Shoulder Massage",
+          "description": "Reduce stiffness & improve circulation in back & shoulder area",
+          "price": "360,000 VND",
+          "duration": "45 min",
+          "source": "https://www.orientspahanoi.com/services-prices.html"
+        },
+        {
+          "name": "Head massage",
+          "description": "Using a warm salt pillow as base, this treatment will relax your neck and head area completely.",
+          "price": "320,000 VND",
+          "duration": "30 min",
+          "source": "https://www.orientspahanoi.com/services-prices.html"
+        }
+      ],
+      "highlights": [
+        {
+          "value": "Founded in 2017 with 4 spas in the heart of Hanoi Old Quarter",
+          "source": "https://www.orientspahanoi.com/"
+        },
+        {
+          "value": "Skilled therapists and attentive receptionists",
+          "source": "https://www.orientspahanoi.com/"
+        },
+        {
+          "value": "Convenient and central location near Hoan Kiem Lake",
           "source": "https://www.orientspahanoi.com/"
         }
       ],
@@ -1195,63 +1419,61 @@
     },
     {
       "name": {
-        "value": "Orient Spa",
+        "value": "Orient Spa Hanoi",
         "source": "https://www.orientspahanoi.com/"
       },
       "summary": {
-        "value": "Relaxing spa experience offering foot and body massage, nail care, shampoo, and holistic spa packages in Hanoi Old Quarter.",
+        "value": "A relaxing spa in Hanoi Old Quarter offering foot and body massages, nail care, and hair treatments for visitors and locals.",
         "source": "https://www.orientspahanoi.com/"
       },
       "category": "massage spa",
       "offerings": [
         {
-          "name": "Total Hair & Head Spa - 90min",
+          "name": "Total Hair & Head Spa",
+          "description": "Scalp exfoliation Double shampoo cleanse Hair mask therapy Blow-dry finish",
           "price": "720,000 VND",
           "duration": "90 min",
           "source": "https://www.orientspahanoi.com/"
         },
         {
-          "name": "Total Foot Care - 60min",
+          "name": "Total Foot Care",
+          "description": "Foot Bath 5 Minutes Foot Scrub 25 Minutes Foot Mask 10 Minutes Basic Pedicure 20 Minutes",
           "price": "390,000 VND",
           "duration": "60 min",
           "source": "https://www.orientspahanoi.com/"
         },
         {
-          "name": "Body & Foot Massage - 105min",
+          "name": "Body & Foot Massage",
+          "description": "Body Massage 75 minutes Foot massage/treatment 30 minutes Choice of Aroma, Thai, Deep Tissue or Hotstone Massage",
           "price": "690,000 VND",
           "duration": "105 min",
           "source": "https://www.orientspahanoi.com/"
         },
         {
-          "name": "Body Massage & Mini Facial - 105min",
+          "name": "Body Massage & Mini Facial",
+          "description": "Body Massage 75 minutes Mini Facial Care 30 minutes Choice of Aroma, Thai, Deep Tissue or Hotstone Massage",
           "price": "790,000 VND",
           "duration": "105 min",
           "source": "https://www.orientspahanoi.com/"
         },
         {
-          "name": "Aroma Therapy Massage",
+          "name": "Back & Shoulder Massage",
+          "description": "Reduce stiffness & improve circulation in back & shoulder area",
+          "price": "360,000 VND",
+          "duration": "45 min",
           "source": "https://www.orientspahanoi.com/services-prices.html"
         },
         {
-          "name": "Thai Massage",
+          "name": "Head massage",
+          "description": "Using a warm salt pillow as base, this treatment will relax your neck and head area completely.",
+          "price": "320,000 VND",
+          "duration": "30 min",
           "source": "https://www.orientspahanoi.com/services-prices.html"
-        },
-        {
-          "name": "Hot Stone Massage",
-          "source": "https://www.orientspahanoi.com/services-prices.html"
-        },
-        {
-          "name": "Deep Tissue Massage",
-          "source": "https://www.orientspahanoi.com/services-prices.html"
-        },
-        {
-          "name": "Manicure & Pedicure",
-          "source": "https://www.orientspahanoi.com/services.html"
         }
       ],
       "highlights": [
         {
-          "value": "Founded in 2017 with the aim to provide visitors and locals with a relaxing spa experience",
+          "value": "Founded in 2017 with 4 spas in the heart of Hanoi Old Quarter",
           "source": "https://www.orientspahanoi.com/"
         },
         {
@@ -1259,7 +1481,90 @@
           "source": "https://www.orientspahanoi.com/"
         },
         {
-          "value": "Convenient and central location in Hanoi Old Quarter",
+          "value": "Convenient and central location near Hoan Kiem Lake",
+          "source": "https://www.orientspahanoi.com/"
+        }
+      ],
+      "location": {
+        "town": {
+          "value": "Hanoi",
+          "source": "https://www.orientspahanoi.com/"
+        },
+        "area": {
+          "value": "Old Quarter",
+          "source": "https://www.orientspahanoi.com/"
+        },
+        "address": {
+          "value": "No 36 Phung Hung, Hoan Kiem, Hanoi",
+          "source": "https://www.orientspahanoi.com/"
+        }
+      }
+    },
+    {
+      "name": {
+        "value": "Orient Spa Hanoi",
+        "source": "https://www.orientspahanoi.com/"
+      },
+      "summary": {
+        "value": "A relaxing spa in Hanoi Old Quarter offering foot and body massages, nail care, and hair treatments for visitors and locals.",
+        "source": "https://www.orientspahanoi.com/"
+      },
+      "category": "massage spa",
+      "offerings": [
+        {
+          "name": "Total Hair & Head Spa",
+          "description": "Scalp exfoliation Double shampoo cleanse Hair mask therapy Blow-dry finish",
+          "price": "720,000 VND",
+          "duration": "90 min",
+          "source": "https://www.orientspahanoi.com/"
+        },
+        {
+          "name": "Total Foot Care",
+          "description": "Foot Bath 5 Minutes Foot Scrub 25 Minutes Foot Mask 10 Minutes Basic Pedicure 20 Minutes",
+          "price": "390,000 VND",
+          "duration": "60 min",
+          "source": "https://www.orientspahanoi.com/"
+        },
+        {
+          "name": "Body & Foot Massage",
+          "description": "Body Massage 75 minutes Foot massage/treatment 30 minutes Choice of Aroma, Thai, Deep Tissue or Hotstone Massage",
+          "price": "690,000 VND",
+          "duration": "105 min",
+          "source": "https://www.orientspahanoi.com/"
+        },
+        {
+          "name": "Body Massage & Mini Facial",
+          "description": "Body Massage 75 minutes Mini Facial Care 30 minutes Choice of Aroma, Thai, Deep Tissue or Hotstone Massage",
+          "price": "790,000 VND",
+          "duration": "105 min",
+          "source": "https://www.orientspahanoi.com/"
+        },
+        {
+          "name": "Back & Shoulder Massage",
+          "description": "Reduce stiffness & improve circulation in back & shoulder area",
+          "price": "360,000 VND",
+          "duration": "45 min",
+          "source": "https://www.orientspahanoi.com/services-prices.html"
+        },
+        {
+          "name": "Head massage",
+          "description": "Using a warm salt pillow as base, this treatment will relax your neck and head area completely.",
+          "price": "320,000 VND",
+          "duration": "30 min",
+          "source": "https://www.orientspahanoi.com/services-prices.html"
+        }
+      ],
+      "highlights": [
+        {
+          "value": "Founded in 2017 with 4 spas in the heart of Hanoi Old Quarter",
+          "source": "https://www.orientspahanoi.com/"
+        },
+        {
+          "value": "Skilled therapists and attentive receptionists",
+          "source": "https://www.orientspahanoi.com/"
+        },
+        {
+          "value": "Convenient and central location near Hoan Kiem Lake",
           "source": "https://www.orientspahanoi.com/"
         }
       ],
@@ -1280,69 +1585,67 @@
       },
       "contact": {
         "whatsapp": {
-          "value": "8497"
+          "value": ""
         }
       }
     },
     {
       "name": {
-        "value": "Orient Spa",
+        "value": "Orient Spa Hanoi",
         "source": "https://www.orientspahanoi.com/"
       },
       "summary": {
-        "value": "Relaxing spa experience offering foot and body massage, nail care, shampoo, and holistic spa packages in Hanoi Old Quarter.",
+        "value": "A relaxing spa in Hanoi Old Quarter offering foot and body massages, nail care, and hair treatments for visitors and locals.",
         "source": "https://www.orientspahanoi.com/"
       },
       "category": "massage spa",
       "offerings": [
         {
-          "name": "Total Hair & Head Spa - 90min",
+          "name": "Total Hair & Head Spa",
+          "description": "Scalp exfoliation Double shampoo cleanse Hair mask therapy Blow-dry finish",
           "price": "720,000 VND",
           "duration": "90 min",
           "source": "https://www.orientspahanoi.com/"
         },
         {
-          "name": "Total Foot Care - 60min",
+          "name": "Total Foot Care",
+          "description": "Foot Bath 5 Minutes Foot Scrub 25 Minutes Foot Mask 10 Minutes Basic Pedicure 20 Minutes",
           "price": "390,000 VND",
           "duration": "60 min",
           "source": "https://www.orientspahanoi.com/"
         },
         {
-          "name": "Body & Foot Massage - 105min",
+          "name": "Body & Foot Massage",
+          "description": "Body Massage 75 minutes Foot massage/treatment 30 minutes Choice of Aroma, Thai, Deep Tissue or Hotstone Massage",
           "price": "690,000 VND",
           "duration": "105 min",
           "source": "https://www.orientspahanoi.com/"
         },
         {
-          "name": "Body Massage & Mini Facial - 105min",
+          "name": "Body Massage & Mini Facial",
+          "description": "Body Massage 75 minutes Mini Facial Care 30 minutes Choice of Aroma, Thai, Deep Tissue or Hotstone Massage",
           "price": "790,000 VND",
           "duration": "105 min",
           "source": "https://www.orientspahanoi.com/"
         },
         {
-          "name": "Aroma Therapy Massage",
+          "name": "Back & Shoulder Massage",
+          "description": "Reduce stiffness & improve circulation in back & shoulder area",
+          "price": "360,000 VND",
+          "duration": "45 min",
           "source": "https://www.orientspahanoi.com/services-prices.html"
         },
         {
-          "name": "Thai Massage",
+          "name": "Head massage",
+          "description": "Using a warm salt pillow as base, this treatment will relax your neck and head area completely.",
+          "price": "320,000 VND",
+          "duration": "30 min",
           "source": "https://www.orientspahanoi.com/services-prices.html"
-        },
-        {
-          "name": "Hot Stone Massage",
-          "source": "https://www.orientspahanoi.com/services-prices.html"
-        },
-        {
-          "name": "Deep Tissue Massage",
-          "source": "https://www.orientspahanoi.com/services-prices.html"
-        },
-        {
-          "name": "Manicure & Pedicure",
-          "source": "https://www.orientspahanoi.com/services.html"
         }
       ],
       "highlights": [
         {
-          "value": "Founded in 2017 with the aim to provide visitors and locals with a relaxing spa experience",
+          "value": "Founded in 2017 with 4 spas in the heart of Hanoi Old Quarter",
           "source": "https://www.orientspahanoi.com/"
         },
         {
@@ -1350,7 +1653,7 @@
           "source": "https://www.orientspahanoi.com/"
         },
         {
-          "value": "Convenient and central location in Hanoi Old Quarter",
+          "value": "Convenient and central location near Hoan Kiem Lake",
           "source": "https://www.orientspahanoi.com/"
         }
       ],
@@ -1372,69 +1675,67 @@
       "contact": {
         "whatsapp": {
           "value": "84977903499",
-          "source": "https://www.orientspahanoi.com"
+          "source": "https://www.orients"
         }
       }
     },
     {
       "name": {
-        "value": "Orient Spa",
+        "value": "Orient Spa Hanoi",
         "source": "https://www.orientspahanoi.com/"
       },
       "summary": {
-        "value": "Relaxing spa experience offering foot and body massage, nail care, shampoo, and holistic spa packages in Hanoi Old Quarter.",
+        "value": "A relaxing spa in Hanoi Old Quarter offering foot and body massages, nail care, and hair treatments for visitors and locals.",
         "source": "https://www.orientspahanoi.com/"
       },
       "category": "massage spa",
       "offerings": [
         {
-          "name": "Total Hair & Head Spa - 90min",
+          "name": "Total Hair & Head Spa",
+          "description": "Scalp exfoliation Double shampoo cleanse Hair mask therapy Blow-dry finish",
           "price": "720,000 VND",
           "duration": "90 min",
           "source": "https://www.orientspahanoi.com/"
         },
         {
-          "name": "Total Foot Care - 60min",
+          "name": "Total Foot Care",
+          "description": "Foot Bath 5 Minutes Foot Scrub 25 Minutes Foot Mask 10 Minutes Basic Pedicure 20 Minutes",
           "price": "390,000 VND",
           "duration": "60 min",
           "source": "https://www.orientspahanoi.com/"
         },
         {
-          "name": "Body & Foot Massage - 105min",
+          "name": "Body & Foot Massage",
+          "description": "Body Massage 75 minutes Foot massage/treatment 30 minutes Choice of Aroma, Thai, Deep Tissue or Hotstone Massage",
           "price": "690,000 VND",
           "duration": "105 min",
           "source": "https://www.orientspahanoi.com/"
         },
         {
-          "name": "Body Massage & Mini Facial - 105min",
+          "name": "Body Massage & Mini Facial",
+          "description": "Body Massage 75 minutes Mini Facial Care 30 minutes Choice of Aroma, Thai, Deep Tissue or Hotstone Massage",
           "price": "790,000 VND",
           "duration": "105 min",
           "source": "https://www.orientspahanoi.com/"
         },
         {
-          "name": "Aroma Therapy Massage",
+          "name": "Back & Shoulder Massage",
+          "description": "Reduce stiffness & improve circulation in back & shoulder area",
+          "price": "360,000 VND",
+          "duration": "45 min",
           "source": "https://www.orientspahanoi.com/services-prices.html"
         },
         {
-          "name": "Thai Massage",
+          "name": "Head massage",
+          "description": "Using a warm salt pillow as base, this treatment will relax your neck and head area completely.",
+          "price": "320,000 VND",
+          "duration": "30 min",
           "source": "https://www.orientspahanoi.com/services-prices.html"
-        },
-        {
-          "name": "Hot Stone Massage",
-          "source": "https://www.orientspahanoi.com/services-prices.html"
-        },
-        {
-          "name": "Deep Tissue Massage",
-          "source": "https://www.orientspahanoi.com/services-prices.html"
-        },
-        {
-          "name": "Manicure & Pedicure",
-          "source": "https://www.orientspahanoi.com/services.html"
         }
       ],
       "highlights": [
         {
-          "value": "Founded in 2017 with the aim to provide visitors and locals with a relaxing spa experience",
+          "value": "Founded in 2017 with 4 spas in the heart of Hanoi Old Quarter",
           "source": "https://www.orientspahanoi.com/"
         },
         {
@@ -1442,102 +1743,7 @@
           "source": "https://www.orientspahanoi.com/"
         },
         {
-          "value": "Convenient and central location in Hanoi Old Quarter",
-          "source": "https://www.orientspahanoi.com/"
-        }
-      ],
-      "location": {
-        "town": {
-          "value": "Hanoi",
-          "source": "https://www.orientspahanoi.com/"
-        },
-        "area": {
-          "value": "Old Quarter",
-          "source": "https://www.orientspahanoi.com/"
-        },
-        "address": {
-          "value": "No 36 Phung Hung, Hoan Kiem, Hanoi",
-          "source": "https://www.orientspahanoi.com/"
-        },
-        "serviceArea": null
-      },
-      "contact": {
-        "whatsapp": {
-          "value": "84977903499",
-          "source": "https://www.orientspahanoi.com/"
-        },
-        "phone": {
-          "value": "+84977903"
-        }
-      }
-    },
-    {
-      "name": {
-        "value": "Orient Spa",
-        "source": "https://www.orientspahanoi.com/"
-      },
-      "summary": {
-        "value": "Relaxing spa experience offering foot and body massage, nail care, shampoo, and holistic spa packages in Hanoi Old Quarter.",
-        "source": "https://www.orientspahanoi.com/"
-      },
-      "category": "massage spa",
-      "offerings": [
-        {
-          "name": "Total Hair & Head Spa - 90min",
-          "price": "720,000 VND",
-          "duration": "90 min",
-          "source": "https://www.orientspahanoi.com/"
-        },
-        {
-          "name": "Total Foot Care - 60min",
-          "price": "390,000 VND",
-          "duration": "60 min",
-          "source": "https://www.orientspahanoi.com/"
-        },
-        {
-          "name": "Body & Foot Massage - 105min",
-          "price": "690,000 VND",
-          "duration": "105 min",
-          "source": "https://www.orientspahanoi.com/"
-        },
-        {
-          "name": "Body Massage & Mini Facial - 105min",
-          "price": "790,000 VND",
-          "duration": "105 min",
-          "source": "https://www.orientspahanoi.com/"
-        },
-        {
-          "name": "Aroma Therapy Massage",
-          "source": "https://www.orientspahanoi.com/services-prices.html"
-        },
-        {
-          "name": "Thai Massage",
-          "source": "https://www.orientspahanoi.com/services-prices.html"
-        },
-        {
-          "name": "Hot Stone Massage",
-          "source": "https://www.orientspahanoi.com/services-prices.html"
-        },
-        {
-          "name": "Deep Tissue Massage",
-          "source": "https://www.orientspahanoi.com/services-prices.html"
-        },
-        {
-          "name": "Manicure & Pedicure",
-          "source": "https://www.orientspahanoi.com/services.html"
-        }
-      ],
-      "highlights": [
-        {
-          "value": "Founded in 2017 with the aim to provide visitors and locals with a relaxing spa experience",
-          "source": "https://www.orientspahanoi.com/"
-        },
-        {
-          "value": "Skilled therapists and attentive receptionists",
-          "source": "https://www.orientspahanoi.com/"
-        },
-        {
-          "value": "Convenient and central location in Hanoi Old Quarter",
+          "value": "Convenient and central location near Hoan Kiem Lake",
           "source": "https://www.orientspahanoi.com/"
         }
       ],
@@ -1562,70 +1768,67 @@
           "source": "https://www.orientspahanoi.com/"
         },
         "phone": {
-          "value": "+84977903499",
-          "source": "https://www.orientspahanoi.com/"
+          "value": "+849779034"
         }
       }
     },
     {
       "name": {
-        "value": "Orient Spa",
+        "value": "Orient Spa Hanoi",
         "source": "https://www.orientspahanoi.com/"
       },
       "summary": {
-        "value": "Relaxing spa experience offering foot and body massage, nail care, shampoo, and holistic spa packages in Hanoi Old Quarter.",
+        "value": "A relaxing spa in Hanoi Old Quarter offering foot and body massages, nail care, and hair treatments for visitors and locals.",
         "source": "https://www.orientspahanoi.com/"
       },
       "category": "massage spa",
       "offerings": [
         {
-          "name": "Total Hair & Head Spa - 90min",
+          "name": "Total Hair & Head Spa",
+          "description": "Scalp exfoliation Double shampoo cleanse Hair mask therapy Blow-dry finish",
           "price": "720,000 VND",
           "duration": "90 min",
           "source": "https://www.orientspahanoi.com/"
         },
         {
-          "name": "Total Foot Care - 60min",
+          "name": "Total Foot Care",
+          "description": "Foot Bath 5 Minutes Foot Scrub 25 Minutes Foot Mask 10 Minutes Basic Pedicure 20 Minutes",
           "price": "390,000 VND",
           "duration": "60 min",
           "source": "https://www.orientspahanoi.com/"
         },
         {
-          "name": "Body & Foot Massage - 105min",
+          "name": "Body & Foot Massage",
+          "description": "Body Massage 75 minutes Foot massage/treatment 30 minutes Choice of Aroma, Thai, Deep Tissue or Hotstone Massage",
           "price": "690,000 VND",
           "duration": "105 min",
           "source": "https://www.orientspahanoi.com/"
         },
         {
-          "name": "Body Massage & Mini Facial - 105min",
+          "name": "Body Massage & Mini Facial",
+          "description": "Body Massage 75 minutes Mini Facial Care 30 minutes Choice of Aroma, Thai, Deep Tissue or Hotstone Massage",
           "price": "790,000 VND",
           "duration": "105 min",
           "source": "https://www.orientspahanoi.com/"
         },
         {
-          "name": "Aroma Therapy Massage",
+          "name": "Back & Shoulder Massage",
+          "description": "Reduce stiffness & improve circulation in back & shoulder area",
+          "price": "360,000 VND",
+          "duration": "45 min",
           "source": "https://www.orientspahanoi.com/services-prices.html"
         },
         {
-          "name": "Thai Massage",
+          "name": "Head massage",
+          "description": "Using a warm salt pillow as base, this treatment will relax your neck and head area completely.",
+          "price": "320,000 VND",
+          "duration": "30 min",
           "source": "https://www.orientspahanoi.com/services-prices.html"
-        },
-        {
-          "name": "Hot Stone Massage",
-          "source": "https://www.orientspahanoi.com/services-prices.html"
-        },
-        {
-          "name": "Deep Tissue Massage",
-          "source": "https://www.orientspahanoi.com/services-prices.html"
-        },
-        {
-          "name": "Manicure & Pedicure",
-          "source": "https://www.orientspahanoi.com/services.html"
         }
       ],
       "highlights": [
         {
-          "value": "Founded in 2017 with the aim to provide visitors and locals with a relaxing spa experience",
+          "value": "Founded in 2017 with 4 spas in the heart of Hanoi Old Quarter",
           "source": "https://www.orientspahanoi.com/"
         },
         {
@@ -1633,7 +1836,7 @@
           "source": "https://www.orientspahanoi.com/"
         },
         {
-          "value": "Convenient and central location in Hanoi Old Quarter",
+          "value": "Convenient and central location near Hoan Kiem Lake",
           "source": "https://www.orientspahanoi.com/"
         }
       ],
@@ -1659,73 +1862,165 @@
         },
         "phone": {
           "value": "+84977903499",
+          "source": "https://www.orientspahanoi.com/services-prices."
+        }
+      }
+    },
+    {
+      "name": {
+        "value": "Orient Spa Hanoi",
+        "source": "https://www.orientspahanoi.com/"
+      },
+      "summary": {
+        "value": "A relaxing spa in Hanoi Old Quarter offering foot and body massages, nail care, and hair treatments for visitors and locals.",
+        "source": "https://www.orientspahanoi.com/"
+      },
+      "category": "massage spa",
+      "offerings": [
+        {
+          "name": "Total Hair & Head Spa",
+          "description": "Scalp exfoliation Double shampoo cleanse Hair mask therapy Blow-dry finish",
+          "price": "720,000 VND",
+          "duration": "90 min",
           "source": "https://www.orientspahanoi.com/"
+        },
+        {
+          "name": "Total Foot Care",
+          "description": "Foot Bath 5 Minutes Foot Scrub 25 Minutes Foot Mask 10 Minutes Basic Pedicure 20 Minutes",
+          "price": "390,000 VND",
+          "duration": "60 min",
+          "source": "https://www.orientspahanoi.com/"
+        },
+        {
+          "name": "Body & Foot Massage",
+          "description": "Body Massage 75 minutes Foot massage/treatment 30 minutes Choice of Aroma, Thai, Deep Tissue or Hotstone Massage",
+          "price": "690,000 VND",
+          "duration": "105 min",
+          "source": "https://www.orientspahanoi.com/"
+        },
+        {
+          "name": "Body Massage & Mini Facial",
+          "description": "Body Massage 75 minutes Mini Facial Care 30 minutes Choice of Aroma, Thai, Deep Tissue or Hotstone Massage",
+          "price": "790,000 VND",
+          "duration": "105 min",
+          "source": "https://www.orientspahanoi.com/"
+        },
+        {
+          "name": "Back & Shoulder Massage",
+          "description": "Reduce stiffness & improve circulation in back & shoulder area",
+          "price": "360,000 VND",
+          "duration": "45 min",
+          "source": "https://www.orientspahanoi.com/services-prices.html"
+        },
+        {
+          "name": "Head massage",
+          "description": "Using a warm salt pillow as base, this treatment will relax your neck and head area completely.",
+          "price": "320,000 VND",
+          "duration": "30 min",
+          "source": "https://www.orientspahanoi.com/services-prices.html"
+        }
+      ],
+      "highlights": [
+        {
+          "value": "Founded in 2017 with 4 spas in the heart of Hanoi Old Quarter",
+          "source": "https://www.orientspahanoi.com/"
+        },
+        {
+          "value": "Skilled therapists and attentive receptionists",
+          "source": "https://www.orientspahanoi.com/"
+        },
+        {
+          "value": "Convenient and central location near Hoan Kiem Lake",
+          "source": "https://www.orientspahanoi.com/"
+        }
+      ],
+      "location": {
+        "town": {
+          "value": "Hanoi",
+          "source": "https://www.orientspahanoi.com/"
+        },
+        "area": {
+          "value": "Old Quarter",
+          "source": "https://www.orientspahanoi.com/"
+        },
+        "address": {
+          "value": "No 36 Phung Hung, Hoan Kiem, Hanoi",
+          "source": "https://www.orientspahanoi.com/"
+        },
+        "serviceArea": null
+      },
+      "contact": {
+        "whatsapp": {
+          "value": "84977903499",
+          "source": "https://www.orientspahanoi.com/"
+        },
+        "phone": {
+          "value": "+84977903499",
+          "source": "https://www.orientspahanoi.com/services-prices.html"
         },
         "email": null,
         "instagram": {
-          "value": "orient.spa.h"
+          "value": ""
         }
       }
     },
     {
       "name": {
-        "value": "Orient Spa",
+        "value": "Orient Spa Hanoi",
         "source": "https://www.orientspahanoi.com/"
       },
       "summary": {
-        "value": "Relaxing spa experience offering foot and body massage, nail care, shampoo, and holistic spa packages in Hanoi Old Quarter.",
+        "value": "A relaxing spa in Hanoi Old Quarter offering foot and body massages, nail care, and hair treatments for visitors and locals.",
         "source": "https://www.orientspahanoi.com/"
       },
       "category": "massage spa",
       "offerings": [
         {
-          "name": "Total Hair & Head Spa - 90min",
+          "name": "Total Hair & Head Spa",
+          "description": "Scalp exfoliation Double shampoo cleanse Hair mask therapy Blow-dry finish",
           "price": "720,000 VND",
           "duration": "90 min",
           "source": "https://www.orientspahanoi.com/"
         },
         {
-          "name": "Total Foot Care - 60min",
+          "name": "Total Foot Care",
+          "description": "Foot Bath 5 Minutes Foot Scrub 25 Minutes Foot Mask 10 Minutes Basic Pedicure 20 Minutes",
           "price": "390,000 VND",
           "duration": "60 min",
           "source": "https://www.orientspahanoi.com/"
         },
         {
-          "name": "Body & Foot Massage - 105min",
+          "name": "Body & Foot Massage",
+          "description": "Body Massage 75 minutes Foot massage/treatment 30 minutes Choice of Aroma, Thai, Deep Tissue or Hotstone Massage",
           "price": "690,000 VND",
           "duration": "105 min",
           "source": "https://www.orientspahanoi.com/"
         },
         {
-          "name": "Body Massage & Mini Facial - 105min",
+          "name": "Body Massage & Mini Facial",
+          "description": "Body Massage 75 minutes Mini Facial Care 30 minutes Choice of Aroma, Thai, Deep Tissue or Hotstone Massage",
           "price": "790,000 VND",
           "duration": "105 min",
           "source": "https://www.orientspahanoi.com/"
         },
         {
-          "name": "Aroma Therapy Massage",
+          "name": "Back & Shoulder Massage",
+          "description": "Reduce stiffness & improve circulation in back & shoulder area",
+          "price": "360,000 VND",
+          "duration": "45 min",
           "source": "https://www.orientspahanoi.com/services-prices.html"
         },
         {
-          "name": "Thai Massage",
+          "name": "Head massage",
+          "description": "Using a warm salt pillow as base, this treatment will relax your neck and head area completely.",
+          "price": "320,000 VND",
+          "duration": "30 min",
           "source": "https://www.orientspahanoi.com/services-prices.html"
-        },
-        {
-          "name": "Hot Stone Massage",
-          "source": "https://www.orientspahanoi.com/services-prices.html"
-        },
-        {
-          "name": "Deep Tissue Massage",
-          "source": "https://www.orientspahanoi.com/services-prices.html"
-        },
-        {
-          "name": "Manicure & Pedicure",
-          "source": "https://www.orientspahanoi.com/services.html"
         }
       ],
       "highlights": [
         {
-          "value": "Founded in 2017 with the aim to provide visitors and locals with a relaxing spa experience",
+          "value": "Founded in 2017 with 4 spas in the heart of Hanoi Old Quarter",
           "source": "https://www.orientspahanoi.com/"
         },
         {
@@ -1733,7 +2028,7 @@
           "source": "https://www.orientspahanoi.com/"
         },
         {
-          "value": "Convenient and central location in Hanoi Old Quarter",
+          "value": "Convenient and central location near Hoan Kiem Lake",
           "source": "https://www.orientspahanoi.com/"
         }
       ],
@@ -1759,7 +2054,7 @@
         },
         "phone": {
           "value": "+84977903499",
-          "source": "https://www.orientspahanoi.com/"
+          "source": "https://www.orientspahanoi.com/services-prices.html"
         },
         "email": null,
         "instagram": {
@@ -1770,63 +2065,61 @@
     },
     {
       "name": {
-        "value": "Orient Spa",
+        "value": "Orient Spa Hanoi",
         "source": "https://www.orientspahanoi.com/"
       },
       "summary": {
-        "value": "Relaxing spa experience offering foot and body massage, nail care, shampoo, and holistic spa packages in Hanoi Old Quarter.",
+        "value": "A relaxing spa in Hanoi Old Quarter offering foot and body massages, nail care, and hair treatments for visitors and locals.",
         "source": "https://www.orientspahanoi.com/"
       },
       "category": "massage spa",
       "offerings": [
         {
-          "name": "Total Hair & Head Spa - 90min",
+          "name": "Total Hair & Head Spa",
+          "description": "Scalp exfoliation Double shampoo cleanse Hair mask therapy Blow-dry finish",
           "price": "720,000 VND",
           "duration": "90 min",
           "source": "https://www.orientspahanoi.com/"
         },
         {
-          "name": "Total Foot Care - 60min",
+          "name": "Total Foot Care",
+          "description": "Foot Bath 5 Minutes Foot Scrub 25 Minutes Foot Mask 10 Minutes Basic Pedicure 20 Minutes",
           "price": "390,000 VND",
           "duration": "60 min",
           "source": "https://www.orientspahanoi.com/"
         },
         {
-          "name": "Body & Foot Massage - 105min",
+          "name": "Body & Foot Massage",
+          "description": "Body Massage 75 minutes Foot massage/treatment 30 minutes Choice of Aroma, Thai, Deep Tissue or Hotstone Massage",
           "price": "690,000 VND",
           "duration": "105 min",
           "source": "https://www.orientspahanoi.com/"
         },
         {
-          "name": "Body Massage & Mini Facial - 105min",
+          "name": "Body Massage & Mini Facial",
+          "description": "Body Massage 75 minutes Mini Facial Care 30 minutes Choice of Aroma, Thai, Deep Tissue or Hotstone Massage",
           "price": "790,000 VND",
           "duration": "105 min",
           "source": "https://www.orientspahanoi.com/"
         },
         {
-          "name": "Aroma Therapy Massage",
+          "name": "Back & Shoulder Massage",
+          "description": "Reduce stiffness & improve circulation in back & shoulder area",
+          "price": "360,000 VND",
+          "duration": "45 min",
           "source": "https://www.orientspahanoi.com/services-prices.html"
         },
         {
-          "name": "Thai Massage",
+          "name": "Head massage",
+          "description": "Using a warm salt pillow as base, this treatment will relax your neck and head area completely.",
+          "price": "320,000 VND",
+          "duration": "30 min",
           "source": "https://www.orientspahanoi.com/services-prices.html"
-        },
-        {
-          "name": "Hot Stone Massage",
-          "source": "https://www.orientspahanoi.com/services-prices.html"
-        },
-        {
-          "name": "Deep Tissue Massage",
-          "source": "https://www.orientspahanoi.com/services-prices.html"
-        },
-        {
-          "name": "Manicure & Pedicure",
-          "source": "https://www.orientspahanoi.com/services.html"
         }
       ],
       "highlights": [
         {
-          "value": "Founded in 2017 with the aim to provide visitors and locals with a relaxing spa experience",
+          "value": "Founded in 2017 with 4 spas in the heart of Hanoi Old Quarter",
           "source": "https://www.orientspahanoi.com/"
         },
         {
@@ -1834,7 +2127,7 @@
           "source": "https://www.orientspahanoi.com/"
         },
         {
-          "value": "Convenient and central location in Hanoi Old Quarter",
+          "value": "Convenient and central location near Hoan Kiem Lake",
           "source": "https://www.orientspahanoi.com/"
         }
       ],
@@ -1860,7 +2153,7 @@
         },
         "phone": {
           "value": "+84977903499",
-          "source": "https://www.orientspahanoi.com/"
+          "source": "https://www.orientspahanoi.com/services-prices.html"
         },
         "email": null,
         "instagram": {
@@ -1869,69 +2162,65 @@
         },
         "bookingUrl": null
       },
-      "hours": {
-        "value": "10:0"
-      }
+      "hours": {}
     },
     {
       "name": {
-        "value": "Orient Spa",
+        "value": "Orient Spa Hanoi",
         "source": "https://www.orientspahanoi.com/"
       },
       "summary": {
-        "value": "Relaxing spa experience offering foot and body massage, nail care, shampoo, and holistic spa packages in Hanoi Old Quarter.",
+        "value": "A relaxing spa in Hanoi Old Quarter offering foot and body massages, nail care, and hair treatments for visitors and locals.",
         "source": "https://www.orientspahanoi.com/"
       },
       "category": "massage spa",
       "offerings": [
         {
-          "name": "Total Hair & Head Spa - 90min",
+          "name": "Total Hair & Head Spa",
+          "description": "Scalp exfoliation Double shampoo cleanse Hair mask therapy Blow-dry finish",
           "price": "720,000 VND",
           "duration": "90 min",
           "source": "https://www.orientspahanoi.com/"
         },
         {
-          "name": "Total Foot Care - 60min",
+          "name": "Total Foot Care",
+          "description": "Foot Bath 5 Minutes Foot Scrub 25 Minutes Foot Mask 10 Minutes Basic Pedicure 20 Minutes",
           "price": "390,000 VND",
           "duration": "60 min",
           "source": "https://www.orientspahanoi.com/"
         },
         {
-          "name": "Body & Foot Massage - 105min",
+          "name": "Body & Foot Massage",
+          "description": "Body Massage 75 minutes Foot massage/treatment 30 minutes Choice of Aroma, Thai, Deep Tissue or Hotstone Massage",
           "price": "690,000 VND",
           "duration": "105 min",
           "source": "https://www.orientspahanoi.com/"
         },
         {
-          "name": "Body Massage & Mini Facial - 105min",
+          "name": "Body Massage & Mini Facial",
+          "description": "Body Massage 75 minutes Mini Facial Care 30 minutes Choice of Aroma, Thai, Deep Tissue or Hotstone Massage",
           "price": "790,000 VND",
           "duration": "105 min",
           "source": "https://www.orientspahanoi.com/"
         },
         {
-          "name": "Aroma Therapy Massage",
+          "name": "Back & Shoulder Massage",
+          "description": "Reduce stiffness & improve circulation in back & shoulder area",
+          "price": "360,000 VND",
+          "duration": "45 min",
           "source": "https://www.orientspahanoi.com/services-prices.html"
         },
         {
-          "name": "Thai Massage",
+          "name": "Head massage",
+          "description": "Using a warm salt pillow as base, this treatment will relax your neck and head area completely.",
+          "price": "320,000 VND",
+          "duration": "30 min",
           "source": "https://www.orientspahanoi.com/services-prices.html"
-        },
-        {
-          "name": "Hot Stone Massage",
-          "source": "https://www.orientspahanoi.com/services-prices.html"
-        },
-        {
-          "name": "Deep Tissue Massage",
-          "source": "https://www.orientspahanoi.com/services-prices.html"
-        },
-        {
-          "name": "Manicure & Pedicure",
-          "source": "https://www.orientspahanoi.com/services.html"
         }
       ],
       "highlights": [
         {
-          "value": "Founded in 2017 with the aim to provide visitors and locals with a relaxing spa experience",
+          "value": "Founded in 2017 with 4 spas in the heart of Hanoi Old Quarter",
           "source": "https://www.orientspahanoi.com/"
         },
         {
@@ -1939,7 +2228,7 @@
           "source": "https://www.orientspahanoi.com/"
         },
         {
-          "value": "Convenient and central location in Hanoi Old Quarter",
+          "value": "Convenient and central location near Hoan Kiem Lake",
           "source": "https://www.orientspahanoi.com/"
         }
       ],
@@ -1965,7 +2254,7 @@
         },
         "phone": {
           "value": "+84977903499",
-          "source": "https://www.orientspahanoi.com/"
+          "source": "https://www.orientspahanoi.com/services-prices.html"
         },
         "email": null,
         "instagram": {
@@ -1976,68 +2265,66 @@
       },
       "hours": {
         "value": "10:00am - 10:00pm daily",
-        "source": "https://www.orients"
+        "source": "https"
       }
     },
     {
       "name": {
-        "value": "Orient Spa",
+        "value": "Orient Spa Hanoi",
         "source": "https://www.orientspahanoi.com/"
       },
       "summary": {
-        "value": "Relaxing spa experience offering foot and body massage, nail care, shampoo, and holistic spa packages in Hanoi Old Quarter.",
+        "value": "A relaxing spa in Hanoi Old Quarter offering foot and body massages, nail care, and hair treatments for visitors and locals.",
         "source": "https://www.orientspahanoi.com/"
       },
       "category": "massage spa",
       "offerings": [
         {
-          "name": "Total Hair & Head Spa - 90min",
+          "name": "Total Hair & Head Spa",
+          "description": "Scalp exfoliation Double shampoo cleanse Hair mask therapy Blow-dry finish",
           "price": "720,000 VND",
           "duration": "90 min",
           "source": "https://www.orientspahanoi.com/"
         },
         {
-          "name": "Total Foot Care - 60min",
+          "name": "Total Foot Care",
+          "description": "Foot Bath 5 Minutes Foot Scrub 25 Minutes Foot Mask 10 Minutes Basic Pedicure 20 Minutes",
           "price": "390,000 VND",
           "duration": "60 min",
           "source": "https://www.orientspahanoi.com/"
         },
         {
-          "name": "Body & Foot Massage - 105min",
+          "name": "Body & Foot Massage",
+          "description": "Body Massage 75 minutes Foot massage/treatment 30 minutes Choice of Aroma, Thai, Deep Tissue or Hotstone Massage",
           "price": "690,000 VND",
           "duration": "105 min",
           "source": "https://www.orientspahanoi.com/"
         },
         {
-          "name": "Body Massage & Mini Facial - 105min",
+          "name": "Body Massage & Mini Facial",
+          "description": "Body Massage 75 minutes Mini Facial Care 30 minutes Choice of Aroma, Thai, Deep Tissue or Hotstone Massage",
           "price": "790,000 VND",
           "duration": "105 min",
           "source": "https://www.orientspahanoi.com/"
         },
         {
-          "name": "Aroma Therapy Massage",
+          "name": "Back & Shoulder Massage",
+          "description": "Reduce stiffness & improve circulation in back & shoulder area",
+          "price": "360,000 VND",
+          "duration": "45 min",
           "source": "https://www.orientspahanoi.com/services-prices.html"
         },
         {
-          "name": "Thai Massage",
+          "name": "Head massage",
+          "description": "Using a warm salt pillow as base, this treatment will relax your neck and head area completely.",
+          "price": "320,000 VND",
+          "duration": "30 min",
           "source": "https://www.orientspahanoi.com/services-prices.html"
-        },
-        {
-          "name": "Hot Stone Massage",
-          "source": "https://www.orientspahanoi.com/services-prices.html"
-        },
-        {
-          "name": "Deep Tissue Massage",
-          "source": "https://www.orientspahanoi.com/services-prices.html"
-        },
-        {
-          "name": "Manicure & Pedicure",
-          "source": "https://www.orientspahanoi.com/services.html"
         }
       ],
       "highlights": [
         {
-          "value": "Founded in 2017 with the aim to provide visitors and locals with a relaxing spa experience",
+          "value": "Founded in 2017 with 4 spas in the heart of Hanoi Old Quarter",
           "source": "https://www.orientspahanoi.com/"
         },
         {
@@ -2045,7 +2332,7 @@
           "source": "https://www.orientspahanoi.com/"
         },
         {
-          "value": "Convenient and central location in Hanoi Old Quarter",
+          "value": "Convenient and central location near Hoan Kiem Lake",
           "source": "https://www.orientspahanoi.com/"
         }
       ],
@@ -2071,7 +2358,114 @@
         },
         "phone": {
           "value": "+84977903499",
+          "source": "https://www.orientspahanoi.com/services-prices.html"
+        },
+        "email": null,
+        "instagram": {
+          "value": "orient.spa.hanoi",
           "source": "https://www.orientspahanoi.com/"
+        },
+        "bookingUrl": null
+      },
+      "hours": {
+        "value": "10:00am - 10:00pm daily",
+        "source": "https://www.orientspahanoi.com/"
+      },
+      "tone": [
+        "welcoming"
+      ]
+    },
+    {
+      "name": {
+        "value": "Orient Spa Hanoi",
+        "source": "https://www.orientspahanoi.com/"
+      },
+      "summary": {
+        "value": "A relaxing spa in Hanoi Old Quarter offering foot and body massages, nail care, and hair treatments for visitors and locals.",
+        "source": "https://www.orientspahanoi.com/"
+      },
+      "category": "massage spa",
+      "offerings": [
+        {
+          "name": "Total Hair & Head Spa",
+          "description": "Scalp exfoliation Double shampoo cleanse Hair mask therapy Blow-dry finish",
+          "price": "720,000 VND",
+          "duration": "90 min",
+          "source": "https://www.orientspahanoi.com/"
+        },
+        {
+          "name": "Total Foot Care",
+          "description": "Foot Bath 5 Minutes Foot Scrub 25 Minutes Foot Mask 10 Minutes Basic Pedicure 20 Minutes",
+          "price": "390,000 VND",
+          "duration": "60 min",
+          "source": "https://www.orientspahanoi.com/"
+        },
+        {
+          "name": "Body & Foot Massage",
+          "description": "Body Massage 75 minutes Foot massage/treatment 30 minutes Choice of Aroma, Thai, Deep Tissue or Hotstone Massage",
+          "price": "690,000 VND",
+          "duration": "105 min",
+          "source": "https://www.orientspahanoi.com/"
+        },
+        {
+          "name": "Body Massage & Mini Facial",
+          "description": "Body Massage 75 minutes Mini Facial Care 30 minutes Choice of Aroma, Thai, Deep Tissue or Hotstone Massage",
+          "price": "790,000 VND",
+          "duration": "105 min",
+          "source": "https://www.orientspahanoi.com/"
+        },
+        {
+          "name": "Back & Shoulder Massage",
+          "description": "Reduce stiffness & improve circulation in back & shoulder area",
+          "price": "360,000 VND",
+          "duration": "45 min",
+          "source": "https://www.orientspahanoi.com/services-prices.html"
+        },
+        {
+          "name": "Head massage",
+          "description": "Using a warm salt pillow as base, this treatment will relax your neck and head area completely.",
+          "price": "320,000 VND",
+          "duration": "30 min",
+          "source": "https://www.orientspahanoi.com/services-prices.html"
+        }
+      ],
+      "highlights": [
+        {
+          "value": "Founded in 2017 with 4 spas in the heart of Hanoi Old Quarter",
+          "source": "https://www.orientspahanoi.com/"
+        },
+        {
+          "value": "Skilled therapists and attentive receptionists",
+          "source": "https://www.orientspahanoi.com/"
+        },
+        {
+          "value": "Convenient and central location near Hoan Kiem Lake",
+          "source": "https://www.orientspahanoi.com/"
+        }
+      ],
+      "location": {
+        "town": {
+          "value": "Hanoi",
+          "source": "https://www.orientspahanoi.com/"
+        },
+        "area": {
+          "value": "Old Quarter",
+          "source": "https://www.orientspahanoi.com/"
+        },
+        "address": {
+          "value": "No 36 Phung Hung, Hoan Kiem, Hanoi",
+          "source": "https://www.orientspahanoi.com/"
+        },
+        "serviceArea": null
+      },
+      "contact": {
+        "whatsapp": {
+          "value": "84977903499",
+          "source": "https://www.orientspahanoi.com/"
+        },
+        "phone": {
+          "value": "+84977903499",
+          "source": "https://www.orientspahanoi.com/services-prices.html"
         },
         "email": null,
         "instagram": {
@@ -2086,68 +2480,68 @@
       },
       "tone": [
         "welcoming",
-        "professional"
+        "professional",
+        "relaxing",
+        "hospitable"
       ]
     },
     {
       "name": {
-        "value": "Orient Spa",
+        "value": "Orient Spa Hanoi",
         "source": "https://www.orientspahanoi.com/"
       },
       "summary": {
-        "value": "Relaxing spa experience offering foot and body massage, nail care, shampoo, and holistic spa packages in Hanoi Old Quarter.",
+        "value": "A relaxing spa in Hanoi Old Quarter offering foot and body massages, nail care, and hair treatments for visitors and locals.",
         "source": "https://www.orientspahanoi.com/"
       },
       "category": "massage spa",
       "offerings": [
         {
-          "name": "Total Hair & Head Spa - 90min",
+          "name": "Total Hair & Head Spa",
+          "description": "Scalp exfoliation Double shampoo cleanse Hair mask therapy Blow-dry finish",
           "price": "720,000 VND",
           "duration": "90 min",
           "source": "https://www.orientspahanoi.com/"
         },
         {
-          "name": "Total Foot Care - 60min",
+          "name": "Total Foot Care",
+          "description": "Foot Bath 5 Minutes Foot Scrub 25 Minutes Foot Mask 10 Minutes Basic Pedicure 20 Minutes",
           "price": "390,000 VND",
           "duration": "60 min",
           "source": "https://www.orientspahanoi.com/"
         },
         {
-          "name": "Body & Foot Massage - 105min",
+          "name": "Body & Foot Massage",
+          "description": "Body Massage 75 minutes Foot massage/treatment 30 minutes Choice of Aroma, Thai, Deep Tissue or Hotstone Massage",
           "price": "690,000 VND",
           "duration": "105 min",
           "source": "https://www.orientspahanoi.com/"
         },
         {
-          "name": "Body Massage & Mini Facial - 105min",
+          "name": "Body Massage & Mini Facial",
+          "description": "Body Massage 75 minutes Mini Facial Care 30 minutes Choice of Aroma, Thai, Deep Tissue or Hotstone Massage",
           "price": "790,000 VND",
           "duration": "105 min",
           "source": "https://www.orientspahanoi.com/"
         },
         {
-          "name": "Aroma Therapy Massage",
+          "name": "Back & Shoulder Massage",
+          "description": "Reduce stiffness & improve circulation in back & shoulder area",
+          "price": "360,000 VND",
+          "duration": "45 min",
           "source": "https://www.orientspahanoi.com/services-prices.html"
         },
         {
-          "name": "Thai Massage",
+          "name": "Head massage",
+          "description": "Using a warm salt pillow as base, this treatment will relax your neck and head area completely.",
+          "price": "320,000 VND",
+          "duration": "30 min",
           "source": "https://www.orientspahanoi.com/services-prices.html"
-        },
-        {
-          "name": "Hot Stone Massage",
-          "source": "https://www.orientspahanoi.com/services-prices.html"
-        },
-        {
-          "name": "Deep Tissue Massage",
-          "source": "https://www.orientspahanoi.com/services-prices.html"
-        },
-        {
-          "name": "Manicure & Pedicure",
-          "source": "https://www.orientspahanoi.com/services.html"
         }
       ],
       "highlights": [
         {
-          "value": "Founded in 2017 with the aim to provide visitors and locals with a relaxing spa experience",
+          "value": "Founded in 2017 with 4 spas in the heart of Hanoi Old Quarter",
           "source": "https://www.orientspahanoi.com/"
         },
         {
@@ -2155,7 +2549,7 @@
           "source": "https://www.orientspahanoi.com/"
         },
         {
-          "value": "Convenient and central location in Hanoi Old Quarter",
+          "value": "Convenient and central location near Hoan Kiem Lake",
           "source": "https://www.orientspahanoi.com/"
         }
       ],
@@ -2181,7 +2575,7 @@
         },
         "phone": {
           "value": "+84977903499",
-          "source": "https://www.orientspahanoi.com/"
+          "source": "https://www.orientspahanoi.com/services-prices.html"
         },
         "email": null,
         "instagram": {
@@ -2201,68 +2595,311 @@
         "hospitable"
       ],
       "colours": [
+        {
+          "hex": "#c4b5a5"
+        }
+      ]
+    },
+    {
+      "name": {
+        "value": "Orient Spa Hanoi",
+        "source": "https://www.orientspahanoi.com/"
+      },
+      "summary": {
+        "value": "A relaxing spa in Hanoi Old Quarter offering foot and body massages, nail care, and hair treatments for visitors and locals.",
+        "source": "https://www.orientspahanoi.com/"
+      },
+      "category": "massage spa",
+      "offerings": [
+        {
+          "name": "Total Hair & Head Spa",
+          "description": "Scalp exfoliation Double shampoo cleanse Hair mask therapy Blow-dry finish",
+          "price": "720,000 VND",
+          "duration": "90 min",
+          "source": "https://www.orientspahanoi.com/"
+        },
+        {
+          "name": "Total Foot Care",
+          "description": "Foot Bath 5 Minutes Foot Scrub 25 Minutes Foot Mask 10 Minutes Basic Pedicure 20 Minutes",
+          "price": "390,000 VND",
+          "duration": "60 min",
+          "source": "https://www.orientspahanoi.com/"
+        },
+        {
+          "name": "Body & Foot Massage",
+          "description": "Body Massage 75 minutes Foot massage/treatment 30 minutes Choice of Aroma, Thai, Deep Tissue or Hotstone Massage",
+          "price": "690,000 VND",
+          "duration": "105 min",
+          "source": "https://www.orientspahanoi.com/"
+        },
+        {
+          "name": "Body Massage & Mini Facial",
+          "description": "Body Massage 75 minutes Mini Facial Care 30 minutes Choice of Aroma, Thai, Deep Tissue or Hotstone Massage",
+          "price": "790,000 VND",
+          "duration": "105 min",
+          "source": "https://www.orientspahanoi.com/"
+        },
+        {
+          "name": "Back & Shoulder Massage",
+          "description": "Reduce stiffness & improve circulation in back & shoulder area",
+          "price": "360,000 VND",
+          "duration": "45 min",
+          "source": "https://www.orientspahanoi.com/services-prices.html"
+        },
+        {
+          "name": "Head massage",
+          "description": "Using a warm salt pillow as base, this treatment will relax your neck and head area completely.",
+          "price": "320,000 VND",
+          "duration": "30 min",
+          "source": "https://www.orientspahanoi.com/services-prices.html"
+        }
+      ],
+      "highlights": [
+        {
+          "value": "Founded in 2017 with 4 spas in the heart of Hanoi Old Quarter",
+          "source": "https://www.orientspahanoi.com/"
+        },
+        {
+          "value": "Skilled therapists and attentive receptionists",
+          "source": "https://www.orientspahanoi.com/"
+        },
+        {
+          "value": "Convenient and central location near Hoan Kiem Lake",
+          "source": "https://www.orientspahanoi.com/"
+        }
+      ],
+      "location": {
+        "town": {
+          "value": "Hanoi",
+          "source": "https://www.orientspahanoi.com/"
+        },
+        "area": {
+          "value": "Old Quarter",
+          "source": "https://www.orientspahanoi.com/"
+        },
+        "address": {
+          "value": "No 36 Phung Hung, Hoan Kiem, Hanoi",
+          "source": "https://www.orientspahanoi.com/"
+        },
+        "serviceArea": null
+      },
+      "contact": {
+        "whatsapp": {
+          "value": "84977903499",
+          "source": "https://www.orientspahanoi.com/"
+        },
+        "phone": {
+          "value": "+84977903499",
+          "source": "https://www.orientspahanoi.com/services-prices.html"
+        },
+        "email": null,
+        "instagram": {
+          "value": "orient.spa.hanoi",
+          "source": "https://www.orientspahanoi.com/"
+        },
+        "bookingUrl": null
+      },
+      "hours": {
+        "value": "10:00am - 10:00pm daily",
+        "source": "https://www.orientspahanoi.com/"
+      },
+      "tone": [
+        "welcoming",
+        "professional",
+        "relaxing",
+        "hospitable"
+      ],
+      "colours": [
+        {
+          "hex": "#c4b5a5",
+          "role": "primary",
+          "source": "logo"
+        },
+        {
+          "hex": "#d3654"
+        }
+      ]
+    },
+    {
+      "name": {
+        "value": "Orient Spa Hanoi",
+        "source": "https://www.orientspahanoi.com/"
+      },
+      "summary": {
+        "value": "A relaxing spa in Hanoi Old Quarter offering foot and body massages, nail care, and hair treatments for visitors and locals.",
+        "source": "https://www.orientspahanoi.com/"
+      },
+      "category": "massage spa",
+      "offerings": [
+        {
+          "name": "Total Hair & Head Spa",
+          "description": "Scalp exfoliation Double shampoo cleanse Hair mask therapy Blow-dry finish",
+          "price": "720,000 VND",
+          "duration": "90 min",
+          "source": "https://www.orientspahanoi.com/"
+        },
+        {
+          "name": "Total Foot Care",
+          "description": "Foot Bath 5 Minutes Foot Scrub 25 Minutes Foot Mask 10 Minutes Basic Pedicure 20 Minutes",
+          "price": "390,000 VND",
+          "duration": "60 min",
+          "source": "https://www.orientspahanoi.com/"
+        },
+        {
+          "name": "Body & Foot Massage",
+          "description": "Body Massage 75 minutes Foot massage/treatment 30 minutes Choice of Aroma, Thai, Deep Tissue or Hotstone Massage",
+          "price": "690,000 VND",
+          "duration": "105 min",
+          "source": "https://www.orientspahanoi.com/"
+        },
+        {
+          "name": "Body Massage & Mini Facial",
+          "description": "Body Massage 75 minutes Mini Facial Care 30 minutes Choice of Aroma, Thai, Deep Tissue or Hotstone Massage",
+          "price": "790,000 VND",
+          "duration": "105 min",
+          "source": "https://www.orientspahanoi.com/"
+        },
+        {
+          "name": "Back & Shoulder Massage",
+          "description": "Reduce stiffness & improve circulation in back & shoulder area",
+          "price": "360,000 VND",
+          "duration": "45 min",
+          "source": "https://www.orientspahanoi.com/services-prices.html"
+        },
+        {
+          "name": "Head massage",
+          "description": "Using a warm salt pillow as base, this treatment will relax your neck and head area completely.",
+          "price": "320,000 VND",
+          "duration": "30 min",
+          "source": "https://www.orientspahanoi.com/services-prices.html"
+        }
+      ],
+      "highlights": [
+        {
+          "value": "Founded in 2017 with 4 spas in the heart of Hanoi Old Quarter",
+          "source": "https://www.orientspahanoi.com/"
+        },
+        {
+          "value": "Skilled therapists and attentive receptionists",
+          "source": "https://www.orientspahanoi.com/"
+        },
+        {
+          "value": "Convenient and central location near Hoan Kiem Lake",
+          "source": "https://www.orientspahanoi.com/"
+        }
+      ],
+      "location": {
+        "town": {
+          "value": "Hanoi",
+          "source": "https://www.orientspahanoi.com/"
+        },
+        "area": {
+          "value": "Old Quarter",
+          "source": "https://www.orientspahanoi.com/"
+        },
+        "address": {
+          "value": "No 36 Phung Hung, Hoan Kiem, Hanoi",
+          "source": "https://www.orientspahanoi.com/"
+        },
+        "serviceArea": null
+      },
+      "contact": {
+        "whatsapp": {
+          "value": "84977903499",
+          "source": "https://www.orientspahanoi.com/"
+        },
+        "phone": {
+          "value": "+84977903499",
+          "source": "https://www.orientspahanoi.com/services-prices.html"
+        },
+        "email": null,
+        "instagram": {
+          "value": "orient.spa.hanoi",
+          "source": "https://www.orientspahanoi.com/"
+        },
+        "bookingUrl": null
+      },
+      "hours": {
+        "value": "10:00am - 10:00pm daily",
+        "source": "https://www.orientspahanoi.com/"
+      },
+      "tone": [
+        "welcoming",
+        "professional",
+        "relaxing",
+        "hospitable"
+      ],
+      "colours": [
+        {
+          "hex": "#c4b5a5",
+          "role": "primary",
+          "source": "logo"
+        },
+        {
+          "hex": "#d36545",
+          "role": "background",
+          "source": "photo"
+        },
         {}
       ]
     },
     {
       "name": {
-        "value": "Orient Spa",
+        "value": "Orient Spa Hanoi",
         "source": "https://www.orientspahanoi.com/"
       },
       "summary": {
-        "value": "Relaxing spa experience offering foot and body massage, nail care, shampoo, and holistic spa packages in Hanoi Old Quarter.",
+        "value": "A relaxing spa in Hanoi Old Quarter offering foot and body massages, nail care, and hair treatments for visitors and locals.",
         "source": "https://www.orientspahanoi.com/"
       },
       "category": "massage spa",
       "offerings": [
         {
-          "name": "Total Hair & Head Spa - 90min",
+          "name": "Total Hair & Head Spa",
+          "description": "Scalp exfoliation Double shampoo cleanse Hair mask therapy Blow-dry finish",
           "price": "720,000 VND",
           "duration": "90 min",
           "source": "https://www.orientspahanoi.com/"
         },
         {
-          "name": "Total Foot Care - 60min",
+          "name": "Total Foot Care",
+          "description": "Foot Bath 5 Minutes Foot Scrub 25 Minutes Foot Mask 10 Minutes Basic Pedicure 20 Minutes",
           "price": "390,000 VND",
           "duration": "60 min",
           "source": "https://www.orientspahanoi.com/"
         },
         {
-          "name": "Body & Foot Massage - 105min",
+          "name": "Body & Foot Massage",
+          "description": "Body Massage 75 minutes Foot massage/treatment 30 minutes Choice of Aroma, Thai, Deep Tissue or Hotstone Massage",
           "price": "690,000 VND",
           "duration": "105 min",
           "source": "https://www.orientspahanoi.com/"
         },
         {
-          "name": "Body Massage & Mini Facial - 105min",
+          "name": "Body Massage & Mini Facial",
+          "description": "Body Massage 75 minutes Mini Facial Care 30 minutes Choice of Aroma, Thai, Deep Tissue or Hotstone Massage",
           "price": "790,000 VND",
           "duration": "105 min",
           "source": "https://www.orientspahanoi.com/"
         },
         {
-          "name": "Aroma Therapy Massage",
+          "name": "Back & Shoulder Massage",
+          "description": "Reduce stiffness & improve circulation in back & shoulder area",
+          "price": "360,000 VND",
+          "duration": "45 min",
           "source": "https://www.orientspahanoi.com/services-prices.html"
         },
         {
-          "name": "Thai Massage",
+          "name": "Head massage",
+          "description": "Using a warm salt pillow as base, this treatment will relax your neck and head area completely.",
+          "price": "320,000 VND",
+          "duration": "30 min",
           "source": "https://www.orientspahanoi.com/services-prices.html"
-        },
-        {
-          "name": "Hot Stone Massage",
-          "source": "https://www.orientspahanoi.com/services-prices.html"
-        },
-        {
-          "name": "Deep Tissue Massage",
-          "source": "https://www.orientspahanoi.com/services-prices.html"
-        },
-        {
-          "name": "Manicure & Pedicure",
-          "source": "https://www.orientspahanoi.com/services.html"
         }
       ],
       "highlights": [
         {
-          "value": "Founded in 2017 with the aim to provide visitors and locals with a relaxing spa experience",
+          "value": "Founded in 2017 with 4 spas in the heart of Hanoi Old Quarter",
           "source": "https://www.orientspahanoi.com/"
         },
         {
@@ -2270,7 +2907,7 @@
           "source": "https://www.orientspahanoi.com/"
         },
         {
-          "value": "Convenient and central location in Hanoi Old Quarter",
+          "value": "Convenient and central location near Hoan Kiem Lake",
           "source": "https://www.orientspahanoi.com/"
         }
       ],
@@ -2296,7 +2933,7 @@
         },
         "phone": {
           "value": "+84977903499",
-          "source": "https://www.orientspahanoi.com/"
+          "source": "https://www.orientspahanoi.com/services-prices.html"
         },
         "email": null,
         "instagram": {
@@ -2317,578 +2954,79 @@
       ],
       "colours": [
         {
-          "hex": "#c8b9a6",
+          "hex": "#c4b5a5",
           "role": "primary",
-          "source": "https://www"
-        }
-      ]
-    },
-    {
-      "name": {
-        "value": "Orient Spa",
-        "source": "https://www.orientspahanoi.com/"
-      },
-      "summary": {
-        "value": "Relaxing spa experience offering foot and body massage, nail care, shampoo, and holistic spa packages in Hanoi Old Quarter.",
-        "source": "https://www.orientspahanoi.com/"
-      },
-      "category": "massage spa",
-      "offerings": [
-        {
-          "name": "Total Hair & Head Spa - 90min",
-          "price": "720,000 VND",
-          "duration": "90 min",
-          "source": "https://www.orientspahanoi.com/"
+          "source": "logo"
         },
         {
-          "name": "Total Foot Care - 60min",
-          "price": "390,000 VND",
-          "duration": "60 min",
-          "source": "https://www.orientspahanoi.com/"
-        },
-        {
-          "name": "Body & Foot Massage - 105min",
-          "price": "690,000 VND",
-          "duration": "105 min",
-          "source": "https://www.orientspahanoi.com/"
-        },
-        {
-          "name": "Body Massage & Mini Facial - 105min",
-          "price": "790,000 VND",
-          "duration": "105 min",
-          "source": "https://www.orientspahanoi.com/"
-        },
-        {
-          "name": "Aroma Therapy Massage",
-          "source": "https://www.orientspahanoi.com/services-prices.html"
-        },
-        {
-          "name": "Thai Massage",
-          "source": "https://www.orientspahanoi.com/services-prices.html"
-        },
-        {
-          "name": "Hot Stone Massage",
-          "source": "https://www.orientspahanoi.com/services-prices.html"
-        },
-        {
-          "name": "Deep Tissue Massage",
-          "source": "https://www.orientspahanoi.com/services-prices.html"
-        },
-        {
-          "name": "Manicure & Pedicure",
-          "source": "https://www.orientspahanoi.com/services.html"
-        }
-      ],
-      "highlights": [
-        {
-          "value": "Founded in 2017 with the aim to provide visitors and locals with a relaxing spa experience",
-          "source": "https://www.orientspahanoi.com/"
-        },
-        {
-          "value": "Skilled therapists and attentive receptionists",
-          "source": "https://www.orientspahanoi.com/"
-        },
-        {
-          "value": "Convenient and central location in Hanoi Old Quarter",
-          "source": "https://www.orientspahanoi.com/"
-        }
-      ],
-      "location": {
-        "town": {
-          "value": "Hanoi",
-          "source": "https://www.orientspahanoi.com/"
-        },
-        "area": {
-          "value": "Old Quarter",
-          "source": "https://www.orientspahanoi.com/"
-        },
-        "address": {
-          "value": "No 36 Phung Hung, Hoan Kiem, Hanoi",
-          "source": "https://www.orientspahanoi.com/"
-        },
-        "serviceArea": null
-      },
-      "contact": {
-        "whatsapp": {
-          "value": "84977903499",
-          "source": "https://www.orientspahanoi.com/"
-        },
-        "phone": {
-          "value": "+84977903499",
-          "source": "https://www.orientspahanoi.com/"
-        },
-        "email": null,
-        "instagram": {
-          "value": "orient.spa.hanoi",
-          "source": "https://www.orientspahanoi.com/"
-        },
-        "bookingUrl": null
-      },
-      "hours": {
-        "value": "10:00am - 10:00pm daily",
-        "source": "https://www.orientspahanoi.com/"
-      },
-      "tone": [
-        "welcoming",
-        "professional",
-        "relaxing",
-        "hospitable"
-      ],
-      "colours": [
-        {
-          "hex": "#c8b9a6",
-          "role": "primary",
-          "source": "https://www.orientspahanoi.com/"
-        },
-        {
-          "hex": "#b453"
-        }
-      ]
-    },
-    {
-      "name": {
-        "value": "Orient Spa",
-        "source": "https://www.orientspahanoi.com/"
-      },
-      "summary": {
-        "value": "Relaxing spa experience offering foot and body massage, nail care, shampoo, and holistic spa packages in Hanoi Old Quarter.",
-        "source": "https://www.orientspahanoi.com/"
-      },
-      "category": "massage spa",
-      "offerings": [
-        {
-          "name": "Total Hair & Head Spa - 90min",
-          "price": "720,000 VND",
-          "duration": "90 min",
-          "source": "https://www.orientspahanoi.com/"
-        },
-        {
-          "name": "Total Foot Care - 60min",
-          "price": "390,000 VND",
-          "duration": "60 min",
-          "source": "https://www.orientspahanoi.com/"
-        },
-        {
-          "name": "Body & Foot Massage - 105min",
-          "price": "690,000 VND",
-          "duration": "105 min",
-          "source": "https://www.orientspahanoi.com/"
-        },
-        {
-          "name": "Body Massage & Mini Facial - 105min",
-          "price": "790,000 VND",
-          "duration": "105 min",
-          "source": "https://www.orientspahanoi.com/"
-        },
-        {
-          "name": "Aroma Therapy Massage",
-          "source": "https://www.orientspahanoi.com/services-prices.html"
-        },
-        {
-          "name": "Thai Massage",
-          "source": "https://www.orientspahanoi.com/services-prices.html"
-        },
-        {
-          "name": "Hot Stone Massage",
-          "source": "https://www.orientspahanoi.com/services-prices.html"
-        },
-        {
-          "name": "Deep Tissue Massage",
-          "source": "https://www.orientspahanoi.com/services-prices.html"
-        },
-        {
-          "name": "Manicure & Pedicure",
-          "source": "https://www.orientspahanoi.com/services.html"
-        }
-      ],
-      "highlights": [
-        {
-          "value": "Founded in 2017 with the aim to provide visitors and locals with a relaxing spa experience",
-          "source": "https://www.orientspahanoi.com/"
-        },
-        {
-          "value": "Skilled therapists and attentive receptionists",
-          "source": "https://www.orientspahanoi.com/"
-        },
-        {
-          "value": "Convenient and central location in Hanoi Old Quarter",
-          "source": "https://www.orientspahanoi.com/"
-        }
-      ],
-      "location": {
-        "town": {
-          "value": "Hanoi",
-          "source": "https://www.orientspahanoi.com/"
-        },
-        "area": {
-          "value": "Old Quarter",
-          "source": "https://www.orientspahanoi.com/"
-        },
-        "address": {
-          "value": "No 36 Phung Hung, Hoan Kiem, Hanoi",
-          "source": "https://www.orientspahanoi.com/"
-        },
-        "serviceArea": null
-      },
-      "contact": {
-        "whatsapp": {
-          "value": "84977903499",
-          "source": "https://www.orientspahanoi.com/"
-        },
-        "phone": {
-          "value": "+84977903499",
-          "source": "https://www.orientspahanoi.com/"
-        },
-        "email": null,
-        "instagram": {
-          "value": "orient.spa.hanoi",
-          "source": "https://www.orientspahanoi.com/"
-        },
-        "bookingUrl": null
-      },
-      "hours": {
-        "value": "10:00am - 10:00pm daily",
-        "source": "https://www.orientspahanoi.com/"
-      },
-      "tone": [
-        "welcoming",
-        "professional",
-        "relaxing",
-        "hospitable"
-      ],
-      "colours": [
-        {
-          "hex": "#c8b9a6",
-          "role": "primary",
-          "source": "https://www.orientspahanoi.com/"
-        },
-        {
-          "hex": "#b45334",
-          "role": "accent",
-          "source": "https://www.orientspahanoi."
-        }
-      ]
-    },
-    {
-      "name": {
-        "value": "Orient Spa",
-        "source": "https://www.orientspahanoi.com/"
-      },
-      "summary": {
-        "value": "Relaxing spa experience offering foot and body massage, nail care, shampoo, and holistic spa packages in Hanoi Old Quarter.",
-        "source": "https://www.orientspahanoi.com/"
-      },
-      "category": "massage spa",
-      "offerings": [
-        {
-          "name": "Total Hair & Head Spa - 90min",
-          "price": "720,000 VND",
-          "duration": "90 min",
-          "source": "https://www.orientspahanoi.com/"
-        },
-        {
-          "name": "Total Foot Care - 60min",
-          "price": "390,000 VND",
-          "duration": "60 min",
-          "source": "https://www.orientspahanoi.com/"
-        },
-        {
-          "name": "Body & Foot Massage - 105min",
-          "price": "690,000 VND",
-          "duration": "105 min",
-          "source": "https://www.orientspahanoi.com/"
-        },
-        {
-          "name": "Body Massage & Mini Facial - 105min",
-          "price": "790,000 VND",
-          "duration": "105 min",
-          "source": "https://www.orientspahanoi.com/"
-        },
-        {
-          "name": "Aroma Therapy Massage",
-          "source": "https://www.orientspahanoi.com/services-prices.html"
-        },
-        {
-          "name": "Thai Massage",
-          "source": "https://www.orientspahanoi.com/services-prices.html"
-        },
-        {
-          "name": "Hot Stone Massage",
-          "source": "https://www.orientspahanoi.com/services-prices.html"
-        },
-        {
-          "name": "Deep Tissue Massage",
-          "source": "https://www.orientspahanoi.com/services-prices.html"
-        },
-        {
-          "name": "Manicure & Pedicure",
-          "source": "https://www.orientspahanoi.com/services.html"
-        }
-      ],
-      "highlights": [
-        {
-          "value": "Founded in 2017 with the aim to provide visitors and locals with a relaxing spa experience",
-          "source": "https://www.orientspahanoi.com/"
-        },
-        {
-          "value": "Skilled therapists and attentive receptionists",
-          "source": "https://www.orientspahanoi.com/"
-        },
-        {
-          "value": "Convenient and central location in Hanoi Old Quarter",
-          "source": "https://www.orientspahanoi.com/"
-        }
-      ],
-      "location": {
-        "town": {
-          "value": "Hanoi",
-          "source": "https://www.orientspahanoi.com/"
-        },
-        "area": {
-          "value": "Old Quarter",
-          "source": "https://www.orientspahanoi.com/"
-        },
-        "address": {
-          "value": "No 36 Phung Hung, Hoan Kiem, Hanoi",
-          "source": "https://www.orientspahanoi.com/"
-        },
-        "serviceArea": null
-      },
-      "contact": {
-        "whatsapp": {
-          "value": "84977903499",
-          "source": "https://www.orientspahanoi.com/"
-        },
-        "phone": {
-          "value": "+84977903499",
-          "source": "https://www.orientspahanoi.com/"
-        },
-        "email": null,
-        "instagram": {
-          "value": "orient.spa.hanoi",
-          "source": "https://www.orientspahanoi.com/"
-        },
-        "bookingUrl": null
-      },
-      "hours": {
-        "value": "10:00am - 10:00pm daily",
-        "source": "https://www.orientspahanoi.com/"
-      },
-      "tone": [
-        "welcoming",
-        "professional",
-        "relaxing",
-        "hospitable"
-      ],
-      "colours": [
-        {
-          "hex": "#c8b9a6",
-          "role": "primary",
-          "source": "https://www.orientspahanoi.com/"
-        },
-        {
-          "hex": "#b45334",
-          "role": "accent",
-          "source": "https://www.orientspahanoi.com/"
-        },
-        {
-          "hex": "#2d2623"
-        }
-      ]
-    },
-    {
-      "name": {
-        "value": "Orient Spa",
-        "source": "https://www.orientspahanoi.com/"
-      },
-      "summary": {
-        "value": "Relaxing spa experience offering foot and body massage, nail care, shampoo, and holistic spa packages in Hanoi Old Quarter.",
-        "source": "https://www.orientspahanoi.com/"
-      },
-      "category": "massage spa",
-      "offerings": [
-        {
-          "name": "Total Hair & Head Spa - 90min",
-          "price": "720,000 VND",
-          "duration": "90 min",
-          "source": "https://www.orientspahanoi.com/"
-        },
-        {
-          "name": "Total Foot Care - 60min",
-          "price": "390,000 VND",
-          "duration": "60 min",
-          "source": "https://www.orientspahanoi.com/"
-        },
-        {
-          "name": "Body & Foot Massage - 105min",
-          "price": "690,000 VND",
-          "duration": "105 min",
-          "source": "https://www.orientspahanoi.com/"
-        },
-        {
-          "name": "Body Massage & Mini Facial - 105min",
-          "price": "790,000 VND",
-          "duration": "105 min",
-          "source": "https://www.orientspahanoi.com/"
-        },
-        {
-          "name": "Aroma Therapy Massage",
-          "source": "https://www.orientspahanoi.com/services-prices.html"
-        },
-        {
-          "name": "Thai Massage",
-          "source": "https://www.orientspahanoi.com/services-prices.html"
-        },
-        {
-          "name": "Hot Stone Massage",
-          "source": "https://www.orientspahanoi.com/services-prices.html"
-        },
-        {
-          "name": "Deep Tissue Massage",
-          "source": "https://www.orientspahanoi.com/services-prices.html"
-        },
-        {
-          "name": "Manicure & Pedicure",
-          "source": "https://www.orientspahanoi.com/services.html"
-        }
-      ],
-      "highlights": [
-        {
-          "value": "Founded in 2017 with the aim to provide visitors and locals with a relaxing spa experience",
-          "source": "https://www.orientspahanoi.com/"
-        },
-        {
-          "value": "Skilled therapists and attentive receptionists",
-          "source": "https://www.orientspahanoi.com/"
-        },
-        {
-          "value": "Convenient and central location in Hanoi Old Quarter",
-          "source": "https://www.orientspahanoi.com/"
-        }
-      ],
-      "location": {
-        "town": {
-          "value": "Hanoi",
-          "source": "https://www.orientspahanoi.com/"
-        },
-        "area": {
-          "value": "Old Quarter",
-          "source": "https://www.orientspahanoi.com/"
-        },
-        "address": {
-          "value": "No 36 Phung Hung, Hoan Kiem, Hanoi",
-          "source": "https://www.orientspahanoi.com/"
-        },
-        "serviceArea": null
-      },
-      "contact": {
-        "whatsapp": {
-          "value": "84977903499",
-          "source": "https://www.orientspahanoi.com/"
-        },
-        "phone": {
-          "value": "+84977903499",
-          "source": "https://www.orientspahanoi.com/"
-        },
-        "email": null,
-        "instagram": {
-          "value": "orient.spa.hanoi",
-          "source": "https://www.orientspahanoi.com/"
-        },
-        "bookingUrl": null
-      },
-      "hours": {
-        "value": "10:00am - 10:00pm daily",
-        "source": "https://www.orientspahanoi.com/"
-      },
-      "tone": [
-        "welcoming",
-        "professional",
-        "relaxing",
-        "hospitable"
-      ],
-      "colours": [
-        {
-          "hex": "#c8b9a6",
-          "role": "primary",
-          "source": "https://www.orientspahanoi.com/"
-        },
-        {
-          "hex": "#b45334",
-          "role": "accent",
-          "source": "https://www.orientspahanoi.com/"
-        },
-        {
-          "hex": "#2d2623",
+          "hex": "#d36545",
           "role": "background",
-          "source": "https://www.orientspahanoi.com/"
+          "source": "photo"
         },
         {
-          "hex": "#ffffff",
+          "hex": "#382923",
           "role": "text",
-          "source": ""
+          "source": "photo"
         }
       ]
     },
     {
       "name": {
-        "value": "Orient Spa",
+        "value": "Orient Spa Hanoi",
         "source": "https://www.orientspahanoi.com/"
       },
       "summary": {
-        "value": "Relaxing spa experience offering foot and body massage, nail care, shampoo, and holistic spa packages in Hanoi Old Quarter.",
+        "value": "A relaxing spa in Hanoi Old Quarter offering foot and body massages, nail care, and hair treatments for visitors and locals.",
         "source": "https://www.orientspahanoi.com/"
       },
       "category": "massage spa",
       "offerings": [
         {
-          "name": "Total Hair & Head Spa - 90min",
+          "name": "Total Hair & Head Spa",
+          "description": "Scalp exfoliation Double shampoo cleanse Hair mask therapy Blow-dry finish",
           "price": "720,000 VND",
           "duration": "90 min",
           "source": "https://www.orientspahanoi.com/"
         },
         {
-          "name": "Total Foot Care - 60min",
+          "name": "Total Foot Care",
+          "description": "Foot Bath 5 Minutes Foot Scrub 25 Minutes Foot Mask 10 Minutes Basic Pedicure 20 Minutes",
           "price": "390,000 VND",
           "duration": "60 min",
           "source": "https://www.orientspahanoi.com/"
         },
         {
-          "name": "Body & Foot Massage - 105min",
+          "name": "Body & Foot Massage",
+          "description": "Body Massage 75 minutes Foot massage/treatment 30 minutes Choice of Aroma, Thai, Deep Tissue or Hotstone Massage",
           "price": "690,000 VND",
           "duration": "105 min",
           "source": "https://www.orientspahanoi.com/"
         },
         {
-          "name": "Body Massage & Mini Facial - 105min",
+          "name": "Body Massage & Mini Facial",
+          "description": "Body Massage 75 minutes Mini Facial Care 30 minutes Choice of Aroma, Thai, Deep Tissue or Hotstone Massage",
           "price": "790,000 VND",
           "duration": "105 min",
           "source": "https://www.orientspahanoi.com/"
         },
         {
-          "name": "Aroma Therapy Massage",
+          "name": "Back & Shoulder Massage",
+          "description": "Reduce stiffness & improve circulation in back & shoulder area",
+          "price": "360,000 VND",
+          "duration": "45 min",
           "source": "https://www.orientspahanoi.com/services-prices.html"
         },
         {
-          "name": "Thai Massage",
+          "name": "Head massage",
+          "description": "Using a warm salt pillow as base, this treatment will relax your neck and head area completely.",
+          "price": "320,000 VND",
+          "duration": "30 min",
           "source": "https://www.orientspahanoi.com/services-prices.html"
-        },
-        {
-          "name": "Hot Stone Massage",
-          "source": "https://www.orientspahanoi.com/services-prices.html"
-        },
-        {
-          "name": "Deep Tissue Massage",
-          "source": "https://www.orientspahanoi.com/services-prices.html"
-        },
-        {
-          "name": "Manicure & Pedicure",
-          "source": "https://www.orientspahanoi.com/services.html"
         }
       ],
       "highlights": [
         {
-          "value": "Founded in 2017 with the aim to provide visitors and locals with a relaxing spa experience",
+          "value": "Founded in 2017 with 4 spas in the heart of Hanoi Old Quarter",
           "source": "https://www.orientspahanoi.com/"
         },
         {
@@ -2896,7 +3034,7 @@
           "source": "https://www.orientspahanoi.com/"
         },
         {
-          "value": "Convenient and central location in Hanoi Old Quarter",
+          "value": "Convenient and central location near Hoan Kiem Lake",
           "source": "https://www.orientspahanoi.com/"
         }
       ],
@@ -2922,7 +3060,7 @@
         },
         "phone": {
           "value": "+84977903499",
-          "source": "https://www.orientspahanoi.com/"
+          "source": "https://www.orientspahanoi.com/services-prices.html"
         },
         "email": null,
         "instagram": {
@@ -2943,225 +3081,82 @@
       ],
       "colours": [
         {
-          "hex": "#c8b9a6",
+          "hex": "#c4b5a5",
           "role": "primary",
-          "source": "https://www.orientspahanoi.com/"
+          "source": "logo"
         },
         {
-          "hex": "#b45334",
-          "role": "accent",
-          "source": "https://www.orientspahanoi.com/"
-        },
-        {
-          "hex": "#2d2623",
+          "hex": "#d36545",
           "role": "background",
-          "source": "https://www.orientspahanoi.com/"
+          "source": "photo"
         },
         {
-          "hex": "#ffffff",
+          "hex": "#382923",
           "role": "text",
-          "source": "https://www.orientspahanoi.com/"
-        }
-      ],
-      "visualStyle": {}
-    },
-    {
-      "name": {
-        "value": "Orient Spa",
-        "source": "https://www.orientspahanoi.com/"
-      },
-      "summary": {
-        "value": "Relaxing spa experience offering foot and body massage, nail care, shampoo, and holistic spa packages in Hanoi Old Quarter.",
-        "source": "https://www.orientspahanoi.com/"
-      },
-      "category": "massage spa",
-      "offerings": [
-        {
-          "name": "Total Hair & Head Spa - 90min",
-          "price": "720,000 VND",
-          "duration": "90 min",
-          "source": "https://www.orientspahanoi.com/"
-        },
-        {
-          "name": "Total Foot Care - 60min",
-          "price": "390,000 VND",
-          "duration": "60 min",
-          "source": "https://www.orientspahanoi.com/"
-        },
-        {
-          "name": "Body & Foot Massage - 105min",
-          "price": "690,000 VND",
-          "duration": "105 min",
-          "source": "https://www.orientspahanoi.com/"
-        },
-        {
-          "name": "Body Massage & Mini Facial - 105min",
-          "price": "790,000 VND",
-          "duration": "105 min",
-          "source": "https://www.orientspahanoi.com/"
-        },
-        {
-          "name": "Aroma Therapy Massage",
-          "source": "https://www.orientspahanoi.com/services-prices.html"
-        },
-        {
-          "name": "Thai Massage",
-          "source": "https://www.orientspahanoi.com/services-prices.html"
-        },
-        {
-          "name": "Hot Stone Massage",
-          "source": "https://www.orientspahanoi.com/services-prices.html"
-        },
-        {
-          "name": "Deep Tissue Massage",
-          "source": "https://www.orientspahanoi.com/services-prices.html"
-        },
-        {
-          "name": "Manicure & Pedicure",
-          "source": "https://www.orientspahanoi.com/services.html"
-        }
-      ],
-      "highlights": [
-        {
-          "value": "Founded in 2017 with the aim to provide visitors and locals with a relaxing spa experience",
-          "source": "https://www.orientspahanoi.com/"
-        },
-        {
-          "value": "Skilled therapists and attentive receptionists",
-          "source": "https://www.orientspahanoi.com/"
-        },
-        {
-          "value": "Convenient and central location in Hanoi Old Quarter",
-          "source": "https://www.orientspahanoi.com/"
-        }
-      ],
-      "location": {
-        "town": {
-          "value": "Hanoi",
-          "source": "https://www.orientspahanoi.com/"
-        },
-        "area": {
-          "value": "Old Quarter",
-          "source": "https://www.orientspahanoi.com/"
-        },
-        "address": {
-          "value": "No 36 Phung Hung, Hoan Kiem, Hanoi",
-          "source": "https://www.orientspahanoi.com/"
-        },
-        "serviceArea": null
-      },
-      "contact": {
-        "whatsapp": {
-          "value": "84977903499",
-          "source": "https://www.orientspahanoi.com/"
-        },
-        "phone": {
-          "value": "+84977903499",
-          "source": "https://www.orientspahanoi.com/"
-        },
-        "email": null,
-        "instagram": {
-          "value": "orient.spa.hanoi",
-          "source": "https://www.orientspahanoi.com/"
-        },
-        "bookingUrl": null
-      },
-      "hours": {
-        "value": "10:00am - 10:00pm daily",
-        "source": "https://www.orientspahanoi.com/"
-      },
-      "tone": [
-        "welcoming",
-        "professional",
-        "relaxing",
-        "hospitable"
-      ],
-      "colours": [
-        {
-          "hex": "#c8b9a6",
-          "role": "primary",
-          "source": "https://www.orientspahanoi.com/"
-        },
-        {
-          "hex": "#b45334",
-          "role": "accent",
-          "source": "https://www.orientspahanoi.com/"
-        },
-        {
-          "hex": "#2d2623",
-          "role": "background",
-          "source": "https://www.orientspahanoi.com/"
-        },
-        {
-          "hex": "#ffffff",
-          "role": "text",
-          "source": "https://www.orientspahanoi.com/"
+          "source": "photo"
         }
       ],
       "visualStyle": {
-        "summary": "Warm terracotta tones, soft warm light, natural wood and stone textures.",
-        "palette": ""
+        "summary": "Warm terracotta, soft ambient lighting, natural wood textures,"
       }
     },
     {
       "name": {
-        "value": "Orient Spa",
+        "value": "Orient Spa Hanoi",
         "source": "https://www.orientspahanoi.com/"
       },
       "summary": {
-        "value": "Relaxing spa experience offering foot and body massage, nail care, shampoo, and holistic spa packages in Hanoi Old Quarter.",
+        "value": "A relaxing spa in Hanoi Old Quarter offering foot and body massages, nail care, and hair treatments for visitors and locals.",
         "source": "https://www.orientspahanoi.com/"
       },
       "category": "massage spa",
       "offerings": [
         {
-          "name": "Total Hair & Head Spa - 90min",
+          "name": "Total Hair & Head Spa",
+          "description": "Scalp exfoliation Double shampoo cleanse Hair mask therapy Blow-dry finish",
           "price": "720,000 VND",
           "duration": "90 min",
           "source": "https://www.orientspahanoi.com/"
         },
         {
-          "name": "Total Foot Care - 60min",
+          "name": "Total Foot Care",
+          "description": "Foot Bath 5 Minutes Foot Scrub 25 Minutes Foot Mask 10 Minutes Basic Pedicure 20 Minutes",
           "price": "390,000 VND",
           "duration": "60 min",
           "source": "https://www.orientspahanoi.com/"
         },
         {
-          "name": "Body & Foot Massage - 105min",
+          "name": "Body & Foot Massage",
+          "description": "Body Massage 75 minutes Foot massage/treatment 30 minutes Choice of Aroma, Thai, Deep Tissue or Hotstone Massage",
           "price": "690,000 VND",
           "duration": "105 min",
           "source": "https://www.orientspahanoi.com/"
         },
         {
-          "name": "Body Massage & Mini Facial - 105min",
+          "name": "Body Massage & Mini Facial",
+          "description": "Body Massage 75 minutes Mini Facial Care 30 minutes Choice of Aroma, Thai, Deep Tissue or Hotstone Massage",
           "price": "790,000 VND",
           "duration": "105 min",
           "source": "https://www.orientspahanoi.com/"
         },
         {
-          "name": "Aroma Therapy Massage",
+          "name": "Back & Shoulder Massage",
+          "description": "Reduce stiffness & improve circulation in back & shoulder area",
+          "price": "360,000 VND",
+          "duration": "45 min",
           "source": "https://www.orientspahanoi.com/services-prices.html"
         },
         {
-          "name": "Thai Massage",
+          "name": "Head massage",
+          "description": "Using a warm salt pillow as base, this treatment will relax your neck and head area completely.",
+          "price": "320,000 VND",
+          "duration": "30 min",
           "source": "https://www.orientspahanoi.com/services-prices.html"
-        },
-        {
-          "name": "Hot Stone Massage",
-          "source": "https://www.orientspahanoi.com/services-prices.html"
-        },
-        {
-          "name": "Deep Tissue Massage",
-          "source": "https://www.orientspahanoi.com/services-prices.html"
-        },
-        {
-          "name": "Manicure & Pedicure",
-          "source": "https://www.orientspahanoi.com/services.html"
         }
       ],
       "highlights": [
         {
-          "value": "Founded in 2017 with the aim to provide visitors and locals with a relaxing spa experience",
+          "value": "Founded in 2017 with 4 spas in the heart of Hanoi Old Quarter",
           "source": "https://www.orientspahanoi.com/"
         },
         {
@@ -3169,7 +3164,7 @@
           "source": "https://www.orientspahanoi.com/"
         },
         {
-          "value": "Convenient and central location in Hanoi Old Quarter",
+          "value": "Convenient and central location near Hoan Kiem Lake",
           "source": "https://www.orientspahanoi.com/"
         }
       ],
@@ -3195,7 +3190,7 @@
         },
         "phone": {
           "value": "+84977903499",
-          "source": "https://www.orientspahanoi.com/"
+          "source": "https://www.orientspahanoi.com/services-prices.html"
         },
         "email": null,
         "instagram": {
@@ -3216,91 +3211,84 @@
       ],
       "colours": [
         {
-          "hex": "#c8b9a6",
+          "hex": "#c4b5a5",
           "role": "primary",
-          "source": "https://www.orientspahanoi.com/"
+          "source": "logo"
         },
         {
-          "hex": "#b45334",
-          "role": "accent",
-          "source": "https://www.orientspahanoi.com/"
-        },
-        {
-          "hex": "#2d2623",
+          "hex": "#d36545",
           "role": "background",
-          "source": "https://www.orientspahanoi.com/"
+          "source": "photo"
         },
         {
-          "hex": "#ffffff",
+          "hex": "#382923",
           "role": "text",
-          "source": "https://www.orientspahanoi.com/"
+          "source": "photo"
         }
       ],
       "visualStyle": {
-        "summary": "Warm terracotta tones, soft warm light, natural wood and stone textures.",
-        "palette": "Terracotta, warm beige, dark wood, and soft green.",
-        "light": "Soft, warm, directional spotlight"
+        "summary": "Warm terracotta, soft ambient lighting, natural wood textures, calm mood",
+        "palette": "warm terracotta, beige, dark brown",
+        "light": "soft warm"
       }
     },
     {
       "name": {
-        "value": "Orient Spa",
+        "value": "Orient Spa Hanoi",
         "source": "https://www.orientspahanoi.com/"
       },
       "summary": {
-        "value": "Relaxing spa experience offering foot and body massage, nail care, shampoo, and holistic spa packages in Hanoi Old Quarter.",
+        "value": "A relaxing spa in Hanoi Old Quarter offering foot and body massages, nail care, and hair treatments for visitors and locals.",
         "source": "https://www.orientspahanoi.com/"
       },
       "category": "massage spa",
       "offerings": [
         {
-          "name": "Total Hair & Head Spa - 90min",
+          "name": "Total Hair & Head Spa",
+          "description": "Scalp exfoliation Double shampoo cleanse Hair mask therapy Blow-dry finish",
           "price": "720,000 VND",
           "duration": "90 min",
           "source": "https://www.orientspahanoi.com/"
         },
         {
-          "name": "Total Foot Care - 60min",
+          "name": "Total Foot Care",
+          "description": "Foot Bath 5 Minutes Foot Scrub 25 Minutes Foot Mask 10 Minutes Basic Pedicure 20 Minutes",
           "price": "390,000 VND",
           "duration": "60 min",
           "source": "https://www.orientspahanoi.com/"
         },
         {
-          "name": "Body & Foot Massage - 105min",
+          "name": "Body & Foot Massage",
+          "description": "Body Massage 75 minutes Foot massage/treatment 30 minutes Choice of Aroma, Thai, Deep Tissue or Hotstone Massage",
           "price": "690,000 VND",
           "duration": "105 min",
           "source": "https://www.orientspahanoi.com/"
         },
         {
-          "name": "Body Massage & Mini Facial - 105min",
+          "name": "Body Massage & Mini Facial",
+          "description": "Body Massage 75 minutes Mini Facial Care 30 minutes Choice of Aroma, Thai, Deep Tissue or Hotstone Massage",
           "price": "790,000 VND",
           "duration": "105 min",
           "source": "https://www.orientspahanoi.com/"
         },
         {
-          "name": "Aroma Therapy Massage",
+          "name": "Back & Shoulder Massage",
+          "description": "Reduce stiffness & improve circulation in back & shoulder area",
+          "price": "360,000 VND",
+          "duration": "45 min",
           "source": "https://www.orientspahanoi.com/services-prices.html"
         },
         {
-          "name": "Thai Massage",
+          "name": "Head massage",
+          "description": "Using a warm salt pillow as base, this treatment will relax your neck and head area completely.",
+          "price": "320,000 VND",
+          "duration": "30 min",
           "source": "https://www.orientspahanoi.com/services-prices.html"
-        },
-        {
-          "name": "Hot Stone Massage",
-          "source": "https://www.orientspahanoi.com/services-prices.html"
-        },
-        {
-          "name": "Deep Tissue Massage",
-          "source": "https://www.orientspahanoi.com/services-prices.html"
-        },
-        {
-          "name": "Manicure & Pedicure",
-          "source": "https://www.orientspahanoi.com/services.html"
         }
       ],
       "highlights": [
         {
-          "value": "Founded in 2017 with the aim to provide visitors and locals with a relaxing spa experience",
+          "value": "Founded in 2017 with 4 spas in the heart of Hanoi Old Quarter",
           "source": "https://www.orientspahanoi.com/"
         },
         {
@@ -3308,7 +3296,7 @@
           "source": "https://www.orientspahanoi.com/"
         },
         {
-          "value": "Convenient and central location in Hanoi Old Quarter",
+          "value": "Convenient and central location near Hoan Kiem Lake",
           "source": "https://www.orientspahanoi.com/"
         }
       ],
@@ -3334,7 +3322,7 @@
         },
         "phone": {
           "value": "+84977903499",
-          "source": "https://www.orientspahanoi.com/"
+          "source": "https://www.orientspahanoi.com/services-prices.html"
         },
         "email": null,
         "instagram": {
@@ -3355,92 +3343,86 @@
       ],
       "colours": [
         {
-          "hex": "#c8b9a6",
+          "hex": "#c4b5a5",
           "role": "primary",
-          "source": "https://www.orientspahanoi.com/"
+          "source": "logo"
         },
         {
-          "hex": "#b45334",
-          "role": "accent",
-          "source": "https://www.orientspahanoi.com/"
-        },
-        {
-          "hex": "#2d2623",
+          "hex": "#d36545",
           "role": "background",
-          "source": "https://www.orientspahanoi.com/"
+          "source": "photo"
         },
         {
-          "hex": "#ffffff",
+          "hex": "#382923",
           "role": "text",
-          "source": "https://www.orientspahanoi.com/"
+          "source": "photo"
         }
       ],
       "visualStyle": {
-        "summary": "Warm terracotta tones, soft warm light, natural wood and stone textures.",
-        "palette": "Terracotta, warm beige, dark wood, and soft green.",
-        "light": "Soft, warm, directional spotlighting creating a cozy atmosphere.",
-        "textures": "Smooth stucco walls, natural wood, slate tiles, and woven"
+        "summary": "Warm terracotta, soft ambient lighting, natural wood textures, calm mood",
+        "palette": "warm terracotta, beige, dark brown",
+        "light": "soft warm interior lighting",
+        "textures": "smooth plaster, polished wood, natural textiles",
+        "mood": "cal"
       }
     },
     {
       "name": {
-        "value": "Orient Spa",
+        "value": "Orient Spa Hanoi",
         "source": "https://www.orientspahanoi.com/"
       },
       "summary": {
-        "value": "Relaxing spa experience offering foot and body massage, nail care, shampoo, and holistic spa packages in Hanoi Old Quarter.",
+        "value": "A relaxing spa in Hanoi Old Quarter offering foot and body massages, nail care, and hair treatments for visitors and locals.",
         "source": "https://www.orientspahanoi.com/"
       },
       "category": "massage spa",
       "offerings": [
         {
-          "name": "Total Hair & Head Spa - 90min",
+          "name": "Total Hair & Head Spa",
+          "description": "Scalp exfoliation Double shampoo cleanse Hair mask therapy Blow-dry finish",
           "price": "720,000 VND",
           "duration": "90 min",
           "source": "https://www.orientspahanoi.com/"
         },
         {
-          "name": "Total Foot Care - 60min",
+          "name": "Total Foot Care",
+          "description": "Foot Bath 5 Minutes Foot Scrub 25 Minutes Foot Mask 10 Minutes Basic Pedicure 20 Minutes",
           "price": "390,000 VND",
           "duration": "60 min",
           "source": "https://www.orientspahanoi.com/"
         },
         {
-          "name": "Body & Foot Massage - 105min",
+          "name": "Body & Foot Massage",
+          "description": "Body Massage 75 minutes Foot massage/treatment 30 minutes Choice of Aroma, Thai, Deep Tissue or Hotstone Massage",
           "price": "690,000 VND",
           "duration": "105 min",
           "source": "https://www.orientspahanoi.com/"
         },
         {
-          "name": "Body Massage & Mini Facial - 105min",
+          "name": "Body Massage & Mini Facial",
+          "description": "Body Massage 75 minutes Mini Facial Care 30 minutes Choice of Aroma, Thai, Deep Tissue or Hotstone Massage",
           "price": "790,000 VND",
           "duration": "105 min",
           "source": "https://www.orientspahanoi.com/"
         },
         {
-          "name": "Aroma Therapy Massage",
+          "name": "Back & Shoulder Massage",
+          "description": "Reduce stiffness & improve circulation in back & shoulder area",
+          "price": "360,000 VND",
+          "duration": "45 min",
           "source": "https://www.orientspahanoi.com/services-prices.html"
         },
         {
-          "name": "Thai Massage",
+          "name": "Head massage",
+          "description": "Using a warm salt pillow as base, this treatment will relax your neck and head area completely.",
+          "price": "320,000 VND",
+          "duration": "30 min",
           "source": "https://www.orientspahanoi.com/services-prices.html"
-        },
-        {
-          "name": "Hot Stone Massage",
-          "source": "https://www.orientspahanoi.com/services-prices.html"
-        },
-        {
-          "name": "Deep Tissue Massage",
-          "source": "https://www.orientspahanoi.com/services-prices.html"
-        },
-        {
-          "name": "Manicure & Pedicure",
-          "source": "https://www.orientspahanoi.com/services.html"
         }
       ],
       "highlights": [
         {
-          "value": "Founded in 2017 with the aim to provide visitors and locals with a relaxing spa experience",
+          "value": "Founded in 2017 with 4 spas in the heart of Hanoi Old Quarter",
           "source": "https://www.orientspahanoi.com/"
         },
         {
@@ -3448,7 +3430,7 @@
           "source": "https://www.orientspahanoi.com/"
         },
         {
-          "value": "Convenient and central location in Hanoi Old Quarter",
+          "value": "Convenient and central location near Hoan Kiem Lake",
           "source": "https://www.orientspahanoi.com/"
         }
       ],
@@ -3474,7 +3456,7 @@
         },
         "phone": {
           "value": "+84977903499",
-          "source": "https://www.orientspahanoi.com/"
+          "source": "https://www.orientspahanoi.com/services-prices.html"
         },
         "email": null,
         "instagram": {
@@ -3495,94 +3477,87 @@
       ],
       "colours": [
         {
-          "hex": "#c8b9a6",
+          "hex": "#c4b5a5",
           "role": "primary",
-          "source": "https://www.orientspahanoi.com/"
+          "source": "logo"
         },
         {
-          "hex": "#b45334",
-          "role": "accent",
-          "source": "https://www.orientspahanoi.com/"
-        },
-        {
-          "hex": "#2d2623",
+          "hex": "#d36545",
           "role": "background",
-          "source": "https://www.orientspahanoi.com/"
+          "source": "photo"
         },
         {
-          "hex": "#ffffff",
+          "hex": "#382923",
           "role": "text",
-          "source": "https://www.orientspahanoi.com/"
+          "source": "photo"
         }
       ],
       "visualStyle": {
-        "summary": "Warm terracotta tones, soft warm light, natural wood and stone textures.",
-        "palette": "Terracotta, warm beige, dark wood, and soft green.",
-        "light": "Soft, warm, directional spotlighting creating a cozy atmosphere.",
-        "textures": "Smooth stucco walls, natural wood, slate tiles, and woven fabrics.",
-        "mood": "Calm, inviting, tranquil, and luxurious."
+        "summary": "Warm terracotta, soft ambient lighting, natural wood textures, calm mood",
+        "palette": "warm terracotta, beige, dark brown",
+        "light": "soft warm interior lighting",
+        "textures": "smooth plaster, polished wood, natural textiles",
+        "mood": "calm, serene, welcoming"
       }
     }
   ],
   "final": {
     "name": {
-      "value": "Orient Spa",
+      "value": "Orient Spa Hanoi",
       "source": "https://www.orientspahanoi.com/"
     },
     "summary": {
-      "value": "Relaxing spa experience offering foot and body massage, nail care, shampoo, and holistic spa packages in Hanoi Old Quarter.",
+      "value": "A relaxing spa in Hanoi Old Quarter offering foot and body massages, nail care, and hair treatments for visitors and locals.",
       "source": "https://www.orientspahanoi.com/"
     },
     "category": "massage spa",
     "offerings": [
       {
-        "name": "Total Hair & Head Spa - 90min",
+        "name": "Total Hair & Head Spa",
+        "description": "Scalp exfoliation Double shampoo cleanse Hair mask therapy Blow-dry finish",
         "price": "720,000 VND",
         "duration": "90 min",
         "source": "https://www.orientspahanoi.com/"
       },
       {
-        "name": "Total Foot Care - 60min",
+        "name": "Total Foot Care",
+        "description": "Foot Bath 5 Minutes Foot Scrub 25 Minutes Foot Mask 10 Minutes Basic Pedicure 20 Minutes",
         "price": "390,000 VND",
         "duration": "60 min",
         "source": "https://www.orientspahanoi.com/"
       },
       {
-        "name": "Body & Foot Massage - 105min",
+        "name": "Body & Foot Massage",
+        "description": "Body Massage 75 minutes Foot massage/treatment 30 minutes Choice of Aroma, Thai, Deep Tissue or Hotstone Massage",
         "price": "690,000 VND",
         "duration": "105 min",
         "source": "https://www.orientspahanoi.com/"
       },
       {
-        "name": "Body Massage & Mini Facial - 105min",
+        "name": "Body Massage & Mini Facial",
+        "description": "Body Massage 75 minutes Mini Facial Care 30 minutes Choice of Aroma, Thai, Deep Tissue or Hotstone Massage",
         "price": "790,000 VND",
         "duration": "105 min",
         "source": "https://www.orientspahanoi.com/"
       },
       {
-        "name": "Aroma Therapy Massage",
+        "name": "Back & Shoulder Massage",
+        "description": "Reduce stiffness & improve circulation in back & shoulder area",
+        "price": "360,000 VND",
+        "duration": "45 min",
         "source": "https://www.orientspahanoi.com/services-prices.html"
       },
       {
-        "name": "Thai Massage",
+        "name": "Head massage",
+        "description": "Using a warm salt pillow as base, this treatment will relax your neck and head area completely.",
+        "price": "320,000 VND",
+        "duration": "30 min",
         "source": "https://www.orientspahanoi.com/services-prices.html"
-      },
-      {
-        "name": "Hot Stone Massage",
-        "source": "https://www.orientspahanoi.com/services-prices.html"
-      },
-      {
-        "name": "Deep Tissue Massage",
-        "source": "https://www.orientspahanoi.com/services-prices.html"
-      },
-      {
-        "name": "Manicure & Pedicure",
-        "source": "https://www.orientspahanoi.com/services.html"
       }
     ],
     "highlights": [
       {
-        "value": "Founded in 2017 with the aim to provide visitors and locals with a relaxing spa experience",
+        "value": "Founded in 2017 with 4 spas in the heart of Hanoi Old Quarter",
         "source": "https://www.orientspahanoi.com/"
       },
       {
@@ -3590,7 +3565,7 @@
         "source": "https://www.orientspahanoi.com/"
       },
       {
-        "value": "Convenient and central location in Hanoi Old Quarter",
+        "value": "Convenient and central location near Hoan Kiem Lake",
         "source": "https://www.orientspahanoi.com/"
       }
     ],
@@ -3616,7 +3591,7 @@
       },
       "phone": {
         "value": "+84977903499",
-        "source": "https://www.orientspahanoi.com/"
+        "source": "https://www.orientspahanoi.com/services-prices.html"
       },
       "email": null,
       "instagram": {
@@ -3637,32 +3612,27 @@
     ],
     "colours": [
       {
-        "hex": "#c8b9a6",
+        "hex": "#c4b5a5",
         "role": "primary",
-        "source": "https://www.orientspahanoi.com/"
+        "source": "logo"
       },
       {
-        "hex": "#b45334",
-        "role": "accent",
-        "source": "https://www.orientspahanoi.com/"
-      },
-      {
-        "hex": "#2d2623",
+        "hex": "#d36545",
         "role": "background",
-        "source": "https://www.orientspahanoi.com/"
+        "source": "photo"
       },
       {
-        "hex": "#ffffff",
+        "hex": "#382923",
         "role": "text",
-        "source": "https://www.orientspahanoi.com/"
+        "source": "photo"
       }
     ],
     "visualStyle": {
-      "summary": "Warm terracotta tones, soft warm light, natural wood and stone textures.",
-      "palette": "Terracotta, warm beige, dark wood, and soft green.",
-      "light": "Soft, warm, directional spotlighting creating a cozy atmosphere.",
-      "textures": "Smooth stucco walls, natural wood, slate tiles, and woven fabrics.",
-      "mood": "Calm, inviting, tranquil, and luxurious."
+      "summary": "Warm terracotta, soft ambient lighting, natural wood textures, calm mood",
+      "palette": "warm terracotta, beige, dark brown",
+      "light": "soft warm interior lighting",
+      "textures": "smooth plaster, polished wood, natural textiles",
+      "mood": "calm, serene, welcoming"
     }
   }
 }

@@ -120,6 +120,13 @@ brixandbaume.com (redirects to google.com).
 
   `brand eval: 16/20 passed · prompt brand-2 · model gemini-3.5-flash-lite`
   Reads took 3 to 11 s. The `recording.json` files are from this run.
+- 2026-10-24: For `brand-3`: code drops an offering whose name its page
+  doesn't show; code reads a WhatsApp number written next to the word
+  WhatsApp (Neyuh); the prompt asks for item names copied word for word, not
+  categories. Four runs: 18, 19, 18 and 17 (the recorded one).
+  `brand eval: 17/20 passed · prompt brand-3 · model gemini-3.5-flash-lite`
+  Phin Coffee (offerings) fails every run, Little Vietnam Tours in two of
+  three. The `recording.json` files are from the last run.
 - 2026-10-24: Two runs of the same prompt differ (Libra and Two Face failed
   once, then passed): flash-lite isn't deterministic, so the gate is a
   snapshot, not a guarantee.

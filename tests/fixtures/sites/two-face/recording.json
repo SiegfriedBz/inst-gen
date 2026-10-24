@@ -1,16 +1,17 @@
 {
   "modelId": "gemini-3.5-flash-lite",
-  "promptVersion": "brand-2",
+  "promptVersion": "brand-3",
   "partials": [
     {
-      "name": {
-        "value": ""
-      }
+      "name": {}
     },
     {
       "name": {
         "value": "Two Face",
         "source": "https://www.twofacebali.com/"
+      },
+      "summary": {
+        "value": "Two Face is a vibrant café in Canggu and Ubud offering"
       }
     },
     {
@@ -19,7 +20,8 @@
         "source": "https://www.twofacebali.com/"
       },
       "summary": {
-        "value": "Two Face is a vibrant cafe in Canggu and Ubud offering specialty coffee and"
+        "value": "Two Face is a vibrant café in Canggu and Ubud offering specialty coffee, creative brunch classics, and a welcoming atmosphere.",
+        "source": "https://www.twoface"
       }
     },
     {
@@ -28,25 +30,11 @@
         "source": "https://www.twofacebali.com/"
       },
       "summary": {
-        "value": "Two Face is a vibrant cafe in Canggu and Ubud offering specialty coffee and creative brunch dishes to locals and travelers.",
-        "source": "https://www.twofacebali.com/"
-      }
-    },
-    {
-      "name": {
-        "value": "Two Face",
-        "source": "https://www.twofacebali.com/"
-      },
-      "summary": {
-        "value": "Two Face is a vibrant cafe in Canggu and Ubud offering specialty coffee and creative brunch dishes to locals and travelers.",
+        "value": "Two Face is a vibrant café in Canggu and Ubud offering specialty coffee, creative brunch classics, and a welcoming atmosphere.",
         "source": "https://www.twofacebali.com/"
       },
       "category": "cafe",
-      "offerings": [
-        {
-          "name": "Br"
-        }
-      ]
+      "offerings": []
     },
     {
       "name": {
@@ -54,15 +42,17 @@
         "source": "https://www.twofacebali.com/"
       },
       "summary": {
-        "value": "Two Face is a vibrant cafe in Canggu and Ubud offering specialty coffee and creative brunch dishes to locals and travelers.",
+        "value": "Two Face is a vibrant café in Canggu and Ubud offering specialty coffee, creative brunch classics, and a welcoming atmosphere.",
         "source": "https://www.twofacebali.com/"
       },
       "category": "cafe",
-      "offerings": [
+      "offerings": [],
+      "highlights": [
         {
-          "name": "Brunch classics",
+          "value": "An elevated brunch spot in the heart of Canggu",
           "source": "https://www.twofacebali.com/"
-        }
+        },
+        {}
       ]
     },
     {
@@ -71,17 +61,18 @@
         "source": "https://www.twofacebali.com/"
       },
       "summary": {
-        "value": "Two Face is a vibrant cafe in Canggu and Ubud offering specialty coffee and creative brunch dishes to locals and travelers.",
+        "value": "Two Face is a vibrant café in Canggu and Ubud offering specialty coffee, creative brunch classics, and a welcoming atmosphere.",
         "source": "https://www.twofacebali.com/"
       },
       "category": "cafe",
-      "offerings": [
+      "offerings": [],
+      "highlights": [
         {
-          "name": "Brunch classics",
+          "value": "An elevated brunch spot in the heart of Canggu",
           "source": "https://www.twofacebali.com/"
         },
         {
-          "name": "Specialty coffee",
+          "value": "Specialty coffee and a relaxed community vibe",
           "source": "https://www.twofacebali"
         }
       ]
@@ -92,23 +83,22 @@
         "source": "https://www.twofacebali.com/"
       },
       "summary": {
-        "value": "Two Face is a vibrant cafe in Canggu and Ubud offering specialty coffee and creative brunch dishes to locals and travelers.",
+        "value": "Two Face is a vibrant café in Canggu and Ubud offering specialty coffee, creative brunch classics, and a welcoming atmosphere.",
         "source": "https://www.twofacebali.com/"
       },
       "category": "cafe",
-      "offerings": [
+      "offerings": [],
+      "highlights": [
         {
-          "name": "Brunch classics",
+          "value": "An elevated brunch spot in the heart of Canggu",
           "source": "https://www.twofacebali.com/"
         },
         {
-          "name": "Specialty coffee",
+          "value": "Specialty coffee and a relaxed community vibe",
           "source": "https://www.twofacebali.com/"
-        }
-      ],
-      "highlights": [
+        },
         {
-          "value": ""
+          "value": "An elevated brunch spot on Kings Palace Road in"
         }
       ]
     },
@@ -118,28 +108,23 @@
         "source": "https://www.twofacebali.com/"
       },
       "summary": {
-        "value": "Two Face is a vibrant cafe in Canggu and Ubud offering specialty coffee and creative brunch dishes to locals and travelers.",
+        "value": "Two Face is a vibrant café in Canggu and Ubud offering specialty coffee, creative brunch classics, and a welcoming atmosphere.",
         "source": "https://www.twofacebali.com/"
       },
       "category": "cafe",
-      "offerings": [
-        {
-          "name": "Brunch classics",
-          "source": "https://www.twofacebali.com/"
-        },
-        {
-          "name": "Specialty coffee",
-          "source": "https://www.twofacebali.com/"
-        }
-      ],
+      "offerings": [],
       "highlights": [
         {
-          "value": "Located in Canggu and Ubud",
+          "value": "An elevated brunch spot in the heart of Canggu",
           "source": "https://www.twofacebali.com/"
         },
         {
-          "value": "Vibrant space that brings together locals and travelers",
-          "source": ""
+          "value": "Specialty coffee and a relaxed community vibe",
+          "source": "https://www.twofacebali.com/"
+        },
+        {
+          "value": "An elevated brunch spot on Kings Palace Road in the heart of Ubud",
+          "source": "https://www.twofacebali.com/"
         }
       ]
     },
@@ -149,105 +134,29 @@
         "source": "https://www.twofacebali.com/"
       },
       "summary": {
-        "value": "Two Face is a vibrant cafe in Canggu and Ubud offering specialty coffee and creative brunch dishes to locals and travelers.",
+        "value": "Two Face is a vibrant café in Canggu and Ubud offering specialty coffee, creative brunch classics, and a welcoming atmosphere.",
         "source": "https://www.twofacebali.com/"
       },
       "category": "cafe",
-      "offerings": [
-        {
-          "name": "Brunch classics",
-          "source": "https://www.twofacebali.com/"
-        },
-        {
-          "name": "Specialty coffee",
-          "source": "https://www.twofacebali.com/"
-        }
-      ],
+      "offerings": [],
       "highlights": [
         {
-          "value": "Located in Canggu and Ubud",
+          "value": "An elevated brunch spot in the heart of Canggu",
           "source": "https://www.twofacebali.com/"
         },
         {
-          "value": "Vibrant space that brings together locals and travelers",
+          "value": "Specialty coffee and a relaxed community vibe",
           "source": "https://www.twofacebali.com/"
         },
         {
-          "value": "Cozy"
-        }
-      ]
-    },
-    {
-      "name": {
-        "value": "Two Face",
-        "source": "https://www.twofacebali.com/"
-      },
-      "summary": {
-        "value": "Two Face is a vibrant cafe in Canggu and Ubud offering specialty coffee and creative brunch dishes to locals and travelers.",
-        "source": "https://www.twofacebali.com/"
-      },
-      "category": "cafe",
-      "offerings": [
-        {
-          "name": "Brunch classics",
-          "source": "https://www.twofacebali.com/"
-        },
-        {
-          "name": "Specialty coffee",
-          "source": "https://www.twofacebali.com/"
-        }
-      ],
-      "highlights": [
-        {
-          "value": "Located in Canggu and Ubud",
-          "source": "https://www.twofacebali.com/"
-        },
-        {
-          "value": "Vibrant space that brings together locals and travelers",
-          "source": "https://www.twofacebali.com/"
-        },
-        {
-          "value": "Cozy retreat for breakfast lovers, remote workers, and coffee enthusiasts",
-          "source": "https://www.twoface"
-        }
-      ]
-    },
-    {
-      "name": {
-        "value": "Two Face",
-        "source": "https://www.twofacebali.com/"
-      },
-      "summary": {
-        "value": "Two Face is a vibrant cafe in Canggu and Ubud offering specialty coffee and creative brunch dishes to locals and travelers.",
-        "source": "https://www.twofacebali.com/"
-      },
-      "category": "cafe",
-      "offerings": [
-        {
-          "name": "Brunch classics",
-          "source": "https://www.twofacebali.com/"
-        },
-        {
-          "name": "Specialty coffee",
-          "source": "https://www.twofacebali.com/"
-        }
-      ],
-      "highlights": [
-        {
-          "value": "Located in Canggu and Ubud",
-          "source": "https://www.twofacebali.com/"
-        },
-        {
-          "value": "Vibrant space that brings together locals and travelers",
-          "source": "https://www.twofacebali.com/"
-        },
-        {
-          "value": "Cozy retreat for breakfast lovers, remote workers, and coffee enthusiasts",
+          "value": "An elevated brunch spot on Kings Palace Road in the heart of Ubud",
           "source": "https://www.twofacebali.com/"
         }
       ],
       "location": {
-        "town": {}
+        "town": {
+          "value": "Canggu"
+        }
       }
     },
     {
@@ -256,31 +165,22 @@
         "source": "https://www.twofacebali.com/"
       },
       "summary": {
-        "value": "Two Face is a vibrant cafe in Canggu and Ubud offering specialty coffee and creative brunch dishes to locals and travelers.",
+        "value": "Two Face is a vibrant café in Canggu and Ubud offering specialty coffee, creative brunch classics, and a welcoming atmosphere.",
         "source": "https://www.twofacebali.com/"
       },
       "category": "cafe",
-      "offerings": [
-        {
-          "name": "Brunch classics",
-          "source": "https://www.twofacebali.com/"
-        },
-        {
-          "name": "Specialty coffee",
-          "source": "https://www.twofacebali.com/"
-        }
-      ],
+      "offerings": [],
       "highlights": [
         {
-          "value": "Located in Canggu and Ubud",
+          "value": "An elevated brunch spot in the heart of Canggu",
           "source": "https://www.twofacebali.com/"
         },
         {
-          "value": "Vibrant space that brings together locals and travelers",
+          "value": "Specialty coffee and a relaxed community vibe",
           "source": "https://www.twofacebali.com/"
         },
         {
-          "value": "Cozy retreat for breakfast lovers, remote workers, and coffee enthusiasts",
+          "value": "An elevated brunch spot on Kings Palace Road in the heart of Ubud",
           "source": "https://www.twofacebali.com/"
         }
       ],
@@ -297,31 +197,22 @@
         "source": "https://www.twofacebali.com/"
       },
       "summary": {
-        "value": "Two Face is a vibrant cafe in Canggu and Ubud offering specialty coffee and creative brunch dishes to locals and travelers.",
+        "value": "Two Face is a vibrant café in Canggu and Ubud offering specialty coffee, creative brunch classics, and a welcoming atmosphere.",
         "source": "https://www.twofacebali.com/"
       },
       "category": "cafe",
-      "offerings": [
-        {
-          "name": "Brunch classics",
-          "source": "https://www.twofacebali.com/"
-        },
-        {
-          "name": "Specialty coffee",
-          "source": "https://www.twofacebali.com/"
-        }
-      ],
+      "offerings": [],
       "highlights": [
         {
-          "value": "Located in Canggu and Ubud",
+          "value": "An elevated brunch spot in the heart of Canggu",
           "source": "https://www.twofacebali.com/"
         },
         {
-          "value": "Vibrant space that brings together locals and travelers",
+          "value": "Specialty coffee and a relaxed community vibe",
           "source": "https://www.twofacebali.com/"
         },
         {
-          "value": "Cozy retreat for breakfast lovers, remote workers, and coffee enthusiasts",
+          "value": "An elevated brunch spot on Kings Palace Road in the heart of Ubud",
           "source": "https://www.twofacebali.com/"
         }
       ],
@@ -330,153 +221,8 @@
           "value": "Canggu",
           "source": "https://www.twofacebali.com/"
         },
-        "area": {
-          "value": "Jl. Munduk, Canggu"
-        }
-      }
-    },
-    {
-      "name": {
-        "value": "Two Face",
-        "source": "https://www.twofacebali.com/"
-      },
-      "summary": {
-        "value": "Two Face is a vibrant cafe in Canggu and Ubud offering specialty coffee and creative brunch dishes to locals and travelers.",
-        "source": "https://www.twofacebali.com/"
-      },
-      "category": "cafe",
-      "offerings": [
-        {
-          "name": "Brunch classics",
-          "source": "https://www.twofacebali.com/"
-        },
-        {
-          "name": "Specialty coffee",
-          "source": "https://www.twofacebali.com/"
-        }
-      ],
-      "highlights": [
-        {
-          "value": "Located in Canggu and Ubud",
-          "source": "https://www.twofacebali.com/"
-        },
-        {
-          "value": "Vibrant space that brings together locals and travelers",
-          "source": "https://www.twofacebali.com/"
-        },
-        {
-          "value": "Cozy retreat for breakfast lovers, remote workers, and coffee enthusiasts",
-          "source": "https://www.twofacebali.com/"
-        }
-      ],
-      "location": {
-        "town": {
-          "value": "Canggu",
-          "source": "https://www.twofacebali.com/"
-        },
-        "area": {
-          "value": "Jl. Munduk, Canggu",
-          "source": "https://www.twofacebali.com/"
-        },
-        "address": {}
-      }
-    },
-    {
-      "name": {
-        "value": "Two Face",
-        "source": "https://www.twofacebali.com/"
-      },
-      "summary": {
-        "value": "Two Face is a vibrant cafe in Canggu and Ubud offering specialty coffee and creative brunch dishes to locals and travelers.",
-        "source": "https://www.twofacebali.com/"
-      },
-      "category": "cafe",
-      "offerings": [
-        {
-          "name": "Brunch classics",
-          "source": "https://www.twofacebali.com/"
-        },
-        {
-          "name": "Specialty coffee",
-          "source": "https://www.twofacebali.com/"
-        }
-      ],
-      "highlights": [
-        {
-          "value": "Located in Canggu and Ubud",
-          "source": "https://www.twofacebali.com/"
-        },
-        {
-          "value": "Vibrant space that brings together locals and travelers",
-          "source": "https://www.twofacebali.com/"
-        },
-        {
-          "value": "Cozy retreat for breakfast lovers, remote workers, and coffee enthusiasts",
-          "source": "https://www.twofacebali.com/"
-        }
-      ],
-      "location": {
-        "town": {
-          "value": "Canggu",
-          "source": "https://www.twofacebali.com/"
-        },
-        "area": {
-          "value": "Jl. Munduk, Canggu",
-          "source": "https://www.twofacebali.com/"
-        },
-        "address": {
-          "value": "Jl. Munduk, Canggu",
-          "source": "https://www.twoface"
-        }
-      }
-    },
-    {
-      "name": {
-        "value": "Two Face",
-        "source": "https://www.twofacebali.com/"
-      },
-      "summary": {
-        "value": "Two Face is a vibrant cafe in Canggu and Ubud offering specialty coffee and creative brunch dishes to locals and travelers.",
-        "source": "https://www.twofacebali.com/"
-      },
-      "category": "cafe",
-      "offerings": [
-        {
-          "name": "Brunch classics",
-          "source": "https://www.twofacebali.com/"
-        },
-        {
-          "name": "Specialty coffee",
-          "source": "https://www.twofacebali.com/"
-        }
-      ],
-      "highlights": [
-        {
-          "value": "Located in Canggu and Ubud",
-          "source": "https://www.twofacebali.com/"
-        },
-        {
-          "value": "Vibrant space that brings together locals and travelers",
-          "source": "https://www.twofacebali.com/"
-        },
-        {
-          "value": "Cozy retreat for breakfast lovers, remote workers, and coffee enthusiasts",
-          "source": "https://www.twofacebali.com/"
-        }
-      ],
-      "location": {
-        "town": {
-          "value": "Canggu",
-          "source": "https://www.twofacebali.com/"
-        },
-        "area": {
-          "value": "Jl. Munduk, Canggu",
-          "source": "https://www.twofacebali.com/"
-        },
-        "address": {
-          "value": "Jl. Munduk, Canggu",
-          "source": "https://www.twofacebali.com/"
-        },
+        "area": null,
+        "address": null,
         "serviceArea": null
       },
       "contact": {
@@ -491,31 +237,22 @@
         "source": "https://www.twofacebali.com/"
       },
       "summary": {
-        "value": "Two Face is a vibrant cafe in Canggu and Ubud offering specialty coffee and creative brunch dishes to locals and travelers.",
+        "value": "Two Face is a vibrant café in Canggu and Ubud offering specialty coffee, creative brunch classics, and a welcoming atmosphere.",
         "source": "https://www.twofacebali.com/"
       },
       "category": "cafe",
-      "offerings": [
-        {
-          "name": "Brunch classics",
-          "source": "https://www.twofacebali.com/"
-        },
-        {
-          "name": "Specialty coffee",
-          "source": "https://www.twofacebali.com/"
-        }
-      ],
+      "offerings": [],
       "highlights": [
         {
-          "value": "Located in Canggu and Ubud",
+          "value": "An elevated brunch spot in the heart of Canggu",
           "source": "https://www.twofacebali.com/"
         },
         {
-          "value": "Vibrant space that brings together locals and travelers",
+          "value": "Specialty coffee and a relaxed community vibe",
           "source": "https://www.twofacebali.com/"
         },
         {
-          "value": "Cozy retreat for breakfast lovers, remote workers, and coffee enthusiasts",
+          "value": "An elevated brunch spot on Kings Palace Road in the heart of Ubud",
           "source": "https://www.twofacebali.com/"
         }
       ],
@@ -524,14 +261,8 @@
           "value": "Canggu",
           "source": "https://www.twofacebali.com/"
         },
-        "area": {
-          "value": "Jl. Munduk, Canggu",
-          "source": "https://www.twofacebali.com/"
-        },
-        "address": {
-          "value": "Jl. Munduk, Canggu",
-          "source": "https://www.twofacebali.com/"
-        },
+        "area": null,
+        "address": null,
         "serviceArea": null
       },
       "contact": {
@@ -547,31 +278,22 @@
         "source": "https://www.twofacebali.com/"
       },
       "summary": {
-        "value": "Two Face is a vibrant cafe in Canggu and Ubud offering specialty coffee and creative brunch dishes to locals and travelers.",
+        "value": "Two Face is a vibrant café in Canggu and Ubud offering specialty coffee, creative brunch classics, and a welcoming atmosphere.",
         "source": "https://www.twofacebali.com/"
       },
       "category": "cafe",
-      "offerings": [
-        {
-          "name": "Brunch classics",
-          "source": "https://www.twofacebali.com/"
-        },
-        {
-          "name": "Specialty coffee",
-          "source": "https://www.twofacebali.com/"
-        }
-      ],
+      "offerings": [],
       "highlights": [
         {
-          "value": "Located in Canggu and Ubud",
+          "value": "An elevated brunch spot in the heart of Canggu",
           "source": "https://www.twofacebali.com/"
         },
         {
-          "value": "Vibrant space that brings together locals and travelers",
+          "value": "Specialty coffee and a relaxed community vibe",
           "source": "https://www.twofacebali.com/"
         },
         {
-          "value": "Cozy retreat for breakfast lovers, remote workers, and coffee enthusiasts",
+          "value": "An elevated brunch spot on Kings Palace Road in the heart of Ubud",
           "source": "https://www.twofacebali.com/"
         }
       ],
@@ -580,14 +302,8 @@
           "value": "Canggu",
           "source": "https://www.twofacebali.com/"
         },
-        "area": {
-          "value": "Jl. Munduk, Canggu",
-          "source": "https://www.twofacebali.com/"
-        },
-        "address": {
-          "value": "Jl. Munduk, Canggu",
-          "source": "https://www.twofacebali.com/"
-        },
+        "area": null,
+        "address": null,
         "serviceArea": null
       },
       "contact": {
@@ -608,31 +324,22 @@
         "source": "https://www.twofacebali.com/"
       },
       "summary": {
-        "value": "Two Face is a vibrant cafe in Canggu and Ubud offering specialty coffee and creative brunch dishes to locals and travelers.",
+        "value": "Two Face is a vibrant café in Canggu and Ubud offering specialty coffee, creative brunch classics, and a welcoming atmosphere.",
         "source": "https://www.twofacebali.com/"
       },
       "category": "cafe",
-      "offerings": [
-        {
-          "name": "Brunch classics",
-          "source": "https://www.twofacebali.com/"
-        },
-        {
-          "name": "Specialty coffee",
-          "source": "https://www.twofacebali.com/"
-        }
-      ],
+      "offerings": [],
       "highlights": [
         {
-          "value": "Located in Canggu and Ubud",
+          "value": "An elevated brunch spot in the heart of Canggu",
           "source": "https://www.twofacebali.com/"
         },
         {
-          "value": "Vibrant space that brings together locals and travelers",
+          "value": "Specialty coffee and a relaxed community vibe",
           "source": "https://www.twofacebali.com/"
         },
         {
-          "value": "Cozy retreat for breakfast lovers, remote workers, and coffee enthusiasts",
+          "value": "An elevated brunch spot on Kings Palace Road in the heart of Ubud",
           "source": "https://www.twofacebali.com/"
         }
       ],
@@ -641,14 +348,8 @@
           "value": "Canggu",
           "source": "https://www.twofacebali.com/"
         },
-        "area": {
-          "value": "Jl. Munduk, Canggu",
-          "source": "https://www.twofacebali.com/"
-        },
-        "address": {
-          "value": "Jl. Munduk, Canggu",
-          "source": "https://www.twofacebali.com/"
-        },
+        "area": null,
+        "address": null,
         "serviceArea": null
       },
       "contact": {
@@ -670,31 +371,22 @@
         "source": "https://www.twofacebali.com/"
       },
       "summary": {
-        "value": "Two Face is a vibrant cafe in Canggu and Ubud offering specialty coffee and creative brunch dishes to locals and travelers.",
+        "value": "Two Face is a vibrant café in Canggu and Ubud offering specialty coffee, creative brunch classics, and a welcoming atmosphere.",
         "source": "https://www.twofacebali.com/"
       },
       "category": "cafe",
-      "offerings": [
-        {
-          "name": "Brunch classics",
-          "source": "https://www.twofacebali.com/"
-        },
-        {
-          "name": "Specialty coffee",
-          "source": "https://www.twofacebali.com/"
-        }
-      ],
+      "offerings": [],
       "highlights": [
         {
-          "value": "Located in Canggu and Ubud",
+          "value": "An elevated brunch spot in the heart of Canggu",
           "source": "https://www.twofacebali.com/"
         },
         {
-          "value": "Vibrant space that brings together locals and travelers",
+          "value": "Specialty coffee and a relaxed community vibe",
           "source": "https://www.twofacebali.com/"
         },
         {
-          "value": "Cozy retreat for breakfast lovers, remote workers, and coffee enthusiasts",
+          "value": "An elevated brunch spot on Kings Palace Road in the heart of Ubud",
           "source": "https://www.twofacebali.com/"
         }
       ],
@@ -703,14 +395,8 @@
           "value": "Canggu",
           "source": "https://www.twofacebali.com/"
         },
-        "area": {
-          "value": "Jl. Munduk, Canggu",
-          "source": "https://www.twofacebali.com/"
-        },
-        "address": {
-          "value": "Jl. Munduk, Canggu",
-          "source": "https://www.twofacebali.com/"
-        },
+        "area": null,
+        "address": null,
         "serviceArea": null
       },
       "contact": {
@@ -736,31 +422,22 @@
         "source": "https://www.twofacebali.com/"
       },
       "summary": {
-        "value": "Two Face is a vibrant cafe in Canggu and Ubud offering specialty coffee and creative brunch dishes to locals and travelers.",
+        "value": "Two Face is a vibrant café in Canggu and Ubud offering specialty coffee, creative brunch classics, and a welcoming atmosphere.",
         "source": "https://www.twofacebali.com/"
       },
       "category": "cafe",
-      "offerings": [
-        {
-          "name": "Brunch classics",
-          "source": "https://www.twofacebali.com/"
-        },
-        {
-          "name": "Specialty coffee",
-          "source": "https://www.twofacebali.com/"
-        }
-      ],
+      "offerings": [],
       "highlights": [
         {
-          "value": "Located in Canggu and Ubud",
+          "value": "An elevated brunch spot in the heart of Canggu",
           "source": "https://www.twofacebali.com/"
         },
         {
-          "value": "Vibrant space that brings together locals and travelers",
+          "value": "Specialty coffee and a relaxed community vibe",
           "source": "https://www.twofacebali.com/"
         },
         {
-          "value": "Cozy retreat for breakfast lovers, remote workers, and coffee enthusiasts",
+          "value": "An elevated brunch spot on Kings Palace Road in the heart of Ubud",
           "source": "https://www.twofacebali.com/"
         }
       ],
@@ -769,14 +446,8 @@
           "value": "Canggu",
           "source": "https://www.twofacebali.com/"
         },
-        "area": {
-          "value": "Jl. Munduk, Canggu",
-          "source": "https://www.twofacebali.com/"
-        },
-        "address": {
-          "value": "Jl. Munduk, Canggu",
-          "source": "https://www.twofacebali.com/"
-        },
+        "area": null,
+        "address": null,
         "serviceArea": null
       },
       "contact": {
@@ -803,31 +474,22 @@
         "source": "https://www.twofacebali.com/"
       },
       "summary": {
-        "value": "Two Face is a vibrant cafe in Canggu and Ubud offering specialty coffee and creative brunch dishes to locals and travelers.",
+        "value": "Two Face is a vibrant café in Canggu and Ubud offering specialty coffee, creative brunch classics, and a welcoming atmosphere.",
         "source": "https://www.twofacebali.com/"
       },
       "category": "cafe",
-      "offerings": [
-        {
-          "name": "Brunch classics",
-          "source": "https://www.twofacebali.com/"
-        },
-        {
-          "name": "Specialty coffee",
-          "source": "https://www.twofacebali.com/"
-        }
-      ],
+      "offerings": [],
       "highlights": [
         {
-          "value": "Located in Canggu and Ubud",
+          "value": "An elevated brunch spot in the heart of Canggu",
           "source": "https://www.twofacebali.com/"
         },
         {
-          "value": "Vibrant space that brings together locals and travelers",
+          "value": "Specialty coffee and a relaxed community vibe",
           "source": "https://www.twofacebali.com/"
         },
         {
-          "value": "Cozy retreat for breakfast lovers, remote workers, and coffee enthusiasts",
+          "value": "An elevated brunch spot on Kings Palace Road in the heart of Ubud",
           "source": "https://www.twofacebali.com/"
         }
       ],
@@ -836,14 +498,8 @@
           "value": "Canggu",
           "source": "https://www.twofacebali.com/"
         },
-        "area": {
-          "value": "Jl. Munduk, Canggu",
-          "source": "https://www.twofacebali.com/"
-        },
-        "address": {
-          "value": "Jl. Munduk, Canggu",
-          "source": "https://www.twofacebali.com/"
-        },
+        "area": null,
+        "address": null,
         "serviceArea": null
       },
       "contact": {
@@ -864,9 +520,9 @@
         "source": "https://www.twofacebali.com/"
       },
       "tone": [
-        "welcoming",
-        "relaxed",
-        "warm"
+        "vibrant",
+        "warm",
+        "wel"
       ]
     },
     {
@@ -875,31 +531,22 @@
         "source": "https://www.twofacebali.com/"
       },
       "summary": {
-        "value": "Two Face is a vibrant cafe in Canggu and Ubud offering specialty coffee and creative brunch dishes to locals and travelers.",
+        "value": "Two Face is a vibrant café in Canggu and Ubud offering specialty coffee, creative brunch classics, and a welcoming atmosphere.",
         "source": "https://www.twofacebali.com/"
       },
       "category": "cafe",
-      "offerings": [
-        {
-          "name": "Brunch classics",
-          "source": "https://www.twofacebali.com/"
-        },
-        {
-          "name": "Specialty coffee",
-          "source": "https://www.twofacebali.com/"
-        }
-      ],
+      "offerings": [],
       "highlights": [
         {
-          "value": "Located in Canggu and Ubud",
+          "value": "An elevated brunch spot in the heart of Canggu",
           "source": "https://www.twofacebali.com/"
         },
         {
-          "value": "Vibrant space that brings together locals and travelers",
+          "value": "Specialty coffee and a relaxed community vibe",
           "source": "https://www.twofacebali.com/"
         },
         {
-          "value": "Cozy retreat for breakfast lovers, remote workers, and coffee enthusiasts",
+          "value": "An elevated brunch spot on Kings Palace Road in the heart of Ubud",
           "source": "https://www.twofacebali.com/"
         }
       ],
@@ -908,14 +555,8 @@
           "value": "Canggu",
           "source": "https://www.twofacebali.com/"
         },
-        "area": {
-          "value": "Jl. Munduk, Canggu",
-          "source": "https://www.twofacebali.com/"
-        },
-        "address": {
-          "value": "Jl. Munduk, Canggu",
-          "source": "https://www.twofacebali.com/"
-        },
+        "area": null,
+        "address": null,
         "serviceArea": null
       },
       "contact": {
@@ -936,177 +577,13 @@
         "source": "https://www.twofacebali.com/"
       },
       "tone": [
+        "vibrant",
+        "warm",
         "welcoming",
         "relaxed",
-        "warm"
+        "cozy"
       ],
       "colours": [
-        {
-          "hex": "#4A3525"
-        }
-      ]
-    },
-    {
-      "name": {
-        "value": "Two Face",
-        "source": "https://www.twofacebali.com/"
-      },
-      "summary": {
-        "value": "Two Face is a vibrant cafe in Canggu and Ubud offering specialty coffee and creative brunch dishes to locals and travelers.",
-        "source": "https://www.twofacebali.com/"
-      },
-      "category": "cafe",
-      "offerings": [
-        {
-          "name": "Brunch classics",
-          "source": "https://www.twofacebali.com/"
-        },
-        {
-          "name": "Specialty coffee",
-          "source": "https://www.twofacebali.com/"
-        }
-      ],
-      "highlights": [
-        {
-          "value": "Located in Canggu and Ubud",
-          "source": "https://www.twofacebali.com/"
-        },
-        {
-          "value": "Vibrant space that brings together locals and travelers",
-          "source": "https://www.twofacebali.com/"
-        },
-        {
-          "value": "Cozy retreat for breakfast lovers, remote workers, and coffee enthusiasts",
-          "source": "https://www.twofacebali.com/"
-        }
-      ],
-      "location": {
-        "town": {
-          "value": "Canggu",
-          "source": "https://www.twofacebali.com/"
-        },
-        "area": {
-          "value": "Jl. Munduk, Canggu",
-          "source": "https://www.twofacebali.com/"
-        },
-        "address": {
-          "value": "Jl. Munduk, Canggu",
-          "source": "https://www.twofacebali.com/"
-        },
-        "serviceArea": null
-      },
-      "contact": {
-        "whatsapp": {
-          "value": "6281239028952",
-          "source": "https://www.twofacebali.com/"
-        },
-        "phone": null,
-        "email": null,
-        "instagram": {
-          "value": "twofacecoffee",
-          "source": "https://www.twofacebali.com/"
-        },
-        "bookingUrl": null
-      },
-      "hours": {
-        "value": "7:30AM - 3:30PM",
-        "source": "https://www.twofacebali.com/"
-      },
-      "tone": [
-        "welcoming",
-        "relaxed",
-        "warm"
-      ],
-      "colours": [
-        {
-          "hex": "#4A3525",
-          "role": "primary",
-          "source": "https://www.twofacebali.com"
-        }
-      ]
-    },
-    {
-      "name": {
-        "value": "Two Face",
-        "source": "https://www.twofacebali.com/"
-      },
-      "summary": {
-        "value": "Two Face is a vibrant cafe in Canggu and Ubud offering specialty coffee and creative brunch dishes to locals and travelers.",
-        "source": "https://www.twofacebali.com/"
-      },
-      "category": "cafe",
-      "offerings": [
-        {
-          "name": "Brunch classics",
-          "source": "https://www.twofacebali.com/"
-        },
-        {
-          "name": "Specialty coffee",
-          "source": "https://www.twofacebali.com/"
-        }
-      ],
-      "highlights": [
-        {
-          "value": "Located in Canggu and Ubud",
-          "source": "https://www.twofacebali.com/"
-        },
-        {
-          "value": "Vibrant space that brings together locals and travelers",
-          "source": "https://www.twofacebali.com/"
-        },
-        {
-          "value": "Cozy retreat for breakfast lovers, remote workers, and coffee enthusiasts",
-          "source": "https://www.twofacebali.com/"
-        }
-      ],
-      "location": {
-        "town": {
-          "value": "Canggu",
-          "source": "https://www.twofacebali.com/"
-        },
-        "area": {
-          "value": "Jl. Munduk, Canggu",
-          "source": "https://www.twofacebali.com/"
-        },
-        "address": {
-          "value": "Jl. Munduk, Canggu",
-          "source": "https://www.twofacebali.com/"
-        },
-        "serviceArea": null
-      },
-      "contact": {
-        "whatsapp": {
-          "value": "6281239028952",
-          "source": "https://www.twofacebali.com/"
-        },
-        "phone": null,
-        "email": null,
-        "instagram": {
-          "value": "twofacecoffee",
-          "source": "https://www.twofacebali.com/"
-        },
-        "bookingUrl": null
-      },
-      "hours": {
-        "value": "7:30AM - 3:30PM",
-        "source": "https://www.twofacebali.com/"
-      },
-      "tone": [
-        "welcoming",
-        "relaxed",
-        "warm"
-      ],
-      "colours": [
-        {
-          "hex": "#4A3525",
-          "role": "primary",
-          "source": "https://www.twofacebali.com/"
-        },
-        {
-          "hex": "#D4A373",
-          "role": "accent",
-          "source": "https://www.twofacebali.com/"
-        },
         {}
       ]
     },
@@ -1116,31 +593,22 @@
         "source": "https://www.twofacebali.com/"
       },
       "summary": {
-        "value": "Two Face is a vibrant cafe in Canggu and Ubud offering specialty coffee and creative brunch dishes to locals and travelers.",
+        "value": "Two Face is a vibrant café in Canggu and Ubud offering specialty coffee, creative brunch classics, and a welcoming atmosphere.",
         "source": "https://www.twofacebali.com/"
       },
       "category": "cafe",
-      "offerings": [
-        {
-          "name": "Brunch classics",
-          "source": "https://www.twofacebali.com/"
-        },
-        {
-          "name": "Specialty coffee",
-          "source": "https://www.twofacebali.com/"
-        }
-      ],
+      "offerings": [],
       "highlights": [
         {
-          "value": "Located in Canggu and Ubud",
+          "value": "An elevated brunch spot in the heart of Canggu",
           "source": "https://www.twofacebali.com/"
         },
         {
-          "value": "Vibrant space that brings together locals and travelers",
+          "value": "Specialty coffee and a relaxed community vibe",
           "source": "https://www.twofacebali.com/"
         },
         {
-          "value": "Cozy retreat for breakfast lovers, remote workers, and coffee enthusiasts",
+          "value": "An elevated brunch spot on Kings Palace Road in the heart of Ubud",
           "source": "https://www.twofacebali.com/"
         }
       ],
@@ -1149,14 +617,8 @@
           "value": "Canggu",
           "source": "https://www.twofacebali.com/"
         },
-        "area": {
-          "value": "Jl. Munduk, Canggu",
-          "source": "https://www.twofacebali.com/"
-        },
-        "address": {
-          "value": "Jl. Munduk, Canggu",
-          "source": "https://www.twofacebali.com/"
-        },
+        "area": null,
+        "address": null,
         "serviceArea": null
       },
       "contact": {
@@ -1177,25 +639,17 @@
         "source": "https://www.twofacebali.com/"
       },
       "tone": [
+        "vibrant",
+        "warm",
         "welcoming",
         "relaxed",
-        "warm"
+        "cozy"
       ],
       "colours": [
         {
-          "hex": "#4A3525",
+          "hex": "#4a2e1b",
           "role": "primary",
-          "source": "https://www.twofacebali.com/"
-        },
-        {
-          "hex": "#D4A373",
-          "role": "accent",
-          "source": "https://www.twofacebali.com/"
-        },
-        {
-          "hex": "#F4F1DE",
-          "role": "background",
-          "source": "https://www"
+          "source": "https://"
         }
       ]
     },
@@ -1205,31 +659,22 @@
         "source": "https://www.twofacebali.com/"
       },
       "summary": {
-        "value": "Two Face is a vibrant cafe in Canggu and Ubud offering specialty coffee and creative brunch dishes to locals and travelers.",
+        "value": "Two Face is a vibrant café in Canggu and Ubud offering specialty coffee, creative brunch classics, and a welcoming atmosphere.",
         "source": "https://www.twofacebali.com/"
       },
       "category": "cafe",
-      "offerings": [
-        {
-          "name": "Brunch classics",
-          "source": "https://www.twofacebali.com/"
-        },
-        {
-          "name": "Specialty coffee",
-          "source": "https://www.twofacebali.com/"
-        }
-      ],
+      "offerings": [],
       "highlights": [
         {
-          "value": "Located in Canggu and Ubud",
+          "value": "An elevated brunch spot in the heart of Canggu",
           "source": "https://www.twofacebali.com/"
         },
         {
-          "value": "Vibrant space that brings together locals and travelers",
+          "value": "Specialty coffee and a relaxed community vibe",
           "source": "https://www.twofacebali.com/"
         },
         {
-          "value": "Cozy retreat for breakfast lovers, remote workers, and coffee enthusiasts",
+          "value": "An elevated brunch spot on Kings Palace Road in the heart of Ubud",
           "source": "https://www.twofacebali.com/"
         }
       ],
@@ -1238,14 +683,8 @@
           "value": "Canggu",
           "source": "https://www.twofacebali.com/"
         },
-        "area": {
-          "value": "Jl. Munduk, Canggu",
-          "source": "https://www.twofacebali.com/"
-        },
-        "address": {
-          "value": "Jl. Munduk, Canggu",
-          "source": "https://www.twofacebali.com/"
-        },
+        "area": null,
+        "address": null,
         "serviceArea": null
       },
       "contact": {
@@ -1266,28 +705,20 @@
         "source": "https://www.twofacebali.com/"
       },
       "tone": [
+        "vibrant",
+        "warm",
         "welcoming",
         "relaxed",
-        "warm"
+        "cozy"
       ],
       "colours": [
         {
-          "hex": "#4A3525",
+          "hex": "#4a2e1b",
           "role": "primary",
           "source": "https://www.twofacebali.com/"
         },
         {
-          "hex": "#D4A373",
-          "role": "accent",
-          "source": "https://www.twofacebali.com/"
-        },
-        {
-          "hex": "#F4F1DE",
-          "role": "background",
-          "source": "https://www.twofacebali.com/"
-        },
-        {
-          "hex": "#2B2D42"
+          "hex": "#d4b8"
         }
       ]
     },
@@ -1297,31 +728,22 @@
         "source": "https://www.twofacebali.com/"
       },
       "summary": {
-        "value": "Two Face is a vibrant cafe in Canggu and Ubud offering specialty coffee and creative brunch dishes to locals and travelers.",
+        "value": "Two Face is a vibrant café in Canggu and Ubud offering specialty coffee, creative brunch classics, and a welcoming atmosphere.",
         "source": "https://www.twofacebali.com/"
       },
       "category": "cafe",
-      "offerings": [
-        {
-          "name": "Brunch classics",
-          "source": "https://www.twofacebali.com/"
-        },
-        {
-          "name": "Specialty coffee",
-          "source": "https://www.twofacebali.com/"
-        }
-      ],
+      "offerings": [],
       "highlights": [
         {
-          "value": "Located in Canggu and Ubud",
+          "value": "An elevated brunch spot in the heart of Canggu",
           "source": "https://www.twofacebali.com/"
         },
         {
-          "value": "Vibrant space that brings together locals and travelers",
+          "value": "Specialty coffee and a relaxed community vibe",
           "source": "https://www.twofacebali.com/"
         },
         {
-          "value": "Cozy retreat for breakfast lovers, remote workers, and coffee enthusiasts",
+          "value": "An elevated brunch spot on Kings Palace Road in the heart of Ubud",
           "source": "https://www.twofacebali.com/"
         }
       ],
@@ -1330,14 +752,8 @@
           "value": "Canggu",
           "source": "https://www.twofacebali.com/"
         },
-        "area": {
-          "value": "Jl. Munduk, Canggu",
-          "source": "https://www.twofacebali.com/"
-        },
-        "address": {
-          "value": "Jl. Munduk, Canggu",
-          "source": "https://www.twofacebali.com/"
-        },
+        "area": null,
+        "address": null,
         "serviceArea": null
       },
       "contact": {
@@ -1358,30 +774,22 @@
         "source": "https://www.twofacebali.com/"
       },
       "tone": [
+        "vibrant",
+        "warm",
         "welcoming",
         "relaxed",
-        "warm"
+        "cozy"
       ],
       "colours": [
         {
-          "hex": "#4A3525",
+          "hex": "#4a2e1b",
           "role": "primary",
           "source": "https://www.twofacebali.com/"
         },
         {
-          "hex": "#D4A373",
+          "hex": "#d4b896",
           "role": "accent",
-          "source": "https://www.twofacebali.com/"
-        },
-        {
-          "hex": "#F4F1DE",
-          "role": "background",
-          "source": "https://www.twofacebali.com/"
-        },
-        {
-          "hex": "#2B2D42",
-          "role": "text",
-          "source": "https://www.twofacebali.com"
+          "source": "https://www.twofacebali"
         }
       ]
     },
@@ -1391,31 +799,22 @@
         "source": "https://www.twofacebali.com/"
       },
       "summary": {
-        "value": "Two Face is a vibrant cafe in Canggu and Ubud offering specialty coffee and creative brunch dishes to locals and travelers.",
+        "value": "Two Face is a vibrant café in Canggu and Ubud offering specialty coffee, creative brunch classics, and a welcoming atmosphere.",
         "source": "https://www.twofacebali.com/"
       },
       "category": "cafe",
-      "offerings": [
-        {
-          "name": "Brunch classics",
-          "source": "https://www.twofacebali.com/"
-        },
-        {
-          "name": "Specialty coffee",
-          "source": "https://www.twofacebali.com/"
-        }
-      ],
+      "offerings": [],
       "highlights": [
         {
-          "value": "Located in Canggu and Ubud",
+          "value": "An elevated brunch spot in the heart of Canggu",
           "source": "https://www.twofacebali.com/"
         },
         {
-          "value": "Vibrant space that brings together locals and travelers",
+          "value": "Specialty coffee and a relaxed community vibe",
           "source": "https://www.twofacebali.com/"
         },
         {
-          "value": "Cozy retreat for breakfast lovers, remote workers, and coffee enthusiasts",
+          "value": "An elevated brunch spot on Kings Palace Road in the heart of Ubud",
           "source": "https://www.twofacebali.com/"
         }
       ],
@@ -1424,14 +823,8 @@
           "value": "Canggu",
           "source": "https://www.twofacebali.com/"
         },
-        "area": {
-          "value": "Jl. Munduk, Canggu",
-          "source": "https://www.twofacebali.com/"
-        },
-        "address": {
-          "value": "Jl. Munduk, Canggu",
-          "source": "https://www.twofacebali.com/"
-        },
+        "area": null,
+        "address": null,
         "serviceArea": null
       },
       "contact": {
@@ -1452,34 +845,271 @@
         "source": "https://www.twofacebali.com/"
       },
       "tone": [
+        "vibrant",
+        "warm",
         "welcoming",
         "relaxed",
-        "warm"
+        "cozy"
       ],
       "colours": [
         {
-          "hex": "#4A3525",
+          "hex": "#4a2e1b",
           "role": "primary",
           "source": "https://www.twofacebali.com/"
         },
         {
-          "hex": "#D4A373",
+          "hex": "#d4b896",
           "role": "accent",
           "source": "https://www.twofacebali.com/"
         },
         {
-          "hex": "#F4F1DE",
+          "hex": "#2c221e"
+        }
+      ]
+    },
+    {
+      "name": {
+        "value": "Two Face",
+        "source": "https://www.twofacebali.com/"
+      },
+      "summary": {
+        "value": "Two Face is a vibrant café in Canggu and Ubud offering specialty coffee, creative brunch classics, and a welcoming atmosphere.",
+        "source": "https://www.twofacebali.com/"
+      },
+      "category": "cafe",
+      "offerings": [],
+      "highlights": [
+        {
+          "value": "An elevated brunch spot in the heart of Canggu",
+          "source": "https://www.twofacebali.com/"
+        },
+        {
+          "value": "Specialty coffee and a relaxed community vibe",
+          "source": "https://www.twofacebali.com/"
+        },
+        {
+          "value": "An elevated brunch spot on Kings Palace Road in the heart of Ubud",
+          "source": "https://www.twofacebali.com/"
+        }
+      ],
+      "location": {
+        "town": {
+          "value": "Canggu",
+          "source": "https://www.twofacebali.com/"
+        },
+        "area": null,
+        "address": null,
+        "serviceArea": null
+      },
+      "contact": {
+        "whatsapp": {
+          "value": "6281239028952",
+          "source": "https://www.twofacebali.com/"
+        },
+        "phone": null,
+        "email": null,
+        "instagram": {
+          "value": "twofacecoffee",
+          "source": "https://www.twofacebali.com/"
+        },
+        "bookingUrl": null
+      },
+      "hours": {
+        "value": "7:30AM - 3:30PM",
+        "source": "https://www.twofacebali.com/"
+      },
+      "tone": [
+        "vibrant",
+        "warm",
+        "welcoming",
+        "relaxed",
+        "cozy"
+      ],
+      "colours": [
+        {
+          "hex": "#4a2e1b",
+          "role": "primary",
+          "source": "https://www.twofacebali.com/"
+        },
+        {
+          "hex": "#d4b896",
+          "role": "accent",
+          "source": "https://www.twofacebali.com/"
+        },
+        {
+          "hex": "#2c221e",
           "role": "background",
           "source": "https://www.twofacebali.com/"
         },
         {
-          "hex": "#2B2D42",
+          "hex": "#f5f2eb",
+          "role": "text"
+        }
+      ]
+    },
+    {
+      "name": {
+        "value": "Two Face",
+        "source": "https://www.twofacebali.com/"
+      },
+      "summary": {
+        "value": "Two Face is a vibrant café in Canggu and Ubud offering specialty coffee, creative brunch classics, and a welcoming atmosphere.",
+        "source": "https://www.twofacebali.com/"
+      },
+      "category": "cafe",
+      "offerings": [],
+      "highlights": [
+        {
+          "value": "An elevated brunch spot in the heart of Canggu",
+          "source": "https://www.twofacebali.com/"
+        },
+        {
+          "value": "Specialty coffee and a relaxed community vibe",
+          "source": "https://www.twofacebali.com/"
+        },
+        {
+          "value": "An elevated brunch spot on Kings Palace Road in the heart of Ubud",
+          "source": "https://www.twofacebali.com/"
+        }
+      ],
+      "location": {
+        "town": {
+          "value": "Canggu",
+          "source": "https://www.twofacebali.com/"
+        },
+        "area": null,
+        "address": null,
+        "serviceArea": null
+      },
+      "contact": {
+        "whatsapp": {
+          "value": "6281239028952",
+          "source": "https://www.twofacebali.com/"
+        },
+        "phone": null,
+        "email": null,
+        "instagram": {
+          "value": "twofacecoffee",
+          "source": "https://www.twofacebali.com/"
+        },
+        "bookingUrl": null
+      },
+      "hours": {
+        "value": "7:30AM - 3:30PM",
+        "source": "https://www.twofacebali.com/"
+      },
+      "tone": [
+        "vibrant",
+        "warm",
+        "welcoming",
+        "relaxed",
+        "cozy"
+      ],
+      "colours": [
+        {
+          "hex": "#4a2e1b",
+          "role": "primary",
+          "source": "https://www.twofacebali.com/"
+        },
+        {
+          "hex": "#d4b896",
+          "role": "accent",
+          "source": "https://www.twofacebali.com/"
+        },
+        {
+          "hex": "#2c221e",
+          "role": "background",
+          "source": "https://www.twofacebali.com/"
+        },
+        {
+          "hex": "#f5f2eb",
+          "role": "text",
+          "source": "https://www.twofacebali.com/"
+        }
+      ]
+    },
+    {
+      "name": {
+        "value": "Two Face",
+        "source": "https://www.twofacebali.com/"
+      },
+      "summary": {
+        "value": "Two Face is a vibrant café in Canggu and Ubud offering specialty coffee, creative brunch classics, and a welcoming atmosphere.",
+        "source": "https://www.twofacebali.com/"
+      },
+      "category": "cafe",
+      "offerings": [],
+      "highlights": [
+        {
+          "value": "An elevated brunch spot in the heart of Canggu",
+          "source": "https://www.twofacebali.com/"
+        },
+        {
+          "value": "Specialty coffee and a relaxed community vibe",
+          "source": "https://www.twofacebali.com/"
+        },
+        {
+          "value": "An elevated brunch spot on Kings Palace Road in the heart of Ubud",
+          "source": "https://www.twofacebali.com/"
+        }
+      ],
+      "location": {
+        "town": {
+          "value": "Canggu",
+          "source": "https://www.twofacebali.com/"
+        },
+        "area": null,
+        "address": null,
+        "serviceArea": null
+      },
+      "contact": {
+        "whatsapp": {
+          "value": "6281239028952",
+          "source": "https://www.twofacebali.com/"
+        },
+        "phone": null,
+        "email": null,
+        "instagram": {
+          "value": "twofacecoffee",
+          "source": "https://www.twofacebali.com/"
+        },
+        "bookingUrl": null
+      },
+      "hours": {
+        "value": "7:30AM - 3:30PM",
+        "source": "https://www.twofacebali.com/"
+      },
+      "tone": [
+        "vibrant",
+        "warm",
+        "welcoming",
+        "relaxed",
+        "cozy"
+      ],
+      "colours": [
+        {
+          "hex": "#4a2e1b",
+          "role": "primary",
+          "source": "https://www.twofacebali.com/"
+        },
+        {
+          "hex": "#d4b896",
+          "role": "accent",
+          "source": "https://www.twofacebali.com/"
+        },
+        {
+          "hex": "#2c221e",
+          "role": "background",
+          "source": "https://www.twofacebali.com/"
+        },
+        {
+          "hex": "#f5f2eb",
           "role": "text",
           "source": "https://www.twofacebali.com/"
         }
       ],
       "visualStyle": {
-        "summary": "Warm earthy tones, soft natural"
+        "summary": "Warm earth tones, soft natural light, rustic wooden textures, and cozy atmosphere"
       }
     },
     {
@@ -1488,31 +1118,22 @@
         "source": "https://www.twofacebali.com/"
       },
       "summary": {
-        "value": "Two Face is a vibrant cafe in Canggu and Ubud offering specialty coffee and creative brunch dishes to locals and travelers.",
+        "value": "Two Face is a vibrant café in Canggu and Ubud offering specialty coffee, creative brunch classics, and a welcoming atmosphere.",
         "source": "https://www.twofacebali.com/"
       },
       "category": "cafe",
-      "offerings": [
-        {
-          "name": "Brunch classics",
-          "source": "https://www.twofacebali.com/"
-        },
-        {
-          "name": "Specialty coffee",
-          "source": "https://www.twofacebali.com/"
-        }
-      ],
+      "offerings": [],
       "highlights": [
         {
-          "value": "Located in Canggu and Ubud",
+          "value": "An elevated brunch spot in the heart of Canggu",
           "source": "https://www.twofacebali.com/"
         },
         {
-          "value": "Vibrant space that brings together locals and travelers",
+          "value": "Specialty coffee and a relaxed community vibe",
           "source": "https://www.twofacebali.com/"
         },
         {
-          "value": "Cozy retreat for breakfast lovers, remote workers, and coffee enthusiasts",
+          "value": "An elevated brunch spot on Kings Palace Road in the heart of Ubud",
           "source": "https://www.twofacebali.com/"
         }
       ],
@@ -1521,14 +1142,8 @@
           "value": "Canggu",
           "source": "https://www.twofacebali.com/"
         },
-        "area": {
-          "value": "Jl. Munduk, Canggu",
-          "source": "https://www.twofacebali.com/"
-        },
-        "address": {
-          "value": "Jl. Munduk, Canggu",
-          "source": "https://www.twofacebali.com/"
-        },
+        "area": null,
+        "address": null,
         "serviceArea": null
       },
       "contact": {
@@ -1549,35 +1164,37 @@
         "source": "https://www.twofacebali.com/"
       },
       "tone": [
+        "vibrant",
+        "warm",
         "welcoming",
         "relaxed",
-        "warm"
+        "cozy"
       ],
       "colours": [
         {
-          "hex": "#4A3525",
+          "hex": "#4a2e1b",
           "role": "primary",
           "source": "https://www.twofacebali.com/"
         },
         {
-          "hex": "#D4A373",
+          "hex": "#d4b896",
           "role": "accent",
           "source": "https://www.twofacebali.com/"
         },
         {
-          "hex": "#F4F1DE",
+          "hex": "#2c221e",
           "role": "background",
           "source": "https://www.twofacebali.com/"
         },
         {
-          "hex": "#2B2D42",
+          "hex": "#f5f2eb",
           "role": "text",
           "source": "https://www.twofacebali.com/"
         }
       ],
       "visualStyle": {
-        "summary": "Warm earthy tones, soft natural light, organic textures, cozy and inviting mood.",
-        "palette": "warm earthy tones, brown, beige, terracotta"
+        "summary": "Warm earth tones, soft natural light, rustic wooden textures, and cozy atmosphere.",
+        "palette": "warm earth tones, browns, ambers, and neutral beiges"
       }
     },
     {
@@ -1586,31 +1203,22 @@
         "source": "https://www.twofacebali.com/"
       },
       "summary": {
-        "value": "Two Face is a vibrant cafe in Canggu and Ubud offering specialty coffee and creative brunch dishes to locals and travelers.",
+        "value": "Two Face is a vibrant café in Canggu and Ubud offering specialty coffee, creative brunch classics, and a welcoming atmosphere.",
         "source": "https://www.twofacebali.com/"
       },
       "category": "cafe",
-      "offerings": [
-        {
-          "name": "Brunch classics",
-          "source": "https://www.twofacebali.com/"
-        },
-        {
-          "name": "Specialty coffee",
-          "source": "https://www.twofacebali.com/"
-        }
-      ],
+      "offerings": [],
       "highlights": [
         {
-          "value": "Located in Canggu and Ubud",
+          "value": "An elevated brunch spot in the heart of Canggu",
           "source": "https://www.twofacebali.com/"
         },
         {
-          "value": "Vibrant space that brings together locals and travelers",
+          "value": "Specialty coffee and a relaxed community vibe",
           "source": "https://www.twofacebali.com/"
         },
         {
-          "value": "Cozy retreat for breakfast lovers, remote workers, and coffee enthusiasts",
+          "value": "An elevated brunch spot on Kings Palace Road in the heart of Ubud",
           "source": "https://www.twofacebali.com/"
         }
       ],
@@ -1619,14 +1227,8 @@
           "value": "Canggu",
           "source": "https://www.twofacebali.com/"
         },
-        "area": {
-          "value": "Jl. Munduk, Canggu",
-          "source": "https://www.twofacebali.com/"
-        },
-        "address": {
-          "value": "Jl. Munduk, Canggu",
-          "source": "https://www.twofacebali.com/"
-        },
+        "area": null,
+        "address": null,
         "serviceArea": null
       },
       "contact": {
@@ -1647,138 +1249,40 @@
         "source": "https://www.twofacebali.com/"
       },
       "tone": [
+        "vibrant",
+        "warm",
         "welcoming",
         "relaxed",
-        "warm"
+        "cozy"
       ],
       "colours": [
         {
-          "hex": "#4A3525",
+          "hex": "#4a2e1b",
           "role": "primary",
           "source": "https://www.twofacebali.com/"
         },
         {
-          "hex": "#D4A373",
+          "hex": "#d4b896",
           "role": "accent",
           "source": "https://www.twofacebali.com/"
         },
         {
-          "hex": "#F4F1DE",
+          "hex": "#2c221e",
           "role": "background",
           "source": "https://www.twofacebali.com/"
         },
         {
-          "hex": "#2B2D42",
+          "hex": "#f5f2eb",
           "role": "text",
           "source": "https://www.twofacebali.com/"
         }
       ],
       "visualStyle": {
-        "summary": "Warm earthy tones, soft natural light, organic textures, cozy and inviting mood.",
-        "palette": "warm earthy tones, brown, beige, terracotta",
-        "light": "soft natural light",
-        "textures": "wood, ceramic, linen, foliage"
-      }
-    },
-    {
-      "name": {
-        "value": "Two Face",
-        "source": "https://www.twofacebali.com/"
-      },
-      "summary": {
-        "value": "Two Face is a vibrant cafe in Canggu and Ubud offering specialty coffee and creative brunch dishes to locals and travelers.",
-        "source": "https://www.twofacebali.com/"
-      },
-      "category": "cafe",
-      "offerings": [
-        {
-          "name": "Brunch classics",
-          "source": "https://www.twofacebali.com/"
-        },
-        {
-          "name": "Specialty coffee",
-          "source": "https://www.twofacebali.com/"
-        }
-      ],
-      "highlights": [
-        {
-          "value": "Located in Canggu and Ubud",
-          "source": "https://www.twofacebali.com/"
-        },
-        {
-          "value": "Vibrant space that brings together locals and travelers",
-          "source": "https://www.twofacebali.com/"
-        },
-        {
-          "value": "Cozy retreat for breakfast lovers, remote workers, and coffee enthusiasts",
-          "source": "https://www.twofacebali.com/"
-        }
-      ],
-      "location": {
-        "town": {
-          "value": "Canggu",
-          "source": "https://www.twofacebali.com/"
-        },
-        "area": {
-          "value": "Jl. Munduk, Canggu",
-          "source": "https://www.twofacebali.com/"
-        },
-        "address": {
-          "value": "Jl. Munduk, Canggu",
-          "source": "https://www.twofacebali.com/"
-        },
-        "serviceArea": null
-      },
-      "contact": {
-        "whatsapp": {
-          "value": "6281239028952",
-          "source": "https://www.twofacebali.com/"
-        },
-        "phone": null,
-        "email": null,
-        "instagram": {
-          "value": "twofacecoffee",
-          "source": "https://www.twofacebali.com/"
-        },
-        "bookingUrl": null
-      },
-      "hours": {
-        "value": "7:30AM - 3:30PM",
-        "source": "https://www.twofacebali.com/"
-      },
-      "tone": [
-        "welcoming",
-        "relaxed",
-        "warm"
-      ],
-      "colours": [
-        {
-          "hex": "#4A3525",
-          "role": "primary",
-          "source": "https://www.twofacebali.com/"
-        },
-        {
-          "hex": "#D4A373",
-          "role": "accent",
-          "source": "https://www.twofacebali.com/"
-        },
-        {
-          "hex": "#F4F1DE",
-          "role": "background",
-          "source": "https://www.twofacebali.com/"
-        },
-        {
-          "hex": "#2B2D42",
-          "role": "text",
-          "source": "https://www.twofacebali.com/"
-        }
-      ],
-      "visualStyle": {
-        "summary": "Warm earthy tones, soft natural light, organic textures, cozy and inviting mood.",
-        "palette": "warm earthy tones, brown, beige, terracotta",
-        "light": "soft natural light",
-        "textures": "wood, ceramic, linen, foliage",
-        "mood": "cozy, welcoming, relaxed"
+        "summary": "Warm earth tones, soft natural light, rustic wooden textures, and cozy atmosphere.",
+        "palette": "warm earth tones, browns, ambers, and neutral beiges",
+        "light": "soft natural light with warm ambient highlights",
+        "textures": "rustic wood, smooth ceramic plates, and natural foliage",
+        "mood": "cozy, relaxed, and inviting"
       }
     }
   ],
@@ -1788,31 +1292,22 @@
       "source": "https://www.twofacebali.com/"
     },
     "summary": {
-      "value": "Two Face is a vibrant cafe in Canggu and Ubud offering specialty coffee and creative brunch dishes to locals and travelers.",
+      "value": "Two Face is a vibrant café in Canggu and Ubud offering specialty coffee, creative brunch classics, and a welcoming atmosphere.",
       "source": "https://www.twofacebali.com/"
     },
     "category": "cafe",
-    "offerings": [
-      {
-        "name": "Brunch classics",
-        "source": "https://www.twofacebali.com/"
-      },
-      {
-        "name": "Specialty coffee",
-        "source": "https://www.twofacebali.com/"
-      }
-    ],
+    "offerings": [],
     "highlights": [
       {
-        "value": "Located in Canggu and Ubud",
+        "value": "An elevated brunch spot in the heart of Canggu",
         "source": "https://www.twofacebali.com/"
       },
       {
-        "value": "Vibrant space that brings together locals and travelers",
+        "value": "Specialty coffee and a relaxed community vibe",
         "source": "https://www.twofacebali.com/"
       },
       {
-        "value": "Cozy retreat for breakfast lovers, remote workers, and coffee enthusiasts",
+        "value": "An elevated brunch spot on Kings Palace Road in the heart of Ubud",
         "source": "https://www.twofacebali.com/"
       }
     ],
@@ -1821,14 +1316,8 @@
         "value": "Canggu",
         "source": "https://www.twofacebali.com/"
       },
-      "area": {
-        "value": "Jl. Munduk, Canggu",
-        "source": "https://www.twofacebali.com/"
-      },
-      "address": {
-        "value": "Jl. Munduk, Canggu",
-        "source": "https://www.twofacebali.com/"
-      },
+      "area": null,
+      "address": null,
       "serviceArea": null
     },
     "contact": {
@@ -1849,38 +1338,40 @@
       "source": "https://www.twofacebali.com/"
     },
     "tone": [
+      "vibrant",
+      "warm",
       "welcoming",
       "relaxed",
-      "warm"
+      "cozy"
     ],
     "colours": [
       {
-        "hex": "#4A3525",
+        "hex": "#4a2e1b",
         "role": "primary",
         "source": "https://www.twofacebali.com/"
       },
       {
-        "hex": "#D4A373",
+        "hex": "#d4b896",
         "role": "accent",
         "source": "https://www.twofacebali.com/"
       },
       {
-        "hex": "#F4F1DE",
+        "hex": "#2c221e",
         "role": "background",
         "source": "https://www.twofacebali.com/"
       },
       {
-        "hex": "#2B2D42",
+        "hex": "#f5f2eb",
         "role": "text",
         "source": "https://www.twofacebali.com/"
       }
     ],
     "visualStyle": {
-      "summary": "Warm earthy tones, soft natural light, organic textures, cozy and inviting mood.",
-      "palette": "warm earthy tones, brown, beige, terracotta",
-      "light": "soft natural light",
-      "textures": "wood, ceramic, linen, foliage",
-      "mood": "cozy, welcoming, relaxed"
+      "summary": "Warm earth tones, soft natural light, rustic wooden textures, and cozy atmosphere.",
+      "palette": "warm earth tones, browns, ambers, and neutral beiges",
+      "light": "soft natural light with warm ambient highlights",
+      "textures": "rustic wood, smooth ceramic plates, and natural foliage",
+      "mood": "cozy, relaxed, and inviting"
     }
   }
 }

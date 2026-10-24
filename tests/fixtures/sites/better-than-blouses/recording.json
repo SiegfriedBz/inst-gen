@@ -1,6 +1,6 @@
 {
   "modelId": "gemini-3.5-flash-lite",
-  "promptVersion": "brand-2",
+  "promptVersion": "brand-3",
   "partials": [
     {
       "name": {}
@@ -8,7 +8,7 @@
     {
       "name": {
         "value": "betterthanblouses",
-        "source": "https://betterthanblouses."
+        "source": "https://betterthanblouses.com/"
       }
     },
     {
@@ -17,7 +17,7 @@
         "source": "https://betterthanblouses.com/"
       },
       "summary": {
-        "value": "Versatile and lightweight handmade batik apparel, including"
+        "value": "Versatile and lightweight handmade batik apparel, vintage"
       }
     },
     {
@@ -26,8 +26,8 @@
         "source": "https://betterthanblouses.com/"
       },
       "summary": {
-        "value": "Versatile and lightweight handmade batik apparel, including blouses, dresses, tops, and skirts, handmade in small batches.",
-        "source": "https://betterthanblouses.com"
+        "value": "Versatile and lightweight handmade batik apparel, vintage finds, and blouses for every occasion.",
+        "source": "https://betterthanblouses.com/"
       }
     },
     {
@@ -36,14 +36,13 @@
         "source": "https://betterthanblouses.com/"
       },
       "summary": {
-        "value": "Versatile and lightweight handmade batik apparel, including blouses, dresses, tops, and skirts, handmade in small batches.",
+        "value": "Versatile and lightweight handmade batik apparel, vintage finds, and blouses for every occasion.",
         "source": "https://betterthanblouses.com/"
       },
       "category": "clothing boutique",
       "offerings": [
         {
-          "name": "Roses | Reversible Shift Dress",
-          "price": "105.00"
+          "name": "Roses"
         }
       ]
     },
@@ -53,7 +52,45 @@
         "source": "https://betterthanblouses.com/"
       },
       "summary": {
-        "value": "Versatile and lightweight handmade batik apparel, including blouses, dresses, tops, and skirts, handmade in small batches.",
+        "value": "Versatile and lightweight handmade batik apparel, vintage finds, and blouses for every occasion.",
+        "source": "https://betterthanblouses.com/"
+      },
+      "category": "clothing boutique",
+      "offerings": [
+        {
+          "name": "Roses | Reversible Shift Dress",
+          "price": "105.00USD"
+        }
+      ]
+    },
+    {
+      "name": {
+        "value": "betterthanblouses",
+        "source": "https://betterthanblouses.com/"
+      },
+      "summary": {
+        "value": "Versatile and lightweight handmade batik apparel, vintage finds, and blouses for every occasion.",
+        "source": "https://betterthanblouses.com/"
+      },
+      "category": "clothing boutique",
+      "offerings": [
+        {
+          "name": "Roses | Reversible Shift Dress",
+          "price": "105.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Cloud"
+        }
+      ]
+    },
+    {
+      "name": {
+        "value": "betterthanblouses",
+        "source": "https://betterthanblouses.com/"
+      },
+      "summary": {
+        "value": "Versatile and lightweight handmade batik apparel, vintage finds, and blouses for every occasion.",
         "source": "https://betterthanblouses.com/"
       },
       "category": "clothing boutique",
@@ -65,7 +102,7 @@
         },
         {
           "name": "Cloud 9 | Pleated Shorts",
-          "price": "60.00"
+          "price": "60.00USD"
         }
       ]
     },
@@ -75,7 +112,33 @@
         "source": "https://betterthanblouses.com/"
       },
       "summary": {
-        "value": "Versatile and lightweight handmade batik apparel, including blouses, dresses, tops, and skirts, handmade in small batches.",
+        "value": "Versatile and lightweight handmade batik apparel, vintage finds, and blouses for every occasion.",
+        "source": "https://betterthanblouses.com/"
+      },
+      "category": "clothing boutique",
+      "offerings": [
+        {
+          "name": "Roses | Reversible Shift Dress",
+          "price": "105.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Cloud 9 | Pleated Shorts",
+          "price": "60.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "La"
+        }
+      ]
+    },
+    {
+      "name": {
+        "value": "betterthanblouses",
+        "source": "https://betterthanblouses.com/"
+      },
+      "summary": {
+        "value": "Versatile and lightweight handmade batik apparel, vintage finds, and blouses for every occasion.",
         "source": "https://betterthanblouses.com/"
       },
       "category": "clothing boutique",
@@ -92,7 +155,7 @@
         },
         {
           "name": "La Vie en Bleu | Shape Shift Top",
-          "price": "37.0"
+          "price": "37.00USD"
         }
       ]
     },
@@ -102,7 +165,7 @@
         "source": "https://betterthanblouses.com/"
       },
       "summary": {
-        "value": "Versatile and lightweight handmade batik apparel, including blouses, dresses, tops, and skirts, handmade in small batches.",
+        "value": "Versatile and lightweight handmade batik apparel, vintage finds, and blouses for every occasion.",
         "source": "https://betterthanblouses.com/"
       },
       "category": "clothing boutique",
@@ -122,38 +185,8 @@
           "price": "37.00USD",
           "source": "https://betterthanblouses.com/"
         },
-        {}
-      ]
-    },
-    {
-      "name": {
-        "value": "betterthanblouses",
-        "source": "https://betterthanblouses.com/"
-      },
-      "summary": {
-        "value": "Versatile and lightweight handmade batik apparel, including blouses, dresses, tops, and skirts, handmade in small batches.",
-        "source": "https://betterthanblouses.com/"
-      },
-      "category": "clothing boutique",
-      "offerings": [
         {
-          "name": "Roses | Reversible Shift Dress",
-          "price": "105.00USD",
-          "source": "https://betterthanblouses.com/"
-        },
-        {
-          "name": "Cloud 9 | Pleated Shorts",
-          "price": "60.00USD",
-          "source": "https://betterthanblouses.com/"
-        },
-        {
-          "name": "La Vie en Bleu | Shape Shift Top",
-          "price": "37.00USD",
-          "source": "https://betterthanblouses.com/"
-        },
-        {
-          "name": "La Vie En Bleu | Split Top",
-          "price": "From 35.00USD"
+          "name": ""
         }
       ]
     },
@@ -163,7 +196,7 @@
         "source": "https://betterthanblouses.com/"
       },
       "summary": {
-        "value": "Versatile and lightweight handmade batik apparel, including blouses, dresses, tops, and skirts, handmade in small batches.",
+        "value": "Versatile and lightweight handmade batik apparel, vintage finds, and blouses for every occasion.",
         "source": "https://betterthanblouses.com/"
       },
       "category": "clothing boutique",
@@ -197,7 +230,7 @@
         "source": "https://betterthanblouses.com/"
       },
       "summary": {
-        "value": "Versatile and lightweight handmade batik apparel, including blouses, dresses, tops, and skirts, handmade in small batches.",
+        "value": "Versatile and lightweight handmade batik apparel, vintage finds, and blouses for every occasion.",
         "source": "https://betterthanblouses.com/"
       },
       "category": "clothing boutique",
@@ -224,7 +257,7 @@
         },
         {
           "name": "Neelam & Ilai | Shape Shift Top",
-          "price": "37."
+          "price": "37.00"
         }
       ]
     },
@@ -234,45 +267,7 @@
         "source": "https://betterthanblouses.com/"
       },
       "summary": {
-        "value": "Versatile and lightweight handmade batik apparel, including blouses, dresses, tops, and skirts, handmade in small batches.",
-        "source": "https://betterthanblouses.com/"
-      },
-      "category": "clothing boutique",
-      "offerings": [
-        {
-          "name": "Roses | Reversible Shift Dress",
-          "price": "105.00USD",
-          "source": "https://betterthanblouses.com/"
-        },
-        {
-          "name": "Cloud 9 | Pleated Shorts",
-          "price": "60.00USD",
-          "source": "https://betterthanblouses.com/"
-        },
-        {
-          "name": "La Vie en Bleu | Shape Shift Top",
-          "price": "37.00USD",
-          "source": "https://betterthanblouses.com/"
-        },
-        {
-          "name": "La Vie En Bleu | Split Top",
-          "price": "From 35.00USD",
-          "source": "https://betterthanblouses.com/"
-        },
-        {
-          "name": "Neelam & Ilai | Shape Shift Top",
-          "price": "37.00USD",
-          "source": "https://betterthanblouses.com/"
-        }
-      ]
-    },
-    {
-      "name": {
-        "value": "betterthanblouses",
-        "source": "https://betterthanblouses.com/"
-      },
-      "summary": {
-        "value": "Versatile and lightweight handmade batik apparel, including blouses, dresses, tops, and skirts, handmade in small batches.",
+        "value": "Versatile and lightweight handmade batik apparel, vintage finds, and blouses for every occasion.",
         "source": "https://betterthanblouses.com/"
       },
       "category": "clothing boutique",
@@ -304,7 +299,7 @@
         },
         {
           "name": "Neelam & Ilai | Split Top",
-          "price": "From"
+          "price": "From 3"
         }
       ]
     },
@@ -314,7 +309,50 @@
         "source": "https://betterthanblouses.com/"
       },
       "summary": {
-        "value": "Versatile and lightweight handmade batik apparel, including blouses, dresses, tops, and skirts, handmade in small batches.",
+        "value": "Versatile and lightweight handmade batik apparel, vintage finds, and blouses for every occasion.",
+        "source": "https://betterthanblouses.com/"
+      },
+      "category": "clothing boutique",
+      "offerings": [
+        {
+          "name": "Roses | Reversible Shift Dress",
+          "price": "105.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Cloud 9 | Pleated Shorts",
+          "price": "60.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "La Vie en Bleu | Shape Shift Top",
+          "price": "37.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "La Vie En Bleu | Split Top",
+          "price": "From 35.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Neelam & Ilai | Shape Shift Top",
+          "price": "37.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Neelam & Ilai | Split Top",
+          "price": "From 35.00USD",
+          "source": "https://betterthanblouses.com/"
+        }
+      ]
+    },
+    {
+      "name": {
+        "value": "betterthanblouses",
+        "source": "https://betterthanblouses.com/"
+      },
+      "summary": {
+        "value": "Versatile and lightweight handmade batik apparel, vintage finds, and blouses for every occasion.",
         "source": "https://betterthanblouses.com/"
       },
       "category": "clothing boutique",
@@ -360,55 +398,7 @@
         "source": "https://betterthanblouses.com/"
       },
       "summary": {
-        "value": "Versatile and lightweight handmade batik apparel, including blouses, dresses, tops, and skirts, handmade in small batches.",
-        "source": "https://betterthanblouses.com/"
-      },
-      "category": "clothing boutique",
-      "offerings": [
-        {
-          "name": "Roses | Reversible Shift Dress",
-          "price": "105.00USD",
-          "source": "https://betterthanblouses.com/"
-        },
-        {
-          "name": "Cloud 9 | Pleated Shorts",
-          "price": "60.00USD",
-          "source": "https://betterthanblouses.com/"
-        },
-        {
-          "name": "La Vie en Bleu | Shape Shift Top",
-          "price": "37.00USD",
-          "source": "https://betterthanblouses.com/"
-        },
-        {
-          "name": "La Vie En Bleu | Split Top",
-          "price": "From 35.00USD",
-          "source": "https://betterthanblouses.com/"
-        },
-        {
-          "name": "Neelam & Ilai | Shape Shift Top",
-          "price": "37.00USD",
-          "source": "https://betterthanblouses.com/"
-        },
-        {
-          "name": "Neelam & Ilai | Split Top",
-          "price": "From 35.00USD",
-          "source": "https://betterthanblouses.com/"
-        },
-        {
-          "name": "Neelam & Ilai | Crop Top",
-          "price": "30.00USD",
-          "source": "https://betterthanblouses.com"
-        }
-      ]
-    },
-    {
-      "name": {
-        "value": "betterthanblouses",
-        "source": "https://betterthanblouses.com/"
-      },
-      "summary": {
-        "value": "Versatile and lightweight handmade batik apparel, including blouses, dresses, tops, and skirts, handmade in small batches.",
+        "value": "Versatile and lightweight handmade batik apparel, vintage finds, and blouses for every occasion.",
         "source": "https://betterthanblouses.com/"
       },
       "category": "clothing boutique",
@@ -459,60 +449,7 @@
         "source": "https://betterthanblouses.com/"
       },
       "summary": {
-        "value": "Versatile and lightweight handmade batik apparel, including blouses, dresses, tops, and skirts, handmade in small batches.",
-        "source": "https://betterthanblouses.com/"
-      },
-      "category": "clothing boutique",
-      "offerings": [
-        {
-          "name": "Roses | Reversible Shift Dress",
-          "price": "105.00USD",
-          "source": "https://betterthanblouses.com/"
-        },
-        {
-          "name": "Cloud 9 | Pleated Shorts",
-          "price": "60.00USD",
-          "source": "https://betterthanblouses.com/"
-        },
-        {
-          "name": "La Vie en Bleu | Shape Shift Top",
-          "price": "37.00USD",
-          "source": "https://betterthanblouses.com/"
-        },
-        {
-          "name": "La Vie En Bleu | Split Top",
-          "price": "From 35.00USD",
-          "source": "https://betterthanblouses.com/"
-        },
-        {
-          "name": "Neelam & Ilai | Shape Shift Top",
-          "price": "37.00USD",
-          "source": "https://betterthanblouses.com/"
-        },
-        {
-          "name": "Neelam & Ilai | Split Top",
-          "price": "From 35.00USD",
-          "source": "https://betterthanblouses.com/"
-        },
-        {
-          "name": "Neelam & Ilai | Crop Top",
-          "price": "30.00USD",
-          "source": "https://betterthanblouses.com/"
-        },
-        {
-          "name": "La Vie En Bleu | Culottes",
-          "price": "70.00USD",
-          "source": "https://betterthanblouses.com"
-        }
-      ]
-    },
-    {
-      "name": {
-        "value": "betterthanblouses",
-        "source": "https://betterthanblouses.com/"
-      },
-      "summary": {
-        "value": "Versatile and lightweight handmade batik apparel, including blouses, dresses, tops, and skirts, handmade in small batches.",
+        "value": "Versatile and lightweight handmade batik apparel, vintage finds, and blouses for every occasion.",
         "source": "https://betterthanblouses.com/"
       },
       "category": "clothing boutique",
@@ -558,7 +495,8 @@
           "source": "https://betterthanblouses.com/"
         },
         {
-          "name": "Mizu | Shape Shift Top"
+          "name": "Mizu | Shape Shift Top",
+          "price": ""
         }
       ]
     },
@@ -568,7 +506,7 @@
         "source": "https://betterthanblouses.com/"
       },
       "summary": {
-        "value": "Versatile and lightweight handmade batik apparel, including blouses, dresses, tops, and skirts, handmade in small batches.",
+        "value": "Versatile and lightweight handmade batik apparel, vintage finds, and blouses for every occasion.",
         "source": "https://betterthanblouses.com/"
       },
       "category": "clothing boutique",
@@ -626,7 +564,7 @@
         "source": "https://betterthanblouses.com/"
       },
       "summary": {
-        "value": "Versatile and lightweight handmade batik apparel, including blouses, dresses, tops, and skirts, handmade in small batches.",
+        "value": "Versatile and lightweight handmade batik apparel, vintage finds, and blouses for every occasion.",
         "source": "https://betterthanblouses.com/"
       },
       "category": "clothing boutique",
@@ -687,7 +625,136 @@
         "source": "https://betterthanblouses.com/"
       },
       "summary": {
-        "value": "Versatile and lightweight handmade batik apparel, including blouses, dresses, tops, and skirts, handmade in small batches.",
+        "value": "Versatile and lightweight handmade batik apparel, vintage finds, and blouses for every occasion.",
+        "source": "https://betterthanblouses.com/"
+      },
+      "category": "clothing boutique",
+      "offerings": [
+        {
+          "name": "Roses | Reversible Shift Dress",
+          "price": "105.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Cloud 9 | Pleated Shorts",
+          "price": "60.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "La Vie en Bleu | Shape Shift Top",
+          "price": "37.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "La Vie En Bleu | Split Top",
+          "price": "From 35.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Neelam & Ilai | Shape Shift Top",
+          "price": "37.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Neelam & Ilai | Split Top",
+          "price": "From 35.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Neelam & Ilai | Crop Top",
+          "price": "30.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "La Vie En Bleu | Culottes",
+          "price": "70.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Mizu | Shape Shift Top",
+          "price": "37.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Flower Market & Mizu | Reversible Midi Skirt",
+          "price": "98.00USD",
+          "source": "https://betterthanblouses."
+        }
+      ]
+    },
+    {
+      "name": {
+        "value": "betterthanblouses",
+        "source": "https://betterthanblouses.com/"
+      },
+      "summary": {
+        "value": "Versatile and lightweight handmade batik apparel, vintage finds, and blouses for every occasion.",
+        "source": "https://betterthanblouses.com/"
+      },
+      "category": "clothing boutique",
+      "offerings": [
+        {
+          "name": "Roses | Reversible Shift Dress",
+          "price": "105.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Cloud 9 | Pleated Shorts",
+          "price": "60.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "La Vie en Bleu | Shape Shift Top",
+          "price": "37.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "La Vie En Bleu | Split Top",
+          "price": "From 35.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Neelam & Ilai | Shape Shift Top",
+          "price": "37.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Neelam & Ilai | Split Top",
+          "price": "From 35.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Neelam & Ilai | Crop Top",
+          "price": "30.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "La Vie En Bleu | Culottes",
+          "price": "70.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Mizu | Shape Shift Top",
+          "price": "37.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Flower Market & Mizu | Reversible Midi Skirt",
+          "price": "98.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Mizu | Crop Top"
+        }
+      ]
+    },
+    {
+      "name": {
+        "value": "betterthanblouses",
+        "source": "https://betterthanblouses.com/"
+      },
+      "summary": {
+        "value": "Versatile and lightweight handmade batik apparel, vintage finds, and blouses for every occasion.",
         "source": "https://betterthanblouses.com/"
       },
       "category": "clothing boutique",
@@ -744,73 +811,6 @@
         },
         {
           "name": "Mizu | Crop Top",
-          "price": "3"
-        }
-      ]
-    },
-    {
-      "name": {
-        "value": "betterthanblouses",
-        "source": "https://betterthanblouses.com/"
-      },
-      "summary": {
-        "value": "Versatile and lightweight handmade batik apparel, including blouses, dresses, tops, and skirts, handmade in small batches.",
-        "source": "https://betterthanblouses.com/"
-      },
-      "category": "clothing boutique",
-      "offerings": [
-        {
-          "name": "Roses | Reversible Shift Dress",
-          "price": "105.00USD",
-          "source": "https://betterthanblouses.com/"
-        },
-        {
-          "name": "Cloud 9 | Pleated Shorts",
-          "price": "60.00USD",
-          "source": "https://betterthanblouses.com/"
-        },
-        {
-          "name": "La Vie en Bleu | Shape Shift Top",
-          "price": "37.00USD",
-          "source": "https://betterthanblouses.com/"
-        },
-        {
-          "name": "La Vie En Bleu | Split Top",
-          "price": "From 35.00USD",
-          "source": "https://betterthanblouses.com/"
-        },
-        {
-          "name": "Neelam & Ilai | Shape Shift Top",
-          "price": "37.00USD",
-          "source": "https://betterthanblouses.com/"
-        },
-        {
-          "name": "Neelam & Ilai | Split Top",
-          "price": "From 35.00USD",
-          "source": "https://betterthanblouses.com/"
-        },
-        {
-          "name": "Neelam & Ilai | Crop Top",
-          "price": "30.00USD",
-          "source": "https://betterthanblouses.com/"
-        },
-        {
-          "name": "La Vie En Bleu | Culottes",
-          "price": "70.00USD",
-          "source": "https://betterthanblouses.com/"
-        },
-        {
-          "name": "Mizu | Shape Shift Top",
-          "price": "37.00USD",
-          "source": "https://betterthanblouses.com/"
-        },
-        {
-          "name": "Flower Market & Mizu | Reversible Midi Skirt",
-          "price": "98.00USD",
-          "source": "https://betterthanblouses.com/"
-        },
-        {
-          "name": "Mizu | Crop Top",
           "price": "30.00USD",
           "source": "https://betterthanblouses.com/"
         }
@@ -822,7 +822,7 @@
         "source": "https://betterthanblouses.com/"
       },
       "summary": {
-        "value": "Versatile and lightweight handmade batik apparel, including blouses, dresses, tops, and skirts, handmade in small batches.",
+        "value": "Versatile and lightweight handmade batik apparel, vintage finds, and blouses for every occasion.",
         "source": "https://betterthanblouses.com/"
       },
       "category": "clothing boutique",
@@ -884,7 +884,7 @@
         },
         {
           "name": "Mizu | Split Top",
-          "price": "From 3"
+          "price": ""
         }
       ]
     },
@@ -894,80 +894,7 @@
         "source": "https://betterthanblouses.com/"
       },
       "summary": {
-        "value": "Versatile and lightweight handmade batik apparel, including blouses, dresses, tops, and skirts, handmade in small batches.",
-        "source": "https://betterthanblouses.com/"
-      },
-      "category": "clothing boutique",
-      "offerings": [
-        {
-          "name": "Roses | Reversible Shift Dress",
-          "price": "105.00USD",
-          "source": "https://betterthanblouses.com/"
-        },
-        {
-          "name": "Cloud 9 | Pleated Shorts",
-          "price": "60.00USD",
-          "source": "https://betterthanblouses.com/"
-        },
-        {
-          "name": "La Vie en Bleu | Shape Shift Top",
-          "price": "37.00USD",
-          "source": "https://betterthanblouses.com/"
-        },
-        {
-          "name": "La Vie En Bleu | Split Top",
-          "price": "From 35.00USD",
-          "source": "https://betterthanblouses.com/"
-        },
-        {
-          "name": "Neelam & Ilai | Shape Shift Top",
-          "price": "37.00USD",
-          "source": "https://betterthanblouses.com/"
-        },
-        {
-          "name": "Neelam & Ilai | Split Top",
-          "price": "From 35.00USD",
-          "source": "https://betterthanblouses.com/"
-        },
-        {
-          "name": "Neelam & Ilai | Crop Top",
-          "price": "30.00USD",
-          "source": "https://betterthanblouses.com/"
-        },
-        {
-          "name": "La Vie En Bleu | Culottes",
-          "price": "70.00USD",
-          "source": "https://betterthanblouses.com/"
-        },
-        {
-          "name": "Mizu | Shape Shift Top",
-          "price": "37.00USD",
-          "source": "https://betterthanblouses.com/"
-        },
-        {
-          "name": "Flower Market & Mizu | Reversible Midi Skirt",
-          "price": "98.00USD",
-          "source": "https://betterthanblouses.com/"
-        },
-        {
-          "name": "Mizu | Crop Top",
-          "price": "30.00USD",
-          "source": "https://betterthanblouses.com/"
-        },
-        {
-          "name": "Mizu | Split Top",
-          "price": "From 35.00USD",
-          "source": "https://betterthanblouses.com/"
-        }
-      ]
-    },
-    {
-      "name": {
-        "value": "betterthanblouses",
-        "source": "https://betterthanblouses.com/"
-      },
-      "summary": {
-        "value": "Versatile and lightweight handmade batik apparel, including blouses, dresses, tops, and skirts, handmade in small batches.",
+        "value": "Versatile and lightweight handmade batik apparel, vintage finds, and blouses for every occasion.",
         "source": "https://betterthanblouses.com/"
       },
       "category": "clothing boutique",
@@ -1032,10 +959,1094 @@
           "price": "From 35.00USD",
           "source": "https://betterthanblouses.com/"
         }
-      ],
-      "highlights": [
+      ]
+    },
+    {
+      "name": {
+        "value": "betterthanblouses",
+        "source": "https://betterthanblouses.com/"
+      },
+      "summary": {
+        "value": "Versatile and lightweight handmade batik apparel, vintage finds, and blouses for every occasion.",
+        "source": "https://betterthanblouses.com/"
+      },
+      "category": "clothing boutique",
+      "offerings": [
         {
-          "value": "Handmade in small batches",
+          "name": "Roses | Reversible Shift Dress",
+          "price": "105.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Cloud 9 | Pleated Shorts",
+          "price": "60.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "La Vie en Bleu | Shape Shift Top",
+          "price": "37.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "La Vie En Bleu | Split Top",
+          "price": "From 35.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Neelam & Ilai | Shape Shift Top",
+          "price": "37.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Neelam & Ilai | Split Top",
+          "price": "From 35.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Neelam & Ilai | Crop Top",
+          "price": "30.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "La Vie En Bleu | Culottes",
+          "price": "70.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Mizu | Shape Shift Top",
+          "price": "37.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Flower Market & Mizu | Reversible Midi Skirt",
+          "price": "98.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Mizu | Crop Top",
+          "price": "30.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Mizu | Split Top",
+          "price": "From 35.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Girl's BF | Split Top"
+        }
+      ]
+    },
+    {
+      "name": {
+        "value": "betterthanblouses",
+        "source": "https://betterthanblouses.com/"
+      },
+      "summary": {
+        "value": "Versatile and lightweight handmade batik apparel, vintage finds, and blouses for every occasion.",
+        "source": "https://betterthanblouses.com/"
+      },
+      "category": "clothing boutique",
+      "offerings": [
+        {
+          "name": "Roses | Reversible Shift Dress",
+          "price": "105.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Cloud 9 | Pleated Shorts",
+          "price": "60.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "La Vie en Bleu | Shape Shift Top",
+          "price": "37.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "La Vie En Bleu | Split Top",
+          "price": "From 35.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Neelam & Ilai | Shape Shift Top",
+          "price": "37.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Neelam & Ilai | Split Top",
+          "price": "From 35.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Neelam & Ilai | Crop Top",
+          "price": "30.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "La Vie En Bleu | Culottes",
+          "price": "70.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Mizu | Shape Shift Top",
+          "price": "37.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Flower Market & Mizu | Reversible Midi Skirt",
+          "price": "98.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Mizu | Crop Top",
+          "price": "30.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Mizu | Split Top",
+          "price": "From 35.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Girl's BF | Split Top",
+          "price": "From 35.00USD",
+          "source": "https://betterthanblouses."
+        }
+      ]
+    },
+    {
+      "name": {
+        "value": "betterthanblouses",
+        "source": "https://betterthanblouses.com/"
+      },
+      "summary": {
+        "value": "Versatile and lightweight handmade batik apparel, vintage finds, and blouses for every occasion.",
+        "source": "https://betterthanblouses.com/"
+      },
+      "category": "clothing boutique",
+      "offerings": [
+        {
+          "name": "Roses | Reversible Shift Dress",
+          "price": "105.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Cloud 9 | Pleated Shorts",
+          "price": "60.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "La Vie en Bleu | Shape Shift Top",
+          "price": "37.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "La Vie En Bleu | Split Top",
+          "price": "From 35.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Neelam & Ilai | Shape Shift Top",
+          "price": "37.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Neelam & Ilai | Split Top",
+          "price": "From 35.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Neelam & Ilai | Crop Top",
+          "price": "30.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "La Vie En Bleu | Culottes",
+          "price": "70.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Mizu | Shape Shift Top",
+          "price": "37.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Flower Market & Mizu | Reversible Midi Skirt",
+          "price": "98.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Mizu | Crop Top",
+          "price": "30.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Mizu | Split Top",
+          "price": "From 35.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Girl's BF | Split Top",
+          "price": "From 35.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Flower Market | Split Top"
+        }
+      ]
+    },
+    {
+      "name": {
+        "value": "betterthanblouses",
+        "source": "https://betterthanblouses.com/"
+      },
+      "summary": {
+        "value": "Versatile and lightweight handmade batik apparel, vintage finds, and blouses for every occasion.",
+        "source": "https://betterthanblouses.com/"
+      },
+      "category": "clothing boutique",
+      "offerings": [
+        {
+          "name": "Roses | Reversible Shift Dress",
+          "price": "105.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Cloud 9 | Pleated Shorts",
+          "price": "60.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "La Vie en Bleu | Shape Shift Top",
+          "price": "37.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "La Vie En Bleu | Split Top",
+          "price": "From 35.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Neelam & Ilai | Shape Shift Top",
+          "price": "37.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Neelam & Ilai | Split Top",
+          "price": "From 35.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Neelam & Ilai | Crop Top",
+          "price": "30.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "La Vie En Bleu | Culottes",
+          "price": "70.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Mizu | Shape Shift Top",
+          "price": "37.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Flower Market & Mizu | Reversible Midi Skirt",
+          "price": "98.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Mizu | Crop Top",
+          "price": "30.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Mizu | Split Top",
+          "price": "From 35.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Girl's BF | Split Top",
+          "price": "From 35.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Flower Market | Split Top",
+          "price": "From 35.00USD",
+          "source": "https://betterthanblouses."
+        }
+      ]
+    },
+    {
+      "name": {
+        "value": "betterthanblouses",
+        "source": "https://betterthanblouses.com/"
+      },
+      "summary": {
+        "value": "Versatile and lightweight handmade batik apparel, vintage finds, and blouses for every occasion.",
+        "source": "https://betterthanblouses.com/"
+      },
+      "category": "clothing boutique",
+      "offerings": [
+        {
+          "name": "Roses | Reversible Shift Dress",
+          "price": "105.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Cloud 9 | Pleated Shorts",
+          "price": "60.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "La Vie en Bleu | Shape Shift Top",
+          "price": "37.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "La Vie En Bleu | Split Top",
+          "price": "From 35.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Neelam & Ilai | Shape Shift Top",
+          "price": "37.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Neelam & Ilai | Split Top",
+          "price": "From 35.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Neelam & Ilai | Crop Top",
+          "price": "30.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "La Vie En Bleu | Culottes",
+          "price": "70.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Mizu | Shape Shift Top",
+          "price": "37.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Flower Market & Mizu | Reversible Midi Skirt",
+          "price": "98.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Mizu | Crop Top",
+          "price": "30.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Mizu | Split Top",
+          "price": "From 35.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Girl's BF | Split Top",
+          "price": "From 35.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Flower Market | Split Top",
+          "price": "From 35.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Pastels and Cream | Crop & Regular",
+          "price": "From 28.00USD",
+          "source": "https://betterthan"
+        }
+      ]
+    },
+    {
+      "name": {
+        "value": "betterthanblouses",
+        "source": "https://betterthanblouses.com/"
+      },
+      "summary": {
+        "value": "Versatile and lightweight handmade batik apparel, vintage finds, and blouses for every occasion.",
+        "source": "https://betterthanblouses.com/"
+      },
+      "category": "clothing boutique",
+      "offerings": [
+        {
+          "name": "Roses | Reversible Shift Dress",
+          "price": "105.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Cloud 9 | Pleated Shorts",
+          "price": "60.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "La Vie en Bleu | Shape Shift Top",
+          "price": "37.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "La Vie En Bleu | Split Top",
+          "price": "From 35.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Neelam & Ilai | Shape Shift Top",
+          "price": "37.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Neelam & Ilai | Split Top",
+          "price": "From 35.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Neelam & Ilai | Crop Top",
+          "price": "30.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "La Vie En Bleu | Culottes",
+          "price": "70.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Mizu | Shape Shift Top",
+          "price": "37.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Flower Market & Mizu | Reversible Midi Skirt",
+          "price": "98.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Mizu | Crop Top",
+          "price": "30.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Mizu | Split Top",
+          "price": "From 35.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Girl's BF | Split Top",
+          "price": "From 35.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Flower Market | Split Top",
+          "price": "From 35.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Pastels and Cream | Crop & Regular",
+          "price": "From 28.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Flower Market | Box Pleated Sk"
+        }
+      ]
+    },
+    {
+      "name": {
+        "value": "betterthanblouses",
+        "source": "https://betterthanblouses.com/"
+      },
+      "summary": {
+        "value": "Versatile and lightweight handmade batik apparel, vintage finds, and blouses for every occasion.",
+        "source": "https://betterthanblouses.com/"
+      },
+      "category": "clothing boutique",
+      "offerings": [
+        {
+          "name": "Roses | Reversible Shift Dress",
+          "price": "105.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Cloud 9 | Pleated Shorts",
+          "price": "60.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "La Vie en Bleu | Shape Shift Top",
+          "price": "37.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "La Vie En Bleu | Split Top",
+          "price": "From 35.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Neelam & Ilai | Shape Shift Top",
+          "price": "37.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Neelam & Ilai | Split Top",
+          "price": "From 35.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Neelam & Ilai | Crop Top",
+          "price": "30.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "La Vie En Bleu | Culottes",
+          "price": "70.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Mizu | Shape Shift Top",
+          "price": "37.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Flower Market & Mizu | Reversible Midi Skirt",
+          "price": "98.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Mizu | Crop Top",
+          "price": "30.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Mizu | Split Top",
+          "price": "From 35.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Girl's BF | Split Top",
+          "price": "From 35.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Flower Market | Split Top",
+          "price": "From 35.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Pastels and Cream | Crop & Regular",
+          "price": "From 28.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Flower Market | Box Pleated Skirt",
+          "price": "70.00USD",
+          "source": "https://better"
+        }
+      ]
+    },
+    {
+      "name": {
+        "value": "betterthanblouses",
+        "source": "https://betterthanblouses.com/"
+      },
+      "summary": {
+        "value": "Versatile and lightweight handmade batik apparel, vintage finds, and blouses for every occasion.",
+        "source": "https://betterthanblouses.com/"
+      },
+      "category": "clothing boutique",
+      "offerings": [
+        {
+          "name": "Roses | Reversible Shift Dress",
+          "price": "105.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Cloud 9 | Pleated Shorts",
+          "price": "60.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "La Vie en Bleu | Shape Shift Top",
+          "price": "37.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "La Vie En Bleu | Split Top",
+          "price": "From 35.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Neelam & Ilai | Shape Shift Top",
+          "price": "37.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Neelam & Ilai | Split Top",
+          "price": "From 35.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Neelam & Ilai | Crop Top",
+          "price": "30.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "La Vie En Bleu | Culottes",
+          "price": "70.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Mizu | Shape Shift Top",
+          "price": "37.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Flower Market & Mizu | Reversible Midi Skirt",
+          "price": "98.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Mizu | Crop Top",
+          "price": "30.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Mizu | Split Top",
+          "price": "From 35.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Girl's BF | Split Top",
+          "price": "From 35.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Flower Market | Split Top",
+          "price": "From 35.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Pastels and Cream | Crop & Regular",
+          "price": "From 28.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Flower Market | Box Pleated Skirt",
+          "price": "70.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Girl's BF | Crop"
+        }
+      ]
+    },
+    {
+      "name": {
+        "value": "betterthanblouses",
+        "source": "https://betterthanblouses.com/"
+      },
+      "summary": {
+        "value": "Versatile and lightweight handmade batik apparel, vintage finds, and blouses for every occasion.",
+        "source": "https://betterthanblouses.com/"
+      },
+      "category": "clothing boutique",
+      "offerings": [
+        {
+          "name": "Roses | Reversible Shift Dress",
+          "price": "105.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Cloud 9 | Pleated Shorts",
+          "price": "60.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "La Vie en Bleu | Shape Shift Top",
+          "price": "37.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "La Vie En Bleu | Split Top",
+          "price": "From 35.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Neelam & Ilai | Shape Shift Top",
+          "price": "37.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Neelam & Ilai | Split Top",
+          "price": "From 35.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Neelam & Ilai | Crop Top",
+          "price": "30.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "La Vie En Bleu | Culottes",
+          "price": "70.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Mizu | Shape Shift Top",
+          "price": "37.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Flower Market & Mizu | Reversible Midi Skirt",
+          "price": "98.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Mizu | Crop Top",
+          "price": "30.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Mizu | Split Top",
+          "price": "From 35.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Girl's BF | Split Top",
+          "price": "From 35.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Flower Market | Split Top",
+          "price": "From 35.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Pastels and Cream | Crop & Regular",
+          "price": "From 28.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Flower Market | Box Pleated Skirt",
+          "price": "70.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Girl's BF | Crop & Regular",
+          "price": "From 28.00USD",
+          "source": ""
+        }
+      ]
+    },
+    {
+      "name": {
+        "value": "betterthanblouses",
+        "source": "https://betterthanblouses.com/"
+      },
+      "summary": {
+        "value": "Versatile and lightweight handmade batik apparel, vintage finds, and blouses for every occasion.",
+        "source": "https://betterthanblouses.com/"
+      },
+      "category": "clothing boutique",
+      "offerings": [
+        {
+          "name": "Roses | Reversible Shift Dress",
+          "price": "105.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Cloud 9 | Pleated Shorts",
+          "price": "60.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "La Vie en Bleu | Shape Shift Top",
+          "price": "37.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "La Vie En Bleu | Split Top",
+          "price": "From 35.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Neelam & Ilai | Shape Shift Top",
+          "price": "37.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Neelam & Ilai | Split Top",
+          "price": "From 35.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Neelam & Ilai | Crop Top",
+          "price": "30.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "La Vie En Bleu | Culottes",
+          "price": "70.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Mizu | Shape Shift Top",
+          "price": "37.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Flower Market & Mizu | Reversible Midi Skirt",
+          "price": "98.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Mizu | Crop Top",
+          "price": "30.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Mizu | Split Top",
+          "price": "From 35.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Girl's BF | Split Top",
+          "price": "From 35.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Flower Market | Split Top",
+          "price": "From 35.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Pastels and Cream | Crop & Regular",
+          "price": "From 28.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Flower Market | Box Pleated Skirt",
+          "price": "70.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Girl's BF | Crop & Regular",
+          "price": "From 28.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Pastel of"
+        }
+      ]
+    },
+    {
+      "name": {
+        "value": "betterthanblouses",
+        "source": "https://betterthanblouses.com/"
+      },
+      "summary": {
+        "value": "Versatile and lightweight handmade batik apparel, vintage finds, and blouses for every occasion.",
+        "source": "https://betterthanblouses.com/"
+      },
+      "category": "clothing boutique",
+      "offerings": [
+        {
+          "name": "Roses | Reversible Shift Dress",
+          "price": "105.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Cloud 9 | Pleated Shorts",
+          "price": "60.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "La Vie en Bleu | Shape Shift Top",
+          "price": "37.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "La Vie En Bleu | Split Top",
+          "price": "From 35.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Neelam & Ilai | Shape Shift Top",
+          "price": "37.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Neelam & Ilai | Split Top",
+          "price": "From 35.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Neelam & Ilai | Crop Top",
+          "price": "30.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "La Vie En Bleu | Culottes",
+          "price": "70.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Mizu | Shape Shift Top",
+          "price": "37.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Flower Market & Mizu | Reversible Midi Skirt",
+          "price": "98.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Mizu | Crop Top",
+          "price": "30.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Mizu | Split Top",
+          "price": "From 35.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Girl's BF | Split Top",
+          "price": "From 35.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Flower Market | Split Top",
+          "price": "From 35.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Pastels and Cream | Crop & Regular",
+          "price": "From 28.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Flower Market | Box Pleated Skirt",
+          "price": "70.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Girl's BF | Crop & Regular",
+          "price": "From 28.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Pastel of the Orient | Crop & Regular",
+          "price": "From 28.00USD"
+        }
+      ]
+    },
+    {
+      "name": {
+        "value": "betterthanblouses",
+        "source": "https://betterthanblouses.com/"
+      },
+      "summary": {
+        "value": "Versatile and lightweight handmade batik apparel, vintage finds, and blouses for every occasion.",
+        "source": "https://betterthanblouses.com/"
+      },
+      "category": "clothing boutique",
+      "offerings": [
+        {
+          "name": "Roses | Reversible Shift Dress",
+          "price": "105.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Cloud 9 | Pleated Shorts",
+          "price": "60.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "La Vie en Bleu | Shape Shift Top",
+          "price": "37.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "La Vie En Bleu | Split Top",
+          "price": "From 35.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Neelam & Ilai | Shape Shift Top",
+          "price": "37.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Neelam & Ilai | Split Top",
+          "price": "From 35.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Neelam & Ilai | Crop Top",
+          "price": "30.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "La Vie En Bleu | Culottes",
+          "price": "70.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Mizu | Shape Shift Top",
+          "price": "37.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Flower Market & Mizu | Reversible Midi Skirt",
+          "price": "98.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Mizu | Crop Top",
+          "price": "30.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Mizu | Split Top",
+          "price": "From 35.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Girl's BF | Split Top",
+          "price": "From 35.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Flower Market | Split Top",
+          "price": "From 35.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Pastels and Cream | Crop & Regular",
+          "price": "From 28.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Flower Market | Box Pleated Skirt",
+          "price": "70.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Girl's BF | Crop & Regular",
+          "price": "From 28.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Pastel of the Orient | Crop & Regular",
+          "price": "From 28.00USD",
           "source": "https://betterthanblouses.com/"
         },
         {}
@@ -1047,7 +2058,7 @@
         "source": "https://betterthanblouses.com/"
       },
       "summary": {
-        "value": "Versatile and lightweight handmade batik apparel, including blouses, dresses, tops, and skirts, handmade in small batches.",
+        "value": "Versatile and lightweight handmade batik apparel, vintage finds, and blouses for every occasion.",
         "source": "https://betterthanblouses.com/"
       },
       "category": "clothing boutique",
@@ -1110,6 +2121,615 @@
         {
           "name": "Mizu | Split Top",
           "price": "From 35.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Girl's BF | Split Top",
+          "price": "From 35.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Flower Market | Split Top",
+          "price": "From 35.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Pastels and Cream | Crop & Regular",
+          "price": "From 28.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Flower Market | Box Pleated Skirt",
+          "price": "70.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Girl's BF | Crop & Regular",
+          "price": "From 28.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Pastel of the Orient | Crop & Regular",
+          "price": "From 28.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Nori | Split Top",
+          "price": "From 35.00USD"
+        }
+      ]
+    },
+    {
+      "name": {
+        "value": "betterthanblouses",
+        "source": "https://betterthanblouses.com/"
+      },
+      "summary": {
+        "value": "Versatile and lightweight handmade batik apparel, vintage finds, and blouses for every occasion.",
+        "source": "https://betterthanblouses.com/"
+      },
+      "category": "clothing boutique",
+      "offerings": [
+        {
+          "name": "Roses | Reversible Shift Dress",
+          "price": "105.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Cloud 9 | Pleated Shorts",
+          "price": "60.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "La Vie en Bleu | Shape Shift Top",
+          "price": "37.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "La Vie En Bleu | Split Top",
+          "price": "From 35.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Neelam & Ilai | Shape Shift Top",
+          "price": "37.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Neelam & Ilai | Split Top",
+          "price": "From 35.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Neelam & Ilai | Crop Top",
+          "price": "30.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "La Vie En Bleu | Culottes",
+          "price": "70.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Mizu | Shape Shift Top",
+          "price": "37.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Flower Market & Mizu | Reversible Midi Skirt",
+          "price": "98.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Mizu | Crop Top",
+          "price": "30.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Mizu | Split Top",
+          "price": "From 35.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Girl's BF | Split Top",
+          "price": "From 35.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Flower Market | Split Top",
+          "price": "From 35.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Pastels and Cream | Crop & Regular",
+          "price": "From 28.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Flower Market | Box Pleated Skirt",
+          "price": "70.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Girl's BF | Crop & Regular",
+          "price": "From 28.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Pastel of the Orient | Crop & Regular",
+          "price": "From 28.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Nori | Split Top",
+          "price": "From 35.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {}
+      ]
+    },
+    {
+      "name": {
+        "value": "betterthanblouses",
+        "source": "https://betterthanblouses.com/"
+      },
+      "summary": {
+        "value": "Versatile and lightweight handmade batik apparel, vintage finds, and blouses for every occasion.",
+        "source": "https://betterthanblouses.com/"
+      },
+      "category": "clothing boutique",
+      "offerings": [
+        {
+          "name": "Roses | Reversible Shift Dress",
+          "price": "105.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Cloud 9 | Pleated Shorts",
+          "price": "60.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "La Vie en Bleu | Shape Shift Top",
+          "price": "37.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "La Vie En Bleu | Split Top",
+          "price": "From 35.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Neelam & Ilai | Shape Shift Top",
+          "price": "37.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Neelam & Ilai | Split Top",
+          "price": "From 35.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Neelam & Ilai | Crop Top",
+          "price": "30.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "La Vie En Bleu | Culottes",
+          "price": "70.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Mizu | Shape Shift Top",
+          "price": "37.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Flower Market & Mizu | Reversible Midi Skirt",
+          "price": "98.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Mizu | Crop Top",
+          "price": "30.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Mizu | Split Top",
+          "price": "From 35.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Girl's BF | Split Top",
+          "price": "From 35.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Flower Market | Split Top",
+          "price": "From 35.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Pastels and Cream | Crop & Regular",
+          "price": "From 28.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Flower Market | Box Pleated Skirt",
+          "price": "70.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Girl's BF | Crop & Regular",
+          "price": "From 28.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Pastel of the Orient | Crop & Regular",
+          "price": "From 28.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Nori | Split Top",
+          "price": "From 35.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Nyonya | 3/4 Sleeved Cropped Top",
+          "price": "70.00"
+        }
+      ]
+    },
+    {
+      "name": {
+        "value": "betterthanblouses",
+        "source": "https://betterthanblouses.com/"
+      },
+      "summary": {
+        "value": "Versatile and lightweight handmade batik apparel, vintage finds, and blouses for every occasion.",
+        "source": "https://betterthanblouses.com/"
+      },
+      "category": "clothing boutique",
+      "offerings": [
+        {
+          "name": "Roses | Reversible Shift Dress",
+          "price": "105.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Cloud 9 | Pleated Shorts",
+          "price": "60.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "La Vie en Bleu | Shape Shift Top",
+          "price": "37.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "La Vie En Bleu | Split Top",
+          "price": "From 35.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Neelam & Ilai | Shape Shift Top",
+          "price": "37.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Neelam & Ilai | Split Top",
+          "price": "From 35.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Neelam & Ilai | Crop Top",
+          "price": "30.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "La Vie En Bleu | Culottes",
+          "price": "70.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Mizu | Shape Shift Top",
+          "price": "37.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Flower Market & Mizu | Reversible Midi Skirt",
+          "price": "98.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Mizu | Crop Top",
+          "price": "30.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Mizu | Split Top",
+          "price": "From 35.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Girl's BF | Split Top",
+          "price": "From 35.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Flower Market | Split Top",
+          "price": "From 35.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Pastels and Cream | Crop & Regular",
+          "price": "From 28.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Flower Market | Box Pleated Skirt",
+          "price": "70.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Girl's BF | Crop & Regular",
+          "price": "From 28.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Pastel of the Orient | Crop & Regular",
+          "price": "From 28.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Nori | Split Top",
+          "price": "From 35.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Nyonya | 3/4 Sleeved Cropped Top",
+          "price": "70.00USD",
+          "source": "https://betterthanblouses.com/"
+        }
+      ],
+      "highlights": [
+        {
+          "value": "Handmade in small batches",
+          "source": "https://"
+        }
+      ]
+    },
+    {
+      "name": {
+        "value": "betterthanblouses",
+        "source": "https://betterthanblouses.com/"
+      },
+      "summary": {
+        "value": "Versatile and lightweight handmade batik apparel, vintage finds, and blouses for every occasion.",
+        "source": "https://betterthanblouses.com/"
+      },
+      "category": "clothing boutique",
+      "offerings": [
+        {
+          "name": "Roses | Reversible Shift Dress",
+          "price": "105.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Cloud 9 | Pleated Shorts",
+          "price": "60.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "La Vie en Bleu | Shape Shift Top",
+          "price": "37.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "La Vie En Bleu | Split Top",
+          "price": "From 35.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Neelam & Ilai | Shape Shift Top",
+          "price": "37.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Neelam & Ilai | Split Top",
+          "price": "From 35.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Neelam & Ilai | Crop Top",
+          "price": "30.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "La Vie En Bleu | Culottes",
+          "price": "70.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Mizu | Shape Shift Top",
+          "price": "37.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Flower Market & Mizu | Reversible Midi Skirt",
+          "price": "98.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Mizu | Crop Top",
+          "price": "30.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Mizu | Split Top",
+          "price": "From 35.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Girl's BF | Split Top",
+          "price": "From 35.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Flower Market | Split Top",
+          "price": "From 35.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Pastels and Cream | Crop & Regular",
+          "price": "From 28.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Flower Market | Box Pleated Skirt",
+          "price": "70.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Girl's BF | Crop & Regular",
+          "price": "From 28.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Pastel of the Orient | Crop & Regular",
+          "price": "From 28.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Nori | Split Top",
+          "price": "From 35.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Nyonya | 3/4 Sleeved Cropped Top",
+          "price": "70.00USD",
+          "source": "https://betterthanblouses.com/"
+        }
+      ],
+      "highlights": [
+        {
+          "value": "Handmade in small batches",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "value": "Versatile & Light-weight apparel for every occasion"
+        }
+      ]
+    },
+    {
+      "name": {
+        "value": "betterthanblouses",
+        "source": "https://betterthanblouses.com/"
+      },
+      "summary": {
+        "value": "Versatile and lightweight handmade batik apparel, vintage finds, and blouses for every occasion.",
+        "source": "https://betterthanblouses.com/"
+      },
+      "category": "clothing boutique",
+      "offerings": [
+        {
+          "name": "Roses | Reversible Shift Dress",
+          "price": "105.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Cloud 9 | Pleated Shorts",
+          "price": "60.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "La Vie en Bleu | Shape Shift Top",
+          "price": "37.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "La Vie En Bleu | Split Top",
+          "price": "From 35.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Neelam & Ilai | Shape Shift Top",
+          "price": "37.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Neelam & Ilai | Split Top",
+          "price": "From 35.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Neelam & Ilai | Crop Top",
+          "price": "30.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "La Vie En Bleu | Culottes",
+          "price": "70.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Mizu | Shape Shift Top",
+          "price": "37.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Flower Market & Mizu | Reversible Midi Skirt",
+          "price": "98.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Mizu | Crop Top",
+          "price": "30.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Mizu | Split Top",
+          "price": "From 35.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Girl's BF | Split Top",
+          "price": "From 35.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Flower Market | Split Top",
+          "price": "From 35.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Pastels and Cream | Crop & Regular",
+          "price": "From 28.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Flower Market | Box Pleated Skirt",
+          "price": "70.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Girl's BF | Crop & Regular",
+          "price": "From 28.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Pastel of the Orient | Crop & Regular",
+          "price": "From 28.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Nori | Split Top",
+          "price": "From 35.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Nyonya | 3/4 Sleeved Cropped Top",
+          "price": "70.00USD",
           "source": "https://betterthanblouses.com/"
         }
       ],
@@ -1120,7 +2740,7 @@
         },
         {
           "value": "Versatile & Light-weight apparel for every occasion",
-          "source": "https://betterthanbl"
+          "source": "https://betterthanblouses.com/"
         }
       ]
     },
@@ -1130,7 +2750,7 @@
         "source": "https://betterthanblouses.com/"
       },
       "summary": {
-        "value": "Versatile and lightweight handmade batik apparel, including blouses, dresses, tops, and skirts, handmade in small batches.",
+        "value": "Versatile and lightweight handmade batik apparel, vintage finds, and blouses for every occasion.",
         "source": "https://betterthanblouses.com/"
       },
       "category": "clothing boutique",
@@ -1193,6 +2813,46 @@
         {
           "name": "Mizu | Split Top",
           "price": "From 35.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Girl's BF | Split Top",
+          "price": "From 35.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Flower Market | Split Top",
+          "price": "From 35.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Pastels and Cream | Crop & Regular",
+          "price": "From 28.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Flower Market | Box Pleated Skirt",
+          "price": "70.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Girl's BF | Crop & Regular",
+          "price": "From 28.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Pastel of the Orient | Crop & Regular",
+          "price": "From 28.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Nori | Split Top",
+          "price": "From 35.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Nyonya | 3/4 Sleeved Cropped Top",
+          "price": "70.00USD",
           "source": "https://betterthanblouses.com/"
         }
       ],
@@ -1207,7 +2867,9 @@
         }
       ],
       "location": {
-        "town": {}
+        "town": {
+          "value": "George Town"
+        }
       }
     },
     {
@@ -1216,7 +2878,7 @@
         "source": "https://betterthanblouses.com/"
       },
       "summary": {
-        "value": "Versatile and lightweight handmade batik apparel, including blouses, dresses, tops, and skirts, handmade in small batches.",
+        "value": "Versatile and lightweight handmade batik apparel, vintage finds, and blouses for every occasion.",
         "source": "https://betterthanblouses.com/"
       },
       "category": "clothing boutique",
@@ -1279,6 +2941,46 @@
         {
           "name": "Mizu | Split Top",
           "price": "From 35.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Girl's BF | Split Top",
+          "price": "From 35.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Flower Market | Split Top",
+          "price": "From 35.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Pastels and Cream | Crop & Regular",
+          "price": "From 28.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Flower Market | Box Pleated Skirt",
+          "price": "70.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Girl's BF | Crop & Regular",
+          "price": "From 28.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Pastel of the Orient | Crop & Regular",
+          "price": "From 28.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Nori | Split Top",
+          "price": "From 35.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Nyonya | 3/4 Sleeved Cropped Top",
+          "price": "70.00USD",
           "source": "https://betterthanblouses.com/"
         }
       ],
@@ -1296,6 +2998,9 @@
         "town": {
           "value": "George Town",
           "source": "https://betterthanblouses.com/contact/"
+        },
+        "area": {
+          "value": "Pen"
         }
       }
     },
@@ -1305,7 +3010,7 @@
         "source": "https://betterthanblouses.com/"
       },
       "summary": {
-        "value": "Versatile and lightweight handmade batik apparel, including blouses, dresses, tops, and skirts, handmade in small batches.",
+        "value": "Versatile and lightweight handmade batik apparel, vintage finds, and blouses for every occasion.",
         "source": "https://betterthanblouses.com/"
       },
       "category": "clothing boutique",
@@ -1368,6 +3073,46 @@
         {
           "name": "Mizu | Split Top",
           "price": "From 35.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Girl's BF | Split Top",
+          "price": "From 35.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Flower Market | Split Top",
+          "price": "From 35.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Pastels and Cream | Crop & Regular",
+          "price": "From 28.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Flower Market | Box Pleated Skirt",
+          "price": "70.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Girl's BF | Crop & Regular",
+          "price": "From 28.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Pastel of the Orient | Crop & Regular",
+          "price": "From 28.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Nori | Split Top",
+          "price": "From 35.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Nyonya | 3/4 Sleeved Cropped Top",
+          "price": "70.00USD",
           "source": "https://betterthanblouses.com/"
         }
       ],
@@ -1388,6 +3133,562 @@
         },
         "area": {
           "value": "Penang",
+          "source": "https://betterthanblouses.com/contact/"
+        }
+      }
+    },
+    {
+      "name": {
+        "value": "betterthanblouses",
+        "source": "https://betterthanblouses.com/"
+      },
+      "summary": {
+        "value": "Versatile and lightweight handmade batik apparel, vintage finds, and blouses for every occasion.",
+        "source": "https://betterthanblouses.com/"
+      },
+      "category": "clothing boutique",
+      "offerings": [
+        {
+          "name": "Roses | Reversible Shift Dress",
+          "price": "105.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Cloud 9 | Pleated Shorts",
+          "price": "60.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "La Vie en Bleu | Shape Shift Top",
+          "price": "37.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "La Vie En Bleu | Split Top",
+          "price": "From 35.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Neelam & Ilai | Shape Shift Top",
+          "price": "37.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Neelam & Ilai | Split Top",
+          "price": "From 35.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Neelam & Ilai | Crop Top",
+          "price": "30.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "La Vie En Bleu | Culottes",
+          "price": "70.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Mizu | Shape Shift Top",
+          "price": "37.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Flower Market & Mizu | Reversible Midi Skirt",
+          "price": "98.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Mizu | Crop Top",
+          "price": "30.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Mizu | Split Top",
+          "price": "From 35.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Girl's BF | Split Top",
+          "price": "From 35.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Flower Market | Split Top",
+          "price": "From 35.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Pastels and Cream | Crop & Regular",
+          "price": "From 28.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Flower Market | Box Pleated Skirt",
+          "price": "70.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Girl's BF | Crop & Regular",
+          "price": "From 28.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Pastel of the Orient | Crop & Regular",
+          "price": "From 28.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Nori | Split Top",
+          "price": "From 35.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Nyonya | 3/4 Sleeved Cropped Top",
+          "price": "70.00USD",
+          "source": "https://betterthanblouses.com/"
+        }
+      ],
+      "highlights": [
+        {
+          "value": "Handmade in small batches",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "value": "Versatile & Light-weight apparel for every occasion",
+          "source": "https://betterthanblouses.com/"
+        }
+      ],
+      "location": {
+        "town": {
+          "value": "George Town",
+          "source": "https://betterthanblouses.com/contact/"
+        },
+        "area": {
+          "value": "Penang",
+          "source": "https://betterthanblouses.com/contact/"
+        },
+        "address": {
+          "value": "191, Lebuh Carnarvon, George Town, 1"
+        }
+      }
+    },
+    {
+      "name": {
+        "value": "betterthanblouses",
+        "source": "https://betterthanblouses.com/"
+      },
+      "summary": {
+        "value": "Versatile and lightweight handmade batik apparel, vintage finds, and blouses for every occasion.",
+        "source": "https://betterthanblouses.com/"
+      },
+      "category": "clothing boutique",
+      "offerings": [
+        {
+          "name": "Roses | Reversible Shift Dress",
+          "price": "105.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Cloud 9 | Pleated Shorts",
+          "price": "60.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "La Vie en Bleu | Shape Shift Top",
+          "price": "37.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "La Vie En Bleu | Split Top",
+          "price": "From 35.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Neelam & Ilai | Shape Shift Top",
+          "price": "37.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Neelam & Ilai | Split Top",
+          "price": "From 35.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Neelam & Ilai | Crop Top",
+          "price": "30.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "La Vie En Bleu | Culottes",
+          "price": "70.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Mizu | Shape Shift Top",
+          "price": "37.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Flower Market & Mizu | Reversible Midi Skirt",
+          "price": "98.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Mizu | Crop Top",
+          "price": "30.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Mizu | Split Top",
+          "price": "From 35.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Girl's BF | Split Top",
+          "price": "From 35.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Flower Market | Split Top",
+          "price": "From 35.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Pastels and Cream | Crop & Regular",
+          "price": "From 28.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Flower Market | Box Pleated Skirt",
+          "price": "70.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Girl's BF | Crop & Regular",
+          "price": "From 28.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Pastel of the Orient | Crop & Regular",
+          "price": "From 28.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Nori | Split Top",
+          "price": "From 35.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Nyonya | 3/4 Sleeved Cropped Top",
+          "price": "70.00USD",
+          "source": "https://betterthanblouses.com/"
+        }
+      ],
+      "highlights": [
+        {
+          "value": "Handmade in small batches",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "value": "Versatile & Light-weight apparel for every occasion",
+          "source": "https://betterthanblouses.com/"
+        }
+      ],
+      "location": {
+        "town": {
+          "value": "George Town",
+          "source": "https://betterthanblouses.com/contact/"
+        },
+        "area": {
+          "value": "Penang",
+          "source": "https://betterthanblouses.com/contact/"
+        },
+        "address": {
+          "value": "191, Lebuh Carnarvon, George Town, 10100, Penang",
+          "source": "https://betterthanblouses.com/contact/"
+        }
+      }
+    },
+    {
+      "name": {
+        "value": "betterthanblouses",
+        "source": "https://betterthanblouses.com/"
+      },
+      "summary": {
+        "value": "Versatile and lightweight handmade batik apparel, vintage finds, and blouses for every occasion.",
+        "source": "https://betterthanblouses.com/"
+      },
+      "category": "clothing boutique",
+      "offerings": [
+        {
+          "name": "Roses | Reversible Shift Dress",
+          "price": "105.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Cloud 9 | Pleated Shorts",
+          "price": "60.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "La Vie en Bleu | Shape Shift Top",
+          "price": "37.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "La Vie En Bleu | Split Top",
+          "price": "From 35.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Neelam & Ilai | Shape Shift Top",
+          "price": "37.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Neelam & Ilai | Split Top",
+          "price": "From 35.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Neelam & Ilai | Crop Top",
+          "price": "30.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "La Vie En Bleu | Culottes",
+          "price": "70.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Mizu | Shape Shift Top",
+          "price": "37.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Flower Market & Mizu | Reversible Midi Skirt",
+          "price": "98.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Mizu | Crop Top",
+          "price": "30.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Mizu | Split Top",
+          "price": "From 35.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Girl's BF | Split Top",
+          "price": "From 35.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Flower Market | Split Top",
+          "price": "From 35.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Pastels and Cream | Crop & Regular",
+          "price": "From 28.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Flower Market | Box Pleated Skirt",
+          "price": "70.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Girl's BF | Crop & Regular",
+          "price": "From 28.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Pastel of the Orient | Crop & Regular",
+          "price": "From 28.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Nori | Split Top",
+          "price": "From 35.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Nyonya | 3/4 Sleeved Cropped Top",
+          "price": "70.00USD",
+          "source": "https://betterthanblouses.com/"
+        }
+      ],
+      "highlights": [
+        {
+          "value": "Handmade in small batches",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "value": "Versatile & Light-weight apparel for every occasion",
+          "source": "https://betterthanblouses.com/"
+        }
+      ],
+      "location": {
+        "town": {
+          "value": "George Town",
+          "source": "https://betterthanblouses.com/contact/"
+        },
+        "area": {
+          "value": "Penang",
+          "source": "https://betterthanblouses.com/contact/"
+        },
+        "address": {
+          "value": "191, Lebuh Carnarvon, George Town, 10100, Penang",
+          "source": "https://betterthanblouses.com/contact/"
+        },
+        "serviceArea": null
+      },
+      "contact": {}
+    },
+    {
+      "name": {
+        "value": "betterthanblouses",
+        "source": "https://betterthanblouses.com/"
+      },
+      "summary": {
+        "value": "Versatile and lightweight handmade batik apparel, vintage finds, and blouses for every occasion.",
+        "source": "https://betterthanblouses.com/"
+      },
+      "category": "clothing boutique",
+      "offerings": [
+        {
+          "name": "Roses | Reversible Shift Dress",
+          "price": "105.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Cloud 9 | Pleated Shorts",
+          "price": "60.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "La Vie en Bleu | Shape Shift Top",
+          "price": "37.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "La Vie En Bleu | Split Top",
+          "price": "From 35.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Neelam & Ilai | Shape Shift Top",
+          "price": "37.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Neelam & Ilai | Split Top",
+          "price": "From 35.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Neelam & Ilai | Crop Top",
+          "price": "30.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "La Vie En Bleu | Culottes",
+          "price": "70.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Mizu | Shape Shift Top",
+          "price": "37.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Flower Market & Mizu | Reversible Midi Skirt",
+          "price": "98.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Mizu | Crop Top",
+          "price": "30.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Mizu | Split Top",
+          "price": "From 35.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Girl's BF | Split Top",
+          "price": "From 35.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Flower Market | Split Top",
+          "price": "From 35.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Pastels and Cream | Crop & Regular",
+          "price": "From 28.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Flower Market | Box Pleated Skirt",
+          "price": "70.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Girl's BF | Crop & Regular",
+          "price": "From 28.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Pastel of the Orient | Crop & Regular",
+          "price": "From 28.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Nori | Split Top",
+          "price": "From 35.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Nyonya | 3/4 Sleeved Cropped Top",
+          "price": "70.00USD",
+          "source": "https://betterthanblouses.com/"
+        }
+      ],
+      "highlights": [
+        {
+          "value": "Handmade in small batches",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "value": "Versatile & Light-weight apparel for every occasion",
+          "source": "https://betterthanblouses.com/"
+        }
+      ],
+      "location": {
+        "town": {
+          "value": "George Town",
+          "source": "https://betterthanblouses.com/contact/"
+        },
+        "area": {
+          "value": "Penang",
+          "source": "https://betterthanblouses.com/contact/"
+        },
+        "address": {
+          "value": "191, Lebuh Carnarvon, George Town, 10100, Penang",
+          "source": "https://betterthanblouses.com/contact/"
+        },
+        "serviceArea": null
+      },
+      "contact": {
+        "whatsapp": {
+          "value": "+60167734763",
           "source": "https://betterthan"
         }
       }
@@ -1398,7 +3699,7 @@
         "source": "https://betterthanblouses.com/"
       },
       "summary": {
-        "value": "Versatile and lightweight handmade batik apparel, including blouses, dresses, tops, and skirts, handmade in small batches.",
+        "value": "Versatile and lightweight handmade batik apparel, vintage finds, and blouses for every occasion.",
         "source": "https://betterthanblouses.com/"
       },
       "category": "clothing boutique",
@@ -1462,610 +3763,45 @@
           "name": "Mizu | Split Top",
           "price": "From 35.00USD",
           "source": "https://betterthanblouses.com/"
-        }
-      ],
-      "highlights": [
-        {
-          "value": "Handmade in small batches",
-          "source": "https://betterthanblouses.com/"
         },
         {
-          "value": "Versatile & Light-weight apparel for every occasion",
-          "source": "https://betterthanblouses.com/"
-        }
-      ],
-      "location": {
-        "town": {
-          "value": "George Town",
-          "source": "https://betterthanblouses.com/contact/"
-        },
-        "area": {
-          "value": "Penang",
-          "source": "https://betterthanblouses.com/contact/"
-        },
-        "address": {
-          "value": "19"
-        }
-      }
-    },
-    {
-      "name": {
-        "value": "betterthanblouses",
-        "source": "https://betterthanblouses.com/"
-      },
-      "summary": {
-        "value": "Versatile and lightweight handmade batik apparel, including blouses, dresses, tops, and skirts, handmade in small batches.",
-        "source": "https://betterthanblouses.com/"
-      },
-      "category": "clothing boutique",
-      "offerings": [
-        {
-          "name": "Roses | Reversible Shift Dress",
-          "price": "105.00USD",
-          "source": "https://betterthanblouses.com/"
-        },
-        {
-          "name": "Cloud 9 | Pleated Shorts",
-          "price": "60.00USD",
-          "source": "https://betterthanblouses.com/"
-        },
-        {
-          "name": "La Vie en Bleu | Shape Shift Top",
-          "price": "37.00USD",
-          "source": "https://betterthanblouses.com/"
-        },
-        {
-          "name": "La Vie En Bleu | Split Top",
+          "name": "Girl's BF | Split Top",
           "price": "From 35.00USD",
           "source": "https://betterthanblouses.com/"
         },
         {
-          "name": "Neelam & Ilai | Shape Shift Top",
-          "price": "37.00USD",
-          "source": "https://betterthanblouses.com/"
-        },
-        {
-          "name": "Neelam & Ilai | Split Top",
+          "name": "Flower Market | Split Top",
           "price": "From 35.00USD",
           "source": "https://betterthanblouses.com/"
         },
         {
-          "name": "Neelam & Ilai | Crop Top",
-          "price": "30.00USD",
+          "name": "Pastels and Cream | Crop & Regular",
+          "price": "From 28.00USD",
           "source": "https://betterthanblouses.com/"
         },
         {
-          "name": "La Vie En Bleu | Culottes",
+          "name": "Flower Market | Box Pleated Skirt",
           "price": "70.00USD",
           "source": "https://betterthanblouses.com/"
         },
         {
-          "name": "Mizu | Shape Shift Top",
-          "price": "37.00USD",
+          "name": "Girl's BF | Crop & Regular",
+          "price": "From 28.00USD",
           "source": "https://betterthanblouses.com/"
         },
         {
-          "name": "Flower Market & Mizu | Reversible Midi Skirt",
-          "price": "98.00USD",
+          "name": "Pastel of the Orient | Crop & Regular",
+          "price": "From 28.00USD",
           "source": "https://betterthanblouses.com/"
         },
         {
-          "name": "Mizu | Crop Top",
-          "price": "30.00USD",
-          "source": "https://betterthanblouses.com/"
-        },
-        {
-          "name": "Mizu | Split Top",
-          "price": "From 35.00USD",
-          "source": "https://betterthanblouses.com/"
-        }
-      ],
-      "highlights": [
-        {
-          "value": "Handmade in small batches",
-          "source": "https://betterthanblouses.com/"
-        },
-        {
-          "value": "Versatile & Light-weight apparel for every occasion",
-          "source": "https://betterthanblouses.com/"
-        }
-      ],
-      "location": {
-        "town": {
-          "value": "George Town",
-          "source": "https://betterthanblouses.com/contact/"
-        },
-        "area": {
-          "value": "Penang",
-          "source": "https://betterthanblouses.com/contact/"
-        },
-        "address": {
-          "value": "191, Lebuh Carnarvon, George Town, 10100, Penang"
-        }
-      }
-    },
-    {
-      "name": {
-        "value": "betterthanblouses",
-        "source": "https://betterthanblouses.com/"
-      },
-      "summary": {
-        "value": "Versatile and lightweight handmade batik apparel, including blouses, dresses, tops, and skirts, handmade in small batches.",
-        "source": "https://betterthanblouses.com/"
-      },
-      "category": "clothing boutique",
-      "offerings": [
-        {
-          "name": "Roses | Reversible Shift Dress",
-          "price": "105.00USD",
-          "source": "https://betterthanblouses.com/"
-        },
-        {
-          "name": "Cloud 9 | Pleated Shorts",
-          "price": "60.00USD",
-          "source": "https://betterthanblouses.com/"
-        },
-        {
-          "name": "La Vie en Bleu | Shape Shift Top",
-          "price": "37.00USD",
-          "source": "https://betterthanblouses.com/"
-        },
-        {
-          "name": "La Vie En Bleu | Split Top",
+          "name": "Nori | Split Top",
           "price": "From 35.00USD",
           "source": "https://betterthanblouses.com/"
         },
         {
-          "name": "Neelam & Ilai | Shape Shift Top",
-          "price": "37.00USD",
-          "source": "https://betterthanblouses.com/"
-        },
-        {
-          "name": "Neelam & Ilai | Split Top",
-          "price": "From 35.00USD",
-          "source": "https://betterthanblouses.com/"
-        },
-        {
-          "name": "Neelam & Ilai | Crop Top",
-          "price": "30.00USD",
-          "source": "https://betterthanblouses.com/"
-        },
-        {
-          "name": "La Vie En Bleu | Culottes",
+          "name": "Nyonya | 3/4 Sleeved Cropped Top",
           "price": "70.00USD",
-          "source": "https://betterthanblouses.com/"
-        },
-        {
-          "name": "Mizu | Shape Shift Top",
-          "price": "37.00USD",
-          "source": "https://betterthanblouses.com/"
-        },
-        {
-          "name": "Flower Market & Mizu | Reversible Midi Skirt",
-          "price": "98.00USD",
-          "source": "https://betterthanblouses.com/"
-        },
-        {
-          "name": "Mizu | Crop Top",
-          "price": "30.00USD",
-          "source": "https://betterthanblouses.com/"
-        },
-        {
-          "name": "Mizu | Split Top",
-          "price": "From 35.00USD",
-          "source": "https://betterthanblouses.com/"
-        }
-      ],
-      "highlights": [
-        {
-          "value": "Handmade in small batches",
-          "source": "https://betterthanblouses.com/"
-        },
-        {
-          "value": "Versatile & Light-weight apparel for every occasion",
-          "source": "https://betterthanblouses.com/"
-        }
-      ],
-      "location": {
-        "town": {
-          "value": "George Town",
-          "source": "https://betterthanblouses.com/contact/"
-        },
-        "area": {
-          "value": "Penang",
-          "source": "https://betterthanblouses.com/contact/"
-        },
-        "address": {
-          "value": "191, Lebuh Carnarvon, George Town, 10100, Penang",
-          "source": "https://betterthanblouses.com/contact/"
-        },
-        "serviceArea": null
-      }
-    },
-    {
-      "name": {
-        "value": "betterthanblouses",
-        "source": "https://betterthanblouses.com/"
-      },
-      "summary": {
-        "value": "Versatile and lightweight handmade batik apparel, including blouses, dresses, tops, and skirts, handmade in small batches.",
-        "source": "https://betterthanblouses.com/"
-      },
-      "category": "clothing boutique",
-      "offerings": [
-        {
-          "name": "Roses | Reversible Shift Dress",
-          "price": "105.00USD",
-          "source": "https://betterthanblouses.com/"
-        },
-        {
-          "name": "Cloud 9 | Pleated Shorts",
-          "price": "60.00USD",
-          "source": "https://betterthanblouses.com/"
-        },
-        {
-          "name": "La Vie en Bleu | Shape Shift Top",
-          "price": "37.00USD",
-          "source": "https://betterthanblouses.com/"
-        },
-        {
-          "name": "La Vie En Bleu | Split Top",
-          "price": "From 35.00USD",
-          "source": "https://betterthanblouses.com/"
-        },
-        {
-          "name": "Neelam & Ilai | Shape Shift Top",
-          "price": "37.00USD",
-          "source": "https://betterthanblouses.com/"
-        },
-        {
-          "name": "Neelam & Ilai | Split Top",
-          "price": "From 35.00USD",
-          "source": "https://betterthanblouses.com/"
-        },
-        {
-          "name": "Neelam & Ilai | Crop Top",
-          "price": "30.00USD",
-          "source": "https://betterthanblouses.com/"
-        },
-        {
-          "name": "La Vie En Bleu | Culottes",
-          "price": "70.00USD",
-          "source": "https://betterthanblouses.com/"
-        },
-        {
-          "name": "Mizu | Shape Shift Top",
-          "price": "37.00USD",
-          "source": "https://betterthanblouses.com/"
-        },
-        {
-          "name": "Flower Market & Mizu | Reversible Midi Skirt",
-          "price": "98.00USD",
-          "source": "https://betterthanblouses.com/"
-        },
-        {
-          "name": "Mizu | Crop Top",
-          "price": "30.00USD",
-          "source": "https://betterthanblouses.com/"
-        },
-        {
-          "name": "Mizu | Split Top",
-          "price": "From 35.00USD",
-          "source": "https://betterthanblouses.com/"
-        }
-      ],
-      "highlights": [
-        {
-          "value": "Handmade in small batches",
-          "source": "https://betterthanblouses.com/"
-        },
-        {
-          "value": "Versatile & Light-weight apparel for every occasion",
-          "source": "https://betterthanblouses.com/"
-        }
-      ],
-      "location": {
-        "town": {
-          "value": "George Town",
-          "source": "https://betterthanblouses.com/contact/"
-        },
-        "area": {
-          "value": "Penang",
-          "source": "https://betterthanblouses.com/contact/"
-        },
-        "address": {
-          "value": "191, Lebuh Carnarvon, George Town, 10100, Penang",
-          "source": "https://betterthanblouses.com/contact/"
-        },
-        "serviceArea": null
-      },
-      "contact": {
-        "whatsapp": {
-          "value": "+60167"
-        }
-      }
-    },
-    {
-      "name": {
-        "value": "betterthanblouses",
-        "source": "https://betterthanblouses.com/"
-      },
-      "summary": {
-        "value": "Versatile and lightweight handmade batik apparel, including blouses, dresses, tops, and skirts, handmade in small batches.",
-        "source": "https://betterthanblouses.com/"
-      },
-      "category": "clothing boutique",
-      "offerings": [
-        {
-          "name": "Roses | Reversible Shift Dress",
-          "price": "105.00USD",
-          "source": "https://betterthanblouses.com/"
-        },
-        {
-          "name": "Cloud 9 | Pleated Shorts",
-          "price": "60.00USD",
-          "source": "https://betterthanblouses.com/"
-        },
-        {
-          "name": "La Vie en Bleu | Shape Shift Top",
-          "price": "37.00USD",
-          "source": "https://betterthanblouses.com/"
-        },
-        {
-          "name": "La Vie En Bleu | Split Top",
-          "price": "From 35.00USD",
-          "source": "https://betterthanblouses.com/"
-        },
-        {
-          "name": "Neelam & Ilai | Shape Shift Top",
-          "price": "37.00USD",
-          "source": "https://betterthanblouses.com/"
-        },
-        {
-          "name": "Neelam & Ilai | Split Top",
-          "price": "From 35.00USD",
-          "source": "https://betterthanblouses.com/"
-        },
-        {
-          "name": "Neelam & Ilai | Crop Top",
-          "price": "30.00USD",
-          "source": "https://betterthanblouses.com/"
-        },
-        {
-          "name": "La Vie En Bleu | Culottes",
-          "price": "70.00USD",
-          "source": "https://betterthanblouses.com/"
-        },
-        {
-          "name": "Mizu | Shape Shift Top",
-          "price": "37.00USD",
-          "source": "https://betterthanblouses.com/"
-        },
-        {
-          "name": "Flower Market & Mizu | Reversible Midi Skirt",
-          "price": "98.00USD",
-          "source": "https://betterthanblouses.com/"
-        },
-        {
-          "name": "Mizu | Crop Top",
-          "price": "30.00USD",
-          "source": "https://betterthanblouses.com/"
-        },
-        {
-          "name": "Mizu | Split Top",
-          "price": "From 35.00USD",
-          "source": "https://betterthanblouses.com/"
-        }
-      ],
-      "highlights": [
-        {
-          "value": "Handmade in small batches",
-          "source": "https://betterthanblouses.com/"
-        },
-        {
-          "value": "Versatile & Light-weight apparel for every occasion",
-          "source": "https://betterthanblouses.com/"
-        }
-      ],
-      "location": {
-        "town": {
-          "value": "George Town",
-          "source": "https://betterthanblouses.com/contact/"
-        },
-        "area": {
-          "value": "Penang",
-          "source": "https://betterthanblouses.com/contact/"
-        },
-        "address": {
-          "value": "191, Lebuh Carnarvon, George Town, 10100, Penang",
-          "source": "https://betterthanblouses.com/contact/"
-        },
-        "serviceArea": null
-      },
-      "contact": {
-        "whatsapp": {
-          "value": "+60167734763",
-          "source": "https://betterthanblouses.com/contact/"
-        }
-      }
-    },
-    {
-      "name": {
-        "value": "betterthanblouses",
-        "source": "https://betterthanblouses.com/"
-      },
-      "summary": {
-        "value": "Versatile and lightweight handmade batik apparel, including blouses, dresses, tops, and skirts, handmade in small batches.",
-        "source": "https://betterthanblouses.com/"
-      },
-      "category": "clothing boutique",
-      "offerings": [
-        {
-          "name": "Roses | Reversible Shift Dress",
-          "price": "105.00USD",
-          "source": "https://betterthanblouses.com/"
-        },
-        {
-          "name": "Cloud 9 | Pleated Shorts",
-          "price": "60.00USD",
-          "source": "https://betterthanblouses.com/"
-        },
-        {
-          "name": "La Vie en Bleu | Shape Shift Top",
-          "price": "37.00USD",
-          "source": "https://betterthanblouses.com/"
-        },
-        {
-          "name": "La Vie En Bleu | Split Top",
-          "price": "From 35.00USD",
-          "source": "https://betterthanblouses.com/"
-        },
-        {
-          "name": "Neelam & Ilai | Shape Shift Top",
-          "price": "37.00USD",
-          "source": "https://betterthanblouses.com/"
-        },
-        {
-          "name": "Neelam & Ilai | Split Top",
-          "price": "From 35.00USD",
-          "source": "https://betterthanblouses.com/"
-        },
-        {
-          "name": "Neelam & Ilai | Crop Top",
-          "price": "30.00USD",
-          "source": "https://betterthanblouses.com/"
-        },
-        {
-          "name": "La Vie En Bleu | Culottes",
-          "price": "70.00USD",
-          "source": "https://betterthanblouses.com/"
-        },
-        {
-          "name": "Mizu | Shape Shift Top",
-          "price": "37.00USD",
-          "source": "https://betterthanblouses.com/"
-        },
-        {
-          "name": "Flower Market & Mizu | Reversible Midi Skirt",
-          "price": "98.00USD",
-          "source": "https://betterthanblouses.com/"
-        },
-        {
-          "name": "Mizu | Crop Top",
-          "price": "30.00USD",
-          "source": "https://betterthanblouses.com/"
-        },
-        {
-          "name": "Mizu | Split Top",
-          "price": "From 35.00USD",
-          "source": "https://betterthanblouses.com/"
-        }
-      ],
-      "highlights": [
-        {
-          "value": "Handmade in small batches",
-          "source": "https://betterthanblouses.com/"
-        },
-        {
-          "value": "Versatile & Light-weight apparel for every occasion",
-          "source": "https://betterthanblouses.com/"
-        }
-      ],
-      "location": {
-        "town": {
-          "value": "George Town",
-          "source": "https://betterthanblouses.com/contact/"
-        },
-        "area": {
-          "value": "Penang",
-          "source": "https://betterthanblouses.com/contact/"
-        },
-        "address": {
-          "value": "191, Lebuh Carnarvon, George Town, 10100, Penang",
-          "source": "https://betterthanblouses.com/contact/"
-        },
-        "serviceArea": null
-      },
-      "contact": {
-        "whatsapp": {
-          "value": "+60167734763",
-          "source": "https://betterthanblouses.com/contact/"
-        },
-        "phone": null,
-        "email": {
-          "value": "hello@betterthanblouses."
-        }
-      }
-    },
-    {
-      "name": {
-        "value": "betterthanblouses",
-        "source": "https://betterthanblouses.com/"
-      },
-      "summary": {
-        "value": "Versatile and lightweight handmade batik apparel, including blouses, dresses, tops, and skirts, handmade in small batches.",
-        "source": "https://betterthanblouses.com/"
-      },
-      "category": "clothing boutique",
-      "offerings": [
-        {
-          "name": "Roses | Reversible Shift Dress",
-          "price": "105.00USD",
-          "source": "https://betterthanblouses.com/"
-        },
-        {
-          "name": "Cloud 9 | Pleated Shorts",
-          "price": "60.00USD",
-          "source": "https://betterthanblouses.com/"
-        },
-        {
-          "name": "La Vie en Bleu | Shape Shift Top",
-          "price": "37.00USD",
-          "source": "https://betterthanblouses.com/"
-        },
-        {
-          "name": "La Vie En Bleu | Split Top",
-          "price": "From 35.00USD",
-          "source": "https://betterthanblouses.com/"
-        },
-        {
-          "name": "Neelam & Ilai | Shape Shift Top",
-          "price": "37.00USD",
-          "source": "https://betterthanblouses.com/"
-        },
-        {
-          "name": "Neelam & Ilai | Split Top",
-          "price": "From 35.00USD",
-          "source": "https://betterthanblouses.com/"
-        },
-        {
-          "name": "Neelam & Ilai | Crop Top",
-          "price": "30.00USD",
-          "source": "https://betterthanblouses.com/"
-        },
-        {
-          "name": "La Vie En Bleu | Culottes",
-          "price": "70.00USD",
-          "source": "https://betterthanblouses.com/"
-        },
-        {
-          "name": "Mizu | Shape Shift Top",
-          "price": "37.00USD",
-          "source": "https://betterthanblouses.com/"
-        },
-        {
-          "name": "Flower Market & Mizu | Reversible Midi Skirt",
-          "price": "98.00USD",
-          "source": "https://betterthanblouses.com/"
-        },
-        {
-          "name": "Mizu | Crop Top",
-          "price": "30.00USD",
-          "source": "https://betterthanblouses.com/"
-        },
-        {
-          "name": "Mizu | Split Top",
-          "price": "From 35.00USD",
           "source": "https://betterthanblouses.com/"
         }
       ],
@@ -2102,7 +3838,7 @@
         "phone": null,
         "email": {
           "value": "hello@betterthanblouses.com",
-          "source": "https://betterthanblouses.com/faq/"
+          "source": "https://betterthan"
         }
       }
     },
@@ -2112,7 +3848,7 @@
         "source": "https://betterthanblouses.com/"
       },
       "summary": {
-        "value": "Versatile and lightweight handmade batik apparel, including blouses, dresses, tops, and skirts, handmade in small batches.",
+        "value": "Versatile and lightweight handmade batik apparel, vintage finds, and blouses for every occasion.",
         "source": "https://betterthanblouses.com/"
       },
       "category": "clothing boutique",
@@ -2175,6 +3911,46 @@
         {
           "name": "Mizu | Split Top",
           "price": "From 35.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Girl's BF | Split Top",
+          "price": "From 35.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Flower Market | Split Top",
+          "price": "From 35.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Pastels and Cream | Crop & Regular",
+          "price": "From 28.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Flower Market | Box Pleated Skirt",
+          "price": "70.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Girl's BF | Crop & Regular",
+          "price": "From 28.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Pastel of the Orient | Crop & Regular",
+          "price": "From 28.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Nori | Split Top",
+          "price": "From 35.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Nyonya | 3/4 Sleeved Cropped Top",
+          "price": "70.00USD",
           "source": "https://betterthanblouses.com/"
         }
       ],
@@ -2214,8 +3990,7 @@
           "source": "https://betterthanblouses.com/faq/"
         },
         "instagram": {
-          "value": "betterthanblouses",
-          "source": "https://better"
+          "value": "betterthan"
         }
       }
     },
@@ -2225,7 +4000,7 @@
         "source": "https://betterthanblouses.com/"
       },
       "summary": {
-        "value": "Versatile and lightweight handmade batik apparel, including blouses, dresses, tops, and skirts, handmade in small batches.",
+        "value": "Versatile and lightweight handmade batik apparel, vintage finds, and blouses for every occasion.",
         "source": "https://betterthanblouses.com/"
       },
       "category": "clothing boutique",
@@ -2288,6 +4063,46 @@
         {
           "name": "Mizu | Split Top",
           "price": "From 35.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Girl's BF | Split Top",
+          "price": "From 35.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Flower Market | Split Top",
+          "price": "From 35.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Pastels and Cream | Crop & Regular",
+          "price": "From 28.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Flower Market | Box Pleated Skirt",
+          "price": "70.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Girl's BF | Crop & Regular",
+          "price": "From 28.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Pastel of the Orient | Crop & Regular",
+          "price": "From 28.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Nori | Split Top",
+          "price": "From 35.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Nyonya | 3/4 Sleeved Cropped Top",
+          "price": "70.00USD",
           "source": "https://betterthanblouses.com/"
         }
       ],
@@ -2329,8 +4144,7 @@
         "instagram": {
           "value": "betterthanblouses",
           "source": "https://betterthanblouses.com/"
-        },
-        "bookingUrl": null
+        }
       }
     },
     {
@@ -2339,7 +4153,7 @@
         "source": "https://betterthanblouses.com/"
       },
       "summary": {
-        "value": "Versatile and lightweight handmade batik apparel, including blouses, dresses, tops, and skirts, handmade in small batches.",
+        "value": "Versatile and lightweight handmade batik apparel, vintage finds, and blouses for every occasion.",
         "source": "https://betterthanblouses.com/"
       },
       "category": "clothing boutique",
@@ -2402,6 +4216,46 @@
         {
           "name": "Mizu | Split Top",
           "price": "From 35.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Girl's BF | Split Top",
+          "price": "From 35.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Flower Market | Split Top",
+          "price": "From 35.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Pastels and Cream | Crop & Regular",
+          "price": "From 28.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Flower Market | Box Pleated Skirt",
+          "price": "70.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Girl's BF | Crop & Regular",
+          "price": "From 28.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Pastel of the Orient | Crop & Regular",
+          "price": "From 28.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Nori | Split Top",
+          "price": "From 35.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Nyonya | 3/4 Sleeved Cropped Top",
+          "price": "70.00USD",
           "source": "https://betterthanblouses.com/"
         }
       ],
@@ -2447,7 +4301,7 @@
         "bookingUrl": null
       },
       "hours": {
-        "value": "Monday - Saturday 1:00 p.m. to 6:00 p.m"
+        "value": "Monday - Saturday 1"
       }
     },
     {
@@ -2456,7 +4310,7 @@
         "source": "https://betterthanblouses.com/"
       },
       "summary": {
-        "value": "Versatile and lightweight handmade batik apparel, including blouses, dresses, tops, and skirts, handmade in small batches.",
+        "value": "Versatile and lightweight handmade batik apparel, vintage finds, and blouses for every occasion.",
         "source": "https://betterthanblouses.com/"
       },
       "category": "clothing boutique",
@@ -2519,6 +4373,46 @@
         {
           "name": "Mizu | Split Top",
           "price": "From 35.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Girl's BF | Split Top",
+          "price": "From 35.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Flower Market | Split Top",
+          "price": "From 35.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Pastels and Cream | Crop & Regular",
+          "price": "From 28.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Flower Market | Box Pleated Skirt",
+          "price": "70.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Girl's BF | Crop & Regular",
+          "price": "From 28.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Pastel of the Orient | Crop & Regular",
+          "price": "From 28.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Nori | Split Top",
+          "price": "From 35.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Nyonya | 3/4 Sleeved Cropped Top",
+          "price": "70.00USD",
           "source": "https://betterthanblouses.com/"
         }
       ],
@@ -2565,7 +4459,7 @@
       },
       "hours": {
         "value": "Monday - Saturday 1:00 p.m. to 6:00 p.m",
-        "source": "https://betterthanblouses.com/contact/"
+        "source": "https://betterthanblouses"
       }
     },
     {
@@ -2574,7 +4468,7 @@
         "source": "https://betterthanblouses.com/"
       },
       "summary": {
-        "value": "Versatile and lightweight handmade batik apparel, including blouses, dresses, tops, and skirts, handmade in small batches.",
+        "value": "Versatile and lightweight handmade batik apparel, vintage finds, and blouses for every occasion.",
         "source": "https://betterthanblouses.com/"
       },
       "category": "clothing boutique",
@@ -2637,6 +4531,46 @@
         {
           "name": "Mizu | Split Top",
           "price": "From 35.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Girl's BF | Split Top",
+          "price": "From 35.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Flower Market | Split Top",
+          "price": "From 35.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Pastels and Cream | Crop & Regular",
+          "price": "From 28.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Flower Market | Box Pleated Skirt",
+          "price": "70.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Girl's BF | Crop & Regular",
+          "price": "From 28.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Pastel of the Orient | Crop & Regular",
+          "price": "From 28.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Nori | Split Top",
+          "price": "From 35.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Nyonya | 3/4 Sleeved Cropped Top",
+          "price": "70.00USD",
           "source": "https://betterthanblouses.com/"
         }
       ],
@@ -2686,14 +4620,177 @@
         "source": "https://betterthanblouses.com/contact/"
       },
       "tone": [
-        "playful",
-        "warm",
         "casual",
-        "friendly"
+        "humorous",
+        "warm"
+      ]
+    },
+    {
+      "name": {
+        "value": "betterthanblouses",
+        "source": "https://betterthanblouses.com/"
+      },
+      "summary": {
+        "value": "Versatile and lightweight handmade batik apparel, vintage finds, and blouses for every occasion.",
+        "source": "https://betterthanblouses.com/"
+      },
+      "category": "clothing boutique",
+      "offerings": [
+        {
+          "name": "Roses | Reversible Shift Dress",
+          "price": "105.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Cloud 9 | Pleated Shorts",
+          "price": "60.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "La Vie en Bleu | Shape Shift Top",
+          "price": "37.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "La Vie En Bleu | Split Top",
+          "price": "From 35.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Neelam & Ilai | Shape Shift Top",
+          "price": "37.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Neelam & Ilai | Split Top",
+          "price": "From 35.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Neelam & Ilai | Crop Top",
+          "price": "30.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "La Vie En Bleu | Culottes",
+          "price": "70.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Mizu | Shape Shift Top",
+          "price": "37.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Flower Market & Mizu | Reversible Midi Skirt",
+          "price": "98.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Mizu | Crop Top",
+          "price": "30.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Mizu | Split Top",
+          "price": "From 35.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Girl's BF | Split Top",
+          "price": "From 35.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Flower Market | Split Top",
+          "price": "From 35.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Pastels and Cream | Crop & Regular",
+          "price": "From 28.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Flower Market | Box Pleated Skirt",
+          "price": "70.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Girl's BF | Crop & Regular",
+          "price": "From 28.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Pastel of the Orient | Crop & Regular",
+          "price": "From 28.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Nori | Split Top",
+          "price": "From 35.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Nyonya | 3/4 Sleeved Cropped Top",
+          "price": "70.00USD",
+          "source": "https://betterthanblouses.com/"
+        }
+      ],
+      "highlights": [
+        {
+          "value": "Handmade in small batches",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "value": "Versatile & Light-weight apparel for every occasion",
+          "source": "https://betterthanblouses.com/"
+        }
+      ],
+      "location": {
+        "town": {
+          "value": "George Town",
+          "source": "https://betterthanblouses.com/contact/"
+        },
+        "area": {
+          "value": "Penang",
+          "source": "https://betterthanblouses.com/contact/"
+        },
+        "address": {
+          "value": "191, Lebuh Carnarvon, George Town, 10100, Penang",
+          "source": "https://betterthanblouses.com/contact/"
+        },
+        "serviceArea": null
+      },
+      "contact": {
+        "whatsapp": {
+          "value": "+60167734763",
+          "source": "https://betterthanblouses.com/contact/"
+        },
+        "phone": null,
+        "email": {
+          "value": "hello@betterthanblouses.com",
+          "source": "https://betterthanblouses.com/faq/"
+        },
+        "instagram": {
+          "value": "betterthanblouses",
+          "source": "https://betterthanblouses.com/"
+        },
+        "bookingUrl": null
+      },
+      "hours": {
+        "value": "Monday - Saturday 1:00 p.m. to 6:00 p.m",
+        "source": "https://betterthanblouses.com/contact/"
+      },
+      "tone": [
+        "casual",
+        "humorous",
+        "warm",
+        "playful"
       ],
       "colours": [
         {
-          "hex": "#000000"
+          "hex": "#00"
         }
       ]
     },
@@ -2703,7 +4800,7 @@
         "source": "https://betterthanblouses.com/"
       },
       "summary": {
-        "value": "Versatile and lightweight handmade batik apparel, including blouses, dresses, tops, and skirts, handmade in small batches.",
+        "value": "Versatile and lightweight handmade batik apparel, vintage finds, and blouses for every occasion.",
         "source": "https://betterthanblouses.com/"
       },
       "category": "clothing boutique",
@@ -2767,6 +4864,46 @@
           "name": "Mizu | Split Top",
           "price": "From 35.00USD",
           "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Girl's BF | Split Top",
+          "price": "From 35.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Flower Market | Split Top",
+          "price": "From 35.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Pastels and Cream | Crop & Regular",
+          "price": "From 28.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Flower Market | Box Pleated Skirt",
+          "price": "70.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Girl's BF | Crop & Regular",
+          "price": "From 28.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Pastel of the Orient | Crop & Regular",
+          "price": "From 28.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Nori | Split Top",
+          "price": "From 35.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Nyonya | 3/4 Sleeved Cropped Top",
+          "price": "70.00USD",
+          "source": "https://betterthanblouses.com/"
         }
       ],
       "highlights": [
@@ -2815,16 +4952,16 @@
         "source": "https://betterthanblouses.com/contact/"
       },
       "tone": [
-        "playful",
-        "warm",
         "casual",
-        "friendly"
+        "humorous",
+        "warm",
+        "playful"
       ],
       "colours": [
         {
           "hex": "#000000",
-          "role": "primary",
-          "source": "https://betterthanblouses.com/"
+          "role": "text",
+          "source": "https://betterthanbl"
         }
       ]
     },
@@ -2834,7 +4971,7 @@
         "source": "https://betterthanblouses.com/"
       },
       "summary": {
-        "value": "Versatile and lightweight handmade batik apparel, including blouses, dresses, tops, and skirts, handmade in small batches.",
+        "value": "Versatile and lightweight handmade batik apparel, vintage finds, and blouses for every occasion.",
         "source": "https://betterthanblouses.com/"
       },
       "category": "clothing boutique",
@@ -2898,6 +5035,46 @@
           "name": "Mizu | Split Top",
           "price": "From 35.00USD",
           "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Girl's BF | Split Top",
+          "price": "From 35.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Flower Market | Split Top",
+          "price": "From 35.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Pastels and Cream | Crop & Regular",
+          "price": "From 28.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Flower Market | Box Pleated Skirt",
+          "price": "70.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Girl's BF | Crop & Regular",
+          "price": "From 28.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Pastel of the Orient | Crop & Regular",
+          "price": "From 28.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Nori | Split Top",
+          "price": "From 35.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Nyonya | 3/4 Sleeved Cropped Top",
+          "price": "70.00USD",
+          "source": "https://betterthanblouses.com/"
         }
       ],
       "highlights": [
@@ -2946,20 +5123,200 @@
         "source": "https://betterthanblouses.com/contact/"
       },
       "tone": [
-        "playful",
-        "warm",
         "casual",
-        "friendly"
+        "humorous",
+        "warm",
+        "playful"
       ],
       "colours": [
         {
           "hex": "#000000",
-          "role": "primary",
+          "role": "text",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "hex": "#ffffff",
+          "role": ""
+        }
+      ]
+    },
+    {
+      "name": {
+        "value": "betterthanblouses",
+        "source": "https://betterthanblouses.com/"
+      },
+      "summary": {
+        "value": "Versatile and lightweight handmade batik apparel, vintage finds, and blouses for every occasion.",
+        "source": "https://betterthanblouses.com/"
+      },
+      "category": "clothing boutique",
+      "offerings": [
+        {
+          "name": "Roses | Reversible Shift Dress",
+          "price": "105.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Cloud 9 | Pleated Shorts",
+          "price": "60.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "La Vie en Bleu | Shape Shift Top",
+          "price": "37.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "La Vie En Bleu | Split Top",
+          "price": "From 35.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Neelam & Ilai | Shape Shift Top",
+          "price": "37.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Neelam & Ilai | Split Top",
+          "price": "From 35.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Neelam & Ilai | Crop Top",
+          "price": "30.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "La Vie En Bleu | Culottes",
+          "price": "70.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Mizu | Shape Shift Top",
+          "price": "37.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Flower Market & Mizu | Reversible Midi Skirt",
+          "price": "98.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Mizu | Crop Top",
+          "price": "30.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Mizu | Split Top",
+          "price": "From 35.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Girl's BF | Split Top",
+          "price": "From 35.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Flower Market | Split Top",
+          "price": "From 35.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Pastels and Cream | Crop & Regular",
+          "price": "From 28.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Flower Market | Box Pleated Skirt",
+          "price": "70.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Girl's BF | Crop & Regular",
+          "price": "From 28.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Pastel of the Orient | Crop & Regular",
+          "price": "From 28.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Nori | Split Top",
+          "price": "From 35.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Nyonya | 3/4 Sleeved Cropped Top",
+          "price": "70.00USD",
+          "source": "https://betterthanblouses.com/"
+        }
+      ],
+      "highlights": [
+        {
+          "value": "Handmade in small batches",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "value": "Versatile & Light-weight apparel for every occasion",
+          "source": "https://betterthanblouses.com/"
+        }
+      ],
+      "location": {
+        "town": {
+          "value": "George Town",
+          "source": "https://betterthanblouses.com/contact/"
+        },
+        "area": {
+          "value": "Penang",
+          "source": "https://betterthanblouses.com/contact/"
+        },
+        "address": {
+          "value": "191, Lebuh Carnarvon, George Town, 10100, Penang",
+          "source": "https://betterthanblouses.com/contact/"
+        },
+        "serviceArea": null
+      },
+      "contact": {
+        "whatsapp": {
+          "value": "+60167734763",
+          "source": "https://betterthanblouses.com/contact/"
+        },
+        "phone": null,
+        "email": {
+          "value": "hello@betterthanblouses.com",
+          "source": "https://betterthanblouses.com/faq/"
+        },
+        "instagram": {
+          "value": "betterthanblouses",
+          "source": "https://betterthanblouses.com/"
+        },
+        "bookingUrl": null
+      },
+      "hours": {
+        "value": "Monday - Saturday 1:00 p.m. to 6:00 p.m",
+        "source": "https://betterthanblouses.com/contact/"
+      },
+      "tone": [
+        "casual",
+        "humorous",
+        "warm",
+        "playful"
+      ],
+      "colours": [
+        {
+          "hex": "#000000",
+          "role": "text",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "hex": "#ffffff",
+          "role": "background",
           "source": "https://betterthanblouses.com/"
         }
       ],
       "visualStyle": {
-        "summary": "bright natural light, vibrant batik patterns, clean minimal"
+        "summary": "Clean studio lighting, minimal white background, vibrant batik patterns,"
       }
     },
     {
@@ -2968,7 +5325,7 @@
         "source": "https://betterthanblouses.com/"
       },
       "summary": {
-        "value": "Versatile and lightweight handmade batik apparel, including blouses, dresses, tops, and skirts, handmade in small batches.",
+        "value": "Versatile and lightweight handmade batik apparel, vintage finds, and blouses for every occasion.",
         "source": "https://betterthanblouses.com/"
       },
       "category": "clothing boutique",
@@ -3032,6 +5389,46 @@
           "name": "Mizu | Split Top",
           "price": "From 35.00USD",
           "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Girl's BF | Split Top",
+          "price": "From 35.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Flower Market | Split Top",
+          "price": "From 35.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Pastels and Cream | Crop & Regular",
+          "price": "From 28.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Flower Market | Box Pleated Skirt",
+          "price": "70.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Girl's BF | Crop & Regular",
+          "price": "From 28.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Pastel of the Orient | Crop & Regular",
+          "price": "From 28.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Nori | Split Top",
+          "price": "From 35.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Nyonya | 3/4 Sleeved Cropped Top",
+          "price": "70.00USD",
+          "source": "https://betterthanblouses.com/"
         }
       ],
       "highlights": [
@@ -3080,21 +5477,26 @@
         "source": "https://betterthanblouses.com/contact/"
       },
       "tone": [
-        "playful",
-        "warm",
         "casual",
-        "friendly"
+        "humorous",
+        "warm",
+        "playful"
       ],
       "colours": [
         {
           "hex": "#000000",
-          "role": "primary",
+          "role": "text",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "hex": "#ffffff",
+          "role": "background",
           "source": "https://betterthanblouses.com/"
         }
       ],
       "visualStyle": {
-        "summary": "bright natural light, vibrant batik patterns, clean minimal studio background",
-        "palette": "vibrant pinks, blues, browns, and pastels"
+        "summary": "Clean studio lighting, minimal white background, vibrant batik patterns, natural textures.",
+        "palette": "White, black, assorted vibrant batik colors like pink, blue, and brown"
       }
     },
     {
@@ -3103,7 +5505,7 @@
         "source": "https://betterthanblouses.com/"
       },
       "summary": {
-        "value": "Versatile and lightweight handmade batik apparel, including blouses, dresses, tops, and skirts, handmade in small batches.",
+        "value": "Versatile and lightweight handmade batik apparel, vintage finds, and blouses for every occasion.",
         "source": "https://betterthanblouses.com/"
       },
       "category": "clothing boutique",
@@ -3167,6 +5569,46 @@
           "name": "Mizu | Split Top",
           "price": "From 35.00USD",
           "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Girl's BF | Split Top",
+          "price": "From 35.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Flower Market | Split Top",
+          "price": "From 35.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Pastels and Cream | Crop & Regular",
+          "price": "From 28.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Flower Market | Box Pleated Skirt",
+          "price": "70.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Girl's BF | Crop & Regular",
+          "price": "From 28.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Pastel of the Orient | Crop & Regular",
+          "price": "From 28.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Nori | Split Top",
+          "price": "From 35.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Nyonya | 3/4 Sleeved Cropped Top",
+          "price": "70.00USD",
+          "source": "https://betterthanblouses.com/"
         }
       ],
       "highlights": [
@@ -3215,23 +5657,28 @@
         "source": "https://betterthanblouses.com/contact/"
       },
       "tone": [
-        "playful",
-        "warm",
         "casual",
-        "friendly"
+        "humorous",
+        "warm",
+        "playful"
       ],
       "colours": [
         {
           "hex": "#000000",
-          "role": "primary",
+          "role": "text",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "hex": "#ffffff",
+          "role": "background",
           "source": "https://betterthanblouses.com/"
         }
       ],
       "visualStyle": {
-        "summary": "bright natural light, vibrant batik patterns, clean minimal studio background",
-        "palette": "vibrant pinks, blues, browns, and pastels",
-        "light": "bright natural daylight",
-        "textures": "smooth cotton and traditional batik textiles"
+        "summary": "Clean studio lighting, minimal white background, vibrant batik patterns, natural textures.",
+        "palette": "White, black, assorted vibrant batik colors like pink, blue, and brown",
+        "light": "Bright studio lighting, soft natural light",
+        "textures": "Smooth cotton fabric, wooden flooring, textile"
       }
     },
     {
@@ -3240,7 +5687,7 @@
         "source": "https://betterthanblouses.com/"
       },
       "summary": {
-        "value": "Versatile and lightweight handmade batik apparel, including blouses, dresses, tops, and skirts, handmade in small batches.",
+        "value": "Versatile and lightweight handmade batik apparel, vintage finds, and blouses for every occasion.",
         "source": "https://betterthanblouses.com/"
       },
       "category": "clothing boutique",
@@ -3304,6 +5751,46 @@
           "name": "Mizu | Split Top",
           "price": "From 35.00USD",
           "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Girl's BF | Split Top",
+          "price": "From 35.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Flower Market | Split Top",
+          "price": "From 35.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Pastels and Cream | Crop & Regular",
+          "price": "From 28.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Flower Market | Box Pleated Skirt",
+          "price": "70.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Girl's BF | Crop & Regular",
+          "price": "From 28.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Pastel of the Orient | Crop & Regular",
+          "price": "From 28.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Nori | Split Top",
+          "price": "From 35.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Nyonya | 3/4 Sleeved Cropped Top",
+          "price": "70.00USD",
+          "source": "https://betterthanblouses.com/"
         }
       ],
       "highlights": [
@@ -3352,24 +5839,29 @@
         "source": "https://betterthanblouses.com/contact/"
       },
       "tone": [
-        "playful",
-        "warm",
         "casual",
-        "friendly"
+        "humorous",
+        "warm",
+        "playful"
       ],
       "colours": [
         {
           "hex": "#000000",
-          "role": "primary",
+          "role": "text",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "hex": "#ffffff",
+          "role": "background",
           "source": "https://betterthanblouses.com/"
         }
       ],
       "visualStyle": {
-        "summary": "bright natural light, vibrant batik patterns, clean minimal studio background",
-        "palette": "vibrant pinks, blues, browns, and pastels",
-        "light": "bright natural daylight",
-        "textures": "smooth cotton and traditional batik textiles",
-        "mood": "cheerful, playful, and fresh"
+        "summary": "Clean studio lighting, minimal white background, vibrant batik patterns, natural textures.",
+        "palette": "White, black, assorted vibrant batik colors like pink, blue, and brown",
+        "light": "Bright studio lighting, soft natural light",
+        "textures": "Smooth cotton fabric, wooden flooring, textile patterns",
+        "mood": "Casual, cheerful, chic"
       }
     }
   ],
@@ -3379,7 +5871,7 @@
       "source": "https://betterthanblouses.com/"
     },
     "summary": {
-      "value": "Versatile and lightweight handmade batik apparel, including blouses, dresses, tops, and skirts, handmade in small batches.",
+      "value": "Versatile and lightweight handmade batik apparel, vintage finds, and blouses for every occasion.",
       "source": "https://betterthanblouses.com/"
     },
     "category": "clothing boutique",
@@ -3443,6 +5935,46 @@
         "name": "Mizu | Split Top",
         "price": "From 35.00USD",
         "source": "https://betterthanblouses.com/"
+      },
+      {
+        "name": "Girl's BF | Split Top",
+        "price": "From 35.00USD",
+        "source": "https://betterthanblouses.com/"
+      },
+      {
+        "name": "Flower Market | Split Top",
+        "price": "From 35.00USD",
+        "source": "https://betterthanblouses.com/"
+      },
+      {
+        "name": "Pastels and Cream | Crop & Regular",
+        "price": "From 28.00USD",
+        "source": "https://betterthanblouses.com/"
+      },
+      {
+        "name": "Flower Market | Box Pleated Skirt",
+        "price": "70.00USD",
+        "source": "https://betterthanblouses.com/"
+      },
+      {
+        "name": "Girl's BF | Crop & Regular",
+        "price": "From 28.00USD",
+        "source": "https://betterthanblouses.com/"
+      },
+      {
+        "name": "Pastel of the Orient | Crop & Regular",
+        "price": "From 28.00USD",
+        "source": "https://betterthanblouses.com/"
+      },
+      {
+        "name": "Nori | Split Top",
+        "price": "From 35.00USD",
+        "source": "https://betterthanblouses.com/"
+      },
+      {
+        "name": "Nyonya | 3/4 Sleeved Cropped Top",
+        "price": "70.00USD",
+        "source": "https://betterthanblouses.com/"
       }
     ],
     "highlights": [
@@ -3491,24 +6023,29 @@
       "source": "https://betterthanblouses.com/contact/"
     },
     "tone": [
-      "playful",
-      "warm",
       "casual",
-      "friendly"
+      "humorous",
+      "warm",
+      "playful"
     ],
     "colours": [
       {
         "hex": "#000000",
-        "role": "primary",
+        "role": "text",
+        "source": "https://betterthanblouses.com/"
+      },
+      {
+        "hex": "#ffffff",
+        "role": "background",
         "source": "https://betterthanblouses.com/"
       }
     ],
     "visualStyle": {
-      "summary": "bright natural light, vibrant batik patterns, clean minimal studio background",
-      "palette": "vibrant pinks, blues, browns, and pastels",
-      "light": "bright natural daylight",
-      "textures": "smooth cotton and traditional batik textiles",
-      "mood": "cheerful, playful, and fresh"
+      "summary": "Clean studio lighting, minimal white background, vibrant batik patterns, natural textures.",
+      "palette": "White, black, assorted vibrant batik colors like pink, blue, and brown",
+      "light": "Bright studio lighting, soft natural light",
+      "textures": "Smooth cotton fabric, wooden flooring, textile patterns",
+      "mood": "Casual, cheerful, chic"
     }
   }
 }

@@ -1,25 +1,14 @@
 {
   "modelId": "gemini-3.5-flash-lite",
-  "promptVersion": "brand-2",
+  "promptVersion": "brand-3",
   "partials": [
     {
-      "name": {
-        "value": ""
-      }
+      "name": {}
     },
     {
       "name": {
         "value": "The Maker",
-        "source": "https://www.themaker243.com/"
-      }
-    },
-    {
-      "name": {
-        "value": "The Maker",
-        "source": "https://www.themaker243.com/"
-      },
-      "summary": {
-        "value": "Handcrafted French pastries, freshly made with quality ingredients and a touch of modern"
+        "source": "https://www.themaker243.com"
       }
     },
     {
@@ -28,8 +17,7 @@
         "source": "https://www.themaker243.com/"
       },
       "summary": {
-        "value": "Handcrafted French pastries, freshly made with quality ingredients and a touch of modern creativity.",
-        "source": "https://www.themaker243.com/menu"
+        "value": "Handcrafted French pastries and bakes made"
       }
     },
     {
@@ -38,13 +26,24 @@
         "source": "https://www.themaker243.com/"
       },
       "summary": {
-        "value": "Handcrafted French pastries, freshly made with quality ingredients and a touch of modern creativity.",
+        "value": "Handcrafted French pastries and bakes made with passion and quality ingredients in George Town, Penang.",
+        "source": "https://www.themaker243."
+      }
+    },
+    {
+      "name": {
+        "value": "The Maker",
+        "source": "https://www.themaker243.com/"
+      },
+      "summary": {
+        "value": "Handcrafted French pastries and bakes made with passion and quality ingredients in George Town, Penang.",
         "source": "https://www.themaker243.com/menu"
       },
       "category": "bakery",
       "offerings": [
         {
-          "name": "French Cro"
+          "name": "French Croissant",
+          "price": "RM 11.00"
         }
       ]
     },
@@ -54,7 +53,7 @@
         "source": "https://www.themaker243.com/"
       },
       "summary": {
-        "value": "Handcrafted French pastries, freshly made with quality ingredients and a touch of modern creativity.",
+        "value": "Handcrafted French pastries and bakes made with passion and quality ingredients in George Town, Penang.",
         "source": "https://www.themaker243.com/menu"
       },
       "category": "bakery",
@@ -62,6 +61,609 @@
         {
           "name": "French Croissant",
           "price": "RM 11.00",
+          "source": "https://www.themaker243.com/menu"
+        },
+        {}
+      ]
+    },
+    {
+      "name": {
+        "value": "The Maker",
+        "source": "https://www.themaker243.com/"
+      },
+      "summary": {
+        "value": "Handcrafted French pastries and bakes made with passion and quality ingredients in George Town, Penang.",
+        "source": "https://www.themaker243.com/menu"
+      },
+      "category": "bakery",
+      "offerings": [
+        {
+          "name": "French Croissant",
+          "price": "RM 11.00",
+          "source": "https://www.themaker243.com/menu"
+        },
+        {
+          "name": "Almond Kaya Croissant",
+          "price": "RM 16.0"
+        }
+      ]
+    },
+    {
+      "name": {
+        "value": "The Maker",
+        "source": "https://www.themaker243.com/"
+      },
+      "summary": {
+        "value": "Handcrafted French pastries and bakes made with passion and quality ingredients in George Town, Penang.",
+        "source": "https://www.themaker243.com/menu"
+      },
+      "category": "bakery",
+      "offerings": [
+        {
+          "name": "French Croissant",
+          "price": "RM 11.00",
+          "source": "https://www.themaker243.com/menu"
+        },
+        {
+          "name": "Almond Kaya Croissant",
+          "price": "RM 16.00",
+          "source": "https://www.themaker243.com/menu"
+        }
+      ]
+    },
+    {
+      "name": {
+        "value": "The Maker",
+        "source": "https://www.themaker243.com/"
+      },
+      "summary": {
+        "value": "Handcrafted French pastries and bakes made with passion and quality ingredients in George Town, Penang.",
+        "source": "https://www.themaker243.com/menu"
+      },
+      "category": "bakery",
+      "offerings": [
+        {
+          "name": "French Croissant",
+          "price": "RM 11.00",
+          "source": "https://www.themaker243.com/menu"
+        },
+        {
+          "name": "Almond Kaya Croissant",
+          "price": "RM 16.00",
+          "source": "https://www.themaker243.com/menu"
+        },
+        {
+          "name": "Scone with Strawberry Jam and Cream /pcs"
+        }
+      ]
+    },
+    {
+      "name": {
+        "value": "The Maker",
+        "source": "https://www.themaker243.com/"
+      },
+      "summary": {
+        "value": "Handcrafted French pastries and bakes made with passion and quality ingredients in George Town, Penang.",
+        "source": "https://www.themaker243.com/menu"
+      },
+      "category": "bakery",
+      "offerings": [
+        {
+          "name": "French Croissant",
+          "price": "RM 11.00",
+          "source": "https://www.themaker243.com/menu"
+        },
+        {
+          "name": "Almond Kaya Croissant",
+          "price": "RM 16.00",
+          "source": "https://www.themaker243.com/menu"
+        },
+        {
+          "name": "Scone with Strawberry Jam and Cream /pcs",
+          "price": "RM 8.50",
+          "source": "https://www.themaker243"
+        }
+      ]
+    },
+    {
+      "name": {
+        "value": "The Maker",
+        "source": "https://www.themaker243.com/"
+      },
+      "summary": {
+        "value": "Handcrafted French pastries and bakes made with passion and quality ingredients in George Town, Penang.",
+        "source": "https://www.themaker243.com/menu"
+      },
+      "category": "bakery",
+      "offerings": [
+        {
+          "name": "French Croissant",
+          "price": "RM 11.00",
+          "source": "https://www.themaker243.com/menu"
+        },
+        {
+          "name": "Almond Kaya Croissant",
+          "price": "RM 16.00",
+          "source": "https://www.themaker243.com/menu"
+        },
+        {
+          "name": "Scone with Strawberry Jam and Cream /pcs",
+          "price": "RM 8.50",
+          "source": "https://www.themaker243.com/menu"
+        },
+        {
+          "name": "Charcoal Sesame Croissant",
+          "price": "RM 21.50",
+          "source": "https://www.the"
+        }
+      ]
+    },
+    {
+      "name": {
+        "value": "The Maker",
+        "source": "https://www.themaker243.com/"
+      },
+      "summary": {
+        "value": "Handcrafted French pastries and bakes made with passion and quality ingredients in George Town, Penang.",
+        "source": "https://www.themaker243.com/menu"
+      },
+      "category": "bakery",
+      "offerings": [
+        {
+          "name": "French Croissant",
+          "price": "RM 11.00",
+          "source": "https://www.themaker243.com/menu"
+        },
+        {
+          "name": "Almond Kaya Croissant",
+          "price": "RM 16.00",
+          "source": "https://www.themaker243.com/menu"
+        },
+        {
+          "name": "Scone with Strawberry Jam and Cream /pcs",
+          "price": "RM 8.50",
+          "source": "https://www.themaker243.com/menu"
+        },
+        {
+          "name": "Charcoal Sesame Croissant",
+          "price": "RM 21.50",
+          "source": "https://www.themaker243.com/menu"
+        },
+        {
+          "name": "Caramalized"
+        }
+      ]
+    },
+    {
+      "name": {
+        "value": "The Maker",
+        "source": "https://www.themaker243.com/"
+      },
+      "summary": {
+        "value": "Handcrafted French pastries and bakes made with passion and quality ingredients in George Town, Penang.",
+        "source": "https://www.themaker243.com/menu"
+      },
+      "category": "bakery",
+      "offerings": [
+        {
+          "name": "French Croissant",
+          "price": "RM 11.00",
+          "source": "https://www.themaker243.com/menu"
+        },
+        {
+          "name": "Almond Kaya Croissant",
+          "price": "RM 16.00",
+          "source": "https://www.themaker243.com/menu"
+        },
+        {
+          "name": "Scone with Strawberry Jam and Cream /pcs",
+          "price": "RM 8.50",
+          "source": "https://www.themaker243.com/menu"
+        },
+        {
+          "name": "Charcoal Sesame Croissant",
+          "price": "RM 21.50",
+          "source": "https://www.themaker243.com/menu"
+        },
+        {
+          "name": "Caramalized Banana Croissant",
+          "price": "RM 20",
+          "source": "https://www"
+        }
+      ]
+    },
+    {
+      "name": {
+        "value": "The Maker",
+        "source": "https://www.themaker243.com/"
+      },
+      "summary": {
+        "value": "Handcrafted French pastries and bakes made with passion and quality ingredients in George Town, Penang.",
+        "source": "https://www.themaker243.com/menu"
+      },
+      "category": "bakery",
+      "offerings": [
+        {
+          "name": "French Croissant",
+          "price": "RM 11.00",
+          "source": "https://www.themaker243.com/menu"
+        },
+        {
+          "name": "Almond Kaya Croissant",
+          "price": "RM 16.00",
+          "source": "https://www.themaker243.com/menu"
+        },
+        {
+          "name": "Scone with Strawberry Jam and Cream /pcs",
+          "price": "RM 8.50",
+          "source": "https://www.themaker243.com/menu"
+        },
+        {
+          "name": "Charcoal Sesame Croissant",
+          "price": "RM 21.50",
+          "source": "https://www.themaker243.com/menu"
+        },
+        {
+          "name": "Caramalized Banana Croissant",
+          "price": "RM 20",
+          "source": "https://www.themaker243.com/menu"
+        },
+        {
+          "name": "M"
+        }
+      ]
+    },
+    {
+      "name": {
+        "value": "The Maker",
+        "source": "https://www.themaker243.com/"
+      },
+      "summary": {
+        "value": "Handcrafted French pastries and bakes made with passion and quality ingredients in George Town, Penang.",
+        "source": "https://www.themaker243.com/menu"
+      },
+      "category": "bakery",
+      "offerings": [
+        {
+          "name": "French Croissant",
+          "price": "RM 11.00",
+          "source": "https://www.themaker243.com/menu"
+        },
+        {
+          "name": "Almond Kaya Croissant",
+          "price": "RM 16.00",
+          "source": "https://www.themaker243.com/menu"
+        },
+        {
+          "name": "Scone with Strawberry Jam and Cream /pcs",
+          "price": "RM 8.50",
+          "source": "https://www.themaker243.com/menu"
+        },
+        {
+          "name": "Charcoal Sesame Croissant",
+          "price": "RM 21.50",
+          "source": "https://www.themaker243.com/menu"
+        },
+        {
+          "name": "Caramalized Banana Croissant",
+          "price": "RM 20",
+          "source": "https://www.themaker243.com/menu"
+        },
+        {
+          "name": "Mushroom Roll",
+          "price": "RM 20",
+          "source": "https://www."
+        }
+      ]
+    },
+    {
+      "name": {
+        "value": "The Maker",
+        "source": "https://www.themaker243.com/"
+      },
+      "summary": {
+        "value": "Handcrafted French pastries and bakes made with passion and quality ingredients in George Town, Penang.",
+        "source": "https://www.themaker243.com/menu"
+      },
+      "category": "bakery",
+      "offerings": [
+        {
+          "name": "French Croissant",
+          "price": "RM 11.00",
+          "source": "https://www.themaker243.com/menu"
+        },
+        {
+          "name": "Almond Kaya Croissant",
+          "price": "RM 16.00",
+          "source": "https://www.themaker243.com/menu"
+        },
+        {
+          "name": "Scone with Strawberry Jam and Cream /pcs",
+          "price": "RM 8.50",
+          "source": "https://www.themaker243.com/menu"
+        },
+        {
+          "name": "Charcoal Sesame Croissant",
+          "price": "RM 21.50",
+          "source": "https://www.themaker243.com/menu"
+        },
+        {
+          "name": "Caramalized Banana Croissant",
+          "price": "RM 20",
+          "source": "https://www.themaker243.com/menu"
+        },
+        {
+          "name": "Mushroom Roll",
+          "price": "RM 20",
+          "source": "https://www.themaker243.com/menu"
+        },
+        {
+          "name": "Curry"
+        }
+      ]
+    },
+    {
+      "name": {
+        "value": "The Maker",
+        "source": "https://www.themaker243.com/"
+      },
+      "summary": {
+        "value": "Handcrafted French pastries and bakes made with passion and quality ingredients in George Town, Penang.",
+        "source": "https://www.themaker243.com/menu"
+      },
+      "category": "bakery",
+      "offerings": [
+        {
+          "name": "French Croissant",
+          "price": "RM 11.00",
+          "source": "https://www.themaker243.com/menu"
+        },
+        {
+          "name": "Almond Kaya Croissant",
+          "price": "RM 16.00",
+          "source": "https://www.themaker243.com/menu"
+        },
+        {
+          "name": "Scone with Strawberry Jam and Cream /pcs",
+          "price": "RM 8.50",
+          "source": "https://www.themaker243.com/menu"
+        },
+        {
+          "name": "Charcoal Sesame Croissant",
+          "price": "RM 21.50",
+          "source": "https://www.themaker243.com/menu"
+        },
+        {
+          "name": "Caramalized Banana Croissant",
+          "price": "RM 20",
+          "source": "https://www.themaker243.com/menu"
+        },
+        {
+          "name": "Mushroom Roll",
+          "price": "RM 20",
+          "source": "https://www.themaker243.com/menu"
+        },
+        {
+          "name": "Curry up",
+          "price": "RM 19",
+          "source": "https://www.themaker2"
+        }
+      ]
+    },
+    {
+      "name": {
+        "value": "The Maker",
+        "source": "https://www.themaker243.com/"
+      },
+      "summary": {
+        "value": "Handcrafted French pastries and bakes made with passion and quality ingredients in George Town, Penang.",
+        "source": "https://www.themaker243.com/menu"
+      },
+      "category": "bakery",
+      "offerings": [
+        {
+          "name": "French Croissant",
+          "price": "RM 11.00",
+          "source": "https://www.themaker243.com/menu"
+        },
+        {
+          "name": "Almond Kaya Croissant",
+          "price": "RM 16.00",
+          "source": "https://www.themaker243.com/menu"
+        },
+        {
+          "name": "Scone with Strawberry Jam and Cream /pcs",
+          "price": "RM 8.50",
+          "source": "https://www.themaker243.com/menu"
+        },
+        {
+          "name": "Charcoal Sesame Croissant",
+          "price": "RM 21.50",
+          "source": "https://www.themaker243.com/menu"
+        },
+        {
+          "name": "Caramalized Banana Croissant",
+          "price": "RM 20",
+          "source": "https://www.themaker243.com/menu"
+        },
+        {
+          "name": "Mushroom Roll",
+          "price": "RM 20",
+          "source": "https://www.themaker243.com/menu"
+        },
+        {
+          "name": "Curry up",
+          "price": "RM 19",
+          "source": "https://www.themaker243.com/menu"
+        },
+        {
+          "name": "Ham & Cheese Croissant"
+        }
+      ]
+    },
+    {
+      "name": {
+        "value": "The Maker",
+        "source": "https://www.themaker243.com/"
+      },
+      "summary": {
+        "value": "Handcrafted French pastries and bakes made with passion and quality ingredients in George Town, Penang.",
+        "source": "https://www.themaker243.com/menu"
+      },
+      "category": "bakery",
+      "offerings": [
+        {
+          "name": "French Croissant",
+          "price": "RM 11.00",
+          "source": "https://www.themaker243.com/menu"
+        },
+        {
+          "name": "Almond Kaya Croissant",
+          "price": "RM 16.00",
+          "source": "https://www.themaker243.com/menu"
+        },
+        {
+          "name": "Scone with Strawberry Jam and Cream /pcs",
+          "price": "RM 8.50",
+          "source": "https://www.themaker243.com/menu"
+        },
+        {
+          "name": "Charcoal Sesame Croissant",
+          "price": "RM 21.50",
+          "source": "https://www.themaker243.com/menu"
+        },
+        {
+          "name": "Caramalized Banana Croissant",
+          "price": "RM 20",
+          "source": "https://www.themaker243.com/menu"
+        },
+        {
+          "name": "Mushroom Roll",
+          "price": "RM 20",
+          "source": "https://www.themaker243.com/menu"
+        },
+        {
+          "name": "Curry up",
+          "price": "RM 19",
+          "source": "https://www.themaker243.com/menu"
+        },
+        {
+          "name": "Ham & Cheese Croissant",
+          "price": "RM 19",
+          "source": "https://www.themaker"
+        }
+      ]
+    },
+    {
+      "name": {
+        "value": "The Maker",
+        "source": "https://www.themaker243.com/"
+      },
+      "summary": {
+        "value": "Handcrafted French pastries and bakes made with passion and quality ingredients in George Town, Penang.",
+        "source": "https://www.themaker243.com/menu"
+      },
+      "category": "bakery",
+      "offerings": [
+        {
+          "name": "French Croissant",
+          "price": "RM 11.00",
+          "source": "https://www.themaker243.com/menu"
+        },
+        {
+          "name": "Almond Kaya Croissant",
+          "price": "RM 16.00",
+          "source": "https://www.themaker243.com/menu"
+        },
+        {
+          "name": "Scone with Strawberry Jam and Cream /pcs",
+          "price": "RM 8.50",
+          "source": "https://www.themaker243.com/menu"
+        },
+        {
+          "name": "Charcoal Sesame Croissant",
+          "price": "RM 21.50",
+          "source": "https://www.themaker243.com/menu"
+        },
+        {
+          "name": "Caramalized Banana Croissant",
+          "price": "RM 20",
+          "source": "https://www.themaker243.com/menu"
+        },
+        {
+          "name": "Mushroom Roll",
+          "price": "RM 20",
+          "source": "https://www.themaker243.com/menu"
+        },
+        {
+          "name": "Curry up",
+          "price": "RM 19",
+          "source": "https://www.themaker243.com/menu"
+        },
+        {
+          "name": "Ham & Cheese Croissant",
+          "price": "RM 19",
+          "source": "https://www.themaker243.com/menu"
+        },
+        {
+          "name": "Seaweed Katsu"
+        }
+      ]
+    },
+    {
+      "name": {
+        "value": "The Maker",
+        "source": "https://www.themaker243.com/"
+      },
+      "summary": {
+        "value": "Handcrafted French pastries and bakes made with passion and quality ingredients in George Town, Penang.",
+        "source": "https://www.themaker243.com/menu"
+      },
+      "category": "bakery",
+      "offerings": [
+        {
+          "name": "French Croissant",
+          "price": "RM 11.00",
+          "source": "https://www.themaker243.com/menu"
+        },
+        {
+          "name": "Almond Kaya Croissant",
+          "price": "RM 16.00",
+          "source": "https://www.themaker243.com/menu"
+        },
+        {
+          "name": "Scone with Strawberry Jam and Cream /pcs",
+          "price": "RM 8.50",
+          "source": "https://www.themaker243.com/menu"
+        },
+        {
+          "name": "Charcoal Sesame Croissant",
+          "price": "RM 21.50",
+          "source": "https://www.themaker243.com/menu"
+        },
+        {
+          "name": "Caramalized Banana Croissant",
+          "price": "RM 20",
+          "source": "https://www.themaker243.com/menu"
+        },
+        {
+          "name": "Mushroom Roll",
+          "price": "RM 20",
+          "source": "https://www.themaker243.com/menu"
+        },
+        {
+          "name": "Curry up",
+          "price": "RM 19",
+          "source": "https://www.themaker243.com/menu"
+        },
+        {
+          "name": "Ham & Cheese Croissant",
+          "price": "RM 19",
+          "source": "https://www.themaker243.com/menu"
+        },
+        {
+          "name": "Seaweed Katsuobushi",
+          "price": "RM 17.50",
           "source": "https://"
         }
       ]
@@ -72,7 +674,7 @@
         "source": "https://www.themaker243.com/"
       },
       "summary": {
-        "value": "Handcrafted French pastries, freshly made with quality ingredients and a touch of modern creativity.",
+        "value": "Handcrafted French pastries and bakes made with passion and quality ingredients in George Town, Penang.",
         "source": "https://www.themaker243.com/menu"
       },
       "category": "bakery",
@@ -80,6 +682,46 @@
         {
           "name": "French Croissant",
           "price": "RM 11.00",
+          "source": "https://www.themaker243.com/menu"
+        },
+        {
+          "name": "Almond Kaya Croissant",
+          "price": "RM 16.00",
+          "source": "https://www.themaker243.com/menu"
+        },
+        {
+          "name": "Scone with Strawberry Jam and Cream /pcs",
+          "price": "RM 8.50",
+          "source": "https://www.themaker243.com/menu"
+        },
+        {
+          "name": "Charcoal Sesame Croissant",
+          "price": "RM 21.50",
+          "source": "https://www.themaker243.com/menu"
+        },
+        {
+          "name": "Caramalized Banana Croissant",
+          "price": "RM 20",
+          "source": "https://www.themaker243.com/menu"
+        },
+        {
+          "name": "Mushroom Roll",
+          "price": "RM 20",
+          "source": "https://www.themaker243.com/menu"
+        },
+        {
+          "name": "Curry up",
+          "price": "RM 19",
+          "source": "https://www.themaker243.com/menu"
+        },
+        {
+          "name": "Ham & Cheese Croissant",
+          "price": "RM 19",
+          "source": "https://www.themaker243.com/menu"
+        },
+        {
+          "name": "Seaweed Katsuobushi",
+          "price": "RM 17.50",
           "source": "https://www.themaker243.com/menu"
         },
         {
@@ -93,7 +735,7 @@
         "source": "https://www.themaker243.com/"
       },
       "summary": {
-        "value": "Handcrafted French pastries, freshly made with quality ingredients and a touch of modern creativity.",
+        "value": "Handcrafted French pastries and bakes made with passion and quality ingredients in George Town, Penang.",
         "source": "https://www.themaker243.com/menu"
       },
       "category": "bakery",
@@ -105,6 +747,177 @@
         },
         {
           "name": "Almond Kaya Croissant",
+          "price": "RM 16.00",
+          "source": "https://www.themaker243.com/menu"
+        },
+        {
+          "name": "Scone with Strawberry Jam and Cream /pcs",
+          "price": "RM 8.50",
+          "source": "https://www.themaker243.com/menu"
+        },
+        {
+          "name": "Charcoal Sesame Croissant",
+          "price": "RM 21.50",
+          "source": "https://www.themaker243.com/menu"
+        },
+        {
+          "name": "Caramalized Banana Croissant",
+          "price": "RM 20",
+          "source": "https://www.themaker243.com/menu"
+        },
+        {
+          "name": "Mushroom Roll",
+          "price": "RM 20",
+          "source": "https://www.themaker243.com/menu"
+        },
+        {
+          "name": "Curry up",
+          "price": "RM 19",
+          "source": "https://www.themaker243.com/menu"
+        },
+        {
+          "name": "Ham & Cheese Croissant",
+          "price": "RM 19",
+          "source": "https://www.themaker243.com/menu"
+        },
+        {
+          "name": "Seaweed Katsuobushi",
+          "price": "RM 17.50",
+          "source": "https://www.themaker243.com/menu"
+        },
+        {
+          "name": "Sourdough Parmesan Cheese Croissant",
+          "price": "RM 17.50"
+        }
+      ]
+    },
+    {
+      "name": {
+        "value": "The Maker",
+        "source": "https://www.themaker243.com/"
+      },
+      "summary": {
+        "value": "Handcrafted French pastries and bakes made with passion and quality ingredients in George Town, Penang.",
+        "source": "https://www.themaker243.com/menu"
+      },
+      "category": "bakery",
+      "offerings": [
+        {
+          "name": "French Croissant",
+          "price": "RM 11.00",
+          "source": "https://www.themaker243.com/menu"
+        },
+        {
+          "name": "Almond Kaya Croissant",
+          "price": "RM 16.00",
+          "source": "https://www.themaker243.com/menu"
+        },
+        {
+          "name": "Scone with Strawberry Jam and Cream /pcs",
+          "price": "RM 8.50",
+          "source": "https://www.themaker243.com/menu"
+        },
+        {
+          "name": "Charcoal Sesame Croissant",
+          "price": "RM 21.50",
+          "source": "https://www.themaker243.com/menu"
+        },
+        {
+          "name": "Caramalized Banana Croissant",
+          "price": "RM 20",
+          "source": "https://www.themaker243.com/menu"
+        },
+        {
+          "name": "Mushroom Roll",
+          "price": "RM 20",
+          "source": "https://www.themaker243.com/menu"
+        },
+        {
+          "name": "Curry up",
+          "price": "RM 19",
+          "source": "https://www.themaker243.com/menu"
+        },
+        {
+          "name": "Ham & Cheese Croissant",
+          "price": "RM 19",
+          "source": "https://www.themaker243.com/menu"
+        },
+        {
+          "name": "Seaweed Katsuobushi",
+          "price": "RM 17.50",
+          "source": "https://www.themaker243.com/menu"
+        },
+        {
+          "name": "Sourdough Parmesan Cheese Croissant",
+          "price": "RM 17.50",
+          "source": "https://www.themaker243.com/menu"
+        },
+        {}
+      ]
+    },
+    {
+      "name": {
+        "value": "The Maker",
+        "source": "https://www.themaker243.com/"
+      },
+      "summary": {
+        "value": "Handcrafted French pastries and bakes made with passion and quality ingredients in George Town, Penang.",
+        "source": "https://www.themaker243.com/menu"
+      },
+      "category": "bakery",
+      "offerings": [
+        {
+          "name": "French Croissant",
+          "price": "RM 11.00",
+          "source": "https://www.themaker243.com/menu"
+        },
+        {
+          "name": "Almond Kaya Croissant",
+          "price": "RM 16.00",
+          "source": "https://www.themaker243.com/menu"
+        },
+        {
+          "name": "Scone with Strawberry Jam and Cream /pcs",
+          "price": "RM 8.50",
+          "source": "https://www.themaker243.com/menu"
+        },
+        {
+          "name": "Charcoal Sesame Croissant",
+          "price": "RM 21.50",
+          "source": "https://www.themaker243.com/menu"
+        },
+        {
+          "name": "Caramalized Banana Croissant",
+          "price": "RM 20",
+          "source": "https://www.themaker243.com/menu"
+        },
+        {
+          "name": "Mushroom Roll",
+          "price": "RM 20",
+          "source": "https://www.themaker243.com/menu"
+        },
+        {
+          "name": "Curry up",
+          "price": "RM 19",
+          "source": "https://www.themaker243.com/menu"
+        },
+        {
+          "name": "Ham & Cheese Croissant",
+          "price": "RM 19",
+          "source": "https://www.themaker243.com/menu"
+        },
+        {
+          "name": "Seaweed Katsuobushi",
+          "price": "RM 17.50",
+          "source": "https://www.themaker243.com/menu"
+        },
+        {
+          "name": "Sourdough Parmesan Cheese Croissant",
+          "price": "RM 17.50",
+          "source": "https://www.themaker243.com/menu"
+        },
+        {
+          "name": "Parisien Flan",
           "price": "RM 16.00"
         }
       ]
@@ -115,31 +928,7 @@
         "source": "https://www.themaker243.com/"
       },
       "summary": {
-        "value": "Handcrafted French pastries, freshly made with quality ingredients and a touch of modern creativity.",
-        "source": "https://www.themaker243.com/menu"
-      },
-      "category": "bakery",
-      "offerings": [
-        {
-          "name": "French Croissant",
-          "price": "RM 11.00",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Almond Kaya Croissant",
-          "price": "RM 16.00",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {}
-      ]
-    },
-    {
-      "name": {
-        "value": "The Maker",
-        "source": "https://www.themaker243.com/"
-      },
-      "summary": {
-        "value": "Handcrafted French pastries, freshly made with quality ingredients and a touch of modern creativity.",
+        "value": "Handcrafted French pastries and bakes made with passion and quality ingredients in George Town, Penang.",
         "source": "https://www.themaker243.com/menu"
       },
       "category": "bakery",
@@ -155,851 +944,7 @@
           "source": "https://www.themaker243.com/menu"
         },
         {
-          "name": "Scone with Strawberry Jam and Cream",
-          "price": "RM 8.50"
-        }
-      ]
-    },
-    {
-      "name": {
-        "value": "The Maker",
-        "source": "https://www.themaker243.com/"
-      },
-      "summary": {
-        "value": "Handcrafted French pastries, freshly made with quality ingredients and a touch of modern creativity.",
-        "source": "https://www.themaker243.com/menu"
-      },
-      "category": "bakery",
-      "offerings": [
-        {
-          "name": "French Croissant",
-          "price": "RM 11.00",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Almond Kaya Croissant",
-          "price": "RM 16.00",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Scone with Strawberry Jam and Cream",
-          "price": "RM 8.50",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {}
-      ]
-    },
-    {
-      "name": {
-        "value": "The Maker",
-        "source": "https://www.themaker243.com/"
-      },
-      "summary": {
-        "value": "Handcrafted French pastries, freshly made with quality ingredients and a touch of modern creativity.",
-        "source": "https://www.themaker243.com/menu"
-      },
-      "category": "bakery",
-      "offerings": [
-        {
-          "name": "French Croissant",
-          "price": "RM 11.00",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Almond Kaya Croissant",
-          "price": "RM 16.00",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Scone with Strawberry Jam and Cream",
-          "price": "RM 8.50",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Charcoal Sesame Croissant",
-          "price": "RM 21.50"
-        }
-      ]
-    },
-    {
-      "name": {
-        "value": "The Maker",
-        "source": "https://www.themaker243.com/"
-      },
-      "summary": {
-        "value": "Handcrafted French pastries, freshly made with quality ingredients and a touch of modern creativity.",
-        "source": "https://www.themaker243.com/menu"
-      },
-      "category": "bakery",
-      "offerings": [
-        {
-          "name": "French Croissant",
-          "price": "RM 11.00",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Almond Kaya Croissant",
-          "price": "RM 16.00",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Scone with Strawberry Jam and Cream",
-          "price": "RM 8.50",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Charcoal Sesame Croissant",
-          "price": "RM 21.50",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Caramalized Banana Croissant",
-          "price": "RM 2"
-        }
-      ]
-    },
-    {
-      "name": {
-        "value": "The Maker",
-        "source": "https://www.themaker243.com/"
-      },
-      "summary": {
-        "value": "Handcrafted French pastries, freshly made with quality ingredients and a touch of modern creativity.",
-        "source": "https://www.themaker243.com/menu"
-      },
-      "category": "bakery",
-      "offerings": [
-        {
-          "name": "French Croissant",
-          "price": "RM 11.00",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Almond Kaya Croissant",
-          "price": "RM 16.00",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Scone with Strawberry Jam and Cream",
-          "price": "RM 8.50",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Charcoal Sesame Croissant",
-          "price": "RM 21.50",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Caramalized Banana Croissant",
-          "price": "RM 20",
-          "source": "https://www.themaker243.com/menu"
-        }
-      ]
-    },
-    {
-      "name": {
-        "value": "The Maker",
-        "source": "https://www.themaker243.com/"
-      },
-      "summary": {
-        "value": "Handcrafted French pastries, freshly made with quality ingredients and a touch of modern creativity.",
-        "source": "https://www.themaker243.com/menu"
-      },
-      "category": "bakery",
-      "offerings": [
-        {
-          "name": "French Croissant",
-          "price": "RM 11.00",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Almond Kaya Croissant",
-          "price": "RM 16.00",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Scone with Strawberry Jam and Cream",
-          "price": "RM 8.50",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Charcoal Sesame Croissant",
-          "price": "RM 21.50",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Caramalized Banana Croissant",
-          "price": "RM 20",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Mushroom Roll",
-          "price": "RM 20"
-        }
-      ]
-    },
-    {
-      "name": {
-        "value": "The Maker",
-        "source": "https://www.themaker243.com/"
-      },
-      "summary": {
-        "value": "Handcrafted French pastries, freshly made with quality ingredients and a touch of modern creativity.",
-        "source": "https://www.themaker243.com/menu"
-      },
-      "category": "bakery",
-      "offerings": [
-        {
-          "name": "French Croissant",
-          "price": "RM 11.00",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Almond Kaya Croissant",
-          "price": "RM 16.00",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Scone with Strawberry Jam and Cream",
-          "price": "RM 8.50",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Charcoal Sesame Croissant",
-          "price": "RM 21.50",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Caramalized Banana Croissant",
-          "price": "RM 20",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Mushroom Roll",
-          "price": "RM 20",
-          "source": "https://www.themaker243.com/menu"
-        }
-      ]
-    },
-    {
-      "name": {
-        "value": "The Maker",
-        "source": "https://www.themaker243.com/"
-      },
-      "summary": {
-        "value": "Handcrafted French pastries, freshly made with quality ingredients and a touch of modern creativity.",
-        "source": "https://www.themaker243.com/menu"
-      },
-      "category": "bakery",
-      "offerings": [
-        {
-          "name": "French Croissant",
-          "price": "RM 11.00",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Almond Kaya Croissant",
-          "price": "RM 16.00",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Scone with Strawberry Jam and Cream",
-          "price": "RM 8.50",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Charcoal Sesame Croissant",
-          "price": "RM 21.50",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Caramalized Banana Croissant",
-          "price": "RM 20",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Mushroom Roll",
-          "price": "RM 20",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Curry up",
-          "price": "RM 19"
-        }
-      ]
-    },
-    {
-      "name": {
-        "value": "The Maker",
-        "source": "https://www.themaker243.com/"
-      },
-      "summary": {
-        "value": "Handcrafted French pastries, freshly made with quality ingredients and a touch of modern creativity.",
-        "source": "https://www.themaker243.com/menu"
-      },
-      "category": "bakery",
-      "offerings": [
-        {
-          "name": "French Croissant",
-          "price": "RM 11.00",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Almond Kaya Croissant",
-          "price": "RM 16.00",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Scone with Strawberry Jam and Cream",
-          "price": "RM 8.50",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Charcoal Sesame Croissant",
-          "price": "RM 21.50",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Caramalized Banana Croissant",
-          "price": "RM 20",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Mushroom Roll",
-          "price": "RM 20",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Curry up",
-          "price": "RM 19",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Ham & Cheese Croissant",
-          "price": "RM 19"
-        }
-      ]
-    },
-    {
-      "name": {
-        "value": "The Maker",
-        "source": "https://www.themaker243.com/"
-      },
-      "summary": {
-        "value": "Handcrafted French pastries, freshly made with quality ingredients and a touch of modern creativity.",
-        "source": "https://www.themaker243.com/menu"
-      },
-      "category": "bakery",
-      "offerings": [
-        {
-          "name": "French Croissant",
-          "price": "RM 11.00",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Almond Kaya Croissant",
-          "price": "RM 16.00",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Scone with Strawberry Jam and Cream",
-          "price": "RM 8.50",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Charcoal Sesame Croissant",
-          "price": "RM 21.50",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Caramalized Banana Croissant",
-          "price": "RM 20",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Mushroom Roll",
-          "price": "RM 20",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Curry up",
-          "price": "RM 19",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Ham & Cheese Croissant",
-          "price": "RM 19",
-          "source": "https://www.themaker243.com/menu"
-        }
-      ]
-    },
-    {
-      "name": {
-        "value": "The Maker",
-        "source": "https://www.themaker243.com/"
-      },
-      "summary": {
-        "value": "Handcrafted French pastries, freshly made with quality ingredients and a touch of modern creativity.",
-        "source": "https://www.themaker243.com/menu"
-      },
-      "category": "bakery",
-      "offerings": [
-        {
-          "name": "French Croissant",
-          "price": "RM 11.00",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Almond Kaya Croissant",
-          "price": "RM 16.00",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Scone with Strawberry Jam and Cream",
-          "price": "RM 8.50",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Charcoal Sesame Croissant",
-          "price": "RM 21.50",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Caramalized Banana Croissant",
-          "price": "RM 20",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Mushroom Roll",
-          "price": "RM 20",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Curry up",
-          "price": "RM 19",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Ham & Cheese Croissant",
-          "price": "RM 19",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Seaweed Katsuobushi",
-          "price": "RM "
-        }
-      ]
-    },
-    {
-      "name": {
-        "value": "The Maker",
-        "source": "https://www.themaker243.com/"
-      },
-      "summary": {
-        "value": "Handcrafted French pastries, freshly made with quality ingredients and a touch of modern creativity.",
-        "source": "https://www.themaker243.com/menu"
-      },
-      "category": "bakery",
-      "offerings": [
-        {
-          "name": "French Croissant",
-          "price": "RM 11.00",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Almond Kaya Croissant",
-          "price": "RM 16.00",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Scone with Strawberry Jam and Cream",
-          "price": "RM 8.50",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Charcoal Sesame Croissant",
-          "price": "RM 21.50",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Caramalized Banana Croissant",
-          "price": "RM 20",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Mushroom Roll",
-          "price": "RM 20",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Curry up",
-          "price": "RM 19",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Ham & Cheese Croissant",
-          "price": "RM 19",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Seaweed Katsuobushi",
-          "price": "RM 17.50",
-          "source": "https://www.themaker243.com/"
-        }
-      ]
-    },
-    {
-      "name": {
-        "value": "The Maker",
-        "source": "https://www.themaker243.com/"
-      },
-      "summary": {
-        "value": "Handcrafted French pastries, freshly made with quality ingredients and a touch of modern creativity.",
-        "source": "https://www.themaker243.com/menu"
-      },
-      "category": "bakery",
-      "offerings": [
-        {
-          "name": "French Croissant",
-          "price": "RM 11.00",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Almond Kaya Croissant",
-          "price": "RM 16.00",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Scone with Strawberry Jam and Cream",
-          "price": "RM 8.50",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Charcoal Sesame Croissant",
-          "price": "RM 21.50",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Caramalized Banana Croissant",
-          "price": "RM 20",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Mushroom Roll",
-          "price": "RM 20",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Curry up",
-          "price": "RM 19",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Ham & Cheese Croissant",
-          "price": "RM 19",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Seaweed Katsuobushi",
-          "price": "RM 17.50",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Sourdough Parmesan Cheese Croissant"
-        }
-      ]
-    },
-    {
-      "name": {
-        "value": "The Maker",
-        "source": "https://www.themaker243.com/"
-      },
-      "summary": {
-        "value": "Handcrafted French pastries, freshly made with quality ingredients and a touch of modern creativity.",
-        "source": "https://www.themaker243.com/menu"
-      },
-      "category": "bakery",
-      "offerings": [
-        {
-          "name": "French Croissant",
-          "price": "RM 11.00",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Almond Kaya Croissant",
-          "price": "RM 16.00",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Scone with Strawberry Jam and Cream",
-          "price": "RM 8.50",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Charcoal Sesame Croissant",
-          "price": "RM 21.50",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Caramalized Banana Croissant",
-          "price": "RM 20",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Mushroom Roll",
-          "price": "RM 20",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Curry up",
-          "price": "RM 19",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Ham & Cheese Croissant",
-          "price": "RM 19",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Seaweed Katsuobushi",
-          "price": "RM 17.50",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Sourdough Parmesan Cheese Croissant",
-          "price": "RM 17.50",
-          "source": "https://www.themaker"
-        }
-      ]
-    },
-    {
-      "name": {
-        "value": "The Maker",
-        "source": "https://www.themaker243.com/"
-      },
-      "summary": {
-        "value": "Handcrafted French pastries, freshly made with quality ingredients and a touch of modern creativity.",
-        "source": "https://www.themaker243.com/menu"
-      },
-      "category": "bakery",
-      "offerings": [
-        {
-          "name": "French Croissant",
-          "price": "RM 11.00",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Almond Kaya Croissant",
-          "price": "RM 16.00",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Scone with Strawberry Jam and Cream",
-          "price": "RM 8.50",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Charcoal Sesame Croissant",
-          "price": "RM 21.50",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Caramalized Banana Croissant",
-          "price": "RM 20",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Mushroom Roll",
-          "price": "RM 20",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Curry up",
-          "price": "RM 19",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Ham & Cheese Croissant",
-          "price": "RM 19",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Seaweed Katsuobushi",
-          "price": "RM 17.50",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Sourdough Parmesan Cheese Croissant",
-          "price": "RM 17.50",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Parisien Flan"
-        }
-      ]
-    },
-    {
-      "name": {
-        "value": "The Maker",
-        "source": "https://www.themaker243.com/"
-      },
-      "summary": {
-        "value": "Handcrafted French pastries, freshly made with quality ingredients and a touch of modern creativity.",
-        "source": "https://www.themaker243.com/menu"
-      },
-      "category": "bakery",
-      "offerings": [
-        {
-          "name": "French Croissant",
-          "price": "RM 11.00",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Almond Kaya Croissant",
-          "price": "RM 16.00",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Scone with Strawberry Jam and Cream",
-          "price": "RM 8.50",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Charcoal Sesame Croissant",
-          "price": "RM 21.50",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Caramalized Banana Croissant",
-          "price": "RM 20",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Mushroom Roll",
-          "price": "RM 20",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Curry up",
-          "price": "RM 19",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Ham & Cheese Croissant",
-          "price": "RM 19",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Seaweed Katsuobushi",
-          "price": "RM 17.50",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Sourdough Parmesan Cheese Croissant",
-          "price": "RM 17.50",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Parisien Flan",
-          "price": "RM 16.00",
-          "source": "https://www."
-        }
-      ]
-    },
-    {
-      "name": {
-        "value": "The Maker",
-        "source": "https://www.themaker243.com/"
-      },
-      "summary": {
-        "value": "Handcrafted French pastries, freshly made with quality ingredients and a touch of modern creativity.",
-        "source": "https://www.themaker243.com/menu"
-      },
-      "category": "bakery",
-      "offerings": [
-        {
-          "name": "French Croissant",
-          "price": "RM 11.00",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Almond Kaya Croissant",
-          "price": "RM 16.00",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Scone with Strawberry Jam and Cream",
-          "price": "RM 8.50",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Charcoal Sesame Croissant",
-          "price": "RM 21.50",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Caramalized Banana Croissant",
-          "price": "RM 20",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Mushroom Roll",
-          "price": "RM 20",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Curry up",
-          "price": "RM 19",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Ham & Cheese Croissant",
-          "price": "RM 19",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Seaweed Katsuobushi",
-          "price": "RM 17.50",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Sourdough Parmesan Cheese Croissant",
-          "price": "RM 17.50",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Parisien Flan",
-          "price": "RM 16.00",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Chocolate Almond"
-        }
-      ]
-    },
-    {
-      "name": {
-        "value": "The Maker",
-        "source": "https://www.themaker243.com/"
-      },
-      "summary": {
-        "value": "Handcrafted French pastries, freshly made with quality ingredients and a touch of modern creativity.",
-        "source": "https://www.themaker243.com/menu"
-      },
-      "category": "bakery",
-      "offerings": [
-        {
-          "name": "French Croissant",
-          "price": "RM 11.00",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Almond Kaya Croissant",
-          "price": "RM 16.00",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Scone with Strawberry Jam and Cream",
+          "name": "Scone with Strawberry Jam and Cream /pcs",
           "price": "RM 8.50",
           "source": "https://www.themaker243.com/menu"
         },
@@ -1045,8 +990,7 @@
         },
         {
           "name": "Chocolate Almond Croissant",
-          "price": "RM 16.00",
-          "source": "https"
+          "price": "RM 16."
         }
       ]
     },
@@ -1056,7 +1000,7 @@
         "source": "https://www.themaker243.com/"
       },
       "summary": {
-        "value": "Handcrafted French pastries, freshly made with quality ingredients and a touch of modern creativity.",
+        "value": "Handcrafted French pastries and bakes made with passion and quality ingredients in George Town, Penang.",
         "source": "https://www.themaker243.com/menu"
       },
       "category": "bakery",
@@ -1072,81 +1016,7 @@
           "source": "https://www.themaker243.com/menu"
         },
         {
-          "name": "Scone with Strawberry Jam and Cream",
-          "price": "RM 8.50",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Charcoal Sesame Croissant",
-          "price": "RM 21.50",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Caramalized Banana Croissant",
-          "price": "RM 20",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Mushroom Roll",
-          "price": "RM 20",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Curry up",
-          "price": "RM 19",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Ham & Cheese Croissant",
-          "price": "RM 19",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Seaweed Katsuobushi",
-          "price": "RM 17.50",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Sourdough Parmesan Cheese Croissant",
-          "price": "RM 17.50",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Parisien Flan",
-          "price": "RM 16.00",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Chocolate Almond Croissant",
-          "price": "RM 16.00",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {}
-      ]
-    },
-    {
-      "name": {
-        "value": "The Maker",
-        "source": "https://www.themaker243.com/"
-      },
-      "summary": {
-        "value": "Handcrafted French pastries, freshly made with quality ingredients and a touch of modern creativity.",
-        "source": "https://www.themaker243.com/menu"
-      },
-      "category": "bakery",
-      "offerings": [
-        {
-          "name": "French Croissant",
-          "price": "RM 11.00",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Almond Kaya Croissant",
-          "price": "RM 16.00",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Scone with Strawberry Jam and Cream",
+          "name": "Scone with Strawberry Jam and Cream /pcs",
           "price": "RM 8.50",
           "source": "https://www.themaker243.com/menu"
         },
@@ -1197,7 +1067,7 @@
         },
         {
           "name": "Pain Au Chocolate",
-          "price": "RM 13.00"
+          "price": "RM 1"
         }
       ]
     },
@@ -1207,7 +1077,7 @@
         "source": "https://www.themaker243.com/"
       },
       "summary": {
-        "value": "Handcrafted French pastries, freshly made with quality ingredients and a touch of modern creativity.",
+        "value": "Handcrafted French pastries and bakes made with passion and quality ingredients in George Town, Penang.",
         "source": "https://www.themaker243.com/menu"
       },
       "category": "bakery",
@@ -1223,7 +1093,7 @@
           "source": "https://www.themaker243.com/menu"
         },
         {
-          "name": "Scone with Strawberry Jam and Cream",
+          "name": "Scone with Strawberry Jam and Cream /pcs",
           "price": "RM 8.50",
           "source": "https://www.themaker243.com/menu"
         },
@@ -1276,8 +1146,7 @@
           "name": "Pain Au Chocolate",
           "price": "RM 13.00",
           "source": "https://www.themaker243.com/menu"
-        },
-        {}
+        }
       ]
     },
     {
@@ -1286,7 +1155,7 @@
         "source": "https://www.themaker243.com/"
       },
       "summary": {
-        "value": "Handcrafted French pastries, freshly made with quality ingredients and a touch of modern creativity.",
+        "value": "Handcrafted French pastries and bakes made with passion and quality ingredients in George Town, Penang.",
         "source": "https://www.themaker243.com/menu"
       },
       "category": "bakery",
@@ -1302,7 +1171,7 @@
           "source": "https://www.themaker243.com/menu"
         },
         {
-          "name": "Scone with Strawberry Jam and Cream",
+          "name": "Scone with Strawberry Jam and Cream /pcs",
           "price": "RM 8.50",
           "source": "https://www.themaker243.com/menu"
         },
@@ -1358,7 +1227,7 @@
         },
         {
           "name": "Honey Sea Salt",
-          "price": "RM 13.00"
+          "price": "RM"
         }
       ]
     },
@@ -1368,7 +1237,7 @@
         "source": "https://www.themaker243.com/"
       },
       "summary": {
-        "value": "Handcrafted French pastries, freshly made with quality ingredients and a touch of modern creativity.",
+        "value": "Handcrafted French pastries and bakes made with passion and quality ingredients in George Town, Penang.",
         "source": "https://www.themaker243.com/menu"
       },
       "category": "bakery",
@@ -1384,7 +1253,176 @@
           "source": "https://www.themaker243.com/menu"
         },
         {
-          "name": "Scone with Strawberry Jam and Cream",
+          "name": "Scone with Strawberry Jam and Cream /pcs",
+          "price": "RM 8.50",
+          "source": "https://www.themaker243.com/menu"
+        },
+        {
+          "name": "Charcoal Sesame Croissant",
+          "price": "RM 21.50",
+          "source": "https://www.themaker243.com/menu"
+        },
+        {
+          "name": "Caramalized Banana Croissant",
+          "price": "RM 20",
+          "source": "https://www.themaker243.com/menu"
+        },
+        {
+          "name": "Mushroom Roll",
+          "price": "RM 20",
+          "source": "https://www.themaker243.com/menu"
+        },
+        {
+          "name": "Curry up",
+          "price": "RM 19",
+          "source": "https://www.themaker243.com/menu"
+        },
+        {
+          "name": "Ham & Cheese Croissant",
+          "price": "RM 19",
+          "source": "https://www.themaker243.com/menu"
+        },
+        {
+          "name": "Seaweed Katsuobushi",
+          "price": "RM 17.50",
+          "source": "https://www.themaker243.com/menu"
+        },
+        {
+          "name": "Sourdough Parmesan Cheese Croissant",
+          "price": "RM 17.50",
+          "source": "https://www.themaker243.com/menu"
+        },
+        {
+          "name": "Parisien Flan",
+          "price": "RM 16.00",
+          "source": "https://www.themaker243.com/menu"
+        },
+        {
+          "name": "Chocolate Almond Croissant",
+          "price": "RM 16.00",
+          "source": "https://www.themaker243.com/menu"
+        },
+        {
+          "name": "Pain Au Chocolate",
+          "price": "RM 13.00",
+          "source": "https://www.themaker243.com/menu"
+        },
+        {
+          "name": "Honey Sea Salt",
+          "price": "RM 13.00",
+          "source": "https://www.themaker243.com"
+        }
+      ]
+    },
+    {
+      "name": {
+        "value": "The Maker",
+        "source": "https://www.themaker243.com/"
+      },
+      "summary": {
+        "value": "Handcrafted French pastries and bakes made with passion and quality ingredients in George Town, Penang.",
+        "source": "https://www.themaker243.com/menu"
+      },
+      "category": "bakery",
+      "offerings": [
+        {
+          "name": "French Croissant",
+          "price": "RM 11.00",
+          "source": "https://www.themaker243.com/menu"
+        },
+        {
+          "name": "Almond Kaya Croissant",
+          "price": "RM 16.00",
+          "source": "https://www.themaker243.com/menu"
+        },
+        {
+          "name": "Scone with Strawberry Jam and Cream /pcs",
+          "price": "RM 8.50",
+          "source": "https://www.themaker243.com/menu"
+        },
+        {
+          "name": "Charcoal Sesame Croissant",
+          "price": "RM 21.50",
+          "source": "https://www.themaker243.com/menu"
+        },
+        {
+          "name": "Caramalized Banana Croissant",
+          "price": "RM 20",
+          "source": "https://www.themaker243.com/menu"
+        },
+        {
+          "name": "Mushroom Roll",
+          "price": "RM 20",
+          "source": "https://www.themaker243.com/menu"
+        },
+        {
+          "name": "Curry up",
+          "price": "RM 19",
+          "source": "https://www.themaker243.com/menu"
+        },
+        {
+          "name": "Ham & Cheese Croissant",
+          "price": "RM 19",
+          "source": "https://www.themaker243.com/menu"
+        },
+        {
+          "name": "Seaweed Katsuobushi",
+          "price": "RM 17.50",
+          "source": "https://www.themaker243.com/menu"
+        },
+        {
+          "name": "Sourdough Parmesan Cheese Croissant",
+          "price": "RM 17.50",
+          "source": "https://www.themaker243.com/menu"
+        },
+        {
+          "name": "Parisien Flan",
+          "price": "RM 16.00",
+          "source": "https://www.themaker243.com/menu"
+        },
+        {
+          "name": "Chocolate Almond Croissant",
+          "price": "RM 16.00",
+          "source": "https://www.themaker243.com/menu"
+        },
+        {
+          "name": "Pain Au Chocolate",
+          "price": "RM 13.00",
+          "source": "https://www.themaker243.com/menu"
+        },
+        {
+          "name": "Honey Sea Salt",
+          "price": "RM 13.00",
+          "source": "https://www.themaker243.com/menu"
+        },
+        {
+          "name": "Cinnamon Roll"
+        }
+      ]
+    },
+    {
+      "name": {
+        "value": "The Maker",
+        "source": "https://www.themaker243.com/"
+      },
+      "summary": {
+        "value": "Handcrafted French pastries and bakes made with passion and quality ingredients in George Town, Penang.",
+        "source": "https://www.themaker243.com/menu"
+      },
+      "category": "bakery",
+      "offerings": [
+        {
+          "name": "French Croissant",
+          "price": "RM 11.00",
+          "source": "https://www.themaker243.com/menu"
+        },
+        {
+          "name": "Almond Kaya Croissant",
+          "price": "RM 16.00",
+          "source": "https://www.themaker243.com/menu"
+        },
+        {
+          "name": "Scone with Strawberry Jam and Cream /pcs",
           "price": "RM 8.50",
           "source": "https://www.themaker243.com/menu"
         },
@@ -1446,7 +1484,7 @@
         {
           "name": "Cinnamon Roll",
           "price": "RM 12.00",
-          "source": "https://www.themaker243.com/menu"
+          "source": "https://www.themaker243"
         }
       ]
     },
@@ -1456,7 +1494,7 @@
         "source": "https://www.themaker243.com/"
       },
       "summary": {
-        "value": "Handcrafted French pastries, freshly made with quality ingredients and a touch of modern creativity.",
+        "value": "Handcrafted French pastries and bakes made with passion and quality ingredients in George Town, Penang.",
         "source": "https://www.themaker243.com/menu"
       },
       "category": "bakery",
@@ -1472,7 +1510,7 @@
           "source": "https://www.themaker243.com/menu"
         },
         {
-          "name": "Scone with Strawberry Jam and Cream",
+          "name": "Scone with Strawberry Jam and Cream /pcs",
           "price": "RM 8.50",
           "source": "https://www.themaker243.com/menu"
         },
@@ -1537,8 +1575,7 @@
           "source": "https://www.themaker243.com/menu"
         },
         {
-          "name": "Cinnamon Stick",
-          "price": "RM 8.00"
+          "name": "Cinnamon Stick (2 stick)"
         }
       ]
     },
@@ -1548,7 +1585,7 @@
         "source": "https://www.themaker243.com/"
       },
       "summary": {
-        "value": "Handcrafted French pastries, freshly made with quality ingredients and a touch of modern creativity.",
+        "value": "Handcrafted French pastries and bakes made with passion and quality ingredients in George Town, Penang.",
         "source": "https://www.themaker243.com/menu"
       },
       "category": "bakery",
@@ -1564,7 +1601,7 @@
           "source": "https://www.themaker243.com/menu"
         },
         {
-          "name": "Scone with Strawberry Jam and Cream",
+          "name": "Scone with Strawberry Jam and Cream /pcs",
           "price": "RM 8.50",
           "source": "https://www.themaker243.com/menu"
         },
@@ -1629,11 +1666,10 @@
           "source": "https://www.themaker243.com/menu"
         },
         {
-          "name": "Cinnamon Stick",
+          "name": "Cinnamon Stick (2 stick)",
           "price": "RM 8.00",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {}
+          "source": "https://www.the"
+        }
       ]
     },
     {
@@ -1642,7 +1678,7 @@
         "source": "https://www.themaker243.com/"
       },
       "summary": {
-        "value": "Handcrafted French pastries, freshly made with quality ingredients and a touch of modern creativity.",
+        "value": "Handcrafted French pastries and bakes made with passion and quality ingredients in George Town, Penang.",
         "source": "https://www.themaker243.com/menu"
       },
       "category": "bakery",
@@ -1658,7 +1694,7 @@
           "source": "https://www.themaker243.com/menu"
         },
         {
-          "name": "Scone with Strawberry Jam and Cream",
+          "name": "Scone with Strawberry Jam and Cream /pcs",
           "price": "RM 8.50",
           "source": "https://www.themaker243.com/menu"
         },
@@ -1723,13 +1759,12 @@
           "source": "https://www.themaker243.com/menu"
         },
         {
-          "name": "Cinnamon Stick",
+          "name": "Cinnamon Stick (2 stick)",
           "price": "RM 8.00",
           "source": "https://www.themaker243.com/menu"
         },
         {
-          "name": "Ham Cheese Foccacia",
-          "price": "quarter RM 10 half RM 19 whole"
+          "name": "Pist Creme"
         }
       ]
     },
@@ -1739,7 +1774,7 @@
         "source": "https://www.themaker243.com/"
       },
       "summary": {
-        "value": "Handcrafted French pastries, freshly made with quality ingredients and a touch of modern creativity.",
+        "value": "Handcrafted French pastries and bakes made with passion and quality ingredients in George Town, Penang.",
         "source": "https://www.themaker243.com/menu"
       },
       "category": "bakery",
@@ -1755,7 +1790,7 @@
           "source": "https://www.themaker243.com/menu"
         },
         {
-          "name": "Scone with Strawberry Jam and Cream",
+          "name": "Scone with Strawberry Jam and Cream /pcs",
           "price": "RM 8.50",
           "source": "https://www.themaker243.com/menu"
         },
@@ -1820,217 +1855,13 @@
           "source": "https://www.themaker243.com/menu"
         },
         {
-          "name": "Cinnamon Stick",
+          "name": "Cinnamon Stick (2 stick)",
           "price": "RM 8.00",
           "source": "https://www.themaker243.com/menu"
         },
         {
-          "name": "Ham Cheese Foccacia",
-          "price": "quarter RM 10 half RM 19 whole RM 35",
-          "source": "https://www.themaker243.com/menu"
-        }
-      ]
-    },
-    {
-      "name": {
-        "value": "The Maker",
-        "source": "https://www.themaker243.com/"
-      },
-      "summary": {
-        "value": "Handcrafted French pastries, freshly made with quality ingredients and a touch of modern creativity.",
-        "source": "https://www.themaker243.com/menu"
-      },
-      "category": "bakery",
-      "offerings": [
-        {
-          "name": "French Croissant",
-          "price": "RM 11.00",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Almond Kaya Croissant",
+          "name": "Pist Creme Patisserie Roll",
           "price": "RM 16.00",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Scone with Strawberry Jam and Cream",
-          "price": "RM 8.50",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Charcoal Sesame Croissant",
-          "price": "RM 21.50",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Caramalized Banana Croissant",
-          "price": "RM 20",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Mushroom Roll",
-          "price": "RM 20",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Curry up",
-          "price": "RM 19",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Ham & Cheese Croissant",
-          "price": "RM 19",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Seaweed Katsuobushi",
-          "price": "RM 17.50",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Sourdough Parmesan Cheese Croissant",
-          "price": "RM 17.50",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Parisien Flan",
-          "price": "RM 16.00",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Chocolate Almond Croissant",
-          "price": "RM 16.00",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Pain Au Chocolate",
-          "price": "RM 13.00",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Honey Sea Salt",
-          "price": "RM 13.00",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Cinnamon Roll",
-          "price": "RM 12.00",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Cinnamon Stick",
-          "price": "RM 8.00",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Ham Cheese Foccacia",
-          "price": "quarter RM 10 half RM 19 whole RM 35",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Sundried Tomato Foccacia"
-        }
-      ]
-    },
-    {
-      "name": {
-        "value": "The Maker",
-        "source": "https://www.themaker243.com/"
-      },
-      "summary": {
-        "value": "Handcrafted French pastries, freshly made with quality ingredients and a touch of modern creativity.",
-        "source": "https://www.themaker243.com/menu"
-      },
-      "category": "bakery",
-      "offerings": [
-        {
-          "name": "French Croissant",
-          "price": "RM 11.00",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Almond Kaya Croissant",
-          "price": "RM 16.00",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Scone with Strawberry Jam and Cream",
-          "price": "RM 8.50",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Charcoal Sesame Croissant",
-          "price": "RM 21.50",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Caramalized Banana Croissant",
-          "price": "RM 20",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Mushroom Roll",
-          "price": "RM 20",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Curry up",
-          "price": "RM 19",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Ham & Cheese Croissant",
-          "price": "RM 19",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Seaweed Katsuobushi",
-          "price": "RM 17.50",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Sourdough Parmesan Cheese Croissant",
-          "price": "RM 17.50",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Parisien Flan",
-          "price": "RM 16.00",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Chocolate Almond Croissant",
-          "price": "RM 16.00",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Pain Au Chocolate",
-          "price": "RM 13.00",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Honey Sea Salt",
-          "price": "RM 13.00",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Cinnamon Roll",
-          "price": "RM 12.00",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Cinnamon Stick",
-          "price": "RM 8.00",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Ham Cheese Foccacia",
-          "price": "quarter RM 10 half RM 19 whole RM 35",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Sundried Tomato Foccacia",
-          "price": "quarter RM 10 half RM 19 whole RM 35",
           "source": ""
         }
       ]
@@ -2041,7 +1872,7 @@
         "source": "https://www.themaker243.com/"
       },
       "summary": {
-        "value": "Handcrafted French pastries, freshly made with quality ingredients and a touch of modern creativity.",
+        "value": "Handcrafted French pastries and bakes made with passion and quality ingredients in George Town, Penang.",
         "source": "https://www.themaker243.com/menu"
       },
       "category": "bakery",
@@ -2057,7 +1888,7 @@
           "source": "https://www.themaker243.com/menu"
         },
         {
-          "name": "Scone with Strawberry Jam and Cream",
+          "name": "Scone with Strawberry Jam and Cream /pcs",
           "price": "RM 8.50",
           "source": "https://www.themaker243.com/menu"
         },
@@ -2122,122 +1953,8 @@
           "source": "https://www.themaker243.com/menu"
         },
         {
-          "name": "Cinnamon Stick",
+          "name": "Cinnamon Stick (2 stick)",
           "price": "RM 8.00",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Ham Cheese Foccacia",
-          "price": "quarter RM 10 half RM 19 whole RM 35",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Sundried Tomato Foccacia",
-          "price": "quarter RM 10 half RM 19 whole RM 35",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {}
-      ]
-    },
-    {
-      "name": {
-        "value": "The Maker",
-        "source": "https://www.themaker243.com/"
-      },
-      "summary": {
-        "value": "Handcrafted French pastries, freshly made with quality ingredients and a touch of modern creativity.",
-        "source": "https://www.themaker243.com/menu"
-      },
-      "category": "bakery",
-      "offerings": [
-        {
-          "name": "French Croissant",
-          "price": "RM 11.00",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Almond Kaya Croissant",
-          "price": "RM 16.00",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Scone with Strawberry Jam and Cream",
-          "price": "RM 8.50",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Charcoal Sesame Croissant",
-          "price": "RM 21.50",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Caramalized Banana Croissant",
-          "price": "RM 20",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Mushroom Roll",
-          "price": "RM 20",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Curry up",
-          "price": "RM 19",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Ham & Cheese Croissant",
-          "price": "RM 19",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Seaweed Katsuobushi",
-          "price": "RM 17.50",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Sourdough Parmesan Cheese Croissant",
-          "price": "RM 17.50",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Parisien Flan",
-          "price": "RM 16.00",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Chocolate Almond Croissant",
-          "price": "RM 16.00",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Pain Au Chocolate",
-          "price": "RM 13.00",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Honey Sea Salt",
-          "price": "RM 13.00",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Cinnamon Roll",
-          "price": "RM 12.00",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Cinnamon Stick",
-          "price": "RM 8.00",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Ham Cheese Foccacia",
-          "price": "quarter RM 10 half RM 19 whole RM 35",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Sundried Tomato Foccacia",
-          "price": "quarter RM 10 half RM 19 whole RM 35",
           "source": "https://www.themaker243.com/menu"
         },
         {
@@ -2253,7 +1970,7 @@
         "source": "https://www.themaker243.com/"
       },
       "summary": {
-        "value": "Handcrafted French pastries, freshly made with quality ingredients and a touch of modern creativity.",
+        "value": "Handcrafted French pastries and bakes made with passion and quality ingredients in George Town, Penang.",
         "source": "https://www.themaker243.com/menu"
       },
       "category": "bakery",
@@ -2269,7 +1986,7 @@
           "source": "https://www.themaker243.com/menu"
         },
         {
-          "name": "Scone with Strawberry Jam and Cream",
+          "name": "Scone with Strawberry Jam and Cream /pcs",
           "price": "RM 8.50",
           "source": "https://www.themaker243.com/menu"
         },
@@ -2334,18 +2051,8 @@
           "source": "https://www.themaker243.com/menu"
         },
         {
-          "name": "Cinnamon Stick",
+          "name": "Cinnamon Stick (2 stick)",
           "price": "RM 8.00",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Ham Cheese Foccacia",
-          "price": "quarter RM 10 half RM 19 whole RM 35",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Sundried Tomato Foccacia",
-          "price": "quarter RM 10 half RM 19 whole RM 35",
           "source": "https://www.themaker243.com/menu"
         },
         {
@@ -2356,7 +2063,7 @@
       ],
       "highlights": [
         {
-          "value": "Handcrafted French pastries made with passion and"
+          "value": "Driven by craft pastry made with passion, patience and a love for the"
         }
       ]
     },
@@ -2366,7 +2073,7 @@
         "source": "https://www.themaker243.com/"
       },
       "summary": {
-        "value": "Handcrafted French pastries, freshly made with quality ingredients and a touch of modern creativity.",
+        "value": "Handcrafted French pastries and bakes made with passion and quality ingredients in George Town, Penang.",
         "source": "https://www.themaker243.com/menu"
       },
       "category": "bakery",
@@ -2382,7 +2089,7 @@
           "source": "https://www.themaker243.com/menu"
         },
         {
-          "name": "Scone with Strawberry Jam and Cream",
+          "name": "Scone with Strawberry Jam and Cream /pcs",
           "price": "RM 8.50",
           "source": "https://www.themaker243.com/menu"
         },
@@ -2447,18 +2154,8 @@
           "source": "https://www.themaker243.com/menu"
         },
         {
-          "name": "Cinnamon Stick",
+          "name": "Cinnamon Stick (2 stick)",
           "price": "RM 8.00",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Ham Cheese Foccacia",
-          "price": "quarter RM 10 half RM 19 whole RM 35",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Sundried Tomato Foccacia",
-          "price": "quarter RM 10 half RM 19 whole RM 35",
           "source": "https://www.themaker243.com/menu"
         },
         {
@@ -2469,7 +2166,7 @@
       ],
       "highlights": [
         {
-          "value": "Handcrafted French pastries made with passion and patience",
+          "value": "Driven by craft pastry made with passion, patience and a love for the craft",
           "source": "https://www.themaker243.com/menu"
         }
       ]
@@ -2480,7 +2177,7 @@
         "source": "https://www.themaker243.com/"
       },
       "summary": {
-        "value": "Handcrafted French pastries, freshly made with quality ingredients and a touch of modern creativity.",
+        "value": "Handcrafted French pastries and bakes made with passion and quality ingredients in George Town, Penang.",
         "source": "https://www.themaker243.com/menu"
       },
       "category": "bakery",
@@ -2496,7 +2193,7 @@
           "source": "https://www.themaker243.com/menu"
         },
         {
-          "name": "Scone with Strawberry Jam and Cream",
+          "name": "Scone with Strawberry Jam and Cream /pcs",
           "price": "RM 8.50",
           "source": "https://www.themaker243.com/menu"
         },
@@ -2561,18 +2258,8 @@
           "source": "https://www.themaker243.com/menu"
         },
         {
-          "name": "Cinnamon Stick",
+          "name": "Cinnamon Stick (2 stick)",
           "price": "RM 8.00",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Ham Cheese Foccacia",
-          "price": "quarter RM 10 half RM 19 whole RM 35",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Sundried Tomato Foccacia",
-          "price": "quarter RM 10 half RM 19 whole RM 35",
           "source": "https://www.themaker243.com/menu"
         },
         {
@@ -2583,11 +2270,11 @@
       ],
       "highlights": [
         {
-          "value": "Handcrafted French pastries made with passion and patience",
+          "value": "Driven by craft pastry made with passion, patience and a love for the craft",
           "source": "https://www.themaker243.com/menu"
         },
         {
-          "value": "Located in the heart of George Town, Penang"
+          "value": "Handcrafted French pastries, freshly made with quality ingredients and a touch of"
         }
       ]
     },
@@ -2597,7 +2284,7 @@
         "source": "https://www.themaker243.com/"
       },
       "summary": {
-        "value": "Handcrafted French pastries, freshly made with quality ingredients and a touch of modern creativity.",
+        "value": "Handcrafted French pastries and bakes made with passion and quality ingredients in George Town, Penang.",
         "source": "https://www.themaker243.com/menu"
       },
       "category": "bakery",
@@ -2613,7 +2300,7 @@
           "source": "https://www.themaker243.com/menu"
         },
         {
-          "name": "Scone with Strawberry Jam and Cream",
+          "name": "Scone with Strawberry Jam and Cream /pcs",
           "price": "RM 8.50",
           "source": "https://www.themaker243.com/menu"
         },
@@ -2678,18 +2365,8 @@
           "source": "https://www.themaker243.com/menu"
         },
         {
-          "name": "Cinnamon Stick",
+          "name": "Cinnamon Stick (2 stick)",
           "price": "RM 8.00",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Ham Cheese Foccacia",
-          "price": "quarter RM 10 half RM 19 whole RM 35",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Sundried Tomato Foccacia",
-          "price": "quarter RM 10 half RM 19 whole RM 35",
           "source": "https://www.themaker243.com/menu"
         },
         {
@@ -2700,135 +2377,17 @@
       ],
       "highlights": [
         {
-          "value": "Handcrafted French pastries made with passion and patience",
+          "value": "Driven by craft pastry made with passion, patience and a love for the craft",
           "source": "https://www.themaker243.com/menu"
         },
         {
-          "value": "Located in the heart of George Town, Penang",
-          "source": "https://www.themaker243.com/our-shops"
-        }
-      ]
-    },
-    {
-      "name": {
-        "value": "The Maker",
-        "source": "https://www.themaker243.com/"
-      },
-      "summary": {
-        "value": "Handcrafted French pastries, freshly made with quality ingredients and a touch of modern creativity.",
-        "source": "https://www.themaker243.com/menu"
-      },
-      "category": "bakery",
-      "offerings": [
-        {
-          "name": "French Croissant",
-          "price": "RM 11.00",
+          "value": "Handcrafted French pastries, freshly made with quality ingredients and a touch of modern creativity",
           "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Almond Kaya Croissant",
-          "price": "RM 16.00",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Scone with Strawberry Jam and Cream",
-          "price": "RM 8.50",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Charcoal Sesame Croissant",
-          "price": "RM 21.50",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Caramalized Banana Croissant",
-          "price": "RM 20",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Mushroom Roll",
-          "price": "RM 20",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Curry up",
-          "price": "RM 19",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Ham & Cheese Croissant",
-          "price": "RM 19",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Seaweed Katsuobushi",
-          "price": "RM 17.50",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Sourdough Parmesan Cheese Croissant",
-          "price": "RM 17.50",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Parisien Flan",
-          "price": "RM 16.00",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Chocolate Almond Croissant",
-          "price": "RM 16.00",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Pain Au Chocolate",
-          "price": "RM 13.00",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Honey Sea Salt",
-          "price": "RM 13.00",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Cinnamon Roll",
-          "price": "RM 12.00",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Cinnamon Stick",
-          "price": "RM 8.00",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Ham Cheese Foccacia",
-          "price": "quarter RM 10 half RM 19 whole RM 35",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Sundried Tomato Foccacia",
-          "price": "quarter RM 10 half RM 19 whole RM 35",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Pist Creme Patisserie Roll",
-          "price": "RM 16.00",
-          "source": "https://www.themaker243.com/menu"
-        }
-      ],
-      "highlights": [
-        {
-          "value": "Handcrafted French pastries made with passion and patience",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "value": "Located in the heart of George Town, Penang",
-          "source": "https://www.themaker243.com/our-shops"
         }
       ],
       "location": {
         "town": {
-          "value": "George Town"
+          "value": "George"
         }
       }
     },
@@ -2838,7 +2397,7 @@
         "source": "https://www.themaker243.com/"
       },
       "summary": {
-        "value": "Handcrafted French pastries, freshly made with quality ingredients and a touch of modern creativity.",
+        "value": "Handcrafted French pastries and bakes made with passion and quality ingredients in George Town, Penang.",
         "source": "https://www.themaker243.com/menu"
       },
       "category": "bakery",
@@ -2854,7 +2413,7 @@
           "source": "https://www.themaker243.com/menu"
         },
         {
-          "name": "Scone with Strawberry Jam and Cream",
+          "name": "Scone with Strawberry Jam and Cream /pcs",
           "price": "RM 8.50",
           "source": "https://www.themaker243.com/menu"
         },
@@ -2919,18 +2478,8 @@
           "source": "https://www.themaker243.com/menu"
         },
         {
-          "name": "Cinnamon Stick",
+          "name": "Cinnamon Stick (2 stick)",
           "price": "RM 8.00",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Ham Cheese Foccacia",
-          "price": "quarter RM 10 half RM 19 whole RM 35",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Sundried Tomato Foccacia",
-          "price": "quarter RM 10 half RM 19 whole RM 35",
           "source": "https://www.themaker243.com/menu"
         },
         {
@@ -2941,274 +2490,17 @@
       ],
       "highlights": [
         {
-          "value": "Handcrafted French pastries made with passion and patience",
+          "value": "Driven by craft pastry made with passion, patience and a love for the craft",
           "source": "https://www.themaker243.com/menu"
         },
         {
-          "value": "Located in the heart of George Town, Penang",
-          "source": "https://www.themaker243.com/our-shops"
+          "value": "Handcrafted French pastries, freshly made with quality ingredients and a touch of modern creativity",
+          "source": "https://www.themaker243.com/menu"
         }
       ],
       "location": {
         "town": {
           "value": "George Town",
-          "source": "https://www.themaker243.com/our-shops"
-        }
-      }
-    },
-    {
-      "name": {
-        "value": "The Maker",
-        "source": "https://www.themaker243.com/"
-      },
-      "summary": {
-        "value": "Handcrafted French pastries, freshly made with quality ingredients and a touch of modern creativity.",
-        "source": "https://www.themaker243.com/menu"
-      },
-      "category": "bakery",
-      "offerings": [
-        {
-          "name": "French Croissant",
-          "price": "RM 11.00",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Almond Kaya Croissant",
-          "price": "RM 16.00",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Scone with Strawberry Jam and Cream",
-          "price": "RM 8.50",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Charcoal Sesame Croissant",
-          "price": "RM 21.50",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Caramalized Banana Croissant",
-          "price": "RM 20",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Mushroom Roll",
-          "price": "RM 20",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Curry up",
-          "price": "RM 19",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Ham & Cheese Croissant",
-          "price": "RM 19",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Seaweed Katsuobushi",
-          "price": "RM 17.50",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Sourdough Parmesan Cheese Croissant",
-          "price": "RM 17.50",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Parisien Flan",
-          "price": "RM 16.00",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Chocolate Almond Croissant",
-          "price": "RM 16.00",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Pain Au Chocolate",
-          "price": "RM 13.00",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Honey Sea Salt",
-          "price": "RM 13.00",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Cinnamon Roll",
-          "price": "RM 12.00",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Cinnamon Stick",
-          "price": "RM 8.00",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Ham Cheese Foccacia",
-          "price": "quarter RM 10 half RM 19 whole RM 35",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Sundried Tomato Foccacia",
-          "price": "quarter RM 10 half RM 19 whole RM 35",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Pist Creme Patisserie Roll",
-          "price": "RM 16.00",
-          "source": "https://www.themaker243.com/menu"
-        }
-      ],
-      "highlights": [
-        {
-          "value": "Handcrafted French pastries made with passion and patience",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "value": "Located in the heart of George Town, Penang",
-          "source": "https://www.themaker243.com/our-shops"
-        }
-      ],
-      "location": {
-        "town": {
-          "value": "George Town",
-          "source": "https://www.themaker243.com/our-shops"
-        },
-        "area": null,
-        "address": {
-          "value": "243 Lebuh Pantai"
-        }
-      }
-    },
-    {
-      "name": {
-        "value": "The Maker",
-        "source": "https://www.themaker243.com/"
-      },
-      "summary": {
-        "value": "Handcrafted French pastries, freshly made with quality ingredients and a touch of modern creativity.",
-        "source": "https://www.themaker243.com/menu"
-      },
-      "category": "bakery",
-      "offerings": [
-        {
-          "name": "French Croissant",
-          "price": "RM 11.00",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Almond Kaya Croissant",
-          "price": "RM 16.00",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Scone with Strawberry Jam and Cream",
-          "price": "RM 8.50",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Charcoal Sesame Croissant",
-          "price": "RM 21.50",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Caramalized Banana Croissant",
-          "price": "RM 20",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Mushroom Roll",
-          "price": "RM 20",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Curry up",
-          "price": "RM 19",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Ham & Cheese Croissant",
-          "price": "RM 19",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Seaweed Katsuobushi",
-          "price": "RM 17.50",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Sourdough Parmesan Cheese Croissant",
-          "price": "RM 17.50",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Parisien Flan",
-          "price": "RM 16.00",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Chocolate Almond Croissant",
-          "price": "RM 16.00",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Pain Au Chocolate",
-          "price": "RM 13.00",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Honey Sea Salt",
-          "price": "RM 13.00",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Cinnamon Roll",
-          "price": "RM 12.00",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Cinnamon Stick",
-          "price": "RM 8.00",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Ham Cheese Foccacia",
-          "price": "quarter RM 10 half RM 19 whole RM 35",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Sundried Tomato Foccacia",
-          "price": "quarter RM 10 half RM 19 whole RM 35",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Pist Creme Patisserie Roll",
-          "price": "RM 16.00",
-          "source": "https://www.themaker243.com/menu"
-        }
-      ],
-      "highlights": [
-        {
-          "value": "Handcrafted French pastries made with passion and patience",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "value": "Located in the heart of George Town, Penang",
-          "source": "https://www.themaker243.com/our-shops"
-        }
-      ],
-      "location": {
-        "town": {
-          "value": "George Town",
-          "source": "https://www.themaker243.com/our-shops"
-        },
-        "area": null,
-        "address": {
-          "value": "243 Lebuh Pantai",
           "source": "https://www.themaker243.com/"
         }
       }
@@ -3219,7 +2511,7 @@
         "source": "https://www.themaker243.com/"
       },
       "summary": {
-        "value": "Handcrafted French pastries, freshly made with quality ingredients and a touch of modern creativity.",
+        "value": "Handcrafted French pastries and bakes made with passion and quality ingredients in George Town, Penang.",
         "source": "https://www.themaker243.com/menu"
       },
       "category": "bakery",
@@ -3235,7 +2527,7 @@
           "source": "https://www.themaker243.com/menu"
         },
         {
-          "name": "Scone with Strawberry Jam and Cream",
+          "name": "Scone with Strawberry Jam and Cream /pcs",
           "price": "RM 8.50",
           "source": "https://www.themaker243.com/menu"
         },
@@ -3300,18 +2592,8 @@
           "source": "https://www.themaker243.com/menu"
         },
         {
-          "name": "Cinnamon Stick",
+          "name": "Cinnamon Stick (2 stick)",
           "price": "RM 8.00",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Ham Cheese Foccacia",
-          "price": "quarter RM 10 half RM 19 whole RM 35",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Sundried Tomato Foccacia",
-          "price": "quarter RM 10 half RM 19 whole RM 35",
           "source": "https://www.themaker243.com/menu"
         },
         {
@@ -3322,29 +2604,389 @@
       ],
       "highlights": [
         {
-          "value": "Handcrafted French pastries made with passion and patience",
+          "value": "Driven by craft pastry made with passion, patience and a love for the craft",
           "source": "https://www.themaker243.com/menu"
         },
         {
-          "value": "Located in the heart of George Town, Penang",
-          "source": "https://www.themaker243.com/our-shops"
+          "value": "Handcrafted French pastries, freshly made with quality ingredients and a touch of modern creativity",
+          "source": "https://www.themaker243.com/menu"
         }
       ],
       "location": {
         "town": {
           "value": "George Town",
+          "source": "https://www.themaker243.com/"
+        },
+        "area": {
+          "value": "Penang",
+          "source": "https://www.themaker"
+        }
+      }
+    },
+    {
+      "name": {
+        "value": "The Maker",
+        "source": "https://www.themaker243.com/"
+      },
+      "summary": {
+        "value": "Handcrafted French pastries and bakes made with passion and quality ingredients in George Town, Penang.",
+        "source": "https://www.themaker243.com/menu"
+      },
+      "category": "bakery",
+      "offerings": [
+        {
+          "name": "French Croissant",
+          "price": "RM 11.00",
+          "source": "https://www.themaker243.com/menu"
+        },
+        {
+          "name": "Almond Kaya Croissant",
+          "price": "RM 16.00",
+          "source": "https://www.themaker243.com/menu"
+        },
+        {
+          "name": "Scone with Strawberry Jam and Cream /pcs",
+          "price": "RM 8.50",
+          "source": "https://www.themaker243.com/menu"
+        },
+        {
+          "name": "Charcoal Sesame Croissant",
+          "price": "RM 21.50",
+          "source": "https://www.themaker243.com/menu"
+        },
+        {
+          "name": "Caramalized Banana Croissant",
+          "price": "RM 20",
+          "source": "https://www.themaker243.com/menu"
+        },
+        {
+          "name": "Mushroom Roll",
+          "price": "RM 20",
+          "source": "https://www.themaker243.com/menu"
+        },
+        {
+          "name": "Curry up",
+          "price": "RM 19",
+          "source": "https://www.themaker243.com/menu"
+        },
+        {
+          "name": "Ham & Cheese Croissant",
+          "price": "RM 19",
+          "source": "https://www.themaker243.com/menu"
+        },
+        {
+          "name": "Seaweed Katsuobushi",
+          "price": "RM 17.50",
+          "source": "https://www.themaker243.com/menu"
+        },
+        {
+          "name": "Sourdough Parmesan Cheese Croissant",
+          "price": "RM 17.50",
+          "source": "https://www.themaker243.com/menu"
+        },
+        {
+          "name": "Parisien Flan",
+          "price": "RM 16.00",
+          "source": "https://www.themaker243.com/menu"
+        },
+        {
+          "name": "Chocolate Almond Croissant",
+          "price": "RM 16.00",
+          "source": "https://www.themaker243.com/menu"
+        },
+        {
+          "name": "Pain Au Chocolate",
+          "price": "RM 13.00",
+          "source": "https://www.themaker243.com/menu"
+        },
+        {
+          "name": "Honey Sea Salt",
+          "price": "RM 13.00",
+          "source": "https://www.themaker243.com/menu"
+        },
+        {
+          "name": "Cinnamon Roll",
+          "price": "RM 12.00",
+          "source": "https://www.themaker243.com/menu"
+        },
+        {
+          "name": "Cinnamon Stick (2 stick)",
+          "price": "RM 8.00",
+          "source": "https://www.themaker243.com/menu"
+        },
+        {
+          "name": "Pist Creme Patisserie Roll",
+          "price": "RM 16.00",
+          "source": "https://www.themaker243.com/menu"
+        }
+      ],
+      "highlights": [
+        {
+          "value": "Driven by craft pastry made with passion, patience and a love for the craft",
+          "source": "https://www.themaker243.com/menu"
+        },
+        {
+          "value": "Handcrafted French pastries, freshly made with quality ingredients and a touch of modern creativity",
+          "source": "https://www.themaker243.com/menu"
+        }
+      ],
+      "location": {
+        "town": {
+          "value": "George Town",
+          "source": "https://www.themaker243.com/"
+        },
+        "area": {
+          "value": "Penang",
           "source": "https://www.themaker243.com/our-shops"
         },
-        "area": null,
+        "address": {}
+      }
+    },
+    {
+      "name": {
+        "value": "The Maker",
+        "source": "https://www.themaker243.com/"
+      },
+      "summary": {
+        "value": "Handcrafted French pastries and bakes made with passion and quality ingredients in George Town, Penang.",
+        "source": "https://www.themaker243.com/menu"
+      },
+      "category": "bakery",
+      "offerings": [
+        {
+          "name": "French Croissant",
+          "price": "RM 11.00",
+          "source": "https://www.themaker243.com/menu"
+        },
+        {
+          "name": "Almond Kaya Croissant",
+          "price": "RM 16.00",
+          "source": "https://www.themaker243.com/menu"
+        },
+        {
+          "name": "Scone with Strawberry Jam and Cream /pcs",
+          "price": "RM 8.50",
+          "source": "https://www.themaker243.com/menu"
+        },
+        {
+          "name": "Charcoal Sesame Croissant",
+          "price": "RM 21.50",
+          "source": "https://www.themaker243.com/menu"
+        },
+        {
+          "name": "Caramalized Banana Croissant",
+          "price": "RM 20",
+          "source": "https://www.themaker243.com/menu"
+        },
+        {
+          "name": "Mushroom Roll",
+          "price": "RM 20",
+          "source": "https://www.themaker243.com/menu"
+        },
+        {
+          "name": "Curry up",
+          "price": "RM 19",
+          "source": "https://www.themaker243.com/menu"
+        },
+        {
+          "name": "Ham & Cheese Croissant",
+          "price": "RM 19",
+          "source": "https://www.themaker243.com/menu"
+        },
+        {
+          "name": "Seaweed Katsuobushi",
+          "price": "RM 17.50",
+          "source": "https://www.themaker243.com/menu"
+        },
+        {
+          "name": "Sourdough Parmesan Cheese Croissant",
+          "price": "RM 17.50",
+          "source": "https://www.themaker243.com/menu"
+        },
+        {
+          "name": "Parisien Flan",
+          "price": "RM 16.00",
+          "source": "https://www.themaker243.com/menu"
+        },
+        {
+          "name": "Chocolate Almond Croissant",
+          "price": "RM 16.00",
+          "source": "https://www.themaker243.com/menu"
+        },
+        {
+          "name": "Pain Au Chocolate",
+          "price": "RM 13.00",
+          "source": "https://www.themaker243.com/menu"
+        },
+        {
+          "name": "Honey Sea Salt",
+          "price": "RM 13.00",
+          "source": "https://www.themaker243.com/menu"
+        },
+        {
+          "name": "Cinnamon Roll",
+          "price": "RM 12.00",
+          "source": "https://www.themaker243.com/menu"
+        },
+        {
+          "name": "Cinnamon Stick (2 stick)",
+          "price": "RM 8.00",
+          "source": "https://www.themaker243.com/menu"
+        },
+        {
+          "name": "Pist Creme Patisserie Roll",
+          "price": "RM 16.00",
+          "source": "https://www.themaker243.com/menu"
+        }
+      ],
+      "highlights": [
+        {
+          "value": "Driven by craft pastry made with passion, patience and a love for the craft",
+          "source": "https://www.themaker243.com/menu"
+        },
+        {
+          "value": "Handcrafted French pastries, freshly made with quality ingredients and a touch of modern creativity",
+          "source": "https://www.themaker243.com/menu"
+        }
+      ],
+      "location": {
+        "town": {
+          "value": "George Town",
+          "source": "https://www.themaker243.com/"
+        },
+        "area": {
+          "value": "Penang",
+          "source": "https://www.themaker243.com/our-shops"
+        },
+        "address": {
+          "value": "243 Lebuh Pantai",
+          "source": "https://www.themaker243."
+        }
+      }
+    },
+    {
+      "name": {
+        "value": "The Maker",
+        "source": "https://www.themaker243.com/"
+      },
+      "summary": {
+        "value": "Handcrafted French pastries and bakes made with passion and quality ingredients in George Town, Penang.",
+        "source": "https://www.themaker243.com/menu"
+      },
+      "category": "bakery",
+      "offerings": [
+        {
+          "name": "French Croissant",
+          "price": "RM 11.00",
+          "source": "https://www.themaker243.com/menu"
+        },
+        {
+          "name": "Almond Kaya Croissant",
+          "price": "RM 16.00",
+          "source": "https://www.themaker243.com/menu"
+        },
+        {
+          "name": "Scone with Strawberry Jam and Cream /pcs",
+          "price": "RM 8.50",
+          "source": "https://www.themaker243.com/menu"
+        },
+        {
+          "name": "Charcoal Sesame Croissant",
+          "price": "RM 21.50",
+          "source": "https://www.themaker243.com/menu"
+        },
+        {
+          "name": "Caramalized Banana Croissant",
+          "price": "RM 20",
+          "source": "https://www.themaker243.com/menu"
+        },
+        {
+          "name": "Mushroom Roll",
+          "price": "RM 20",
+          "source": "https://www.themaker243.com/menu"
+        },
+        {
+          "name": "Curry up",
+          "price": "RM 19",
+          "source": "https://www.themaker243.com/menu"
+        },
+        {
+          "name": "Ham & Cheese Croissant",
+          "price": "RM 19",
+          "source": "https://www.themaker243.com/menu"
+        },
+        {
+          "name": "Seaweed Katsuobushi",
+          "price": "RM 17.50",
+          "source": "https://www.themaker243.com/menu"
+        },
+        {
+          "name": "Sourdough Parmesan Cheese Croissant",
+          "price": "RM 17.50",
+          "source": "https://www.themaker243.com/menu"
+        },
+        {
+          "name": "Parisien Flan",
+          "price": "RM 16.00",
+          "source": "https://www.themaker243.com/menu"
+        },
+        {
+          "name": "Chocolate Almond Croissant",
+          "price": "RM 16.00",
+          "source": "https://www.themaker243.com/menu"
+        },
+        {
+          "name": "Pain Au Chocolate",
+          "price": "RM 13.00",
+          "source": "https://www.themaker243.com/menu"
+        },
+        {
+          "name": "Honey Sea Salt",
+          "price": "RM 13.00",
+          "source": "https://www.themaker243.com/menu"
+        },
+        {
+          "name": "Cinnamon Roll",
+          "price": "RM 12.00",
+          "source": "https://www.themaker243.com/menu"
+        },
+        {
+          "name": "Cinnamon Stick (2 stick)",
+          "price": "RM 8.00",
+          "source": "https://www.themaker243.com/menu"
+        },
+        {
+          "name": "Pist Creme Patisserie Roll",
+          "price": "RM 16.00",
+          "source": "https://www.themaker243.com/menu"
+        }
+      ],
+      "highlights": [
+        {
+          "value": "Driven by craft pastry made with passion, patience and a love for the craft",
+          "source": "https://www.themaker243.com/menu"
+        },
+        {
+          "value": "Handcrafted French pastries, freshly made with quality ingredients and a touch of modern creativity",
+          "source": "https://www.themaker243.com/menu"
+        }
+      ],
+      "location": {
+        "town": {
+          "value": "George Town",
+          "source": "https://www.themaker243.com/"
+        },
+        "area": {
+          "value": "Penang",
+          "source": "https://www.themaker243.com/our-shops"
+        },
         "address": {
           "value": "243 Lebuh Pantai",
           "source": "https://www.themaker243.com/"
         },
         "serviceArea": null
       },
-      "contact": {
-        "whatsapp": null
-      }
+      "contact": {}
     },
     {
       "name": {
@@ -3352,7 +2994,7 @@
         "source": "https://www.themaker243.com/"
       },
       "summary": {
-        "value": "Handcrafted French pastries, freshly made with quality ingredients and a touch of modern creativity.",
+        "value": "Handcrafted French pastries and bakes made with passion and quality ingredients in George Town, Penang.",
         "source": "https://www.themaker243.com/menu"
       },
       "category": "bakery",
@@ -3368,7 +3010,7 @@
           "source": "https://www.themaker243.com/menu"
         },
         {
-          "name": "Scone with Strawberry Jam and Cream",
+          "name": "Scone with Strawberry Jam and Cream /pcs",
           "price": "RM 8.50",
           "source": "https://www.themaker243.com/menu"
         },
@@ -3433,18 +3075,8 @@
           "source": "https://www.themaker243.com/menu"
         },
         {
-          "name": "Cinnamon Stick",
+          "name": "Cinnamon Stick (2 stick)",
           "price": "RM 8.00",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Ham Cheese Foccacia",
-          "price": "quarter RM 10 half RM 19 whole RM 35",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Sundried Tomato Foccacia",
-          "price": "quarter RM 10 half RM 19 whole RM 35",
           "source": "https://www.themaker243.com/menu"
         },
         {
@@ -3455,20 +3087,23 @@
       ],
       "highlights": [
         {
-          "value": "Handcrafted French pastries made with passion and patience",
+          "value": "Driven by craft pastry made with passion, patience and a love for the craft",
           "source": "https://www.themaker243.com/menu"
         },
         {
-          "value": "Located in the heart of George Town, Penang",
-          "source": "https://www.themaker243.com/our-shops"
+          "value": "Handcrafted French pastries, freshly made with quality ingredients and a touch of modern creativity",
+          "source": "https://www.themaker243.com/menu"
         }
       ],
       "location": {
         "town": {
           "value": "George Town",
+          "source": "https://www.themaker243.com/"
+        },
+        "area": {
+          "value": "Penang",
           "source": "https://www.themaker243.com/our-shops"
         },
-        "area": null,
         "address": {
           "value": "243 Lebuh Pantai",
           "source": "https://www.themaker243.com/"
@@ -3478,7 +3113,7 @@
       "contact": {
         "whatsapp": null,
         "phone": {
-          "value": "0162143243"
+          "value": "01621432"
         }
       }
     },
@@ -3488,7 +3123,7 @@
         "source": "https://www.themaker243.com/"
       },
       "summary": {
-        "value": "Handcrafted French pastries, freshly made with quality ingredients and a touch of modern creativity.",
+        "value": "Handcrafted French pastries and bakes made with passion and quality ingredients in George Town, Penang.",
         "source": "https://www.themaker243.com/menu"
       },
       "category": "bakery",
@@ -3504,7 +3139,7 @@
           "source": "https://www.themaker243.com/menu"
         },
         {
-          "name": "Scone with Strawberry Jam and Cream",
+          "name": "Scone with Strawberry Jam and Cream /pcs",
           "price": "RM 8.50",
           "source": "https://www.themaker243.com/menu"
         },
@@ -3569,18 +3204,8 @@
           "source": "https://www.themaker243.com/menu"
         },
         {
-          "name": "Cinnamon Stick",
+          "name": "Cinnamon Stick (2 stick)",
           "price": "RM 8.00",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Ham Cheese Foccacia",
-          "price": "quarter RM 10 half RM 19 whole RM 35",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Sundried Tomato Foccacia",
-          "price": "quarter RM 10 half RM 19 whole RM 35",
           "source": "https://www.themaker243.com/menu"
         },
         {
@@ -3591,20 +3216,23 @@
       ],
       "highlights": [
         {
-          "value": "Handcrafted French pastries made with passion and patience",
+          "value": "Driven by craft pastry made with passion, patience and a love for the craft",
           "source": "https://www.themaker243.com/menu"
         },
         {
-          "value": "Located in the heart of George Town, Penang",
-          "source": "https://www.themaker243.com/our-shops"
+          "value": "Handcrafted French pastries, freshly made with quality ingredients and a touch of modern creativity",
+          "source": "https://www.themaker243.com/menu"
         }
       ],
       "location": {
         "town": {
           "value": "George Town",
+          "source": "https://www.themaker243.com/"
+        },
+        "area": {
+          "value": "Penang",
           "source": "https://www.themaker243.com/our-shops"
         },
-        "area": null,
         "address": {
           "value": "243 Lebuh Pantai",
           "source": "https://www.themaker243.com/"
@@ -3625,7 +3253,7 @@
         "source": "https://www.themaker243.com/"
       },
       "summary": {
-        "value": "Handcrafted French pastries, freshly made with quality ingredients and a touch of modern creativity.",
+        "value": "Handcrafted French pastries and bakes made with passion and quality ingredients in George Town, Penang.",
         "source": "https://www.themaker243.com/menu"
       },
       "category": "bakery",
@@ -3641,7 +3269,7 @@
           "source": "https://www.themaker243.com/menu"
         },
         {
-          "name": "Scone with Strawberry Jam and Cream",
+          "name": "Scone with Strawberry Jam and Cream /pcs",
           "price": "RM 8.50",
           "source": "https://www.themaker243.com/menu"
         },
@@ -3706,18 +3334,8 @@
           "source": "https://www.themaker243.com/menu"
         },
         {
-          "name": "Cinnamon Stick",
+          "name": "Cinnamon Stick (2 stick)",
           "price": "RM 8.00",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Ham Cheese Foccacia",
-          "price": "quarter RM 10 half RM 19 whole RM 35",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Sundried Tomato Foccacia",
-          "price": "quarter RM 10 half RM 19 whole RM 35",
           "source": "https://www.themaker243.com/menu"
         },
         {
@@ -3728,20 +3346,155 @@
       ],
       "highlights": [
         {
-          "value": "Handcrafted French pastries made with passion and patience",
+          "value": "Driven by craft pastry made with passion, patience and a love for the craft",
           "source": "https://www.themaker243.com/menu"
         },
         {
-          "value": "Located in the heart of George Town, Penang",
-          "source": "https://www.themaker243.com/our-shops"
+          "value": "Handcrafted French pastries, freshly made with quality ingredients and a touch of modern creativity",
+          "source": "https://www.themaker243.com/menu"
         }
       ],
       "location": {
         "town": {
           "value": "George Town",
+          "source": "https://www.themaker243.com/"
+        },
+        "area": {
+          "value": "Penang",
           "source": "https://www.themaker243.com/our-shops"
         },
-        "area": null,
+        "address": {
+          "value": "243 Lebuh Pantai",
+          "source": "https://www.themaker243.com/"
+        },
+        "serviceArea": null
+      },
+      "contact": {
+        "whatsapp": null,
+        "phone": {
+          "value": "0162143243",
+          "source": "https://www.themaker243.com/our-shops"
+        },
+        "email": null,
+        "instagram": null
+      }
+    },
+    {
+      "name": {
+        "value": "The Maker",
+        "source": "https://www.themaker243.com/"
+      },
+      "summary": {
+        "value": "Handcrafted French pastries and bakes made with passion and quality ingredients in George Town, Penang.",
+        "source": "https://www.themaker243.com/menu"
+      },
+      "category": "bakery",
+      "offerings": [
+        {
+          "name": "French Croissant",
+          "price": "RM 11.00",
+          "source": "https://www.themaker243.com/menu"
+        },
+        {
+          "name": "Almond Kaya Croissant",
+          "price": "RM 16.00",
+          "source": "https://www.themaker243.com/menu"
+        },
+        {
+          "name": "Scone with Strawberry Jam and Cream /pcs",
+          "price": "RM 8.50",
+          "source": "https://www.themaker243.com/menu"
+        },
+        {
+          "name": "Charcoal Sesame Croissant",
+          "price": "RM 21.50",
+          "source": "https://www.themaker243.com/menu"
+        },
+        {
+          "name": "Caramalized Banana Croissant",
+          "price": "RM 20",
+          "source": "https://www.themaker243.com/menu"
+        },
+        {
+          "name": "Mushroom Roll",
+          "price": "RM 20",
+          "source": "https://www.themaker243.com/menu"
+        },
+        {
+          "name": "Curry up",
+          "price": "RM 19",
+          "source": "https://www.themaker243.com/menu"
+        },
+        {
+          "name": "Ham & Cheese Croissant",
+          "price": "RM 19",
+          "source": "https://www.themaker243.com/menu"
+        },
+        {
+          "name": "Seaweed Katsuobushi",
+          "price": "RM 17.50",
+          "source": "https://www.themaker243.com/menu"
+        },
+        {
+          "name": "Sourdough Parmesan Cheese Croissant",
+          "price": "RM 17.50",
+          "source": "https://www.themaker243.com/menu"
+        },
+        {
+          "name": "Parisien Flan",
+          "price": "RM 16.00",
+          "source": "https://www.themaker243.com/menu"
+        },
+        {
+          "name": "Chocolate Almond Croissant",
+          "price": "RM 16.00",
+          "source": "https://www.themaker243.com/menu"
+        },
+        {
+          "name": "Pain Au Chocolate",
+          "price": "RM 13.00",
+          "source": "https://www.themaker243.com/menu"
+        },
+        {
+          "name": "Honey Sea Salt",
+          "price": "RM 13.00",
+          "source": "https://www.themaker243.com/menu"
+        },
+        {
+          "name": "Cinnamon Roll",
+          "price": "RM 12.00",
+          "source": "https://www.themaker243.com/menu"
+        },
+        {
+          "name": "Cinnamon Stick (2 stick)",
+          "price": "RM 8.00",
+          "source": "https://www.themaker243.com/menu"
+        },
+        {
+          "name": "Pist Creme Patisserie Roll",
+          "price": "RM 16.00",
+          "source": "https://www.themaker243.com/menu"
+        }
+      ],
+      "highlights": [
+        {
+          "value": "Driven by craft pastry made with passion, patience and a love for the craft",
+          "source": "https://www.themaker243.com/menu"
+        },
+        {
+          "value": "Handcrafted French pastries, freshly made with quality ingredients and a touch of modern creativity",
+          "source": "https://www.themaker243.com/menu"
+        }
+      ],
+      "location": {
+        "town": {
+          "value": "George Town",
+          "source": "https://www.themaker243.com/"
+        },
+        "area": {
+          "value": "Penang",
+          "source": "https://www.themaker243.com/our-shops"
+        },
         "address": {
           "value": "243 Lebuh Pantai",
           "source": "https://www.themaker243.com/"
@@ -3756,9 +3509,10 @@
         },
         "email": null,
         "instagram": null,
-        "bookingUrl": {
-          "value": "https"
-        }
+        "bookingUrl": null
+      },
+      "hours": {
+        "value": "Tue - Sun 9.30"
       }
     },
     {
@@ -3767,7 +3521,7 @@
         "source": "https://www.themaker243.com/"
       },
       "summary": {
-        "value": "Handcrafted French pastries, freshly made with quality ingredients and a touch of modern creativity.",
+        "value": "Handcrafted French pastries and bakes made with passion and quality ingredients in George Town, Penang.",
         "source": "https://www.themaker243.com/menu"
       },
       "category": "bakery",
@@ -3783,7 +3537,7 @@
           "source": "https://www.themaker243.com/menu"
         },
         {
-          "name": "Scone with Strawberry Jam and Cream",
+          "name": "Scone with Strawberry Jam and Cream /pcs",
           "price": "RM 8.50",
           "source": "https://www.themaker243.com/menu"
         },
@@ -3848,18 +3602,8 @@
           "source": "https://www.themaker243.com/menu"
         },
         {
-          "name": "Cinnamon Stick",
+          "name": "Cinnamon Stick (2 stick)",
           "price": "RM 8.00",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Ham Cheese Foccacia",
-          "price": "quarter RM 10 half RM 19 whole RM 35",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Sundried Tomato Foccacia",
-          "price": "quarter RM 10 half RM 19 whole RM 35",
           "source": "https://www.themaker243.com/menu"
         },
         {
@@ -3870,20 +3614,23 @@
       ],
       "highlights": [
         {
-          "value": "Handcrafted French pastries made with passion and patience",
+          "value": "Driven by craft pastry made with passion, patience and a love for the craft",
           "source": "https://www.themaker243.com/menu"
         },
         {
-          "value": "Located in the heart of George Town, Penang",
-          "source": "https://www.themaker243.com/our-shops"
+          "value": "Handcrafted French pastries, freshly made with quality ingredients and a touch of modern creativity",
+          "source": "https://www.themaker243.com/menu"
         }
       ],
       "location": {
         "town": {
           "value": "George Town",
+          "source": "https://www.themaker243.com/"
+        },
+        "area": {
+          "value": "Penang",
           "source": "https://www.themaker243.com/our-shops"
         },
-        "area": null,
         "address": {
           "value": "243 Lebuh Pantai",
           "source": "https://www.themaker243.com/"
@@ -3898,301 +3645,11 @@
         },
         "email": null,
         "instagram": null,
-        "bookingUrl": {
-          "value": "https://themaker.feedme.vip",
-          "source": "https://www.themaker243"
-        }
-      }
-    },
-    {
-      "name": {
-        "value": "The Maker",
-        "source": "https://www.themaker243.com/"
-      },
-      "summary": {
-        "value": "Handcrafted French pastries, freshly made with quality ingredients and a touch of modern creativity.",
-        "source": "https://www.themaker243.com/menu"
-      },
-      "category": "bakery",
-      "offerings": [
-        {
-          "name": "French Croissant",
-          "price": "RM 11.00",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Almond Kaya Croissant",
-          "price": "RM 16.00",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Scone with Strawberry Jam and Cream",
-          "price": "RM 8.50",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Charcoal Sesame Croissant",
-          "price": "RM 21.50",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Caramalized Banana Croissant",
-          "price": "RM 20",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Mushroom Roll",
-          "price": "RM 20",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Curry up",
-          "price": "RM 19",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Ham & Cheese Croissant",
-          "price": "RM 19",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Seaweed Katsuobushi",
-          "price": "RM 17.50",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Sourdough Parmesan Cheese Croissant",
-          "price": "RM 17.50",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Parisien Flan",
-          "price": "RM 16.00",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Chocolate Almond Croissant",
-          "price": "RM 16.00",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Pain Au Chocolate",
-          "price": "RM 13.00",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Honey Sea Salt",
-          "price": "RM 13.00",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Cinnamon Roll",
-          "price": "RM 12.00",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Cinnamon Stick",
-          "price": "RM 8.00",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Ham Cheese Foccacia",
-          "price": "quarter RM 10 half RM 19 whole RM 35",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Sundried Tomato Foccacia",
-          "price": "quarter RM 10 half RM 19 whole RM 35",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Pist Creme Patisserie Roll",
-          "price": "RM 16.00",
-          "source": "https://www.themaker243.com/menu"
-        }
-      ],
-      "highlights": [
-        {
-          "value": "Handcrafted French pastries made with passion and patience",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "value": "Located in the heart of George Town, Penang",
-          "source": "https://www.themaker243.com/our-shops"
-        }
-      ],
-      "location": {
-        "town": {
-          "value": "George Town",
-          "source": "https://www.themaker243.com/our-shops"
-        },
-        "area": null,
-        "address": {
-          "value": "243 Lebuh Pantai",
-          "source": "https://www.themaker243.com/"
-        },
-        "serviceArea": null
-      },
-      "contact": {
-        "whatsapp": null,
-        "phone": {
-          "value": "0162143243",
-          "source": "https://www.themaker243.com/our-shops"
-        },
-        "email": null,
-        "instagram": null,
-        "bookingUrl": {
-          "value": "https://themaker.feedme.vip",
-          "source": "https://www.themaker243.com/our-shops"
-        }
-      },
-      "hours": {}
-    },
-    {
-      "name": {
-        "value": "The Maker",
-        "source": "https://www.themaker243.com/"
-      },
-      "summary": {
-        "value": "Handcrafted French pastries, freshly made with quality ingredients and a touch of modern creativity.",
-        "source": "https://www.themaker243.com/menu"
-      },
-      "category": "bakery",
-      "offerings": [
-        {
-          "name": "French Croissant",
-          "price": "RM 11.00",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Almond Kaya Croissant",
-          "price": "RM 16.00",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Scone with Strawberry Jam and Cream",
-          "price": "RM 8.50",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Charcoal Sesame Croissant",
-          "price": "RM 21.50",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Caramalized Banana Croissant",
-          "price": "RM 20",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Mushroom Roll",
-          "price": "RM 20",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Curry up",
-          "price": "RM 19",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Ham & Cheese Croissant",
-          "price": "RM 19",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Seaweed Katsuobushi",
-          "price": "RM 17.50",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Sourdough Parmesan Cheese Croissant",
-          "price": "RM 17.50",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Parisien Flan",
-          "price": "RM 16.00",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Chocolate Almond Croissant",
-          "price": "RM 16.00",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Pain Au Chocolate",
-          "price": "RM 13.00",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Honey Sea Salt",
-          "price": "RM 13.00",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Cinnamon Roll",
-          "price": "RM 12.00",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Cinnamon Stick",
-          "price": "RM 8.00",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Ham Cheese Foccacia",
-          "price": "quarter RM 10 half RM 19 whole RM 35",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Sundried Tomato Foccacia",
-          "price": "quarter RM 10 half RM 19 whole RM 35",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Pist Creme Patisserie Roll",
-          "price": "RM 16.00",
-          "source": "https://www.themaker243.com/menu"
-        }
-      ],
-      "highlights": [
-        {
-          "value": "Handcrafted French pastries made with passion and patience",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "value": "Located in the heart of George Town, Penang",
-          "source": "https://www.themaker243.com/our-shops"
-        }
-      ],
-      "location": {
-        "town": {
-          "value": "George Town",
-          "source": "https://www.themaker243.com/our-shops"
-        },
-        "area": null,
-        "address": {
-          "value": "243 Lebuh Pantai",
-          "source": "https://www.themaker243.com/"
-        },
-        "serviceArea": null
-      },
-      "contact": {
-        "whatsapp": null,
-        "phone": {
-          "value": "0162143243",
-          "source": "https://www.themaker243.com/our-shops"
-        },
-        "email": null,
-        "instagram": null,
-        "bookingUrl": {
-          "value": "https://themaker.feedme.vip",
-          "source": "https://www.themaker243.com/our-shops"
-        }
+        "bookingUrl": null
       },
       "hours": {
         "value": "Tue - Sun 9.30am to 5.30pm",
-        "source": "https://www.the"
+        "source": "https://www.themaker243.com"
       }
     },
     {
@@ -4201,7 +3658,7 @@
         "source": "https://www.themaker243.com/"
       },
       "summary": {
-        "value": "Handcrafted French pastries, freshly made with quality ingredients and a touch of modern creativity.",
+        "value": "Handcrafted French pastries and bakes made with passion and quality ingredients in George Town, Penang.",
         "source": "https://www.themaker243.com/menu"
       },
       "category": "bakery",
@@ -4217,7 +3674,7 @@
           "source": "https://www.themaker243.com/menu"
         },
         {
-          "name": "Scone with Strawberry Jam and Cream",
+          "name": "Scone with Strawberry Jam and Cream /pcs",
           "price": "RM 8.50",
           "source": "https://www.themaker243.com/menu"
         },
@@ -4282,18 +3739,8 @@
           "source": "https://www.themaker243.com/menu"
         },
         {
-          "name": "Cinnamon Stick",
+          "name": "Cinnamon Stick (2 stick)",
           "price": "RM 8.00",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Ham Cheese Foccacia",
-          "price": "quarter RM 10 half RM 19 whole RM 35",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Sundried Tomato Foccacia",
-          "price": "quarter RM 10 half RM 19 whole RM 35",
           "source": "https://www.themaker243.com/menu"
         },
         {
@@ -4304,20 +3751,23 @@
       ],
       "highlights": [
         {
-          "value": "Handcrafted French pastries made with passion and patience",
+          "value": "Driven by craft pastry made with passion, patience and a love for the craft",
           "source": "https://www.themaker243.com/menu"
         },
         {
-          "value": "Located in the heart of George Town, Penang",
-          "source": "https://www.themaker243.com/our-shops"
+          "value": "Handcrafted French pastries, freshly made with quality ingredients and a touch of modern creativity",
+          "source": "https://www.themaker243.com/menu"
         }
       ],
       "location": {
         "town": {
           "value": "George Town",
+          "source": "https://www.themaker243.com/"
+        },
+        "area": {
+          "value": "Penang",
           "source": "https://www.themaker243.com/our-shops"
         },
-        "area": null,
         "address": {
           "value": "243 Lebuh Pantai",
           "source": "https://www.themaker243.com/"
@@ -4332,160 +3782,7 @@
         },
         "email": null,
         "instagram": null,
-        "bookingUrl": {
-          "value": "https://themaker.feedme.vip",
-          "source": "https://www.themaker243.com/our-shops"
-        }
-      },
-      "hours": {
-        "value": "Tue - Sun 9.30am to 5.30pm",
-        "source": "https://www.themaker243.com/our-shops"
-      },
-      "tone": [
-        "pass"
-      ]
-    },
-    {
-      "name": {
-        "value": "The Maker",
-        "source": "https://www.themaker243.com/"
-      },
-      "summary": {
-        "value": "Handcrafted French pastries, freshly made with quality ingredients and a touch of modern creativity.",
-        "source": "https://www.themaker243.com/menu"
-      },
-      "category": "bakery",
-      "offerings": [
-        {
-          "name": "French Croissant",
-          "price": "RM 11.00",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Almond Kaya Croissant",
-          "price": "RM 16.00",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Scone with Strawberry Jam and Cream",
-          "price": "RM 8.50",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Charcoal Sesame Croissant",
-          "price": "RM 21.50",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Caramalized Banana Croissant",
-          "price": "RM 20",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Mushroom Roll",
-          "price": "RM 20",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Curry up",
-          "price": "RM 19",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Ham & Cheese Croissant",
-          "price": "RM 19",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Seaweed Katsuobushi",
-          "price": "RM 17.50",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Sourdough Parmesan Cheese Croissant",
-          "price": "RM 17.50",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Parisien Flan",
-          "price": "RM 16.00",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Chocolate Almond Croissant",
-          "price": "RM 16.00",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Pain Au Chocolate",
-          "price": "RM 13.00",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Honey Sea Salt",
-          "price": "RM 13.00",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Cinnamon Roll",
-          "price": "RM 12.00",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Cinnamon Stick",
-          "price": "RM 8.00",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Ham Cheese Foccacia",
-          "price": "quarter RM 10 half RM 19 whole RM 35",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Sundried Tomato Foccacia",
-          "price": "quarter RM 10 half RM 19 whole RM 35",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Pist Creme Patisserie Roll",
-          "price": "RM 16.00",
-          "source": "https://www.themaker243.com/menu"
-        }
-      ],
-      "highlights": [
-        {
-          "value": "Handcrafted French pastries made with passion and patience",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "value": "Located in the heart of George Town, Penang",
-          "source": "https://www.themaker243.com/our-shops"
-        }
-      ],
-      "location": {
-        "town": {
-          "value": "George Town",
-          "source": "https://www.themaker243.com/our-shops"
-        },
-        "area": null,
-        "address": {
-          "value": "243 Lebuh Pantai",
-          "source": "https://www.themaker243.com/"
-        },
-        "serviceArea": null
-      },
-      "contact": {
-        "whatsapp": null,
-        "phone": {
-          "value": "0162143243",
-          "source": "https://www.themaker243.com/our-shops"
-        },
-        "email": null,
-        "instagram": null,
-        "bookingUrl": {
-          "value": "https://themaker.feedme.vip",
-          "source": "https://www.themaker243.com/our-shops"
-        }
+        "bookingUrl": null
       },
       "hours": {
         "value": "Tue - Sun 9.30am to 5.30pm",
@@ -4493,11 +3790,7 @@
       },
       "tone": [
         "passionate",
-        "warm",
-        "inviting"
-      ],
-      "colours": [
-        {}
+        "warm"
       ]
     },
     {
@@ -4506,7 +3799,7 @@
         "source": "https://www.themaker243.com/"
       },
       "summary": {
-        "value": "Handcrafted French pastries, freshly made with quality ingredients and a touch of modern creativity.",
+        "value": "Handcrafted French pastries and bakes made with passion and quality ingredients in George Town, Penang.",
         "source": "https://www.themaker243.com/menu"
       },
       "category": "bakery",
@@ -4522,7 +3815,7 @@
           "source": "https://www.themaker243.com/menu"
         },
         {
-          "name": "Scone with Strawberry Jam and Cream",
+          "name": "Scone with Strawberry Jam and Cream /pcs",
           "price": "RM 8.50",
           "source": "https://www.themaker243.com/menu"
         },
@@ -4587,18 +3880,8 @@
           "source": "https://www.themaker243.com/menu"
         },
         {
-          "name": "Cinnamon Stick",
+          "name": "Cinnamon Stick (2 stick)",
           "price": "RM 8.00",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Ham Cheese Foccacia",
-          "price": "quarter RM 10 half RM 19 whole RM 35",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Sundried Tomato Foccacia",
-          "price": "quarter RM 10 half RM 19 whole RM 35",
           "source": "https://www.themaker243.com/menu"
         },
         {
@@ -4609,20 +3892,23 @@
       ],
       "highlights": [
         {
-          "value": "Handcrafted French pastries made with passion and patience",
+          "value": "Driven by craft pastry made with passion, patience and a love for the craft",
           "source": "https://www.themaker243.com/menu"
         },
         {
-          "value": "Located in the heart of George Town, Penang",
-          "source": "https://www.themaker243.com/our-shops"
+          "value": "Handcrafted French pastries, freshly made with quality ingredients and a touch of modern creativity",
+          "source": "https://www.themaker243.com/menu"
         }
       ],
       "location": {
         "town": {
           "value": "George Town",
+          "source": "https://www.themaker243.com/"
+        },
+        "area": {
+          "value": "Penang",
           "source": "https://www.themaker243.com/our-shops"
         },
-        "area": null,
         "address": {
           "value": "243 Lebuh Pantai",
           "source": "https://www.themaker243.com/"
@@ -4637,10 +3923,7 @@
         },
         "email": null,
         "instagram": null,
-        "bookingUrl": {
-          "value": "https://themaker.feedme.vip",
-          "source": "https://www.themaker243.com/our-shops"
-        }
+        "bookingUrl": null
       },
       "hours": {
         "value": "Tue - Sun 9.30am to 5.30pm",
@@ -4653,8 +3936,7 @@
       ],
       "colours": [
         {
-          "hex": "#000000",
-          "role": "background"
+          "hex": "#00"
         }
       ]
     },
@@ -4664,7 +3946,7 @@
         "source": "https://www.themaker243.com/"
       },
       "summary": {
-        "value": "Handcrafted French pastries, freshly made with quality ingredients and a touch of modern creativity.",
+        "value": "Handcrafted French pastries and bakes made with passion and quality ingredients in George Town, Penang.",
         "source": "https://www.themaker243.com/menu"
       },
       "category": "bakery",
@@ -4680,7 +3962,7 @@
           "source": "https://www.themaker243.com/menu"
         },
         {
-          "name": "Scone with Strawberry Jam and Cream",
+          "name": "Scone with Strawberry Jam and Cream /pcs",
           "price": "RM 8.50",
           "source": "https://www.themaker243.com/menu"
         },
@@ -4745,18 +4027,8 @@
           "source": "https://www.themaker243.com/menu"
         },
         {
-          "name": "Cinnamon Stick",
+          "name": "Cinnamon Stick (2 stick)",
           "price": "RM 8.00",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Ham Cheese Foccacia",
-          "price": "quarter RM 10 half RM 19 whole RM 35",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Sundried Tomato Foccacia",
-          "price": "quarter RM 10 half RM 19 whole RM 35",
           "source": "https://www.themaker243.com/menu"
         },
         {
@@ -4767,20 +4039,23 @@
       ],
       "highlights": [
         {
-          "value": "Handcrafted French pastries made with passion and patience",
+          "value": "Driven by craft pastry made with passion, patience and a love for the craft",
           "source": "https://www.themaker243.com/menu"
         },
         {
-          "value": "Located in the heart of George Town, Penang",
-          "source": "https://www.themaker243.com/our-shops"
+          "value": "Handcrafted French pastries, freshly made with quality ingredients and a touch of modern creativity",
+          "source": "https://www.themaker243.com/menu"
         }
       ],
       "location": {
         "town": {
           "value": "George Town",
+          "source": "https://www.themaker243.com/"
+        },
+        "area": {
+          "value": "Penang",
           "source": "https://www.themaker243.com/our-shops"
         },
-        "area": null,
         "address": {
           "value": "243 Lebuh Pantai",
           "source": "https://www.themaker243.com/"
@@ -4795,10 +4070,7 @@
         },
         "email": null,
         "instagram": null,
-        "bookingUrl": {
-          "value": "https://themaker.feedme.vip",
-          "source": "https://www.themaker243.com/our-shops"
-        }
+        "bookingUrl": null
       },
       "hours": {
         "value": "Tue - Sun 9.30am to 5.30pm",
@@ -4813,9 +4085,8 @@
         {
           "hex": "#000000",
           "role": "background",
-          "source": "https://www.themaker243.com/"
-        },
-        {}
+          "source": "https://www.the"
+        }
       ]
     },
     {
@@ -4824,7 +4095,7 @@
         "source": "https://www.themaker243.com/"
       },
       "summary": {
-        "value": "Handcrafted French pastries, freshly made with quality ingredients and a touch of modern creativity.",
+        "value": "Handcrafted French pastries and bakes made with passion and quality ingredients in George Town, Penang.",
         "source": "https://www.themaker243.com/menu"
       },
       "category": "bakery",
@@ -4840,7 +4111,7 @@
           "source": "https://www.themaker243.com/menu"
         },
         {
-          "name": "Scone with Strawberry Jam and Cream",
+          "name": "Scone with Strawberry Jam and Cream /pcs",
           "price": "RM 8.50",
           "source": "https://www.themaker243.com/menu"
         },
@@ -4905,18 +4176,8 @@
           "source": "https://www.themaker243.com/menu"
         },
         {
-          "name": "Cinnamon Stick",
+          "name": "Cinnamon Stick (2 stick)",
           "price": "RM 8.00",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Ham Cheese Foccacia",
-          "price": "quarter RM 10 half RM 19 whole RM 35",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Sundried Tomato Foccacia",
-          "price": "quarter RM 10 half RM 19 whole RM 35",
           "source": "https://www.themaker243.com/menu"
         },
         {
@@ -4927,20 +4188,23 @@
       ],
       "highlights": [
         {
-          "value": "Handcrafted French pastries made with passion and patience",
+          "value": "Driven by craft pastry made with passion, patience and a love for the craft",
           "source": "https://www.themaker243.com/menu"
         },
         {
-          "value": "Located in the heart of George Town, Penang",
-          "source": "https://www.themaker243.com/our-shops"
+          "value": "Handcrafted French pastries, freshly made with quality ingredients and a touch of modern creativity",
+          "source": "https://www.themaker243.com/menu"
         }
       ],
       "location": {
         "town": {
           "value": "George Town",
+          "source": "https://www.themaker243.com/"
+        },
+        "area": {
+          "value": "Penang",
           "source": "https://www.themaker243.com/our-shops"
         },
-        "area": null,
         "address": {
           "value": "243 Lebuh Pantai",
           "source": "https://www.themaker243.com/"
@@ -4955,10 +4219,7 @@
         },
         "email": null,
         "instagram": null,
-        "bookingUrl": {
-          "value": "https://themaker.feedme.vip",
-          "source": "https://www.themaker243.com/our-shops"
-        }
+        "bookingUrl": null
       },
       "hours": {
         "value": "Tue - Sun 9.30am to 5.30pm",
@@ -4976,9 +4237,7 @@
           "source": "https://www.themaker243.com/"
         },
         {
-          "hex": "#ffffff",
-          "role": "text",
-          "source": "https://www.themaker2"
+          "hex": "#ffffff"
         }
       ]
     },
@@ -4988,7 +4247,7 @@
         "source": "https://www.themaker243.com/"
       },
       "summary": {
-        "value": "Handcrafted French pastries, freshly made with quality ingredients and a touch of modern creativity.",
+        "value": "Handcrafted French pastries and bakes made with passion and quality ingredients in George Town, Penang.",
         "source": "https://www.themaker243.com/menu"
       },
       "category": "bakery",
@@ -5004,7 +4263,7 @@
           "source": "https://www.themaker243.com/menu"
         },
         {
-          "name": "Scone with Strawberry Jam and Cream",
+          "name": "Scone with Strawberry Jam and Cream /pcs",
           "price": "RM 8.50",
           "source": "https://www.themaker243.com/menu"
         },
@@ -5069,18 +4328,8 @@
           "source": "https://www.themaker243.com/menu"
         },
         {
-          "name": "Cinnamon Stick",
+          "name": "Cinnamon Stick (2 stick)",
           "price": "RM 8.00",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Ham Cheese Foccacia",
-          "price": "quarter RM 10 half RM 19 whole RM 35",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Sundried Tomato Foccacia",
-          "price": "quarter RM 10 half RM 19 whole RM 35",
           "source": "https://www.themaker243.com/menu"
         },
         {
@@ -5091,20 +4340,23 @@
       ],
       "highlights": [
         {
-          "value": "Handcrafted French pastries made with passion and patience",
+          "value": "Driven by craft pastry made with passion, patience and a love for the craft",
           "source": "https://www.themaker243.com/menu"
         },
         {
-          "value": "Located in the heart of George Town, Penang",
-          "source": "https://www.themaker243.com/our-shops"
+          "value": "Handcrafted French pastries, freshly made with quality ingredients and a touch of modern creativity",
+          "source": "https://www.themaker243.com/menu"
         }
       ],
       "location": {
         "town": {
           "value": "George Town",
+          "source": "https://www.themaker243.com/"
+        },
+        "area": {
+          "value": "Penang",
           "source": "https://www.themaker243.com/our-shops"
         },
-        "area": null,
         "address": {
           "value": "243 Lebuh Pantai",
           "source": "https://www.themaker243.com/"
@@ -5119,10 +4371,7 @@
         },
         "email": null,
         "instagram": null,
-        "bookingUrl": {
-          "value": "https://themaker.feedme.vip",
-          "source": "https://www.themaker243.com/our-shops"
-        }
+        "bookingUrl": null
       },
       "hours": {
         "value": "Tue - Sun 9.30am to 5.30pm",
@@ -5146,7 +4395,7 @@
         }
       ],
       "visualStyle": {
-        "summary": ""
+        "summary": "Dark monochrome, chalk texture, warm artisan"
       }
     },
     {
@@ -5155,7 +4404,7 @@
         "source": "https://www.themaker243.com/"
       },
       "summary": {
-        "value": "Handcrafted French pastries, freshly made with quality ingredients and a touch of modern creativity.",
+        "value": "Handcrafted French pastries and bakes made with passion and quality ingredients in George Town, Penang.",
         "source": "https://www.themaker243.com/menu"
       },
       "category": "bakery",
@@ -5171,7 +4420,7 @@
           "source": "https://www.themaker243.com/menu"
         },
         {
-          "name": "Scone with Strawberry Jam and Cream",
+          "name": "Scone with Strawberry Jam and Cream /pcs",
           "price": "RM 8.50",
           "source": "https://www.themaker243.com/menu"
         },
@@ -5236,18 +4485,8 @@
           "source": "https://www.themaker243.com/menu"
         },
         {
-          "name": "Cinnamon Stick",
+          "name": "Cinnamon Stick (2 stick)",
           "price": "RM 8.00",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Ham Cheese Foccacia",
-          "price": "quarter RM 10 half RM 19 whole RM 35",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Sundried Tomato Foccacia",
-          "price": "quarter RM 10 half RM 19 whole RM 35",
           "source": "https://www.themaker243.com/menu"
         },
         {
@@ -5258,20 +4497,23 @@
       ],
       "highlights": [
         {
-          "value": "Handcrafted French pastries made with passion and patience",
+          "value": "Driven by craft pastry made with passion, patience and a love for the craft",
           "source": "https://www.themaker243.com/menu"
         },
         {
-          "value": "Located in the heart of George Town, Penang",
-          "source": "https://www.themaker243.com/our-shops"
+          "value": "Handcrafted French pastries, freshly made with quality ingredients and a touch of modern creativity",
+          "source": "https://www.themaker243.com/menu"
         }
       ],
       "location": {
         "town": {
           "value": "George Town",
+          "source": "https://www.themaker243.com/"
+        },
+        "area": {
+          "value": "Penang",
           "source": "https://www.themaker243.com/our-shops"
         },
-        "area": null,
         "address": {
           "value": "243 Lebuh Pantai",
           "source": "https://www.themaker243.com/"
@@ -5286,10 +4528,7 @@
         },
         "email": null,
         "instagram": null,
-        "bookingUrl": {
-          "value": "https://themaker.feedme.vip",
-          "source": "https://www.themaker243.com/our-shops"
-        }
+        "bookingUrl": null
       },
       "hours": {
         "value": "Tue - Sun 9.30am to 5.30pm",
@@ -5313,8 +4552,9 @@
         }
       ],
       "visualStyle": {
-        "summary": "Warm rustic tones, soft ambient light, natural textures, artisanal mood.",
-        "palette": "dark background with white typography"
+        "summary": "Dark monochrome, chalk texture, warm artisan light, cozy moody bakery mood",
+        "palette": "black and white",
+        "light": "warm directional"
       }
     },
     {
@@ -5323,7 +4563,7 @@
         "source": "https://www.themaker243.com/"
       },
       "summary": {
-        "value": "Handcrafted French pastries, freshly made with quality ingredients and a touch of modern creativity.",
+        "value": "Handcrafted French pastries and bakes made with passion and quality ingredients in George Town, Penang.",
         "source": "https://www.themaker243.com/menu"
       },
       "category": "bakery",
@@ -5339,7 +4579,7 @@
           "source": "https://www.themaker243.com/menu"
         },
         {
-          "name": "Scone with Strawberry Jam and Cream",
+          "name": "Scone with Strawberry Jam and Cream /pcs",
           "price": "RM 8.50",
           "source": "https://www.themaker243.com/menu"
         },
@@ -5404,18 +4644,8 @@
           "source": "https://www.themaker243.com/menu"
         },
         {
-          "name": "Cinnamon Stick",
+          "name": "Cinnamon Stick (2 stick)",
           "price": "RM 8.00",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Ham Cheese Foccacia",
-          "price": "quarter RM 10 half RM 19 whole RM 35",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Sundried Tomato Foccacia",
-          "price": "quarter RM 10 half RM 19 whole RM 35",
           "source": "https://www.themaker243.com/menu"
         },
         {
@@ -5426,20 +4656,23 @@
       ],
       "highlights": [
         {
-          "value": "Handcrafted French pastries made with passion and patience",
+          "value": "Driven by craft pastry made with passion, patience and a love for the craft",
           "source": "https://www.themaker243.com/menu"
         },
         {
-          "value": "Located in the heart of George Town, Penang",
-          "source": "https://www.themaker243.com/our-shops"
+          "value": "Handcrafted French pastries, freshly made with quality ingredients and a touch of modern creativity",
+          "source": "https://www.themaker243.com/menu"
         }
       ],
       "location": {
         "town": {
           "value": "George Town",
+          "source": "https://www.themaker243.com/"
+        },
+        "area": {
+          "value": "Penang",
           "source": "https://www.themaker243.com/our-shops"
         },
-        "area": null,
         "address": {
           "value": "243 Lebuh Pantai",
           "source": "https://www.themaker243.com/"
@@ -5454,10 +4687,7 @@
         },
         "email": null,
         "instagram": null,
-        "bookingUrl": {
-          "value": "https://themaker.feedme.vip",
-          "source": "https://www.themaker243.com/our-shops"
-        }
+        "bookingUrl": null
       },
       "hours": {
         "value": "Tue - Sun 9.30am to 5.30pm",
@@ -5481,10 +4711,11 @@
         }
       ],
       "visualStyle": {
-        "summary": "Warm rustic tones, soft ambient light, natural textures, artisanal mood.",
-        "palette": "dark background with white typography and warm earthy tones",
-        "light": "soft warm light",
-        "textures": "rough baked textures"
+        "summary": "Dark monochrome, chalk texture, warm artisan light, cozy moody bakery mood",
+        "palette": "black and white",
+        "light": "warm directional light",
+        "textures": "chalkboard texture, flaky pastries",
+        "mood": "artisanal, cozy, craft"
       }
     },
     {
@@ -5493,7 +4724,7 @@
         "source": "https://www.themaker243.com/"
       },
       "summary": {
-        "value": "Handcrafted French pastries, freshly made with quality ingredients and a touch of modern creativity.",
+        "value": "Handcrafted French pastries and bakes made with passion and quality ingredients in George Town, Penang.",
         "source": "https://www.themaker243.com/menu"
       },
       "category": "bakery",
@@ -5509,7 +4740,7 @@
           "source": "https://www.themaker243.com/menu"
         },
         {
-          "name": "Scone with Strawberry Jam and Cream",
+          "name": "Scone with Strawberry Jam and Cream /pcs",
           "price": "RM 8.50",
           "source": "https://www.themaker243.com/menu"
         },
@@ -5574,18 +4805,8 @@
           "source": "https://www.themaker243.com/menu"
         },
         {
-          "name": "Cinnamon Stick",
+          "name": "Cinnamon Stick (2 stick)",
           "price": "RM 8.00",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Ham Cheese Foccacia",
-          "price": "quarter RM 10 half RM 19 whole RM 35",
-          "source": "https://www.themaker243.com/menu"
-        },
-        {
-          "name": "Sundried Tomato Foccacia",
-          "price": "quarter RM 10 half RM 19 whole RM 35",
           "source": "https://www.themaker243.com/menu"
         },
         {
@@ -5596,20 +4817,23 @@
       ],
       "highlights": [
         {
-          "value": "Handcrafted French pastries made with passion and patience",
+          "value": "Driven by craft pastry made with passion, patience and a love for the craft",
           "source": "https://www.themaker243.com/menu"
         },
         {
-          "value": "Located in the heart of George Town, Penang",
-          "source": "https://www.themaker243.com/our-shops"
+          "value": "Handcrafted French pastries, freshly made with quality ingredients and a touch of modern creativity",
+          "source": "https://www.themaker243.com/menu"
         }
       ],
       "location": {
         "town": {
           "value": "George Town",
+          "source": "https://www.themaker243.com/"
+        },
+        "area": {
+          "value": "Penang",
           "source": "https://www.themaker243.com/our-shops"
         },
-        "area": null,
         "address": {
           "value": "243 Lebuh Pantai",
           "source": "https://www.themaker243.com/"
@@ -5624,10 +4848,7 @@
         },
         "email": null,
         "instagram": null,
-        "bookingUrl": {
-          "value": "https://themaker.feedme.vip",
-          "source": "https://www.themaker243.com/our-shops"
-        }
+        "bookingUrl": null
       },
       "hours": {
         "value": "Tue - Sun 9.30am to 5.30pm",
@@ -5651,11 +4872,11 @@
         }
       ],
       "visualStyle": {
-        "summary": "Warm rustic tones, soft ambient light, natural textures, artisanal mood.",
-        "palette": "dark background with white typography and warm earthy tones",
-        "light": "soft warm light",
-        "textures": "rough baked textures and stone",
-        "mood": "artisanal and cozy"
+        "summary": "Dark monochrome, chalk texture, warm artisan light, cozy moody bakery mood",
+        "palette": "black and white",
+        "light": "warm directional light",
+        "textures": "chalkboard texture, flaky pastries",
+        "mood": "artisanal, cozy, craft-focused"
       }
     }
   ],
@@ -5665,7 +4886,7 @@
       "source": "https://www.themaker243.com/"
     },
     "summary": {
-      "value": "Handcrafted French pastries, freshly made with quality ingredients and a touch of modern creativity.",
+      "value": "Handcrafted French pastries and bakes made with passion and quality ingredients in George Town, Penang.",
       "source": "https://www.themaker243.com/menu"
     },
     "category": "bakery",
@@ -5681,7 +4902,7 @@
         "source": "https://www.themaker243.com/menu"
       },
       {
-        "name": "Scone with Strawberry Jam and Cream",
+        "name": "Scone with Strawberry Jam and Cream /pcs",
         "price": "RM 8.50",
         "source": "https://www.themaker243.com/menu"
       },
@@ -5746,18 +4967,8 @@
         "source": "https://www.themaker243.com/menu"
       },
       {
-        "name": "Cinnamon Stick",
+        "name": "Cinnamon Stick (2 stick)",
         "price": "RM 8.00",
-        "source": "https://www.themaker243.com/menu"
-      },
-      {
-        "name": "Ham Cheese Foccacia",
-        "price": "quarter RM 10 half RM 19 whole RM 35",
-        "source": "https://www.themaker243.com/menu"
-      },
-      {
-        "name": "Sundried Tomato Foccacia",
-        "price": "quarter RM 10 half RM 19 whole RM 35",
         "source": "https://www.themaker243.com/menu"
       },
       {
@@ -5768,20 +4979,23 @@
     ],
     "highlights": [
       {
-        "value": "Handcrafted French pastries made with passion and patience",
+        "value": "Driven by craft pastry made with passion, patience and a love for the craft",
         "source": "https://www.themaker243.com/menu"
       },
       {
-        "value": "Located in the heart of George Town, Penang",
-        "source": "https://www.themaker243.com/our-shops"
+        "value": "Handcrafted French pastries, freshly made with quality ingredients and a touch of modern creativity",
+        "source": "https://www.themaker243.com/menu"
       }
     ],
     "location": {
       "town": {
         "value": "George Town",
+        "source": "https://www.themaker243.com/"
+      },
+      "area": {
+        "value": "Penang",
         "source": "https://www.themaker243.com/our-shops"
       },
-      "area": null,
       "address": {
         "value": "243 Lebuh Pantai",
         "source": "https://www.themaker243.com/"
@@ -5796,10 +5010,7 @@
       },
       "email": null,
       "instagram": null,
-      "bookingUrl": {
-        "value": "https://themaker.feedme.vip",
-        "source": "https://www.themaker243.com/our-shops"
-      }
+      "bookingUrl": null
     },
     "hours": {
       "value": "Tue - Sun 9.30am to 5.30pm",
@@ -5823,11 +5034,11 @@
       }
     ],
     "visualStyle": {
-      "summary": "Warm rustic tones, soft ambient light, natural textures, artisanal mood.",
-      "palette": "dark background with white typography and warm earthy tones",
-      "light": "soft warm light",
-      "textures": "rough baked textures and stone",
-      "mood": "artisanal and cozy"
+      "summary": "Dark monochrome, chalk texture, warm artisan light, cozy moody bakery mood",
+      "palette": "black and white",
+      "light": "warm directional light",
+      "textures": "chalkboard texture, flaky pastries",
+      "mood": "artisanal, cozy, craft-focused"
     }
   }
 }

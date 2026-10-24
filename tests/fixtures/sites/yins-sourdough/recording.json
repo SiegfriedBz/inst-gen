@@ -1,15 +1,12 @@
 {
   "modelId": "gemini-3.5-flash-lite",
-  "promptVersion": "brand-2",
+  "promptVersion": "brand-3",
   "partials": [
-    {
-      "name": null
-    },
+    {},
     {
       "name": null,
       "summary": null,
-      "category": "bakery",
-      "offerings": []
+      "category": "bakery"
     },
     {
       "name": null,
@@ -49,45 +46,6 @@
       "contact": {
         "whatsapp": null,
         "phone": null,
-        "email": null
-      }
-    },
-    {
-      "name": null,
-      "summary": null,
-      "category": "bakery",
-      "offerings": [],
-      "highlights": [],
-      "location": {
-        "town": null,
-        "area": null,
-        "address": null,
-        "serviceArea": null
-      },
-      "contact": {
-        "whatsapp": null,
-        "phone": null,
-        "email": null,
-        "instagram": null,
-        "bookingUrl": null
-      },
-      "hours": null
-    },
-    {
-      "name": null,
-      "summary": null,
-      "category": "bakery",
-      "offerings": [],
-      "highlights": [],
-      "location": {
-        "town": null,
-        "area": null,
-        "address": null,
-        "serviceArea": null
-      },
-      "contact": {
-        "whatsapp": null,
-        "phone": null,
         "email": null,
         "instagram": null,
         "bookingUrl": null
@@ -96,7 +54,7 @@
       "tone": [],
       "colours": [
         {
-          "hex": "#1a1e24"
+          "hex": "#1e2229"
         }
       ]
     },
@@ -123,7 +81,7 @@
       "tone": [],
       "colours": [
         {
-          "hex": "#1a1e24",
+          "hex": "#1e2229",
           "role": "background",
           "source": "https://yinssourdough.com/"
         }
@@ -152,13 +110,14 @@
       "tone": [],
       "colours": [
         {
-          "hex": "#1a1e24",
+          "hex": "#1e2229",
           "role": "background",
           "source": "https://yinssourdough.com/"
         },
         {
           "hex": "#ffffff",
-          "role": "text"
+          "role": "text",
+          "source": "https"
         }
       ]
     },
@@ -185,7 +144,7 @@
       "tone": [],
       "colours": [
         {
-          "hex": "#1a1e24",
+          "hex": "#1e2229",
           "role": "background",
           "source": "https://yinssourdough.com/"
         },
@@ -194,7 +153,8 @@
           "role": "text",
           "source": "https://yinssourdough.com/"
         }
-      ]
+      ],
+      "visualStyle": {}
     },
     {
       "name": null,
@@ -219,7 +179,7 @@
       "tone": [],
       "colours": [
         {
-          "hex": "#1a1e24",
+          "hex": "#1e2229",
           "role": "background",
           "source": "https://yinssourdough.com/"
         },
@@ -230,8 +190,8 @@
         }
       ],
       "visualStyle": {
-        "summary": "minimalist dark circular logo with white cursive letter",
-        "palette": "black"
+        "summary": "dark round minimalist logo with white cursive letter",
+        "palette": "dark grey and white"
       }
     },
     {
@@ -257,7 +217,7 @@
       "tone": [],
       "colours": [
         {
-          "hex": "#1a1e24",
+          "hex": "#1e2229",
           "role": "background",
           "source": "https://yinssourdough.com/"
         },
@@ -268,9 +228,9 @@
         }
       ],
       "visualStyle": {
-        "summary": "minimalist dark circular logo with white cursive letter",
-        "palette": "black and white",
-        "light": "flat",
+        "summary": "dark round minimalist logo with white cursive letter",
+        "palette": "dark grey and white",
+        "light": "even",
         "textures": "smooth",
         "mood": "simple"
       }
@@ -299,7 +259,7 @@
     "tone": [],
     "colours": [
       {
-        "hex": "#1a1e24",
+        "hex": "#1e2229",
         "role": "background",
         "source": "https://yinssourdough.com/"
       },
@@ -310,9 +270,9 @@
       }
     ],
     "visualStyle": {
-      "summary": "minimalist dark circular logo with white cursive letter",
-      "palette": "black and white",
-      "light": "flat",
+      "summary": "dark round minimalist logo with white cursive letter",
+      "palette": "dark grey and white",
+      "light": "even",
       "textures": "smooth",
       "mood": "simple"
     }
