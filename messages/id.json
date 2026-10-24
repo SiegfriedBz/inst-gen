@@ -20,5 +20,70 @@
   "language": {
     "label": "Bahasa"
   },
-  "notConfigured": "Shopfront belum dikonfigurasi."
+  "notConfigured": "Shopfront belum dikonfigurasi.",
+  "brand": {
+    "panel": {
+      "sections": {
+        "business": "Usaha Anda",
+        "place": "Di mana dan kapan",
+        "contact": "Cara orang menghubungi Anda",
+        "look": "Tampilan Anda",
+        "feeling": "Suasana Anda"
+      },
+      "edit": "Ubah",
+      "editSection": "Ubah {section}",
+      "add": "Tambah",
+      "notFound": "Tidak ditemukan di situs Anda",
+      "warnWhatsapp": "Tambahkan nomor WhatsApp Anda: setiap postingan diakhiri dengan nomor ini.",
+      "warnTown": "Tambahkan kota Anda: postingan dan tagar memakainya.",
+      "thin": "Kami tidak bisa membaca banyak dari situs web Anda. Lengkapi yang kurang agar postingan Anda tepat.",
+      "fields": {
+        "name": "Nama",
+        "summary": "Apa yang Anda tawarkan",
+        "category": "Jenis usaha",
+        "offerings": "Layanan dan harga",
+        "highlights": "Apa kata situs Anda tentang Anda",
+        "town": "Kota",
+        "area": "Wilayah",
+        "address": "Alamat",
+        "serviceArea": "Ke mana Anda datang",
+        "hours": "Jam buka",
+        "whatsapp": "WhatsApp",
+        "phone": "Telepon",
+        "email": "Email",
+        "instagram": "Instagram",
+        "bookingUrl": "Tautan pemesanan",
+        "logo": "Logo",
+        "colours": "Warna",
+        "visualStyle": "Gaya visual",
+        "palette": "Palet",
+        "light": "Cahaya",
+        "textures": "Tekstur",
+        "mood": "Suasana",
+        "photos": "Foto yang kami lihat",
+        "promise": "Janji Anda",
+        "feeling": "Perasaan tamu",
+        "moments": "Mengapa orang datang",
+        "placeSymbols": "Simbol tempat Anda",
+        "senses": "Aroma, tekstur, dan cahaya",
+        "tone": "Gaya bahasa Anda"
+      },
+      "roles": {
+        "primary": "Utama",
+        "accent": "Aksen",
+        "background": "Latar",
+        "text": "Teks"
+      },
+      "logoAlt": "Logo {name}",
+      "photoAlt": "Foto dari situs web Anda"
+    },
+    "source": {
+      "page": "dari {path}",
+      "home": "dari halaman utama Anda",
+      "site": "dari situs web Anda",
+      "guess": "tebakan kami dari foto Anda",
+      "suggestion": "saran kami",
+      "owner": "ditambahkan oleh Anda"
+    }
+  }
 }

@@ -20,5 +20,70 @@
   "language": {
     "label": "Ngôn ngữ"
   },
-  "notConfigured": "Shopfront chưa được thiết lập."
+  "notConfigured": "Shopfront chưa được thiết lập.",
+  "brand": {
+    "panel": {
+      "sections": {
+        "business": "Doanh nghiệp của bạn",
+        "place": "Ở đâu và khi nào",
+        "contact": "Cách khách liên hệ",
+        "look": "Phong cách của bạn",
+        "feeling": "Cảm xúc của bạn"
+      },
+      "edit": "Sửa",
+      "editSection": "Sửa {section}",
+      "add": "Thêm",
+      "notFound": "Không tìm thấy trên trang web của bạn",
+      "warnWhatsapp": "Thêm số WhatsApp của bạn: mọi bài đăng đều kết thúc bằng số này.",
+      "warnTown": "Thêm thành phố của bạn: bài đăng và hashtag sẽ dùng đến.",
+      "thin": "Chúng tôi không đọc được nhiều từ trang web của bạn. Hãy điền phần còn thiếu để bài đăng chính xác.",
+      "fields": {
+        "name": "Tên",
+        "summary": "Bạn cung cấp gì",
+        "category": "Loại hình kinh doanh",
+        "offerings": "Dịch vụ và giá",
+        "highlights": "Trang web nói gì về bạn",
+        "town": "Thành phố",
+        "area": "Khu vực",
+        "address": "Địa chỉ",
+        "serviceArea": "Nơi bạn phục vụ",
+        "hours": "Giờ mở cửa",
+        "whatsapp": "WhatsApp",
+        "phone": "Điện thoại",
+        "email": "Email",
+        "instagram": "Instagram",
+        "bookingUrl": "Liên kết đặt lịch",
+        "logo": "Logo",
+        "colours": "Màu sắc",
+        "visualStyle": "Phong cách hình ảnh",
+        "palette": "Bảng màu",
+        "light": "Ánh sáng",
+        "textures": "Chất liệu",
+        "mood": "Không khí",
+        "photos": "Ảnh chúng tôi đã xem",
+        "promise": "Lời hứa của bạn",
+        "feeling": "Khách nên cảm thấy thế nào",
+        "moments": "Vì sao khách đến",
+        "placeSymbols": "Biểu tượng của nơi bạn",
+        "senses": "Hương thơm, chất liệu và ánh sáng",
+        "tone": "Giọng điệu của bạn"
+      },
+      "roles": {
+        "primary": "Chính",
+        "accent": "Điểm nhấn",
+        "background": "Nền",
+        "text": "Chữ"
+      },
+      "logoAlt": "Logo của {name}",
+      "photoAlt": "Ảnh từ trang web của bạn"
+    },
+    "source": {
+      "page": "từ {path}",
+      "home": "từ trang chủ của bạn",
+      "site": "từ trang web của bạn",
+      "guess": "chúng tôi đoán từ ảnh của bạn",
+      "suggestion": "gợi ý của chúng tôi",
+      "owner": "do bạn thêm"
+    }
+  }
 }

@@ -20,5 +20,70 @@
   "language": {
     "label": "Language"
   },
-  "notConfigured": "Shopfront isn't configured yet."
+  "notConfigured": "Shopfront isn't configured yet.",
+  "brand": {
+    "panel": {
+      "sections": {
+        "business": "Your business",
+        "place": "Where and when",
+        "contact": "How people reach you",
+        "look": "Your look",
+        "feeling": "Your feeling"
+      },
+      "edit": "Edit",
+      "editSection": "Edit {section}",
+      "add": "Add",
+      "notFound": "Not found on your site",
+      "warnWhatsapp": "Add your WhatsApp number: every post ends with it.",
+      "warnTown": "Add your town: posts and hashtags use it.",
+      "thin": "We couldn't read much from your website. Fill in what's missing so your posts are right.",
+      "fields": {
+        "name": "Name",
+        "summary": "What you offer",
+        "category": "Kind of business",
+        "offerings": "Services and prices",
+        "highlights": "What your site says about you",
+        "town": "Town",
+        "area": "Area",
+        "address": "Address",
+        "serviceArea": "Where you go",
+        "hours": "Opening hours",
+        "whatsapp": "WhatsApp",
+        "phone": "Phone",
+        "email": "Email",
+        "instagram": "Instagram",
+        "bookingUrl": "Booking link",
+        "logo": "Logo",
+        "colours": "Colours",
+        "visualStyle": "Visual style",
+        "palette": "Palette",
+        "light": "Light",
+        "textures": "Textures",
+        "mood": "Mood",
+        "photos": "Photos we looked at",
+        "promise": "Your promise",
+        "feeling": "How guests should feel",
+        "moments": "Why people come",
+        "placeSymbols": "Symbols of your place",
+        "senses": "Scents, textures and light",
+        "tone": "Your tone"
+      },
+      "roles": {
+        "primary": "Main",
+        "accent": "Accent",
+        "background": "Background",
+        "text": "Text"
+      },
+      "logoAlt": "Logo of {name}",
+      "photoAlt": "Photo from your website"
+    },
+    "source": {
+      "page": "from {path}",
+      "home": "from your home page",
+      "site": "from your website",
+      "guess": "our guess from your photos",
+      "suggestion": "our suggestion",
+      "owner": "added by you"
+    }
+  }
 }
