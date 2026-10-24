@@ -87,7 +87,12 @@ function lightnessSaturation(hex: string): { l: number; s: number } {
   return { l, s };
 }
 
-const BRAND_PROPERTY = /(--(?:primary|brand|accent|color-[\w-]+)[\w-]*)\s*:\s*([^;}]+)/gi;
+const CUSTOM_PROPERTY = /(?<![\w-])(--[\w-]+)\s*:\s*([^;}]+)/g;
+const BRAND_NAME = /^--(?:primary|brand|accent|color-|wp--preset--color--)/;
+
+// WordPress's default block-editor palette, present on most WordPress sites.
+const WORDPRESS_PALETTE =
+  /^--wp--preset--color--(?:black|white|cyan-bluish-gray|pale-pink|vivid-red|luminous-vivid-orange|luminous-vivid-amber|light-green-cyan|vivid-green-cyan|pale-cyan-blue|vivid-cyan-blue|vivid-purple)$/;
 
 // Tailwind v4 declares its whole default palette as --color-* variables; they
 // say nothing about the brand.
@@ -100,9 +105,10 @@ export function brandColours(themeColor: string | undefined, css: string[]): Cod
   const theme = themeColor ? toHex(themeColor) : null;
   if (theme) found.push({ hex: theme, source: 'theme-color' });
   for (const sheet of css) {
-    for (const match of sheet.matchAll(BRAND_PROPERTY)) {
+    for (const match of sheet.matchAll(CUSTOM_PROPERTY)) {
       const property = match[1].toLowerCase();
-      if (TAILWIND_PALETTE.test(property)) continue;
+      if (!BRAND_NAME.test(property)) continue;
+      if (TAILWIND_PALETTE.test(property) || WORDPRESS_PALETTE.test(property)) continue;
       const hex = toHex(match[2].replace(/!important/i, ''));
       if (hex) found.push({ hex, source: `css:${property}` });
     }

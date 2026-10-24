@@ -58,6 +58,19 @@ describe('brandColours', () => {
     ]);
   });
 
+  test("ignores WordPress's preset palette", () => {
+    const css =
+      'body{--wp--preset--color--black:#000000;--wp--preset--color--vivid-red:#cf2e2e;--wp--preset--color--pale-pink:#f78da7}';
+    expect(brandColours(undefined, [css])).toEqual([]);
+  });
+
+  test("keeps a theme's own WordPress preset", () => {
+    const css = 'body{--wp--preset--color--black:#000000;--wp--preset--color--jungle:#2f5d3a}';
+    expect(brandColours(undefined, [css])).toEqual([
+      { hex: '#2f5d3a', role: 'primary', source: 'css:--wp--preset--color--jungle' },
+    ]);
+  });
+
   test('keeps at most 5, without duplicates', () => {
     const css = `:root{${[
       '#111111',
