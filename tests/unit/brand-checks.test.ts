@@ -1,0 +1,260 @@
+import { describe, expect, test } from 'vitest';
+import { codeProfile, finalise, mergeAndCheck, normaliseSource } from '@/lib/brand/checks';
+import type { CodeFacts } from '@/lib/brand/extract/structured';
+import type { DeepPartial, ModelProfile } from '@/lib/brand/profile';
+
+const HOME = 'https://sen.vn/';
+const ABOUT = 'https://sen.vn/about';
+const PRICES = 'https://sen.vn/prices';
+const pagesRead = [HOME, ABOUT, PRICES];
+
+function facts(overrides: Partial<CodeFacts> = {}): CodeFacts {
+  return {
+    business: null,
+    meta: {},
+    contact: { whatsapp: [], phone: [], email: [], instagram: [] },
+    source: HOME,
+    ...overrides,
+  };
+}
+
+const pages = new Map([
+  [HOME, 'Sen Spa. Mobile massage in Da Nang. Call 0905 123 456. Open 9am to 11pm.'],
+  [ABOUT, 'Our therapists come to your hotel. Write to book@sen.vn.'],
+  [PRICES, 'Aroma massage 450.000 VND for 90 minutes. Hot stone 600,000 VND.'],
+]);
+
+const extra = {
+  siteUrl: HOME,
+  pagesRead,
+  colours: [{ hex: '#1f6f5c', role: 'primary' as const, source: 'theme-color' }],
+  logoUrl: null,
+  photoUrls: ['https://sen.vn/hero.jpg'],
+};
+
+function run(
+  model: DeepPartial<ModelProfile>,
+  codeFacts: CodeFacts[] = [facts({ meta: { siteName: 'Sen Spa | Da Nang' } })],
+  photos = 1,
+) {
+  const code = codeProfile(codeFacts, { ...extra, photoUrls: photos ? extra.photoUrls : [] });
+  return mergeAndCheck(code, model, { facts: codeFacts, pages, pagesRead, photos });
+}
+
+describe('normaliseSource', () => {
+  test.each([
+    ['/about', ABOUT],
+    ['https://sen.vn/about/', ABOUT],
+    ['https://www.sen.vn/about?x=1', ABOUT],
+    ['https://sen.vn', HOME],
+    ['model', 'model'],
+    ['https://other.vn/about', null],
+    ['/blog', null],
+  ])('%s gives %s', (source, expected) => {
+    expect(normaliseSource(source, pagesRead)).toBe(expected);
+  });
+});
+
+describe('codeProfile', () => {
+  test('carries what code found, with sources', () => {
+    const profile = codeProfile(
+      [
+        facts({
+          business: {
+            name: 'Sen Spa',
+            telephone: '+84 905 123 456',
+            address: { street: '12 Bach Dang', town: 'Da Nang', country: 'VN' },
+            hours: 'Mo-Su 09:00-23:00',
+            offers: [],
+            sameAs: ['https://instagram.com/sen.spa'],
+          },
+          contact: { whatsapp: ['84905123456'], phone: [], email: ['book@sen.vn'], instagram: [] },
+        }),
+      ],
+      extra,
+    );
+    expect(profile).toMatchObject({
+      siteUrl: HOME,
+      pagesRead,
+      name: { value: 'Sen Spa', source: HOME },
+      location: {
+        town: { value: 'Da Nang', source: HOME },
+        address: { value: '12 Bach Dang', source: HOME },
+      },
+      contact: {
+        whatsapp: { value: '+84905123456', source: HOME },
+        phone: { value: '+84905123456', source: HOME },
+        email: { value: 'book@sen.vn', source: HOME },
+        instagram: { value: 'sen.spa', source: HOME },
+      },
+      hours: { value: 'Mo-Su 09:00-23:00', source: HOME },
+      colours: extra.colours,
+    });
+  });
+});
+
+describe('mergeAndCheck', () => {
+  test('code beats the model on phone', () => {
+    const codeFacts = [
+      facts({
+        business: { name: 'Sen Spa', telephone: '+84 905 123 456', offers: [], sameAs: [] },
+        source: ABOUT,
+      }),
+    ];
+    const { profile } = run(
+      { contact: { phone: { value: '+84 999 999 999', source: HOME } } },
+      codeFacts,
+    );
+    expect(profile.contact?.phone).toEqual({ value: '+84905123456', source: ABOUT });
+  });
+
+  test('a model phone that is on its page is kept; without a country it stays as written', () => {
+    const { profile } = run({ contact: { phone: { value: '0905 123 456', source: HOME } } });
+    expect(profile.contact?.phone?.value).toBe('0905 123 456');
+  });
+
+  test('a model WhatsApp number not on its page is dropped', () => {
+    const { profile, dropped } = run({
+      contact: { whatsapp: { value: '+84 911 222 333', source: HOME } },
+    });
+    expect(profile.contact?.whatsapp ?? null).toBeNull();
+    expect(dropped).toContainEqual({ field: 'contact.whatsapp', reason: 'not_on_page' });
+  });
+
+  test('a model email is checked ignoring case', () => {
+    const { profile } = run({ contact: { email: { value: 'Book@Sen.vn', source: ABOUT } } });
+    expect(profile.contact?.email?.value).toBe('Book@Sen.vn');
+  });
+
+  test('a price not on its page is dropped', () => {
+    const { profile, dropped } = run({
+      offerings: [
+        { name: 'Aroma massage', price: '450,000 VND', source: PRICES },
+        { name: 'Hot stone', price: 'VND 600.000', source: PRICES },
+        { name: 'Four hands', price: '900,000 VND', source: PRICES },
+      ],
+    });
+    expect(profile.offerings?.map((o) => o?.price)).toEqual([
+      '450,000 VND',
+      'VND 600.000',
+      undefined,
+    ]);
+    expect(dropped).toContainEqual({ field: 'offerings[2].price', reason: 'not_on_page' });
+  });
+
+  test('a fact with an unknown source is dropped', () => {
+    const { profile, dropped } = run({
+      hours: { value: 'Open 24 hours', source: 'https://sen.vn/blog' },
+    });
+    expect(profile.hours ?? null).toBeNull();
+    expect(dropped).toContainEqual({ field: 'hours', reason: 'unknown_source' });
+  });
+
+  test('a relative source with a trailing slash is kept', () => {
+    const { profile } = run({
+      highlights: [{ value: 'Therapists come to you', source: '/about/' }],
+    });
+    expect(profile.highlights).toEqual([{ value: 'Therapists come to you', source: ABOUT }]);
+  });
+
+  describe('name', () => {
+    const ld = [facts({ business: { name: 'Svarga Bali Massage', offers: [], sameAs: [] } })];
+
+    test('a short name inside the JSON-LD name is kept', () => {
+      expect(run({ name: { value: 'Svarga', source: HOME } }, ld).profile.name).toEqual({
+        value: 'Svarga',
+        source: HOME,
+      });
+    });
+
+    test('a name not in the page names gives way to the JSON-LD name', () => {
+      const { profile, dropped } = run({ name: { value: 'Svarga Luxury', source: HOME } }, ld);
+      expect(profile.name).toEqual({ value: 'Svarga Bali Massage', source: HOME });
+      expect(dropped).toContainEqual({ field: 'name', reason: 'not_in_page_names' });
+    });
+
+    test('without JSON-LD, og:site_name is cut at the separator', () => {
+      expect(run({}).profile.name).toEqual({ value: 'Sen Spa', source: HOME });
+    });
+  });
+
+  test('model colours are kept only when code found under 2', () => {
+    const model = { colours: [{ hex: '#e07a2f', role: 'accent' as const, source: '/x' }] };
+    expect(run(model).profile.colours).toEqual([
+      extra.colours[0],
+      { hex: '#e07a2f', role: 'accent', source: 'model' },
+    ]);
+    const twoColours = codeProfile([facts()], {
+      ...extra,
+      colours: [...extra.colours, { hex: '#ffffff', role: 'background', source: 'css:--bg' }],
+    });
+    const merged = mergeAndCheck(twoColours, model, {
+      facts: [facts()],
+      pages,
+      pagesRead,
+      photos: 1,
+    });
+    expect(merged.profile.colours).toHaveLength(2);
+  });
+
+  test('no photos means no visual style', () => {
+    const style = {
+      summary: 'soft light',
+      palette: 'green',
+      light: 'soft',
+      textures: 'linen',
+      mood: 'calm',
+    };
+    expect(run({ visualStyle: style }, undefined, 0).profile.visualStyle).toBeNull();
+    expect(run({ visualStyle: style }).profile.visualStyle).toEqual(style);
+  });
+
+  test('a half-streamed model object does not throw and keeps what is checked', () => {
+    const { profile } = run({
+      summary: { value: 'Mobile massage in Da' },
+      offerings: [{ name: 'Aroma massage', price: '450,000 VND', source: PRICES }, { name: 'Hot' }],
+      tone: ['calm'],
+    });
+    expect(profile.summary ?? null).toBeNull();
+    expect(profile.offerings).toHaveLength(1);
+    expect(profile.tone).toEqual(['calm']);
+  });
+});
+
+describe('finalise', () => {
+  const meta = {
+    readAt: '2026-10-24T09:00:00.000Z',
+    promptVersion: 'brand-1',
+    thin: false,
+    dropped: [],
+  };
+
+  test('fills the meta fields and passes the schema', () => {
+    const { profile } = run({ category: 'massage spa', tone: ['calm', 'warm', 'caring'] });
+    const final = finalise(profile, meta);
+    expect(final).toMatchObject({
+      schemaVersion: 1,
+      promptVersion: 'brand-1',
+      thin: false,
+      name: { value: 'Sen Spa' },
+      offerings: [],
+      summary: null,
+      contact: { whatsapp: null },
+    });
+  });
+
+  test('rejects a profile with no name', () => {
+    const code = codeProfile([facts()], extra);
+    const { profile } = mergeAndCheck(
+      code,
+      { category: 'spa', tone: ['a', 'b', 'c'] },
+      {
+        facts: [facts()],
+        pages,
+        pagesRead,
+        photos: 1,
+      },
+    );
+    expect(() => finalise(profile, meta)).toThrow();
+  });
+});
