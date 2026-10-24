@@ -1,7 +1,8 @@
 ---
 title: "Brand panel"
 description: "The home screen reads the owner's website, streams the brand profile into an editable panel, keeps it on the phone in IndexedDB, and offers \"Re-read my website\" and \"Forget this business\", in English, Indonesian and Vietnamese."
-status: draft
+status: approved
+approved: { by: siegfried.bozza@protonmail.com, at: 2026-10-24T16:33:59Z }
 date: "2026-10-24"
 ---
 
