@@ -1,5 +1,6 @@
 import { describe, expect, test } from 'vitest';
 import { replayTextModel } from '@/lib/ai/replay';
+import { BRAND_PROMPT_VERSION } from '@/lib/brand/prompt';
 import { BrandReadError, prepareRead, type ReadDeps, streamProfile } from '@/lib/brand/read';
 import type { StreamLine } from '@/lib/brand/stream';
 import { type SiteFile, siteTransport } from './helpers/site';
@@ -131,7 +132,7 @@ describe('brand read', () => {
     expect(last.profile.location.town?.value).toBe('Da Nang');
     expect(last.profile.offerings[0].price).toBe('450,000 VND');
     expect(last.profile.thin).toBe(false);
-    expect(last.profile.promptVersion).toBe('brand-1');
+    expect(last.profile.promptVersion).toBe(BRAND_PROMPT_VERSION);
     expect(lines.filter((l) => l.type === 'final')).toHaveLength(1);
   });
 
