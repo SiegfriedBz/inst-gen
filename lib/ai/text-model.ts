@@ -5,7 +5,13 @@ import { type DeepPartial, type ModelProfile, modelProfileSchema } from '@/lib/b
 // The app's only door to a text model (decision 0003). Callers see the
 // TextModel interface, so tests swap in a replayer and never call the network.
 
-export const TEXT_MODELS = { brand: 'gemini-3.8-flash', light: 'gemini-3.5-flash-lite' } as const;
+// The brand read moved from gemini-3.8-flash to flash-lite on 2026-10-24: on
+// the free tier, flash took about 110 s a read, past the 30 s step limit
+// (docs/specs/brand/extract-site/journal.md).
+export const TEXT_MODELS = {
+  brand: 'gemini-3.5-flash-lite',
+  light: 'gemini-3.5-flash-lite',
+} as const;
 
 export type BrandModelInput = {
   system: string;

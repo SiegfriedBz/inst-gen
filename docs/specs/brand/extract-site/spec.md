@@ -169,7 +169,9 @@ limits).
 
 ### The model call
 
-One structured call to `gemini-3.8-flash` (decision 0003), through the AI SDK's
+One structured call to `gemini-3.5-flash-lite` (decision 0003's model swap,
+made after the eval: `gemini-3.8-flash` took about 110 s a read on the free
+tier; see the journal), through the AI SDK's
 `streamObject` with the profile's zod schema. Its partial objects feed the
 route's own stream (see "The response"), never the browser directly.
 
@@ -301,7 +303,8 @@ an `error` line.
 `lib/ai/text-model.ts`, as decision 0003 requires:
 
 - It is the only module that imports `@ai-sdk/google`. The model IDs
-  (`gemini-3.8-flash`, `gemini-3.5-flash-lite`) are its constants.
+  (`gemini-3.5-flash-lite` for both the brand read and the light calls) are
+  its constants.
 - It reads `GOOGLE_GENERATIVE_AI_API_KEY` on the server only. The key is
   added to `.env.example` with an empty value, and the scaffold's missing-
   configuration rule does not cover it: without a key, the brand read fails

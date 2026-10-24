@@ -20,7 +20,7 @@ async function drain(iterable: AsyncIterable<unknown>): Promise<unknown[]> {
 
 describe('TEXT_MODELS', () => {
   test('match decision 0003', () => {
-    expect(TEXT_MODELS).toEqual({ brand: 'gemini-3.8-flash', light: 'gemini-3.5-flash-lite' });
+    expect(TEXT_MODELS).toEqual({ brand: 'gemini-3.5-flash-lite', light: 'gemini-3.5-flash-lite' });
   });
 });
 

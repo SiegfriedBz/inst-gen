@@ -95,7 +95,10 @@ brixandbaume.com (redirects to google.com).
   refused by this model ("not supported"); `low` is its floor.
   `gemini-3.5-flash-lite` reads Svarga in 10 s (first partial at 3 s). The
   eval below ran on flash-lite through `pnpm eval:brand --model=…`; the
-  app's constant still names `gemini-3.8-flash` until the developer decides.
+  app's constant still named `gemini-3.8-flash` until the developer decided.
+- 2026-10-24: The developer chose flash-lite for the brand read, and asked
+  for offerings to improve until 16/20 holds across runs. Before that, four
+  runs of `brand-2` scored 16, 14, 15 and 15/20.
 - 2026-10-24: Flash-lite sometimes returned more items or words than the
   profile allows, and the read failed with "response did not match schema".
   The model's schema now has no limits; code trims to them. A profile may
