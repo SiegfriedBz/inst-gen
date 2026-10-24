@@ -1,6 +1,7 @@
 import { createGoogleGenerativeAI, type GoogleLanguageModelOptions } from '@ai-sdk/google';
-import { APICallError, Output, streamText } from 'ai';
+import { APICallError, generateText, Output, streamText } from 'ai';
 import { type DeepPartial, type ModelProfile, modelProfileSchema } from '@/lib/brand/profile';
+import { type SearchModelAnswer, searchModelAnswerSchema } from '@/lib/brand/search/prompt';
 
 // The app's only door to a text model (decision 0003). Callers see the
 // TextModel interface, so tests swap in a replayer and never call the network.
@@ -23,8 +24,12 @@ export type BrandModelInput = {
 // iterated to the end.
 export type ModelStream<T> = AsyncIterable<DeepPartial<T>> & { final: Promise<T> };
 
+export type SearchModelInput = { system: string; text: string };
+
 export interface TextModel {
   streamBrandProfile(input: BrandModelInput, signal: AbortSignal): ModelStream<ModelProfile>;
+  // The essence search's one short call (docs/specs/brand/search-essence).
+  searchEssence(input: SearchModelInput, signal: AbortSignal): Promise<SearchModelAnswer>;
 }
 
 export class ModelError extends Error {
@@ -133,6 +138,30 @@ export function geminiTextModel(
         }
       }
       return toModelStream(run());
+    },
+
+    async searchEssence(input, signal) {
+      const apiKey = process.env.GOOGLE_GENERATIVE_AI_API_KEY;
+      if (!apiKey) throw new ModelError('failed', 'GOOGLE_GENERATIVE_AI_API_KEY is not set');
+      const google = createGoogleGenerativeAI({ apiKey });
+      try {
+        const result = await generateText({
+          model: google(TEXT_MODELS.light),
+          system: input.system,
+          prompt: input.text,
+          output: Output.object({ schema: searchModelAnswerSchema }),
+          providerOptions: {
+            google: { thinkingConfig: { thinkingLevel } } satisfies GoogleLanguageModelOptions,
+          },
+          abortSignal: signal,
+          // A retry spends free quota; the caller reports model_busy instead.
+          maxRetries: 0,
+        });
+        return result.output;
+      } catch (error) {
+        if (signal.aborted) throw signal.reason;
+        throw toModelError(error);
+      }
     },
   };
 }
