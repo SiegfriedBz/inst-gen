@@ -47,7 +47,7 @@ Gate: CI green, and a page live on the production URL.
 | 0.3 | Text model and region rule | decision 0003 | done |
 | 0.4 | Long-running work (streaming a ~1 minute run) | decision 0005 | done |
 | 0.5 | `harness/app-scaffold`: Next.js app, tooling in hooks and CI, deployed to Vercel behind the pilot passphrase; styling in decision 0007 | spec | done |
-| 0.6 | `platform/i18n`: screens in English, Indonesian, Vietnamese | spec | todo |
+| 0.6 | `platform/i18n`: screens in English, Indonesian, Vietnamese | spec | done |
 
 ## Phase 1: Brand from a website
 

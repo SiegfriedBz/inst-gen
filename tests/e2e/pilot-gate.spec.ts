@@ -87,7 +87,7 @@ test.describe('dark mode', () => {
     const background = (selector: string) =>
       page.locator(selector).evaluate((el) => getComputedStyle(el).backgroundColor);
     expect(await background('body')).toBe('rgb(18, 22, 20)');
-    expect(await background('button[type=submit]')).toBe('rgb(63, 191, 148)');
+    expect(await background('button[type=submit]:not([name=locale])')).toBe('rgb(63, 191, 148)');
   });
 });
 

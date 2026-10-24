@@ -1,7 +1,7 @@
 import type { Metadata, Viewport } from 'next';
 import { Be_Vietnam_Pro } from 'next/font/google';
 import { NextIntlClientProvider } from 'next-intl';
-import { getTranslations } from 'next-intl/server';
+import { getLocale, getTranslations } from 'next-intl/server';
 import type { ReactNode } from 'react';
 import './globals.css';
 
@@ -28,9 +28,9 @@ export const viewport: Viewport = {
   ],
 };
 
-export default function RootLayout({ children }: { children: ReactNode }) {
+export default async function RootLayout({ children }: { children: ReactNode }) {
   return (
-    <html lang="en" className={beVietnam.variable}>
+    <html lang={await getLocale()} className={beVietnam.variable}>
       <body className="min-h-dvh font-sans antialiased">
         <NextIntlClientProvider>
           <div className="mx-auto flex min-h-dvh w-full max-w-[420px] flex-col px-5 pt-7 pb-6">
