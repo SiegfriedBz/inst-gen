@@ -1,0 +1,25 @@
+# graft's local graph cache — regenerable, not committed (run `graft build --no-ignore`).
+/graft/
+
+# Superpowers scratch space
+.superpowers/
+
+# Claude Code: per-session worktrees and personal settings
+.claude/worktrees/
+.claude/settings.local.json
+CLAUDE.local.md
+
+# Dependencies
+node_modules/
+
+# Next.js, Vercel and test output
+.next/
+next-env.d.ts
+.vercel/
+playwright-report/
+test-results/
+*.tsbuildinfo
+
+# Local environment: only the example is committed
+.env*
+!.env.example
