@@ -1,7 +1,7 @@
 import type { CodeFacts } from './extract/structured';
 
 // Bump with every change to the prompt, so eval scores trace back to it.
-export const BRAND_PROMPT_VERSION = 'brand-2';
+export const BRAND_PROMPT_VERSION = 'brand-3';
 
 export function brandPrompt(): string {
   return `You read a small business's website and describe its brand, for an app that writes its Instagram posts and review replies.
@@ -19,7 +19,7 @@ Rules:
 Field notes:
 - summary: what they sell and to whom, in at most 25 words.
 - category: one or two words, like "massage spa" or "coffee shop".
-- offerings: the main services, products, classes or experiences customers book or buy, as the pages name them, up to 20. Start with the core ones (for a spa, its massages; for a café, its coffee and dishes), not only signature or seasonal items.
+- offerings: the individual services, products, classes, tours or dishes customers book or buy, up to 20. Copy each name word for word as a page writes it; an offering whose name isn't on its page is thrown away. List items, not categories or menu headings (for example "Aroma Massage", not "Body Massage"; "Amazing Vietnam", not "Classic Itineraries"). Start with the core ones (for a spa, its massages; for a café, its coffee and dishes), not only signature or seasonal items.
 - highlights: short claims the site makes, at most 8.
 - location.town: the town or city, never a district, ward or regency (for example Canggu, not Kuta Utara; Ho Chi Minh City, not District 1).
 - location.serviceArea: for businesses that come to the client.
