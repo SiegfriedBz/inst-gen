@@ -1,8 +1,7 @@
 ---
 title: "Brand profile from a website"
-description: "A server step that reads a business's website and streams back a grounded brand profile (facts, colours, logo, visual style), with 20 saved site fixtures, recorded model calls and a first eval set."
-status: approved
-approved: { by: siegfried.bozza@protonmail.com, at: 2026-10-24T09:02:54Z }
+description: "A server step that reads a business's website and streams back a grounded brand profile (facts, colours, logo, visual style, essence), with 20 saved site fixtures, recorded model calls and a first eval set."
+status: draft
 date: "2026-10-24"
 ---
 
@@ -186,6 +185,8 @@ route's own stream (see "The response"), never the browser directly.
   - The visual style describes palette, light, textures and mood of the
     photos, for an image model to imitate. It never describes people, and it
     is empty when no photos were given.
+  - The essence (below) says what the business is about, where it is, why
+    people come and how they should feel, for images, captions and replies.
   - Tone words describe how the site talks (for example "calm", "warm",
     "professional"), not what it sells.
   - Write in English, whatever the site's language.
@@ -253,10 +254,44 @@ images. An empty field is `null`, never an empty string or a placeholder.
 | `tone` | 3 to 5 words | From the site's wording |
 | `colours` | list, 1 to 5 | Each `{ hex, role, source }`, `role` one of `primary`, `accent`, `background`, `text` |
 | `logoUrl` | sourced URL | Absolute |
+| `essence` | `{ feeling, placeSymbols, senses, moments }` | See "The essence" below |
 | `visualStyle` | `{ summary, palette, light, textures, mood }` or `null` | `summary` ≤ 12 words, like "warm tropical, soft light, natural textures"; `null` when no photos were read |
 | `photoUrls` | URL[] | The photos the style was read from |
 | `promptVersion` | string | `BRAND_PROMPT_VERSION` |
 | `dropped` | list of `{ field, reason }` | From the checks above |
+
+### The essence
+
+A website is often poor, but the business still has a soul: what it does,
+where, for whom, and how people should feel after. The essence captures it,
+so images, captions and review replies read as if someone understood the
+business, not as if they copied its website.
+
+| Field | Type | What it holds |
+|---|---|---|
+| `feeling` | 2 to 4 words | How a customer should feel ("relaxed, warm, cared for") |
+| `placeSymbols` | up to 5 phrases | Symbols of the place tied to the trade ("lotus flowers", "Hoi An lanterns"; "frangipani", "temple offerings") |
+| `senses` | up to 5 phrases | Scents, textures, light and sounds of the experience ("warm coconut oil", "fresh linens") |
+| `moments` | up to 6 sourced phrases | Why people come, as the site says it ("after a surf at My Khe", "after a long flight") |
+
+- `moments` are facts about the business: each names its page, and the
+  checks drop one whose source isn't a page read.
+- `feeling`, `placeSymbols` and `senses` are interpretation, from the trade,
+  the place and the site's own words, with `source: "model"`. They guide
+  images, tone and wording only, never a factual claim (no "we use lotus
+  oil" unless a page says so). The owner can edit them in the panel (1.2).
+- Example, Sen (massage at your hotel in Da Nang): feeling "relaxing, warm,
+  cared for"; place "lotus flowers, Hoi An lanterns, My Khe beach at dusk";
+  senses "warm natural oils, fresh linens, soft lamp light"; moments "after
+  a surf at My Khe, after a long flight, after climbing the Marble
+  Mountains". Svarga (massage at your villa in Bali): place "frangipani,
+  temple offerings, rice terraces"; senses "warm coconut oil, frangipani
+  scent, villa deck at sunset"; moments "after a surf in Canggu, after a
+  Mount Batur hike".
+- A thin site still gets an essence from its trade and place, with empty
+  `moments`.
+- The eval doesn't score the essence; the developer judges it with tone and
+  style, and the verdict goes in the journal.
 
 Fields the post plan or panel may need later (content pillars, hashtags, the
 owner's edits) are not in this schema; their specs add them with a new
@@ -521,3 +556,6 @@ tone and style go in the journal.
 - Bot check, ownership tick box, region block, domain blocklist: phase 4
   `platform/quotas-abuse`.
 - Businesses without a website.
+- Enriching the essence from what people search for (search terms built
+  from the essence, read through a search tool): 1.3
+  `brand/search-essence`, after a check that it is free and allowed.
