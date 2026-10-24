@@ -1,7 +1,8 @@
 ---
 title: "Screens in three languages"
 description: "Shopfront's screens in English, Indonesian and Vietnamese: the phone's language picks the first time, a switch on every screen changes it, the choice is kept in a cookie, and English fills any gap."
-status: draft
+status: approved
+approved: { by: siegfried.bozza@protonmail.com, at: 2026-10-24T08:04:18Z }
 date: "2026-10-24"
 ---
 
