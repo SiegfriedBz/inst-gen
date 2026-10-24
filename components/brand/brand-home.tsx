@@ -19,7 +19,13 @@ import type { BrandErrorCode, PartialProfile, Profile } from '@/lib/brand/profil
 import { type ReadEvent, type RunningRead, resumeRead, startRead } from '@/lib/brand/read-client';
 import type { SearchAnswer } from '@/lib/brand/search/run';
 import { mergeSearch, needsSearch, requestSearch } from '@/lib/brand/search-client';
-import { forgetBrand, loadBrand, requestPersistence, saveBrand } from '@/lib/brand/store';
+import {
+  forgetBrand,
+  loadBrand,
+  mergeSearchIntoStore,
+  requestPersistence,
+  saveBrand,
+} from '@/lib/brand/store';
 import { holdWakeLock } from '@/lib/brand/wake-lock';
 import { BrandPanel, type SearchState } from './panel';
 import { Reading } from './reading';
@@ -64,17 +70,23 @@ export function BrandHome({ ownerId }: { ownerId: string }) {
   const ownerEditedRef = useRef<string[]>([]);
   ownerEditedRef.current = ownerEdited;
 
-  // Merges a waiting answer into the profile as saved now, which may hold
-  // edits made since the search left.
+  // Merges a waiting answer into the profile as stored now, which may hold
+  // edits made since the search left, here or in another tab.
   const applySearch = useCallback(async () => {
     const answer = pending.current;
     const base = savedRef.current;
     if (!answer || !base) return;
     pending.current = null;
-    const merged = mergeSearch(base, answer);
+    let merged: Profile;
     try {
-      const kept = await saveBrand(ownerId, merged, new Date(), ownerEditedRef.current);
-      if (!kept) setNotice('notKept');
+      const record = await mergeSearchIntoStore(ownerId, answer);
+      if (record) {
+        merged = record.profile;
+        setOwnerEdited(record.ownerEdited);
+      } else {
+        // No store on this phone: the answer joins the profile on screen.
+        merged = mergeSearch(base, answer);
+      }
     } catch {
       setSearch('failed');
       return;
@@ -90,7 +102,9 @@ export function BrandHome({ ownerId }: { ownerId: string }) {
       const controller = new AbortController();
       searching.current = controller;
       setSearch('running');
-      void (async () => {
+      // One tab at a time searches for an owner; a tab that can't take the
+      // lock leaves it to the one that holds it.
+      const run = async () => {
         try {
           const outcome = await requestSearch(profile, {
             fetch: (...args) => globalThis.fetch(...args),
@@ -110,9 +124,22 @@ export function BrandHome({ ownerId }: { ownerId: string }) {
         } finally {
           if (searching.current === controller) searching.current = null;
         }
-      })();
+      };
+      const locks = typeof navigator === 'undefined' ? undefined : navigator.locks;
+      if (!locks) {
+        void run();
+        return;
+      }
+      void locks.request(`brand-search:${ownerId}`, { ifAvailable: true }, async (lock) => {
+        if (lock) {
+          await run();
+        } else {
+          if (searching.current === controller) searching.current = null;
+          setSearch(null);
+        }
+      });
     },
-    [applySearch],
+    [applySearch, ownerId],
   );
 
   const stopSearch = useCallback(() => {

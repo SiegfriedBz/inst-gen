@@ -1,6 +1,8 @@
 import { type DBSchema, type IDBPDatabase, openDB } from 'idb';
 import type { RunRecord } from '@/lib/runs/run-record';
 import { type Profile, profileSchema, upgradeProfile } from './profile';
+import type { SearchAnswer } from './search/run';
+import { mergeSearch } from './search-client';
 
 // The owner's business kept on the phone (docs/specs/brand/brand-panel,
 // "Stored on the phone"): one IndexedDB database, a brand per owner id and
@@ -83,6 +85,44 @@ export async function saveBrand(
   if (!db) return false;
   await db.put('brands', { ownerId, profile: checked, savedAt: now.toISOString(), ownerEdited });
   return true;
+}
+
+// Merges an essence search answer into the record as stored now, in one
+// transaction, so an edit saved from another tab since the search left is
+// kept (docs/specs/brand/search-essence). A record already searched keeps its
+// first answer. Null when there is no record (forgotten) or no store.
+export async function mergeSearchIntoStore(
+  ownerId: string,
+  answer: SearchAnswer,
+  now: Date = new Date(),
+): Promise<BrandRecord | null> {
+  const db = await openStore();
+  if (!db) return null;
+  const tx = db.transaction('brands', 'readwrite');
+  const raw = await tx.store.get(ownerId);
+  if (!raw) {
+    await tx.done;
+    return null;
+  }
+  const parsed = profileSchema.safeParse(upgradeProfile(raw.profile));
+  if (!parsed.success) {
+    await tx.done;
+    return null;
+  }
+  const ownerEdited = raw.ownerEdited ?? [];
+  if (parsed.data.searchedAt !== null) {
+    await tx.done;
+    return { ownerId, profile: parsed.data, savedAt: raw.savedAt, ownerEdited };
+  }
+  const record: BrandRecord = {
+    ownerId,
+    profile: profileSchema.parse(mergeSearch(parsed.data, answer)),
+    savedAt: now.toISOString(),
+    ownerEdited,
+  };
+  await tx.store.put(record);
+  await tx.done;
+  return record;
 }
 
 export async function forgetBrand(ownerId: string): Promise<void> {

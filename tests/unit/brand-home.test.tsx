@@ -386,4 +386,20 @@ describe('BrandHome and the essence search', () => {
     expect(await screen.findByText(INTRO)).toBeTruthy();
     expect(searchCalls()).toHaveLength(0);
   });
+
+  test('a tab that cannot take the search lock sends no search', async () => {
+    routes(async () => Response.json(answer));
+    vi.stubGlobal('navigator', {
+      ...navigator,
+      locks: {
+        request: (_name: string, _opts: unknown, fn: (lock: null) => Promise<void>) => fn(null),
+      },
+    });
+    await saveBrand('sen', unsearched);
+    renderHome();
+    expect(await screen.findByText(INTRO)).toBeTruthy();
+    await new Promise((resolve) => setTimeout(resolve, 50));
+    expect(searchCalls()).toHaveLength(0);
+    expect(screen.queryByText('Looking up what people search for…')).toBeNull();
+  });
 });
