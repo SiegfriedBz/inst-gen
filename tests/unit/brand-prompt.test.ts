@@ -3,8 +3,8 @@ import type { CodeFacts } from '@/lib/brand/extract/structured';
 import { BRAND_PROMPT_VERSION, brandPrompt, brandUserText } from '@/lib/brand/prompt';
 
 describe('brand prompt', () => {
-  test('starts at brand-1', () => {
-    expect(BRAND_PROMPT_VERSION).toBe('brand-1');
+  test('is at brand-2', () => {
+    expect(BRAND_PROMPT_VERSION).toBe('brand-2');
   });
 
   test.each([
@@ -14,6 +14,9 @@ describe('brand prompt', () => {
     'never describe people',
     'how the site talks',
     'in English',
+    'never a district',
+    'says is on WhatsApp',
+    'Start with the core ones',
   ])('the rules mention "%s"', (phrase) => {
     expect(brandPrompt().toLowerCase()).toContain(phrase.toLowerCase());
   });
