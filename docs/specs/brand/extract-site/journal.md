@@ -30,7 +30,7 @@
   repo keeps it Biome-formatted, so run `biome check --write pnpm-lock.yaml`
   after adding a package.
 
-### The 20 sites (proposed, waiting for the developer's check)
+### The 20 sites (approved by the developer on 2026-10-24, then two swaps)
 
 | Slug | Site | Kind, place | Builder | Expected |
 |---|---|---|---|---|
@@ -42,10 +42,10 @@
 | `phin-coffee` | phincoffeehoian.com | Café, Hoi An | WordPress | full, WhatsApp |
 | `lulu-bistrot` | lulubistrot.com | Restaurant, Canggu | Squarespace | full, WhatsApp |
 | `two-face` | twofacebali.com | Café, Canggu and Ubud | Squarespace | full, WhatsApp |
-| `the-maker` | themaker243.com | Café and bakery, Penang | Wix | full |
-| `yins-sourdough` | yinssourdough.com | Bakery, Penang | Framer | **thin** (no text served) |
-| `the-lawn` | thelawncanggu.com | Beach club, Canggu | Wix | **thin** (no text served) |
-| `joys-house` | guesthouse-chiangmai.com | Guesthouse, Chiang Mai | Hand-made | full |
+| `the-maker` | themaker243.com | Café and bakery, Penang | Wix | full; its home page is JavaScript-only, the text is on its subpages |
+| `yins-sourdough` | yinssourdough.com | Bakery, Penang | Framer | **thin**: serves no text without JavaScript |
+| `revolver-bali` | revolverbali.com | Coffee shop and merch, Bali | Shopify | full, WhatsApp |
+| `libra-house` | librahousechiangmai.com | Guesthouse, Chiang Mai | Hand-made | full |
 | `serenity-bali` | serenitybali.com | Eco guesthouse and yoga, Canggu | Wix | full |
 | `phonepraseuth` | phonepraseuthguesthouse.com | Guesthouse, Luang Prabang | WordPress (Elementor) | full |
 | `siem-reap-private-tour` | siemreapprivatetour.com | Tour guide, Siem Reap | WordPress | full, WhatsApp |
@@ -58,6 +58,34 @@
 Checked on 2026-10-24 with the reader's user agent: every site answers 200.
 Left out: ghee-hiang.com (its page now serves unrelated gambling text) and
 brixandbaume.com (redirects to google.com).
+
+- 2026-10-24: Two swaps after the developer's approval, both when the sites
+  were saved. Joy's House (guesthouse-chiangmai.com) now serves Indonesian
+  gambling spam ("ORITOGEL"): the site has been taken over, so Libra
+  Guesthouse replaces it. The Lawn turned out not to be thin (its home page
+  is empty, its subpages have text), so Revolver Bali replaces it.
+- 2026-10-24: Only one real site is truly thin (Yin's Sourdough). A dozen
+  other candidates all served text. The spec's "at least 2 thin or
+  JavaScript-only sites" is met by Yin's (thin) and The Maker (a
+  JavaScript-only home page, text on its subpages). The thin path is also
+  covered by unit tests.
+- 2026-10-24: Saving the real sites found three reader bugs, each fixed with
+  a test first: Wix image URLs made cache file names too long (now a hash);
+  WordPress's default preset palette (`--wp--preset--color--vivid-red`)
+  passed as brand colours; and a cookie-banner rule removed whole pages when
+  `<html>` or `<body>` had a class like `supports-no-cookies` (Shopify).
+- 2026-10-24: The town now comes from the model, checked against its page,
+  and falls back to JSON-LD. `addressLocality` is often a district on real
+  sites ("Kec. Kuta Utara", "Phường Bến Thành, Quận 1", "Cau Giay
+  District"). This reverses an earlier call that code wins for the town.
+- 2026-10-24: A thin fixture is scored only on the thin flag, WhatsApp, and
+  invented offerings or prices: it has no real name, town or summary.
+- 2026-10-24: Expected files were written from the saved page text. Expected
+  brand colours are set only where one colour clearly dominates the site's
+  CSS or `theme-color` (9 of 20); elsewhere the colour check is skipped.
+  Neyuh expects WhatsApp +84358358353: its contact page writes the number as
+  "Phone · WhatsApp · Zalo" without a wa.me link, so only the model can find
+  it. Town is null for Naki (no town given) and Revolver (many venues).
 
 ## RED
 
