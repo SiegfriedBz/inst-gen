@@ -12,8 +12,12 @@ function maxWords(max: number) {
   });
 }
 
-// A fact and the page it came from: a URL, or "model" for a colour or style
-// the model inferred from images.
+// A fact and where it came from: a page URL, "model" for a colour or style
+// the model inferred from images, or "owner" for a value the owner typed in
+// the brand panel (docs/specs/brand/brand-panel). Code may also write a
+// short tag for a colour it read, like "theme-color".
+export const OWNER_SOURCE = 'owner';
+
 export function sourced<T extends z.ZodType>(value: T) {
   return z.object({ value, source: text });
 }
