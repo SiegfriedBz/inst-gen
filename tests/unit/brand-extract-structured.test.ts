@@ -165,6 +165,19 @@ describe('extractStructured: contact links', () => {
     expect(extractStructured(doc('', body), URL_).contact.whatsapp).toEqual([digits]);
   });
 
+  test('a malformed escape in a link does not throw', () => {
+    const body =
+      '<a href="tel:%">x</a><a href="mailto:a%ZZ@x.com">y</a><a href="https://wa.me/%E0">z</a>';
+    expect(() => extractStructured(doc('', body), URL_)).not.toThrow();
+  });
+
+  test('a long run of digits and spaces is scanned quickly', () => {
+    const body = `<p>${'1 '.repeat(40_000)}</p>`;
+    const started = Date.now();
+    extractStructured(doc('', body), URL_);
+    expect(Date.now() - started).toBeLessThan(500);
+  });
+
   test('a phone number far from the word WhatsApp is not taken', () => {
     const body =
       '<p>Call +84 358 358 353 for bookings. We reply to every message within a day, and on WhatsApp too.</p>';

@@ -42,6 +42,11 @@ describe('POST /api/brand/read', () => {
     expect(maxDuration).toBe(30);
   });
 
+  test('the read gives up before the platform cap, so the error line arrives', async () => {
+    const { DEFAULT_LIMITS } = await import('@/lib/brand/read');
+    expect(DEFAULT_LIMITS.totalMs).toBeLessThanOrEqual(maxDuration * 1000 - 2_000);
+  });
+
   test.each(['not json', '{}', '{"url": 42}'])('%s is 400 invalid_url', async (body) => {
     const response = await post(body);
     expect(response.status).toBe(400);

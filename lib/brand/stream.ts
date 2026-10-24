@@ -31,7 +31,11 @@ function parseLine(raw: string): StreamLine {
 export async function* readLines(body: ReadableStream<Uint8Array>): AsyncGenerator<StreamLine> {
   const decoder = new TextDecoder();
   let buffer = '';
-  for await (const chunk of body) {
+  // A reader, not `for await`: Safari's ReadableStream isn't async-iterable.
+  const reader = body.getReader();
+  for (;;) {
+    const { done, value: chunk } = await reader.read();
+    if (done) break;
     buffer += decoder.decode(chunk, { stream: true });
     let newline = buffer.indexOf('\n');
     while (newline !== -1) {

@@ -110,6 +110,16 @@ describe('createFetcher', () => {
     expect(calls).toHaveLength(0);
   });
 
+  test.each([
+    'https://x.com:8443/a.css',
+    'http://user:pw@x.com/about',
+    'http://8.8.8.8:6379/x.png',
+  ])('refuses %s found in a page, without calling the transport', async (url) => {
+    const { f, calls } = fetcher({ [url]: html() });
+    expect(await kindOf(f.fetchPage(new URL(url), { crossSiteRedirects: false }))).toBe('blocked');
+    expect(calls).toHaveLength(0);
+  });
+
   test('refuses a cross-site redirect unless allowed', async () => {
     const routes = { 'https://x.com/': redirect('https://y.com/'), 'https://y.com/': html() };
     const { f } = fetcher(routes);

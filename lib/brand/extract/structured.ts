@@ -222,17 +222,36 @@ export function instagramHandle(url: URL): string | undefined {
 
 // A phone number next to the word WhatsApp (within 25 characters, with no
 // other digits between), as in "WhatsApp: +62 811-3888-472" or
-// "+84 358 358 353 Phone · WhatsApp · Zalo".
-const NUMBER = String.raw`\+?\d[\d\s().-]{6,}\d`;
-const WHATSAPP_IN_TEXT = new RegExp(
-  String.raw`(${NUMBER})[^\d+]{0,25}?whats\s?app|whats\s?app[^\d+]{0,25}?(${NUMBER})`,
-  'gi',
-);
+// "+84 358 358 353 Phone · WhatsApp · Zalo". Only a short window around each
+// "WhatsApp" is searched, so a long run of digits can't stall the read.
+const WHATSAPP_WORD = /whats\s?app/gi;
+const NUMBER_BEFORE = /(\+?\d[\d\s().-]{6,20}\d)[^\d+]{0,25}$/;
+const NUMBER_AFTER = /^[^\d+]{0,25}?(\+?\d[\d\s().-]{6,20}\d)/;
 
 function whatsappInText(text: string): string[] {
-  return [...text.matchAll(WHATSAPP_IN_TEXT)]
-    .map((match) => (match[1] ?? match[2]).replace(/\D/g, ''))
-    .filter((digits) => digits.length >= 8);
+  const found: string[] = [];
+  for (const word of text.matchAll(WHATSAPP_WORD)) {
+    const at = word.index ?? 0;
+    const before = text.slice(Math.max(0, at - 60), at).match(NUMBER_BEFORE)?.[1];
+    const after = text
+      .slice(at + word[0].length, at + word[0].length + 60)
+      .match(NUMBER_AFTER)?.[1];
+    for (const number of [before, after]) {
+      const digits = number?.replace(/\D/g, '');
+      if (digits && digits.length >= 8) found.push(digits);
+    }
+  }
+  return found;
+}
+
+// decodeURIComponent throws on a bad escape ("tel:%"); a page must never
+// break the read.
+function safeDecode(value: string): string {
+  try {
+    return decodeURIComponent(value);
+  } catch {
+    return value;
+  }
 }
 
 function contactLinks($: cheerio.CheerioAPI): CodeFacts['contact'] {
@@ -254,13 +273,13 @@ function contactLinks($: cheerio.CheerioAPI): CodeFacts['contact'] {
       continue;
     }
     const digits = (value: string | null) => {
-      const d = decodeURIComponent(value ?? '').replace(/\D/g, '');
+      const d = safeDecode(value ?? '').replace(/\D/g, '');
       return d.length >= 6 ? d : undefined;
     };
     if (url.protocol === 'tel:') {
-      add(contact.phone, decodeURIComponent(href.replace(/^tel:/i, '')).trim() || undefined);
+      add(contact.phone, safeDecode(href.replace(/^tel:/i, '')).trim() || undefined);
     } else if (url.protocol === 'mailto:') {
-      add(contact.email, decodeURIComponent(url.pathname).toLowerCase() || undefined);
+      add(contact.email, safeDecode(url.pathname).toLowerCase() || undefined);
     } else if (url.protocol === 'whatsapp:') {
       add(contact.whatsapp, digits(url.searchParams.get('phone')));
     } else if (url.hostname === 'wa.me') {

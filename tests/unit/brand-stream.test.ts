@@ -39,6 +39,12 @@ describe('readLines', () => {
     await expect(collect(streamOf([bad]))).rejects.toThrow();
   });
 
+  test('works on a stream that is not async-iterable (Safari)', async () => {
+    const body = streamOf(['{"type":"error","code":"model_busy"}\n']);
+    Object.defineProperty(body, Symbol.asyncIterator, { value: undefined });
+    expect(await collect(body)).toEqual([{ type: 'error', code: 'model_busy' }]);
+  });
+
   test('reads an error line', async () => {
     const lines = await collect(streamOf(['{"type":"error","code":"model_timeout"}\n']));
     expect(lines).toEqual([{ type: 'error', code: 'model_timeout' }]);

@@ -117,6 +117,9 @@ export function createFetcher(opts: {
     const signal = AbortSignal.any([budget, AbortSignal.timeout(perResponseMs)]);
     let url = start;
     try {
+      // Every URL, from the owner or found in a page, keeps to the same rules:
+      // http(s), default port, no user name or password.
+      if (!cleanUrl(start.href)) throw new FetchError('blocked', `refused URL: ${start.href}`);
       for (let hop = 0; ; hop++) {
         const ip = hostIsIpLiteral(url);
         if (ip !== null && !isPublicAddress(ip)) {
