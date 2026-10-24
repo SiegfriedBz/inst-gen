@@ -1,0 +1,81 @@
+@import "tailwindcss";
+
+/* Shopfront tokens (spec: harness/app-scaffold, "Look"). Components use
+   these names only, never raw colours. */
+:root {
+  --page: #f6f7f5;
+  --ink: #16181a;
+  --ink-secondary: #4a524c;
+  --field: #ffffff;
+  --field-muted: #eef0ee;
+  --edge: #c9cfca;
+  --accent: #0f7b5f;
+  --on-accent: #ffffff;
+  --accent-tint: #e2f1eb;
+  --accent-tint-ink: #0f7b5f;
+  --error: #b42318;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --page: #121614;
+    --ink: #ecefec;
+    --ink-secondary: #b4bdb6;
+    --field: #1b201d;
+    --field-muted: #171b19;
+    --edge: #39413c;
+    --accent: #3fbf94;
+    --on-accent: #0b1f18;
+    --accent-tint: #173a2f;
+    --accent-tint-ink: #7fd9b8;
+    --error: #f0948c;
+  }
+}
+
+@theme inline {
+  --color-page: var(--page);
+  --color-ink: var(--ink);
+  --color-ink-secondary: var(--ink-secondary);
+  --color-field: var(--field);
+  --color-field-muted: var(--field-muted);
+  --color-edge: var(--edge);
+  --color-accent: var(--accent);
+  --color-on-accent: var(--on-accent);
+  --color-accent-tint: var(--accent-tint);
+  --color-accent-tint-ink: var(--accent-tint-ink);
+  --color-error: var(--error);
+  --radius-control: 12px;
+  --font-sans: var(--font-be-vietnam), ui-sans-serif, system-ui, sans-serif;
+}
+
+html {
+  color-scheme: light dark;
+}
+
+body {
+  background: var(--page);
+  color: var(--ink);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  main {
+    animation: page-in 200ms ease-out;
+  }
+
+  .press {
+    transition: transform 120ms ease-out;
+  }
+
+  .press:active {
+    transform: scale(0.98);
+  }
+}
+
+@keyframes page-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}

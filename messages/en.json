@@ -1,3 +1,21 @@
 {
+  "meta": {
+    "title": "Shopfront",
+    "description": "Your posts and review replies, written for you."
+  },
+  "enter": {
+    "label": "Passphrase",
+    "submit": "Enter",
+    "wrong": "That passphrase isn't right. Try again.",
+    "footer": "Private pilot for invited spas."
+  },
+  "home": {
+    "welcome": "Welcome, {name}",
+    "soon": "Soon you'll paste your website link here and get six posts, each with a story.",
+    "websiteLabel": "Your website",
+    "websiteExample": "yourspa.com",
+    "comingSoon": "Coming soon",
+    "signedIn": "Signed in on this phone for 30 days."
+  },
   "notConfigured": "Shopfront isn't configured yet."
 }
