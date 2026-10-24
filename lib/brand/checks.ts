@@ -266,7 +266,10 @@ export function mergeAndCheck(
     offerings,
     highlights,
     location: {
-      town: codeWins(cLoc.town, checked('location.town', mLoc.town)),
+      // JSON-LD's addressLocality is often a district; the model's town, checked
+      // against its page, comes first.
+      town:
+        checked('location.town', mLoc.town) ?? (cLoc.town?.value ? (cLoc.town as Sourced) : null),
       area: cLoc.area?.value ? cLoc.area : checked('location.area', mLoc.area),
       address: codeWins(cLoc.address, checked('location.address', mLoc.address)),
       serviceArea: cLoc.serviceArea?.value

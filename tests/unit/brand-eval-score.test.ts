@@ -89,6 +89,26 @@ describe('scoreFixture', () => {
     expect(score(undefined, { brandColours: ['#ff0000'] }).failures).toEqual(['colour']);
   });
 
+  test('a thin fixture is scored only on thin, WhatsApp and invented facts', () => {
+    const thin = {
+      acceptedNames: ['Yin'],
+      whatsapp: null,
+      town: null,
+      summaryKeywords: [],
+      offerings: [],
+      brandColours: [],
+      thin: true,
+    };
+    const result = score((p) => {
+      p.thin = true;
+      p.name.value = 'Home';
+      p.contact.whatsapp = null;
+      p.location.town = null;
+      p.summary = null;
+    }, thin);
+    expect(result).toEqual({ pass: true, failures: [] });
+  });
+
   test('fails on the wrong thin flag', () => {
     expect(score(undefined, { thin: true }).failures).toEqual(['thin']);
   });

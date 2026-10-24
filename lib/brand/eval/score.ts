@@ -9,8 +9,8 @@ import type { Profile } from '../profile';
 export const expectedSchema = z.object({
   acceptedNames: z.array(z.string().min(1)).min(1),
   whatsapp: z.string().nullable(),
-  town: z.string().min(1),
-  summaryKeywords: z.array(z.string().min(1)).min(1),
+  town: z.string().min(1).nullable(),
+  summaryKeywords: z.array(z.string().min(1)),
   offerings: z.array(z.string().min(1)),
   brandColours: z.array(z.string().regex(/^#[0-9a-f]{6}$/)),
   thin: z.boolean(),
@@ -52,8 +52,12 @@ export function scoreFixture(
   const failures: string[] = [];
   const page = (source: string) => pages.get(source) ?? '';
 
+  // A thin site has no real name, town or summary to score: only the thin flag
+  // and that nothing was invented count.
+  const full = !expected.thin;
+
   const name = normaliseText(profile.name.value);
-  if (!expected.acceptedNames.some((n) => normaliseText(n) === name)) failures.push('name');
+  if (full && !expected.acceptedNames.some((n) => normaliseText(n) === name)) failures.push('name');
 
   const whatsapp = profile.contact.whatsapp?.value ?? null;
   const whatsappRight =
@@ -63,14 +67,20 @@ export function scoreFixture(
   if (!whatsappRight) failures.push('whatsapp');
 
   const town = profile.location.town?.value;
-  if (!town || !looseMatch(town, expected.town)) failures.push('town');
+  if (full && expected.town !== null && (!town || !looseMatch(town, expected.town))) {
+    failures.push('town');
+  }
 
   const summary = normaliseText(profile.summary?.value ?? '');
-  if (!expected.summaryKeywords.some((k) => summary.includes(normaliseText(k)))) {
+  if (
+    full &&
+    expected.summaryKeywords.length > 0 &&
+    !expected.summaryKeywords.some((k) => summary.includes(normaliseText(k)))
+  ) {
     failures.push('summary');
   }
 
-  if (expected.offerings.length > 0) {
+  if (full && expected.offerings.length > 0) {
     const found = expected.offerings.filter((e) =>
       profile.offerings.some((o) => looseMatch(o.name, e)),
     );
@@ -93,6 +103,7 @@ export function scoreFixture(
   }
 
   if (
+    full &&
     expected.brandColours.length > 0 &&
     !profile.colours.some((c) =>
       expected.brandColours.some((e) => colourDistance(c.hex, e) <= COLOUR_DISTANCE),

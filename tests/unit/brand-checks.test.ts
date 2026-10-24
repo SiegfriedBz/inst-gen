@@ -108,6 +108,22 @@ describe('mergeAndCheck', () => {
     expect(profile.contact?.phone).toEqual({ value: '+84905123456', source: ABOUT });
   });
 
+  test("the model's town beats a district from JSON-LD", () => {
+    const codeFacts = [
+      facts({
+        business: {
+          name: 'Sen Spa',
+          address: { town: 'Son Tra District' },
+          offers: [],
+          sameAs: [],
+        },
+      }),
+    ];
+    const { profile } = run({ location: { town: { value: 'Da Nang', source: HOME } } }, codeFacts);
+    expect(profile.location?.town).toEqual({ value: 'Da Nang', source: HOME });
+    expect(run({}, codeFacts).profile.location?.town?.value).toBe('Son Tra District');
+  });
+
   test('a model phone that is on its page is kept; without a country it stays as written', () => {
     const { profile } = run({ contact: { phone: { value: '0905 123 456', source: HOME } } });
     expect(profile.contact?.phone?.value).toBe('0905 123 456');
