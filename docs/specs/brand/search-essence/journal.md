@@ -18,7 +18,22 @@
   done for the MVP: Tavily is allowed on the terms reading above, with no
   email to Tavily and no record of the plan's credits or of the stop-not-bill
   setting. Verdict: yes. To revisit before public launch (phase 4).
+- 2026-10-24: Recorded the essence search on sen, svarga, karsa-spa,
+  orient-spa and phin-coffee (`pnpm eval:search --record`), 3.0 to 4.9 s
+  each:
+  `essence search: 5/5 answered · prompt search-1 · model gemini-3.5-flash-lite`
+- 2026-10-24: `pnpm test:e2e` couldn't start on port 3000, which another
+  project's Next server held; it ran on a free port through a throwaway
+  config, not committed: 26 passed.
 
 ## RED
 
+Task 1, the first tests of this work:
+
+`Tests  6 failed | 54 passed (60)`
+
 ## GREEN
+
+`pnpm check` after Task 9:
+
+`Tests  598 passed (598)`

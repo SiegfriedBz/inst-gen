@@ -5,9 +5,12 @@ import * as cheerio from 'cheerio';
 import { z } from 'zod';
 import type { Recording } from '@/lib/ai/replay';
 import type { TextModel } from '@/lib/ai/text-model';
+import type { SearchRecording } from '@/lib/search/replay';
 import { type Expected, expectedSchema } from './eval/score';
 import { type Fetched, type Transport, undiciTransport } from './fetch-safe';
 import { prepareRead } from './read';
+import type { SearchModelAnswer } from './search/prompt';
+import type { SearchBody } from './search/queries';
 import { cleanUrl } from './url';
 
 // Saved sites for offline tests and the eval (spec, "Fixtures"). Pages,
@@ -28,16 +31,32 @@ const manifestSchema = z.object({
 
 export type Manifest = z.infer<typeof manifestSchema>;
 
-export type Fixture = { manifest: Manifest; expected: Expected; recording: Recording | null };
+// An essence search recorded for a fixture by `pnpm eval:search --record`.
+export type SearchFixture = {
+  modelId: string;
+  promptVersion: string;
+  body: SearchBody;
+  queries: SearchRecording['queries'];
+  answer: SearchModelAnswer;
+};
+
+export type Fixture = {
+  manifest: Manifest;
+  expected: Expected;
+  recording: Recording | null;
+  search: SearchFixture | null;
+};
 
 const readJson = (path: string) => JSON.parse(readFileSync(path, 'utf8'));
 
 export function loadFixture(dir: string): Fixture {
   const recordingPath = join(dir, 'recording.json');
+  const searchPath = join(dir, 'search.json');
   return {
     manifest: manifestSchema.parse(readJson(join(dir, 'manifest.json'))),
     expected: expectedSchema.parse(readJson(join(dir, 'expected.json'))),
     recording: existsSync(recordingPath) ? (readJson(recordingPath) as Recording) : null,
+    search: existsSync(searchPath) ? (readJson(searchPath) as SearchFixture) : null,
   };
 }
 

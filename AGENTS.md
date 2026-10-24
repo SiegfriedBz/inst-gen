@@ -103,6 +103,7 @@ index of the code).
 | `pnpm test:e2e` | Playwright tests; builds and starts the app with test passphrases. First run: `pnpm exec playwright install chromium` |
 | `pnpm fixtures:save <url> <slug>` | Save a site fixture with the real reader; no model call |
 | `pnpm eval:brand [slug…] [--record]` | Score brand reads on the fixtures with the real model. ⚠️ Spends Gemini quota (about 20 reads a day for the whole app): run a few slugs at a time, never on a pilot day |
+| `pnpm eval:search [slug…] [--record]` | Run the essence search on five fixtures with the real Tavily and Gemini, and print each essence before and after. ⚠️ Spends 3 Tavily credits (1,000 a month) and 1 Flash-Lite request per fixture |
 
 ## What fails silently
 
