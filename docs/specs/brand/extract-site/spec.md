@@ -1,8 +1,7 @@
 ---
 title: "Brand profile from a website"
 description: "A server step that reads a business's website and streams back a grounded brand profile (facts, colours, logo, visual style, essence), with 20 saved site fixtures, recorded model calls and a first eval set."
-status: approved
-approved: { by: siegfried.bozza@protonmail.com, at: 2026-10-24T12:20:23Z }
+status: draft
 date: "2026-10-24"
 ---
 
@@ -255,7 +254,7 @@ images. An empty field is `null`, never an empty string or a placeholder.
 | `tone` | 3 to 5 words | From the site's wording |
 | `colours` | list, 1 to 5 | Each `{ hex, role, source }`, `role` one of `primary`, `accent`, `background`, `text` |
 | `logoUrl` | sourced URL | Absolute |
-| `essence` | `{ feeling, placeSymbols, senses, moments }` | See "The essence" below |
+| `essence` | `{ promise, feeling, placeSymbols, senses, moments }` | See "The essence" below |
 | `visualStyle` | `{ summary, palette, light, textures, mood }` or `null` | `summary` ≤ 12 words, like "warm tropical, soft light, natural textures"; `null` when no photos were read |
 | `photoUrls` | URL[] | The photos the style was read from |
 | `promptVersion` | string | `BRAND_PROMPT_VERSION` |
@@ -270,24 +269,28 @@ business, not as if they copied its website.
 
 | Field | Type | What it holds |
 |---|---|---|
+| `promise` | sourced sentence, ≤ 20 words, or `null` | How the service reaches the customer and what they have to do, as the site says it ("We come to your hotel or villa: book on WhatsApp and relax") |
 | `feeling` | 2 to 4 words | How a customer should feel ("relaxed, warm, cared for") |
 | `placeSymbols` | up to 5 phrases | Symbols of the place tied to the trade ("lotus flowers", "Hoi An lanterns"; "frangipani", "temple offerings") |
-| `senses` | up to 5 phrases | Scents, textures, light and sounds of the experience ("warm coconut oil", "fresh linens") |
+| `senses` | up to 5 phrases | Scents, textures, light and sounds of the experience, where it happens: for a mobile service, the client's own hotel room or villa ("soft hotel lighting", "villa deck at sunset", "warm coconut oil") |
 | `moments` | up to 6 sourced phrases | Why people come, as the site says it ("after a surf at My Khe", "after a long flight") |
 
-- `moments` are facts about the business: each names its page, and the
-  checks drop one whose source isn't a page read.
+- `promise` and `moments` are facts about the business: each names its
+  page, and the checks drop one whose source isn't a page read.
 - `feeling`, `placeSymbols` and `senses` are interpretation, from the trade,
   the place and the site's own words, with `source: "model"`. They guide
   images, tone and wording only, never a factual claim (no "we use lotus
   oil" unless a page says so). The owner can edit them in the panel (1.2).
-- Example, Sen (massage at your hotel in Da Nang): feeling "relaxing, warm,
-  cared for"; place "lotus flowers, Hoi An lanterns, My Khe beach at dusk";
-  senses "warm natural oils, fresh linens, soft lamp light"; moments "after
+- Example, Sen (massage at your hotel in Da Nang): promise "Our therapists
+  come to your hotel, apartment or villa: book on WhatsApp and relax";
+  feeling "relaxing, warm, cared for"; place "lotus flowers, My Khe beach
+  at dusk"; senses "warm natural oils, fresh linens, soft hotel lighting";
+  moments "after
   a surf at My Khe, after a long flight, after climbing the Marble
-  Mountains". Svarga (massage at your villa in Bali): place "frangipani,
-  temple offerings, rice terraces"; senses "warm coconut oil, frangipani
-  scent, villa deck at sunset"; moments "after a surf in Canggu, after a
+  Mountains". Svarga (massage at your villa in Bali): promise "Therapists
+  bring the massage to your villa or hotel: message us and relax"; place
+  "frangipani, temple offerings, rice terraces"; senses "warm coconut oil,
+  soft villa lighting, villa deck at sunset"; moments "after a surf in Canggu, after a
   Mount Batur hike".
 - A thin site still gets an essence from its trade and place, with empty
   `moments`.
