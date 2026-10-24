@@ -1,5 +1,6 @@
 import { redirect } from 'next/navigation';
 import { getTranslations } from 'next-intl/server';
+import { LanguageSwitch } from '@/components/language-switch';
 import { ShopfrontMark } from '@/components/shopfront-mark';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
@@ -36,7 +37,8 @@ export default async function HomePage() {
       <p id="website-soon" className="mt-2 text-xs text-ink-secondary">
         {t('comingSoon')}
       </p>
-      <p className="mt-auto pt-10 text-xs text-ink-secondary">{t('signedIn')}</p>
+      <LanguageSwitch returnTo="/" />
+      <p className="mt-1 text-xs text-ink-secondary">{t('signedIn')}</p>
     </main>
   );
 }

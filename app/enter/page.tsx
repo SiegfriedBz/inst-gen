@@ -1,4 +1,5 @@
 import { getTranslations } from 'next-intl/server';
+import { LanguageSwitch } from '@/components/language-switch';
 import { ShopfrontMark } from '@/components/shopfront-mark';
 import { SignInForm } from './sign-in-form';
 
@@ -15,7 +16,8 @@ export default async function EnterPage() {
         {meta('description')}
       </p>
       <SignInForm />
-      <p className="mt-auto pt-10 text-xs text-ink-secondary">{t('footer')}</p>
+      <LanguageSwitch returnTo="/enter" />
+      <p className="mt-1 text-xs text-ink-secondary">{t('footer')}</p>
     </main>
   );
 }
