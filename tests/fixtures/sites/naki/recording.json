@@ -1,32 +1,15 @@
 {
   "modelId": "gemini-3.5-flash-lite",
-  "promptVersion": "brand-4",
+  "promptVersion": "brand-5",
   "partials": [
     {
-      "name": {}
-    },
-    {
       "name": {
-        "value": "Naki The Label",
-        "source": "https://nakithelabel.com"
+        "value": ""
       }
     },
     {
       "name": {
         "value": "Naki The Label",
-        "source": "https://nakithelabel.com/"
-      },
-      "summary": {
-        "value": "Handmade leather bags from Bali, crafted"
-      }
-    },
-    {
-      "name": {
-        "value": "Naki The Label",
-        "source": "https://nakithelabel.com/"
-      },
-      "summary": {
-        "value": "Handmade leather bags from Bali, crafted with sustainable practices and supporting local artisans.",
         "source": "https://nakithelabel.com/"
       }
     },
@@ -36,13 +19,32 @@
         "source": "https://nakithelabel.com/"
       },
       "summary": {
-        "value": "Handmade leather bags from Bali, crafted with sustainable practices and supporting local artisans.",
+        "value": "Handcrafted leather bags from Bali, combining timeless design with practicality while supporting local artisans and"
+      }
+    },
+    {
+      "name": {
+        "value": "Naki The Label",
         "source": "https://nakithelabel.com/"
       },
-      "category": "fashion brand",
+      "summary": {
+        "value": "Handcrafted leather bags from Bali, combining timeless design with practicality while supporting local artisans and a meaningful cause.",
+        "source": "https://nakithelabel.com/"
+      }
+    },
+    {
+      "name": {
+        "value": "Naki The Label",
+        "source": "https://nakithelabel.com/"
+      },
+      "summary": {
+        "value": "Handcrafted leather bags from Bali, combining timeless design with practicality while supporting local artisans and a meaningful cause.",
+        "source": "https://nakithelabel.com/"
+      },
+      "category": "leather bags",
       "offerings": [
         {
-          "name": ""
+          "name": "Ruby Red Two-Strap Bag"
         }
       ]
     },
@@ -52,14 +54,15 @@
         "source": "https://nakithelabel.com/"
       },
       "summary": {
-        "value": "Handmade leather bags from Bali, crafted with sustainable practices and supporting local artisans.",
+        "value": "Handcrafted leather bags from Bali, combining timeless design with practicality while supporting local artisans and a meaningful cause.",
         "source": "https://nakithelabel.com/"
       },
-      "category": "fashion brand",
+      "category": "leather bags",
       "offerings": [
         {
           "name": "Ruby Red Two-Strap Bag",
-          "price": "€55,98"
+          "price": "€55,98",
+          "source": "https://nakithe"
         }
       ]
     },
@@ -69,10 +72,10 @@
         "source": "https://nakithelabel.com/"
       },
       "summary": {
-        "value": "Handmade leather bags from Bali, crafted with sustainable practices and supporting local artisans.",
+        "value": "Handcrafted leather bags from Bali, combining timeless design with practicality while supporting local artisans and a meaningful cause.",
         "source": "https://nakithelabel.com/"
       },
-      "category": "fashion brand",
+      "category": "leather bags",
       "offerings": [
         {
           "name": "Ruby Red Two-Strap Bag",
@@ -80,7 +83,7 @@
           "source": "https://nakithelabel.com/"
         },
         {
-          "name": "Olive"
+          "name": "Olive Green One-Strap Bag"
         }
       ]
     },
@@ -90,32 +93,10 @@
         "source": "https://nakithelabel.com/"
       },
       "summary": {
-        "value": "Handmade leather bags from Bali, crafted with sustainable practices and supporting local artisans.",
+        "value": "Handcrafted leather bags from Bali, combining timeless design with practicality while supporting local artisans and a meaningful cause.",
         "source": "https://nakithelabel.com/"
       },
-      "category": "fashion brand",
-      "offerings": [
-        {
-          "name": "Ruby Red Two-Strap Bag",
-          "price": "€55,98",
-          "source": "https://nakithelabel.com/"
-        },
-        {
-          "name": "Olive Green One-Strap Bag",
-          "price": "€55,98"
-        }
-      ]
-    },
-    {
-      "name": {
-        "value": "Naki The Label",
-        "source": "https://nakithelabel.com/"
-      },
-      "summary": {
-        "value": "Handmade leather bags from Bali, crafted with sustainable practices and supporting local artisans.",
-        "source": "https://nakithelabel.com/"
-      },
-      "category": "fashion brand",
+      "category": "leather bags",
       "offerings": [
         {
           "name": "Ruby Red Two-Strap Bag",
@@ -125,10 +106,7 @@
         {
           "name": "Olive Green One-Strap Bag",
           "price": "€55,98",
-          "source": "https://nakithelabel.com/"
-        },
-        {
-          "name": "Ruby Red"
+          "source": "https://nakithelabel"
         }
       ]
     },
@@ -138,10 +116,10 @@
         "source": "https://nakithelabel.com/"
       },
       "summary": {
-        "value": "Handmade leather bags from Bali, crafted with sustainable practices and supporting local artisans.",
+        "value": "Handcrafted leather bags from Bali, combining timeless design with practicality while supporting local artisans and a meaningful cause.",
         "source": "https://nakithelabel.com/"
       },
-      "category": "fashion brand",
+      "category": "leather bags",
       "offerings": [
         {
           "name": "Ruby Red Two-Strap Bag",
@@ -155,601 +133,6 @@
         },
         {
           "name": "Ruby Red One-Strap Bag",
-          "price": "€55,98"
-        }
-      ]
-    },
-    {
-      "name": {
-        "value": "Naki The Label",
-        "source": "https://nakithelabel.com/"
-      },
-      "summary": {
-        "value": "Handmade leather bags from Bali, crafted with sustainable practices and supporting local artisans.",
-        "source": "https://nakithelabel.com/"
-      },
-      "category": "fashion brand",
-      "offerings": [
-        {
-          "name": "Ruby Red Two-Strap Bag",
-          "price": "€55,98",
-          "source": "https://nakithelabel.com/"
-        },
-        {
-          "name": "Olive Green One-Strap Bag",
-          "price": "€55,98",
-          "source": "https://nakithelabel.com/"
-        },
-        {
-          "name": "Ruby Red One-Strap Bag",
-          "price": "€55,98",
-          "source": "https://nakithelabel.com/"
-        },
-        {
-          "name": "Burgundy Red"
-        }
-      ]
-    },
-    {
-      "name": {
-        "value": "Naki The Label",
-        "source": "https://nakithelabel.com/"
-      },
-      "summary": {
-        "value": "Handmade leather bags from Bali, crafted with sustainable practices and supporting local artisans.",
-        "source": "https://nakithelabel.com/"
-      },
-      "category": "fashion brand",
-      "offerings": [
-        {
-          "name": "Ruby Red Two-Strap Bag",
-          "price": "€55,98",
-          "source": "https://nakithelabel.com/"
-        },
-        {
-          "name": "Olive Green One-Strap Bag",
-          "price": "€55,98",
-          "source": "https://nakithelabel.com/"
-        },
-        {
-          "name": "Ruby Red One-Strap Bag",
-          "price": "€55,98",
-          "source": "https://nakithelabel.com/"
-        },
-        {
-          "name": "Burgundy Red One-Strap Bag",
-          "price": "€55,98"
-        }
-      ]
-    },
-    {
-      "name": {
-        "value": "Naki The Label",
-        "source": "https://nakithelabel.com/"
-      },
-      "summary": {
-        "value": "Handmade leather bags from Bali, crafted with sustainable practices and supporting local artisans.",
-        "source": "https://nakithelabel.com/"
-      },
-      "category": "fashion brand",
-      "offerings": [
-        {
-          "name": "Ruby Red Two-Strap Bag",
-          "price": "€55,98",
-          "source": "https://nakithelabel.com/"
-        },
-        {
-          "name": "Olive Green One-Strap Bag",
-          "price": "€55,98",
-          "source": "https://nakithelabel.com/"
-        },
-        {
-          "name": "Ruby Red One-Strap Bag",
-          "price": "€55,98",
-          "source": "https://nakithelabel.com/"
-        },
-        {
-          "name": "Burgundy Red One-Strap Bag",
-          "price": "€55,98",
-          "source": "https://nakithelabel.com/"
-        },
-        {
-          "name": "Navy Blue One"
-        }
-      ]
-    },
-    {
-      "name": {
-        "value": "Naki The Label",
-        "source": "https://nakithelabel.com/"
-      },
-      "summary": {
-        "value": "Handmade leather bags from Bali, crafted with sustainable practices and supporting local artisans.",
-        "source": "https://nakithelabel.com/"
-      },
-      "category": "fashion brand",
-      "offerings": [
-        {
-          "name": "Ruby Red Two-Strap Bag",
-          "price": "€55,98",
-          "source": "https://nakithelabel.com/"
-        },
-        {
-          "name": "Olive Green One-Strap Bag",
-          "price": "€55,98",
-          "source": "https://nakithelabel.com/"
-        },
-        {
-          "name": "Ruby Red One-Strap Bag",
-          "price": "€55,98",
-          "source": "https://nakithelabel.com/"
-        },
-        {
-          "name": "Burgundy Red One-Strap Bag",
-          "price": "€55,98",
-          "source": "https://nakithelabel.com/"
-        },
-        {
-          "name": "Navy Blue One-Strap Bag",
-          "price": "€55,98",
-          "source": ""
-        }
-      ]
-    },
-    {
-      "name": {
-        "value": "Naki The Label",
-        "source": "https://nakithelabel.com/"
-      },
-      "summary": {
-        "value": "Handmade leather bags from Bali, crafted with sustainable practices and supporting local artisans.",
-        "source": "https://nakithelabel.com/"
-      },
-      "category": "fashion brand",
-      "offerings": [
-        {
-          "name": "Ruby Red Two-Strap Bag",
-          "price": "€55,98",
-          "source": "https://nakithelabel.com/"
-        },
-        {
-          "name": "Olive Green One-Strap Bag",
-          "price": "€55,98",
-          "source": "https://nakithelabel.com/"
-        },
-        {
-          "name": "Ruby Red One-Strap Bag",
-          "price": "€55,98",
-          "source": "https://nakithelabel.com/"
-        },
-        {
-          "name": "Burgundy Red One-Strap Bag",
-          "price": "€55,98",
-          "source": "https://nakithelabel.com/"
-        },
-        {
-          "name": "Navy Blue One-Strap Bag",
-          "price": "€55,98",
-          "source": "https://nakithelabel.com/"
-        },
-        {
-          "name": "Sandshell Beige"
-        }
-      ]
-    },
-    {
-      "name": {
-        "value": "Naki The Label",
-        "source": "https://nakithelabel.com/"
-      },
-      "summary": {
-        "value": "Handmade leather bags from Bali, crafted with sustainable practices and supporting local artisans.",
-        "source": "https://nakithelabel.com/"
-      },
-      "category": "fashion brand",
-      "offerings": [
-        {
-          "name": "Ruby Red Two-Strap Bag",
-          "price": "€55,98",
-          "source": "https://nakithelabel.com/"
-        },
-        {
-          "name": "Olive Green One-Strap Bag",
-          "price": "€55,98",
-          "source": "https://nakithelabel.com/"
-        },
-        {
-          "name": "Ruby Red One-Strap Bag",
-          "price": "€55,98",
-          "source": "https://nakithelabel.com/"
-        },
-        {
-          "name": "Burgundy Red One-Strap Bag",
-          "price": "€55,98",
-          "source": "https://nakithelabel.com/"
-        },
-        {
-          "name": "Navy Blue One-Strap Bag",
-          "price": "€55,98",
-          "source": "https://nakithelabel.com/"
-        },
-        {
-          "name": "Sandshell Beige One-Strap",
-          "price": "€55,98",
-          "source": ""
-        }
-      ]
-    },
-    {
-      "name": {
-        "value": "Naki The Label",
-        "source": "https://nakithelabel.com/"
-      },
-      "summary": {
-        "value": "Handmade leather bags from Bali, crafted with sustainable practices and supporting local artisans.",
-        "source": "https://nakithelabel.com/"
-      },
-      "category": "fashion brand",
-      "offerings": [
-        {
-          "name": "Ruby Red Two-Strap Bag",
-          "price": "€55,98",
-          "source": "https://nakithelabel.com/"
-        },
-        {
-          "name": "Olive Green One-Strap Bag",
-          "price": "€55,98",
-          "source": "https://nakithelabel.com/"
-        },
-        {
-          "name": "Ruby Red One-Strap Bag",
-          "price": "€55,98",
-          "source": "https://nakithelabel.com/"
-        },
-        {
-          "name": "Burgundy Red One-Strap Bag",
-          "price": "€55,98",
-          "source": "https://nakithelabel.com/"
-        },
-        {
-          "name": "Navy Blue One-Strap Bag",
-          "price": "€55,98",
-          "source": "https://nakithelabel.com/"
-        },
-        {
-          "name": "Sandshell Beige One-Strap",
-          "price": "€55,98",
-          "source": "https://nakithelabel.com/"
-        },
-        {
-          "name": "Mint Green One-"
-        }
-      ]
-    },
-    {
-      "name": {
-        "value": "Naki The Label",
-        "source": "https://nakithelabel.com/"
-      },
-      "summary": {
-        "value": "Handmade leather bags from Bali, crafted with sustainable practices and supporting local artisans.",
-        "source": "https://nakithelabel.com/"
-      },
-      "category": "fashion brand",
-      "offerings": [
-        {
-          "name": "Ruby Red Two-Strap Bag",
-          "price": "€55,98",
-          "source": "https://nakithelabel.com/"
-        },
-        {
-          "name": "Olive Green One-Strap Bag",
-          "price": "€55,98",
-          "source": "https://nakithelabel.com/"
-        },
-        {
-          "name": "Ruby Red One-Strap Bag",
-          "price": "€55,98",
-          "source": "https://nakithelabel.com/"
-        },
-        {
-          "name": "Burgundy Red One-Strap Bag",
-          "price": "€55,98",
-          "source": "https://nakithelabel.com/"
-        },
-        {
-          "name": "Navy Blue One-Strap Bag",
-          "price": "€55,98",
-          "source": "https://nakithelabel.com/"
-        },
-        {
-          "name": "Sandshell Beige One-Strap",
-          "price": "€55,98",
-          "source": "https://nakithelabel.com/"
-        },
-        {
-          "name": "Mint Green One-Strap Bag",
-          "price": "€55,98",
-          "source": "https"
-        }
-      ]
-    },
-    {
-      "name": {
-        "value": "Naki The Label",
-        "source": "https://nakithelabel.com/"
-      },
-      "summary": {
-        "value": "Handmade leather bags from Bali, crafted with sustainable practices and supporting local artisans.",
-        "source": "https://nakithelabel.com/"
-      },
-      "category": "fashion brand",
-      "offerings": [
-        {
-          "name": "Ruby Red Two-Strap Bag",
-          "price": "€55,98",
-          "source": "https://nakithelabel.com/"
-        },
-        {
-          "name": "Olive Green One-Strap Bag",
-          "price": "€55,98",
-          "source": "https://nakithelabel.com/"
-        },
-        {
-          "name": "Ruby Red One-Strap Bag",
-          "price": "€55,98",
-          "source": "https://nakithelabel.com/"
-        },
-        {
-          "name": "Burgundy Red One-Strap Bag",
-          "price": "€55,98",
-          "source": "https://nakithelabel.com/"
-        },
-        {
-          "name": "Navy Blue One-Strap Bag",
-          "price": "€55,98",
-          "source": "https://nakithelabel.com/"
-        },
-        {
-          "name": "Sandshell Beige One-Strap",
-          "price": "€55,98",
-          "source": "https://nakithelabel.com/"
-        },
-        {
-          "name": "Mint Green One-Strap Bag",
-          "price": "€55,98",
-          "source": "https://nakithelabel.com/"
-        },
-        {
-          "name": "Sandshell Beige Two"
-        }
-      ]
-    },
-    {
-      "name": {
-        "value": "Naki The Label",
-        "source": "https://nakithelabel.com/"
-      },
-      "summary": {
-        "value": "Handmade leather bags from Bali, crafted with sustainable practices and supporting local artisans.",
-        "source": "https://nakithelabel.com/"
-      },
-      "category": "fashion brand",
-      "offerings": [
-        {
-          "name": "Ruby Red Two-Strap Bag",
-          "price": "€55,98",
-          "source": "https://nakithelabel.com/"
-        },
-        {
-          "name": "Olive Green One-Strap Bag",
-          "price": "€55,98",
-          "source": "https://nakithelabel.com/"
-        },
-        {
-          "name": "Ruby Red One-Strap Bag",
-          "price": "€55,98",
-          "source": "https://nakithelabel.com/"
-        },
-        {
-          "name": "Burgundy Red One-Strap Bag",
-          "price": "€55,98",
-          "source": "https://nakithelabel.com/"
-        },
-        {
-          "name": "Navy Blue One-Strap Bag",
-          "price": "€55,98",
-          "source": "https://nakithelabel.com/"
-        },
-        {
-          "name": "Sandshell Beige One-Strap",
-          "price": "€55,98",
-          "source": "https://nakithelabel.com/"
-        },
-        {
-          "name": "Mint Green One-Strap Bag",
-          "price": "€55,98",
-          "source": "https://nakithelabel.com/"
-        },
-        {
-          "name": "Sandshell Beige Two-Strap Bag",
-          "price": "€55,98",
-          "source": ""
-        }
-      ]
-    },
-    {
-      "name": {
-        "value": "Naki The Label",
-        "source": "https://nakithelabel.com/"
-      },
-      "summary": {
-        "value": "Handmade leather bags from Bali, crafted with sustainable practices and supporting local artisans.",
-        "source": "https://nakithelabel.com/"
-      },
-      "category": "fashion brand",
-      "offerings": [
-        {
-          "name": "Ruby Red Two-Strap Bag",
-          "price": "€55,98",
-          "source": "https://nakithelabel.com/"
-        },
-        {
-          "name": "Olive Green One-Strap Bag",
-          "price": "€55,98",
-          "source": "https://nakithelabel.com/"
-        },
-        {
-          "name": "Ruby Red One-Strap Bag",
-          "price": "€55,98",
-          "source": "https://nakithelabel.com/"
-        },
-        {
-          "name": "Burgundy Red One-Strap Bag",
-          "price": "€55,98",
-          "source": "https://nakithelabel.com/"
-        },
-        {
-          "name": "Navy Blue One-Strap Bag",
-          "price": "€55,98",
-          "source": "https://nakithelabel.com/"
-        },
-        {
-          "name": "Sandshell Beige One-Strap",
-          "price": "€55,98",
-          "source": "https://nakithelabel.com/"
-        },
-        {
-          "name": "Mint Green One-Strap Bag",
-          "price": "€55,98",
-          "source": "https://nakithelabel.com/"
-        },
-        {
-          "name": "Sandshell Beige Two-Strap Bag",
-          "price": "€55,98",
-          "source": "https://nakithelabel.com/"
-        },
-        {
-          "name": "Ocean Blue One-"
-        }
-      ]
-    },
-    {
-      "name": {
-        "value": "Naki The Label",
-        "source": "https://nakithelabel.com/"
-      },
-      "summary": {
-        "value": "Handmade leather bags from Bali, crafted with sustainable practices and supporting local artisans.",
-        "source": "https://nakithelabel.com/"
-      },
-      "category": "fashion brand",
-      "offerings": [
-        {
-          "name": "Ruby Red Two-Strap Bag",
-          "price": "€55,98",
-          "source": "https://nakithelabel.com/"
-        },
-        {
-          "name": "Olive Green One-Strap Bag",
-          "price": "€55,98",
-          "source": "https://nakithelabel.com/"
-        },
-        {
-          "name": "Ruby Red One-Strap Bag",
-          "price": "€55,98",
-          "source": "https://nakithelabel.com/"
-        },
-        {
-          "name": "Burgundy Red One-Strap Bag",
-          "price": "€55,98",
-          "source": "https://nakithelabel.com/"
-        },
-        {
-          "name": "Navy Blue One-Strap Bag",
-          "price": "€55,98",
-          "source": "https://nakithelabel.com/"
-        },
-        {
-          "name": "Sandshell Beige One-Strap",
-          "price": "€55,98",
-          "source": "https://nakithelabel.com/"
-        },
-        {
-          "name": "Mint Green One-Strap Bag",
-          "price": "€55,98",
-          "source": "https://nakithelabel.com/"
-        },
-        {
-          "name": "Sandshell Beige Two-Strap Bag",
-          "price": "€55,98",
-          "source": "https://nakithelabel.com/"
-        },
-        {
-          "name": "Ocean Blue One-Strap Bag",
-          "price": "€55,98",
-          "source": "https"
-        }
-      ]
-    },
-    {
-      "name": {
-        "value": "Naki The Label",
-        "source": "https://nakithelabel.com/"
-      },
-      "summary": {
-        "value": "Handmade leather bags from Bali, crafted with sustainable practices and supporting local artisans.",
-        "source": "https://nakithelabel.com/"
-      },
-      "category": "fashion brand",
-      "offerings": [
-        {
-          "name": "Ruby Red Two-Strap Bag",
-          "price": "€55,98",
-          "source": "https://nakithelabel.com/"
-        },
-        {
-          "name": "Olive Green One-Strap Bag",
-          "price": "€55,98",
-          "source": "https://nakithelabel.com/"
-        },
-        {
-          "name": "Ruby Red One-Strap Bag",
-          "price": "€55,98",
-          "source": "https://nakithelabel.com/"
-        },
-        {
-          "name": "Burgundy Red One-Strap Bag",
-          "price": "€55,98",
-          "source": "https://nakithelabel.com/"
-        },
-        {
-          "name": "Navy Blue One-Strap Bag",
-          "price": "€55,98",
-          "source": "https://nakithelabel.com/"
-        },
-        {
-          "name": "Sandshell Beige One-Strap",
-          "price": "€55,98",
-          "source": "https://nakithelabel.com/"
-        },
-        {
-          "name": "Mint Green One-Strap Bag",
-          "price": "€55,98",
-          "source": "https://nakithelabel.com/"
-        },
-        {
-          "name": "Sandshell Beige Two-Strap Bag",
-          "price": "€55,98",
-          "source": "https://nakithelabel.com/"
-        },
-        {
-          "name": "Ocean Blue One-Strap Bag",
-          "price": "€55,98",
-          "source": "https://nakithelabel.com/"
-        },
-        {
-          "name": "Hazelnut Brown Two-Strap Bag",
           "price": "€55,98",
           "source": "https://nakithelabel."
         }
@@ -761,10 +144,10 @@
         "source": "https://nakithelabel.com/"
       },
       "summary": {
-        "value": "Handmade leather bags from Bali, crafted with sustainable practices and supporting local artisans.",
+        "value": "Handcrafted leather bags from Bali, combining timeless design with practicality while supporting local artisans and a meaningful cause.",
         "source": "https://nakithelabel.com/"
       },
-      "category": "fashion brand",
+      "category": "leather bags",
       "offerings": [
         {
           "name": "Ruby Red Two-Strap Bag",
@@ -784,40 +167,7 @@
         {
           "name": "Burgundy Red One-Strap Bag",
           "price": "€55,98",
-          "source": "https://nakithelabel.com/"
-        },
-        {
-          "name": "Navy Blue One-Strap Bag",
-          "price": "€55,98",
-          "source": "https://nakithelabel.com/"
-        },
-        {
-          "name": "Sandshell Beige One-Strap",
-          "price": "€55,98",
-          "source": "https://nakithelabel.com/"
-        },
-        {
-          "name": "Mint Green One-Strap Bag",
-          "price": "€55,98",
-          "source": "https://nakithelabel.com/"
-        },
-        {
-          "name": "Sandshell Beige Two-Strap Bag",
-          "price": "€55,98",
-          "source": "https://nakithelabel.com/"
-        },
-        {
-          "name": "Ocean Blue One-Strap Bag",
-          "price": "€55,98",
-          "source": "https://nakithelabel.com/"
-        },
-        {
-          "name": "Hazelnut Brown Two-Strap Bag",
-          "price": "€55,98",
-          "source": "https://nakithelabel.com/"
-        },
-        {
-          "name": "Midnight Black One-Strap Bag"
+          "source": "https://nakithelabel."
         }
       ]
     },
@@ -827,10 +177,46 @@
         "source": "https://nakithelabel.com/"
       },
       "summary": {
-        "value": "Handmade leather bags from Bali, crafted with sustainable practices and supporting local artisans.",
+        "value": "Handcrafted leather bags from Bali, combining timeless design with practicality while supporting local artisans and a meaningful cause.",
         "source": "https://nakithelabel.com/"
       },
-      "category": "fashion brand",
+      "category": "leather bags",
+      "offerings": [
+        {
+          "name": "Ruby Red Two-Strap Bag",
+          "price": "€55,98",
+          "source": "https://nakithelabel.com/"
+        },
+        {
+          "name": "Olive Green One-Strap Bag",
+          "price": "€55,98",
+          "source": "https://nakithelabel.com/"
+        },
+        {
+          "name": "Ruby Red One-Strap Bag",
+          "price": "€55,98",
+          "source": "https://nakithelabel.com/"
+        },
+        {
+          "name": "Burgundy Red One-Strap Bag",
+          "price": "€55,98",
+          "source": "https://nakithelabel.com/"
+        },
+        {
+          "name": "Navy Blue One-Strap Bag"
+        }
+      ]
+    },
+    {
+      "name": {
+        "value": "Naki The Label",
+        "source": "https://nakithelabel.com/"
+      },
+      "summary": {
+        "value": "Handcrafted leather bags from Bali, combining timeless design with practicality while supporting local artisans and a meaningful cause.",
+        "source": "https://nakithelabel.com/"
+      },
+      "category": "leather bags",
       "offerings": [
         {
           "name": "Ruby Red Two-Strap Bag",
@@ -854,36 +240,6 @@
         },
         {
           "name": "Navy Blue One-Strap Bag",
-          "price": "€55,98",
-          "source": "https://nakithelabel.com/"
-        },
-        {
-          "name": "Sandshell Beige One-Strap",
-          "price": "€55,98",
-          "source": "https://nakithelabel.com/"
-        },
-        {
-          "name": "Mint Green One-Strap Bag",
-          "price": "€55,98",
-          "source": "https://nakithelabel.com/"
-        },
-        {
-          "name": "Sandshell Beige Two-Strap Bag",
-          "price": "€55,98",
-          "source": "https://nakithelabel.com/"
-        },
-        {
-          "name": "Ocean Blue One-Strap Bag",
-          "price": "€55,98",
-          "source": "https://nakithelabel.com/"
-        },
-        {
-          "name": "Hazelnut Brown Two-Strap Bag",
-          "price": "€55,98",
-          "source": "https://nakithelabel.com/"
-        },
-        {
-          "name": "Midnight Black One-Strap Bag",
           "price": "€55,98",
           "source": "https://nakithelabel.com"
         }
@@ -895,10 +251,603 @@
         "source": "https://nakithelabel.com/"
       },
       "summary": {
-        "value": "Handmade leather bags from Bali, crafted with sustainable practices and supporting local artisans.",
+        "value": "Handcrafted leather bags from Bali, combining timeless design with practicality while supporting local artisans and a meaningful cause.",
         "source": "https://nakithelabel.com/"
       },
-      "category": "fashion brand",
+      "category": "leather bags",
+      "offerings": [
+        {
+          "name": "Ruby Red Two-Strap Bag",
+          "price": "€55,98",
+          "source": "https://nakithelabel.com/"
+        },
+        {
+          "name": "Olive Green One-Strap Bag",
+          "price": "€55,98",
+          "source": "https://nakithelabel.com/"
+        },
+        {
+          "name": "Ruby Red One-Strap Bag",
+          "price": "€55,98",
+          "source": "https://nakithelabel.com/"
+        },
+        {
+          "name": "Burgundy Red One-Strap Bag",
+          "price": "€55,98",
+          "source": "https://nakithelabel.com/"
+        },
+        {
+          "name": "Navy Blue One-Strap Bag",
+          "price": "€55,98",
+          "source": "https://nakithelabel.com/"
+        },
+        {
+          "name": "Sandshell Beige One-Strap"
+        }
+      ]
+    },
+    {
+      "name": {
+        "value": "Naki The Label",
+        "source": "https://nakithelabel.com/"
+      },
+      "summary": {
+        "value": "Handcrafted leather bags from Bali, combining timeless design with practicality while supporting local artisans and a meaningful cause.",
+        "source": "https://nakithelabel.com/"
+      },
+      "category": "leather bags",
+      "offerings": [
+        {
+          "name": "Ruby Red Two-Strap Bag",
+          "price": "€55,98",
+          "source": "https://nakithelabel.com/"
+        },
+        {
+          "name": "Olive Green One-Strap Bag",
+          "price": "€55,98",
+          "source": "https://nakithelabel.com/"
+        },
+        {
+          "name": "Ruby Red One-Strap Bag",
+          "price": "€55,98",
+          "source": "https://nakithelabel.com/"
+        },
+        {
+          "name": "Burgundy Red One-Strap Bag",
+          "price": "€55,98",
+          "source": "https://nakithelabel.com/"
+        },
+        {
+          "name": "Navy Blue One-Strap Bag",
+          "price": "€55,98",
+          "source": "https://nakithelabel.com/"
+        },
+        {
+          "name": "Sandshell Beige One-Strap",
+          "price": "€55,98",
+          "source": "https://nakithelabel.com"
+        }
+      ]
+    },
+    {
+      "name": {
+        "value": "Naki The Label",
+        "source": "https://nakithelabel.com/"
+      },
+      "summary": {
+        "value": "Handcrafted leather bags from Bali, combining timeless design with practicality while supporting local artisans and a meaningful cause.",
+        "source": "https://nakithelabel.com/"
+      },
+      "category": "leather bags",
+      "offerings": [
+        {
+          "name": "Ruby Red Two-Strap Bag",
+          "price": "€55,98",
+          "source": "https://nakithelabel.com/"
+        },
+        {
+          "name": "Olive Green One-Strap Bag",
+          "price": "€55,98",
+          "source": "https://nakithelabel.com/"
+        },
+        {
+          "name": "Ruby Red One-Strap Bag",
+          "price": "€55,98",
+          "source": "https://nakithelabel.com/"
+        },
+        {
+          "name": "Burgundy Red One-Strap Bag",
+          "price": "€55,98",
+          "source": "https://nakithelabel.com/"
+        },
+        {
+          "name": "Navy Blue One-Strap Bag",
+          "price": "€55,98",
+          "source": "https://nakithelabel.com/"
+        },
+        {
+          "name": "Sandshell Beige One-Strap",
+          "price": "€55,98",
+          "source": "https://nakithelabel.com/"
+        },
+        {
+          "name": "Mint Green One-Strap Bag"
+        }
+      ]
+    },
+    {
+      "name": {
+        "value": "Naki The Label",
+        "source": "https://nakithelabel.com/"
+      },
+      "summary": {
+        "value": "Handcrafted leather bags from Bali, combining timeless design with practicality while supporting local artisans and a meaningful cause.",
+        "source": "https://nakithelabel.com/"
+      },
+      "category": "leather bags",
+      "offerings": [
+        {
+          "name": "Ruby Red Two-Strap Bag",
+          "price": "€55,98",
+          "source": "https://nakithelabel.com/"
+        },
+        {
+          "name": "Olive Green One-Strap Bag",
+          "price": "€55,98",
+          "source": "https://nakithelabel.com/"
+        },
+        {
+          "name": "Ruby Red One-Strap Bag",
+          "price": "€55,98",
+          "source": "https://nakithelabel.com/"
+        },
+        {
+          "name": "Burgundy Red One-Strap Bag",
+          "price": "€55,98",
+          "source": "https://nakithelabel.com/"
+        },
+        {
+          "name": "Navy Blue One-Strap Bag",
+          "price": "€55,98",
+          "source": "https://nakithelabel.com/"
+        },
+        {
+          "name": "Sandshell Beige One-Strap",
+          "price": "€55,98",
+          "source": "https://nakithelabel.com/"
+        },
+        {
+          "name": "Mint Green One-Strap Bag",
+          "price": "€55,98",
+          "source": "https://nakithelabel.com/"
+        }
+      ]
+    },
+    {
+      "name": {
+        "value": "Naki The Label",
+        "source": "https://nakithelabel.com/"
+      },
+      "summary": {
+        "value": "Handcrafted leather bags from Bali, combining timeless design with practicality while supporting local artisans and a meaningful cause.",
+        "source": "https://nakithelabel.com/"
+      },
+      "category": "leather bags",
+      "offerings": [
+        {
+          "name": "Ruby Red Two-Strap Bag",
+          "price": "€55,98",
+          "source": "https://nakithelabel.com/"
+        },
+        {
+          "name": "Olive Green One-Strap Bag",
+          "price": "€55,98",
+          "source": "https://nakithelabel.com/"
+        },
+        {
+          "name": "Ruby Red One-Strap Bag",
+          "price": "€55,98",
+          "source": "https://nakithelabel.com/"
+        },
+        {
+          "name": "Burgundy Red One-Strap Bag",
+          "price": "€55,98",
+          "source": "https://nakithelabel.com/"
+        },
+        {
+          "name": "Navy Blue One-Strap Bag",
+          "price": "€55,98",
+          "source": "https://nakithelabel.com/"
+        },
+        {
+          "name": "Sandshell Beige One-Strap",
+          "price": "€55,98",
+          "source": "https://nakithelabel.com/"
+        },
+        {
+          "name": "Mint Green One-Strap Bag",
+          "price": "€55,98",
+          "source": "https://nakithelabel.com/"
+        },
+        {
+          "name": "Sandshell Beige Two-Strap Bag"
+        }
+      ]
+    },
+    {
+      "name": {
+        "value": "Naki The Label",
+        "source": "https://nakithelabel.com/"
+      },
+      "summary": {
+        "value": "Handcrafted leather bags from Bali, combining timeless design with practicality while supporting local artisans and a meaningful cause.",
+        "source": "https://nakithelabel.com/"
+      },
+      "category": "leather bags",
+      "offerings": [
+        {
+          "name": "Ruby Red Two-Strap Bag",
+          "price": "€55,98",
+          "source": "https://nakithelabel.com/"
+        },
+        {
+          "name": "Olive Green One-Strap Bag",
+          "price": "€55,98",
+          "source": "https://nakithelabel.com/"
+        },
+        {
+          "name": "Ruby Red One-Strap Bag",
+          "price": "€55,98",
+          "source": "https://nakithelabel.com/"
+        },
+        {
+          "name": "Burgundy Red One-Strap Bag",
+          "price": "€55,98",
+          "source": "https://nakithelabel.com/"
+        },
+        {
+          "name": "Navy Blue One-Strap Bag",
+          "price": "€55,98",
+          "source": "https://nakithelabel.com/"
+        },
+        {
+          "name": "Sandshell Beige One-Strap",
+          "price": "€55,98",
+          "source": "https://nakithelabel.com/"
+        },
+        {
+          "name": "Mint Green One-Strap Bag",
+          "price": "€55,98",
+          "source": "https://nakithelabel.com/"
+        },
+        {
+          "name": "Sandshell Beige Two-Strap Bag",
+          "price": "€55,98",
+          "source": "https://nakithelabel.com"
+        }
+      ]
+    },
+    {
+      "name": {
+        "value": "Naki The Label",
+        "source": "https://nakithelabel.com/"
+      },
+      "summary": {
+        "value": "Handcrafted leather bags from Bali, combining timeless design with practicality while supporting local artisans and a meaningful cause.",
+        "source": "https://nakithelabel.com/"
+      },
+      "category": "leather bags",
+      "offerings": [
+        {
+          "name": "Ruby Red Two-Strap Bag",
+          "price": "€55,98",
+          "source": "https://nakithelabel.com/"
+        },
+        {
+          "name": "Olive Green One-Strap Bag",
+          "price": "€55,98",
+          "source": "https://nakithelabel.com/"
+        },
+        {
+          "name": "Ruby Red One-Strap Bag",
+          "price": "€55,98",
+          "source": "https://nakithelabel.com/"
+        },
+        {
+          "name": "Burgundy Red One-Strap Bag",
+          "price": "€55,98",
+          "source": "https://nakithelabel.com/"
+        },
+        {
+          "name": "Navy Blue One-Strap Bag",
+          "price": "€55,98",
+          "source": "https://nakithelabel.com/"
+        },
+        {
+          "name": "Sandshell Beige One-Strap",
+          "price": "€55,98",
+          "source": "https://nakithelabel.com/"
+        },
+        {
+          "name": "Mint Green One-Strap Bag",
+          "price": "€55,98",
+          "source": "https://nakithelabel.com/"
+        },
+        {
+          "name": "Sandshell Beige Two-Strap Bag",
+          "price": "€55,98",
+          "source": "https://nakithelabel.com/"
+        },
+        {
+          "name": "Ocean Blue One-Strap Bag"
+        }
+      ]
+    },
+    {
+      "name": {
+        "value": "Naki The Label",
+        "source": "https://nakithelabel.com/"
+      },
+      "summary": {
+        "value": "Handcrafted leather bags from Bali, combining timeless design with practicality while supporting local artisans and a meaningful cause.",
+        "source": "https://nakithelabel.com/"
+      },
+      "category": "leather bags",
+      "offerings": [
+        {
+          "name": "Ruby Red Two-Strap Bag",
+          "price": "€55,98",
+          "source": "https://nakithelabel.com/"
+        },
+        {
+          "name": "Olive Green One-Strap Bag",
+          "price": "€55,98",
+          "source": "https://nakithelabel.com/"
+        },
+        {
+          "name": "Ruby Red One-Strap Bag",
+          "price": "€55,98",
+          "source": "https://nakithelabel.com/"
+        },
+        {
+          "name": "Burgundy Red One-Strap Bag",
+          "price": "€55,98",
+          "source": "https://nakithelabel.com/"
+        },
+        {
+          "name": "Navy Blue One-Strap Bag",
+          "price": "€55,98",
+          "source": "https://nakithelabel.com/"
+        },
+        {
+          "name": "Sandshell Beige One-Strap",
+          "price": "€55,98",
+          "source": "https://nakithelabel.com/"
+        },
+        {
+          "name": "Mint Green One-Strap Bag",
+          "price": "€55,98",
+          "source": "https://nakithelabel.com/"
+        },
+        {
+          "name": "Sandshell Beige Two-Strap Bag",
+          "price": "€55,98",
+          "source": "https://nakithelabel.com/"
+        },
+        {
+          "name": "Ocean Blue One-Strap Bag",
+          "price": "€55,98",
+          "source": "https://nakithelabel.com/"
+        }
+      ]
+    },
+    {
+      "name": {
+        "value": "Naki The Label",
+        "source": "https://nakithelabel.com/"
+      },
+      "summary": {
+        "value": "Handcrafted leather bags from Bali, combining timeless design with practicality while supporting local artisans and a meaningful cause.",
+        "source": "https://nakithelabel.com/"
+      },
+      "category": "leather bags",
+      "offerings": [
+        {
+          "name": "Ruby Red Two-Strap Bag",
+          "price": "€55,98",
+          "source": "https://nakithelabel.com/"
+        },
+        {
+          "name": "Olive Green One-Strap Bag",
+          "price": "€55,98",
+          "source": "https://nakithelabel.com/"
+        },
+        {
+          "name": "Ruby Red One-Strap Bag",
+          "price": "€55,98",
+          "source": "https://nakithelabel.com/"
+        },
+        {
+          "name": "Burgundy Red One-Strap Bag",
+          "price": "€55,98",
+          "source": "https://nakithelabel.com/"
+        },
+        {
+          "name": "Navy Blue One-Strap Bag",
+          "price": "€55,98",
+          "source": "https://nakithelabel.com/"
+        },
+        {
+          "name": "Sandshell Beige One-Strap",
+          "price": "€55,98",
+          "source": "https://nakithelabel.com/"
+        },
+        {
+          "name": "Mint Green One-Strap Bag",
+          "price": "€55,98",
+          "source": "https://nakithelabel.com/"
+        },
+        {
+          "name": "Sandshell Beige Two-Strap Bag",
+          "price": "€55,98",
+          "source": "https://nakithelabel.com/"
+        },
+        {
+          "name": "Ocean Blue One-Strap Bag",
+          "price": "€55,98",
+          "source": "https://nakithelabel.com/"
+        },
+        {
+          "name": "Hazelnut Brown Two-Strap Bag",
+          "price": "€"
+        }
+      ]
+    },
+    {
+      "name": {
+        "value": "Naki The Label",
+        "source": "https://nakithelabel.com/"
+      },
+      "summary": {
+        "value": "Handcrafted leather bags from Bali, combining timeless design with practicality while supporting local artisans and a meaningful cause.",
+        "source": "https://nakithelabel.com/"
+      },
+      "category": "leather bags",
+      "offerings": [
+        {
+          "name": "Ruby Red Two-Strap Bag",
+          "price": "€55,98",
+          "source": "https://nakithelabel.com/"
+        },
+        {
+          "name": "Olive Green One-Strap Bag",
+          "price": "€55,98",
+          "source": "https://nakithelabel.com/"
+        },
+        {
+          "name": "Ruby Red One-Strap Bag",
+          "price": "€55,98",
+          "source": "https://nakithelabel.com/"
+        },
+        {
+          "name": "Burgundy Red One-Strap Bag",
+          "price": "€55,98",
+          "source": "https://nakithelabel.com/"
+        },
+        {
+          "name": "Navy Blue One-Strap Bag",
+          "price": "€55,98",
+          "source": "https://nakithelabel.com/"
+        },
+        {
+          "name": "Sandshell Beige One-Strap",
+          "price": "€55,98",
+          "source": "https://nakithelabel.com/"
+        },
+        {
+          "name": "Mint Green One-Strap Bag",
+          "price": "€55,98",
+          "source": "https://nakithelabel.com/"
+        },
+        {
+          "name": "Sandshell Beige Two-Strap Bag",
+          "price": "€55,98",
+          "source": "https://nakithelabel.com/"
+        },
+        {
+          "name": "Ocean Blue One-Strap Bag",
+          "price": "€55,98",
+          "source": "https://nakithelabel.com/"
+        },
+        {
+          "name": "Hazelnut Brown Two-Strap Bag",
+          "price": "€55,98",
+          "source": "https://nakithelabel.com/"
+        },
+        {
+          "name": "Midnight Black One-Strap Bag",
+          "price": "€5"
+        }
+      ]
+    },
+    {
+      "name": {
+        "value": "Naki The Label",
+        "source": "https://nakithelabel.com/"
+      },
+      "summary": {
+        "value": "Handcrafted leather bags from Bali, combining timeless design with practicality while supporting local artisans and a meaningful cause.",
+        "source": "https://nakithelabel.com/"
+      },
+      "category": "leather bags",
+      "offerings": [
+        {
+          "name": "Ruby Red Two-Strap Bag",
+          "price": "€55,98",
+          "source": "https://nakithelabel.com/"
+        },
+        {
+          "name": "Olive Green One-Strap Bag",
+          "price": "€55,98",
+          "source": "https://nakithelabel.com/"
+        },
+        {
+          "name": "Ruby Red One-Strap Bag",
+          "price": "€55,98",
+          "source": "https://nakithelabel.com/"
+        },
+        {
+          "name": "Burgundy Red One-Strap Bag",
+          "price": "€55,98",
+          "source": "https://nakithelabel.com/"
+        },
+        {
+          "name": "Navy Blue One-Strap Bag",
+          "price": "€55,98",
+          "source": "https://nakithelabel.com/"
+        },
+        {
+          "name": "Sandshell Beige One-Strap",
+          "price": "€55,98",
+          "source": "https://nakithelabel.com/"
+        },
+        {
+          "name": "Mint Green One-Strap Bag",
+          "price": "€55,98",
+          "source": "https://nakithelabel.com/"
+        },
+        {
+          "name": "Sandshell Beige Two-Strap Bag",
+          "price": "€55,98",
+          "source": "https://nakithelabel.com/"
+        },
+        {
+          "name": "Ocean Blue One-Strap Bag",
+          "price": "€55,98",
+          "source": "https://nakithelabel.com/"
+        },
+        {
+          "name": "Hazelnut Brown Two-Strap Bag",
+          "price": "€55,98",
+          "source": "https://nakithelabel.com/"
+        },
+        {
+          "name": "Midnight Black One-Strap Bag",
+          "price": "€55,98",
+          "source": "https://nakithelabel.com/"
+        }
+      ]
+    },
+    {
+      "name": {
+        "value": "Naki The Label",
+        "source": "https://nakithelabel.com/"
+      },
+      "summary": {
+        "value": "Handcrafted leather bags from Bali, combining timeless design with practicality while supporting local artisans and a meaningful cause.",
+        "source": "https://nakithelabel.com/"
+      },
+      "category": "leather bags",
       "offerings": [
         {
           "name": "Ruby Red Two-Strap Bag",
@@ -956,7 +905,8 @@
           "source": "https://nakithelabel.com/"
         },
         {
-          "name": "Midnight Black Two-Strap Bag"
+          "name": "Midnight Black Two-Strap Bag",
+          "price": "€55"
         }
       ]
     },
@@ -966,10 +916,10 @@
         "source": "https://nakithelabel.com/"
       },
       "summary": {
-        "value": "Handmade leather bags from Bali, crafted with sustainable practices and supporting local artisans.",
+        "value": "Handcrafted leather bags from Bali, combining timeless design with practicality while supporting local artisans and a meaningful cause.",
         "source": "https://nakithelabel.com/"
       },
-      "category": "fashion brand",
+      "category": "leather bags",
       "offerings": [
         {
           "name": "Ruby Red Two-Strap Bag",
@@ -1030,7 +980,8 @@
           "name": "Midnight Black Two-Strap Bag",
           "price": "€55,98",
           "source": "https://nakithelabel.com/"
-        }
+        },
+        {}
       ]
     },
     {
@@ -1039,10 +990,10 @@
         "source": "https://nakithelabel.com/"
       },
       "summary": {
-        "value": "Handmade leather bags from Bali, crafted with sustainable practices and supporting local artisans.",
+        "value": "Handcrafted leather bags from Bali, combining timeless design with practicality while supporting local artisans and a meaningful cause.",
         "source": "https://nakithelabel.com/"
       },
-      "category": "fashion brand",
+      "category": "leather bags",
       "offerings": [
         {
           "name": "Ruby Red Two-Strap Bag",
@@ -1105,7 +1056,8 @@
           "source": "https://nakithelabel.com/"
         },
         {
-          "name": "Hazelnut Brown One-Strap Bag"
+          "name": "Hazelnut Brown One-Strap Bag",
+          "price": "€55"
         }
       ]
     },
@@ -1115,10 +1067,10 @@
         "source": "https://nakithelabel.com/"
       },
       "summary": {
-        "value": "Handmade leather bags from Bali, crafted with sustainable practices and supporting local artisans.",
+        "value": "Handcrafted leather bags from Bali, combining timeless design with practicality while supporting local artisans and a meaningful cause.",
         "source": "https://nakithelabel.com/"
       },
-      "category": "fashion brand",
+      "category": "leather bags",
       "offerings": [
         {
           "name": "Ruby Red Two-Strap Bag",
@@ -1184,7 +1136,8 @@
           "name": "Hazelnut Brown One-Strap Bag",
           "price": "€55,98",
           "source": "https://nakithelabel.com/"
-        }
+        },
+        {}
       ]
     },
     {
@@ -1193,10 +1146,10 @@
         "source": "https://nakithelabel.com/"
       },
       "summary": {
-        "value": "Handmade leather bags from Bali, crafted with sustainable practices and supporting local artisans.",
+        "value": "Handcrafted leather bags from Bali, combining timeless design with practicality while supporting local artisans and a meaningful cause.",
         "source": "https://nakithelabel.com/"
       },
-      "category": "fashion brand",
+      "category": "leather bags",
       "offerings": [
         {
           "name": "Ruby Red Two-Strap Bag",
@@ -1265,7 +1218,7 @@
         },
         {
           "name": "Sienna Dark Brown Bag",
-          "price": ""
+          "price": "€55,98"
         }
       ]
     },
@@ -1275,10 +1228,10 @@
         "source": "https://nakithelabel.com/"
       },
       "summary": {
-        "value": "Handmade leather bags from Bali, crafted with sustainable practices and supporting local artisans.",
+        "value": "Handcrafted leather bags from Bali, combining timeless design with practicality while supporting local artisans and a meaningful cause.",
         "source": "https://nakithelabel.com/"
       },
-      "category": "fashion brand",
+      "category": "leather bags",
       "offerings": [
         {
           "name": "Ruby Red Two-Strap Bag",
@@ -1349,7 +1302,8 @@
           "name": "Sienna Dark Brown Bag",
           "price": "€55,98",
           "source": "https://nakithelabel.com/"
-        }
+        },
+        {}
       ]
     },
     {
@@ -1358,10 +1312,10 @@
         "source": "https://nakithelabel.com/"
       },
       "summary": {
-        "value": "Handmade leather bags from Bali, crafted with sustainable practices and supporting local artisans.",
+        "value": "Handcrafted leather bags from Bali, combining timeless design with practicality while supporting local artisans and a meaningful cause.",
         "source": "https://nakithelabel.com/"
       },
-      "category": "fashion brand",
+      "category": "leather bags",
       "offerings": [
         {
           "name": "Ruby Red Two-Strap Bag",
@@ -1435,7 +1389,7 @@
         },
         {
           "name": "Sienna Midnight Black Bag",
-          "price": "€51"
+          "price": "€51,98"
         }
       ]
     },
@@ -1445,10 +1399,10 @@
         "source": "https://nakithelabel.com/"
       },
       "summary": {
-        "value": "Handmade leather bags from Bali, crafted with sustainable practices and supporting local artisans.",
+        "value": "Handcrafted leather bags from Bali, combining timeless design with practicality while supporting local artisans and a meaningful cause.",
         "source": "https://nakithelabel.com/"
       },
-      "category": "fashion brand",
+      "category": "leather bags",
       "offerings": [
         {
           "name": "Ruby Red Two-Strap Bag",
@@ -1525,7 +1479,9 @@
           "price": "€51,98",
           "source": "https://nakithelabel.com/"
         },
-        {}
+        {
+          "name": ""
+        }
       ]
     },
     {
@@ -1534,10 +1490,10 @@
         "source": "https://nakithelabel.com/"
       },
       "summary": {
-        "value": "Handmade leather bags from Bali, crafted with sustainable practices and supporting local artisans.",
+        "value": "Handcrafted leather bags from Bali, combining timeless design with practicality while supporting local artisans and a meaningful cause.",
         "source": "https://nakithelabel.com/"
       },
-      "category": "fashion brand",
+      "category": "leather bags",
       "offerings": [
         {
           "name": "Ruby Red Two-Strap Bag",
@@ -1626,104 +1582,10 @@
         "source": "https://nakithelabel.com/"
       },
       "summary": {
-        "value": "Handmade leather bags from Bali, crafted with sustainable practices and supporting local artisans.",
+        "value": "Handcrafted leather bags from Bali, combining timeless design with practicality while supporting local artisans and a meaningful cause.",
         "source": "https://nakithelabel.com/"
       },
-      "category": "fashion brand",
-      "offerings": [
-        {
-          "name": "Ruby Red Two-Strap Bag",
-          "price": "€55,98",
-          "source": "https://nakithelabel.com/"
-        },
-        {
-          "name": "Olive Green One-Strap Bag",
-          "price": "€55,98",
-          "source": "https://nakithelabel.com/"
-        },
-        {
-          "name": "Ruby Red One-Strap Bag",
-          "price": "€55,98",
-          "source": "https://nakithelabel.com/"
-        },
-        {
-          "name": "Burgundy Red One-Strap Bag",
-          "price": "€55,98",
-          "source": "https://nakithelabel.com/"
-        },
-        {
-          "name": "Navy Blue One-Strap Bag",
-          "price": "€55,98",
-          "source": "https://nakithelabel.com/"
-        },
-        {
-          "name": "Sandshell Beige One-Strap",
-          "price": "€55,98",
-          "source": "https://nakithelabel.com/"
-        },
-        {
-          "name": "Mint Green One-Strap Bag",
-          "price": "€55,98",
-          "source": "https://nakithelabel.com/"
-        },
-        {
-          "name": "Sandshell Beige Two-Strap Bag",
-          "price": "€55,98",
-          "source": "https://nakithelabel.com/"
-        },
-        {
-          "name": "Ocean Blue One-Strap Bag",
-          "price": "€55,98",
-          "source": "https://nakithelabel.com/"
-        },
-        {
-          "name": "Hazelnut Brown Two-Strap Bag",
-          "price": "€55,98",
-          "source": "https://nakithelabel.com/"
-        },
-        {
-          "name": "Midnight Black One-Strap Bag",
-          "price": "€55,98",
-          "source": "https://nakithelabel.com/"
-        },
-        {
-          "name": "Midnight Black Two-Strap Bag",
-          "price": "€55,98",
-          "source": "https://nakithelabel.com/"
-        },
-        {
-          "name": "Hazelnut Brown One-Strap Bag",
-          "price": "€55,98",
-          "source": "https://nakithelabel.com/"
-        },
-        {
-          "name": "Sienna Dark Brown Bag",
-          "price": "€55,98",
-          "source": "https://nakithelabel.com/"
-        },
-        {
-          "name": "Sienna Midnight Black Bag",
-          "price": "€51,98",
-          "source": "https://nakithelabel.com/"
-        },
-        {
-          "name": "Sienna Navy Blue Bag",
-          "price": "€55,98",
-          "source": "https://nakithelabel.com/"
-        },
-        {}
-      ]
-    },
-    {
-      "name": {
-        "value": "Naki The Label",
-        "source": "https://nakithelabel.com/"
-      },
-      "summary": {
-        "value": "Handmade leather bags from Bali, crafted with sustainable practices and supporting local artisans.",
-        "source": "https://nakithelabel.com/"
-      },
-      "category": "fashion brand",
+      "category": "leather bags",
       "offerings": [
         {
           "name": "Ruby Red Two-Strap Bag",
@@ -1806,8 +1668,7 @@
           "source": "https://nakithelabel.com/"
         },
         {
-          "name": "Sienna Ruby Red",
-          "price": "€55,98"
+          "name": "Sienna Ruby"
         }
       ]
     },
@@ -1817,10 +1678,10 @@
         "source": "https://nakithelabel.com/"
       },
       "summary": {
-        "value": "Handmade leather bags from Bali, crafted with sustainable practices and supporting local artisans.",
+        "value": "Handcrafted leather bags from Bali, combining timeless design with practicality while supporting local artisans and a meaningful cause.",
         "source": "https://nakithelabel.com/"
       },
-      "category": "fashion brand",
+      "category": "leather bags",
       "offerings": [
         {
           "name": "Ruby Red Two-Strap Bag",
@@ -1905,10 +1766,7 @@
         {
           "name": "Sienna Ruby Red",
           "price": "€55,98",
-          "source": "https://nakithelabel.com/"
-        },
-        {
-          "name": "Luna"
+          "source": "https://nak"
         }
       ]
     },
@@ -1918,10 +1776,111 @@
         "source": "https://nakithelabel.com/"
       },
       "summary": {
-        "value": "Handmade leather bags from Bali, crafted with sustainable practices and supporting local artisans.",
+        "value": "Handcrafted leather bags from Bali, combining timeless design with practicality while supporting local artisans and a meaningful cause.",
         "source": "https://nakithelabel.com/"
       },
-      "category": "fashion brand",
+      "category": "leather bags",
+      "offerings": [
+        {
+          "name": "Ruby Red Two-Strap Bag",
+          "price": "€55,98",
+          "source": "https://nakithelabel.com/"
+        },
+        {
+          "name": "Olive Green One-Strap Bag",
+          "price": "€55,98",
+          "source": "https://nakithelabel.com/"
+        },
+        {
+          "name": "Ruby Red One-Strap Bag",
+          "price": "€55,98",
+          "source": "https://nakithelabel.com/"
+        },
+        {
+          "name": "Burgundy Red One-Strap Bag",
+          "price": "€55,98",
+          "source": "https://nakithelabel.com/"
+        },
+        {
+          "name": "Navy Blue One-Strap Bag",
+          "price": "€55,98",
+          "source": "https://nakithelabel.com/"
+        },
+        {
+          "name": "Sandshell Beige One-Strap",
+          "price": "€55,98",
+          "source": "https://nakithelabel.com/"
+        },
+        {
+          "name": "Mint Green One-Strap Bag",
+          "price": "€55,98",
+          "source": "https://nakithelabel.com/"
+        },
+        {
+          "name": "Sandshell Beige Two-Strap Bag",
+          "price": "€55,98",
+          "source": "https://nakithelabel.com/"
+        },
+        {
+          "name": "Ocean Blue One-Strap Bag",
+          "price": "€55,98",
+          "source": "https://nakithelabel.com/"
+        },
+        {
+          "name": "Hazelnut Brown Two-Strap Bag",
+          "price": "€55,98",
+          "source": "https://nakithelabel.com/"
+        },
+        {
+          "name": "Midnight Black One-Strap Bag",
+          "price": "€55,98",
+          "source": "https://nakithelabel.com/"
+        },
+        {
+          "name": "Midnight Black Two-Strap Bag",
+          "price": "€55,98",
+          "source": "https://nakithelabel.com/"
+        },
+        {
+          "name": "Hazelnut Brown One-Strap Bag",
+          "price": "€55,98",
+          "source": "https://nakithelabel.com/"
+        },
+        {
+          "name": "Sienna Dark Brown Bag",
+          "price": "€55,98",
+          "source": "https://nakithelabel.com/"
+        },
+        {
+          "name": "Sienna Midnight Black Bag",
+          "price": "€51,98",
+          "source": "https://nakithelabel.com/"
+        },
+        {
+          "name": "Sienna Navy Blue Bag",
+          "price": "€55,98",
+          "source": "https://nakithelabel.com/"
+        },
+        {
+          "name": "Sienna Ruby Red",
+          "price": "€55,98",
+          "source": "https://nakithelabel.com/"
+        },
+        {
+          "name": "Luna Midnight Black Bag"
+        }
+      ]
+    },
+    {
+      "name": {
+        "value": "Naki The Label",
+        "source": "https://nakithelabel.com/"
+      },
+      "summary": {
+        "value": "Handcrafted leather bags from Bali, combining timeless design with practicality while supporting local artisans and a meaningful cause.",
+        "source": "https://nakithelabel.com/"
+      },
+      "category": "leather bags",
       "offerings": [
         {
           "name": "Ruby Red Two-Strap Bag",
@@ -2011,7 +1970,7 @@
         {
           "name": "Luna Midnight Black Bag",
           "price": "€63,98",
-          "source": "https"
+          "source": "https://nakithelabel.com"
         }
       ]
     },
@@ -2021,10 +1980,10 @@
         "source": "https://nakithelabel.com/"
       },
       "summary": {
-        "value": "Handmade leather bags from Bali, crafted with sustainable practices and supporting local artisans.",
+        "value": "Handcrafted leather bags from Bali, combining timeless design with practicality while supporting local artisans and a meaningful cause.",
         "source": "https://nakithelabel.com/"
       },
-      "category": "fashion brand",
+      "category": "leather bags",
       "offerings": [
         {
           "name": "Ruby Red Two-Strap Bag",
@@ -2127,118 +2086,10 @@
         "source": "https://nakithelabel.com/"
       },
       "summary": {
-        "value": "Handmade leather bags from Bali, crafted with sustainable practices and supporting local artisans.",
+        "value": "Handcrafted leather bags from Bali, combining timeless design with practicality while supporting local artisans and a meaningful cause.",
         "source": "https://nakithelabel.com/"
       },
-      "category": "fashion brand",
-      "offerings": [
-        {
-          "name": "Ruby Red Two-Strap Bag",
-          "price": "€55,98",
-          "source": "https://nakithelabel.com/"
-        },
-        {
-          "name": "Olive Green One-Strap Bag",
-          "price": "€55,98",
-          "source": "https://nakithelabel.com/"
-        },
-        {
-          "name": "Ruby Red One-Strap Bag",
-          "price": "€55,98",
-          "source": "https://nakithelabel.com/"
-        },
-        {
-          "name": "Burgundy Red One-Strap Bag",
-          "price": "€55,98",
-          "source": "https://nakithelabel.com/"
-        },
-        {
-          "name": "Navy Blue One-Strap Bag",
-          "price": "€55,98",
-          "source": "https://nakithelabel.com/"
-        },
-        {
-          "name": "Sandshell Beige One-Strap",
-          "price": "€55,98",
-          "source": "https://nakithelabel.com/"
-        },
-        {
-          "name": "Mint Green One-Strap Bag",
-          "price": "€55,98",
-          "source": "https://nakithelabel.com/"
-        },
-        {
-          "name": "Sandshell Beige Two-Strap Bag",
-          "price": "€55,98",
-          "source": "https://nakithelabel.com/"
-        },
-        {
-          "name": "Ocean Blue One-Strap Bag",
-          "price": "€55,98",
-          "source": "https://nakithelabel.com/"
-        },
-        {
-          "name": "Hazelnut Brown Two-Strap Bag",
-          "price": "€55,98",
-          "source": "https://nakithelabel.com/"
-        },
-        {
-          "name": "Midnight Black One-Strap Bag",
-          "price": "€55,98",
-          "source": "https://nakithelabel.com/"
-        },
-        {
-          "name": "Midnight Black Two-Strap Bag",
-          "price": "€55,98",
-          "source": "https://nakithelabel.com/"
-        },
-        {
-          "name": "Hazelnut Brown One-Strap Bag",
-          "price": "€55,98",
-          "source": "https://nakithelabel.com/"
-        },
-        {
-          "name": "Sienna Dark Brown Bag",
-          "price": "€55,98",
-          "source": "https://nakithelabel.com/"
-        },
-        {
-          "name": "Sienna Midnight Black Bag",
-          "price": "€51,98",
-          "source": "https://nakithelabel.com/"
-        },
-        {
-          "name": "Sienna Navy Blue Bag",
-          "price": "€55,98",
-          "source": "https://nakithelabel.com/"
-        },
-        {
-          "name": "Sienna Ruby Red",
-          "price": "€55,98",
-          "source": "https://nakithelabel.com/"
-        },
-        {
-          "name": "Luna Midnight Black Bag",
-          "price": "€63,98",
-          "source": "https://nakithelabel.com/"
-        },
-        {
-          "name": "Stellar Dark Brown Bag",
-          "price": "€51,98",
-          "source": "https://nakithe"
-        }
-      ]
-    },
-    {
-      "name": {
-        "value": "Naki The Label",
-        "source": "https://nakithelabel.com/"
-      },
-      "summary": {
-        "value": "Handmade leather bags from Bali, crafted with sustainable practices and supporting local artisans.",
-        "source": "https://nakithelabel.com/"
-      },
-      "category": "fashion brand",
+      "category": "leather bags",
       "offerings": [
         {
           "name": "Ruby Red Two-Strap Bag",
@@ -2334,9 +2185,6 @@
           "name": "Stellar Dark Brown Bag",
           "price": "€51,98",
           "source": "https://nakithelabel.com/"
-        },
-        {
-          "name": "Stellar Midnight Black Bag"
         }
       ]
     },
@@ -2346,10 +2194,10 @@
         "source": "https://nakithelabel.com/"
       },
       "summary": {
-        "value": "Handmade leather bags from Bali, crafted with sustainable practices and supporting local artisans.",
+        "value": "Handcrafted leather bags from Bali, combining timeless design with practicality while supporting local artisans and a meaningful cause.",
         "source": "https://nakithelabel.com/"
       },
-      "category": "fashion brand",
+      "category": "leather bags",
       "offerings": [
         {
           "name": "Ruby Red Two-Strap Bag",
@@ -2448,8 +2296,7 @@
         },
         {
           "name": "Stellar Midnight Black Bag",
-          "price": "€51,98",
-          "source": "https://nakithelabel.com"
+          "price": "€5"
         }
       ]
     },
@@ -2459,10 +2306,10 @@
         "source": "https://nakithelabel.com/"
       },
       "summary": {
-        "value": "Handmade leather bags from Bali, crafted with sustainable practices and supporting local artisans.",
+        "value": "Handcrafted leather bags from Bali, combining timeless design with practicality while supporting local artisans and a meaningful cause.",
         "source": "https://nakithelabel.com/"
       },
-      "category": "fashion brand",
+      "category": "leather bags",
       "offerings": [
         {
           "name": "Ruby Red Two-Strap Bag",
@@ -2564,11 +2411,6 @@
           "price": "€51,98",
           "source": "https://nakithelabel.com/"
         }
-      ],
-      "highlights": [
-        {
-          "value": "Handcrafted"
-        }
       ]
     },
     {
@@ -2577,10 +2419,10 @@
         "source": "https://nakithelabel.com/"
       },
       "summary": {
-        "value": "Handmade leather bags from Bali, crafted with sustainable practices and supporting local artisans.",
+        "value": "Handcrafted leather bags from Bali, combining timeless design with practicality while supporting local artisans and a meaningful cause.",
         "source": "https://nakithelabel.com/"
       },
-      "category": "fashion brand",
+      "category": "leather bags",
       "offerings": [
         {
           "name": "Ruby Red Two-Strap Bag",
@@ -2685,11 +2527,7 @@
       ],
       "highlights": [
         {
-          "value": "Handcrafted in Paradise",
-          "source": "https://nakithelabel.com/"
-        },
-        {
-          "value": "Shipped within 1-2 working days in NL & BE"
+          "value": "Handcrafted in Paradise"
         }
       ]
     },
@@ -2699,10 +2537,10 @@
         "source": "https://nakithelabel.com/"
       },
       "summary": {
-        "value": "Handmade leather bags from Bali, crafted with sustainable practices and supporting local artisans.",
+        "value": "Handcrafted leather bags from Bali, combining timeless design with practicality while supporting local artisans and a meaningful cause.",
         "source": "https://nakithelabel.com/"
       },
-      "category": "fashion brand",
+      "category": "leather bags",
       "offerings": [
         {
           "name": "Ruby Red Two-Strap Bag",
@@ -2811,11 +2649,7 @@
           "source": "https://nakithelabel.com/"
         },
         {
-          "value": "Shipped within 1-2 working days in NL & BE",
-          "source": "https://nakithelabel.com/"
-        },
-        {
-          "value": "Worldwide shipping"
+          "value": "Shi"
         }
       ]
     },
@@ -2825,10 +2659,10 @@
         "source": "https://nakithelabel.com/"
       },
       "summary": {
-        "value": "Handmade leather bags from Bali, crafted with sustainable practices and supporting local artisans.",
+        "value": "Handcrafted leather bags from Bali, combining timeless design with practicality while supporting local artisans and a meaningful cause.",
         "source": "https://nakithelabel.com/"
       },
-      "category": "fashion brand",
+      "category": "leather bags",
       "offerings": [
         {
           "name": "Ruby Red Two-Strap Bag",
@@ -2938,13 +2772,8 @@
         },
         {
           "value": "Shipped within 1-2 working days in NL & BE",
-          "source": "https://nakithelabel.com/"
-        },
-        {
-          "value": "Worldwide shipping",
-          "source": "https://nakithelabel.com/"
-        },
-        {}
+          "source": "https://nakithelabel"
+        }
       ]
     },
     {
@@ -2953,10 +2782,10 @@
         "source": "https://nakithelabel.com/"
       },
       "summary": {
-        "value": "Handmade leather bags from Bali, crafted with sustainable practices and supporting local artisans.",
+        "value": "Handcrafted leather bags from Bali, combining timeless design with practicality while supporting local artisans and a meaningful cause.",
         "source": "https://nakithelabel.com/"
       },
-      "category": "fashion brand",
+      "category": "leather bags",
       "offerings": [
         {
           "name": "Ruby Red Two-Strap Bag",
@@ -3070,11 +2899,7 @@
         },
         {
           "value": "Worldwide shipping",
-          "source": "https://nakithelabel.com/"
-        },
-        {
-          "value": "Supports local leather workshops in Bali",
-          "source": "https://nakithelabel.com/pages/about"
+          "source": ""
         }
       ]
     },
@@ -3084,10 +2909,10 @@
         "source": "https://nakithelabel.com/"
       },
       "summary": {
-        "value": "Handmade leather bags from Bali, crafted with sustainable practices and supporting local artisans.",
+        "value": "Handcrafted leather bags from Bali, combining timeless design with practicality while supporting local artisans and a meaningful cause.",
         "source": "https://nakithelabel.com/"
       },
-      "category": "fashion brand",
+      "category": "leather bags",
       "offerings": [
         {
           "name": "Ruby Red Two-Strap Bag",
@@ -3204,11 +3029,7 @@
           "source": "https://nakithelabel.com/"
         },
         {
-          "value": "Supports local leather workshops in Bali",
-          "source": "https://nakithelabel.com/pages/about"
-        },
-        {
-          "value": "With every order, we donate to The Bali Kids Foundation"
+          "value": "Returns within 1"
         }
       ]
     },
@@ -3218,10 +3039,10 @@
         "source": "https://nakithelabel.com/"
       },
       "summary": {
-        "value": "Handmade leather bags from Bali, crafted with sustainable practices and supporting local artisans.",
+        "value": "Handcrafted leather bags from Bali, combining timeless design with practicality while supporting local artisans and a meaningful cause.",
         "source": "https://nakithelabel.com/"
       },
-      "category": "fashion brand",
+      "category": "leather bags",
       "offerings": [
         {
           "name": "Ruby Red Two-Strap Bag",
@@ -3336,300 +3157,12 @@
         {
           "value": "Worldwide shipping",
           "source": "https://nakithelabel.com/"
-        },
-        {
-          "value": "Supports local leather workshops in Bali",
-          "source": "https://nakithelabel.com/pages/about"
-        },
-        {
-          "value": "With every order, we donate to The Bali Kids Foundation",
-          "source": "https://nakithelabel.com/pages/about"
-        },
-        {
-          "value": "Returns within "
-        }
-      ]
-    },
-    {
-      "name": {
-        "value": "Naki The Label",
-        "source": "https://nakithelabel.com/"
-      },
-      "summary": {
-        "value": "Handmade leather bags from Bali, crafted with sustainable practices and supporting local artisans.",
-        "source": "https://nakithelabel.com/"
-      },
-      "category": "fashion brand",
-      "offerings": [
-        {
-          "name": "Ruby Red Two-Strap Bag",
-          "price": "€55,98",
-          "source": "https://nakithelabel.com/"
-        },
-        {
-          "name": "Olive Green One-Strap Bag",
-          "price": "€55,98",
-          "source": "https://nakithelabel.com/"
-        },
-        {
-          "name": "Ruby Red One-Strap Bag",
-          "price": "€55,98",
-          "source": "https://nakithelabel.com/"
-        },
-        {
-          "name": "Burgundy Red One-Strap Bag",
-          "price": "€55,98",
-          "source": "https://nakithelabel.com/"
-        },
-        {
-          "name": "Navy Blue One-Strap Bag",
-          "price": "€55,98",
-          "source": "https://nakithelabel.com/"
-        },
-        {
-          "name": "Sandshell Beige One-Strap",
-          "price": "€55,98",
-          "source": "https://nakithelabel.com/"
-        },
-        {
-          "name": "Mint Green One-Strap Bag",
-          "price": "€55,98",
-          "source": "https://nakithelabel.com/"
-        },
-        {
-          "name": "Sandshell Beige Two-Strap Bag",
-          "price": "€55,98",
-          "source": "https://nakithelabel.com/"
-        },
-        {
-          "name": "Ocean Blue One-Strap Bag",
-          "price": "€55,98",
-          "source": "https://nakithelabel.com/"
-        },
-        {
-          "name": "Hazelnut Brown Two-Strap Bag",
-          "price": "€55,98",
-          "source": "https://nakithelabel.com/"
-        },
-        {
-          "name": "Midnight Black One-Strap Bag",
-          "price": "€55,98",
-          "source": "https://nakithelabel.com/"
-        },
-        {
-          "name": "Midnight Black Two-Strap Bag",
-          "price": "€55,98",
-          "source": "https://nakithelabel.com/"
-        },
-        {
-          "name": "Hazelnut Brown One-Strap Bag",
-          "price": "€55,98",
-          "source": "https://nakithelabel.com/"
-        },
-        {
-          "name": "Sienna Dark Brown Bag",
-          "price": "€55,98",
-          "source": "https://nakithelabel.com/"
-        },
-        {
-          "name": "Sienna Midnight Black Bag",
-          "price": "€51,98",
-          "source": "https://nakithelabel.com/"
-        },
-        {
-          "name": "Sienna Navy Blue Bag",
-          "price": "€55,98",
-          "source": "https://nakithelabel.com/"
-        },
-        {
-          "name": "Sienna Ruby Red",
-          "price": "€55,98",
-          "source": "https://nakithelabel.com/"
-        },
-        {
-          "name": "Luna Midnight Black Bag",
-          "price": "€63,98",
-          "source": "https://nakithelabel.com/"
-        },
-        {
-          "name": "Stellar Dark Brown Bag",
-          "price": "€51,98",
-          "source": "https://nakithelabel.com/"
-        },
-        {
-          "name": "Stellar Midnight Black Bag",
-          "price": "€51,98",
-          "source": "https://nakithelabel.com/"
-        }
-      ],
-      "highlights": [
-        {
-          "value": "Handcrafted in Paradise",
-          "source": "https://nakithelabel.com/"
-        },
-        {
-          "value": "Shipped within 1-2 working days in NL & BE",
-          "source": "https://nakithelabel.com/"
-        },
-        {
-          "value": "Worldwide shipping",
-          "source": "https://nakithelabel.com/"
-        },
-        {
-          "value": "Supports local leather workshops in Bali",
-          "source": "https://nakithelabel.com/pages/about"
-        },
-        {
-          "value": "With every order, we donate to The Bali Kids Foundation",
-          "source": "https://nakithelabel.com/pages/about"
-        },
-        {
-          "value": "Returns within 14 days receive a full refund",
-          "source": "https://nakithelabel.com/pages/"
-        }
-      ]
-    },
-    {
-      "name": {
-        "value": "Naki The Label",
-        "source": "https://nakithelabel.com/"
-      },
-      "summary": {
-        "value": "Handmade leather bags from Bali, crafted with sustainable practices and supporting local artisans.",
-        "source": "https://nakithelabel.com/"
-      },
-      "category": "fashion brand",
-      "offerings": [
-        {
-          "name": "Ruby Red Two-Strap Bag",
-          "price": "€55,98",
-          "source": "https://nakithelabel.com/"
-        },
-        {
-          "name": "Olive Green One-Strap Bag",
-          "price": "€55,98",
-          "source": "https://nakithelabel.com/"
-        },
-        {
-          "name": "Ruby Red One-Strap Bag",
-          "price": "€55,98",
-          "source": "https://nakithelabel.com/"
-        },
-        {
-          "name": "Burgundy Red One-Strap Bag",
-          "price": "€55,98",
-          "source": "https://nakithelabel.com/"
-        },
-        {
-          "name": "Navy Blue One-Strap Bag",
-          "price": "€55,98",
-          "source": "https://nakithelabel.com/"
-        },
-        {
-          "name": "Sandshell Beige One-Strap",
-          "price": "€55,98",
-          "source": "https://nakithelabel.com/"
-        },
-        {
-          "name": "Mint Green One-Strap Bag",
-          "price": "€55,98",
-          "source": "https://nakithelabel.com/"
-        },
-        {
-          "name": "Sandshell Beige Two-Strap Bag",
-          "price": "€55,98",
-          "source": "https://nakithelabel.com/"
-        },
-        {
-          "name": "Ocean Blue One-Strap Bag",
-          "price": "€55,98",
-          "source": "https://nakithelabel.com/"
-        },
-        {
-          "name": "Hazelnut Brown Two-Strap Bag",
-          "price": "€55,98",
-          "source": "https://nakithelabel.com/"
-        },
-        {
-          "name": "Midnight Black One-Strap Bag",
-          "price": "€55,98",
-          "source": "https://nakithelabel.com/"
-        },
-        {
-          "name": "Midnight Black Two-Strap Bag",
-          "price": "€55,98",
-          "source": "https://nakithelabel.com/"
-        },
-        {
-          "name": "Hazelnut Brown One-Strap Bag",
-          "price": "€55,98",
-          "source": "https://nakithelabel.com/"
-        },
-        {
-          "name": "Sienna Dark Brown Bag",
-          "price": "€55,98",
-          "source": "https://nakithelabel.com/"
-        },
-        {
-          "name": "Sienna Midnight Black Bag",
-          "price": "€51,98",
-          "source": "https://nakithelabel.com/"
-        },
-        {
-          "name": "Sienna Navy Blue Bag",
-          "price": "€55,98",
-          "source": "https://nakithelabel.com/"
-        },
-        {
-          "name": "Sienna Ruby Red",
-          "price": "€55,98",
-          "source": "https://nakithelabel.com/"
-        },
-        {
-          "name": "Luna Midnight Black Bag",
-          "price": "€63,98",
-          "source": "https://nakithelabel.com/"
-        },
-        {
-          "name": "Stellar Dark Brown Bag",
-          "price": "€51,98",
-          "source": "https://nakithelabel.com/"
-        },
-        {
-          "name": "Stellar Midnight Black Bag",
-          "price": "€51,98",
-          "source": "https://nakithelabel.com/"
-        }
-      ],
-      "highlights": [
-        {
-          "value": "Handcrafted in Paradise",
-          "source": "https://nakithelabel.com/"
-        },
-        {
-          "value": "Shipped within 1-2 working days in NL & BE",
-          "source": "https://nakithelabel.com/"
-        },
-        {
-          "value": "Worldwide shipping",
-          "source": "https://nakithelabel.com/"
-        },
-        {
-          "value": "Supports local leather workshops in Bali",
-          "source": "https://nakithelabel.com/pages/about"
-        },
-        {
-          "value": "With every order, we donate to The Bali Kids Foundation",
-          "source": "https://nakithelabel.com/pages/about"
         },
         {
           "value": "Returns within 14 days receive a full refund",
           "source": "https://nakithelabel.com/pages/contact"
         }
-      ],
-      "location": {
-        "town": null
-      }
+      ]
     },
     {
       "name": {
@@ -3637,10 +3170,10 @@
         "source": "https://nakithelabel.com/"
       },
       "summary": {
-        "value": "Handmade leather bags from Bali, crafted with sustainable practices and supporting local artisans.",
+        "value": "Handcrafted leather bags from Bali, combining timeless design with practicality while supporting local artisans and a meaningful cause.",
         "source": "https://nakithelabel.com/"
       },
-      "category": "fashion brand",
+      "category": "leather bags",
       "offerings": [
         {
           "name": "Ruby Red Two-Strap Bag",
@@ -3757,24 +3290,14 @@
           "source": "https://nakithelabel.com/"
         },
         {
-          "value": "Supports local leather workshops in Bali",
-          "source": "https://nakithelabel.com/pages/about"
-        },
-        {
-          "value": "With every order, we donate to The Bali Kids Foundation",
-          "source": "https://nakithelabel.com/pages/about"
-        },
-        {
           "value": "Returns within 14 days receive a full refund",
           "source": "https://nakithelabel.com/pages/contact"
+        },
+        {
+          "value": "Supports local leather workshops in Bali",
+          "source": ""
         }
-      ],
-      "location": {
-        "town": null,
-        "area": null,
-        "address": null,
-        "serviceArea": null
-      }
+      ]
     },
     {
       "name": {
@@ -3782,10 +3305,10 @@
         "source": "https://nakithelabel.com/"
       },
       "summary": {
-        "value": "Handmade leather bags from Bali, crafted with sustainable practices and supporting local artisans.",
+        "value": "Handcrafted leather bags from Bali, combining timeless design with practicality while supporting local artisans and a meaningful cause.",
         "source": "https://nakithelabel.com/"
       },
-      "category": "fashion brand",
+      "category": "leather bags",
       "offerings": [
         {
           "name": "Ruby Red Two-Strap Bag",
@@ -3902,16 +3425,293 @@
           "source": "https://nakithelabel.com/"
         },
         {
+          "value": "Returns within 14 days receive a full refund",
+          "source": "https://nakithelabel.com/pages/contact"
+        },
+        {
           "value": "Supports local leather workshops in Bali",
           "source": "https://nakithelabel.com/pages/about"
         },
         {
-          "value": "With every order, we donate to The Bali Kids Foundation",
-          "source": "https://nakithelabel.com/pages/about"
+          "value": ""
+        }
+      ]
+    },
+    {
+      "name": {
+        "value": "Naki The Label",
+        "source": "https://nakithelabel.com/"
+      },
+      "summary": {
+        "value": "Handcrafted leather bags from Bali, combining timeless design with practicality while supporting local artisans and a meaningful cause.",
+        "source": "https://nakithelabel.com/"
+      },
+      "category": "leather bags",
+      "offerings": [
+        {
+          "name": "Ruby Red Two-Strap Bag",
+          "price": "€55,98",
+          "source": "https://nakithelabel.com/"
+        },
+        {
+          "name": "Olive Green One-Strap Bag",
+          "price": "€55,98",
+          "source": "https://nakithelabel.com/"
+        },
+        {
+          "name": "Ruby Red One-Strap Bag",
+          "price": "€55,98",
+          "source": "https://nakithelabel.com/"
+        },
+        {
+          "name": "Burgundy Red One-Strap Bag",
+          "price": "€55,98",
+          "source": "https://nakithelabel.com/"
+        },
+        {
+          "name": "Navy Blue One-Strap Bag",
+          "price": "€55,98",
+          "source": "https://nakithelabel.com/"
+        },
+        {
+          "name": "Sandshell Beige One-Strap",
+          "price": "€55,98",
+          "source": "https://nakithelabel.com/"
+        },
+        {
+          "name": "Mint Green One-Strap Bag",
+          "price": "€55,98",
+          "source": "https://nakithelabel.com/"
+        },
+        {
+          "name": "Sandshell Beige Two-Strap Bag",
+          "price": "€55,98",
+          "source": "https://nakithelabel.com/"
+        },
+        {
+          "name": "Ocean Blue One-Strap Bag",
+          "price": "€55,98",
+          "source": "https://nakithelabel.com/"
+        },
+        {
+          "name": "Hazelnut Brown Two-Strap Bag",
+          "price": "€55,98",
+          "source": "https://nakithelabel.com/"
+        },
+        {
+          "name": "Midnight Black One-Strap Bag",
+          "price": "€55,98",
+          "source": "https://nakithelabel.com/"
+        },
+        {
+          "name": "Midnight Black Two-Strap Bag",
+          "price": "€55,98",
+          "source": "https://nakithelabel.com/"
+        },
+        {
+          "name": "Hazelnut Brown One-Strap Bag",
+          "price": "€55,98",
+          "source": "https://nakithelabel.com/"
+        },
+        {
+          "name": "Sienna Dark Brown Bag",
+          "price": "€55,98",
+          "source": "https://nakithelabel.com/"
+        },
+        {
+          "name": "Sienna Midnight Black Bag",
+          "price": "€51,98",
+          "source": "https://nakithelabel.com/"
+        },
+        {
+          "name": "Sienna Navy Blue Bag",
+          "price": "€55,98",
+          "source": "https://nakithelabel.com/"
+        },
+        {
+          "name": "Sienna Ruby Red",
+          "price": "€55,98",
+          "source": "https://nakithelabel.com/"
+        },
+        {
+          "name": "Luna Midnight Black Bag",
+          "price": "€63,98",
+          "source": "https://nakithelabel.com/"
+        },
+        {
+          "name": "Stellar Dark Brown Bag",
+          "price": "€51,98",
+          "source": "https://nakithelabel.com/"
+        },
+        {
+          "name": "Stellar Midnight Black Bag",
+          "price": "€51,98",
+          "source": "https://nakithelabel.com/"
+        }
+      ],
+      "highlights": [
+        {
+          "value": "Handcrafted in Paradise",
+          "source": "https://nakithelabel.com/"
+        },
+        {
+          "value": "Shipped within 1-2 working days in NL & BE",
+          "source": "https://nakithelabel.com/"
+        },
+        {
+          "value": "Worldwide shipping",
+          "source": "https://nakithelabel.com/"
         },
         {
           "value": "Returns within 14 days receive a full refund",
           "source": "https://nakithelabel.com/pages/contact"
+        },
+        {
+          "value": "Supports local leather workshops in Bali",
+          "source": "https://nakithelabel.com/pages/about"
+        },
+        {
+          "value": "Donates to The Bali Kids Foundation with every order",
+          "source": "https://nakithelabel.com/"
+        }
+      ]
+    },
+    {
+      "name": {
+        "value": "Naki The Label",
+        "source": "https://nakithelabel.com/"
+      },
+      "summary": {
+        "value": "Handcrafted leather bags from Bali, combining timeless design with practicality while supporting local artisans and a meaningful cause.",
+        "source": "https://nakithelabel.com/"
+      },
+      "category": "leather bags",
+      "offerings": [
+        {
+          "name": "Ruby Red Two-Strap Bag",
+          "price": "€55,98",
+          "source": "https://nakithelabel.com/"
+        },
+        {
+          "name": "Olive Green One-Strap Bag",
+          "price": "€55,98",
+          "source": "https://nakithelabel.com/"
+        },
+        {
+          "name": "Ruby Red One-Strap Bag",
+          "price": "€55,98",
+          "source": "https://nakithelabel.com/"
+        },
+        {
+          "name": "Burgundy Red One-Strap Bag",
+          "price": "€55,98",
+          "source": "https://nakithelabel.com/"
+        },
+        {
+          "name": "Navy Blue One-Strap Bag",
+          "price": "€55,98",
+          "source": "https://nakithelabel.com/"
+        },
+        {
+          "name": "Sandshell Beige One-Strap",
+          "price": "€55,98",
+          "source": "https://nakithelabel.com/"
+        },
+        {
+          "name": "Mint Green One-Strap Bag",
+          "price": "€55,98",
+          "source": "https://nakithelabel.com/"
+        },
+        {
+          "name": "Sandshell Beige Two-Strap Bag",
+          "price": "€55,98",
+          "source": "https://nakithelabel.com/"
+        },
+        {
+          "name": "Ocean Blue One-Strap Bag",
+          "price": "€55,98",
+          "source": "https://nakithelabel.com/"
+        },
+        {
+          "name": "Hazelnut Brown Two-Strap Bag",
+          "price": "€55,98",
+          "source": "https://nakithelabel.com/"
+        },
+        {
+          "name": "Midnight Black One-Strap Bag",
+          "price": "€55,98",
+          "source": "https://nakithelabel.com/"
+        },
+        {
+          "name": "Midnight Black Two-Strap Bag",
+          "price": "€55,98",
+          "source": "https://nakithelabel.com/"
+        },
+        {
+          "name": "Hazelnut Brown One-Strap Bag",
+          "price": "€55,98",
+          "source": "https://nakithelabel.com/"
+        },
+        {
+          "name": "Sienna Dark Brown Bag",
+          "price": "€55,98",
+          "source": "https://nakithelabel.com/"
+        },
+        {
+          "name": "Sienna Midnight Black Bag",
+          "price": "€51,98",
+          "source": "https://nakithelabel.com/"
+        },
+        {
+          "name": "Sienna Navy Blue Bag",
+          "price": "€55,98",
+          "source": "https://nakithelabel.com/"
+        },
+        {
+          "name": "Sienna Ruby Red",
+          "price": "€55,98",
+          "source": "https://nakithelabel.com/"
+        },
+        {
+          "name": "Luna Midnight Black Bag",
+          "price": "€63,98",
+          "source": "https://nakithelabel.com/"
+        },
+        {
+          "name": "Stellar Dark Brown Bag",
+          "price": "€51,98",
+          "source": "https://nakithelabel.com/"
+        },
+        {
+          "name": "Stellar Midnight Black Bag",
+          "price": "€51,98",
+          "source": "https://nakithelabel.com/"
+        }
+      ],
+      "highlights": [
+        {
+          "value": "Handcrafted in Paradise",
+          "source": "https://nakithelabel.com/"
+        },
+        {
+          "value": "Shipped within 1-2 working days in NL & BE",
+          "source": "https://nakithelabel.com/"
+        },
+        {
+          "value": "Worldwide shipping",
+          "source": "https://nakithelabel.com/"
+        },
+        {
+          "value": "Returns within 14 days receive a full refund",
+          "source": "https://nakithelabel.com/pages/contact"
+        },
+        {
+          "value": "Supports local leather workshops in Bali",
+          "source": "https://nakithelabel.com/pages/about"
+        },
+        {
+          "value": "Donates to The Bali Kids Foundation with every order",
+          "source": "https://nakithelabel.com/pages/about"
         }
       ],
       "location": {
@@ -3922,8 +3722,7 @@
       },
       "contact": {
         "whatsapp": null,
-        "phone": null,
-        "email": null
+        "phone": null
       }
     },
     {
@@ -3932,10 +3731,10 @@
         "source": "https://nakithelabel.com/"
       },
       "summary": {
-        "value": "Handmade leather bags from Bali, crafted with sustainable practices and supporting local artisans.",
+        "value": "Handcrafted leather bags from Bali, combining timeless design with practicality while supporting local artisans and a meaningful cause.",
         "source": "https://nakithelabel.com/"
       },
-      "category": "fashion brand",
+      "category": "leather bags",
       "offerings": [
         {
           "name": "Ruby Red Two-Strap Bag",
@@ -4052,16 +3851,16 @@
           "source": "https://nakithelabel.com/"
         },
         {
+          "value": "Returns within 14 days receive a full refund",
+          "source": "https://nakithelabel.com/pages/contact"
+        },
+        {
           "value": "Supports local leather workshops in Bali",
           "source": "https://nakithelabel.com/pages/about"
         },
         {
-          "value": "With every order, we donate to The Bali Kids Foundation",
+          "value": "Donates to The Bali Kids Foundation with every order",
           "source": "https://nakithelabel.com/pages/about"
-        },
-        {
-          "value": "Returns within 14 days receive a full refund",
-          "source": "https://nakithelabel.com/pages/contact"
         }
       ],
       "location": {
@@ -4076,7 +3875,7 @@
         "email": null,
         "instagram": {
           "value": "nakithelabel_",
-          "source": "https://nakithelabel."
+          "source": ""
         }
       }
     },
@@ -4086,10 +3885,10 @@
         "source": "https://nakithelabel.com/"
       },
       "summary": {
-        "value": "Handmade leather bags from Bali, crafted with sustainable practices and supporting local artisans.",
+        "value": "Handcrafted leather bags from Bali, combining timeless design with practicality while supporting local artisans and a meaningful cause.",
         "source": "https://nakithelabel.com/"
       },
-      "category": "fashion brand",
+      "category": "leather bags",
       "offerings": [
         {
           "name": "Ruby Red Two-Strap Bag",
@@ -4206,16 +4005,16 @@
           "source": "https://nakithelabel.com/"
         },
         {
+          "value": "Returns within 14 days receive a full refund",
+          "source": "https://nakithelabel.com/pages/contact"
+        },
+        {
           "value": "Supports local leather workshops in Bali",
           "source": "https://nakithelabel.com/pages/about"
         },
         {
-          "value": "With every order, we donate to The Bali Kids Foundation",
+          "value": "Donates to The Bali Kids Foundation with every order",
           "source": "https://nakithelabel.com/pages/about"
-        },
-        {
-          "value": "Returns within 14 days receive a full refund",
-          "source": "https://nakithelabel.com/pages/contact"
         }
       ],
       "location": {
@@ -4233,8 +4032,7 @@
           "source": "https://nakithelabel.com/"
         },
         "bookingUrl": null
-      },
-      "hours": null
+      }
     },
     {
       "name": {
@@ -4242,10 +4040,10 @@
         "source": "https://nakithelabel.com/"
       },
       "summary": {
-        "value": "Handmade leather bags from Bali, crafted with sustainable practices and supporting local artisans.",
+        "value": "Handcrafted leather bags from Bali, combining timeless design with practicality while supporting local artisans and a meaningful cause.",
         "source": "https://nakithelabel.com/"
       },
-      "category": "fashion brand",
+      "category": "leather bags",
       "offerings": [
         {
           "name": "Ruby Red Two-Strap Bag",
@@ -4362,16 +4160,16 @@
           "source": "https://nakithelabel.com/"
         },
         {
+          "value": "Returns within 14 days receive a full refund",
+          "source": "https://nakithelabel.com/pages/contact"
+        },
+        {
           "value": "Supports local leather workshops in Bali",
           "source": "https://nakithelabel.com/pages/about"
         },
         {
-          "value": "With every order, we donate to The Bali Kids Foundation",
+          "value": "Donates to The Bali Kids Foundation with every order",
           "source": "https://nakithelabel.com/pages/about"
-        },
-        {
-          "value": "Returns within 14 days receive a full refund",
-          "source": "https://nakithelabel.com/pages/contact"
         }
       ],
       "location": {
@@ -4393,13 +4191,343 @@
       "hours": null,
       "tone": [
         "excited",
-        "warm",
-        "passionate"
+        "conscious",
+        "proud"
+      ]
+    },
+    {
+      "name": {
+        "value": "Naki The Label",
+        "source": "https://nakithelabel.com/"
+      },
+      "summary": {
+        "value": "Handcrafted leather bags from Bali, combining timeless design with practicality while supporting local artisans and a meaningful cause.",
+        "source": "https://nakithelabel.com/"
+      },
+      "category": "leather bags",
+      "offerings": [
+        {
+          "name": "Ruby Red Two-Strap Bag",
+          "price": "€55,98",
+          "source": "https://nakithelabel.com/"
+        },
+        {
+          "name": "Olive Green One-Strap Bag",
+          "price": "€55,98",
+          "source": "https://nakithelabel.com/"
+        },
+        {
+          "name": "Ruby Red One-Strap Bag",
+          "price": "€55,98",
+          "source": "https://nakithelabel.com/"
+        },
+        {
+          "name": "Burgundy Red One-Strap Bag",
+          "price": "€55,98",
+          "source": "https://nakithelabel.com/"
+        },
+        {
+          "name": "Navy Blue One-Strap Bag",
+          "price": "€55,98",
+          "source": "https://nakithelabel.com/"
+        },
+        {
+          "name": "Sandshell Beige One-Strap",
+          "price": "€55,98",
+          "source": "https://nakithelabel.com/"
+        },
+        {
+          "name": "Mint Green One-Strap Bag",
+          "price": "€55,98",
+          "source": "https://nakithelabel.com/"
+        },
+        {
+          "name": "Sandshell Beige Two-Strap Bag",
+          "price": "€55,98",
+          "source": "https://nakithelabel.com/"
+        },
+        {
+          "name": "Ocean Blue One-Strap Bag",
+          "price": "€55,98",
+          "source": "https://nakithelabel.com/"
+        },
+        {
+          "name": "Hazelnut Brown Two-Strap Bag",
+          "price": "€55,98",
+          "source": "https://nakithelabel.com/"
+        },
+        {
+          "name": "Midnight Black One-Strap Bag",
+          "price": "€55,98",
+          "source": "https://nakithelabel.com/"
+        },
+        {
+          "name": "Midnight Black Two-Strap Bag",
+          "price": "€55,98",
+          "source": "https://nakithelabel.com/"
+        },
+        {
+          "name": "Hazelnut Brown One-Strap Bag",
+          "price": "€55,98",
+          "source": "https://nakithelabel.com/"
+        },
+        {
+          "name": "Sienna Dark Brown Bag",
+          "price": "€55,98",
+          "source": "https://nakithelabel.com/"
+        },
+        {
+          "name": "Sienna Midnight Black Bag",
+          "price": "€51,98",
+          "source": "https://nakithelabel.com/"
+        },
+        {
+          "name": "Sienna Navy Blue Bag",
+          "price": "€55,98",
+          "source": "https://nakithelabel.com/"
+        },
+        {
+          "name": "Sienna Ruby Red",
+          "price": "€55,98",
+          "source": "https://nakithelabel.com/"
+        },
+        {
+          "name": "Luna Midnight Black Bag",
+          "price": "€63,98",
+          "source": "https://nakithelabel.com/"
+        },
+        {
+          "name": "Stellar Dark Brown Bag",
+          "price": "€51,98",
+          "source": "https://nakithelabel.com/"
+        },
+        {
+          "name": "Stellar Midnight Black Bag",
+          "price": "€51,98",
+          "source": "https://nakithelabel.com/"
+        }
+      ],
+      "highlights": [
+        {
+          "value": "Handcrafted in Paradise",
+          "source": "https://nakithelabel.com/"
+        },
+        {
+          "value": "Shipped within 1-2 working days in NL & BE",
+          "source": "https://nakithelabel.com/"
+        },
+        {
+          "value": "Worldwide shipping",
+          "source": "https://nakithelabel.com/"
+        },
+        {
+          "value": "Returns within 14 days receive a full refund",
+          "source": "https://nakithelabel.com/pages/contact"
+        },
+        {
+          "value": "Supports local leather workshops in Bali",
+          "source": "https://nakithelabel.com/pages/about"
+        },
+        {
+          "value": "Donates to The Bali Kids Foundation with every order",
+          "source": "https://nakithelabel.com/pages/about"
+        }
+      ],
+      "location": {
+        "town": null,
+        "area": null,
+        "address": null,
+        "serviceArea": null
+      },
+      "contact": {
+        "whatsapp": null,
+        "phone": null,
+        "email": null,
+        "instagram": {
+          "value": "nakithelabel_",
+          "source": "https://nakithelabel.com/"
+        },
+        "bookingUrl": null
+      },
+      "hours": null,
+      "tone": [
+        "excited",
+        "conscious",
+        "proud",
+        "warm"
+      ],
+      "colours": [
+        {
+          "hex": "#00000"
+        }
+      ]
+    },
+    {
+      "name": {
+        "value": "Naki The Label",
+        "source": "https://nakithelabel.com/"
+      },
+      "summary": {
+        "value": "Handcrafted leather bags from Bali, combining timeless design with practicality while supporting local artisans and a meaningful cause.",
+        "source": "https://nakithelabel.com/"
+      },
+      "category": "leather bags",
+      "offerings": [
+        {
+          "name": "Ruby Red Two-Strap Bag",
+          "price": "€55,98",
+          "source": "https://nakithelabel.com/"
+        },
+        {
+          "name": "Olive Green One-Strap Bag",
+          "price": "€55,98",
+          "source": "https://nakithelabel.com/"
+        },
+        {
+          "name": "Ruby Red One-Strap Bag",
+          "price": "€55,98",
+          "source": "https://nakithelabel.com/"
+        },
+        {
+          "name": "Burgundy Red One-Strap Bag",
+          "price": "€55,98",
+          "source": "https://nakithelabel.com/"
+        },
+        {
+          "name": "Navy Blue One-Strap Bag",
+          "price": "€55,98",
+          "source": "https://nakithelabel.com/"
+        },
+        {
+          "name": "Sandshell Beige One-Strap",
+          "price": "€55,98",
+          "source": "https://nakithelabel.com/"
+        },
+        {
+          "name": "Mint Green One-Strap Bag",
+          "price": "€55,98",
+          "source": "https://nakithelabel.com/"
+        },
+        {
+          "name": "Sandshell Beige Two-Strap Bag",
+          "price": "€55,98",
+          "source": "https://nakithelabel.com/"
+        },
+        {
+          "name": "Ocean Blue One-Strap Bag",
+          "price": "€55,98",
+          "source": "https://nakithelabel.com/"
+        },
+        {
+          "name": "Hazelnut Brown Two-Strap Bag",
+          "price": "€55,98",
+          "source": "https://nakithelabel.com/"
+        },
+        {
+          "name": "Midnight Black One-Strap Bag",
+          "price": "€55,98",
+          "source": "https://nakithelabel.com/"
+        },
+        {
+          "name": "Midnight Black Two-Strap Bag",
+          "price": "€55,98",
+          "source": "https://nakithelabel.com/"
+        },
+        {
+          "name": "Hazelnut Brown One-Strap Bag",
+          "price": "€55,98",
+          "source": "https://nakithelabel.com/"
+        },
+        {
+          "name": "Sienna Dark Brown Bag",
+          "price": "€55,98",
+          "source": "https://nakithelabel.com/"
+        },
+        {
+          "name": "Sienna Midnight Black Bag",
+          "price": "€51,98",
+          "source": "https://nakithelabel.com/"
+        },
+        {
+          "name": "Sienna Navy Blue Bag",
+          "price": "€55,98",
+          "source": "https://nakithelabel.com/"
+        },
+        {
+          "name": "Sienna Ruby Red",
+          "price": "€55,98",
+          "source": "https://nakithelabel.com/"
+        },
+        {
+          "name": "Luna Midnight Black Bag",
+          "price": "€63,98",
+          "source": "https://nakithelabel.com/"
+        },
+        {
+          "name": "Stellar Dark Brown Bag",
+          "price": "€51,98",
+          "source": "https://nakithelabel.com/"
+        },
+        {
+          "name": "Stellar Midnight Black Bag",
+          "price": "€51,98",
+          "source": "https://nakithelabel.com/"
+        }
+      ],
+      "highlights": [
+        {
+          "value": "Handcrafted in Paradise",
+          "source": "https://nakithelabel.com/"
+        },
+        {
+          "value": "Shipped within 1-2 working days in NL & BE",
+          "source": "https://nakithelabel.com/"
+        },
+        {
+          "value": "Worldwide shipping",
+          "source": "https://nakithelabel.com/"
+        },
+        {
+          "value": "Returns within 14 days receive a full refund",
+          "source": "https://nakithelabel.com/pages/contact"
+        },
+        {
+          "value": "Supports local leather workshops in Bali",
+          "source": "https://nakithelabel.com/pages/about"
+        },
+        {
+          "value": "Donates to The Bali Kids Foundation with every order",
+          "source": "https://nakithelabel.com/pages/about"
+        }
+      ],
+      "location": {
+        "town": null,
+        "area": null,
+        "address": null,
+        "serviceArea": null
+      },
+      "contact": {
+        "whatsapp": null,
+        "phone": null,
+        "email": null,
+        "instagram": {
+          "value": "nakithelabel_",
+          "source": "https://nakithelabel.com/"
+        },
+        "bookingUrl": null
+      },
+      "hours": null,
+      "tone": [
+        "excited",
+        "conscious",
+        "proud",
+        "warm"
       ],
       "colours": [
         {
           "hex": "#000000",
-          "role": "primary"
+          "role": "primary",
+          "source": "https://nakithelabel.com/"
         }
       ]
     },
@@ -4409,10 +4537,10 @@
         "source": "https://nakithelabel.com/"
       },
       "summary": {
-        "value": "Handmade leather bags from Bali, crafted with sustainable practices and supporting local artisans.",
+        "value": "Handcrafted leather bags from Bali, combining timeless design with practicality while supporting local artisans and a meaningful cause.",
         "source": "https://nakithelabel.com/"
       },
-      "category": "fashion brand",
+      "category": "leather bags",
       "offerings": [
         {
           "name": "Ruby Red Two-Strap Bag",
@@ -4529,16 +4657,16 @@
           "source": "https://nakithelabel.com/"
         },
         {
+          "value": "Returns within 14 days receive a full refund",
+          "source": "https://nakithelabel.com/pages/contact"
+        },
+        {
           "value": "Supports local leather workshops in Bali",
           "source": "https://nakithelabel.com/pages/about"
         },
         {
-          "value": "With every order, we donate to The Bali Kids Foundation",
+          "value": "Donates to The Bali Kids Foundation with every order",
           "source": "https://nakithelabel.com/pages/about"
-        },
-        {
-          "value": "Returns within 14 days receive a full refund",
-          "source": "https://nakithelabel.com/pages/contact"
         }
       ],
       "location": {
@@ -4560,14 +4688,20 @@
       "hours": null,
       "tone": [
         "excited",
-        "warm",
-        "passionate"
+        "conscious",
+        "proud",
+        "warm"
       ],
       "colours": [
         {
           "hex": "#000000",
           "role": "primary",
           "source": "https://nakithelabel.com/"
+        },
+        {
+          "hex": "#ffffff",
+          "role": "background",
+          "source": "https"
         }
       ]
     },
@@ -4577,10 +4711,10 @@
         "source": "https://nakithelabel.com/"
       },
       "summary": {
-        "value": "Handmade leather bags from Bali, crafted with sustainable practices and supporting local artisans.",
+        "value": "Handcrafted leather bags from Bali, combining timeless design with practicality while supporting local artisans and a meaningful cause.",
         "source": "https://nakithelabel.com/"
       },
-      "category": "fashion brand",
+      "category": "leather bags",
       "offerings": [
         {
           "name": "Ruby Red Two-Strap Bag",
@@ -4697,16 +4831,16 @@
           "source": "https://nakithelabel.com/"
         },
         {
+          "value": "Returns within 14 days receive a full refund",
+          "source": "https://nakithelabel.com/pages/contact"
+        },
+        {
           "value": "Supports local leather workshops in Bali",
           "source": "https://nakithelabel.com/pages/about"
         },
         {
-          "value": "With every order, we donate to The Bali Kids Foundation",
+          "value": "Donates to The Bali Kids Foundation with every order",
           "source": "https://nakithelabel.com/pages/about"
-        },
-        {
-          "value": "Returns within 14 days receive a full refund",
-          "source": "https://nakithelabel.com/pages/contact"
         }
       ],
       "location": {
@@ -4728,196 +4862,203 @@
       "hours": null,
       "tone": [
         "excited",
-        "warm",
-        "passionate"
+        "conscious",
+        "proud",
+        "warm"
       ],
       "colours": [
         {
           "hex": "#000000",
           "role": "primary",
+          "source": "https://nakithelabel.com/"
+        },
+        {
+          "hex": "#ffffff",
+          "role": "background",
+          "source": "https://nakithelabel.com/"
+        }
+      ],
+      "essence": {}
+    },
+    {
+      "name": {
+        "value": "Naki The Label",
+        "source": "https://nakithelabel.com/"
+      },
+      "summary": {
+        "value": "Handcrafted leather bags from Bali, combining timeless design with practicality while supporting local artisans and a meaningful cause.",
+        "source": "https://nakithelabel.com/"
+      },
+      "category": "leather bags",
+      "offerings": [
+        {
+          "name": "Ruby Red Two-Strap Bag",
+          "price": "€55,98",
+          "source": "https://nakithelabel.com/"
+        },
+        {
+          "name": "Olive Green One-Strap Bag",
+          "price": "€55,98",
+          "source": "https://nakithelabel.com/"
+        },
+        {
+          "name": "Ruby Red One-Strap Bag",
+          "price": "€55,98",
+          "source": "https://nakithelabel.com/"
+        },
+        {
+          "name": "Burgundy Red One-Strap Bag",
+          "price": "€55,98",
+          "source": "https://nakithelabel.com/"
+        },
+        {
+          "name": "Navy Blue One-Strap Bag",
+          "price": "€55,98",
+          "source": "https://nakithelabel.com/"
+        },
+        {
+          "name": "Sandshell Beige One-Strap",
+          "price": "€55,98",
+          "source": "https://nakithelabel.com/"
+        },
+        {
+          "name": "Mint Green One-Strap Bag",
+          "price": "€55,98",
+          "source": "https://nakithelabel.com/"
+        },
+        {
+          "name": "Sandshell Beige Two-Strap Bag",
+          "price": "€55,98",
+          "source": "https://nakithelabel.com/"
+        },
+        {
+          "name": "Ocean Blue One-Strap Bag",
+          "price": "€55,98",
+          "source": "https://nakithelabel.com/"
+        },
+        {
+          "name": "Hazelnut Brown Two-Strap Bag",
+          "price": "€55,98",
+          "source": "https://nakithelabel.com/"
+        },
+        {
+          "name": "Midnight Black One-Strap Bag",
+          "price": "€55,98",
+          "source": "https://nakithelabel.com/"
+        },
+        {
+          "name": "Midnight Black Two-Strap Bag",
+          "price": "€55,98",
+          "source": "https://nakithelabel.com/"
+        },
+        {
+          "name": "Hazelnut Brown One-Strap Bag",
+          "price": "€55,98",
+          "source": "https://nakithelabel.com/"
+        },
+        {
+          "name": "Sienna Dark Brown Bag",
+          "price": "€55,98",
+          "source": "https://nakithelabel.com/"
+        },
+        {
+          "name": "Sienna Midnight Black Bag",
+          "price": "€51,98",
+          "source": "https://nakithelabel.com/"
+        },
+        {
+          "name": "Sienna Navy Blue Bag",
+          "price": "€55,98",
+          "source": "https://nakithelabel.com/"
+        },
+        {
+          "name": "Sienna Ruby Red",
+          "price": "€55,98",
+          "source": "https://nakithelabel.com/"
+        },
+        {
+          "name": "Luna Midnight Black Bag",
+          "price": "€63,98",
+          "source": "https://nakithelabel.com/"
+        },
+        {
+          "name": "Stellar Dark Brown Bag",
+          "price": "€51,98",
+          "source": "https://nakithelabel.com/"
+        },
+        {
+          "name": "Stellar Midnight Black Bag",
+          "price": "€51,98",
+          "source": "https://nakithelabel.com/"
+        }
+      ],
+      "highlights": [
+        {
+          "value": "Handcrafted in Paradise",
+          "source": "https://nakithelabel.com/"
+        },
+        {
+          "value": "Shipped within 1-2 working days in NL & BE",
+          "source": "https://nakithelabel.com/"
+        },
+        {
+          "value": "Worldwide shipping",
+          "source": "https://nakithelabel.com/"
+        },
+        {
+          "value": "Returns within 14 days receive a full refund",
+          "source": "https://nakithelabel.com/pages/contact"
+        },
+        {
+          "value": "Supports local leather workshops in Bali",
+          "source": "https://nakithelabel.com/pages/about"
+        },
+        {
+          "value": "Donates to The Bali Kids Foundation with every order",
+          "source": "https://nakithelabel.com/pages/about"
+        }
+      ],
+      "location": {
+        "town": null,
+        "area": null,
+        "address": null,
+        "serviceArea": null
+      },
+      "contact": {
+        "whatsapp": null,
+        "phone": null,
+        "email": null,
+        "instagram": {
+          "value": "nakithelabel_",
+          "source": "https://nakithelabel.com/"
+        },
+        "bookingUrl": null
+      },
+      "hours": null,
+      "tone": [
+        "excited",
+        "conscious",
+        "proud",
+        "warm"
+      ],
+      "colours": [
+        {
+          "hex": "#000000",
+          "role": "primary",
+          "source": "https://nakithelabel.com/"
+        },
+        {
+          "hex": "#ffffff",
+          "role": "background",
           "source": "https://nakithelabel.com/"
         }
       ],
       "essence": {
         "feeling": [
-          "elegant",
           "stylish",
-          "conscious"
-        ]
-      }
-    },
-    {
-      "name": {
-        "value": "Naki The Label",
-        "source": "https://nakithelabel.com/"
-      },
-      "summary": {
-        "value": "Handmade leather bags from Bali, crafted with sustainable practices and supporting local artisans.",
-        "source": "https://nakithelabel.com/"
-      },
-      "category": "fashion brand",
-      "offerings": [
-        {
-          "name": "Ruby Red Two-Strap Bag",
-          "price": "€55,98",
-          "source": "https://nakithelabel.com/"
-        },
-        {
-          "name": "Olive Green One-Strap Bag",
-          "price": "€55,98",
-          "source": "https://nakithelabel.com/"
-        },
-        {
-          "name": "Ruby Red One-Strap Bag",
-          "price": "€55,98",
-          "source": "https://nakithelabel.com/"
-        },
-        {
-          "name": "Burgundy Red One-Strap Bag",
-          "price": "€55,98",
-          "source": "https://nakithelabel.com/"
-        },
-        {
-          "name": "Navy Blue One-Strap Bag",
-          "price": "€55,98",
-          "source": "https://nakithelabel.com/"
-        },
-        {
-          "name": "Sandshell Beige One-Strap",
-          "price": "€55,98",
-          "source": "https://nakithelabel.com/"
-        },
-        {
-          "name": "Mint Green One-Strap Bag",
-          "price": "€55,98",
-          "source": "https://nakithelabel.com/"
-        },
-        {
-          "name": "Sandshell Beige Two-Strap Bag",
-          "price": "€55,98",
-          "source": "https://nakithelabel.com/"
-        },
-        {
-          "name": "Ocean Blue One-Strap Bag",
-          "price": "€55,98",
-          "source": "https://nakithelabel.com/"
-        },
-        {
-          "name": "Hazelnut Brown Two-Strap Bag",
-          "price": "€55,98",
-          "source": "https://nakithelabel.com/"
-        },
-        {
-          "name": "Midnight Black One-Strap Bag",
-          "price": "€55,98",
-          "source": "https://nakithelabel.com/"
-        },
-        {
-          "name": "Midnight Black Two-Strap Bag",
-          "price": "€55,98",
-          "source": "https://nakithelabel.com/"
-        },
-        {
-          "name": "Hazelnut Brown One-Strap Bag",
-          "price": "€55,98",
-          "source": "https://nakithelabel.com/"
-        },
-        {
-          "name": "Sienna Dark Brown Bag",
-          "price": "€55,98",
-          "source": "https://nakithelabel.com/"
-        },
-        {
-          "name": "Sienna Midnight Black Bag",
-          "price": "€51,98",
-          "source": "https://nakithelabel.com/"
-        },
-        {
-          "name": "Sienna Navy Blue Bag",
-          "price": "€55,98",
-          "source": "https://nakithelabel.com/"
-        },
-        {
-          "name": "Sienna Ruby Red",
-          "price": "€55,98",
-          "source": "https://nakithelabel.com/"
-        },
-        {
-          "name": "Luna Midnight Black Bag",
-          "price": "€63,98",
-          "source": "https://nakithelabel.com/"
-        },
-        {
-          "name": "Stellar Dark Brown Bag",
-          "price": "€51,98",
-          "source": "https://nakithelabel.com/"
-        },
-        {
-          "name": "Stellar Midnight Black Bag",
-          "price": "€51,98",
-          "source": "https://nakithelabel.com/"
-        }
-      ],
-      "highlights": [
-        {
-          "value": "Handcrafted in Paradise",
-          "source": "https://nakithelabel.com/"
-        },
-        {
-          "value": "Shipped within 1-2 working days in NL & BE",
-          "source": "https://nakithelabel.com/"
-        },
-        {
-          "value": "Worldwide shipping",
-          "source": "https://nakithelabel.com/"
-        },
-        {
-          "value": "Supports local leather workshops in Bali",
-          "source": "https://nakithelabel.com/pages/about"
-        },
-        {
-          "value": "With every order, we donate to The Bali Kids Foundation",
-          "source": "https://nakithelabel.com/pages/about"
-        },
-        {
-          "value": "Returns within 14 days receive a full refund",
-          "source": "https://nakithelabel.com/pages/contact"
-        }
-      ],
-      "location": {
-        "town": null,
-        "area": null,
-        "address": null,
-        "serviceArea": null
-      },
-      "contact": {
-        "whatsapp": null,
-        "phone": null,
-        "email": null,
-        "instagram": {
-          "value": "nakithelabel_",
-          "source": "https://nakithelabel.com/"
-        },
-        "bookingUrl": null
-      },
-      "hours": null,
-      "tone": [
-        "excited",
-        "warm",
-        "passionate"
-      ],
-      "colours": [
-        {
-          "hex": "#000000",
-          "role": "primary",
-          "source": "https://nakithelabel.com/"
-        }
-      ],
-      "essence": {
-        "feeling": [
+          "conscious",
           "elegant",
-          "stylish",
-          "conscious"
+          "cherished"
         ],
         "placeSymbols": [
           "Balinese artisan workshops",
@@ -4932,10 +5073,10 @@
         "source": "https://nakithelabel.com/"
       },
       "summary": {
-        "value": "Handmade leather bags from Bali, crafted with sustainable practices and supporting local artisans.",
+        "value": "Handcrafted leather bags from Bali, combining timeless design with practicality while supporting local artisans and a meaningful cause.",
         "source": "https://nakithelabel.com/"
       },
-      "category": "fashion brand",
+      "category": "leather bags",
       "offerings": [
         {
           "name": "Ruby Red Two-Strap Bag",
@@ -5052,16 +5193,16 @@
           "source": "https://nakithelabel.com/"
         },
         {
+          "value": "Returns within 14 days receive a full refund",
+          "source": "https://nakithelabel.com/pages/contact"
+        },
+        {
           "value": "Supports local leather workshops in Bali",
           "source": "https://nakithelabel.com/pages/about"
         },
         {
-          "value": "With every order, we donate to The Bali Kids Foundation",
+          "value": "Donates to The Bali Kids Foundation with every order",
           "source": "https://nakithelabel.com/pages/about"
-        },
-        {
-          "value": "Returns within 14 days receive a full refund",
-          "source": "https://nakithelabel.com/pages/contact"
         }
       ],
       "location": {
@@ -5083,30 +5224,41 @@
       "hours": null,
       "tone": [
         "excited",
-        "warm",
-        "passionate"
+        "conscious",
+        "proud",
+        "warm"
       ],
       "colours": [
         {
           "hex": "#000000",
           "role": "primary",
           "source": "https://nakithelabel.com/"
+        },
+        {
+          "hex": "#ffffff",
+          "role": "background",
+          "source": "https://nakithelabel.com/"
         }
       ],
       "essence": {
         "feeling": [
-          "elegant",
           "stylish",
-          "conscious"
+          "conscious",
+          "elegant",
+          "cherished"
         ],
         "placeSymbols": [
           "Balinese artisan workshops",
           "tropical foliage",
-          "temple offerings"
+          "temple offerings",
+          "frangipani flowers",
+          "bali coast"
         ],
         "senses": [
-          "supple leather texture",
-          "rich"
+          "rich leather scent",
+          "supple smooth texture",
+          "soft warm light",
+          "polished"
         ]
       }
     },
@@ -5116,10 +5268,10 @@
         "source": "https://nakithelabel.com/"
       },
       "summary": {
-        "value": "Handmade leather bags from Bali, crafted with sustainable practices and supporting local artisans.",
+        "value": "Handcrafted leather bags from Bali, combining timeless design with practicality while supporting local artisans and a meaningful cause.",
         "source": "https://nakithelabel.com/"
       },
-      "category": "fashion brand",
+      "category": "leather bags",
       "offerings": [
         {
           "name": "Ruby Red Two-Strap Bag",
@@ -5236,16 +5388,16 @@
           "source": "https://nakithelabel.com/"
         },
         {
+          "value": "Returns within 14 days receive a full refund",
+          "source": "https://nakithelabel.com/pages/contact"
+        },
+        {
           "value": "Supports local leather workshops in Bali",
           "source": "https://nakithelabel.com/pages/about"
         },
         {
-          "value": "With every order, we donate to The Bali Kids Foundation",
+          "value": "Donates to The Bali Kids Foundation with every order",
           "source": "https://nakithelabel.com/pages/about"
-        },
-        {
-          "value": "Returns within 14 days receive a full refund",
-          "source": "https://nakithelabel.com/pages/contact"
         }
       ],
       "location": {
@@ -5267,33 +5419,243 @@
       "hours": null,
       "tone": [
         "excited",
-        "warm",
-        "passionate"
+        "conscious",
+        "proud",
+        "warm"
       ],
       "colours": [
         {
           "hex": "#000000",
           "role": "primary",
           "source": "https://nakithelabel.com/"
+        },
+        {
+          "hex": "#ffffff",
+          "role": "background",
+          "source": "https://nakithelabel.com/"
         }
       ],
       "essence": {
         "feeling": [
-          "elegant",
           "stylish",
-          "conscious"
+          "conscious",
+          "elegant",
+          "cherished"
         ],
         "placeSymbols": [
           "Balinese artisan workshops",
           "tropical foliage",
-          "temple offerings"
+          "temple offerings",
+          "frangipani flowers",
+          "bali coast"
         ],
         "senses": [
-          "supple leather texture",
-          "rich natural dyes",
-          "silver hardware"
+          "rich leather scent",
+          "supple smooth texture",
+          "soft warm light",
+          "polished metal hardware"
         ],
         "moments": []
+      },
+      "visualStyle": {}
+    },
+    {
+      "name": {
+        "value": "Naki The Label",
+        "source": "https://nakithelabel.com/"
+      },
+      "summary": {
+        "value": "Handcrafted leather bags from Bali, combining timeless design with practicality while supporting local artisans and a meaningful cause.",
+        "source": "https://nakithelabel.com/"
+      },
+      "category": "leather bags",
+      "offerings": [
+        {
+          "name": "Ruby Red Two-Strap Bag",
+          "price": "€55,98",
+          "source": "https://nakithelabel.com/"
+        },
+        {
+          "name": "Olive Green One-Strap Bag",
+          "price": "€55,98",
+          "source": "https://nakithelabel.com/"
+        },
+        {
+          "name": "Ruby Red One-Strap Bag",
+          "price": "€55,98",
+          "source": "https://nakithelabel.com/"
+        },
+        {
+          "name": "Burgundy Red One-Strap Bag",
+          "price": "€55,98",
+          "source": "https://nakithelabel.com/"
+        },
+        {
+          "name": "Navy Blue One-Strap Bag",
+          "price": "€55,98",
+          "source": "https://nakithelabel.com/"
+        },
+        {
+          "name": "Sandshell Beige One-Strap",
+          "price": "€55,98",
+          "source": "https://nakithelabel.com/"
+        },
+        {
+          "name": "Mint Green One-Strap Bag",
+          "price": "€55,98",
+          "source": "https://nakithelabel.com/"
+        },
+        {
+          "name": "Sandshell Beige Two-Strap Bag",
+          "price": "€55,98",
+          "source": "https://nakithelabel.com/"
+        },
+        {
+          "name": "Ocean Blue One-Strap Bag",
+          "price": "€55,98",
+          "source": "https://nakithelabel.com/"
+        },
+        {
+          "name": "Hazelnut Brown Two-Strap Bag",
+          "price": "€55,98",
+          "source": "https://nakithelabel.com/"
+        },
+        {
+          "name": "Midnight Black One-Strap Bag",
+          "price": "€55,98",
+          "source": "https://nakithelabel.com/"
+        },
+        {
+          "name": "Midnight Black Two-Strap Bag",
+          "price": "€55,98",
+          "source": "https://nakithelabel.com/"
+        },
+        {
+          "name": "Hazelnut Brown One-Strap Bag",
+          "price": "€55,98",
+          "source": "https://nakithelabel.com/"
+        },
+        {
+          "name": "Sienna Dark Brown Bag",
+          "price": "€55,98",
+          "source": "https://nakithelabel.com/"
+        },
+        {
+          "name": "Sienna Midnight Black Bag",
+          "price": "€51,98",
+          "source": "https://nakithelabel.com/"
+        },
+        {
+          "name": "Sienna Navy Blue Bag",
+          "price": "€55,98",
+          "source": "https://nakithelabel.com/"
+        },
+        {
+          "name": "Sienna Ruby Red",
+          "price": "€55,98",
+          "source": "https://nakithelabel.com/"
+        },
+        {
+          "name": "Luna Midnight Black Bag",
+          "price": "€63,98",
+          "source": "https://nakithelabel.com/"
+        },
+        {
+          "name": "Stellar Dark Brown Bag",
+          "price": "€51,98",
+          "source": "https://nakithelabel.com/"
+        },
+        {
+          "name": "Stellar Midnight Black Bag",
+          "price": "€51,98",
+          "source": "https://nakithelabel.com/"
+        }
+      ],
+      "highlights": [
+        {
+          "value": "Handcrafted in Paradise",
+          "source": "https://nakithelabel.com/"
+        },
+        {
+          "value": "Shipped within 1-2 working days in NL & BE",
+          "source": "https://nakithelabel.com/"
+        },
+        {
+          "value": "Worldwide shipping",
+          "source": "https://nakithelabel.com/"
+        },
+        {
+          "value": "Returns within 14 days receive a full refund",
+          "source": "https://nakithelabel.com/pages/contact"
+        },
+        {
+          "value": "Supports local leather workshops in Bali",
+          "source": "https://nakithelabel.com/pages/about"
+        },
+        {
+          "value": "Donates to The Bali Kids Foundation with every order",
+          "source": "https://nakithelabel.com/pages/about"
+        }
+      ],
+      "location": {
+        "town": null,
+        "area": null,
+        "address": null,
+        "serviceArea": null
+      },
+      "contact": {
+        "whatsapp": null,
+        "phone": null,
+        "email": null,
+        "instagram": {
+          "value": "nakithelabel_",
+          "source": "https://nakithelabel.com/"
+        },
+        "bookingUrl": null
+      },
+      "hours": null,
+      "tone": [
+        "excited",
+        "conscious",
+        "proud",
+        "warm"
+      ],
+      "colours": [
+        {
+          "hex": "#000000",
+          "role": "primary",
+          "source": "https://nakithelabel.com/"
+        },
+        {
+          "hex": "#ffffff",
+          "role": "background",
+          "source": "https://nakithelabel.com/"
+        }
+      ],
+      "essence": {
+        "feeling": [
+          "stylish",
+          "conscious",
+          "elegant",
+          "cherished"
+        ],
+        "placeSymbols": [
+          "Balinese artisan workshops",
+          "tropical foliage",
+          "temple offerings",
+          "frangipani flowers",
+          "bali coast"
+        ],
+        "senses": [
+          "rich leather scent",
+          "supple smooth texture",
+          "soft warm light",
+          "polished metal hardware"
+        ],
+        "moments": []
+      },
+      "visualStyle": {
+        "summary": "minimalist clean studio, soft neutral lighting, smooth leather textures, elegant mood"
       }
     },
     {
@@ -5302,10 +5664,10 @@
         "source": "https://nakithelabel.com/"
       },
       "summary": {
-        "value": "Handmade leather bags from Bali, crafted with sustainable practices and supporting local artisans.",
+        "value": "Handcrafted leather bags from Bali, combining timeless design with practicality while supporting local artisans and a meaningful cause.",
         "source": "https://nakithelabel.com/"
       },
-      "category": "fashion brand",
+      "category": "leather bags",
       "offerings": [
         {
           "name": "Ruby Red Two-Strap Bag",
@@ -5422,16 +5784,16 @@
           "source": "https://nakithelabel.com/"
         },
         {
+          "value": "Returns within 14 days receive a full refund",
+          "source": "https://nakithelabel.com/pages/contact"
+        },
+        {
           "value": "Supports local leather workshops in Bali",
           "source": "https://nakithelabel.com/pages/about"
         },
         {
-          "value": "With every order, we donate to The Bali Kids Foundation",
+          "value": "Donates to The Bali Kids Foundation with every order",
           "source": "https://nakithelabel.com/pages/about"
-        },
-        {
-          "value": "Returns within 14 days receive a full refund",
-          "source": "https://nakithelabel.com/pages/contact"
         }
       ],
       "location": {
@@ -5453,36 +5815,49 @@
       "hours": null,
       "tone": [
         "excited",
-        "warm",
-        "passionate"
+        "conscious",
+        "proud",
+        "warm"
       ],
       "colours": [
         {
           "hex": "#000000",
           "role": "primary",
           "source": "https://nakithelabel.com/"
+        },
+        {
+          "hex": "#ffffff",
+          "role": "background",
+          "source": "https://nakithelabel.com/"
         }
       ],
       "essence": {
         "feeling": [
-          "elegant",
           "stylish",
-          "conscious"
+          "conscious",
+          "elegant",
+          "cherished"
         ],
         "placeSymbols": [
           "Balinese artisan workshops",
           "tropical foliage",
-          "temple offerings"
+          "temple offerings",
+          "frangipani flowers",
+          "bali coast"
         ],
         "senses": [
-          "supple leather texture",
-          "rich natural dyes",
-          "silver hardware"
+          "rich leather scent",
+          "supple smooth texture",
+          "soft warm light",
+          "polished metal hardware"
         ],
         "moments": []
       },
       "visualStyle": {
-        "summary": "minimalist studio product photography, clean white background, soft lighting"
+        "summary": "minimalist clean studio, soft neutral lighting, smooth leather textures, elegant mood",
+        "palette": "monochrome with rich leather tones",
+        "light": "soft diffused studio lighting",
+        "textures": "smooth"
       }
     },
     {
@@ -5491,10 +5866,10 @@
         "source": "https://nakithelabel.com/"
       },
       "summary": {
-        "value": "Handmade leather bags from Bali, crafted with sustainable practices and supporting local artisans.",
+        "value": "Handcrafted leather bags from Bali, combining timeless design with practicality while supporting local artisans and a meaningful cause.",
         "source": "https://nakithelabel.com/"
       },
-      "category": "fashion brand",
+      "category": "leather bags",
       "offerings": [
         {
           "name": "Ruby Red Two-Strap Bag",
@@ -5611,16 +5986,16 @@
           "source": "https://nakithelabel.com/"
         },
         {
+          "value": "Returns within 14 days receive a full refund",
+          "source": "https://nakithelabel.com/pages/contact"
+        },
+        {
           "value": "Supports local leather workshops in Bali",
           "source": "https://nakithelabel.com/pages/about"
         },
         {
-          "value": "With every order, we donate to The Bali Kids Foundation",
+          "value": "Donates to The Bali Kids Foundation with every order",
           "source": "https://nakithelabel.com/pages/about"
-        },
-        {
-          "value": "Returns within 14 days receive a full refund",
-          "source": "https://nakithelabel.com/pages/contact"
         }
       ],
       "location": {
@@ -5642,231 +6017,50 @@
       "hours": null,
       "tone": [
         "excited",
-        "warm",
-        "passionate"
+        "conscious",
+        "proud",
+        "warm"
       ],
       "colours": [
         {
           "hex": "#000000",
           "role": "primary",
           "source": "https://nakithelabel.com/"
-        }
-      ],
-      "essence": {
-        "feeling": [
-          "elegant",
-          "stylish",
-          "conscious"
-        ],
-        "placeSymbols": [
-          "Balinese artisan workshops",
-          "tropical foliage",
-          "temple offerings"
-        ],
-        "senses": [
-          "supple leather texture",
-          "rich natural dyes",
-          "silver hardware"
-        ],
-        "moments": []
-      },
-      "visualStyle": {
-        "summary": "minimalist studio product photography, clean white background, soft lighting",
-        "palette": "burgundy, black, dark brown",
-        "light": "soft diffuse lighting"
-      }
-    },
-    {
-      "name": {
-        "value": "Naki The Label",
-        "source": "https://nakithelabel.com/"
-      },
-      "summary": {
-        "value": "Handmade leather bags from Bali, crafted with sustainable practices and supporting local artisans.",
-        "source": "https://nakithelabel.com/"
-      },
-      "category": "fashion brand",
-      "offerings": [
-        {
-          "name": "Ruby Red Two-Strap Bag",
-          "price": "€55,98",
-          "source": "https://nakithelabel.com/"
         },
         {
-          "name": "Olive Green One-Strap Bag",
-          "price": "€55,98",
-          "source": "https://nakithelabel.com/"
-        },
-        {
-          "name": "Ruby Red One-Strap Bag",
-          "price": "€55,98",
-          "source": "https://nakithelabel.com/"
-        },
-        {
-          "name": "Burgundy Red One-Strap Bag",
-          "price": "€55,98",
-          "source": "https://nakithelabel.com/"
-        },
-        {
-          "name": "Navy Blue One-Strap Bag",
-          "price": "€55,98",
-          "source": "https://nakithelabel.com/"
-        },
-        {
-          "name": "Sandshell Beige One-Strap",
-          "price": "€55,98",
-          "source": "https://nakithelabel.com/"
-        },
-        {
-          "name": "Mint Green One-Strap Bag",
-          "price": "€55,98",
-          "source": "https://nakithelabel.com/"
-        },
-        {
-          "name": "Sandshell Beige Two-Strap Bag",
-          "price": "€55,98",
-          "source": "https://nakithelabel.com/"
-        },
-        {
-          "name": "Ocean Blue One-Strap Bag",
-          "price": "€55,98",
-          "source": "https://nakithelabel.com/"
-        },
-        {
-          "name": "Hazelnut Brown Two-Strap Bag",
-          "price": "€55,98",
-          "source": "https://nakithelabel.com/"
-        },
-        {
-          "name": "Midnight Black One-Strap Bag",
-          "price": "€55,98",
-          "source": "https://nakithelabel.com/"
-        },
-        {
-          "name": "Midnight Black Two-Strap Bag",
-          "price": "€55,98",
-          "source": "https://nakithelabel.com/"
-        },
-        {
-          "name": "Hazelnut Brown One-Strap Bag",
-          "price": "€55,98",
-          "source": "https://nakithelabel.com/"
-        },
-        {
-          "name": "Sienna Dark Brown Bag",
-          "price": "€55,98",
-          "source": "https://nakithelabel.com/"
-        },
-        {
-          "name": "Sienna Midnight Black Bag",
-          "price": "€51,98",
-          "source": "https://nakithelabel.com/"
-        },
-        {
-          "name": "Sienna Navy Blue Bag",
-          "price": "€55,98",
-          "source": "https://nakithelabel.com/"
-        },
-        {
-          "name": "Sienna Ruby Red",
-          "price": "€55,98",
-          "source": "https://nakithelabel.com/"
-        },
-        {
-          "name": "Luna Midnight Black Bag",
-          "price": "€63,98",
-          "source": "https://nakithelabel.com/"
-        },
-        {
-          "name": "Stellar Dark Brown Bag",
-          "price": "€51,98",
-          "source": "https://nakithelabel.com/"
-        },
-        {
-          "name": "Stellar Midnight Black Bag",
-          "price": "€51,98",
-          "source": "https://nakithelabel.com/"
-        }
-      ],
-      "highlights": [
-        {
-          "value": "Handcrafted in Paradise",
-          "source": "https://nakithelabel.com/"
-        },
-        {
-          "value": "Shipped within 1-2 working days in NL & BE",
-          "source": "https://nakithelabel.com/"
-        },
-        {
-          "value": "Worldwide shipping",
-          "source": "https://nakithelabel.com/"
-        },
-        {
-          "value": "Supports local leather workshops in Bali",
-          "source": "https://nakithelabel.com/pages/about"
-        },
-        {
-          "value": "With every order, we donate to The Bali Kids Foundation",
-          "source": "https://nakithelabel.com/pages/about"
-        },
-        {
-          "value": "Returns within 14 days receive a full refund",
-          "source": "https://nakithelabel.com/pages/contact"
-        }
-      ],
-      "location": {
-        "town": null,
-        "area": null,
-        "address": null,
-        "serviceArea": null
-      },
-      "contact": {
-        "whatsapp": null,
-        "phone": null,
-        "email": null,
-        "instagram": {
-          "value": "nakithelabel_",
-          "source": "https://nakithelabel.com/"
-        },
-        "bookingUrl": null
-      },
-      "hours": null,
-      "tone": [
-        "excited",
-        "warm",
-        "passionate"
-      ],
-      "colours": [
-        {
-          "hex": "#000000",
-          "role": "primary",
+          "hex": "#ffffff",
+          "role": "background",
           "source": "https://nakithelabel.com/"
         }
       ],
       "essence": {
         "feeling": [
-          "elegant",
           "stylish",
-          "conscious"
+          "conscious",
+          "elegant",
+          "cherished"
         ],
         "placeSymbols": [
           "Balinese artisan workshops",
           "tropical foliage",
-          "temple offerings"
+          "temple offerings",
+          "frangipani flowers",
+          "bali coast"
         ],
         "senses": [
-          "supple leather texture",
-          "rich natural dyes",
-          "silver hardware"
+          "rich leather scent",
+          "supple smooth texture",
+          "soft warm light",
+          "polished metal hardware"
         ],
         "moments": []
       },
       "visualStyle": {
-        "summary": "minimalist studio product photography, clean white background, soft lighting",
-        "palette": "burgundy, black, dark brown",
-        "light": "soft diffuse lighting",
-        "textures": "smooth leather, metallic studs",
-        "mood": "luxurious, clean, modern"
+        "summary": "minimalist clean studio, soft neutral lighting, smooth leather textures, elegant mood",
+        "palette": "monochrome with rich leather tones",
+        "light": "soft diffused studio lighting",
+        "textures": "smooth supple leather and polished metal hardware",
+        "mood": "chic, timeless, and conscious"
       }
     }
   ],
@@ -5876,10 +6070,10 @@
       "source": "https://nakithelabel.com/"
     },
     "summary": {
-      "value": "Handmade leather bags from Bali, crafted with sustainable practices and supporting local artisans.",
+      "value": "Handcrafted leather bags from Bali, combining timeless design with practicality while supporting local artisans and a meaningful cause.",
       "source": "https://nakithelabel.com/"
     },
-    "category": "fashion brand",
+    "category": "leather bags",
     "offerings": [
       {
         "name": "Ruby Red Two-Strap Bag",
@@ -5996,16 +6190,16 @@
         "source": "https://nakithelabel.com/"
       },
       {
+        "value": "Returns within 14 days receive a full refund",
+        "source": "https://nakithelabel.com/pages/contact"
+      },
+      {
         "value": "Supports local leather workshops in Bali",
         "source": "https://nakithelabel.com/pages/about"
       },
       {
-        "value": "With every order, we donate to The Bali Kids Foundation",
+        "value": "Donates to The Bali Kids Foundation with every order",
         "source": "https://nakithelabel.com/pages/about"
-      },
-      {
-        "value": "Returns within 14 days receive a full refund",
-        "source": "https://nakithelabel.com/pages/contact"
       }
     ],
     "location": {
@@ -6027,40 +6221,50 @@
     "hours": null,
     "tone": [
       "excited",
-      "warm",
-      "passionate"
+      "conscious",
+      "proud",
+      "warm"
     ],
     "colours": [
       {
         "hex": "#000000",
         "role": "primary",
         "source": "https://nakithelabel.com/"
+      },
+      {
+        "hex": "#ffffff",
+        "role": "background",
+        "source": "https://nakithelabel.com/"
       }
     ],
     "essence": {
       "feeling": [
-        "elegant",
         "stylish",
-        "conscious"
+        "conscious",
+        "elegant",
+        "cherished"
       ],
       "placeSymbols": [
         "Balinese artisan workshops",
         "tropical foliage",
-        "temple offerings"
+        "temple offerings",
+        "frangipani flowers",
+        "bali coast"
       ],
       "senses": [
-        "supple leather texture",
-        "rich natural dyes",
-        "silver hardware"
+        "rich leather scent",
+        "supple smooth texture",
+        "soft warm light",
+        "polished metal hardware"
       ],
       "moments": []
     },
     "visualStyle": {
-      "summary": "minimalist studio product photography, clean white background, soft lighting",
-      "palette": "burgundy, black, dark brown",
-      "light": "soft diffuse lighting",
-      "textures": "smooth leather, metallic studs",
-      "mood": "luxurious, clean, modern"
+      "summary": "minimalist clean studio, soft neutral lighting, smooth leather textures, elegant mood",
+      "palette": "monochrome with rich leather tones",
+      "light": "soft diffused studio lighting",
+      "textures": "smooth supple leather and polished metal hardware",
+      "mood": "chic, timeless, and conscious"
     }
   }
 }

@@ -127,6 +127,19 @@ brixandbaume.com (redirects to google.com).
   `brand eval: 17/20 passed · prompt brand-3 · model gemini-3.5-flash-lite`
   Phin Coffee (offerings) fails every run, Little Vietnam Tours in two of
   three. The `recording.json` files are from the last run.
+- 2026-10-24: The developer judged tone and style: the style missed what
+  the business is about (Sen should carry Vietnam, lotus flowers and
+  relaxation after sport; Svarga, Bali, frangipani and after-surf rest).
+  The spec gained an essence (feeling, place symbols, senses, moments),
+  approved at 12:20 UTC, and roadmap 1.3 `brand/search-essence` will enrich
+  it from what people search for.
+- 2026-10-24: `brand-4` added the essence: 18/20. Its examples leaked into
+  other trades (a café got "warm coconut oil, fresh linens") and Orient Spa
+  in Hanoi got "Hoi An lanterns". `brand-5` keeps the essence to the
+  business's own trade and town, and asks for short moments:
+  `brand eval: 18/20 passed · prompt brand-5 · model gemini-3.5-flash-lite`
+  The recordings are from this run. The eval retries a busy (503) answer
+  once after 10 s.
 - 2026-10-24: Two runs of the same prompt differ (Libra and Two Face failed
   once, then passed): flash-lite isn't deterministic, so the gate is a
   snapshot, not a guarantee.

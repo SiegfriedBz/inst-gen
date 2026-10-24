@@ -1,6 +1,6 @@
 {
   "modelId": "gemini-3.5-flash-lite",
-  "promptVersion": "brand-4",
+  "promptVersion": "brand-5",
   "partials": [
     {
       "name": {}
@@ -8,7 +8,7 @@
     {
       "name": {
         "value": "Yin's Sourdough",
-        "source": "https://yinssourdough."
+        "source": "https://yinss"
       }
     },
     {
@@ -17,7 +17,7 @@
         "source": "https://yinssourdough.com/"
       },
       "summary": {
-        "value": "Artisanal sourdough bakery crafting traditional"
+        "value": "Artisanal sourdough"
       }
     },
     {
@@ -29,6 +29,19 @@
         "value": "Artisanal sourdough bakery crafting traditional breads and pastries.",
         "source": "https://yinssourdough.com/"
       }
+    },
+    {
+      "name": {
+        "value": "Yin's Sourdough",
+        "source": "https://yinssourdough.com/"
+      },
+      "summary": {
+        "value": "Artisanal sourdough bakery crafting traditional breads and pastries.",
+        "source": "https://yinssourdough.com/"
+      },
+      "category": "bakery",
+      "offerings": [],
+      "highlights": []
     },
     {
       "name": {
@@ -92,6 +105,61 @@
         "whatsapp": null,
         "phone": null,
         "email": null,
+        "instagram": null
+      }
+    },
+    {
+      "name": {
+        "value": "Yin's Sourdough",
+        "source": "https://yinssourdough.com/"
+      },
+      "summary": {
+        "value": "Artisanal sourdough bakery crafting traditional breads and pastries.",
+        "source": "https://yinssourdough.com/"
+      },
+      "category": "bakery",
+      "offerings": [],
+      "highlights": [],
+      "location": {
+        "town": null,
+        "area": null,
+        "address": null,
+        "serviceArea": null
+      },
+      "contact": {
+        "whatsapp": null,
+        "phone": null,
+        "email": null,
+        "instagram": null,
+        "bookingUrl": null
+      },
+      "hours": null,
+      "tone": [
+        "warm"
+      ]
+    },
+    {
+      "name": {
+        "value": "Yin's Sourdough",
+        "source": "https://yinssourdough.com/"
+      },
+      "summary": {
+        "value": "Artisanal sourdough bakery crafting traditional breads and pastries.",
+        "source": "https://yinssourdough.com/"
+      },
+      "category": "bakery",
+      "offerings": [],
+      "highlights": [],
+      "location": {
+        "town": null,
+        "area": null,
+        "address": null,
+        "serviceArea": null
+      },
+      "contact": {
+        "whatsapp": null,
+        "phone": null,
+        "email": null,
         "instagram": null,
         "bookingUrl": null
       },
@@ -102,7 +170,7 @@
       ],
       "colours": [
         {
-          "hex": "#1a1d20"
+          "hex": "#1a"
         }
       ]
     },
@@ -141,8 +209,7 @@
           "hex": "#1a1d20",
           "role": "background",
           "source": "https://yinssourdough.com/"
-        },
-        {}
+        }
       ]
     },
     {
@@ -184,7 +251,7 @@
         {
           "hex": "#ffffff",
           "role": "text",
-          "source": "https://"
+          "source": "https"
         }
       ]
     },
@@ -276,8 +343,8 @@
       ],
       "essence": {
         "feeling": [
-          "cozy",
-          "satisfied"
+          "hungry",
+          "comforted"
         ],
         "placeSymbols": []
       }
@@ -326,14 +393,18 @@
       ],
       "essence": {
         "feeling": [
-          "cozy",
-          "satisfied"
+          "hungry",
+          "comforted"
         ],
         "placeSymbols": [],
         "senses": [
-          "warm crust",
-          "freshly baked bread"
-        ]
+          "freshly baked crust",
+          "warm flour"
+        ],
+        "moments": []
+      },
+      "visualStyle": {
+        "summary": "dark minimalist, soft light, clean textures,"
       }
     },
     {
@@ -380,18 +451,20 @@
       ],
       "essence": {
         "feeling": [
-          "cozy",
-          "satisfied"
+          "hungry",
+          "comforted"
         ],
         "placeSymbols": [],
         "senses": [
-          "warm crust",
-          "freshly baked bread"
+          "freshly baked crust",
+          "warm flour"
         ],
         "moments": []
       },
       "visualStyle": {
-        "summary": "dark minimalist, soft light, clean"
+        "summary": "dark minimalist, soft light, clean textures, warm mood",
+        "palette": "dark background with white typography",
+        "light": "soft direct light"
       }
     },
     {
@@ -438,82 +511,22 @@
       ],
       "essence": {
         "feeling": [
-          "cozy",
-          "satisfied"
+          "hungry",
+          "comforted"
         ],
         "placeSymbols": [],
         "senses": [
-          "warm crust",
-          "freshly baked bread"
+          "freshly baked crust",
+          "warm flour"
         ],
         "moments": []
       },
       "visualStyle": {
-        "summary": "dark minimalist, soft light, clean textures",
-        "palette": "dark grey and white",
-        "light": "soft"
-      }
-    },
-    {
-      "name": {
-        "value": "Yin's Sourdough",
-        "source": "https://yinssourdough.com/"
-      },
-      "summary": {
-        "value": "Artisanal sourdough bakery crafting traditional breads and pastries.",
-        "source": "https://yinssourdough.com/"
-      },
-      "category": "bakery",
-      "offerings": [],
-      "highlights": [],
-      "location": {
-        "town": null,
-        "area": null,
-        "address": null,
-        "serviceArea": null
-      },
-      "contact": {
-        "whatsapp": null,
-        "phone": null,
-        "email": null,
-        "instagram": null,
-        "bookingUrl": null
-      },
-      "hours": null,
-      "tone": [
-        "warm",
-        "artisanal"
-      ],
-      "colours": [
-        {
-          "hex": "#1a1d20",
-          "role": "background",
-          "source": "https://yinssourdough.com/"
-        },
-        {
-          "hex": "#ffffff",
-          "role": "text",
-          "source": "https://yinssourdough.com/"
-        }
-      ],
-      "essence": {
-        "feeling": [
-          "cozy",
-          "satisfied"
-        ],
-        "placeSymbols": [],
-        "senses": [
-          "warm crust",
-          "freshly baked bread"
-        ],
-        "moments": []
-      },
-      "visualStyle": {
-        "summary": "dark minimalist, soft light, clean textures",
-        "palette": "dark grey and white",
-        "light": "soft",
-        "textures": "smooth",
-        "mood": "minimal"
+        "summary": "dark minimalist, soft light, clean textures, warm mood",
+        "palette": "dark background with white typography",
+        "light": "soft direct light",
+        "textures": "smooth matte",
+        "mood": "warm"
       }
     }
   ],
@@ -561,22 +574,22 @@
     ],
     "essence": {
       "feeling": [
-        "cozy",
-        "satisfied"
+        "hungry",
+        "comforted"
       ],
       "placeSymbols": [],
       "senses": [
-        "warm crust",
-        "freshly baked bread"
+        "freshly baked crust",
+        "warm flour"
       ],
       "moments": []
     },
     "visualStyle": {
-      "summary": "dark minimalist, soft light, clean textures",
-      "palette": "dark grey and white",
-      "light": "soft",
-      "textures": "smooth",
-      "mood": "minimal"
+      "summary": "dark minimalist, soft light, clean textures, warm mood",
+      "palette": "dark background with white typography",
+      "light": "soft direct light",
+      "textures": "smooth matte",
+      "mood": "warm"
     }
   }
 }

@@ -1,6 +1,6 @@
 {
   "modelId": "gemini-3.5-flash-lite",
-  "promptVersion": "brand-4",
+  "promptVersion": "brand-5",
   "partials": [
     {
       "name": {}
@@ -8,6 +8,25 @@
     {
       "name": {
         "value": "PHONEPRASEUTH GUESTHOUSE",
+        "source": "https://phonepraseuthguesthouse.com"
+      }
+    },
+    {
+      "name": {
+        "value": "PHONEPRASEUTH GUESTHOUSE",
+        "source": "https://phonepraseuthguesthouse.com/"
+      },
+      "summary": {
+        "value": "A quiet, personalized and friendly guesthouse on"
+      }
+    },
+    {
+      "name": {
+        "value": "PHONEPRASEUTH GUESTHOUSE",
+        "source": "https://phonepraseuthguesthouse.com/"
+      },
+      "summary": {
+        "value": "A quiet, personalized and friendly guesthouse on the bank of Namkhan river in Luang Prabang, offering comfortable rooms.",
         "source": "https://phonepr"
       }
     },
@@ -17,25 +36,7 @@
         "source": "https://phonepraseuthguesthouse.com/"
       },
       "summary": {
-        "value": "Quiet,"
-      }
-    },
-    {
-      "name": {
-        "value": "PHONEPRASEUTH GUESTHOUSE",
-        "source": "https://phonepraseuthguesthouse.com/"
-      },
-      "summary": {
-        "value": "Quiet, personalized, and friendly guesthouse in Luang Prabang offering comfortable rooms near the Nam Khan river and UNESCO heritage city."
-      }
-    },
-    {
-      "name": {
-        "value": "PHONEPRASEUTH GUESTHOUSE",
-        "source": "https://phonepraseuthguesthouse.com/"
-      },
-      "summary": {
-        "value": "Quiet, personalized, and friendly guesthouse in Luang Prabang offering comfortable rooms near the Nam Khan river and UNESCO heritage city.",
+        "value": "A quiet, personalized and friendly guesthouse on the bank of Namkhan river in Luang Prabang, offering comfortable rooms.",
         "source": "https://phonepraseuthguesthouse.com/"
       },
       "category": "guesthouse"
@@ -46,15 +47,14 @@
         "source": "https://phonepraseuthguesthouse.com/"
       },
       "summary": {
-        "value": "Quiet, personalized, and friendly guesthouse in Luang Prabang offering comfortable rooms near the Nam Khan river and UNESCO heritage city.",
+        "value": "A quiet, personalized and friendly guesthouse on the bank of Namkhan river in Luang Prabang, offering comfortable rooms.",
         "source": "https://phonepraseuthguesthouse.com/"
       },
       "category": "guesthouse",
       "offerings": [
         {
           "name": "Double Room Up-stair",
-          "price": "US$26",
-          "source": "https://phonepraseuthguesthouse"
+          "price": "US$26"
         }
       ]
     },
@@ -64,7 +64,7 @@
         "source": "https://phonepraseuthguesthouse.com/"
       },
       "summary": {
-        "value": "Quiet, personalized, and friendly guesthouse in Luang Prabang offering comfortable rooms near the Nam Khan river and UNESCO heritage city.",
+        "value": "A quiet, personalized and friendly guesthouse on the bank of Namkhan river in Luang Prabang, offering comfortable rooms.",
         "source": "https://phonepraseuthguesthouse.com/"
       },
       "category": "guesthouse",
@@ -74,9 +74,7 @@
           "price": "US$26",
           "source": "https://phonepraseuthguesthouse.com/"
         },
-        {
-          "name": "Double Room Down-stair"
-        }
+        {}
       ]
     },
     {
@@ -85,7 +83,7 @@
         "source": "https://phonepraseuthguesthouse.com/"
       },
       "summary": {
-        "value": "Quiet, personalized, and friendly guesthouse in Luang Prabang offering comfortable rooms near the Nam Khan river and UNESCO heritage city.",
+        "value": "A quiet, personalized and friendly guesthouse on the bank of Namkhan river in Luang Prabang, offering comfortable rooms.",
         "source": "https://phonepraseuthguesthouse.com/"
       },
       "category": "guesthouse",
@@ -97,8 +95,7 @@
         },
         {
           "name": "Double Room Down-stair",
-          "price": "US$26",
-          "source": "https://phonepraseuthguesthouse."
+          "price": "US$26"
         }
       ]
     },
@@ -108,7 +105,7 @@
         "source": "https://phonepraseuthguesthouse.com/"
       },
       "summary": {
-        "value": "Quiet, personalized, and friendly guesthouse in Luang Prabang offering comfortable rooms near the Nam Khan river and UNESCO heritage city.",
+        "value": "A quiet, personalized and friendly guesthouse on the bank of Namkhan river in Luang Prabang, offering comfortable rooms.",
         "source": "https://phonepraseuthguesthouse.com/"
       },
       "category": "guesthouse",
@@ -125,7 +122,7 @@
         },
         {
           "name": "Twin Room",
-          "price": "US"
+          "price": "US$26"
         }
       ]
     },
@@ -135,35 +132,7 @@
         "source": "https://phonepraseuthguesthouse.com/"
       },
       "summary": {
-        "value": "Quiet, personalized, and friendly guesthouse in Luang Prabang offering comfortable rooms near the Nam Khan river and UNESCO heritage city.",
-        "source": "https://phonepraseuthguesthouse.com/"
-      },
-      "category": "guesthouse",
-      "offerings": [
-        {
-          "name": "Double Room Up-stair",
-          "price": "US$26",
-          "source": "https://phonepraseuthguesthouse.com/"
-        },
-        {
-          "name": "Double Room Down-stair",
-          "price": "US$26",
-          "source": "https://phonepraseuthguesthouse.com/"
-        },
-        {
-          "name": "Twin Room",
-          "price": "US$26",
-          "source": "https://phonepraseuthguesthouse.com/"
-        }
-      ]
-    },
-    {
-      "name": {
-        "value": "PHONEPRASEUTH GUESTHOUSE",
-        "source": "https://phonepraseuthguesthouse.com/"
-      },
-      "summary": {
-        "value": "Quiet, personalized, and friendly guesthouse in Luang Prabang offering comfortable rooms near the Nam Khan river and UNESCO heritage city.",
+        "value": "A quiet, personalized and friendly guesthouse on the bank of Namkhan river in Luang Prabang, offering comfortable rooms.",
         "source": "https://phonepraseuthguesthouse.com/"
       },
       "category": "guesthouse",
@@ -184,9 +153,7 @@
           "source": "https://phonepraseuthguesthouse.com/"
         },
         {
-          "name": "Family Room",
-          "price": "US$50",
-          "source": "https://phonepraseuthguesthouse.com/"
+          "name": ""
         }
       ]
     },
@@ -196,7 +163,7 @@
         "source": "https://phonepraseuthguesthouse.com/"
       },
       "summary": {
-        "value": "Quiet, personalized, and friendly guesthouse in Luang Prabang offering comfortable rooms near the Nam Khan river and UNESCO heritage city.",
+        "value": "A quiet, personalized and friendly guesthouse on the bank of Namkhan river in Luang Prabang, offering comfortable rooms.",
         "source": "https://phonepraseuthguesthouse.com/"
       },
       "category": "guesthouse",
@@ -219,590 +186,8 @@
         {
           "name": "Family Room",
           "price": "US$50",
-          "source": "https://phonepraseuthguesthouse.com/"
-        }
-      ],
-      "highlights": [
-        {
-          "value": "Just a 5-minute walk from the guesthouse"
-        }
-      ]
-    },
-    {
-      "name": {
-        "value": "PHONEPRASEUTH GUESTHOUSE",
-        "source": "https://phonepraseuthguesthouse.com/"
-      },
-      "summary": {
-        "value": "Quiet, personalized, and friendly guesthouse in Luang Prabang offering comfortable rooms near the Nam Khan river and UNESCO heritage city.",
-        "source": "https://phonepraseuthguesthouse.com/"
-      },
-      "category": "guesthouse",
-      "offerings": [
-        {
-          "name": "Double Room Up-stair",
-          "price": "US$26",
-          "source": "https://phonepraseuthguesthouse.com/"
-        },
-        {
-          "name": "Double Room Down-stair",
-          "price": "US$26",
-          "source": "https://phonepraseuthguesthouse.com/"
-        },
-        {
-          "name": "Twin Room",
-          "price": "US$26",
-          "source": "https://phonepraseuthguesthouse.com/"
-        },
-        {
-          "name": "Family Room",
-          "price": "US$50",
-          "source": "https://phonepraseuthguesthouse.com/"
-        }
-      ],
-      "highlights": [
-        {
-          "value": "Just a 5-minute walk from the guesthouse to the center point of Luang Prabang across the Nam Khan by boat",
-          "source": "https://"
-        }
-      ]
-    },
-    {
-      "name": {
-        "value": "PHONEPRASEUTH GUESTHOUSE",
-        "source": "https://phonepraseuthguesthouse.com/"
-      },
-      "summary": {
-        "value": "Quiet, personalized, and friendly guesthouse in Luang Prabang offering comfortable rooms near the Nam Khan river and UNESCO heritage city.",
-        "source": "https://phonepraseuthguesthouse.com/"
-      },
-      "category": "guesthouse",
-      "offerings": [
-        {
-          "name": "Double Room Up-stair",
-          "price": "US$26",
-          "source": "https://phonepraseuthguesthouse.com/"
-        },
-        {
-          "name": "Double Room Down-stair",
-          "price": "US$26",
-          "source": "https://phonepraseuthguesthouse.com/"
-        },
-        {
-          "name": "Twin Room",
-          "price": "US$26",
-          "source": "https://phonepraseuthguesthouse.com/"
-        },
-        {
-          "name": "Family Room",
-          "price": "US$50",
-          "source": "https://phonepraseuthguesthouse.com/"
-        }
-      ],
-      "highlights": [
-        {
-          "value": "Just a 5-minute walk from the guesthouse to the center point of Luang Prabang across the Nam Khan by boat",
-          "source": "https://phonepraseuthguesthouse.com/"
-        },
-        {
-          "value": "Offers quiet,"
-        }
-      ]
-    },
-    {
-      "name": {
-        "value": "PHONEPRASEUTH GUESTHOUSE",
-        "source": "https://phonepraseuthguesthouse.com/"
-      },
-      "summary": {
-        "value": "Quiet, personalized, and friendly guesthouse in Luang Prabang offering comfortable rooms near the Nam Khan river and UNESCO heritage city.",
-        "source": "https://phonepraseuthguesthouse.com/"
-      },
-      "category": "guesthouse",
-      "offerings": [
-        {
-          "name": "Double Room Up-stair",
-          "price": "US$26",
-          "source": "https://phonepraseuthguesthouse.com/"
-        },
-        {
-          "name": "Double Room Down-stair",
-          "price": "US$26",
-          "source": "https://phonepraseuthguesthouse.com/"
-        },
-        {
-          "name": "Twin Room",
-          "price": "US$26",
-          "source": "https://phonepraseuthguesthouse.com/"
-        },
-        {
-          "name": "Family Room",
-          "price": "US$50",
-          "source": "https://phonepraseuthguesthouse.com/"
-        }
-      ],
-      "highlights": [
-        {
-          "value": "Just a 5-minute walk from the guesthouse to the center point of Luang Prabang across the Nam Khan by boat",
-          "source": "https://phonepraseuthguesthouse.com/"
-        },
-        {
-          "value": "Offers quiet, personalized & friendly 18 rooms, standing on the bank of Namkhan river",
-          "source": "https"
-        }
-      ]
-    },
-    {
-      "name": {
-        "value": "PHONEPRASEUTH GUESTHOUSE",
-        "source": "https://phonepraseuthguesthouse.com/"
-      },
-      "summary": {
-        "value": "Quiet, personalized, and friendly guesthouse in Luang Prabang offering comfortable rooms near the Nam Khan river and UNESCO heritage city.",
-        "source": "https://phonepraseuthguesthouse.com/"
-      },
-      "category": "guesthouse",
-      "offerings": [
-        {
-          "name": "Double Room Up-stair",
-          "price": "US$26",
-          "source": "https://phonepraseuthguesthouse.com/"
-        },
-        {
-          "name": "Double Room Down-stair",
-          "price": "US$26",
-          "source": "https://phonepraseuthguesthouse.com/"
-        },
-        {
-          "name": "Twin Room",
-          "price": "US$26",
-          "source": "https://phonepraseuthguesthouse.com/"
-        },
-        {
-          "name": "Family Room",
-          "price": "US$50",
-          "source": "https://phonepraseuthguesthouse.com/"
-        }
-      ],
-      "highlights": [
-        {
-          "value": "Just a 5-minute walk from the guesthouse to the center point of Luang Prabang across the Nam Khan by boat",
-          "source": "https://phonepraseuthguesthouse.com/"
-        },
-        {
-          "value": "Offers quiet, personalized & friendly 18 rooms, standing on the bank of Namkhan river",
-          "source": "https://phonepraseuthguesthouse.com/"
-        },
-        {
-          "value": "Just "
-        }
-      ]
-    },
-    {
-      "name": {
-        "value": "PHONEPRASEUTH GUESTHOUSE",
-        "source": "https://phonepraseuthguesthouse.com/"
-      },
-      "summary": {
-        "value": "Quiet, personalized, and friendly guesthouse in Luang Prabang offering comfortable rooms near the Nam Khan river and UNESCO heritage city.",
-        "source": "https://phonepraseuthguesthouse.com/"
-      },
-      "category": "guesthouse",
-      "offerings": [
-        {
-          "name": "Double Room Up-stair",
-          "price": "US$26",
-          "source": "https://phonepraseuthguesthouse.com/"
-        },
-        {
-          "name": "Double Room Down-stair",
-          "price": "US$26",
-          "source": "https://phonepraseuthguesthouse.com/"
-        },
-        {
-          "name": "Twin Room",
-          "price": "US$26",
-          "source": "https://phonepraseuthguesthouse.com/"
-        },
-        {
-          "name": "Family Room",
-          "price": "US$50",
-          "source": "https://phonepraseuthguesthouse.com/"
-        }
-      ],
-      "highlights": [
-        {
-          "value": "Just a 5-minute walk from the guesthouse to the center point of Luang Prabang across the Nam Khan by boat",
-          "source": "https://phonepraseuthguesthouse.com/"
-        },
-        {
-          "value": "Offers quiet, personalized & friendly 18 rooms, standing on the bank of Namkhan river",
-          "source": "https://phonepraseuthguesthouse.com/"
-        },
-        {
-          "value": "Just 7 minutes crossing bamboo bridge to night market in the heart of UNESCO heritage city",
-          "source": "https://"
-        }
-      ]
-    },
-    {
-      "name": {
-        "value": "PHONEPRASEUTH GUESTHOUSE",
-        "source": "https://phonepraseuthguesthouse.com/"
-      },
-      "summary": {
-        "value": "Quiet, personalized, and friendly guesthouse in Luang Prabang offering comfortable rooms near the Nam Khan river and UNESCO heritage city.",
-        "source": "https://phonepraseuthguesthouse.com/"
-      },
-      "category": "guesthouse",
-      "offerings": [
-        {
-          "name": "Double Room Up-stair",
-          "price": "US$26",
-          "source": "https://phonepraseuthguesthouse.com/"
-        },
-        {
-          "name": "Double Room Down-stair",
-          "price": "US$26",
-          "source": "https://phonepraseuthguesthouse.com/"
-        },
-        {
-          "name": "Twin Room",
-          "price": "US$26",
-          "source": "https://phonepraseuthguesthouse.com/"
-        },
-        {
-          "name": "Family Room",
-          "price": "US$50",
-          "source": "https://phonepraseuthguesthouse.com/"
-        }
-      ],
-      "highlights": [
-        {
-          "value": "Just a 5-minute walk from the guesthouse to the center point of Luang Prabang across the Nam Khan by boat",
-          "source": "https://phonepraseuthguesthouse.com/"
-        },
-        {
-          "value": "Offers quiet, personalized & friendly 18 rooms, standing on the bank of Namkhan river",
-          "source": "https://phonepraseuthguesthouse.com/"
-        },
-        {
-          "value": "Just 7 minutes crossing bamboo bridge to night market in the heart of UNESCO heritage city",
-          "source": "https://phonepraseuthguesthouse.com/"
-        }
-      ],
-      "location": {}
-    },
-    {
-      "name": {
-        "value": "PHONEPRASEUTH GUESTHOUSE",
-        "source": "https://phonepraseuthguesthouse.com/"
-      },
-      "summary": {
-        "value": "Quiet, personalized, and friendly guesthouse in Luang Prabang offering comfortable rooms near the Nam Khan river and UNESCO heritage city.",
-        "source": "https://phonepraseuthguesthouse.com/"
-      },
-      "category": "guesthouse",
-      "offerings": [
-        {
-          "name": "Double Room Up-stair",
-          "price": "US$26",
-          "source": "https://phonepraseuthguesthouse.com/"
-        },
-        {
-          "name": "Double Room Down-stair",
-          "price": "US$26",
-          "source": "https://phonepraseuthguesthouse.com/"
-        },
-        {
-          "name": "Twin Room",
-          "price": "US$26",
-          "source": "https://phonepraseuthguesthouse.com/"
-        },
-        {
-          "name": "Family Room",
-          "price": "US$50",
-          "source": "https://phonepraseuthguesthouse.com/"
-        }
-      ],
-      "highlights": [
-        {
-          "value": "Just a 5-minute walk from the guesthouse to the center point of Luang Prabang across the Nam Khan by boat",
-          "source": "https://phonepraseuthguesthouse.com/"
-        },
-        {
-          "value": "Offers quiet, personalized & friendly 18 rooms, standing on the bank of Namkhan river",
-          "source": "https://phonepraseuthguesthouse.com/"
-        },
-        {
-          "value": "Just 7 minutes crossing bamboo bridge to night market in the heart of UNESCO heritage city",
-          "source": "https://phonepraseuthguesthouse.com/"
-        }
-      ],
-      "location": {
-        "town": {
-          "value": "Luang Prabang",
           "source": "https://phonepr"
         }
-      }
-    },
-    {
-      "name": {
-        "value": "PHONEPRASEUTH GUESTHOUSE",
-        "source": "https://phonepraseuthguesthouse.com/"
-      },
-      "summary": {
-        "value": "Quiet, personalized, and friendly guesthouse in Luang Prabang offering comfortable rooms near the Nam Khan river and UNESCO heritage city.",
-        "source": "https://phonepraseuthguesthouse.com/"
-      },
-      "category": "guesthouse",
-      "offerings": [
-        {
-          "name": "Double Room Up-stair",
-          "price": "US$26",
-          "source": "https://phonepraseuthguesthouse.com/"
-        },
-        {
-          "name": "Double Room Down-stair",
-          "price": "US$26",
-          "source": "https://phonepraseuthguesthouse.com/"
-        },
-        {
-          "name": "Twin Room",
-          "price": "US$26",
-          "source": "https://phonepraseuthguesthouse.com/"
-        },
-        {
-          "name": "Family Room",
-          "price": "US$50",
-          "source": "https://phonepraseuthguesthouse.com/"
-        }
-      ],
-      "highlights": [
-        {
-          "value": "Just a 5-minute walk from the guesthouse to the center point of Luang Prabang across the Nam Khan by boat",
-          "source": "https://phonepraseuthguesthouse.com/"
-        },
-        {
-          "value": "Offers quiet, personalized & friendly 18 rooms, standing on the bank of Namkhan river",
-          "source": "https://phonepraseuthguesthouse.com/"
-        },
-        {
-          "value": "Just 7 minutes crossing bamboo bridge to night market in the heart of UNESCO heritage city",
-          "source": "https://phonepraseuthguesthouse.com/"
-        }
-      ],
-      "location": {
-        "town": {
-          "value": "Luang Prabang",
-          "source": "https://phonepraseuthguesthouse.com/"
-        },
-        "area": null,
-        "address": {
-          "value": "Ban Phanluang, Luang Prabang, the World Heritage Town"
-        }
-      }
-    },
-    {
-      "name": {
-        "value": "PHONEPRASEUTH GUESTHOUSE",
-        "source": "https://phonepraseuthguesthouse.com/"
-      },
-      "summary": {
-        "value": "Quiet, personalized, and friendly guesthouse in Luang Prabang offering comfortable rooms near the Nam Khan river and UNESCO heritage city.",
-        "source": "https://phonepraseuthguesthouse.com/"
-      },
-      "category": "guesthouse",
-      "offerings": [
-        {
-          "name": "Double Room Up-stair",
-          "price": "US$26",
-          "source": "https://phonepraseuthguesthouse.com/"
-        },
-        {
-          "name": "Double Room Down-stair",
-          "price": "US$26",
-          "source": "https://phonepraseuthguesthouse.com/"
-        },
-        {
-          "name": "Twin Room",
-          "price": "US$26",
-          "source": "https://phonepraseuthguesthouse.com/"
-        },
-        {
-          "name": "Family Room",
-          "price": "US$50",
-          "source": "https://phonepraseuthguesthouse.com/"
-        }
-      ],
-      "highlights": [
-        {
-          "value": "Just a 5-minute walk from the guesthouse to the center point of Luang Prabang across the Nam Khan by boat",
-          "source": "https://phonepraseuthguesthouse.com/"
-        },
-        {
-          "value": "Offers quiet, personalized & friendly 18 rooms, standing on the bank of Namkhan river",
-          "source": "https://phonepraseuthguesthouse.com/"
-        },
-        {
-          "value": "Just 7 minutes crossing bamboo bridge to night market in the heart of UNESCO heritage city",
-          "source": "https://phonepraseuthguesthouse.com/"
-        }
-      ],
-      "location": {
-        "town": {
-          "value": "Luang Prabang",
-          "source": "https://phonepraseuthguesthouse.com/"
-        },
-        "area": null,
-        "address": {
-          "value": "Ban Phanluang, Luang Prabang, the World Heritage Town",
-          "source": "https://phonepraseuthguesthouse.com/"
-        },
-        "serviceArea": null
-      },
-      "contact": {
-        "whatsapp": null,
-        "phone": null
-      }
-    },
-    {
-      "name": {
-        "value": "PHONEPRASEUTH GUESTHOUSE",
-        "source": "https://phonepraseuthguesthouse.com/"
-      },
-      "summary": {
-        "value": "Quiet, personalized, and friendly guesthouse in Luang Prabang offering comfortable rooms near the Nam Khan river and UNESCO heritage city.",
-        "source": "https://phonepraseuthguesthouse.com/"
-      },
-      "category": "guesthouse",
-      "offerings": [
-        {
-          "name": "Double Room Up-stair",
-          "price": "US$26",
-          "source": "https://phonepraseuthguesthouse.com/"
-        },
-        {
-          "name": "Double Room Down-stair",
-          "price": "US$26",
-          "source": "https://phonepraseuthguesthouse.com/"
-        },
-        {
-          "name": "Twin Room",
-          "price": "US$26",
-          "source": "https://phonepraseuthguesthouse.com/"
-        },
-        {
-          "name": "Family Room",
-          "price": "US$50",
-          "source": "https://phonepraseuthguesthouse.com/"
-        }
-      ],
-      "highlights": [
-        {
-          "value": "Just a 5-minute walk from the guesthouse to the center point of Luang Prabang across the Nam Khan by boat",
-          "source": "https://phonepraseuthguesthouse.com/"
-        },
-        {
-          "value": "Offers quiet, personalized & friendly 18 rooms, standing on the bank of Namkhan river",
-          "source": "https://phonepraseuthguesthouse.com/"
-        },
-        {
-          "value": "Just 7 minutes crossing bamboo bridge to night market in the heart of UNESCO heritage city",
-          "source": "https://phonepraseuthguesthouse.com/"
-        }
-      ],
-      "location": {
-        "town": {
-          "value": "Luang Prabang",
-          "source": "https://phonepraseuthguesthouse.com/"
-        },
-        "area": null,
-        "address": {
-          "value": "Ban Phanluang, Luang Prabang, the World Heritage Town",
-          "source": "https://phonepraseuthguesthouse.com/"
-        },
-        "serviceArea": null
-      },
-      "contact": {
-        "whatsapp": null,
-        "phone": null,
-        "email": {
-          "value": "phonepraseuth1@gmail.com"
-        }
-      }
-    },
-    {
-      "name": {
-        "value": "PHONEPRASEUTH GUESTHOUSE",
-        "source": "https://phonepraseuthguesthouse.com/"
-      },
-      "summary": {
-        "value": "Quiet, personalized, and friendly guesthouse in Luang Prabang offering comfortable rooms near the Nam Khan river and UNESCO heritage city.",
-        "source": "https://phonepraseuthguesthouse.com/"
-      },
-      "category": "guesthouse",
-      "offerings": [
-        {
-          "name": "Double Room Up-stair",
-          "price": "US$26",
-          "source": "https://phonepraseuthguesthouse.com/"
-        },
-        {
-          "name": "Double Room Down-stair",
-          "price": "US$26",
-          "source": "https://phonepraseuthguesthouse.com/"
-        },
-        {
-          "name": "Twin Room",
-          "price": "US$26",
-          "source": "https://phonepraseuthguesthouse.com/"
-        },
-        {
-          "name": "Family Room",
-          "price": "US$50",
-          "source": "https://phonepraseuthguesthouse.com/"
-        }
-      ],
-      "highlights": [
-        {
-          "value": "Just a 5-minute walk from the guesthouse to the center point of Luang Prabang across the Nam Khan by boat",
-          "source": "https://phonepraseuthguesthouse.com/"
-        },
-        {
-          "value": "Offers quiet, personalized & friendly 18 rooms, standing on the bank of Namkhan river",
-          "source": "https://phonepraseuthguesthouse.com/"
-        },
-        {
-          "value": "Just 7 minutes crossing bamboo bridge to night market in the heart of UNESCO heritage city",
-          "source": "https://phonepraseuthguesthouse.com/"
-        }
-      ],
-      "location": {
-        "town": {
-          "value": "Luang Prabang",
-          "source": "https://phonepraseuthguesthouse.com/"
-        },
-        "area": null,
-        "address": {
-          "value": "Ban Phanluang, Luang Prabang, the World Heritage Town",
-          "source": "https://phonepraseuthguesthouse.com/"
-        },
-        "serviceArea": null
-      },
-      "contact": {
-        "whatsapp": null,
-        "phone": null,
-        "email": {
-          "value": "phonepraseuth1@gmail.com",
-          "source": "https://phonepraseuthguesthouse.com/"
-        },
-        "instagram": null,
-        "bookingUrl": null
-      },
-      "hours": null,
-      "tone": [
-        "welcoming"
       ]
     },
     {
@@ -811,7 +196,7 @@
         "source": "https://phonepraseuthguesthouse.com/"
       },
       "summary": {
-        "value": "Quiet, personalized, and friendly guesthouse in Luang Prabang offering comfortable rooms near the Nam Khan river and UNESCO heritage city.",
+        "value": "A quiet, personalized and friendly guesthouse on the bank of Namkhan river in Luang Prabang, offering comfortable rooms.",
         "source": "https://phonepraseuthguesthouse.com/"
       },
       "category": "guesthouse",
@@ -838,49 +223,8 @@
         }
       ],
       "highlights": [
-        {
-          "value": "Just a 5-minute walk from the guesthouse to the center point of Luang Prabang across the Nam Khan by boat",
-          "source": "https://phonepraseuthguesthouse.com/"
-        },
-        {
-          "value": "Offers quiet, personalized & friendly 18 rooms, standing on the bank of Namkhan river",
-          "source": "https://phonepraseuthguesthouse.com/"
-        },
-        {
-          "value": "Just 7 minutes crossing bamboo bridge to night market in the heart of UNESCO heritage city",
-          "source": "https://phonepraseuthguesthouse.com/"
-        }
-      ],
-      "location": {
-        "town": {
-          "value": "Luang Prabang",
-          "source": "https://phonepraseuthguesthouse.com/"
-        },
-        "area": null,
-        "address": {
-          "value": "Ban Phanluang, Luang Prabang, the World Heritage Town",
-          "source": "https://phonepraseuthguesthouse.com/"
-        },
-        "serviceArea": null
-      },
-      "contact": {
-        "whatsapp": null,
-        "phone": null,
-        "email": {
-          "value": "phonepraseuth1@gmail.com",
-          "source": "https://phonepraseuthguesthouse.com/"
-        },
-        "instagram": null,
-        "bookingUrl": null
-      },
-      "hours": null,
-      "tone": [
-        "welcoming",
-        "friendly",
-        "peaceful",
-        "informative"
-      ],
-      "colours": []
+        {}
+      ]
     },
     {
       "name": {
@@ -888,7 +232,87 @@
         "source": "https://phonepraseuthguesthouse.com/"
       },
       "summary": {
-        "value": "Quiet, personalized, and friendly guesthouse in Luang Prabang offering comfortable rooms near the Nam Khan river and UNESCO heritage city.",
+        "value": "A quiet, personalized and friendly guesthouse on the bank of Namkhan river in Luang Prabang, offering comfortable rooms.",
+        "source": "https://phonepraseuthguesthouse.com/"
+      },
+      "category": "guesthouse",
+      "offerings": [
+        {
+          "name": "Double Room Up-stair",
+          "price": "US$26",
+          "source": "https://phonepraseuthguesthouse.com/"
+        },
+        {
+          "name": "Double Room Down-stair",
+          "price": "US$26",
+          "source": "https://phonepraseuthguesthouse.com/"
+        },
+        {
+          "name": "Twin Room",
+          "price": "US$26",
+          "source": "https://phonepraseuthguesthouse.com/"
+        },
+        {
+          "name": "Family Room",
+          "price": "US$50",
+          "source": "https://phonepraseuthguesthouse.com/"
+        }
+      ],
+      "highlights": [
+        {
+          "value": "Just a 5-minute walk from the guesthouse to the center point of Luang Prabang"
+        }
+      ]
+    },
+    {
+      "name": {
+        "value": "PHONEPRASEUTH GUESTHOUSE",
+        "source": "https://phonepraseuthguesthouse.com/"
+      },
+      "summary": {
+        "value": "A quiet, personalized and friendly guesthouse on the bank of Namkhan river in Luang Prabang, offering comfortable rooms.",
+        "source": "https://phonepraseuthguesthouse.com/"
+      },
+      "category": "guesthouse",
+      "offerings": [
+        {
+          "name": "Double Room Up-stair",
+          "price": "US$26",
+          "source": "https://phonepraseuthguesthouse.com/"
+        },
+        {
+          "name": "Double Room Down-stair",
+          "price": "US$26",
+          "source": "https://phonepraseuthguesthouse.com/"
+        },
+        {
+          "name": "Twin Room",
+          "price": "US$26",
+          "source": "https://phonepraseuthguesthouse.com/"
+        },
+        {
+          "name": "Family Room",
+          "price": "US$50",
+          "source": "https://phonepraseuthguesthouse.com/"
+        }
+      ],
+      "highlights": [
+        {
+          "value": "Just a 5-minute walk from the guesthouse to the center point of Luang Prabang across the Nam Khan by boat",
+          "source": "https://phonepraseuthguesthouse.com/"
+        },
+        {
+          "value": "Offers quiet, personalized & friendly 18 rooms, standing on the bank of"
+        }
+      ]
+    },
+    {
+      "name": {
+        "value": "PHONEPRASEUTH GUESTHOUSE",
+        "source": "https://phonepraseuthguesthouse.com/"
+      },
+      "summary": {
+        "value": "A quiet, personalized and friendly guesthouse on the bank of Namkhan river in Luang Prabang, offering comfortable rooms.",
         "source": "https://phonepraseuthguesthouse.com/"
       },
       "category": "guesthouse",
@@ -922,9 +346,145 @@
         {
           "value": "Offers quiet, personalized & friendly 18 rooms, standing on the bank of Namkhan river",
           "source": "https://phonepraseuthguesthouse.com/"
+        }
+      ]
+    },
+    {
+      "name": {
+        "value": "PHONEPRASEUTH GUESTHOUSE",
+        "source": "https://phonepraseuthguesthouse.com/"
+      },
+      "summary": {
+        "value": "A quiet, personalized and friendly guesthouse on the bank of Namkhan river in Luang Prabang, offering comfortable rooms.",
+        "source": "https://phonepraseuthguesthouse.com/"
+      },
+      "category": "guesthouse",
+      "offerings": [
+        {
+          "name": "Double Room Up-stair",
+          "price": "US$26",
+          "source": "https://phonepraseuthguesthouse.com/"
         },
         {
-          "value": "Just 7 minutes crossing bamboo bridge to night market in the heart of UNESCO heritage city",
+          "name": "Double Room Down-stair",
+          "price": "US$26",
+          "source": "https://phonepraseuthguesthouse.com/"
+        },
+        {
+          "name": "Twin Room",
+          "price": "US$26",
+          "source": "https://phonepraseuthguesthouse.com/"
+        },
+        {
+          "name": "Family Room",
+          "price": "US$50",
+          "source": "https://phonepraseuthguesthouse.com/"
+        }
+      ],
+      "highlights": [
+        {
+          "value": "Just a 5-minute walk from the guesthouse to the center point of Luang Prabang across the Nam Khan by boat",
+          "source": "https://phonepraseuthguesthouse.com/"
+        },
+        {
+          "value": "Offers quiet, personalized & friendly 18 rooms, standing on the bank of Namkhan river",
+          "source": "https://phonepraseuthguesthouse.com/"
+        }
+      ],
+      "location": {
+        "town": {
+          "value": "Luang Prab"
+        }
+      }
+    },
+    {
+      "name": {
+        "value": "PHONEPRASEUTH GUESTHOUSE",
+        "source": "https://phonepraseuthguesthouse.com/"
+      },
+      "summary": {
+        "value": "A quiet, personalized and friendly guesthouse on the bank of Namkhan river in Luang Prabang, offering comfortable rooms.",
+        "source": "https://phonepraseuthguesthouse.com/"
+      },
+      "category": "guesthouse",
+      "offerings": [
+        {
+          "name": "Double Room Up-stair",
+          "price": "US$26",
+          "source": "https://phonepraseuthguesthouse.com/"
+        },
+        {
+          "name": "Double Room Down-stair",
+          "price": "US$26",
+          "source": "https://phonepraseuthguesthouse.com/"
+        },
+        {
+          "name": "Twin Room",
+          "price": "US$26",
+          "source": "https://phonepraseuthguesthouse.com/"
+        },
+        {
+          "name": "Family Room",
+          "price": "US$50",
+          "source": "https://phonepraseuthguesthouse.com/"
+        }
+      ],
+      "highlights": [
+        {
+          "value": "Just a 5-minute walk from the guesthouse to the center point of Luang Prabang across the Nam Khan by boat",
+          "source": "https://phonepraseuthguesthouse.com/"
+        },
+        {
+          "value": "Offers quiet, personalized & friendly 18 rooms, standing on the bank of Namkhan river",
+          "source": "https://phonepraseuthguesthouse.com/"
+        }
+      ],
+      "location": {
+        "town": {
+          "value": "Luang Prabang",
+          "source": "https://phonepraseuthguesthouse.com/"
+        }
+      }
+    },
+    {
+      "name": {
+        "value": "PHONEPRASEUTH GUESTHOUSE",
+        "source": "https://phonepraseuthguesthouse.com/"
+      },
+      "summary": {
+        "value": "A quiet, personalized and friendly guesthouse on the bank of Namkhan river in Luang Prabang, offering comfortable rooms.",
+        "source": "https://phonepraseuthguesthouse.com/"
+      },
+      "category": "guesthouse",
+      "offerings": [
+        {
+          "name": "Double Room Up-stair",
+          "price": "US$26",
+          "source": "https://phonepraseuthguesthouse.com/"
+        },
+        {
+          "name": "Double Room Down-stair",
+          "price": "US$26",
+          "source": "https://phonepraseuthguesthouse.com/"
+        },
+        {
+          "name": "Twin Room",
+          "price": "US$26",
+          "source": "https://phonepraseuthguesthouse.com/"
+        },
+        {
+          "name": "Family Room",
+          "price": "US$50",
+          "source": "https://phonepraseuthguesthouse.com/"
+        }
+      ],
+      "highlights": [
+        {
+          "value": "Just a 5-minute walk from the guesthouse to the center point of Luang Prabang across the Nam Khan by boat",
+          "source": "https://phonepraseuthguesthouse.com/"
+        },
+        {
+          "value": "Offers quiet, personalized & friendly 18 rooms, standing on the bank of Namkhan river",
           "source": "https://phonepraseuthguesthouse.com/"
         }
       ],
@@ -933,9 +493,436 @@
           "value": "Luang Prabang",
           "source": "https://phonepraseuthguesthouse.com/"
         },
-        "area": null,
+        "area": {
+          "value": "Ban Phanluang",
+          "source": "https://phone"
+        }
+      }
+    },
+    {
+      "name": {
+        "value": "PHONEPRASEUTH GUESTHOUSE",
+        "source": "https://phonepraseuthguesthouse.com/"
+      },
+      "summary": {
+        "value": "A quiet, personalized and friendly guesthouse on the bank of Namkhan river in Luang Prabang, offering comfortable rooms.",
+        "source": "https://phonepraseuthguesthouse.com/"
+      },
+      "category": "guesthouse",
+      "offerings": [
+        {
+          "name": "Double Room Up-stair",
+          "price": "US$26",
+          "source": "https://phonepraseuthguesthouse.com/"
+        },
+        {
+          "name": "Double Room Down-stair",
+          "price": "US$26",
+          "source": "https://phonepraseuthguesthouse.com/"
+        },
+        {
+          "name": "Twin Room",
+          "price": "US$26",
+          "source": "https://phonepraseuthguesthouse.com/"
+        },
+        {
+          "name": "Family Room",
+          "price": "US$50",
+          "source": "https://phonepraseuthguesthouse.com/"
+        }
+      ],
+      "highlights": [
+        {
+          "value": "Just a 5-minute walk from the guesthouse to the center point of Luang Prabang across the Nam Khan by boat",
+          "source": "https://phonepraseuthguesthouse.com/"
+        },
+        {
+          "value": "Offers quiet, personalized & friendly 18 rooms, standing on the bank of Namkhan river",
+          "source": "https://phonepraseuthguesthouse.com/"
+        }
+      ],
+      "location": {
+        "town": {
+          "value": "Luang Prabang",
+          "source": "https://phonepraseuthguesthouse.com/"
+        },
+        "area": {
+          "value": "Ban Phanluang",
+          "source": "https://phonepraseuthguesthouse.com/"
+        },
         "address": {
-          "value": "Ban Phanluang, Luang Prabang, the World Heritage Town",
+          "value": "Ban"
+        }
+      }
+    },
+    {
+      "name": {
+        "value": "PHONEPRASEUTH GUESTHOUSE",
+        "source": "https://phonepraseuthguesthouse.com/"
+      },
+      "summary": {
+        "value": "A quiet, personalized and friendly guesthouse on the bank of Namkhan river in Luang Prabang, offering comfortable rooms.",
+        "source": "https://phonepraseuthguesthouse.com/"
+      },
+      "category": "guesthouse",
+      "offerings": [
+        {
+          "name": "Double Room Up-stair",
+          "price": "US$26",
+          "source": "https://phonepraseuthguesthouse.com/"
+        },
+        {
+          "name": "Double Room Down-stair",
+          "price": "US$26",
+          "source": "https://phonepraseuthguesthouse.com/"
+        },
+        {
+          "name": "Twin Room",
+          "price": "US$26",
+          "source": "https://phonepraseuthguesthouse.com/"
+        },
+        {
+          "name": "Family Room",
+          "price": "US$50",
+          "source": "https://phonepraseuthguesthouse.com/"
+        }
+      ],
+      "highlights": [
+        {
+          "value": "Just a 5-minute walk from the guesthouse to the center point of Luang Prabang across the Nam Khan by boat",
+          "source": "https://phonepraseuthguesthouse.com/"
+        },
+        {
+          "value": "Offers quiet, personalized & friendly 18 rooms, standing on the bank of Namkhan river",
+          "source": "https://phonepraseuthguesthouse.com/"
+        }
+      ],
+      "location": {
+        "town": {
+          "value": "Luang Prabang",
+          "source": "https://phonepraseuthguesthouse.com/"
+        },
+        "area": {
+          "value": "Ban Phanluang",
+          "source": "https://phonepraseuthguesthouse.com/"
+        },
+        "address": {
+          "value": "Ban Phanluang, Luang Prabang",
+          "source": "https://phonepraseuthguesthouse."
+        }
+      }
+    },
+    {
+      "name": {
+        "value": "PHONEPRASEUTH GUESTHOUSE",
+        "source": "https://phonepraseuthguesthouse.com/"
+      },
+      "summary": {
+        "value": "A quiet, personalized and friendly guesthouse on the bank of Namkhan river in Luang Prabang, offering comfortable rooms.",
+        "source": "https://phonepraseuthguesthouse.com/"
+      },
+      "category": "guesthouse",
+      "offerings": [
+        {
+          "name": "Double Room Up-stair",
+          "price": "US$26",
+          "source": "https://phonepraseuthguesthouse.com/"
+        },
+        {
+          "name": "Double Room Down-stair",
+          "price": "US$26",
+          "source": "https://phonepraseuthguesthouse.com/"
+        },
+        {
+          "name": "Twin Room",
+          "price": "US$26",
+          "source": "https://phonepraseuthguesthouse.com/"
+        },
+        {
+          "name": "Family Room",
+          "price": "US$50",
+          "source": "https://phonepraseuthguesthouse.com/"
+        }
+      ],
+      "highlights": [
+        {
+          "value": "Just a 5-minute walk from the guesthouse to the center point of Luang Prabang across the Nam Khan by boat",
+          "source": "https://phonepraseuthguesthouse.com/"
+        },
+        {
+          "value": "Offers quiet, personalized & friendly 18 rooms, standing on the bank of Namkhan river",
+          "source": "https://phonepraseuthguesthouse.com/"
+        }
+      ],
+      "location": {
+        "town": {
+          "value": "Luang Prabang",
+          "source": "https://phonepraseuthguesthouse.com/"
+        },
+        "area": {
+          "value": "Ban Phanluang",
+          "source": "https://phonepraseuthguesthouse.com/"
+        },
+        "address": {
+          "value": "Ban Phanluang, Luang Prabang",
+          "source": "https://phonepraseuthguesthouse.com/"
+        },
+        "serviceArea": null
+      },
+      "contact": {}
+    },
+    {
+      "name": {
+        "value": "PHONEPRASEUTH GUESTHOUSE",
+        "source": "https://phonepraseuthguesthouse.com/"
+      },
+      "summary": {
+        "value": "A quiet, personalized and friendly guesthouse on the bank of Namkhan river in Luang Prabang, offering comfortable rooms.",
+        "source": "https://phonepraseuthguesthouse.com/"
+      },
+      "category": "guesthouse",
+      "offerings": [
+        {
+          "name": "Double Room Up-stair",
+          "price": "US$26",
+          "source": "https://phonepraseuthguesthouse.com/"
+        },
+        {
+          "name": "Double Room Down-stair",
+          "price": "US$26",
+          "source": "https://phonepraseuthguesthouse.com/"
+        },
+        {
+          "name": "Twin Room",
+          "price": "US$26",
+          "source": "https://phonepraseuthguesthouse.com/"
+        },
+        {
+          "name": "Family Room",
+          "price": "US$50",
+          "source": "https://phonepraseuthguesthouse.com/"
+        }
+      ],
+      "highlights": [
+        {
+          "value": "Just a 5-minute walk from the guesthouse to the center point of Luang Prabang across the Nam Khan by boat",
+          "source": "https://phonepraseuthguesthouse.com/"
+        },
+        {
+          "value": "Offers quiet, personalized & friendly 18 rooms, standing on the bank of Namkhan river",
+          "source": "https://phonepraseuthguesthouse.com/"
+        }
+      ],
+      "location": {
+        "town": {
+          "value": "Luang Prabang",
+          "source": "https://phonepraseuthguesthouse.com/"
+        },
+        "area": {
+          "value": "Ban Phanluang",
+          "source": "https://phonepraseuthguesthouse.com/"
+        },
+        "address": {
+          "value": "Ban Phanluang, Luang Prabang",
+          "source": "https://phonepraseuthguesthouse.com/"
+        },
+        "serviceArea": null
+      },
+      "contact": {
+        "whatsapp": null,
+        "phone": null,
+        "email": {
+          "value": "phone"
+        }
+      }
+    },
+    {
+      "name": {
+        "value": "PHONEPRASEUTH GUESTHOUSE",
+        "source": "https://phonepraseuthguesthouse.com/"
+      },
+      "summary": {
+        "value": "A quiet, personalized and friendly guesthouse on the bank of Namkhan river in Luang Prabang, offering comfortable rooms.",
+        "source": "https://phonepraseuthguesthouse.com/"
+      },
+      "category": "guesthouse",
+      "offerings": [
+        {
+          "name": "Double Room Up-stair",
+          "price": "US$26",
+          "source": "https://phonepraseuthguesthouse.com/"
+        },
+        {
+          "name": "Double Room Down-stair",
+          "price": "US$26",
+          "source": "https://phonepraseuthguesthouse.com/"
+        },
+        {
+          "name": "Twin Room",
+          "price": "US$26",
+          "source": "https://phonepraseuthguesthouse.com/"
+        },
+        {
+          "name": "Family Room",
+          "price": "US$50",
+          "source": "https://phonepraseuthguesthouse.com/"
+        }
+      ],
+      "highlights": [
+        {
+          "value": "Just a 5-minute walk from the guesthouse to the center point of Luang Prabang across the Nam Khan by boat",
+          "source": "https://phonepraseuthguesthouse.com/"
+        },
+        {
+          "value": "Offers quiet, personalized & friendly 18 rooms, standing on the bank of Namkhan river",
+          "source": "https://phonepraseuthguesthouse.com/"
+        }
+      ],
+      "location": {
+        "town": {
+          "value": "Luang Prabang",
+          "source": "https://phonepraseuthguesthouse.com/"
+        },
+        "area": {
+          "value": "Ban Phanluang",
+          "source": "https://phonepraseuthguesthouse.com/"
+        },
+        "address": {
+          "value": "Ban Phanluang, Luang Prabang",
+          "source": "https://phonepraseuthguesthouse.com/"
+        },
+        "serviceArea": null
+      },
+      "contact": {
+        "whatsapp": null,
+        "phone": null,
+        "email": {
+          "value": "phonepraseuth1@gmail.com",
+          "source": "https://phonepraseuthguesthouse."
+        }
+      }
+    },
+    {
+      "name": {
+        "value": "PHONEPRASEUTH GUESTHOUSE",
+        "source": "https://phonepraseuthguesthouse.com/"
+      },
+      "summary": {
+        "value": "A quiet, personalized and friendly guesthouse on the bank of Namkhan river in Luang Prabang, offering comfortable rooms.",
+        "source": "https://phonepraseuthguesthouse.com/"
+      },
+      "category": "guesthouse",
+      "offerings": [
+        {
+          "name": "Double Room Up-stair",
+          "price": "US$26",
+          "source": "https://phonepraseuthguesthouse.com/"
+        },
+        {
+          "name": "Double Room Down-stair",
+          "price": "US$26",
+          "source": "https://phonepraseuthguesthouse.com/"
+        },
+        {
+          "name": "Twin Room",
+          "price": "US$26",
+          "source": "https://phonepraseuthguesthouse.com/"
+        },
+        {
+          "name": "Family Room",
+          "price": "US$50",
+          "source": "https://phonepraseuthguesthouse.com/"
+        }
+      ],
+      "highlights": [
+        {
+          "value": "Just a 5-minute walk from the guesthouse to the center point of Luang Prabang across the Nam Khan by boat",
+          "source": "https://phonepraseuthguesthouse.com/"
+        },
+        {
+          "value": "Offers quiet, personalized & friendly 18 rooms, standing on the bank of Namkhan river",
+          "source": "https://phonepraseuthguesthouse.com/"
+        }
+      ],
+      "location": {
+        "town": {
+          "value": "Luang Prabang",
+          "source": "https://phonepraseuthguesthouse.com/"
+        },
+        "area": {
+          "value": "Ban Phanluang",
+          "source": "https://phonepraseuthguesthouse.com/"
+        },
+        "address": {
+          "value": "Ban Phanluang, Luang Prabang",
+          "source": "https://phonepraseuthguesthouse.com/"
+        },
+        "serviceArea": null
+      },
+      "contact": {
+        "whatsapp": null,
+        "phone": null,
+        "email": {
+          "value": "phonepraseuth1@gmail.com",
+          "source": "https://phonepraseuthguesthouse.com/"
+        },
+        "instagram": null,
+        "bookingUrl": null
+      }
+    },
+    {
+      "name": {
+        "value": "PHONEPRASEUTH GUESTHOUSE",
+        "source": "https://phonepraseuthguesthouse.com/"
+      },
+      "summary": {
+        "value": "A quiet, personalized and friendly guesthouse on the bank of Namkhan river in Luang Prabang, offering comfortable rooms.",
+        "source": "https://phonepraseuthguesthouse.com/"
+      },
+      "category": "guesthouse",
+      "offerings": [
+        {
+          "name": "Double Room Up-stair",
+          "price": "US$26",
+          "source": "https://phonepraseuthguesthouse.com/"
+        },
+        {
+          "name": "Double Room Down-stair",
+          "price": "US$26",
+          "source": "https://phonepraseuthguesthouse.com/"
+        },
+        {
+          "name": "Twin Room",
+          "price": "US$26",
+          "source": "https://phonepraseuthguesthouse.com/"
+        },
+        {
+          "name": "Family Room",
+          "price": "US$50",
+          "source": "https://phonepraseuthguesthouse.com/"
+        }
+      ],
+      "highlights": [
+        {
+          "value": "Just a 5-minute walk from the guesthouse to the center point of Luang Prabang across the Nam Khan by boat",
+          "source": "https://phonepraseuthguesthouse.com/"
+        },
+        {
+          "value": "Offers quiet, personalized & friendly 18 rooms, standing on the bank of Namkhan river",
+          "source": "https://phonepraseuthguesthouse.com/"
+        }
+      ],
+      "location": {
+        "town": {
+          "value": "Luang Prabang",
+          "source": "https://phonepraseuthguesthouse.com/"
+        },
+        "area": {
+          "value": "Ban Phanluang",
+          "source": "https://phonepraseuthguesthouse.com/"
+        },
+        "address": {
+          "value": "Ban Phanluang, Luang Prabang",
           "source": "https://phonepraseuthguesthouse.com/"
         },
         "serviceArea": null
@@ -952,17 +939,90 @@
       },
       "hours": null,
       "tone": [
-        "welcoming",
         "friendly",
-        "peaceful",
-        "informative"
+        "welcoming",
+        "peace"
+      ]
+    },
+    {
+      "name": {
+        "value": "PHONEPRASEUTH GUESTHOUSE",
+        "source": "https://phonepraseuthguesthouse.com/"
+      },
+      "summary": {
+        "value": "A quiet, personalized and friendly guesthouse on the bank of Namkhan river in Luang Prabang, offering comfortable rooms.",
+        "source": "https://phonepraseuthguesthouse.com/"
+      },
+      "category": "guesthouse",
+      "offerings": [
+        {
+          "name": "Double Room Up-stair",
+          "price": "US$26",
+          "source": "https://phonepraseuthguesthouse.com/"
+        },
+        {
+          "name": "Double Room Down-stair",
+          "price": "US$26",
+          "source": "https://phonepraseuthguesthouse.com/"
+        },
+        {
+          "name": "Twin Room",
+          "price": "US$26",
+          "source": "https://phonepraseuthguesthouse.com/"
+        },
+        {
+          "name": "Family Room",
+          "price": "US$50",
+          "source": "https://phonepraseuthguesthouse.com/"
+        }
+      ],
+      "highlights": [
+        {
+          "value": "Just a 5-minute walk from the guesthouse to the center point of Luang Prabang across the Nam Khan by boat",
+          "source": "https://phonepraseuthguesthouse.com/"
+        },
+        {
+          "value": "Offers quiet, personalized & friendly 18 rooms, standing on the bank of Namkhan river",
+          "source": "https://phonepraseuthguesthouse.com/"
+        }
+      ],
+      "location": {
+        "town": {
+          "value": "Luang Prabang",
+          "source": "https://phonepraseuthguesthouse.com/"
+        },
+        "area": {
+          "value": "Ban Phanluang",
+          "source": "https://phonepraseuthguesthouse.com/"
+        },
+        "address": {
+          "value": "Ban Phanluang, Luang Prabang",
+          "source": "https://phonepraseuthguesthouse.com/"
+        },
+        "serviceArea": null
+      },
+      "contact": {
+        "whatsapp": null,
+        "phone": null,
+        "email": {
+          "value": "phonepraseuth1@gmail.com",
+          "source": "https://phonepraseuthguesthouse.com/"
+        },
+        "instagram": null,
+        "bookingUrl": null
+      },
+      "hours": null,
+      "tone": [
+        "friendly",
+        "welcoming",
+        "peaceful"
       ],
       "colours": [],
       "essence": {
         "feeling": [
-          "peaceful",
-          "welcoming",
-          "rested"
+          "relaxed",
+          "refreshed",
+          "welcomed"
         ]
       }
     },
@@ -972,7 +1032,7 @@
         "source": "https://phonepraseuthguesthouse.com/"
       },
       "summary": {
-        "value": "Quiet, personalized, and friendly guesthouse in Luang Prabang offering comfortable rooms near the Nam Khan river and UNESCO heritage city.",
+        "value": "A quiet, personalized and friendly guesthouse on the bank of Namkhan river in Luang Prabang, offering comfortable rooms.",
         "source": "https://phonepraseuthguesthouse.com/"
       },
       "category": "guesthouse",
@@ -1006,10 +1066,6 @@
         {
           "value": "Offers quiet, personalized & friendly 18 rooms, standing on the bank of Namkhan river",
           "source": "https://phonepraseuthguesthouse.com/"
-        },
-        {
-          "value": "Just 7 minutes crossing bamboo bridge to night market in the heart of UNESCO heritage city",
-          "source": "https://phonepraseuthguesthouse.com/"
         }
       ],
       "location": {
@@ -1017,9 +1073,12 @@
           "value": "Luang Prabang",
           "source": "https://phonepraseuthguesthouse.com/"
         },
-        "area": null,
+        "area": {
+          "value": "Ban Phanluang",
+          "source": "https://phonepraseuthguesthouse.com/"
+        },
         "address": {
-          "value": "Ban Phanluang, Luang Prabang, the World Heritage Town",
+          "value": "Ban Phanluang, Luang Prabang",
           "source": "https://phonepraseuthguesthouse.com/"
         },
         "serviceArea": null
@@ -1036,21 +1095,21 @@
       },
       "hours": null,
       "tone": [
-        "welcoming",
         "friendly",
-        "peaceful",
-        "informative"
+        "welcoming",
+        "peaceful"
       ],
       "colours": [],
       "essence": {
         "feeling": [
-          "peaceful",
-          "welcoming",
-          "rested"
+          "relaxed",
+          "refreshed",
+          "welcomed"
         ],
         "placeSymbols": [
           "Nam Khan river",
-          "bamboo bridge"
+          "bamboo bridge",
+          "Mount Phousi"
         ]
       }
     },
@@ -1060,7 +1119,7 @@
         "source": "https://phonepraseuthguesthouse.com/"
       },
       "summary": {
-        "value": "Quiet, personalized, and friendly guesthouse in Luang Prabang offering comfortable rooms near the Nam Khan river and UNESCO heritage city.",
+        "value": "A quiet, personalized and friendly guesthouse on the bank of Namkhan river in Luang Prabang, offering comfortable rooms.",
         "source": "https://phonepraseuthguesthouse.com/"
       },
       "category": "guesthouse",
@@ -1094,10 +1153,6 @@
         {
           "value": "Offers quiet, personalized & friendly 18 rooms, standing on the bank of Namkhan river",
           "source": "https://phonepraseuthguesthouse.com/"
-        },
-        {
-          "value": "Just 7 minutes crossing bamboo bridge to night market in the heart of UNESCO heritage city",
-          "source": "https://phonepraseuthguesthouse.com/"
         }
       ],
       "location": {
@@ -1105,9 +1160,12 @@
           "value": "Luang Prabang",
           "source": "https://phonepraseuthguesthouse.com/"
         },
-        "area": null,
+        "area": {
+          "value": "Ban Phanluang",
+          "source": "https://phonepraseuthguesthouse.com/"
+        },
         "address": {
-          "value": "Ban Phanluang, Luang Prabang, the World Heritage Town",
+          "value": "Ban Phanluang, Luang Prabang",
           "source": "https://phonepraseuthguesthouse.com/"
         },
         "serviceArea": null
@@ -1124,29 +1182,26 @@
       },
       "hours": null,
       "tone": [
-        "welcoming",
         "friendly",
-        "peaceful",
-        "informative"
+        "welcoming",
+        "peaceful"
       ],
       "colours": [],
       "essence": {
         "feeling": [
-          "peaceful",
-          "welcoming",
-          "rested"
+          "relaxed",
+          "refreshed",
+          "welcomed"
         ],
         "placeSymbols": [
           "Nam Khan river",
           "bamboo bridge",
           "Mount Phousi",
-          "Wat Xiengthong",
+          "temple stupas",
           "night market"
         ],
         "senses": [
-          "flowing river water",
-          "cool morning air",
-          "cris"
+          "flowing"
         ]
       }
     },
@@ -1156,7 +1211,7 @@
         "source": "https://phonepraseuthguesthouse.com/"
       },
       "summary": {
-        "value": "Quiet, personalized, and friendly guesthouse in Luang Prabang offering comfortable rooms near the Nam Khan river and UNESCO heritage city.",
+        "value": "A quiet, personalized and friendly guesthouse on the bank of Namkhan river in Luang Prabang, offering comfortable rooms.",
         "source": "https://phonepraseuthguesthouse.com/"
       },
       "category": "guesthouse",
@@ -1190,10 +1245,6 @@
         {
           "value": "Offers quiet, personalized & friendly 18 rooms, standing on the bank of Namkhan river",
           "source": "https://phonepraseuthguesthouse.com/"
-        },
-        {
-          "value": "Just 7 minutes crossing bamboo bridge to night market in the heart of UNESCO heritage city",
-          "source": "https://phonepraseuthguesthouse.com/"
         }
       ],
       "location": {
@@ -1201,9 +1252,12 @@
           "value": "Luang Prabang",
           "source": "https://phonepraseuthguesthouse.com/"
         },
-        "area": null,
+        "area": {
+          "value": "Ban Phanluang",
+          "source": "https://phonepraseuthguesthouse.com/"
+        },
         "address": {
-          "value": "Ban Phanluang, Luang Prabang, the World Heritage Town",
+          "value": "Ban Phanluang, Luang Prabang",
           "source": "https://phonepraseuthguesthouse.com/"
         },
         "serviceArea": null
@@ -1220,33 +1274,128 @@
       },
       "hours": null,
       "tone": [
-        "welcoming",
         "friendly",
-        "peaceful",
-        "informative"
+        "welcoming",
+        "peaceful"
       ],
       "colours": [],
       "essence": {
         "feeling": [
-          "peaceful",
-          "welcoming",
-          "rested"
+          "relaxed",
+          "refreshed",
+          "welcomed"
         ],
         "placeSymbols": [
           "Nam Khan river",
           "bamboo bridge",
           "Mount Phousi",
-          "Wat Xiengthong",
+          "temple stupas",
           "night market"
         ],
         "senses": [
           "flowing river water",
-          "cool morning air",
-          "crisp white linens",
-          "warm tropical sunlight"
+          "morning mist over hills",
+          "wooden textures",
+          "soft river breeze"
+        ]
+      }
+    },
+    {
+      "name": {
+        "value": "PHONEPRASEUTH GUESTHOUSE",
+        "source": "https://phonepraseuthguesthouse.com/"
+      },
+      "summary": {
+        "value": "A quiet, personalized and friendly guesthouse on the bank of Namkhan river in Luang Prabang, offering comfortable rooms.",
+        "source": "https://phonepraseuthguesthouse.com/"
+      },
+      "category": "guesthouse",
+      "offerings": [
+        {
+          "name": "Double Room Up-stair",
+          "price": "US$26",
+          "source": "https://phonepraseuthguesthouse.com/"
+        },
+        {
+          "name": "Double Room Down-stair",
+          "price": "US$26",
+          "source": "https://phonepraseuthguesthouse.com/"
+        },
+        {
+          "name": "Twin Room",
+          "price": "US$26",
+          "source": "https://phonepraseuthguesthouse.com/"
+        },
+        {
+          "name": "Family Room",
+          "price": "US$50",
+          "source": "https://phonepraseuthguesthouse.com/"
+        }
+      ],
+      "highlights": [
+        {
+          "value": "Just a 5-minute walk from the guesthouse to the center point of Luang Prabang across the Nam Khan by boat",
+          "source": "https://phonepraseuthguesthouse.com/"
+        },
+        {
+          "value": "Offers quiet, personalized & friendly 18 rooms, standing on the bank of Namkhan river",
+          "source": "https://phonepraseuthguesthouse.com/"
+        }
+      ],
+      "location": {
+        "town": {
+          "value": "Luang Prabang",
+          "source": "https://phonepraseuthguesthouse.com/"
+        },
+        "area": {
+          "value": "Ban Phanluang",
+          "source": "https://phonepraseuthguesthouse.com/"
+        },
+        "address": {
+          "value": "Ban Phanluang, Luang Prabang",
+          "source": "https://phonepraseuthguesthouse.com/"
+        },
+        "serviceArea": null
+      },
+      "contact": {
+        "whatsapp": null,
+        "phone": null,
+        "email": {
+          "value": "phonepraseuth1@gmail.com",
+          "source": "https://phonepraseuthguesthouse.com/"
+        },
+        "instagram": null,
+        "bookingUrl": null
+      },
+      "hours": null,
+      "tone": [
+        "friendly",
+        "welcoming",
+        "peaceful"
+      ],
+      "colours": [],
+      "essence": {
+        "feeling": [
+          "relaxed",
+          "refreshed",
+          "welcomed"
+        ],
+        "placeSymbols": [
+          "Nam Khan river",
+          "bamboo bridge",
+          "Mount Phousi",
+          "temple stupas",
+          "night market"
+        ],
+        "senses": [
+          "flowing river water",
+          "morning mist over hills",
+          "wooden textures",
+          "soft river breeze"
         ],
         "moments": []
-      }
+      },
+      "visualStyle": {}
     },
     {
       "name": {
@@ -1254,7 +1403,7 @@
         "source": "https://phonepraseuthguesthouse.com/"
       },
       "summary": {
-        "value": "Quiet, personalized, and friendly guesthouse in Luang Prabang offering comfortable rooms near the Nam Khan river and UNESCO heritage city.",
+        "value": "A quiet, personalized and friendly guesthouse on the bank of Namkhan river in Luang Prabang, offering comfortable rooms.",
         "source": "https://phonepraseuthguesthouse.com/"
       },
       "category": "guesthouse",
@@ -1288,10 +1437,6 @@
         {
           "value": "Offers quiet, personalized & friendly 18 rooms, standing on the bank of Namkhan river",
           "source": "https://phonepraseuthguesthouse.com/"
-        },
-        {
-          "value": "Just 7 minutes crossing bamboo bridge to night market in the heart of UNESCO heritage city",
-          "source": "https://phonepraseuthguesthouse.com/"
         }
       ],
       "location": {
@@ -1299,9 +1444,12 @@
           "value": "Luang Prabang",
           "source": "https://phonepraseuthguesthouse.com/"
         },
-        "area": null,
+        "area": {
+          "value": "Ban Phanluang",
+          "source": "https://phonepraseuthguesthouse.com/"
+        },
         "address": {
-          "value": "Ban Phanluang, Luang Prabang, the World Heritage Town",
+          "value": "Ban Phanluang, Luang Prabang",
           "source": "https://phonepraseuthguesthouse.com/"
         },
         "serviceArea": null
@@ -1318,34 +1466,241 @@
       },
       "hours": null,
       "tone": [
-        "welcoming",
         "friendly",
-        "peaceful",
-        "informative"
+        "welcoming",
+        "peaceful"
       ],
       "colours": [],
       "essence": {
         "feeling": [
-          "peaceful",
-          "welcoming",
-          "rested"
+          "relaxed",
+          "refreshed",
+          "welcomed"
         ],
         "placeSymbols": [
           "Nam Khan river",
           "bamboo bridge",
           "Mount Phousi",
-          "Wat Xiengthong",
+          "temple stupas",
           "night market"
         ],
         "senses": [
           "flowing river water",
-          "cool morning air",
-          "crisp white linens",
-          "warm tropical sunlight"
+          "morning mist over hills",
+          "wooden textures",
+          "soft river breeze"
         ],
         "moments": []
       },
-      "visualStyle": null
+      "visualStyle": {
+        "summary": "peaceful riverside, natural light, wooden textures, warm welcoming mood",
+        "palette": "natural earth"
+      }
+    },
+    {
+      "name": {
+        "value": "PHONEPRASEUTH GUESTHOUSE",
+        "source": "https://phonepraseuthguesthouse.com/"
+      },
+      "summary": {
+        "value": "A quiet, personalized and friendly guesthouse on the bank of Namkhan river in Luang Prabang, offering comfortable rooms.",
+        "source": "https://phonepraseuthguesthouse.com/"
+      },
+      "category": "guesthouse",
+      "offerings": [
+        {
+          "name": "Double Room Up-stair",
+          "price": "US$26",
+          "source": "https://phonepraseuthguesthouse.com/"
+        },
+        {
+          "name": "Double Room Down-stair",
+          "price": "US$26",
+          "source": "https://phonepraseuthguesthouse.com/"
+        },
+        {
+          "name": "Twin Room",
+          "price": "US$26",
+          "source": "https://phonepraseuthguesthouse.com/"
+        },
+        {
+          "name": "Family Room",
+          "price": "US$50",
+          "source": "https://phonepraseuthguesthouse.com/"
+        }
+      ],
+      "highlights": [
+        {
+          "value": "Just a 5-minute walk from the guesthouse to the center point of Luang Prabang across the Nam Khan by boat",
+          "source": "https://phonepraseuthguesthouse.com/"
+        },
+        {
+          "value": "Offers quiet, personalized & friendly 18 rooms, standing on the bank of Namkhan river",
+          "source": "https://phonepraseuthguesthouse.com/"
+        }
+      ],
+      "location": {
+        "town": {
+          "value": "Luang Prabang",
+          "source": "https://phonepraseuthguesthouse.com/"
+        },
+        "area": {
+          "value": "Ban Phanluang",
+          "source": "https://phonepraseuthguesthouse.com/"
+        },
+        "address": {
+          "value": "Ban Phanluang, Luang Prabang",
+          "source": "https://phonepraseuthguesthouse.com/"
+        },
+        "serviceArea": null
+      },
+      "contact": {
+        "whatsapp": null,
+        "phone": null,
+        "email": {
+          "value": "phonepraseuth1@gmail.com",
+          "source": "https://phonepraseuthguesthouse.com/"
+        },
+        "instagram": null,
+        "bookingUrl": null
+      },
+      "hours": null,
+      "tone": [
+        "friendly",
+        "welcoming",
+        "peaceful"
+      ],
+      "colours": [],
+      "essence": {
+        "feeling": [
+          "relaxed",
+          "refreshed",
+          "welcomed"
+        ],
+        "placeSymbols": [
+          "Nam Khan river",
+          "bamboo bridge",
+          "Mount Phousi",
+          "temple stupas",
+          "night market"
+        ],
+        "senses": [
+          "flowing river water",
+          "morning mist over hills",
+          "wooden textures",
+          "soft river breeze"
+        ],
+        "moments": []
+      },
+      "visualStyle": {
+        "summary": "peaceful riverside, natural light, wooden textures, warm welcoming mood",
+        "palette": "natural earth tones and greens",
+        "light": "soft morning sunlight",
+        "textures": "natural wood and stone"
+      }
+    },
+    {
+      "name": {
+        "value": "PHONEPRASEUTH GUESTHOUSE",
+        "source": "https://phonepraseuthguesthouse.com/"
+      },
+      "summary": {
+        "value": "A quiet, personalized and friendly guesthouse on the bank of Namkhan river in Luang Prabang, offering comfortable rooms.",
+        "source": "https://phonepraseuthguesthouse.com/"
+      },
+      "category": "guesthouse",
+      "offerings": [
+        {
+          "name": "Double Room Up-stair",
+          "price": "US$26",
+          "source": "https://phonepraseuthguesthouse.com/"
+        },
+        {
+          "name": "Double Room Down-stair",
+          "price": "US$26",
+          "source": "https://phonepraseuthguesthouse.com/"
+        },
+        {
+          "name": "Twin Room",
+          "price": "US$26",
+          "source": "https://phonepraseuthguesthouse.com/"
+        },
+        {
+          "name": "Family Room",
+          "price": "US$50",
+          "source": "https://phonepraseuthguesthouse.com/"
+        }
+      ],
+      "highlights": [
+        {
+          "value": "Just a 5-minute walk from the guesthouse to the center point of Luang Prabang across the Nam Khan by boat",
+          "source": "https://phonepraseuthguesthouse.com/"
+        },
+        {
+          "value": "Offers quiet, personalized & friendly 18 rooms, standing on the bank of Namkhan river",
+          "source": "https://phonepraseuthguesthouse.com/"
+        }
+      ],
+      "location": {
+        "town": {
+          "value": "Luang Prabang",
+          "source": "https://phonepraseuthguesthouse.com/"
+        },
+        "area": {
+          "value": "Ban Phanluang",
+          "source": "https://phonepraseuthguesthouse.com/"
+        },
+        "address": {
+          "value": "Ban Phanluang, Luang Prabang",
+          "source": "https://phonepraseuthguesthouse.com/"
+        },
+        "serviceArea": null
+      },
+      "contact": {
+        "whatsapp": null,
+        "phone": null,
+        "email": {
+          "value": "phonepraseuth1@gmail.com",
+          "source": "https://phonepraseuthguesthouse.com/"
+        },
+        "instagram": null,
+        "bookingUrl": null
+      },
+      "hours": null,
+      "tone": [
+        "friendly",
+        "welcoming",
+        "peaceful"
+      ],
+      "colours": [],
+      "essence": {
+        "feeling": [
+          "relaxed",
+          "refreshed",
+          "welcomed"
+        ],
+        "placeSymbols": [
+          "Nam Khan river",
+          "bamboo bridge",
+          "Mount Phousi",
+          "temple stupas",
+          "night market"
+        ],
+        "senses": [
+          "flowing river water",
+          "morning mist over hills",
+          "wooden textures",
+          "soft river breeze"
+        ],
+        "moments": []
+      },
+      "visualStyle": {
+        "summary": "peaceful riverside, natural light, wooden textures, warm welcoming mood",
+        "palette": "natural earth tones and greens",
+        "light": "soft morning sunlight",
+        "textures": "natural wood and stone",
+        "mood": "tranquil and cozy"
+      }
     }
   ],
   "final": {
@@ -1354,7 +1709,7 @@
       "source": "https://phonepraseuthguesthouse.com/"
     },
     "summary": {
-      "value": "Quiet, personalized, and friendly guesthouse in Luang Prabang offering comfortable rooms near the Nam Khan river and UNESCO heritage city.",
+      "value": "A quiet, personalized and friendly guesthouse on the bank of Namkhan river in Luang Prabang, offering comfortable rooms.",
       "source": "https://phonepraseuthguesthouse.com/"
     },
     "category": "guesthouse",
@@ -1388,10 +1743,6 @@
       {
         "value": "Offers quiet, personalized & friendly 18 rooms, standing on the bank of Namkhan river",
         "source": "https://phonepraseuthguesthouse.com/"
-      },
-      {
-        "value": "Just 7 minutes crossing bamboo bridge to night market in the heart of UNESCO heritage city",
-        "source": "https://phonepraseuthguesthouse.com/"
       }
     ],
     "location": {
@@ -1399,9 +1750,12 @@
         "value": "Luang Prabang",
         "source": "https://phonepraseuthguesthouse.com/"
       },
-      "area": null,
+      "area": {
+        "value": "Ban Phanluang",
+        "source": "https://phonepraseuthguesthouse.com/"
+      },
       "address": {
-        "value": "Ban Phanluang, Luang Prabang, the World Heritage Town",
+        "value": "Ban Phanluang, Luang Prabang",
         "source": "https://phonepraseuthguesthouse.com/"
       },
       "serviceArea": null
@@ -1418,33 +1772,38 @@
     },
     "hours": null,
     "tone": [
-      "welcoming",
       "friendly",
-      "peaceful",
-      "informative"
+      "welcoming",
+      "peaceful"
     ],
     "colours": [],
     "essence": {
       "feeling": [
-        "peaceful",
-        "welcoming",
-        "rested"
+        "relaxed",
+        "refreshed",
+        "welcomed"
       ],
       "placeSymbols": [
         "Nam Khan river",
         "bamboo bridge",
         "Mount Phousi",
-        "Wat Xiengthong",
+        "temple stupas",
         "night market"
       ],
       "senses": [
         "flowing river water",
-        "cool morning air",
-        "crisp white linens",
-        "warm tropical sunlight"
+        "morning mist over hills",
+        "wooden textures",
+        "soft river breeze"
       ],
       "moments": []
     },
-    "visualStyle": null
+    "visualStyle": {
+      "summary": "peaceful riverside, natural light, wooden textures, warm welcoming mood",
+      "palette": "natural earth tones and greens",
+      "light": "soft morning sunlight",
+      "textures": "natural wood and stone",
+      "mood": "tranquil and cozy"
+    }
   }
 }

@@ -1,6 +1,6 @@
 {
   "modelId": "gemini-3.5-flash-lite",
-  "promptVersion": "brand-4",
+  "promptVersion": "brand-5",
   "partials": [
     {
       "name": {}
@@ -17,7 +17,7 @@
         "source": "https://revolverbali.com/"
       },
       "summary": {
-        "value": "Born in Bali in 2012, Revolver is"
+        "value": "Iconic Bali-born coffee shop offering signature brews"
       }
     },
     {
@@ -26,8 +26,8 @@
         "source": "https://revolverbali.com/"
       },
       "summary": {
-        "value": "Born in Bali in 2012, Revolver is a renowned coffee shop and lifestyle brand offering specialty coffee and merchandise across multiple venues.",
-        "source": "https://revolverbali"
+        "value": "Iconic Bali-born coffee shop offering signature brews, single-origin coffee, merchandise, and apparel across multiple venues.",
+        "source": "https://revolverbali."
       }
     },
     {
@@ -36,11 +36,13 @@
         "source": "https://revolverbali.com/"
       },
       "summary": {
-        "value": "Born in Bali in 2012, Revolver is a renowned coffee shop and lifestyle brand offering specialty coffee and merchandise across multiple venues.",
+        "value": "Iconic Bali-born coffee shop offering signature brews, single-origin coffee, merchandise, and apparel across multiple venues.",
         "source": "https://revolverbali.com/"
       },
       "category": "coffee shop",
-      "offerings": []
+      "offerings": [
+        {}
+      ]
     },
     {
       "name": {
@@ -48,14 +50,14 @@
         "source": "https://revolverbali.com/"
       },
       "summary": {
-        "value": "Born in Bali in 2012, Revolver is a renowned coffee shop and lifestyle brand offering specialty coffee and merchandise across multiple venues.",
+        "value": "Iconic Bali-born coffee shop offering signature brews, single-origin coffee, merchandise, and apparel across multiple venues.",
         "source": "https://revolverbali.com/"
       },
       "category": "coffee shop",
       "offerings": [
         {
           "name": "Revolver Instant Coffee",
-          "price": "IDR 245"
+          "price": "IDR 245,"
         }
       ]
     },
@@ -65,7 +67,7 @@
         "source": "https://revolverbali.com/"
       },
       "summary": {
-        "value": "Born in Bali in 2012, Revolver is a renowned coffee shop and lifestyle brand offering specialty coffee and merchandise across multiple venues.",
+        "value": "Iconic Bali-born coffee shop offering signature brews, single-origin coffee, merchandise, and apparel across multiple venues.",
         "source": "https://revolverbali.com/"
       },
       "category": "coffee shop",
@@ -73,148 +75,6 @@
         {
           "name": "Revolver Instant Coffee",
           "price": "IDR 245,000",
-          "source": "https://revolverbali.com/"
-        }
-      ]
-    },
-    {
-      "name": {
-        "value": "Revolver Bali",
-        "source": "https://revolverbali.com/"
-      },
-      "summary": {
-        "value": "Born in Bali in 2012, Revolver is a renowned coffee shop and lifestyle brand offering specialty coffee and merchandise across multiple venues.",
-        "source": "https://revolverbali.com/"
-      },
-      "category": "coffee shop",
-      "offerings": [
-        {
-          "name": "Revolver Instant Coffee",
-          "price": "IDR 245,000",
-          "source": "https://revolverbali.com/"
-        },
-        {
-          "name": "Dad Hats",
-          "price": "IDR 515,0"
-        }
-      ]
-    },
-    {
-      "name": {
-        "value": "Revolver Bali",
-        "source": "https://revolverbali.com/"
-      },
-      "summary": {
-        "value": "Born in Bali in 2012, Revolver is a renowned coffee shop and lifestyle brand offering specialty coffee and merchandise across multiple venues.",
-        "source": "https://revolverbali.com/"
-      },
-      "category": "coffee shop",
-      "offerings": [
-        {
-          "name": "Revolver Instant Coffee",
-          "price": "IDR 245,000",
-          "source": "https://revolverbali.com/"
-        },
-        {
-          "name": "Dad Hats",
-          "price": "IDR 515,000",
-          "source": "https://revolverbali.com/"
-        },
-        {
-          "name": "Gak Masalah Long Sleeve",
-          "price": "IDR 765"
-        }
-      ]
-    },
-    {
-      "name": {
-        "value": "Revolver Bali",
-        "source": "https://revolverbali.com/"
-      },
-      "summary": {
-        "value": "Born in Bali in 2012, Revolver is a renowned coffee shop and lifestyle brand offering specialty coffee and merchandise across multiple venues.",
-        "source": "https://revolverbali.com/"
-      },
-      "category": "coffee shop",
-      "offerings": [
-        {
-          "name": "Revolver Instant Coffee",
-          "price": "IDR 245,000",
-          "source": "https://revolverbali.com/"
-        },
-        {
-          "name": "Dad Hats",
-          "price": "IDR 515,000",
-          "source": "https://revolverbali.com/"
-        },
-        {
-          "name": "Gak Masalah Long Sleeve",
-          "price": "IDR 765,000",
-          "source": "https://revolverbali.com/"
-        }
-      ]
-    },
-    {
-      "name": {
-        "value": "Revolver Bali",
-        "source": "https://revolverbali.com/"
-      },
-      "summary": {
-        "value": "Born in Bali in 2012, Revolver is a renowned coffee shop and lifestyle brand offering specialty coffee and merchandise across multiple venues.",
-        "source": "https://revolverbali.com/"
-      },
-      "category": "coffee shop",
-      "offerings": [
-        {
-          "name": "Revolver Instant Coffee",
-          "price": "IDR 245,000",
-          "source": "https://revolverbali.com/"
-        },
-        {
-          "name": "Dad Hats",
-          "price": "IDR 515,000",
-          "source": "https://revolverbali.com/"
-        },
-        {
-          "name": "Gak Masalah Long Sleeve",
-          "price": "IDR 765,000",
-          "source": "https://revolverbali.com/"
-        },
-        {
-          "name": "Studio Crop Sweater",
-          "price": "IDR 930,"
-        }
-      ]
-    },
-    {
-      "name": {
-        "value": "Revolver Bali",
-        "source": "https://revolverbali.com/"
-      },
-      "summary": {
-        "value": "Born in Bali in 2012, Revolver is a renowned coffee shop and lifestyle brand offering specialty coffee and merchandise across multiple venues.",
-        "source": "https://revolverbali.com/"
-      },
-      "category": "coffee shop",
-      "offerings": [
-        {
-          "name": "Revolver Instant Coffee",
-          "price": "IDR 245,000",
-          "source": "https://revolverbali.com/"
-        },
-        {
-          "name": "Dad Hats",
-          "price": "IDR 515,000",
-          "source": "https://revolverbali.com/"
-        },
-        {
-          "name": "Gak Masalah Long Sleeve",
-          "price": "IDR 765,000",
-          "source": "https://revolverbali.com/"
-        },
-        {
-          "name": "Studio Crop Sweater",
-          "price": "IDR 930,000",
           "source": "https://revolverbali.com/"
         },
         {}
@@ -226,7 +86,7 @@
         "source": "https://revolverbali.com/"
       },
       "summary": {
-        "value": "Born in Bali in 2012, Revolver is a renowned coffee shop and lifestyle brand offering specialty coffee and merchandise across multiple venues.",
+        "value": "Iconic Bali-born coffee shop offering signature brews, single-origin coffee, merchandise, and apparel across multiple venues.",
         "source": "https://revolverbali.com/"
       },
       "category": "coffee shop",
@@ -238,22 +98,7 @@
         },
         {
           "name": "Dad Hats",
-          "price": "IDR 515,000",
-          "source": "https://revolverbali.com/"
-        },
-        {
-          "name": "Gak Masalah Long Sleeve",
-          "price": "IDR 765,000",
-          "source": "https://revolverbali.com/"
-        },
-        {
-          "name": "Studio Crop Sweater",
-          "price": "IDR 930,000",
-          "source": "https://revolverbali.com/"
-        },
-        {
-          "name": "Single Origin Ethiopia - 250gr",
-          "price": "IDR"
+          "price": "IDR 515,00"
         }
       ]
     },
@@ -263,7 +108,119 @@
         "source": "https://revolverbali.com/"
       },
       "summary": {
-        "value": "Born in Bali in 2012, Revolver is a renowned coffee shop and lifestyle brand offering specialty coffee and merchandise across multiple venues.",
+        "value": "Iconic Bali-born coffee shop offering signature brews, single-origin coffee, merchandise, and apparel across multiple venues.",
+        "source": "https://revolverbali.com/"
+      },
+      "category": "coffee shop",
+      "offerings": [
+        {
+          "name": "Revolver Instant Coffee",
+          "price": "IDR 245,000",
+          "source": "https://revolverbali.com/"
+        },
+        {
+          "name": "Dad Hats",
+          "price": "IDR 515,000",
+          "source": "https://revolverbali.com/"
+        },
+        {}
+      ]
+    },
+    {
+      "name": {
+        "value": "Revolver Bali",
+        "source": "https://revolverbali.com/"
+      },
+      "summary": {
+        "value": "Iconic Bali-born coffee shop offering signature brews, single-origin coffee, merchandise, and apparel across multiple venues.",
+        "source": "https://revolverbali.com/"
+      },
+      "category": "coffee shop",
+      "offerings": [
+        {
+          "name": "Revolver Instant Coffee",
+          "price": "IDR 245,000",
+          "source": "https://revolverbali.com/"
+        },
+        {
+          "name": "Dad Hats",
+          "price": "IDR 515,000",
+          "source": "https://revolverbali.com/"
+        },
+        {
+          "name": "Gak Masalah Long Sleeve",
+          "price": "IDR 765,"
+        }
+      ]
+    },
+    {
+      "name": {
+        "value": "Revolver Bali",
+        "source": "https://revolverbali.com/"
+      },
+      "summary": {
+        "value": "Iconic Bali-born coffee shop offering signature brews, single-origin coffee, merchandise, and apparel across multiple venues.",
+        "source": "https://revolverbali.com/"
+      },
+      "category": "coffee shop",
+      "offerings": [
+        {
+          "name": "Revolver Instant Coffee",
+          "price": "IDR 245,000",
+          "source": "https://revolverbali.com/"
+        },
+        {
+          "name": "Dad Hats",
+          "price": "IDR 515,000",
+          "source": "https://revolverbali.com/"
+        },
+        {
+          "name": "Gak Masalah Long Sleeve",
+          "price": "IDR 765,000",
+          "source": "https://revolverbali.com/"
+        },
+        {}
+      ]
+    },
+    {
+      "name": {
+        "value": "Revolver Bali",
+        "source": "https://revolverbali.com/"
+      },
+      "summary": {
+        "value": "Iconic Bali-born coffee shop offering signature brews, single-origin coffee, merchandise, and apparel across multiple venues.",
+        "source": "https://revolverbali.com/"
+      },
+      "category": "coffee shop",
+      "offerings": [
+        {
+          "name": "Revolver Instant Coffee",
+          "price": "IDR 245,000",
+          "source": "https://revolverbali.com/"
+        },
+        {
+          "name": "Dad Hats",
+          "price": "IDR 515,000",
+          "source": "https://revolverbali.com/"
+        },
+        {
+          "name": "Gak Masalah Long Sleeve",
+          "price": "IDR 765,000",
+          "source": "https://revolverbali.com/"
+        },
+        {
+          "name": "Studio Crop Sweater",
+          "price": "IDR 930,0"
+        }
+      ]
+    },
+    {
+      "name": {
+        "value": "Revolver Bali",
+        "source": "https://revolverbali.com/"
+      },
+      "summary": {
+        "value": "Iconic Bali-born coffee shop offering signature brews, single-origin coffee, merchandise, and apparel across multiple venues.",
         "source": "https://revolverbali.com/"
       },
       "category": "coffee shop",
@@ -290,11 +247,6 @@
         },
         {
           "name": "Single Origin Ethiopia - 250gr",
-          "price": "IDR 260,000",
-          "source": "https://revolverbali.com/"
-        },
-        {
-          "name": "Bali Heritage Tee",
           "price": "IDR "
         }
       ]
@@ -305,7 +257,7 @@
         "source": "https://revolverbali.com/"
       },
       "summary": {
-        "value": "Born in Bali in 2012, Revolver is a renowned coffee shop and lifestyle brand offering specialty coffee and merchandise across multiple venues.",
+        "value": "Iconic Bali-born coffee shop offering signature brews, single-origin coffee, merchandise, and apparel across multiple venues.",
         "source": "https://revolverbali.com/"
       },
       "category": "coffee shop",
@@ -333,11 +285,6 @@
         {
           "name": "Single Origin Ethiopia - 250gr",
           "price": "IDR 260,000",
-          "source": "https://revolverbali.com/"
-        },
-        {
-          "name": "Bali Heritage Tee",
-          "price": "IDR 655,000",
           "source": "https://revolverbali.com/"
         }
       ]
@@ -348,7 +295,7 @@
         "source": "https://revolverbali.com/"
       },
       "summary": {
-        "value": "Born in Bali in 2012, Revolver is a renowned coffee shop and lifestyle brand offering specialty coffee and merchandise across multiple venues.",
+        "value": "Iconic Bali-born coffee shop offering signature brews, single-origin coffee, merchandise, and apparel across multiple venues.",
         "source": "https://revolverbali.com/"
       },
       "category": "coffee shop",
@@ -380,111 +327,6 @@
         },
         {
           "name": "Bali Heritage Tee",
-          "price": "IDR 655,000",
-          "source": "https://revolverbali.com/"
-        },
-        {
-          "name": "Revolver Keychain",
-          "price": "IDR 1"
-        }
-      ]
-    },
-    {
-      "name": {
-        "value": "Revolver Bali",
-        "source": "https://revolverbali.com/"
-      },
-      "summary": {
-        "value": "Born in Bali in 2012, Revolver is a renowned coffee shop and lifestyle brand offering specialty coffee and merchandise across multiple venues.",
-        "source": "https://revolverbali.com/"
-      },
-      "category": "coffee shop",
-      "offerings": [
-        {
-          "name": "Revolver Instant Coffee",
-          "price": "IDR 245,000",
-          "source": "https://revolverbali.com/"
-        },
-        {
-          "name": "Dad Hats",
-          "price": "IDR 515,000",
-          "source": "https://revolverbali.com/"
-        },
-        {
-          "name": "Gak Masalah Long Sleeve",
-          "price": "IDR 765,000",
-          "source": "https://revolverbali.com/"
-        },
-        {
-          "name": "Studio Crop Sweater",
-          "price": "IDR 930,000",
-          "source": "https://revolverbali.com/"
-        },
-        {
-          "name": "Single Origin Ethiopia - 250gr",
-          "price": "IDR 260,000",
-          "source": "https://revolverbali.com/"
-        },
-        {
-          "name": "Bali Heritage Tee",
-          "price": "IDR 655,000",
-          "source": "https://revolverbali.com/"
-        },
-        {
-          "name": "Revolver Keychain",
-          "price": "IDR 105,000",
-          "source": "https://revolverbali.com/"
-        }
-      ]
-    },
-    {
-      "name": {
-        "value": "Revolver Bali",
-        "source": "https://revolverbali.com/"
-      },
-      "summary": {
-        "value": "Born in Bali in 2012, Revolver is a renowned coffee shop and lifestyle brand offering specialty coffee and merchandise across multiple venues.",
-        "source": "https://revolverbali.com/"
-      },
-      "category": "coffee shop",
-      "offerings": [
-        {
-          "name": "Revolver Instant Coffee",
-          "price": "IDR 245,000",
-          "source": "https://revolverbali.com/"
-        },
-        {
-          "name": "Dad Hats",
-          "price": "IDR 515,000",
-          "source": "https://revolverbali.com/"
-        },
-        {
-          "name": "Gak Masalah Long Sleeve",
-          "price": "IDR 765,000",
-          "source": "https://revolverbali.com/"
-        },
-        {
-          "name": "Studio Crop Sweater",
-          "price": "IDR 930,000",
-          "source": "https://revolverbali.com/"
-        },
-        {
-          "name": "Single Origin Ethiopia - 250gr",
-          "price": "IDR 260,000",
-          "source": "https://revolverbali.com/"
-        },
-        {
-          "name": "Bali Heritage Tee",
-          "price": "IDR 655,000",
-          "source": "https://revolverbali.com/"
-        },
-        {
-          "name": "Revolver Keychain",
-          "price": "IDR 105,000",
-          "source": "https://revolverbali.com/"
-        },
-        {
-          "name": "Ga Masalah Tee",
           "price": "IDR 6"
         }
       ]
@@ -495,7 +337,97 @@
         "source": "https://revolverbali.com/"
       },
       "summary": {
-        "value": "Born in Bali in 2012, Revolver is a renowned coffee shop and lifestyle brand offering specialty coffee and merchandise across multiple venues.",
+        "value": "Iconic Bali-born coffee shop offering signature brews, single-origin coffee, merchandise, and apparel across multiple venues.",
+        "source": "https://revolverbali.com/"
+      },
+      "category": "coffee shop",
+      "offerings": [
+        {
+          "name": "Revolver Instant Coffee",
+          "price": "IDR 245,000",
+          "source": "https://revolverbali.com/"
+        },
+        {
+          "name": "Dad Hats",
+          "price": "IDR 515,000",
+          "source": "https://revolverbali.com/"
+        },
+        {
+          "name": "Gak Masalah Long Sleeve",
+          "price": "IDR 765,000",
+          "source": "https://revolverbali.com/"
+        },
+        {
+          "name": "Studio Crop Sweater",
+          "price": "IDR 930,000",
+          "source": "https://revolverbali.com/"
+        },
+        {
+          "name": "Single Origin Ethiopia - 250gr",
+          "price": "IDR 260,000",
+          "source": "https://revolverbali.com/"
+        },
+        {
+          "name": "Bali Heritage Tee",
+          "price": "IDR 655,000",
+          "source": "https://revolverbali.com/"
+        }
+      ]
+    },
+    {
+      "name": {
+        "value": "Revolver Bali",
+        "source": "https://revolverbali.com/"
+      },
+      "summary": {
+        "value": "Iconic Bali-born coffee shop offering signature brews, single-origin coffee, merchandise, and apparel across multiple venues.",
+        "source": "https://revolverbali.com/"
+      },
+      "category": "coffee shop",
+      "offerings": [
+        {
+          "name": "Revolver Instant Coffee",
+          "price": "IDR 245,000",
+          "source": "https://revolverbali.com/"
+        },
+        {
+          "name": "Dad Hats",
+          "price": "IDR 515,000",
+          "source": "https://revolverbali.com/"
+        },
+        {
+          "name": "Gak Masalah Long Sleeve",
+          "price": "IDR 765,000",
+          "source": "https://revolverbali.com/"
+        },
+        {
+          "name": "Studio Crop Sweater",
+          "price": "IDR 930,000",
+          "source": "https://revolverbali.com/"
+        },
+        {
+          "name": "Single Origin Ethiopia - 250gr",
+          "price": "IDR 260,000",
+          "source": "https://revolverbali.com/"
+        },
+        {
+          "name": "Bali Heritage Tee",
+          "price": "IDR 655,000",
+          "source": "https://revolverbali.com/"
+        },
+        {
+          "name": "Revolver Keychain",
+          "price": "IDR 10"
+        }
+      ]
+    },
+    {
+      "name": {
+        "value": "Revolver Bali",
+        "source": "https://revolverbali.com/"
+      },
+      "summary": {
+        "value": "Iconic Bali-born coffee shop offering signature brews, single-origin coffee, merchandise, and apparel across multiple venues.",
         "source": "https://revolverbali.com/"
       },
       "category": "coffee shop",
@@ -537,8 +469,7 @@
         },
         {
           "name": "Ga Masalah Tee",
-          "price": "IDR 655,000",
-          "source": "https://revolverbali.com/"
+          "price": "IDR 65"
         }
       ]
     },
@@ -548,7 +479,7 @@
         "source": "https://revolverbali.com/"
       },
       "summary": {
-        "value": "Born in Bali in 2012, Revolver is a renowned coffee shop and lifestyle brand offering specialty coffee and merchandise across multiple venues.",
+        "value": "Iconic Bali-born coffee shop offering signature brews, single-origin coffee, merchandise, and apparel across multiple venues.",
         "source": "https://revolverbali.com/"
       },
       "category": "coffee shop",
@@ -606,7 +537,7 @@
         "source": "https://revolverbali.com/"
       },
       "summary": {
-        "value": "Born in Bali in 2012, Revolver is a renowned coffee shop and lifestyle brand offering specialty coffee and merchandise across multiple venues.",
+        "value": "Iconic Bali-born coffee shop offering signature brews, single-origin coffee, merchandise, and apparel across multiple venues.",
         "source": "https://revolverbali.com/"
       },
       "category": "coffee shop",
@@ -656,11 +587,9 @@
         {
           "value": "Free Shipping Indonesia Wide",
           "source": "https://revolverbali.com/"
-        },
-        {
-          "value": ""
         }
-      ]
+      ],
+      "location": {}
     },
     {
       "name": {
@@ -668,7 +597,7 @@
         "source": "https://revolverbali.com/"
       },
       "summary": {
-        "value": "Born in Bali in 2012, Revolver is a renowned coffee shop and lifestyle brand offering specialty coffee and merchandise across multiple venues.",
+        "value": "Iconic Bali-born coffee shop offering signature brews, single-origin coffee, merchandise, and apparel across multiple venues.",
         "source": "https://revolverbali.com/"
       },
       "category": "coffee shop",
@@ -717,146 +646,13 @@
       "highlights": [
         {
           "value": "Free Shipping Indonesia Wide",
-          "source": "https://revolverbali.com/"
-        },
-        {
-          "value": "10% off all Revolver Food and Beverage after run for all members",
-          "source": "https://"
-        }
-      ]
-    },
-    {
-      "name": {
-        "value": "Revolver Bali",
-        "source": "https://revolverbali.com/"
-      },
-      "summary": {
-        "value": "Born in Bali in 2012, Revolver is a renowned coffee shop and lifestyle brand offering specialty coffee and merchandise across multiple venues.",
-        "source": "https://revolverbali.com/"
-      },
-      "category": "coffee shop",
-      "offerings": [
-        {
-          "name": "Revolver Instant Coffee",
-          "price": "IDR 245,000",
-          "source": "https://revolverbali.com/"
-        },
-        {
-          "name": "Dad Hats",
-          "price": "IDR 515,000",
-          "source": "https://revolverbali.com/"
-        },
-        {
-          "name": "Gak Masalah Long Sleeve",
-          "price": "IDR 765,000",
-          "source": "https://revolverbali.com/"
-        },
-        {
-          "name": "Studio Crop Sweater",
-          "price": "IDR 930,000",
-          "source": "https://revolverbali.com/"
-        },
-        {
-          "name": "Single Origin Ethiopia - 250gr",
-          "price": "IDR 260,000",
-          "source": "https://revolverbali.com/"
-        },
-        {
-          "name": "Bali Heritage Tee",
-          "price": "IDR 655,000",
-          "source": "https://revolverbali.com/"
-        },
-        {
-          "name": "Revolver Keychain",
-          "price": "IDR 105,000",
-          "source": "https://revolverbali.com/"
-        },
-        {
-          "name": "Ga Masalah Tee",
-          "price": "IDR 655,000",
-          "source": "https://revolverbali.com/"
-        }
-      ],
-      "highlights": [
-        {
-          "value": "Free Shipping Indonesia Wide",
-          "source": "https://revolverbali.com/"
-        },
-        {
-          "value": "10% off all Revolver Food and Beverage after run for all members",
-          "source": "https://revolverbali.com/"
-        }
-      ],
-      "location": {
-        "town": {}
-      }
-    },
-    {
-      "name": {
-        "value": "Revolver Bali",
-        "source": "https://revolverbali.com/"
-      },
-      "summary": {
-        "value": "Born in Bali in 2012, Revolver is a renowned coffee shop and lifestyle brand offering specialty coffee and merchandise across multiple venues.",
-        "source": "https://revolverbali.com/"
-      },
-      "category": "coffee shop",
-      "offerings": [
-        {
-          "name": "Revolver Instant Coffee",
-          "price": "IDR 245,000",
-          "source": "https://revolverbali.com/"
-        },
-        {
-          "name": "Dad Hats",
-          "price": "IDR 515,000",
-          "source": "https://revolverbali.com/"
-        },
-        {
-          "name": "Gak Masalah Long Sleeve",
-          "price": "IDR 765,000",
-          "source": "https://revolverbali.com/"
-        },
-        {
-          "name": "Studio Crop Sweater",
-          "price": "IDR 930,000",
-          "source": "https://revolverbali.com/"
-        },
-        {
-          "name": "Single Origin Ethiopia - 250gr",
-          "price": "IDR 260,000",
-          "source": "https://revolverbali.com/"
-        },
-        {
-          "name": "Bali Heritage Tee",
-          "price": "IDR 655,000",
-          "source": "https://revolverbali.com/"
-        },
-        {
-          "name": "Revolver Keychain",
-          "price": "IDR 105,000",
-          "source": "https://revolverbali.com/"
-        },
-        {
-          "name": "Ga Masalah Tee",
-          "price": "IDR 655,000",
-          "source": "https://revolverbali.com/"
-        }
-      ],
-      "highlights": [
-        {
-          "value": "Free Shipping Indonesia Wide",
-          "source": "https://revolverbali.com/"
-        },
-        {
-          "value": "10% off all Revolver Food and Beverage after run for all members",
           "source": "https://revolverbali.com/"
         }
       ],
       "location": {
         "town": {
-          "value": "Bali",
-          "source": "https://revolverbali.com/"
+          "value": "Seminyak",
+          "source": "https://revolverbali"
         }
       }
     },
@@ -866,7 +662,7 @@
         "source": "https://revolverbali.com/"
       },
       "summary": {
-        "value": "Born in Bali in 2012, Revolver is a renowned coffee shop and lifestyle brand offering specialty coffee and merchandise across multiple venues.",
+        "value": "Iconic Bali-born coffee shop offering signature brews, single-origin coffee, merchandise, and apparel across multiple venues.",
         "source": "https://revolverbali.com/"
       },
       "category": "coffee shop",
@@ -916,20 +712,16 @@
         {
           "value": "Free Shipping Indonesia Wide",
           "source": "https://revolverbali.com/"
-        },
-        {
-          "value": "10% off all Revolver Food and Beverage after run for all members",
-          "source": "https://revolverbali.com/"
         }
       ],
       "location": {
         "town": {
-          "value": "Bali",
+          "value": "Seminyak",
           "source": "https://revolverbali.com/"
         },
-        "area": null,
-        "address": null,
-        "serviceArea": null
+        "area": {
+          "value": "Bali"
+        }
       }
     },
     {
@@ -938,7 +730,7 @@
         "source": "https://revolverbali.com/"
       },
       "summary": {
-        "value": "Born in Bali in 2012, Revolver is a renowned coffee shop and lifestyle brand offering specialty coffee and merchandise across multiple venues.",
+        "value": "Iconic Bali-born coffee shop offering signature brews, single-origin coffee, merchandise, and apparel across multiple venues.",
         "source": "https://revolverbali.com/"
       },
       "category": "coffee shop",
@@ -988,24 +780,93 @@
         {
           "value": "Free Shipping Indonesia Wide",
           "source": "https://revolverbali.com/"
+        }
+      ],
+      "location": {
+        "town": {
+          "value": "Seminyak",
+          "source": "https://revolverbali.com/"
+        },
+        "area": {
+          "value": "Bali",
+          "source": "https://revolverbali.com/"
+        },
+        "address": null
+      }
+    },
+    {
+      "name": {
+        "value": "Revolver Bali",
+        "source": "https://revolverbali.com/"
+      },
+      "summary": {
+        "value": "Iconic Bali-born coffee shop offering signature brews, single-origin coffee, merchandise, and apparel across multiple venues.",
+        "source": "https://revolverbali.com/"
+      },
+      "category": "coffee shop",
+      "offerings": [
+        {
+          "name": "Revolver Instant Coffee",
+          "price": "IDR 245,000",
+          "source": "https://revolverbali.com/"
         },
         {
-          "value": "10% off all Revolver Food and Beverage after run for all members",
+          "name": "Dad Hats",
+          "price": "IDR 515,000",
+          "source": "https://revolverbali.com/"
+        },
+        {
+          "name": "Gak Masalah Long Sleeve",
+          "price": "IDR 765,000",
+          "source": "https://revolverbali.com/"
+        },
+        {
+          "name": "Studio Crop Sweater",
+          "price": "IDR 930,000",
+          "source": "https://revolverbali.com/"
+        },
+        {
+          "name": "Single Origin Ethiopia - 250gr",
+          "price": "IDR 260,000",
+          "source": "https://revolverbali.com/"
+        },
+        {
+          "name": "Bali Heritage Tee",
+          "price": "IDR 655,000",
+          "source": "https://revolverbali.com/"
+        },
+        {
+          "name": "Revolver Keychain",
+          "price": "IDR 105,000",
+          "source": "https://revolverbali.com/"
+        },
+        {
+          "name": "Ga Masalah Tee",
+          "price": "IDR 655,000",
+          "source": "https://revolverbali.com/"
+        }
+      ],
+      "highlights": [
+        {
+          "value": "Free Shipping Indonesia Wide",
           "source": "https://revolverbali.com/"
         }
       ],
       "location": {
         "town": {
+          "value": "Seminyak",
+          "source": "https://revolverbali.com/"
+        },
+        "area": {
           "value": "Bali",
           "source": "https://revolverbali.com/"
         },
-        "area": null,
         "address": null,
         "serviceArea": null
       },
       "contact": {
         "whatsapp": {
-          "value": "62821"
+          "value": ""
         }
       }
     },
@@ -1015,7 +876,7 @@
         "source": "https://revolverbali.com/"
       },
       "summary": {
-        "value": "Born in Bali in 2012, Revolver is a renowned coffee shop and lifestyle brand offering specialty coffee and merchandise across multiple venues.",
+        "value": "Iconic Bali-born coffee shop offering signature brews, single-origin coffee, merchandise, and apparel across multiple venues.",
         "source": "https://revolverbali.com/"
       },
       "category": "coffee shop",
@@ -1065,25 +926,24 @@
         {
           "value": "Free Shipping Indonesia Wide",
           "source": "https://revolverbali.com/"
-        },
-        {
-          "value": "10% off all Revolver Food and Beverage after run for all members",
-          "source": "https://revolverbali.com/"
         }
       ],
       "location": {
         "town": {
+          "value": "Seminyak",
+          "source": "https://revolverbali.com/"
+        },
+        "area": {
           "value": "Bali",
           "source": "https://revolverbali.com/"
         },
-        "area": null,
         "address": null,
         "serviceArea": null
       },
       "contact": {
         "whatsapp": {
           "value": "628213100794",
-          "source": "https://revolverbali.com/pages/"
+          "source": "https://revolverbali"
         }
       }
     },
@@ -1093,7 +953,7 @@
         "source": "https://revolverbali.com/"
       },
       "summary": {
-        "value": "Born in Bali in 2012, Revolver is a renowned coffee shop and lifestyle brand offering specialty coffee and merchandise across multiple venues.",
+        "value": "Iconic Bali-born coffee shop offering signature brews, single-origin coffee, merchandise, and apparel across multiple venues.",
         "source": "https://revolverbali.com/"
       },
       "category": "coffee shop",
@@ -1143,18 +1003,17 @@
         {
           "value": "Free Shipping Indonesia Wide",
           "source": "https://revolverbali.com/"
-        },
-        {
-          "value": "10% off all Revolver Food and Beverage after run for all members",
-          "source": "https://revolverbali.com/"
         }
       ],
       "location": {
         "town": {
+          "value": "Seminyak",
+          "source": "https://revolverbali.com/"
+        },
+        "area": {
           "value": "Bali",
           "source": "https://revolverbali.com/"
         },
-        "area": null,
         "address": null,
         "serviceArea": null
       },
@@ -1173,7 +1032,7 @@
         "source": "https://revolverbali.com/"
       },
       "summary": {
-        "value": "Born in Bali in 2012, Revolver is a renowned coffee shop and lifestyle brand offering specialty coffee and merchandise across multiple venues.",
+        "value": "Iconic Bali-born coffee shop offering signature brews, single-origin coffee, merchandise, and apparel across multiple venues.",
         "source": "https://revolverbali.com/"
       },
       "category": "coffee shop",
@@ -1223,18 +1082,17 @@
         {
           "value": "Free Shipping Indonesia Wide",
           "source": "https://revolverbali.com/"
-        },
-        {
-          "value": "10% off all Revolver Food and Beverage after run for all members",
-          "source": "https://revolverbali.com/"
         }
       ],
       "location": {
         "town": {
+          "value": "Seminyak",
+          "source": "https://revolverbali.com/"
+        },
+        "area": {
           "value": "Bali",
           "source": "https://revolverbali.com/"
         },
-        "area": null,
         "address": null,
         "serviceArea": null
       },
@@ -1247,7 +1105,7 @@
         "email": null,
         "instagram": {
           "value": "revolver.bali",
-          "source": "https://revolverbali."
+          "source": "https"
         }
       }
     },
@@ -1257,7 +1115,7 @@
         "source": "https://revolverbali.com/"
       },
       "summary": {
-        "value": "Born in Bali in 2012, Revolver is a renowned coffee shop and lifestyle brand offering specialty coffee and merchandise across multiple venues.",
+        "value": "Iconic Bali-born coffee shop offering signature brews, single-origin coffee, merchandise, and apparel across multiple venues.",
         "source": "https://revolverbali.com/"
       },
       "category": "coffee shop",
@@ -1307,18 +1165,17 @@
         {
           "value": "Free Shipping Indonesia Wide",
           "source": "https://revolverbali.com/"
-        },
-        {
-          "value": "10% off all Revolver Food and Beverage after run for all members",
-          "source": "https://revolverbali.com/"
         }
       ],
       "location": {
         "town": {
+          "value": "Seminyak",
+          "source": "https://revolverbali.com/"
+        },
+        "area": {
           "value": "Bali",
           "source": "https://revolverbali.com/"
         },
-        "area": null,
         "address": null,
         "serviceArea": null
       },
@@ -1334,8 +1191,7 @@
           "source": "https://revolverbali.com/"
         },
         "bookingUrl": null
-      },
-      "hours": null
+      }
     },
     {
       "name": {
@@ -1343,7 +1199,7 @@
         "source": "https://revolverbali.com/"
       },
       "summary": {
-        "value": "Born in Bali in 2012, Revolver is a renowned coffee shop and lifestyle brand offering specialty coffee and merchandise across multiple venues.",
+        "value": "Iconic Bali-born coffee shop offering signature brews, single-origin coffee, merchandise, and apparel across multiple venues.",
         "source": "https://revolverbali.com/"
       },
       "category": "coffee shop",
@@ -1393,18 +1249,17 @@
         {
           "value": "Free Shipping Indonesia Wide",
           "source": "https://revolverbali.com/"
-        },
-        {
-          "value": "10% off all Revolver Food and Beverage after run for all members",
-          "source": "https://revolverbali.com/"
         }
       ],
       "location": {
         "town": {
+          "value": "Seminyak",
+          "source": "https://revolverbali.com/"
+        },
+        "area": {
           "value": "Bali",
           "source": "https://revolverbali.com/"
         },
-        "area": null,
         "address": null,
         "serviceArea": null
       },
@@ -1423,9 +1278,9 @@
       },
       "hours": null,
       "tone": [
-        "bold",
+        "cool",
         "energetic",
-        "casual"
+        "wel"
       ]
     },
     {
@@ -1434,7 +1289,7 @@
         "source": "https://revolverbali.com/"
       },
       "summary": {
-        "value": "Born in Bali in 2012, Revolver is a renowned coffee shop and lifestyle brand offering specialty coffee and merchandise across multiple venues.",
+        "value": "Iconic Bali-born coffee shop offering signature brews, single-origin coffee, merchandise, and apparel across multiple venues.",
         "source": "https://revolverbali.com/"
       },
       "category": "coffee shop",
@@ -1484,18 +1339,17 @@
         {
           "value": "Free Shipping Indonesia Wide",
           "source": "https://revolverbali.com/"
-        },
-        {
-          "value": "10% off all Revolver Food and Beverage after run for all members",
-          "source": "https://revolverbali.com/"
         }
       ],
       "location": {
         "town": {
+          "value": "Seminyak",
+          "source": "https://revolverbali.com/"
+        },
+        "area": {
           "value": "Bali",
           "source": "https://revolverbali.com/"
         },
-        "area": null,
         "address": null,
         "serviceArea": null
       },
@@ -1514,13 +1368,211 @@
       },
       "hours": null,
       "tone": [
-        "bold",
+        "cool",
         "energetic",
-        "casual"
+        "welcoming",
+        "bold"
+      ],
+      "colours": [
+        {}
+      ]
+    },
+    {
+      "name": {
+        "value": "Revolver Bali",
+        "source": "https://revolverbali.com/"
+      },
+      "summary": {
+        "value": "Iconic Bali-born coffee shop offering signature brews, single-origin coffee, merchandise, and apparel across multiple venues.",
+        "source": "https://revolverbali.com/"
+      },
+      "category": "coffee shop",
+      "offerings": [
+        {
+          "name": "Revolver Instant Coffee",
+          "price": "IDR 245,000",
+          "source": "https://revolverbali.com/"
+        },
+        {
+          "name": "Dad Hats",
+          "price": "IDR 515,000",
+          "source": "https://revolverbali.com/"
+        },
+        {
+          "name": "Gak Masalah Long Sleeve",
+          "price": "IDR 765,000",
+          "source": "https://revolverbali.com/"
+        },
+        {
+          "name": "Studio Crop Sweater",
+          "price": "IDR 930,000",
+          "source": "https://revolverbali.com/"
+        },
+        {
+          "name": "Single Origin Ethiopia - 250gr",
+          "price": "IDR 260,000",
+          "source": "https://revolverbali.com/"
+        },
+        {
+          "name": "Bali Heritage Tee",
+          "price": "IDR 655,000",
+          "source": "https://revolverbali.com/"
+        },
+        {
+          "name": "Revolver Keychain",
+          "price": "IDR 105,000",
+          "source": "https://revolverbali.com/"
+        },
+        {
+          "name": "Ga Masalah Tee",
+          "price": "IDR 655,000",
+          "source": "https://revolverbali.com/"
+        }
+      ],
+      "highlights": [
+        {
+          "value": "Free Shipping Indonesia Wide",
+          "source": "https://revolverbali.com/"
+        }
+      ],
+      "location": {
+        "town": {
+          "value": "Seminyak",
+          "source": "https://revolverbali.com/"
+        },
+        "area": {
+          "value": "Bali",
+          "source": "https://revolverbali.com/"
+        },
+        "address": null,
+        "serviceArea": null
+      },
+      "contact": {
+        "whatsapp": {
+          "value": "628213100794",
+          "source": "https://revolverbali.com/pages/location"
+        },
+        "phone": null,
+        "email": null,
+        "instagram": {
+          "value": "revolver.bali",
+          "source": "https://revolverbali.com/"
+        },
+        "bookingUrl": null
+      },
+      "hours": null,
+      "tone": [
+        "cool",
+        "energetic",
+        "welcoming",
+        "bold"
       ],
       "colours": [
         {
           "hex": "#000000",
+          "role": "background",
+          "source": "https://revolver"
+        }
+      ]
+    },
+    {
+      "name": {
+        "value": "Revolver Bali",
+        "source": "https://revolverbali.com/"
+      },
+      "summary": {
+        "value": "Iconic Bali-born coffee shop offering signature brews, single-origin coffee, merchandise, and apparel across multiple venues.",
+        "source": "https://revolverbali.com/"
+      },
+      "category": "coffee shop",
+      "offerings": [
+        {
+          "name": "Revolver Instant Coffee",
+          "price": "IDR 245,000",
+          "source": "https://revolverbali.com/"
+        },
+        {
+          "name": "Dad Hats",
+          "price": "IDR 515,000",
+          "source": "https://revolverbali.com/"
+        },
+        {
+          "name": "Gak Masalah Long Sleeve",
+          "price": "IDR 765,000",
+          "source": "https://revolverbali.com/"
+        },
+        {
+          "name": "Studio Crop Sweater",
+          "price": "IDR 930,000",
+          "source": "https://revolverbali.com/"
+        },
+        {
+          "name": "Single Origin Ethiopia - 250gr",
+          "price": "IDR 260,000",
+          "source": "https://revolverbali.com/"
+        },
+        {
+          "name": "Bali Heritage Tee",
+          "price": "IDR 655,000",
+          "source": "https://revolverbali.com/"
+        },
+        {
+          "name": "Revolver Keychain",
+          "price": "IDR 105,000",
+          "source": "https://revolverbali.com/"
+        },
+        {
+          "name": "Ga Masalah Tee",
+          "price": "IDR 655,000",
+          "source": "https://revolverbali.com/"
+        }
+      ],
+      "highlights": [
+        {
+          "value": "Free Shipping Indonesia Wide",
+          "source": "https://revolverbali.com/"
+        }
+      ],
+      "location": {
+        "town": {
+          "value": "Seminyak",
+          "source": "https://revolverbali.com/"
+        },
+        "area": {
+          "value": "Bali",
+          "source": "https://revolverbali.com/"
+        },
+        "address": null,
+        "serviceArea": null
+      },
+      "contact": {
+        "whatsapp": {
+          "value": "628213100794",
+          "source": "https://revolverbali.com/pages/location"
+        },
+        "phone": null,
+        "email": null,
+        "instagram": {
+          "value": "revolver.bali",
+          "source": "https://revolverbali.com/"
+        },
+        "bookingUrl": null
+      },
+      "hours": null,
+      "tone": [
+        "cool",
+        "energetic",
+        "welcoming",
+        "bold"
+      ],
+      "colours": [
+        {
+          "hex": "#000000",
+          "role": "background",
+          "source": "https://revolverbali.com/"
+        },
+        {
+          "hex": "#ffffff",
           "role": ""
         }
       ]
@@ -1531,7 +1583,7 @@
         "source": "https://revolverbali.com/"
       },
       "summary": {
-        "value": "Born in Bali in 2012, Revolver is a renowned coffee shop and lifestyle brand offering specialty coffee and merchandise across multiple venues.",
+        "value": "Iconic Bali-born coffee shop offering signature brews, single-origin coffee, merchandise, and apparel across multiple venues.",
         "source": "https://revolverbali.com/"
       },
       "category": "coffee shop",
@@ -1581,18 +1633,17 @@
         {
           "value": "Free Shipping Indonesia Wide",
           "source": "https://revolverbali.com/"
-        },
-        {
-          "value": "10% off all Revolver Food and Beverage after run for all members",
-          "source": "https://revolverbali.com/"
         }
       ],
       "location": {
         "town": {
+          "value": "Seminyak",
+          "source": "https://revolverbali.com/"
+        },
+        "area": {
           "value": "Bali",
           "source": "https://revolverbali.com/"
         },
-        "area": null,
         "address": null,
         "serviceArea": null
       },
@@ -1611,108 +1662,10 @@
       },
       "hours": null,
       "tone": [
-        "bold",
+        "cool",
         "energetic",
-        "casual"
-      ],
-      "colours": [
-        {
-          "hex": "#000000",
-          "role": "background",
-          "source": "https://revolverbali.com/"
-        },
-        {}
-      ]
-    },
-    {
-      "name": {
-        "value": "Revolver Bali",
-        "source": "https://revolverbali.com/"
-      },
-      "summary": {
-        "value": "Born in Bali in 2012, Revolver is a renowned coffee shop and lifestyle brand offering specialty coffee and merchandise across multiple venues.",
-        "source": "https://revolverbali.com/"
-      },
-      "category": "coffee shop",
-      "offerings": [
-        {
-          "name": "Revolver Instant Coffee",
-          "price": "IDR 245,000",
-          "source": "https://revolverbali.com/"
-        },
-        {
-          "name": "Dad Hats",
-          "price": "IDR 515,000",
-          "source": "https://revolverbali.com/"
-        },
-        {
-          "name": "Gak Masalah Long Sleeve",
-          "price": "IDR 765,000",
-          "source": "https://revolverbali.com/"
-        },
-        {
-          "name": "Studio Crop Sweater",
-          "price": "IDR 930,000",
-          "source": "https://revolverbali.com/"
-        },
-        {
-          "name": "Single Origin Ethiopia - 250gr",
-          "price": "IDR 260,000",
-          "source": "https://revolverbali.com/"
-        },
-        {
-          "name": "Bali Heritage Tee",
-          "price": "IDR 655,000",
-          "source": "https://revolverbali.com/"
-        },
-        {
-          "name": "Revolver Keychain",
-          "price": "IDR 105,000",
-          "source": "https://revolverbali.com/"
-        },
-        {
-          "name": "Ga Masalah Tee",
-          "price": "IDR 655,000",
-          "source": "https://revolverbali.com/"
-        }
-      ],
-      "highlights": [
-        {
-          "value": "Free Shipping Indonesia Wide",
-          "source": "https://revolverbali.com/"
-        },
-        {
-          "value": "10% off all Revolver Food and Beverage after run for all members",
-          "source": "https://revolverbali.com/"
-        }
-      ],
-      "location": {
-        "town": {
-          "value": "Bali",
-          "source": "https://revolverbali.com/"
-        },
-        "area": null,
-        "address": null,
-        "serviceArea": null
-      },
-      "contact": {
-        "whatsapp": {
-          "value": "628213100794",
-          "source": "https://revolverbali.com/pages/location"
-        },
-        "phone": null,
-        "email": null,
-        "instagram": {
-          "value": "revolver.bali",
-          "source": "https://revolverbali.com/"
-        },
-        "bookingUrl": null
-      },
-      "hours": null,
-      "tone": [
-        "bold",
-        "energetic",
-        "casual"
+        "welcoming",
+        "bold"
       ],
       "colours": [
         {
@@ -1723,7 +1676,7 @@
         {
           "hex": "#ffffff",
           "role": "text",
-          "source": "https://revolverbali.com"
+          "source": "https://revolverbali.com/"
         }
       ]
     },
@@ -1733,7 +1686,7 @@
         "source": "https://revolverbali.com/"
       },
       "summary": {
-        "value": "Born in Bali in 2012, Revolver is a renowned coffee shop and lifestyle brand offering specialty coffee and merchandise across multiple venues.",
+        "value": "Iconic Bali-born coffee shop offering signature brews, single-origin coffee, merchandise, and apparel across multiple venues.",
         "source": "https://revolverbali.com/"
       },
       "category": "coffee shop",
@@ -1783,18 +1736,17 @@
         {
           "value": "Free Shipping Indonesia Wide",
           "source": "https://revolverbali.com/"
-        },
-        {
-          "value": "10% off all Revolver Food and Beverage after run for all members",
-          "source": "https://revolverbali.com/"
         }
       ],
       "location": {
         "town": {
+          "value": "Seminyak",
+          "source": "https://revolverbali.com/"
+        },
+        "area": {
           "value": "Bali",
           "source": "https://revolverbali.com/"
         },
-        "area": null,
         "address": null,
         "serviceArea": null
       },
@@ -1813,9 +1765,10 @@
       },
       "hours": null,
       "tone": [
-        "bold",
+        "cool",
         "energetic",
-        "casual"
+        "welcoming",
+        "bold"
       ],
       "colours": [
         {
@@ -1831,7 +1784,9 @@
       ],
       "essence": {
         "feeling": [
-          "energetic"
+          "energized",
+          "cool",
+          ""
         ]
       }
     },
@@ -1841,7 +1796,7 @@
         "source": "https://revolverbali.com/"
       },
       "summary": {
-        "value": "Born in Bali in 2012, Revolver is a renowned coffee shop and lifestyle brand offering specialty coffee and merchandise across multiple venues.",
+        "value": "Iconic Bali-born coffee shop offering signature brews, single-origin coffee, merchandise, and apparel across multiple venues.",
         "source": "https://revolverbali.com/"
       },
       "category": "coffee shop",
@@ -1891,18 +1846,17 @@
         {
           "value": "Free Shipping Indonesia Wide",
           "source": "https://revolverbali.com/"
-        },
-        {
-          "value": "10% off all Revolver Food and Beverage after run for all members",
-          "source": "https://revolverbali.com/"
         }
       ],
       "location": {
         "town": {
+          "value": "Seminyak",
+          "source": "https://revolverbali.com/"
+        },
+        "area": {
           "value": "Bali",
           "source": "https://revolverbali.com/"
         },
-        "area": null,
         "address": null,
         "serviceArea": null
       },
@@ -1921,9 +1875,10 @@
       },
       "hours": null,
       "tone": [
-        "bold",
+        "cool",
         "energetic",
-        "casual"
+        "welcoming",
+        "bold"
       ],
       "colours": [
         {
@@ -1939,127 +1894,13 @@
       ],
       "essence": {
         "feeling": [
-          "energetic",
-          "revived",
-          "welcome"
-        ],
-        "placeSymbols": [
-          "Sem"
-        ]
-      }
-    },
-    {
-      "name": {
-        "value": "Revolver Bali",
-        "source": "https://revolverbali.com/"
-      },
-      "summary": {
-        "value": "Born in Bali in 2012, Revolver is a renowned coffee shop and lifestyle brand offering specialty coffee and merchandise across multiple venues.",
-        "source": "https://revolverbali.com/"
-      },
-      "category": "coffee shop",
-      "offerings": [
-        {
-          "name": "Revolver Instant Coffee",
-          "price": "IDR 245,000",
-          "source": "https://revolverbali.com/"
-        },
-        {
-          "name": "Dad Hats",
-          "price": "IDR 515,000",
-          "source": "https://revolverbali.com/"
-        },
-        {
-          "name": "Gak Masalah Long Sleeve",
-          "price": "IDR 765,000",
-          "source": "https://revolverbali.com/"
-        },
-        {
-          "name": "Studio Crop Sweater",
-          "price": "IDR 930,000",
-          "source": "https://revolverbali.com/"
-        },
-        {
-          "name": "Single Origin Ethiopia - 250gr",
-          "price": "IDR 260,000",
-          "source": "https://revolverbali.com/"
-        },
-        {
-          "name": "Bali Heritage Tee",
-          "price": "IDR 655,000",
-          "source": "https://revolverbali.com/"
-        },
-        {
-          "name": "Revolver Keychain",
-          "price": "IDR 105,000",
-          "source": "https://revolverbali.com/"
-        },
-        {
-          "name": "Ga Masalah Tee",
-          "price": "IDR 655,000",
-          "source": "https://revolverbali.com/"
-        }
-      ],
-      "highlights": [
-        {
-          "value": "Free Shipping Indonesia Wide",
-          "source": "https://revolverbali.com/"
-        },
-        {
-          "value": "10% off all Revolver Food and Beverage after run for all members",
-          "source": "https://revolverbali.com/"
-        }
-      ],
-      "location": {
-        "town": {
-          "value": "Bali",
-          "source": "https://revolverbali.com/"
-        },
-        "area": null,
-        "address": null,
-        "serviceArea": null
-      },
-      "contact": {
-        "whatsapp": {
-          "value": "628213100794",
-          "source": "https://revolverbali.com/pages/location"
-        },
-        "phone": null,
-        "email": null,
-        "instagram": {
-          "value": "revolver.bali",
-          "source": "https://revolverbali.com/"
-        },
-        "bookingUrl": null
-      },
-      "hours": null,
-      "tone": [
-        "bold",
-        "energetic",
-        "casual"
-      ],
-      "colours": [
-        {
-          "hex": "#000000",
-          "role": "background",
-          "source": "https://revolverbali.com/"
-        },
-        {
-          "hex": "#ffffff",
-          "role": "text",
-          "source": "https://revolverbali.com/"
-        }
-      ],
-      "essence": {
-        "feeling": [
-          "energetic",
-          "revived",
-          "welcome"
+          "energized",
+          "cool",
+          "at home"
         ],
         "placeSymbols": [
           "Seminyak streets",
-          "Canggu surf culture",
-          "Bali tropical vibe"
+          "surf"
         ]
       }
     },
@@ -2069,7 +1910,7 @@
         "source": "https://revolverbali.com/"
       },
       "summary": {
-        "value": "Born in Bali in 2012, Revolver is a renowned coffee shop and lifestyle brand offering specialty coffee and merchandise across multiple venues.",
+        "value": "Iconic Bali-born coffee shop offering signature brews, single-origin coffee, merchandise, and apparel across multiple venues.",
         "source": "https://revolverbali.com/"
       },
       "category": "coffee shop",
@@ -2119,18 +1960,17 @@
         {
           "value": "Free Shipping Indonesia Wide",
           "source": "https://revolverbali.com/"
-        },
-        {
-          "value": "10% off all Revolver Food and Beverage after run for all members",
-          "source": "https://revolverbali.com/"
         }
       ],
       "location": {
         "town": {
+          "value": "Seminyak",
+          "source": "https://revolverbali.com/"
+        },
+        "area": {
           "value": "Bali",
           "source": "https://revolverbali.com/"
         },
-        "area": null,
         "address": null,
         "serviceArea": null
       },
@@ -2149,9 +1989,10 @@
       },
       "hours": null,
       "tone": [
-        "bold",
+        "cool",
         "energetic",
-        "casual"
+        "welcoming",
+        "bold"
       ],
       "colours": [
         {
@@ -2167,19 +2008,138 @@
       ],
       "essence": {
         "feeling": [
-          "energetic",
-          "revived",
-          "welcome"
+          "energized",
+          "cool",
+          "at home"
         ],
         "placeSymbols": [
           "Seminyak streets",
-          "Canggu surf culture",
-          "Bali tropical vibe"
+          "surf boards",
+          "tropical foliage",
+          "Bali sun",
+          "coastal breeze"
+        ]
+      }
+    },
+    {
+      "name": {
+        "value": "Revolver Bali",
+        "source": "https://revolverbali.com/"
+      },
+      "summary": {
+        "value": "Iconic Bali-born coffee shop offering signature brews, single-origin coffee, merchandise, and apparel across multiple venues.",
+        "source": "https://revolverbali.com/"
+      },
+      "category": "coffee shop",
+      "offerings": [
+        {
+          "name": "Revolver Instant Coffee",
+          "price": "IDR 245,000",
+          "source": "https://revolverbali.com/"
+        },
+        {
+          "name": "Dad Hats",
+          "price": "IDR 515,000",
+          "source": "https://revolverbali.com/"
+        },
+        {
+          "name": "Gak Masalah Long Sleeve",
+          "price": "IDR 765,000",
+          "source": "https://revolverbali.com/"
+        },
+        {
+          "name": "Studio Crop Sweater",
+          "price": "IDR 930,000",
+          "source": "https://revolverbali.com/"
+        },
+        {
+          "name": "Single Origin Ethiopia - 250gr",
+          "price": "IDR 260,000",
+          "source": "https://revolverbali.com/"
+        },
+        {
+          "name": "Bali Heritage Tee",
+          "price": "IDR 655,000",
+          "source": "https://revolverbali.com/"
+        },
+        {
+          "name": "Revolver Keychain",
+          "price": "IDR 105,000",
+          "source": "https://revolverbali.com/"
+        },
+        {
+          "name": "Ga Masalah Tee",
+          "price": "IDR 655,000",
+          "source": "https://revolverbali.com/"
+        }
+      ],
+      "highlights": [
+        {
+          "value": "Free Shipping Indonesia Wide",
+          "source": "https://revolverbali.com/"
+        }
+      ],
+      "location": {
+        "town": {
+          "value": "Seminyak",
+          "source": "https://revolverbali.com/"
+        },
+        "area": {
+          "value": "Bali",
+          "source": "https://revolverbali.com/"
+        },
+        "address": null,
+        "serviceArea": null
+      },
+      "contact": {
+        "whatsapp": {
+          "value": "628213100794",
+          "source": "https://revolverbali.com/pages/location"
+        },
+        "phone": null,
+        "email": null,
+        "instagram": {
+          "value": "revolver.bali",
+          "source": "https://revolverbali.com/"
+        },
+        "bookingUrl": null
+      },
+      "hours": null,
+      "tone": [
+        "cool",
+        "energetic",
+        "welcoming",
+        "bold"
+      ],
+      "colours": [
+        {
+          "hex": "#000000",
+          "role": "background",
+          "source": "https://revolverbali.com/"
+        },
+        {
+          "hex": "#ffffff",
+          "role": "text",
+          "source": "https://revolverbali.com/"
+        }
+      ],
+      "essence": {
+        "feeling": [
+          "energized",
+          "cool",
+          "at home"
+        ],
+        "placeSymbols": [
+          "Seminyak streets",
+          "surf boards",
+          "tropical foliage",
+          "Bali sun",
+          "coastal breeze"
         ],
         "senses": [
-          "fresh roasted coffee beans",
-          "dark roast aroma",
-          "soft"
+          "roasted coffee aroma",
+          "crisp morning air",
+          "ch"
         ]
       }
     },
@@ -2189,7 +2149,7 @@
         "source": "https://revolverbali.com/"
       },
       "summary": {
-        "value": "Born in Bali in 2012, Revolver is a renowned coffee shop and lifestyle brand offering specialty coffee and merchandise across multiple venues.",
+        "value": "Iconic Bali-born coffee shop offering signature brews, single-origin coffee, merchandise, and apparel across multiple venues.",
         "source": "https://revolverbali.com/"
       },
       "category": "coffee shop",
@@ -2239,18 +2199,17 @@
         {
           "value": "Free Shipping Indonesia Wide",
           "source": "https://revolverbali.com/"
-        },
-        {
-          "value": "10% off all Revolver Food and Beverage after run for all members",
-          "source": "https://revolverbali.com/"
         }
       ],
       "location": {
         "town": {
+          "value": "Seminyak",
+          "source": "https://revolverbali.com/"
+        },
+        "area": {
           "value": "Bali",
           "source": "https://revolverbali.com/"
         },
-        "area": null,
         "address": null,
         "serviceArea": null
       },
@@ -2269,9 +2228,10 @@
       },
       "hours": null,
       "tone": [
-        "bold",
+        "cool",
         "energetic",
-        "casual"
+        "welcoming",
+        "bold"
       ],
       "colours": [
         {
@@ -2287,147 +2247,24 @@
       ],
       "essence": {
         "feeling": [
-          "energetic",
-          "revived",
-          "welcome"
+          "energized",
+          "cool",
+          "at home"
         ],
         "placeSymbols": [
           "Seminyak streets",
-          "Canggu surf culture",
-          "Bali tropical vibe"
+          "surf boards",
+          "tropical foliage",
+          "Bali sun",
+          "coastal breeze"
         ],
         "senses": [
-          "fresh roasted coffee beans",
-          "dark roast aroma",
-          "soft cotton apparel"
+          "roasted coffee aroma",
+          "crisp morning air",
+          "chinking ceramic cups",
+          "smooth espresso"
         ],
         "moments": []
-      },
-      "visualStyle": {}
-    },
-    {
-      "name": {
-        "value": "Revolver Bali",
-        "source": "https://revolverbali.com/"
-      },
-      "summary": {
-        "value": "Born in Bali in 2012, Revolver is a renowned coffee shop and lifestyle brand offering specialty coffee and merchandise across multiple venues.",
-        "source": "https://revolverbali.com/"
-      },
-      "category": "coffee shop",
-      "offerings": [
-        {
-          "name": "Revolver Instant Coffee",
-          "price": "IDR 245,000",
-          "source": "https://revolverbali.com/"
-        },
-        {
-          "name": "Dad Hats",
-          "price": "IDR 515,000",
-          "source": "https://revolverbali.com/"
-        },
-        {
-          "name": "Gak Masalah Long Sleeve",
-          "price": "IDR 765,000",
-          "source": "https://revolverbali.com/"
-        },
-        {
-          "name": "Studio Crop Sweater",
-          "price": "IDR 930,000",
-          "source": "https://revolverbali.com/"
-        },
-        {
-          "name": "Single Origin Ethiopia - 250gr",
-          "price": "IDR 260,000",
-          "source": "https://revolverbali.com/"
-        },
-        {
-          "name": "Bali Heritage Tee",
-          "price": "IDR 655,000",
-          "source": "https://revolverbali.com/"
-        },
-        {
-          "name": "Revolver Keychain",
-          "price": "IDR 105,000",
-          "source": "https://revolverbali.com/"
-        },
-        {
-          "name": "Ga Masalah Tee",
-          "price": "IDR 655,000",
-          "source": "https://revolverbali.com/"
-        }
-      ],
-      "highlights": [
-        {
-          "value": "Free Shipping Indonesia Wide",
-          "source": "https://revolverbali.com/"
-        },
-        {
-          "value": "10% off all Revolver Food and Beverage after run for all members",
-          "source": "https://revolverbali.com/"
-        }
-      ],
-      "location": {
-        "town": {
-          "value": "Bali",
-          "source": "https://revolverbali.com/"
-        },
-        "area": null,
-        "address": null,
-        "serviceArea": null
-      },
-      "contact": {
-        "whatsapp": {
-          "value": "628213100794",
-          "source": "https://revolverbali.com/pages/location"
-        },
-        "phone": null,
-        "email": null,
-        "instagram": {
-          "value": "revolver.bali",
-          "source": "https://revolverbali.com/"
-        },
-        "bookingUrl": null
-      },
-      "hours": null,
-      "tone": [
-        "bold",
-        "energetic",
-        "casual"
-      ],
-      "colours": [
-        {
-          "hex": "#000000",
-          "role": "background",
-          "source": "https://revolverbali.com/"
-        },
-        {
-          "hex": "#ffffff",
-          "role": "text",
-          "source": "https://revolverbali.com/"
-        }
-      ],
-      "essence": {
-        "feeling": [
-          "energetic",
-          "revived",
-          "welcome"
-        ],
-        "placeSymbols": [
-          "Seminyak streets",
-          "Canggu surf culture",
-          "Bali tropical vibe"
-        ],
-        "senses": [
-          "fresh roasted coffee beans",
-          "dark roast aroma",
-          "soft cotton apparel"
-        ],
-        "moments": []
-      },
-      "visualStyle": {
-        "summary": "bold monochrome, high contrast, minimalist lighting, raw industrial textures",
-        "palette": "black and white"
       }
     },
     {
@@ -2436,7 +2273,7 @@
         "source": "https://revolverbali.com/"
       },
       "summary": {
-        "value": "Born in Bali in 2012, Revolver is a renowned coffee shop and lifestyle brand offering specialty coffee and merchandise across multiple venues.",
+        "value": "Iconic Bali-born coffee shop offering signature brews, single-origin coffee, merchandise, and apparel across multiple venues.",
         "source": "https://revolverbali.com/"
       },
       "category": "coffee shop",
@@ -2486,18 +2323,17 @@
         {
           "value": "Free Shipping Indonesia Wide",
           "source": "https://revolverbali.com/"
-        },
-        {
-          "value": "10% off all Revolver Food and Beverage after run for all members",
-          "source": "https://revolverbali.com/"
         }
       ],
       "location": {
         "town": {
+          "value": "Seminyak",
+          "source": "https://revolverbali.com/"
+        },
+        "area": {
           "value": "Bali",
           "source": "https://revolverbali.com/"
         },
-        "area": null,
         "address": null,
         "serviceArea": null
       },
@@ -2516,9 +2352,10 @@
       },
       "hours": null,
       "tone": [
-        "bold",
+        "cool",
         "energetic",
-        "casual"
+        "welcoming",
+        "bold"
       ],
       "colours": [
         {
@@ -2534,28 +2371,27 @@
       ],
       "essence": {
         "feeling": [
-          "energetic",
-          "revived",
-          "welcome"
+          "energized",
+          "cool",
+          "at home"
         ],
         "placeSymbols": [
           "Seminyak streets",
-          "Canggu surf culture",
-          "Bali tropical vibe"
+          "surf boards",
+          "tropical foliage",
+          "Bali sun",
+          "coastal breeze"
         ],
         "senses": [
-          "fresh roasted coffee beans",
-          "dark roast aroma",
-          "soft cotton apparel"
+          "roasted coffee aroma",
+          "crisp morning air",
+          "chinking ceramic cups",
+          "smooth espresso"
         ],
         "moments": []
       },
       "visualStyle": {
-        "summary": "bold monochrome, high contrast, minimalist lighting, raw industrial textures",
-        "palette": "black and white",
-        "light": "studio directional light",
-        "textures": "matte metal, washed cotton",
-        "mood": ""
+        "summary": "Bold monochrome aesthetic, high contrast, minimalist lighting, urban grunge textures."
       }
     },
     {
@@ -2564,7 +2400,7 @@
         "source": "https://revolverbali.com/"
       },
       "summary": {
-        "value": "Born in Bali in 2012, Revolver is a renowned coffee shop and lifestyle brand offering specialty coffee and merchandise across multiple venues.",
+        "value": "Iconic Bali-born coffee shop offering signature brews, single-origin coffee, merchandise, and apparel across multiple venues.",
         "source": "https://revolverbali.com/"
       },
       "category": "coffee shop",
@@ -2614,18 +2450,17 @@
         {
           "value": "Free Shipping Indonesia Wide",
           "source": "https://revolverbali.com/"
-        },
-        {
-          "value": "10% off all Revolver Food and Beverage after run for all members",
-          "source": "https://revolverbali.com/"
         }
       ],
       "location": {
         "town": {
+          "value": "Seminyak",
+          "source": "https://revolverbali.com/"
+        },
+        "area": {
           "value": "Bali",
           "source": "https://revolverbali.com/"
         },
-        "area": null,
         "address": null,
         "serviceArea": null
       },
@@ -2644,9 +2479,10 @@
       },
       "hours": null,
       "tone": [
-        "bold",
+        "cool",
         "energetic",
-        "casual"
+        "welcoming",
+        "bold"
       ],
       "colours": [
         {
@@ -2662,28 +2498,161 @@
       ],
       "essence": {
         "feeling": [
-          "energetic",
-          "revived",
-          "welcome"
+          "energized",
+          "cool",
+          "at home"
         ],
         "placeSymbols": [
           "Seminyak streets",
-          "Canggu surf culture",
-          "Bali tropical vibe"
+          "surf boards",
+          "tropical foliage",
+          "Bali sun",
+          "coastal breeze"
         ],
         "senses": [
-          "fresh roasted coffee beans",
-          "dark roast aroma",
-          "soft cotton apparel"
+          "roasted coffee aroma",
+          "crisp morning air",
+          "chinking ceramic cups",
+          "smooth espresso"
         ],
         "moments": []
       },
       "visualStyle": {
-        "summary": "bold monochrome, high contrast, minimalist lighting, raw industrial textures",
-        "palette": "black and white",
-        "light": "studio directional light",
-        "textures": "matte metal, washed cotton",
-        "mood": "cool, edgy, confident"
+        "summary": "Bold monochrome aesthetic, high contrast, minimalist lighting, urban grunge textures.",
+        "palette": "Black and white",
+        "light": "High contrast studio light",
+        "textures": "Matte metal"
+      }
+    },
+    {
+      "name": {
+        "value": "Revolver Bali",
+        "source": "https://revolverbali.com/"
+      },
+      "summary": {
+        "value": "Iconic Bali-born coffee shop offering signature brews, single-origin coffee, merchandise, and apparel across multiple venues.",
+        "source": "https://revolverbali.com/"
+      },
+      "category": "coffee shop",
+      "offerings": [
+        {
+          "name": "Revolver Instant Coffee",
+          "price": "IDR 245,000",
+          "source": "https://revolverbali.com/"
+        },
+        {
+          "name": "Dad Hats",
+          "price": "IDR 515,000",
+          "source": "https://revolverbali.com/"
+        },
+        {
+          "name": "Gak Masalah Long Sleeve",
+          "price": "IDR 765,000",
+          "source": "https://revolverbali.com/"
+        },
+        {
+          "name": "Studio Crop Sweater",
+          "price": "IDR 930,000",
+          "source": "https://revolverbali.com/"
+        },
+        {
+          "name": "Single Origin Ethiopia - 250gr",
+          "price": "IDR 260,000",
+          "source": "https://revolverbali.com/"
+        },
+        {
+          "name": "Bali Heritage Tee",
+          "price": "IDR 655,000",
+          "source": "https://revolverbali.com/"
+        },
+        {
+          "name": "Revolver Keychain",
+          "price": "IDR 105,000",
+          "source": "https://revolverbali.com/"
+        },
+        {
+          "name": "Ga Masalah Tee",
+          "price": "IDR 655,000",
+          "source": "https://revolverbali.com/"
+        }
+      ],
+      "highlights": [
+        {
+          "value": "Free Shipping Indonesia Wide",
+          "source": "https://revolverbali.com/"
+        }
+      ],
+      "location": {
+        "town": {
+          "value": "Seminyak",
+          "source": "https://revolverbali.com/"
+        },
+        "area": {
+          "value": "Bali",
+          "source": "https://revolverbali.com/"
+        },
+        "address": null,
+        "serviceArea": null
+      },
+      "contact": {
+        "whatsapp": {
+          "value": "628213100794",
+          "source": "https://revolverbali.com/pages/location"
+        },
+        "phone": null,
+        "email": null,
+        "instagram": {
+          "value": "revolver.bali",
+          "source": "https://revolverbali.com/"
+        },
+        "bookingUrl": null
+      },
+      "hours": null,
+      "tone": [
+        "cool",
+        "energetic",
+        "welcoming",
+        "bold"
+      ],
+      "colours": [
+        {
+          "hex": "#000000",
+          "role": "background",
+          "source": "https://revolverbali.com/"
+        },
+        {
+          "hex": "#ffffff",
+          "role": "text",
+          "source": "https://revolverbali.com/"
+        }
+      ],
+      "essence": {
+        "feeling": [
+          "energized",
+          "cool",
+          "at home"
+        ],
+        "placeSymbols": [
+          "Seminyak streets",
+          "surf boards",
+          "tropical foliage",
+          "Bali sun",
+          "coastal breeze"
+        ],
+        "senses": [
+          "roasted coffee aroma",
+          "crisp morning air",
+          "chinking ceramic cups",
+          "smooth espresso"
+        ],
+        "moments": []
+      },
+      "visualStyle": {
+        "summary": "Bold monochrome aesthetic, high contrast, minimalist lighting, urban grunge textures.",
+        "palette": "Black and white",
+        "light": "High contrast studio light",
+        "textures": "Matte metal, washed cotton, smooth ceramic",
+        "mood": "Edgy and modern"
       }
     }
   ],
@@ -2693,7 +2662,7 @@
       "source": "https://revolverbali.com/"
     },
     "summary": {
-      "value": "Born in Bali in 2012, Revolver is a renowned coffee shop and lifestyle brand offering specialty coffee and merchandise across multiple venues.",
+      "value": "Iconic Bali-born coffee shop offering signature brews, single-origin coffee, merchandise, and apparel across multiple venues.",
       "source": "https://revolverbali.com/"
     },
     "category": "coffee shop",
@@ -2743,18 +2712,17 @@
       {
         "value": "Free Shipping Indonesia Wide",
         "source": "https://revolverbali.com/"
-      },
-      {
-        "value": "10% off all Revolver Food and Beverage after run for all members",
-        "source": "https://revolverbali.com/"
       }
     ],
     "location": {
       "town": {
+        "value": "Seminyak",
+        "source": "https://revolverbali.com/"
+      },
+      "area": {
         "value": "Bali",
         "source": "https://revolverbali.com/"
       },
-      "area": null,
       "address": null,
       "serviceArea": null
     },
@@ -2773,9 +2741,10 @@
     },
     "hours": null,
     "tone": [
-      "bold",
+      "cool",
       "energetic",
-      "casual"
+      "welcoming",
+      "bold"
     ],
     "colours": [
       {
@@ -2791,28 +2760,31 @@
     ],
     "essence": {
       "feeling": [
-        "energetic",
-        "revived",
-        "welcome"
+        "energized",
+        "cool",
+        "at home"
       ],
       "placeSymbols": [
         "Seminyak streets",
-        "Canggu surf culture",
-        "Bali tropical vibe"
+        "surf boards",
+        "tropical foliage",
+        "Bali sun",
+        "coastal breeze"
       ],
       "senses": [
-        "fresh roasted coffee beans",
-        "dark roast aroma",
-        "soft cotton apparel"
+        "roasted coffee aroma",
+        "crisp morning air",
+        "chinking ceramic cups",
+        "smooth espresso"
       ],
       "moments": []
     },
     "visualStyle": {
-      "summary": "bold monochrome, high contrast, minimalist lighting, raw industrial textures",
-      "palette": "black and white",
-      "light": "studio directional light",
-      "textures": "matte metal, washed cotton",
-      "mood": "cool, edgy, confident"
+      "summary": "Bold monochrome aesthetic, high contrast, minimalist lighting, urban grunge textures.",
+      "palette": "Black and white",
+      "light": "High contrast studio light",
+      "textures": "Matte metal, washed cotton, smooth ceramic",
+      "mood": "Edgy and modern"
     }
   }
 }

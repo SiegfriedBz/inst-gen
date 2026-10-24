@@ -1,6 +1,6 @@
 {
   "modelId": "gemini-3.5-flash-lite",
-  "promptVersion": "brand-4",
+  "promptVersion": "brand-5",
   "partials": [
     {
       "name": {}
@@ -17,7 +17,7 @@
         "source": "https://betterthanblouses.com/"
       },
       "summary": {
-        "value": "Handmade batik apparel and vintage finds, crafted"
+        "value": "Handmade batik apparel including blouses, tops, skirts"
       }
     },
     {
@@ -26,17 +26,7 @@
         "source": "https://betterthanblouses.com/"
       },
       "summary": {
-        "value": "Handmade batik apparel and vintage finds, crafted in small batches for versatile, everyday wear.",
-        "source": "https://betterthanblouses.com/"
-      }
-    },
-    {
-      "name": {
-        "value": "betterthanblouses",
-        "source": "https://betterthanblouses.com/"
-      },
-      "summary": {
-        "value": "Handmade batik apparel and vintage finds, crafted in small batches for versatile, everyday wear.",
+        "value": "Handmade batik apparel including blouses, tops, skirts, and dresses, crafted in small batches in Penang.",
         "source": "https://betterthanblouses.com/"
       },
       "category": "clothing boutique",
@@ -52,7 +42,7 @@
         "source": "https://betterthanblouses.com/"
       },
       "summary": {
-        "value": "Handmade batik apparel and vintage finds, crafted in small batches for versatile, everyday wear.",
+        "value": "Handmade batik apparel including blouses, tops, skirts, and dresses, crafted in small batches in Penang.",
         "source": "https://betterthanblouses.com/"
       },
       "category": "clothing boutique",
@@ -69,7 +59,7 @@
         "source": "https://betterthanblouses.com/"
       },
       "summary": {
-        "value": "Handmade batik apparel and vintage finds, crafted in small batches for versatile, everyday wear.",
+        "value": "Handmade batik apparel including blouses, tops, skirts, and dresses, crafted in small batches in Penang.",
         "source": "https://betterthanblouses.com/"
       },
       "category": "clothing boutique",
@@ -90,7 +80,7 @@
         "source": "https://betterthanblouses.com/"
       },
       "summary": {
-        "value": "Handmade batik apparel and vintage finds, crafted in small batches for versatile, everyday wear.",
+        "value": "Handmade batik apparel including blouses, tops, skirts, and dresses, crafted in small batches in Penang.",
         "source": "https://betterthanblouses.com/"
       },
       "category": "clothing boutique",
@@ -112,7 +102,7 @@
         "source": "https://betterthanblouses.com/"
       },
       "summary": {
-        "value": "Handmade batik apparel and vintage finds, crafted in small batches for versatile, everyday wear.",
+        "value": "Handmade batik apparel including blouses, tops, skirts, and dresses, crafted in small batches in Penang.",
         "source": "https://betterthanblouses.com/"
       },
       "category": "clothing boutique",
@@ -138,7 +128,7 @@
         "source": "https://betterthanblouses.com/"
       },
       "summary": {
-        "value": "Handmade batik apparel and vintage finds, crafted in small batches for versatile, everyday wear.",
+        "value": "Handmade batik apparel including blouses, tops, skirts, and dresses, crafted in small batches in Penang.",
         "source": "https://betterthanblouses.com/"
       },
       "category": "clothing boutique",
@@ -155,6 +145,144 @@
         },
         {
           "name": "La Vie en Bleu | Shape Shift Top",
+          "price": "37.00USD",
+          "source": "https://"
+        }
+      ]
+    },
+    {
+      "name": {
+        "value": "betterthanblouses",
+        "source": "https://betterthanblouses.com/"
+      },
+      "summary": {
+        "value": "Handmade batik apparel including blouses, tops, skirts, and dresses, crafted in small batches in Penang.",
+        "source": "https://betterthanblouses.com/"
+      },
+      "category": "clothing boutique",
+      "offerings": [
+        {
+          "name": "Roses | Reversible Shift Dress",
+          "price": "105.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Cloud 9 | Pleated Shorts",
+          "price": "60.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "La Vie en Bleu | Shape Shift Top",
+          "price": "37.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "La Vie En Bleu |"
+        }
+      ]
+    },
+    {
+      "name": {
+        "value": "betterthanblouses",
+        "source": "https://betterthanblouses.com/"
+      },
+      "summary": {
+        "value": "Handmade batik apparel including blouses, tops, skirts, and dresses, crafted in small batches in Penang.",
+        "source": "https://betterthanblouses.com/"
+      },
+      "category": "clothing boutique",
+      "offerings": [
+        {
+          "name": "Roses | Reversible Shift Dress",
+          "price": "105.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Cloud 9 | Pleated Shorts",
+          "price": "60.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "La Vie en Bleu | Shape Shift Top",
+          "price": "37.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "La Vie En Bleu | Split Top",
+          "price": "From 35.00USD",
+          "source": ""
+        }
+      ]
+    },
+    {
+      "name": {
+        "value": "betterthanblouses",
+        "source": "https://betterthanblouses.com/"
+      },
+      "summary": {
+        "value": "Handmade batik apparel including blouses, tops, skirts, and dresses, crafted in small batches in Penang.",
+        "source": "https://betterthanblouses.com/"
+      },
+      "category": "clothing boutique",
+      "offerings": [
+        {
+          "name": "Roses | Reversible Shift Dress",
+          "price": "105.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Cloud 9 | Pleated Shorts",
+          "price": "60.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "La Vie en Bleu | Shape Shift Top",
+          "price": "37.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "La Vie En Bleu | Split Top",
+          "price": "From 35.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Neelam"
+        }
+      ]
+    },
+    {
+      "name": {
+        "value": "betterthanblouses",
+        "source": "https://betterthanblouses.com/"
+      },
+      "summary": {
+        "value": "Handmade batik apparel including blouses, tops, skirts, and dresses, crafted in small batches in Penang.",
+        "source": "https://betterthanblouses.com/"
+      },
+      "category": "clothing boutique",
+      "offerings": [
+        {
+          "name": "Roses | Reversible Shift Dress",
+          "price": "105.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Cloud 9 | Pleated Shorts",
+          "price": "60.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "La Vie en Bleu | Shape Shift Top",
+          "price": "37.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "La Vie En Bleu | Split Top",
+          "price": "From 35.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Neelam & Ilai | Shape Shift Top",
           "price": "37.00USD"
         }
       ]
@@ -165,7 +293,7 @@
         "source": "https://betterthanblouses.com/"
       },
       "summary": {
-        "value": "Handmade batik apparel and vintage finds, crafted in small batches for versatile, everyday wear.",
+        "value": "Handmade batik apparel including blouses, tops, skirts, and dresses, crafted in small batches in Penang.",
         "source": "https://betterthanblouses.com/"
       },
       "category": "clothing boutique",
@@ -182,6 +310,16 @@
         },
         {
           "name": "La Vie en Bleu | Shape Shift Top",
+          "price": "37.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "La Vie En Bleu | Split Top",
+          "price": "From 35.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Neelam & Ilai | Shape Shift Top",
           "price": "37.00USD",
           "source": "https://betterthanblouses.com/"
         },
@@ -196,7 +334,7 @@
         "source": "https://betterthanblouses.com/"
       },
       "summary": {
-        "value": "Handmade batik apparel and vintage finds, crafted in small batches for versatile, everyday wear.",
+        "value": "Handmade batik apparel including blouses, tops, skirts, and dresses, crafted in small batches in Penang.",
         "source": "https://betterthanblouses.com/"
       },
       "category": "clothing boutique",
@@ -218,6 +356,58 @@
         },
         {
           "name": "La Vie En Bleu | Split Top",
+          "price": "From 35.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Neelam & Ilai | Shape Shift Top",
+          "price": "37.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Neelam & Ilai | Split Top",
+          "price": "From 35.00USD"
+        }
+      ]
+    },
+    {
+      "name": {
+        "value": "betterthanblouses",
+        "source": "https://betterthanblouses.com/"
+      },
+      "summary": {
+        "value": "Handmade batik apparel including blouses, tops, skirts, and dresses, crafted in small batches in Penang.",
+        "source": "https://betterthanblouses.com/"
+      },
+      "category": "clothing boutique",
+      "offerings": [
+        {
+          "name": "Roses | Reversible Shift Dress",
+          "price": "105.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Cloud 9 | Pleated Shorts",
+          "price": "60.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "La Vie en Bleu | Shape Shift Top",
+          "price": "37.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "La Vie En Bleu | Split Top",
+          "price": "From 35.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Neelam & Ilai | Shape Shift Top",
+          "price": "37.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Neelam & Ilai | Split Top",
           "price": "From 35.00USD",
           "source": "https://betterthanblouses.com/"
         },
@@ -230,7 +420,7 @@
         "source": "https://betterthanblouses.com/"
       },
       "summary": {
-        "value": "Handmade batik apparel and vintage finds, crafted in small batches for versatile, everyday wear.",
+        "value": "Handmade batik apparel including blouses, tops, skirts, and dresses, crafted in small batches in Penang.",
         "source": "https://betterthanblouses.com/"
       },
       "category": "clothing boutique",
@@ -257,6 +447,228 @@
         },
         {
           "name": "Neelam & Ilai | Shape Shift Top",
+          "price": "37.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Neelam & Ilai | Split Top",
+          "price": "From 35.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Neelam & Ilai | Crop Top",
+          "price": "30.0"
+        }
+      ]
+    },
+    {
+      "name": {
+        "value": "betterthanblouses",
+        "source": "https://betterthanblouses.com/"
+      },
+      "summary": {
+        "value": "Handmade batik apparel including blouses, tops, skirts, and dresses, crafted in small batches in Penang.",
+        "source": "https://betterthanblouses.com/"
+      },
+      "category": "clothing boutique",
+      "offerings": [
+        {
+          "name": "Roses | Reversible Shift Dress",
+          "price": "105.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Cloud 9 | Pleated Shorts",
+          "price": "60.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "La Vie en Bleu | Shape Shift Top",
+          "price": "37.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "La Vie En Bleu | Split Top",
+          "price": "From 35.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Neelam & Ilai | Shape Shift Top",
+          "price": "37.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Neelam & Ilai | Split Top",
+          "price": "From 35.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Neelam & Ilai | Crop Top",
+          "price": "30.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {}
+      ]
+    },
+    {
+      "name": {
+        "value": "betterthanblouses",
+        "source": "https://betterthanblouses.com/"
+      },
+      "summary": {
+        "value": "Handmade batik apparel including blouses, tops, skirts, and dresses, crafted in small batches in Penang.",
+        "source": "https://betterthanblouses.com/"
+      },
+      "category": "clothing boutique",
+      "offerings": [
+        {
+          "name": "Roses | Reversible Shift Dress",
+          "price": "105.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Cloud 9 | Pleated Shorts",
+          "price": "60.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "La Vie en Bleu | Shape Shift Top",
+          "price": "37.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "La Vie En Bleu | Split Top",
+          "price": "From 35.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Neelam & Ilai | Shape Shift Top",
+          "price": "37.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Neelam & Ilai | Split Top",
+          "price": "From 35.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Neelam & Ilai | Crop Top",
+          "price": "30.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "La Vie En Bleu | Culottes",
+          "price": "70.0"
+        }
+      ]
+    },
+    {
+      "name": {
+        "value": "betterthanblouses",
+        "source": "https://betterthanblouses.com/"
+      },
+      "summary": {
+        "value": "Handmade batik apparel including blouses, tops, skirts, and dresses, crafted in small batches in Penang.",
+        "source": "https://betterthanblouses.com/"
+      },
+      "category": "clothing boutique",
+      "offerings": [
+        {
+          "name": "Roses | Reversible Shift Dress",
+          "price": "105.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Cloud 9 | Pleated Shorts",
+          "price": "60.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "La Vie en Bleu | Shape Shift Top",
+          "price": "37.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "La Vie En Bleu | Split Top",
+          "price": "From 35.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Neelam & Ilai | Shape Shift Top",
+          "price": "37.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Neelam & Ilai | Split Top",
+          "price": "From 35.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Neelam & Ilai | Crop Top",
+          "price": "30.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "La Vie En Bleu | Culottes",
+          "price": "70.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {}
+      ]
+    },
+    {
+      "name": {
+        "value": "betterthanblouses",
+        "source": "https://betterthanblouses.com/"
+      },
+      "summary": {
+        "value": "Handmade batik apparel including blouses, tops, skirts, and dresses, crafted in small batches in Penang.",
+        "source": "https://betterthanblouses.com/"
+      },
+      "category": "clothing boutique",
+      "offerings": [
+        {
+          "name": "Roses | Reversible Shift Dress",
+          "price": "105.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Cloud 9 | Pleated Shorts",
+          "price": "60.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "La Vie en Bleu | Shape Shift Top",
+          "price": "37.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "La Vie En Bleu | Split Top",
+          "price": "From 35.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Neelam & Ilai | Shape Shift Top",
+          "price": "37.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Neelam & Ilai | Split Top",
+          "price": "From 35.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Neelam & Ilai | Crop Top",
+          "price": "30.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "La Vie En Bleu | Culottes",
+          "price": "70.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Mizu | Shape Shift Top",
           "price": "37.00"
         }
       ]
@@ -267,304 +679,7 @@
         "source": "https://betterthanblouses.com/"
       },
       "summary": {
-        "value": "Handmade batik apparel and vintage finds, crafted in small batches for versatile, everyday wear.",
-        "source": "https://betterthanblouses.com/"
-      },
-      "category": "clothing boutique",
-      "offerings": [
-        {
-          "name": "Roses | Reversible Shift Dress",
-          "price": "105.00USD",
-          "source": "https://betterthanblouses.com/"
-        },
-        {
-          "name": "Cloud 9 | Pleated Shorts",
-          "price": "60.00USD",
-          "source": "https://betterthanblouses.com/"
-        },
-        {
-          "name": "La Vie en Bleu | Shape Shift Top",
-          "price": "37.00USD",
-          "source": "https://betterthanblouses.com/"
-        },
-        {
-          "name": "La Vie En Bleu | Split Top",
-          "price": "From 35.00USD",
-          "source": "https://betterthanblouses.com/"
-        },
-        {
-          "name": "Neelam & Ilai | Shape Shift Top",
-          "price": "37.00USD",
-          "source": "https://betterthanblouses.com/"
-        },
-        {
-          "name": "Neelam & Ilai | Split Top",
-          "price": "From 3"
-        }
-      ]
-    },
-    {
-      "name": {
-        "value": "betterthanblouses",
-        "source": "https://betterthanblouses.com/"
-      },
-      "summary": {
-        "value": "Handmade batik apparel and vintage finds, crafted in small batches for versatile, everyday wear.",
-        "source": "https://betterthanblouses.com/"
-      },
-      "category": "clothing boutique",
-      "offerings": [
-        {
-          "name": "Roses | Reversible Shift Dress",
-          "price": "105.00USD",
-          "source": "https://betterthanblouses.com/"
-        },
-        {
-          "name": "Cloud 9 | Pleated Shorts",
-          "price": "60.00USD",
-          "source": "https://betterthanblouses.com/"
-        },
-        {
-          "name": "La Vie en Bleu | Shape Shift Top",
-          "price": "37.00USD",
-          "source": "https://betterthanblouses.com/"
-        },
-        {
-          "name": "La Vie En Bleu | Split Top",
-          "price": "From 35.00USD",
-          "source": "https://betterthanblouses.com/"
-        },
-        {
-          "name": "Neelam & Ilai | Shape Shift Top",
-          "price": "37.00USD",
-          "source": "https://betterthanblouses.com/"
-        },
-        {
-          "name": "Neelam & Ilai | Split Top",
-          "price": "From 35.00USD",
-          "source": "https://betterthanblouses.com/"
-        }
-      ]
-    },
-    {
-      "name": {
-        "value": "betterthanblouses",
-        "source": "https://betterthanblouses.com/"
-      },
-      "summary": {
-        "value": "Handmade batik apparel and vintage finds, crafted in small batches for versatile, everyday wear.",
-        "source": "https://betterthanblouses.com/"
-      },
-      "category": "clothing boutique",
-      "offerings": [
-        {
-          "name": "Roses | Reversible Shift Dress",
-          "price": "105.00USD",
-          "source": "https://betterthanblouses.com/"
-        },
-        {
-          "name": "Cloud 9 | Pleated Shorts",
-          "price": "60.00USD",
-          "source": "https://betterthanblouses.com/"
-        },
-        {
-          "name": "La Vie en Bleu | Shape Shift Top",
-          "price": "37.00USD",
-          "source": "https://betterthanblouses.com/"
-        },
-        {
-          "name": "La Vie En Bleu | Split Top",
-          "price": "From 35.00USD",
-          "source": "https://betterthanblouses.com/"
-        },
-        {
-          "name": "Neelam & Ilai | Shape Shift Top",
-          "price": "37.00USD",
-          "source": "https://betterthanblouses.com/"
-        },
-        {
-          "name": "Neelam & Ilai | Split Top",
-          "price": "From 35.00USD",
-          "source": "https://betterthanblouses.com/"
-        },
-        {
-          "name": "Neelam & Ilai | Crop Top"
-        }
-      ]
-    },
-    {
-      "name": {
-        "value": "betterthanblouses",
-        "source": "https://betterthanblouses.com/"
-      },
-      "summary": {
-        "value": "Handmade batik apparel and vintage finds, crafted in small batches for versatile, everyday wear.",
-        "source": "https://betterthanblouses.com/"
-      },
-      "category": "clothing boutique",
-      "offerings": [
-        {
-          "name": "Roses | Reversible Shift Dress",
-          "price": "105.00USD",
-          "source": "https://betterthanblouses.com/"
-        },
-        {
-          "name": "Cloud 9 | Pleated Shorts",
-          "price": "60.00USD",
-          "source": "https://betterthanblouses.com/"
-        },
-        {
-          "name": "La Vie en Bleu | Shape Shift Top",
-          "price": "37.00USD",
-          "source": "https://betterthanblouses.com/"
-        },
-        {
-          "name": "La Vie En Bleu | Split Top",
-          "price": "From 35.00USD",
-          "source": "https://betterthanblouses.com/"
-        },
-        {
-          "name": "Neelam & Ilai | Shape Shift Top",
-          "price": "37.00USD",
-          "source": "https://betterthanblouses.com/"
-        },
-        {
-          "name": "Neelam & Ilai | Split Top",
-          "price": "From 35.00USD",
-          "source": "https://betterthanblouses.com/"
-        },
-        {
-          "name": "Neelam & Ilai | Crop Top",
-          "price": "30.00USD",
-          "source": "https://betterthanblouses.com/"
-        },
-        {
-          "name": "La Vie En Bleu | Culottes"
-        }
-      ]
-    },
-    {
-      "name": {
-        "value": "betterthanblouses",
-        "source": "https://betterthanblouses.com/"
-      },
-      "summary": {
-        "value": "Handmade batik apparel and vintage finds, crafted in small batches for versatile, everyday wear.",
-        "source": "https://betterthanblouses.com/"
-      },
-      "category": "clothing boutique",
-      "offerings": [
-        {
-          "name": "Roses | Reversible Shift Dress",
-          "price": "105.00USD",
-          "source": "https://betterthanblouses.com/"
-        },
-        {
-          "name": "Cloud 9 | Pleated Shorts",
-          "price": "60.00USD",
-          "source": "https://betterthanblouses.com/"
-        },
-        {
-          "name": "La Vie en Bleu | Shape Shift Top",
-          "price": "37.00USD",
-          "source": "https://betterthanblouses.com/"
-        },
-        {
-          "name": "La Vie En Bleu | Split Top",
-          "price": "From 35.00USD",
-          "source": "https://betterthanblouses.com/"
-        },
-        {
-          "name": "Neelam & Ilai | Shape Shift Top",
-          "price": "37.00USD",
-          "source": "https://betterthanblouses.com/"
-        },
-        {
-          "name": "Neelam & Ilai | Split Top",
-          "price": "From 35.00USD",
-          "source": "https://betterthanblouses.com/"
-        },
-        {
-          "name": "Neelam & Ilai | Crop Top",
-          "price": "30.00USD",
-          "source": "https://betterthanblouses.com/"
-        },
-        {
-          "name": "La Vie En Bleu | Culottes",
-          "price": "70.00USD",
-          "source": "https://betterthanblouses.com/"
-        },
-        {
-          "name": "Mizu | Shape Shift Top",
-          "price": ""
-        }
-      ]
-    },
-    {
-      "name": {
-        "value": "betterthanblouses",
-        "source": "https://betterthanblouses.com/"
-      },
-      "summary": {
-        "value": "Handmade batik apparel and vintage finds, crafted in small batches for versatile, everyday wear.",
-        "source": "https://betterthanblouses.com/"
-      },
-      "category": "clothing boutique",
-      "offerings": [
-        {
-          "name": "Roses | Reversible Shift Dress",
-          "price": "105.00USD",
-          "source": "https://betterthanblouses.com/"
-        },
-        {
-          "name": "Cloud 9 | Pleated Shorts",
-          "price": "60.00USD",
-          "source": "https://betterthanblouses.com/"
-        },
-        {
-          "name": "La Vie en Bleu | Shape Shift Top",
-          "price": "37.00USD",
-          "source": "https://betterthanblouses.com/"
-        },
-        {
-          "name": "La Vie En Bleu | Split Top",
-          "price": "From 35.00USD",
-          "source": "https://betterthanblouses.com/"
-        },
-        {
-          "name": "Neelam & Ilai | Shape Shift Top",
-          "price": "37.00USD",
-          "source": "https://betterthanblouses.com/"
-        },
-        {
-          "name": "Neelam & Ilai | Split Top",
-          "price": "From 35.00USD",
-          "source": "https://betterthanblouses.com/"
-        },
-        {
-          "name": "Neelam & Ilai | Crop Top",
-          "price": "30.00USD",
-          "source": "https://betterthanblouses.com/"
-        },
-        {
-          "name": "La Vie En Bleu | Culottes",
-          "price": "70.00USD",
-          "source": "https://betterthanblouses.com/"
-        },
-        {
-          "name": "Mizu | Shape Shift Top",
-          "price": "37.00USD",
-          "source": "https://betterthanblouses.com/"
-        }
-      ]
-    },
-    {
-      "name": {
-        "value": "betterthanblouses",
-        "source": "https://betterthanblouses.com/"
-      },
-      "summary": {
-        "value": "Handmade batik apparel and vintage finds, crafted in small batches for versatile, everyday wear.",
+        "value": "Handmade batik apparel including blouses, tops, skirts, and dresses, crafted in small batches in Penang.",
         "source": "https://betterthanblouses.com/"
       },
       "category": "clothing boutique",
@@ -615,7 +730,8 @@
           "source": "https://betterthanblouses.com/"
         },
         {
-          "name": "Flower Market & Mizu | Reversible Midi Skirt"
+          "name": "Flower Market & Mizu | Reversible Midi Skirt",
+          "price": "9"
         }
       ]
     },
@@ -625,7 +741,70 @@
         "source": "https://betterthanblouses.com/"
       },
       "summary": {
-        "value": "Handmade batik apparel and vintage finds, crafted in small batches for versatile, everyday wear.",
+        "value": "Handmade batik apparel including blouses, tops, skirts, and dresses, crafted in small batches in Penang.",
+        "source": "https://betterthanblouses.com/"
+      },
+      "category": "clothing boutique",
+      "offerings": [
+        {
+          "name": "Roses | Reversible Shift Dress",
+          "price": "105.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Cloud 9 | Pleated Shorts",
+          "price": "60.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "La Vie en Bleu | Shape Shift Top",
+          "price": "37.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "La Vie En Bleu | Split Top",
+          "price": "From 35.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Neelam & Ilai | Shape Shift Top",
+          "price": "37.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Neelam & Ilai | Split Top",
+          "price": "From 35.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Neelam & Ilai | Crop Top",
+          "price": "30.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "La Vie En Bleu | Culottes",
+          "price": "70.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Mizu | Shape Shift Top",
+          "price": "37.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Flower Market & Mizu | Reversible Midi Skirt",
+          "price": "98.00USD",
+          "source": "https://betterthanblouses.com/"
+        }
+      ]
+    },
+    {
+      "name": {
+        "value": "betterthanblouses",
+        "source": "https://betterthanblouses.com/"
+      },
+      "summary": {
+        "value": "Handmade batik apparel including blouses, tops, skirts, and dresses, crafted in small batches in Penang.",
         "source": "https://betterthanblouses.com/"
       },
       "category": "clothing boutique",
@@ -682,7 +861,7 @@
         },
         {
           "name": "Mizu | Crop Top",
-          "price": "3"
+          "price": "30."
         }
       ]
     },
@@ -692,7 +871,7 @@
         "source": "https://betterthanblouses.com/"
       },
       "summary": {
-        "value": "Handmade batik apparel and vintage finds, crafted in small batches for versatile, everyday wear.",
+        "value": "Handmade batik apparel including blouses, tops, skirts, and dresses, crafted in small batches in Penang.",
         "source": "https://betterthanblouses.com/"
       },
       "category": "clothing boutique",
@@ -760,7 +939,7 @@
         "source": "https://betterthanblouses.com/"
       },
       "summary": {
-        "value": "Handmade batik apparel and vintage finds, crafted in small batches for versatile, everyday wear.",
+        "value": "Handmade batik apparel including blouses, tops, skirts, and dresses, crafted in small batches in Penang.",
         "source": "https://betterthanblouses.com/"
       },
       "category": "clothing boutique",
@@ -822,7 +1001,7 @@
         },
         {
           "name": "Mizu | Split Top",
-          "price": "From 3"
+          "price": "From 35."
         }
       ]
     },
@@ -832,7 +1011,7 @@
         "source": "https://betterthanblouses.com/"
       },
       "summary": {
-        "value": "Handmade batik apparel and vintage finds, crafted in small batches for versatile, everyday wear.",
+        "value": "Handmade batik apparel including blouses, tops, skirts, and dresses, crafted in small batches in Penang.",
         "source": "https://betterthanblouses.com/"
       },
       "category": "clothing boutique",
@@ -905,7 +1084,7 @@
         "source": "https://betterthanblouses.com/"
       },
       "summary": {
-        "value": "Handmade batik apparel and vintage finds, crafted in small batches for versatile, everyday wear.",
+        "value": "Handmade batik apparel including blouses, tops, skirts, and dresses, crafted in small batches in Penang.",
         "source": "https://betterthanblouses.com/"
       },
       "category": "clothing boutique",
@@ -972,91 +1151,9 @@
         }
       ],
       "highlights": [
-        {
-          "value": "Versatile & Light-weight"
-        }
-      ]
-    },
-    {
-      "name": {
-        "value": "betterthanblouses",
-        "source": "https://betterthanblouses.com/"
-      },
-      "summary": {
-        "value": "Handmade batik apparel and vintage finds, crafted in small batches for versatile, everyday wear.",
-        "source": "https://betterthanblouses.com/"
-      },
-      "category": "clothing boutique",
-      "offerings": [
-        {
-          "name": "Roses | Reversible Shift Dress",
-          "price": "105.00USD",
-          "source": "https://betterthanblouses.com/"
-        },
-        {
-          "name": "Cloud 9 | Pleated Shorts",
-          "price": "60.00USD",
-          "source": "https://betterthanblouses.com/"
-        },
-        {
-          "name": "La Vie en Bleu | Shape Shift Top",
-          "price": "37.00USD",
-          "source": "https://betterthanblouses.com/"
-        },
-        {
-          "name": "La Vie En Bleu | Split Top",
-          "price": "From 35.00USD",
-          "source": "https://betterthanblouses.com/"
-        },
-        {
-          "name": "Neelam & Ilai | Shape Shift Top",
-          "price": "37.00USD",
-          "source": "https://betterthanblouses.com/"
-        },
-        {
-          "name": "Neelam & Ilai | Split Top",
-          "price": "From 35.00USD",
-          "source": "https://betterthanblouses.com/"
-        },
-        {
-          "name": "Neelam & Ilai | Crop Top",
-          "price": "30.00USD",
-          "source": "https://betterthanblouses.com/"
-        },
-        {
-          "name": "La Vie En Bleu | Culottes",
-          "price": "70.00USD",
-          "source": "https://betterthanblouses.com/"
-        },
-        {
-          "name": "Mizu | Shape Shift Top",
-          "price": "37.00USD",
-          "source": "https://betterthanblouses.com/"
-        },
-        {
-          "name": "Flower Market & Mizu | Reversible Midi Skirt",
-          "price": "98.00USD",
-          "source": "https://betterthanblouses.com/"
-        },
-        {
-          "name": "Mizu | Crop Top",
-          "price": "30.00USD",
-          "source": "https://betterthanblouses.com/"
-        },
-        {
-          "name": "Mizu | Split Top",
-          "price": "From 35.00USD",
-          "source": "https://betterthanblouses.com/"
-        }
-      ],
-      "highlights": [
-        {
-          "value": "Versatile & Light-weight apparel for every occasion",
-          "source": "https://betterthanblouses.com/"
-        },
         {
           "value": "Handmade in small batches",
-          "source": "https://betterthan"
+          "source": ""
         }
       ]
     },
@@ -1066,7 +1163,7 @@
         "source": "https://betterthanblouses.com/"
       },
       "summary": {
-        "value": "Handmade batik apparel and vintage finds, crafted in small batches for versatile, everyday wear.",
+        "value": "Handmade batik apparel including blouses, tops, skirts, and dresses, crafted in small batches in Penang.",
         "source": "https://betterthanblouses.com/"
       },
       "category": "clothing boutique",
@@ -1133,16 +1230,12 @@
         }
       ],
       "highlights": [
-        {
-          "value": "Versatile & Light-weight apparel for every occasion",
-          "source": "https://betterthanblouses.com/"
-        },
         {
           "value": "Handmade in small batches",
           "source": "https://betterthanblouses.com/"
         },
         {
-          "value": "Carefully curated vintage finds"
+          "value": "Versatile &"
         }
       ]
     },
@@ -1152,7 +1245,7 @@
         "source": "https://betterthanblouses.com/"
       },
       "summary": {
-        "value": "Handmade batik apparel and vintage finds, crafted in small batches for versatile, everyday wear.",
+        "value": "Handmade batik apparel including blouses, tops, skirts, and dresses, crafted in small batches in Penang.",
         "source": "https://betterthanblouses.com/"
       },
       "category": "clothing boutique",
@@ -1220,110 +1313,17 @@
       ],
       "highlights": [
         {
-          "value": "Versatile & Light-weight apparel for every occasion",
-          "source": "https://betterthanblouses.com/"
-        },
-        {
           "value": "Handmade in small batches",
           "source": "https://betterthanblouses.com/"
         },
         {
-          "value": "Carefully curated vintage finds",
-          "source": "https://betterthanblouses.com/"
-        }
-      ],
-      "location": {}
-    },
-    {
-      "name": {
-        "value": "betterthanblouses",
-        "source": "https://betterthanblouses.com/"
-      },
-      "summary": {
-        "value": "Handmade batik apparel and vintage finds, crafted in small batches for versatile, everyday wear.",
-        "source": "https://betterthanblouses.com/"
-      },
-      "category": "clothing boutique",
-      "offerings": [
-        {
-          "name": "Roses | Reversible Shift Dress",
-          "price": "105.00USD",
-          "source": "https://betterthanblouses.com/"
-        },
-        {
-          "name": "Cloud 9 | Pleated Shorts",
-          "price": "60.00USD",
-          "source": "https://betterthanblouses.com/"
-        },
-        {
-          "name": "La Vie en Bleu | Shape Shift Top",
-          "price": "37.00USD",
-          "source": "https://betterthanblouses.com/"
-        },
-        {
-          "name": "La Vie En Bleu | Split Top",
-          "price": "From 35.00USD",
-          "source": "https://betterthanblouses.com/"
-        },
-        {
-          "name": "Neelam & Ilai | Shape Shift Top",
-          "price": "37.00USD",
-          "source": "https://betterthanblouses.com/"
-        },
-        {
-          "name": "Neelam & Ilai | Split Top",
-          "price": "From 35.00USD",
-          "source": "https://betterthanblouses.com/"
-        },
-        {
-          "name": "Neelam & Ilai | Crop Top",
-          "price": "30.00USD",
-          "source": "https://betterthanblouses.com/"
-        },
-        {
-          "name": "La Vie En Bleu | Culottes",
-          "price": "70.00USD",
-          "source": "https://betterthanblouses.com/"
-        },
-        {
-          "name": "Mizu | Shape Shift Top",
-          "price": "37.00USD",
-          "source": "https://betterthanblouses.com/"
-        },
-        {
-          "name": "Flower Market & Mizu | Reversible Midi Skirt",
-          "price": "98.00USD",
-          "source": "https://betterthanblouses.com/"
-        },
-        {
-          "name": "Mizu | Crop Top",
-          "price": "30.00USD",
-          "source": "https://betterthanblouses.com/"
-        },
-        {
-          "name": "Mizu | Split Top",
-          "price": "From 35.00USD",
-          "source": "https://betterthanblouses.com/"
-        }
-      ],
-      "highlights": [
-        {
           "value": "Versatile & Light-weight apparel for every occasion",
-          "source": "https://betterthanblouses.com/"
-        },
-        {
-          "value": "Handmade in small batches",
-          "source": "https://betterthanblouses.com/"
-        },
-        {
-          "value": "Carefully curated vintage finds",
           "source": "https://betterthanblouses.com/"
         }
       ],
       "location": {
         "town": {
-          "value": "George Town",
-          "source": "https://better"
+          "value": "George"
         }
       }
     },
@@ -1333,7 +1333,7 @@
         "source": "https://betterthanblouses.com/"
       },
       "summary": {
-        "value": "Handmade batik apparel and vintage finds, crafted in small batches for versatile, everyday wear.",
+        "value": "Handmade batik apparel including blouses, tops, skirts, and dresses, crafted in small batches in Penang.",
         "source": "https://betterthanblouses.com/"
       },
       "category": "clothing boutique",
@@ -1401,15 +1401,11 @@
       ],
       "highlights": [
         {
-          "value": "Versatile & Light-weight apparel for every occasion",
-          "source": "https://betterthanblouses.com/"
-        },
-        {
           "value": "Handmade in small batches",
           "source": "https://betterthanblouses.com/"
         },
         {
-          "value": "Carefully curated vintage finds",
+          "value": "Versatile & Light-weight apparel for every occasion",
           "source": "https://betterthanblouses.com/"
         }
       ],
@@ -1417,9 +1413,7 @@
         "town": {
           "value": "George Town",
           "source": "https://betterthanblouses.com/contact/"
-        },
-        "area": null,
-        "address": {}
+        }
       }
     },
     {
@@ -1428,7 +1422,7 @@
         "source": "https://betterthanblouses.com/"
       },
       "summary": {
-        "value": "Handmade batik apparel and vintage finds, crafted in small batches for versatile, everyday wear.",
+        "value": "Handmade batik apparel including blouses, tops, skirts, and dresses, crafted in small batches in Penang.",
         "source": "https://betterthanblouses.com/"
       },
       "category": "clothing boutique",
@@ -1496,15 +1490,11 @@
       ],
       "highlights": [
         {
-          "value": "Versatile & Light-weight apparel for every occasion",
-          "source": "https://betterthanblouses.com/"
-        },
-        {
           "value": "Handmade in small batches",
           "source": "https://betterthanblouses.com/"
         },
         {
-          "value": "Carefully curated vintage finds",
+          "value": "Versatile & Light-weight apparel for every occasion",
           "source": "https://betterthanblouses.com/"
         }
       ],
@@ -1513,7 +1503,199 @@
           "value": "George Town",
           "source": "https://betterthanblouses.com/contact/"
         },
-        "area": null,
+        "area": {
+          "value": "Penang",
+          "source": "https://betterthanbl"
+        }
+      }
+    },
+    {
+      "name": {
+        "value": "betterthanblouses",
+        "source": "https://betterthanblouses.com/"
+      },
+      "summary": {
+        "value": "Handmade batik apparel including blouses, tops, skirts, and dresses, crafted in small batches in Penang.",
+        "source": "https://betterthanblouses.com/"
+      },
+      "category": "clothing boutique",
+      "offerings": [
+        {
+          "name": "Roses | Reversible Shift Dress",
+          "price": "105.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Cloud 9 | Pleated Shorts",
+          "price": "60.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "La Vie en Bleu | Shape Shift Top",
+          "price": "37.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "La Vie En Bleu | Split Top",
+          "price": "From 35.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Neelam & Ilai | Shape Shift Top",
+          "price": "37.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Neelam & Ilai | Split Top",
+          "price": "From 35.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Neelam & Ilai | Crop Top",
+          "price": "30.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "La Vie En Bleu | Culottes",
+          "price": "70.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Mizu | Shape Shift Top",
+          "price": "37.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Flower Market & Mizu | Reversible Midi Skirt",
+          "price": "98.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Mizu | Crop Top",
+          "price": "30.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Mizu | Split Top",
+          "price": "From 35.00USD",
+          "source": "https://betterthanblouses.com/"
+        }
+      ],
+      "highlights": [
+        {
+          "value": "Handmade in small batches",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "value": "Versatile & Light-weight apparel for every occasion",
+          "source": "https://betterthanblouses.com/"
+        }
+      ],
+      "location": {
+        "town": {
+          "value": "George Town",
+          "source": "https://betterthanblouses.com/contact/"
+        },
+        "area": {
+          "value": "Penang",
+          "source": "https://betterthanblouses.com/contact/"
+        },
+        "address": {
+          "value": "191"
+        }
+      }
+    },
+    {
+      "name": {
+        "value": "betterthanblouses",
+        "source": "https://betterthanblouses.com/"
+      },
+      "summary": {
+        "value": "Handmade batik apparel including blouses, tops, skirts, and dresses, crafted in small batches in Penang.",
+        "source": "https://betterthanblouses.com/"
+      },
+      "category": "clothing boutique",
+      "offerings": [
+        {
+          "name": "Roses | Reversible Shift Dress",
+          "price": "105.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Cloud 9 | Pleated Shorts",
+          "price": "60.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "La Vie en Bleu | Shape Shift Top",
+          "price": "37.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "La Vie En Bleu | Split Top",
+          "price": "From 35.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Neelam & Ilai | Shape Shift Top",
+          "price": "37.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Neelam & Ilai | Split Top",
+          "price": "From 35.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Neelam & Ilai | Crop Top",
+          "price": "30.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "La Vie En Bleu | Culottes",
+          "price": "70.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Mizu | Shape Shift Top",
+          "price": "37.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Flower Market & Mizu | Reversible Midi Skirt",
+          "price": "98.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Mizu | Crop Top",
+          "price": "30.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Mizu | Split Top",
+          "price": "From 35.00USD",
+          "source": "https://betterthanblouses.com/"
+        }
+      ],
+      "highlights": [
+        {
+          "value": "Handmade in small batches",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "value": "Versatile & Light-weight apparel for every occasion",
+          "source": "https://betterthanblouses.com/"
+        }
+      ],
+      "location": {
+        "town": {
+          "value": "George Town",
+          "source": "https://betterthanblouses.com/contact/"
+        },
+        "area": {
+          "value": "Penang",
+          "source": "https://betterthanblouses.com/contact/"
+        },
         "address": {
           "value": "191, Lebuh Carnarvon, George Town, 10100, Penang"
         }
@@ -1525,7 +1707,7 @@
         "source": "https://betterthanblouses.com/"
       },
       "summary": {
-        "value": "Handmade batik apparel and vintage finds, crafted in small batches for versatile, everyday wear.",
+        "value": "Handmade batik apparel including blouses, tops, skirts, and dresses, crafted in small batches in Penang.",
         "source": "https://betterthanblouses.com/"
       },
       "category": "clothing boutique",
@@ -1593,15 +1775,11 @@
       ],
       "highlights": [
         {
-          "value": "Versatile & Light-weight apparel for every occasion",
-          "source": "https://betterthanblouses.com/"
-        },
-        {
           "value": "Handmade in small batches",
           "source": "https://betterthanblouses.com/"
         },
         {
-          "value": "Carefully curated vintage finds",
+          "value": "Versatile & Light-weight apparel for every occasion",
           "source": "https://betterthanblouses.com/"
         }
       ],
@@ -1610,7 +1788,10 @@
           "value": "George Town",
           "source": "https://betterthanblouses.com/contact/"
         },
-        "area": null,
+        "area": {
+          "value": "Penang",
+          "source": "https://betterthanblouses.com/contact/"
+        },
         "address": {
           "value": "191, Lebuh Carnarvon, George Town, 10100, Penang",
           "source": "https://betterthanblouses.com/contact/"
@@ -1624,7 +1805,7 @@
         "source": "https://betterthanblouses.com/"
       },
       "summary": {
-        "value": "Handmade batik apparel and vintage finds, crafted in small batches for versatile, everyday wear.",
+        "value": "Handmade batik apparel including blouses, tops, skirts, and dresses, crafted in small batches in Penang.",
         "source": "https://betterthanblouses.com/"
       },
       "category": "clothing boutique",
@@ -1692,15 +1873,11 @@
       ],
       "highlights": [
         {
-          "value": "Versatile & Light-weight apparel for every occasion",
-          "source": "https://betterthanblouses.com/"
-        },
-        {
           "value": "Handmade in small batches",
           "source": "https://betterthanblouses.com/"
         },
         {
-          "value": "Carefully curated vintage finds",
+          "value": "Versatile & Light-weight apparel for every occasion",
           "source": "https://betterthanblouses.com/"
         }
       ],
@@ -1709,7 +1886,10 @@
           "value": "George Town",
           "source": "https://betterthanblouses.com/contact/"
         },
-        "area": null,
+        "area": {
+          "value": "Penang",
+          "source": "https://betterthanblouses.com/contact/"
+        },
         "address": {
           "value": "191, Lebuh Carnarvon, George Town, 10100, Penang",
           "source": "https://betterthanblouses.com/contact/"
@@ -1718,7 +1898,7 @@
       },
       "contact": {
         "whatsapp": {
-          "value": "+6016 "
+          "value": "+60167"
         }
       }
     },
@@ -1728,7 +1908,7 @@
         "source": "https://betterthanblouses.com/"
       },
       "summary": {
-        "value": "Handmade batik apparel and vintage finds, crafted in small batches for versatile, everyday wear.",
+        "value": "Handmade batik apparel including blouses, tops, skirts, and dresses, crafted in small batches in Penang.",
         "source": "https://betterthanblouses.com/"
       },
       "category": "clothing boutique",
@@ -1796,15 +1976,11 @@
       ],
       "highlights": [
         {
-          "value": "Versatile & Light-weight apparel for every occasion",
-          "source": "https://betterthanblouses.com/"
-        },
-        {
           "value": "Handmade in small batches",
           "source": "https://betterthanblouses.com/"
         },
         {
-          "value": "Carefully curated vintage finds",
+          "value": "Versatile & Light-weight apparel for every occasion",
           "source": "https://betterthanblouses.com/"
         }
       ],
@@ -1813,7 +1989,10 @@
           "value": "George Town",
           "source": "https://betterthanblouses.com/contact/"
         },
-        "area": null,
+        "area": {
+          "value": "Penang",
+          "source": "https://betterthanblouses.com/contact/"
+        },
         "address": {
           "value": "191, Lebuh Carnarvon, George Town, 10100, Penang",
           "source": "https://betterthanblouses.com/contact/"
@@ -1822,8 +2001,8 @@
       },
       "contact": {
         "whatsapp": {
-          "value": "+6016 773 4763",
-          "source": "https://betterthanblouses.com/"
+          "value": "+60167734763",
+          "source": "https://betterthanblouses.com/contact/"
         }
       }
     },
@@ -1833,7 +2012,7 @@
         "source": "https://betterthanblouses.com/"
       },
       "summary": {
-        "value": "Handmade batik apparel and vintage finds, crafted in small batches for versatile, everyday wear.",
+        "value": "Handmade batik apparel including blouses, tops, skirts, and dresses, crafted in small batches in Penang.",
         "source": "https://betterthanblouses.com/"
       },
       "category": "clothing boutique",
@@ -1901,15 +2080,11 @@
       ],
       "highlights": [
         {
-          "value": "Versatile & Light-weight apparel for every occasion",
-          "source": "https://betterthanblouses.com/"
-        },
-        {
           "value": "Handmade in small batches",
           "source": "https://betterthanblouses.com/"
         },
         {
-          "value": "Carefully curated vintage finds",
+          "value": "Versatile & Light-weight apparel for every occasion",
           "source": "https://betterthanblouses.com/"
         }
       ],
@@ -1918,7 +2093,10 @@
           "value": "George Town",
           "source": "https://betterthanblouses.com/contact/"
         },
-        "area": null,
+        "area": {
+          "value": "Penang",
+          "source": "https://betterthanblouses.com/contact/"
+        },
         "address": {
           "value": "191, Lebuh Carnarvon, George Town, 10100, Penang",
           "source": "https://betterthanblouses.com/contact/"
@@ -1927,12 +2105,12 @@
       },
       "contact": {
         "whatsapp": {
-          "value": "+6016 773 4763",
+          "value": "+60167734763",
           "source": "https://betterthanblouses.com/contact/"
         },
         "phone": null,
         "email": {
-          "value": ""
+          "value": "hello@betterthanblouses."
         }
       }
     },
@@ -1942,7 +2120,7 @@
         "source": "https://betterthanblouses.com/"
       },
       "summary": {
-        "value": "Handmade batik apparel and vintage finds, crafted in small batches for versatile, everyday wear.",
+        "value": "Handmade batik apparel including blouses, tops, skirts, and dresses, crafted in small batches in Penang.",
         "source": "https://betterthanblouses.com/"
       },
       "category": "clothing boutique",
@@ -2010,15 +2188,11 @@
       ],
       "highlights": [
         {
-          "value": "Versatile & Light-weight apparel for every occasion",
-          "source": "https://betterthanblouses.com/"
-        },
-        {
           "value": "Handmade in small batches",
           "source": "https://betterthanblouses.com/"
         },
         {
-          "value": "Carefully curated vintage finds",
+          "value": "Versatile & Light-weight apparel for every occasion",
           "source": "https://betterthanblouses.com/"
         }
       ],
@@ -2027,7 +2201,10 @@
           "value": "George Town",
           "source": "https://betterthanblouses.com/contact/"
         },
-        "area": null,
+        "area": {
+          "value": "Penang",
+          "source": "https://betterthanblouses.com/contact/"
+        },
         "address": {
           "value": "191, Lebuh Carnarvon, George Town, 10100, Penang",
           "source": "https://betterthanblouses.com/contact/"
@@ -2036,13 +2213,13 @@
       },
       "contact": {
         "whatsapp": {
-          "value": "+6016 773 4763",
+          "value": "+60167734763",
           "source": "https://betterthanblouses.com/contact/"
         },
         "phone": null,
         "email": {
           "value": "hello@betterthanblouses.com",
-          "source": "https://betterthanblouses.com/"
+          "source": "https://betterthanblouses.com/faq/"
         }
       }
     },
@@ -2052,7 +2229,7 @@
         "source": "https://betterthanblouses.com/"
       },
       "summary": {
-        "value": "Handmade batik apparel and vintage finds, crafted in small batches for versatile, everyday wear.",
+        "value": "Handmade batik apparel including blouses, tops, skirts, and dresses, crafted in small batches in Penang.",
         "source": "https://betterthanblouses.com/"
       },
       "category": "clothing boutique",
@@ -2120,15 +2297,11 @@
       ],
       "highlights": [
         {
-          "value": "Versatile & Light-weight apparel for every occasion",
-          "source": "https://betterthanblouses.com/"
-        },
-        {
           "value": "Handmade in small batches",
           "source": "https://betterthanblouses.com/"
         },
         {
-          "value": "Carefully curated vintage finds",
+          "value": "Versatile & Light-weight apparel for every occasion",
           "source": "https://betterthanblouses.com/"
         }
       ],
@@ -2137,7 +2310,10 @@
           "value": "George Town",
           "source": "https://betterthanblouses.com/contact/"
         },
-        "area": null,
+        "area": {
+          "value": "Penang",
+          "source": "https://betterthanblouses.com/contact/"
+        },
         "address": {
           "value": "191, Lebuh Carnarvon, George Town, 10100, Penang",
           "source": "https://betterthanblouses.com/contact/"
@@ -2146,7 +2322,7 @@
       },
       "contact": {
         "whatsapp": {
-          "value": "+6016 773 4763",
+          "value": "+60167734763",
           "source": "https://betterthanblouses.com/contact/"
         },
         "phone": null,
@@ -2155,7 +2331,8 @@
           "source": "https://betterthanblouses.com/faq/"
         },
         "instagram": {
-          "value": "betterthanblouses"
+          "value": "betterthanblouses",
+          "source": "https://better"
         }
       }
     },
@@ -2165,7 +2342,7 @@
         "source": "https://betterthanblouses.com/"
       },
       "summary": {
-        "value": "Handmade batik apparel and vintage finds, crafted in small batches for versatile, everyday wear.",
+        "value": "Handmade batik apparel including blouses, tops, skirts, and dresses, crafted in small batches in Penang.",
         "source": "https://betterthanblouses.com/"
       },
       "category": "clothing boutique",
@@ -2233,15 +2410,11 @@
       ],
       "highlights": [
         {
-          "value": "Versatile & Light-weight apparel for every occasion",
-          "source": "https://betterthanblouses.com/"
-        },
-        {
           "value": "Handmade in small batches",
           "source": "https://betterthanblouses.com/"
         },
         {
-          "value": "Carefully curated vintage finds",
+          "value": "Versatile & Light-weight apparel for every occasion",
           "source": "https://betterthanblouses.com/"
         }
       ],
@@ -2250,7 +2423,10 @@
           "value": "George Town",
           "source": "https://betterthanblouses.com/contact/"
         },
-        "area": null,
+        "area": {
+          "value": "Penang",
+          "source": "https://betterthanblouses.com/contact/"
+        },
         "address": {
           "value": "191, Lebuh Carnarvon, George Town, 10100, Penang",
           "source": "https://betterthanblouses.com/contact/"
@@ -2259,7 +2435,121 @@
       },
       "contact": {
         "whatsapp": {
-          "value": "+6016 773 4763",
+          "value": "+60167734763",
+          "source": "https://betterthanblouses.com/contact/"
+        },
+        "phone": null,
+        "email": {
+          "value": "hello@betterthanblouses.com",
+          "source": "https://betterthanblouses.com/faq/"
+        },
+        "instagram": {
+          "value": "betterthanblouses",
+          "source": "https://betterthanblouses.com/"
+        },
+        "bookingUrl": null
+      }
+    },
+    {
+      "name": {
+        "value": "betterthanblouses",
+        "source": "https://betterthanblouses.com/"
+      },
+      "summary": {
+        "value": "Handmade batik apparel including blouses, tops, skirts, and dresses, crafted in small batches in Penang.",
+        "source": "https://betterthanblouses.com/"
+      },
+      "category": "clothing boutique",
+      "offerings": [
+        {
+          "name": "Roses | Reversible Shift Dress",
+          "price": "105.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Cloud 9 | Pleated Shorts",
+          "price": "60.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "La Vie en Bleu | Shape Shift Top",
+          "price": "37.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "La Vie En Bleu | Split Top",
+          "price": "From 35.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Neelam & Ilai | Shape Shift Top",
+          "price": "37.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Neelam & Ilai | Split Top",
+          "price": "From 35.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Neelam & Ilai | Crop Top",
+          "price": "30.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "La Vie En Bleu | Culottes",
+          "price": "70.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Mizu | Shape Shift Top",
+          "price": "37.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Flower Market & Mizu | Reversible Midi Skirt",
+          "price": "98.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Mizu | Crop Top",
+          "price": "30.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Mizu | Split Top",
+          "price": "From 35.00USD",
+          "source": "https://betterthanblouses.com/"
+        }
+      ],
+      "highlights": [
+        {
+          "value": "Handmade in small batches",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "value": "Versatile & Light-weight apparel for every occasion",
+          "source": "https://betterthanblouses.com/"
+        }
+      ],
+      "location": {
+        "town": {
+          "value": "George Town",
+          "source": "https://betterthanblouses.com/contact/"
+        },
+        "area": {
+          "value": "Penang",
+          "source": "https://betterthanblouses.com/contact/"
+        },
+        "address": {
+          "value": "191, Lebuh Carnarvon, George Town, 10100, Penang",
+          "source": "https://betterthanblouses.com/contact/"
+        },
+        "serviceArea": null
+      },
+      "contact": {
+        "whatsapp": {
+          "value": "+60167734763",
           "source": "https://betterthanblouses.com/contact/"
         },
         "phone": null,
@@ -2274,7 +2564,7 @@
         "bookingUrl": null
       },
       "hours": {
-        "value": "Monday - Saturday 1:00 p.m. to 6"
+        "value": "Monday - Saturday 1:00 p.m. to 6:00 p.m"
       }
     },
     {
@@ -2283,7 +2573,7 @@
         "source": "https://betterthanblouses.com/"
       },
       "summary": {
-        "value": "Handmade batik apparel and vintage finds, crafted in small batches for versatile, everyday wear.",
+        "value": "Handmade batik apparel including blouses, tops, skirts, and dresses, crafted in small batches in Penang.",
         "source": "https://betterthanblouses.com/"
       },
       "category": "clothing boutique",
@@ -2351,15 +2641,11 @@
       ],
       "highlights": [
         {
-          "value": "Versatile & Light-weight apparel for every occasion",
-          "source": "https://betterthanblouses.com/"
-        },
-        {
           "value": "Handmade in small batches",
           "source": "https://betterthanblouses.com/"
         },
         {
-          "value": "Carefully curated vintage finds",
+          "value": "Versatile & Light-weight apparel for every occasion",
           "source": "https://betterthanblouses.com/"
         }
       ],
@@ -2368,7 +2654,10 @@
           "value": "George Town",
           "source": "https://betterthanblouses.com/contact/"
         },
-        "area": null,
+        "area": {
+          "value": "Penang",
+          "source": "https://betterthanblouses.com/contact/"
+        },
         "address": {
           "value": "191, Lebuh Carnarvon, George Town, 10100, Penang",
           "source": "https://betterthanblouses.com/contact/"
@@ -2377,7 +2666,125 @@
       },
       "contact": {
         "whatsapp": {
-          "value": "+6016 773 4763",
+          "value": "+60167734763",
+          "source": "https://betterthanblouses.com/contact/"
+        },
+        "phone": null,
+        "email": {
+          "value": "hello@betterthanblouses.com",
+          "source": "https://betterthanblouses.com/faq/"
+        },
+        "instagram": {
+          "value": "betterthanblouses",
+          "source": "https://betterthanblouses.com/"
+        },
+        "bookingUrl": null
+      },
+      "hours": {
+        "value": "Monday - Saturday 1:00 p.m. to 6:00 p.m",
+        "source": "https://betterthanblouses.com/contact/"
+      }
+    },
+    {
+      "name": {
+        "value": "betterthanblouses",
+        "source": "https://betterthanblouses.com/"
+      },
+      "summary": {
+        "value": "Handmade batik apparel including blouses, tops, skirts, and dresses, crafted in small batches in Penang.",
+        "source": "https://betterthanblouses.com/"
+      },
+      "category": "clothing boutique",
+      "offerings": [
+        {
+          "name": "Roses | Reversible Shift Dress",
+          "price": "105.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Cloud 9 | Pleated Shorts",
+          "price": "60.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "La Vie en Bleu | Shape Shift Top",
+          "price": "37.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "La Vie En Bleu | Split Top",
+          "price": "From 35.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Neelam & Ilai | Shape Shift Top",
+          "price": "37.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Neelam & Ilai | Split Top",
+          "price": "From 35.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Neelam & Ilai | Crop Top",
+          "price": "30.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "La Vie En Bleu | Culottes",
+          "price": "70.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Mizu | Shape Shift Top",
+          "price": "37.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Flower Market & Mizu | Reversible Midi Skirt",
+          "price": "98.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Mizu | Crop Top",
+          "price": "30.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Mizu | Split Top",
+          "price": "From 35.00USD",
+          "source": "https://betterthanblouses.com/"
+        }
+      ],
+      "highlights": [
+        {
+          "value": "Handmade in small batches",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "value": "Versatile & Light-weight apparel for every occasion",
+          "source": "https://betterthanblouses.com/"
+        }
+      ],
+      "location": {
+        "town": {
+          "value": "George Town",
+          "source": "https://betterthanblouses.com/contact/"
+        },
+        "area": {
+          "value": "Penang",
+          "source": "https://betterthanblouses.com/contact/"
+        },
+        "address": {
+          "value": "191, Lebuh Carnarvon, George Town, 10100, Penang",
+          "source": "https://betterthanblouses.com/contact/"
+        },
+        "serviceArea": null
+      },
+      "contact": {
+        "whatsapp": {
+          "value": "+60167734763",
           "source": "https://betterthanblouses.com/contact/"
         },
         "phone": null,
@@ -2399,136 +2806,12 @@
         "playful",
         "warm",
         "casual",
-        "personal"
-      ]
-    },
-    {
-      "name": {
-        "value": "betterthanblouses",
-        "source": "https://betterthanblouses.com/"
-      },
-      "summary": {
-        "value": "Handmade batik apparel and vintage finds, crafted in small batches for versatile, everyday wear.",
-        "source": "https://betterthanblouses.com/"
-      },
-      "category": "clothing boutique",
-      "offerings": [
-        {
-          "name": "Roses | Reversible Shift Dress",
-          "price": "105.00USD",
-          "source": "https://betterthanblouses.com/"
-        },
-        {
-          "name": "Cloud 9 | Pleated Shorts",
-          "price": "60.00USD",
-          "source": "https://betterthanblouses.com/"
-        },
-        {
-          "name": "La Vie en Bleu | Shape Shift Top",
-          "price": "37.00USD",
-          "source": "https://betterthanblouses.com/"
-        },
-        {
-          "name": "La Vie En Bleu | Split Top",
-          "price": "From 35.00USD",
-          "source": "https://betterthanblouses.com/"
-        },
-        {
-          "name": "Neelam & Ilai | Shape Shift Top",
-          "price": "37.00USD",
-          "source": "https://betterthanblouses.com/"
-        },
-        {
-          "name": "Neelam & Ilai | Split Top",
-          "price": "From 35.00USD",
-          "source": "https://betterthanblouses.com/"
-        },
-        {
-          "name": "Neelam & Ilai | Crop Top",
-          "price": "30.00USD",
-          "source": "https://betterthanblouses.com/"
-        },
-        {
-          "name": "La Vie En Bleu | Culottes",
-          "price": "70.00USD",
-          "source": "https://betterthanblouses.com/"
-        },
-        {
-          "name": "Mizu | Shape Shift Top",
-          "price": "37.00USD",
-          "source": "https://betterthanblouses.com/"
-        },
-        {
-          "name": "Flower Market & Mizu | Reversible Midi Skirt",
-          "price": "98.00USD",
-          "source": "https://betterthanblouses.com/"
-        },
-        {
-          "name": "Mizu | Crop Top",
-          "price": "30.00USD",
-          "source": "https://betterthanblouses.com/"
-        },
-        {
-          "name": "Mizu | Split Top",
-          "price": "From 35.00USD",
-          "source": "https://betterthanblouses.com/"
-        }
-      ],
-      "highlights": [
-        {
-          "value": "Versatile & Light-weight apparel for every occasion",
-          "source": "https://betterthanblouses.com/"
-        },
-        {
-          "value": "Handmade in small batches",
-          "source": "https://betterthanblouses.com/"
-        },
-        {
-          "value": "Carefully curated vintage finds",
-          "source": "https://betterthanblouses.com/"
-        }
-      ],
-      "location": {
-        "town": {
-          "value": "George Town",
-          "source": "https://betterthanblouses.com/contact/"
-        },
-        "area": null,
-        "address": {
-          "value": "191, Lebuh Carnarvon, George Town, 10100, Penang",
-          "source": "https://betterthanblouses.com/contact/"
-        },
-        "serviceArea": null
-      },
-      "contact": {
-        "whatsapp": {
-          "value": "+6016 773 4763",
-          "source": "https://betterthanblouses.com/contact/"
-        },
-        "phone": null,
-        "email": {
-          "value": "hello@betterthanblouses.com",
-          "source": "https://betterthanblouses.com/faq/"
-        },
-        "instagram": {
-          "value": "betterthanblouses",
-          "source": "https://betterthanblouses.com/"
-        },
-        "bookingUrl": null
-      },
-      "hours": {
-        "value": "Monday - Saturday 1:00 p.m. to 6:00 p.m",
-        "source": "https://betterthanblouses.com/contact/"
-      },
-      "tone": [
-        "playful",
-        "warm",
-        "casual",
-        "personal"
+        "witty"
       ],
       "colours": [
         {
-          "hex": "#000000"
+          "hex": "#000000",
+          "role": "primary"
         }
       ]
     },
@@ -2538,7 +2821,7 @@
         "source": "https://betterthanblouses.com/"
       },
       "summary": {
-        "value": "Handmade batik apparel and vintage finds, crafted in small batches for versatile, everyday wear.",
+        "value": "Handmade batik apparel including blouses, tops, skirts, and dresses, crafted in small batches in Penang.",
         "source": "https://betterthanblouses.com/"
       },
       "category": "clothing boutique",
@@ -2606,15 +2889,11 @@
       ],
       "highlights": [
         {
-          "value": "Versatile & Light-weight apparel for every occasion",
-          "source": "https://betterthanblouses.com/"
-        },
-        {
           "value": "Handmade in small batches",
           "source": "https://betterthanblouses.com/"
         },
         {
-          "value": "Carefully curated vintage finds",
+          "value": "Versatile & Light-weight apparel for every occasion",
           "source": "https://betterthanblouses.com/"
         }
       ],
@@ -2623,7 +2902,10 @@
           "value": "George Town",
           "source": "https://betterthanblouses.com/contact/"
         },
-        "area": null,
+        "area": {
+          "value": "Penang",
+          "source": "https://betterthanblouses.com/contact/"
+        },
         "address": {
           "value": "191, Lebuh Carnarvon, George Town, 10100, Penang",
           "source": "https://betterthanblouses.com/contact/"
@@ -2632,7 +2914,7 @@
       },
       "contact": {
         "whatsapp": {
-          "value": "+6016 773 4763",
+          "value": "+60167734763",
           "source": "https://betterthanblouses.com/contact/"
         },
         "phone": null,
@@ -2654,13 +2936,16 @@
         "playful",
         "warm",
         "casual",
-        "personal"
+        "witty"
       ],
       "colours": [
         {
           "hex": "#000000",
           "role": "primary",
-          "source": "https://betterthanblouses.com/wp-"
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "hex": "#"
         }
       ]
     },
@@ -2670,7 +2955,7 @@
         "source": "https://betterthanblouses.com/"
       },
       "summary": {
-        "value": "Handmade batik apparel and vintage finds, crafted in small batches for versatile, everyday wear.",
+        "value": "Handmade batik apparel including blouses, tops, skirts, and dresses, crafted in small batches in Penang.",
         "source": "https://betterthanblouses.com/"
       },
       "category": "clothing boutique",
@@ -2738,15 +3023,11 @@
       ],
       "highlights": [
         {
-          "value": "Versatile & Light-weight apparel for every occasion",
-          "source": "https://betterthanblouses.com/"
-        },
-        {
           "value": "Handmade in small batches",
           "source": "https://betterthanblouses.com/"
         },
         {
-          "value": "Carefully curated vintage finds",
+          "value": "Versatile & Light-weight apparel for every occasion",
           "source": "https://betterthanblouses.com/"
         }
       ],
@@ -2755,7 +3036,10 @@
           "value": "George Town",
           "source": "https://betterthanblouses.com/contact/"
         },
-        "area": null,
+        "area": {
+          "value": "Penang",
+          "source": "https://betterthanblouses.com/contact/"
+        },
         "address": {
           "value": "191, Lebuh Carnarvon, George Town, 10100, Penang",
           "source": "https://betterthanblouses.com/contact/"
@@ -2764,7 +3048,7 @@
       },
       "contact": {
         "whatsapp": {
-          "value": "+6016 773 4763",
+          "value": "+60167734763",
           "source": "https://betterthanblouses.com/contact/"
         },
         "phone": null,
@@ -2786,13 +3070,18 @@
         "playful",
         "warm",
         "casual",
-        "personal"
+        "witty"
       ],
       "colours": [
         {
           "hex": "#000000",
           "role": "primary",
-          "source": "https://betterthanblouses.com/wp-content/uploads/2019/09/btb_logo.png"
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "hex": "#ffffff",
+          "role": "background",
+          "source": "https://betterthanblouses.com"
         }
       ]
     },
@@ -2802,7 +3091,7 @@
         "source": "https://betterthanblouses.com/"
       },
       "summary": {
-        "value": "Handmade batik apparel and vintage finds, crafted in small batches for versatile, everyday wear.",
+        "value": "Handmade batik apparel including blouses, tops, skirts, and dresses, crafted in small batches in Penang.",
         "source": "https://betterthanblouses.com/"
       },
       "category": "clothing boutique",
@@ -2870,15 +3159,11 @@
       ],
       "highlights": [
         {
-          "value": "Versatile & Light-weight apparel for every occasion",
-          "source": "https://betterthanblouses.com/"
-        },
-        {
           "value": "Handmade in small batches",
           "source": "https://betterthanblouses.com/"
         },
         {
-          "value": "Carefully curated vintage finds",
+          "value": "Versatile & Light-weight apparel for every occasion",
           "source": "https://betterthanblouses.com/"
         }
       ],
@@ -2887,7 +3172,10 @@
           "value": "George Town",
           "source": "https://betterthanblouses.com/contact/"
         },
-        "area": null,
+        "area": {
+          "value": "Penang",
+          "source": "https://betterthanblouses.com/contact/"
+        },
         "address": {
           "value": "191, Lebuh Carnarvon, George Town, 10100, Penang",
           "source": "https://betterthanblouses.com/contact/"
@@ -2896,7 +3184,7 @@
       },
       "contact": {
         "whatsapp": {
-          "value": "+6016 773 4763",
+          "value": "+60167734763",
           "source": "https://betterthanblouses.com/contact/"
         },
         "phone": null,
@@ -2918,20 +3206,23 @@
         "playful",
         "warm",
         "casual",
-        "personal"
+        "witty"
       ],
       "colours": [
         {
           "hex": "#000000",
           "role": "primary",
-          "source": "https://betterthanblouses.com/wp-content/uploads/2019/09/btb_logo.png"
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "hex": "#ffffff",
+          "role": "background",
+          "source": "https://betterthanblouses.com/"
         }
       ],
       "essence": {
         "feeling": [
-          "special",
-          "playful",
-          "confident"
+          "stylish"
         ]
       }
     },
@@ -2941,7 +3232,7 @@
         "source": "https://betterthanblouses.com/"
       },
       "summary": {
-        "value": "Handmade batik apparel and vintage finds, crafted in small batches for versatile, everyday wear.",
+        "value": "Handmade batik apparel including blouses, tops, skirts, and dresses, crafted in small batches in Penang.",
         "source": "https://betterthanblouses.com/"
       },
       "category": "clothing boutique",
@@ -3009,15 +3300,11 @@
       ],
       "highlights": [
         {
-          "value": "Versatile & Light-weight apparel for every occasion",
-          "source": "https://betterthanblouses.com/"
-        },
-        {
           "value": "Handmade in small batches",
           "source": "https://betterthanblouses.com/"
         },
         {
-          "value": "Carefully curated vintage finds",
+          "value": "Versatile & Light-weight apparel for every occasion",
           "source": "https://betterthanblouses.com/"
         }
       ],
@@ -3026,7 +3313,10 @@
           "value": "George Town",
           "source": "https://betterthanblouses.com/contact/"
         },
-        "area": null,
+        "area": {
+          "value": "Penang",
+          "source": "https://betterthanblouses.com/contact/"
+        },
         "address": {
           "value": "191, Lebuh Carnarvon, George Town, 10100, Penang",
           "source": "https://betterthanblouses.com/contact/"
@@ -3035,7 +3325,7 @@
       },
       "contact": {
         "whatsapp": {
-          "value": "+6016 773 4763",
+          "value": "+60167734763",
           "source": "https://betterthanblouses.com/contact/"
         },
         "phone": null,
@@ -3057,24 +3347,329 @@
         "playful",
         "warm",
         "casual",
-        "personal"
+        "witty"
       ],
       "colours": [
         {
           "hex": "#000000",
           "role": "primary",
-          "source": "https://betterthanblouses.com/wp-content/uploads/2019/09/btb_logo.png"
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "hex": "#ffffff",
+          "role": "background",
+          "source": "https://betterthanblouses.com/"
         }
       ],
       "essence": {
         "feeling": [
+          "stylish",
           "special",
-          "playful",
-          "confident"
+          "liberated"
         ],
         "placeSymbols": [
-          "shophouses",
-          "batik motifs",
+          "heritage sh"
+        ]
+      }
+    },
+    {
+      "name": {
+        "value": "betterthanblouses",
+        "source": "https://betterthanblouses.com/"
+      },
+      "summary": {
+        "value": "Handmade batik apparel including blouses, tops, skirts, and dresses, crafted in small batches in Penang.",
+        "source": "https://betterthanblouses.com/"
+      },
+      "category": "clothing boutique",
+      "offerings": [
+        {
+          "name": "Roses | Reversible Shift Dress",
+          "price": "105.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Cloud 9 | Pleated Shorts",
+          "price": "60.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "La Vie en Bleu | Shape Shift Top",
+          "price": "37.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "La Vie En Bleu | Split Top",
+          "price": "From 35.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Neelam & Ilai | Shape Shift Top",
+          "price": "37.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Neelam & Ilai | Split Top",
+          "price": "From 35.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Neelam & Ilai | Crop Top",
+          "price": "30.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "La Vie En Bleu | Culottes",
+          "price": "70.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Mizu | Shape Shift Top",
+          "price": "37.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Flower Market & Mizu | Reversible Midi Skirt",
+          "price": "98.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Mizu | Crop Top",
+          "price": "30.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Mizu | Split Top",
+          "price": "From 35.00USD",
+          "source": "https://betterthanblouses.com/"
+        }
+      ],
+      "highlights": [
+        {
+          "value": "Handmade in small batches",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "value": "Versatile & Light-weight apparel for every occasion",
+          "source": "https://betterthanblouses.com/"
+        }
+      ],
+      "location": {
+        "town": {
+          "value": "George Town",
+          "source": "https://betterthanblouses.com/contact/"
+        },
+        "area": {
+          "value": "Penang",
+          "source": "https://betterthanblouses.com/contact/"
+        },
+        "address": {
+          "value": "191, Lebuh Carnarvon, George Town, 10100, Penang",
+          "source": "https://betterthanblouses.com/contact/"
+        },
+        "serviceArea": null
+      },
+      "contact": {
+        "whatsapp": {
+          "value": "+60167734763",
+          "source": "https://betterthanblouses.com/contact/"
+        },
+        "phone": null,
+        "email": {
+          "value": "hello@betterthanblouses.com",
+          "source": "https://betterthanblouses.com/faq/"
+        },
+        "instagram": {
+          "value": "betterthanblouses",
+          "source": "https://betterthanblouses.com/"
+        },
+        "bookingUrl": null
+      },
+      "hours": {
+        "value": "Monday - Saturday 1:00 p.m. to 6:00 p.m",
+        "source": "https://betterthanblouses.com/contact/"
+      },
+      "tone": [
+        "playful",
+        "warm",
+        "casual",
+        "witty"
+      ],
+      "colours": [
+        {
+          "hex": "#000000",
+          "role": "primary",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "hex": "#ffffff",
+          "role": "background",
+          "source": "https://betterthanblouses.com/"
+        }
+      ],
+      "essence": {
+        "feeling": [
+          "stylish",
+          "special",
+          "liberated"
+        ],
+        "placeSymbols": [
+          "heritage shophouses of George Town",
+          "traditional batik motifs",
+          "Penang street art",
+          "Per"
+        ]
+      }
+    },
+    {
+      "name": {
+        "value": "betterthanblouses",
+        "source": "https://betterthanblouses.com/"
+      },
+      "summary": {
+        "value": "Handmade batik apparel including blouses, tops, skirts, and dresses, crafted in small batches in Penang.",
+        "source": "https://betterthanblouses.com/"
+      },
+      "category": "clothing boutique",
+      "offerings": [
+        {
+          "name": "Roses | Reversible Shift Dress",
+          "price": "105.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Cloud 9 | Pleated Shorts",
+          "price": "60.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "La Vie en Bleu | Shape Shift Top",
+          "price": "37.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "La Vie En Bleu | Split Top",
+          "price": "From 35.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Neelam & Ilai | Shape Shift Top",
+          "price": "37.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Neelam & Ilai | Split Top",
+          "price": "From 35.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Neelam & Ilai | Crop Top",
+          "price": "30.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "La Vie En Bleu | Culottes",
+          "price": "70.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Mizu | Shape Shift Top",
+          "price": "37.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Flower Market & Mizu | Reversible Midi Skirt",
+          "price": "98.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Mizu | Crop Top",
+          "price": "30.00USD",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "name": "Mizu | Split Top",
+          "price": "From 35.00USD",
+          "source": "https://betterthanblouses.com/"
+        }
+      ],
+      "highlights": [
+        {
+          "value": "Handmade in small batches",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "value": "Versatile & Light-weight apparel for every occasion",
+          "source": "https://betterthanblouses.com/"
+        }
+      ],
+      "location": {
+        "town": {
+          "value": "George Town",
+          "source": "https://betterthanblouses.com/contact/"
+        },
+        "area": {
+          "value": "Penang",
+          "source": "https://betterthanblouses.com/contact/"
+        },
+        "address": {
+          "value": "191, Lebuh Carnarvon, George Town, 10100, Penang",
+          "source": "https://betterthanblouses.com/contact/"
+        },
+        "serviceArea": null
+      },
+      "contact": {
+        "whatsapp": {
+          "value": "+60167734763",
+          "source": "https://betterthanblouses.com/contact/"
+        },
+        "phone": null,
+        "email": {
+          "value": "hello@betterthanblouses.com",
+          "source": "https://betterthanblouses.com/faq/"
+        },
+        "instagram": {
+          "value": "betterthanblouses",
+          "source": "https://betterthanblouses.com/"
+        },
+        "bookingUrl": null
+      },
+      "hours": {
+        "value": "Monday - Saturday 1:00 p.m. to 6:00 p.m",
+        "source": "https://betterthanblouses.com/contact/"
+      },
+      "tone": [
+        "playful",
+        "warm",
+        "casual",
+        "witty"
+      ],
+      "colours": [
+        {
+          "hex": "#000000",
+          "role": "primary",
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "hex": "#ffffff",
+          "role": "background",
+          "source": "https://betterthanblouses.com/"
+        }
+      ],
+      "essence": {
+        "feeling": [
+          "stylish",
+          "special",
+          "liberated"
+        ],
+        "placeSymbols": [
+          "heritage shophouses of George Town",
+          "traditional batik motifs",
+          "Penang street art",
+          "Peranakan tiles"
+        ],
+        "senses": [
+          "lightweight cotton",
           ""
         ]
       }
@@ -3085,7 +3680,7 @@
         "source": "https://betterthanblouses.com/"
       },
       "summary": {
-        "value": "Handmade batik apparel and vintage finds, crafted in small batches for versatile, everyday wear.",
+        "value": "Handmade batik apparel including blouses, tops, skirts, and dresses, crafted in small batches in Penang.",
         "source": "https://betterthanblouses.com/"
       },
       "category": "clothing boutique",
@@ -3153,15 +3748,11 @@
       ],
       "highlights": [
         {
-          "value": "Versatile & Light-weight apparel for every occasion",
-          "source": "https://betterthanblouses.com/"
-        },
-        {
           "value": "Handmade in small batches",
           "source": "https://betterthanblouses.com/"
         },
         {
-          "value": "Carefully curated vintage finds",
+          "value": "Versatile & Light-weight apparel for every occasion",
           "source": "https://betterthanblouses.com/"
         }
       ],
@@ -3170,7 +3761,10 @@
           "value": "George Town",
           "source": "https://betterthanblouses.com/contact/"
         },
-        "area": null,
+        "area": {
+          "value": "Penang",
+          "source": "https://betterthanblouses.com/contact/"
+        },
         "address": {
           "value": "191, Lebuh Carnarvon, George Town, 10100, Penang",
           "source": "https://betterthanblouses.com/contact/"
@@ -3179,7 +3773,7 @@
       },
       "contact": {
         "whatsapp": {
-          "value": "+6016 773 4763",
+          "value": "+60167734763",
           "source": "https://betterthanblouses.com/contact/"
         },
         "phone": null,
@@ -3201,178 +3795,37 @@
         "playful",
         "warm",
         "casual",
-        "personal"
+        "witty"
       ],
       "colours": [
         {
           "hex": "#000000",
           "role": "primary",
-          "source": "https://betterthanblouses.com/wp-content/uploads/2019/09/btb_logo.png"
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "hex": "#ffffff",
+          "role": "background",
+          "source": "https://betterthanblouses.com/"
         }
       ],
       "essence": {
         "feeling": [
+          "stylish",
           "special",
-          "playful",
-          "confident"
+          "liberated"
         ],
         "placeSymbols": [
-          "shophouses",
-          "batik motifs",
+          "heritage shophouses of George Town",
+          "traditional batik motifs",
+          "Penang street art",
           "Peranakan tiles"
         ],
         "senses": [
           "lightweight cotton",
-          ""
-        ]
-      }
-    },
-    {
-      "name": {
-        "value": "betterthanblouses",
-        "source": "https://betterthanblouses.com/"
-      },
-      "summary": {
-        "value": "Handmade batik apparel and vintage finds, crafted in small batches for versatile, everyday wear.",
-        "source": "https://betterthanblouses.com/"
-      },
-      "category": "clothing boutique",
-      "offerings": [
-        {
-          "name": "Roses | Reversible Shift Dress",
-          "price": "105.00USD",
-          "source": "https://betterthanblouses.com/"
-        },
-        {
-          "name": "Cloud 9 | Pleated Shorts",
-          "price": "60.00USD",
-          "source": "https://betterthanblouses.com/"
-        },
-        {
-          "name": "La Vie en Bleu | Shape Shift Top",
-          "price": "37.00USD",
-          "source": "https://betterthanblouses.com/"
-        },
-        {
-          "name": "La Vie En Bleu | Split Top",
-          "price": "From 35.00USD",
-          "source": "https://betterthanblouses.com/"
-        },
-        {
-          "name": "Neelam & Ilai | Shape Shift Top",
-          "price": "37.00USD",
-          "source": "https://betterthanblouses.com/"
-        },
-        {
-          "name": "Neelam & Ilai | Split Top",
-          "price": "From 35.00USD",
-          "source": "https://betterthanblouses.com/"
-        },
-        {
-          "name": "Neelam & Ilai | Crop Top",
-          "price": "30.00USD",
-          "source": "https://betterthanblouses.com/"
-        },
-        {
-          "name": "La Vie En Bleu | Culottes",
-          "price": "70.00USD",
-          "source": "https://betterthanblouses.com/"
-        },
-        {
-          "name": "Mizu | Shape Shift Top",
-          "price": "37.00USD",
-          "source": "https://betterthanblouses.com/"
-        },
-        {
-          "name": "Flower Market & Mizu | Reversible Midi Skirt",
-          "price": "98.00USD",
-          "source": "https://betterthanblouses.com/"
-        },
-        {
-          "name": "Mizu | Crop Top",
-          "price": "30.00USD",
-          "source": "https://betterthanblouses.com/"
-        },
-        {
-          "name": "Mizu | Split Top",
-          "price": "From 35.00USD",
-          "source": "https://betterthanblouses.com/"
-        }
-      ],
-      "highlights": [
-        {
-          "value": "Versatile & Light-weight apparel for every occasion",
-          "source": "https://betterthanblouses.com/"
-        },
-        {
-          "value": "Handmade in small batches",
-          "source": "https://betterthanblouses.com/"
-        },
-        {
-          "value": "Carefully curated vintage finds",
-          "source": "https://betterthanblouses.com/"
-        }
-      ],
-      "location": {
-        "town": {
-          "value": "George Town",
-          "source": "https://betterthanblouses.com/contact/"
-        },
-        "area": null,
-        "address": {
-          "value": "191, Lebuh Carnarvon, George Town, 10100, Penang",
-          "source": "https://betterthanblouses.com/contact/"
-        },
-        "serviceArea": null
-      },
-      "contact": {
-        "whatsapp": {
-          "value": "+6016 773 4763",
-          "source": "https://betterthanblouses.com/contact/"
-        },
-        "phone": null,
-        "email": {
-          "value": "hello@betterthanblouses.com",
-          "source": "https://betterthanblouses.com/faq/"
-        },
-        "instagram": {
-          "value": "betterthanblouses",
-          "source": "https://betterthanblouses.com/"
-        },
-        "bookingUrl": null
-      },
-      "hours": {
-        "value": "Monday - Saturday 1:00 p.m. to 6:00 p.m",
-        "source": "https://betterthanblouses.com/contact/"
-      },
-      "tone": [
-        "playful",
-        "warm",
-        "casual",
-        "personal"
-      ],
-      "colours": [
-        {
-          "hex": "#000000",
-          "role": "primary",
-          "source": "https://betterthanblouses.com/wp-content/uploads/2019/09/btb_logo.png"
-        }
-      ],
-      "essence": {
-        "feeling": [
-          "special",
-          "playful",
-          "confident"
-        ],
-        "placeSymbols": [
-          "shophouses",
-          "batik motifs",
-          "Peranakan tiles"
-        ],
-        "senses": [
-          "lightweight cotton",
-          "vibrant prints",
-          "soft natural fabrics"
+          "vibrant floral prints",
+          "soft fabric textures",
+          "natural daylight"
         ],
         "moments": []
       }
@@ -3383,7 +3836,7 @@
         "source": "https://betterthanblouses.com/"
       },
       "summary": {
-        "value": "Handmade batik apparel and vintage finds, crafted in small batches for versatile, everyday wear.",
+        "value": "Handmade batik apparel including blouses, tops, skirts, and dresses, crafted in small batches in Penang.",
         "source": "https://betterthanblouses.com/"
       },
       "category": "clothing boutique",
@@ -3451,15 +3904,11 @@
       ],
       "highlights": [
         {
-          "value": "Versatile & Light-weight apparel for every occasion",
-          "source": "https://betterthanblouses.com/"
-        },
-        {
           "value": "Handmade in small batches",
           "source": "https://betterthanblouses.com/"
         },
         {
-          "value": "Carefully curated vintage finds",
+          "value": "Versatile & Light-weight apparel for every occasion",
           "source": "https://betterthanblouses.com/"
         }
       ],
@@ -3468,7 +3917,10 @@
           "value": "George Town",
           "source": "https://betterthanblouses.com/contact/"
         },
-        "area": null,
+        "area": {
+          "value": "Penang",
+          "source": "https://betterthanblouses.com/contact/"
+        },
         "address": {
           "value": "191, Lebuh Carnarvon, George Town, 10100, Penang",
           "source": "https://betterthanblouses.com/contact/"
@@ -3477,7 +3929,7 @@
       },
       "contact": {
         "whatsapp": {
-          "value": "+6016 773 4763",
+          "value": "+60167734763",
           "source": "https://betterthanblouses.com/contact/"
         },
         "phone": null,
@@ -3499,35 +3951,42 @@
         "playful",
         "warm",
         "casual",
-        "personal"
+        "witty"
       ],
       "colours": [
         {
           "hex": "#000000",
           "role": "primary",
-          "source": "https://betterthanblouses.com/wp-content/uploads/2019/09/btb_logo.png"
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "hex": "#ffffff",
+          "role": "background",
+          "source": "https://betterthanblouses.com/"
         }
       ],
       "essence": {
         "feeling": [
+          "stylish",
           "special",
-          "playful",
-          "confident"
+          "liberated"
         ],
         "placeSymbols": [
-          "shophouses",
-          "batik motifs",
+          "heritage shophouses of George Town",
+          "traditional batik motifs",
+          "Penang street art",
           "Peranakan tiles"
         ],
         "senses": [
           "lightweight cotton",
-          "vibrant prints",
-          "soft natural fabrics"
+          "vibrant floral prints",
+          "soft fabric textures",
+          "natural daylight"
         ],
         "moments": []
       },
       "visualStyle": {
-        "summary": "clean bright light, studio backdrop, vibrant batik patterns, casual cheerful mood"
+        "summary": "clean minimal backdrop, bright natural light, vibrant batik"
       }
     },
     {
@@ -3536,7 +3995,7 @@
         "source": "https://betterthanblouses.com/"
       },
       "summary": {
-        "value": "Handmade batik apparel and vintage finds, crafted in small batches for versatile, everyday wear.",
+        "value": "Handmade batik apparel including blouses, tops, skirts, and dresses, crafted in small batches in Penang.",
         "source": "https://betterthanblouses.com/"
       },
       "category": "clothing boutique",
@@ -3604,15 +4063,11 @@
       ],
       "highlights": [
         {
-          "value": "Versatile & Light-weight apparel for every occasion",
-          "source": "https://betterthanblouses.com/"
-        },
-        {
           "value": "Handmade in small batches",
           "source": "https://betterthanblouses.com/"
         },
         {
-          "value": "Carefully curated vintage finds",
+          "value": "Versatile & Light-weight apparel for every occasion",
           "source": "https://betterthanblouses.com/"
         }
       ],
@@ -3621,7 +4076,10 @@
           "value": "George Town",
           "source": "https://betterthanblouses.com/contact/"
         },
-        "area": null,
+        "area": {
+          "value": "Penang",
+          "source": "https://betterthanblouses.com/contact/"
+        },
         "address": {
           "value": "191, Lebuh Carnarvon, George Town, 10100, Penang",
           "source": "https://betterthanblouses.com/contact/"
@@ -3630,7 +4088,7 @@
       },
       "contact": {
         "whatsapp": {
-          "value": "+6016 773 4763",
+          "value": "+60167734763",
           "source": "https://betterthanblouses.com/contact/"
         },
         "phone": null,
@@ -3652,37 +4110,43 @@
         "playful",
         "warm",
         "casual",
-        "personal"
+        "witty"
       ],
       "colours": [
         {
           "hex": "#000000",
           "role": "primary",
-          "source": "https://betterthanblouses.com/wp-content/uploads/2019/09/btb_logo.png"
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "hex": "#ffffff",
+          "role": "background",
+          "source": "https://betterthanblouses.com/"
         }
       ],
       "essence": {
         "feeling": [
+          "stylish",
           "special",
-          "playful",
-          "confident"
+          "liberated"
         ],
         "placeSymbols": [
-          "shophouses",
-          "batik motifs",
+          "heritage shophouses of George Town",
+          "traditional batik motifs",
+          "Penang street art",
           "Peranakan tiles"
         ],
         "senses": [
           "lightweight cotton",
-          "vibrant prints",
-          "soft natural fabrics"
+          "vibrant floral prints",
+          "soft fabric textures",
+          "natural daylight"
         ],
         "moments": []
       },
       "visualStyle": {
-        "summary": "clean bright light, studio backdrop, vibrant batik patterns, casual cheerful mood",
-        "palette": "bright, pastel, white, multicolored batik tones",
-        "light": "bright natural daylight, soft studio lighting"
+        "summary": "clean minimal backdrop, bright natural light, vibrant batik patterns, cheerful mood",
+        "palette": "vibrant pinks, blues, browns, and neutral whites"
       }
     },
     {
@@ -3691,7 +4155,7 @@
         "source": "https://betterthanblouses.com/"
       },
       "summary": {
-        "value": "Handmade batik apparel and vintage finds, crafted in small batches for versatile, everyday wear.",
+        "value": "Handmade batik apparel including blouses, tops, skirts, and dresses, crafted in small batches in Penang.",
         "source": "https://betterthanblouses.com/"
       },
       "category": "clothing boutique",
@@ -3759,15 +4223,11 @@
       ],
       "highlights": [
         {
-          "value": "Versatile & Light-weight apparel for every occasion",
-          "source": "https://betterthanblouses.com/"
-        },
-        {
           "value": "Handmade in small batches",
           "source": "https://betterthanblouses.com/"
         },
         {
-          "value": "Carefully curated vintage finds",
+          "value": "Versatile & Light-weight apparel for every occasion",
           "source": "https://betterthanblouses.com/"
         }
       ],
@@ -3776,7 +4236,10 @@
           "value": "George Town",
           "source": "https://betterthanblouses.com/contact/"
         },
-        "area": null,
+        "area": {
+          "value": "Penang",
+          "source": "https://betterthanblouses.com/contact/"
+        },
         "address": {
           "value": "191, Lebuh Carnarvon, George Town, 10100, Penang",
           "source": "https://betterthanblouses.com/contact/"
@@ -3785,7 +4248,7 @@
       },
       "contact": {
         "whatsapp": {
-          "value": "+6016 773 4763",
+          "value": "+60167734763",
           "source": "https://betterthanblouses.com/contact/"
         },
         "phone": null,
@@ -3807,39 +4270,46 @@
         "playful",
         "warm",
         "casual",
-        "personal"
+        "witty"
       ],
       "colours": [
         {
           "hex": "#000000",
           "role": "primary",
-          "source": "https://betterthanblouses.com/wp-content/uploads/2019/09/btb_logo.png"
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "hex": "#ffffff",
+          "role": "background",
+          "source": "https://betterthanblouses.com/"
         }
       ],
       "essence": {
         "feeling": [
+          "stylish",
           "special",
-          "playful",
-          "confident"
+          "liberated"
         ],
         "placeSymbols": [
-          "shophouses",
-          "batik motifs",
+          "heritage shophouses of George Town",
+          "traditional batik motifs",
+          "Penang street art",
           "Peranakan tiles"
         ],
         "senses": [
           "lightweight cotton",
-          "vibrant prints",
-          "soft natural fabrics"
+          "vibrant floral prints",
+          "soft fabric textures",
+          "natural daylight"
         ],
         "moments": []
       },
       "visualStyle": {
-        "summary": "clean bright light, studio backdrop, vibrant batik patterns, casual cheerful mood",
-        "palette": "bright, pastel, white, multicolored batik tones",
-        "light": "bright natural daylight, soft studio lighting",
-        "textures": "cotton, smooth fabric, wooden floors, white walls",
-        "mood": "playful, upbeat"
+        "summary": "clean minimal backdrop, bright natural light, vibrant batik patterns, cheerful mood",
+        "palette": "vibrant pinks, blues, browns, and neutral whites",
+        "light": "bright natural daylight",
+        "textures": "smooth cotton and traditional batik fabric",
+        "mood": "play"
       }
     },
     {
@@ -3848,7 +4318,7 @@
         "source": "https://betterthanblouses.com/"
       },
       "summary": {
-        "value": "Handmade batik apparel and vintage finds, crafted in small batches for versatile, everyday wear.",
+        "value": "Handmade batik apparel including blouses, tops, skirts, and dresses, crafted in small batches in Penang.",
         "source": "https://betterthanblouses.com/"
       },
       "category": "clothing boutique",
@@ -3916,15 +4386,11 @@
       ],
       "highlights": [
         {
-          "value": "Versatile & Light-weight apparel for every occasion",
-          "source": "https://betterthanblouses.com/"
-        },
-        {
           "value": "Handmade in small batches",
           "source": "https://betterthanblouses.com/"
         },
         {
-          "value": "Carefully curated vintage finds",
+          "value": "Versatile & Light-weight apparel for every occasion",
           "source": "https://betterthanblouses.com/"
         }
       ],
@@ -3933,7 +4399,10 @@
           "value": "George Town",
           "source": "https://betterthanblouses.com/contact/"
         },
-        "area": null,
+        "area": {
+          "value": "Penang",
+          "source": "https://betterthanblouses.com/contact/"
+        },
         "address": {
           "value": "191, Lebuh Carnarvon, George Town, 10100, Penang",
           "source": "https://betterthanblouses.com/contact/"
@@ -3942,7 +4411,7 @@
       },
       "contact": {
         "whatsapp": {
-          "value": "+6016 773 4763",
+          "value": "+60167734763",
           "source": "https://betterthanblouses.com/contact/"
         },
         "phone": null,
@@ -3964,39 +4433,46 @@
         "playful",
         "warm",
         "casual",
-        "personal"
+        "witty"
       ],
       "colours": [
         {
           "hex": "#000000",
           "role": "primary",
-          "source": "https://betterthanblouses.com/wp-content/uploads/2019/09/btb_logo.png"
+          "source": "https://betterthanblouses.com/"
+        },
+        {
+          "hex": "#ffffff",
+          "role": "background",
+          "source": "https://betterthanblouses.com/"
         }
       ],
       "essence": {
         "feeling": [
+          "stylish",
           "special",
-          "playful",
-          "confident"
+          "liberated"
         ],
         "placeSymbols": [
-          "shophouses",
-          "batik motifs",
+          "heritage shophouses of George Town",
+          "traditional batik motifs",
+          "Penang street art",
           "Peranakan tiles"
         ],
         "senses": [
           "lightweight cotton",
-          "vibrant prints",
-          "soft natural fabrics"
+          "vibrant floral prints",
+          "soft fabric textures",
+          "natural daylight"
         ],
         "moments": []
       },
       "visualStyle": {
-        "summary": "clean bright light, studio backdrop, vibrant batik patterns, casual cheerful mood",
-        "palette": "bright, pastel, white, multicolored batik tones",
-        "light": "bright natural daylight, soft studio lighting",
-        "textures": "cotton, smooth fabric, wooden floors, white walls",
-        "mood": "playful, upbeat, vintage-inspired"
+        "summary": "clean minimal backdrop, bright natural light, vibrant batik patterns, cheerful mood",
+        "palette": "vibrant pinks, blues, browns, and neutral whites",
+        "light": "bright natural daylight",
+        "textures": "smooth cotton and traditional batik fabric",
+        "mood": "playful and chic"
       }
     }
   ],
@@ -4006,7 +4482,7 @@
       "source": "https://betterthanblouses.com/"
     },
     "summary": {
-      "value": "Handmade batik apparel and vintage finds, crafted in small batches for versatile, everyday wear.",
+      "value": "Handmade batik apparel including blouses, tops, skirts, and dresses, crafted in small batches in Penang.",
       "source": "https://betterthanblouses.com/"
     },
     "category": "clothing boutique",
@@ -4074,15 +4550,11 @@
     ],
     "highlights": [
       {
-        "value": "Versatile & Light-weight apparel for every occasion",
-        "source": "https://betterthanblouses.com/"
-      },
-      {
         "value": "Handmade in small batches",
         "source": "https://betterthanblouses.com/"
       },
       {
-        "value": "Carefully curated vintage finds",
+        "value": "Versatile & Light-weight apparel for every occasion",
         "source": "https://betterthanblouses.com/"
       }
     ],
@@ -4091,7 +4563,10 @@
         "value": "George Town",
         "source": "https://betterthanblouses.com/contact/"
       },
-      "area": null,
+      "area": {
+        "value": "Penang",
+        "source": "https://betterthanblouses.com/contact/"
+      },
       "address": {
         "value": "191, Lebuh Carnarvon, George Town, 10100, Penang",
         "source": "https://betterthanblouses.com/contact/"
@@ -4100,7 +4575,7 @@
     },
     "contact": {
       "whatsapp": {
-        "value": "+6016 773 4763",
+        "value": "+60167734763",
         "source": "https://betterthanblouses.com/contact/"
       },
       "phone": null,
@@ -4122,39 +4597,46 @@
       "playful",
       "warm",
       "casual",
-      "personal"
+      "witty"
     ],
     "colours": [
       {
         "hex": "#000000",
         "role": "primary",
-        "source": "https://betterthanblouses.com/wp-content/uploads/2019/09/btb_logo.png"
+        "source": "https://betterthanblouses.com/"
+      },
+      {
+        "hex": "#ffffff",
+        "role": "background",
+        "source": "https://betterthanblouses.com/"
       }
     ],
     "essence": {
       "feeling": [
+        "stylish",
         "special",
-        "playful",
-        "confident"
+        "liberated"
       ],
       "placeSymbols": [
-        "shophouses",
-        "batik motifs",
+        "heritage shophouses of George Town",
+        "traditional batik motifs",
+        "Penang street art",
         "Peranakan tiles"
       ],
       "senses": [
         "lightweight cotton",
-        "vibrant prints",
-        "soft natural fabrics"
+        "vibrant floral prints",
+        "soft fabric textures",
+        "natural daylight"
       ],
       "moments": []
     },
     "visualStyle": {
-      "summary": "clean bright light, studio backdrop, vibrant batik patterns, casual cheerful mood",
-      "palette": "bright, pastel, white, multicolored batik tones",
-      "light": "bright natural daylight, soft studio lighting",
-      "textures": "cotton, smooth fabric, wooden floors, white walls",
-      "mood": "playful, upbeat, vintage-inspired"
+      "summary": "clean minimal backdrop, bright natural light, vibrant batik patterns, cheerful mood",
+      "palette": "vibrant pinks, blues, browns, and neutral whites",
+      "light": "bright natural daylight",
+      "textures": "smooth cotton and traditional batik fabric",
+      "mood": "playful and chic"
     }
   }
 }
