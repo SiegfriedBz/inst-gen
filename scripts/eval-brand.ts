@@ -70,7 +70,7 @@ while (queue.length > 0) {
         console.log(`    tone: ${p.tone.join(', ')} · style: ${p.visualStyle?.summary ?? 'none'}`);
         const e = p.essence;
         console.log(
-          `    essence: ${e.feeling.join(', ')} | place: ${e.placeSymbols.join(', ')} | senses: ${e.senses.join(', ')} | moments: ${e.moments.map((m) => m.value).join(', ')}`,
+          `    essence: ${e.promise?.value ?? '-'} | ${e.feeling.join(', ')} | place: ${e.placeSymbols.join(', ')} | senses: ${e.senses.join(', ')} | moments: ${e.moments.map((m) => m.value).join(', ')}`,
         );
         if (verbose && !score.pass) {
           console.log(

@@ -66,6 +66,7 @@ export const LIMITS = {
   placeSymbols: 5,
   senses: 5,
   moments: 6,
+  promiseWords: 20,
 } as const;
 
 // What the model fills in. It has no limits: a model answer a word or an item
@@ -105,6 +106,7 @@ export const modelProfileSchema = z.object({
   colours: z.array(z.object({ hex: loose, role: z.enum(COLOUR_ROLES), source: loose })),
   essence: z
     .object({
+      promise: looseSourced,
       feeling: z.array(loose),
       placeSymbols: z.array(loose),
       senses: z.array(loose),
@@ -138,6 +140,7 @@ export const profileSchema = z.object({
   // What the business is about, where, why people come and how they should
   // feel. Only moments are facts; the rest is interpretation (spec, "The essence").
   essence: z.object({
+    promise: sourced(maxWords(LIMITS.promiseWords)).nullable(),
     feeling: z.array(text).max(LIMITS.feeling),
     placeSymbols: z.array(text).max(LIMITS.placeSymbols),
     senses: z.array(text).max(LIMITS.senses),

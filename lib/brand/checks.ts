@@ -269,8 +269,12 @@ export function mergeAndCheck(
 
   const words = (list: (string | undefined)[] | undefined, max: number) =>
     (list ?? []).filter((w): w is string => Boolean(w)).slice(0, max);
+  const promise = checked('essence.promise', model.essence?.promise);
   const essence = model.essence
     ? {
+        promise: promise
+          ? { value: firstWords(promise.value, LIMITS.promiseWords), source: promise.source }
+          : null,
         feeling: words(model.essence.feeling, LIMITS.feeling),
         placeSymbols: words(model.essence.placeSymbols, LIMITS.placeSymbols),
         senses: words(model.essence.senses, LIMITS.senses),
@@ -371,6 +375,7 @@ export function finalise(
     logoUrl: profile.logoUrl ?? null,
     photoUrls: profile.photoUrls ?? [],
     essence: {
+      promise: profile.essence?.promise ?? null,
       feeling: profile.essence?.feeling ?? [],
       placeSymbols: profile.essence?.placeSymbols ?? [],
       senses: profile.essence?.senses ?? [],

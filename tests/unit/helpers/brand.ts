@@ -44,6 +44,10 @@ export function svargaProfile(): Profile {
     ],
     logoUrl: { value: 'https://svargabalimassage.com/logo.png', source: SITE },
     essence: {
+      promise: {
+        value: 'Therapists bring the massage to your villa: message us and relax',
+        source: SITE,
+      },
       feeling: ['relaxing', 'warm', 'cared for'],
       placeSymbols: ['frangipani', 'temple offerings'],
       senses: ['warm coconut oil', 'villa deck at sunset'],

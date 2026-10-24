@@ -259,9 +259,29 @@ describe('the essence', () => {
     ],
   };
 
+  test('keeps a promise from a page read, cut to 20 words', () => {
+    const long = Array.from({ length: 25 }, (_, i) => `w${i}`).join(' ');
+    const { profile } = run({
+      essence: { ...essence, promise: { value: long, source: '/about' } },
+    });
+    expect(profile.essence?.promise).toEqual({
+      value: long.split(' ').slice(0, 20).join(' '),
+      source: ABOUT,
+    });
+  });
+
+  test('drops a promise whose page was not read', () => {
+    const { profile, dropped } = run({
+      essence: { ...essence, promise: { value: 'We come to you', source: 'https://sen.vn/blog' } },
+    });
+    expect(profile.essence?.promise ?? null).toBeNull();
+    expect(dropped).toContainEqual({ field: 'essence.promise', reason: 'unknown_source' });
+  });
+
   test('keeps interpretation, and moments whose page was read', () => {
     const { profile, dropped } = run({ essence });
     expect(profile.essence).toEqual({
+      promise: null,
       feeling: ['relaxing', 'warm', 'cared for'],
       placeSymbols: ['lotus flowers', 'Hoi An lanterns'],
       senses: ['warm natural oils', 'fresh linens'],
@@ -294,7 +314,13 @@ describe('the essence', () => {
       thin: false,
       dropped: [],
     });
-    expect(final.essence).toEqual({ feeling: [], placeSymbols: [], senses: [], moments: [] });
+    expect(final.essence).toEqual({
+      promise: null,
+      feeling: [],
+      placeSymbols: [],
+      senses: [],
+      moments: [],
+    });
   });
 });
 
