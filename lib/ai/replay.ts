@@ -1,4 +1,5 @@
 import type { DeepPartial, ModelProfile } from '@/lib/brand/profile';
+import type { SearchModelAnswer } from '@/lib/brand/search/prompt';
 import { ModelError, type TextModel, toModelStream } from './text-model';
 
 // Recorded model calls: unit tests replay them, and `pnpm eval:brand --record`
@@ -27,9 +28,21 @@ function sleep(ms: number, signal: AbortSignal): Promise<void> {
 
 export function replayTextModel(
   recording: Recording,
-  opts: { delayMs?: number; hang?: boolean; error?: 'busy' | 'failed' } = {},
+  opts: {
+    delayMs?: number;
+    hang?: boolean;
+    error?: 'busy' | 'failed';
+    // The essence search's answer; without one, searchEssence fails.
+    searchAnswer?: SearchModelAnswer;
+  } = {},
 ): TextModel {
   return {
+    async searchEssence(_input, signal) {
+      if (opts.error) throw new ModelError(opts.error, `replayed ${opts.error}`);
+      if (opts.hang) await waitForAbort(signal);
+      if (!opts.searchAnswer) throw new ModelError('failed', 'no recorded search answer');
+      return opts.searchAnswer;
+    },
     streamBrandProfile(_input, signal) {
       async function* run(): AsyncGenerator<DeepPartial<ModelProfile>, ModelProfile> {
         if (opts.error) throw new ModelError(opts.error, `replayed ${opts.error}`);
@@ -50,8 +63,14 @@ export function recordingTextModel(
   inner: TextModel,
   meta: { modelId: string; promptVersion: string },
   onDone: (recording: Recording) => void,
+  onSearch: (answer: SearchModelAnswer) => void = () => {},
 ): TextModel {
   return {
+    async searchEssence(input, signal) {
+      const answer = await inner.searchEssence(input, signal);
+      onSearch(answer);
+      return answer;
+    },
     streamBrandProfile(input, signal) {
       const stream = inner.streamBrandProfile(input, signal);
       async function* run(): AsyncGenerator<DeepPartial<ModelProfile>, ModelProfile> {

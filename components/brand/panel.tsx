@@ -1,6 +1,6 @@
 'use client';
 
-import { WarningCircle } from '@phosphor-icons/react';
+import { CircleNotch, WarningCircle } from '@phosphor-icons/react';
 import { useTranslations } from 'next-intl';
 import { createContext, type ReactNode, useContext } from 'react';
 import type { SourceKind } from '@/lib/brand/display';
@@ -17,11 +17,16 @@ type Sourced = { value?: string; source?: string } | null | undefined;
 const text = (value: unknown): string | undefined =>
   typeof value === 'string' && value.trim() ? value : undefined;
 
+// Where the essence search stands (docs/specs/brand/search-essence): null
+// when it isn't running and has nothing to say.
+export type SearchState = 'running' | 'failed' | 'empty' | null;
+
 type PanelProps = {
   profile: PartialProfile;
   editable: boolean;
   onEdit: (section: SectionId) => void;
   ownerEdited?: readonly string[];
+  search?: SearchState;
 };
 
 type FieldProps = {
@@ -29,6 +34,10 @@ type FieldProps = {
   section: SectionId;
   filled: boolean;
   warning?: string;
+  // Instead of "Not found on your site", for a field the site doesn't fill.
+  empty?: string;
+  // Shown under the field, filled or not.
+  after?: ReactNode;
   children?: ReactNode;
 };
 
@@ -41,7 +50,7 @@ const PanelContext = createContext<{ editable: boolean; onEdit: (section: Sectio
   onEdit: () => {},
 });
 
-function Field({ label, section, filled, warning, children }: FieldProps) {
+function Field({ label, section, filled, warning, empty, after, children }: FieldProps) {
   const t = useTranslations('brand.panel');
   const { editable, onEdit } = useContext(PanelContext);
   return (
@@ -59,7 +68,7 @@ function Field({ label, section, filled, warning, children }: FieldProps) {
               {warning}
             </span>
           ) : (
-            <span className="text-ink-secondary">{t('notFound')}</span>
+            <span className="text-ink-secondary">{empty ?? t('notFound')}</span>
           )}
           <button
             type="button"
@@ -70,6 +79,7 @@ function Field({ label, section, filled, warning, children }: FieldProps) {
           </button>
         </p>
       )}
+      {after}
     </div>
   );
 }
@@ -120,7 +130,61 @@ function Section({ id, children }: { id: SectionId; children: ReactNode }) {
   );
 }
 
-export function BrandPanel({ profile, editable, onEdit, ownerEdited = [] }: PanelProps) {
+function SearchTerms({
+  terms,
+  search,
+  label,
+}: {
+  terms: string[];
+  search: SearchState;
+  label: string;
+}) {
+  const t = useTranslations('brand');
+  const line = 'mt-1 block text-xs text-ink-secondary';
+  if (search === 'running') {
+    return (
+      <div data-field className="py-2.5">
+        <p className="text-[13px] text-ink-secondary">{label}</p>
+        <p className="mt-0.5 flex items-center gap-2 text-[15px] text-ink-secondary">
+          <CircleNotch aria-hidden className="animate-spin" size={16} />
+          {t('panel.searching')}
+        </p>
+      </div>
+    );
+  }
+  return (
+    <Field
+      label={label}
+      section="feeling"
+      filled={terms.length > 0}
+      empty={t('panel.notFoundYet')}
+      after={
+        search === 'failed' ? (
+          <span className={line}>{t('panel.searchFailed')}</span>
+        ) : search === 'empty' ? (
+          <span className={line}>{t('panel.searchEmpty')}</span>
+        ) : null
+      }
+    >
+      <ul className="mt-1 flex flex-wrap gap-1.5">
+        {terms.map((term) => (
+          <li key={term} className="rounded-full bg-field-muted px-2.5 py-0.5 text-[14px]">
+            {term}
+          </li>
+        ))}
+      </ul>
+      <span className={line}>{t('source.search')}</span>
+    </Field>
+  );
+}
+
+export function BrandPanel({
+  profile,
+  editable,
+  onEdit,
+  ownerEdited = [],
+  search = null,
+}: PanelProps) {
   const t = useTranslations('brand.panel');
   const f = (key: string) => t(`fields.${key}` as 'fields.name');
   // A field with no source says "added by you" once the owner changed it.
@@ -308,7 +372,7 @@ export function BrandPanel({ profile, editable, onEdit, ownerEdited = [] }: Pane
                 // biome-ignore lint/suspicious/noArrayIndexKey: moments have no id
                 <li key={i}>
                   {m?.value}
-                  <SourceNote source={m?.source} />
+                  <SourceNote source={m?.source} siteUrl={profile.siteUrl} />
                 </li>
               ))}
             </ul>
@@ -329,6 +393,11 @@ export function BrandPanel({ profile, editable, onEdit, ownerEdited = [] }: Pane
             {words(profile.essence?.senses).join(', ')}
             <SourceNote source="model" kind="suggestion" />
           </Field>
+          <SearchTerms
+            terms={words(profile.essence?.searchTerms)}
+            search={search}
+            label={f('searchTerms')}
+          />
           <Field label={f('tone')} section="feeling" filled={words(profile.tone).length > 0}>
             {words(profile.tone).join(', ')}
             {ownerEdited.includes('tone') && <SourceNote source="owner" />}

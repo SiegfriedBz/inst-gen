@@ -1,6 +1,6 @@
 // @vitest-environment jsdom
 import 'fake-indexeddb/auto';
-import { cleanup, fireEvent, render, screen, waitFor } from '@testing-library/react';
+import { cleanup, fireEvent, render, screen, waitFor, within } from '@testing-library/react';
 import { IDBFactory } from 'fake-indexeddb';
 import { NextIntlClientProvider } from 'next-intl';
 import { afterEach, beforeEach, describe, expect, test, vi } from 'vitest';
@@ -13,7 +13,9 @@ import { saveRun } from '@/lib/runs/store';
 import messages from '@/messages/en.json';
 import { svargaProfile } from './helpers/brand';
 
-const profile = svargaProfile();
+// Already searched, so the read tests see no search request.
+const profile: Profile = { ...svargaProfile(), searchedAt: '2026-10-24T09:30:00.000Z' };
+const unsearched = svargaProfile();
 const INTRO = /This is what we understood about Svarga/;
 
 let fetchMock: ReturnType<typeof vi.fn>;
@@ -123,7 +125,7 @@ describe('BrandHome', () => {
     const db = await openStore();
     await db?.put('brands', {
       ownerId: 'sen',
-      profile: { schemaVersion: 2 } as never,
+      profile: { schemaVersion: 3 } as never,
       savedAt: '',
     });
     renderHome();
@@ -261,5 +263,143 @@ describe('BrandHome', () => {
     expect(await screen.findByText('9am to midnight')).toBeTruthy();
     const stored = await loadBrand('sen');
     expect(stored.kind === 'saved' && stored.record.profile.hours?.source).toBe('owner');
+  });
+});
+
+describe('BrandHome and the essence search', () => {
+  const GUIDE = 'https://bali.travel/batur';
+  const answer = {
+    searchTerms: ['hotel massage canggu'],
+    moments: [{ value: 'after a Mount Batur hike', source: GUIDE }],
+    placeSymbols: [],
+    dropped: [],
+    searchedAt: '2026-10-24T12:00:00.000Z',
+    searchPromptVersion: 'search-1',
+  };
+  const searchCalls = () =>
+    fetchMock.mock.calls.filter(([url]) => String(url) === '/api/brand/search');
+
+  // Answers the read with a final line and the search with `search`.
+  function routes(search: () => Promise<Response>) {
+    fetchMock.mockImplementation((url: string) =>
+      url === '/api/brand/search'
+        ? search()
+        : Promise.resolve(ndjson([{ type: 'final', profile: unsearched }])),
+    );
+  }
+
+  test('searches after a final read and shows the additions', async () => {
+    routes(async () => Response.json(answer));
+    renderHome();
+    await typeAndRead('svargabalimassage.com');
+    expect(await screen.findByRole('link', { name: 'seen on bali.travel' })).toBeTruthy();
+    expect(screen.getByText('hotel massage canggu')).toBeTruthy();
+    expect(searchCalls()).toHaveLength(1);
+    const body = JSON.parse(String(searchCalls()[0]?.[1]?.body));
+    expect(body).toMatchObject({ category: 'massage spa', town: 'Canggu', country: 'ID' });
+    expect(body).not.toHaveProperty('name');
+    await waitFor(async () => {
+      const stored = await loadBrand('sen');
+      expect(stored.kind === 'saved' && stored.record.profile.searchedAt).toBe(answer.searchedAt);
+    });
+  });
+
+  test('shows the searching line while search runs', async () => {
+    routes(() => new Promise<Response>(() => {}));
+    renderHome();
+    await typeAndRead('svargabalimassage.com');
+    expect(await screen.findByText('Looking up what people search for…')).toBeTruthy();
+    expect(screen.getByRole('button', { name: 'Edit Your feeling' })).toBeTruthy();
+  });
+
+  test('searches once on load when searchedAt is null, and not when set', async () => {
+    routes(async () => Response.json(answer));
+    await saveBrand('sen', unsearched);
+    renderHome();
+    expect(await screen.findByText('hotel massage canggu')).toBeTruthy();
+    expect(searchCalls()).toHaveLength(1);
+    cleanup();
+    fetchMock.mockClear();
+    renderHome();
+    expect(await screen.findByText(INTRO)).toBeTruthy();
+    expect(searchCalls()).toHaveLength(0);
+  });
+
+  test('sends one search when the load and a visibility change both ask', async () => {
+    routes(() => new Promise<Response>(() => {}));
+    await saveBrand('sen', unsearched);
+    renderHome();
+    await screen.findByText('Looking up what people search for…');
+    document.dispatchEvent(new Event('visibilitychange'));
+    window.dispatchEvent(new Event('online'));
+    expect(searchCalls()).toHaveLength(1);
+  });
+
+  test('waits for the feeling sheet to close before merging', async () => {
+    let answerSearch: (r: Response) => void = () => {};
+    routes(() => new Promise<Response>((resolve) => (answerSearch = resolve)));
+    await saveBrand('sen', unsearched);
+    renderHome();
+    fireEvent.click(await screen.findByRole('button', { name: 'Edit Your feeling' }));
+    await waitFor(() => expect(searchCalls()).toHaveLength(1));
+    answerSearch(Response.json(answer));
+    const feeling = await screen.findByRole('group', { name: 'How guests should feel' });
+    fireEvent.click(within(feeling).getByRole('button', { name: 'Remove relaxing' }));
+    fireEvent.click(screen.getByRole('button', { name: 'Save' }));
+    expect(await screen.findByText('hotel massage canggu')).toBeTruthy();
+    const stored = await loadBrand('sen');
+    if (stored.kind !== 'saved') throw new Error('not saved');
+    expect(stored.record.profile.essence.feeling).toEqual(['warm', 'cared for']);
+    expect(stored.record.profile.essence.searchTerms).toEqual(['hotel massage canggu']);
+  });
+
+  test('keeps the panel on a failed search and shows the line', async () => {
+    routes(async () => Response.json({ error: 'search_busy' }, { status: 503 }));
+    await saveBrand('sen', unsearched);
+    renderHome();
+    expect(
+      await screen.findByText("We couldn't look this up today. We'll try again next time."),
+    ).toBeTruthy();
+    expect(screen.getByText(INTRO)).toBeTruthy();
+    const stored = await loadBrand('sen');
+    expect(stored.kind === 'saved' && stored.record.profile.searchedAt).toBeNull();
+  });
+
+  test('shows nothing about search without a key', async () => {
+    routes(async () => Response.json({ error: 'search_unavailable' }, { status: 503 }));
+    await saveBrand('sen', unsearched);
+    renderHome();
+    await waitFor(() => expect(searchCalls()).toHaveLength(1));
+    await screen.findByText(INTRO);
+    await waitFor(() =>
+      expect(screen.queryByText('Looking up what people search for…')).toBeNull(),
+    );
+    expect(screen.queryByText(/We couldn't look this up/)).toBeNull();
+  });
+
+  test('skips search without a town', async () => {
+    routes(async () => Response.json(answer));
+    const p = svargaProfile();
+    p.location.town = null;
+    await saveBrand('sen', p);
+    renderHome();
+    expect(await screen.findByText(INTRO)).toBeTruthy();
+    expect(searchCalls()).toHaveLength(0);
+  });
+
+  test('a tab that cannot take the search lock sends no search', async () => {
+    routes(async () => Response.json(answer));
+    vi.stubGlobal('navigator', {
+      ...navigator,
+      locks: {
+        request: (_name: string, _opts: unknown, fn: (lock: null) => Promise<void>) => fn(null),
+      },
+    });
+    await saveBrand('sen', unsearched);
+    renderHome();
+    expect(await screen.findByText(INTRO)).toBeTruthy();
+    await new Promise((resolve) => setTimeout(resolve, 50));
+    expect(searchCalls()).toHaveLength(0);
+    expect(screen.queryByText('Looking up what people search for…')).toBeNull();
   });
 });

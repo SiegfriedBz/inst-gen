@@ -109,6 +109,74 @@ describe('geminiTextModel', () => {
   });
 });
 
+describe('searchEssence', () => {
+  const searchInput = { system: 'rules', text: 'results' };
+  const answer = { searchTerms: ['hotel massage da nang'], moments: [], placeSymbols: [] };
+
+  afterEach(() => {
+    vi.unstubAllEnvs();
+    vi.unstubAllGlobals();
+  });
+
+  test('a replayed model answers its recorded search answer', async () => {
+    const model = replayTextModel(rec, { searchAnswer: answer });
+    expect(await model.searchEssence(searchInput, new AbortController().signal)).toEqual(answer);
+  });
+
+  test('a recording model hands over the search answer', async () => {
+    const done = vi.fn();
+    const model = recordingTextModel(
+      replayTextModel(rec, { searchAnswer: answer }),
+      { modelId: 'm', promptVersion: 'p' },
+      () => {},
+      done,
+    );
+    await model.searchEssence(searchInput, new AbortController().signal);
+    expect(done).toHaveBeenCalledWith(answer);
+  });
+
+  test('calls the light model once, with no retries', async () => {
+    vi.stubEnv('GOOGLE_GENERATIVE_AI_API_KEY', 'test-key-not-real');
+    const fetchMock = vi.fn(
+      async (_url: string | URL | Request, _init?: RequestInit) =>
+        new Response(JSON.stringify({ error: { code: 503, message: 'busy' } }), {
+          status: 503,
+          headers: { 'content-type': 'application/json' },
+        }),
+    );
+    vi.stubGlobal('fetch', fetchMock);
+    await geminiTextModel()
+      .searchEssence(searchInput, new AbortController().signal)
+      .catch(() => {});
+    expect(fetchMock).toHaveBeenCalledTimes(1);
+    expect(String(fetchMock.mock.calls[0]?.[0])).toContain(TEXT_MODELS.light);
+  });
+
+  test('a 429 is busy', async () => {
+    vi.stubEnv('GOOGLE_GENERATIVE_AI_API_KEY', 'test-key-not-real');
+    vi.stubGlobal(
+      'fetch',
+      vi.fn(
+        async () =>
+          new Response(JSON.stringify({ error: { code: 429, message: 'quota' } }), {
+            status: 429,
+            headers: { 'content-type': 'application/json' },
+          }),
+      ),
+    );
+    await expect(
+      geminiTextModel().searchEssence(searchInput, new AbortController().signal),
+    ).rejects.toMatchObject({ kind: 'busy' });
+  });
+
+  test('without a key, fails with ModelError failed', async () => {
+    vi.stubEnv('GOOGLE_GENERATIVE_AI_API_KEY', '');
+    await expect(
+      geminiTextModel().searchEssence(searchInput, new AbortController().signal),
+    ).rejects.toMatchObject({ kind: 'failed' });
+  });
+});
+
 describe('the Google provider', () => {
   function sourceFiles(dir: string): string[] {
     return readdirSync(dir, { withFileTypes: true }).flatMap((entry) => {

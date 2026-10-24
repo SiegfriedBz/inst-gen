@@ -63,7 +63,8 @@
         "moments": "Why people come",
         "placeSymbols": "Symbols of your place",
         "senses": "Scents, textures and light",
-        "tone": "Your tone"
+        "tone": "Your tone",
+        "searchTerms": "What people search for"
       },
       "roles": {
         "primary": "Main",
@@ -72,7 +73,11 @@
         "text": "Text"
       },
       "logoAlt": "Logo of {name}",
-      "photoAlt": "Photo from your website"
+      "photoAlt": "Photo from your website",
+      "searching": "Looking up what people search for…",
+      "searchFailed": "We couldn't look this up today. We'll try again next time.",
+      "searchEmpty": "Nothing found for your town.",
+      "notFoundYet": "Not found yet"
     },
     "source": {
       "page": "from {path}",
@@ -80,7 +85,9 @@
       "site": "from your website",
       "guess": "our guess from your photos",
       "suggestion": "our suggestion",
-      "owner": "added by you"
+      "owner": "added by you",
+      "elsewhere": "seen on {host}",
+      "search": "from what people search for"
     },
     "edit": {
       "save": "Save",

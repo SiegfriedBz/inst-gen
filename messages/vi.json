@@ -63,7 +63,8 @@
         "moments": "Vì sao khách đến",
         "placeSymbols": "Biểu tượng của nơi bạn",
         "senses": "Hương thơm, chất liệu và ánh sáng",
-        "tone": "Giọng điệu của bạn"
+        "tone": "Giọng điệu của bạn",
+        "searchTerms": "Mọi người tìm kiếm gì"
       },
       "roles": {
         "primary": "Chính",
@@ -72,7 +73,11 @@
         "text": "Chữ"
       },
       "logoAlt": "Logo của {name}",
-      "photoAlt": "Ảnh từ trang web của bạn"
+      "photoAlt": "Ảnh từ trang web của bạn",
+      "searching": "Đang tìm xem mọi người tìm kiếm gì…",
+      "searchFailed": "Hôm nay chúng tôi chưa tra cứu được. Chúng tôi sẽ thử lại lần sau.",
+      "searchEmpty": "Không tìm thấy gì cho thành phố của bạn.",
+      "notFoundYet": "Chưa tìm thấy"
     },
     "source": {
       "page": "từ {path}",
@@ -80,7 +85,9 @@
       "site": "từ trang web của bạn",
       "guess": "chúng tôi đoán từ ảnh của bạn",
       "suggestion": "gợi ý của chúng tôi",
-      "owner": "do bạn thêm"
+      "owner": "do bạn thêm",
+      "elsewhere": "xem trên {host}",
+      "search": "từ những gì mọi người tìm kiếm"
     },
     "edit": {
       "save": "Lưu",

@@ -71,6 +71,11 @@ export const LIMITS = {
   senses: 5,
   moments: 6,
   promiseWords: 20,
+  // From the essence search (docs/specs/brand/search-essence).
+  searchTerms: 8,
+  searchTermWords: 6,
+  searchMoments: 3,
+  searchSymbols: 2,
 } as const;
 
 // What the model fills in. It has no limits: a model answer a word or an item
@@ -125,7 +130,7 @@ export const modelProfileSchema = z.object({
 export type ModelProfile = z.infer<typeof modelProfileSchema>;
 
 export const profileSchema = z.object({
-  schemaVersion: z.literal(1),
+  schemaVersion: z.literal(2),
   siteUrl: z.url(),
   readAt: z.iso.datetime(),
   pagesRead: z.array(z.url()).min(1).max(8),
@@ -149,14 +154,36 @@ export const profileSchema = z.object({
     placeSymbols: z.array(text).max(LIMITS.placeSymbols),
     senses: z.array(text).max(LIMITS.senses),
     moments: z.array(sourced(text)).max(LIMITS.moments),
+    // What people type to find this trade in this town, from the essence
+    // search (docs/specs/brand/search-essence); empty until it has run.
+    searchTerms: z.array(maxWords(LIMITS.searchTermWords)).max(LIMITS.searchTerms),
   }),
   visualStyle: visualStyle.nullable(),
   photoUrls: z.array(z.url()),
   promptVersion: text,
   dropped: z.array(z.object({ field: text, reason: text })),
+  // When the essence search last succeeded, and with which prompt.
+  searchedAt: z.iso.datetime().nullable(),
+  searchPromptVersion: text.nullable(),
 });
 
 export type Profile = z.infer<typeof profileSchema>;
+
+// A profile saved as version 1 (before the essence search) read as version 2;
+// anything else comes back unchanged, for the schema to judge.
+export function upgradeProfile(raw: unknown): unknown {
+  if (!raw || typeof raw !== 'object') return raw;
+  const profile = raw as { schemaVersion?: unknown; essence?: unknown };
+  if (profile.schemaVersion !== 1) return raw;
+  const essence = profile.essence && typeof profile.essence === 'object' ? profile.essence : {};
+  return {
+    ...profile,
+    schemaVersion: 2,
+    essence: { ...essence, searchTerms: [] },
+    searchedAt: null,
+    searchPromptVersion: null,
+  };
+}
 
 export type DeepPartial<T> = T extends (infer U)[]
   ? DeepPartial<U>[]

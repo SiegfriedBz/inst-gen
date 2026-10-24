@@ -60,6 +60,7 @@ export type FeelingValues = {
   moments: Item[];
   placeSymbols: string[];
   senses: string[];
+  searchTerms: string[];
   tone: string[];
 };
 
@@ -135,6 +136,7 @@ export function sectionValues<S extends SectionId>(profile: Profile, section: S)
       moments: profile.essence.moments.map((m) => ({ ...m })),
       placeSymbols: [...profile.essence.placeSymbols],
       senses: [...profile.essence.senses],
+      searchTerms: [...profile.essence.searchTerms],
       tone: [...profile.tone],
     }),
   };
@@ -345,6 +347,7 @@ function build(profile: Profile, section: SectionId, values: SectionValues[Secti
         feeling: words(v.feeling),
         placeSymbols: words(v.placeSymbols),
         senses: words(v.senses),
+        searchTerms: words(v.searchTerms),
         moments: items(profile.essence.moments, v.moments),
       },
     };
@@ -378,6 +381,7 @@ export const UNSOURCED_FIELDS = [
   'essence.feeling',
   'essence.placeSymbols',
   'essence.senses',
+  'essence.searchTerms',
 ] as const;
 
 export type UnsourcedField = (typeof UNSOURCED_FIELDS)[number];
@@ -386,7 +390,9 @@ function unsourced(profile: Profile, field: UnsourcedField): unknown {
   if (field === 'category') return profile.category;
   if (field === 'tone') return profile.tone;
   if (field === 'visualStyle') return profile.visualStyle;
-  return profile.essence[field.slice('essence.'.length) as 'feeling' | 'placeSymbols' | 'senses'];
+  return profile.essence[
+    field.slice('essence.'.length) as 'feeling' | 'placeSymbols' | 'senses' | 'searchTerms'
+  ];
 }
 
 export function changedUnsourced(before: Profile, after: Profile): UnsourcedField[] {

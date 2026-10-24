@@ -340,6 +340,7 @@ describe('the essence', () => {
       placeSymbols: [],
       senses: [],
       moments: [],
+      searchTerms: [],
     });
   });
 });
@@ -419,8 +420,10 @@ describe('finalise', () => {
     const { profile } = run({ category: 'massage spa', tone: ['calm', 'warm', 'caring'] });
     const final = finalise(profile, meta);
     expect(final).toMatchObject({
-      schemaVersion: 1,
+      schemaVersion: 2,
       promptVersion: 'brand-1',
+      searchedAt: null,
+      searchPromptVersion: null,
       thin: false,
       name: { value: 'Sen Spa' },
       offerings: [],

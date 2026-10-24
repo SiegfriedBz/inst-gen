@@ -372,7 +372,10 @@ function ColourRole({ value, onChange }: { value: string; onChange: (role: strin
 function FeelingForm({ values, set, error }: FormProps<'feeling'>) {
   const l = useLabels();
   const v = values as FeelingValues;
-  const chips = (key: 'feeling' | 'placeSymbols' | 'senses' | 'tone', max: number) => (
+  const chips = (
+    key: 'feeling' | 'placeSymbols' | 'senses' | 'searchTerms' | 'tone',
+    max: number,
+  ) => (
     <ChipsField
       label={l.field(key)}
       hint={l.items(max)}
@@ -411,6 +414,7 @@ function FeelingForm({ values, set, error }: FormProps<'feeling'>) {
       />
       {chips('placeSymbols', LIMITS.placeSymbols)}
       {chips('senses', LIMITS.senses)}
+      {chips('searchTerms', LIMITS.searchTerms)}
       {chips('tone', LIMITS.tone)}
     </>
   );

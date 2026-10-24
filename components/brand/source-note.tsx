@@ -5,12 +5,20 @@ import { type SourceKind, sourceOf } from '@/lib/brand/display';
 
 // The small muted line under a fact saying where it came from, so the owner
 // can tell what her site says from what the app guessed.
-export function SourceNote({ source, kind = 'fact' }: { source?: string; kind?: SourceKind }) {
+export function SourceNote({
+  source,
+  kind = 'fact',
+  siteUrl,
+}: {
+  source?: string;
+  kind?: SourceKind;
+  siteUrl?: string;
+}) {
   const t = useTranslations('brand.source');
-  const shown = sourceOf(source, kind);
+  const shown = sourceOf(source, kind, siteUrl);
   if (!shown) return null;
   const className = 'mt-0.5 block text-xs text-ink-secondary';
-  if (shown.kind === 'page' || shown.kind === 'home') {
+  if (shown.kind === 'page' || shown.kind === 'home' || shown.kind === 'elsewhere') {
     return (
       <a
         href={shown.href}
@@ -18,7 +26,11 @@ export function SourceNote({ source, kind = 'fact' }: { source?: string; kind?: 
         rel="noopener noreferrer"
         className={`${className} underline-offset-4 hover:underline`}
       >
-        {shown.kind === 'page' ? t('page', { path: shown.path }) : t('home')}
+        {shown.kind === 'page'
+          ? t('page', { path: shown.path })
+          : shown.kind === 'elsewhere'
+            ? t('elsewhere', { host: shown.host })
+            : t('home')}
       </a>
     );
   }

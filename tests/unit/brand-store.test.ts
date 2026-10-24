@@ -4,6 +4,7 @@ import { afterEach, beforeEach, describe, expect, test, vi } from 'vitest';
 import {
   forgetBrand,
   loadBrand,
+  mergeSearchIntoStore,
   openStore,
   requestPersistence,
   resetStoreForTests,
@@ -19,6 +20,15 @@ beforeEach(() => {
 afterEach(() => {
   vi.unstubAllGlobals();
 });
+
+const searchAnswer = {
+  searchTerms: ['hotel massage canggu'],
+  moments: [],
+  placeSymbols: [],
+  dropped: [],
+  searchedAt: '2026-10-24T12:00:00.000Z',
+  searchPromptVersion: 'search-2',
+};
 
 function rawRun(id: string, ownerId: string) {
   return {
@@ -57,6 +67,56 @@ describe('the brand store', () => {
     expect(await loadBrand('sen')).toMatchObject({ record: { ownerEdited: [] } });
   });
 
+  test('loads a saved v1 profile as v2 and keeps its owner edits', async () => {
+    const { searchedAt: _a, searchPromptVersion: _b, ...rest } = svargaProfile();
+    const { searchTerms: _c, ...essence } = rest.essence;
+    const v1 = {
+      ...rest,
+      schemaVersion: 1,
+      essence,
+      hours: { value: '9am to midnight', source: 'owner' },
+    };
+    const db = await openStore();
+    await db?.put('brands', {
+      ownerId: 'sen',
+      profile: v1 as never,
+      savedAt: '2026-10-24T10:00:00.000Z',
+      ownerEdited: ['tone'],
+    });
+    const result = await loadBrand('sen');
+    if (result.kind !== 'saved') throw new Error(`expected saved, got ${result.kind}`);
+    expect(result.record.profile.schemaVersion).toBe(2);
+    expect(result.record.profile.essence.searchTerms).toEqual([]);
+    expect(result.record.profile.searchedAt).toBeNull();
+    expect(result.record.profile.hours).toEqual({ value: '9am to midnight', source: 'owner' });
+    expect(result.record.ownerEdited).toEqual(['tone']);
+  });
+
+  test('merges a search answer into the record as stored, not as the caller holds it', async () => {
+    // Another tab saved a tone edit after this tab loaded the profile.
+    await saveBrand('sen', { ...svargaProfile(), tone: ['playful'] }, new Date(), ['tone']);
+    const merged = await mergeSearchIntoStore('sen', searchAnswer);
+    expect(merged?.profile.tone).toEqual(['playful']);
+    expect(merged?.profile.essence.searchTerms).toEqual(['hotel massage canggu']);
+    expect(merged?.ownerEdited).toEqual(['tone']);
+    const stored = await loadBrand('sen');
+    expect(stored.kind === 'saved' && stored.record.profile).toEqual(merged?.profile);
+  });
+
+  test('merges a search answer only once', async () => {
+    await saveBrand('sen', svargaProfile());
+    await mergeSearchIntoStore('sen', searchAnswer);
+    const again = await mergeSearchIntoStore('sen', {
+      ...searchAnswer,
+      searchTerms: ['spa seminyak'],
+    });
+    expect(again?.profile.essence.searchTerms).toEqual(['hotel massage canggu']);
+  });
+
+  test('a search answer for a forgotten brand is dropped', async () => {
+    expect(await mergeSearchIntoStore('sen', searchAnswer)).toBeNull();
+  });
+
   test('another owner sees nothing', async () => {
     await saveBrand('sen', svargaProfile());
     expect(await loadBrand('svarga')).toEqual({ kind: 'none' });
@@ -66,7 +126,7 @@ describe('the brand store', () => {
     const db = await openStore();
     await db?.put('brands', {
       ownerId: 'sen',
-      profile: { schemaVersion: 2 } as never,
+      profile: { schemaVersion: 3 } as never,
       savedAt: '2026-10-24T10:00:00.000Z',
     });
     expect(await loadBrand('sen')).toEqual({ kind: 'invalid' });

@@ -250,6 +250,15 @@ describe('applying a section edit', () => {
     expect(changedUnsourced(p, p)).toEqual([]);
   });
 
+  test('records an edit to search terms as an owner edit', () => {
+    const feeling = sectionValues(p, 'feeling');
+    const after = ok(
+      applySection(p, 'feeling', { ...feeling, searchTerms: [' hotel massage canggu ', ''] }),
+    );
+    expect(after.essence.searchTerms).toEqual(['hotel massage canggu']);
+    expect(changedUnsourced(p, after)).toEqual(['essence.searchTerms']);
+  });
+
   test('counts edits to fields without a source too', () => {
     expect(countOwnerEdits(p, ['tone', 'visualStyle'])).toBe(2);
   });

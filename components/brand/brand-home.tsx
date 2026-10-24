@@ -17,9 +17,17 @@ import { lastReadLabel } from '@/lib/brand/display';
 import { changedUnsourced, countOwnerEdits, type SectionId } from '@/lib/brand/edit';
 import type { BrandErrorCode, PartialProfile, Profile } from '@/lib/brand/profile';
 import { type ReadEvent, type RunningRead, resumeRead, startRead } from '@/lib/brand/read-client';
-import { forgetBrand, loadBrand, requestPersistence, saveBrand } from '@/lib/brand/store';
+import type { SearchAnswer } from '@/lib/brand/search/run';
+import { mergeSearch, needsSearch, requestSearch } from '@/lib/brand/search-client';
+import {
+  forgetBrand,
+  loadBrand,
+  mergeSearchIntoStore,
+  requestPersistence,
+  saveBrand,
+} from '@/lib/brand/store';
 import { holdWakeLock } from '@/lib/brand/wake-lock';
-import { BrandPanel } from './panel';
+import { BrandPanel, type SearchState } from './panel';
 import { Reading } from './reading';
 import { SectionSheet } from './section-sheet';
 
@@ -52,6 +60,100 @@ export function BrandHome({ ownerId }: { ownerId: string }) {
   const lock = useRef<{ release(): void } | null>(null);
   const savedRef = useRef<Profile | null>(null);
   savedRef.current = saved;
+  const [search, setSearch] = useState<SearchState>(null);
+  // The one essence search in flight, and an answer waiting for the "Your
+  // feeling" sheet to close (docs/specs/brand/search-essence).
+  const searching = useRef<AbortController | null>(null);
+  const pending = useRef<SearchAnswer | null>(null);
+  const editingRef = useRef<SectionId | null>(null);
+  editingRef.current = editing;
+  const ownerEditedRef = useRef<string[]>([]);
+  ownerEditedRef.current = ownerEdited;
+
+  // Merges a waiting answer into the profile as stored now, which may hold
+  // edits made since the search left, here or in another tab.
+  const applySearch = useCallback(async () => {
+    const answer = pending.current;
+    const base = savedRef.current;
+    if (!answer || !base) return;
+    pending.current = null;
+    let merged: Profile;
+    try {
+      const record = await mergeSearchIntoStore(ownerId, answer);
+      if (record) {
+        merged = record.profile;
+        setOwnerEdited(record.ownerEdited);
+      } else {
+        // No store on this phone: the answer joins the profile on screen.
+        merged = mergeSearch(base, answer);
+      }
+    } catch {
+      setSearch('failed');
+      return;
+    }
+    setSaved(merged);
+    const found = answer.searchTerms.length + answer.moments.length + answer.placeSymbols.length;
+    setSearch(found === 0 ? 'empty' : null);
+  }, [ownerId]);
+
+  const startSearch = useCallback(
+    (profile: Profile) => {
+      if (searching.current || !needsSearch(profile)) return;
+      const controller = new AbortController();
+      searching.current = controller;
+      setSearch('running');
+      // One tab at a time searches for an owner; a tab that can't take the
+      // lock leaves it to the one that holds it.
+      const run = async () => {
+        try {
+          const outcome = await requestSearch(profile, {
+            fetch: (...args) => globalThis.fetch(...args),
+            signal: controller.signal,
+          });
+          if (controller.signal.aborted) return;
+          if (outcome.kind === 'signedOut') {
+            window.location.assign('/enter');
+          } else if (outcome.kind === 'error') {
+            setSearch(outcome.code === 'search_unavailable' ? null : 'failed');
+          } else {
+            pending.current = outcome.answer;
+            if (editingRef.current !== 'feeling') await applySearch();
+          }
+        } catch {
+          // Stopped by a re-read or a forget.
+        } finally {
+          if (searching.current === controller) searching.current = null;
+        }
+      };
+      const locks = typeof navigator === 'undefined' ? undefined : navigator.locks;
+      if (!locks) {
+        void run();
+        return;
+      }
+      void locks.request(`brand-search:${ownerId}`, { ifAvailable: true }, async (lock) => {
+        if (lock) {
+          await run();
+        } else {
+          if (searching.current === controller) searching.current = null;
+          setSearch(null);
+        }
+      });
+    },
+    [applySearch, ownerId],
+  );
+
+  const stopSearch = useCallback(() => {
+    searching.current?.abort();
+    searching.current = null;
+    pending.current = null;
+    setSearch(null);
+  }, []);
+
+  // An answer that came while the feeling sheet was open, or before the
+  // profile it joins was on screen, is merged once both are ready.
+  useEffect(() => {
+    if (saved && editing !== 'feeling') void applySearch();
+  }, [saved, editing, applySearch]);
 
   const endRead = useCallback(() => {
     lock.current?.release();
@@ -72,6 +174,7 @@ export function BrandHome({ ownerId }: { ownerId: string }) {
         setView({ kind: 'panel' });
         setAnnounce(t('home.announceDone'));
         if (event.kept) void requestPersistence();
+        startSearch(event.profile);
       } else if (event.type === 'error') {
         endRead();
         setError(event.code);
@@ -85,7 +188,7 @@ export function BrandHome({ ownerId }: { ownerId: string }) {
         window.location.assign('/enter');
       }
     },
-    [endRead, t],
+    [endRead, t, startSearch],
   );
 
   const begin = useCallback(
@@ -113,6 +216,7 @@ export function BrandHome({ ownerId }: { ownerId: string }) {
         setSaved(result.record.profile);
         setOwnerEdited(result.record.ownerEdited);
         setView({ kind: 'panel' });
+        startSearch(result.record.profile);
       } else {
         setNotice(result.kind === 'invalid' ? 'invalidSaved' : null);
         setView({ kind: 'empty' });
@@ -130,7 +234,7 @@ export function BrandHome({ ownerId }: { ownerId: string }) {
       document.removeEventListener('visibilitychange', onVisible);
       window.removeEventListener('online', onOnline);
     };
-  }, [ownerId, tryResume]);
+  }, [ownerId, tryResume, startSearch]);
 
   function read(event: React.FormEvent) {
     event.preventDefault();
@@ -145,6 +249,7 @@ export function BrandHome({ ownerId }: { ownerId: string }) {
   function reread() {
     if (!saved) return;
     setConfirm(null);
+    stopSearch();
     begin(startRead({ ownerId, url: saved.siteUrl, reread: true }, onEvent), saved.siteUrl);
   }
 
@@ -157,6 +262,7 @@ export function BrandHome({ ownerId }: { ownerId: string }) {
 
   async function forget() {
     setConfirm(null);
+    stopSearch();
     await forgetBrand(ownerId);
     setSaved(null);
     setOwnerEdited([]);
@@ -234,7 +340,13 @@ export function BrandHome({ ownerId }: { ownerId: string }) {
           <p className="mb-4 text-[15px] leading-normal text-ink-secondary">
             {t('home.intro', { name: saved.name.value })}
           </p>
-          <BrandPanel profile={saved} editable onEdit={setEditing} ownerEdited={ownerEdited} />
+          <BrandPanel
+            profile={saved}
+            editable
+            onEdit={setEditing}
+            ownerEdited={ownerEdited}
+            search={search}
+          />
           <p className="mt-4 text-[13px] text-ink-secondary">{t('home.postsSoon')}</p>
           <div className="mt-6 flex flex-col gap-2 border-t border-edge pt-4">
             <p className="truncate text-[15px]">{saved.siteUrl}</p>

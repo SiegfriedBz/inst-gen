@@ -337,6 +337,9 @@ describe('the log line', () => {
           })(),
         );
       },
+      searchEssence() {
+        throw new Error('the brand read makes no search call');
+      },
     };
   }
 

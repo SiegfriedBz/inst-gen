@@ -105,6 +105,19 @@ describe('SectionSheet', () => {
     expect(saved(onSave).tone).toEqual(['warm', 'caring', 'playful']);
   });
 
+  test('a search term can be added as a chip', async () => {
+    const { onSave } = renderSheet('feeling');
+    const terms = screen.getByRole('group', { name: 'What people search for' });
+    expect(within(terms).getByText('Up to 8')).toBeTruthy();
+    fireEvent.change(within(terms).getByRole('textbox'), {
+      target: { value: 'massage canggu' },
+    });
+    fireEvent.keyDown(within(terms).getByRole('textbox'), { key: 'Enter' });
+    fireEvent.click(screen.getByRole('button', { name: 'Save' }));
+    await waitFor(() => expect(onSave).toHaveBeenCalledTimes(1));
+    expect(saved(onSave).essence.searchTerms).toEqual(['massage canggu']);
+  });
+
   test('the logo can be removed', async () => {
     const { onSave } = renderSheet('look');
     fireEvent.click(screen.getByRole('button', { name: 'Remove logo' }));

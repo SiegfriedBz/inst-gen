@@ -5,7 +5,7 @@ export const ABOUT = 'https://svargabalimassage.com/about';
 
 export function svargaProfile(): Profile {
   return {
-    schemaVersion: 1,
+    schemaVersion: 2,
     siteUrl: SITE,
     readAt: '2026-10-24T09:00:00.000Z',
     pagesRead: [SITE, ABOUT],
@@ -52,6 +52,7 @@ export function svargaProfile(): Profile {
       placeSymbols: ['frangipani', 'temple offerings'],
       senses: ['warm coconut oil', 'villa deck at sunset'],
       moments: [{ value: 'after a surf in Canggu', source: SITE }],
+      searchTerms: [],
     },
     visualStyle: {
       summary: 'warm tropical, soft light, natural textures',
@@ -63,6 +64,8 @@ export function svargaProfile(): Profile {
     photoUrls: ['https://svargabalimassage.com/hero.jpg'],
     promptVersion: 'brand-1',
     dropped: [],
+    searchedAt: null,
+    searchPromptVersion: null,
   };
 }
 
@@ -108,6 +111,7 @@ export function senProfile(): Profile {
       placeSymbols: ['lotus flowers', 'My Khe beach at dusk'],
       senses: ['warm natural oils', 'soft hotel lighting'],
       moments: [{ value: 'after a surf at My Khe', source: SEN_SITE }],
+      searchTerms: [],
     },
     photoUrls: [],
   };
