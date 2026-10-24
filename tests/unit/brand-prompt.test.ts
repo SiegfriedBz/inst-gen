@@ -3,8 +3,8 @@ import type { CodeFacts } from '@/lib/brand/extract/structured';
 import { BRAND_PROMPT_VERSION, brandPrompt, brandUserText } from '@/lib/brand/prompt';
 
 describe('brand prompt', () => {
-  test('is at brand-4', () => {
-    expect(BRAND_PROMPT_VERSION).toBe('brand-4');
+  test('is at brand-5', () => {
+    expect(BRAND_PROMPT_VERSION).toBe('brand-5');
   });
 
   test.each([
@@ -22,6 +22,8 @@ describe('brand prompt', () => {
     'think beyond the website',
     'essence.placeSymbols',
     'essence.moments',
+    'never copy them for another trade',
+    'Hanoi is not Hoi An',
   ])('the rules mention "%s"', (phrase) => {
     expect(brandPrompt().toLowerCase()).toContain(phrase.toLowerCase());
   });

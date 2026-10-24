@@ -1,7 +1,7 @@
 import type { CodeFacts } from './extract/structured';
 
 // Bump with every change to the prompt, so eval scores trace back to it.
-export const BRAND_PROMPT_VERSION = 'brand-4';
+export const BRAND_PROMPT_VERSION = 'brand-5';
 
 export function brandPrompt(): string {
   return `You read a small business's website and describe its brand, for an app that writes its Instagram posts and review replies.
@@ -27,10 +27,11 @@ Field notes:
 - contact.whatsapp: a number the site links to WhatsApp or says is on WhatsApp.
 - contact.instagram: the handle without "@".
 - colours: only when you can see them in the logo or photos; use roles primary, accent, background or text.
+- essence: every part fits this business's own trade and its own town. The examples below are for a massage business only: never copy them for another trade (a café smells of coffee, not of massage oil).
 - essence.feeling: 2 to 4 words for how a customer should feel after (for a massage: relaxing, warm, cared for).
-- essence.placeSymbols: up to 5 symbols of the place tied to the trade, which images can show (for a massage in Da Nang: lotus flowers, Hoi An lanterns, My Khe beach at dusk; in Bali: frangipani, temple offerings, rice terraces). Use what the place is known for, even when the site doesn't say it.
-- essence.senses: up to 5 scents, textures, lights or sounds of the experience (warm coconut oil, fresh linens, soft lamp light).
-- essence.moments: up to 6 moments when people need the business, as the pages say them (after a surf at My Khe, after a long flight), each with its page URL. Leave it empty when no page names one.
+- essence.placeSymbols: up to 5 symbols of the business's own town or area, tied to its trade, which images can show. Never a symbol of another town, even a famous one nearby (Hanoi is not Hoi An). For a massage in Da Nang: lotus flowers, My Khe beach at dusk; in Bali: frangipani, temple offerings, rice terraces. Use what the place is known for, even when the site doesn't say it.
+- essence.senses: up to 5 scents, textures, lights or sounds of this business's experience.
+- essence.moments: up to 6 short moments when people need the business, a few words each, from what the pages say (after a surf at My Khe, after a long flight), each with its page URL. Leave it empty when no page names one.
 - visualStyle.summary: at most 12 words, like "warm tropical, soft light, natural textures".`;
 }
 
