@@ -34,6 +34,11 @@
   biome put it back in the repo's (double quotes), leaving only sharp's lines
   changed from develop.
 
+- 2026-10-25: Task 8. Ports 3000 and 3100 were held by another project's dev
+  servers, so the e2e suite ran through a scratch config (`.superpowers/`,
+  outside git) that only moves the server to port 3217. The repo's config is
+  unchanged.
+
 ## RED
 
 Task 1:
@@ -139,4 +144,10 @@ Task 7 (`pnpm check`):
 ```
  Test Files  65 passed (65)
       Tests  772 passed (772)
+```
+
+Task 8 (`playwright test`, all of tests/e2e):
+
+```
+  29 passed (11.8s)
 ```

@@ -8,6 +8,13 @@ const SEN = 'test-lotus-river-sen';
 
 test.use({ locale: 'en-US' });
 
+// Sen is on IMAGE_OWNERS: no test here may reach Google with the fake key.
+test.beforeEach(async ({ page }) => {
+  await page.route('**/api/posts/image', (route) =>
+    route.fulfill({ status: 403, json: { error: 'images_off' } }),
+  );
+});
+
 async function signInAndRead(page: Page) {
   await page.goto('/enter');
   await page.getByLabel('Passphrase').fill(SEN);
