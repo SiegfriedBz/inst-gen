@@ -1,6 +1,6 @@
 ---
 title: "Editor and download"
-description: "Each batch gets an Instagram-style feed preview; the owner edits a post's caption, hashtags and alt text, reads the caption in their own language through one small Flash-Lite call kept on the phone, asks for a new image with an optional hint, copies the words, saves each image, and downloads a batch as a ZIP; 'Update captions' leaves edited posts alone, with a per-post rewrite on offer."
+description: "Each batch gets an Instagram-style feed preview; the owner edits a post's caption, hashtags and alt text, reads the caption in their own language through one small Flash-Lite call kept on the phone, asks for a new image with an optional hint, copies the words, and saves each post and story image one by one; 'Update captions' leaves edited posts alone, with a per-post rewrite on offer."
 status: draft
 date: "2026-10-25"
 ---
@@ -27,8 +27,8 @@ This spec covers the last step before Instagram (Global Plan, "Tweak" and
   Indonesia" on each caption, read-only, while what gets posted stays in
   English;
 - **a new image**, optionally with a short hint ("more green");
-- **taking it away**: copy the words, save the post and story images to the
-  phone, or download the batch as one ZIP.
+- **taking it away**: copy the words, and save the post and story images to
+  the phone's Photos, one by one.
 
 Success: on their own phones, Sen and Svarga each get at least 4 posts and
 their stories from the app into Instagram, without help beyond the How-to
@@ -234,25 +234,11 @@ Under each card's image and words, three actions:
   digits turned into `-`, the date is the batch's `createdAt`, and `n` is
   the post's number.
 
-Above each batch's cards, **"Download all (ZIP)"** builds one ZIP in the
-browser and downloads it as `{name}-{yyyy-mm-dd}.zip`:
-
-```
-1-post.jpg  1-story.jpg  …  6-post.jpg  6-story.jpg
-captions.txt
-```
-
-- `captions.txt` holds, for each post in order: "Post {n}", the caption,
-  the call to action, the hashtags, and "Image description: {alt text}",
-  separated by a line of dashes. UTF-8.
-- Posts without an image are left out of the images and say "(no image
-  yet)" in `captions.txt`.
-- The ZIP is stored, not compressed: JPEGs don't shrink. It is built with
-  `fflate`'s `zipSync` (a new direct dependency, about 8 KB, chosen in the
-  journal over writing a ZIP writer by hand), loaded only when the button is
-  tapped.
-- On an iPhone the ZIP lands in Files, not Photos; the per-image buttons are
-  the way into Photos. The How-to page (2.7) says so.
+One post at a time, and nothing else: a post is "Save post image" plus
+"Copy caption"; a story is "Save story image" alone, since Instagram stories
+have no caption box (text goes on as a sticker, 2.7's How-to page). There is
+no batch download: the owner chose this on 2026-10-25, since a ZIP lands in
+Files, never in Photos where Instagram looks, and adds a dependency.
 
 ### On the phone
 
@@ -273,10 +259,8 @@ the alt text counter, "Too long for Instagram: {count} characters over.",
 "Rewrite this one too", "Show in {language}", "Hide", "In {language}, for
 you to read. Instagram gets the English.", the three translation failures,
 "New image", "What should change? (optional)", its placeholder, "Make it",
-"Check that the image description still fits.", "Copy caption", "Copied", "Copy it from here.", "Save
-post image", "Save story image", "Download all (ZIP)", and in
-`captions.txt`, "Post {n}", "Image description:" and "(no image yet)" in
-English, as the captions are.
+"Check that the image description still fits.", "Copy caption", "Copied",
+"Copy it from here.", "Save post image" and "Save story image".
 
 ### Tests and evaluation
 
@@ -286,8 +270,8 @@ English, as the captions are.
   `edited` defaulting to `false` on an old batch; the translate route's
   schema, its failures, and that only the caption is sent; the translation
   store and its `captionHash` rule; the image route's `hint` (cleaned,
-  placed before the style line, version `images-4`); file names; the ZIP's entries and
-  `captions.txt`; "Forget my business" and the translations.
+  placed before the style line, version `images-4`); the copied text; file
+  names; "Forget my business" and the translations.
 - A recorded Flash-Lite translation for one Sen caption in Vietnamese and
   one Svarga caption in Indonesian, replayed in tests.
 - The developer reads those two translations (Google Translate back to
@@ -299,8 +283,9 @@ English, as the captions are.
   see the edited caption unchanged, then tap "Rewrite this one too" and see
   it replaced; switch the screen to Vietnamese, tap "Show in Tiếng Việt",
   see the translation, reload and open it again with no request; ask for a
-  new image with a hint and see the request carry it; tap "Download all (ZIP)" and check the downloaded file's
-  entries.
+  new image with a hint and see the request carry it; in a browser that
+  can't share files, tap "Save post image" and get a download with the
+  post's file name.
 - On a real iPhone and a real Android phone, the developer saves one post
   image and one story image to Photos through the share sheet and posts
   them from Instagram, and records it in the journal: the share sheet can't
@@ -385,11 +370,11 @@ Scenario: Copying a caption
   Then the clipboard holds the caption, the call to action and the hashtags with their "#"
   And the button reads "Copied"
 
-Scenario: Downloading a batch
-  Given a batch of six posts with five images
-  When the owner taps "Download all (ZIP)"
-  Then a ZIP downloads with ten JPEGs and captions.txt
-  And captions.txt says "(no image yet)" for the post without one
+Scenario: Saving an image without a share sheet
+  Given a browser that can't share files
+  And the business is "Sen Da Nang Massage" with a batch made on 2026-10-25
+  When the owner taps "Save post image" on post 2
+  Then "sen-da-nang-massage-2026-10-25-2-post.jpg" downloads
 
 Scenario: Forget removes the translations
   Given saved translations
@@ -428,6 +413,8 @@ Scenario: Forget removes the translations
 - Regenerating a whole post (new caption and image together, Global Plan
   "Tweak"): left out to keep this spec to about a day; added to the roadmap
   after the pilot if the owners ask for it.
+- Downloading a batch as one ZIP: a ZIP lands in Files, not Photos, so it
+  doesn't help an owner who posts from a phone.
 - Moving the post crop inside the story: left out to keep the card simple,
   since 2.3's crops kept their subjects; added after the pilot if the owners
   ask.
