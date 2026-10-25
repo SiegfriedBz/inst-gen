@@ -3,14 +3,17 @@ import { existsSync, mkdirSync, readFileSync, rmSync, writeFileSync } from 'node
 import { join } from 'node:path';
 import * as cheerio from 'cheerio';
 import { z } from 'zod';
-import type { Recording } from '@/lib/ai/replay';
+import { type Recording, replayTextModel } from '@/lib/ai/replay';
 import type { TextModel } from '@/lib/ai/text-model';
-import type { SearchRecording } from '@/lib/search/replay';
+import { replaySearchTool, type SearchRecording } from '@/lib/search/replay';
 import { type Expected, expectedSchema } from './eval/score';
 import { type Fetched, type Transport, undiciTransport } from './fetch-safe';
-import { prepareRead } from './read';
+import type { Profile } from './profile';
+import { prepareRead, streamProfile } from './read';
 import type { SearchModelAnswer } from './search/prompt';
 import type { SearchBody } from './search/queries';
+import { runSearch } from './search/run';
+import { mergeSearch } from './search-client';
 import { cleanUrl } from './url';
 
 // Saved sites for offline tests and the eval (spec, "Fixtures"). Pages,
@@ -40,11 +43,19 @@ export type SearchFixture = {
   answer: SearchModelAnswer;
 };
 
+// A post plan recorded for a fixture by `pnpm eval:posts --record`.
+export type PostsFixture = {
+  modelId: string;
+  promptVersion: string;
+  recording: Recording;
+};
+
 export type Fixture = {
   manifest: Manifest;
   expected: Expected;
   recording: Recording | null;
   search: SearchFixture | null;
+  posts: PostsFixture | null;
 };
 
 const readJson = (path: string) => JSON.parse(readFileSync(path, 'utf8'));
@@ -52,12 +63,46 @@ const readJson = (path: string) => JSON.parse(readFileSync(path, 'utf8'));
 export function loadFixture(dir: string): Fixture {
   const recordingPath = join(dir, 'recording.json');
   const searchPath = join(dir, 'search.json');
+  const postsPath = join(dir, 'posts.json');
   return {
     manifest: manifestSchema.parse(readJson(join(dir, 'manifest.json'))),
     expected: expectedSchema.parse(readJson(join(dir, 'expected.json'))),
     recording: existsSync(recordingPath) ? (readJson(recordingPath) as Recording) : null,
     search: existsSync(searchPath) ? (readJson(searchPath) as SearchFixture) : null,
+    posts: existsSync(postsPath) ? (readJson(postsPath) as PostsFixture) : null,
   };
+}
+
+// The fixture's profile from its recorded brand read: no model call.
+export async function replayedProfile(dir: string): Promise<Profile> {
+  const fixture = loadFixture(dir);
+  if (!fixture.recording) throw new Error('no recording.json');
+  const deps = { transport: fixtureTransport(dir), model: replayTextModel(fixture.recording) };
+  const signal = new AbortController().signal;
+  const prepared = await prepareRead(fixture.manifest.siteUrl, deps, signal);
+  for await (const line of streamProfile(prepared, deps, signal)) {
+    if (line.type === 'final') return line.profile;
+    if (line.type === 'error') throw new Error(line.code);
+  }
+  throw new Error('no final line');
+}
+
+// The profile an owner would have: the recorded brand read, with the
+// recorded essence search merged in when the fixture has one.
+export async function fixtureProfile(dir: string): Promise<Profile> {
+  const profile = await replayedProfile(dir);
+  const { search, recording } = loadFixture(dir);
+  if (!search || !recording) return profile;
+  const answer = await runSearch(
+    search.body,
+    {
+      tool: replaySearchTool({ queries: search.queries }),
+      model: replayTextModel(recording, { searchAnswer: search.answer }),
+      now: () => new Date(profile.readAt),
+    },
+    new AbortController().signal,
+  );
+  return mergeSearch(profile, answer);
 }
 
 // A cached image's file name: a hash of its URL, short enough for any filesystem.
