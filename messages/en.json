@@ -242,6 +242,10 @@
       "altCount": "{count}/{max}",
       "tooLong": "Too long for Instagram: {count} characters over.",
       "empty": "Write a caption first."
+    },
+    "feed": {
+      "title": "Your feed once these are posted",
+      "order": "Post them from 1 to 6: the last one you post shows first."
     }
   }
 }

@@ -28,6 +28,14 @@
   `false`, `false` and the batch's hash.
 - 2026-10-25: File names fold accents to ASCII (`Đà Nẵng` → `da-nang`), so
   every phone and computer shows them the same.
+- 2026-10-25: Instagram's grid ratio: third-party guides for 2026 agree the
+  profile grid shows a centred 3:4 slice of each post, so a 4:5 post loses a
+  thin strip on each side (oktopost.com, kapwing.com, buffer.com). Instagram's
+  Help Center wasn't checked. The tiles use 3:4 with `object-cover`. Still
+  owed by the owner: one look at a real profile.
+- 2026-10-25: Object URLs for images are shared and counted, so a card and
+  its tile use one URL, revoked when neither shows it any more (2.3's
+  revoke test kept).
 - 2026-10-25: The feed preview shows only when images are on for the owner:
   without images it would be a grid of empty tiles.
 

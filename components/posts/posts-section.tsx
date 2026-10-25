@@ -13,6 +13,7 @@ import { type ImageEvent, resumeImages, startImages } from '@/lib/posts/image-cl
 import { imageKey, loadImages, type SavedImage } from '@/lib/posts/image-store';
 import { ctaFor } from '@/lib/posts/input';
 import { loadBatches, recentPosts, saveBatch } from '@/lib/posts/store';
+import { FeedPreview } from './feed-preview';
 import { PostCard } from './post-card';
 import type { ImageState } from './post-image';
 
@@ -327,6 +328,17 @@ export function PostsSection({
               >
                 {t('images.make')}
               </Button>
+            )}
+            {imagesOn && (
+              <FeedPreview
+                batch={batch}
+                images={images}
+                onPick={(postId) =>
+                  document
+                    .getElementById(`post-${batch.id}-${postId}`)
+                    ?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+                }
+              />
             )}
             {stale.length > 0 && (
               <div className="rounded-control bg-accent-tint px-4 py-3 text-[15px] text-accent-tint-ink">

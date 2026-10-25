@@ -2,11 +2,12 @@
 
 import { useTranslations } from 'next-intl';
 import { Dialog as SheetPrimitive } from 'radix-ui';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTitle } from '@/components/ui/sheet';
 import type { ImageErrorCode } from '@/lib/posts/image';
 import type { SavedImage } from '@/lib/posts/image-store';
+import { useObjectUrl } from './object-url';
 
 // One post's image on its card (docs/specs/posts/generate-images, "On the
 // screen"): a placeholder while it is made, the 4:5 post crop once saved,
@@ -18,17 +19,6 @@ export type ImageState =
   | { kind: 'making' }
   | { kind: 'ready'; image: SavedImage }
   | { kind: 'failed'; code: ImageErrorCode | 'no_space' | 'offline' };
-
-function useObjectUrl(blob: Blob | null): string | null {
-  const [url, setUrl] = useState<string | null>(null);
-  useEffect(() => {
-    if (!blob) return;
-    const made = URL.createObjectURL(blob);
-    setUrl(made);
-    return () => URL.revokeObjectURL(made);
-  }, [blob]);
-  return url;
-}
 
 function Ready({ image, altText }: { image: SavedImage; altText: string }) {
   const t = useTranslations('posts.images');

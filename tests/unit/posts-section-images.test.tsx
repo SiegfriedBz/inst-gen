@@ -127,6 +127,26 @@ const makePosts = async () => {
   return button;
 };
 
+describe('the feed preview in the posts section', () => {
+  test('tapping a tile scrolls to its card', async () => {
+    const scrolled: string[] = [];
+    Element.prototype.scrollIntoView = vi.fn(function (this: Element) {
+      scrolled.push(this.id);
+    });
+    await saveBatch(batch(six));
+    await renderSection();
+    fireEvent.click(await screen.findByRole('button', { name: 'Post 3' }));
+    expect(scrolled).toEqual(['post-b1-post-3']);
+  });
+
+  test('no feed preview when images are off', async () => {
+    await saveBatch(batch(six));
+    await renderSection(false);
+    await screen.findByText('Caption 1.');
+    expect(screen.queryByText('Your feed once these are posted')).toBeNull();
+  });
+});
+
 describe('images in the posts section', () => {
   test("one batch's image doesn't show on another batch", async () => {
     await saveBatch({ ...batch(six), id: 'a', createdAt: '2026-10-24T09:00:00.000Z' });
