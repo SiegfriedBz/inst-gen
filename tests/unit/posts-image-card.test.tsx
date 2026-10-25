@@ -76,6 +76,14 @@ describe('a post image', () => {
     expect(retry).toHaveBeenCalledTimes(1);
   });
 
+  test('offline says it carries on, with no Try again', () => {
+    show({ kind: 'failed', code: 'offline' }, vi.fn());
+    expect(
+      screen.getByText("You're offline. Your images will carry on when you're back."),
+    ).toBeTruthy();
+    expect(screen.queryByRole('button')).toBeNull();
+  });
+
   test('images_off shows the off line and no button', () => {
     show({ kind: 'failed', code: 'images_off' }, vi.fn());
     expect(screen.getByText("Images aren't turned on for your account yet.")).toBeTruthy();

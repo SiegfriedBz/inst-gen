@@ -23,11 +23,36 @@ export type ImageEvent =
   | { type: 'signedOut' };
 
 const liveRuns = new Set<string>();
-const livePosts = new Set<string>();
+// How many requests are alive per post: a retry may overlap a lost request.
+const livePosts = new Map<string, number>();
 const MAX_RESUMES = 2;
 
 export function isImageRunning(postId: string): boolean {
-  return livePosts.has(postId);
+  return (livePosts.get(postId) ?? 0) > 0;
+}
+
+function holdPost(postId: string): void {
+  livePosts.set(postId, (livePosts.get(postId) ?? 0) + 1);
+}
+
+function releasePost(postId: string): void {
+  const left = (livePosts.get(postId) ?? 0) - 1;
+  if (left > 0) livePosts.set(postId, left);
+  else livePosts.delete(postId);
+}
+
+// A new request for these posts replaces any older run's step for them, so a
+// resume never asks for the same image twice.
+async function supersede(ownerId: string, runId: string, postIds: string[]): Promise<void> {
+  for (const other of await loadOpenRuns(ownerId, 'images')) {
+    if (other.id === runId) continue;
+    for (const step of other.steps) {
+      if (step.name !== 'image' || !postIds.includes(step.postId)) continue;
+      if (step.status === 'running' || step.status === 'pending') {
+        await setImageStep(other.id, step.postId, 'failed');
+      }
+    }
+  }
 }
 
 function isErrorCode(value: unknown): value is ImageErrorCode {
@@ -57,7 +82,11 @@ function request(
   const controller = new AbortController();
   let finished = false;
   let signedOut = false;
-  for (const id of postIds) livePosts.add(id);
+  for (const id of postIds) holdPost(id);
+  const held = new Set(postIds);
+  const release = (id: string) => {
+    if (held.delete(id)) releasePost(id);
+  };
 
   async function one(postId: string): Promise<void> {
     const post = batch.posts.find((p) => p.id === postId);
@@ -107,7 +136,7 @@ function request(
         code: error instanceof ImageStoreFullError ? 'no_space' : 'image_failed',
       });
     } finally {
-      livePosts.delete(postId);
+      release(postId);
     }
   }
 
@@ -127,9 +156,11 @@ function request(
             },
       );
       if (controller.signal.aborted) return;
+      await supersede(run.ownerId, run.id, postIds);
+      if (controller.signal.aborted) return;
       await Promise.all(postIds.map(one));
     } finally {
-      for (const id of postIds) livePosts.delete(id);
+      for (const id of postIds) release(id);
       liveRuns.delete(run.id);
       finished = true;
       if (controller.signal.aborted) await deleteRun(run.id);
@@ -168,6 +199,8 @@ export async function resumeImages(
   const open = await loadOpenRuns(ownerId, 'images');
   const saved = await loadImages(ownerId);
   const resumed: (RunningRead & { postIds: string[] })[] = [];
+  // Each post is asked for once, whatever number of runs still hold it.
+  const taken = new Set<string>();
   for (const found of open) {
     if (liveRuns.has(found.id)) continue;
     const run = resumeRun(found, (id) => liveRuns.has(id));
@@ -176,14 +209,19 @@ export async function resumeImages(
       await deleteRun(run.id);
       continue;
     }
-    // A post whose image reached the phone is done, whatever the run says.
+    // A post whose image reached the phone is done, whatever the run says;
+    // one being asked for right now, or by a newer run, is this run's no more.
     const current: RunRecord = {
       ...run,
-      steps: run.steps.map((step) =>
-        step.name === 'image' && step.status === 'pending' && saved.has(step.postId)
-          ? { ...step, status: 'done' }
-          : step,
-      ),
+      steps: run.steps.map((step) => {
+        if (step.name !== 'image' || step.status !== 'pending') return step;
+        if (saved.has(step.postId)) return { ...step, status: 'done' };
+        if (isImageRunning(step.postId) || taken.has(step.postId)) {
+          return { ...step, status: 'failed' };
+        }
+        taken.add(step.postId);
+        return step;
+      }),
     };
     const pending = current.steps.flatMap((step) =>
       step.name === 'image' && step.status === 'pending' ? [step.postId] : [],

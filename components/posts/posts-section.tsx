@@ -57,6 +57,11 @@ export function PostsSection({
   const [failed, setFailed] = useState<Map<string, ImageFailure>>(new Map());
   const imageRuns = useRef(new Set<RunningRead>());
   const imageLock = useRef<{ release(): void } | null>(null);
+  // True while lost images are looked up, so a tap can't ask for them twice.
+  const [imagesResuming, setImagesResuming] = useState(imagesOn);
+  // An image dropped with the phone still online: asked for again once its
+  // run has ended, as the posts are.
+  const droppedOnline = useRef(false);
 
   const onImageEvent = useCallback((event: ImageEvent) => {
     if (event.type === 'signedOut') {
@@ -73,6 +78,7 @@ export function PostsSection({
       setImages((map) => new Map(map).set(postId, event.image));
     } else {
       const code = event.type === 'offline' ? 'offline' : event.code;
+      if (event.type === 'offline' && navigator.onLine) droppedOnline.current = true;
       setFailed((map) => new Map(map).set(postId, code));
     }
   }, []);
@@ -94,6 +100,10 @@ export function PostsSection({
         imageLock.current?.release();
         imageLock.current = null;
       }
+      if (droppedOnline.current && mounted.current) {
+        droppedOnline.current = false;
+        void resumeImagesRef.current();
+      }
     });
   }, []);
 
@@ -106,10 +116,15 @@ export function PostsSection({
 
   const tryResumeImages = useCallback(async () => {
     if (!imagesOn) return;
-    const run = await resumeImages(ownerId, batchesRef.current, onImageEvent);
-    if (!run) return;
-    if (!mounted.current) run.stop();
-    else trackImages(run, run.postIds);
+    setImagesResuming(true);
+    try {
+      const run = await resumeImages(ownerId, batchesRef.current, onImageEvent);
+      if (!run) return;
+      if (!mounted.current) run.stop();
+      else trackImages(run, run.postIds);
+    } finally {
+      if (mounted.current) setImagesResuming(false);
+    }
   }, [imagesOn, ownerId, onImageEvent, trackImages]);
   const resumeImagesRef = useRef(tryResumeImages);
   resumeImagesRef.current = tryResumeImages;
@@ -228,7 +243,7 @@ export function PostsSection({
   }
 
   const cta = ctaFor(profile);
-  const busy = running !== null || resuming || making.size > 0;
+  const busy = running !== null || resuming || imagesResuming || making.size > 0;
 
   function imageOf(post: Post, batch: PostBatch, batchButton: boolean) {
     const retry = () => makeImages(batch, [post.id]);

@@ -19,13 +19,21 @@ import { post } from './helpers/posts';
 type Start = { input: { batch: PostBatch; postIds: string[] }; onEvent: (e: ImageEvent) => void };
 const started: Start[] = [];
 let release: () => void = () => {};
+const resumeCalls: { resolve: (v: null) => void }[] = [];
+let holdResume = false;
 
 vi.mock('@/lib/posts/image-client', () => ({
   startImages: vi.fn((input: Start['input'], onEvent: Start['onEvent']) => {
     started.push({ input, onEvent });
     return { stop: vi.fn(), done: new Promise<void>((resolve) => (release = resolve)) };
   }),
-  resumeImages: vi.fn(async () => null),
+  resumeImages: vi.fn(
+    () =>
+      new Promise<null>((resolve) => {
+        resumeCalls.push({ resolve });
+        if (!holdResume) resolve(null);
+      }),
+  ),
 }));
 
 let fetchMock: ReturnType<typeof vi.fn>;
@@ -34,6 +42,8 @@ beforeEach(() => {
   globalThis.indexedDB = new IDBFactory();
   resetStoreForTests();
   started.length = 0;
+  resumeCalls.length = 0;
+  holdResume = false;
   fetchMock = vi.fn();
   vi.stubGlobal('fetch', fetchMock);
   vi.stubGlobal(
@@ -176,6 +186,32 @@ describe('images in the posts section', () => {
     const button = await screen.findByRole('button', { name: 'Make the images' });
     fireEvent.click(button);
     expect(started[0].input.postIds).toEqual(six.map((p) => p.id));
+  });
+
+  test('Make the images waits while lost images are looked up', async () => {
+    await saveBatch(batch(six));
+    holdResume = true;
+    await renderSection();
+    const button = (await screen.findByRole('button', {
+      name: 'Make the images',
+    })) as HTMLButtonElement;
+    await waitFor(() => expect(resumeCalls.length).toBeGreaterThan(0));
+    await new Promise((resolve) => setTimeout(resolve, 50));
+    expect(button.disabled).toBe(true);
+    for (const call of resumeCalls) call.resolve(null);
+    await waitFor(() => expect(button.disabled).toBe(false));
+  });
+
+  test('a dropped image is asked for again while the phone is online', async () => {
+    fetchMock.mockResolvedValue(planAnswer(six));
+    await renderSection();
+    fireEvent.click(await makePosts());
+    await waitFor(() => expect(started).toHaveLength(1));
+    const before = resumeCalls.length;
+    started[0].onEvent({ type: 'offline', postId: 'post-1' });
+    for (const p of six.slice(1)) started[0].onEvent({ type: 'image', image: image(p.id) });
+    release();
+    await waitFor(() => expect(resumeCalls.length).toBeGreaterThan(before));
   });
 
   test('images off: no request, the off line on every card', async () => {

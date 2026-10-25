@@ -39,6 +39,17 @@
   outside git) that only moves the server to port 3217. The repo's config is
   unchanged.
 
+- 2026-10-25: Final review (a fresh reviewer). Fixed three ways to pay for an
+  image twice: a "Try again" tapped while offline left runs that a resume then
+  asked for again (a new request now replaces any older run's step for that
+  post, a resume asks for each post once, and an offline card has no "Try
+  again"); "Make the images" was enabled while lost images were still being
+  looked up; an image dropped with the phone online waited for a visibility or
+  online event (it is now asked for again once its run ends, as posts are).
+  Deferred minors: wake locks kept after a dev remount, two resumes at once
+  acting on stale run records, Forget's no-late-save rests on React's unmount
+  order, an abort listener left on success.
+
 ## RED
 
 Task 1:
@@ -93,6 +104,13 @@ Task 7:
 ```
  Test Files  1 failed (1)
       Tests  6 failed (6)
+```
+
+Final review fixes:
+
+```
+ Test Files  3 failed (3)
+      Tests  5 failed | 27 passed (32)
 ```
 
 ## GREEN
@@ -150,4 +168,15 @@ Task 8 (`playwright test`, all of tests/e2e):
 
 ```
   29 passed (11.8s)
+```
+
+Final review fixes (`pnpm check`, then all of tests/e2e):
+
+```
+ Test Files  65 passed (65)
+      Tests  777 passed (777)
+```
+
+```
+  29 passed (12.4s)
 ```

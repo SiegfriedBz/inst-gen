@@ -235,6 +235,32 @@ describe('resuming images', () => {
     expect(await loadOpenRuns('sen', 'images')).toEqual([]);
   });
 
+  test('a retry while offline is not asked for twice on resume', async () => {
+    fetchMock.mockRejectedValue(new TypeError('Failed to fetch'));
+    await make(['post-1']);
+    await make(['post-1']);
+    fetchMock.mockReset();
+    fetchMock.mockImplementation(async (_url: string, init: RequestInit) =>
+      ok(JSON.parse(init.body as string).postId),
+    );
+    const resumed = await resumeImages('sen', [batch], () => {}, deps);
+    await resumed?.done;
+    expect(fetchMock).toHaveBeenCalledTimes(1);
+    expect(await loadOpenRuns('sen', 'images')).toEqual([]);
+  });
+
+  test('resume skips a post whose retry is in flight', async () => {
+    await saveRun(lost(['post-1']));
+    const waiting: ((r: Response) => void)[] = [];
+    fetchMock.mockImplementation(() => new Promise<Response>((resolve) => waiting.push(resolve)));
+    const retry = startImages({ ownerId: 'sen', batch, postIds: ['post-1'] }, () => {}, deps);
+    await vi.waitFor(() => expect(fetchMock).toHaveBeenCalledTimes(1));
+    expect(await resumeImages('sen', [batch], () => {}, deps)).toBeNull();
+    expect(fetchMock).toHaveBeenCalledTimes(1);
+    waiting[0](ok('post-1'));
+    await retry.done;
+  });
+
   test('a run still alive in this page is left alone', async () => {
     const waiting: ((r: Response) => void)[] = [];
     fetchMock.mockImplementation(() => new Promise<Response>((resolve) => waiting.push(resolve)));

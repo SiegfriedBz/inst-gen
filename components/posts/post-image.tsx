@@ -88,7 +88,8 @@ export function PostImage({
   return (
     <div className="flex aspect-[4/5] w-full flex-col items-center justify-center rounded-control bg-accent-tint px-4 text-center text-[15px] text-accent-tint-ink">
       <p>{state.kind === 'making' ? t('making') : t(`errors.${state.code}`)}</p>
-      {state.kind === 'failed' && retry}
+      {/* An offline image carries on by itself when the phone is back. */}
+      {state.kind === 'failed' && state.code !== 'offline' && retry}
     </div>
   );
 }
