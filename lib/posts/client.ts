@@ -11,6 +11,7 @@ import {
   type PostsErrorCode,
   type RecentPost,
 } from './batch';
+import { mergeRewrite } from './edit';
 import { ctaFor } from './input';
 import { applyCta, loadBatches, recentPosts, saveBatch } from './store';
 import { readPostsLines } from './stream';
@@ -27,7 +28,9 @@ export type PostsEvent =
   | { type: 'offline' }
   | { type: 'signedOut' };
 
-type Input = { step: 'plan'; recent: RecentPost[] } | { step: 'rewrite'; batch: PostBatch };
+type Input =
+  | { step: 'plan'; recent: RecentPost[] }
+  | { step: 'rewrite'; batch: PostBatch; postIds: string[] };
 
 const live = new Set<string>();
 const MAX_RESUMES = 2;
@@ -53,7 +56,7 @@ function toBatch(
   result: PlanResult,
   now: Date,
 ): PostBatch {
-  if (input.step === 'rewrite') return { ...input.batch, ...result };
+  if (input.step === 'rewrite') return mergeRewrite(input.batch, result, input.postIds);
   return {
     ...result,
     id: run.id,
@@ -101,7 +104,7 @@ function request(
       const body =
         input.step === 'plan'
           ? { profile, recent: input.recent }
-          : { profile, posts: input.batch.posts };
+          : { profile, posts: input.batch.posts.filter((p) => input.postIds.includes(p.id)) };
       const response = await deps.fetch(`/api/posts/${input.step}`, {
         method: 'POST',
         headers: { 'content-type': 'application/json' },
@@ -169,18 +172,25 @@ export function startPlan(
   return request(run, true, input.profile, { step: 'plan', recent: input.recent }, onEvent, deps);
 }
 
+// Rewrites the batch's posts named in `postIds`; the others stay as they are.
 export function startRewrite(
-  input: { ownerId: string; profile: Profile; batch: PostBatch },
+  input: { ownerId: string; profile: Profile; batch: PostBatch; postIds: string[] },
   onEvent: (e: PostsEvent) => void,
   deps: ReadDeps = defaultReadDeps(),
 ): RunningRead {
   const run = newPostsRun(
-    { ownerId: input.ownerId, step: 'rewrite', batchId: input.batch.id },
+    {
+      ownerId: input.ownerId,
+      step: 'rewrite',
+      batchId: input.batch.id,
+      postIds: input.postIds,
+    },
     deps.now(),
     deps.newId(),
   );
   live.add(run.id);
-  return request(run, true, input.profile, { step: 'rewrite', batch: input.batch }, onEvent, deps);
+  const step: Input = { step: 'rewrite', batch: input.batch, postIds: input.postIds };
+  return request(run, true, input.profile, step, onEvent, deps);
 }
 
 // Asks again for this owner's unfinished plan or rewrite, or returns null when
@@ -206,6 +216,8 @@ export async function resumePosts(
     return null;
   }
   const input: Input =
-    step === 'rewrite' && batch ? { step, batch } : { step: 'plan', recent: recentPosts(batches) };
+    step === 'rewrite' && batch
+      ? { step, batch, postIds: run.postIds ?? batch.posts.map((p) => p.id) }
+      : { step: 'plan', recent: recentPosts(batches) };
   return { ...request(run, false, profile, input, onEvent, deps), step };
 }

@@ -10,8 +10,9 @@ import {
   saveBrand,
 } from '@/lib/brand/store';
 import type { PostBatch } from '@/lib/posts/batch';
+import { staleUnedited } from '@/lib/posts/edit';
 import { profileHash } from '@/lib/posts/input';
-import { applyCta, isStale, loadBatches, recentPosts, saveBatch } from '@/lib/posts/store';
+import { applyCta, loadBatches, recentPosts, saveBatch } from '@/lib/posts/store';
 import { newPostsRun } from '@/lib/runs/run-record';
 import { loadOpenRun, saveRun } from '@/lib/runs/store';
 import { svargaProfile } from './helpers/brand';
@@ -97,14 +98,14 @@ describe('the posts store', () => {
     );
   });
 
-  test('isStale is false after a WhatsApp edit and true after a summary edit', () => {
+  test('posts are not stale after a WhatsApp edit, and are after a summary edit', () => {
     const saved = batch('a', '2026-10-25T09:00:00.000Z');
     const whatsapp = svargaProfile();
     whatsapp.contact.whatsapp = { value: '+6280000000000', source: 'owner' };
-    expect(isStale(saved, whatsapp)).toBe(false);
+    expect(staleUnedited(saved, whatsapp)).toEqual([]);
     const summary = svargaProfile();
     summary.summary = { value: 'Massage at home', source: 'owner' };
-    expect(isStale(saved, summary)).toBe(true);
+    expect(staleUnedited(saved, summary)).toEqual(saved.posts);
   });
 
   test('forgetBrand deletes batches and posts runs', async () => {

@@ -154,7 +154,11 @@ describe('a rewrite from the browser', () => {
     await saveBatch(batch);
     const rewritten = { ...result, posts: posts.map((p) => ({ ...p, caption: 'New caption.' })) };
     fetchMock.mockResolvedValue(ndjson([{ type: 'final', result: rewritten }]));
-    await startRewrite({ ownerId: 'svarga', profile, batch }, () => {}, deps).done;
+    await startRewrite(
+      { ownerId: 'svarga', profile, batch, postIds: posts.map((p) => p.id) },
+      () => {},
+      deps,
+    ).done;
     const batches = await loadBatches('svarga');
     expect(batches).toHaveLength(1);
     expect(batches[0]).toMatchObject({
@@ -164,5 +168,69 @@ describe('a rewrite from the browser', () => {
     });
     expect(batches[0].posts[0].caption).toBe('New caption.');
     expect(fetchMock).toHaveBeenCalledWith('/api/posts/rewrite', expect.anything());
+  });
+});
+
+describe('a rewrite of some posts', () => {
+  const stale: PostBatch = {
+    ...result,
+    id: 'b1',
+    ownerId: 'svarga',
+    createdAt: '2026-10-24T10:00:00.000Z',
+    profileReadAt: profile.readAt,
+    profileHash: 'stale000',
+    posts: posts.map((p, i) => (i < 2 ? { ...p, caption: `Mine ${i + 1}.`, edited: true } : p)),
+  };
+  const sent = ['post-3', 'post-4', 'post-5', 'post-6'];
+  const answer = () =>
+    ndjson([
+      {
+        type: 'final',
+        result: {
+          ...result,
+          posts: posts.slice(2).map((p) => ({ ...p, caption: `New ${p.id}.` })),
+        },
+      },
+    ]);
+
+  test('a rewrite sends only the posts asked for', async () => {
+    await saveBatch(stale);
+    fetchMock.mockResolvedValue(answer());
+    await startRewrite({ ownerId: 'svarga', profile, batch: stale, postIds: sent }, () => {}, deps)
+      .done;
+    const body = JSON.parse((fetchMock.mock.calls[0][1] as RequestInit).body as string);
+    expect(body.posts.map((p: { id: string }) => p.id)).toEqual(sent);
+  });
+
+  test("a rewrite keeps the posts it didn't send", async () => {
+    await saveBatch(stale);
+    fetchMock.mockResolvedValue(answer());
+    await startRewrite({ ownerId: 'svarga', profile, batch: stale, postIds: sent }, () => {}, deps)
+      .done;
+    const [saved] = await loadBatches('svarga');
+    expect(saved.posts.map((p) => p.caption)).toEqual([
+      'Mine 1.',
+      'Mine 2.',
+      'New post-3.',
+      'New post-4.',
+      'New post-5.',
+      'New post-6.',
+    ]);
+    expect(saved.posts[0]).toMatchObject({ edited: true, profileHash: 'stale000' });
+  });
+
+  test('a resumed rewrite sends the same posts', async () => {
+    await saveBatch(stale);
+    fetchMock.mockRejectedValueOnce(new TypeError('offline'));
+    await startRewrite(
+      { ownerId: 'svarga', profile, batch: stale, postIds: ['post-4'] },
+      () => {},
+      deps,
+    ).done;
+    fetchMock.mockResolvedValue(answer());
+    const resumed = await resumePosts('svarga', profile, () => {}, deps);
+    await resumed?.done;
+    const body = JSON.parse((fetchMock.mock.calls[1][1] as RequestInit).body as string);
+    expect(body.posts.map((p: { id: string }) => p.id)).toEqual(['post-4']);
   });
 });

@@ -204,6 +204,8 @@
     "fewer": "Lần này chúng tôi tạo được {count} bài đăng.",
     "stale": "Thông tin doanh nghiệp của bạn đã thay đổi kể từ khi tạo các bài đăng này.",
     "update": "Cập nhật chú thích",
+    "rewriteOne": "Viết lại bài này luôn",
+    "staleEdited": "Các bài bạn đã sửa được giữ nguyên như bạn viết.",
     "errors": {
       "model_busy": "Shopfront đã dùng hết lượt viết miễn phí hôm nay. Hãy thử lại vào ngày mai.",
       "model_timeout": "Viết bài đăng của bạn mất quá nhiều thời gian. Hãy thử lại.",

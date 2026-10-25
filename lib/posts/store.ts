@@ -1,7 +1,5 @@
-import type { Profile } from '@/lib/brand/profile';
 import { openStore } from '@/lib/brand/store';
 import { batchSchema, POSTS_LIMITS, type PostBatch, type RecentPost } from './batch';
-import { profileHash } from './input';
 
 // Batches of posts kept on the phone (docs/specs/posts/generate-copy, "On the
 // phone"), in the brand's database. Without IndexedDB nothing is kept.
@@ -44,8 +42,4 @@ export async function applyCta(ownerId: string, cta: string): Promise<PostBatch[
   await Promise.all(updated.map((batch) => tx.store.put(batch)));
   await tx.done;
   return updated.sort((a, b) => b.createdAt.localeCompare(a.createdAt));
-}
-
-export function isStale(batch: PostBatch, profile: Profile): boolean {
-  return batch.profileHash !== profileHash(profile);
 }

@@ -8,10 +8,11 @@ import type { RunningRead } from '@/lib/brand/read-client';
 import { holdWakeLock } from '@/lib/brand/wake-lock';
 import { POSTS_LIMITS, type Post, type PostBatch, type PostsErrorCode } from '@/lib/posts/batch';
 import { type PostsEvent, resumePosts, startPlan, startRewrite } from '@/lib/posts/client';
+import { flagsFor, isPostStale, staleUnedited } from '@/lib/posts/edit';
 import { type ImageEvent, resumeImages, startImages } from '@/lib/posts/image-client';
 import { imageKey, loadImages, type SavedImage } from '@/lib/posts/image-store';
 import { ctaFor } from '@/lib/posts/input';
-import { isStale, loadBatches, recentPosts } from '@/lib/posts/store';
+import { loadBatches, recentPosts } from '@/lib/posts/store';
 import { PostCard } from './post-card';
 import type { ImageState } from './post-image';
 
@@ -243,8 +244,10 @@ export function PostsSection({
     begin(run, { step: 'plan', posts: [] });
   }
 
-  function update(batch: PostBatch) {
-    const run = startRewrite({ ownerId, profile, batch }, onEvent);
+  // Rewrites the posts named; edited posts are only sent when asked for one
+  // by one (docs/specs/posts/editor-download).
+  function update(batch: PostBatch, postIds: string[]) {
+    const run = startRewrite({ ownerId, profile, batch, postIds }, onEvent);
     begin(run, { step: 'rewrite', batchId: batch.id, posts: [] });
   }
 
@@ -295,6 +298,7 @@ export function PostsSection({
             const key = imageKey(batch.id, p.id);
             return images.has(key) || making.has(key);
           });
+        const stale = staleUnedited(batch, profile);
         return (
           <div key={batch.id} className="flex flex-col gap-3">
             {needsImages && (
@@ -311,13 +315,19 @@ export function PostsSection({
                 {t('images.make')}
               </Button>
             )}
-            {isStale(batch, profile) && (
+            {stale.length > 0 && (
               <div className="rounded-control bg-accent-tint px-4 py-3 text-[15px] text-accent-tint-ink">
                 <p>{t('stale')}</p>
+                {batch.posts.some((p) => p.edited) && <p>{t('staleEdited')}</p>}
                 <Button
                   type="button"
                   className="mt-2"
-                  onClick={() => update(batch)}
+                  onClick={() =>
+                    update(
+                      batch,
+                      stale.map((p) => p.id),
+                    )
+                  }
                   disabled={busy}
                 >
                   {t('update')}
@@ -330,6 +340,13 @@ export function PostsSection({
                 post={post}
                 cta={cta ?? post.cta}
                 image={imageOf(post, batch, needsImages)}
+                flags={flagsFor(post, batch, profile)}
+                onRewrite={
+                  post.edited && isPostStale(post, batch, profile)
+                    ? () => update(batch, [post.id])
+                    : undefined
+                }
+                busy={busy}
               />
             ))}
           </div>
