@@ -10,15 +10,17 @@ import { POSTS_LIMITS, type Post, type PostBatch, type PostsErrorCode } from '@/
 import { type PostsEvent, resumePosts, startPlan, startRewrite } from '@/lib/posts/client';
 import {
   applyEdit,
+  autoRewrite,
   flagsFor,
   isPostStale,
   markNewImage,
+  newestBatch,
   type PostEdit,
   staleUnedited,
 } from '@/lib/posts/edit';
 import { type ImageEvent, resumeImages, startImages } from '@/lib/posts/image-client';
 import { imageKey, loadImages, type SavedImage } from '@/lib/posts/image-store';
-import { ctaFor } from '@/lib/posts/input';
+import { ctaFor, profileHash } from '@/lib/posts/input';
 import { loadBatches, recentPosts, saveBatch } from '@/lib/posts/store';
 import { CaptionTranslation } from './caption-translation';
 import { FeedPreview } from './feed-preview';
@@ -31,6 +33,8 @@ import { TakeAway } from './take-away';
 // kept on the phone, newest first. Shown only with the panel, so never during
 // a brand read. Once a plan is saved, its six images are asked for
 // (docs/specs/posts/generate-images) when images are on for this owner.
+// While its tab shows, the newest batch's captions follow the business
+// details by themselves (docs/specs/platform/home-tabs).
 
 type Running = { step: 'plan' | 'rewrite'; batchId?: string; posts: Post[] };
 
@@ -40,10 +44,16 @@ export function PostsSection({
   ownerId,
   profile,
   imagesOn,
+  active,
+  searching,
 }: {
   ownerId: string;
   profile: Profile;
   imagesOn: boolean;
+  // "Create your posts" is the tab showing.
+  active: boolean;
+  // The essence search is running: its answer changes the details again.
+  searching: boolean;
 }) {
   const t = useTranslations('posts');
   const brand = useTranslations('brand');
@@ -76,6 +86,11 @@ export function PostsSection({
   // Posts whose new image (not a first one) is being made, by `imageKey`: its
   // answer asks the owner to check the image description.
   const remaking = useRef(new Set<string>());
+  // The details (by `profileHash`) the automatic update last went out for:
+  // never twice for the same details, so a failure or a dropped post waits
+  // for the owner, until the tab is opened again.
+  const [triedHash, setTriedHash] = useState<string | null>(null);
+  const wasActive = useRef(active);
 
   const onImageEvent = useCallback((event: ImageEvent) => {
     if (event.type === 'signedOut') {
@@ -269,10 +284,13 @@ export function PostsSection({
 
   // Rewrites the posts named; edited posts are only sent when asked for one
   // by one (docs/specs/posts/editor-download).
-  function update(batch: PostBatch, postIds: string[]) {
-    const run = startRewrite({ ownerId, profile, batch, postIds }, onEvent);
-    begin(run, { step: 'rewrite', batchId: batch.id, posts: [] });
-  }
+  const update = useCallback(
+    (batch: PostBatch, postIds: string[]) => {
+      const run = startRewrite({ ownerId, profile, batch, postIds }, onEvent);
+      begin(run, { step: 'rewrite', batchId: batch.id, posts: [] });
+    },
+    [ownerId, profile, onEvent, begin],
+  );
 
   // The owner's words, kept on the phone only (docs/specs/posts/editor-download).
   function saveEdit(batchId: string, postId: string, edit: PostEdit) {
@@ -289,6 +307,30 @@ export function PostsSection({
 
   const cta = ctaFor(profile);
   const busy = running !== null || resuming || imagesResuming || making.size > 0;
+  const currentHash = profileHash(profile);
+  const newest = newestBatch(batches);
+  const behind = newest ? staleUnedited(newest, profile) : [];
+  // The newest batch's update is on its way: waiting for the search, the
+  // images or the tab, or running.
+  const updating = behind.length > 0 && (triedHash !== currentHash || running?.step === 'rewrite');
+  // While the update waits for the search, nothing else starts: one rewrite
+  // against the final details, and the waiting batch stays the newest.
+  const waiting = searching && behind.length > 0;
+  const held = busy || waiting;
+
+  // Opening the tab again lets a failed update try once more.
+  useEffect(() => {
+    if (active && !wasActive.current) setTriedHash(null);
+    wasActive.current = active;
+  }, [active]);
+
+  useEffect(() => {
+    if (!active || searching || busy || triedHash === currentHash) return;
+    const next = autoRewrite(batches, profile);
+    if (!next) return;
+    setTriedHash(currentHash);
+    update(next.batch, next.postIds);
+  }, [active, searching, busy, triedHash, currentHash, batches, profile, update]);
 
   function imageOf(post: Post, batch: PostBatch, batchButton: boolean) {
     const retry = () => makeImages(batch, [post.id]);
@@ -321,11 +363,11 @@ export function PostsSection({
   }
   return (
     <section className="mt-6 flex flex-col gap-3">
-      <Button type="button" onClick={make} disabled={!cta || busy}>
+      <Button type="button" onClick={make} disabled={!cta || held}>
         {batches.length > 0 ? t('makeMore') : t('make')}
       </Button>
       {!cta && <p className="text-[13px] text-error">{brand('panel.warnWhatsapp')}</p>}
-      {busy && <p className="text-[13px] text-ink-secondary">{t('keepOpen')}</p>}
+      {(busy || updating) && <p className="text-[13px] text-ink-secondary">{t('keepOpen')}</p>}
       {error && (
         <p
           role="alert"
@@ -349,7 +391,8 @@ export function PostsSection({
             const key = imageKey(batch.id, p.id);
             return images.has(key) || making.has(key);
           });
-        const stale = staleUnedited(batch, profile);
+        const isNewest = batch === newest;
+        const stale = isNewest && !updating ? behind : [];
         return (
           <div key={batch.id} className="flex flex-col gap-3">
             {needsImages && (
@@ -361,7 +404,7 @@ export function PostsSection({
                     batch.posts.map((p) => p.id),
                   )
                 }
-                disabled={busy}
+                disabled={held}
               >
                 {t('images.make')}
               </Button>
@@ -377,6 +420,14 @@ export function PostsSection({
                 }
               />
             )}
+            {isNewest && updating && (
+              <p
+                role="status"
+                className="rounded-control bg-accent-tint px-4 py-3 text-[15px] text-accent-tint-ink"
+              >
+                {t('updating')}
+              </p>
+            )}
             {stale.length > 0 && (
               <div className="rounded-control bg-accent-tint px-4 py-3 text-[15px] text-accent-tint-ink">
                 <p>{t('stale')}</p>
@@ -390,7 +441,7 @@ export function PostsSection({
                       stale.map((p) => p.id),
                     )
                   }
-                  disabled={busy}
+                  disabled={held}
                 >
                   {t('update')}
                 </Button>
@@ -405,13 +456,14 @@ export function PostsSection({
                 anchorId={`post-${batch.id}-${post.id}`}
                 onSave={(edit) => saveEdit(batch.id, post.id, edit)}
                 image={imageOf(post, batch, needsImages)}
-                flags={flagsFor(post, batch, profile)}
+                flags={flagsFor(post, batch, profile, isNewest)}
                 onRewrite={
-                  post.edited && isPostStale(post, batch, profile)
+                  isNewest && post.edited && isPostStale(post, batch, profile)
                     ? () => update(batch, [post.id])
                     : undefined
                 }
-                busy={busy}
+                busy={held}
+                editBusy={running !== null || resuming || waiting}
                 translation={
                   <CaptionTranslation
                     key={post.caption}

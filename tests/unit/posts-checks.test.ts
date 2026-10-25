@@ -104,6 +104,19 @@ describe('cleanHashtags', () => {
       ]),
     ).toEqual(['danang', 'massagedanang', 'spa', 'aftersurf', 'relax']);
   });
+
+  it('keeps Vietnamese letters and their accents', () => {
+    expect(cleanHashtags(['#ĐàNẵng', 'massage'])).toEqual(['đànẵng', 'massage']);
+  });
+
+  it('treats accents typed as separate marks like precomposed ones', () => {
+    expect(cleanHashtags(['Đa\u0300Na\u0306\u0303ng', 'đànẵng'])).toEqual(['đànẵng']);
+  });
+
+  it('still drops hyphens and folds case', () => {
+    expect(cleanHashtags(['#da-nang', 'DaNang'])).toEqual(['danang']);
+    expect(cleanHashtags(['#PijatBali'])).toEqual(['pijatbali']);
+  });
 });
 
 describe('checkPost', () => {

@@ -10,6 +10,11 @@
     "footer": "Chương trình thử nghiệm riêng cho các spa được mời."
   },
   "home": {
+    "tabs": {
+      "label": "Trang chính",
+      "business": "Doanh nghiệp",
+      "posts": "Tạo bài đăng"
+    },
     "welcome": "Chào mừng, {name}",
     "websiteLabel": "Trang web của bạn",
     "signedIn": "Đã đăng nhập trên điện thoại này trong 30 ngày."
@@ -206,6 +211,7 @@
     "update": "Cập nhật chú thích",
     "rewriteOne": "Viết lại bài này luôn",
     "staleEdited": "Các bài bạn đã sửa được giữ nguyên như bạn viết.",
+    "updating": "Đang cập nhật chú thích cho khớp với doanh nghiệp của bạn…",
     "errors": {
       "model_busy": "Shopfront đã dùng hết lượt viết miễn phí hôm nay. Hãy thử lại vào ngày mai.",
       "model_timeout": "Viết bài đăng của bạn mất quá nhiều thời gian. Hãy thử lại.",

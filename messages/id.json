@@ -10,6 +10,11 @@
     "footer": "Uji coba khusus untuk spa yang diundang."
   },
   "home": {
+    "tabs": {
+      "label": "Beranda",
+      "business": "Usaha Anda",
+      "posts": "Buat postingan"
+    },
     "welcome": "Selamat datang, {name}",
     "websiteLabel": "Situs web Anda",
     "signedIn": "Masuk di ponsel ini selama 30 hari."
@@ -206,6 +211,7 @@
     "update": "Perbarui keterangan",
     "rewriteOne": "Tulis ulang yang ini juga",
     "staleEdited": "Postingan yang Anda ubah tetap seperti yang Anda tulis.",
+    "updating": "Memperbarui keterangan agar sesuai dengan usaha Anda…",
     "errors": {
       "model_busy": "Shopfront sudah memakai jatah menulis gratis hari ini. Coba lagi besok.",
       "model_timeout": "Menulis postingan Anda terlalu lama. Coba lagi.",

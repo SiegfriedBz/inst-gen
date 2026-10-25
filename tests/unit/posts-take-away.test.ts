@@ -26,6 +26,23 @@ describe('file names', () => {
       'shopfront-2026-10-25-1-post.jpg',
     );
   });
+
+  test("the file name uses the phone's date", () => {
+    const zone = process.env.TZ;
+    try {
+      process.env.TZ = 'Asia/Ho_Chi_Minh';
+      expect(imageFileName('Sen', '2026-10-25T23:30:00.000Z', 1, 'post')).toBe(
+        'sen-2026-10-26-1-post.jpg',
+      );
+      process.env.TZ = 'UTC';
+      expect(imageFileName('Sen', '2026-10-25T23:30:00.000Z', 1, 'post')).toBe(
+        'sen-2026-10-25-1-post.jpg',
+      );
+    } finally {
+      if (zone === undefined) delete process.env.TZ;
+      else process.env.TZ = zone;
+    }
+  });
 });
 
 describe('the clipboard', () => {

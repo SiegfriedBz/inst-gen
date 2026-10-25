@@ -60,12 +60,35 @@ export function staleUnedited(batch: PostBatch, profile: Profile): Post[] {
   return batch.posts.filter((post) => !post.edited && isPostStale(post, batch, profile));
 }
 
-// An edited post that is out of date is checked against today's details,
-// with no call.
-export function flagsFor(post: Post, batch: PostBatch, profile: Profile): Flag[] {
-  return post.edited && isPostStale(post, batch, profile)
+// An out-of-date post is checked against today's details, with no call: in
+// the newest batch only an edited one, since the others are about to be
+// rewritten; in an older batch, which nothing rewrites, every one
+// (docs/specs/platform/home-tabs).
+export function flagsFor(post: Post, batch: PostBatch, profile: Profile, newest = true): Flag[] {
+  return (post.edited || !newest) && isPostStale(post, batch, profile)
     ? findFlags(post.caption, profile)
     : post.unchecked;
+}
+
+// The batch made last. A rewrite moves its batch to the top of the list, so
+// the list's order doesn't tell.
+export function newestBatch(batches: PostBatch[]): PostBatch | undefined {
+  return batches.reduce<PostBatch | undefined>(
+    (newest, batch) => (!newest || batch.createdAt > newest.createdAt ? batch : newest),
+    undefined,
+  );
+}
+
+// What the posts section rewrites by itself after a business edit: the newest
+// batch's out-of-date posts the owner didn't edit (docs/specs/platform/home-tabs).
+export function autoRewrite(
+  batches: PostBatch[],
+  profile: Profile,
+): { batch: PostBatch; postIds: string[] } | null {
+  const batch = newestBatch(batches);
+  if (!batch) return null;
+  const postIds = staleUnedited(batch, profile).map((post) => post.id);
+  return postIds.length > 0 ? { batch, postIds } : null;
 }
 
 // A rewrite's answer for the posts sent; the others keep their words and the

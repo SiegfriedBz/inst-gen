@@ -20,7 +20,15 @@ export function imageFileName(
   n: number,
   kind: 'post' | 'story',
 ): string {
-  return `${slug(name)}-${createdAt.slice(0, 10)}-${n}-${kind}.jpg`;
+  return `${slug(name)}-${localDate(createdAt)}-${n}-${kind}.jpg`;
+}
+
+// The batch's day on the phone's own clock, not in UTC: a batch made at 6:30
+// in Da Nang is that day's.
+function localDate(iso: string): string {
+  const date = new Date(iso);
+  const pad = (n: number) => String(n).padStart(2, '0');
+  return `${date.getFullYear()}-${pad(date.getMonth() + 1)}-${pad(date.getDate())}`;
 }
 
 // False when the phone refuses the clipboard: the caller shows the text to

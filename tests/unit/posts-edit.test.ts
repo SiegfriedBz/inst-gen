@@ -2,12 +2,14 @@ import { describe, expect, test } from 'vitest';
 import type { PlanResult, Post, PostBatch } from '@/lib/posts/batch';
 import {
   applyEdit,
+  autoRewrite,
   charsOver,
   flagsFor,
   INSTAGRAM_CAPTION_MAX,
   isPostStale,
   markNewImage,
   mergeRewrite,
+  newestBatch,
   parseHashtags,
   postHash,
   postText,
@@ -45,6 +47,7 @@ const six = Array.from({ length: 6 }, (_, i) =>
 describe('editing a post', () => {
   test('hashtags are cleaned on save', () => {
     expect(parseHashtags('#DaNang massage, danang #spa')).toEqual(['danang', 'massage', 'spa']);
+    expect(parseHashtags('#ĐàNẵng, #spa')).toEqual(['đànẵng', 'spa']);
   });
 
   test("an edited caption isn't cut", () => {
@@ -125,6 +128,65 @@ describe('staleness per post', () => {
     expect(flagsFor(flagged, b, profile)).toEqual([{ kind: 'price', text: '450k' }]);
     const fresh = { ...flagged, profileHash: profileHash(profile) };
     expect(flagsFor(fresh, batch([fresh], 'old'), profile)).toEqual([]);
+  });
+});
+
+describe('the automatic update after a business edit', () => {
+  const older = (posts: Post[], hash?: string): PostBatch => ({
+    ...batch(posts, hash),
+    id: 'b0',
+    createdAt: '2026-10-24T09:00:00.000Z',
+  });
+
+  test('newestBatch goes by createdAt, not by the list order', () => {
+    expect(newestBatch([older(six), batch(six)])?.id).toBe('b1');
+    expect(newestBatch([])).toBeUndefined();
+  });
+
+  test('autoRewrite picks the newest batch by createdAt', () => {
+    const next = autoRewrite([older(six), batch(six)], changed);
+    expect(next?.batch.id).toBe('b1');
+    expect(next?.postIds).toEqual(six.map((p) => p.id));
+  });
+
+  test('autoRewrite leaves edited posts out', () => {
+    const posts = six.map((p, i) => (i < 2 ? { ...p, edited: true } : p));
+    expect(autoRewrite([batch(posts)], changed)?.postIds).toEqual([
+      'post-3',
+      'post-4',
+      'post-5',
+      'post-6',
+    ]);
+  });
+
+  test('autoRewrite is null when only an older batch is out of date', () => {
+    expect(autoRewrite([older(six, 'stale000'), batch(six)], profile)).toBeNull();
+  });
+
+  test('autoRewrite is null when every out-of-date post is edited', () => {
+    const posts = six.map((p) => ({ ...p, edited: true }));
+    expect(autoRewrite([batch(posts)], changed)).toBeNull();
+  });
+
+  test('autoRewrite is null when only the WhatsApp number changed', () => {
+    const whatsapp = {
+      ...profile,
+      contact: {
+        ...profile.contact,
+        whatsapp: { value: '+84900000000', source: 'owner' as const },
+      },
+    };
+    expect(autoRewrite([batch(six)], whatsapp)).toBeNull();
+  });
+
+  test("flags on an older batch's unedited out-of-date post follow the current profile", () => {
+    const flagged = { ...six[0], caption: 'Only 990k.', unchecked: [] };
+    const old = batch([flagged]);
+    expect(flagsFor(flagged, old, changed, false)).toEqual([
+      expect.objectContaining({ kind: 'price' }),
+    ]);
+    expect(flagsFor(flagged, old, changed, true)).toEqual([]);
+    expect(flagsFor(flagged, old, changed)).toEqual([]);
   });
 });
 

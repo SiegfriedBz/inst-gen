@@ -8,7 +8,10 @@ export default async function EnterPage() {
   const t = await getTranslations('enter');
   return (
     <main className="flex flex-1 flex-col">
-      <ShopfrontMark />
+      <header className="flex items-center justify-between gap-2">
+        <ShopfrontMark />
+        <LanguageSwitch returnTo="/enter" />
+      </header>
       <h1 className="mt-11 text-[30px] leading-[1.1] font-medium tracking-[-0.02em]">
         {meta('title')}
       </h1>
@@ -16,8 +19,7 @@ export default async function EnterPage() {
         {meta('description')}
       </p>
       <SignInForm />
-      <LanguageSwitch returnTo="/enter" />
-      <p className="mt-1 text-xs text-ink-secondary">{t('footer')}</p>
+      <p className="mt-auto pt-10 text-xs text-ink-secondary">{t('footer')}</p>
     </main>
   );
 }

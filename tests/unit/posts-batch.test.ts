@@ -31,4 +31,9 @@ describe('batchSchema', () => {
   it('refuses a hashtag with "#"', () => {
     expect(batchSchema.safeParse(batch([post({ hashtags: ['#canggu'] })])).success).toBe(false);
   });
+
+  it('a batch with a Vietnamese hashtag loads', () => {
+    expect(batchSchema.safeParse(batch([post({ hashtags: ['đànẵng'] })])).success).toBe(true);
+    expect(batchSchema.safeParse(batch([post({ hashtags: ['da-nang'] })])).success).toBe(false);
+  });
 });

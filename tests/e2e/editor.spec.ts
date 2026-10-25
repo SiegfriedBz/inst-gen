@@ -20,9 +20,16 @@ async function signIn(page: Page) {
   await expect(page).toHaveURL('/');
 }
 
-async function readAndMake(page: Page, website: string, read: string, make: string) {
+async function readAndMake(
+  page: Page,
+  website: string,
+  read: string,
+  make: string,
+  postsTab = 'Create your posts',
+) {
   await page.getByLabel(website).fill('sendanangmassage.com');
   await page.getByRole('button', { name: read }).click();
+  await page.getByRole('tab', { name: postsTab }).click();
   await page.getByRole('button', { name: make }).click();
 }
 
@@ -47,7 +54,9 @@ test('the feed preview shows six tiles, and a tile goes to its card', async ({ p
   await expect(page.locator('article').nth(3)).toBeInViewport();
 });
 
-test('an edit is kept after a reload, and Update captions leaves it alone', async ({ page }) => {
+test('an edit is kept after a reload, and the automatic update leaves it alone', async ({
+  page,
+}) => {
   const { profile } = await sixPosts(page);
   const first = page.locator('article').first();
   await first.getByRole('button', { name: 'Edit' }).click();
@@ -70,11 +79,11 @@ test('an edit is kept after a reload, and Update captions leaves it alone', asyn
     const body = postsBody(profile, { caption: 'Rewritten' });
     await route.fulfill({ status: 200, contentType: 'application/x-ndjson', body });
   });
+  await page.getByRole('tab', { name: 'Your business' }).click();
   await page.getByRole('button', { name: 'Edit Where and when' }).click();
   await page.getByLabel('Opening hours').fill('Every day, 9am to midnight');
   await page.getByRole('button', { name: 'Save', exact: true }).click();
-  await expect(page.getByText('Posts you edited stay as you wrote them.')).toBeVisible();
-  await page.getByRole('button', { name: 'Update captions' }).click();
+  await page.getByRole('tab', { name: 'Create your posts' }).click();
   await expect(page.getByText('Rewritten 2.')).toBeVisible();
   await expect(page.getByText('My own words about warm oil.')).toBeVisible();
   expect(sent).toEqual([5]);
@@ -148,7 +157,13 @@ test.describe('a Vietnamese screen', () => {
       });
     });
     await signIn(page);
-    await readAndMake(page, vi.home.websiteLabel, vi.brand.home.read, vi.posts.make);
+    await readAndMake(
+      page,
+      vi.home.websiteLabel,
+      vi.brand.home.read,
+      vi.posts.make,
+      vi.home.tabs.posts,
+    );
     const show = vi.posts.translate.show.replace('{language}', 'Tiếng Việt');
     const first = page.locator('article').first();
     await first.getByRole('button', { name: show }).click();

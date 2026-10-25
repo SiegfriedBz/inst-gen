@@ -106,7 +106,15 @@ function cutWords(text: string, max: number): string {
 }
 
 export function cleanHashtags(raw: string[]): string[] {
-  const tags = raw.map((tag) => tag.toLowerCase().replace(/[^a-z0-9]/g, '')).filter(Boolean);
+  // Any letter, its accents and any digit: Instagram takes `#đànẵng`.
+  const tags = raw
+    .map((tag) =>
+      tag
+        .normalize('NFC')
+        .toLowerCase()
+        .replace(/[^\p{L}\p{M}\p{N}]/gu, ''),
+    )
+    .filter(Boolean);
   return [...new Set(tags)].slice(0, POSTS_LIMITS.hashtags);
 }
 
