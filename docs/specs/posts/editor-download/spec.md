@@ -177,8 +177,8 @@ no button.
   add nothing. `maxRetries: 0`, `request.signal` passed, a 20 s cut-off.
 - **Kept on the phone.** Decision 0003 has one call "each time a view is
   opened"; this spec keeps the answer instead, so reopening the view costs
-  nothing. A new IndexedDB store, `translations`, keyed by `postId` and
-  `locale`, holds `{ postId, ownerId, locale, captionHash, text, model,
+  nothing. A new IndexedDB store, `translations`, keyed by `batchId`,
+  `postId` and `locale`, holds `{ batchId, postId, ownerId, locale, captionHash, text, model,
   promptVersion, createdAt }`. A saved translation is used only while its
   `captionHash` matches the caption; an edit or a rewrite makes the next
   view call the model again. "Forget my business" deletes them.
@@ -255,11 +255,25 @@ Files, never in Photos where Instagram looks, and adds a dependency.
 
 ### On the phone
 
+**First, 2.3's image bug.** Every batch numbers its posts `post-1` to
+`post-6`, and the `images` store (and the screen's image map) is keyed by
+`postId` alone, so a second batch's images overwrite the first's: older
+batches show the wrong pictures. 2.4's feed preview and save buttons would
+carry that on, so the builder check found it and the owner chose, on
+2026-10-25, to fix it as this item's first task:
+
+- Images are keyed by `batchId` and `postId` together, in the store and on
+  the screen; tiles, cards and their scroll targets use both too.
+- The next database version moves each saved image under its own
+  `batchId` (every record already holds it) in the same upgrade that adds
+  `translations`. Nothing is guessed and nothing leaves the phone.
+- An older batch whose images were already overwritten shows no image and
+  2.3's "Try again"; each costs about $0.05, as any new image does.
+
 - `postSchema` gains `edited: boolean` and `altToCheck: boolean`, both
   defaulting to `false`, and `profileHash`, defaulting to the batch's, when
   a stored batch lacks them, so older batches still load.
-- The new `translations` store comes with the next database version; the
-  upgrade adds it without touching the other stores.
+- The new `translations` store comes with that same database version.
 - "Forget my business" deletes the translations with the batches and images.
 
 ### Strings
@@ -282,7 +296,8 @@ you to read. Instagram gets the English.", the three translation failures,
   the 2,200 limit, flags again); the rewrite sending only unedited
   out-of-date posts, no line when all are edited, one post for "Rewrite this
   one too", and an edit stamping the current `profileHash`; `altToCheck` set
-  by a new image and cleared by a saved edit;
+  by a new image and cleared by a saved edit; two batches' images kept
+  apart, and the upgrade moving 2.3's saved images under their batch;
   `edited` defaulting to `false` on an old batch; the translate route's
   schema, its failures, and that only the caption is sent; the translation
   store and its `captionHash` rule; the image route's `hint` (cleaned,
@@ -393,6 +408,11 @@ Scenario: Saving an image without a share sheet
   And the business is "Sen Da Nang Massage" with a batch made on 2026-10-25
   When the owner taps "Save post image" on post 2
   Then "sen-da-nang-massage-2026-10-25-2-post.jpg" downloads
+
+Scenario: Two batches keep their own images
+  Given a batch with its six images
+  When the owner makes a second batch and its images arrive
+  Then each batch's grid and cards show its own images, also after a reload
 
 Scenario: Forget removes the translations
   Given saved translations
