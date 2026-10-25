@@ -102,21 +102,10 @@ export const planBodySchema = z.object({
 });
 export type PlanBody = z.infer<typeof planBodySchema>;
 
+// Whole posts, so a post the model leaves out keeps what it had.
 export const rewriteBodySchema = z.object({
   profile: profileSchema,
-  posts: z
-    .array(
-      postSchema.pick({
-        id: true,
-        type: true,
-        topic: true,
-        scene: true,
-        caption: true,
-        imagePrompt: true,
-      }),
-    )
-    .min(1)
-    .max(POSTS_LIMITS.posts),
+  posts: z.array(postSchema).min(1).max(POSTS_LIMITS.posts),
 });
 export type RewriteBody = z.infer<typeof rewriteBodySchema>;
 
