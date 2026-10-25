@@ -1,4 +1,6 @@
-import { geminiTextModel } from '@/lib/ai/text-model';
+import { geminiTextModel, TEXT_MODELS } from '@/lib/ai/text-model';
+import { formatPostsLog } from '@/lib/posts/log';
+import type { PostsDeps } from '@/lib/posts/run';
 import { tavilySearchTool } from '@/lib/search/tavily';
 import { undiciTransport } from './fetch-safe';
 import type { ReadDeps } from './read';
@@ -21,5 +23,14 @@ export function defaultSearchDeps(): SearchDeps {
     tool: tavilySearchTool(),
     model: geminiTextModel(),
     log: (entry) => console.info(formatSearchLog(entry)),
+  };
+}
+
+// The real model, for the post plan and rewrite routes.
+export function defaultPostsDeps(): PostsDeps {
+  return {
+    model: geminiTextModel(),
+    modelId: TEXT_MODELS.posts,
+    log: (entry) => console.info(formatPostsLog(entry)),
   };
 }
