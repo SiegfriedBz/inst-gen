@@ -43,3 +43,38 @@ export async function applyCta(ownerId: string, cta: string): Promise<PostBatch[
   await tx.done;
   return updated.sort((a, b) => b.createdAt.localeCompare(a.createdAt));
 }
+
+// What came before the owner's day (docs/specs/posts/suggestions): the images
+// and translations go; the newest records holding up to `recent` posts stay,
+// only so new attempts don't repeat their topics; older records go.
+export async function clearBefore(ownerId: string, start: Date): Promise<void> {
+  const db = await openStore();
+  if (!db) return;
+  const tx = db.transaction(['posts', 'images', 'translations'], 'readwrite');
+  const old = ((await tx.objectStore('posts').index('ownerId').getAll(ownerId)) as PostBatch[])
+    .filter((batch) => new Date(batch.createdAt) < start)
+    .sort((a, b) => b.createdAt.localeCompare(a.createdAt));
+  if (old.length === 0) {
+    await tx.done;
+    return;
+  }
+  const oldIds = new Set(old.map((batch) => batch.id));
+  let topics = 0;
+  for (const batch of old) {
+    if (topics >= POSTS_LIMITS.recent) await tx.objectStore('posts').delete(batch.id);
+    topics += batch.posts.length;
+  }
+  for (const name of ['images', 'translations'] as const) {
+    const store = tx.objectStore(name);
+    for (const record of await store.index('ownerId').getAll(ownerId)) {
+      if (oldIds.has(record.batchId)) {
+        await store.delete(
+          name === 'images'
+            ? [record.batchId, record.postId]
+            : [record.batchId, record.postId, (record as { locale: string }).locale],
+        );
+      }
+    }
+  }
+  await tx.done;
+}
