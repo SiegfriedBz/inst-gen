@@ -1,7 +1,8 @@
 ---
 title: "Suggestions"
 description: "'Create your posts' becomes a plain stack of attempts, each of six suggestions (a post image, a story image and the post's text), used one at a time with 'Save the 2 images' and 'Copy the text'; suggestions last until 3am on the phone's clock; the feed preview, type labels, post numbers and image description go; and the language switch gets faster."
-status: draft
+status: approved
+approved: { by: siegfried.bozza@protonmail.com, at: 2026-10-25T19:26:38Z }
 date: "2026-10-25"
 ---
 
