@@ -8,5 +8,6 @@
 ## RED
 
 - Task 1: `Tests  4 failed | 34 passed (38)`
+- Task 2: `Tests  1 failed | 11 passed (12)`
 
 ## GREEN
