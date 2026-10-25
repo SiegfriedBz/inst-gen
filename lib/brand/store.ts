@@ -197,13 +197,17 @@ export async function mergeSearchIntoStore(
 export async function forgetBrand(ownerId: string): Promise<void> {
   const db = await openStore();
   if (!db) return;
-  const tx = db.transaction(['brands', 'runs', 'posts', 'images', 'translations'], 'readwrite');
+  const tx = db.transaction(
+    ['brands', 'runs', 'posts', 'images', 'translations', 'reviews'],
+    'readwrite',
+  );
   const runIds = await tx.objectStore('runs').index('ownerId').getAllKeys(ownerId);
   const batchIds = await tx.objectStore('posts').index('ownerId').getAllKeys(ownerId);
   const imageIds = await tx.objectStore('images').index('ownerId').getAllKeys(ownerId);
   const translationIds = await tx.objectStore('translations').index('ownerId').getAllKeys(ownerId);
   await Promise.all([
     tx.objectStore('brands').delete(ownerId),
+    tx.objectStore('reviews').delete(ownerId),
     ...runIds.map((id) => tx.objectStore('runs').delete(id)),
     ...batchIds.map((id) => tx.objectStore('posts').delete(id)),
     ...imageIds.map((id) => tx.objectStore('images').delete(id)),

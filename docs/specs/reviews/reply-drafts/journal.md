@@ -48,6 +48,15 @@
   submitted with Enter in the new spec: the header's language buttons are
   submit buttons too.
 
+- 2026-10-25: Final review by a fresh reviewer. Fixed: a review from before
+  3am now goes when the tab is opened, not only at page load (an app left
+  open overnight); a phone whose storage fails still shows the tab and the
+  replies, keeping nothing; "Forget" deletes the review too. Deferred minors:
+  skin-tone or flag emoji left in an abusive reply, `en_US` or three-letter
+  language codes, a 4,000-character paste cut silently, a leading `{name},`
+  with no name, an error line placed above the two links. Playwright again:
+  42 passed.
+
 ## RED
 
 ```
@@ -85,7 +94,20 @@
       Tests  5 failed | 8 passed (13)
 ```
 
+```
+      Tests  3 failed | 22 passed (25)
+```
+
 ## GREEN
+
+```
+      Tests  25 passed (25)
+```
+
+```
+ Test Files  87 passed (87)
+      Tests  1005 passed (1005)
+```
 
 ```
  Test Files  3 passed (3)

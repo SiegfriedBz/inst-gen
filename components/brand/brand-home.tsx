@@ -438,7 +438,7 @@ export function BrandHome({ ownerId, imagesOn }: { ownerId: string; imagesOn: bo
             />
           </TabsContent>
           <TabsContent value="reviews" hidden={tab !== 'reviews'}>
-            <ReviewsSection ownerId={ownerId} profile={saved} />
+            <ReviewsSection ownerId={ownerId} profile={saved} active={tab === 'reviews'} />
           </TabsContent>
         </Tabs>
       )}

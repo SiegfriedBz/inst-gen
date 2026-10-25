@@ -7,6 +7,7 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 import type { Profile } from '@/lib/brand/profile';
+import { dayStart } from '@/lib/posts/day';
 import { requestReplies } from '@/lib/reviews/client';
 import { fillName } from '@/lib/reviews/name';
 import { REPLY_LIMITS, type ReplyErrorCode, type ScreenLocale } from '@/lib/reviews/reply';
@@ -32,7 +33,24 @@ function languageName(code: string, locale: string): string {
 // the guest's name, get a short and a warmer reply in the guest's language,
 // with translations in the owner's. Only the current review is kept, until a
 // new one or 3am.
-export function ReviewsSection({ ownerId, profile }: { ownerId: string; profile: Profile }) {
+// Storage that fails (a full phone) keeps nothing; the tab still works.
+async function keep(work: Promise<void>): Promise<void> {
+  try {
+    await work;
+  } catch {}
+}
+
+export function ReviewsSection({
+  ownerId,
+  profile,
+  active,
+}: {
+  ownerId: string;
+  profile: Profile;
+  // The tab is showing: a review from before today's 3am goes, even in an app
+  // left open overnight.
+  active: boolean;
+}) {
   const t = useTranslations('reviews');
   const locale = useLocale() as ScreenLocale;
   const id = useId();
@@ -47,15 +65,26 @@ export function ReviewsSection({ ownerId, profile }: { ownerId: string; profile:
 
   useEffect(() => {
     let live = true;
-    void loadReview(ownerId, new Date()).then((saved) => {
-      if (!live) return;
-      setRecord(saved);
-      setLoaded(true);
-    });
+    void loadReview(ownerId, new Date())
+      .catch(() => null)
+      .then((saved) => {
+        if (!live) return;
+        setRecord(saved);
+        setLoaded(true);
+      });
     return () => {
       live = false;
     };
   }, [ownerId]);
+
+  useEffect(() => {
+    if (!active || !record || new Date(record.createdAt) >= dayStart(new Date())) return;
+    setRecord(null);
+    setName('');
+    setReview('');
+    setError(null);
+    void keep(clearReview(ownerId));
+  }, [active, record, ownerId]);
 
   async function write(input: { name: string; review: string; again: boolean }) {
     if (sending.current) return;
@@ -86,14 +115,14 @@ export function ReviewsSection({ ownerId, profile }: { ownerId: string; profile:
       createdAt: new Date().toISOString(),
     };
     setRecord(next);
-    await saveReview(next);
+    await keep(saveReview(next));
   }
 
   async function saveEdit(which: 'short' | 'warm', text: string) {
     if (!record) return;
     const next = { ...record, edits: { ...record.edits, [which]: text } };
     setRecord(next);
-    await saveReview(next);
+    await keep(saveReview(next));
   }
 
   async function startOver() {
@@ -101,7 +130,7 @@ export function ReviewsSection({ ownerId, profile }: { ownerId: string; profile:
     setName('');
     setReview('');
     setError(null);
-    await clearReview(ownerId);
+    await keep(clearReview(ownerId));
   }
 
   const errorLine = error && (

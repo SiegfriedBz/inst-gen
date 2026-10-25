@@ -1,7 +1,7 @@
 import 'fake-indexeddb/auto';
 import { IDBFactory } from 'fake-indexeddb';
 import { afterAll, beforeEach, describe, expect, test } from 'vitest';
-import { resetStoreForTests } from '@/lib/brand/store';
+import { forgetBrand, resetStoreForTests } from '@/lib/brand/store';
 import { clearReview, loadReview, type ReviewRecord, saveReview } from '@/lib/reviews/store';
 
 // Only the current review, kept until a new one or 3am
@@ -72,6 +72,14 @@ describe('the current review', () => {
   test('a record that no longer fits is dropped', async () => {
     await saveReview({ ...record(), answer: { broken: true } } as unknown as ReviewRecord);
     expect(await loadReview('sen', local(26, 23))).toBeNull();
+  });
+
+  test('forgetting the business forgets its review too', async () => {
+    await saveReview(record());
+    await saveReview(record({ ownerId: 'svarga' }));
+    await forgetBrand('sen');
+    expect(await loadReview('sen', local(26, 23))).toBeNull();
+    expect(await loadReview('svarga', local(26, 23))).not.toBeNull();
   });
 
   test('without IndexedDB load is null and save is a no-op', async () => {

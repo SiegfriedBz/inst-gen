@@ -60,12 +60,16 @@ function answer(over: Partial<ReplyResponse> = {}): ReplyResponse {
 
 const ok = (body: unknown) => Response.json(body);
 
-function renderTab(locale = 'vi') {
-  return render(
+function tab(locale = 'vi', active = true) {
+  return (
     <NextIntlClientProvider locale={locale} messages={messages} timeZone="UTC">
-      <ReviewsSection ownerId="sen" profile={senProfile()} />
-    </NextIntlClientProvider>,
+      <ReviewsSection ownerId="sen" profile={senProfile()} active={active} />
+    </NextIntlClientProvider>
   );
+}
+
+function renderTab(locale = 'vi') {
+  return render(tab(locale));
 }
 
 const writeButton = () => screen.getByRole('button', { name: 'Write 2 replies' });
@@ -292,5 +296,25 @@ describe('the replies', () => {
     renderTab();
     expect(await screen.findByText('Thank you, Anna K.! 🙏 Hope to see you again 🪷')).toBeTruthy();
     expect(fetchMock).not.toHaveBeenCalled();
+  });
+
+  test('opening the tab after 3am empties it, even with the app left open overnight', async () => {
+    await saveReview({
+      ownerId: 'sen',
+      name: 'Anna K.',
+      review: REVIEW,
+      locale: 'vi',
+      answer: answer(),
+      edits: { short: null, warm: null },
+      createdAt: '2026-10-25T10:00:00.000Z',
+    });
+    const view = render(tab('vi', true));
+    expect(await screen.findByText('Thank you, Anna K.! 🙏 Hope to see you again 🪷')).toBeTruthy();
+    view.rerender(tab('vi', false));
+    // The next morning, with no reload.
+    vi.setSystemTime(new Date('2026-10-26T12:00:00.000Z'));
+    view.rerender(tab('vi', true));
+    expect(await screen.findByText(/Got a new review on Google Maps\?/)).toBeTruthy();
+    expect(await loadReview('sen', new Date())).toBeNull();
   });
 });
