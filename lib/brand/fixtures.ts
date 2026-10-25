@@ -110,6 +110,12 @@ const noModel: TextModel = {
   searchEssence() {
     throw new Error('saving a fixture makes no model call');
   },
+  streamPostPlan() {
+    throw new Error('saving a fixture makes no model call');
+  },
+  streamPostRewrite() {
+    throw new Error('saving a fixture makes no model call');
+  },
 };
 
 export async function saveFixture(url: string, slug: string): Promise<Manifest> {

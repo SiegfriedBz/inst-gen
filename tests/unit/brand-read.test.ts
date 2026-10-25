@@ -340,6 +340,12 @@ describe('the log line', () => {
       searchEssence() {
         throw new Error('the brand read makes no search call');
       },
+      streamPostPlan() {
+        throw new Error('the brand read makes no posts call');
+      },
+      streamPostRewrite() {
+        throw new Error('the brand read makes no posts call');
+      },
     };
   }
 
