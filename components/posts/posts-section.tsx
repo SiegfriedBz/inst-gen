@@ -26,6 +26,11 @@ export function PostsSection({ ownerId, profile }: { ownerId: string; profile: P
   const [running, setRunning] = useState<Running | null>(null);
   const [error, setError] = useState<PostsErrorCode | 'offline' | null>(null);
   const [fewer, setFewer] = useState<number | null>(null);
+  // True until the first look for a lost run ends, and while one resumes, so
+  // a tap can't start a second run beside it.
+  const [resuming, setResuming] = useState(true);
+  const mounted = useRef(false);
+  const resumeRef = useRef<() => Promise<void>>(async () => {});
   const request = useRef<RunningRead | null>(null);
   const lock = useRef<{ release(): void } | null>(null);
   const profileRef = useRef(profile);
@@ -51,10 +56,15 @@ export function PostsSection({ ownerId, profile }: { ownerId: string; profile: P
         end();
         setError(event.code);
       } else if (event.type === 'offline') {
-        // The run waits for the owner to come back: let the screen sleep.
+        // The cards of a lost step go away; it is asked for again when the
+        // owner is back, or now when only the connection to us dropped.
+        const lost = request.current;
         lock.current?.release();
         lock.current = null;
-        setError('offline');
+        request.current = null;
+        setRunning(null);
+        if (navigator.onLine) void lost?.done.then(() => resumeRef.current());
+        else setError('offline');
       } else {
         window.location.assign('/enter');
       }
@@ -71,11 +81,21 @@ export function PostsSection({ ownerId, profile }: { ownerId: string; profile: P
   }, []);
 
   const tryResume = useCallback(async () => {
-    const run = await resumePosts(ownerId, profileRef.current, onEvent);
-    if (run) begin(run, { step: run.step, posts: [] });
+    setResuming(true);
+    try {
+      const run = await resumePosts(ownerId, profileRef.current, onEvent);
+      if (!run) return;
+      // The section closed (a Forget, a re-read) while the run was looked up.
+      if (!mounted.current) run.stop();
+      else begin(run, { step: run.step, posts: [] });
+    } finally {
+      if (mounted.current) setResuming(false);
+    }
   }, [ownerId, onEvent, begin]);
+  resumeRef.current = tryResume;
 
   useEffect(() => {
+    mounted.current = true;
     let active = true;
     void (async () => {
       const saved = await loadBatches(ownerId);
@@ -91,6 +111,7 @@ export function PostsSection({ ownerId, profile }: { ownerId: string; profile: P
     window.addEventListener('online', onOnline);
     return () => {
       active = false;
+      mounted.current = false;
       document.removeEventListener('visibilitychange', onVisible);
       window.removeEventListener('online', onOnline);
       request.current?.stop();
@@ -109,7 +130,7 @@ export function PostsSection({ ownerId, profile }: { ownerId: string; profile: P
   }
 
   const cta = ctaFor(profile);
-  const busy = running !== null;
+  const busy = running !== null || resuming;
   return (
     <section className="mt-6 flex flex-col gap-3">
       <Button type="button" onClick={make} disabled={!cta || busy}>

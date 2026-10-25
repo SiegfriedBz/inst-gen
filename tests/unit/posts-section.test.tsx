@@ -11,6 +11,8 @@ import type { Post, PostBatch } from '@/lib/posts/batch';
 import { profileHash } from '@/lib/posts/input';
 import { saveBatch } from '@/lib/posts/store';
 import { encodePostsLine, type PostsLine } from '@/lib/posts/stream';
+import { newPostsRun } from '@/lib/runs/run-record';
+import { saveRun } from '@/lib/runs/store';
 import messages from '@/messages/en.json';
 import { svargaProfile } from './helpers/brand';
 import { post } from './helpers/posts';
@@ -51,11 +53,18 @@ function batch(posts: Post[], hash = profileHash(svargaProfile())): PostBatch {
 
 async function renderSection(profile: Profile = svargaProfile()) {
   await saveBrand('svarga', profile);
-  render(
+  return render(
     <NextIntlClientProvider locale="en" messages={messages} timeZone="UTC">
       <PostsSection ownerId="svarga" profile={profile} />
     </NextIntlClientProvider>,
   );
+}
+
+// The button, once the first look for a lost run has ended.
+async function readyButton(): Promise<HTMLButtonElement> {
+  const button = await makeButton();
+  await waitFor(() => expect(button.disabled).toBe(false));
+  return button;
 }
 
 const makeButton = async () =>
@@ -114,7 +123,7 @@ describe('the posts section', () => {
     let release: (r: Response) => void = () => {};
     fetchMock.mockImplementation(() => new Promise<Response>((resolve) => (release = resolve)));
     await renderSection();
-    fireEvent.click(await makeButton());
+    fireEvent.click(await readyButton());
     expect(
       await screen.findByText('Keep this page open for about a minute while your posts are made.'),
     ).toBeTruthy();
@@ -143,10 +152,59 @@ describe('the posts section', () => {
   test('an error shows its message and gives the button back', async () => {
     fetchMock.mockResolvedValue(ndjson([{ type: 'error', code: 'model_busy' }]));
     await renderSection();
-    fireEvent.click(await makeButton());
+    fireEvent.click(await readyButton());
     expect(
       await screen.findByText("Shopfront has used today's free writing. Try again tomorrow."),
     ).toBeTruthy();
     await waitFor(async () => expect((await makeButton()).disabled).toBe(false));
+  });
+
+  test('the button waits while a lost run is being resumed', async () => {
+    await saveRun(newPostsRun({ ownerId: 'svarga', step: 'plan' }, new Date(), 'lost'));
+    fetchMock.mockImplementation(() => new Promise<Response>(() => {}));
+    await saveBrand('svarga', svargaProfile());
+    render(
+      <NextIntlClientProvider locale="en" messages={messages} timeZone="UTC">
+        <PostsSection ownerId="svarga" profile={svargaProfile()} />
+      </NextIntlClientProvider>,
+    );
+    const first = screen.getByRole('button', { name: /Make/ }) as HTMLButtonElement;
+    expect(first.disabled).toBe(true);
+    await waitFor(() => expect(fetchMock).toHaveBeenCalledTimes(1));
+  });
+
+  test('a dropped stream clears the cards and asks once more while online', async () => {
+    const p = post({ id: 'post-1' });
+    const final: PostsLine = {
+      type: 'final',
+      result: {
+        posts: [p],
+        dropped: [],
+        promptVersion: 'posts-1',
+        model: 'm',
+        profileHash: profileHash(svargaProfile()),
+      },
+    };
+    fetchMock
+      .mockResolvedValueOnce(
+        ndjson([{ type: 'post', index: 0, post: post({ id: 'post-1', caption: 'Half.' }) }]),
+      )
+      .mockResolvedValueOnce(ndjson([{ type: 'post', index: 0, post: p }, final]));
+    await renderSection();
+    fireEvent.click(await readyButton());
+    expect(await screen.findByText('Warm oil, slow hands.')).toBeTruthy();
+    expect(fetchMock).toHaveBeenCalledTimes(2);
+    expect(screen.queryByText('Half.')).toBeNull();
+    await waitFor(async () => expect((await makeButton()).disabled).toBe(false));
+  });
+
+  test('a resume that ends after the section closes asks for nothing', async () => {
+    const view = await renderSection();
+    await makeButton();
+    await saveRun(newPostsRun({ ownerId: 'svarga', step: 'plan' }, new Date(), 'lost'));
+    document.dispatchEvent(new Event('visibilitychange'));
+    view.unmount();
+    await new Promise((resolve) => setTimeout(resolve, 100));
+    expect(fetchMock).not.toHaveBeenCalled();
   });
 });

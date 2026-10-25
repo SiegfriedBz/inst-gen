@@ -124,3 +124,18 @@ describe('the posts store', () => {
     expect((await loadOpenRun('svarga', 'posts'))?.id).toBe('p1');
   });
 });
+
+describe('opening the store', () => {
+  test('gives up when another tab holds the old version open', async () => {
+    const old = await openDB('shopfront', 1, {
+      upgrade(db) {
+        db.createObjectStore('brands', { keyPath: 'ownerId' });
+        db.createObjectStore('runs', { keyPath: 'id' }).createIndex('ownerId', 'ownerId');
+      },
+    });
+    const started = Date.now();
+    expect(await openStore()).toBeNull();
+    expect(Date.now() - started).toBeLessThan(4000);
+    old.close();
+  });
+});

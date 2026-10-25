@@ -38,10 +38,18 @@ const DB_VERSION = 2;
 let opening: Promise<IDBPDatabase<ShopfrontDb> | null> | null = null;
 let persistAsked = false;
 
+// How long to wait for another tab that holds an older version open.
+const BLOCKED_MS = 2_000;
+
 async function open(): Promise<IDBPDatabase<ShopfrontDb> | null> {
   if (typeof indexedDB === 'undefined' || !indexedDB) return null;
+  let giveUp: (value: null) => void = () => {};
+  const blocked = new Promise<null>((resolve) => {
+    giveUp = resolve;
+  });
+  let opened: Promise<IDBPDatabase<ShopfrontDb>>;
   try {
-    return await openDB<ShopfrontDb>(DB_NAME, DB_VERSION, {
+    opened = openDB<ShopfrontDb>(DB_NAME, DB_VERSION, {
       upgrade(db, oldVersion) {
         if (oldVersion < 1) {
           db.createObjectStore('brands', { keyPath: 'ownerId' });
@@ -51,7 +59,28 @@ async function open(): Promise<IDBPDatabase<ShopfrontDb> | null> {
           db.createObjectStore('posts', { keyPath: 'id' }).createIndex('ownerId', 'ownerId');
         }
       },
+      // Another tab still has an older version open: the page works without
+      // the store rather than wait forever, and tries again on its next use.
+      blocked() {
+        setTimeout(() => giveUp(null), BLOCKED_MS);
+      },
+      // A newer version wants to open in another tab: step aside.
+      blocking() {
+        void opened.then((db) => db.close());
+        opening = null;
+      },
     });
+  } catch {
+    return null;
+  }
+  try {
+    const db = await Promise.race([opened, blocked]);
+    if (!db) {
+      opening = null;
+      // Closed if the other tab lets go later, so it never blocks again.
+      void opened.then((late) => late.close()).catch(() => {});
+    }
+    return db;
   } catch {
     return null;
   }

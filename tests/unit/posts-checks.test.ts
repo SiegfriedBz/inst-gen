@@ -132,6 +132,16 @@ describe('checkPost', () => {
     expect(dropped).toEqual([{ field: 'posts', reason: 'unknown type "meme"' }]);
   });
 
+  it('drops a post with an empty image prompt', () => {
+    const { post: checked, dropped } = checkPost(
+      raw({ imagePrompt: '   ' }),
+      svargaProfile(),
+      'p1',
+    );
+    expect(checked).toBeNull();
+    expect(dropped).toEqual([{ field: 'posts', reason: 'empty image prompt' }]);
+  });
+
   it('sets the call to action from the profile', () => {
     const { post: checked } = checkPost(raw(), svargaProfile(), 'p1');
     expect(checked?.cta).toBe('Book on WhatsApp: +6281234567890');

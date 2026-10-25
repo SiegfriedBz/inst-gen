@@ -147,6 +147,9 @@ export function checkPost(
   }
   if (!raw.caption.trim())
     return { post: null, dropped: [{ field: 'posts', reason: 'empty caption' }] };
+  if (!raw.imagePrompt.trim()) {
+    return { post: null, dropped: [{ field: 'posts', reason: 'empty image prompt' }] };
+  }
   return {
     post: {
       id,

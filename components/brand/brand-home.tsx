@@ -266,13 +266,15 @@ export function BrandHome({ ownerId }: { ownerId: string }) {
   async function forget() {
     setConfirm(null);
     stopSearch();
-    await forgetBrand(ownerId);
+    // The posts section closes first, which stops its run, so nothing it
+    // was making is saved after the delete.
+    setView({ kind: 'empty' });
     setSaved(null);
     setOwnerEdited([]);
     setUrl('');
     setNotice(null);
     setError(null);
-    setView({ kind: 'empty' });
+    await forgetBrand(ownerId);
   }
 
   async function saveEdit(profile: Profile) {

@@ -104,6 +104,27 @@ describe('a post plan from the browser', () => {
     expect(await loadBatches('svarga')).toEqual([]);
   });
 
+  test('a final line that arrives after stop saves nothing', async () => {
+    let running: { stop(): void } | null = null;
+    const body = new ReadableStream<Uint8Array>(
+      {
+        pull(controller) {
+          running?.stop();
+          controller.enqueue(new TextEncoder().encode(encodePostsLine({ type: 'final', result })));
+          controller.close();
+        },
+      },
+      { highWaterMark: 0 },
+    );
+    fetchMock.mockResolvedValue(new Response(body));
+    const events: PostsEvent[] = [];
+    running = startPlan({ ownerId: 'svarga', profile, recent: [] }, (e) => events.push(e), deps);
+    await (running as unknown as { done: Promise<void> }).done;
+    expect(fetchMock).toHaveBeenCalledTimes(1);
+    expect(await loadBatches('svarga')).toEqual([]);
+    expect(events).toEqual([]);
+  });
+
   test('a 400 reports its error code', async () => {
     fetchMock.mockResolvedValue(Response.json({ error: 'invalid_profile' }, { status: 400 }));
     expect((await plan()).at(-1)).toEqual({ type: 'error', code: 'invalid_profile' });

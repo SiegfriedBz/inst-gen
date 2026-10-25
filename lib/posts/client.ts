@@ -123,6 +123,8 @@ function request(
         if (line.type === 'post') {
           onEvent(line);
         } else if (line.type === 'final') {
+          // Stopped (a Forget, a re-read, the section closing): keep nothing.
+          if (controller.signal.aborted) return;
           const batch = await keep(toBatch(run, input, profile, line.result, deps.now()));
           await deleteRun(run.id);
           onEvent({ type: 'final', batch });
