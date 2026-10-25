@@ -27,6 +27,9 @@ import {
   saveBrand,
 } from '@/lib/brand/store';
 import { holdWakeLock } from '@/lib/brand/wake-lock';
+import { ctaFor } from '@/lib/posts/input';
+import { applyCta } from '@/lib/posts/store';
+import { PostsSection } from '../posts/posts-section';
 import { BrandPanel, type SearchState } from './panel';
 import { Reading } from './reading';
 import { SectionSheet } from './section-sheet';
@@ -263,13 +266,15 @@ export function BrandHome({ ownerId }: { ownerId: string }) {
   async function forget() {
     setConfirm(null);
     stopSearch();
-    await forgetBrand(ownerId);
+    // The posts section closes first, which stops its run, so nothing it
+    // was making is saved after the delete.
+    setView({ kind: 'empty' });
     setSaved(null);
     setOwnerEdited([]);
     setUrl('');
     setNotice(null);
     setError(null);
-    setView({ kind: 'empty' });
+    await forgetBrand(ownerId);
   }
 
   async function saveEdit(profile: Profile) {
@@ -277,6 +282,9 @@ export function BrandHome({ ownerId }: { ownerId: string }) {
       ? [...new Set([...ownerEdited, ...changedUnsourced(saved, profile)])]
       : ownerEdited;
     const kept = await saveBrand(ownerId, profile, new Date(), edited);
+    // A WhatsApp edit reaches every post's call to action, with no model call.
+    const cta = ctaFor(profile);
+    if (kept && cta) await applyCta(ownerId, cta);
     setSaved(profile);
     setOwnerEdited(edited);
     if (!kept) setNotice('notKept');
@@ -347,7 +355,7 @@ export function BrandHome({ ownerId }: { ownerId: string }) {
             ownerEdited={ownerEdited}
             search={search}
           />
-          <p className="mt-4 text-[13px] text-ink-secondary">{t('home.postsSoon')}</p>
+          <PostsSection ownerId={ownerId} profile={saved} />
           <div className="mt-6 flex flex-col gap-2 border-t border-edge pt-4">
             <p className="truncate text-[15px]">{saved.siteUrl}</p>
             <p className="text-[13px] text-ink-secondary">

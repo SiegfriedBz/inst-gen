@@ -151,7 +151,6 @@
       "announceReading": "Đang đọc trang web của bạn",
       "announceDone": "Xong: hãy kiểm tra những gì chúng tôi hiểu",
       "intro": "Đây là những gì chúng tôi hiểu về {name}. Hãy sửa chỗ nào chưa đúng: bài đăng của bạn được viết từ đây.",
-      "postsSoon": "Bài đăng của bạn sắp có.",
       "lastRead": "Đọc lần cuối {when}",
       "reread": "Đọc lại trang web của tôi",
       "forget": "Quên doanh nghiệp này",
@@ -179,6 +178,38 @@
       "body": "Thao tác này xóa mọi thứ Shopfront lưu trên điện thoại này cho doanh nghiệp của bạn. Bạn có thể đọc lại trang web bất cứ lúc nào.",
       "confirm": "Quên",
       "cancel": "Hủy"
+    }
+  },
+  "posts": {
+    "make": "Tạo bài đăng của tôi",
+    "makeMore": "Tạo thêm 6 bài",
+    "keepOpen": "Hãy giữ trang này mở khoảng một phút trong khi bài đăng của bạn được tạo.",
+    "heading": "Bài đăng của bạn",
+    "types": {
+      "offer": "Ưu đãi",
+      "moment": "Vì sao khách đến",
+      "local": "Thành phố của bạn",
+      "ritual": "Nghi thức",
+      "tip": "Mẹo",
+      "proof": "Khách nói gì"
+    },
+    "imageDescription": "Mô tả hình ảnh",
+    "check": "Kiểm tra trước khi đăng:",
+    "flags": {
+      "price": "{text} không có trên trang web của bạn",
+      "duration": "{text} không có trên trang web của bạn",
+      "banned": "\"{text}\" có thể không được phép trên Instagram",
+      "firstLine": "Dòng đầu dài hơn phần Instagram hiển thị trước \"thêm\""
+    },
+    "fewer": "Lần này chúng tôi tạo được {count} bài đăng.",
+    "stale": "Thông tin doanh nghiệp của bạn đã thay đổi kể từ khi tạo các bài đăng này.",
+    "update": "Cập nhật chú thích",
+    "errors": {
+      "model_busy": "Shopfront đã dùng hết lượt viết miễn phí hôm nay. Hãy thử lại vào ngày mai.",
+      "model_timeout": "Viết bài đăng của bạn mất quá nhiều thời gian. Hãy thử lại.",
+      "model_failed": "Đã xảy ra lỗi khi viết bài đăng của bạn. Hãy thử lại.",
+      "invalid_profile": "Đã xảy ra lỗi khi viết bài đăng của bạn. Hãy thử lại.",
+      "offline": "Bạn đang ngoại tuyến. Bài đăng sẽ tiếp tục khi bạn quay lại."
     }
   }
 }

@@ -7,16 +7,10 @@
 // Usage: pnpm eval:search [slug…] [--record]
 import { existsSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
-import { recordingTextModel, replayTextModel } from '@/lib/ai/replay';
+import { recordingTextModel } from '@/lib/ai/replay';
 import { geminiTextModel, TEXT_MODELS } from '@/lib/ai/text-model';
-import {
-  FIXTURES_DIR,
-  fixtureTransport,
-  loadFixture,
-  type SearchFixture,
-} from '@/lib/brand/fixtures';
+import { FIXTURES_DIR, replayedProfile, type SearchFixture } from '@/lib/brand/fixtures';
 import type { Profile } from '@/lib/brand/profile';
-import { prepareRead, streamProfile } from '@/lib/brand/read';
 import { SEARCH_PROMPT_VERSION, type SearchModelAnswer } from '@/lib/brand/search/prompt';
 import { buildQueries } from '@/lib/brand/search/queries';
 import { runSearch } from '@/lib/brand/search/run';
@@ -31,20 +25,6 @@ const args = process.argv.slice(2);
 const record = args.includes('--record');
 const wanted = args.filter((a) => !a.startsWith('--'));
 const slugs = wanted.length > 0 ? wanted : DEFAULT_SLUGS;
-
-// The fixture's profile, from its recorded brand read: no model call.
-async function replayedProfile(dir: string): Promise<Profile> {
-  const fixture = loadFixture(dir);
-  if (!fixture.recording) throw new Error('no recording.json');
-  const deps = { transport: fixtureTransport(dir), model: replayTextModel(fixture.recording) };
-  const signal = new AbortController().signal;
-  const prepared = await prepareRead(fixture.manifest.siteUrl, deps, signal);
-  for await (const line of streamProfile(prepared, deps, signal)) {
-    if (line.type === 'final') return line.profile;
-    if (line.type === 'error') throw new Error(line.code);
-  }
-  throw new Error('no final line');
-}
 
 function essenceLine(p: Profile): string {
   const e = p.essence;

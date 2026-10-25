@@ -1,4 +1,5 @@
 import { type DBSchema, type IDBPDatabase, openDB } from 'idb';
+import type { PostBatch } from '@/lib/posts/batch';
 import type { RunRecord } from '@/lib/runs/run-record';
 import { type Profile, profileSchema, upgradeProfile } from './profile';
 import type { SearchAnswer } from './search/run';
@@ -27,23 +28,59 @@ export interface ShopfrontDb extends DBSchema {
   // Records saved before `ownerEdited` existed have none.
   brands: { key: string; value: Omit<BrandRecord, 'ownerEdited'> & { ownerEdited?: string[] } };
   runs: { key: string; value: RunRecord; indexes: { ownerId: string } };
+  // Batches of posts (docs/specs/posts/generate-copy, "On the phone").
+  posts: { key: string; value: PostBatch; indexes: { ownerId: string } };
 }
 
 const DB_NAME = 'shopfront';
-const DB_VERSION = 1;
+const DB_VERSION = 2;
 
 let opening: Promise<IDBPDatabase<ShopfrontDb> | null> | null = null;
 let persistAsked = false;
 
+// How long to wait for another tab that holds an older version open.
+const BLOCKED_MS = 2_000;
+
 async function open(): Promise<IDBPDatabase<ShopfrontDb> | null> {
   if (typeof indexedDB === 'undefined' || !indexedDB) return null;
+  let giveUp: (value: null) => void = () => {};
+  const blocked = new Promise<null>((resolve) => {
+    giveUp = resolve;
+  });
+  let opened: Promise<IDBPDatabase<ShopfrontDb>>;
   try {
-    return await openDB<ShopfrontDb>(DB_NAME, DB_VERSION, {
-      upgrade(db) {
-        db.createObjectStore('brands', { keyPath: 'ownerId' });
-        db.createObjectStore('runs', { keyPath: 'id' }).createIndex('ownerId', 'ownerId');
+    opened = openDB<ShopfrontDb>(DB_NAME, DB_VERSION, {
+      upgrade(db, oldVersion) {
+        if (oldVersion < 1) {
+          db.createObjectStore('brands', { keyPath: 'ownerId' });
+          db.createObjectStore('runs', { keyPath: 'id' }).createIndex('ownerId', 'ownerId');
+        }
+        if (oldVersion < 2) {
+          db.createObjectStore('posts', { keyPath: 'id' }).createIndex('ownerId', 'ownerId');
+        }
+      },
+      // Another tab still has an older version open: the page works without
+      // the store rather than wait forever, and tries again on its next use.
+      blocked() {
+        setTimeout(() => giveUp(null), BLOCKED_MS);
+      },
+      // A newer version wants to open in another tab: step aside.
+      blocking() {
+        void opened.then((db) => db.close());
+        opening = null;
       },
     });
+  } catch {
+    return null;
+  }
+  try {
+    const db = await Promise.race([opened, blocked]);
+    if (!db) {
+      opening = null;
+      // Closed if the other tab lets go later, so it never blocks again.
+      void opened.then((late) => late.close()).catch(() => {});
+    }
+    return db;
   } catch {
     return null;
   }
@@ -128,11 +165,13 @@ export async function mergeSearchIntoStore(
 export async function forgetBrand(ownerId: string): Promise<void> {
   const db = await openStore();
   if (!db) return;
-  const tx = db.transaction(['brands', 'runs'], 'readwrite');
+  const tx = db.transaction(['brands', 'runs', 'posts'], 'readwrite');
   const runIds = await tx.objectStore('runs').index('ownerId').getAllKeys(ownerId);
+  const batchIds = await tx.objectStore('posts').index('ownerId').getAllKeys(ownerId);
   await Promise.all([
     tx.objectStore('brands').delete(ownerId),
     ...runIds.map((id) => tx.objectStore('runs').delete(id)),
+    ...batchIds.map((id) => tx.objectStore('posts').delete(id)),
   ]);
   await tx.done;
 }

@@ -104,6 +104,7 @@ index of the code).
 | `pnpm fixtures:save <url> <slug>` | Save a site fixture with the real reader; no model call |
 | `pnpm eval:brand [slug…] [--record]` | Score brand reads on the fixtures with the real model. ⚠️ Spends Gemini quota (about 20 reads a day for the whole app): run a few slugs at a time, never on a pilot day |
 | `pnpm eval:search [slug…] [--record]` | Run the essence search on five fixtures with the real Tavily and Gemini, and print each essence before and after. ⚠️ Spends 3 Tavily credits (1,000 a month) and 1 Flash-Lite request per fixture |
+| `pnpm eval:posts [slug…] [--record] [--model=<id>]` | Plan six posts for fixtures with the real model, and print each with code's checks. ⚠️ Spends 1 Gemini request per fixture from the app's daily pool: a few slugs at a time, never on a pilot day |
 
 ## What fails silently
 

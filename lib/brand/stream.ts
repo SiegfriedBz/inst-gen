@@ -1,4 +1,5 @@
 import { z } from 'zod';
+import { readNdjson } from '@/lib/stream/ndjson';
 import {
   type BrandErrorCode,
   ERROR_CODES,
@@ -28,23 +29,6 @@ function parseLine(raw: string): StreamLine {
   return lineSchema.parse(JSON.parse(raw)) as StreamLine;
 }
 
-export async function* readLines(body: ReadableStream<Uint8Array>): AsyncGenerator<StreamLine> {
-  const decoder = new TextDecoder();
-  let buffer = '';
-  // A reader, not `for await`: Safari's ReadableStream isn't async-iterable.
-  const reader = body.getReader();
-  for (;;) {
-    const { done, value: chunk } = await reader.read();
-    if (done) break;
-    buffer += decoder.decode(chunk, { stream: true });
-    let newline = buffer.indexOf('\n');
-    while (newline !== -1) {
-      const raw = buffer.slice(0, newline).trim();
-      buffer = buffer.slice(newline + 1);
-      if (raw) yield parseLine(raw);
-      newline = buffer.indexOf('\n');
-    }
-  }
-  const rest = (buffer + decoder.decode()).trim();
-  if (rest) yield parseLine(rest);
+export function readLines(body: ReadableStream<Uint8Array>): AsyncGenerator<StreamLine> {
+  return readNdjson(body, parseLine);
 }

@@ -19,6 +19,7 @@
     "fixtures:save": "tsx scripts/save-fixture.ts",
     "eval:brand": "tsx scripts/eval-brand.ts",
     "eval:search": "tsx scripts/eval-search.ts",
+    "eval:posts": "tsx scripts/eval-posts.ts",
     "check": "node scripts/check-docs.mjs && node scripts/check-repo.mjs && biome ci && pnpm typecheck && vitest run",
     "prepare": "lefthook install"
   },
