@@ -7,7 +7,7 @@ import { Sheet, SheetContent, SheetTitle } from '@/components/ui/sheet';
 import type { Post } from '@/lib/posts/batch';
 import { postText } from '@/lib/posts/edit';
 import type { SavedImage } from '@/lib/posts/image-store';
-import { copyToClipboard, imageFileName, saveImageFile } from '@/lib/posts/take-away';
+import { copyToClipboard, imageFileName, saveImageFiles } from '@/lib/posts/take-away';
 
 // The last buttons on a card (docs/specs/posts/editor-download, "Taking it
 // away"): "Copy caption" as the main one, then the post and story images.
@@ -46,7 +46,9 @@ export function TakeAway({
 
   const save = (kind: 'post' | 'story') => () => {
     if (!image) return;
-    void saveImageFile(image[kind], imageFileName(name, createdAt, number, kind));
+    void saveImageFiles([
+      { blob: image[kind], name: imageFileName(name, createdAt, 1, number, kind) },
+    ]);
   };
 
   return (

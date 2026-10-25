@@ -9,5 +9,6 @@
 ## RED
 
 - Task 1: `Tests  1 failed | 9 passed (10)`, and `posts-day.test.ts` failed to load (`Cannot find package '@/lib/posts/day'`)
+- Task 2: `Tests  6 failed | 6 passed (12)`
 
 ## GREEN
