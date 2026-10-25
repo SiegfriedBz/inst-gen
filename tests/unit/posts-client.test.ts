@@ -234,3 +234,43 @@ describe('a rewrite of some posts', () => {
     expect(body.posts.map((p: { id: string }) => p.id)).toEqual(['post-4']);
   });
 });
+
+describe('a rewrite and an edit saved while it runs', () => {
+  test('an edit saved during a rewrite is kept', async () => {
+    const batch: PostBatch = {
+      ...result,
+      id: 'b1',
+      ownerId: 'svarga',
+      createdAt: '2026-10-24T10:00:00.000Z',
+      profileReadAt: profile.readAt,
+      profileHash: 'stale000',
+    };
+    await saveBatch(batch);
+    let answer: (r: Response) => void = () => {};
+    fetchMock.mockReturnValue(new Promise<Response>((resolve) => (answer = resolve)));
+    const run = startRewrite(
+      { ownerId: 'svarga', profile, batch, postIds: posts.map((p) => p.id) },
+      () => {},
+      deps,
+    );
+    await vi.waitFor(() => expect(fetchMock).toHaveBeenCalled());
+    await saveBatch({
+      ...batch,
+      posts: batch.posts.map((p) =>
+        p.id === 'post-3' ? { ...p, caption: 'Saved while it ran.', edited: true } : p,
+      ),
+    });
+    answer(
+      ndjson([
+        {
+          type: 'final',
+          result: { ...result, posts: posts.map((p) => ({ ...p, caption: `New ${p.id}.` })) },
+        },
+      ]),
+    );
+    await run.done;
+    const [saved] = await loadBatches('svarga');
+    expect(saved.posts[2]).toMatchObject({ caption: 'Saved while it ran.', edited: true });
+    expect(saved.posts[0].caption).toBe('New post-1.');
+  });
+});

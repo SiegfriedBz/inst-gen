@@ -92,6 +92,14 @@ describe('getTranslation', () => {
     );
   });
 
+  test('an empty answer is never kept', async () => {
+    const fetch = vi.fn(async () =>
+      Response.json({ text: '', model: 'gemini-3.5-flash-lite', promptVersion: 'translate-1' }),
+    );
+    expect(await getTranslation(input, deps(fetch))).toEqual({ ok: false, code: 'model_failed' });
+    expect(await loadTranslation('b1', 'post-1', 'vi', CAPTION)).toBeNull();
+  });
+
   test('401 is signedOut, an error code is passed on, a network error is offline', async () => {
     expect(
       await getTranslation(input, deps(vi.fn(async () => new Response(null, { status: 401 })))),

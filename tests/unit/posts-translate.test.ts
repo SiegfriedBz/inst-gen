@@ -90,6 +90,16 @@ describe('runTranslate', () => {
     expect(failed).toEqual({ ok: false, code: 'model_failed' });
   });
 
+  test('an empty answer is model_failed', async () => {
+    const out = await runTranslate(
+      { text: CAPTION, locale: 'vi' },
+      'sen',
+      { model: model(async () => '  ') },
+      signal(),
+    );
+    expect(out).toEqual({ ok: false, code: 'model_failed' });
+  });
+
   test('past the cut-off is model_timeout', async () => {
     const hang: TextModel['translateCaption'] = (_t, _l, s) =>
       new Promise((_resolve, reject) => {

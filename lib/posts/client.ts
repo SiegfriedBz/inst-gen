@@ -49,14 +49,32 @@ async function errorCodeOf(response: Response): Promise<PostsErrorCode> {
   }
 }
 
-function toBatch(
+// A rewrite's answer lands on the batch as stored now, not as it was sent: an
+// edit or a new image saved while it ran is kept, and a post the owner changed
+// since it was sent keeps the owner's words.
+async function rewritten(
+  input: Extract<Input, { step: 'rewrite' }>,
+  result: PlanResult,
+): Promise<PostBatch> {
+  const stored = await loadBatches(input.batch.ownerId);
+  const current = stored.find((b) => b.id === input.batch.id) ?? input.batch;
+  const sent = new Map(input.batch.posts.map((p) => [p.id, p]));
+  const unchanged = input.postIds.filter((id) => {
+    const now = current.posts.find((p) => p.id === id);
+    const then = sent.get(id);
+    return now && then && now.caption === then.caption && !!now.edited === !!then.edited;
+  });
+  return mergeRewrite(current, result, unchanged);
+}
+
+async function toBatch(
   run: RunRecord,
   input: Input,
   profile: Profile,
   result: PlanResult,
   now: Date,
-): PostBatch {
-  if (input.step === 'rewrite') return mergeRewrite(input.batch, result, input.postIds);
+): Promise<PostBatch> {
+  if (input.step === 'rewrite') return rewritten(input, result);
   return {
     ...result,
     id: run.id,
@@ -128,7 +146,7 @@ function request(
         } else if (line.type === 'final') {
           // Stopped (a Forget, a re-read, the section closing): keep nothing.
           if (controller.signal.aborted) return;
-          const batch = await keep(toBatch(run, input, profile, line.result, deps.now()));
+          const batch = await keep(await toBatch(run, input, profile, line.result, deps.now()));
           await deleteRun(run.id);
           onEvent({ type: 'final', batch });
           return;

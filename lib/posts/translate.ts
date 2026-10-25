@@ -15,7 +15,7 @@ export const translateBodySchema = z.object({
 export type TranslateBody = z.infer<typeof translateBodySchema>;
 
 export const translateResponseSchema = z.object({
-  text: z.string(),
+  text: z.string().trim().min(1),
   model: z.string().min(1),
   promptVersion: z.string().min(1),
 });

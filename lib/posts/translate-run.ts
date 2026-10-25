@@ -85,6 +85,8 @@ export async function runTranslate(
       deps.model.translateCaption(body.text, body.locale, stepSignal),
       stopped,
     ]);
+    // A blocked or cut-off answer comes back empty; it is never kept.
+    if (!text.trim()) throw new ModelError('failed', 'empty translation');
     entry.charsOut = text.length;
     return end({
       ok: true,
