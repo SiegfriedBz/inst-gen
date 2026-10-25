@@ -21,3 +21,9 @@ export function dayOf(iso: string): string {
 export function isToday(iso: string, now: Date): boolean {
   return new Date(iso) >= dayStart(now);
 }
+
+// "Attempt 1" is the first of the day: numbers by creation, oldest first.
+export function attemptNumbers(batches: { id: string; createdAt: string }[]): Map<string, number> {
+  const oldestFirst = [...batches].sort((a, b) => a.createdAt.localeCompare(b.createdAt));
+  return new Map(oldestFirst.map((batch, i) => [batch.id, i + 1]));
+}

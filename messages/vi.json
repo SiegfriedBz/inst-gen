@@ -199,21 +199,11 @@
     "howToTextOnly": "Trên Instagram: tạo bài đăng với ảnh của bạn và dán phần chữ.",
     "editText": "Sửa chữ",
     "keepOpen": "Hãy giữ trang này mở khoảng một phút trong khi bài đăng của bạn được tạo.",
-    "heading": "Bài đăng của bạn",
-    "types": {
-      "offer": "Ưu đãi",
-      "moment": "Vì sao khách đến",
-      "local": "Thành phố của bạn",
-      "ritual": "Nghi thức",
-      "tip": "Mẹo",
-      "proof": "Khách nói gì"
-    },
     "flags": {
       "price": "Giá này không có trên trang web của bạn: {text}. Hãy kiểm tra trước khi đăng.",
       "duration": "Thời lượng này không có trên trang web của bạn: {text}. Hãy kiểm tra trước khi đăng.",
       "banned": "Instagram có thể không cho phép \"{text}\". Nên đổi từ này."
     },
-    "fewer": "Lần này chúng tôi tạo được {count} bài đăng.",
     "stale": "Thông tin doanh nghiệp của bạn đã thay đổi kể từ khi tạo các bài đăng này.",
     "update": "Cập nhật chú thích",
     "rewriteOne": "Viết lại bài này luôn",
@@ -256,10 +246,6 @@
       "hashtagsHint": "Tối đa 5. Cách nhau bằng dấu cách.",
       "tooLong": "Quá dài cho Instagram: thừa {count} ký tự.",
       "empty": "Hãy viết chú thích trước."
-    },
-    "feed": {
-      "title": "Trang của bạn khi đã đăng xong",
-      "order": "Đăng lần lượt từ 1 đến 6: bài đăng sau cùng sẽ hiện đầu tiên."
     },
     "takeAway": {
       "copied": "Đã sao chép",

@@ -199,21 +199,11 @@
     "howToTextOnly": "Di Instagram: buat postingan dengan foto Anda sendiri dan tempel teksnya.",
     "editText": "Ubah teks",
     "keepOpen": "Biarkan halaman ini terbuka sekitar satu menit selama postingan Anda dibuat.",
-    "heading": "Postingan Anda",
-    "types": {
-      "offer": "Penawaran",
-      "moment": "Alasan orang datang",
-      "local": "Kota Anda",
-      "ritual": "Ritualnya",
-      "tip": "Tips",
-      "proof": "Kata orang"
-    },
     "flags": {
       "price": "Harga ini tidak ada di situs Anda: {text}. Periksa sebelum memposting.",
       "duration": "Durasi ini tidak ada di situs Anda: {text}. Periksa sebelum memposting.",
       "banned": "Instagram mungkin tidak mengizinkan \"{text}\". Sebaiknya diganti."
     },
-    "fewer": "Kali ini kami membuat {count} postingan.",
     "stale": "Detail bisnis Anda berubah sejak postingan ini dibuat.",
     "update": "Perbarui keterangan",
     "rewriteOne": "Tulis ulang yang ini juga",
@@ -256,10 +246,6 @@
       "hashtagsHint": "Maksimal 5. Pisahkan dengan spasi.",
       "tooLong": "Terlalu panjang untuk Instagram: lebih {count} karakter.",
       "empty": "Tulis keterangan dulu."
-    },
-    "feed": {
-      "title": "Feed Anda setelah semua ini diposting",
-      "order": "Posting dari 1 sampai 6: yang terakhir Anda posting tampil paling depan."
     },
     "takeAway": {
       "copied": "Tersalin",

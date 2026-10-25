@@ -199,21 +199,11 @@
     "howToTextOnly": "In Instagram: make a post with your own photo and paste the text.",
     "editText": "Edit the text",
     "keepOpen": "Keep this page open for about a minute while your posts are made.",
-    "heading": "Your posts",
-    "types": {
-      "offer": "Offer",
-      "moment": "Why people come",
-      "local": "Your town",
-      "ritual": "The ritual",
-      "tip": "Tip",
-      "proof": "What people say"
-    },
     "flags": {
       "price": "This price isn't on your website: {text}. Check it before posting.",
       "duration": "This duration isn't on your website: {text}. Check it before posting.",
       "banned": "Instagram may not allow \"{text}\". Better to change it."
     },
-    "fewer": "We made {count} posts this time.",
     "stale": "Your business details changed since these posts were made.",
     "update": "Update captions",
     "rewriteOne": "Rewrite this one too",
@@ -256,10 +246,6 @@
       "hashtagsHint": "Up to 5. Separate them with spaces.",
       "tooLong": "Too long for Instagram: {count} characters over.",
       "empty": "Write a caption first."
-    },
-    "feed": {
-      "title": "Your feed once these are posted",
-      "order": "Post them from 1 to 6: the last one you post shows first."
     },
     "takeAway": {
       "copied": "Copied",

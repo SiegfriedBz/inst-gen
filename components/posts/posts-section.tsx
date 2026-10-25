@@ -1,13 +1,14 @@
 'use client';
 
 import { useTranslations } from 'next-intl';
-import { useCallback, useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { Button } from '@/components/ui/button';
 import type { Profile } from '@/lib/brand/profile';
 import type { RunningRead } from '@/lib/brand/read-client';
 import { holdWakeLock } from '@/lib/brand/wake-lock';
-import { POSTS_LIMITS, type Post, type PostBatch, type PostsErrorCode } from '@/lib/posts/batch';
+import type { Post, PostBatch, PostsErrorCode } from '@/lib/posts/batch';
 import { type PostsEvent, resumePosts, startPlan, startRewrite } from '@/lib/posts/client';
+import { attemptNumbers, dayStart } from '@/lib/posts/day';
 import {
   applyEdit,
   autoRewrite,
@@ -21,18 +22,18 @@ import {
 import { type ImageEvent, resumeImages, startImages } from '@/lib/posts/image-client';
 import { imageKey, loadImages, type SavedImage } from '@/lib/posts/image-store';
 import { ctaFor, profileHash } from '@/lib/posts/input';
-import { loadBatches, recentPosts, saveBatch } from '@/lib/posts/store';
+import { clearBefore, loadBatches, recentPosts, saveBatch } from '@/lib/posts/store';
 import { CaptionTranslation } from './caption-translation';
-import { FeedPreview } from './feed-preview';
 import { PostCard } from './post-card';
 import type { ImageState } from './post-image';
 import { TakeAway } from './take-away';
 
-// "Your posts" under the brand panel (docs/specs/posts/generate-copy): the
-// button that makes a batch, the posts as they stream in, and every batch
-// kept on the phone, newest first. Shown only with the panel, so never during
-// a brand read. Once a plan is saved, its six images are asked for
-// (docs/specs/posts/generate-images) when images are on for this owner.
+// "Create your posts" (docs/specs/posts/suggestions): the button that makes
+// an attempt of six suggestions, the suggestions as they stream in, and the
+// attempts made since 3am on the phone's clock, newest on top; anything
+// older is cleared when the section loads. Once a plan is saved, its six
+// images are asked for (docs/specs/posts/generate-images) when images are on
+// for this owner.
 // While its tab shows, the newest batch's captions follow the business
 // details by themselves (docs/specs/platform/home-tabs).
 
@@ -60,7 +61,10 @@ export function PostsSection({
   const [batches, setBatches] = useState<PostBatch[]>([]);
   const [running, setRunning] = useState<Running | null>(null);
   const [error, setError] = useState<PostsErrorCode | 'offline' | null>(null);
-  const [fewer, setFewer] = useState<number | null>(null);
+  // The start of the owner's day, once the section has cleared what came
+  // before it: only attempts made since then are shown.
+  const [start, setStart] = useState<Date | null>(null);
+  const startRef = useRef<Date | null>(null);
   // True until the first look for a lost run ends, and while one resumes, so
   // a tap can't start a second run beside it.
   const [resuming, setResuming] = useState(true);
@@ -163,7 +167,9 @@ export function PostsSection({
     if (!imagesOn) return;
     setImagesResuming(true);
     try {
-      const run = await resumeImages(ownerId, batchesRef.current, onImageEvent);
+      const from = startRef.current;
+      const today = from ? batchesRef.current.filter((b) => new Date(b.createdAt) >= from) : [];
+      const run = await resumeImages(ownerId, today, onImageEvent);
       if (!run) return;
       if (!mounted.current) run.stop();
       else trackImages(run, run.keys);
@@ -196,7 +202,6 @@ export function PostsSection({
             event.batch.posts.map((p) => p.id),
           );
         }
-        setFewer(event.batch.posts.length < POSTS_LIMITS.posts ? event.batch.posts.length : null);
       } else if (event.type === 'error') {
         end();
         setError(event.code);
@@ -222,7 +227,6 @@ export function PostsSection({
     stepRef.current = state.step;
     lock.current ??= holdWakeLock();
     setError(null);
-    setFewer(null);
     setRunning(state);
   }, []);
 
@@ -244,10 +248,14 @@ export function PostsSection({
     mounted.current = true;
     let active = true;
     void (async () => {
+      const from = dayStart(new Date());
+      await clearBefore(ownerId, from);
       const saved = await loadBatches(ownerId);
       const savedImages = await loadImages(ownerId);
       if (!active) return;
       batchesRef.current = saved;
+      startRef.current = from;
+      setStart(from);
       setBatches(saved);
       setImages(savedImages);
       await tryResume();
@@ -308,7 +316,18 @@ export function PostsSection({
   const cta = ctaFor(profile);
   const busy = running !== null || resuming || imagesResuming || making.size > 0;
   const currentHash = profileHash(profile);
-  const newest = newestBatch(batches);
+  // Today's attempts, newest on top; older kept records only feed `recent`.
+  const shown = useMemo(
+    () =>
+      start
+        ? batches
+            .filter((batch) => new Date(batch.createdAt) >= start)
+            .sort((a, b) => b.createdAt.localeCompare(a.createdAt))
+        : [],
+    [batches, start],
+  );
+  const numbers = attemptNumbers(shown);
+  const newest = newestBatch(shown);
   const behind = newest ? staleUnedited(newest, profile) : [];
   // The newest batch's update is on its way: waiting for the search, the
   // images or the tab, or running.
@@ -326,11 +345,11 @@ export function PostsSection({
 
   useEffect(() => {
     if (!active || searching || busy || triedHash === currentHash) return;
-    const next = autoRewrite(batches, profile);
+    const next = autoRewrite(shown, profile);
     if (!next) return;
     setTriedHash(currentHash);
     update(next.batch, next.postIds);
-  }, [active, searching, busy, triedHash, currentHash, batches, profile, update]);
+  }, [active, searching, busy, triedHash, currentHash, shown, profile, update]);
 
   function imageOf(post: Post, batch: PostBatch, batchButton: boolean) {
     const retry = () => makeImages(batch, [post.id]);
@@ -364,8 +383,13 @@ export function PostsSection({
   return (
     <section className="mt-6 flex flex-col gap-3">
       <Button type="button" onClick={make} disabled={!cta || held}>
-        {batches.length > 0 ? t('makeMore') : t('make')}
+        {shown.length > 0 ? t('makeMore') : t('make')}
       </Button>
+      {shown.length > 0 && (
+        <p className="text-[13px] text-ink-secondary">
+          {t('moreBelow', { n: numbers.get(shown[0].id) ?? shown.length })}
+        </p>
+      )}
       {!cta && <p className="text-[13px] text-error">{brand('panel.warnWhatsapp')}</p>}
       {(busy || updating) && <p className="text-[13px] text-ink-secondary">{t('keepOpen')}</p>}
       {error && (
@@ -376,15 +400,20 @@ export function PostsSection({
           {t(`errors.${error}`)}
         </p>
       )}
-      {(batches.length > 0 || (running?.step === 'plan' && running.posts.length > 0)) && (
-        <h2 className="mt-3 text-[17px] font-medium tracking-[-0.01em]">{t('heading')}</h2>
+      {start && shown.length === 0 && running?.step !== 'plan' && (
+        <p className="rounded-control border border-dashed border-edge px-4 py-4 text-center text-[15px] text-ink-secondary">
+          {imagesOn ? t('empty') : t('emptyTextOnly')}
+        </p>
       )}
-      {fewer !== null && (
-        <p className="text-[13px] text-ink-secondary">{t('fewer', { count: fewer })}</p>
+      {running?.step === 'plan' && (
+        <>
+          <AttemptHeading n={shown.length + 1} count={running.posts.length} />
+          {running.posts.map((post) => (
+            <PostCard key={post.id} post={post} cta={cta ?? post.cta} />
+          ))}
+        </>
       )}
-      {running?.step === 'plan' &&
-        running.posts.map((post) => <PostCard key={post.id} post={post} cta={cta ?? post.cta} />)}
-      {batches.map((batch) => {
+      {shown.map((batch) => {
         const needsImages =
           imagesOn &&
           !batch.posts.some((p) => {
@@ -395,6 +424,7 @@ export function PostsSection({
         const stale = isNewest && !updating ? behind : [];
         return (
           <div key={batch.id} className="flex flex-col gap-3">
+            <AttemptHeading n={numbers.get(batch.id) ?? 1} count={batch.posts.length} />
             {needsImages && (
               <Button
                 type="button"
@@ -408,17 +438,6 @@ export function PostsSection({
               >
                 {t('images.make')}
               </Button>
-            )}
-            {imagesOn && (
-              <FeedPreview
-                batch={batch}
-                images={images}
-                onPick={(postId) =>
-                  document
-                    .getElementById(`post-${batch.id}-${postId}`)
-                    ?.scrollIntoView({ behavior: 'smooth', block: 'start' })
-                }
-              />
             )}
             {isNewest && updating && (
               <p
@@ -483,7 +502,7 @@ export function PostsSection({
                     imagesOn={imagesOn}
                     name={profile.name.value}
                     createdAt={batch.createdAt}
-                    attempt={1}
+                    attempt={numbers.get(batch.id) ?? 1}
                     n={index + 1}
                   />
                 }
@@ -493,5 +512,15 @@ export function PostsSection({
         );
       })}
     </section>
+  );
+}
+
+function AttemptHeading({ n, count }: { n: number; count: number }) {
+  const t = useTranslations('posts');
+  return (
+    <div className="mt-3 flex items-baseline justify-between gap-2 border-t border-edge pt-4">
+      <h2 className="text-[17px] font-medium tracking-[-0.01em]">{t('attempt', { n })}</h2>
+      <span className="text-[13px] text-ink-secondary">{t('attemptCount', { count })}</span>
+    </div>
   );
 }
