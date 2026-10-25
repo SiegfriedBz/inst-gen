@@ -46,10 +46,31 @@
   "traditional" and "ultimate" became "best", nuances the owner reads past.
   Verdict: fit for reading.
 
+## Still owed (the owner, on real phones)
+
+Playwright can't open a share sheet or Instagram, so these wait for the
+owner, before or during the pilot:
+
+- On a real iPhone and a real Android phone: "Save post image" and "Save
+  story image" through the share sheet into Photos, then post both from
+  Instagram. Record the phones and the outcome here.
+- On a real iPhone: "Copy caption" with the clipboard refused shows "Copy it
+  from here." with the text selected.
+- One look at a real Instagram profile to confirm the 3:4 grid crop.
+
 ## RED
 
-Task 1: `Tests  15 failed | 34 passed (49)`
+- Task 1: `Tests  15 failed | 34 passed (49)`
+- Task 2: `Tests  1 failed | 2 passed (3)`, and `posts-edit.test.ts` failed to load (`Cannot find package '@/lib/posts/edit'`)
+- Task 3: `Tests  7 failed | 19 passed (26)`
+- Task 4: `Tests  8 failed (8)`
+- Task 5: `Tests  1 failed | 10 passed (11)`, and `posts-feed-preview.test.tsx` failed to load
+- Task 6: `Test Files  2 failed (2)` with `Tests  no tests` (the modules didn't exist)
+- Task 7: `Tests  14 failed | 75 passed (89)`
+- Task 8: `Test Files` 5 failed: 3 failed tests in `ai-text-model.test.ts`, and 4 files failed to load
+- Final review fixes: `Tests  3 failed | 22 passed (25)`
 
 ## GREEN
 
-<the test tool's summary line, copied as printed>
+- Vitest, whole suite: `Tests  883 passed (883)`
+- Playwright, whole suite: `35 passed (37.2s)`
