@@ -1,23 +1,31 @@
 import type { Profile } from '@/lib/brand/profile';
+import type { PostBatch } from '@/lib/posts/batch';
 
 // A run as decision 0005 keeps it in the browser: each step's status and,
 // once done, its output. The brand panel (docs/specs/brand/brand-panel)
-// has one step, the brand read; phase 2 adds more.
+// has one step, the brand read; a posts run (docs/specs/posts/generate-copy)
+// has one too, the plan or its rewrite.
 
 export type StepStatus = 'pending' | 'running' | 'done' | 'failed';
 
-export type RunStep = { name: 'brand'; status: StepStatus; output?: Profile };
+export type RunStep =
+  | { name: 'brand'; status: StepStatus; output?: Profile }
+  | { name: 'plan' | 'rewrite'; status: StepStatus; output?: PostBatch };
+
+export type RunKind = 'brand-read' | 'posts';
 
 export type RunRecord = {
   id: string;
   ownerId: string;
-  kind: 'brand-read';
+  kind: RunKind;
   reread: boolean;
   url: string;
   startedAt: string;
   steps: RunStep[];
-  // How many times the read was asked for again after it was lost.
+  // How many times the step was asked for again after it was lost.
   resumes?: number;
+  // The batch a rewrite replaces.
+  batchId?: string;
 };
 
 export function newBrandRun(
@@ -36,6 +44,23 @@ export function newBrandRun(
   };
 }
 
+export function newPostsRun(
+  input: { ownerId: string; step: 'plan' | 'rewrite'; batchId?: string },
+  now: Date,
+  id: string,
+): RunRecord {
+  return {
+    id,
+    ownerId: input.ownerId,
+    kind: 'posts',
+    reread: false,
+    url: '',
+    startedAt: now.toISOString(),
+    steps: [{ name: input.step, status: 'running' }],
+    ...(input.batchId ? { batchId: input.batchId } : {}),
+  };
+}
+
 // Decision 0005, "Resume": a step marked running whose request is no
 // longer alive goes back to pending. Done and failed steps stay as they are.
 export function resumeRun(run: RunRecord, isLive: (runId: string) => boolean): RunRecord {
@@ -43,7 +68,7 @@ export function resumeRun(run: RunRecord, isLive: (runId: string) => boolean): R
   return {
     ...run,
     steps: run.steps.map((step) =>
-      step.status === 'running' ? { ...step, status: 'pending' } : step,
+      step.status === 'running' ? ({ ...step, status: 'pending' } as RunStep) : step,
     ),
   };
 }

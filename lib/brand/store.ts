@@ -1,4 +1,5 @@
 import { type DBSchema, type IDBPDatabase, openDB } from 'idb';
+import type { PostBatch } from '@/lib/posts/batch';
 import type { RunRecord } from '@/lib/runs/run-record';
 import { type Profile, profileSchema, upgradeProfile } from './profile';
 import type { SearchAnswer } from './search/run';
@@ -27,10 +28,12 @@ export interface ShopfrontDb extends DBSchema {
   // Records saved before `ownerEdited` existed have none.
   brands: { key: string; value: Omit<BrandRecord, 'ownerEdited'> & { ownerEdited?: string[] } };
   runs: { key: string; value: RunRecord; indexes: { ownerId: string } };
+  // Batches of posts (docs/specs/posts/generate-copy, "On the phone").
+  posts: { key: string; value: PostBatch; indexes: { ownerId: string } };
 }
 
 const DB_NAME = 'shopfront';
-const DB_VERSION = 1;
+const DB_VERSION = 2;
 
 let opening: Promise<IDBPDatabase<ShopfrontDb> | null> | null = null;
 let persistAsked = false;
@@ -39,9 +42,14 @@ async function open(): Promise<IDBPDatabase<ShopfrontDb> | null> {
   if (typeof indexedDB === 'undefined' || !indexedDB) return null;
   try {
     return await openDB<ShopfrontDb>(DB_NAME, DB_VERSION, {
-      upgrade(db) {
-        db.createObjectStore('brands', { keyPath: 'ownerId' });
-        db.createObjectStore('runs', { keyPath: 'id' }).createIndex('ownerId', 'ownerId');
+      upgrade(db, oldVersion) {
+        if (oldVersion < 1) {
+          db.createObjectStore('brands', { keyPath: 'ownerId' });
+          db.createObjectStore('runs', { keyPath: 'id' }).createIndex('ownerId', 'ownerId');
+        }
+        if (oldVersion < 2) {
+          db.createObjectStore('posts', { keyPath: 'id' }).createIndex('ownerId', 'ownerId');
+        }
       },
     });
   } catch {
@@ -128,11 +136,13 @@ export async function mergeSearchIntoStore(
 export async function forgetBrand(ownerId: string): Promise<void> {
   const db = await openStore();
   if (!db) return;
-  const tx = db.transaction(['brands', 'runs'], 'readwrite');
+  const tx = db.transaction(['brands', 'runs', 'posts'], 'readwrite');
   const runIds = await tx.objectStore('runs').index('ownerId').getAllKeys(ownerId);
+  const batchIds = await tx.objectStore('posts').index('ownerId').getAllKeys(ownerId);
   await Promise.all([
     tx.objectStore('brands').delete(ownerId),
     ...runIds.map((id) => tx.objectStore('runs').delete(id)),
+    ...batchIds.map((id) => tx.objectStore('posts').delete(id)),
   ]);
   await tx.done;
 }
