@@ -10,6 +10,10 @@
   so it is encoded once. JPEG sizes on the banded test image say nothing about
   real photos; Task 9 records real sizes.
 
+- 2026-10-25: Task 3. A spent prepaid balance is guessed as a 429, or a 400 or
+  403 whose message says billing, prepay, credit or balance. To check the first
+  time the balance runs out.
+
 ## RED
 
 Task 1:
@@ -26,6 +30,13 @@ Task 2:
       Tests  no tests
 ```
 
+Task 3:
+
+```
+ Test Files  1 failed (1)
+      Tests  no tests
+```
+
 ## GREEN
 
 Task 1:
@@ -36,6 +47,13 @@ Task 1:
 ```
 
 Task 2:
+
+```
+ Test Files  1 passed (1)
+      Tests  5 passed (5)
+```
+
+Task 3:
 
 ```
  Test Files  1 passed (1)

@@ -67,7 +67,7 @@ index of the code).
 | `lib/pilot/` | The pilot gate: passphrases, signed session, gate decision |
 | `lib/brand/` | The brand read: safe fetching, extraction, checks, the profile schema, fixtures and eval scoring; in the browser, the phone's store (IndexedDB), the read client and the owner's edits |
 | `lib/runs/` | Decision 0005's run record, kept on the phone, and its resume rule |
-| `lib/ai/` | The text-model module (the only importer of `@ai-sdk/google`) and the replayer for recorded calls |
+| `lib/ai/` | The text-model and image-model modules (the only importers of `@ai-sdk/google`) and the replayer for recorded calls |
 | `proxy.ts` | Runs the gate on every request |
 | `messages/` | next-intl message files, `en.json`, `id.json` and `vi.json`; every visible string lives here |
 | `lib/i18n/` | Which language a screen uses, and the messages laid over English |
