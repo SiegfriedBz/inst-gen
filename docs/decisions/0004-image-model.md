@@ -34,7 +34,7 @@ a month?
 
 - People shown well: a back, shoulders, hands, feet, a guest at rest, without
   warped anatomy.
-- At most $8 a month for all images, enforced by the app, not only by alerts.
+- At most $8 a month for all images, as a hard limit, not only an alert.
 - Tall images made natively, 9:16, at least 1080 px wide, so the 4:5 post
   crop and the story stay sharp on a phone.
 - About 5 to 15 s per image, several in parallel (decision 0005), and a
@@ -87,10 +87,13 @@ images pass both steps.
 
 **Billing.** Image calls use a second Google project with billing turned on,
 and its own key (`GOOGLE_IMAGE_API_KEY`). The project with the free key for
-text (decision 0003) gets no billing account. Google Cloud budget alerts at
-$4 and $8 a month on the image project warn the maintainer by email.
+text (decision 0003) gets no billing account. The image project is prepaid,
+€7 (about $8) with auto-reload off: when the balance runs out, image calls
+fail until the maintainer tops up, so Google can never charge more than what
+was put in. No budget alerts are needed.
 
-**The $8 cap.** Budget alerts don't stop spending, so the app stops it:
+**The $8 cap.** The prepaid balance is the hard limit. The app adds a second
+one, so a busy month fails gracefully instead of with an error from Google:
 `platform/usage-counters` (roadmap 2.6) counts image calls a month across all
 owners, at the price measured here, and refuses new images once the month's
 estimate reaches $8. Until 2.6 ships, images are made only by the maintainer
@@ -116,8 +119,8 @@ named, before this decision is approved.
 - Bad, because Google may change prices or retire a model (Gemini 2.5 Flash
   Image shut down on 2026-10-02); a change that breaks the cap needs a new
   decision.
-- Bad, because the cap depends on the app's own counter; a bug there could
-  overspend until the $8 email alert.
+- Bad, because the prepaid balance must be topped up by hand each month, and
+  images stop for everyone when it runs out.
 - Bad, because a bake-off on 3 brands with hand-written prompts is small; the
   post plan's real prompts may do better or worse.
 
@@ -148,7 +151,7 @@ Checks:
   request with `GOOGLE_GENERATIVE_AI_API_KEY`.
 - `platform/usage-counters` refuses images once the month's estimate reaches
   $8, with a unit test at the boundary.
-- The image project has budget alerts at $4 and $8.
+- The image project is prepaid with auto-reload off.
 - The decision records the bake-off's per-image price, time and size.
 
 ## Pros and Cons of the Options
