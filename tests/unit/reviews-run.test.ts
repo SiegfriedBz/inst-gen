@@ -53,7 +53,7 @@ describe('runReply', () => {
         ...answer,
         short: { text: 'Thank you, {name}! 🌼', translation: 'Cảm ơn {name}! 🌼' },
         model: 'gemini-3.5-flash-lite',
-        promptVersion: 'reply-1',
+        promptVersion: 'reply-2',
       },
     });
     expect(calls).toEqual([replyPrompt(body, '🌼')]);
