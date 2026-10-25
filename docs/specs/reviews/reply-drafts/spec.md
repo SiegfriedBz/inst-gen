@@ -1,7 +1,8 @@
 ---
 title: "Review reply drafts"
 description: "A third home tab, 'Reviews': the owner pastes a Google Maps review and the guest's name, and gets two replies (short and warmer) in the guest's language, each with its translation in the owner's language, from one Flash-Lite call; only the current review is kept, until a new one or 3am."
-status: draft
+status: approved
+approved: { by: siegfried.bozza@protonmail.com, at: 2026-10-25T20:55:19Z }
 date: "2026-10-25"
 ---
 
