@@ -56,7 +56,7 @@ function deferredFetch() {
 function renderHome() {
   render(
     <NextIntlClientProvider locale="en" messages={messages} timeZone="UTC">
-      <BrandHome ownerId="sen" />
+      <BrandHome ownerId="sen" imagesOn={false} />
     </NextIntlClientProvider>,
   );
 }

@@ -210,6 +210,23 @@
       "model_failed": "Đã xảy ra lỗi khi viết bài đăng của bạn. Hãy thử lại.",
       "invalid_profile": "Đã xảy ra lỗi khi viết bài đăng của bạn. Hãy thử lại.",
       "offline": "Bạn đang ngoại tuyến. Bài đăng sẽ tiếp tục khi bạn quay lại."
+    },
+    "images": {
+      "make": "Tạo hình ảnh",
+      "making": "Đang tạo hình ảnh…",
+      "seeStory": "Xem story",
+      "retry": "Thử lại",
+      "close": "Đóng",
+      "off": "Hình ảnh chưa được bật cho tài khoản của bạn.",
+      "errors": {
+        "images_paused": "Hình ảnh tạm dừng. Chú thích của bạn đã sẵn sàng.",
+        "image_blocked": "Không thể tạo hình ảnh này. Hãy thử lại để có hình mới.",
+        "image_timeout": "Hình ảnh này mất quá nhiều thời gian. Hãy thử lại.",
+        "image_failed": "Đã xảy ra lỗi khi tạo hình ảnh này.",
+        "invalid_request": "Đã xảy ra lỗi khi tạo hình ảnh này.",
+        "no_space": "Điện thoại của bạn không còn đủ dung lượng cho hình ảnh.",
+        "offline": "Bạn đang ngoại tuyến. Hình ảnh sẽ tiếp tục khi bạn quay lại."
+      }
     }
   }
 }

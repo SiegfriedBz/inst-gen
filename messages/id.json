@@ -210,6 +210,23 @@
       "model_failed": "Terjadi kesalahan saat menulis postingan Anda. Coba lagi.",
       "invalid_profile": "Terjadi kesalahan saat menulis postingan Anda. Coba lagi.",
       "offline": "Anda sedang offline. Postingan Anda akan dilanjutkan saat Anda kembali."
+    },
+    "images": {
+      "make": "Buat gambarnya",
+      "making": "Membuat gambar…",
+      "seeStory": "Lihat story",
+      "retry": "Coba lagi",
+      "close": "Tutup",
+      "off": "Gambar belum diaktifkan untuk akun Anda.",
+      "errors": {
+        "images_paused": "Gambar dijeda untuk sementara. Keterangan Anda sudah siap.",
+        "image_blocked": "Gambar ini tidak bisa dibuat. Coba lagi untuk gambar baru.",
+        "image_timeout": "Gambar ini terlalu lama dibuat. Coba lagi.",
+        "image_failed": "Terjadi kesalahan saat membuat gambar ini.",
+        "invalid_request": "Terjadi kesalahan saat membuat gambar ini.",
+        "no_space": "Ruang penyimpanan ponsel Anda tidak cukup untuk gambar.",
+        "offline": "Anda sedang offline. Gambar Anda akan dilanjutkan saat Anda kembali."
+      }
     }
   }
 }

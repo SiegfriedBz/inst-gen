@@ -6,6 +6,8 @@ const testEnv = {
     process.env.PILOT_PASSPHRASES ??
     'test-lotus-river-sen,test-blue-wave-svarga,test-quiet-stone-dev',
   SESSION_SECRET: process.env.SESSION_SECRET ?? 'test-session-secret-not-for-production-0001',
+  GOOGLE_IMAGE_API_KEY: 'test-image-key-not-real',
+  IMAGE_OWNERS: 'sen,svarga',
 };
 
 export default defineConfig({

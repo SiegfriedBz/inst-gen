@@ -67,7 +67,7 @@ index of the code).
 | `lib/pilot/` | The pilot gate: passphrases, signed session, gate decision |
 | `lib/brand/` | The brand read: safe fetching, extraction, checks, the profile schema, fixtures and eval scoring; in the browser, the phone's store (IndexedDB), the read client and the owner's edits |
 | `lib/runs/` | Decision 0005's run record, kept on the phone, and its resume rule |
-| `lib/ai/` | The text-model module (the only importer of `@ai-sdk/google`) and the replayer for recorded calls |
+| `lib/ai/` | The text-model and image-model modules (the only importers of `@ai-sdk/google`) and the replayer for recorded calls |
 | `proxy.ts` | Runs the gate on every request |
 | `messages/` | next-intl message files, `en.json`, `id.json` and `vi.json`; every visible string lives here |
 | `lib/i18n/` | Which language a screen uses, and the messages laid over English |
@@ -105,6 +105,7 @@ index of the code).
 | `pnpm eval:brand [slug…] [--record]` | Score brand reads on the fixtures with the real model. ⚠️ Spends Gemini quota (about 20 reads a day for the whole app): run a few slugs at a time, never on a pilot day |
 | `pnpm eval:search [slug…] [--record]` | Run the essence search on five fixtures with the real Tavily and Gemini, and print each essence before and after. ⚠️ Spends 3 Tavily credits (1,000 a month) and 1 Flash-Lite request per fixture |
 | `pnpm eval:posts [slug…] [--record] [--model=<id>]` | Plan six posts for fixtures with the real model, and print each with code's checks. ⚠️ Spends 1 Gemini request per fixture from the app's daily pool: a few slugs at a time, never on a pilot day |
+| `pnpm eval:images <slug…>` | Make the six images of fixtures' recorded posts with the real image model, saved as JPEGs under the scratch folder `eval-images`. ⚠️ Spends about $0.30 of the prepaid image balance per fixture: ask first |
 
 ## What fails silently
 

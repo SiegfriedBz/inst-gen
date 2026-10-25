@@ -2,14 +2,29 @@
 
 import { useTranslations } from 'next-intl';
 import type { Post } from '@/lib/posts/batch';
+import { type ImageState, PostImage } from './post-image';
 
 // One post as the owner reads it before 2.4's feed preview: what it is, the
 // words to post, and what to check (docs/specs/posts/generate-copy, "On the
-// screen"). The image prompt is 2.3's and isn't shown.
-export function PostCard({ post, cta }: { post: Post; cta: string }) {
+// screen"), with its image above (docs/specs/posts/generate-images). The image
+// prompt isn't shown.
+export function PostCard({
+  post,
+  cta,
+  image,
+}: {
+  post: Post;
+  cta: string;
+  image?: { state: ImageState; onRetry?: () => void };
+}) {
   const t = useTranslations('posts');
   return (
     <article className="rounded-control border border-edge bg-field px-4 py-3">
+      {image && (
+        <div className="mb-3">
+          <PostImage state={image.state} altText={post.altText} onRetry={image.onRetry} />
+        </div>
+      )}
       <p className="text-[13px] font-medium text-accent">{t(`types.${post.type}`)}</p>
       <p className="mt-2 whitespace-pre-line text-[15px] leading-normal text-ink">{post.caption}</p>
       {cta && <p className="mt-3 text-[15px] leading-normal text-ink">{cta}</p>}

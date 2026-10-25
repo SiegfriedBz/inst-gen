@@ -238,10 +238,10 @@ describe('the Google provider', () => {
     });
   }
 
-  test('is imported only by lib/ai/text-model.ts', () => {
+  test('is imported only by the text-model and image-model modules', () => {
     const importers = sourceFiles('.')
       .filter((file) => !file.startsWith('tests'))
       .filter((file) => readFileSync(file, 'utf8').includes("from '@ai-sdk/google'"));
-    expect(importers).toEqual(['lib/ai/text-model.ts']);
+    expect(importers.sort()).toEqual(['lib/ai/image-model.ts', 'lib/ai/text-model.ts']);
   });
 });

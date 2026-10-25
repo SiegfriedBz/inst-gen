@@ -210,6 +210,23 @@
       "model_failed": "Something went wrong while writing your posts. Try again.",
       "invalid_profile": "Something went wrong while writing your posts. Try again.",
       "offline": "You're offline. Your posts will carry on when you're back."
+    },
+    "images": {
+      "make": "Make the images",
+      "making": "Making the image…",
+      "seeStory": "See the story",
+      "retry": "Try again",
+      "close": "Close",
+      "off": "Images aren't turned on for your account yet.",
+      "errors": {
+        "images_paused": "Images are paused for now. Your captions are ready.",
+        "image_blocked": "This image couldn't be made. Try again for a new one.",
+        "image_timeout": "This image took too long. Try again.",
+        "image_failed": "Something went wrong while making this image.",
+        "invalid_request": "Something went wrong while making this image.",
+        "no_space": "Your phone is out of space for images.",
+        "offline": "You're offline. Your images will carry on when you're back."
+      }
     }
   }
 }

@@ -29,8 +29,32 @@ describe('planPrompt', () => {
     }
   });
 
+  // The maintainer's verdicts on the first images (generate-images journal).
+  it('asks for the massage in every image, from what the business offers', () => {
+    const prompt = planPrompt();
+    for (const rule of [
+      "The massage is in every image: a therapist's hands working on a guest, or oil or towels being used for a treatment.",
+      'Only what the business offers',
+      'Never a guest alone, never an empty room, never a drink or a prop on its own.',
+      'relaxed and alive',
+      'neatly made',
+      'never clinical or hospital-like',
+      'curtains hang still',
+      'golden oil in a clear glass bottle',
+      'never a small dark bottle',
+    ]) {
+      expect(prompt).toContain(rule);
+    }
+  });
+
+  it('says every scene shows the massage, and no longer offers stones by default', () => {
+    const prompt = planPrompt();
+    expect(prompt).toContain('every scene shows the massage');
+    expect(prompt).not.toMatch(/stones/);
+  });
+
   it('has a version', () => {
-    expect(POSTS_PROMPT_VERSION).toBe('posts-1');
+    expect(POSTS_PROMPT_VERSION).toBe('posts-2');
   });
 });
 
