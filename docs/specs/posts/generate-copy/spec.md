@@ -1,7 +1,8 @@
 ---
 title: "Generate copy"
 description: "From the saved brand profile, one streamed text call plans six posts and writes each one's caption, hashtags, alt text and image prompt; code checks the facts, adds the WhatsApp call to action, and keeps the batch on the phone; a brand edit marks captions out of date, and one call rewrites them."
-status: draft
+status: approved
+approved: { by: siegfried.bozza@protonmail.com, at: 2026-10-25T12:43:53Z }
 date: "2026-10-25"
 ---
 
