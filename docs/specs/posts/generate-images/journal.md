@@ -14,6 +14,10 @@
   403 whose message says billing, prepay, credit or balance. To check the first
   time the balance runs out.
 
+- 2026-10-25: Task 4. The route answers 401 when no owner can be read from the
+  session (proxy.ts already turns those away), and 499 with no body when the
+  request was closed: nobody reads it.
+
 ## RED
 
 Task 1:
@@ -34,6 +38,13 @@ Task 3:
 
 ```
  Test Files  1 failed (1)
+      Tests  no tests
+```
+
+Task 4:
+
+```
+ Test Files  2 failed (2)
       Tests  no tests
 ```
 
@@ -58,4 +69,11 @@ Task 3:
 ```
  Test Files  1 passed (1)
       Tests  5 passed (5)
+```
+
+Task 4:
+
+```
+ Test Files  2 passed (2)
+      Tests  15 passed (15)
 ```
