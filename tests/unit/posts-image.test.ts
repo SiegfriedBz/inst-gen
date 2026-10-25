@@ -90,6 +90,49 @@ describe('the image prompt', () => {
       'Keep the subject in the middle of the frame, with calm space above and below it.',
     );
     expect(p).toMatch(/no text, letters, labels, logos or watermarks/i);
-    expect(IMAGE_PROMPT_VERSION).toBe('images-1');
+    expect(IMAGE_PROMPT_VERSION).toBe('images-2');
+  });
+});
+
+describe('light and weather in the post prompt', () => {
+  // 2.2's plan wrote "sunlit" for Sen although its prompt forbids bright sun
+  // (journal, final eval); decision 0004 rejects daylight, grey skies and damp.
+  test("Sen's sunlit room becomes lamp-lit", () => {
+    const p = imagePrompt(
+      'Vertical 9:16 photo of a professional massage treatment in a clean, sunlit Da Nang hotel room.',
+    );
+    expect(p).toContain('in a clean, lamp-lit Da Nang hotel room.');
+    expect(p).not.toMatch(/sunlit/i);
+  });
+
+  test.each([
+    ['A sunny balcony', 'A warm balcony'],
+    ['Bright sunlight on the towels', 'Warm lamplight on the towels'],
+    ['A villa in the morning', 'A villa at dusk'],
+    ['Daylight through the window', 'Lamplight through the window'],
+    ['Midday on the terrace', 'Dusk on the terrace'],
+  ])('%s → %s', (input, output) => {
+    expect(imagePrompt(input).startsWith(`${output} `)).toBe(true);
+  });
+
+  test('grey skies, mist, rain and damp are dropped', () => {
+    const p = imagePrompt(
+      'A balcony under an overcast grey sky, misty garden, rain on damp stone.',
+    );
+    expect(p).not.toMatch(/overcast|grey sky|mist|rain|damp/i);
+  });
+
+  test('words that only contain a light word are kept', () => {
+    expect(
+      imagePrompt('A sunflower on a brainstorming table').startsWith(
+        'A sunflower on a brainstorming table ',
+      ),
+    ).toBe(true);
+  });
+
+  test('the style line says the light wins over the scene', () => {
+    expect(imagePrompt('x')).toContain(
+      'Whatever the scene says, the light is dusk, lamps, lanterns or candles.',
+    );
   });
 });

@@ -50,6 +50,18 @@
   acting on stale run records, Forget's no-late-save rests on React's unmount
   order, an abort listener left on success.
 
+- 2026-10-25: Eval with `images-1`, Sen and Svarga: 12 of 12 images made,
+  $0.60, 20 to 28 s each (26 to 28 s for a batch of six), every input
+  1536×2752; stories 181 to 419 KB, posts 126 to 301 KB. No post crop cuts its
+  subject. Sen 1 came out in daylight: the recorded post plan wrote "sunlit"
+  although 2.2's prompt forbids bright sun. The recording stays as the model
+  answered.
+- 2026-10-25: `images-2`. The image step now swaps daylight and bad-weather
+  words in the post's prompt for dusk and lamp light (`cleanLight`, whole words
+  only), and the style line adds "Whatever the scene says, the light is dusk,
+  lamps, lanterns or candles." The spec names `images-1`; the version is bumped
+  with the change, as the spec asks.
+
 ## RED
 
 Task 1:
@@ -111,6 +123,13 @@ Final review fixes:
 ```
  Test Files  3 failed (3)
       Tests  5 failed | 27 passed (32)
+```
+
+Light cleaning (`images-2`):
+
+```
+ Test Files  2 failed (2)
+      Tests  11 failed | 18 passed (29)
 ```
 
 ## GREEN
@@ -179,4 +198,11 @@ Final review fixes (`pnpm check`, then all of tests/e2e):
 
 ```
   29 passed (12.4s)
+```
+
+Light cleaning (`images-2`), then `pnpm check`:
+
+```
+ Test Files  2 passed (2)
+      Tests  29 passed (29)
 ```

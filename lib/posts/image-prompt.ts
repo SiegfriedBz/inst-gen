@@ -3,7 +3,7 @@
 // keeps the subject (docs/specs/posts/generate-images, "The model step").
 // Bump the version with every change.
 
-export const IMAGE_PROMPT_VERSION = 'images-1';
+export const IMAGE_PROMPT_VERSION = 'images-2';
 
 export const IMAGE_STYLE =
   'Vertical photograph for an Instagram story, shot on a full-frame camera with a 50mm lens. ' +
@@ -11,8 +11,40 @@ export const IMAGE_STYLE =
   'A quiet, relaxing mood that invites introspection, as if time has slowed down. ' +
   'Realistic skin and textures, natural anatomy. No face is visible or recognisable. ' +
   'The image contains no text, letters, labels, logos or watermarks; bottles and jars are plain. ' +
-  'Keep the subject in the middle of the frame, with calm space above and below it.';
+  'Keep the subject in the middle of the frame, with calm space above and below it. ' +
+  'Whatever the scene says, the light is dusk, lamps, lanterns or candles.';
+
+// Decision 0004: never daylight, grey skies, mist, rain or damp. The post
+// plan's prompt says so too, but its model doesn't always listen (Sen's
+// "sunlit" room, journal), so code swaps those words before the image model
+// reads them. Whole words only; the first letter's case is kept.
+const LIGHT: [RegExp, string][] = [
+  [/\bbright (?:sunlight|sunshine|sun)\b/gi, 'warm lamplight'],
+  [/\bsunlit\b/gi, 'lamp-lit'],
+  [/\bsunny\b/gi, 'warm'],
+  [/\b(?:sunlight|sunshine|daylight)\b/gi, 'lamplight'],
+  [/\bin the (?:morning|afternoon)\b/gi, 'at dusk'],
+  [/\b(?:morning|afternoon|midday|noon|daytime)\b/gi, 'dusk'],
+  [/\b(?:overcast |grey |gray )+sky\b/gi, 'dusk sky'],
+  [/\bovercast\b/gi, 'calm'],
+  [/\b(?:misty|foggy)\b/gi, 'quiet'],
+  [/\b(?:damp|wet)\b/gi, 'clean'],
+  [/\b(?:rainy|rain|mist|fog)\b/gi, ''],
+];
+
+function keepCase(found: string, replacement: string): string {
+  if (!replacement || found[0] !== found[0].toUpperCase()) return replacement;
+  return replacement[0].toUpperCase() + replacement.slice(1);
+}
+
+export function cleanLight(text: string): string {
+  let out = text;
+  for (const [pattern, replacement] of LIGHT) {
+    out = out.replace(pattern, (found) => keepCase(found, replacement));
+  }
+  return out.replace(/ {2,}/g, ' ').replace(/ ([,.;:])/g, '$1');
+}
 
 export function imagePrompt(postPrompt: string): string {
-  return `${postPrompt.trim()} ${IMAGE_STYLE}`;
+  return `${cleanLight(postPrompt.trim())} ${IMAGE_STYLE}`;
 }
