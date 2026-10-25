@@ -13,7 +13,8 @@
     "tabs": {
       "label": "Beranda",
       "business": "Usaha Anda",
-      "posts": "Buat postingan"
+      "posts": "Buat postingan",
+      "reviews": "Ulasan"
     },
     "welcome": "Selamat datang, {name}",
     "websiteLabel": "Situs web Anda",
@@ -260,6 +261,29 @@
         "model_timeout": "Terjemahan terlalu lama. Coba lagi.",
         "model_failed": "Ada yang salah dengan terjemahan. Coba lagi."
       }
+    }
+  },
+  "reviews": {
+    "intro": "Ada ulasan baru di Google Maps? Salin dan tempel di sini. Kami menulis 2 balasan dalam bahasa tamu Anda.",
+    "nameLabel": "Nama tamu (opsional)",
+    "reviewLabel": "Ulasan",
+    "write": "Tulis 2 balasan",
+    "writing": "Sedang menulis balasan…",
+    "keepOpen": "Biarkan halaman ini terbuka beberapa detik.",
+    "heading": "Ulasan dari {name} · dalam {language}",
+    "headingNoName": "Ulasan · dalam {language}",
+    "short": "Balasan singkat",
+    "warm": "Balasan lebih hangat",
+    "abusive": "Ulasan ini mungkin kasar atau palsu. Mungkin lebih baik tidak membalas, atau laporkan di Google Maps. Jika membalas, tetap tenang, seperti di bawah.",
+    "howTo": "Di Google Maps: buka ulasannya, ketuk Balas, lalu tempel.",
+    "again": "Tulis 2 balasan lain",
+    "newReview": "Tempel ulasan baru",
+    "errors": {
+      "model_busy": "Shopfront sudah memakai jatah menulis gratis hari ini. Coba lagi besok.",
+      "model_timeout": "Menulis balasan terlalu lama. Coba lagi.",
+      "model_failed": "Terjadi kesalahan saat menulis balasan. Coba lagi.",
+      "invalid_request": "Terjadi kesalahan saat menulis balasan. Coba lagi.",
+      "offline": "Anda sedang offline. Coba lagi saat kembali online."
     }
   }
 }

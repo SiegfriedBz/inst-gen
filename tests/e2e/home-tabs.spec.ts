@@ -31,7 +31,7 @@ test('a first read lands on Your business, and the next open on Create your post
   await fulfilRead(page, [streamBody(senProfile())]);
   await signInAndRead(page);
   const business = page.getByRole('tab', { name: 'Your business' });
-  const posts = page.getByRole('tab', { name: 'Create your posts' });
+  const posts = page.getByRole('tab', { name: 'Create Posts' });
   await expect(business).toHaveAttribute('aria-selected', 'true');
   await expect(posts).toHaveAttribute('aria-selected', 'false');
   await expect(page.getByText(/This is what we understood about/)).toBeVisible();
@@ -58,7 +58,7 @@ test('Re-read my website hides the tabs until it ends', async ({ page }) => {
     route.fulfill({ status: 503, json: { error: 'search_unavailable' } }),
   );
   await signInAndRead(page);
-  await page.getByRole('tab', { name: 'Create your posts' }).click();
+  await page.getByRole('tab', { name: 'Create Posts' }).click();
   await page.getByRole('tab', { name: 'Your business' }).click();
   await page.getByRole('button', { name: 'Re-read my website' }).click();
   await expect(page.getByText('Reading your website…')).toBeVisible();

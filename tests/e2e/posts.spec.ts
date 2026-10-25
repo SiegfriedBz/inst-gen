@@ -22,7 +22,7 @@ async function signInAndRead(page: Page) {
   await expect(page).toHaveURL('/');
   await page.getByLabel('Your website').fill('sendanangmassage.com');
   await page.getByRole('button', { name: 'Read my website' }).click();
-  await page.getByRole('tab', { name: 'Create your posts' }).click();
+  await page.getByRole('tab', { name: 'Create Posts' }).click();
 }
 
 test('posts stream in, stay, and follow a brand edit by themselves', async ({ page }) => {
@@ -55,7 +55,7 @@ test('posts stream in, stay, and follow a brand edit by themselves', async ({ pa
   await page.getByLabel('Opening hours').fill('Every day, 9am to midnight');
   await page.getByRole('button', { name: 'Save' }).click();
   expect(rewrites.count()).toBe(0);
-  await page.getByRole('tab', { name: 'Create your posts' }).click();
+  await page.getByRole('tab', { name: 'Create Posts' }).click();
   await expect(page.getByText('Rewritten 1.')).toBeVisible();
   // The mocked answer carries the old details' hash, so the posts stay out of
   // date: one request all the same, never a second by itself.

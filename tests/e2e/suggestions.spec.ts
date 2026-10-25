@@ -18,7 +18,7 @@ async function signInAndRead(page: Page) {
   await expect(page).toHaveURL('/');
   await page.getByLabel('Your website').fill('sendanangmassage.com');
   await page.getByRole('button', { name: 'Read my website' }).click();
-  await page.getByRole('tab', { name: 'Create your posts' }).click();
+  await page.getByRole('tab', { name: 'Create Posts' }).click();
 }
 
 test("today's suggestions stay through a reload, and 3am clears them", async ({ page }) => {
