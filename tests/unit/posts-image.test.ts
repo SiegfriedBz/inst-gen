@@ -111,6 +111,7 @@ describe('light and weather in the post prompt', () => {
     ['A villa in the morning', 'A villa at dusk'],
     ['Daylight through the window', 'Lamplight through the window'],
     ['Midday on the terrace', 'Dusk on the terrace'],
+    ['A massage in a bright, tidy hotel room', 'A massage in a warm, tidy hotel room'],
   ])('%s → %s', (input, output) => {
     expect(imagePrompt(input).startsWith(`${output} `)).toBe(true);
   });

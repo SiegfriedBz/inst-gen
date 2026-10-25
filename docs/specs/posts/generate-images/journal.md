@@ -66,6 +66,15 @@
   would book this": Sen 2 and 4 (2 of 6); Svarga 1, 5 and 6 (3 of 6). Below the
   spec's pass mark of 4 of 6 for each. No crop was said to cut its subject.
 
+- 2026-10-25: Specs amended and approved with the maintainer's image rules:
+  `posts-2` (every scene shows the massage, only what the business offers,
+  tidy, warm, still air, golden oil in clear glass) and `images-3` (the same
+  rules in the style line). Sen's and Svarga's plans re-recorded with
+  `posts-2` (2 Gemini requests, about 4 s each): 11 of 12 image prompts show
+  a therapist at work; Sen 6 is towels on their own, and Sen 3 said "bright",
+  now swapped for "warm" by `cleanLight`. The other three fixtures keep their
+  `posts-1` recordings.
+
 ## RED
 
 Task 1:

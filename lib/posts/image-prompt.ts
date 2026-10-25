@@ -29,6 +29,7 @@ export const IMAGE_STYLE =
 const LIGHT: [RegExp, string][] = [
   [/\bbright (?:sunlight|sunshine|sun)\b/gi, 'warm lamplight'],
   [/\bsunlit\b/gi, 'lamp-lit'],
+  [/\bbright\b/gi, 'warm'],
   [/\bsunny\b/gi, 'warm'],
   [/\b(?:sunlight|sunshine|daylight)\b/gi, 'lamplight'],
   [/\bin the (?:morning|afternoon)\b/gi, 'at dusk'],
