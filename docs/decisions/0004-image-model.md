@@ -1,6 +1,6 @@
 ---
 title: "Image model"
-description: "Images come from a paid Google Gemini image model, Nano Banana 2.1 or Nano Banana Pro as a blind bake-off decides, in a billed Google project of their own, capped at $8 a month; the free Workers AI models were tried and draw people badly."
+description: "Images come from Google's Nano Banana 2.1 at 9:16 and 2K, about $0.05 an image, in a prepaid Google project of their own capped at $8 a month; a blind bake-off found it as good as Nano Banana Pro for the pilot spas, and the free Workers AI models drew people badly."
 status: draft
 date: "2026-10-25"
 ---
@@ -99,8 +99,37 @@ owners, at the price measured here, and refuses new images once the month's
 estimate reaches $8. Until 2.6 ships, images are made only by the maintainer
 for the two pilot spas.
 
-**Bake-off result:** pending. It is filled in here, and the chosen option
-named, before this decision is approved.
+**Bake-off result** (2026-10-25, 24 images, $2.21). Gemini's check passed
+all 24 images, so it filtered nothing; the blind look decided. Images marked
+"a tourist would book this", out of 4:
+
+| Model | Sen | Svarga | Karsa Spa |
+|---|---|---|---|
+| Nano Banana 2.1 | 3 | 2 (1 unmarked) | 0 |
+| Nano Banana Pro | 2 | 3 | 0 |
+
+Read strictly, the rule fails both models on Karsa Spa. The cause was the
+prompts, not the models: Karsa's were the only ones left in daytime light
+("misty early morning", "overcast daylight"), and both models gave grey skies,
+rain and damp, mouldy stone, which the maintainer rejects in any image. On the
+two pilot spas, Sen and Svarga, both models pass, and the blind look doesn't
+prefer Pro (5 images each).
+
+Chosen option: 1, Nano Banana 2.1, because it draws people as well as Nano
+Banana Pro did for the pilot spas, at about a third of the price, through the
+library the app already uses.
+
+Prompt lessons for the post plan (roadmap 2.2), from both rounds:
+
+- Light is always low, soft and warm: dusk, a lamp, lanterns, candles. Never
+  bright sun, grey sky, mist, rain or damp.
+- Places look clean and cared for: no mould, stains, wet stone or worn
+  surfaces.
+- Sen and Svarga are mobile spas: the scene is the guest's hotel room,
+  balcony or villa, not a spa building.
+- "A guest at rest seen from behind" got "no" for every brand with both
+  models; treatments, details, feet and prepared rooms did better.
+- Bottles are plain, with no label, or the model writes text on them.
 
 ### Consequences
 
@@ -110,8 +139,14 @@ named, before this decision is approved.
   app's only model library (decision 0003): no new library, no new vendor.
   The SDK sets `imageConfig.aspectRatio` to `9:16` and `imageSize` to `2K`.
 - Good, because at about $0.05 an image, Nano Banana 2.1 costs about $2.50 in
-  the launch month and $1.30 a month after; Nano Banana Pro, about $6.70 and
-  $3.50. Both fit under $8.
+  the launch month and $1.30 a month after, well under $8, with room for a
+  third spa or a few new images when an owner asks.
+- Bad, because an image took about 22 s (18 to 26 s), slower than the 5 to
+  10 s decision 0005 expected. Six images made in parallel still finish in
+  about 25 s, under the 60 s cut-off, but the run feels slower.
+- Bad, because an image comes back at 1536×2752, about 2.9 MB, close to
+  Vercel's 4.5 MB response limit once base64-encoded. `posts/generate-images`
+  (roadmap 2.3) shrinks it to 1080×1920 before sending it to the phone.
 - Bad, because the app is no longer $0: decision 0001's "$0, no card on file"
   now holds for everything except images, and the image project needs a card
   on file. The roadmap's constraint "Images come from a free model" changes
@@ -137,7 +172,8 @@ Criteria for a postable image:
 4. **Right size:** 9:16, at least 1080 px wide, sharp on a phone.
 5. **Tasteful and calm:** relaxing and professional, never suggestive. The
    light is low, soft and warm, never bright or harsh: the mood invites
-   introspection.
+   introspection. Clean and comfortable, inspiring confidence: never a grey
+   sky, rain, damp, mould or a worn place.
 6. **Varied:** across one brand's images, people at rest, treatments, details
    and places, not one scene repeated.
 7. **Tourists and expats would book it:** a holiday treat or a well-earned
@@ -206,6 +242,10 @@ Checked on 2026-10-25:
   passed 7 of the 12 klein 4B images; the fails were text on bottles (2),
   warped hands (2) and an odd body (1). The maintainer's look: "both very bad
   with bodies and hands".
+- Second bake-off, 2026-10-25, through `@ai-sdk/google` at 9:16 and 2K:
+  Nano Banana 2.1, 12 images, 18.2 to 25.6 s each (22 s on average),
+  1536×2752 JPEG, about 2.9 MB; Nano Banana Pro, 12 images, 21.5 to 85.6 s
+  (28 s on average), same size, about 2.8 MB. $2.21 for the 24 images.
 - Posts for a new account: 9 to 12 posts before promoting it, then about 3 a
   week, is a common rule of thumb in social media guides, not a measured
   figure.
