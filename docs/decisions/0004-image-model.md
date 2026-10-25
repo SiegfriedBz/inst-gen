@@ -1,7 +1,8 @@
 ---
 title: "Image model"
 description: "Images come from Google's Nano Banana 2.1 at 9:16 and 2K, about $0.05 an image, in a prepaid Google project of their own capped at $8 a month; a blind bake-off found it as good as Nano Banana Pro for the pilot spas, and the free Workers AI models drew people badly."
-status: draft
+status: approved
+approved: { by: siegfried.bozza@protonmail.com, at: 2026-10-25T08:36:04Z }
 date: "2026-10-25"
 ---
 
