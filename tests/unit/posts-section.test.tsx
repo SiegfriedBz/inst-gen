@@ -55,7 +55,7 @@ async function renderSection(profile: Profile = svargaProfile()) {
   await saveBrand('svarga', profile);
   return render(
     <NextIntlClientProvider locale="en" messages={messages} timeZone="UTC">
-      <PostsSection ownerId="svarga" profile={profile} />
+      <PostsSection ownerId="svarga" profile={profile} imagesOn={false} />
     </NextIntlClientProvider>,
   );
 }
@@ -165,7 +165,7 @@ describe('the posts section', () => {
     await saveBrand('svarga', svargaProfile());
     render(
       <NextIntlClientProvider locale="en" messages={messages} timeZone="UTC">
-        <PostsSection ownerId="svarga" profile={svargaProfile()} />
+        <PostsSection ownerId="svarga" profile={svargaProfile()} imagesOn={false} />
       </NextIntlClientProvider>,
     );
     const first = screen.getByRole('button', { name: /Make/ }) as HTMLButtonElement;

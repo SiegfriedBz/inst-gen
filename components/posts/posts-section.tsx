@@ -8,18 +8,32 @@ import type { RunningRead } from '@/lib/brand/read-client';
 import { holdWakeLock } from '@/lib/brand/wake-lock';
 import { POSTS_LIMITS, type Post, type PostBatch, type PostsErrorCode } from '@/lib/posts/batch';
 import { type PostsEvent, resumePosts, startPlan, startRewrite } from '@/lib/posts/client';
+import { type ImageEvent, resumeImages, startImages } from '@/lib/posts/image-client';
+import { loadImages, type SavedImage } from '@/lib/posts/image-store';
 import { ctaFor } from '@/lib/posts/input';
 import { isStale, loadBatches, recentPosts } from '@/lib/posts/store';
 import { PostCard } from './post-card';
+import type { ImageState } from './post-image';
 
 // "Your posts" under the brand panel (docs/specs/posts/generate-copy): the
 // button that makes a batch, the posts as they stream in, and every batch
 // kept on the phone, newest first. Shown only with the panel, so never during
-// a brand read.
+// a brand read. Once a plan is saved, its six images are asked for
+// (docs/specs/posts/generate-images) when images are on for this owner.
 
 type Running = { step: 'plan' | 'rewrite'; batchId?: string; posts: Post[] };
 
-export function PostsSection({ ownerId, profile }: { ownerId: string; profile: Profile }) {
+type ImageFailure = Extract<ImageState, { kind: 'failed' }>['code'];
+
+export function PostsSection({
+  ownerId,
+  profile,
+  imagesOn,
+}: {
+  ownerId: string;
+  profile: Profile;
+  imagesOn: boolean;
+}) {
   const t = useTranslations('posts');
   const brand = useTranslations('brand');
   const [batches, setBatches] = useState<PostBatch[]>([]);
@@ -35,6 +49,70 @@ export function PostsSection({ ownerId, profile }: { ownerId: string; profile: P
   const lock = useRef<{ release(): void } | null>(null);
   const profileRef = useRef(profile);
   profileRef.current = profile;
+  const stepRef = useRef<Running['step'] | null>(null);
+  const batchesRef = useRef<PostBatch[]>([]);
+  batchesRef.current = batches;
+  const [images, setImages] = useState<Map<string, SavedImage>>(new Map());
+  const [making, setMaking] = useState<Set<string>>(new Set());
+  const [failed, setFailed] = useState<Map<string, ImageFailure>>(new Map());
+  const imageRuns = useRef(new Set<RunningRead>());
+  const imageLock = useRef<{ release(): void } | null>(null);
+
+  const onImageEvent = useCallback((event: ImageEvent) => {
+    if (event.type === 'signedOut') {
+      window.location.assign('/enter');
+      return;
+    }
+    const postId = event.type === 'image' ? event.image.postId : event.postId;
+    setMaking((set) => {
+      const next = new Set(set);
+      next.delete(postId);
+      return next;
+    });
+    if (event.type === 'image') {
+      setImages((map) => new Map(map).set(postId, event.image));
+    } else {
+      const code = event.type === 'offline' ? 'offline' : event.code;
+      setFailed((map) => new Map(map).set(postId, code));
+    }
+  }, []);
+
+  // Keeps an images request: the screen awake while any runs, all stopped
+  // when the section closes.
+  const trackImages = useCallback((run: RunningRead, postIds: string[]) => {
+    imageRuns.current.add(run);
+    imageLock.current ??= holdWakeLock();
+    setMaking((set) => new Set([...set, ...postIds]));
+    setFailed((map) => {
+      const next = new Map(map);
+      for (const id of postIds) next.delete(id);
+      return next;
+    });
+    void run.done.then(() => {
+      imageRuns.current.delete(run);
+      if (imageRuns.current.size === 0) {
+        imageLock.current?.release();
+        imageLock.current = null;
+      }
+    });
+  }, []);
+
+  const makeImages = useCallback(
+    (batch: PostBatch, postIds: string[]) => {
+      trackImages(startImages({ ownerId, batch, postIds }, onImageEvent), postIds);
+    },
+    [ownerId, onImageEvent, trackImages],
+  );
+
+  const tryResumeImages = useCallback(async () => {
+    if (!imagesOn) return;
+    const run = await resumeImages(ownerId, batchesRef.current, onImageEvent);
+    if (!run) return;
+    if (!mounted.current) run.stop();
+    else trackImages(run, run.postIds);
+  }, [imagesOn, ownerId, onImageEvent, trackImages]);
+  const resumeImagesRef = useRef(tryResumeImages);
+  resumeImagesRef.current = tryResumeImages;
 
   const end = useCallback(() => {
     lock.current?.release();
@@ -48,9 +126,16 @@ export function PostsSection({ ownerId, profile }: { ownerId: string; profile: P
       if (event.type === 'post') {
         setRunning((r) => (r ? { ...r, posts: [...r.posts, event.post] } : r));
       } else if (event.type === 'final') {
+        const planned = stepRef.current === 'plan';
         end();
         setError(null);
         setBatches((list) => [event.batch, ...list.filter((b) => b.id !== event.batch.id)]);
+        if (planned && imagesOn) {
+          makeImages(
+            event.batch,
+            event.batch.posts.map((p) => p.id),
+          );
+        }
         setFewer(event.batch.posts.length < POSTS_LIMITS.posts ? event.batch.posts.length : null);
       } else if (event.type === 'error') {
         end();
@@ -69,11 +154,12 @@ export function PostsSection({ ownerId, profile }: { ownerId: string; profile: P
         window.location.assign('/enter');
       }
     },
-    [end],
+    [end, imagesOn, makeImages],
   );
 
   const begin = useCallback((run: RunningRead, state: Running) => {
     request.current = run;
+    stepRef.current = state.step;
     lock.current ??= holdWakeLock();
     setError(null);
     setFewer(null);
@@ -99,14 +185,24 @@ export function PostsSection({ ownerId, profile }: { ownerId: string; profile: P
     let active = true;
     void (async () => {
       const saved = await loadBatches(ownerId);
+      const savedImages = await loadImages(ownerId);
       if (!active) return;
+      batchesRef.current = saved;
       setBatches(saved);
+      setImages(savedImages);
       await tryResume();
+      await resumeImagesRef.current();
     })();
     const onVisible = () => {
-      if (document.visibilityState === 'visible') void tryResume();
+      if (document.visibilityState === 'visible') {
+        void tryResume();
+        void resumeImagesRef.current();
+      }
     };
-    const onOnline = () => void tryResume();
+    const onOnline = () => {
+      void tryResume();
+      void resumeImagesRef.current();
+    };
     document.addEventListener('visibilitychange', onVisible);
     window.addEventListener('online', onOnline);
     return () => {
@@ -116,6 +212,8 @@ export function PostsSection({ ownerId, profile }: { ownerId: string; profile: P
       window.removeEventListener('online', onOnline);
       request.current?.stop();
       lock.current?.release();
+      for (const run of imageRuns.current) run.stop();
+      imageLock.current?.release();
     };
   }, [ownerId, tryResume]);
 
@@ -130,7 +228,21 @@ export function PostsSection({ ownerId, profile }: { ownerId: string; profile: P
   }
 
   const cta = ctaFor(profile);
-  const busy = running !== null || resuming;
+  const busy = running !== null || resuming || making.size > 0;
+
+  function imageOf(post: Post, batch: PostBatch, batchButton: boolean) {
+    const retry = () => makeImages(batch, [post.id]);
+    const saved = images.get(post.id);
+    let state: ImageState;
+    if (!imagesOn) state = { kind: 'off' };
+    else if (saved) state = { kind: 'ready', image: saved };
+    else if (making.has(post.id)) state = { kind: 'making' };
+    else {
+      const code = failed.get(post.id);
+      state = code ? { kind: 'failed', code } : { kind: 'none' };
+    }
+    return { state, onRetry: batchButton ? undefined : retry };
+  }
   return (
     <section className="mt-6 flex flex-col gap-3">
       <Button type="button" onClick={make} disabled={!cta || busy}>
@@ -154,21 +266,49 @@ export function PostsSection({ ownerId, profile }: { ownerId: string; profile: P
       )}
       {running?.step === 'plan' &&
         running.posts.map((post) => <PostCard key={post.id} post={post} cta={cta ?? post.cta} />)}
-      {batches.map((batch) => (
-        <div key={batch.id} className="flex flex-col gap-3">
-          {isStale(batch, profile) && (
-            <div className="rounded-control bg-accent-tint px-4 py-3 text-[15px] text-accent-tint-ink">
-              <p>{t('stale')}</p>
-              <Button type="button" className="mt-2" onClick={() => update(batch)} disabled={busy}>
-                {t('update')}
+      {batches.map((batch) => {
+        const needsImages =
+          imagesOn && !batch.posts.some((p) => images.has(p.id) || making.has(p.id));
+        return (
+          <div key={batch.id} className="flex flex-col gap-3">
+            {needsImages && (
+              <Button
+                type="button"
+                onClick={() =>
+                  makeImages(
+                    batch,
+                    batch.posts.map((p) => p.id),
+                  )
+                }
+                disabled={busy}
+              >
+                {t('images.make')}
               </Button>
-            </div>
-          )}
-          {batch.posts.map((post) => (
-            <PostCard key={post.id} post={post} cta={cta ?? post.cta} />
-          ))}
-        </div>
-      ))}
+            )}
+            {isStale(batch, profile) && (
+              <div className="rounded-control bg-accent-tint px-4 py-3 text-[15px] text-accent-tint-ink">
+                <p>{t('stale')}</p>
+                <Button
+                  type="button"
+                  className="mt-2"
+                  onClick={() => update(batch)}
+                  disabled={busy}
+                >
+                  {t('update')}
+                </Button>
+              </div>
+            )}
+            {batch.posts.map((post) => (
+              <PostCard
+                key={post.id}
+                post={post}
+                cta={cta ?? post.cta}
+                image={imageOf(post, batch, needsImages)}
+              />
+            ))}
+          </div>
+        );
+      })}
     </section>
   );
 }

@@ -26,6 +26,14 @@
   step just marked done. Resume now marks those steps done in the copy it
   saves.
 
+- 2026-10-25: Task 7. The story sheet closes with its Close button or Escape;
+  the image itself isn't a tap target (biome's a11y rules).
+- 2026-10-25: Task 7. "Try again" stays available on a failed card while the
+  other images are still being made: each retry is its own run.
+- 2026-10-25: Task 7. `pnpm add sharp` rewrote `pnpm-lock.yaml` in pnpm's style;
+  biome put it back in the repo's (double quotes), leaving only sharp's lines
+  changed from develop.
+
 ## RED
 
 Task 1:
@@ -70,6 +78,18 @@ Task 6:
       Tests  no tests
 ```
 
+Task 7:
+
+```
+ Test Files  1 failed (1)
+      Tests  no tests
+```
+
+```
+ Test Files  1 failed (1)
+      Tests  6 failed (6)
+```
+
 ## GREEN
 
 Task 1:
@@ -112,4 +132,11 @@ Task 6:
 ```
  Test Files  1 passed (1)
       Tests  14 passed (14)
+```
+
+Task 7 (`pnpm check`):
+
+```
+ Test Files  65 passed (65)
+      Tests  772 passed (772)
 ```

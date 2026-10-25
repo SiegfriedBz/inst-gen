@@ -1,0 +1,191 @@
+// @vitest-environment jsdom
+import 'fake-indexeddb/auto';
+import { cleanup, fireEvent, render, screen, waitFor } from '@testing-library/react';
+import { IDBFactory } from 'fake-indexeddb';
+import { NextIntlClientProvider } from 'next-intl';
+import { afterEach, beforeEach, describe, expect, test, vi } from 'vitest';
+import { PostsSection } from '@/components/posts/posts-section';
+import { resetStoreForTests, saveBrand } from '@/lib/brand/store';
+import type { Post, PostBatch } from '@/lib/posts/batch';
+import type { ImageEvent } from '@/lib/posts/image-client';
+import { type SavedImage, saveImage } from '@/lib/posts/image-store';
+import { profileHash } from '@/lib/posts/input';
+import { saveBatch } from '@/lib/posts/store';
+import { encodePostsLine, type PostsLine } from '@/lib/posts/stream';
+import messages from '@/messages/en.json';
+import { svargaProfile } from './helpers/brand';
+import { post } from './helpers/posts';
+
+type Start = { input: { batch: PostBatch; postIds: string[] }; onEvent: (e: ImageEvent) => void };
+const started: Start[] = [];
+let release: () => void = () => {};
+
+vi.mock('@/lib/posts/image-client', () => ({
+  startImages: vi.fn((input: Start['input'], onEvent: Start['onEvent']) => {
+    started.push({ input, onEvent });
+    return { stop: vi.fn(), done: new Promise<void>((resolve) => (release = resolve)) };
+  }),
+  resumeImages: vi.fn(async () => null),
+}));
+
+let fetchMock: ReturnType<typeof vi.fn>;
+
+beforeEach(() => {
+  globalThis.indexedDB = new IDBFactory();
+  resetStoreForTests();
+  started.length = 0;
+  fetchMock = vi.fn();
+  vi.stubGlobal('fetch', fetchMock);
+  vi.stubGlobal(
+    'URL',
+    Object.assign(URL, { createObjectURL: vi.fn(() => 'blob:x'), revokeObjectURL: vi.fn() }),
+  );
+});
+
+afterEach(() => {
+  cleanup();
+  vi.unstubAllGlobals();
+});
+
+const profile = svargaProfile();
+const six = Array.from({ length: 6 }, (_, i) =>
+  post({ id: `post-${i + 1}`, altText: `Alt ${i + 1}`, caption: `Caption ${i + 1}.` }),
+);
+
+function batch(posts: Post[], hash = profileHash(profile)): PostBatch {
+  return {
+    id: 'b1',
+    ownerId: 'svarga',
+    createdAt: '2026-10-25T09:00:00.000Z',
+    profileReadAt: '2026-10-24T09:00:00.000Z',
+    profileHash: hash,
+    promptVersion: 'posts-1',
+    model: 'm',
+    posts,
+    dropped: [],
+  };
+}
+
+function image(postId: string): SavedImage {
+  return {
+    postId,
+    batchId: 'b1',
+    ownerId: 'svarga',
+    story: new Blob(['s'], { type: 'image/jpeg' }),
+    post: new Blob(['p'], { type: 'image/jpeg' }),
+    imagePrompt: 'A villa deck at dusk',
+    model: 'm',
+    promptVersion: 'images-1',
+    createdAt: '2026-10-25T10:00:00.000Z',
+  };
+}
+
+const planAnswer = (posts: Post[]) =>
+  new Response(
+    [
+      ...posts.map((p, index): PostsLine => ({ type: 'post', index, post: p })),
+      {
+        type: 'final',
+        result: {
+          posts,
+          dropped: [],
+          promptVersion: 'posts-1',
+          model: 'm',
+          profileHash: profileHash(profile),
+        },
+      } satisfies PostsLine,
+    ]
+      .map(encodePostsLine)
+      .join(''),
+    { headers: { 'content-type': 'application/x-ndjson' } },
+  );
+
+async function renderSection(imagesOn = true) {
+  await saveBrand('svarga', profile);
+  return render(
+    <NextIntlClientProvider locale="en" messages={messages} timeZone="UTC">
+      <PostsSection ownerId="svarga" profile={profile} imagesOn={imagesOn} />
+    </NextIntlClientProvider>,
+  );
+}
+
+const makePosts = async () => {
+  const button = (await screen.findByRole('button', {
+    name: /Make my posts|Make 6 more/,
+  })) as HTMLButtonElement;
+  await waitFor(() => expect(button.disabled).toBe(false));
+  return button;
+};
+
+describe('images in the posts section', () => {
+  test('a saved plan starts its six images', async () => {
+    fetchMock.mockResolvedValue(planAnswer(six));
+    await renderSection();
+    fireEvent.click(await makePosts());
+    await waitFor(() => expect(started).toHaveLength(1));
+    expect(started[0].input.postIds).toEqual(six.map((p) => p.id));
+    expect(await screen.findAllByText('Making the image…')).toHaveLength(6);
+    expect(screen.queryByRole('button', { name: 'Make the images' })).toBeNull();
+  });
+
+  test('images arrive on their cards, and a failure says why', async () => {
+    fetchMock.mockResolvedValue(planAnswer(six));
+    await renderSection();
+    fireEvent.click(await makePosts());
+    await waitFor(() => expect(started).toHaveLength(1));
+    started[0].onEvent({ type: 'image', image: image('post-1') });
+    started[0].onEvent({ type: 'error', postId: 'post-2', code: 'image_blocked' });
+    expect(await screen.findByRole('img', { name: 'Alt 1' })).toBeTruthy();
+    expect(screen.getByText("This image couldn't be made. Try again for a new one.")).toBeTruthy();
+    fireEvent.click(screen.getByRole('button', { name: 'Try again' }));
+    expect(started[1].input.postIds).toEqual(['post-2']);
+  });
+
+  test('Make my posts stays disabled while images are made', async () => {
+    fetchMock.mockResolvedValue(planAnswer(six));
+    await renderSection();
+    fireEvent.click(await makePosts());
+    await waitFor(() => expect(started).toHaveLength(1));
+    const more = (await screen.findByRole('button', { name: 'Make 6 more' })) as HTMLButtonElement;
+    expect(more.disabled).toBe(true);
+    expect(
+      screen.getByText('Keep this page open for about a minute while your posts are made.'),
+    ).toBeTruthy();
+    for (const p of six) started[0].onEvent({ type: 'image', image: image(p.id) });
+    release();
+    await waitFor(() => expect(more.disabled).toBe(false));
+  });
+
+  test('a rewrite starts no image', async () => {
+    await saveBatch(batch(six, 'stale000'));
+    for (const p of six) await saveImage(image(p.id));
+    fetchMock.mockResolvedValue(planAnswer(six));
+    await renderSection();
+    fireEvent.click(await screen.findByRole('button', { name: 'Update captions' }));
+    await waitFor(() => expect(fetchMock).toHaveBeenCalledTimes(1));
+    await waitFor(() =>
+      expect(screen.queryByRole('button', { name: 'Update captions' })).toBeNull(),
+    );
+    expect(started).toHaveLength(0);
+    expect(screen.getAllByRole('img')).toHaveLength(6);
+  });
+
+  test('an old batch shows Make the images', async () => {
+    await saveBatch(batch(six));
+    await renderSection();
+    const button = await screen.findByRole('button', { name: 'Make the images' });
+    fireEvent.click(button);
+    expect(started[0].input.postIds).toEqual(six.map((p) => p.id));
+  });
+
+  test('images off: no request, the off line on every card', async () => {
+    fetchMock.mockResolvedValue(planAnswer(six));
+    await renderSection(false);
+    fireEvent.click(await makePosts());
+    expect(
+      await screen.findAllByText("Images aren't turned on for your account yet."),
+    ).toHaveLength(6);
+    expect(started).toHaveLength(0);
+    expect(screen.queryByRole('button', { name: 'Make the images' })).toBeNull();
+  });
+});
