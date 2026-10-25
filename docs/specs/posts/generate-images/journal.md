@@ -62,6 +62,10 @@
   lamps, lanterns or candles." The spec names `images-1`; the version is bumped
   with the change, as the spec asks.
 
+- 2026-10-25: Maintainer's verdicts on the `images-1` post crops, "a tourist
+  would book this": Sen 2 and 4 (2 of 6); Svarga 1, 5 and 6 (3 of 6). Below the
+  spec's pass mark of 4 of 6 for each. No crop was said to cut its subject.
+
 ## RED
 
 Task 1:
