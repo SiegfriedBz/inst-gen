@@ -73,9 +73,10 @@ most sample replies as written, with $0 spent on everything but images
 | 2.3 | `posts/generate-images`: tall images, post and story crops | spec | done |
 | 2.4 | `posts/editor-download`: feed preview, edits, owner's-language view, saving to the phone | spec | done |
 | 2.5 | `platform/home-tabs`: two tabs on the home screen, captions that follow business edits, the language switch at the top right | spec | done |
-| 2.6 | `reviews/reply-drafts`: warm and short replies, owner's-language view | spec | todo |
-| 2.7 | `platform/usage-counters`: per-owner daily limits in Upstash Redis, the usage bar | spec | todo |
-| 2.8 | `guide/owner-guide`: How-to page and printable PDF, three languages | spec | todo |
+| 2.6 | `posts/suggestions`: today's attempts of six suggestions, saved in two steps, cleared at 3am; a faster language switch | spec | done |
+| 2.7 | `reviews/reply-drafts`: warm and short replies, owner's-language view | spec | todo |
+| 2.8 | `platform/usage-counters`: per-owner daily limits in Upstash Redis, the usage bar | spec | todo |
+| 2.9 | `guide/owner-guide`: How-to page and printable PDF, three languages | spec | todo |
 
 ## Later phases
 

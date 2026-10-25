@@ -26,7 +26,7 @@ the tabs add one control and take away a long scroll; captions follow the
 business details without a button; and the language switch moves from the
 bottom of the page to the top right, where people look for it.
 
-The tabs leave room for a third, review replies (2.6 `reviews/reply-drafts`).
+The tabs leave room for a third, review replies (2.7 `reviews/reply-drafts`).
 
 ## Behaviour
 
@@ -367,7 +367,7 @@ Scenario: Vietnamese hashtags keep their letters
 
 ## Out of scope
 
-- The third tab, review replies: 2.6 `reviews/reply-drafts` adds it to this
+- The third tab, review replies: 2.7 `reviews/reply-drafts` adds it to this
   row.
 - Rewriting images after a business edit: never automatic (roadmap rule).
 - Remembering the last tab, sticky tabs, a bottom tab bar.
@@ -375,4 +375,4 @@ Scenario: Vietnamese hashtags keep their letters
   resumed image, "Edited" cleared on a dropped rewrite answer, the translate
   client's failure paths, the v4 upgrade reading images at once,
   `profileHash` recomputed on every render): later, when they bite.
-- Usage counters and the usage bar: 2.7 `platform/usage-counters`.
+- Usage counters and the usage bar: 2.8 `platform/usage-counters`.

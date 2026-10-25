@@ -48,7 +48,7 @@ browser asks for all six at once (decision 0005: "Image (×6, in parallel)").
 
 ### Who can make images
 
-Until 2.7 (`platform/usage-counters`) counts image spend, decision 0004 says
+Until 2.8 (`platform/usage-counters`) counts image spend, decision 0004 says
 images are made only for the two pilot spas. A new server variable,
 **`IMAGE_OWNERS`**, lists the owner ids allowed, comma-separated
 (`sen,svarga`). It goes in `.env.example` with a made-up value.
@@ -290,7 +290,7 @@ Scenario: Forget removes the images
 ## Known limits
 
 - **Spend is capped only by the prepaid balance and the allowlist** until
-  2.7 counts image calls a month. An allowed owner can make as many images as
+  2.8 counts image calls a month. An allowed owner can make as many images as
   the balance pays for; "Try again" spends again.
 - **The crop is always centred.** The style line asks the model to keep the
   subject in the middle; a subject near the top or bottom is cut in the post.
@@ -308,7 +308,7 @@ Scenario: Forget removes the images
 
 - Regenerating one image, moving the crop, the feed preview and downloads:
   2.4 `posts/editor-download`.
-- Counting image spend a month and the usage bar: 2.7
+- Counting image spend a month and the usage bar: 2.8
   `platform/usage-counters`.
 - Images that show the business's real premises, products or staff: never
   (Global Plan, "Honest images").

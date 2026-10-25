@@ -415,7 +415,7 @@ Scenario: The model is busy
 
 - **Quota.** A batch, or a rewrite, costs 1 request of the text model's free
   daily quota, shared with brand reads and evals. Per-owner limits and the
-  usage bar are 2.7's.
+  usage bar are 2.8's.
 - **The price check is best effort.** Prices written in words, or a price
   equal in digits to another offering's, pass. The owner reads every caption
   before posting.
@@ -436,6 +436,6 @@ Scenario: The model is busy
 - Images, post and story crops: 2.3 `posts/generate-images`.
 - The feed preview, editing a caption, copying, the owner's-language view,
   regenerating one post, and downloads: 2.4 `posts/editor-download`.
-- Daily limits and the usage bar: 2.7 `platform/usage-counters`.
+- Daily limits and the usage bar: 2.8 `platform/usage-counters`.
 - Captions in other languages, scheduling and publishing: later phases.
 - Instagram as a source of tone or past captions: phase 3.

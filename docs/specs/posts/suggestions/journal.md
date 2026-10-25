@@ -8,6 +8,9 @@
 - 2026-10-25: "Create new image" and "See the story image" keep their keys
   under `posts.images` (`newImage`, `seeStory`); the spec's table lists them
   as `posts.newImage` and `posts.seeStory`. Only the place of the key differs.
+- 2026-10-25: Roadmap: this item is 2.6; reviews, usage counters and the owner
+  guide move to 2.7, 2.8 and 2.9 in the specs, in 2.5's spec where it points
+  forward, and in decision 0004.
 - 2026-10-25: Older kept records (before 3am) only feed `recent`; image runs
   are resumed for today's attempts only, so a run left over from yesterday
   is dropped rather than saving an image for a cleared attempt.
@@ -43,4 +46,15 @@
 - Task 6: `language-switch.test.tsx` failed to load (`Failed to resolve import "@/components/locale-provider"`); the language-change test: `expected 2 to be 1` (a second search)
 - Task 5: none; the browser tests follow the code already proven red then green in Tasks 1 to 4, as the plan orders them (whole suite: `38 passed (32.0s)`)
 
+## Still owed (the owners, during the pilot)
+
+- On a real iPhone and a real Android phone: "Save the 2 images" opens one
+  share sheet with both images and "Save 2 images" puts them side by side in
+  Photos; "Copy the text" then pastes in Instagram.
+- Read back the new strings in Indonesian and Vietnamese.
+- On the deployment: how the language switch feels now.
+
 ## GREEN
+
+- Vitest, whole suite: `Tests  920 passed (920)`
+- Playwright, whole suite: `39 passed (37.9s)`
