@@ -36,6 +36,9 @@ export type Flag = z.infer<typeof flagSchema>;
 const droppedSchema = z.object({ field: text, reason: text });
 export type Dropped = z.infer<typeof droppedSchema>;
 
+// A cleaned hashtag: letters with their accents and digits, no `#`.
+export const HASHTAG = /^[\p{L}\p{M}\p{N}]+$/u;
+
 export const postSchema = z.object({
   id: text,
   type: z.enum(POST_TYPES),
@@ -43,7 +46,7 @@ export const postSchema = z.object({
   scene: z.enum(SCENES),
   caption: text,
   cta: z.string(),
-  hashtags: z.array(z.string().regex(/^[a-z0-9]+$/)).max(POSTS_LIMITS.hashtags),
+  hashtags: z.array(z.string().regex(HASHTAG)).max(POSTS_LIMITS.hashtags),
   altText: z.string().max(POSTS_LIMITS.altTextChars),
   imagePrompt: text,
   unchecked: z.array(flagSchema),

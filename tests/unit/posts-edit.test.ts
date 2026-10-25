@@ -45,6 +45,7 @@ const six = Array.from({ length: 6 }, (_, i) =>
 describe('editing a post', () => {
   test('hashtags are cleaned on save', () => {
     expect(parseHashtags('#DaNang massage, danang #spa')).toEqual(['danang', 'massage', 'spa']);
+    expect(parseHashtags('#ĐàNẵng, #spa')).toEqual(['đànẵng', 'spa']);
   });
 
   test("an edited caption isn't cut", () => {
