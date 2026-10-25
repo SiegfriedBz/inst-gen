@@ -155,6 +155,10 @@ no button.
   promptVersion, createdAt }`. A saved translation is used only while its
   `captionHash` matches the caption; an edit or a rewrite makes the next
   view call the model again. "Forget my business" deletes them.
+- **Read only when asked.** The pilot's phones are slow, so a translation
+  is read from the store only when the owner taps "Show in…", never for
+  every card when the list opens. A saved one shows at once, with no
+  network.
 - **Failures**, shown in the box with no retry inside the call: `model_busy`
   (429 or 503) "Shopfront has used today's free translations. Try again
   tomorrow."; `model_timeout` "The translation took too long. Try again.";
