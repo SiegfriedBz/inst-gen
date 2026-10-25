@@ -22,6 +22,7 @@ export function PostCard({
   onSave,
   onRewrite,
   busy = false,
+  editBusy = busy,
   translation,
   takeAway,
 }: {
@@ -38,6 +39,8 @@ export function PostCard({
   // "Rewrite this one too", on an edited post that is out of date.
   onRewrite?: () => void;
   busy?: boolean;
+  // Only a step that replaces the words holds "Edit"; images don't.
+  editBusy?: boolean;
   translation?: ReactNode;
   takeAway?: ReactNode;
 }) {
@@ -112,7 +115,7 @@ export function PostCard({
           type="button"
           className="mt-3 py-1.5 text-[15px] font-medium text-accent underline disabled:opacity-60"
           onClick={() => setEditing(true)}
-          disabled={busy}
+          disabled={editBusy}
         >
           {t('edit.edit')}
         </button>

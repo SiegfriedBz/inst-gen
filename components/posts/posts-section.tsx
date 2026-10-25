@@ -412,6 +412,7 @@ export function PostsSection({
                     : undefined
                 }
                 busy={busy}
+                editBusy={running !== null || resuming}
                 translation={
                   <CaptionTranslation
                     key={post.caption}

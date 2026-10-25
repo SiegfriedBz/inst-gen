@@ -132,6 +132,27 @@ describe('edited posts and Update captions', () => {
     expect(screen.queryByRole('button', { name: 'Rewrite this one too' })).toBeNull();
   });
 
+  test('edit is disabled while a rewrite runs', async () => {
+    await saveBatch(batch(sixPosts));
+    let answer: (r: Response) => void = () => {};
+    fetchMock.mockReturnValue(new Promise<Response>((resolve) => (answer = resolve)));
+    await renderSection(changed());
+    const update = await screen.findByRole('button', { name: 'Update captions' });
+    await waitFor(() => expect((update as HTMLButtonElement).disabled).toBe(false));
+    fireEvent.click(update);
+    const edits = (await screen.findAllByRole('button', { name: 'Edit' })) as HTMLButtonElement[];
+    await waitFor(() => expect(edits.every((b) => b.disabled)).toBe(true));
+    answer(rewriteAnswer(sixPosts.map((p) => p.id)));
+    await screen.findByText('New post-1.');
+    await waitFor(() =>
+      expect(
+        (screen.getAllByRole('button', { name: 'Edit' }) as HTMLButtonElement[]).every(
+          (b) => !b.disabled,
+        ),
+      ).toBe(true),
+    );
+  });
+
   test("an edited post's flags follow the new details", async () => {
     const flagged = { ...sixPosts[0], caption: 'Only 990k.', edited: true, unchecked: [] };
     await saveBatch(batch([flagged]));

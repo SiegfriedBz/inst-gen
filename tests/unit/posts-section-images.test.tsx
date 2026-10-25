@@ -233,6 +233,18 @@ describe('images in the posts section', () => {
     await waitFor(() => expect(more.disabled).toBe(false));
   });
 
+  test('edit can be tapped while images are made', async () => {
+    fetchMock.mockResolvedValue(planAnswer(six));
+    await renderSection();
+    fireEvent.click(await makePosts());
+    await waitFor(() => expect(started).toHaveLength(1));
+    const more = (await screen.findByRole('button', { name: 'Make 6 more' })) as HTMLButtonElement;
+    expect(more.disabled).toBe(true);
+    const edits = (await screen.findAllByRole('button', { name: 'Edit' })) as HTMLButtonElement[];
+    expect(edits).toHaveLength(6);
+    await waitFor(() => expect(edits.every((b) => !b.disabled)).toBe(true));
+  });
+
   test('a rewrite starts no image', async () => {
     await saveBatch(batch(six, 'stale000'));
     for (const p of six) await saveImage(image(p.id));
