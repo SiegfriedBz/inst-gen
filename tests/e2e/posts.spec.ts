@@ -1,0 +1,67 @@
+import { expect, type Page, test } from '@playwright/test';
+import { senProfile } from '../unit/helpers/brand';
+import { fulfilRead, streamBody } from './helpers/brand-stream';
+import { fulfilPosts, postsBody } from './helpers/posts-stream';
+
+// Test values from playwright.config.ts; not secrets.
+const SEN = 'test-lotus-river-sen';
+
+test.use({ locale: 'en-US' });
+
+async function signInAndRead(page: Page) {
+  await page.goto('/enter');
+  await page.getByLabel('Passphrase').fill(SEN);
+  await page.getByRole('button', { name: 'Enter' }).click();
+  await expect(page).toHaveURL('/');
+  await page.getByLabel('Your website').fill('sendanangmassage.com');
+  await page.getByRole('button', { name: 'Read my website' }).click();
+}
+
+test('posts stream in, stay, and are rewritten after a brand edit', async ({ page }) => {
+  const profile = senProfile();
+  await fulfilRead(page, [streamBody(profile)]);
+  await page.route('**/api/posts/plan', async (route) => {
+    await new Promise((resolve) => setTimeout(resolve, 500));
+    await route.fulfill({
+      status: 200,
+      contentType: 'application/x-ndjson',
+      body: postsBody(profile),
+    });
+  });
+  await signInAndRead(page);
+
+  await page.getByRole('button', { name: 'Make my posts' }).click();
+  await expect(
+    page.getByText('Keep this page open for about a minute while your posts are made.'),
+  ).toBeVisible();
+  await expect(page.getByText('Caption 6.')).toBeVisible();
+  await expect(page.locator('article')).toHaveCount(6);
+
+  await page.reload();
+  await expect(page.locator('article')).toHaveCount(6);
+  await expect(page.getByRole('button', { name: 'Make 6 more' })).toBeVisible();
+
+  const rewrites = await fulfilPosts(page, 'rewrite', postsBody(profile, { caption: 'Rewritten' }));
+  await page.getByRole('button', { name: 'Edit Where and when' }).click();
+  await page.getByLabel('Opening hours').fill('Every day, 9am to midnight');
+  await page.getByRole('button', { name: 'Save' }).click();
+  await expect(
+    page.getByText('Your business details changed since these posts were made.'),
+  ).toBeVisible();
+  await page.getByRole('button', { name: 'Update captions' }).click();
+  await expect(page.getByText('Rewritten 1.')).toBeVisible();
+  expect(rewrites.count()).toBe(1);
+});
+
+test('a busy model says so and gives the button back', async ({ page }) => {
+  const profile = senProfile();
+  await fulfilRead(page, [streamBody(profile)]);
+  await fulfilPosts(page, 'plan', postsBody(profile, { error: 'model_busy' }));
+  await signInAndRead(page);
+
+  await page.getByRole('button', { name: 'Make my posts' }).click();
+  await expect(
+    page.getByText("Shopfront has used today's free writing. Try again tomorrow."),
+  ).toBeVisible();
+  await expect(page.getByRole('button', { name: 'Make my posts' })).toBeEnabled();
+});
