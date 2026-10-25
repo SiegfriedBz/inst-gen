@@ -1,7 +1,8 @@
 ---
 title: "Generate images"
 description: "Once a batch's captions are saved, the browser asks for its six images in parallel, one request each; the server makes a 9:16 image with Nano Banana 2.1, shrinks it to a 1080×1920 story and a centred 1080×1350 post crop, both JPEG, and the phone keeps them; only owners on an allowlist can make images until usage counters ship."
-status: draft
+status: approved
+approved: { by: siegfried.bozza@protonmail.com, at: 2026-10-25T11:54:39Z }
 date: "2026-10-25"
 ---
 
