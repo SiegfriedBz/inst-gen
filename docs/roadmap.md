@@ -69,7 +69,7 @@ most sample replies as written, with $0 spent on everything but images
 | # | Item | Kind | Status |
 |---|---|---|---|
 | 2.1 | Image model: portrait-capable, after a bake-off on the eval set; paid, at most $8 a month | decision 0004 | done |
-| 2.2 | `posts/generate-copy`: post plan, captions, hashtags, alt text | spec | todo |
+| 2.2 | `posts/generate-copy`: post plan, captions, hashtags, alt text | spec | in progress |
 | 2.3 | `posts/generate-images`: tall images, post and story crops | spec | todo |
 | 2.4 | `posts/editor-download`: feed preview, edits, owner's-language view, ZIP | spec | todo |
 | 2.5 | `reviews/reply-drafts`: warm and short replies, owner's-language view | spec | todo |
