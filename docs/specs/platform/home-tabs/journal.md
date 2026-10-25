@@ -13,5 +13,6 @@
 - Task 1: `Tests  4 failed | 34 passed (38)`
 - Task 2: `Tests  1 failed | 11 passed (12)`
 - Task 3: `Tests  1 failed | 30 passed (31)`
+- Task 4: `Tests  7 failed | 12 passed (19)` (`newestBatch is not a function`)
 
 ## GREEN
