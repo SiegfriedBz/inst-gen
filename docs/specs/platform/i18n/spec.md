@@ -58,6 +58,10 @@ there is nothing to gain from per-language addresses.
 
 ### The switch
 
+Since 2.5 (`platform/home-tabs`), the switch is three codes, EN · VI · ID, at
+the top right of the screen; see that spec. The rules below still hold
+otherwise.
+
 - A row of three links or buttons at the bottom of every screen, the
   passphrase screen included, just above the screen's footer line. Each
   language appears in its own name (the table above), so a reader finds theirs
@@ -91,8 +95,8 @@ there is nothing to gain from per-language addresses.
   (cookie, then `Accept-Language`, then English) and sets the matching
   `<html lang>`.
 - Not translated here: captions, hashtags and review replies, which are
-  generated in English (their owner's-language view is 2.4 and 2.5), and the
-  owner guide (2.7).
+  generated in English (their owner's-language view is 2.4 and 2.7), and the
+  owner guide (2.9).
 
 ### Wording
 
@@ -206,14 +210,14 @@ layout in all three languages.
 - The choice lives on one phone. A second phone, or cleared site data, starts
   again from that phone's language.
 - Dates and numbers aren't formatted yet: no screen shows any. The usage bar
-  (2.6) is the first, and formats them for the current language with
+  (2.8) is the first, and formats them for the current language with
   next-intl.
 - Right-to-left languages aren't considered; none of the three needs it.
 
 ## Out of scope
 
 - Captions, hashtags and replies in the owner's language: 2.4
-  `posts/editor-download` and 2.5 `reviews/reply-drafts`.
-- The owner guide in three languages: 2.7 `guide/owner-guide`.
+  `posts/editor-download` and 2.7 `reviews/reply-drafts`.
+- The owner guide in three languages: 2.9 `guide/owner-guide`.
 - Any language beyond these three, and a per-spa default language.
 - Language in the URL, and per-language pages for search engines.

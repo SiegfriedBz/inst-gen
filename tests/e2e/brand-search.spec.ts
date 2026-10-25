@@ -40,6 +40,7 @@ test('a read is followed by the search, whose additions show and stay', async ({
   );
 
   await page.reload();
+  await page.getByRole('tab', { name: 'Your business' }).click();
   await expect(page.getByText('hotel massage da nang')).toBeVisible();
   expect(searches.count()).toBe(1);
 });

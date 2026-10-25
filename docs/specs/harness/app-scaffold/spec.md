@@ -45,7 +45,7 @@ and no locale in the URL.
   the real passphrases.)
 - The text after the last hyphen is the **owner id** (`sen`, `svarga`, `dev`).
   The app greets the owner by that id, capitalised ("Sen", "Svarga", "Dev").
-  `platform/usage-counters` (2.6) will key the daily limits on the owner id and
+  `platform/usage-counters` (2.8) will key the daily limits on the owner id and
   decide how `dev` is treated.
 - All passphrases are in one secret environment variable, `PILOT_PASSPHRASES`,
   comma-separated. They are never in the code, the repo or a log line. Adding
@@ -256,7 +256,7 @@ others arrive with later specs and are checked then.
 | Account | Used from | How to check there is no card |
 |---|---|---|
 | Vercel (Hobby) | this spec | Team or account Settings → Billing: plan "Hobby", no payment method listed |
-| Upstash | 2.6 `platform/usage-counters` | Console → Account → Billing: "Free" plan, no payment method |
+| Upstash | 2.8 `platform/usage-counters` | Console → Account → Billing: "Free" plan, no payment method |
 | Cloudflare (Workers AI) | 2.3 `posts/generate-images` | Dashboard → Manage Account → Billing: no payment method, Workers plan "Free" |
 | Google AI Studio (Gemini) | 1.1 `brand/extract-site` | Google Cloud console for the key's project → Billing: "This project has no billing account" |
 
@@ -352,7 +352,7 @@ and the dark-mode screen.
 ## Out of scope
 
 - Indonesian and Vietnamese, and the language switch: `platform/i18n` (0.6).
-- Usage counters, Upstash and the usage bar: `platform/usage-counters` (2.6).
+- Usage counters, Upstash and the usage bar: `platform/usage-counters` (2.8).
 - Pasting a website link and everything after it: phase 1 and 2 specs.
 - Sign-out, accounts and public sign-up: phase 4.
 - A custom domain and a real logo.

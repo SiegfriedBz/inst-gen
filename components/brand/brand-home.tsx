@@ -13,6 +13,7 @@ import {
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { lastReadLabel } from '@/lib/brand/display';
 import { changedUnsourced, countOwnerEdits, type SectionId } from '@/lib/brand/edit';
 import type { BrandErrorCode, PartialProfile, Profile } from '@/lib/brand/profile';
@@ -27,12 +28,18 @@ import {
   saveBrand,
 } from '@/lib/brand/store';
 import { holdWakeLock } from '@/lib/brand/wake-lock';
+import { ctaFor } from '@/lib/posts/input';
+import { applyCta } from '@/lib/posts/store';
+import { PostsSection } from '../posts/posts-section';
 import { BrandPanel, type SearchState } from './panel';
 import { Reading } from './reading';
 import { SectionSheet } from './section-sheet';
 
 // The home screen (docs/specs/brand/brand-panel, "The home screen"): no
-// business yet, reading, or the panel. Everything is kept on the phone.
+// business yet, reading, or the panel. Everything is kept on the phone. With
+// the panel come two tabs, "Your business" and "Create your posts"
+// (docs/specs/platform/home-tabs): the app opens on the posts, and a read of
+// any kind comes back to the business.
 
 type View =
   | { kind: 'loading' }
@@ -42,11 +49,19 @@ type View =
 
 type Notice = 'invalidSaved' | 'notKept' | null;
 
-export function BrandHome({ ownerId }: { ownerId: string }) {
+type HomeTab = 'business' | 'posts';
+
+export function BrandHome({ ownerId, imagesOn }: { ownerId: string; imagesOn: boolean }) {
   const t = useTranslations('brand');
+  // Read by the load callbacks, so a language change doesn't run the load
+  // again (a second search, a reload of the brand).
+  const tRef = useRef(t);
+  tRef.current = t;
   const home = useTranslations('home');
   const locale = useLocale();
   const [view, setView] = useState<View>({ kind: 'loading' });
+  // Not remembered: every open lands on "Create your posts".
+  const [tab, setTab] = useState<HomeTab>('posts');
   const [saved, setSaved] = useState<Profile | null>(null);
   const [ownerEdited, setOwnerEdited] = useState<string[]>([]);
   const [url, setUrl] = useState('');
@@ -172,7 +187,7 @@ export function BrandHome({ ownerId }: { ownerId: string }) {
         setError(null);
         setNotice(event.kept ? null : 'notKept');
         setView({ kind: 'panel' });
-        setAnnounce(t('home.announceDone'));
+        setAnnounce(tRef.current('home.announceDone'));
         if (event.kept) void requestPersistence();
         startSearch(event.profile);
       } else if (event.type === 'error') {
@@ -188,19 +203,17 @@ export function BrandHome({ ownerId }: { ownerId: string }) {
         window.location.assign('/enter');
       }
     },
-    [endRead, t, startSearch],
+    [endRead, startSearch],
   );
 
-  const begin = useCallback(
-    (read: RunningRead, readUrl: string) => {
-      running.current = read;
-      lock.current ??= holdWakeLock();
-      setError(null);
-      setView({ kind: 'reading', url: readUrl, partial: {} });
-      setAnnounce(t('home.announceReading'));
-    },
-    [t],
-  );
+  const begin = useCallback((read: RunningRead, readUrl: string) => {
+    running.current = read;
+    lock.current ??= holdWakeLock();
+    setError(null);
+    setTab('business');
+    setView({ kind: 'reading', url: readUrl, partial: {} });
+    setAnnounce(tRef.current('home.announceReading'));
+  }, []);
 
   const tryResume = useCallback(async () => {
     const read = await resumeRead(ownerId, onEvent);
@@ -263,13 +276,15 @@ export function BrandHome({ ownerId }: { ownerId: string }) {
   async function forget() {
     setConfirm(null);
     stopSearch();
-    await forgetBrand(ownerId);
+    // The posts section closes first, which stops its run, so nothing it
+    // was making is saved after the delete.
+    setView({ kind: 'empty' });
     setSaved(null);
     setOwnerEdited([]);
     setUrl('');
     setNotice(null);
     setError(null);
-    setView({ kind: 'empty' });
+    await forgetBrand(ownerId);
   }
 
   async function saveEdit(profile: Profile) {
@@ -277,6 +292,9 @@ export function BrandHome({ ownerId }: { ownerId: string }) {
       ? [...new Set([...ownerEdited, ...changedUnsourced(saved, profile)])]
       : ownerEdited;
     const kept = await saveBrand(ownerId, profile, new Date(), edited);
+    // A WhatsApp edit reaches every post's call to action, with no model call.
+    const cta = ctaFor(profile);
+    if (kept && cta) await applyCta(ownerId, cta);
     setSaved(profile);
     setOwnerEdited(edited);
     if (!kept) setNotice('notKept');
@@ -336,74 +354,88 @@ export function BrandHome({ ownerId }: { ownerId: string }) {
       )}
 
       {view.kind === 'panel' && saved && (
-        <>
-          <p className="mb-4 text-[15px] leading-normal text-ink-secondary">
-            {t('home.intro', { name: saved.name.value })}
-          </p>
-          <BrandPanel
-            profile={saved}
-            editable
-            onEdit={setEditing}
-            ownerEdited={ownerEdited}
-            search={search}
-          />
-          <p className="mt-4 text-[13px] text-ink-secondary">{t('home.postsSoon')}</p>
-          <div className="mt-6 flex flex-col gap-2 border-t border-edge pt-4">
-            <p className="truncate text-[15px]">{saved.siteUrl}</p>
-            <p className="text-[13px] text-ink-secondary">
-              {t('home.lastRead', { when: lastReadLabel(saved.readAt, new Date(), locale) })}
+        <Tabs value={tab} onValueChange={(value) => setTab(value as HomeTab)}>
+          <TabsList aria-label={home('tabs.label')}>
+            <TabsTrigger value="business">{home('tabs.business')}</TabsTrigger>
+            <TabsTrigger value="posts">{home('tabs.posts')}</TabsTrigger>
+          </TabsList>
+          <TabsContent value="business" hidden={tab !== 'business'} className="mt-5">
+            <p className="mb-4 text-[15px] leading-normal text-ink-secondary">
+              {t('home.intro', { name: saved.name.value })}
             </p>
-            <button
-              type="button"
-              onClick={() => (edits > 0 ? setConfirm('reread') : reread())}
-              className="press mt-2 inline-flex h-12 w-full items-center justify-center rounded-control border border-edge px-4 text-[15px] font-medium text-ink outline-none focus-visible:ring-2 focus-visible:ring-accent"
-            >
-              {t('home.reread')}
-            </button>
-            <button
-              type="button"
-              onClick={() => setConfirm('forget')}
-              className="min-h-11 text-[15px] font-medium text-error outline-none focus-visible:ring-2 focus-visible:ring-accent"
-            >
-              {t('home.forget')}
-            </button>
-          </div>
-          <SectionSheet
-            profile={saved}
-            section={editing}
-            onSave={saveEdit}
-            onClose={() => setEditing(null)}
-          />
-          <AlertDialog open={confirm !== null} onOpenChange={(open) => !open && setConfirm(null)}>
-            <AlertDialogContent>
-              {confirm === 'reread' ? (
-                <>
-                  <AlertDialogTitle>{t('reread.title')}</AlertDialogTitle>
-                  <AlertDialogDescription>
-                    {t('reread.body', { count: edits })}
-                  </AlertDialogDescription>
-                  <div className="flex gap-2">
-                    <AlertDialogCancel>{t('reread.cancel')}</AlertDialogCancel>
-                    <AlertDialogAction onClick={reread}>{t('reread.confirm')}</AlertDialogAction>
-                  </div>
-                </>
-              ) : (
-                <>
-                  <AlertDialogTitle>
-                    {t('forget.title', { name: saved.name.value })}
-                  </AlertDialogTitle>
-                  <AlertDialogDescription>{t('forget.body')}</AlertDialogDescription>
-                  <div className="flex gap-2">
-                    <AlertDialogCancel>{t('forget.cancel')}</AlertDialogCancel>
-                    <AlertDialogAction destructive onClick={() => void forget()}>
-                      {t('forget.confirm')}
-                    </AlertDialogAction>
-                  </div>
-                </>
-              )}
-            </AlertDialogContent>
-          </AlertDialog>
-        </>
+            <BrandPanel
+              profile={saved}
+              editable
+              onEdit={setEditing}
+              ownerEdited={ownerEdited}
+              search={search}
+            />
+            <div className="mt-6 flex flex-col gap-2 border-t border-edge pt-4">
+              <p className="truncate text-[15px]">{saved.siteUrl}</p>
+              <p className="text-[13px] text-ink-secondary">
+                {t('home.lastRead', { when: lastReadLabel(saved.readAt, new Date(), locale) })}
+              </p>
+              <button
+                type="button"
+                onClick={() => (edits > 0 ? setConfirm('reread') : reread())}
+                className="press mt-2 inline-flex h-12 w-full items-center justify-center rounded-control border border-edge px-4 text-[15px] font-medium text-ink outline-none focus-visible:ring-2 focus-visible:ring-accent"
+              >
+                {t('home.reread')}
+              </button>
+              <button
+                type="button"
+                onClick={() => setConfirm('forget')}
+                className="min-h-11 text-[15px] font-medium text-error outline-none focus-visible:ring-2 focus-visible:ring-accent"
+              >
+                {t('home.forget')}
+              </button>
+            </div>
+            <SectionSheet
+              profile={saved}
+              section={editing}
+              onSave={saveEdit}
+              onClose={() => setEditing(null)}
+            />
+            <AlertDialog open={confirm !== null} onOpenChange={(open) => !open && setConfirm(null)}>
+              <AlertDialogContent>
+                {confirm === 'reread' ? (
+                  <>
+                    <AlertDialogTitle>{t('reread.title')}</AlertDialogTitle>
+                    <AlertDialogDescription>
+                      {t('reread.body', { count: edits })}
+                    </AlertDialogDescription>
+                    <div className="flex gap-2">
+                      <AlertDialogCancel>{t('reread.cancel')}</AlertDialogCancel>
+                      <AlertDialogAction onClick={reread}>{t('reread.confirm')}</AlertDialogAction>
+                    </div>
+                  </>
+                ) : (
+                  <>
+                    <AlertDialogTitle>
+                      {t('forget.title', { name: saved.name.value })}
+                    </AlertDialogTitle>
+                    <AlertDialogDescription>{t('forget.body')}</AlertDialogDescription>
+                    <div className="flex gap-2">
+                      <AlertDialogCancel>{t('forget.cancel')}</AlertDialogCancel>
+                      <AlertDialogAction destructive onClick={() => void forget()}>
+                        {t('forget.confirm')}
+                      </AlertDialogAction>
+                    </div>
+                  </>
+                )}
+              </AlertDialogContent>
+            </AlertDialog>
+          </TabsContent>
+          <TabsContent value="posts" hidden={tab !== 'posts'}>
+            <PostsSection
+              ownerId={ownerId}
+              profile={saved}
+              imagesOn={imagesOn}
+              active={tab === 'posts'}
+              searching={search === 'running'}
+            />
+          </TabsContent>
+        </Tabs>
       )}
     </div>
   );

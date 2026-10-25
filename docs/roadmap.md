@@ -23,8 +23,8 @@ Settled on 2026-10-23:
 - No database in the MVP. Brand, drafts and images live in the owner's
   browser; the server keeps only usage counters (Upstash Redis).
 - Hosting on Vercel Hobby, functions in Singapore; allowed because the MVP is
-  free and non-commercial (decision 0001). Images from Workers AI, text from
-  Gemini (free tiers, never a card on file).
+  free and non-commercial (decision 0001). Text from Gemini's free tier,
+  never a card on file; images from a paid Gemini model (decision 0004).
 - Portrait posts (1080×1350) with a story crop (1080×1920). Captions in
   English, each ending with a WhatsApp call to action.
 - App screens and the owner guide in English, Indonesian and Vietnamese. Every
@@ -33,8 +33,9 @@ Settled on 2026-10-23:
 - A usage bar on every screen shows what's left today and when it resets, in
   the owner's time zone. Brand-panel edits re-run captions only; images change
   only when the owner taps regenerate.
-- Images come from a free model that makes portrait images natively (decision
-  0004). Gemini's image models have no free API tier.
+- Images come from Nano Banana 2.1 at 9:16, in a prepaid Google project of
+  their own, capped at $8 a month (decision 0004, 2026-10-25): the free
+  Workers AI models drew people badly.
 
 ## Phase 0: Foundations
 
@@ -62,17 +63,20 @@ Gate: the right brand profile on 16 of the 20 saved site fixtures.
 ## Phase 2: Posts and review replies (the MVP)
 
 Gate: Sen and Svarga would each post at least 4 of their 6 drafts and send
-most sample replies as written, with $0 spent.
+most sample replies as written, with $0 spent on everything but images
+(at most $8 a month, decision 0004).
 
 | # | Item | Kind | Status |
 |---|---|---|---|
-| 2.1 | Image model: free, portrait-capable, after a bake-off on the eval set | decision 0004 | todo |
-| 2.2 | `posts/generate-copy`: post plan, captions, hashtags, alt text | spec | todo |
-| 2.3 | `posts/generate-images`: tall images, post and story crops | spec | todo |
-| 2.4 | `posts/editor-download`: feed preview, edits, owner's-language view, ZIP | spec | todo |
-| 2.5 | `reviews/reply-drafts`: warm and short replies, owner's-language view | spec | todo |
-| 2.6 | `platform/usage-counters`: per-owner daily limits in Upstash Redis, the usage bar | spec | todo |
-| 2.7 | `guide/owner-guide`: How-to page and printable PDF, three languages | spec | todo |
+| 2.1 | Image model: portrait-capable, after a bake-off on the eval set; paid, at most $8 a month | decision 0004 | done |
+| 2.2 | `posts/generate-copy`: post plan, captions, hashtags, alt text | spec | done |
+| 2.3 | `posts/generate-images`: tall images, post and story crops | spec | done |
+| 2.4 | `posts/editor-download`: feed preview, edits, owner's-language view, saving to the phone | spec | done |
+| 2.5 | `platform/home-tabs`: two tabs on the home screen, captions that follow business edits, the language switch at the top right | spec | done |
+| 2.6 | `posts/suggestions`: today's attempts of six suggestions, saved in two steps, cleared at 3am; a faster language switch | spec | done |
+| 2.7 | `reviews/reply-drafts`: warm and short replies, owner's-language view | spec | todo |
+| 2.8 | `platform/usage-counters`: per-owner daily limits in Upstash Redis, the usage bar | spec | todo |
+| 2.9 | `guide/owner-guide`: How-to page and printable PDF, three languages | spec | todo |
 
 ## Later phases
 

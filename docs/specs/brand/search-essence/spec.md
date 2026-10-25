@@ -373,7 +373,7 @@ Scenario: No key, no search
 - **Credits.** 1,000 Tavily credits a month at 3 a read is about 330 reads a
   month for the whole app, shared with evals. Plenty for two pilot owners;
   public launch (phase 4) needs another look. Per-owner limits and the usage
-  bar are 2.6's.
+  bar are 2.8's.
 - **Snippets can still hold names.** No review query is sent, but a travel
   page's snippet may quote a person. That text goes to Gemini's free tier,
   where reviewers may read it. It is public web text, as the site's own pages
@@ -392,7 +392,7 @@ Scenario: No key, no search
 ## Out of scope
 
 - Using search terms in hashtags and captions: 2.2 `posts/generate-copy`.
-- Per-owner daily limits on searches and the usage bar: 2.6
+- Per-owner daily limits on searches and the usage bar: 2.8
   `platform/usage-counters`.
 - Searching for the business by name, its reviews or competitors.
 - A "search again" button, and searching in the owner's language.

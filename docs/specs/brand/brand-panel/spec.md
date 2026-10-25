@@ -43,7 +43,7 @@ record and resume from decision 0005, which phase 2 extends with more steps.
   and `vi.json`, including a message for each of 1.1's error codes.
 
 No server change: the route, the profile schema's shape and the prompt from
-1.1 stay as they are. No posts, no usage bar (2.6), no owner guide (its own
+1.1 stay as they are. No posts, no usage bar (2.8), no owner guide (its own
 spec).
 
 ### One business per owner, per phone
@@ -84,7 +84,7 @@ cleans and checks the URL and answers `invalid_url` (1.1).
 - A "Stop" text button: it aborts the request and goes back to state 1 (or,
   during a re-read, to the saved panel). A stopped read has already counted
   against the model's free quota; the button doesn't say so (the usage bar,
-  2.6, will).
+  2.8, will).
 
 The app holds a screen wake lock from the tap until the read ends, and asks
 again when the page becomes visible (decision 0005). A refused lock is
@@ -416,7 +416,7 @@ resume, and one error. CI calls no model and no website.
   manual start is added if an owner hits this.
 - **Every read and re-read spends free quota** (about 20 Flash requests a day
   for the whole app, decision 0003), and nothing counts or limits them until
-  2.6. A stopped or interrupted read is still spent.
+  2.8. A stopped or interrupted read is still spent.
 - **Profile content is English.** Labels follow the owner's language; the
   facts and the essence stay as 1.1 wrote them. Owners who edit in another
   language get that language in their captions; the form hint asks for
@@ -429,7 +429,7 @@ resume, and one error. CI calls no model and no website.
 
 - The post plan, the feed preview, and re-running captions after an edit:
   2.2 `posts/generate-copy` and the specs after it.
-- The usage bar and counters, including what a re-read costs today: 2.6
+- The usage bar and counters, including what a re-read costs today: 2.8
   `platform/usage-counters`.
 - The owner guide, including adding Shopfront to the home screen and staying
   on the page during a read: `guide/owner-guide`.

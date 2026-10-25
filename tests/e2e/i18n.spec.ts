@@ -1,15 +1,17 @@
 import { type BrowserContext, expect, type Page, test } from '@playwright/test';
 import id from '@/messages/id.json' with { type: 'json' };
 import vi from '@/messages/vi.json' with { type: 'json' };
+import { senProfile } from '../unit/helpers/brand';
 
 // Test values from playwright.config.ts; not secrets.
 const SEN = 'test-lotus-river-sen';
+const SVARGA = 'test-blue-wave-svarga';
 const ONE_YEAR = 365 * 24 * 60 * 60;
 const BASE = 'http://localhost:3000';
 
-async function signIn(page: Page) {
+async function signIn(page: Page, passphrase = SEN) {
   await page.goto('/enter');
-  await page.locator('#passphrase').fill(SEN);
+  await page.locator('#passphrase').fill(passphrase);
   await page.locator('button[type=submit]:not([name=locale])').click();
   await expect(page).toHaveURL('/');
 }
@@ -62,8 +64,22 @@ test.describe('phone in English', () => {
 
   test('switching on / keeps the owner there', async ({ page, context }) => {
     await signIn(page);
-    const nav = page.getByRole('navigation', { name: 'Language' });
-    await expect(nav.getByText('English')).toHaveAttribute('aria-current', 'true');
+    // One switch, at the top right (docs/specs/platform/home-tabs).
+    await expect(page.getByRole('navigation', { name: 'Language' })).toHaveCount(1);
+    const nav = page.locator('header').getByRole('navigation', { name: 'Language' });
+    await expect(nav.locator('[aria-current="true"]')).toContainText('English');
+    await expect(nav.locator('[aria-current="true"]')).toContainText('EN');
+    const names = await nav
+      .locator('button, [aria-current]')
+      .evaluateAll((items) =>
+        items.map((item) => item.getAttribute('aria-label') ?? item.textContent?.trim() ?? ''),
+      );
+    expect(names.map((name) => name.replace(/EN$/, ''))).toEqual([
+      'English',
+      'Tiếng Việt',
+      'Bahasa Indonesia',
+    ]);
+    await expect(nav.getByRole('button', { name: 'Tiếng Việt' })).toHaveText('VI');
     await nav.getByRole('button', { name: 'Tiếng Việt' }).click();
 
     await expect(page).toHaveURL('/');
@@ -72,6 +88,8 @@ test.describe('phone in English', () => {
     ).toBeVisible();
     await expect(page.locator('header').getByText('Sen', { exact: true })).toBeVisible();
 
+    // Saved in the background once the screen has switched.
+    await expect.poll(async () => (await localeCookie(context))?.value).toBe('vi');
     const cookie = await localeCookie(context);
     expect(cookie?.value).toBe('vi');
     expect(cookie?.httpOnly).toBe(true);
@@ -104,11 +122,56 @@ test.describe('small phone', () => {
       await expectFits(page);
     });
   }
+
+  test('vi fits 320px with the name Svarga', async ({ page, context }) => {
+    await saveLocale(context, 'vi');
+    await signIn(page, SVARGA);
+    await expectFits(page);
+  });
 });
 
 async function expectFits(page: Page) {
   expect(await page.evaluate(() => document.documentElement.scrollWidth)).toBeLessThanOrEqual(320);
-  const entries = page.getByRole('navigation').locator('button, [aria-current]');
+  const entries = page
+    .locator('header')
+    .getByRole('navigation', { name: /./ })
+    .locator('button, [aria-current]');
   await expect(entries).toHaveCount(3);
   for (const entry of await entries.all()) await expect(entry).toBeInViewport();
 }
+
+test.describe('switching with JavaScript', () => {
+  test.use({ locale: 'en-US' });
+
+  test('keeps the open tab, and the choice after a reload', async ({ page, context }) => {
+    await signIn(page);
+    await page.getByLabel('Your website').fill('sendanangmassage.com');
+    await page.route('**/api/brand/read', (route) =>
+      route.fulfill({
+        status: 200,
+        contentType: 'application/x-ndjson',
+        body: `${JSON.stringify({ type: 'final', profile: senProfile() })}\n`,
+      }),
+    );
+    await page.route('**/api/brand/search', (route) =>
+      route.fulfill({ status: 503, json: { error: 'search_unavailable' } }),
+    );
+    await page.getByRole('button', { name: 'Read my website' }).click();
+    await expect(page.getByRole('tab', { name: 'Your business' })).toHaveAttribute(
+      'aria-selected',
+      'true',
+    );
+    await page.locator('header').getByRole('button', { name: 'Tiếng Việt' }).click();
+    await expect(page.getByRole('tab', { name: vi.home.tabs.business })).toHaveAttribute(
+      'aria-selected',
+      'true',
+    );
+    await expect(page.locator('html')).toHaveAttribute('lang', 'vi');
+    await expect.poll(async () => (await localeCookie(context))?.value).toBe('vi');
+    await page.reload();
+    await expect(page.getByRole('tab', { name: vi.home.tabs.posts })).toHaveAttribute(
+      'aria-selected',
+      'true',
+    );
+  });
+});

@@ -10,6 +10,11 @@
     "footer": "Private pilot for invited spas."
   },
   "home": {
+    "tabs": {
+      "label": "Home",
+      "business": "Your business",
+      "posts": "Create your posts"
+    },
     "welcome": "Welcome, {name}",
     "websiteLabel": "Your website",
     "signedIn": "Signed in on this phone for 30 days."
@@ -151,7 +156,6 @@
       "announceReading": "Reading your website",
       "announceDone": "Done: check what we understood",
       "intro": "This is what we understood about {name}. Fix anything that's wrong: your posts are written from it.",
-      "postsSoon": "Your posts are coming soon.",
       "lastRead": "Last read {when}",
       "reread": "Re-read my website",
       "forget": "Forget this business",
@@ -179,6 +183,83 @@
       "body": "This deletes everything Shopfront keeps on this phone for your business. You can read your website again any time.",
       "confirm": "Forget",
       "cancel": "Cancel"
+    }
+  },
+  "posts": {
+    "make": "Make 6 suggestions",
+    "makeMore": "Make 6 new suggestions",
+    "moreBelow": "They go on top. Attempt {n} stays below.",
+    "empty": "Each suggestion is 2 images (1 for the post, 1 for the story) and the text for the post, ready for Instagram. Pick the ones you like and save them to your phone.",
+    "emptyTextOnly": "Each suggestion is the text for a post, ready for Instagram. Pick the ones you like and copy them.",
+    "attempt": "Attempt {n}",
+    "attemptCount": "{count, plural, one {# suggestion} other {# suggestions}}",
+    "saveImages": "Save the 2 images",
+    "copyText": "Copy the text",
+    "howTo": "In Instagram: make a post with the post image and paste the text, then a story with the story image.",
+    "howToTextOnly": "In Instagram: make a post with your own photo and paste the text.",
+    "editText": "Edit the text",
+    "keepOpen": "Keep this page open for about a minute while your posts are made.",
+    "flags": {
+      "price": "This price isn't on your website: {text}. Check it before posting.",
+      "duration": "This duration isn't on your website: {text}. Check it before posting.",
+      "banned": "Instagram may not allow \"{text}\". Better to change it."
+    },
+    "stale": "Your business details changed since these posts were made.",
+    "update": "Update captions",
+    "rewriteOne": "Rewrite this one too",
+    "staleEdited": "Posts you edited stay as you wrote them.",
+    "updating": "Updating your captions to match your business…",
+    "errors": {
+      "model_busy": "Shopfront has used today's free writing. Try again tomorrow.",
+      "model_timeout": "Writing your posts took too long. Try again.",
+      "model_failed": "Something went wrong while writing your posts. Try again.",
+      "invalid_profile": "Something went wrong while writing your posts. Try again.",
+      "offline": "You're offline. Your posts will carry on when you're back."
+    },
+    "images": {
+      "make": "Make the images",
+      "making": "Making the image…",
+      "seeStory": "See the story image",
+      "retry": "Try again",
+      "close": "Close",
+      "off": "Images aren't turned on for your account yet.",
+      "errors": {
+        "images_paused": "Images are paused for now. Your captions are ready.",
+        "image_blocked": "This image couldn't be made. Try again for a new one.",
+        "image_timeout": "This image took too long. Try again.",
+        "image_failed": "Something went wrong while making this image.",
+        "invalid_request": "Something went wrong while making this image.",
+        "no_space": "Your phone is out of space for images.",
+        "offline": "You're offline. Your images will carry on when you're back."
+      },
+      "newImage": "Create new image",
+      "hintLabel": "What should change? (optional)",
+      "hintPlaceholder": "more green, a sunset balcony",
+      "makeIt": "Make it",
+      "cancel": "Cancel"
+    },
+    "edit": {
+      "save": "Save",
+      "cancel": "Cancel",
+      "caption": "Caption",
+      "hashtags": "Hashtags",
+      "hashtagsHint": "Up to 5. Separate them with spaces.",
+      "tooLong": "Too long for Instagram: {count} characters over.",
+      "empty": "Write a caption first."
+    },
+    "takeAway": {
+      "copied": "Copied",
+      "copyHere": "Copy it from here."
+    },
+    "translate": {
+      "show": "Show in {language}",
+      "hide": "Hide",
+      "label": "In {language}, for you to read. Instagram gets the English.",
+      "errors": {
+        "model_busy": "Shopfront has used today's free translations. Try again tomorrow.",
+        "model_timeout": "The translation took too long. Try again.",
+        "model_failed": "Something went wrong with the translation. Try again."
+      }
     }
   }
 }

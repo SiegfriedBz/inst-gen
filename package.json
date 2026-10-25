@@ -19,6 +19,9 @@
     "fixtures:save": "tsx scripts/save-fixture.ts",
     "eval:brand": "tsx scripts/eval-brand.ts",
     "eval:search": "tsx scripts/eval-search.ts",
+    "eval:posts": "tsx scripts/eval-posts.ts",
+    "eval:images": "tsx scripts/eval-images.ts",
+    "eval:translate": "tsx scripts/eval-translate.ts",
     "check": "node scripts/check-docs.mjs && node scripts/check-repo.mjs && biome ci && pnpm typecheck && vitest run",
     "prepare": "lefthook install"
   },
@@ -39,6 +42,7 @@
     "react": "19.3.1",
     "react-dom": "19.3.1",
     "robots-parser": "3.0.1",
+    "sharp": "0.35.5",
     "tailwind-merge": "3.7.0",
     "tailwindcss": "4.3.3",
     "undici": "8.11.2",

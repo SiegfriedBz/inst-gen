@@ -20,7 +20,11 @@ async function drain(iterable: AsyncIterable<unknown>): Promise<unknown[]> {
 
 describe('TEXT_MODELS', () => {
   test('match decision 0003', () => {
-    expect(TEXT_MODELS).toEqual({ brand: 'gemini-3.5-flash-lite', light: 'gemini-3.5-flash-lite' });
+    expect(TEXT_MODELS).toEqual({
+      brand: 'gemini-3.5-flash-lite',
+      light: 'gemini-3.5-flash-lite',
+      posts: 'gemini-3.5-flash-lite',
+    });
   });
 });
 
@@ -109,6 +113,52 @@ describe('geminiTextModel', () => {
   });
 });
 
+describe('post plan', () => {
+  const posts = {
+    modelId: 'gemini-3.5-flash-lite',
+    promptVersion: 'posts-1',
+    partials: [{ posts: [{ type: 'offer' }] }, { posts: [{ type: 'offer' }, { type: 'tip' }] }],
+    final: { posts: [{ type: 'offer' }, { type: 'tip' }] },
+  };
+  const call = { system: 'rules', text: 'profile' };
+
+  test('replayTextModel replays a posts recording', async () => {
+    const stream = replayTextModel(rec, { posts }).streamPostPlan(
+      call,
+      new AbortController().signal,
+    );
+    expect(await drain(stream)).toEqual(posts.partials);
+    expect(await stream.final).toEqual(posts.final);
+  });
+
+  test('recordingTextModel records a post plan', async () => {
+    let recorded: unknown = null;
+    const model = recordingTextModel(
+      replayTextModel(rec, { posts }),
+      { modelId: 'm', promptVersion: 'posts-1' },
+      () => {},
+      () => {},
+      (r) => {
+        recorded = r;
+      },
+    );
+    await drain(model.streamPostPlan(call, new AbortController().signal));
+    expect(recorded).toMatchObject({ partials: posts.partials, final: posts.final });
+  });
+
+  test('without a key, the plan fails with ModelError failed', async () => {
+    vi.stubEnv('GOOGLE_GENERATIVE_AI_API_KEY', '');
+    try {
+      const stream = geminiTextModel().streamPostPlan(call, new AbortController().signal);
+      await expect(drain(stream)).rejects.toMatchObject({ kind: 'failed' });
+      const rewrite = geminiTextModel().streamPostRewrite(call, new AbortController().signal);
+      await expect(drain(rewrite)).rejects.toMatchObject({ kind: 'failed' });
+    } finally {
+      vi.unstubAllEnvs();
+    }
+  });
+});
+
 describe('searchEssence', () => {
   const searchInput = { system: 'rules', text: 'results' };
   const answer = { searchTerms: ['hotel massage da nang'], moments: [], placeSymbols: [] };
@@ -177,6 +227,50 @@ describe('searchEssence', () => {
   });
 });
 
+describe('translateCaption', () => {
+  afterEach(() => {
+    vi.unstubAllEnvs();
+    vi.unstubAllGlobals();
+  });
+
+  test('uses flash-lite with minimal thinking, once, with no retries', async () => {
+    vi.stubEnv('GOOGLE_GENERATIVE_AI_API_KEY', 'test-key-not-real');
+    const fetchMock = vi.fn(
+      async (_url: string | URL | Request, _init?: RequestInit) =>
+        new Response(JSON.stringify({ error: { code: 503, message: 'busy' } }), {
+          status: 503,
+          headers: { 'content-type': 'application/json' },
+        }),
+    );
+    vi.stubGlobal('fetch', fetchMock);
+    await expect(
+      geminiTextModel().translateCaption('Warm oil.', 'vi', new AbortController().signal),
+    ).rejects.toMatchObject({ kind: 'busy' });
+    expect(fetchMock).toHaveBeenCalledTimes(1);
+    expect(String(fetchMock.mock.calls[0]?.[0])).toContain(TEXT_MODELS.light);
+    const body = String(fetchMock.mock.calls[0]?.[1]?.body);
+    expect(body.toLowerCase()).toContain('minimal');
+    expect(body).toContain('Warm oil.');
+    expect(body).toContain('Vietnamese');
+  });
+
+  test('without a key, fails with ModelError failed', async () => {
+    vi.stubEnv('GOOGLE_GENERATIVE_AI_API_KEY', '');
+    await expect(
+      geminiTextModel().translateCaption('Warm oil.', 'id', new AbortController().signal),
+    ).rejects.toMatchObject({ kind: 'failed' });
+  });
+
+  test('a replayed model answers its recorded translation', async () => {
+    const model = replayTextModel(rec, {
+      translation: { ...rec, partials: [], final: 'Dầu ấm.' },
+    });
+    expect(await model.translateCaption('Warm oil.', 'vi', new AbortController().signal)).toBe(
+      'Dầu ấm.',
+    );
+  });
+});
+
 describe('the Google provider', () => {
   function sourceFiles(dir: string): string[] {
     return readdirSync(dir, { withFileTypes: true }).flatMap((entry) => {
@@ -188,10 +282,10 @@ describe('the Google provider', () => {
     });
   }
 
-  test('is imported only by lib/ai/text-model.ts', () => {
+  test('is imported only by the text-model and image-model modules', () => {
     const importers = sourceFiles('.')
       .filter((file) => !file.startsWith('tests'))
       .filter((file) => readFileSync(file, 'utf8').includes("from '@ai-sdk/google'"));
-    expect(importers).toEqual(['lib/ai/text-model.ts']);
+    expect(importers.sort()).toEqual(['lib/ai/image-model.ts', 'lib/ai/text-model.ts']);
   });
 });

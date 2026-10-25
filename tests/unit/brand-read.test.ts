@@ -340,6 +340,15 @@ describe('the log line', () => {
       searchEssence() {
         throw new Error('the brand read makes no search call');
       },
+      translateCaption() {
+        throw new Error('the brand read makes no translation call');
+      },
+      streamPostPlan() {
+        throw new Error('the brand read makes no posts call');
+      },
+      streamPostRewrite() {
+        throw new Error('the brand read makes no posts call');
+      },
     };
   }
 

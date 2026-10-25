@@ -152,6 +152,28 @@ describe('the brand store', () => {
     expect((await db?.getAll('runs'))?.map((run) => run.id)).toEqual(['r2']);
   });
 
+  test('forget deletes translations', async () => {
+    await saveBrand('sen', svargaProfile());
+    const db = await openStore();
+    const translation = (ownerId: string) => ({
+      batchId: 'b1',
+      postId: `post-${ownerId}`,
+      ownerId,
+      locale: 'vi' as const,
+      captionHash: 'h',
+      text: 'Xin chào',
+      model: 'm',
+      promptVersion: 'translate-1',
+      createdAt: '2026-10-25T10:00:00.000Z',
+    });
+    await db?.put('translations', translation('sen'));
+    await db?.put('translations', translation('svarga'));
+
+    await forgetBrand('sen');
+
+    expect((await db?.getAll('translations'))?.map((t) => t.ownerId)).toEqual(['svarga']);
+  });
+
   test('without IndexedDB, load says unavailable and save returns false', async () => {
     vi.stubGlobal('indexedDB', undefined);
     resetStoreForTests();

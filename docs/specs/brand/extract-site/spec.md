@@ -29,7 +29,7 @@ and `pnpm eval:brand` reports how many of the 20 saved sites come back right.
 The phase 1 gate is 16 of 20.
 
 Why now: the brand panel (1.2) shows this profile, and the post plan (2.2) and
-review replies (2.5) are written from it. It has to exist, and be measured,
+review replies (2.7) are written from it. It has to exist, and be measured,
 before anything is built on top of it.
 
 ## Behaviour
@@ -579,7 +579,7 @@ tone and style go in the journal.
   read in full.
 - **About 20 reads a day.** One Flash request per read, on a free tier of
   about 20 a day shared with the post plan and the eval. The usage counters
-  (2.6) and the "back tomorrow" message aren't built yet; until then, a 429
+  (2.8) and the "back tomorrow" message aren't built yet; until then, a 429
   is just `model_busy`.
 - **No cache on the server.** Each request reads the site again. The profile
   is kept on the owner's phone from 1.2.
@@ -600,7 +600,7 @@ tone and style go in the journal.
 - The run record in IndexedDB and resuming a run: decision 0005, built with
   the first screen that starts a run (1.2).
 - Content pillars, hashtags and the post plan: 2.2 `posts/generate-copy`.
-- Usage counters and the daily pool: 2.6 `platform/usage-counters`.
+- Usage counters and the daily pool: 2.8 `platform/usage-counters`.
 - The Instagram handle field and Instagram data: phase 3.
 - Bot check, ownership tick box, region block, domain blocklist: phase 4
   `platform/quotas-abuse`.

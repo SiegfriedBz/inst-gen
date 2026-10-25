@@ -10,6 +10,11 @@
     "footer": "Uji coba khusus untuk spa yang diundang."
   },
   "home": {
+    "tabs": {
+      "label": "Beranda",
+      "business": "Usaha Anda",
+      "posts": "Buat postingan"
+    },
     "welcome": "Selamat datang, {name}",
     "websiteLabel": "Situs web Anda",
     "signedIn": "Masuk di ponsel ini selama 30 hari."
@@ -151,7 +156,6 @@
       "announceReading": "Membaca situs web Anda",
       "announceDone": "Selesai: periksa apa yang kami pahami",
       "intro": "Inilah yang kami pahami tentang {name}. Perbaiki yang salah: postingan Anda ditulis dari sini.",
-      "postsSoon": "Postingan Anda segera hadir.",
       "lastRead": "Terakhir dibaca {when}",
       "reread": "Baca ulang situs web saya",
       "forget": "Lupakan usaha ini",
@@ -179,6 +183,83 @@
       "body": "Ini menghapus semua yang disimpan Shopfront di ponsel ini untuk usaha Anda. Anda bisa membaca situs web Anda lagi kapan saja.",
       "confirm": "Lupakan",
       "cancel": "Batal"
+    }
+  },
+  "posts": {
+    "make": "Buat 6 saran",
+    "makeMore": "Buat 6 saran baru",
+    "moreBelow": "Saran baru muncul di atas. Percobaan {n} tetap di bawah.",
+    "empty": "Setiap saran berisi 2 gambar (1 untuk postingan, 1 untuk story) dan teks untuk postingan, siap untuk Instagram. Pilih yang Anda suka dan simpan di ponsel Anda.",
+    "emptyTextOnly": "Setiap saran berisi teks untuk postingan, siap untuk Instagram. Pilih yang Anda suka dan salin.",
+    "attempt": "Percobaan {n}",
+    "attemptCount": "{count} saran",
+    "saveImages": "Simpan 2 gambar",
+    "copyText": "Salin teks",
+    "howTo": "Di Instagram: buat postingan dengan gambar postingan dan tempel teksnya, lalu buat story dengan gambar story.",
+    "howToTextOnly": "Di Instagram: buat postingan dengan foto Anda sendiri dan tempel teksnya.",
+    "editText": "Ubah teks",
+    "keepOpen": "Biarkan halaman ini terbuka sekitar satu menit selama postingan Anda dibuat.",
+    "flags": {
+      "price": "Harga ini tidak ada di situs Anda: {text}. Periksa sebelum memposting.",
+      "duration": "Durasi ini tidak ada di situs Anda: {text}. Periksa sebelum memposting.",
+      "banned": "Instagram mungkin tidak mengizinkan \"{text}\". Sebaiknya diganti."
+    },
+    "stale": "Detail bisnis Anda berubah sejak postingan ini dibuat.",
+    "update": "Perbarui keterangan",
+    "rewriteOne": "Tulis ulang yang ini juga",
+    "staleEdited": "Postingan yang Anda ubah tetap seperti yang Anda tulis.",
+    "updating": "Memperbarui keterangan agar sesuai dengan usaha Anda…",
+    "errors": {
+      "model_busy": "Shopfront sudah memakai jatah menulis gratis hari ini. Coba lagi besok.",
+      "model_timeout": "Menulis postingan Anda terlalu lama. Coba lagi.",
+      "model_failed": "Terjadi kesalahan saat menulis postingan Anda. Coba lagi.",
+      "invalid_profile": "Terjadi kesalahan saat menulis postingan Anda. Coba lagi.",
+      "offline": "Anda sedang offline. Postingan Anda akan dilanjutkan saat Anda kembali."
+    },
+    "images": {
+      "make": "Buat gambarnya",
+      "making": "Membuat gambar…",
+      "seeStory": "Lihat gambar story",
+      "retry": "Coba lagi",
+      "close": "Tutup",
+      "off": "Gambar belum diaktifkan untuk akun Anda.",
+      "errors": {
+        "images_paused": "Gambar dijeda untuk sementara. Keterangan Anda sudah siap.",
+        "image_blocked": "Gambar ini tidak bisa dibuat. Coba lagi untuk gambar baru.",
+        "image_timeout": "Gambar ini terlalu lama dibuat. Coba lagi.",
+        "image_failed": "Terjadi kesalahan saat membuat gambar ini.",
+        "invalid_request": "Terjadi kesalahan saat membuat gambar ini.",
+        "no_space": "Ruang penyimpanan ponsel Anda tidak cukup untuk gambar.",
+        "offline": "Anda sedang offline. Gambar Anda akan dilanjutkan saat Anda kembali."
+      },
+      "newImage": "Buat gambar baru",
+      "hintLabel": "Apa yang perlu diubah? (opsional)",
+      "hintPlaceholder": "lebih hijau, balkon saat senja",
+      "makeIt": "Buat",
+      "cancel": "Batal"
+    },
+    "edit": {
+      "save": "Simpan",
+      "cancel": "Batal",
+      "caption": "Keterangan",
+      "hashtags": "Tagar",
+      "hashtagsHint": "Maksimal 5. Pisahkan dengan spasi.",
+      "tooLong": "Terlalu panjang untuk Instagram: lebih {count} karakter.",
+      "empty": "Tulis keterangan dulu."
+    },
+    "takeAway": {
+      "copied": "Tersalin",
+      "copyHere": "Salin dari sini."
+    },
+    "translate": {
+      "show": "Tampilkan dalam {language}",
+      "hide": "Sembunyikan",
+      "label": "Dalam {language}, untuk Anda baca. Instagram mendapat versi bahasa Inggris.",
+      "errors": {
+        "model_busy": "Shopfront sudah memakai jatah terjemahan gratis hari ini. Coba lagi besok.",
+        "model_timeout": "Terjemahan terlalu lama. Coba lagi.",
+        "model_failed": "Ada yang salah dengan terjemahan. Coba lagi."
+      }
     }
   }
 }
