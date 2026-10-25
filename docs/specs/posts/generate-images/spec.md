@@ -1,8 +1,7 @@
 ---
 title: "Generate images"
 description: "Once a batch's captions are saved, the browser asks for its six images in parallel, one request each; the server makes a 9:16 image with Nano Banana 2.1, shrinks it to a 1080×1920 story and a centred 1080×1350 post crop, both JPEG, and the phone keeps them; only owners on an allowlist can make images until usage counters ship."
-status: approved
-approved: { by: siegfried.bozza@protonmail.com, at: 2026-10-25T11:54:39Z }
+status: draft
 date: "2026-10-25"
 ---
 
@@ -88,13 +87,21 @@ swap in a fake, and the module is the only other importer of
 - **Call.** `generateText` with `responseModalities: ['IMAGE']` and
   `imageConfig: { aspectRatio: '9:16', imageSize: '2K' }`, as in the
   bake-off. `maxRetries: 0`; `request.signal` reaches the call.
-- **Prompt.** The post's image prompt, then a fixed style line held in its own
-  module with a version constant, `IMAGE_PROMPT_VERSION` (`images-1`). The
-  style line starts from the bake-off's (full-frame photograph, 50 mm, low
-  soft warm light, natural anatomy, no recognisable face, no text, labels,
-  logos or watermarks, plain bottles) and adds one rule for the crop:
-  **"Keep the subject in the middle of the frame, with calm space above and
-  below it."**
+- **Prompt.** The post's image prompt, with daylight and bad-weather words
+  swapped for dusk and lamp light by code, then a fixed style line held in
+  its own module with a version constant, `IMAGE_PROMPT_VERSION`
+  (`images-3`). The style line starts from the bake-off's (full-frame
+  photograph, 50 mm, low soft warm light, natural anatomy, no recognisable
+  face, no text, labels, logos or watermarks, plain bottles), adds one rule
+  for the crop, **"Keep the subject in the middle of the frame, with calm
+  space above and below it."**, and repeats 2.2's image rules as a safety
+  net, from the maintainer's verdicts on the first images (journal,
+  2026-10-25): the massage under way in the frame, with the therapist's
+  hands; a guest relaxed and alive, never lying still as if asleep; beds and
+  linens neatly made, nothing messy; a warm, homely room, never clinical or
+  hospital-like; curtains still, no wind; massage oil as golden oil in clear
+  glass, never a small dark bottle; and whatever the scene says, the light
+  is dusk, lamps, lanterns or candles.
 - **Cut-off.** `maxDuration` 300 s; the route gives up by itself at 60 s
   (decision 0005). Typical time about 22 s (decision 0004), measured again
   and recorded in the journal.

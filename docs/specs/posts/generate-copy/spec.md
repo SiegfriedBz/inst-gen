@@ -1,8 +1,7 @@
 ---
 title: "Generate copy"
 description: "From the saved brand profile, one streamed text call plans six posts and writes each one's caption, hashtags, alt text and image prompt; code checks the facts, adds the WhatsApp call to action, and keeps the batch on the phone; a brand edit marks captions out of date, and one call rewrites them."
-status: approved
-approved: { by: siegfried.bozza@protonmail.com, at: 2026-10-25T08:48:05Z }
+status: draft
 date: "2026-10-25"
 ---
 
@@ -157,24 +156,42 @@ written from the image prompt: "Hands pressing warm oil into a guest's
 shoulders on a hotel balcony at dusk". No "image of".
 
 **The image prompt.** English, at most 80 words, read by 2.3. It follows
-decision 0004's lessons:
+decision 0004's lessons, and the maintainer's verdicts on the first images
+(generate-images journal, 2026-10-25):
 
+- **The massage is in every image:** a therapist's hands working on a guest,
+  or oil or towels being used for a treatment. Only what the business offers:
+  a tool or treatment appears only if `offerings` holds it (no hot stones
+  for a business that doesn't offer them). Never a guest alone, never an
+  empty room, never a drink or a prop on its own.
+- A guest looks relaxed and alive, with the therapist there: never lying
+  still as if asleep.
 - Light low, soft and warm: dusk, a lamp, lanterns, candles. Never bright
   sun, grey sky, mist, rain or damp.
-- Places clean and cared for.
+- Places clean, tidy and cared for: beds and linens neatly made, nothing
+  rumpled or messy.
+- Rooms warm and homely, like a boutique hotel or villa; never clinical or
+  hospital-like.
+- Still air: curtains hang still, no wind.
+- Oil looks like massage oil: golden oil in a clear glass bottle, or poured
+  into a palm; never a small dark bottle that could pass for medicine.
 - For a business that goes to the guest (its `serviceArea` says so, as Sen's
   and Svarga's do), the scene is the guest's hotel room, balcony or villa,
   not a spa building.
-- No guest at rest seen from behind; no recognisable face; no text, logos or
+- No guest seen from behind; no recognisable face; no text, logos or
   labels (bottles are plain).
 - The palette, light and textures of `visualStyle`, and the senses and place
   symbols of the essence.
 - Never the business's own premises, products or staff as if real (Global
   Plan, "Honest images").
 
-Each post also gets a `scene`: `treatment`, `detail`, `place` or `guest`
-(a person at rest, never from behind). Across the six, at most 2 of any
-scene, so the grid is varied (decision 0004, criterion 6).
+Each post also gets a `scene`, and every scene shows the massage:
+`treatment` (the therapist's hands at work on the guest), `detail` (a close
+view of the treatment: oil poured into a palm, warm towels laid on a back),
+`place` (the guest's room, balcony or villa with the massage under way in
+it) or `guest` (the guest relaxed during the treatment, the therapist's
+hands in the frame). Across the six, at most 2 of any scene, so the grid is
+varied (decision 0004, criterion 6). The prompt version becomes `posts-2`.
 
 ### What code checks
 
