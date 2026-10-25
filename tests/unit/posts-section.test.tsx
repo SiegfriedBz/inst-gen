@@ -511,13 +511,13 @@ describe("today's attempts", () => {
   test('the button and its line', async () => {
     const view = await renderSection();
     expect(await screen.findByRole('button', { name: 'Make 6 suggestions' })).toBeTruthy();
-    expect(screen.getByText(/Each suggestion is the text for a post/)).toBeTruthy();
+    expect(await screen.findByText(/Each suggestion is the text for a post/)).toBeTruthy();
     expect(screen.queryByText(/stays below/)).toBeNull();
     view.unmount();
     await saveBatch(batch(sixPosts));
     await renderSection();
     expect(await screen.findByRole('button', { name: 'Make 6 new suggestions' })).toBeTruthy();
-    expect(screen.getByText('They go on top. Attempt 1 stays below.')).toBeTruthy();
+    expect(await screen.findByText('They go on top. Attempt 1 stays below.')).toBeTruthy();
     expect(screen.queryByText(/Each suggestion is/)).toBeNull();
   });
 

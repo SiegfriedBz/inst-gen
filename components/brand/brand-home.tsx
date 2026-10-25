@@ -53,6 +53,10 @@ type HomeTab = 'business' | 'posts';
 
 export function BrandHome({ ownerId, imagesOn }: { ownerId: string; imagesOn: boolean }) {
   const t = useTranslations('brand');
+  // Read by the load callbacks, so a language change doesn't run the load
+  // again (a second search, a reload of the brand).
+  const tRef = useRef(t);
+  tRef.current = t;
   const home = useTranslations('home');
   const locale = useLocale();
   const [view, setView] = useState<View>({ kind: 'loading' });
@@ -183,7 +187,7 @@ export function BrandHome({ ownerId, imagesOn }: { ownerId: string; imagesOn: bo
         setError(null);
         setNotice(event.kept ? null : 'notKept');
         setView({ kind: 'panel' });
-        setAnnounce(t('home.announceDone'));
+        setAnnounce(tRef.current('home.announceDone'));
         if (event.kept) void requestPersistence();
         startSearch(event.profile);
       } else if (event.type === 'error') {
@@ -199,20 +203,17 @@ export function BrandHome({ ownerId, imagesOn }: { ownerId: string; imagesOn: bo
         window.location.assign('/enter');
       }
     },
-    [endRead, t, startSearch],
+    [endRead, startSearch],
   );
 
-  const begin = useCallback(
-    (read: RunningRead, readUrl: string) => {
-      running.current = read;
-      lock.current ??= holdWakeLock();
-      setError(null);
-      setTab('business');
-      setView({ kind: 'reading', url: readUrl, partial: {} });
-      setAnnounce(t('home.announceReading'));
-    },
-    [t],
-  );
+  const begin = useCallback((read: RunningRead, readUrl: string) => {
+    running.current = read;
+    lock.current ??= holdWakeLock();
+    setError(null);
+    setTab('business');
+    setView({ kind: 'reading', url: readUrl, partial: {} });
+    setAnnounce(tRef.current('home.announceReading'));
+  }, []);
 
   const tryResume = useCallback(async () => {
     const read = await resumeRead(ownerId, onEvent);
