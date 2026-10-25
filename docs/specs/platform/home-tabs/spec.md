@@ -1,7 +1,8 @@
 ---
 title: "Home tabs"
 description: "Once a business is saved, the home screen splits into two tabs, 'Your business' and 'Create your posts', opening on 'Create your posts' except right after a read; captions follow business edits automatically, the language switch moves to the top right as EN · VI · ID, and three small leftovers from 2.4 are fixed."
-status: draft
+status: approved
+approved: { by: siegfried.bozza@protonmail.com, at: 2026-10-25T17:31:29Z }
 date: "2026-10-25"
 ---
 
