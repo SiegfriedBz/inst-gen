@@ -30,6 +30,14 @@
   decision 0004 (it names 2.6 for the usage counters); plans and journals
   keep the numbers they were written with.
 
+- 2026-10-25: The spec lists the language switch's checks (order, names,
+  the current one marked) under Vitest; they are in `tests/e2e/i18n.spec.ts`
+  instead, since the switch is an async server component.
+- 2026-10-25: Final review (one fresh reviewer, whole branch): no critical
+  finding; one important, fixed test-first: the posts' buttons weren't held
+  while the update waited for the essence search, as the spec asks. Minor
+  findings are listed in the PR.
+
 ## Still owed (the owners, during the pilot)
 
 - Read back the tab labels and "Updating your captions to match your
@@ -43,9 +51,10 @@
 - Task 4: `Tests  7 failed | 12 passed (19)` (`newestBatch is not a function`)
 - Task 5: `Tests  10 failed | 27 passed (37)`; the dropped-post guard: `Tests  1 failed | 23 skipped (24)` with the guard taken out
 - Task 6: `Tests  4 failed | 26 passed (30)`
+- Final review fix: `Tests  1 failed | 24 skipped (25)`
 - Task 7 (Playwright, `tests/e2e/i18n.spec.ts`): `5 failed` / `5 passed (34.7s)`
 
 ## GREEN
 
-- Vitest, whole suite: `Tests  909 passed (909)`
+- Vitest, whole suite: `Tests  910 passed (910)`
 - Playwright, whole suite: `38 passed (28.7s)`

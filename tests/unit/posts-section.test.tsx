@@ -152,12 +152,28 @@ describe('captions follow the business by themselves', () => {
     fetchMock.mockResolvedValue(rewriteAnswer(sixPosts.map((p) => p.id)));
     const profile = changed();
     const view = await renderSection(profile, { searching: true });
-    await readyButton();
+    await screen.findByText('Caption 1.');
     expect(await screen.findByText(UPDATING)).toBeTruthy();
     expect(rewriteCalls()).toHaveLength(0);
     view.rerender(section(profile));
     await screen.findByText('New post-1.');
     expect(rewriteCalls()).toHaveLength(1);
+  });
+
+  test("the posts' buttons wait with the update while the search runs", async () => {
+    const posts = sixPosts.map((p, i) => (i === 0 ? { ...p, edited: true } : p));
+    await saveBatch(batch(posts));
+    await renderSection(changed(), { searching: true });
+    await screen.findByText(UPDATING);
+    const more = (await makeButton()) as HTMLButtonElement;
+    await waitFor(() => expect(more.disabled).toBe(true));
+    const edits = screen.getAllByRole('button', { name: 'Edit' }) as HTMLButtonElement[];
+    expect(edits.every((b) => b.disabled)).toBe(true);
+    const rewrite = screen.getByRole('button', {
+      name: 'Rewrite this one too',
+    }) as HTMLButtonElement;
+    expect(rewrite.disabled).toBe(true);
+    expect(fetchMock).not.toHaveBeenCalled();
   });
 
   test('a failed automatic update shows Update captions and sends nothing more until the tab opens again', async () => {

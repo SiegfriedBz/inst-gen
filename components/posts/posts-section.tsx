@@ -313,6 +313,10 @@ export function PostsSection({
   // The newest batch's update is on its way: waiting for the search, the
   // images or the tab, or running.
   const updating = behind.length > 0 && (triedHash !== currentHash || running?.step === 'rewrite');
+  // While the update waits for the search, nothing else starts: one rewrite
+  // against the final details, and the waiting batch stays the newest.
+  const waiting = searching && behind.length > 0;
+  const held = busy || waiting;
 
   // Opening the tab again lets a failed update try once more.
   useEffect(() => {
@@ -359,7 +363,7 @@ export function PostsSection({
   }
   return (
     <section className="mt-6 flex flex-col gap-3">
-      <Button type="button" onClick={make} disabled={!cta || busy}>
+      <Button type="button" onClick={make} disabled={!cta || held}>
         {batches.length > 0 ? t('makeMore') : t('make')}
       </Button>
       {!cta && <p className="text-[13px] text-error">{brand('panel.warnWhatsapp')}</p>}
@@ -400,7 +404,7 @@ export function PostsSection({
                     batch.posts.map((p) => p.id),
                   )
                 }
-                disabled={busy}
+                disabled={held}
               >
                 {t('images.make')}
               </Button>
@@ -437,7 +441,7 @@ export function PostsSection({
                       stale.map((p) => p.id),
                     )
                   }
-                  disabled={busy}
+                  disabled={held}
                 >
                   {t('update')}
                 </Button>
@@ -458,8 +462,8 @@ export function PostsSection({
                     ? () => update(batch, [post.id])
                     : undefined
                 }
-                busy={busy}
-                editBusy={running !== null || resuming}
+                busy={held}
+                editBusy={running !== null || resuming || waiting}
                 translation={
                   <CaptionTranslation
                     key={post.caption}
