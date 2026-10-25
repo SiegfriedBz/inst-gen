@@ -88,9 +88,11 @@ inside the tab, the repeat reads as the tab's first part.
   (https://claude.ai/artifact/Gupm6Uyig4XXSJpgh8o2tC, section 1b): one
   segmented bar on the muted field colour (`field-muted`, a 1px soft edge,
   12 to 14px radius, 4px inner padding), each tab an equal share of it.
-- **The open tab** is filled with `accent`, its label in `on-accent`, weight
-  600. The other tabs are transparent with `ink-secondary` text, weight 500.
-  No dot, no icon.
+- **The open tab** is filled with `accent`, its label in `on-accent`. The
+  other tabs are transparent with `ink-secondary` text. All labels are weight
+  500, the heaviest weight the app's font loads: the fill alone marks the
+  open tab, and no extra font file is downloaded on a slow phone. No dot, no
+  icon.
 - Each tab is at least 44px high, 14px text, centred; a label that doesn't
   fit wraps onto two lines rather than being cut off.
 - AA contrast in both modes for both states. Visible focus. No horizontal
@@ -122,8 +124,11 @@ business" brings the posts back in sync without a tap, captions only.
 
 - **When**: whenever "Create your posts" is showing and the **newest batch**
   has at least one post that is out of date (2.4's rule: its `profileHash`
-  isn't the profile's) and not edited by the owner, and nothing is being
-  made for posts (no plan, rewrite or images running or resuming). That
+  isn't the profile's) and not edited by the owner, nothing is being made
+  for posts (no plan, rewrite or images running or resuming), and the
+  essence search isn't running. The newest batch is the one with the latest
+  `createdAt` (a rewrite can move an older batch to the top of the list).
+  That
   covers opening the tab, opening the app (it lands on the tab), and a
   change that arrives while the tab is showing, such as the essence search's
   answer, or a plan or images finishing.
@@ -136,11 +141,19 @@ business" brings the posts back in sync without a tap, captions only.
   this one too" on each out-of-date edited post of the newest batch.
 - **Older batches** are never rewritten: they are probably posted already.
   They show no "details changed" line, no "Update captions" and no "Rewrite
-  this one too". Their "Check before posting:" flags still follow the
-  current profile, with no call, as in 2.4.
-- **While it runs**: the newest batch shows the line "Updating your captions
-  to match your business…" above its cards, with today's "Keep this page
-  open…" line, and the posts' buttons are disabled as for any rewrite.
+  this one too". Since nothing will rewrite them, every out-of-date post in
+  an older batch, edited or not, has its "Check before posting:" flags
+  checked again against the current profile, with no call (2.4 did this for
+  edited posts only). The newest batch keeps 2.4's rule, since its unedited
+  posts are about to be rewritten.
+- **Waiting for the essence search**: after a re-read the search runs again
+  (`needsSearch`), and its answer changes the essence, which the model sees.
+  So the update waits for the search to end, answered, empty or failed, and
+  sends one rewrite against the final profile instead of two. While it
+  waits, and while it runs, the newest batch shows the line "Updating your
+  captions to match your business…" above its cards, with today's "Keep this
+  page open…" line, and the posts' buttons are disabled as for any rewrite.
+  (`PostsSection` learns from `BrandHome` whether the search is running.)
 - **If it fails** (offline beyond 2.4's resume, the day's limit, a timeout):
   2.4's error line shows, and the newest batch shows 2.4's "Your business
   details changed…" line with the "Update captions" button, so "Try again"
@@ -200,8 +213,9 @@ Three of the minors listed in PR #18, each its own commit:
    owner waits for all six. From now on "Edit" (and its "Save") is disabled
    only while a text step runs or resumes (a plan or a rewrite), since only
    those replace the words. An edit saved while images are made keeps both:
-   the owner's words and the new image, with 2.4's `altToCheck` set by an
-   image that lands after the edit. "Make my posts", "Update captions",
+   the owner's words and the image. `altToCheck` keeps 2.4's rule: only a
+   "New image" sets it, never a post's first image, whose alt text was
+   written for that same image prompt. "Make my posts", "Update captions",
    "Rewrite this one too" and "New image" keep 2.4's rules.
 2. **File names use the phone's date.** `imageFileName` takes the batch's
    date in the phone's own time zone, not the first ten characters of its UTC
@@ -212,7 +226,9 @@ Three of the minors listed in PR #18, each its own commit:
    accents and any digit, not only `a-z0-9`: text is normalised to NFC, lower
    cased, and everything but letters (`\p{L}`), combining marks (`\p{M}`) and
    digits (`\p{N}`) is dropped. `#ĐàNẵng` becomes `đànẵng`; `#da-nang` still
-   becomes `danang`. No duplicates, at most 5, as before.
+   becomes `danang`. No duplicates, at most 5, as before. The batch schema's
+   hashtag pattern (`lib/posts/batch.ts`) widens the same way, so posts
+   saved with such tags load again.
 
 ### The roadmap
 
@@ -232,8 +248,10 @@ Three of the minors listed in PR #18, each its own commit:
     loaded, first read, re-read) to tab, and no tabs while reading or empty;
   - which posts the automatic update sends: the newest batch's out-of-date
     unedited posts only; none when every out-of-date post is edited, when
-    only an older batch is out of date, or when only the WhatsApp number
-    changed;
+    only an older batch is out of date, when only the WhatsApp number
+    changed, or while the essence search runs;
+  - flags on an older batch's unedited out-of-date post follow the current
+    profile;
   - the home screen (Testing Library): no tablist before a read; after a
     first read, "Your business" selected; mounted with a saved brand,
     "Create your posts" selected; switching tabs keeps a running posts
@@ -335,10 +353,10 @@ Scenario: Vietnamese hashtags keep their letters
 
 ## Known limits
 
-- An owner who makes posts before the essence search has answered gets one
-  automatic rewrite when the answer lands (the essence is part of what the
-  model sees). It costs one request from the daily pool, as tapping "Update
-  captions" would have.
+- An owner who makes posts while the essence search is still running (right
+  after a first read) gets one automatic rewrite when the answer lands, since
+  the essence is part of what the model sees. It costs one request from the
+  daily pool, as tapping "Update captions" would have.
 - The codes "VI" and "ID" are short forms an owner may not know at first;
   each one's full name is its accessible name and tooltip, and the current
   one is always marked, so a wrong tap is undone with one more.
