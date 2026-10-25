@@ -90,7 +90,7 @@ describe('the image prompt', () => {
       'Keep the subject in the middle of the frame, with calm space above and below it.',
     );
     expect(p).toMatch(/no text, letters, labels, logos or watermarks/i);
-    expect(IMAGE_PROMPT_VERSION).toBe('images-2');
+    expect(IMAGE_PROMPT_VERSION).toBe('images-3');
   });
 });
 
@@ -128,6 +128,20 @@ describe('light and weather in the post prompt', () => {
         'A sunflower on a brainstorming table ',
       ),
     ).toBe(true);
+  });
+
+  test('the style line repeats the image rules as a safety net', () => {
+    const p = imagePrompt('x');
+    for (const rule of [
+      "The massage is under way in the frame, with the therapist's hands.",
+      'A guest looks relaxed and alive, never lying still as if asleep.',
+      'Beds and linens are neatly made; nothing is messy.',
+      'The room is warm and homely, never clinical or hospital-like.',
+      'Curtains hang still; there is no wind.',
+      'Massage oil is golden oil in clear glass, never a small dark bottle.',
+    ]) {
+      expect(p).toContain(rule);
+    }
   });
 
   test('the style line says the light wins over the scene', () => {

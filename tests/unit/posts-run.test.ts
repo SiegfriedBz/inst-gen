@@ -72,7 +72,7 @@ describe('streamPlan', () => {
     expect(final).toMatchObject({
       type: 'final',
       result: {
-        promptVersion: 'posts-1',
+        promptVersion: 'posts-2',
         model: 'gemini-3.5-flash-lite',
         profileHash: profileHash(svargaProfile()),
       },

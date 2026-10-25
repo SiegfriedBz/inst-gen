@@ -30,7 +30,7 @@ describe('makePostImage', () => {
     if (!out.ok) throw new Error(`expected ok, got ${out.code}`);
     expect(out.response.postId).toBe('post-3');
     expect(out.response.model).toBe('gemini-nano-banana-2.1');
-    expect(out.response.promptVersion).toBe('images-2');
+    expect(out.response.promptVersion).toBe('images-3');
     const story = await sharp(Buffer.from(out.response.story, 'base64')).metadata();
     const post = await sharp(Buffer.from(out.response.post, 'base64')).metadata();
     expect([story.width, story.height, story.format]).toEqual([1080, 1920, 'jpeg']);
@@ -121,7 +121,7 @@ describe('makePostImage', () => {
     const line = formatImageLog(logs[0]);
     expect(line).not.toContain(body.imagePrompt);
     expect(line).toMatch(
-      /^image owner=sen post=post-3 scene=detail model=gemini-nano-banana-2\.1 prompt=images-2 size=1536x2752 story_bytes=\d+ post_bytes=\d+ model_ms=\d+ total_ms=\d+ outcome=ok usd=0\.05$/,
+      /^image owner=sen post=post-3 scene=detail model=gemini-nano-banana-2\.1 prompt=images-3 size=1536x2752 story_bytes=\d+ post_bytes=\d+ model_ms=\d+ total_ms=\d+ outcome=ok usd=0\.05$/,
     );
     expect(formatImageLog(logs[1])).toContain('size=- story_bytes=- post_bytes=-');
   });

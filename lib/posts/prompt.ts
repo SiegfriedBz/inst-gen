@@ -4,7 +4,7 @@ import type { PostsModelInput } from './input';
 
 // The post plan's prompts (docs/specs/posts/generate-copy, "What the model
 // writes"). Bump the version with every change, so eval verdicts trace back to it.
-export const POSTS_PROMPT_VERSION = 'posts-1';
+export const POSTS_PROMPT_VERSION = 'posts-2';
 
 const CAPTION_RULES = `Captions:
 - English, in the business's tone words, written to tourists and expats nearby.
@@ -37,15 +37,20 @@ The topic: one line, at most 12 words, saying what the post is about.
 ${CAPTION_RULES}
 
 The image prompt: English, at most 80 words, for an image model making a tall 9:16 photo.
+- The massage is in every image: a therapist's hands working on a guest, or oil or towels being used for a treatment. Only what the business offers: a tool or treatment appears only if the offerings hold it. Never a guest alone, never an empty room, never a drink or a prop on its own.
+- A guest looks relaxed and alive, with the therapist there: never lying still as if asleep.
 - Light is always low, soft and warm: dusk, a lamp, lanterns, candles. Never bright sun, grey sky, mist, rain or damp.
-- Places look clean and cared for: no mould, stains, wet stone or worn surfaces.
+- Places look clean, tidy and cared for: beds and linens neatly made, nothing rumpled or messy; no mould, stains, wet stone or worn surfaces.
+- Rooms are warm and homely, like a boutique hotel or villa; never clinical or hospital-like.
+- Still air: curtains hang still, no wind.
+- Oil looks like massage oil: golden oil in a clear glass bottle, or poured into a palm; never a small dark bottle that could pass for medicine.
 - For a business that goes to its guests (its service area says so), the scene is the guest's hotel room, balcony or villa, never a spa building.
-- No guest at rest seen from behind: a guest is shown never from behind. No recognisable face.
+- A guest is shown never from behind. No recognisable face.
 - No text, logos or labels anywhere in the image; bottles are plain.
 - Use the visual style's palette, light and textures, and the essence's senses and place symbols.
 - Never the business's own premises, products or staff as if real.
 
-The scene: treatment (hands at work), detail (oils, stones, towels, flowers), place (the room, deck or town), or guest (a person at rest, never from behind). At most 2 posts of any scene.`;
+The scene, and every scene shows the massage: treatment (the therapist's hands at work on the guest), detail (a close view of the treatment: oil poured into a palm, warm towels laid on a back), place (the guest's room, balcony or villa with the massage under way in it), or guest (the guest relaxed during the treatment, the therapist's hands in the frame). At most 2 posts of any scene.`;
 }
 
 function profileText(input: PostsModelInput): string {
