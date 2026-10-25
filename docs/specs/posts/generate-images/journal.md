@@ -75,6 +75,12 @@
   now swapped for "warm" by `cleanLight`. The other three fixtures keep their
   `posts-1` recordings.
 
+- 2026-10-25: Eval with `posts-2` and `images-3`, Sen and Svarga: 12 of 12
+  made, $0.60, 16 to 37 s each; stories 180 to 263 KB, posts 142 to 197 KB.
+  Every image shows a massage under way. Maintainer's verdicts on the post
+  crops: Sen 1, 2, 3, 5 and 6 (5 of 6); Svarga 1, 2, 3, 4 and 6 (5 of 6),
+  "much better". No crop cuts its subject. Passes the spec's 4 of 6.
+
 ## RED
 
 Task 1:
