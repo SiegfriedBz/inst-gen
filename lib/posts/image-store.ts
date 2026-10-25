@@ -37,12 +37,18 @@ export async function saveImage(image: SavedImage): Promise<void> {
   }
 }
 
-// The owner's images by post id.
+// Post ids repeat in every batch (`post-1` to `post-6`), so an image is known
+// by its batch and post together.
+export function imageKey(batchId: string, postId: string): string {
+  return `${batchId}/${postId}`;
+}
+
+// The owner's images by `imageKey`.
 export async function loadImages(ownerId: string): Promise<Map<string, SavedImage>> {
   const db = await openStore();
   if (!db) return new Map();
   const all = await db.getAllFromIndex('images', 'ownerId', ownerId);
-  return new Map(all.map((image) => [image.postId, image]));
+  return new Map(all.map((image) => [imageKey(image.batchId, image.postId), image]));
 }
 
 function jpeg(base64: string): Blob {

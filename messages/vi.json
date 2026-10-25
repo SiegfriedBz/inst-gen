@@ -204,6 +204,8 @@
     "fewer": "Lần này chúng tôi tạo được {count} bài đăng.",
     "stale": "Thông tin doanh nghiệp của bạn đã thay đổi kể từ khi tạo các bài đăng này.",
     "update": "Cập nhật chú thích",
+    "rewriteOne": "Viết lại bài này luôn",
+    "staleEdited": "Các bài bạn đã sửa được giữ nguyên như bạn viết.",
     "errors": {
       "model_busy": "Shopfront đã dùng hết lượt viết miễn phí hôm nay. Hãy thử lại vào ngày mai.",
       "model_timeout": "Viết bài đăng của bạn mất quá nhiều thời gian. Hãy thử lại.",
@@ -226,6 +228,46 @@
         "invalid_request": "Đã xảy ra lỗi khi tạo hình ảnh này.",
         "no_space": "Điện thoại của bạn không còn đủ dung lượng cho hình ảnh.",
         "offline": "Bạn đang ngoại tuyến. Hình ảnh sẽ tiếp tục khi bạn quay lại."
+      },
+      "newImage": "Ảnh mới",
+      "hintLabel": "Cần thay đổi gì? (không bắt buộc)",
+      "hintPlaceholder": "xanh hơn, ban công lúc hoàng hôn",
+      "makeIt": "Tạo ảnh",
+      "cancel": "Hủy",
+      "checkAlt": "Hãy kiểm tra mô tả ảnh còn phù hợp không."
+    },
+    "number": "Bài {n}",
+    "edit": {
+      "edit": "Sửa",
+      "save": "Lưu",
+      "cancel": "Hủy",
+      "edited": "Đã sửa",
+      "caption": "Chú thích",
+      "hashtags": "Hashtag",
+      "hashtagsHint": "Tối đa 5. Cách nhau bằng dấu cách.",
+      "altCount": "{count}/{max}",
+      "tooLong": "Quá dài cho Instagram: thừa {count} ký tự.",
+      "empty": "Hãy viết chú thích trước."
+    },
+    "feed": {
+      "title": "Trang của bạn khi đã đăng xong",
+      "order": "Đăng lần lượt từ 1 đến 6: bài đăng sau cùng sẽ hiện đầu tiên."
+    },
+    "takeAway": {
+      "copy": "Sao chép chú thích",
+      "copied": "Đã sao chép",
+      "copyHere": "Sao chép từ đây.",
+      "savePost": "Lưu ảnh bài đăng",
+      "saveStory": "Lưu ảnh story"
+    },
+    "translate": {
+      "show": "Xem bằng {language}",
+      "hide": "Ẩn",
+      "label": "Bằng {language}, để bạn đọc. Instagram nhận bản tiếng Anh.",
+      "errors": {
+        "model_busy": "Shopfront đã dùng hết lượt dịch miễn phí hôm nay. Hãy thử lại vào ngày mai.",
+        "model_timeout": "Bản dịch mất quá lâu. Hãy thử lại.",
+        "model_failed": "Đã có lỗi khi dịch. Hãy thử lại."
       }
     }
   }

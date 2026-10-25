@@ -37,6 +37,8 @@ export function replayTextModel(
     searchAnswer?: SearchModelAnswer;
     // A post plan or rewrite; without one, both posts calls fail.
     posts?: Recording;
+    // A caption's translation, its `final` the text; without one, it fails.
+    translation?: Recording;
   } = {},
 ): TextModel {
   function replay<T>(recording: Recording | undefined, signal: AbortSignal) {
@@ -59,6 +61,12 @@ export function replayTextModel(
     },
     streamPostRewrite(_input, signal) {
       return replay<ModelRewrite>(opts.posts, signal);
+    },
+    async translateCaption(_text, _locale, signal) {
+      if (opts.error) throw new ModelError(opts.error, `replayed ${opts.error}`);
+      if (opts.hang) await waitForAbort(signal);
+      if (!opts.translation) throw new ModelError('failed', 'no recorded translation');
+      return opts.translation.final as string;
     },
     async searchEssence(_input, signal) {
       if (opts.error) throw new ModelError(opts.error, `replayed ${opts.error}`);
@@ -88,6 +96,7 @@ export function recordingTextModel(
   onDone: (recording: Recording) => void,
   onSearch: (answer: SearchModelAnswer) => void = () => {},
   onPosts: (recording: Recording) => void = () => {},
+  onTranslation: (recording: Recording) => void = () => {},
 ): TextModel {
   function record<T>(stream: ModelStream<T>) {
     async function* run(): AsyncGenerator<DeepPartial<T>, T> {
@@ -108,6 +117,11 @@ export function recordingTextModel(
     },
     streamPostRewrite(input, signal) {
       return record(inner.streamPostRewrite(input, signal));
+    },
+    async translateCaption(text, locale, signal) {
+      const final = await inner.translateCaption(text, locale, signal);
+      onTranslation({ ...meta, partials: [], final });
+      return final;
     },
     async searchEssence(input, signal) {
       const answer = await inner.searchEssence(input, signal);

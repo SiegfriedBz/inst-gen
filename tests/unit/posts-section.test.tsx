@@ -9,7 +9,7 @@ import type { Profile } from '@/lib/brand/profile';
 import { resetStoreForTests, saveBrand } from '@/lib/brand/store';
 import type { Post, PostBatch } from '@/lib/posts/batch';
 import { profileHash } from '@/lib/posts/input';
-import { saveBatch } from '@/lib/posts/store';
+import { loadBatches, saveBatch } from '@/lib/posts/store';
 import { encodePostsLine, type PostsLine } from '@/lib/posts/stream';
 import { newPostsRun } from '@/lib/runs/run-record';
 import { saveRun } from '@/lib/runs/store';
@@ -69,6 +69,96 @@ async function readyButton(): Promise<HTMLButtonElement> {
 
 const makeButton = async () =>
   (await screen.findByRole('button', { name: /Make/ })) as HTMLButtonElement;
+
+const changed = (): Profile => {
+  const profile = svargaProfile();
+  return { ...profile, summary: { value: 'Massage at your villa', source: profile.siteUrl } };
+};
+const sixPosts = Array.from({ length: 6 }, (_, i) =>
+  post({ id: `post-${i + 1}`, caption: `Caption ${i + 1}.` }),
+);
+const rewriteAnswer = (ids: string[]) =>
+  ndjson([
+    {
+      type: 'final',
+      result: {
+        posts: sixPosts
+          .filter((p) => ids.includes(p.id))
+          .map((p) => ({ ...p, caption: `New ${p.id}.` })),
+        dropped: [],
+        promptVersion: 'posts-1',
+        model: 'm',
+        profileHash: profileHash(changed()),
+      },
+    },
+  ]);
+const sentIds = (call: unknown[]) =>
+  JSON.parse((call[1] as RequestInit).body as string).posts.map((p: { id: string }) => p.id);
+
+describe('edited posts and Update captions', () => {
+  test('update captions leaves edited posts out', async () => {
+    const posts = sixPosts.map((p, i) => (i < 2 ? { ...p, edited: true } : p));
+    await saveBatch(batch(posts));
+    fetchMock.mockResolvedValue(rewriteAnswer(['post-3', 'post-4', 'post-5', 'post-6']));
+    await renderSection(changed());
+    expect(await screen.findByText('Posts you edited stay as you wrote them.')).toBeTruthy();
+    const update = await screen.findByRole('button', { name: 'Update captions' });
+    await waitFor(() => expect((update as HTMLButtonElement).disabled).toBe(false));
+    fireEvent.click(update);
+    await screen.findByText('New post-3.');
+    expect(sentIds(fetchMock.mock.calls[0])).toEqual(['post-3', 'post-4', 'post-5', 'post-6']);
+    expect(screen.getByText('Caption 1.')).toBeTruthy();
+  });
+
+  test('no stale line when only edited posts are out of date', async () => {
+    await saveBatch(batch(sixPosts.map((p) => ({ ...p, edited: true }))));
+    await renderSection(changed());
+    expect(await screen.findAllByRole('button', { name: 'Rewrite this one too' })).toHaveLength(6);
+    expect(
+      screen.queryByText('Your business details changed since these posts were made.'),
+    ).toBeNull();
+  });
+
+  test('rewrite this one too sends one post', async () => {
+    const posts = sixPosts.map((p, i) => (i === 0 ? { ...p, edited: true } : p));
+    await saveBatch(batch(posts));
+    fetchMock.mockResolvedValue(rewriteAnswer(['post-1']));
+    await renderSection(changed());
+    const button = await screen.findByRole('button', { name: 'Rewrite this one too' });
+    await waitFor(() => expect((button as HTMLButtonElement).disabled).toBe(false));
+    fireEvent.click(button);
+    await screen.findByText('New post-1.');
+    expect(sentIds(fetchMock.mock.calls[0])).toEqual(['post-1']);
+    expect(screen.queryByRole('button', { name: 'Rewrite this one too' })).toBeNull();
+  });
+
+  test("an edited post's flags follow the new details", async () => {
+    const flagged = { ...sixPosts[0], caption: 'Only 990k.', edited: true, unchecked: [] };
+    await saveBatch(batch([flagged]));
+    await renderSection(changed());
+    expect(await screen.findByText('990k is not on your site')).toBeTruthy();
+  });
+});
+
+describe('editing in the posts section', () => {
+  test('a saved edit is kept on the phone, numbered and marked Edited', async () => {
+    await saveBatch(batch(sixPosts));
+    await renderSection();
+    expect(await screen.findByText('Post 6')).toBeTruthy();
+    const [edit] = await screen.findAllByRole('button', { name: 'Edit' });
+    await waitFor(() => expect((edit as HTMLButtonElement).disabled).toBe(false));
+    fireEvent.click(edit);
+    fireEvent.change(screen.getByLabelText('Caption'), { target: { value: 'My own words.' } });
+    fireEvent.click(screen.getByRole('button', { name: 'Save' }));
+    expect(await screen.findByText('My own words.')).toBeTruthy();
+    expect(screen.getByText('Edited')).toBeTruthy();
+    await waitFor(async () => {
+      const [saved] = await loadBatches('svarga');
+      expect(saved.posts[0]).toMatchObject({ caption: 'My own words.', edited: true });
+    });
+    expect(fetchMock).not.toHaveBeenCalled();
+  });
+});
 
 describe('the posts section', () => {
   test('without WhatsApp the button is disabled and says why', async () => {

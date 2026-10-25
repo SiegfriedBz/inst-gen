@@ -16,7 +16,10 @@ import messages from '@/messages/en.json';
 import { svargaProfile } from './helpers/brand';
 import { post } from './helpers/posts';
 
-type Start = { input: { batch: PostBatch; postIds: string[] }; onEvent: (e: ImageEvent) => void };
+type Start = {
+  input: { batch: PostBatch; postIds: string[]; hint?: string };
+  onEvent: (e: ImageEvent) => void;
+};
 const started: Start[] = [];
 let release: () => void = () => {};
 const resumeCalls: { resolve: (v: null) => void }[] = [];
@@ -127,7 +130,67 @@ const makePosts = async () => {
   return button;
 };
 
+describe('the feed preview in the posts section', () => {
+  test('tapping a tile scrolls to its card', async () => {
+    const scrolled: string[] = [];
+    Element.prototype.scrollIntoView = vi.fn(function (this: Element) {
+      scrolled.push(this.id);
+    });
+    await saveBatch(batch(six));
+    await renderSection();
+    fireEvent.click(await screen.findByRole('button', { name: 'Post 3' }));
+    expect(scrolled).toEqual(['post-b1-post-3']);
+  });
+
+  test('a card with its image can be copied and saved', async () => {
+    await saveBatch(batch(six));
+    await saveImage(image('post-1'));
+    await renderSection();
+    expect(await screen.findAllByRole('button', { name: 'Copy caption' })).toHaveLength(6);
+    expect(await screen.findAllByRole('button', { name: 'Save post image' })).toHaveLength(1);
+  });
+
+  test('a new image asks the owner to check the description, until an edit', async () => {
+    await saveBatch(batch(six));
+    await saveImage(image('post-1'));
+    await renderSection();
+    const button = await screen.findByRole('button', { name: 'New image' });
+    await waitFor(() => expect((button as HTMLButtonElement).disabled).toBe(false));
+    fireEvent.click(button);
+    fireEvent.change(screen.getByLabelText('What should change? (optional)'), {
+      target: { value: 'more green' },
+    });
+    fireEvent.click(screen.getByRole('button', { name: 'Make it' }));
+    expect(started.at(-1)?.input).toMatchObject({ postIds: ['post-1'], hint: 'more green' });
+    expect(screen.getByText('Making the image…')).toBeTruthy();
+    started.at(-1)?.onEvent({ type: 'image', image: image('post-1') });
+    expect(await screen.findByText('Check that the image description still fits.')).toBeTruthy();
+    fireEvent.click(screen.getAllByRole('button', { name: 'Edit' })[0]);
+    fireEvent.click(screen.getByRole('button', { name: 'Save' }));
+    await waitFor(() =>
+      expect(screen.queryByText('Check that the image description still fits.')).toBeNull(),
+    );
+  });
+
+  test('no feed preview when images are off', async () => {
+    await saveBatch(batch(six));
+    await renderSection(false);
+    await screen.findByText('Caption 1.');
+    expect(screen.queryByText('Your feed once these are posted')).toBeNull();
+  });
+});
+
 describe('images in the posts section', () => {
+  test("one batch's image doesn't show on another batch", async () => {
+    await saveBatch({ ...batch(six), id: 'a', createdAt: '2026-10-24T09:00:00.000Z' });
+    await saveBatch({ ...batch(six), id: 'b' });
+    await saveImage({ ...image('post-1'), batchId: 'a' });
+    await renderSection();
+    await screen.findAllByRole('img');
+    await new Promise((resolve) => setTimeout(resolve, 50));
+    expect(screen.getAllByRole('img')).toHaveLength(1);
+  });
+
   test('a saved plan starts its six images', async () => {
     fetchMock.mockResolvedValue(planAnswer(six));
     await renderSection();
@@ -143,8 +206,9 @@ describe('images in the posts section', () => {
     await renderSection();
     fireEvent.click(await makePosts());
     await waitFor(() => expect(started).toHaveLength(1));
-    started[0].onEvent({ type: 'image', image: image('post-1') });
-    started[0].onEvent({ type: 'error', postId: 'post-2', code: 'image_blocked' });
+    const batchId = started[0].input.batch.id;
+    started[0].onEvent({ type: 'image', image: { ...image('post-1'), batchId } });
+    started[0].onEvent({ type: 'error', batchId, postId: 'post-2', code: 'image_blocked' });
     expect(await screen.findByRole('img', { name: 'Alt 1' })).toBeTruthy();
     expect(screen.getByText("This image couldn't be made. Try again for a new one.")).toBeTruthy();
     fireEvent.click(screen.getByRole('button', { name: 'Try again' }));
@@ -161,7 +225,10 @@ describe('images in the posts section', () => {
     expect(
       screen.getByText('Keep this page open for about a minute while your posts are made.'),
     ).toBeTruthy();
-    for (const p of six) started[0].onEvent({ type: 'image', image: image(p.id) });
+    const batchId = started[0].input.batch.id;
+    for (const p of six) {
+      started[0].onEvent({ type: 'image', image: { ...image(p.id), batchId } });
+    }
     release();
     await waitFor(() => expect(more.disabled).toBe(false));
   });
@@ -208,8 +275,11 @@ describe('images in the posts section', () => {
     fireEvent.click(await makePosts());
     await waitFor(() => expect(started).toHaveLength(1));
     const before = resumeCalls.length;
-    started[0].onEvent({ type: 'offline', postId: 'post-1' });
-    for (const p of six.slice(1)) started[0].onEvent({ type: 'image', image: image(p.id) });
+    const batchId = started[0].input.batch.id;
+    started[0].onEvent({ type: 'offline', batchId, postId: 'post-1' });
+    for (const p of six.slice(1)) {
+      started[0].onEvent({ type: 'image', image: { ...image(p.id), batchId } });
+    }
     release();
     await waitFor(() => expect(resumeCalls.length).toBeGreaterThan(before));
   });

@@ -6,6 +6,8 @@ import { POSTS_LIMITS, SCENES } from './batch';
 
 const text = z.string().min(1);
 
+export const IMAGE_HINT_CHARS = 60;
+
 const words = (value: string) => value.trim().split(/\s+/).filter(Boolean).length;
 
 export const imageBodySchema = z.object({
@@ -14,6 +16,8 @@ export const imageBodySchema = z.object({
     message: `at most ${POSTS_LIMITS.imagePromptWords} words`,
   }),
   scene: z.enum(SCENES),
+  // The owner's words about a new image (docs/specs/posts/editor-download).
+  hint: z.string().max(IMAGE_HINT_CHARS).optional(),
 });
 export type ImageBody = z.infer<typeof imageBodySchema>;
 

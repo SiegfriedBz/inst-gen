@@ -51,6 +51,13 @@ describe('POST /api/posts/image', () => {
     expect(wrongScene.status).toBe(400);
   });
 
+  test('a hint over 60 characters answers 400 invalid_request', async () => {
+    allowed();
+    const res = await route.POST(request({ ...good, hint: 'a'.repeat(61) }));
+    expect(res.status).toBe(400);
+    expect(await res.json()).toEqual({ error: 'invalid_request' });
+  });
+
   test('an owner not listed answers 403 images_off', async () => {
     allowed();
     owner.id = 'dev';

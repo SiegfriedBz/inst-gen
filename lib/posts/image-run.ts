@@ -3,7 +3,7 @@ import { describeModelError } from '@/lib/brand/read-log';
 import type { ImageBody, ImageErrorCode, ImageResponse } from './image';
 import { storyAndPost } from './image-crop';
 import type { ImageLog } from './image-log';
-import { IMAGE_PROMPT_VERSION, imagePrompt } from './image-prompt';
+import { cleanHint, IMAGE_PROMPT_VERSION, imagePrompt } from './image-prompt';
 
 // One post's image, end to end (docs/specs/posts/generate-images): the model
 // call, then the story and post JPEGs. Not streamed; no retry, since a retry
@@ -33,10 +33,12 @@ export async function makePostImage(
   const timeout = AbortSignal.timeout(deps.timeoutMs ?? IMAGE_TIMEOUT_MS);
   const stepSignal = AbortSignal.any([signal, timeout]);
   const model = deps.modelId ?? IMAGE_MODEL;
+  const hint = cleanHint(body.hint);
   const entry: ImageLog = {
     owner: ownerId,
     postId: body.postId,
     scene: body.scene,
+    hint: hint !== undefined,
     model,
     promptVersion: IMAGE_PROMPT_VERSION,
     size: null,
@@ -58,7 +60,7 @@ export async function makePostImage(
     });
     stopped.catch(() => {});
     const file = await Promise.race([
-      deps.model.makeImage(imagePrompt(body.imagePrompt), stepSignal),
+      deps.model.makeImage(imagePrompt(body.imagePrompt, hint), stepSignal),
       stopped,
     ]);
     entry.modelMs = Date.now() - started;

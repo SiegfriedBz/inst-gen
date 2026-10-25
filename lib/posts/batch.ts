@@ -47,6 +47,11 @@ export const postSchema = z.object({
   altText: z.string().max(POSTS_LIMITS.altTextChars),
   imagePrompt: text,
   unchecked: z.array(flagSchema),
+  // The owner's editor (docs/specs/posts/editor-download). Absent on posts
+  // saved before it: not edited, nothing to check, the batch's profileHash.
+  edited: z.boolean().optional(),
+  altToCheck: z.boolean().optional(),
+  profileHash: z.string().optional(),
 });
 export type Post = z.infer<typeof postSchema>;
 

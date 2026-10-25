@@ -4,6 +4,7 @@ import { formatImageLog } from '@/lib/posts/image-log';
 import type { ImageDeps } from '@/lib/posts/image-run';
 import { formatPostsLog } from '@/lib/posts/log';
 import type { PostsDeps } from '@/lib/posts/run';
+import { formatTranslateLog, type TranslateDeps } from '@/lib/posts/translate-run';
 import { tavilySearchTool } from '@/lib/search/tavily';
 import { undiciTransport } from './fetch-safe';
 import type { ReadDeps } from './read';
@@ -46,5 +47,13 @@ export function defaultImageDeps(): ImageDeps | null {
     model: geminiImageModel(apiKey),
     modelId: IMAGE_MODEL,
     log: (entry) => console.info(formatImageLog(entry)),
+  };
+}
+
+// The real model, for the caption translation route.
+export function defaultTranslateDeps(): TranslateDeps {
+  return {
+    model: geminiTextModel(),
+    log: (entry) => console.info(formatTranslateLog(entry)),
   };
 }

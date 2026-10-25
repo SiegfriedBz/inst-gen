@@ -11,6 +11,7 @@ import {
   type PostsErrorCode,
   type RecentPost,
 } from './batch';
+import { mergeRewrite } from './edit';
 import { ctaFor } from './input';
 import { applyCta, loadBatches, recentPosts, saveBatch } from './store';
 import { readPostsLines } from './stream';
@@ -27,7 +28,9 @@ export type PostsEvent =
   | { type: 'offline' }
   | { type: 'signedOut' };
 
-type Input = { step: 'plan'; recent: RecentPost[] } | { step: 'rewrite'; batch: PostBatch };
+type Input =
+  | { step: 'plan'; recent: RecentPost[] }
+  | { step: 'rewrite'; batch: PostBatch; postIds: string[] };
 
 const live = new Set<string>();
 const MAX_RESUMES = 2;
@@ -46,14 +49,32 @@ async function errorCodeOf(response: Response): Promise<PostsErrorCode> {
   }
 }
 
-function toBatch(
+// A rewrite's answer lands on the batch as stored now, not as it was sent: an
+// edit or a new image saved while it ran is kept, and a post the owner changed
+// since it was sent keeps the owner's words.
+async function rewritten(
+  input: Extract<Input, { step: 'rewrite' }>,
+  result: PlanResult,
+): Promise<PostBatch> {
+  const stored = await loadBatches(input.batch.ownerId);
+  const current = stored.find((b) => b.id === input.batch.id) ?? input.batch;
+  const sent = new Map(input.batch.posts.map((p) => [p.id, p]));
+  const unchanged = input.postIds.filter((id) => {
+    const now = current.posts.find((p) => p.id === id);
+    const then = sent.get(id);
+    return now && then && now.caption === then.caption && !!now.edited === !!then.edited;
+  });
+  return mergeRewrite(current, result, unchanged);
+}
+
+async function toBatch(
   run: RunRecord,
   input: Input,
   profile: Profile,
   result: PlanResult,
   now: Date,
-): PostBatch {
-  if (input.step === 'rewrite') return { ...input.batch, ...result };
+): Promise<PostBatch> {
+  if (input.step === 'rewrite') return rewritten(input, result);
   return {
     ...result,
     id: run.id,
@@ -101,7 +122,7 @@ function request(
       const body =
         input.step === 'plan'
           ? { profile, recent: input.recent }
-          : { profile, posts: input.batch.posts };
+          : { profile, posts: input.batch.posts.filter((p) => input.postIds.includes(p.id)) };
       const response = await deps.fetch(`/api/posts/${input.step}`, {
         method: 'POST',
         headers: { 'content-type': 'application/json' },
@@ -125,7 +146,7 @@ function request(
         } else if (line.type === 'final') {
           // Stopped (a Forget, a re-read, the section closing): keep nothing.
           if (controller.signal.aborted) return;
-          const batch = await keep(toBatch(run, input, profile, line.result, deps.now()));
+          const batch = await keep(await toBatch(run, input, profile, line.result, deps.now()));
           await deleteRun(run.id);
           onEvent({ type: 'final', batch });
           return;
@@ -169,18 +190,25 @@ export function startPlan(
   return request(run, true, input.profile, { step: 'plan', recent: input.recent }, onEvent, deps);
 }
 
+// Rewrites the batch's posts named in `postIds`; the others stay as they are.
 export function startRewrite(
-  input: { ownerId: string; profile: Profile; batch: PostBatch },
+  input: { ownerId: string; profile: Profile; batch: PostBatch; postIds: string[] },
   onEvent: (e: PostsEvent) => void,
   deps: ReadDeps = defaultReadDeps(),
 ): RunningRead {
   const run = newPostsRun(
-    { ownerId: input.ownerId, step: 'rewrite', batchId: input.batch.id },
+    {
+      ownerId: input.ownerId,
+      step: 'rewrite',
+      batchId: input.batch.id,
+      postIds: input.postIds,
+    },
     deps.now(),
     deps.newId(),
   );
   live.add(run.id);
-  return request(run, true, input.profile, { step: 'rewrite', batch: input.batch }, onEvent, deps);
+  const step: Input = { step: 'rewrite', batch: input.batch, postIds: input.postIds };
+  return request(run, true, input.profile, step, onEvent, deps);
 }
 
 // Asks again for this owner's unfinished plan or rewrite, or returns null when
@@ -206,6 +234,8 @@ export async function resumePosts(
     return null;
   }
   const input: Input =
-    step === 'rewrite' && batch ? { step, batch } : { step: 'plan', recent: recentPosts(batches) };
+    step === 'rewrite' && batch
+      ? { step, batch, postIds: run.postIds ?? batch.posts.map((p) => p.id) }
+      : { step: 'plan', recent: recentPosts(batches) };
   return { ...request(run, false, profile, input, onEvent, deps), step };
 }

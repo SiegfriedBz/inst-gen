@@ -29,6 +29,11 @@ export type RunRecord = {
   resumes?: number;
   // The batch a rewrite replaces, or whose images an images run makes.
   batchId?: string;
+  // The posts a rewrite sends: those the owner didn't edit, or the one they
+  // asked for (docs/specs/posts/editor-download). All of them when absent.
+  postIds?: string[];
+  // The owner's hint for a new image, asked for again on a resume.
+  hint?: string;
 };
 
 export function newBrandRun(
@@ -48,7 +53,7 @@ export function newBrandRun(
 }
 
 export function newPostsRun(
-  input: { ownerId: string; step: 'plan' | 'rewrite'; batchId?: string },
+  input: { ownerId: string; step: 'plan' | 'rewrite'; batchId?: string; postIds?: string[] },
   now: Date,
   id: string,
 ): RunRecord {
@@ -61,11 +66,12 @@ export function newPostsRun(
     startedAt: now.toISOString(),
     steps: [{ name: input.step, status: 'running' }],
     ...(input.batchId ? { batchId: input.batchId } : {}),
+    ...(input.postIds ? { postIds: input.postIds } : {}),
   };
 }
 
 export function newImagesRun(
-  input: { ownerId: string; batchId: string; postIds: string[] },
+  input: { ownerId: string; batchId: string; postIds: string[]; hint?: string },
   now: Date,
   id: string,
 ): RunRecord {
@@ -78,6 +84,7 @@ export function newImagesRun(
     startedAt: now.toISOString(),
     steps: input.postIds.map((postId) => ({ name: 'image', postId, status: 'running' })),
     batchId: input.batchId,
+    ...(input.hint ? { hint: input.hint } : {}),
   };
 }
 
