@@ -18,5 +18,6 @@
 - Task 2: `Tests  6 failed | 6 passed (12)`
 - Task 3: `Tests  18 failed | 10 passed (28)` (`Element type is invalid` for the links not yet exported); after it, the section, feed preview and home tests fail on the old labels until Task 4: `Tests  23 failed | 893 passed (916)`
 - Task 4: `Tests  7 failed | 37 passed (44)`
+- Task 5: none; the browser tests follow the code already proven red then green in Tasks 1 to 4, as the plan orders them (whole suite: `38 passed (32.0s)`)
 
 ## GREEN

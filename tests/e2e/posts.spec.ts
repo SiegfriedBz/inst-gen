@@ -38,7 +38,7 @@ test('posts stream in, stay, and follow a brand edit by themselves', async ({ pa
   });
   await signInAndRead(page);
 
-  await page.getByRole('button', { name: 'Make my posts' }).click();
+  await page.getByRole('button', { name: 'Make 6 suggestions' }).click();
   await expect(
     page.getByText('Keep this page open for about a minute while your posts are made.'),
   ).toBeVisible();
@@ -47,7 +47,7 @@ test('posts stream in, stay, and follow a brand edit by themselves', async ({ pa
 
   await page.reload();
   await expect(page.locator('article')).toHaveCount(6);
-  await expect(page.getByRole('button', { name: 'Make 6 more' })).toBeVisible();
+  await expect(page.getByRole('button', { name: 'Make 6 new suggestions' })).toBeVisible();
 
   const rewrites = await fulfilPosts(page, 'rewrite', postsBody(profile, { caption: 'Rewritten' }));
   await page.getByRole('tab', { name: 'Your business' }).click();
@@ -69,9 +69,9 @@ test('a busy model says so and gives the button back', async ({ page }) => {
   await fulfilPosts(page, 'plan', postsBody(profile, { error: 'model_busy' }));
   await signInAndRead(page);
 
-  await page.getByRole('button', { name: 'Make my posts' }).click();
+  await page.getByRole('button', { name: 'Make 6 suggestions' }).click();
   await expect(
     page.getByText("Shopfront has used today's free writing. Try again tomorrow."),
   ).toBeVisible();
-  await expect(page.getByRole('button', { name: 'Make my posts' })).toBeEnabled();
+  await expect(page.getByRole('button', { name: 'Make 6 suggestions' })).toBeEnabled();
 });

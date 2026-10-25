@@ -38,7 +38,7 @@ test('a first read lands on Your business, and the next open on Create your post
 
   await page.reload();
   await expect(posts).toHaveAttribute('aria-selected', 'true');
-  await expect(page.getByRole('button', { name: 'Make my posts' })).toBeVisible();
+  await expect(page.getByRole('button', { name: 'Make 6 suggestions' })).toBeVisible();
   await expect(page.getByText(/This is what we understood about/)).toBeHidden();
 });
 

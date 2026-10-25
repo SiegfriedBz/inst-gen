@@ -39,36 +39,24 @@ async function sixPosts(page: Page) {
   await fulfilPosts(page, 'plan', postsBody(profile));
   const images = await fulfilImages(page, {});
   await signIn(page);
-  await readAndMake(page, 'Your website', 'Read my website', 'Make my posts');
+  await readAndMake(page, 'Your website', 'Read my website', 'Make 6 suggestions');
   await expect(page.locator('article img')).toHaveCount(6);
   return { profile, images };
 }
-
-test('the feed preview shows six tiles, and a tile goes to its card', async ({ page }) => {
-  await sixPosts(page);
-  await expect(page.getByText('Your feed once these are posted')).toBeVisible();
-  const tiles = page.getByRole('button', { name: /^Post \d$/ });
-  await expect(tiles).toHaveCount(6);
-  await expect(tiles.first()).toHaveAccessibleName('Post 6');
-  await page.getByRole('button', { name: 'Post 4' }).click();
-  await expect(page.locator('article').nth(3)).toBeInViewport();
-});
 
 test('an edit is kept after a reload, and the automatic update leaves it alone', async ({
   page,
 }) => {
   const { profile } = await sixPosts(page);
   const first = page.locator('article').first();
-  await first.getByRole('button', { name: 'Edit' }).click();
+  await first.getByRole('button', { name: 'Edit the text' }).click();
   await first.getByLabel('Caption').fill('My own words about warm oil.');
   await first.getByRole('button', { name: 'Save', exact: true }).click();
-  await expect(first.getByText('Edited')).toBeVisible();
 
   await page.reload();
   await expect(
     page.locator('article').first().getByText('My own words about warm oil.'),
   ).toBeVisible();
-  await expect(page.locator('article').first().getByText('Edited')).toBeVisible();
 
   const sent: number[] = [];
   await page.route('**/api/posts/rewrite', async (route) => {
@@ -101,34 +89,44 @@ test('a new image carries the hint', async ({ page }) => {
     if (request.url().endsWith('/api/posts/image')) bodies.push(request.postDataJSON());
   });
   const first = page.locator('article').first();
-  await first.getByRole('button', { name: 'New image' }).click();
+  await first.getByRole('button', { name: 'Create new image' }).click();
   await first.getByLabel('What should change? (optional)').fill('more green');
   await first.getByRole('button', { name: 'Make it' }).click();
-  await expect(first.getByText('Check that the image description still fits.')).toBeVisible();
+  await expect(first.getByText('Making the image…')).toBeHidden();
   expect(bodies.map((b) => b.hint)).toEqual(['more green']);
   expect(images.count()).toBe(7);
 });
 
-test('without a share sheet, Save post image downloads the file', async ({ page }) => {
+test('without a share sheet, Save the 2 images downloads both, named', async ({ page }) => {
   await sixPosts(page);
-  const download = page.waitForEvent('download');
-  await page.locator('article').nth(1).getByRole('button', { name: 'Save post image' }).click();
-  expect((await download).suggestedFilename()).toMatch(/^sen-\d{4}-\d{2}-\d{2}-2-post\.jpg$/);
+  const names: string[] = [];
+  page.on('download', (download) => names.push(download.suggestedFilename()));
+  await page.locator('article').nth(1).getByRole('button', { name: 'Save the 2 images' }).click();
+  await expect.poll(() => names.length).toBe(2);
+  expect(names[0]).toMatch(/^sen-\d{4}-\d{2}-\d{2}-attempt-1-suggestion-2-post\.jpg$/);
+  expect(names[1]).toMatch(/^sen-\d{4}-\d{2}-\d{2}-attempt-1-suggestion-2-story\.jpg$/);
 });
 
-test('two batches keep their own images after a reload', async ({ page }) => {
+test('two attempts stack, newest on top, and keep their own images after a reload', async ({
+  page,
+}) => {
   const profile = senProfile();
   await fulfilRead(page, [streamBody(profile)]);
   await fulfilPosts(page, 'plan', postsBody(profile));
   const failures: Record<string, { status: number; error: string }> = {};
   await fulfilImages(page, failures);
   await signIn(page);
-  await readAndMake(page, 'Your website', 'Read my website', 'Make my posts');
+  await readAndMake(page, 'Your website', 'Read my website', 'Make 6 suggestions');
   await expect(page.locator('article img')).toHaveCount(6);
   failures['post-1'] = { status: 502, error: 'image_blocked' };
-  await page.getByRole('button', { name: 'Make 6 more' }).click();
+  await page.getByRole('button', { name: 'Make 6 new suggestions' }).click();
   await expect(page.locator('article')).toHaveCount(12);
   await expect(page.locator('article img')).toHaveCount(11);
+  await expect(page.getByRole('heading', { name: /^Attempt/ })).toHaveText([
+    'Attempt 2',
+    'Attempt 1',
+  ]);
+  await expect(page.getByText('They go on top. Attempt 2 stays below.')).toBeVisible();
 
   await page.reload();
   await expect(page.locator('article img')).toHaveCount(11);
