@@ -117,7 +117,13 @@ async function renderSection(imagesOn = true) {
   await saveBrand('svarga', profile);
   return render(
     <NextIntlClientProvider locale="en" messages={messages} timeZone="UTC">
-      <PostsSection ownerId="svarga" profile={profile} imagesOn={imagesOn} />
+      <PostsSection
+        ownerId="svarga"
+        profile={profile}
+        imagesOn={imagesOn}
+        active
+        searching={false}
+      />
     </NextIntlClientProvider>,
   );
 }
@@ -250,10 +256,9 @@ describe('images in the posts section', () => {
     for (const p of six) await saveImage(image(p.id));
     fetchMock.mockResolvedValue(planAnswer(six));
     await renderSection();
-    fireEvent.click(await screen.findByRole('button', { name: 'Update captions' }));
     await waitFor(() => expect(fetchMock).toHaveBeenCalledTimes(1));
     await waitFor(() =>
-      expect(screen.queryByRole('button', { name: 'Update captions' })).toBeNull(),
+      expect(screen.queryByText('Updating your captions to match your business…')).toBeNull(),
     );
     expect(started).toHaveLength(0);
     expect(screen.getAllByRole('img')).toHaveLength(6);

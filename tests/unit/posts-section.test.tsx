@@ -51,13 +51,25 @@ function batch(posts: Post[], hash = profileHash(svargaProfile())): PostBatch {
   };
 }
 
-async function renderSection(profile: Profile = svargaProfile()) {
-  await saveBrand('svarga', profile);
-  return render(
+type Shown = { active?: boolean; searching?: boolean };
+
+function section(profile: Profile, { active = true, searching = false }: Shown = {}) {
+  return (
     <NextIntlClientProvider locale="en" messages={messages} timeZone="UTC">
-      <PostsSection ownerId="svarga" profile={profile} imagesOn={false} />
-    </NextIntlClientProvider>,
+      <PostsSection
+        ownerId="svarga"
+        profile={profile}
+        imagesOn={false}
+        active={active}
+        searching={searching}
+      />
+    </NextIntlClientProvider>
   );
+}
+
+async function renderSection(profile: Profile = svargaProfile(), shown: Shown = {}) {
+  await saveBrand('svarga', profile);
+  return render(section(profile, shown));
 }
 
 // The button, once the first look for a lost run has ended.
@@ -95,19 +107,128 @@ const rewriteAnswer = (ids: string[]) =>
 const sentIds = (call: unknown[]) =>
   JSON.parse((call[1] as RequestInit).body as string).posts.map((p: { id: string }) => p.id);
 
-describe('edited posts and Update captions', () => {
-  test('update captions leaves edited posts out', async () => {
+const UPDATING = 'Updating your captions to match your business…';
+const errorAnswer = () => ndjson([{ type: 'error', code: 'model_busy' }]);
+const rewriteCalls = () =>
+  fetchMock.mock.calls.filter((call) => String(call[0]).endsWith('/api/posts/rewrite'));
+
+describe('captions follow the business by themselves', () => {
+  test('captions follow a business edit with no tap', async () => {
     const posts = sixPosts.map((p, i) => (i < 2 ? { ...p, edited: true } : p));
     await saveBatch(batch(posts));
     fetchMock.mockResolvedValue(rewriteAnswer(['post-3', 'post-4', 'post-5', 'post-6']));
     await renderSection(changed());
-    expect(await screen.findByText('Posts you edited stay as you wrote them.')).toBeTruthy();
+    await screen.findByText('New post-3.');
+    expect(rewriteCalls()).toHaveLength(1);
+    expect(sentIds(rewriteCalls()[0])).toEqual(['post-3', 'post-4', 'post-5', 'post-6']);
+    expect(screen.getByText('Caption 1.')).toBeTruthy();
+    expect(screen.queryByRole('button', { name: 'Update captions' })).toBeNull();
+  });
+
+  test('the updating line shows while the update runs', async () => {
+    await saveBatch(batch(sixPosts));
+    fetchMock.mockReturnValue(new Promise<Response>(() => {}));
+    await renderSection(changed());
+    expect(await screen.findByText(UPDATING)).toBeTruthy();
+    expect(
+      screen.getByText('Keep this page open for about a minute while your posts are made.'),
+    ).toBeTruthy();
+  });
+
+  test('nothing is sent while the tab is hidden', async () => {
+    await saveBatch(batch(sixPosts));
+    fetchMock.mockResolvedValue(rewriteAnswer(sixPosts.map((p) => p.id)));
+    const profile = changed();
+    const view = await renderSection(profile, { active: false });
+    await readyButton();
+    expect(rewriteCalls()).toHaveLength(0);
+    view.rerender(section(profile));
+    await screen.findByText('New post-1.');
+    expect(rewriteCalls()).toHaveLength(1);
+  });
+
+  test('nothing is sent while the essence search runs', async () => {
+    await saveBatch(batch(sixPosts));
+    fetchMock.mockResolvedValue(rewriteAnswer(sixPosts.map((p) => p.id)));
+    const profile = changed();
+    const view = await renderSection(profile, { searching: true });
+    await readyButton();
+    expect(await screen.findByText(UPDATING)).toBeTruthy();
+    expect(rewriteCalls()).toHaveLength(0);
+    view.rerender(section(profile));
+    await screen.findByText('New post-1.');
+    expect(rewriteCalls()).toHaveLength(1);
+  });
+
+  test('a failed automatic update shows Update captions and sends nothing more until the tab opens again', async () => {
+    await saveBatch(batch(sixPosts));
+    fetchMock.mockImplementation(async () => errorAnswer());
+    const view = await renderSection(changed());
+    expect(await screen.findByRole('button', { name: 'Update captions' })).toBeTruthy();
+    expect(screen.getByRole('alert').textContent).toMatch(/today's free writing/);
+    expect(screen.queryByText(UPDATING)).toBeNull();
+    view.rerender(section(changed()));
+    await readyButton();
+    expect(rewriteCalls()).toHaveLength(1);
+    view.rerender(section(changed(), { active: false }));
+    view.rerender(section(changed()));
+    await waitFor(() => expect(rewriteCalls()).toHaveLength(2));
+  });
+
+  test('Update captions after a failure tries again', async () => {
+    await saveBatch(batch(sixPosts));
+    fetchMock.mockImplementationOnce(async () => errorAnswer());
+    fetchMock.mockResolvedValue(rewriteAnswer(sixPosts.map((p) => p.id)));
+    await renderSection(changed());
     const update = await screen.findByRole('button', { name: 'Update captions' });
     await waitFor(() => expect((update as HTMLButtonElement).disabled).toBe(false));
     fireEvent.click(update);
-    await screen.findByText('New post-3.');
-    expect(sentIds(fetchMock.mock.calls[0])).toEqual(['post-3', 'post-4', 'post-5', 'post-6']);
-    expect(screen.getByText('Caption 1.')).toBeTruthy();
+    await screen.findByText('New post-1.');
+    expect(rewriteCalls()).toHaveLength(2);
+    expect(screen.queryByRole('button', { name: 'Update captions' })).toBeNull();
+  });
+
+  test('a post the answer drops is not sent again by itself', async () => {
+    await saveBatch(batch(sixPosts));
+    fetchMock.mockResolvedValue(rewriteAnswer(['post-1', 'post-2', 'post-3', 'post-4', 'post-5']));
+    await renderSection(changed());
+    await screen.findByText('New post-5.');
+    expect(await screen.findByRole('button', { name: 'Update captions' })).toBeTruthy();
+    await readyButton();
+    expect(rewriteCalls()).toHaveLength(1);
+  });
+
+  test('older batches are left alone', async () => {
+    const old = {
+      ...batch(
+        sixPosts.map((p, i) => (i === 0 ? { ...p, edited: true } : p)),
+        'stale000',
+      ),
+      id: 'b0',
+      createdAt: '2026-10-24T09:00:00.000Z',
+    };
+    await saveBatch(old);
+    await saveBatch(batch(sixPosts));
+    await renderSection();
+    await readyButton();
+    expect(fetchMock).not.toHaveBeenCalled();
+    expect(screen.queryByRole('button', { name: 'Update captions' })).toBeNull();
+    expect(screen.queryByRole('button', { name: 'Rewrite this one too' })).toBeNull();
+    expect(
+      screen.queryByText('Your business details changed since these posts were made.'),
+    ).toBeNull();
+  });
+
+  test("an older batch's unedited post is checked against today's details", async () => {
+    const flagged = { ...sixPosts[0], caption: 'Only 990k.', unchecked: [] };
+    await saveBatch({
+      ...batch([flagged], 'stale000'),
+      id: 'b0',
+      createdAt: '2026-10-24T09:00:00.000Z',
+    });
+    await saveBatch(batch(sixPosts));
+    await renderSection();
+    expect(await screen.findByText('990k is not on your site')).toBeTruthy();
   });
 
   test('no stale line when only edited posts are out of date', async () => {
@@ -117,19 +238,19 @@ describe('edited posts and Update captions', () => {
     expect(
       screen.queryByText('Your business details changed since these posts were made.'),
     ).toBeNull();
+    expect(fetchMock).not.toHaveBeenCalled();
   });
 
   test('rewrite this one too sends one post', async () => {
-    const posts = sixPosts.map((p, i) => (i === 0 ? { ...p, edited: true } : p));
-    await saveBatch(batch(posts));
+    await saveBatch(batch(sixPosts.map((p) => ({ ...p, edited: true }))));
     fetchMock.mockResolvedValue(rewriteAnswer(['post-1']));
     await renderSection(changed());
-    const button = await screen.findByRole('button', { name: 'Rewrite this one too' });
+    const [button] = await screen.findAllByRole('button', { name: 'Rewrite this one too' });
     await waitFor(() => expect((button as HTMLButtonElement).disabled).toBe(false));
     fireEvent.click(button);
     await screen.findByText('New post-1.');
     expect(sentIds(fetchMock.mock.calls[0])).toEqual(['post-1']);
-    expect(screen.queryByRole('button', { name: 'Rewrite this one too' })).toBeNull();
+    expect(screen.getAllByRole('button', { name: 'Rewrite this one too' })).toHaveLength(5);
   });
 
   test('edit is disabled while a rewrite runs', async () => {
@@ -137,9 +258,7 @@ describe('edited posts and Update captions', () => {
     let answer: (r: Response) => void = () => {};
     fetchMock.mockReturnValue(new Promise<Response>((resolve) => (answer = resolve)));
     await renderSection(changed());
-    const update = await screen.findByRole('button', { name: 'Update captions' });
-    await waitFor(() => expect((update as HTMLButtonElement).disabled).toBe(false));
-    fireEvent.click(update);
+    await screen.findByText(UPDATING);
     const edits = (await screen.findAllByRole('button', { name: 'Edit' })) as HTMLButtonElement[];
     await waitFor(() => expect(edits.every((b) => b.disabled)).toBe(true));
     answer(rewriteAnswer(sixPosts.map((p) => p.id)));
@@ -214,15 +333,6 @@ describe('the posts section', () => {
     expect(screen.getByText('450k is not on your site')).toBeTruthy();
   });
 
-  test('a stale batch offers to update its captions', async () => {
-    await saveBatch(batch([post()], 'stale000'));
-    await renderSection();
-    expect(
-      await screen.findByText('Your business details changed since these posts were made.'),
-    ).toBeTruthy();
-    expect(screen.getByRole('button', { name: 'Update captions' })).toBeTruthy();
-  });
-
   test('a batch made from the current profile does not', async () => {
     await saveBatch(batch([post()]));
     await renderSection();
@@ -274,11 +384,7 @@ describe('the posts section', () => {
     await saveRun(newPostsRun({ ownerId: 'svarga', step: 'plan' }, new Date(), 'lost'));
     fetchMock.mockImplementation(() => new Promise<Response>(() => {}));
     await saveBrand('svarga', svargaProfile());
-    render(
-      <NextIntlClientProvider locale="en" messages={messages} timeZone="UTC">
-        <PostsSection ownerId="svarga" profile={svargaProfile()} imagesOn={false} />
-      </NextIntlClientProvider>,
-    );
+    render(section(svargaProfile()));
     const first = screen.getByRole('button', { name: /Make/ }) as HTMLButtonElement;
     expect(first.disabled).toBe(true);
     await waitFor(() => expect(fetchMock).toHaveBeenCalledTimes(1));

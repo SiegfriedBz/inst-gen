@@ -355,7 +355,13 @@ export function BrandHome({ ownerId, imagesOn }: { ownerId: string; imagesOn: bo
             ownerEdited={ownerEdited}
             search={search}
           />
-          <PostsSection ownerId={ownerId} profile={saved} imagesOn={imagesOn} />
+          <PostsSection
+            ownerId={ownerId}
+            profile={saved}
+            imagesOn={imagesOn}
+            active
+            searching={search === 'running'}
+          />
           <div className="mt-6 flex flex-col gap-2 border-t border-edge pt-4">
             <p className="truncate text-[15px]">{saved.siteUrl}</p>
             <p className="text-[13px] text-ink-secondary">
