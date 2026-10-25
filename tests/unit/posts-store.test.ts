@@ -11,8 +11,10 @@ import {
 } from '@/lib/brand/store';
 import type { PostBatch } from '@/lib/posts/batch';
 import { staleUnedited } from '@/lib/posts/edit';
-import { profileHash } from '@/lib/posts/input';
-import { applyCta, loadBatches, recentPosts, saveBatch } from '@/lib/posts/store';
+import { imageKey, loadImages, type SavedImage, saveImage } from '@/lib/posts/image-store';
+import { hashText, profileHash } from '@/lib/posts/input';
+import { applyCta, clearBefore, loadBatches, recentPosts, saveBatch } from '@/lib/posts/store';
+import { loadTranslation, saveTranslation } from '@/lib/posts/translation-store';
 import { newPostsRun } from '@/lib/runs/run-record';
 import { loadOpenRun, saveRun } from '@/lib/runs/store';
 import { svargaProfile } from './helpers/brand';
@@ -138,5 +140,56 @@ describe('opening the store', () => {
     expect(await openStore()).toBeNull();
     expect(Date.now() - started).toBeLessThan(4000);
     old.close();
+  });
+});
+
+describe('clearing what came before the day', () => {
+  const image = (batchId: string, postId: string): SavedImage => ({
+    batchId,
+    postId,
+    ownerId: 'svarga',
+    post: new Blob(['p'], { type: 'image/jpeg' }),
+    story: new Blob(['s'], { type: 'image/jpeg' }),
+    imagePrompt: 'A villa deck at dusk',
+    model: 'm',
+    promptVersion: 'images-1',
+    createdAt: '2026-10-25T10:00:00.000Z',
+  });
+  const translation = (batchId: string, caption: string) => ({
+    batchId,
+    postId: `${batchId}-0`,
+    ownerId: 'svarga',
+    locale: 'id' as const,
+    captionHash: hashText(caption),
+    text: 'Terjemahan',
+    model: 'm',
+    promptVersion: 'translate-1',
+    createdAt: '2026-10-25T10:00:00.000Z',
+  });
+
+  test("old attempts lose their images and translations, keep their topics up to the limit, and today's stay", async () => {
+    const days = [
+      '2026-10-22T10:00:00.000Z',
+      '2026-10-23T10:00:00.000Z',
+      '2026-10-24T10:00:00.000Z',
+      '2026-10-25T10:00:00.000Z',
+    ];
+    const ids = ['d1', 'd2', 'd3', 'today'];
+    for (const [i, id] of ids.entries()) {
+      const b = batch(id, days[i]);
+      await saveBatch(b);
+      await saveImage(image(id, `${id}-0`));
+      await saveTranslation(translation(id, b.posts[0].caption));
+    }
+    await clearBefore('svarga', new Date('2026-10-25T03:00:00.000Z'));
+
+    const kept = await loadBatches('svarga');
+    expect(kept.map((b) => b.id)).toEqual(['today', 'd3', 'd2']);
+    const images = await loadImages('svarga');
+    expect([...images.keys()]).toEqual([imageKey('today', 'today-0')]);
+    const caption = kept[0].posts[0].caption;
+    expect(await loadTranslation('today', 'today-0', 'id', caption)).not.toBeNull();
+    expect(await loadTranslation('d3', 'd3-0', 'id', caption)).toBeNull();
+    expect(recentPosts(kept.slice(1)).map((p) => p.topic)).toContain('d3 topic 0');
   });
 });

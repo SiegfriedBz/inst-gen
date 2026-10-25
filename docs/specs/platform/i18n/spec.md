@@ -95,8 +95,8 @@ otherwise.
   (cookie, then `Accept-Language`, then English) and sets the matching
   `<html lang>`.
 - Not translated here: captions, hashtags and review replies, which are
-  generated in English (their owner's-language view is 2.4 and 2.6), and the
-  owner guide (2.8).
+  generated in English (their owner's-language view is 2.4 and 2.7), and the
+  owner guide (2.9).
 
 ### Wording
 
@@ -210,14 +210,14 @@ layout in all three languages.
 - The choice lives on one phone. A second phone, or cleared site data, starts
   again from that phone's language.
 - Dates and numbers aren't formatted yet: no screen shows any. The usage bar
-  (2.7) is the first, and formats them for the current language with
+  (2.8) is the first, and formats them for the current language with
   next-intl.
 - Right-to-left languages aren't considered; none of the three needs it.
 
 ## Out of scope
 
 - Captions, hashtags and replies in the owner's language: 2.4
-  `posts/editor-download` and 2.6 `reviews/reply-drafts`.
-- The owner guide in three languages: 2.8 `guide/owner-guide`.
+  `posts/editor-download` and 2.7 `reviews/reply-drafts`.
+- The owner guide in three languages: 2.9 `guide/owner-guide`.
 - Any language beyond these three, and a per-spa default language.
 - Language in the URL, and per-language pages for search engines.

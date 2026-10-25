@@ -26,7 +26,7 @@ test('images follow the captions, stay on the phone, and one is tried again', as
   await page.getByRole('button', { name: 'Read my website' }).click();
   await page.getByRole('tab', { name: 'Create your posts' }).click();
 
-  await page.getByRole('button', { name: 'Make my posts' }).click();
+  await page.getByRole('button', { name: 'Make 6 suggestions' }).click();
   await expect(page.getByText('Making the image…')).toHaveCount(6);
   await expect(page.locator('article img')).toHaveCount(5);
   const third = page.locator('article').nth(2);
@@ -34,7 +34,11 @@ test('images follow the captions, stay on the phone, and one is tried again', as
     third.getByText("This image couldn't be made. Try again for a new one."),
   ).toBeVisible();
 
-  await page.locator('article').first().getByRole('button', { name: 'See the story' }).click();
+  await page
+    .locator('article')
+    .first()
+    .getByRole('button', { name: 'See the story image' })
+    .click();
   await expect(page.getByRole('dialog').locator('img')).toBeVisible();
   await page.getByRole('button', { name: 'Close' }).click();
   await expect(page.getByRole('dialog')).toHaveCount(0);

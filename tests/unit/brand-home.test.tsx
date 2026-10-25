@@ -8,6 +8,7 @@ import { BrandHome } from '@/components/brand/brand-home';
 import type { Profile } from '@/lib/brand/profile';
 import { loadBrand, openStore, resetStoreForTests, saveBrand } from '@/lib/brand/store';
 import { encodeLine, type StreamLine } from '@/lib/brand/stream';
+import { messagesFor } from '@/lib/i18n/messages';
 import type { PostBatch } from '@/lib/posts/batch';
 import { profileHash } from '@/lib/posts/input';
 import { saveBatch } from '@/lib/posts/store';
@@ -313,7 +314,7 @@ describe('the home tabs', () => {
     renderHome();
     await screen.findByRole('tablist', { name: 'Home' });
     expect(selected('Create your posts')).toBe('true');
-    expect(await screen.findByRole('button', { name: 'Make my posts' })).toBeTruthy();
+    expect(await screen.findByRole('button', { name: 'Make 6 suggestions' })).toBeTruthy();
     expect(screen.getByText(INTRO).closest('[role="tabpanel"]')?.hasAttribute('hidden')).toBe(true);
     await openTab('Your business');
     expect(screen.getByText(INTRO)).toBeTruthy();
@@ -324,7 +325,7 @@ describe('the home tabs', () => {
     const made: PostBatch = {
       id: 'b1',
       ownerId: 'sen',
-      createdAt: '2026-10-25T09:00:00.000Z',
+      createdAt: new Date().toISOString(),
       profileReadAt: profile.readAt,
       profileHash: profileHash(profile),
       promptVersion: 'posts-1',
@@ -361,7 +362,7 @@ describe('the home tabs', () => {
     });
     renderHome();
     const make = (await screen.findByRole('button', {
-      name: 'Make my posts',
+      name: 'Make 6 suggestions',
     })) as HTMLButtonElement;
     await waitFor(() => expect(make.disabled).toBe(false));
     fireEvent.click(make);
@@ -369,6 +370,34 @@ describe('the home tabs', () => {
     await openTab('Your business');
     await openTab('Create your posts');
     expect(signal?.aborted).toBe(false);
+  });
+});
+
+describe('a language change', () => {
+  test('keeps the open tab and neither reloads nor searches again', async () => {
+    await saveBrand('sen', unsearched);
+    // The search answers "unavailable" at once, as without a key: nothing
+    // in flight stops a second one.
+    fetchMock.mockImplementation(async () =>
+      Response.json({ error: 'search_unavailable' }, { status: 503 }),
+    );
+    const home = (locale: 'en' | 'vi') => (
+      <NextIntlClientProvider locale={locale} messages={messagesFor(locale)} timeZone="UTC">
+        <BrandHome ownerId="sen" imagesOn={false} />
+      </NextIntlClientProvider>
+    );
+    const view = render(home('en'));
+    await openTab('Your business');
+    await waitFor(() => expect(urls()).toContain('/api/brand/search'));
+    await new Promise((resolve) => setTimeout(resolve, 50));
+    const before = fetchMock.mock.calls.length;
+    view.rerender(home('vi'));
+    expect(await screen.findByRole('tab', { name: 'Doanh nghiệp' })).toBeTruthy();
+    expect(screen.getByRole('tab', { name: 'Doanh nghiệp' }).getAttribute('aria-selected')).toBe(
+      'true',
+    );
+    await new Promise((resolve) => setTimeout(resolve, 50));
+    expect(fetchMock.mock.calls.length).toBe(before);
   });
 });
 

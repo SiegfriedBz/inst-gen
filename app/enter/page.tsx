@@ -1,25 +1,18 @@
-import { getTranslations } from 'next-intl/server';
 import { LanguageSwitch } from '@/components/language-switch';
+import { EnterFooter, EnterIntro } from '@/components/screen-text';
 import { ShopfrontMark } from '@/components/shopfront-mark';
 import { SignInForm } from './sign-in-form';
 
-export default async function EnterPage() {
-  const meta = await getTranslations('meta');
-  const t = await getTranslations('enter');
+export default function EnterPage() {
   return (
     <main className="flex flex-1 flex-col">
       <header className="flex items-center justify-between gap-2">
         <ShopfrontMark />
         <LanguageSwitch returnTo="/enter" />
       </header>
-      <h1 className="mt-11 text-[30px] leading-[1.1] font-medium tracking-[-0.02em]">
-        {meta('title')}
-      </h1>
-      <p className="mt-1.5 mb-8 text-[15px] leading-normal text-ink-secondary">
-        {meta('description')}
-      </p>
+      <EnterIntro />
       <SignInForm />
-      <p className="mt-auto pt-10 text-xs text-ink-secondary">{t('footer')}</p>
+      <EnterFooter />
     </main>
   );
 }

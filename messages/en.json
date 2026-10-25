@@ -186,27 +186,24 @@
     }
   },
   "posts": {
-    "make": "Make my posts",
-    "makeMore": "Make 6 more",
+    "make": "Make 6 suggestions",
+    "makeMore": "Make 6 new suggestions",
+    "moreBelow": "They go on top. Attempt {n} stays below.",
+    "empty": "Each suggestion is 2 images (1 for the post, 1 for the story) and the text for the post, ready for Instagram. Pick the ones you like and save them to your phone.",
+    "emptyTextOnly": "Each suggestion is the text for a post, ready for Instagram. Pick the ones you like and copy them.",
+    "attempt": "Attempt {n}",
+    "attemptCount": "{count, plural, one {# suggestion} other {# suggestions}}",
+    "saveImages": "Save the 2 images",
+    "copyText": "Copy the text",
+    "howTo": "In Instagram: make a post with the post image and paste the text, then a story with the story image.",
+    "howToTextOnly": "In Instagram: make a post with your own photo and paste the text.",
+    "editText": "Edit the text",
     "keepOpen": "Keep this page open for about a minute while your posts are made.",
-    "heading": "Your posts",
-    "types": {
-      "offer": "Offer",
-      "moment": "Why people come",
-      "local": "Your town",
-      "ritual": "The ritual",
-      "tip": "Tip",
-      "proof": "What people say"
-    },
-    "imageDescription": "Image description",
-    "check": "Check before posting:",
     "flags": {
-      "price": "{text} is not on your site",
-      "duration": "{text} is not on your site",
-      "banned": "\"{text}\" may not be allowed on Instagram",
-      "firstLine": "The first line is longer than Instagram shows before \"more\""
+      "price": "This price isn't on your website: {text}. Check it before posting.",
+      "duration": "This duration isn't on your website: {text}. Check it before posting.",
+      "banned": "Instagram may not allow \"{text}\". Better to change it."
     },
-    "fewer": "We made {count} posts this time.",
     "stale": "Your business details changed since these posts were made.",
     "update": "Update captions",
     "rewriteOne": "Rewrite this one too",
@@ -222,7 +219,7 @@
     "images": {
       "make": "Make the images",
       "making": "Making the image…",
-      "seeStory": "See the story",
+      "seeStory": "See the story image",
       "retry": "Try again",
       "close": "Close",
       "off": "Images aren't turned on for your account yet.",
@@ -235,36 +232,24 @@
         "no_space": "Your phone is out of space for images.",
         "offline": "You're offline. Your images will carry on when you're back."
       },
-      "newImage": "New image",
+      "newImage": "Create new image",
       "hintLabel": "What should change? (optional)",
       "hintPlaceholder": "more green, a sunset balcony",
       "makeIt": "Make it",
-      "cancel": "Cancel",
-      "checkAlt": "Check that the image description still fits."
+      "cancel": "Cancel"
     },
-    "number": "Post {n}",
     "edit": {
-      "edit": "Edit",
       "save": "Save",
       "cancel": "Cancel",
-      "edited": "Edited",
       "caption": "Caption",
       "hashtags": "Hashtags",
       "hashtagsHint": "Up to 5. Separate them with spaces.",
-      "altCount": "{count}/{max}",
       "tooLong": "Too long for Instagram: {count} characters over.",
       "empty": "Write a caption first."
     },
-    "feed": {
-      "title": "Your feed once these are posted",
-      "order": "Post them from 1 to 6: the last one you post shows first."
-    },
     "takeAway": {
-      "copy": "Copy caption",
       "copied": "Copied",
-      "copyHere": "Copy it from here.",
-      "savePost": "Save post image",
-      "saveStory": "Save story image"
+      "copyHere": "Copy it from here."
     },
     "translate": {
       "show": "Show in {language}",

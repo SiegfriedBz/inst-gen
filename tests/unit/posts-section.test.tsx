@@ -8,6 +8,7 @@ import { PostsSection } from '@/components/posts/posts-section';
 import type { Profile } from '@/lib/brand/profile';
 import { resetStoreForTests, saveBrand } from '@/lib/brand/store';
 import type { Post, PostBatch } from '@/lib/posts/batch';
+import { loadImages, type SavedImage, saveImage } from '@/lib/posts/image-store';
 import { profileHash } from '@/lib/posts/input';
 import { loadBatches, saveBatch } from '@/lib/posts/store';
 import { encodePostsLine, type PostsLine } from '@/lib/posts/stream';
@@ -20,6 +21,9 @@ import { post } from './helpers/posts';
 let fetchMock: ReturnType<typeof vi.fn>;
 
 beforeEach(() => {
+  // Today, past 3am: the fixtures' 09:00 attempts are today's.
+  vi.useFakeTimers({ toFake: ['Date'] });
+  vi.setSystemTime(new Date('2026-10-25T12:00:00.000Z'));
   globalThis.indexedDB = new IDBFactory();
   resetStoreForTests();
   fetchMock = vi.fn();
@@ -27,6 +31,7 @@ beforeEach(() => {
 });
 
 afterEach(() => {
+  vi.useRealTimers();
   cleanup();
   vi.unstubAllGlobals();
 });
@@ -78,6 +83,18 @@ async function readyButton(): Promise<HTMLButtonElement> {
   await waitFor(() => expect(button.disabled).toBe(false));
   return button;
 }
+
+const image = (batchId: string, postId: string): SavedImage => ({
+  batchId,
+  postId,
+  ownerId: 'svarga',
+  post: new Blob(['p'], { type: 'image/jpeg' }),
+  story: new Blob(['s'], { type: 'image/jpeg' }),
+  imagePrompt: 'A villa deck at dusk',
+  model: 'm',
+  promptVersion: 'images-1',
+  createdAt: '2026-10-24T10:00:00.000Z',
+});
 
 const makeButton = async () =>
   (await screen.findByRole('button', { name: /Make/ })) as HTMLButtonElement;
@@ -167,7 +184,7 @@ describe('captions follow the business by themselves', () => {
     await screen.findByText(UPDATING);
     const more = (await makeButton()) as HTMLButtonElement;
     await waitFor(() => expect(more.disabled).toBe(true));
-    const edits = screen.getAllByRole('button', { name: 'Edit' }) as HTMLButtonElement[];
+    const edits = screen.getAllByRole('button', { name: 'Edit the text' }) as HTMLButtonElement[];
     expect(edits.every((b) => b.disabled)).toBe(true);
     const rewrite = screen.getByRole('button', {
       name: 'Rewrite this one too',
@@ -221,7 +238,7 @@ describe('captions follow the business by themselves', () => {
         'stale000',
       ),
       id: 'b0',
-      createdAt: '2026-10-24T09:00:00.000Z',
+      createdAt: '2026-10-25T08:00:00.000Z',
     };
     await saveBatch(old);
     await saveBatch(batch(sixPosts));
@@ -240,11 +257,13 @@ describe('captions follow the business by themselves', () => {
     await saveBatch({
       ...batch([flagged], 'stale000'),
       id: 'b0',
-      createdAt: '2026-10-24T09:00:00.000Z',
+      createdAt: '2026-10-25T08:00:00.000Z',
     });
     await saveBatch(batch(sixPosts));
     await renderSection();
-    expect(await screen.findByText('990k is not on your site')).toBeTruthy();
+    expect(
+      await screen.findByText("This price isn't on your website: 990k. Check it before posting."),
+    ).toBeTruthy();
   });
 
   test('no stale line when only edited posts are out of date', async () => {
@@ -275,13 +294,15 @@ describe('captions follow the business by themselves', () => {
     fetchMock.mockReturnValue(new Promise<Response>((resolve) => (answer = resolve)));
     await renderSection(changed());
     await screen.findByText(UPDATING);
-    const edits = (await screen.findAllByRole('button', { name: 'Edit' })) as HTMLButtonElement[];
+    const edits = (await screen.findAllByRole('button', {
+      name: 'Edit the text',
+    })) as HTMLButtonElement[];
     await waitFor(() => expect(edits.every((b) => b.disabled)).toBe(true));
     answer(rewriteAnswer(sixPosts.map((p) => p.id)));
     await screen.findByText('New post-1.');
     await waitFor(() =>
       expect(
-        (screen.getAllByRole('button', { name: 'Edit' }) as HTMLButtonElement[]).every(
+        (screen.getAllByRole('button', { name: 'Edit the text' }) as HTMLButtonElement[]).every(
           (b) => !b.disabled,
         ),
       ).toBe(true),
@@ -292,22 +313,23 @@ describe('captions follow the business by themselves', () => {
     const flagged = { ...sixPosts[0], caption: 'Only 990k.', edited: true, unchecked: [] };
     await saveBatch(batch([flagged]));
     await renderSection(changed());
-    expect(await screen.findByText('990k is not on your site')).toBeTruthy();
+    expect(
+      await screen.findByText("This price isn't on your website: 990k. Check it before posting."),
+    ).toBeTruthy();
   });
 });
 
 describe('editing in the posts section', () => {
-  test('a saved edit is kept on the phone, numbered and marked Edited', async () => {
+  test('a saved edit is kept on the phone', async () => {
     await saveBatch(batch(sixPosts));
     await renderSection();
-    expect(await screen.findByText('Post 6')).toBeTruthy();
-    const [edit] = await screen.findAllByRole('button', { name: 'Edit' });
+    await screen.findByText('Caption 6.');
+    const [edit] = await screen.findAllByRole('button', { name: 'Edit the text' });
     await waitFor(() => expect((edit as HTMLButtonElement).disabled).toBe(false));
     fireEvent.click(edit);
     fireEvent.change(screen.getByLabelText('Caption'), { target: { value: 'My own words.' } });
     fireEvent.click(screen.getByRole('button', { name: 'Save' }));
     expect(await screen.findByText('My own words.')).toBeTruthy();
-    expect(screen.getByText('Edited')).toBeTruthy();
     await waitFor(async () => {
       const [saved] = await loadBatches('svarga');
       expect(saved.posts[0]).toMatchObject({ caption: 'My own words.', edited: true });
@@ -325,34 +347,35 @@ describe('the posts section', () => {
     expect(screen.getByText('Add your WhatsApp number: every post ends with it.')).toBeTruthy();
   });
 
-  test('reads "Make 6 more" when a batch exists', async () => {
+  test('reads "Make 6 new suggestions" when an attempt is on screen', async () => {
     await saveBatch(batch([post()]));
     await renderSection();
-    expect(await screen.findByRole('button', { name: 'Make 6 more' })).toBeTruthy();
+    expect(await screen.findByRole('button', { name: 'Make 6 new suggestions' })).toBeTruthy();
   });
 
-  test('a card shows the label, caption, call to action, hashtags and image description, never the prompt', async () => {
+  test('a card shows the caption, call to action and hashtags, never the prompt', async () => {
     await saveBatch(batch([post({ imagePrompt: 'SECRET PROMPT' })]));
     await renderSection();
-    expect(await screen.findByText('Offer')).toBeTruthy();
+    expect(await screen.findByText('Warm oil, slow hands.')).toBeTruthy();
     expect(screen.getByText('Warm oil, slow hands.')).toBeTruthy();
     expect(screen.getByText('Book on WhatsApp: +6281234567890')).toBeTruthy();
     expect(screen.getByText('#canggu #balimassage #aftersurf')).toBeTruthy();
-    expect(screen.getByText('Image description')).toBeTruthy();
+    expect(screen.queryByText('Image description')).toBeNull();
     expect(screen.queryByText(/SECRET PROMPT/)).toBeNull();
   });
 
   test('a flagged post says what to check', async () => {
     await saveBatch(batch([post({ unchecked: [{ kind: 'price', text: '450k' }] })]));
     await renderSection();
-    expect(await screen.findByText('Check before posting:')).toBeTruthy();
-    expect(screen.getByText('450k is not on your site')).toBeTruthy();
+    expect(
+      await screen.findByText("This price isn't on your website: 450k. Check it before posting."),
+    ).toBeTruthy();
   });
 
   test('a batch made from the current profile does not', async () => {
     await saveBatch(batch([post()]));
     await renderSection();
-    await screen.findByText('Offer');
+    await screen.findByText('Warm oil, slow hands.');
     expect(screen.queryByRole('button', { name: 'Update captions' })).toBeNull();
   });
 
@@ -382,7 +405,7 @@ describe('the posts section', () => {
       ]),
     );
     expect(await screen.findByText('Warm oil, slow hands.')).toBeTruthy();
-    expect(await screen.findByText('We made 1 posts this time.')).toBeTruthy();
+    expect(await screen.findByText('1 suggestion')).toBeTruthy();
     await waitFor(() => expect(screen.queryByText(/Keep this page open/)).toBeNull());
   });
 
@@ -438,6 +461,106 @@ describe('the posts section', () => {
     document.dispatchEvent(new Event('visibilitychange'));
     view.unmount();
     await new Promise((resolve) => setTimeout(resolve, 100));
+    expect(fetchMock).not.toHaveBeenCalled();
+  });
+});
+
+describe("today's attempts", () => {
+  const yesterday = (posts: Post[], hash?: string): PostBatch => ({
+    ...batch(posts, hash),
+    id: 'y1',
+    createdAt: '2026-10-24T09:00:00.000Z',
+  });
+  const yesterdayPosts = sixPosts.map((p, i) => ({
+    ...p,
+    caption: `Yesterday ${i + 1}.`,
+    topic: `yesterday topic ${i + 1}`,
+  }));
+
+  test("yesterday's attempts are not shown and their images are gone", async () => {
+    await saveBatch(yesterday(yesterdayPosts));
+    await saveImage(image('y1', 'post-1'));
+    await saveBatch(batch(sixPosts));
+    await renderSection();
+    expect(await screen.findByText('Caption 1.')).toBeTruthy();
+    expect(screen.queryByText('Yesterday 1.')).toBeNull();
+    expect(screen.getAllByRole('heading', { name: /^Attempt/ }).map((h) => h.textContent)).toEqual([
+      'Attempt 1',
+    ]);
+    await waitFor(async () => expect((await loadImages('svarga')).size).toBe(0));
+  });
+
+  test('attempts are numbered from the oldest of the day, newest on top', async () => {
+    await saveBatch(batch(sixPosts));
+    await saveBatch({
+      ...batch(sixPosts.map((p) => ({ ...p, caption: `Later ${p.id}.` }))),
+      id: 'b2',
+      createdAt: '2026-10-25T10:00:00.000Z',
+    });
+    await renderSection();
+    await screen.findByText('Later post-1.');
+    expect(screen.getAllByRole('heading', { name: /^Attempt/ }).map((h) => h.textContent)).toEqual([
+      'Attempt 2',
+      'Attempt 1',
+    ]);
+    expect(screen.getAllByText('6 suggestions')).toHaveLength(2);
+    const text = document.body.textContent ?? '';
+    expect(text.indexOf('Later post-1.')).toBeLessThan(text.indexOf('Caption 1.'));
+  });
+
+  test('the button and its line', async () => {
+    const view = await renderSection();
+    expect(await screen.findByRole('button', { name: 'Make 6 suggestions' })).toBeTruthy();
+    expect(await screen.findByText(/Each suggestion is the text for a post/)).toBeTruthy();
+    expect(screen.queryByText(/stays below/)).toBeNull();
+    view.unmount();
+    await saveBatch(batch(sixPosts));
+    await renderSection();
+    expect(await screen.findByRole('button', { name: 'Make 6 new suggestions' })).toBeTruthy();
+    expect(await screen.findByText('They go on top. Attempt 1 stays below.')).toBeTruthy();
+    expect(screen.queryByText(/Each suggestion is/)).toBeNull();
+  });
+
+  test('a new attempt streams in on top', async () => {
+    await saveBatch(batch(sixPosts));
+    const streamed = post({ id: 'post-1', caption: 'Streaming in.' });
+    fetchMock.mockResolvedValue(
+      new Response(
+        new ReadableStream({
+          start(controller) {
+            controller.enqueue(
+              new TextEncoder().encode(encodePostsLine({ type: 'post', index: 0, post: streamed })),
+            );
+          },
+        }),
+        { headers: { 'content-type': 'application/x-ndjson' } },
+      ),
+    );
+    await renderSection();
+    fireEvent.click(await readyButton());
+    await screen.findByText('Streaming in.');
+    expect(screen.getAllByRole('heading', { name: /^Attempt/ }).map((h) => h.textContent)).toEqual([
+      'Attempt 2',
+      'Attempt 1',
+    ]);
+    const text = document.body.textContent ?? '';
+    expect(text.indexOf('Streaming in.')).toBeLessThan(text.indexOf('Caption 1.'));
+  });
+
+  test("recent topics include yesterday's", async () => {
+    await saveBatch(yesterday(yesterdayPosts));
+    fetchMock.mockReturnValue(new Promise<Response>(() => {}));
+    await renderSection();
+    fireEvent.click(await readyButton());
+    await waitFor(() => expect(fetchMock).toHaveBeenCalled());
+    const body = JSON.parse((fetchMock.mock.calls[0][1] as RequestInit).body as string);
+    expect(body.recent.map((r: { topic: string }) => r.topic)).toContain('yesterday topic 1');
+  });
+
+  test("the automatic update leaves yesterday's attempt alone", async () => {
+    await saveBatch(yesterday(yesterdayPosts, 'stale000'));
+    await renderSection();
+    await readyButton();
     expect(fetchMock).not.toHaveBeenCalled();
   });
 });

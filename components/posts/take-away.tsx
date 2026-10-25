@@ -7,27 +7,33 @@ import { Sheet, SheetContent, SheetTitle } from '@/components/ui/sheet';
 import type { Post } from '@/lib/posts/batch';
 import { postText } from '@/lib/posts/edit';
 import type { SavedImage } from '@/lib/posts/image-store';
-import { copyToClipboard, imageFileName, saveImageFile } from '@/lib/posts/take-away';
+import { copyToClipboard, imageFileName, saveImageFiles } from '@/lib/posts/take-away';
 
-// The last buttons on a card (docs/specs/posts/editor-download, "Taking it
-// away"): "Copy caption" as the main one, then the post and story images.
-// A story has no caption box on Instagram, so its image is all it takes.
+// The two steps that take a suggestion away (docs/specs/posts/suggestions, "A
+// suggestion"): both images to the phone in one share sheet, then the text to
+// the clipboard, with how to post them in Instagram. Without images, only the
+// text, unnumbered.
 export function TakeAway({
   post,
   cta,
   image,
+  imagesOn,
   name,
   createdAt,
-  number,
+  attempt,
+  n,
 }: {
   post: Post;
   cta: string;
+  // Only once the image is saved and no new one is being made.
   image?: SavedImage;
+  imagesOn: boolean;
   name: string;
   createdAt: string;
-  number: number;
+  attempt: number;
+  n: number;
 }) {
-  const t = useTranslations('posts.takeAway');
+  const t = useTranslations('posts');
   const [copied, setCopied] = useState(false);
   const [byHand, setByHand] = useState(false);
   const box = useRef<HTMLTextAreaElement>(null);
@@ -44,34 +50,42 @@ export function TakeAway({
     else setByHand(true);
   }
 
-  const save = (kind: 'post' | 'story') => () => {
+  function save() {
     if (!image) return;
-    void saveImageFile(image[kind], imageFileName(name, createdAt, number, kind));
-  };
+    void saveImageFiles(
+      (['post', 'story'] as const).map((kind) => ({
+        blob: image[kind],
+        name: imageFileName(name, createdAt, attempt, n, kind),
+      })),
+    );
+  }
+
+  const step = (number: number) => (
+    <span
+      aria-hidden="true"
+      className="mr-2 inline-flex size-6 items-center justify-center rounded-full bg-black/10 text-[13px]"
+    >
+      {number}
+    </span>
+  );
 
   return (
-    <div className="mt-3 flex flex-col gap-2">
-      <Button type="button" onClick={copy}>
-        {copied ? t('copied') : t('copy')}
-      </Button>
-      {image && (
-        <div className="flex gap-2">
-          <Button
-            type="button"
-            className="border border-edge bg-field text-ink"
-            onClick={save('post')}
-          >
-            {t('savePost')}
-          </Button>
-          <Button
-            type="button"
-            className="border border-edge bg-field text-ink"
-            onClick={save('story')}
-          >
-            {t('saveStory')}
-          </Button>
-        </div>
+    <div className="flex flex-col gap-2">
+      {imagesOn && (
+        <Button type="button" onClick={save} disabled={!image}>
+          {step(1)}
+          {t('saveImages')}
+        </Button>
       )}
+      <Button
+        type="button"
+        className={imagesOn ? 'border border-edge bg-field text-ink' : undefined}
+        onClick={copy}
+      >
+        {imagesOn && step(2)}
+        {copied ? t('takeAway.copied') : t('copyText')}
+      </Button>
+      <p className="text-[13px] text-ink-secondary">{imagesOn ? t('howTo') : t('howToTextOnly')}</p>
       <Sheet open={byHand} onOpenChange={setByHand}>
         <SheetContent
           className="flex flex-col gap-3 p-4"
@@ -81,7 +95,7 @@ export function TakeAway({
             box.current?.select();
           }}
         >
-          <SheetTitle>{t('copyHere')}</SheetTitle>
+          <SheetTitle>{t('takeAway.copyHere')}</SheetTitle>
           <textarea
             ref={box}
             readOnly

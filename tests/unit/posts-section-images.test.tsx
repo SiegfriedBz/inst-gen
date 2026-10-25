@@ -7,7 +7,7 @@ import { afterEach, beforeEach, describe, expect, test, vi } from 'vitest';
 import { PostsSection } from '@/components/posts/posts-section';
 import { resetStoreForTests, saveBrand } from '@/lib/brand/store';
 import type { Post, PostBatch } from '@/lib/posts/batch';
-import type { ImageEvent } from '@/lib/posts/image-client';
+import { type ImageEvent, resumeImages } from '@/lib/posts/image-client';
 import { type SavedImage, saveImage } from '@/lib/posts/image-store';
 import { profileHash } from '@/lib/posts/input';
 import { saveBatch } from '@/lib/posts/store';
@@ -42,6 +42,10 @@ vi.mock('@/lib/posts/image-client', () => ({
 let fetchMock: ReturnType<typeof vi.fn>;
 
 beforeEach(() => {
+  // Today, past 3am: the fixtures' 09:00 attempts are today's.
+  vi.useFakeTimers({ toFake: ['Date'] });
+  vi.setSystemTime(new Date('2026-10-25T12:00:00.000Z'));
+  vi.mocked(resumeImages).mockClear();
   globalThis.indexedDB = new IDBFactory();
   resetStoreForTests();
   started.length = 0;
@@ -56,6 +60,7 @@ beforeEach(() => {
 });
 
 afterEach(() => {
+  vi.useRealTimers();
   cleanup();
   vi.unstubAllGlobals();
 });
@@ -130,37 +135,31 @@ async function renderSection(imagesOn = true) {
 
 const makePosts = async () => {
   const button = (await screen.findByRole('button', {
-    name: /Make my posts|Make 6 more/,
+    name: /Make 6 (new )?suggestions/,
   })) as HTMLButtonElement;
   await waitFor(() => expect(button.disabled).toBe(false));
   return button;
 };
 
-describe('the feed preview in the posts section', () => {
-  test('tapping a tile scrolls to its card', async () => {
-    const scrolled: string[] = [];
-    Element.prototype.scrollIntoView = vi.fn(function (this: Element) {
-      scrolled.push(this.id);
-    });
-    await saveBatch(batch(six));
-    await renderSection();
-    fireEvent.click(await screen.findByRole('button', { name: 'Post 3' }));
-    expect(scrolled).toEqual(['post-b1-post-3']);
-  });
-
+describe('a suggestion with its images', () => {
   test('a card with its image can be copied and saved', async () => {
     await saveBatch(batch(six));
     await saveImage(image('post-1'));
     await renderSection();
-    expect(await screen.findAllByRole('button', { name: 'Copy caption' })).toHaveLength(6);
-    expect(await screen.findAllByRole('button', { name: 'Save post image' })).toHaveLength(1);
+    expect(await screen.findAllByRole('button', { name: 'Copy the text' })).toHaveLength(6);
+    const saves = (await screen.findAllByRole('button', {
+      name: 'Save the 2 images',
+    })) as HTMLButtonElement[];
+    expect(saves).toHaveLength(6);
+    await waitFor(() => expect(saves.filter((b) => !b.disabled)).toHaveLength(1));
+    expect(screen.queryByText('Your feed once these are posted')).toBeNull();
   });
 
-  test('a new image asks the owner to check the description, until an edit', async () => {
+  test('Create new image carries the hint', async () => {
     await saveBatch(batch(six));
     await saveImage(image('post-1'));
     await renderSection();
-    const button = await screen.findByRole('button', { name: 'New image' });
+    const button = await screen.findByRole('button', { name: 'Create new image' });
     await waitFor(() => expect((button as HTMLButtonElement).disabled).toBe(false));
     fireEvent.click(button);
     fireEvent.change(screen.getByLabelText('What should change? (optional)'), {
@@ -169,26 +168,21 @@ describe('the feed preview in the posts section', () => {
     fireEvent.click(screen.getByRole('button', { name: 'Make it' }));
     expect(started.at(-1)?.input).toMatchObject({ postIds: ['post-1'], hint: 'more green' });
     expect(screen.getByText('Making the image…')).toBeTruthy();
-    started.at(-1)?.onEvent({ type: 'image', image: image('post-1') });
-    expect(await screen.findByText('Check that the image description still fits.')).toBeTruthy();
-    fireEvent.click(screen.getAllByRole('button', { name: 'Edit' })[0]);
-    fireEvent.click(screen.getByRole('button', { name: 'Save' }));
-    await waitFor(() =>
-      expect(screen.queryByText('Check that the image description still fits.')).toBeNull(),
-    );
   });
 
-  test('no feed preview when images are off', async () => {
+  test('images for a cleared attempt are not saved', async () => {
+    await saveBatch({ ...batch(six), id: 'y1', createdAt: '2026-10-24T09:00:00.000Z' });
     await saveBatch(batch(six));
-    await renderSection(false);
-    await screen.findByText('Caption 1.');
-    expect(screen.queryByText('Your feed once these are posted')).toBeNull();
+    await renderSection();
+    await waitFor(() => expect(vi.mocked(resumeImages)).toHaveBeenCalled());
+    const passed = vi.mocked(resumeImages).mock.calls.at(-1)?.[1] as PostBatch[];
+    expect(passed.map((b) => b.id)).toEqual(['b1']);
   });
 });
 
 describe('images in the posts section', () => {
   test("one batch's image doesn't show on another batch", async () => {
-    await saveBatch({ ...batch(six), id: 'a', createdAt: '2026-10-24T09:00:00.000Z' });
+    await saveBatch({ ...batch(six), id: 'a', createdAt: '2026-10-25T08:00:00.000Z' });
     await saveBatch({ ...batch(six), id: 'b' });
     await saveImage({ ...image('post-1'), batchId: 'a' });
     await renderSection();
@@ -226,7 +220,9 @@ describe('images in the posts section', () => {
     await renderSection();
     fireEvent.click(await makePosts());
     await waitFor(() => expect(started).toHaveLength(1));
-    const more = (await screen.findByRole('button', { name: 'Make 6 more' })) as HTMLButtonElement;
+    const more = (await screen.findByRole('button', {
+      name: 'Make 6 new suggestions',
+    })) as HTMLButtonElement;
     expect(more.disabled).toBe(true);
     expect(
       screen.getByText('Keep this page open for about a minute while your posts are made.'),
@@ -244,9 +240,13 @@ describe('images in the posts section', () => {
     await renderSection();
     fireEvent.click(await makePosts());
     await waitFor(() => expect(started).toHaveLength(1));
-    const more = (await screen.findByRole('button', { name: 'Make 6 more' })) as HTMLButtonElement;
+    const more = (await screen.findByRole('button', {
+      name: 'Make 6 new suggestions',
+    })) as HTMLButtonElement;
     expect(more.disabled).toBe(true);
-    const edits = (await screen.findAllByRole('button', { name: 'Edit' })) as HTMLButtonElement[];
+    const edits = (await screen.findAllByRole('button', {
+      name: 'Edit the text',
+    })) as HTMLButtonElement[];
     expect(edits).toHaveLength(6);
     await waitFor(() => expect(edits.every((b) => !b.disabled)).toBe(true));
   });

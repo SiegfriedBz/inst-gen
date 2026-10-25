@@ -95,9 +95,9 @@ was put in. No budget alerts are needed.
 
 **The $8 cap.** The prepaid balance is the hard limit. The app adds a second
 one, so a busy month fails gracefully instead of with an error from Google:
-`platform/usage-counters` (roadmap 2.7) counts image calls a month across all
+`platform/usage-counters` (roadmap 2.8) counts image calls a month across all
 owners, at the price measured here, and refuses new images once the month's
-estimate reaches $8. Until 2.7 ships, images are made only by the maintainer
+estimate reaches $8. Until 2.8 ships, images are made only by the maintainer
 for the two pilot spas.
 
 **Bake-off result** (2026-10-25, 24 images, $2.21). Gemini's check passed

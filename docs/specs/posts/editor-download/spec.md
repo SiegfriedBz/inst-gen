@@ -33,7 +33,7 @@ This spec covers the last step before Instagram (Global Plan, "Tweak" and
 
 Success: on their own phones, Sen and Svarga each get at least 4 posts and
 their stories from the app into Instagram, without help beyond the How-to
-page that 2.8 will write. Every caption they post is one they've read in
+page that 2.9 will write. Every caption they post is one they've read in
 their own language at least once, if they want to.
 
 Why now: it's the last piece phase 2's gate needs. 2.2 and 2.3 handed over
@@ -53,7 +53,7 @@ switch and no second view. Each batch opens with its **feed preview**, then
 its cards as today, with the controls below added to each card.
 
 No switch inside "Your posts": choosing between posts and review replies is
-2.6's (`reviews/reply-drafts`), and two layers of switches would break this
+2.7's (`reviews/reply-drafts`), and two layers of switches would break this
 item's "super easy" rule.
 
 A finished card, top to bottom (the mockup the owner reviewed on
@@ -65,7 +65,7 @@ A finished card, top to bottom (the mockup the owner reviewed on
 3. the caption, then "Show in…" (Indonesian or Vietnamese screens only);
 4. the call to action, the hashtags, "Image description" with the alt text,
    and "Check before posting:", as today. The alt text is there to read and
-   edit; nothing copies it, and 2.8's How-to page says where Instagram takes
+   edit; nothing copies it, and 2.9's How-to page says where Instagram takes
    it (builder's call after the builder check);
 5. "Edit", as a text link;
 6. the take-away buttons, last: "Copy caption" full width as the main
@@ -221,7 +221,7 @@ small form under the image:
   image" button shows.
 - Each new image costs about $0.05 of the prepaid balance, as 2.3's "Try
   again" does. Counting them a day (Global Plan: about 10 regenerations) is
-  2.7's.
+  2.8's.
 - The alt text is not rewritten: a line under the new image says "Check that
   the image description still fits.", until the owner edits and saves the
   post. There's no dismiss button (an eighth control); the post stores
@@ -250,7 +250,7 @@ Under each card's image and words, three actions:
 
 One post at a time, and nothing else: a post is "Save post image" plus
 "Copy caption"; a story is "Save story image" alone, since Instagram stories
-have no caption box (text goes on as a sticker, 2.8's How-to page). There is
+have no caption box (text goes on as a sticker, 2.9's How-to page). There is
 no batch download: the owner chose this on 2026-10-25, since a ZIP lands in
 Files, never in Photos where Instagram looks, and adds a dependency.
 
@@ -432,7 +432,7 @@ Scenario: Forget removes the translations
 - **The alt text isn't rewritten for a new image.** The card asks the owner
   to check it; 2.2's "alt text describes the prompt" limit stands.
 - **New images are counted only by the balance and the allowlist** until
-  2.7.
+  2.8.
 - **The post crop can't be moved**: it's always the story's centre. 2.3's
   journal found no crop cutting its subject on twelve images; when one does,
   "New image" is the way out.
@@ -457,10 +457,10 @@ Scenario: Forget removes the translations
 - Moving the post crop inside the story: left out to keep the card simple,
   since 2.3's crops kept their subjects; added after the pilot if the owners
   ask.
-- Counting regenerations and translations a day, and the usage bar: 2.7
+- Counting regenerations and translations a day, and the usage bar: 2.8
   `platform/usage-counters`.
 - How to post a story with a WhatsApp sticker, saving hashtags, and the
-  share sheet steps: 2.8 `guide/owner-guide`.
-- Review replies and their owner's-language view: 2.6 `reviews/reply-drafts`.
+  share sheet steps: 2.9 `guide/owner-guide`.
+- Review replies and their owner's-language view: 2.7 `reviews/reply-drafts`.
 - Scheduling and direct publishing: never in the MVP (Global Plan).
 - Captions in the owner's language for posting: later phases.
