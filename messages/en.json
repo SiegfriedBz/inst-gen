@@ -246,6 +246,13 @@
     "feed": {
       "title": "Your feed once these are posted",
       "order": "Post them from 1 to 6: the last one you post shows first."
+    },
+    "takeAway": {
+      "copy": "Copy caption",
+      "copied": "Copied",
+      "copyHere": "Copy it from here.",
+      "savePost": "Save post image",
+      "saveStory": "Save story image"
     }
   }
 }

@@ -16,6 +16,7 @@ import { loadBatches, recentPosts, saveBatch } from '@/lib/posts/store';
 import { FeedPreview } from './feed-preview';
 import { PostCard } from './post-card';
 import type { ImageState } from './post-image';
+import { TakeAway } from './take-away';
 
 // "Your posts" under the brand panel (docs/specs/posts/generate-copy): the
 // button that makes a batch, the posts as they stream in, and every batch
@@ -375,6 +376,16 @@ export function PostsSection({
                     : undefined
                 }
                 busy={busy}
+                takeAway={
+                  <TakeAway
+                    post={post}
+                    cta={cta ?? post.cta}
+                    image={images.get(imageKey(batch.id, post.id))}
+                    name={profile.name.value}
+                    createdAt={batch.createdAt}
+                    number={index + 1}
+                  />
+                }
               />
             ))}
           </div>

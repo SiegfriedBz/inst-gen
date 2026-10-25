@@ -139,6 +139,14 @@ describe('the feed preview in the posts section', () => {
     expect(scrolled).toEqual(['post-b1-post-3']);
   });
 
+  test('a card with its image can be copied and saved', async () => {
+    await saveBatch(batch(six));
+    await saveImage(image('post-1'));
+    await renderSection();
+    expect(await screen.findAllByRole('button', { name: 'Copy caption' })).toHaveLength(6);
+    expect(await screen.findAllByRole('button', { name: 'Save post image' })).toHaveLength(1);
+  });
+
   test('no feed preview when images are off', async () => {
     await saveBatch(batch(six));
     await renderSection(false);
