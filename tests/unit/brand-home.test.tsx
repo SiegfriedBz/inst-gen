@@ -320,6 +320,19 @@ describe('the home tabs', () => {
     expect(screen.getByText(INTRO)).toBeTruthy();
   });
 
+  test('the third tab, Reviews, holds the review form', async () => {
+    await saveBrand('sen', profile);
+    renderHome();
+    await screen.findByRole('tablist', { name: 'Home' });
+    expect(screen.getAllByRole('tab').map((tab) => tab.textContent)).toEqual([
+      'Your business',
+      'Create Posts',
+      'Reviews',
+    ]);
+    await openTab('Reviews');
+    expect(await screen.findByRole('button', { name: 'Write 2 replies' })).toBeTruthy();
+  });
+
   test('a re-read lands on Your business and the update waits for the tab', async () => {
     await saveBrand('sen', profile);
     const made: PostBatch = {
