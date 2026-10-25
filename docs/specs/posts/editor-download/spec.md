@@ -47,34 +47,31 @@ the owners ask.
 
 ### Where things are
 
-The "Your posts" section (2.2) gains a two-way switch at the top, under its
-heading: **"Feed"** and **"Posts"**.
+The "Your posts" section (2.2) stays one list, newest batch first, with no
+switch and no second view. Each batch opens with its **feed preview**, then
+its cards as today, with the controls below added to each card.
 
-- **Posts** (the default) is today's list of cards, newest batch first, with
-  the controls below added to each card.
-- **Feed** is the preview. Tapping a tile switches to Posts and scrolls to
-  that post's card.
-- The switch remembers the owner's last pick on this phone (`localStorage`, read
-  and written inside a `try`): a per-phone convenience, never saved with the
-  batch.
-- While a plan or rewrite streams, the switch stays on Posts, as today.
+No switch inside "Your posts": choosing between posts and review replies is
+2.5's (`reviews/reply-drafts`), and two layers of switches would break this
+item's "super easy" rule.
 
 ### The feed preview
 
-An Instagram-style profile grid for all of the owner's posts, newest batch
-first:
+Above each batch's cards, a small Instagram-style grid of that batch's six
+posts:
 
-- A header like a profile's: a round initial (the business name's first
-  letter on the brand's first colour, as the panel shows it), the business
-  name, and the line "Your feed once these are posted".
-- A 3-column grid with 2 px gaps. Each tile is the post crop, shown at
+- A line above it, "Your feed once these are posted", and the note "Post
+  them from 1 to 6: the last one you post shows first."
+- A 3-column grid with 2 px gaps, two rows. Each tile is the post crop, shown at
   Instagram's grid ratio (3:4 on 2026-10-25, a centred slice of the 4:5
   post). The builder checks the grid ratio on a real profile before starting
   and records it in the journal; Instagram changes it.
-- Order: Instagram shows the last post first, so the grid shows each batch's
-  posts in reverse. A note above the grid says "Post them from 1 to 6: the
-  last one you post shows first.", and each card in Posts shows its number,
-  "Post 1", "Post 2"….
+- Order: Instagram shows the last post first, so the grid shows the batch's
+  posts in reverse, post 6 first. Each card shows its number, "Post 1",
+  "Post 2"….
+- Tapping a tile scrolls to that post's card.
+- The tiles reuse the images the cards already load: nothing extra is read
+  or decoded on a slow phone.
 - A post with no image yet shows a tile in the panel's muted colour with its
   type label. A failed image shows the same tile.
 - Nothing in the grid can be edited; it's a preview.
@@ -253,7 +250,7 @@ captions.txt
 ### Strings
 
 Every new visible string goes in `messages/en.json`, `id.json` and `vi.json`
-in the same commit: "Feed", "Posts", "Your feed once these are posted",
+in the same commit: "Your feed once these are posted",
 "Post them from 1 to 6: the last one you post shows first.", "Post {n}",
 "Edit", "Save", "Cancel", "Edited", "Up to 5. Separate them with spaces.",
 the alt text counter, "Too long for Instagram: {count} characters over.",
@@ -281,8 +278,8 @@ English, as the captions are.
 - The developer reads those two translations (Google Translate back to
   English is enough) for added or lost facts, and records the verdict in
   the journal with the prompt version.
-- Playwright tests at the phone viewport, with the routes mocked: switch to
-  Feed and see six tiles, tap one and land on its card; edit a caption, save,
+- Playwright tests at the phone viewport, with the routes mocked: see six
+  tiles above a batch, tap one and land on its card; edit a caption, save,
   reload, see it kept and "Edited"; edit the summary, tap "Update captions",
   see the edited caption unchanged, then tap "Rewrite this one too" and see
   it replaced; switch the screen to Vietnamese, tap "Show in Tiếng Việt",
@@ -299,10 +296,10 @@ English, as the captions are.
 ```gherkin
 Scenario: The feed preview
   Given a batch of six posts with their images
-  When the owner taps "Feed"
-  Then a 3-column grid shows the six post images, post 6 first
+  When the owner opens "Your posts"
+  Then above the batch's cards a 3-column grid shows the six post images, post 6 first
   When the owner taps a tile
-  Then the Posts list shows, scrolled to that post's card
+  Then the list scrolls to that post's card
 
 Scenario: Editing a caption
   Given a post whose caption has no flags
