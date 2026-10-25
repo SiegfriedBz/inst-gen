@@ -5,18 +5,18 @@
   "review": "Pijatnya enak sekali dan tempatnya bersih. Sayang parkir motornya agak sempit. Overall puas!",
   "recording": {
     "modelId": "gemini-3.5-flash-lite",
-    "promptVersion": "reply-1",
+    "promptVersion": "reply-2",
     "partials": [],
     "final": {
       "reviewLanguage": "id",
       "abusive": false,
       "reviewTranslation": null,
       "short": {
-        "text": "Terima kasih banyak 🙏 atas ulasannya! Kami senang Anda menikmati pijatan dan kebersihan tempat kami. Kami nantikan kedatangan Anda kembali 🌼",
+        "text": "Terima kasih! 🙏 Mohon maaf mengenai parkir motor yang sempit. Kami senang Anda menikmati pijat dan kebersihannya, semoga bisa kembali lagi ke Svarga Bali Massage. 🌼",
         "translation": null
       },
       "warm": {
-        "text": "Terima kasih banyak 🙏 atas kunjungan dan ulasan positif Anda mengenai pijatan kami yang nyaman serta tempat yang bersih. Semoga kami bisa segera menyambut Anda kembali untuk pengalaman relaksasi lainnya 🌼",
+        "text": "Terima kasih banyak atas ulasan Anda! 🙏 Kami turut minta maaf atas kendala parkir motor yang agak sempit. Senang sekali rasanya mengetahui Anda puas dengan pijat dan tempat kami yang bersih, dan kami sangat menantikan kunjungan Anda berikutnya ke Svarga Bali Massage. 🌼",
         "translation": null
       }
     }

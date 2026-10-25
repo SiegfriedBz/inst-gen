@@ -6,6 +6,7 @@ import { replayTextModel } from '@/lib/ai/replay';
 import { FIXTURES_DIR, fixtureProfile } from '@/lib/brand/fixtures';
 import { replyBodyFor } from '@/lib/reviews/client';
 import type { ScreenLocale } from '@/lib/reviews/reply';
+import { REPLY_PROMPT_VERSION } from '@/lib/reviews/reply-prompt';
 import { runReply } from '@/lib/reviews/reply-run';
 
 // The made-up reviews, replayed from `pnpm eval:replies --record`
@@ -45,10 +46,10 @@ async function replay(slug: string) {
 const EMOJI = /\p{Extended_Pictographic}/u;
 
 describe('recorded replies', () => {
-  test('all seven reviews are recorded with reply-1', () => {
+  test('all seven reviews are recorded with the current prompt', () => {
     expect(fixtures).toHaveLength(7);
     for (const fixture of fixtures) {
-      expect(fixture.recording?.promptVersion, fixture.slug).toBe('reply-1');
+      expect(fixture.recording?.promptVersion, fixture.slug).toBe(REPLY_PROMPT_VERSION);
     }
   });
 

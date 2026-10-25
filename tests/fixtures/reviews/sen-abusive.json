@@ -5,18 +5,18 @@
   "review": "SCAM!!! Never been there but my friend says they are thieves. Avoid!!!",
   "recording": {
     "modelId": "gemini-3.5-flash-lite",
-    "promptVersion": "reply-1",
+    "promptVersion": "reply-2",
     "partials": [],
     "final": {
       "reviewLanguage": "en",
       "abusive": true,
       "reviewTranslation": null,
       "short": {
-        "text": "Hello {name}, this review is false and does not reflect our business. We have no record of you as a client.",
+        "text": "Hello {name}. We have no record of you or your friend visiting our service. Please contact us directly so we can look into this matter.",
         "translation": null
       },
       "warm": {
-        "text": "Dear {name}, we take our service very seriously and believe there is a misunderstanding here. Please contact our management team to clarify this matter.",
+        "text": "Hello {name}. We take all feedback seriously, but we have no record of any such experience in our system. Please reach out to us directly to discuss this further.",
         "translation": null
       }
     }

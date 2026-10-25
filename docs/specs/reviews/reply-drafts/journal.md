@@ -26,6 +26,18 @@
   Prompt `reply-2` adds: sorry for every complaint, even small; come back to
   the business by name; never call a review false, say there's no record of
   the visit; 🙏 after the thank-you sentence and the flower at the very end.
+- 2026-10-25: Second `pnpm eval:replies --record` (7 more requests, approved),
+  prompt `reply-2`: 7/7. Every complaint now gets a sorry (cold room and
+  wait, street noise, motorbike parking, even "a bit pricey"); the abusive
+  replies say there's no record of the visit and ask the guest to contact
+  the spa, with no accusation; "come back to Svarga Bali Massage" fixes the
+  reversed Russian sentence; 🙏 follows "Thank you, {name}!" and the flower
+  ends each reply. Left as they are: the Korean replies dropped the "님"
+  honorific, one short Vietnamese reply opens with "Chúc mừng" and
+  apologises for a price the guest found worth it, and one review
+  translation reads "Bộ phận mát-xa" for "massage"; the owner reads and can
+  edit before posting. The replay test now expects the current prompt
+  version.
 - 2026-10-25: Ruling: the double-tap test re-queried the button by its label,
   which changes on the first tap; it taps the same element twice.
 - 2026-10-25: Ruling: `posts-store`'s database version test pinned 4; it

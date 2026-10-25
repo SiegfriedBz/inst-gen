@@ -5,19 +5,19 @@
   "review": "다낭에서 받은 마사지 중 최고였어요. 직원분들이 친절하고 시설도 깨끗했어요. 다음에 또 올게요!",
   "recording": {
     "modelId": "gemini-3.5-flash-lite",
-    "promptVersion": "reply-1",
+    "promptVersion": "reply-2",
     "partials": [],
     "final": {
       "reviewLanguage": "ko",
       "abusive": false,
-      "reviewTranslation": "Đây là dịch vụ mát-xa tuyệt vời nhất tôi từng nhận được ở Đà Nẵng. Nhân viên rất thân thiện và cơ sở vật chất rất sạch sẽ. Tôi sẽ quay lại lần sau!",
+      "reviewTranslation": "Đây là dịch vụ mát-xa tuyệt vời nhất tôi từng nhận được ở Đà Nẵng. Nhân viên rất thân thiện và cơ sở vật chất sạch sẽ. Tôi sẽ quay lại lần sau!",
       "short": {
-        "text": "감사합니다 {name}님 🙏. 친절한 직원들과 깨끗한 시설을 마음에 들어 해주셔서 기쁩니다. 다음에 다낭에 오시면 다시 뵙기를 바랍니다 🪷",
-        "translation": "Cảm ơn bạn {name} 🙏. Chúng tôi rất vui vì bạn thích nhân viên thân thiện và cơ sở vật chất sạch sẽ của chúng tôi. Hy vọng được gặp lại bạn vào lần tới khi bạn đến Đà Nẵng 🪷"
+        "text": "감사합니다, {name}! 🙏 친절한 직원들과 깨끗한 시설을 마음에 들어 하시니 기쁩니다. 다시 방문해 주세요. 🪷",
+        "translation": "Cảm ơn bạn, {name}! 🙏 Chúng tôi rất vui vì bạn thích nhân viên thân thiện và cơ sở sạch sẽ. Hẹn gặp lại bạn nhé. 🪷"
       },
       "warm": {
-        "text": "소중한 리뷰를 남겨주셔서 진심으로 감사합니다 {name}님 🙏. 직원들의 친절함과 깔끔한 환경을 칭찬해 주셔서 정말 힘이 됩니다. 다낭에 다시 방문하실 때 저희 서비스를 찾아주시면 더욱 정성껏 모시겠습니다 🪷",
-        "translation": "Chân thành cảm ơn bạn {name} đã để lại đánh giá quý giá 🙏. Chúng tôi rất được khích lệ khi bạn khen ngợi sự thân thiện của nhân viên và môi trường sạch sẽ. Khi bạn ghé thăm Đà Nẵng lần nữa, chúng tôi rất mong được phục vụ bạn tận tình hơn nữa 🪷"
+        "text": "저희 센 다낭 마사지를 찾아주셔서 진심으로 감사합니다, {name}! 🙏 다낭에서 가장 좋은 기억이 되었다니 저희도 정말 기쁩니다. 따뜻한 발걸음으로 다시 찾아주시기를 기다리겠습니다. 🪷",
+        "translation": "Cảm ơn chân thành vì đã chọn Sen Da Nang Massage, {name}! 🙏 Chúng tôi rất vui khi biết đây là trải nghiệm tuyệt vời nhất của bạn tại Đà Nẵng. Rất mong được đón tiếp bạn trở lại lần nữa. 🪷"
       }
     }
   }

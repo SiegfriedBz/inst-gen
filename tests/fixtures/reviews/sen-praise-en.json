@@ -5,19 +5,19 @@
   "review": "Best massage I had in Vietnam! The therapist found every knot in my shoulders and the ginger tea afterwards was lovely. Very calm place, we will come back before we fly home.",
   "recording": {
     "modelId": "gemini-3.5-flash-lite",
-    "promptVersion": "reply-1",
+    "promptVersion": "reply-2",
     "partials": [],
     "final": {
       "reviewLanguage": "en",
       "abusive": false,
-      "reviewTranslation": "Trợ lý massage tốt nhất tôi từng có ở Việt Nam! Kỹ thuật viên đã tìm thấy mọi nút thắt ở vai của tôi và trà gừng sau đó rất tuyệt vời. Nơi rất yên bình, chúng tôi sẽ quay lại trước khi bay về nhà.",
+      "reviewTranslation": "Bộ phận mát-xa tốt nhất tôi từng có ở Việt Nam! Kỹ thuật viên đã tìm thấy mọi nút thắt ở vai tôi và trà gừng sau đó rất tuyệt vời. Nơi rất yên bình, chúng tôi sẽ quay lại trước khi bay về nhà.",
       "short": {
-        "text": "Thank you so much {name} 🙏! We are glad you enjoyed the shoulder massage and the ginger tea. Hope to see you again before your flight 🪷.",
-        "translation": "Cảm ơn bạn rất nhiều {name} 🙏! Chúng tôi rất vui vì bạn thích dịch vụ massage vai và trà gừng. Hy vọng được gặp lại bạn trước chuyến bay 🪷."
+        "text": "Thank you, {name}! 🙏 We are glad you enjoyed the shoulder massage and the ginger tea. We hope to see you again at Sen Da Nang Massage before your flight. 🪷",
+        "translation": "Cảm ơn bạn, {name}! 🙏 Chúng tôi rất vui vì bạn thích dịch vụ mát-xa vai và trà gừng. Chúng tôi hy vọng được gặp lại bạn tại Sen Da Nang Massage trước chuyến bay của bạn. 🪷"
       },
       "warm": {
-        "text": "Thank you for your wonderful review {name} 🙏! It is so great to hear you loved the relaxing atmosphere and our ginger tea. We would be delighted to welcome you back anytime 🪷.",
-        "translation": "Cảm ơn đánh giá tuyệt vời của bạn {name} 🙏! Thật tuyệt khi biết bạn yêu thích không gian thư giãn và trà gừng của chúng tôi. Chúng tôi rất hân hạnh được chào đón bạn quay lại bất cứ lúc nào 🪷."
+        "text": "Thank you so much, {name}! 🙏 It is wonderful to hear that our therapist helped with your shoulders and that you loved the calm atmosphere and ginger tea. We would be delighted to welcome you back to Sen Da Nang Massage soon. 🪷",
+        "translation": "Cảm ơn bạn rất nhiều, {name}! 🙏 Thật tuyệt vời khi nghe rằng kỹ thuật viên của chúng tôi đã giúp ích cho vai của bạn và bạn rất thích bầu không khí yên bình cùng trà gừng. Chúng tôi rất hân hạnh được chào đón bạn quay lại Sen Da Nang Massage sớm. 🪷"
       }
     }
   }
