@@ -13,6 +13,28 @@ import { useSwitchLocale } from './locale-provider';
 // and comes back to the same screen.
 const SWITCH_ORDER = ['en', 'vi', 'id'] as const satisfies readonly Locale[];
 
+// The latest choice not yet saved: a save that fails (often offline on these
+// phones) is tried again, for the latest choice only, once the phone is back.
+let unsaved: Locale | null = null;
+
+function persist(locale: Locale): void {
+  unsaved = locale;
+  saveLocale(locale).then(
+    () => {
+      if (unsaved === locale) unsaved = null;
+    },
+    () => {
+      window.addEventListener(
+        'online',
+        () => {
+          if (unsaved) persist(unsaved);
+        },
+        { once: true },
+      );
+    },
+  );
+}
+
 export function LanguageSwitch({ returnTo }: { returnTo: string }) {
   const current = useLocale();
   const t = useTranslations('language');
@@ -48,7 +70,7 @@ export function LanguageSwitch({ returnTo }: { returnTo: string }) {
               onClick={(event) => {
                 event.preventDefault();
                 switchTo(code);
-                void saveLocale(code);
+                persist(code);
               }}
               className="inline-flex min-h-11 min-w-10 items-center justify-center px-2 text-ink-secondary outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-inset"
             >

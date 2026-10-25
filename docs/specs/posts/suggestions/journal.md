@@ -43,18 +43,30 @@
 - Task 2: `Tests  6 failed | 6 passed (12)`
 - Task 3: `Tests  18 failed | 10 passed (28)` (`Element type is invalid` for the links not yet exported); after it, the section, feed preview and home tests fail on the old labels until Task 4: `Tests  23 failed | 893 passed (916)`
 - Task 4: `Tests  7 failed | 37 passed (44)`
+- Final review fixes: `Tests  2 failed | 2 passed (4)`
 - Task 6: `language-switch.test.tsx` failed to load (`Failed to resolve import "@/components/locale-provider"`); the language-change test: `expected 2 to be 1` (a second search)
 - Task 5: none; the browser tests follow the code already proven red then green in Tasks 1 to 4, as the plan orders them (whole suite: `38 passed (32.0s)`)
+
+- 2026-10-25: Final review (one fresh reviewer, whole branch): no critical
+  finding. Fixed test-first: the provider followed every server render, so
+  a second quick tap could be undone by the first save's answer (each save
+  re-renders the page in the background, which Next does after a cookie is
+  set in a server action); and a save that failed offline was lost, so the
+  next open came back in the old language: it is now tried again, for the
+  latest choice, once the phone is back online. Minor findings are listed in
+  the PR.
 
 ## Still owed (the owners, during the pilot)
 
 - On a real iPhone and a real Android phone: "Save the 2 images" opens one
   share sheet with both images and "Save 2 images" puts them side by side in
   Photos; "Copy the text" then pastes in Instagram.
+- In a browser without file sharing (a computer's Chrome): both downloads
+  arrive; Chrome may ask once to allow several files.
 - Read back the new strings in Indonesian and Vietnamese.
 - On the deployment: how the language switch feels now.
 
 ## GREEN
 
-- Vitest, whole suite: `Tests  920 passed (920)`
-- Playwright, whole suite: `39 passed (37.9s)`
+- Vitest, whole suite: `Tests  922 passed (922)`
+- Playwright, whole suite: `39 passed (29.6s)`

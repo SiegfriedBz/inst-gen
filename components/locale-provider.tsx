@@ -1,15 +1,7 @@
 'use client';
 
 import { NextIntlClientProvider } from 'next-intl';
-import {
-  createContext,
-  type ReactNode,
-  useCallback,
-  useContext,
-  useEffect,
-  useMemo,
-  useState,
-} from 'react';
+import { createContext, type ReactNode, useCallback, useContext, useMemo, useState } from 'react';
 import type { Locale } from '@/lib/i18n/locale';
 import { messagesFor } from '@/lib/i18n/messages';
 
@@ -27,9 +19,10 @@ export function LocaleProvider({
   initialLocale: Locale;
   children: ReactNode;
 }) {
+  // The page's first language, from the cookie; after that the phone's
+  // choice. A later server render (each save re-renders the layout) never
+  // overrides it: it may carry a choice the owner has already moved on from.
   const [locale, setLocale] = useState(initialLocale);
-  // A server render that knows better (the cookie, after a reload) wins.
-  useEffect(() => setLocale(initialLocale), [initialLocale]);
   const messages = useMemo(() => messagesFor(locale), [locale]);
   const switchTo = useCallback((next: Locale) => {
     setLocale(next);

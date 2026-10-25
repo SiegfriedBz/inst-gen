@@ -21,13 +21,15 @@ function Welcome() {
   return <h1>{t('welcome', { name: 'Sen' })}</h1>;
 }
 
+const tree = (initialLocale: 'en' | 'vi') => (
+  <LocaleProvider initialLocale={initialLocale}>
+    <LanguageSwitch returnTo="/" />
+    <Welcome />
+  </LocaleProvider>
+);
+
 function show() {
-  render(
-    <LocaleProvider initialLocale="en">
-      <LanguageSwitch returnTo="/" />
-      <Welcome />
-    </LocaleProvider>,
-  );
+  return render(tree('en'));
 }
 
 describe('the language switch', () => {
@@ -53,5 +55,32 @@ describe('the language switch', () => {
     expect(saveLocale).toHaveBeenCalledWith('vi');
     const nav = screen.getByRole('navigation', { name: 'Ngôn ngữ' });
     expect(nav.querySelector('[aria-current="true"]')?.textContent).toContain('VI');
+  });
+
+  test("a server render from an earlier tap doesn't switch the screen back", async () => {
+    const view = show();
+    await act(async () => {
+      fireEvent.click(screen.getByRole('button', { name: 'Tiếng Việt' }));
+    });
+    await act(async () => {
+      fireEvent.click(screen.getByRole('button', { name: 'English' }));
+    });
+    // The first save's answer re-renders the layout with the cookie it set.
+    view.rerender(tree('vi'));
+    expect(screen.getByRole('heading').textContent).toBe('Welcome, Sen');
+  });
+
+  test('a save that fails offline is tried again once the phone is back', async () => {
+    saveLocale.mockRejectedValueOnce(new TypeError('Failed to fetch'));
+    show();
+    await act(async () => {
+      fireEvent.click(screen.getByRole('button', { name: 'Tiếng Việt' }));
+    });
+    expect(saveLocale).toHaveBeenCalledTimes(1);
+    await act(async () => {
+      window.dispatchEvent(new Event('online'));
+    });
+    expect(saveLocale).toHaveBeenCalledTimes(2);
+    expect(saveLocale).toHaveBeenLastCalledWith('vi');
   });
 });
