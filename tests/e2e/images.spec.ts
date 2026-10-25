@@ -24,6 +24,7 @@ test('images follow the captions, stay on the phone, and one is tried again', as
   await expect(page).toHaveURL('/');
   await page.getByLabel('Your website').fill('sendanangmassage.com');
   await page.getByRole('button', { name: 'Read my website' }).click();
+  await page.getByRole('tab', { name: 'Create your posts' }).click();
 
   await page.getByRole('button', { name: 'Make my posts' }).click();
   await expect(page.getByText('Making the image…')).toHaveCount(6);

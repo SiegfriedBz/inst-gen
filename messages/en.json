@@ -10,6 +10,11 @@
     "footer": "Private pilot for invited spas."
   },
   "home": {
+    "tabs": {
+      "label": "Home",
+      "business": "Your business",
+      "posts": "Create your posts"
+    },
     "welcome": "Welcome, {name}",
     "websiteLabel": "Your website",
     "signedIn": "Signed in on this phone for 30 days."

@@ -8,10 +8,14 @@ import { BrandHome } from '@/components/brand/brand-home';
 import type { Profile } from '@/lib/brand/profile';
 import { loadBrand, openStore, resetStoreForTests, saveBrand } from '@/lib/brand/store';
 import { encodeLine, type StreamLine } from '@/lib/brand/stream';
+import type { PostBatch } from '@/lib/posts/batch';
+import { profileHash } from '@/lib/posts/input';
+import { saveBatch } from '@/lib/posts/store';
 import { newBrandRun } from '@/lib/runs/run-record';
 import { saveRun } from '@/lib/runs/store';
 import messages from '@/messages/en.json';
 import { svargaProfile } from './helpers/brand';
+import { post } from './helpers/posts';
 
 // Already searched, so the read tests see no search request.
 const profile: Profile = { ...svargaProfile(), searchedAt: '2026-10-24T09:30:00.000Z' };
@@ -152,6 +156,7 @@ describe('BrandHome', () => {
   test('re-read with 2 edits asks, and cancel makes no request', async () => {
     await saveBrand('sen', withEdits());
     renderHome();
+    await openTab('Your business');
     fireEvent.click(await screen.findByRole('button', { name: 'Re-read my website' }));
     expect(await screen.findByText('Read your website again?')).toBeTruthy();
     expect(
@@ -165,6 +170,7 @@ describe('BrandHome', () => {
   test('re-read counts an edit to a field without a source', async () => {
     await saveBrand('sen', profile, new Date(), ['tone']);
     renderHome();
+    await openTab('Your business');
     fireEvent.click(await screen.findByRole('button', { name: 'Re-read my website' }));
     expect(
       await screen.findByText('Your 1 change will be replaced by what your site says now.'),
@@ -174,6 +180,7 @@ describe('BrandHome', () => {
   test('editing the tone is remembered as an edit', async () => {
     await saveBrand('sen', profile);
     renderHome();
+    await openTab('Your business');
     fireEvent.click(await screen.findByRole('button', { name: 'Edit Your feeling' }));
     fireEvent.click(await screen.findByRole('button', { name: 'Remove calm' }));
     fireEvent.click(screen.getByRole('button', { name: 'Save' }));
@@ -186,6 +193,7 @@ describe('BrandHome', () => {
     await saveBrand('sen', profile);
     fetchMock.mockResolvedValue(ndjson([{ type: 'final', profile }]));
     renderHome();
+    await openTab('Your business');
     fireEvent.click(await screen.findByRole('button', { name: 'Re-read my website' }));
     await waitFor(() => expect(fetchMock).toHaveBeenCalledTimes(1));
     expect(fetchMock.mock.calls[0]?.[1]?.body).toBe(JSON.stringify({ url: profile.siteUrl }));
@@ -195,6 +203,7 @@ describe('BrandHome', () => {
     await saveBrand('sen', profile);
     fetchMock.mockResolvedValue(ndjson([{ type: 'error', code: 'model_busy' }]));
     renderHome();
+    await openTab('Your business');
     fireEvent.click(await screen.findByRole('button', { name: 'Re-read my website' }));
     expect(
       await screen.findByText("Shopfront has used today's free reading. Try again tomorrow."),
@@ -206,6 +215,7 @@ describe('BrandHome', () => {
   test('forget deletes and shows the empty field', async () => {
     await saveBrand('sen', profile);
     renderHome();
+    await openTab('Your business');
     fireEvent.click(await screen.findByRole('button', { name: 'Forget this business' }));
     expect(await screen.findByText('Forget Svarga?')).toBeTruthy();
     fireEvent.click(screen.getByRole('button', { name: 'Forget' }));
@@ -255,6 +265,7 @@ describe('BrandHome', () => {
   test('an edit saved in a section is kept on the phone', async () => {
     await saveBrand('sen', profile);
     renderHome();
+    await openTab('Your business');
     fireEvent.click(await screen.findByRole('button', { name: 'Edit Where and when' }));
     fireEvent.change(await screen.findByLabelText('Opening hours'), {
       target: { value: '9am to midnight' },
@@ -263,6 +274,101 @@ describe('BrandHome', () => {
     expect(await screen.findByText('9am to midnight')).toBeTruthy();
     const stored = await loadBrand('sen');
     expect(stored.kind === 'saved' && stored.record.profile.hours?.source).toBe('owner');
+  });
+});
+
+const tab = (name: string) => screen.getByRole('tab', { name });
+const selected = (name: string) => tab(name).getAttribute('aria-selected');
+async function openTab(name: string) {
+  const trigger = await screen.findByRole('tab', { name });
+  // Radix Tabs switches on mouse down.
+  fireEvent.mouseDown(trigger, { button: 0 });
+  await waitFor(() => expect(trigger.getAttribute('aria-selected')).toBe('true'));
+}
+const urls = () => fetchMock.mock.calls.map((call) => String(call[0]));
+
+describe('the home tabs', () => {
+  test('no tabs before a read', async () => {
+    renderHome();
+    await screen.findByLabelText('Your website');
+    expect(screen.queryByRole('tablist')).toBeNull();
+  });
+
+  test('a first read lands on Your business', async () => {
+    const release = deferredFetch();
+    renderHome();
+    await typeAndRead('svargabalimassage.com');
+    await screen.findByText('Reading your website…');
+    expect(screen.queryByRole('tablist')).toBeNull();
+    await waitFor(() => expect(fetchMock).toHaveBeenCalledTimes(1));
+    release(ndjson([{ type: 'final', profile }]));
+    expect(await screen.findByRole('tablist', { name: 'Home' })).toBeTruthy();
+    expect(selected('Your business')).toBe('true');
+    expect(selected('Create your posts')).toBe('false');
+    expect(screen.getByText(INTRO)).toBeTruthy();
+  });
+
+  test('a saved profile opens on Create your posts', async () => {
+    await saveBrand('sen', profile);
+    renderHome();
+    await screen.findByRole('tablist', { name: 'Home' });
+    expect(selected('Create your posts')).toBe('true');
+    expect(await screen.findByRole('button', { name: 'Make my posts' })).toBeTruthy();
+    expect(screen.getByText(INTRO).closest('[role="tabpanel"]')?.hasAttribute('hidden')).toBe(true);
+    await openTab('Your business');
+    expect(screen.getByText(INTRO)).toBeTruthy();
+  });
+
+  test('a re-read lands on Your business and the update waits for the tab', async () => {
+    await saveBrand('sen', profile);
+    const made: PostBatch = {
+      id: 'b1',
+      ownerId: 'sen',
+      createdAt: '2026-10-25T09:00:00.000Z',
+      profileReadAt: profile.readAt,
+      profileHash: profileHash(profile),
+      promptVersion: 'posts-1',
+      model: 'm',
+      posts: [post({ id: 'post-1' })],
+      dropped: [],
+    };
+    await saveBatch(made);
+    const reread: Profile = {
+      ...profile,
+      summary: { value: 'Massage at your villa', source: profile.siteUrl },
+    };
+    fetchMock.mockImplementation(async (url: string) =>
+      url === '/api/brand/read'
+        ? ndjson([{ type: 'final', profile: reread }])
+        : new Promise<Response>(() => {}),
+    );
+    renderHome();
+    await openTab('Your business');
+    fireEvent.click(await screen.findByRole('button', { name: 'Re-read my website' }));
+    await screen.findByText(/Massage at your villa/);
+    expect(selected('Your business')).toBe('true');
+    expect(urls()).toEqual(['/api/brand/read']);
+    await openTab('Create your posts');
+    await waitFor(() => expect(urls()).toContain('/api/posts/rewrite'));
+  });
+
+  test('switching tabs keeps a running posts request alive', async () => {
+    await saveBrand('sen', profile);
+    let signal: AbortSignal | undefined;
+    fetchMock.mockImplementation((_url: string, init: RequestInit) => {
+      signal = init.signal ?? undefined;
+      return new Promise<Response>(() => {});
+    });
+    renderHome();
+    const make = (await screen.findByRole('button', {
+      name: 'Make my posts',
+    })) as HTMLButtonElement;
+    await waitFor(() => expect(make.disabled).toBe(false));
+    fireEvent.click(make);
+    await waitFor(() => expect(urls()).toContain('/api/posts/plan'));
+    await openTab('Your business');
+    await openTab('Create your posts');
+    expect(signal?.aborted).toBe(false);
   });
 });
 
@@ -340,6 +446,7 @@ describe('BrandHome and the essence search', () => {
     routes(() => new Promise<Response>((resolve) => (answerSearch = resolve)));
     await saveBrand('sen', unsearched);
     renderHome();
+    await openTab('Your business');
     fireEvent.click(await screen.findByRole('button', { name: 'Edit Your feeling' }));
     await waitFor(() => expect(searchCalls()).toHaveLength(1));
     answerSearch(Response.json(answer));

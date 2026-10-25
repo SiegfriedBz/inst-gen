@@ -22,9 +22,10 @@ async function signInAndRead(page: Page) {
   await expect(page).toHaveURL('/');
   await page.getByLabel('Your website').fill('sendanangmassage.com');
   await page.getByRole('button', { name: 'Read my website' }).click();
+  await page.getByRole('tab', { name: 'Create your posts' }).click();
 }
 
-test('posts stream in, stay, and are rewritten after a brand edit', async ({ page }) => {
+test('posts stream in, stay, and follow a brand edit by themselves', async ({ page }) => {
   const profile = senProfile();
   await fulfilRead(page, [streamBody(profile)]);
   await page.route('**/api/posts/plan', async (route) => {
@@ -49,14 +50,16 @@ test('posts stream in, stay, and are rewritten after a brand edit', async ({ pag
   await expect(page.getByRole('button', { name: 'Make 6 more' })).toBeVisible();
 
   const rewrites = await fulfilPosts(page, 'rewrite', postsBody(profile, { caption: 'Rewritten' }));
+  await page.getByRole('tab', { name: 'Your business' }).click();
   await page.getByRole('button', { name: 'Edit Where and when' }).click();
   await page.getByLabel('Opening hours').fill('Every day, 9am to midnight');
   await page.getByRole('button', { name: 'Save' }).click();
-  await expect(
-    page.getByText('Your business details changed since these posts were made.'),
-  ).toBeVisible();
-  await page.getByRole('button', { name: 'Update captions' }).click();
+  expect(rewrites.count()).toBe(0);
+  await page.getByRole('tab', { name: 'Create your posts' }).click();
   await expect(page.getByText('Rewritten 1.')).toBeVisible();
+  // The mocked answer carries the old details' hash, so the posts stay out of
+  // date: one request all the same, never a second by itself.
+  await expect(page.getByRole('button', { name: 'Update captions' })).toBeVisible();
   expect(rewrites.count()).toBe(1);
 });
 

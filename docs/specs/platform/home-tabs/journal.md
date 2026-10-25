@@ -13,6 +13,18 @@
   stays out of date, and without the guard it would be sent again and again.
   Either way the newest batch then shows "Update captions" until the tab is
   opened again.
+- 2026-10-25: The opening tab is one piece of state: it starts on "Create
+  your posts", and every read (first, re-read or resumed) sets "Your
+  business" as it begins. The spec's "pure rule" is tested through the
+  component instead of a separate function.
+- 2026-10-25: Both tab panels stay mounted; the closed one has the `hidden`
+  attribute, so it's out of sight and out of the accessibility tree.
+- 2026-10-25: Playwright in this cloud container: the pinned 1.64.1 doesn't
+  find the preinstalled browser, and the server it starts didn't get the
+  test passphrases. The suite ran with a local, git-ignored config pointing
+  at `/opt/pw-browsers/chromium`, against `pnpm build && pnpm start` started
+  by hand with `playwright.config.ts`'s test values. The repo's config is
+  unchanged.
 
 ## RED
 
@@ -21,5 +33,6 @@
 - Task 3: `Tests  1 failed | 30 passed (31)`
 - Task 4: `Tests  7 failed | 12 passed (19)` (`newestBatch is not a function`)
 - Task 5: `Tests  10 failed | 27 passed (37)`; the dropped-post guard: `Tests  1 failed | 23 skipped (24)` with the guard taken out
+- Task 6: `Tests  4 failed | 26 passed (30)`
 
 ## GREEN

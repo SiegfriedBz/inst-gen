@@ -46,6 +46,8 @@ test('first read, edit, and reload keeps it', async ({ page }) => {
   ).toBeVisible();
 
   await page.reload();
+  // The app opens on the posts from then on (docs/specs/platform/home-tabs).
+  await page.getByRole('tab', { name: 'Your business' }).click();
   await expect(page.getByText(INTRO, { exact: false })).toBeVisible();
   await expect(page.getByText('9am to midnight')).toBeVisible();
   expect(reads.count()).toBe(1);
