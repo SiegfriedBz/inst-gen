@@ -151,7 +151,6 @@
       "announceReading": "Membaca situs web Anda",
       "announceDone": "Selesai: periksa apa yang kami pahami",
       "intro": "Inilah yang kami pahami tentang {name}. Perbaiki yang salah: postingan Anda ditulis dari sini.",
-      "postsSoon": "Postingan Anda segera hadir.",
       "lastRead": "Terakhir dibaca {when}",
       "reread": "Baca ulang situs web saya",
       "forget": "Lupakan usaha ini",
@@ -179,6 +178,38 @@
       "body": "Ini menghapus semua yang disimpan Shopfront di ponsel ini untuk usaha Anda. Anda bisa membaca situs web Anda lagi kapan saja.",
       "confirm": "Lupakan",
       "cancel": "Batal"
+    }
+  },
+  "posts": {
+    "make": "Buat postingan saya",
+    "makeMore": "Buat 6 lagi",
+    "keepOpen": "Biarkan halaman ini terbuka sekitar satu menit selama postingan Anda dibuat.",
+    "heading": "Postingan Anda",
+    "types": {
+      "offer": "Penawaran",
+      "moment": "Alasan orang datang",
+      "local": "Kota Anda",
+      "ritual": "Ritualnya",
+      "tip": "Tips",
+      "proof": "Kata orang"
+    },
+    "imageDescription": "Deskripsi gambar",
+    "check": "Periksa sebelum memposting:",
+    "flags": {
+      "price": "{text} tidak ada di situs Anda",
+      "duration": "{text} tidak ada di situs Anda",
+      "banned": "\"{text}\" mungkin tidak diizinkan di Instagram",
+      "firstLine": "Baris pertama lebih panjang dari yang ditampilkan Instagram sebelum \"lainnya\""
+    },
+    "fewer": "Kali ini kami membuat {count} postingan.",
+    "stale": "Detail bisnis Anda berubah sejak postingan ini dibuat.",
+    "update": "Perbarui keterangan",
+    "errors": {
+      "model_busy": "Shopfront sudah memakai jatah menulis gratis hari ini. Coba lagi besok.",
+      "model_timeout": "Menulis postingan Anda terlalu lama. Coba lagi.",
+      "model_failed": "Terjadi kesalahan saat menulis postingan Anda. Coba lagi.",
+      "invalid_profile": "Terjadi kesalahan saat menulis postingan Anda. Coba lagi.",
+      "offline": "Anda sedang offline. Postingan Anda akan dilanjutkan saat Anda kembali."
     }
   }
 }
