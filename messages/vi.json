@@ -229,6 +229,19 @@
         "no_space": "Điện thoại của bạn không còn đủ dung lượng cho hình ảnh.",
         "offline": "Bạn đang ngoại tuyến. Hình ảnh sẽ tiếp tục khi bạn quay lại."
       }
+    },
+    "number": "Bài {n}",
+    "edit": {
+      "edit": "Sửa",
+      "save": "Lưu",
+      "cancel": "Hủy",
+      "edited": "Đã sửa",
+      "caption": "Chú thích",
+      "hashtags": "Hashtag",
+      "hashtagsHint": "Tối đa 5. Cách nhau bằng dấu cách.",
+      "altCount": "{count}/{max}",
+      "tooLong": "Quá dài cho Instagram: thừa {count} ký tự.",
+      "empty": "Hãy viết chú thích trước."
     }
   }
 }

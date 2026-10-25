@@ -9,7 +9,7 @@ import type { Profile } from '@/lib/brand/profile';
 import { resetStoreForTests, saveBrand } from '@/lib/brand/store';
 import type { Post, PostBatch } from '@/lib/posts/batch';
 import { profileHash } from '@/lib/posts/input';
-import { saveBatch } from '@/lib/posts/store';
+import { loadBatches, saveBatch } from '@/lib/posts/store';
 import { encodePostsLine, type PostsLine } from '@/lib/posts/stream';
 import { newPostsRun } from '@/lib/runs/run-record';
 import { saveRun } from '@/lib/runs/store';
@@ -137,6 +137,26 @@ describe('edited posts and Update captions', () => {
     await saveBatch(batch([flagged]));
     await renderSection(changed());
     expect(await screen.findByText('990k is not on your site')).toBeTruthy();
+  });
+});
+
+describe('editing in the posts section', () => {
+  test('a saved edit is kept on the phone, numbered and marked Edited', async () => {
+    await saveBatch(batch(sixPosts));
+    await renderSection();
+    expect(await screen.findByText('Post 6')).toBeTruthy();
+    const [edit] = await screen.findAllByRole('button', { name: 'Edit' });
+    await waitFor(() => expect((edit as HTMLButtonElement).disabled).toBe(false));
+    fireEvent.click(edit);
+    fireEvent.change(screen.getByLabelText('Caption'), { target: { value: 'My own words.' } });
+    fireEvent.click(screen.getByRole('button', { name: 'Save' }));
+    expect(await screen.findByText('My own words.')).toBeTruthy();
+    expect(screen.getByText('Edited')).toBeTruthy();
+    await waitFor(async () => {
+      const [saved] = await loadBatches('svarga');
+      expect(saved.posts[0]).toMatchObject({ caption: 'My own words.', edited: true });
+    });
+    expect(fetchMock).not.toHaveBeenCalled();
   });
 });
 

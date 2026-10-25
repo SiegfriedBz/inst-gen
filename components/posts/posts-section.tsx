@@ -8,11 +8,11 @@ import type { RunningRead } from '@/lib/brand/read-client';
 import { holdWakeLock } from '@/lib/brand/wake-lock';
 import { POSTS_LIMITS, type Post, type PostBatch, type PostsErrorCode } from '@/lib/posts/batch';
 import { type PostsEvent, resumePosts, startPlan, startRewrite } from '@/lib/posts/client';
-import { flagsFor, isPostStale, staleUnedited } from '@/lib/posts/edit';
+import { applyEdit, flagsFor, isPostStale, type PostEdit, staleUnedited } from '@/lib/posts/edit';
 import { type ImageEvent, resumeImages, startImages } from '@/lib/posts/image-client';
 import { imageKey, loadImages, type SavedImage } from '@/lib/posts/image-store';
 import { ctaFor } from '@/lib/posts/input';
-import { loadBatches, recentPosts } from '@/lib/posts/store';
+import { loadBatches, recentPosts, saveBatch } from '@/lib/posts/store';
 import { PostCard } from './post-card';
 import type { ImageState } from './post-image';
 
@@ -251,6 +251,19 @@ export function PostsSection({
     begin(run, { step: 'rewrite', batchId: batch.id, posts: [] });
   }
 
+  // The owner's words, kept on the phone only (docs/specs/posts/editor-download).
+  function saveEdit(batchId: string, postId: string, edit: PostEdit) {
+    const current = batchesRef.current.find((b) => b.id === batchId);
+    if (!current) return;
+    const next: PostBatch = {
+      ...current,
+      posts: current.posts.map((p) => (p.id === postId ? applyEdit(p, edit, profile) : p)),
+    };
+    batchesRef.current = batchesRef.current.map((b) => (b.id === batchId ? next : b));
+    setBatches(batchesRef.current);
+    void saveBatch(next);
+  }
+
   const cta = ctaFor(profile);
   const busy = running !== null || resuming || imagesResuming || making.size > 0;
 
@@ -334,11 +347,14 @@ export function PostsSection({
                 </Button>
               </div>
             )}
-            {batch.posts.map((post) => (
+            {batch.posts.map((post, index) => (
               <PostCard
                 key={post.id}
                 post={post}
                 cta={cta ?? post.cta}
+                number={index + 1}
+                anchorId={`post-${batch.id}-${post.id}`}
+                onSave={(edit) => saveEdit(batch.id, post.id, edit)}
                 image={imageOf(post, batch, needsImages)}
                 flags={flagsFor(post, batch, profile)}
                 onRewrite={
