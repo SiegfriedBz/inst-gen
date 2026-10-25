@@ -1,0 +1,24 @@
+{
+  "business": "sen",
+  "locale": "vi",
+  "name": "Nguyễn Thu Hà",
+  "review": "Không gian yên tĩnh, kỹ thuật viên tay nghề tốt. Giá hơi cao so với các tiệm gần đó nhưng đáng tiền.",
+  "recording": {
+    "modelId": "gemini-3.5-flash-lite",
+    "promptVersion": "reply-1",
+    "partials": [],
+    "final": {
+      "reviewLanguage": "vi",
+      "abusive": false,
+      "reviewTranslation": null,
+      "short": {
+        "text": "Cảm ơn bạn {name} 🙏 đã đánh giá. Chúng tôi rất vui vì bạn thích không gian yên tĩnh và kỹ thuật viên của chúng tôi. Hẹn gặp lại bạn lần sau 🪷",
+        "translation": null
+      },
+      "warm": {
+        "text": "Xin cảm ơn bạn {name} 🙏 rất nhiều vì đã chia sẻ cảm nhận. Thật tuyệt vời khi biết bạn hài lòng với dịch vụ và tay nghề của kỹ thuật viên. Rất mong được phục vụ bạn trong những lần ghé thăm tiếp theo 🪷",
+        "translation": null
+      }
+    }
+  }
+}

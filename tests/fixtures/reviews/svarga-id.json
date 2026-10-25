@@ -1,0 +1,24 @@
+{
+  "business": "svarga",
+  "locale": "id",
+  "name": "",
+  "review": "Pijatnya enak sekali dan tempatnya bersih. Sayang parkir motornya agak sempit. Overall puas!",
+  "recording": {
+    "modelId": "gemini-3.5-flash-lite",
+    "promptVersion": "reply-1",
+    "partials": [],
+    "final": {
+      "reviewLanguage": "id",
+      "abusive": false,
+      "reviewTranslation": null,
+      "short": {
+        "text": "Terima kasih banyak 🙏 atas ulasannya! Kami senang Anda menikmati pijatan dan kebersihan tempat kami. Kami nantikan kedatangan Anda kembali 🌼",
+        "translation": null
+      },
+      "warm": {
+        "text": "Terima kasih banyak 🙏 atas kunjungan dan ulasan positif Anda mengenai pijatan kami yang nyaman serta tempat yang bersih. Semoga kami bisa segera menyambut Anda kembali untuk pengalaman relaksasi lainnya 🌼",
+        "translation": null
+      }
+    }
+  }
+}

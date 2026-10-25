@@ -1,0 +1,24 @@
+{
+  "business": "sen",
+  "locale": "vi",
+  "name": "Tom R.",
+  "review": "Lovely hot stone massage, my back feels new! Only thing: the room was a bit cold and we waited about 20 minutes past our booking.",
+  "recording": {
+    "modelId": "gemini-3.5-flash-lite",
+    "promptVersion": "reply-1",
+    "partials": [],
+    "final": {
+      "reviewLanguage": "en",
+      "abusive": false,
+      "reviewTranslation": "Mát-xa đá nóng tuyệt vời, lưng tôi như mới! Điểm duy nhất là phòng hơi lạnh và chúng tôi phải đợi khoảng 20 phút sau giờ đặt hẹn.",
+      "short": {
+        "text": "Thank you {name} 🙏 for your feedback on our hot stone massage. We acknowledge the temperature and the wait time. We hope to welcome you back soon 🪷",
+        "translation": "Cảm ơn {name} 🙏 vì phản hồi về dịch vụ mát-xa đá nóng của chúng tôi. Chúng tôi ghi nhận về nhiệt độ phòng và thời gian chờ đợi. Mong sớm được đón tiếp bạn trở lại 🪷"
+      },
+      "warm": {
+        "text": "Thank you so much {name} 🙏 for sharing your experience, and we are so glad your back feels new after the hot stone massage! We are sorry for the chilly room and the 20-minute wait. We would love to have you back for a much smoother visit next time 🪷",
+        "translation": "Cảm ơn bạn rất nhiều {name} 🙏 vì đã chia sẻ trải nghiệm, và chúng tôi rất vui vì lưng của bạn đã thoải mái hơn sau bài mát-xa đá nóng! Chúng tôi xin lỗi vì phòng hơi lạnh và thời gian chờ 20 phút. Rất mong được đón bạn trở lại với trải nghiệm trọn vẹn hơn vào lần tới 🪷"
+      }
+    }
+  }
+}

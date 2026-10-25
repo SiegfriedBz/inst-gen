@@ -1,0 +1,24 @@
+{
+  "business": "sen",
+  "locale": "en",
+  "name": "Mike",
+  "review": "SCAM!!! Never been there but my friend says they are thieves. Avoid!!!",
+  "recording": {
+    "modelId": "gemini-3.5-flash-lite",
+    "promptVersion": "reply-1",
+    "partials": [],
+    "final": {
+      "reviewLanguage": "en",
+      "abusive": true,
+      "reviewTranslation": null,
+      "short": {
+        "text": "Hello {name}, this review is false and does not reflect our business. We have no record of you as a client.",
+        "translation": null
+      },
+      "warm": {
+        "text": "Dear {name}, we take our service very seriously and believe there is a misunderstanding here. Please contact our management team to clarify this matter.",
+        "translation": null
+      }
+    }
+  }
+}

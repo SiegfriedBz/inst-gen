@@ -25,17 +25,17 @@ function isErrorCode(value: unknown): value is ReplyErrorCode {
   return (REPLY_ERROR_CODES as readonly unknown[]).includes(value);
 }
 
-export async function requestReplies(
-  input: {
-    review: string;
-    name: string;
-    locale: ScreenLocale;
-    profile: Profile;
-    avoid: [string, string] | null;
-  },
-  deps: Deps = defaultDeps(),
-): Promise<RepliesResult> {
-  const body: ReplyBody = {
+export type RepliesInput = {
+  review: string;
+  name: string;
+  locale: ScreenLocale;
+  profile: Profile;
+  avoid: [string, string] | null;
+};
+
+// What goes to the route: the name is reduced to whether there is one.
+export function replyBodyFor(input: RepliesInput): ReplyBody {
+  return {
     review: input.review.trim(),
     hasName: input.name.trim() !== '',
     locale: input.locale,
@@ -46,6 +46,13 @@ export async function requestReplies(
     country: countryOf(input.profile),
     avoid: input.avoid,
   };
+}
+
+export async function requestReplies(
+  input: RepliesInput,
+  deps: Deps = defaultDeps(),
+): Promise<RepliesResult> {
+  const body = replyBodyFor(input);
   let response: Response;
   try {
     response = await deps.fetch('/api/reviews/reply', {

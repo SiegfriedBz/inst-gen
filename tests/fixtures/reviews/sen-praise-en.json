@@ -1,0 +1,24 @@
+{
+  "business": "sen",
+  "locale": "vi",
+  "name": "Anna K.",
+  "review": "Best massage I had in Vietnam! The therapist found every knot in my shoulders and the ginger tea afterwards was lovely. Very calm place, we will come back before we fly home.",
+  "recording": {
+    "modelId": "gemini-3.5-flash-lite",
+    "promptVersion": "reply-1",
+    "partials": [],
+    "final": {
+      "reviewLanguage": "en",
+      "abusive": false,
+      "reviewTranslation": "Trợ lý massage tốt nhất tôi từng có ở Việt Nam! Kỹ thuật viên đã tìm thấy mọi nút thắt ở vai của tôi và trà gừng sau đó rất tuyệt vời. Nơi rất yên bình, chúng tôi sẽ quay lại trước khi bay về nhà.",
+      "short": {
+        "text": "Thank you so much {name} 🙏! We are glad you enjoyed the shoulder massage and the ginger tea. Hope to see you again before your flight 🪷.",
+        "translation": "Cảm ơn bạn rất nhiều {name} 🙏! Chúng tôi rất vui vì bạn thích dịch vụ massage vai và trà gừng. Hy vọng được gặp lại bạn trước chuyến bay 🪷."
+      },
+      "warm": {
+        "text": "Thank you for your wonderful review {name} 🙏! It is so great to hear you loved the relaxing atmosphere and our ginger tea. We would be delighted to welcome you back anytime 🪷.",
+        "translation": "Cảm ơn đánh giá tuyệt vời của bạn {name} 🙏! Thật tuyệt khi biết bạn yêu thích không gian thư giãn và trà gừng của chúng tôi. Chúng tôi rất hân hạnh được chào đón bạn quay lại bất cứ lúc nào 🪷."
+      }
+    }
+  }
+}
