@@ -55,6 +55,21 @@ No switch inside "Your posts": choosing between posts and review replies is
 2.5's (`reviews/reply-drafts`), and two layers of switches would break this
 item's "super easy" rule.
 
+A finished card, top to bottom (the mockup the owner reviewed on
+2026-10-25):
+
+1. the post image, with "See the story" and "New image" side by side under
+   it;
+2. the type label, "Edited" when it applies, and "Post {n}" on the right;
+3. the caption, then "Show in…" (Indonesian or Vietnamese screens only);
+4. the call to action, the hashtags, and "Check before posting:" as today;
+5. "Edit", as a text link;
+6. the take-away buttons, last: "Copy caption" full width as the main
+   button, then "Save post image" and "Save story image" side by side.
+
+The owner chose to keep every control and let the pilot show which ones Sen
+and Svarga don't use.
+
 ### The feed preview
 
 Above each batch's cards, a small Instagram-style grid of that batch's six
@@ -405,6 +420,8 @@ Scenario: Forget removes the translations
 - **No undo** after Save or a new image, beyond Cancel before
   saving.
 - Edited captions aren't checked for facts beyond 2.2's code checks.
+- **Seven controls on a finished card.** That's a lot for the "super easy"
+  rule; the pilot shows which go unused, and a later item trims them.
 
 ## Out of scope
 
