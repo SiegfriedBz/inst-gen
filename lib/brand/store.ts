@@ -2,6 +2,7 @@ import { type DBSchema, type IDBPDatabase, openDB } from 'idb';
 import type { PostBatch } from '@/lib/posts/batch';
 import type { SavedImage } from '@/lib/posts/image-store';
 import type { SavedTranslation } from '@/lib/posts/translation-store';
+import type { ReviewRecord } from '@/lib/reviews/store';
 import type { RunRecord } from '@/lib/runs/run-record';
 import { type Profile, profileSchema, upgradeProfile } from './profile';
 import type { SearchAnswer } from './search/run';
@@ -41,10 +42,12 @@ export interface ShopfrontDb extends DBSchema {
     value: SavedTranslation;
     indexes: { ownerId: string };
   };
+  // The current review and its replies (docs/specs/reviews/reply-drafts).
+  reviews: { key: string; value: ReviewRecord };
 }
 
 const DB_NAME = 'shopfront';
-const DB_VERSION = 4;
+const DB_VERSION = 5;
 
 let opening: Promise<IDBPDatabase<ShopfrontDb> | null> | null = null;
 let persistAsked = false;
@@ -83,6 +86,9 @@ async function open(): Promise<IDBPDatabase<ShopfrontDb> | null> {
           db.createObjectStore('translations', {
             keyPath: ['batchId', 'postId', 'locale'],
           }).createIndex('ownerId', 'ownerId');
+        }
+        if (oldVersion < 5) {
+          db.createObjectStore('reviews', { keyPath: 'ownerId' });
         }
       },
       // Another tab still has an older version open: the page works without
