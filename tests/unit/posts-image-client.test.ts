@@ -11,7 +11,7 @@ import {
   resumeImages,
   startImages,
 } from '@/lib/posts/image-client';
-import { loadImages, saveImage } from '@/lib/posts/image-store';
+import { imageKey, loadImages, saveImage } from '@/lib/posts/image-store';
 import { newImagesRun } from '@/lib/runs/run-record';
 import { loadOpenRuns, saveRun } from '@/lib/runs/store';
 import { post } from './helpers/posts';
@@ -74,7 +74,7 @@ describe("a batch's images from the browser", () => {
     fetchMock.mockImplementation(() => new Promise<Response>((resolve) => waiting.push(resolve)));
     const run = startImages({ ownerId: 'sen', batch, postIds: ids }, () => {}, deps);
     await vi.waitFor(() => expect(fetchMock).toHaveBeenCalledTimes(6));
-    expect(isImageRunning('post-1')).toBe(true);
+    expect(isImageRunning('b1', 'post-1')).toBe(true);
     expect(fetchMock.mock.calls[0][0]).toBe('/api/posts/image');
     expect(bodyOf(fetchMock.mock.calls[2])).toEqual({
       postId: 'post-3',
@@ -85,7 +85,7 @@ describe("a batch's images from the browser", () => {
       resolve(ok(`post-${i + 1}`));
     });
     await run.done;
-    expect(isImageRunning('post-1')).toBe(false);
+    expect(isImageRunning('b1', 'post-1')).toBe(false);
   });
 
   test('an answer is saved then reported', async () => {
@@ -94,7 +94,7 @@ describe("a batch's images from the browser", () => {
     const [event] = events;
     if (event.type !== 'image') throw new Error(event.type);
     expect(event.image).toMatchObject({ postId: 'post-1', batchId: 'b1', ownerId: 'sen' });
-    expect((await loadImages('sen')).has('post-1')).toBe(true);
+    expect((await loadImages('sen')).has(imageKey('b1', 'post-1'))).toBe(true);
     expect(await loadOpenRuns('sen', 'images')).toEqual([]);
   });
 
@@ -108,7 +108,7 @@ describe("a batch's images from the browser", () => {
     const events = await make();
     expect(events.filter((e) => e.type === 'image')).toHaveLength(5);
     expect(events.filter((e) => e.type === 'error')).toEqual([
-      { type: 'error', postId: 'post-3', code: 'image_blocked' },
+      { type: 'error', batchId: 'b1', postId: 'post-3', code: 'image_blocked' },
     ]);
     expect((await loadImages('sen')).size).toBe(5);
     expect(await loadOpenRuns('sen', 'images')).toEqual([]);
@@ -117,7 +117,7 @@ describe("a batch's images from the browser", () => {
   test('an unknown error answer is image_failed', async () => {
     fetchMock.mockResolvedValue(new Response('oops', { status: 500 }));
     expect(await make(['post-1'])).toEqual([
-      { type: 'error', postId: 'post-1', code: 'image_failed' },
+      { type: 'error', batchId: 'b1', postId: 'post-1', code: 'image_failed' },
     ]);
   });
 
@@ -134,7 +134,7 @@ describe("a batch's images from the browser", () => {
     };
     try {
       expect(await make(['post-1'])).toEqual([
-        { type: 'error', postId: 'post-1', code: 'no_space' },
+        { type: 'error', batchId: 'b1', postId: 'post-1', code: 'no_space' },
       ]);
     } finally {
       IDBObjectStore.prototype.put = real;
@@ -143,7 +143,7 @@ describe("a batch's images from the browser", () => {
 
   test('a dropped connection reports offline and keeps the step running', async () => {
     fetchMock.mockRejectedValue(new TypeError('Failed to fetch'));
-    expect(await make(['post-1'])).toEqual([{ type: 'offline', postId: 'post-1' }]);
+    expect(await make(['post-1'])).toEqual([{ type: 'offline', batchId: 'b1', postId: 'post-1' }]);
     const [run] = await loadOpenRuns('sen', 'images');
     expect(run.steps).toEqual([{ name: 'image', postId: 'post-1', status: 'running' }]);
   });
@@ -212,6 +212,24 @@ describe('resuming images', () => {
     expect(await loadOpenRuns('sen', 'images')).toEqual([]);
   });
 
+  test("resume treats another batch's image as not done", async () => {
+    await saveRun(lost(['post-1']));
+    await saveImage({
+      postId: 'post-1',
+      batchId: 'other-batch',
+      ownerId: 'sen',
+      story: new Blob(['s']),
+      post: new Blob(['p']),
+      imagePrompt: 'Scene 1 at dusk',
+      model: 'm',
+      promptVersion: 'images-1',
+      createdAt: '2026-10-25T09:31:00.000Z',
+    });
+    const resumed = await resumeImages('sen', [batch], () => {}, deps);
+    expect(resumed?.postIds).toEqual(['post-1']);
+    await resumed?.done;
+  });
+
   test('nothing to resume is null', async () => {
     expect(await resumeImages('sen', [batch], () => {}, deps)).toBeNull();
   });
@@ -229,8 +247,8 @@ describe('resuming images', () => {
     expect(await resumeImages('sen', [batch], (e) => events.push(e), deps)).toBeNull();
     expect(fetchMock).not.toHaveBeenCalled();
     expect(events).toEqual([
-      { type: 'error', postId: 'post-1', code: 'image_failed' },
-      { type: 'error', postId: 'post-2', code: 'image_failed' },
+      { type: 'error', batchId: 'b1', postId: 'post-1', code: 'image_failed' },
+      { type: 'error', batchId: 'b1', postId: 'post-2', code: 'image_failed' },
     ]);
     expect(await loadOpenRuns('sen', 'images')).toEqual([]);
   });

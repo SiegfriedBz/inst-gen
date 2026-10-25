@@ -2,10 +2,11 @@ import 'fake-indexeddb/auto';
 import { IDBFactory } from 'fake-indexeddb';
 import { openDB } from 'idb';
 import { beforeEach, describe, expect, test } from 'vitest';
-import { forgetBrand, resetStoreForTests, saveBrand } from '@/lib/brand/store';
+import { forgetBrand, openStore, resetStoreForTests, saveBrand } from '@/lib/brand/store';
 import type { PostBatch } from '@/lib/posts/batch';
 import {
   ImageStoreFullError,
+  imageKey,
   loadImages,
   type SavedImage,
   saveImage,
@@ -22,10 +23,10 @@ beforeEach(() => {
 
 const jpeg = (bytes: number[]) => new Blob([new Uint8Array(bytes)], { type: 'image/jpeg' });
 
-function image(ownerId: string, postId: string): SavedImage {
+function image(ownerId: string, postId: string, batchId = 'b1'): SavedImage {
   return {
     postId,
-    batchId: 'b1',
+    batchId,
     ownerId,
     story: jpeg([0xff, 0xd8, 1, 2]),
     post: jpeg([0xff, 0xd8, 3]),
@@ -39,7 +40,7 @@ function image(ownerId: string, postId: string): SavedImage {
 describe('the images store', () => {
   test('an image saved is loaded with its blobs', async () => {
     await saveImage(image('sen', 'post-1'));
-    const loaded = (await loadImages('sen')).get('post-1');
+    const loaded = (await loadImages('sen')).get(imageKey('b1', 'post-1'));
     expect(loaded?.story.type).toBe('image/jpeg');
     expect(new Uint8Array(await (loaded as SavedImage).story.arrayBuffer())).toEqual(
       new Uint8Array([0xff, 0xd8, 1, 2]),
@@ -85,6 +86,32 @@ describe('the images store', () => {
     expect((await loadBatches('sen')).map((b) => b.id)).toEqual(['b1']);
     await saveImage(image('sen', 'post-1'));
     expect((await loadImages('sen')).size).toBe(1);
+  });
+
+  test('two batches keep their own images', async () => {
+    await saveImage(image('sen', 'post-1', 'a'));
+    await saveImage(image('sen', 'post-1', 'b'));
+    const loaded = await loadImages('sen');
+    expect(loaded.size).toBe(2);
+    expect(loaded.get(imageKey('a', 'post-1'))?.batchId).toBe('a');
+    expect(loaded.get(imageKey('b', 'post-1'))?.batchId).toBe('b');
+  });
+
+  test('the version 4 upgrade moves saved images under their batch', async () => {
+    const v3 = await openDB('shopfront', 3, {
+      upgrade(db) {
+        db.createObjectStore('brands', { keyPath: 'ownerId' });
+        db.createObjectStore('runs', { keyPath: 'id' }).createIndex('ownerId', 'ownerId');
+        db.createObjectStore('posts', { keyPath: 'id' }).createIndex('ownerId', 'ownerId');
+        db.createObjectStore('images', { keyPath: 'postId' }).createIndex('ownerId', 'ownerId');
+      },
+    });
+    await v3.put('images', image('sen', 'post-2', 'old-batch'));
+    v3.close();
+    const loaded = await loadImages('sen');
+    expect([...loaded.keys()]).toEqual([imageKey('old-batch', 'post-2')]);
+    const db = await openStore();
+    expect(db?.objectStoreNames.contains('translations')).toBe(true);
   });
 
   test('toSavedImage decodes base64 into JPEG blobs', async () => {

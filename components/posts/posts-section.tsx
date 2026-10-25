@@ -9,7 +9,7 @@ import { holdWakeLock } from '@/lib/brand/wake-lock';
 import { POSTS_LIMITS, type Post, type PostBatch, type PostsErrorCode } from '@/lib/posts/batch';
 import { type PostsEvent, resumePosts, startPlan, startRewrite } from '@/lib/posts/client';
 import { type ImageEvent, resumeImages, startImages } from '@/lib/posts/image-client';
-import { loadImages, type SavedImage } from '@/lib/posts/image-store';
+import { imageKey, loadImages, type SavedImage } from '@/lib/posts/image-store';
 import { ctaFor } from '@/lib/posts/input';
 import { isStale, loadBatches, recentPosts } from '@/lib/posts/store';
 import { PostCard } from './post-card';
@@ -68,30 +68,33 @@ export function PostsSection({
       window.location.assign('/enter');
       return;
     }
-    const postId = event.type === 'image' ? event.image.postId : event.postId;
+    const key =
+      event.type === 'image'
+        ? imageKey(event.image.batchId, event.image.postId)
+        : imageKey(event.batchId, event.postId);
     setMaking((set) => {
       const next = new Set(set);
-      next.delete(postId);
+      next.delete(key);
       return next;
     });
     if (event.type === 'image') {
-      setImages((map) => new Map(map).set(postId, event.image));
+      setImages((map) => new Map(map).set(key, event.image));
     } else {
       const code = event.type === 'offline' ? 'offline' : event.code;
       if (event.type === 'offline' && navigator.onLine) droppedOnline.current = true;
-      setFailed((map) => new Map(map).set(postId, code));
+      setFailed((map) => new Map(map).set(key, code));
     }
   }, []);
 
   // Keeps an images request: the screen awake while any runs, all stopped
-  // when the section closes.
-  const trackImages = useCallback((run: RunningRead, postIds: string[]) => {
+  // when the section closes. `keys` are the posts' `imageKey`s.
+  const trackImages = useCallback((run: RunningRead, keys: string[]) => {
     imageRuns.current.add(run);
     imageLock.current ??= holdWakeLock();
-    setMaking((set) => new Set([...set, ...postIds]));
+    setMaking((set) => new Set([...set, ...keys]));
     setFailed((map) => {
       const next = new Map(map);
-      for (const id of postIds) next.delete(id);
+      for (const key of keys) next.delete(key);
       return next;
     });
     void run.done.then(() => {
@@ -109,7 +112,10 @@ export function PostsSection({
 
   const makeImages = useCallback(
     (batch: PostBatch, postIds: string[]) => {
-      trackImages(startImages({ ownerId, batch, postIds }, onImageEvent), postIds);
+      trackImages(
+        startImages({ ownerId, batch, postIds }, onImageEvent),
+        postIds.map((id) => imageKey(batch.id, id)),
+      );
     },
     [ownerId, onImageEvent, trackImages],
   );
@@ -121,7 +127,7 @@ export function PostsSection({
       const run = await resumeImages(ownerId, batchesRef.current, onImageEvent);
       if (!run) return;
       if (!mounted.current) run.stop();
-      else trackImages(run, run.postIds);
+      else trackImages(run, run.keys);
     } finally {
       if (mounted.current) setImagesResuming(false);
     }
@@ -247,13 +253,14 @@ export function PostsSection({
 
   function imageOf(post: Post, batch: PostBatch, batchButton: boolean) {
     const retry = () => makeImages(batch, [post.id]);
-    const saved = images.get(post.id);
+    const key = imageKey(batch.id, post.id);
+    const saved = images.get(key);
     let state: ImageState;
     if (!imagesOn) state = { kind: 'off' };
     else if (saved) state = { kind: 'ready', image: saved };
-    else if (making.has(post.id)) state = { kind: 'making' };
+    else if (making.has(key)) state = { kind: 'making' };
     else {
-      const code = failed.get(post.id);
+      const code = failed.get(key);
       state = code ? { kind: 'failed', code } : { kind: 'none' };
     }
     return { state, onRetry: batchButton ? undefined : retry };
@@ -283,7 +290,11 @@ export function PostsSection({
         running.posts.map((post) => <PostCard key={post.id} post={post} cta={cta ?? post.cta} />)}
       {batches.map((batch) => {
         const needsImages =
-          imagesOn && !batch.posts.some((p) => images.has(p.id) || making.has(p.id));
+          imagesOn &&
+          !batch.posts.some((p) => {
+            const key = imageKey(batch.id, p.id);
+            return images.has(key) || making.has(key);
+          });
         return (
           <div key={batch.id} className="flex flex-col gap-3">
             {needsImages && (

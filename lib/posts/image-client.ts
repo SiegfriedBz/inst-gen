@@ -5,6 +5,7 @@ import type { PostBatch } from './batch';
 import { IMAGE_ERROR_CODES, type ImageErrorCode, imageResponseSchema } from './image';
 import {
   ImageStoreFullError,
+  imageKey,
   loadImages,
   type SavedImage,
   saveImage,
@@ -18,34 +19,40 @@ import {
 
 export type ImageEvent =
   | { type: 'image'; image: SavedImage }
-  | { type: 'error'; postId: string; code: ImageErrorCode | 'no_space' }
-  | { type: 'offline'; postId: string }
+  | { type: 'error'; batchId: string; postId: string; code: ImageErrorCode | 'no_space' }
+  | { type: 'offline'; batchId: string; postId: string }
   | { type: 'signedOut' };
 
 const liveRuns = new Set<string>();
-// How many requests are alive per post: a retry may overlap a lost request.
+// How many requests are alive per post, by `imageKey`: a retry may overlap a
+// lost request.
 const livePosts = new Map<string, number>();
 const MAX_RESUMES = 2;
 
-export function isImageRunning(postId: string): boolean {
-  return (livePosts.get(postId) ?? 0) > 0;
+export function isImageRunning(batchId: string, postId: string): boolean {
+  return (livePosts.get(imageKey(batchId, postId)) ?? 0) > 0;
 }
 
-function holdPost(postId: string): void {
-  livePosts.set(postId, (livePosts.get(postId) ?? 0) + 1);
+function holdPost(key: string): void {
+  livePosts.set(key, (livePosts.get(key) ?? 0) + 1);
 }
 
-function releasePost(postId: string): void {
-  const left = (livePosts.get(postId) ?? 0) - 1;
-  if (left > 0) livePosts.set(postId, left);
-  else livePosts.delete(postId);
+function releasePost(key: string): void {
+  const left = (livePosts.get(key) ?? 0) - 1;
+  if (left > 0) livePosts.set(key, left);
+  else livePosts.delete(key);
 }
 
 // A new request for these posts replaces any older run's step for them, so a
 // resume never asks for the same image twice.
-async function supersede(ownerId: string, runId: string, postIds: string[]): Promise<void> {
+async function supersede(
+  ownerId: string,
+  runId: string,
+  batchId: string,
+  postIds: string[],
+): Promise<void> {
   for (const other of await loadOpenRuns(ownerId, 'images')) {
-    if (other.id === runId) continue;
+    if (other.id === runId || other.batchId !== batchId) continue;
     for (const step of other.steps) {
       if (step.name !== 'image' || !postIds.includes(step.postId)) continue;
       if (step.status === 'running' || step.status === 'pending') {
@@ -82,10 +89,10 @@ function request(
   const controller = new AbortController();
   let finished = false;
   let signedOut = false;
-  for (const id of postIds) holdPost(id);
+  for (const id of postIds) holdPost(imageKey(batch.id, id));
   const held = new Set(postIds);
   const release = (id: string) => {
-    if (held.delete(id)) releasePost(id);
+    if (held.delete(id)) releasePost(imageKey(batch.id, id));
   };
 
   async function one(postId: string): Promise<void> {
@@ -108,7 +115,7 @@ function request(
       if (!response.ok) {
         const code = await errorCodeOf(response);
         await setImageStep(run.id, postId, 'failed');
-        onEvent({ type: 'error', postId, code });
+        onEvent({ type: 'error', batchId: batch.id, postId, code });
         return;
       }
       const answer = imageResponseSchema.parse(await response.json());
@@ -126,12 +133,13 @@ function request(
       if (controller.signal.aborted) return;
       if (error instanceof TypeError) {
         // The step stays running; it is asked for again when the owner is back.
-        onEvent({ type: 'offline', postId });
+        onEvent({ type: 'offline', batchId: batch.id, postId });
         return;
       }
       await setImageStep(run.id, postId, 'failed');
       onEvent({
         type: 'error',
+        batchId: batch.id,
         postId,
         code: error instanceof ImageStoreFullError ? 'no_space' : 'image_failed',
       });
@@ -156,7 +164,7 @@ function request(
             },
       );
       if (controller.signal.aborted) return;
-      await supersede(run.ownerId, run.id, postIds);
+      await supersede(run.ownerId, run.id, batch.id, postIds);
       if (controller.signal.aborted) return;
       await Promise.all(postIds.map(one));
     } finally {
@@ -189,16 +197,16 @@ export function startImages(
 }
 
 // Asks again for the images this owner's open runs lost, or returns null when
-// there are none to ask for.
+// there are none to ask for. `keys` are the posts' `imageKey`s.
 export async function resumeImages(
   ownerId: string,
   batches: PostBatch[],
   onEvent: (e: ImageEvent) => void,
   deps: ReadDeps = defaultReadDeps(),
-): Promise<(RunningRead & { postIds: string[] }) | null> {
+): Promise<(RunningRead & { postIds: string[]; keys: string[] }) | null> {
   const open = await loadOpenRuns(ownerId, 'images');
   const saved = await loadImages(ownerId);
-  const resumed: (RunningRead & { postIds: string[] })[] = [];
+  const resumed: (RunningRead & { postIds: string[]; keys: string[] })[] = [];
   // Each post is asked for once, whatever number of runs still hold it.
   const taken = new Set<string>();
   for (const found of open) {
@@ -215,11 +223,12 @@ export async function resumeImages(
       ...run,
       steps: run.steps.map((step) => {
         if (step.name !== 'image' || step.status !== 'pending') return step;
-        if (saved.has(step.postId)) return { ...step, status: 'done' };
-        if (isImageRunning(step.postId) || taken.has(step.postId)) {
+        const key = imageKey(batch.id, step.postId);
+        if (saved.has(key)) return { ...step, status: 'done' };
+        if (isImageRunning(batch.id, step.postId) || taken.has(key)) {
           return { ...step, status: 'failed' };
         }
-        taken.add(step.postId);
+        taken.add(key);
         return step;
       }),
     };
@@ -234,16 +243,21 @@ export async function resumeImages(
       await saveRun(current);
       for (const postId of pending) {
         await setImageStep(run.id, postId, 'failed');
-        onEvent({ type: 'error', postId, code: 'image_failed' });
+        onEvent({ type: 'error', batchId: batch.id, postId, code: 'image_failed' });
       }
       continue;
     }
     liveRuns.add(run.id);
-    resumed.push({ ...request(current, false, batch, pending, onEvent, deps), postIds: pending });
+    resumed.push({
+      ...request(current, false, batch, pending, onEvent, deps),
+      postIds: pending,
+      keys: pending.map((id) => imageKey(batch.id, id)),
+    });
   }
   if (resumed.length === 0) return null;
   return {
     postIds: resumed.flatMap((r) => r.postIds),
+    keys: resumed.flatMap((r) => r.keys),
     stop: () => {
       for (const r of resumed) r.stop();
     },

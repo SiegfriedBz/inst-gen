@@ -128,6 +128,16 @@ const makePosts = async () => {
 };
 
 describe('images in the posts section', () => {
+  test("one batch's image doesn't show on another batch", async () => {
+    await saveBatch({ ...batch(six), id: 'a', createdAt: '2026-10-24T09:00:00.000Z' });
+    await saveBatch({ ...batch(six), id: 'b' });
+    await saveImage({ ...image('post-1'), batchId: 'a' });
+    await renderSection();
+    await screen.findAllByRole('img');
+    await new Promise((resolve) => setTimeout(resolve, 50));
+    expect(screen.getAllByRole('img')).toHaveLength(1);
+  });
+
   test('a saved plan starts its six images', async () => {
     fetchMock.mockResolvedValue(planAnswer(six));
     await renderSection();
@@ -143,8 +153,9 @@ describe('images in the posts section', () => {
     await renderSection();
     fireEvent.click(await makePosts());
     await waitFor(() => expect(started).toHaveLength(1));
-    started[0].onEvent({ type: 'image', image: image('post-1') });
-    started[0].onEvent({ type: 'error', postId: 'post-2', code: 'image_blocked' });
+    const batchId = started[0].input.batch.id;
+    started[0].onEvent({ type: 'image', image: { ...image('post-1'), batchId } });
+    started[0].onEvent({ type: 'error', batchId, postId: 'post-2', code: 'image_blocked' });
     expect(await screen.findByRole('img', { name: 'Alt 1' })).toBeTruthy();
     expect(screen.getByText("This image couldn't be made. Try again for a new one.")).toBeTruthy();
     fireEvent.click(screen.getByRole('button', { name: 'Try again' }));
@@ -161,7 +172,10 @@ describe('images in the posts section', () => {
     expect(
       screen.getByText('Keep this page open for about a minute while your posts are made.'),
     ).toBeTruthy();
-    for (const p of six) started[0].onEvent({ type: 'image', image: image(p.id) });
+    const batchId = started[0].input.batch.id;
+    for (const p of six) {
+      started[0].onEvent({ type: 'image', image: { ...image(p.id), batchId } });
+    }
     release();
     await waitFor(() => expect(more.disabled).toBe(false));
   });
@@ -208,8 +222,11 @@ describe('images in the posts section', () => {
     fireEvent.click(await makePosts());
     await waitFor(() => expect(started).toHaveLength(1));
     const before = resumeCalls.length;
-    started[0].onEvent({ type: 'offline', postId: 'post-1' });
-    for (const p of six.slice(1)) started[0].onEvent({ type: 'image', image: image(p.id) });
+    const batchId = started[0].input.batch.id;
+    started[0].onEvent({ type: 'offline', batchId, postId: 'post-1' });
+    for (const p of six.slice(1)) {
+      started[0].onEvent({ type: 'image', image: { ...image(p.id), batchId } });
+    }
     release();
     await waitFor(() => expect(resumeCalls.length).toBeGreaterThan(before));
   });
