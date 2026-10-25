@@ -22,6 +22,12 @@ describe('batchSchema', () => {
     expect(batchSchema.safeParse(batch(posts)).success).toBe(true);
   });
 
+  it('keeps the editor fields', () => {
+    const edited = post({ edited: true, altToCheck: true, profileHash: 'h1' });
+    const parsed = batchSchema.parse(batch([edited]));
+    expect(parsed.posts[0]).toMatchObject({ edited: true, altToCheck: true, profileHash: 'h1' });
+  });
+
   it('refuses a hashtag with "#"', () => {
     expect(batchSchema.safeParse(batch([post({ hashtags: ['#canggu'] })])).success).toBe(false);
   });
