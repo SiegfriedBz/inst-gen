@@ -1,6 +1,6 @@
 ---
 title: "Editor and download"
-description: "Each batch gets an Instagram-style feed preview; the owner edits a post's caption, hashtags and alt text, reads the caption in their own language through one small Flash-Lite call kept on the phone, asks for a new image with an optional hint, moves the post crop, copies the words, saves each image, and downloads a batch as a ZIP; 'Update captions' leaves edited posts alone, with a per-post rewrite on offer."
+description: "Each batch gets an Instagram-style feed preview; the owner edits a post's caption, hashtags and alt text, reads the caption in their own language through one small Flash-Lite call kept on the phone, asks for a new image with an optional hint, copies the words, saves each image, and downloads a batch as a ZIP; 'Update captions' leaves edited posts alone, with a per-post rewrite on offer."
 status: draft
 date: "2026-10-25"
 ---
@@ -26,8 +26,7 @@ This spec covers the last step before Instagram (Global Plan, "Tweak" and
 - the **owner's-language view**: "Show in Tiếng Việt" or "Show in Bahasa
   Indonesia" on each caption, read-only, while what gets posted stays in
   English;
-- **a new image**, optionally with a short hint ("more green"), and **moving
-  the post crop** up or down inside the story;
+- **a new image**, optionally with a short hint ("more green");
 - **taking it away**: copy the words, save the post and story images to the
   phone, or download the batch as one ZIP.
 
@@ -38,6 +37,11 @@ their own language at least once, if they want to.
 
 Why now: it's the last piece phase 2's gate needs. 2.2 and 2.3 handed over
 everything listed here.
+
+**Super easy to use** (the owner's rule for this item): the pilot's owners
+use cheap, slow phones and aren't app people. Fewer buttons, fewer modes,
+nothing to learn; when in doubt, leave a control out and add it later if
+the owners ask.
 
 ## Behaviour
 
@@ -197,26 +201,7 @@ small form under the image:
 - The alt text is not rewritten: a line under the new image says "Check that
   the image description still fits.", until the owner edits the post or
   dismisses it.
-- A new image resets the crop to the centre.
-
-### Moving the crop
-
-The post is a 1080×1350 slice of the 1080×1920 story; 2.3 always took the
-middle. On a card with an image, a button **"Move the crop"** shows the
-story with the post's frame over it and three choices: **"Higher"**,
-**"Middle"** and **"Lower"**, which put the slice's top at row 0, 285 or
-570.
-
-- The browser recrops the saved story with a canvas and saves the result as
-  the post JPEG (quality 0.85). No server call, no spend.
-- The image record gains `crop: 'top' | 'middle' | 'bottom'`, `'middle'` for
-  images saved before this spec.
-- Changing the crop updates the card and the feed preview at once.
-- The story is never changed.
-
-Three positions rather than a free drag: easier on a phone, and enough for
-a subject that sits high or low. A free drag can come later if the owners
-ask.
+- The post stays 2.3's centred crop of the story.
 
 ### Taking it away
 
@@ -261,7 +246,6 @@ captions.txt
 
 - `postSchema` gains `edited: boolean`, defaulting to `false` when a stored
   batch lacks it, so older batches still load.
-- The image record gains `crop`, as above.
 - The new `translations` store comes with the next database version; the
   upgrade adds it without touching the other stores.
 - "Forget my business" deletes the translations with the batches and images.
@@ -277,8 +261,7 @@ the alt text counter, "Too long for Instagram: {count} characters over.",
 "Rewrite this one too", "Show in {language}", "Hide", "In {language}, for
 you to read. Instagram gets the English.", the three translation failures,
 "New image", "What should change? (optional)", its placeholder, "Make it",
-"Check that the image description still fits.", "Move the crop", "Higher",
-"Middle", "Lower", "Copy caption", "Copied", "Copy it from here.", "Save
+"Check that the image description still fits.", "Copy caption", "Copied", "Copy it from here.", "Save
 post image", "Save story image", "Download all (ZIP)", and in
 `captions.txt`, "Post {n}", "Image description:" and "(no image yet)" in
 English, as the captions are.
@@ -291,8 +274,7 @@ English, as the captions are.
   `edited` defaulting to `false` on an old batch; the translate route's
   schema, its failures, and that only the caption is sent; the translation
   store and its `captionHash` rule; the image route's `hint` (cleaned,
-  placed before the style line, version `images-4`); the crop offsets (0,
-  285, 570) on a generated story; file names; the ZIP's entries and
+  placed before the style line, version `images-4`); file names; the ZIP's entries and
   `captions.txt`; "Forget my business" and the translations.
 - A recorded Flash-Lite translation for one Sen caption in Vietnamese and
   one Svarga caption in Indonesian, replayed in tests.
@@ -305,8 +287,7 @@ English, as the captions are.
   see the edited caption unchanged, then tap "Rewrite this one too" and see
   it replaced; switch the screen to Vietnamese, tap "Show in Tiếng Việt",
   see the translation, reload and open it again with no request; ask for a
-  new image with a hint and see the request carry it; move the crop to
-  "Higher"; tap "Download all (ZIP)" and check the downloaded file's
+  new image with a hint and see the request carry it; tap "Download all (ZIP)" and check the downloaded file's
   entries.
 - On a real iPhone and a real Android phone, the developer saves one post
   image and one story image to Photos through the share sheet and posts
@@ -387,13 +368,6 @@ Scenario: A new image fails
   Then the old image stays
   And "This image couldn't be made. Try again for a new one." shows
 
-Scenario: Moving the crop
-  Given a post with its image
-  When the owner taps "Move the crop" and picks "Higher"
-  Then the post image is the story's rows 0 to 1349
-  And the feed preview shows the new crop
-  And no request is made
-
 Scenario: Copying a caption
   When the owner taps "Copy caption"
   Then the clipboard holds the caption, the call to action and the hashtags with their "#"
@@ -423,13 +397,15 @@ Scenario: Forget removes the translations
   to check it; 2.2's "alt text describes the prompt" limit stands.
 - **New images are counted only by the balance and the allowlist** until
   2.6.
-- **Three crop positions**, no free drag, no zoom.
+- **The post crop can't be moved**: it's always the story's centre. 2.3's
+  journal found no crop cutting its subject on twelve images; when one does,
+  "New image" is the way out.
 - **The 3:4 grid ratio and the 2,200-character limit** are Instagram's as
   of 2026-10-25, confirmed by the builder; Instagram changes them.
 - **The share sheet differs by phone.** Where it can't take files, the
   image downloads to the phone's files instead, and the owner moves it to
   Photos.
-- **No undo** after Save, a new image or a new crop, beyond Cancel before
+- **No undo** after Save or a new image, beyond Cancel before
   saving.
 - Edited captions aren't checked for facts beyond 2.2's code checks.
 
@@ -438,6 +414,9 @@ Scenario: Forget removes the translations
 - Regenerating a whole post (new caption and image together, Global Plan
   "Tweak"): left out to keep this spec to about a day; added to the roadmap
   after the pilot if the owners ask for it.
+- Moving the post crop inside the story: left out to keep the card simple,
+  since 2.3's crops kept their subjects; added after the pilot if the owners
+  ask.
 - Counting regenerations and translations a day, and the usage bar: 2.6
   `platform/usage-counters`.
 - How to post a story with a WhatsApp sticker, saving hashtags, and the
