@@ -1,7 +1,8 @@
 ---
 title: "Editor and download"
 description: "Each batch gets an Instagram-style feed preview; the owner edits a post's caption, hashtags and alt text, reads the caption in their own language through one small Flash-Lite call kept on the phone, asks for a new image with an optional hint, copies the words, and saves each post and story image one by one; 'Update captions' leaves edited posts alone, with a per-post rewrite on offer."
-status: draft
+status: approved
+approved: { by: siegfried.bozza@protonmail.com, at: 2026-10-25T14:26:55Z }
 date: "2026-10-25"
 ---
 
