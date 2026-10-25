@@ -230,6 +230,24 @@ describe('resuming images', () => {
     await resumed?.done;
   });
 
+  test('the hint is in the body, and a resumed run sends it again', async () => {
+    fetchMock.mockRejectedValueOnce(new TypeError('offline'));
+    await startImages(
+      { ownerId: 'sen', batch, postIds: ['post-2'], hint: 'more green' },
+      () => {},
+      deps,
+    ).done;
+    expect(bodyOf(fetchMock.mock.calls[0]).hint).toBe('more green');
+    const resumed = await resumeImages('sen', [batch], () => {}, deps);
+    await resumed?.done;
+    expect(bodyOf(fetchMock.mock.calls[1]).hint).toBe('more green');
+  });
+
+  test('no hint, no hint in the body', async () => {
+    await make(['post-1']);
+    expect('hint' in bodyOf(fetchMock.mock.calls[0])).toBe(false);
+  });
+
   test('nothing to resume is null', async () => {
     expect(await resumeImages('sen', [batch], () => {}, deps)).toBeNull();
   });

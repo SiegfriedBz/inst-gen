@@ -1,7 +1,12 @@
 import { describe, expect, test, vi } from 'vitest';
 import { IMAGE_ERROR_STATUS, imageBodySchema, imageResponseSchema } from '@/lib/posts/image';
 import { imageOwners, imagesOn } from '@/lib/posts/image-access';
-import { IMAGE_PROMPT_VERSION, imagePrompt } from '@/lib/posts/image-prompt';
+import {
+  cleanHint,
+  IMAGE_PROMPT_VERSION,
+  IMAGE_STYLE,
+  imagePrompt,
+} from '@/lib/posts/image-prompt';
 
 describe('the image request', () => {
   test('a prompt of 80 words is taken', () => {
@@ -90,7 +95,29 @@ describe('the image prompt', () => {
       'Keep the subject in the middle of the frame, with calm space above and below it.',
     );
     expect(p).toMatch(/no text, letters, labels, logos or watermarks/i);
-    expect(IMAGE_PROMPT_VERSION).toBe('images-3');
+    expect(IMAGE_PROMPT_VERSION).toBe('images-4');
+  });
+});
+
+describe("the owner's hint", () => {
+  test('a hint goes before the style line', () => {
+    expect(imagePrompt('A room at dusk.', 'more green')).toBe(
+      `A room at dusk. The owner asks: more green. ${IMAGE_STYLE}`,
+    );
+    expect(imagePrompt('A room at dusk.')).toBe(`A room at dusk. ${IMAGE_STYLE}`);
+  });
+
+  test('a hint is cleaned', () => {
+    expect(cleanHint('  more\ngreen. ')).toBe('more green');
+    expect(cleanHint(' a sunset\r\n balcony ')).toBe('a sunset balcony');
+    expect(cleanHint('  ')).toBeUndefined();
+    expect(cleanHint(undefined)).toBeUndefined();
+  });
+
+  test('a hint of 60 characters is taken, 61 is refused', () => {
+    const body = { postId: 'p', imagePrompt: 'A room', scene: 'detail' };
+    expect(imageBodySchema.safeParse({ ...body, hint: 'a'.repeat(60) }).success).toBe(true);
+    expect(imageBodySchema.safeParse({ ...body, hint: 'a'.repeat(61) }).success).toBe(false);
   });
 });
 

@@ -32,6 +32,8 @@ export type RunRecord = {
   // The posts a rewrite sends: those the owner didn't edit, or the one they
   // asked for (docs/specs/posts/editor-download). All of them when absent.
   postIds?: string[];
+  // The owner's hint for a new image, asked for again on a resume.
+  hint?: string;
 };
 
 export function newBrandRun(
@@ -69,7 +71,7 @@ export function newPostsRun(
 }
 
 export function newImagesRun(
-  input: { ownerId: string; batchId: string; postIds: string[] },
+  input: { ownerId: string; batchId: string; postIds: string[]; hint?: string },
   now: Date,
   id: string,
 ): RunRecord {
@@ -82,6 +84,7 @@ export function newImagesRun(
     startedAt: now.toISOString(),
     steps: input.postIds.map((postId) => ({ name: 'image', postId, status: 'running' })),
     batchId: input.batchId,
+    ...(input.hint ? { hint: input.hint } : {}),
   };
 }
 

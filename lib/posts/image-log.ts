@@ -3,12 +3,14 @@ import type { ImageErrorCode } from './image';
 
 // One line in the server log per image, like the post plan's
 // (lib/posts/log.ts). It never holds the image prompt
-// (docs/specs/posts/generate-images, "Failures").
+// (docs/specs/posts/generate-images, "Failures") nor the owner's hint, only
+// whether there was one (docs/specs/posts/editor-download).
 
 export type ImageLog = {
   owner: string;
   postId: string;
   scene: Scene;
+  hint: boolean;
   model: string;
   promptVersion: string;
   // The size the model returned, as "1536x2752"; null before it answered.
@@ -30,6 +32,7 @@ export function formatImageLog(log: ImageLog): string {
     `owner=${log.owner}`,
     `post=${log.postId}`,
     `scene=${log.scene}`,
+    `hint=${log.hint ? 'yes' : 'no'}`,
     `model=${log.model}`,
     `prompt=${log.promptVersion}`,
     `size=${log.size ?? '-'}`,

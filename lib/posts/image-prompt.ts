@@ -3,7 +3,7 @@
 // keeps the subject (docs/specs/posts/generate-images, "The model step").
 // Bump the version with every change.
 
-export const IMAGE_PROMPT_VERSION = 'images-3';
+export const IMAGE_PROMPT_VERSION = 'images-4';
 
 export const IMAGE_STYLE =
   'Vertical photograph for an Instagram story, shot on a full-frame camera with a 50mm lens. ' +
@@ -54,6 +54,19 @@ export function cleanLight(text: string): string {
   return out.replace(/ {2,}/g, ' ').replace(/ ([,.;:])/g, '$1');
 }
 
-export function imagePrompt(postPrompt: string): string {
-  return `${cleanLight(postPrompt.trim())} ${IMAGE_STYLE}`;
+// The owner's hint for a new image, as one line (docs/specs/posts/editor-download,
+// "A new image"); nothing when it's empty.
+export function cleanHint(raw: string | undefined): string | undefined {
+  const hint = raw
+    ?.replace(/\s*[\r\n]+\s*/g, ' ')
+    .trim()
+    .replace(/\.+$/, '');
+  return hint || undefined;
+}
+
+// The hint comes before the style line, so the style's rules still come last
+// and win.
+export function imagePrompt(postPrompt: string, hint?: string): string {
+  const asks = hint ? ` The owner asks: ${hint}.` : '';
+  return `${cleanLight(postPrompt.trim())}${asks} ${IMAGE_STYLE}`;
 }

@@ -102,7 +102,12 @@ function request(
       const response = await deps.fetch('/api/posts/image', {
         method: 'POST',
         headers: { 'content-type': 'application/json' },
-        body: JSON.stringify({ postId, imagePrompt: post.imagePrompt, scene: post.scene }),
+        body: JSON.stringify({
+          postId,
+          imagePrompt: post.imagePrompt,
+          scene: post.scene,
+          ...(run.hint ? { hint: run.hint } : {}),
+        }),
         signal: controller.signal,
       });
       if (controller.signal.aborted) return;
@@ -183,12 +188,17 @@ function request(
 }
 
 export function startImages(
-  input: { ownerId: string; batch: PostBatch; postIds: string[] },
+  input: { ownerId: string; batch: PostBatch; postIds: string[]; hint?: string },
   onEvent: (e: ImageEvent) => void,
   deps: ReadDeps = defaultReadDeps(),
 ): RunningRead {
   const run = newImagesRun(
-    { ownerId: input.ownerId, batchId: input.batch.id, postIds: input.postIds },
+    {
+      ownerId: input.ownerId,
+      batchId: input.batch.id,
+      postIds: input.postIds,
+      ...(input.hint ? { hint: input.hint } : {}),
+    },
     deps.now(),
     deps.newId(),
   );

@@ -47,7 +47,15 @@ export function PostCard({
     <article id={anchorId} className="rounded-control border border-edge bg-field px-4 py-3">
       {image && (
         <div className="mb-3">
-          <PostImage state={image.state} altText={post.altText} onRetry={image.onRetry} />
+          <PostImage
+            state={image.state}
+            altText={post.altText}
+            onRetry={image.onRetry}
+            onNewImage={image.onNewImage}
+          />
+          {post.altToCheck && (
+            <p className="mt-2 text-[13px] text-ink-secondary">{t('images.checkAlt')}</p>
+          )}
         </div>
       )}
       <div className="flex items-baseline justify-between gap-2">

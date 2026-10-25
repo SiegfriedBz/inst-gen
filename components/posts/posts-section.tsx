@@ -8,7 +8,14 @@ import type { RunningRead } from '@/lib/brand/read-client';
 import { holdWakeLock } from '@/lib/brand/wake-lock';
 import { POSTS_LIMITS, type Post, type PostBatch, type PostsErrorCode } from '@/lib/posts/batch';
 import { type PostsEvent, resumePosts, startPlan, startRewrite } from '@/lib/posts/client';
-import { applyEdit, flagsFor, isPostStale, type PostEdit, staleUnedited } from '@/lib/posts/edit';
+import {
+  applyEdit,
+  flagsFor,
+  isPostStale,
+  markNewImage,
+  type PostEdit,
+  staleUnedited,
+} from '@/lib/posts/edit';
 import { type ImageEvent, resumeImages, startImages } from '@/lib/posts/image-client';
 import { imageKey, loadImages, type SavedImage } from '@/lib/posts/image-store';
 import { ctaFor } from '@/lib/posts/input';
@@ -65,6 +72,9 @@ export function PostsSection({
   // An image dropped with the phone still online: asked for again once its
   // run has ended, as the posts are.
   const droppedOnline = useRef(false);
+  // Posts whose new image (not a first one) is being made, by `imageKey`: its
+  // answer asks the owner to check the image description.
+  const remaking = useRef(new Set<string>());
 
   const onImageEvent = useCallback((event: ImageEvent) => {
     if (event.type === 'signedOut') {
@@ -82,8 +92,18 @@ export function PostsSection({
     });
     if (event.type === 'image') {
       setImages((map) => new Map(map).set(key, event.image));
+      if (remaking.current.delete(key)) {
+        const batch = batchesRef.current.find((b) => b.id === event.image.batchId);
+        if (batch) {
+          const next = markNewImage(batch, event.image.postId);
+          batchesRef.current = batchesRef.current.map((b) => (b.id === next.id ? next : b));
+          setBatches(batchesRef.current);
+          void saveBatch(next);
+        }
+      }
     } else {
       const code = event.type === 'offline' ? 'offline' : event.code;
+      if (event.type !== 'offline') remaking.current.delete(key);
       if (event.type === 'offline' && navigator.onLine) droppedOnline.current = true;
       setFailed((map) => new Map(map).set(key, code));
     }
@@ -114,9 +134,9 @@ export function PostsSection({
   }, []);
 
   const makeImages = useCallback(
-    (batch: PostBatch, postIds: string[]) => {
+    (batch: PostBatch, postIds: string[], hint?: string) => {
       trackImages(
-        startImages({ ownerId, batch, postIds }, onImageEvent),
+        startImages({ ownerId, batch, postIds, ...(hint ? { hint } : {}) }, onImageEvent),
         postIds.map((id) => imageKey(batch.id, id)),
       );
     },
@@ -273,15 +293,30 @@ export function PostsSection({
     const retry = () => makeImages(batch, [post.id]);
     const key = imageKey(batch.id, post.id);
     const saved = images.get(key);
+    const newImage = (hint: string) => {
+      if (saved) remaking.current.add(key);
+      makeImages(batch, [post.id], hint.trim() || undefined);
+    };
     let state: ImageState;
     if (!imagesOn) state = { kind: 'off' };
-    else if (saved) state = { kind: 'ready', image: saved };
-    else if (making.has(key)) state = { kind: 'making' };
+    else if (saved) {
+      const failure = failed.get(key);
+      state = {
+        kind: 'ready',
+        image: saved,
+        making: making.has(key),
+        ...(failure ? { failure } : {}),
+      };
+    } else if (making.has(key)) state = { kind: 'making' };
     else {
       const code = failed.get(key);
       state = code ? { kind: 'failed', code } : { kind: 'none' };
     }
-    return { state, onRetry: batchButton ? undefined : retry };
+    return {
+      state,
+      onRetry: batchButton ? undefined : retry,
+      onNewImage: imagesOn ? newImage : undefined,
+    };
   }
   return (
     <section className="mt-6 flex flex-col gap-3">

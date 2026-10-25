@@ -228,7 +228,13 @@
         "invalid_request": "Something went wrong while making this image.",
         "no_space": "Your phone is out of space for images.",
         "offline": "You're offline. Your images will carry on when you're back."
-      }
+      },
+      "newImage": "New image",
+      "hintLabel": "What should change? (optional)",
+      "hintPlaceholder": "more green, a sunset balcony",
+      "makeIt": "Make it",
+      "cancel": "Cancel",
+      "checkAlt": "Check that the image description still fits."
     },
     "number": "Post {n}",
     "edit": {

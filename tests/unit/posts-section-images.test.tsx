@@ -16,7 +16,10 @@ import messages from '@/messages/en.json';
 import { svargaProfile } from './helpers/brand';
 import { post } from './helpers/posts';
 
-type Start = { input: { batch: PostBatch; postIds: string[] }; onEvent: (e: ImageEvent) => void };
+type Start = {
+  input: { batch: PostBatch; postIds: string[]; hint?: string };
+  onEvent: (e: ImageEvent) => void;
+};
 const started: Start[] = [];
 let release: () => void = () => {};
 const resumeCalls: { resolve: (v: null) => void }[] = [];
@@ -145,6 +148,28 @@ describe('the feed preview in the posts section', () => {
     await renderSection();
     expect(await screen.findAllByRole('button', { name: 'Copy caption' })).toHaveLength(6);
     expect(await screen.findAllByRole('button', { name: 'Save post image' })).toHaveLength(1);
+  });
+
+  test('a new image asks the owner to check the description, until an edit', async () => {
+    await saveBatch(batch(six));
+    await saveImage(image('post-1'));
+    await renderSection();
+    const button = await screen.findByRole('button', { name: 'New image' });
+    await waitFor(() => expect((button as HTMLButtonElement).disabled).toBe(false));
+    fireEvent.click(button);
+    fireEvent.change(screen.getByLabelText('What should change? (optional)'), {
+      target: { value: 'more green' },
+    });
+    fireEvent.click(screen.getByRole('button', { name: 'Make it' }));
+    expect(started.at(-1)?.input).toMatchObject({ postIds: ['post-1'], hint: 'more green' });
+    expect(screen.getByText('Making the image…')).toBeTruthy();
+    started.at(-1)?.onEvent({ type: 'image', image: image('post-1') });
+    expect(await screen.findByText('Check that the image description still fits.')).toBeTruthy();
+    fireEvent.click(screen.getAllByRole('button', { name: 'Edit' })[0]);
+    fireEvent.click(screen.getByRole('button', { name: 'Save' }));
+    await waitFor(() =>
+      expect(screen.queryByText('Check that the image description still fits.')).toBeNull(),
+    );
   });
 
   test('no feed preview when images are off', async () => {
