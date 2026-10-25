@@ -186,8 +186,18 @@
     }
   },
   "posts": {
-    "make": "Tạo bài đăng của tôi",
-    "makeMore": "Tạo thêm 6 bài",
+    "make": "Tạo 6 gợi ý",
+    "makeMore": "Tạo 6 gợi ý mới",
+    "moreBelow": "Gợi ý mới nằm ở trên. Lần thử {n} vẫn ở bên dưới.",
+    "empty": "Mỗi gợi ý gồm 2 hình (1 cho bài đăng, 1 cho story) và phần chữ cho bài đăng, sẵn sàng cho Instagram. Chọn những gợi ý bạn thích và lưu vào điện thoại.",
+    "emptyTextOnly": "Mỗi gợi ý là phần chữ cho một bài đăng, sẵn sàng cho Instagram. Chọn những gợi ý bạn thích và sao chép.",
+    "attempt": "Lần thử {n}",
+    "attemptCount": "{count} gợi ý",
+    "saveImages": "Lưu 2 hình",
+    "copyText": "Sao chép chữ",
+    "howTo": "Trên Instagram: tạo bài đăng với hình bài đăng và dán phần chữ, rồi tạo story với hình story.",
+    "howToTextOnly": "Trên Instagram: tạo bài đăng với ảnh của bạn và dán phần chữ.",
+    "editText": "Sửa chữ",
     "keepOpen": "Hãy giữ trang này mở khoảng một phút trong khi bài đăng của bạn được tạo.",
     "heading": "Bài đăng của bạn",
     "types": {
@@ -198,13 +208,10 @@
       "tip": "Mẹo",
       "proof": "Khách nói gì"
     },
-    "imageDescription": "Mô tả hình ảnh",
-    "check": "Kiểm tra trước khi đăng:",
     "flags": {
-      "price": "{text} không có trên trang web của bạn",
-      "duration": "{text} không có trên trang web của bạn",
-      "banned": "\"{text}\" có thể không được phép trên Instagram",
-      "firstLine": "Dòng đầu dài hơn phần Instagram hiển thị trước \"thêm\""
+      "price": "Giá này không có trên trang web của bạn: {text}. Hãy kiểm tra trước khi đăng.",
+      "duration": "Thời lượng này không có trên trang web của bạn: {text}. Hãy kiểm tra trước khi đăng.",
+      "banned": "Instagram có thể không cho phép \"{text}\". Nên đổi từ này."
     },
     "fewer": "Lần này chúng tôi tạo được {count} bài đăng.",
     "stale": "Thông tin doanh nghiệp của bạn đã thay đổi kể từ khi tạo các bài đăng này.",
@@ -222,7 +229,7 @@
     "images": {
       "make": "Tạo hình ảnh",
       "making": "Đang tạo hình ảnh…",
-      "seeStory": "Xem story",
+      "seeStory": "Xem hình story",
       "retry": "Thử lại",
       "close": "Đóng",
       "off": "Hình ảnh chưa được bật cho tài khoản của bạn.",
@@ -235,23 +242,18 @@
         "no_space": "Điện thoại của bạn không còn đủ dung lượng cho hình ảnh.",
         "offline": "Bạn đang ngoại tuyến. Hình ảnh sẽ tiếp tục khi bạn quay lại."
       },
-      "newImage": "Ảnh mới",
+      "newImage": "Tạo hình mới",
       "hintLabel": "Cần thay đổi gì? (không bắt buộc)",
       "hintPlaceholder": "xanh hơn, ban công lúc hoàng hôn",
       "makeIt": "Tạo ảnh",
-      "cancel": "Hủy",
-      "checkAlt": "Hãy kiểm tra mô tả ảnh còn phù hợp không."
+      "cancel": "Hủy"
     },
-    "number": "Bài {n}",
     "edit": {
-      "edit": "Sửa",
       "save": "Lưu",
       "cancel": "Hủy",
-      "edited": "Đã sửa",
       "caption": "Chú thích",
       "hashtags": "Hashtag",
       "hashtagsHint": "Tối đa 5. Cách nhau bằng dấu cách.",
-      "altCount": "{count}/{max}",
       "tooLong": "Quá dài cho Instagram: thừa {count} ký tự.",
       "empty": "Hãy viết chú thích trước."
     },
@@ -260,11 +262,8 @@
       "order": "Đăng lần lượt từ 1 đến 6: bài đăng sau cùng sẽ hiện đầu tiên."
     },
     "takeAway": {
-      "copy": "Sao chép chú thích",
       "copied": "Đã sao chép",
-      "copyHere": "Sao chép từ đây.",
-      "savePost": "Lưu ảnh bài đăng",
-      "saveStory": "Lưu ảnh story"
+      "copyHere": "Sao chép từ đây."
     },
     "translate": {
       "show": "Xem bằng {language}",

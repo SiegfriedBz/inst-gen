@@ -26,16 +26,18 @@ const image: SavedImage = {
   createdAt: '2026-10-25T10:00:00.000Z',
 };
 
-function show(withImage = true) {
+function show({ withImage = true, imagesOn = true } = {}) {
   render(
     <NextIntlClientProvider locale="en" messages={messages} timeZone="UTC">
       <TakeAway
         post={post()}
         cta={CTA}
         image={withImage ? image : undefined}
+        imagesOn={imagesOn}
         name="Svarga"
         createdAt="2026-10-25T09:00:00.000Z"
-        number={1}
+        attempt={2}
+        n={3}
       />
     </NextIntlClientProvider>,
   );
@@ -45,13 +47,13 @@ const stubClipboard = (writeText: () => Promise<void>) =>
   vi.stubGlobal('navigator', { ...navigator, clipboard: { writeText } });
 
 describe('taking a post away', () => {
-  test('Copied for 2 s, then Copy caption again', async () => {
+  test('Copied for 2 s, then Copy the text again', async () => {
     vi.useFakeTimers();
     const writeText = vi.fn(async () => {});
     stubClipboard(writeText);
     show();
     await act(async () => {
-      fireEvent.click(screen.getByRole('button', { name: 'Copy caption' }));
+      fireEvent.click(screen.getByRole('button', { name: 'Copy the text' }));
     });
     expect(writeText).toHaveBeenCalledWith(
       `Warm oil, slow hands.\n\n${CTA}\n\n#canggu #balimassage #aftersurf`,
@@ -60,7 +62,7 @@ describe('taking a post away', () => {
     await act(async () => {
       vi.advanceTimersByTime(2000);
     });
-    expect(screen.getByRole('button', { name: 'Copy caption' })).toBeTruthy();
+    expect(screen.getByRole('button', { name: 'Copy the text' })).toBeTruthy();
   });
 
   test('a refused clipboard opens the sheet with the text selected', async () => {
@@ -69,7 +71,7 @@ describe('taking a post away', () => {
     });
     show();
     await act(async () => {
-      fireEvent.click(screen.getByRole('button', { name: 'Copy caption' }));
+      fireEvent.click(screen.getByRole('button', { name: 'Copy the text' }));
     });
     expect(await screen.findByText('Copy it from here.')).toBeTruthy();
     const box = screen.getByRole('textbox') as HTMLTextAreaElement;
@@ -77,16 +79,39 @@ describe('taking a post away', () => {
     expect(box.readOnly).toBe(true);
   });
 
-  test('the save buttons need an image', () => {
-    show(false);
-    expect(screen.getByRole('button', { name: 'Copy caption' })).toBeTruthy();
-    expect(screen.queryByRole('button', { name: 'Save post image' })).toBeNull();
-    expect(screen.queryByRole('button', { name: 'Save story image' })).toBeNull();
+  test('Save the 2 images shares both, named by attempt and suggestion', async () => {
+    const share = vi.fn(async () => {});
+    vi.stubGlobal('navigator', { ...navigator, canShare: () => true, share });
+    show();
+    await act(async () => {
+      fireEvent.click(screen.getByRole('button', { name: 'Save the 2 images' }));
+    });
+    const files = (share.mock.calls[0] as unknown as [{ files: File[] }])[0].files;
+    expect(files.map((f) => f.name)).toEqual([
+      'svarga-2026-10-25-attempt-2-suggestion-3-post.jpg',
+      'svarga-2026-10-25-attempt-2-suggestion-3-story.jpg',
+    ]);
+    expect(
+      screen.getByText(
+        'In Instagram: make a post with the post image and paste the text, then a story with the story image.',
+      ),
+    ).toBeTruthy();
   });
 
-  test('with an image, both save buttons show', () => {
-    show();
-    expect(screen.getByRole('button', { name: 'Save post image' })).toBeTruthy();
-    expect(screen.getByRole('button', { name: 'Save story image' })).toBeTruthy();
+  test('Save the 2 images waits for the image', () => {
+    show({ withImage: false });
+    expect(
+      (screen.getByRole('button', { name: 'Save the 2 images' }) as HTMLButtonElement).disabled,
+    ).toBe(true);
+  });
+
+  test('text only without images', () => {
+    show({ withImage: false, imagesOn: false });
+    expect(screen.queryByRole('button', { name: 'Save the 2 images' })).toBeNull();
+    const copy = screen.getByRole('button', { name: 'Copy the text' });
+    expect(copy.textContent).toBe('Copy the text');
+    expect(
+      screen.getByText('In Instagram: make a post with your own photo and paste the text.'),
+    ).toBeTruthy();
   });
 });

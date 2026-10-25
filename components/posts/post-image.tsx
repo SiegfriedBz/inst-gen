@@ -11,11 +11,12 @@ import { IMAGE_HINT_CHARS, type ImageErrorCode } from '@/lib/posts/image';
 import type { SavedImage } from '@/lib/posts/image-store';
 import { useObjectUrl } from './object-url';
 
-// One post's image on its card (docs/specs/posts/generate-images, "On the
-// screen"): a placeholder while it is made, the 4:5 post crop once saved,
-// with the 9:16 story full screen on tap, or why it couldn't be made. A new
-// image, with the owner's optional hint, keeps the old one on the card until
-// it is saved (docs/specs/posts/editor-download, "A new image").
+// One suggestion's image on its card (docs/specs/posts/generate-images, "On
+// the screen"): a placeholder while it is made, the 4:5 post crop once saved,
+// or why it couldn't be made. "Create new image", with the owner's optional
+// hint, keeps the old one on the card until it is saved
+// (docs/specs/posts/editor-download, "A new image"); it and "See the story
+// image" are links the card places (docs/specs/posts/suggestions).
 
 type ImageFailure = ImageErrorCode | 'no_space' | 'offline';
 
@@ -27,21 +28,25 @@ export type ImageState =
   | { kind: 'ready'; image: SavedImage; making?: boolean; failure?: ImageFailure }
   | { kind: 'failed'; code: ImageFailure };
 
-function NewImage({ onMake, disabled }: { onMake: (hint: string) => void; disabled: boolean }) {
+const LINK =
+  'inline-flex min-h-11 items-center text-[15px] font-medium text-accent underline underline-offset-4 outline-none focus-visible:ring-2 focus-visible:ring-accent disabled:opacity-60';
+
+export function NewImageLink({
+  onMake,
+  disabled,
+}: {
+  onMake: (hint: string) => void;
+  disabled: boolean;
+}) {
   const t = useTranslations('posts.images');
   const id = useId();
   const [open, setOpen] = useState(false);
   const [hint, setHint] = useState('');
   if (!open) {
     return (
-      <Button
-        type="button"
-        className="border border-edge bg-field text-ink"
-        onClick={() => setOpen(true)}
-        disabled={disabled}
-      >
+      <button type="button" className={LINK} onClick={() => setOpen(true)} disabled={disabled}>
         {t('newImage')}
-      </Button>
+      </button>
     );
   }
   return (
@@ -85,18 +90,14 @@ function Ready({
   altText,
   making = false,
   failure,
-  onNewImage,
 }: {
   image: SavedImage;
   altText: string;
   making?: boolean;
   failure?: ImageFailure;
-  onNewImage?: (hint: string) => void;
 }) {
   const t = useTranslations('posts.images');
-  const [open, setOpen] = useState(false);
   const post = useObjectUrl(image.post);
-  const story = useObjectUrl(open ? image.story : null);
   return (
     <>
       <div className="relative">
@@ -115,12 +116,24 @@ function Ready({
         )}
       </div>
       {failure && <p className="mt-2 text-[13px] text-error">{t(`errors.${failure}`)}</p>}
-      <div className="mt-2 flex gap-2">
-        <Button type="button" onClick={() => setOpen(true)}>
-          {t('seeStory')}
-        </Button>
-        {onNewImage && <NewImage onMake={onNewImage} disabled={making} />}
-      </div>
+    </>
+  );
+}
+
+// The 9:16 story full screen, from a small link at the bottom of the card.
+export function StoryLink({ image, altText }: { image: SavedImage; altText: string }) {
+  const t = useTranslations('posts.images');
+  const [open, setOpen] = useState(false);
+  const story = useObjectUrl(open ? image.story : null);
+  return (
+    <>
+      <button
+        type="button"
+        className="mx-auto inline-flex min-h-11 items-center text-[13px] text-ink-secondary underline underline-offset-4 outline-none focus-visible:ring-2 focus-visible:ring-accent"
+        onClick={() => setOpen(true)}
+      >
+        {t('seeStory')}
+      </button>
       <Sheet open={open} onOpenChange={setOpen}>
         <SheetContent className="inset-0 h-dvh max-h-none rounded-none bg-black p-0">
           <SheetTitle className="sr-only">{t('seeStory')}</SheetTitle>
@@ -142,23 +155,15 @@ export function PostImage({
   state,
   altText,
   onRetry,
-  onNewImage,
 }: {
   state: ImageState;
   altText: string;
   onRetry?: () => void;
-  onNewImage?: (hint: string) => void;
 }) {
   const t = useTranslations('posts.images');
   if (state.kind === 'ready') {
     return (
-      <Ready
-        image={state.image}
-        altText={altText}
-        making={state.making}
-        failure={state.failure}
-        onNewImage={onNewImage}
-      />
+      <Ready image={state.image} altText={altText} making={state.making} failure={state.failure} />
     );
   }
   if (state.kind === 'off' || (state.kind === 'failed' && state.code === 'images_off')) {
@@ -175,9 +180,6 @@ export function PostImage({
       <p>{state.kind === 'making' ? t('making') : t(`errors.${state.code}`)}</p>
       {/* An offline image carries on by itself when the phone is back. */}
       {state.kind === 'failed' && state.code !== 'offline' && retry}
-      {state.kind === 'failed' && state.code !== 'offline' && onNewImage && (
-        <NewImage onMake={onNewImage} disabled={false} />
-      )}
     </div>
   );
 }

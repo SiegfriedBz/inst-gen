@@ -6,12 +6,13 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
-import { POSTS_LIMITS, type Post } from '@/lib/posts/batch';
+import type { Post } from '@/lib/posts/batch';
 import { charsOver, type PostEdit } from '@/lib/posts/edit';
 
 // A post's words as fields (docs/specs/posts/editor-download, "Editing a
 // post"). The call to action stays read-only below the caption; code cleans
-// the hashtags and checks the caption once the card saves the edit.
+// the hashtags and checks the caption once the card saves the edit. The alt
+// text isn't shown any more (docs/specs/posts/suggestions): it passes through.
 export function PostEditor({
   post,
   cta,
@@ -56,16 +57,6 @@ export function PostEditor({
         onChange={(e) => set('hashtags')(e.target.value)}
       />
       <p className="text-[13px] text-ink-secondary">{t('edit.hashtagsHint')}</p>
-      <Label htmlFor={`${id}-alt`}>{t('imageDescription')}</Label>
-      <Input
-        id={`${id}-alt`}
-        maxLength={POSTS_LIMITS.altTextChars}
-        value={edit.altText}
-        onChange={(e) => set('altText')(e.target.value)}
-      />
-      <p className="text-[13px] text-ink-secondary">
-        {t('edit.altCount', { count: edit.altText.length, max: POSTS_LIMITS.altTextChars })}
-      </p>
       <div className="mt-1 flex gap-2">
         <Button type="button" className="border border-edge bg-field text-ink" onClick={onCancel}>
           {t('edit.cancel')}

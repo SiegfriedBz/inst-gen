@@ -452,8 +452,6 @@ export function PostsSection({
                 key={post.id}
                 post={post}
                 cta={cta ?? post.cta}
-                number={index + 1}
-                anchorId={`post-${batch.id}-${post.id}`}
                 onSave={(edit) => saveEdit(batch.id, post.id, edit)}
                 image={imageOf(post, batch, needsImages)}
                 flags={flagsFor(post, batch, profile, isNewest)}
@@ -477,10 +475,16 @@ export function PostsSection({
                   <TakeAway
                     post={post}
                     cta={cta ?? post.cta}
-                    image={images.get(imageKey(batch.id, post.id))}
+                    image={
+                      making.has(imageKey(batch.id, post.id))
+                        ? undefined
+                        : images.get(imageKey(batch.id, post.id))
+                    }
+                    imagesOn={imagesOn}
                     name={profile.name.value}
                     createdAt={batch.createdAt}
-                    number={index + 1}
+                    attempt={1}
+                    n={index + 1}
                   />
                 }
               />

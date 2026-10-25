@@ -186,8 +186,18 @@
     }
   },
   "posts": {
-    "make": "Buat postingan saya",
-    "makeMore": "Buat 6 lagi",
+    "make": "Buat 6 saran",
+    "makeMore": "Buat 6 saran baru",
+    "moreBelow": "Saran baru muncul di atas. Percobaan {n} tetap di bawah.",
+    "empty": "Setiap saran berisi 2 gambar (1 untuk postingan, 1 untuk story) dan teks untuk postingan, siap untuk Instagram. Pilih yang Anda suka dan simpan di ponsel Anda.",
+    "emptyTextOnly": "Setiap saran berisi teks untuk postingan, siap untuk Instagram. Pilih yang Anda suka dan salin.",
+    "attempt": "Percobaan {n}",
+    "attemptCount": "{count} saran",
+    "saveImages": "Simpan 2 gambar",
+    "copyText": "Salin teks",
+    "howTo": "Di Instagram: buat postingan dengan gambar postingan dan tempel teksnya, lalu buat story dengan gambar story.",
+    "howToTextOnly": "Di Instagram: buat postingan dengan foto Anda sendiri dan tempel teksnya.",
+    "editText": "Ubah teks",
     "keepOpen": "Biarkan halaman ini terbuka sekitar satu menit selama postingan Anda dibuat.",
     "heading": "Postingan Anda",
     "types": {
@@ -198,13 +208,10 @@
       "tip": "Tips",
       "proof": "Kata orang"
     },
-    "imageDescription": "Deskripsi gambar",
-    "check": "Periksa sebelum memposting:",
     "flags": {
-      "price": "{text} tidak ada di situs Anda",
-      "duration": "{text} tidak ada di situs Anda",
-      "banned": "\"{text}\" mungkin tidak diizinkan di Instagram",
-      "firstLine": "Baris pertama lebih panjang dari yang ditampilkan Instagram sebelum \"lainnya\""
+      "price": "Harga ini tidak ada di situs Anda: {text}. Periksa sebelum memposting.",
+      "duration": "Durasi ini tidak ada di situs Anda: {text}. Periksa sebelum memposting.",
+      "banned": "Instagram mungkin tidak mengizinkan \"{text}\". Sebaiknya diganti."
     },
     "fewer": "Kali ini kami membuat {count} postingan.",
     "stale": "Detail bisnis Anda berubah sejak postingan ini dibuat.",
@@ -222,7 +229,7 @@
     "images": {
       "make": "Buat gambarnya",
       "making": "Membuat gambar…",
-      "seeStory": "Lihat story",
+      "seeStory": "Lihat gambar story",
       "retry": "Coba lagi",
       "close": "Tutup",
       "off": "Gambar belum diaktifkan untuk akun Anda.",
@@ -235,23 +242,18 @@
         "no_space": "Ruang penyimpanan ponsel Anda tidak cukup untuk gambar.",
         "offline": "Anda sedang offline. Gambar Anda akan dilanjutkan saat Anda kembali."
       },
-      "newImage": "Gambar baru",
+      "newImage": "Buat gambar baru",
       "hintLabel": "Apa yang perlu diubah? (opsional)",
       "hintPlaceholder": "lebih hijau, balkon saat senja",
       "makeIt": "Buat",
-      "cancel": "Batal",
-      "checkAlt": "Periksa apakah deskripsi gambar masih sesuai."
+      "cancel": "Batal"
     },
-    "number": "Postingan {n}",
     "edit": {
-      "edit": "Ubah",
       "save": "Simpan",
       "cancel": "Batal",
-      "edited": "Diubah",
       "caption": "Keterangan",
       "hashtags": "Tagar",
       "hashtagsHint": "Maksimal 5. Pisahkan dengan spasi.",
-      "altCount": "{count}/{max}",
       "tooLong": "Terlalu panjang untuk Instagram: lebih {count} karakter.",
       "empty": "Tulis keterangan dulu."
     },
@@ -260,11 +262,8 @@
       "order": "Posting dari 1 sampai 6: yang terakhir Anda posting tampil paling depan."
     },
     "takeAway": {
-      "copy": "Salin keterangan",
       "copied": "Tersalin",
-      "copyHere": "Salin dari sini.",
-      "savePost": "Simpan gambar postingan",
-      "saveStory": "Simpan gambar story"
+      "copyHere": "Salin dari sini."
     },
     "translate": {
       "show": "Tampilkan dalam {language}",
