@@ -38,6 +38,13 @@
   revoke test kept).
 - 2026-10-25: The feed preview shows only when images are on for the owner:
   without images it would be a grid of empty tiles.
+- 2026-10-25: Translations recorded with `pnpm eval:translate --record`
+  (owner's go-ahead, 2 Flash-Lite requests), prompt `translate-1`: Sen's
+  first caption in Vietnamese (965 ms) and Svarga's in Indonesian (611 ms).
+  Read back by the developer, not through Google Translate: no fact added or
+  lost. Prices (500k VND, IDR 250k) and 60 minutes kept; "classic" became
+  "traditional" and "ultimate" became "best", nuances the owner reads past.
+  Verdict: fit for reading.
 
 ## RED
 
