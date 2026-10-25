@@ -62,7 +62,10 @@ A finished card, top to bottom (the mockup the owner reviewed on
    it;
 2. the type label, "Edited" when it applies, and "Post {n}" on the right;
 3. the caption, then "Show in…" (Indonesian or Vietnamese screens only);
-4. the call to action, the hashtags, and "Check before posting:" as today;
+4. the call to action, the hashtags, "Image description" with the alt text,
+   and "Check before posting:", as today. The alt text is there to read and
+   edit; nothing copies it, and 2.7's How-to page says where Instagram takes
+   it (builder's call after the builder check);
 5. "Edit", as a text link;
 6. the take-away buttons, last: "Copy caption" full width as the main
    button, then "Save post image" and "Save story image" side by side.
@@ -123,20 +126,28 @@ hashtags and alt text into fields, with **"Save"** and **"Cancel"**.
 2.2 left this open. When the business details change and the owner taps
 "Update captions":
 
-- **Edited posts are kept as the owner wrote them.** Only unedited posts go
-  to `POST /api/posts/rewrite`, and only they come back rewritten.
-- If every post in the batch is edited, no request is made: the batch takes
-  the new `profileHash` and the line goes away.
-- When at least one post is edited, the stale line adds: "Posts you edited
-  stay as you wrote them."
-- An edited post's flags are checked again against the new profile, with no
-  call, so a price the owner removed from the site shows up as one to check.
-- While the batch is out of date, each edited card shows a small **"Rewrite
-  this one too"** button. It sends that one post to the same
-  `POST /api/posts/rewrite`, replaces its caption, hashtags and alt text with
-  the answer, and marks it `edited: false`. The owner's words are replaced
-  only when they tap it. Once every post is rewritten or kept, the batch
-  takes the new `profileHash` as above.
+Each post records the `profileHash` its words were written against: the
+model's posts take the batch's hash, a rewrite's posts the new one, and
+**saving an edit stamps the current hash**, since the owner has just read
+the post against today's details. A post is out of date when its hash isn't
+the profile's (builder's call after the builder check: it makes the rules
+below hold after a reload without a "kept" state).
+
+- **Edited posts are kept as the owner wrote them.** "Your business details
+  changed" shows while at least one *unedited* post is out of date. "Update
+  captions" sends only those to `POST /api/posts/rewrite`, and only they come
+  back rewritten. When at least one post is edited, the line adds: "Posts
+  you edited stay as you wrote them."
+- If every out-of-date post is edited, the line doesn't show: "Update
+  captions" would have nothing to send.
+- An edited post that is out of date has its flags checked again against the
+  new profile, with no call, so a price the owner removed from the site
+  shows up as one to check.
+- It also shows a small **"Rewrite this one too"** button. It sends that one
+  post to the same `POST /api/posts/rewrite`, replaces its caption, hashtags
+  and alt text with the answer, marks it `edited: false` and gives it the
+  current hash. The owner's words are replaced only when they tap it. The
+  button also goes away when the owner edits and saves the post again.
 
 ### The owner's-language view
 
@@ -211,8 +222,10 @@ small form under the image:
   again" does. Counting them a day (Global Plan: about 10 regenerations) is
   2.6's.
 - The alt text is not rewritten: a line under the new image says "Check that
-  the image description still fits.", until the owner edits the post or
-  dismisses it.
+  the image description still fits.", until the owner edits and saves the
+  post. There's no dismiss button (an eighth control); the post stores
+  `altToCheck: true`, so the line survives a reload (builder's call after
+  the builder check).
 - The post stays 2.3's centred crop of the story.
 
 ### Taking it away
@@ -242,8 +255,9 @@ Files, never in Photos where Instagram looks, and adds a dependency.
 
 ### On the phone
 
-- `postSchema` gains `edited: boolean`, defaulting to `false` when a stored
-  batch lacks it, so older batches still load.
+- `postSchema` gains `edited: boolean` and `altToCheck: boolean`, both
+  defaulting to `false`, and `profileHash`, defaulting to the batch's, when
+  a stored batch lacks them, so older batches still load.
 - The new `translations` store comes with the next database version; the
   upgrade adds it without touching the other stores.
 - "Forget my business" deletes the translations with the batches and images.
@@ -265,8 +279,10 @@ you to read. Instagram gets the English.", the three translation failures,
 ### Tests and evaluation
 
 - Unit tests (Vitest) for: hashtag and caption checks on an edit (no cut,
-  the 2,200 limit, flags again); the rewrite sending only unedited posts,
-  none when all are edited, and one post for "Rewrite this one too";
+  the 2,200 limit, flags again); the rewrite sending only unedited
+  out-of-date posts, no line when all are edited, one post for "Rewrite this
+  one too", and an edit stamping the current `profileHash`; `altToCheck` set
+  by a new image and cleared by a saved edit;
   `edited` defaulting to `false` on an old batch; the translate route's
   schema, its failures, and that only the caption is sent; the translation
   store and its `captionHash` rule; the image route's `hint` (cleaned,
@@ -332,9 +348,11 @@ Scenario: Rewriting one edited post on request
 
 Scenario: Every post edited
   Given a batch whose six posts are all edited
-  When the owner edits the summary and taps "Update captions"
-  Then no request is made
-  And the "Your business details changed" line goes away
+  When the owner edits the summary
+  Then the "Your business details changed" line doesn't show
+  And each card shows "Rewrite this one too"
+  When the owner edits and saves one of them
+  Then that card's "Rewrite this one too" goes away, also after a reload
 
 Scenario: Reading a caption in Vietnamese
   Given the screen is in Vietnamese
