@@ -18,6 +18,14 @@
   session (proxy.ts already turns those away), and 499 with no body when the
   request was closed: nobody reads it.
 
+- 2026-10-25: Task 6. The images get a run of their own, kind `images`, started
+  once the plan's run has ended, rather than six steps added to the plan's run
+  as the spec words it. Same resume rule; the plan client stays as it is.
+- 2026-10-25: Task 6. A first GREEN run failed `resume skips posts that already
+  have an image`: the resumed request saved its stale copy of the run over the
+  step just marked done. Resume now marks those steps done in the copy it
+  saves.
+
 ## RED
 
 Task 1:
@@ -55,6 +63,13 @@ Task 5:
       Tests  5 failed | 3 passed (8)
 ```
 
+Task 6:
+
+```
+ Test Files  1 failed (1)
+      Tests  no tests
+```
+
 ## GREEN
 
 Task 1:
@@ -90,4 +105,11 @@ Task 5:
 ```
  Test Files  3 passed (3)
       Tests  24 passed (24)
+```
+
+Task 6:
+
+```
+ Test Files  1 passed (1)
+      Tests  14 passed (14)
 ```
