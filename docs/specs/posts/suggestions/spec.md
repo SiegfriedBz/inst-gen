@@ -92,6 +92,15 @@ description" and its text, "Check that the image description still fits.",
 made and kept; it just isn't shown or edited. 2.4's editor loses its alt
 text field: "Edit the text" edits the caption and the hashtags.
 
+**Without images** (an owner not on `IMAGE_OWNERS`, or images paused): the
+card has no image, no "Create new image", no "See the story image", and one
+step, "Copy the text", with no number; the how-to line becomes "In Instagram:
+make a post with your own photo and paste the text." The empty note becomes
+"Each suggestion is the text for a post, ready for Instagram. Pick the ones
+you like and copy them." While a suggestion's image is being made or has
+failed, "Save the 2 images" is disabled and 2.3's image state shows in its
+place at the top of the card (builder's call after the builder check).
+
 Everything a suggestion did in 2.4 and 2.5 that isn't listed as gone stays:
 2.5's automatic caption update (newest attempt on screen only), "Rewrite this
 one too", the editor's checks and the 2,200-character limit, 2.3's image
@@ -100,7 +109,10 @@ states ("Making the image…", failures and "Try again", "Make the images").
 ### Image file names
 
 `{name}-{YYYY-MM-DD}-attempt-{a}-suggestion-{n}-post.jpg` and `…-story.jpg`,
-with 2.4's folded name and the phone's date (2.5), for example
+with 2.4's folded name and the date of the attempt's day: the day that starts
+at 3am on the phone's clock, so an attempt made at 00:10 carries the previous
+date like the attempts before it (builder's call after the builder check), for
+example
 `sen-2026-10-26-attempt-2-suggestion-3-post.jpg`. Photos on iPhone and most
 Android galleries don't show file names; the two images still arrive side by
 side, one near-square and one tall.
@@ -128,13 +140,17 @@ not midnight, so the reset happens while the owner sleeps).
 ### A faster language switch
 
 Tapping EN, VI or ID feels slow on the deployment. The builder **measures
-first** on a production build (`pnpm build && pnpm start`), at a phone
-viewport with a slow CPU, from the tap to the screen in the new language, on
-the home screen with six suggestions and their images on the phone. Then
-they fix the cause found, and record the before and after numbers in the
-journal.
+first**, on a production build (`pnpm build && pnpm start`) in Playwright's
+Chromium at the phone viewport, with the CPU slowed 4× and every request
+delayed by 150 ms (about a round trip from Da Nang or Bali to Vercel's
+Singapore region), from the tap to the screen in the new language, on the
+home screen with six suggestions and their images on the phone. Then they fix
+the cause found, and record the before and after numbers in the journal. The
+deployment isn't measured from here: it sits behind the pilot passphrase
+(builder's call after the builder check).
 
-- Target: the new language shows within 1 second of the tap on a warm server.
+- Target: under those conditions, the new language shows within 1 second of
+  the tap.
 - Unchanged: the switch still works without JavaScript, sets the same
   cookie, and keeps the owner on the same screen. With JavaScript, the open
   tab and anything being made carry on (as 2.5's switching tabs).
@@ -152,6 +168,8 @@ translations; the owners read them back during the pilot):
 | `posts.make` | Make 6 suggestions | Buat 6 saran | Tạo 6 gợi ý |
 | `posts.makeMore` | Make 6 new suggestions | Buat 6 saran baru | Tạo 6 gợi ý mới |
 | `posts.moreBelow` | They go on top. Attempt {n} stays below. | Saran baru muncul di atas. Percobaan {n} tetap di bawah. | Gợi ý mới nằm ở trên. Lần thử {n} vẫn ở bên dưới. |
+| `posts.emptyTextOnly` | Each suggestion is the text for a post, ready for Instagram. Pick the ones you like and copy them. | Setiap saran berisi teks untuk postingan, siap untuk Instagram. Pilih yang Anda suka dan salin. | Mỗi gợi ý là phần chữ cho một bài đăng, sẵn sàng cho Instagram. Chọn những gợi ý bạn thích và sao chép. |
+| `posts.howToTextOnly` | In Instagram: make a post with your own photo and paste the text. | Di Instagram: buat postingan dengan foto Anda sendiri dan tempel teksnya. | Trên Instagram: tạo bài đăng với ảnh của bạn và dán phần chữ. |
 | `posts.empty` | Each suggestion is 2 images (1 for the post, 1 for the story) and the text for the post, ready for Instagram. Pick the ones you like and save them to your phone. | Setiap saran berisi 2 gambar (1 untuk postingan, 1 untuk story) dan teks untuk postingan, siap untuk Instagram. Pilih yang Anda suka dan simpan di ponsel Anda. | Mỗi gợi ý gồm 2 hình (1 cho bài đăng, 1 cho story) và phần chữ cho bài đăng, sẵn sàng cho Instagram. Chọn những gợi ý bạn thích và lưu vào điện thoại. |
 | `posts.attempt` | Attempt {n} | Percobaan {n} | Lần thử {n} |
 | `posts.attemptCount` | {count, plural, one {# suggestion} other {# suggestions}} | {count} saran | {count} gợi ý |
