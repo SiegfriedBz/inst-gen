@@ -20,6 +20,7 @@ import { type ImageEvent, resumeImages, startImages } from '@/lib/posts/image-cl
 import { imageKey, loadImages, type SavedImage } from '@/lib/posts/image-store';
 import { ctaFor } from '@/lib/posts/input';
 import { loadBatches, recentPosts, saveBatch } from '@/lib/posts/store';
+import { CaptionTranslation } from './caption-translation';
 import { FeedPreview } from './feed-preview';
 import { PostCard } from './post-card';
 import type { ImageState } from './post-image';
@@ -411,6 +412,15 @@ export function PostsSection({
                     : undefined
                 }
                 busy={busy}
+                translation={
+                  <CaptionTranslation
+                    key={post.caption}
+                    ownerId={ownerId}
+                    batchId={batch.id}
+                    postId={post.id}
+                    caption={post.caption}
+                  />
+                }
                 takeAway={
                   <TakeAway
                     post={post}

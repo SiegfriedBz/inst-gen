@@ -49,13 +49,19 @@ function sortedJson(value: unknown): string {
 
 // FNV-1a over what the model sees: a batch is out of date when this changes.
 // Synchronous, so the browser and the server compute it the same way.
-export function profileHash(profile: Profile): string {
+// FNV-1a over the text's code points, as 8 hex digits: enough to tell two
+// versions apart, never to keep anything secret.
+export function hashText(text: string): string {
   let hash = 0x811c9dc5;
-  for (const char of sortedJson(postsModelInput(profile))) {
+  for (const char of text) {
     hash ^= char.codePointAt(0) ?? 0;
     hash = Math.imul(hash, 0x01000193) >>> 0;
   }
   return hash.toString(16).padStart(8, '0');
+}
+
+export function profileHash(profile: Profile): string {
+  return hashText(sortedJson(postsModelInput(profile)));
 }
 
 export function ctaFor(profile: Profile): string | null {

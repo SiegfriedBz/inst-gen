@@ -259,6 +259,16 @@
       "copyHere": "Salin dari sini.",
       "savePost": "Simpan gambar postingan",
       "saveStory": "Simpan gambar story"
+    },
+    "translate": {
+      "show": "Tampilkan dalam {language}",
+      "hide": "Sembunyikan",
+      "label": "Dalam {language}, untuk Anda baca. Instagram mendapat versi bahasa Inggris.",
+      "errors": {
+        "model_busy": "Shopfront sudah memakai jatah terjemahan gratis hari ini. Coba lagi besok.",
+        "model_timeout": "Terjemahan terlalu lama. Coba lagi.",
+        "model_failed": "Ada yang salah dengan terjemahan. Coba lagi."
+      }
     }
   }
 }

@@ -227,6 +227,50 @@ describe('searchEssence', () => {
   });
 });
 
+describe('translateCaption', () => {
+  afterEach(() => {
+    vi.unstubAllEnvs();
+    vi.unstubAllGlobals();
+  });
+
+  test('uses flash-lite with minimal thinking, once, with no retries', async () => {
+    vi.stubEnv('GOOGLE_GENERATIVE_AI_API_KEY', 'test-key-not-real');
+    const fetchMock = vi.fn(
+      async (_url: string | URL | Request, _init?: RequestInit) =>
+        new Response(JSON.stringify({ error: { code: 503, message: 'busy' } }), {
+          status: 503,
+          headers: { 'content-type': 'application/json' },
+        }),
+    );
+    vi.stubGlobal('fetch', fetchMock);
+    await expect(
+      geminiTextModel().translateCaption('Warm oil.', 'vi', new AbortController().signal),
+    ).rejects.toMatchObject({ kind: 'busy' });
+    expect(fetchMock).toHaveBeenCalledTimes(1);
+    expect(String(fetchMock.mock.calls[0]?.[0])).toContain(TEXT_MODELS.light);
+    const body = String(fetchMock.mock.calls[0]?.[1]?.body);
+    expect(body.toLowerCase()).toContain('minimal');
+    expect(body).toContain('Warm oil.');
+    expect(body).toContain('Vietnamese');
+  });
+
+  test('without a key, fails with ModelError failed', async () => {
+    vi.stubEnv('GOOGLE_GENERATIVE_AI_API_KEY', '');
+    await expect(
+      geminiTextModel().translateCaption('Warm oil.', 'id', new AbortController().signal),
+    ).rejects.toMatchObject({ kind: 'failed' });
+  });
+
+  test('a replayed model answers its recorded translation', async () => {
+    const model = replayTextModel(rec, {
+      translation: { ...rec, partials: [], final: 'Dầu ấm.' },
+    });
+    expect(await model.translateCaption('Warm oil.', 'vi', new AbortController().signal)).toBe(
+      'Dầu ấm.',
+    );
+  });
+});
+
 describe('the Google provider', () => {
   function sourceFiles(dir: string): string[] {
     return readdirSync(dir, { withFileTypes: true }).flatMap((entry) => {

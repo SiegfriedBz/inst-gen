@@ -259,6 +259,16 @@
       "copyHere": "Copy it from here.",
       "savePost": "Save post image",
       "saveStory": "Save story image"
+    },
+    "translate": {
+      "show": "Show in {language}",
+      "hide": "Hide",
+      "label": "In {language}, for you to read. Instagram gets the English.",
+      "errors": {
+        "model_busy": "Shopfront has used today's free translations. Try again tomorrow.",
+        "model_timeout": "The translation took too long. Try again.",
+        "model_failed": "Something went wrong with the translation. Try again."
+      }
     }
   }
 }

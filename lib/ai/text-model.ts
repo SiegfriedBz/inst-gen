@@ -9,6 +9,8 @@ import {
   modelPostPlanSchema,
   modelRewriteSchema,
 } from '@/lib/posts/batch';
+import type { TranslateLocale } from '@/lib/posts/translate';
+import { translatePrompt } from '@/lib/posts/translate-prompt';
 
 // The app's only door to a text model (decision 0003). Callers see the
 // TextModel interface, so tests swap in a replayer and never call the network.
@@ -46,6 +48,9 @@ export interface TextModel {
   // edit (docs/specs/posts/generate-copy).
   streamPostPlan(input: PostsModelCall, signal: AbortSignal): ModelStream<ModelPostPlan>;
   streamPostRewrite(input: PostsModelCall, signal: AbortSignal): ModelStream<ModelRewrite>;
+  // A caption in the owner's language, plain text, not streamed
+  // (docs/specs/posts/editor-download).
+  translateCaption(text: string, locale: TranslateLocale, signal: AbortSignal): Promise<string>;
 }
 
 export class ModelError extends Error {
@@ -211,6 +216,31 @@ export function geminiTextModel(
         }
       }
       return toModelStream(run());
+    },
+
+    async translateCaption(text, locale, signal) {
+      const apiKey = process.env.GOOGLE_GENERATIVE_AI_API_KEY;
+      if (!apiKey) throw new ModelError('failed', 'GOOGLE_GENERATIVE_AI_API_KEY is not set');
+      const google = createGoogleGenerativeAI({ apiKey });
+      try {
+        const result = await generateText({
+          model: google(TEXT_MODELS.light),
+          system: translatePrompt(locale),
+          prompt: text,
+          providerOptions: {
+            google: {
+              thinkingConfig: { thinkingLevel: 'minimal' },
+            } satisfies GoogleLanguageModelOptions,
+          },
+          abortSignal: signal,
+          // A retry spends free quota; the caller reports model_busy instead.
+          maxRetries: 0,
+        });
+        return result.text.trim();
+      } catch (error) {
+        if (signal.aborted) throw signal.reason;
+        throw toModelError(error);
+      }
     },
 
     async searchEssence(input, signal) {
