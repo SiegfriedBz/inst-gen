@@ -4,12 +4,13 @@ import vi from '@/messages/vi.json' with { type: 'json' };
 
 // Test values from playwright.config.ts; not secrets.
 const SEN = 'test-lotus-river-sen';
+const SVARGA = 'test-blue-wave-svarga';
 const ONE_YEAR = 365 * 24 * 60 * 60;
 const BASE = 'http://localhost:3000';
 
-async function signIn(page: Page) {
+async function signIn(page: Page, passphrase = SEN) {
   await page.goto('/enter');
-  await page.locator('#passphrase').fill(SEN);
+  await page.locator('#passphrase').fill(passphrase);
   await page.locator('button[type=submit]:not([name=locale])').click();
   await expect(page).toHaveURL('/');
 }
@@ -62,8 +63,22 @@ test.describe('phone in English', () => {
 
   test('switching on / keeps the owner there', async ({ page, context }) => {
     await signIn(page);
-    const nav = page.getByRole('navigation', { name: 'Language' });
-    await expect(nav.getByText('English')).toHaveAttribute('aria-current', 'true');
+    // One switch, at the top right (docs/specs/platform/home-tabs).
+    await expect(page.getByRole('navigation', { name: 'Language' })).toHaveCount(1);
+    const nav = page.locator('header').getByRole('navigation', { name: 'Language' });
+    await expect(nav.locator('[aria-current="true"]')).toContainText('English');
+    await expect(nav.locator('[aria-current="true"]')).toContainText('EN');
+    const names = await nav
+      .locator('button, [aria-current]')
+      .evaluateAll((items) =>
+        items.map((item) => item.getAttribute('aria-label') ?? item.textContent?.trim() ?? ''),
+      );
+    expect(names.map((name) => name.replace(/EN$/, ''))).toEqual([
+      'English',
+      'Tiếng Việt',
+      'Bahasa Indonesia',
+    ]);
+    await expect(nav.getByRole('button', { name: 'Tiếng Việt' })).toHaveText('VI');
     await nav.getByRole('button', { name: 'Tiếng Việt' }).click();
 
     await expect(page).toHaveURL('/');
@@ -104,11 +119,20 @@ test.describe('small phone', () => {
       await expectFits(page);
     });
   }
+
+  test('vi fits 320px with the name Svarga', async ({ page, context }) => {
+    await saveLocale(context, 'vi');
+    await signIn(page, SVARGA);
+    await expectFits(page);
+  });
 });
 
 async function expectFits(page: Page) {
   expect(await page.evaluate(() => document.documentElement.scrollWidth)).toBeLessThanOrEqual(320);
-  const entries = page.getByRole('navigation').locator('button, [aria-current]');
+  const entries = page
+    .locator('header')
+    .getByRole('navigation', { name: /./ })
+    .locator('button, [aria-current]');
   await expect(entries).toHaveCount(3);
   for (const entry of await entries.all()) await expect(entry).toBeInViewport();
 }

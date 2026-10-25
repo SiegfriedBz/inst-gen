@@ -34,5 +34,6 @@
 - Task 4: `Tests  7 failed | 12 passed (19)` (`newestBatch is not a function`)
 - Task 5: `Tests  10 failed | 27 passed (37)`; the dropped-post guard: `Tests  1 failed | 23 skipped (24)` with the guard taken out
 - Task 6: `Tests  4 failed | 26 passed (30)`
+- Task 7 (Playwright, `tests/e2e/i18n.spec.ts`): `5 failed` / `5 passed (34.7s)`
 
 ## GREEN

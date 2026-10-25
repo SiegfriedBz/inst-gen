@@ -14,18 +14,20 @@ export default async function HomePage() {
   const t = await getTranslations('home');
   return (
     <main className="flex flex-1 flex-col">
-      <header className="flex items-center justify-between">
+      <header className="flex items-center justify-between gap-2">
         <ShopfrontMark />
-        <span className="rounded-control bg-accent-tint px-3 py-1 text-[13px] text-accent-tint-ink">
-          {name}
-        </span>
+        <div className="flex min-w-0 items-center gap-2">
+          <LanguageSwitch returnTo="/" />
+          <span className="min-w-0 truncate rounded-control bg-accent-tint px-3 py-1 text-[13px] text-accent-tint-ink">
+            {name}
+          </span>
+        </div>
       </header>
       <h1 className="mt-11 text-[26px] leading-[1.15] font-medium tracking-[-0.02em]">
         {t('welcome', { name })}
       </h1>
       <BrandHome ownerId={ownerId} imagesOn={imagesOn(ownerId)} />
-      <LanguageSwitch returnTo="/" />
-      <p className="mt-1 text-xs text-ink-secondary">{t('signedIn')}</p>
+      <p className="mt-auto pt-10 text-xs text-ink-secondary">{t('signedIn')}</p>
     </main>
   );
 }
