@@ -22,6 +22,7 @@
     "eval:posts": "tsx scripts/eval-posts.ts",
     "eval:images": "tsx scripts/eval-images.ts",
     "eval:translate": "tsx scripts/eval-translate.ts",
+    "eval:replies": "tsx scripts/eval-replies.ts",
     "check": "node scripts/check-docs.mjs && node scripts/check-repo.mjs && biome ci && pnpm typecheck && vitest run",
     "prepare": "lefthook install"
   },

@@ -12,7 +12,7 @@ export type SearchOutcome =
   | { kind: 'error'; code: SearchErrorCode }
   | { kind: 'signedOut' };
 
-function countryOf(profile: Profile): SearchBody['country'] {
+export function countryOf(profile: Profile): SearchBody['country'] {
   for (const number of [profile.contact.whatsapp?.value, profile.contact.phone?.value]) {
     if (number?.startsWith('+84')) return 'VN';
     if (number?.startsWith('+62')) return 'ID';

@@ -1,6 +1,7 @@
 import type { DeepPartial, ModelProfile } from '@/lib/brand/profile';
 import type { SearchModelAnswer } from '@/lib/brand/search/prompt';
 import type { ModelPostPlan, ModelRewrite } from '@/lib/posts/batch';
+import type { ModelReplies } from '@/lib/reviews/reply';
 import { ModelError, type ModelStream, type TextModel, toModelStream } from './text-model';
 
 // Recorded model calls: unit tests replay them, and `pnpm eval:brand --record`
@@ -39,6 +40,8 @@ export function replayTextModel(
     posts?: Recording;
     // A caption's translation, its `final` the text; without one, it fails.
     translation?: Recording;
+    // A review's two replies, its `final` the answer; without one, it fails.
+    replies?: Recording;
   } = {},
 ): TextModel {
   function replay<T>(recording: Recording | undefined, signal: AbortSignal) {
@@ -67,6 +70,12 @@ export function replayTextModel(
       if (opts.hang) await waitForAbort(signal);
       if (!opts.translation) throw new ModelError('failed', 'no recorded translation');
       return opts.translation.final as string;
+    },
+    async writeReplies(_input, signal) {
+      if (opts.error) throw new ModelError(opts.error, `replayed ${opts.error}`);
+      if (opts.hang) await waitForAbort(signal);
+      if (!opts.replies) throw new ModelError('failed', 'no recorded replies');
+      return opts.replies.final as ModelReplies;
     },
     async searchEssence(_input, signal) {
       if (opts.error) throw new ModelError(opts.error, `replayed ${opts.error}`);
@@ -97,6 +106,7 @@ export function recordingTextModel(
   onSearch: (answer: SearchModelAnswer) => void = () => {},
   onPosts: (recording: Recording) => void = () => {},
   onTranslation: (recording: Recording) => void = () => {},
+  onReplies: (recording: Recording) => void = () => {},
 ): TextModel {
   function record<T>(stream: ModelStream<T>) {
     async function* run(): AsyncGenerator<DeepPartial<T>, T> {
@@ -121,6 +131,11 @@ export function recordingTextModel(
     async translateCaption(text, locale, signal) {
       const final = await inner.translateCaption(text, locale, signal);
       onTranslation({ ...meta, partials: [], final });
+      return final;
+    },
+    async writeReplies(input, signal) {
+      const final = await inner.writeReplies(input, signal);
+      onReplies({ ...meta, partials: [], final });
       return final;
     },
     async searchEssence(input, signal) {

@@ -2,6 +2,7 @@ import { type DBSchema, type IDBPDatabase, openDB } from 'idb';
 import type { PostBatch } from '@/lib/posts/batch';
 import type { SavedImage } from '@/lib/posts/image-store';
 import type { SavedTranslation } from '@/lib/posts/translation-store';
+import type { ReviewRecord } from '@/lib/reviews/store';
 import type { RunRecord } from '@/lib/runs/run-record';
 import { type Profile, profileSchema, upgradeProfile } from './profile';
 import type { SearchAnswer } from './search/run';
@@ -41,10 +42,12 @@ export interface ShopfrontDb extends DBSchema {
     value: SavedTranslation;
     indexes: { ownerId: string };
   };
+  // The current review and its replies (docs/specs/reviews/reply-drafts).
+  reviews: { key: string; value: ReviewRecord };
 }
 
 const DB_NAME = 'shopfront';
-const DB_VERSION = 4;
+const DB_VERSION = 5;
 
 let opening: Promise<IDBPDatabase<ShopfrontDb> | null> | null = null;
 let persistAsked = false;
@@ -83,6 +86,9 @@ async function open(): Promise<IDBPDatabase<ShopfrontDb> | null> {
           db.createObjectStore('translations', {
             keyPath: ['batchId', 'postId', 'locale'],
           }).createIndex('ownerId', 'ownerId');
+        }
+        if (oldVersion < 5) {
+          db.createObjectStore('reviews', { keyPath: 'ownerId' });
         }
       },
       // Another tab still has an older version open: the page works without
@@ -191,13 +197,17 @@ export async function mergeSearchIntoStore(
 export async function forgetBrand(ownerId: string): Promise<void> {
   const db = await openStore();
   if (!db) return;
-  const tx = db.transaction(['brands', 'runs', 'posts', 'images', 'translations'], 'readwrite');
+  const tx = db.transaction(
+    ['brands', 'runs', 'posts', 'images', 'translations', 'reviews'],
+    'readwrite',
+  );
   const runIds = await tx.objectStore('runs').index('ownerId').getAllKeys(ownerId);
   const batchIds = await tx.objectStore('posts').index('ownerId').getAllKeys(ownerId);
   const imageIds = await tx.objectStore('images').index('ownerId').getAllKeys(ownerId);
   const translationIds = await tx.objectStore('translations').index('ownerId').getAllKeys(ownerId);
   await Promise.all([
     tx.objectStore('brands').delete(ownerId),
+    tx.objectStore('reviews').delete(ownerId),
     ...runIds.map((id) => tx.objectStore('runs').delete(id)),
     ...batchIds.map((id) => tx.objectStore('posts').delete(id)),
     ...imageIds.map((id) => tx.objectStore('images').delete(id)),

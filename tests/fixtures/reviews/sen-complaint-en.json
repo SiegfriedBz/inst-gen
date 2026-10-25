@@ -1,0 +1,24 @@
+{
+  "business": "sen",
+  "locale": "vi",
+  "name": "Tom R.",
+  "review": "Lovely hot stone massage, my back feels new! Only thing: the room was a bit cold and we waited about 20 minutes past our booking.",
+  "recording": {
+    "modelId": "gemini-3.5-flash-lite",
+    "promptVersion": "reply-2",
+    "partials": [],
+    "final": {
+      "reviewLanguage": "en",
+      "abusive": false,
+      "reviewTranslation": "Mát-xa đá nóng tuyệt vời, lưng của tôi như được hồi sinh! Chỉ có điều: phòng hơi lạnh và chúng tôi phải đợi khoảng 20 phút so với giờ đặt lịch.",
+      "short": {
+        "text": "Thank you, {name}! 🙏 Glad you enjoyed the hot stone massage. Sorry about the cold room and the wait. We hope to welcome you back to Sen Da Nang Massage soon. 🪷",
+        "translation": "Cảm ơn bạn, {name}! 🙏 Rất vui vì bạn thích dịch vụ mát-xa đá nóng. Xin lỗi vì phòng lạnh và thời gian phải chờ đợi. Chúng tôi hy vọng được chào đón bạn quay lại Sen Da Nang Massage sớm. 🪷"
+      },
+      "warm": {
+        "text": "Thank you so much, {name}! 🙏 We are thrilled your back feels great after the lovely hot stone massage. Sorry about the cold room and the wait. We would love to pamper you again at Sen Da Nang Massage on your next visit. 🪷",
+        "translation": "Cảm ơn bạn rất nhiều, {name}! 🙏 Chúng tôi rất vui vì lưng của bạn cảm thấy tuyệt vời sau buổi mát-xa đá nóng. Xin lỗi vì phòng lạnh và thời gian phải chờ đợi. Chúng tôi rất mong được chăm sóc cho bạn lần nữa tại Sen Da Nang Massage trong chuyến thăm tới. 🪷"
+      }
+    }
+  }
+}

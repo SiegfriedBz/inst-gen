@@ -2,6 +2,7 @@
 
 import { useLocale, useTranslations } from 'next-intl';
 import { useCallback, useEffect, useRef, useState } from 'react';
+import { ReviewsSection } from '@/components/reviews/reviews-section';
 import {
   AlertDialog,
   AlertDialogAction,
@@ -37,9 +38,9 @@ import { SectionSheet } from './section-sheet';
 
 // The home screen (docs/specs/brand/brand-panel, "The home screen"): no
 // business yet, reading, or the panel. Everything is kept on the phone. With
-// the panel come two tabs, "Your business" and "Create your posts"
-// (docs/specs/platform/home-tabs): the app opens on the posts, and a read of
-// any kind comes back to the business.
+// the panel come three tabs, "Your business", "Create Posts"
+// (docs/specs/platform/home-tabs) and "Reviews" (docs/specs/reviews/reply-drafts):
+// the app opens on the posts, and a read of any kind comes back to the business.
 
 type View =
   | { kind: 'loading' }
@@ -49,7 +50,7 @@ type View =
 
 type Notice = 'invalidSaved' | 'notKept' | null;
 
-type HomeTab = 'business' | 'posts';
+type HomeTab = 'business' | 'posts' | 'reviews';
 
 export function BrandHome({ ownerId, imagesOn }: { ownerId: string; imagesOn: boolean }) {
   const t = useTranslations('brand');
@@ -60,7 +61,7 @@ export function BrandHome({ ownerId, imagesOn }: { ownerId: string; imagesOn: bo
   const home = useTranslations('home');
   const locale = useLocale();
   const [view, setView] = useState<View>({ kind: 'loading' });
-  // Not remembered: every open lands on "Create your posts".
+  // Not remembered: every open lands on "Create Posts".
   const [tab, setTab] = useState<HomeTab>('posts');
   const [saved, setSaved] = useState<Profile | null>(null);
   const [ownerEdited, setOwnerEdited] = useState<string[]>([]);
@@ -358,6 +359,7 @@ export function BrandHome({ ownerId, imagesOn }: { ownerId: string; imagesOn: bo
           <TabsList aria-label={home('tabs.label')}>
             <TabsTrigger value="business">{home('tabs.business')}</TabsTrigger>
             <TabsTrigger value="posts">{home('tabs.posts')}</TabsTrigger>
+            <TabsTrigger value="reviews">{home('tabs.reviews')}</TabsTrigger>
           </TabsList>
           <TabsContent value="business" hidden={tab !== 'business'} className="mt-5">
             <p className="mb-4 text-[15px] leading-normal text-ink-secondary">
@@ -434,6 +436,9 @@ export function BrandHome({ ownerId, imagesOn }: { ownerId: string; imagesOn: bo
               active={tab === 'posts'}
               searching={search === 'running'}
             />
+          </TabsContent>
+          <TabsContent value="reviews" hidden={tab !== 'reviews'}>
+            <ReviewsSection ownerId={ownerId} profile={saved} active={tab === 'reviews'} />
           </TabsContent>
         </Tabs>
       )}

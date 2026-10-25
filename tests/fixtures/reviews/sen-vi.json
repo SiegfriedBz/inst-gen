@@ -1,0 +1,24 @@
+{
+  "business": "sen",
+  "locale": "vi",
+  "name": "Nguyễn Thu Hà",
+  "review": "Không gian yên tĩnh, kỹ thuật viên tay nghề tốt. Giá hơi cao so với các tiệm gần đó nhưng đáng tiền.",
+  "recording": {
+    "modelId": "gemini-3.5-flash-lite",
+    "promptVersion": "reply-2",
+    "partials": [],
+    "final": {
+      "reviewLanguage": "vi",
+      "abusive": false,
+      "reviewTranslation": null,
+      "short": {
+        "text": "Cảm ơn {name}! 🙏 Chúc mừng bạn đã có trải nghiệm không gian yên tĩnh và kỹ thuật viên tay nghề tốt. Xin lỗi bạn về mức giá hơi cao. Hẹn gặp lại bạn tại Sen Da Nang Massage nhé 🪷",
+        "translation": null
+      },
+      "warm": {
+        "text": "Cảm ơn {name}! 🙏 Chúng tôi rất vui vì bạn hài lòng với không gian yên tĩnh và kỹ thuật viên tay nghề tốt của chúng tôi. Xin lỗi bạn vì giá dịch vụ hơi cao. Rất mong được đón tiếp bạn quay lại Sen Da Nang Massage trong thời gian tới 🪷",
+        "translation": null
+      }
+    }
+  }
+}

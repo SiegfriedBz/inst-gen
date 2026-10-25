@@ -13,7 +13,8 @@
     "tabs": {
       "label": "Trang chính",
       "business": "Doanh nghiệp",
-      "posts": "Tạo bài đăng"
+      "posts": "Tạo bài đăng",
+      "reviews": "Đánh giá"
     },
     "welcome": "Chào mừng, {name}",
     "websiteLabel": "Trang web của bạn",
@@ -260,6 +261,29 @@
         "model_timeout": "Bản dịch mất quá lâu. Hãy thử lại.",
         "model_failed": "Đã có lỗi khi dịch. Hãy thử lại."
       }
+    }
+  },
+  "reviews": {
+    "intro": "Có đánh giá mới trên Google Maps? Hãy sao chép và dán vào đây. Chúng tôi viết 2 câu trả lời bằng ngôn ngữ của khách.",
+    "nameLabel": "Tên khách (không bắt buộc)",
+    "reviewLabel": "Đánh giá",
+    "write": "Viết 2 câu trả lời",
+    "writing": "Đang viết câu trả lời…",
+    "keepOpen": "Hãy giữ trang này mở trong vài giây.",
+    "heading": "Đánh giá của {name} · bằng {language}",
+    "headingNoName": "Đánh giá · bằng {language}",
+    "short": "Trả lời ngắn",
+    "warm": "Trả lời ấm áp hơn",
+    "abusive": "Đánh giá này có thể mang tính xúc phạm hoặc giả mạo. Có thể tốt hơn là không trả lời, hoặc báo cáo trên Google Maps. Nếu trả lời, hãy giữ bình tĩnh, như bên dưới.",
+    "howTo": "Trên Google Maps: mở đánh giá, nhấn Trả lời rồi dán.",
+    "again": "Viết 2 câu trả lời khác",
+    "newReview": "Dán đánh giá mới",
+    "errors": {
+      "model_busy": "Shopfront đã dùng hết lượt viết miễn phí hôm nay. Hãy thử lại vào ngày mai.",
+      "model_timeout": "Viết câu trả lời mất quá lâu. Hãy thử lại.",
+      "model_failed": "Đã có lỗi khi viết câu trả lời. Hãy thử lại.",
+      "invalid_request": "Đã có lỗi khi viết câu trả lời. Hãy thử lại.",
+      "offline": "Bạn đang ngoại tuyến. Hãy thử lại khi có mạng."
     }
   }
 }

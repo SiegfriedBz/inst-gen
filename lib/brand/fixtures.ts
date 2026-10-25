@@ -161,6 +161,9 @@ const noModel: TextModel = {
   streamPostRewrite() {
     throw new Error('saving a fixture makes no model call');
   },
+  writeReplies() {
+    throw new Error('saving a fixture makes no model call');
+  },
   translateCaption() {
     throw new Error('saving a fixture makes no model call');
   },
