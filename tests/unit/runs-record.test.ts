@@ -2,6 +2,7 @@ import { describe, expect, test } from 'vitest';
 import {
   isFinished,
   newBrandRun,
+  newImagesRun,
   newPostsRun,
   type RunRecord,
   resumeRun,
@@ -86,5 +87,27 @@ describe('a posts run', () => {
     expect(rewrite.batchId).toBe('b1');
     expect(stepsToRequest(resumeRun(done, () => false))).toEqual([]);
     expect(isFinished(done)).toBe(true);
+  });
+});
+
+describe('an images run', () => {
+  const images = newImagesRun(
+    { ownerId: 'sen', batchId: 'b1', postIds: ['post-1', 'post-2'] },
+    new Date('2026-10-25T10:00:00Z'),
+    'r1',
+  );
+
+  test('newImagesRun has one running image step per post', () => {
+    expect(images).toMatchObject({ id: 'r1', ownerId: 'sen', kind: 'images', batchId: 'b1' });
+    expect(images.steps).toEqual([
+      { name: 'image', postId: 'post-1', status: 'running' },
+      { name: 'image', postId: 'post-2', status: 'running' },
+    ]);
+  });
+
+  test('resume sets lost image steps back to pending', () => {
+    const resumed = resumeRun(images, () => false);
+    expect(resumed.steps.map((s) => s.status)).toEqual(['pending', 'pending']);
+    expect(stepsToRequest(resumed)).toEqual(['image', 'image']);
   });
 });

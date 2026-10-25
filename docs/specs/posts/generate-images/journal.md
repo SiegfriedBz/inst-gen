@@ -48,6 +48,13 @@ Task 4:
       Tests  no tests
 ```
 
+Task 5:
+
+```
+ Test Files  3 failed (3)
+      Tests  5 failed | 3 passed (8)
+```
+
 ## GREEN
 
 Task 1:
@@ -76,4 +83,11 @@ Task 4:
 ```
  Test Files  2 passed (2)
       Tests  15 passed (15)
+```
+
+Task 5:
+
+```
+ Test Files  3 passed (3)
+      Tests  24 passed (24)
 ```

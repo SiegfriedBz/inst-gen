@@ -4,15 +4,18 @@ import type { PostBatch } from '@/lib/posts/batch';
 // A run as decision 0005 keeps it in the browser: each step's status and,
 // once done, its output. The brand panel (docs/specs/brand/brand-panel)
 // has one step, the brand read; a posts run (docs/specs/posts/generate-copy)
-// has one too, the plan or its rewrite.
+// has one too, the plan or its rewrite; an images run has one step per post
+// (docs/specs/posts/generate-images).
 
 export type StepStatus = 'pending' | 'running' | 'done' | 'failed';
 
 export type RunStep =
   | { name: 'brand'; status: StepStatus; output?: Profile }
-  | { name: 'plan' | 'rewrite'; status: StepStatus; output?: PostBatch };
+  | { name: 'plan' | 'rewrite'; status: StepStatus; output?: PostBatch }
+  // The image itself lives in the images store, not in the run.
+  | { name: 'image'; postId: string; status: StepStatus };
 
-export type RunKind = 'brand-read' | 'posts';
+export type RunKind = 'brand-read' | 'posts' | 'images';
 
 export type RunRecord = {
   id: string;
@@ -24,7 +27,7 @@ export type RunRecord = {
   steps: RunStep[];
   // How many times the step was asked for again after it was lost.
   resumes?: number;
-  // The batch a rewrite replaces.
+  // The batch a rewrite replaces, or whose images an images run makes.
   batchId?: string;
 };
 
@@ -58,6 +61,23 @@ export function newPostsRun(
     startedAt: now.toISOString(),
     steps: [{ name: input.step, status: 'running' }],
     ...(input.batchId ? { batchId: input.batchId } : {}),
+  };
+}
+
+export function newImagesRun(
+  input: { ownerId: string; batchId: string; postIds: string[] },
+  now: Date,
+  id: string,
+): RunRecord {
+  return {
+    id,
+    ownerId: input.ownerId,
+    kind: 'images',
+    reread: false,
+    url: '',
+    startedAt: now.toISOString(),
+    steps: input.postIds.map((postId) => ({ name: 'image', postId, status: 'running' })),
+    batchId: input.batchId,
   };
 }
 
