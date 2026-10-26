@@ -32,6 +32,23 @@
   }
 }
 
+/* The owner guide on paper or in a PDF (docs/specs/guide/owner-guide,
+   "Printable PDF"): A4, black on white whatever the phone's mode. */
+@page {
+  size: A4;
+  margin: 16mm;
+}
+
+@media print {
+  :root {
+    --page: #ffffff;
+    --ink: #000000;
+    --ink-secondary: #333333;
+    --field-muted: #ffffff;
+    --accent: #000000;
+  }
+}
+
 @theme inline {
   --color-page: var(--page);
   --color-ink: var(--ink);

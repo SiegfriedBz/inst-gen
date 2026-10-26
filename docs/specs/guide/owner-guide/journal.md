@@ -16,6 +16,19 @@
 - 2026-10-26: Quoted app messages in "If something goes wrong" are copied by
   hand from `usage.*` (their first sentence), not passed in: they carry a
   `{time}` the guide can't fill.
+- 2026-10-26: `guideContact` lives in `lib/guide/contact.ts`: a Next.js page
+  file may only export the page and its route settings.
+- 2026-10-26: The two links are client components
+  (`components/guide/guide-links.tsx`) so they switch language at once, like
+  the rest of the header.
+- 2026-10-26: Print also touches `app/layout.tsx`: its 420px column widens to
+  the page and drops its padding, so A4 uses its width.
+- 2026-10-26: The home header keeps the "Guide" label visible: it fits at
+  320px in all three languages (the e2e scroll check), so no icon-only
+  fallback.
+- 2026-10-26: `[WebServer] Error: ENVIRONMENT_FALLBACK` in the e2e log is
+  next-intl's warning about a missing time zone; it shows before this work
+  too (Task 2's RED run).
 
 ## RED
 
@@ -27,6 +40,16 @@ Error: Failed to resolve import "@/components/guide/owner-guide" from "tests/uni
       Tests  no tests
 ```
 
+Task 2, `CI=1 pnpm test:e2e tests/e2e/guide.spec.ts`:
+
+```
+  6 failed
+  1 passed (2.3m)
+```
+
+("the guide is private" passes before the page exists: the gate already
+sends every path without a session to `/enter`.)
+
 ## GREEN
 
 Task 1, `pnpm vitest run tests/unit/guide.test.tsx tests/unit/i18n-messages.test.ts`:
@@ -34,4 +57,10 @@ Task 1, `pnpm vitest run tests/unit/guide.test.tsx tests/unit/i18n-messages.test
 ```
  Test Files  2 passed (2)
       Tests  18 passed (18)
+```
+
+Task 2, `CI=1 pnpm test:e2e tests/e2e/guide.spec.ts tests/e2e/home-tabs.spec.ts tests/e2e/i18n.spec.ts`:
+
+```
+  20 passed (18.8s)
 ```
