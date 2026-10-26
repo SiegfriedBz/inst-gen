@@ -47,7 +47,8 @@ limits stay in step with the quota they protect.
 - This is not the 3am day of suggestions and reviews (`posts/suggestions`,
   `reviews/reply-drafts`): that one decides what stays **on screen**. This one
   decides what's **left**. The two don't meet on screen: the bar never
-  mentions 3am.
+  mentions 3am. (Changed by `platform/one-daily-reset`, 2026-10-26: the
+  screen now follows this reset too; there is one day.)
 
 (Builder's call: decision 0003 left this to this item, with "the pool resets
 at the later one" as an option. With one model family and no Workers AI, one
@@ -448,7 +449,8 @@ Scenario: No Upstash on Vercel
   US summer), not overnight: an owner who works in the morning gets a full
   day, one who works around 15:00 may see their limits come back mid-task.
 - **Two clocks.** Attempts and reviews leave the screen at 3am; counts come
-  back at midnight Pacific. The bar shows only the second.
+  back at midnight Pacific. The bar shows only the second. (Gone with
+  `platform/one-daily-reset`, 2026-10-26: one clock.)
 - **Shared database.** A preview deployment's tests spend the same day as
   production.
 - **Redis down** lets text through uncounted and stops images for a moment.
