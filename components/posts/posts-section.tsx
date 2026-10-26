@@ -298,6 +298,14 @@ export function PostsSection({
   }, [ownerId, tryResume]);
 
   function make() {
+    // An app left open across the reset starts the new day here, so the new
+    // attempt is numbered like the bar counts (docs/specs/platform/one-daily-reset).
+    const from = dayStart(new Date());
+    if (startRef.current && from > startRef.current) {
+      startRef.current = from;
+      setStart(from);
+      void clearBefore(ownerId, from);
+    }
     const run = startPlan({ ownerId, profile, recent: recentPosts(batches) }, onEvent);
     begin(run, { step: 'plan', posts: [] });
   }

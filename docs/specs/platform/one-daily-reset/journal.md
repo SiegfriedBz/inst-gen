@@ -19,6 +19,13 @@
 - 2026-10-26: Image file names use the phone's date of the reset that opened
   the day (the spec's builder's call); `dayOf` already read `dayStart`'s local
   date, so only `dayStart` changed.
+- 2026-10-26: Final review (fresh reviewer): an attempt made in an app left
+  open across the reset was numbered with the old day ("Attempt 3" while the
+  bar said 2 left) and dated with the new one. "Make 6 new suggestions" now
+  starts the new day first: yesterday's attempts leave the screen and the new
+  one is "Attempt 1". The tap is the owner's own, so this isn't clearing
+  mid-use. Also fixed in the spec: the Da Nang test times (14:00 in US summer
+  time, 15:00 after), which the code and tests already had right.
 
 ## RED
 
@@ -34,6 +41,13 @@ e2e, on the old `lib/posts/day.ts`:
   2 passed (16.9s)
 ```
 
+Final review fix:
+
+```
+AssertionError: expected [ 'Attempt 2', 'Attempt 1' ] to deeply equal [ 'Attempt 1' ]
+      Tests  1 failed | 31 skipped (32)
+```
+
 ## GREEN
 
 ```
@@ -43,4 +57,11 @@ e2e, on the old `lib/posts/day.ts`:
 
 ```
   4 passed (11.0s)
+```
+
+After the final review fix:
+
+```
+ Test Files  96 passed (96)
+      Tests  1102 passed (1102)
 ```

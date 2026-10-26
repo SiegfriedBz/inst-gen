@@ -48,7 +48,7 @@ What changes:
 - **Image file names** (`posts/suggestions`, "Image file names") carry the
   date the attempt's day started on the phone's clock: the date of the reset
   that opened it. In Da Nang an attempt made at 10:00 on 27 October belongs to
-  the day that opened at 15:00 on 26 October, so its files read
+  the day that opened at 14:00 on 26 October, so its files read
   `2026-10-26`, like every attempt of that day. (Builder's call: the calendar
   date of the attempt would give two files the same name, "attempt 2" at
   10:00 and "attempt 2" at 16:00 on the same date.)
@@ -88,8 +88,8 @@ roadmap gains this item before 2.9; the PR that ships it marks it `done`.
 
 - Vitest (`tests/unit/posts-day.test.ts`, rewritten), with the phone's zone
   set to `Asia/Ho_Chi_Minh`:
-  - `dayStart` at 14:59 and 15:00 on 26 October (US summer time) and at 15:59
-    and 16:00 on 3 November (US winter time);
+  - `dayStart` at 13:59 and 14:00 on 26 October (US summer time) and at 14:59
+    and 15:00 on 3 November (US winter time);
   - `dayOf` for 10:00 on 27 October is `2026-10-26`, for 16:00 is
     `2026-10-27`;
   - `isToday` from the reset exactly;
