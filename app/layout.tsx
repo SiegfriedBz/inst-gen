@@ -35,7 +35,7 @@ export default async function RootLayout({ children }: { children: ReactNode }) 
     <html lang={locale} className={beVietnam.variable}>
       <body className="min-h-dvh font-sans antialiased">
         <LocaleProvider initialLocale={locale}>
-          <div className="mx-auto flex min-h-dvh w-full max-w-[420px] flex-col px-5 pt-7 pb-6">
+          <div className="mx-auto flex min-h-dvh w-full max-w-[420px] flex-col px-5 pt-7 pb-6 print:min-h-0 print:max-w-none print:p-0">
             {children}
           </div>
         </LocaleProvider>

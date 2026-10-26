@@ -1,7 +1,7 @@
 import { defineConfig, devices } from '@playwright/test';
 
 // Test values, not secrets: the same ones CI sets.
-const testEnv = {
+export const testEnv = {
   PILOT_PASSPHRASES:
     process.env.PILOT_PASSPHRASES ??
     'test-lotus-river-sen,test-blue-wave-svarga,test-quiet-stone-dev',

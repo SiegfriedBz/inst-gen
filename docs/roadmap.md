@@ -77,7 +77,7 @@ most sample replies as written, with $0 spent on everything but images
 | 2.7 | `reviews/reply-drafts`: warm and short replies, owner's-language view | spec | done |
 | 2.8 | `platform/usage-counters`: per-owner daily limits in Upstash Redis, the usage bar | spec | done |
 | 2.8b | `platform/one-daily-reset`: suggestions and review drafts clear at Google's reset, the same moment the limits come back; one time on screen | spec | done |
-| 2.9 | `guide/owner-guide`: How-to page and printable PDF, three languages | spec | todo |
+| 2.9 | `guide/owner-guide`: How-to page and printable PDF, three languages | spec | done |
 
 ## Later phases
 

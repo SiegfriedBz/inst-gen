@@ -24,7 +24,9 @@ describe('recorded post plans', () => {
     expect(SLUGS.filter((slug) => !existsSync(join(FIXTURES_DIR, slug, 'posts.json')))).toEqual([]);
   });
 
-  test.each(SLUGS)('%s replays to a checked batch', async (slug) => {
+  // About 3 s each alone (karsa-spa); the default 5 s is too tight when the
+  // whole suite runs at once.
+  test.each(SLUGS)('%s replays to a checked batch', { timeout: 20_000 }, async (slug) => {
     const dir = join(FIXTURES_DIR, slug);
     const fixture = loadFixture(dir);
     if (!fixture.posts) throw new Error(`no posts.json for ${slug}`);

@@ -305,5 +305,78 @@
       "rewrites": "Captions were updated {limit} times today. Again at {time}.",
       "translations": "Today's {limit} translations are used up. More at {time}."
     }
+  },
+  "guide": {
+    "link": "Guide",
+    "title": "How to use Shopfront",
+    "intro": "Everything you need, in about five minutes of reading.",
+    "contents": "On this page",
+    "back": "Back to Shopfront",
+    "print": "Print or save as PDF",
+    "start": {
+      "title": "Getting started",
+      "passphrase": "Open the link you were given, type your passphrase and tap <b>{button}</b>. You stay signed in on this phone for 30 days.",
+      "home": "Add Shopfront to your home screen:",
+      "iphone": "On an iPhone, in Safari: tap Share, then \"Add to Home Screen\".",
+      "android": "On Android, in Chrome: tap ⋮, then \"Add to Home screen\" or \"Install app\".",
+      "why": "Your business and your posts are kept on this phone. On an iPhone, Safari may clear them after about a week without a visit, unless Shopfront is on your home screen.",
+      "onePhone": "Everything stays on this phone: another phone starts empty."
+    },
+    "business": {
+      "title": "Your business",
+      "read": "Type your website and tap <b>{button}</b>. Keep the page open while Shopfront reads it; the screen stays on by itself.",
+      "check": "Check what it found, section by section. Tap <b>{button}</b> to fix or add anything.",
+      "missing": "Add your WhatsApp number and your town if they're missing: every post ends with your WhatsApp, and the hashtags use your town.",
+      "english": "Write your changes in English if you can: the posts are written in English.",
+      "reread": "<b>{button}</b> replaces your changes with what your website says now; Shopfront asks first. To use another website, tap <b>{forget}</b> and start again."
+    },
+    "posts": {
+      "title": "Making your posts",
+      "make": "In <b>{tab}</b>, tap <b>{button}</b>. You get 6 suggestions, each with a post image, a story image and the text for the post.",
+      "wait": "Keep the page open for about a minute while they are made.",
+      "leave": "If you leave, Shopfront carries on where it stopped when you come back, but the part it was making is made again and uses some of today's allowance. So start when you have a minute to wait, not just before a call.",
+      "more": "Want other ideas? Tap <b>{button}</b>: the new ones go on top, the earlier ones stay below.",
+      "edit": "Tap <b>{button}</b> to change a suggestion's words, and <b>{image}</b> for a different picture; you can add a short hint.",
+      "update": "If you change your business, the captions are updated to match. Text you edited yourself is left alone."
+    },
+    "instagram": {
+      "title": "Posting on Instagram",
+      "save": "Tap <b>1 {button}</b>. In the menu that opens, choose to save the images: the post image and the story image land side by side in your photos. On a phone without that menu, both download instead.",
+      "copy": "Tap <b>2 {button}</b>. It copies the caption, your WhatsApp line and the hashtags, ready to paste.",
+      "post": "The post: in Instagram, tap +, then Post. Pick the post image, paste the text and share.",
+      "story": "The story: tap +, then Story, and pick the story image. Tap the sticker icon, choose \"Link\", paste your WhatsApp link and place the sticker. A story has no text to paste.",
+      "link": "Your WhatsApp link is <code>https://wa.me/</code> followed by your number with its country code, with no + and no spaces. For example: <code>https://wa.me/84901234567</code>.",
+      "alt": "Optional: before you share a post, Instagram's \"Advanced settings\", then \"Accessibility\", let you describe the image for people who can't see it.",
+      "noImages": "No pictures on your suggestions? Post a photo of your own and paste the text.",
+      "never": "Shopfront never posts for you: you decide what goes out."
+    },
+    "reviews": {
+      "title": "Replying to reviews",
+      "paste": "In Google Maps, open the review and copy its text. In <b>{tab}</b>, paste it (the guest's name is optional) and tap <b>{button}</b>.",
+      "pick": "Pick the reply you like, change it if you want, copy it, and paste it as your reply in Google Maps. Replies are written in your guest's language, and you can read them in yours.",
+      "other": "Neither fits? Tap <b>{button}</b>. A new review replaces the last one."
+    },
+    "allowance": {
+      "title": "Your daily allowance",
+      "free": "Shopfront is free, so each day has a limit.",
+      "limits": "Each day you have {reads}, {attempts} of 6 suggestions, {newImages} and {replies}, plus caption updates and translations.",
+      "bar": "The bar at the top of the screen shows what's left today and the time it all comes back.",
+      "reset": "At that time, the limits come back and the day's suggestions and review replies leave the screen. Save what you want to keep before then.",
+      "time": "The time on the bar is in your phone's own time: trust it rather than a fixed hour.",
+      "month": "New images also have a monthly budget for the whole app. If it runs out, Shopfront says when images are back."
+    },
+    "languages": {
+      "title": "Languages",
+      "switch": "The letters at the top right (EN, VI, ID) change the language of the screens.",
+      "captions": "Posts are written in English, and review replies in your guest's language. Showing them in your language is for reading, not for posting."
+    },
+    "trouble": {
+      "title": "If something goes wrong",
+      "limit": "\"You've made today's … attempts\" or a similar line: wait for the time on the bar.",
+      "pool": "\"Shopfront has used today's free writing\": the whole app has used its free allowance for today. It's back at the time shown.",
+      "paused": "\"Images are paused for a moment\": try again in a few minutes.",
+      "gone": "Your business is gone: Safari cleared it, or this is another phone. Read your website again, and add Shopfront to your home screen.",
+      "contact": "Still stuck? Write to {contact} on WhatsApp."
+    }
   }
 }

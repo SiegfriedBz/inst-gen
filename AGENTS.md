@@ -61,8 +61,9 @@ index of the code).
 | `.agents/skills/` | Source of the repo's skills |
 | `.claude/skills/` | Copy of `.agents/skills/`, made by the pre-commit hook; never edit it |
 | `scripts/` | Repo checks and the skills copy |
-| `app/` | Next.js App Router: pages, the `/enter` sign-in, API routes |
+| `app/` | Next.js App Router: pages, the `/enter` sign-in, the `/guide` owner guide, API routes |
 | `components/` | Shared components; `components/ui/` holds the shadcn/ui ones (decision 0007) |
+| `components/guide/` | The owner guide: its eight sections and the links in and out |
 | `components/brand/` | The home screen: its three tabs, the brand read and panel (reading state, sections, edit forms) |
 | `components/reviews/` | The Reviews tab: the pasted review and its two reply cards |
 | `components/usage/` | The usage bar and the lines shown at a limit |
@@ -113,6 +114,7 @@ index of the code).
 | `pnpm eval:images <slug…>` | Make the six images of fixtures' recorded posts with the real image model, saved as JPEGs under the scratch folder `eval-images`. ⚠️ Spends about $0.30 of the prepaid image balance per fixture: ask first |
 | `pnpm eval:translate [slug:locale…] [--record]` | Translate the first recorded caption of `sen:vi` and `svarga:id` (by default) with the real Flash-Lite, and print each for reading back. ⚠️ Spends 1 Flash-Lite request per pair from the app's daily pool: never on a pilot day |
 | `pnpm eval:replies [slug…] [--record]` | Write the two replies to the made-up reviews in `tests/fixtures/reviews/` (all, by default) with the real Flash-Lite, and print each after code's checks for reading back. ⚠️ Spends 1 Flash-Lite request per review from the app's daily pool: a few at a time, never on a pilot day |
+| `pnpm guide:pdf` | Build the app, start it with test passphrases, and write the owner guide as three A4 PDFs under `.superpowers/guide/`; the contact line comes from `GUIDE_CONTACT` in `.env.local`. ⚠️ Needs port 3000 free; no model call |
 
 ## What fails silently
 

@@ -305,5 +305,78 @@
       "rewrites": "Chú thích đã được cập nhật {limit} lần hôm nay. Cập nhật lại được lúc {time}.",
       "translations": "Đã dùng hết {limit} bản dịch hôm nay. Có thêm lúc {time}."
     }
+  },
+  "guide": {
+    "link": "Hướng dẫn",
+    "title": "Cách dùng Shopfront",
+    "intro": "Mọi điều bạn cần, đọc trong khoảng năm phút.",
+    "contents": "Trong trang này",
+    "back": "Quay lại Shopfront",
+    "print": "In hoặc lưu thành PDF",
+    "start": {
+      "title": "Bắt đầu",
+      "passphrase": "Mở đường link bạn được gửi, nhập cụm mật khẩu và chạm <b>{button}</b>. Bạn vẫn đăng nhập trên điện thoại này trong 30 ngày.",
+      "home": "Thêm Shopfront vào màn hình chính:",
+      "iphone": "Trên iPhone, trong Safari: chạm Chia sẻ, rồi \"Add to Home Screen\".",
+      "android": "Trên Android, trong Chrome: chạm ⋮, rồi \"Add to Home screen\" hoặc \"Install app\".",
+      "why": "Doanh nghiệp và bài đăng của bạn được lưu trên điện thoại này. Trên iPhone, Safari có thể xóa chúng nếu bạn không mở Shopfront khoảng một tuần, trừ khi Shopfront nằm trên màn hình chính.",
+      "onePhone": "Mọi thứ ở lại trên điện thoại này: điện thoại khác sẽ bắt đầu trống."
+    },
+    "business": {
+      "title": "Doanh nghiệp của bạn",
+      "read": "Nhập trang web của bạn và chạm <b>{button}</b>. Giữ trang mở trong lúc Shopfront đọc; màn hình tự sáng.",
+      "check": "Xem lại những gì tìm được, từng phần một. Chạm <b>{button}</b> để sửa hoặc thêm.",
+      "missing": "Thêm số WhatsApp và thành phố của bạn nếu còn thiếu: mỗi bài đăng kết thúc bằng WhatsApp của bạn, và hashtag dùng tên thành phố.",
+      "english": "Nếu được, hãy viết thay đổi bằng tiếng Anh: bài đăng được viết bằng tiếng Anh.",
+      "reread": "<b>{button}</b> thay các thay đổi của bạn bằng nội dung hiện tại của trang web; Shopfront sẽ hỏi trước. Để dùng trang web khác, chạm <b>{forget}</b> rồi bắt đầu lại."
+    },
+    "posts": {
+      "title": "Tạo bài đăng",
+      "make": "Trong <b>{tab}</b>, chạm <b>{button}</b>. Bạn nhận 6 gợi ý, mỗi gợi ý có hình bài đăng, hình story và chữ cho bài đăng.",
+      "wait": "Giữ trang mở khoảng một phút trong lúc gợi ý được tạo.",
+      "leave": "Nếu bạn rời đi, Shopfront sẽ tiếp tục từ chỗ dừng khi bạn quay lại, nhưng phần đang làm dở sẽ được làm lại và tốn một phần lượt của hôm nay. Vì vậy hãy bắt đầu khi bạn có một phút để chờ, đừng bắt đầu ngay trước một cuộc gọi.",
+      "more": "Muốn ý khác? Chạm <b>{button}</b>: gợi ý mới nằm trên, gợi ý cũ vẫn ở bên dưới.",
+      "edit": "Chạm <b>{button}</b> để đổi lời của một gợi ý, và <b>{image}</b> để có hình khác; bạn có thể thêm mô tả ngắn.",
+      "update": "Nếu bạn thay đổi thông tin doanh nghiệp, chú thích sẽ được cập nhật theo. Chữ bạn đã tự sửa thì được giữ nguyên."
+    },
+    "instagram": {
+      "title": "Đăng lên Instagram",
+      "save": "Chạm <b>1 {button}</b>. Trong menu hiện ra, chọn lưu hình: hình bài đăng và hình story nằm cạnh nhau trong ảnh của bạn. Trên điện thoại không có menu đó, cả hai được tải xuống.",
+      "copy": "Chạm <b>2 {button}</b>. Nút này sao chép chú thích, dòng WhatsApp và hashtag, sẵn sàng để dán.",
+      "post": "Bài đăng: trong Instagram, chạm +, rồi Post. Chọn hình bài đăng, dán chữ và chia sẻ.",
+      "story": "Story: chạm +, rồi Story, và chọn hình story. Chạm biểu tượng nhãn dán, chọn \"Link\", dán link WhatsApp của bạn và đặt nhãn dán. Story không cần dán chữ.",
+      "link": "Link WhatsApp của bạn là <code>https://wa.me/</code> và số của bạn kèm mã quốc gia, không có dấu + và không có khoảng trắng. Ví dụ: <code>https://wa.me/84901234567</code>.",
+      "alt": "Không bắt buộc: trước khi chia sẻ bài đăng, mục \"Advanced settings\" rồi \"Accessibility\" của Instagram cho phép bạn mô tả hình cho người không nhìn thấy.",
+      "noImages": "Gợi ý không có hình? Hãy đăng ảnh của bạn và dán chữ.",
+      "never": "Shopfront không bao giờ đăng thay bạn: bạn quyết định những gì được đăng."
+    },
+    "reviews": {
+      "title": "Trả lời đánh giá",
+      "paste": "Trong Google Maps, mở đánh giá và sao chép nội dung. Trong <b>{tab}</b>, dán vào (tên khách có thể bỏ trống) và chạm <b>{button}</b>.",
+      "pick": "Chọn câu trả lời bạn thích, sửa nếu muốn, sao chép rồi dán làm câu trả lời trong Google Maps. Câu trả lời được viết bằng ngôn ngữ của khách, và bạn có thể đọc bằng ngôn ngữ của mình.",
+      "other": "Không câu nào hợp? Chạm <b>{button}</b>. Đánh giá mới sẽ thay đánh giá trước."
+    },
+    "allowance": {
+      "title": "Lượt dùng mỗi ngày",
+      "free": "Shopfront miễn phí, nên mỗi ngày có giới hạn.",
+      "limits": "Mỗi ngày bạn có {reads}, {attempts} (mỗi lần 6 gợi ý), {newImages} và {replies}, cùng với các lần cập nhật chú thích và bản dịch.",
+      "bar": "Thanh ở đầu màn hình cho biết hôm nay còn lại bao nhiêu và giờ mọi thứ được làm mới.",
+      "reset": "Vào giờ đó, giới hạn được làm mới, còn các gợi ý và câu trả lời đánh giá trong ngày rời khỏi màn hình. Hãy lưu những gì bạn muốn giữ trước giờ đó.",
+      "time": "Giờ trên thanh theo giờ điện thoại của bạn: hãy tin giờ đó thay vì một giờ cố định.",
+      "month": "Hình mới còn có ngân sách hằng tháng cho cả ứng dụng. Nếu hết, Shopfront sẽ cho biết khi nào có hình trở lại."
+    },
+    "languages": {
+      "title": "Ngôn ngữ",
+      "switch": "Các chữ ở góc trên bên phải (EN, VI, ID) đổi ngôn ngữ của màn hình.",
+      "captions": "Bài đăng được viết bằng tiếng Anh, và câu trả lời đánh giá bằng ngôn ngữ của khách. Hiển thị bằng ngôn ngữ của bạn là để đọc, không phải để đăng."
+    },
+    "trouble": {
+      "title": "Khi có sự cố",
+      "limit": "\"Bạn đã dùng … lần thử hôm nay\" hoặc dòng tương tự: chờ đến giờ trên thanh.",
+      "pool": "\"Shopfront đã dùng hết lượt viết miễn phí hôm nay\": cả ứng dụng đã dùng hết lượt miễn phí của hôm nay. Có lại vào giờ được hiển thị.",
+      "paused": "\"Tạo hình đang tạm dừng\": hãy thử lại sau vài phút.",
+      "gone": "Doanh nghiệp của bạn biến mất: Safari đã xóa, hoặc đây là điện thoại khác. Hãy đọc lại trang web, và thêm Shopfront vào màn hình chính.",
+      "contact": "Vẫn chưa được? Nhắn {contact} trên WhatsApp."
+    }
   }
 }
