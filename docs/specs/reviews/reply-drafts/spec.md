@@ -126,6 +126,8 @@ is lost.
 
 ### Kept until a new review or 3am
 
+> Changed by `platform/one-daily-reset` (2026-10-26): the day starts at Google's reset, midnight Pacific, not at 3am on the phone's clock.
+
 A trip to Google Maps on a cheap phone can reload the app, so **only the
 current review** is kept on the phone (IndexedDB, as the suggestions): the
 name, the review, its language and translation, the abusive flag, the two

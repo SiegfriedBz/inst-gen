@@ -48,10 +48,10 @@ async function signInAndRead(page: Page) {
   await expect(page.getByRole('tablist')).toBeVisible();
 }
 
-test('paste a review, get two replies, keep them through a reload, lose them at 3am', async ({
+test('paste a review, get two replies, keep them through a reload, lose them at the reset', async ({
   page,
 }) => {
-  await page.clock.install({ time: new Date('2026-10-26T20:00:00+07:00') });
+  await page.clock.install({ time: new Date('2026-10-26T10:00:00+07:00') });
   const sent: string[] = [];
   await page.route('**/api/reviews/reply', async (route) => {
     sent.push(route.request().postData() ?? '');
@@ -85,8 +85,8 @@ test('paste a review, get two replies, keep them through a reload, lose them at 
   await expect(page.getByText(short)).toBeVisible();
   expect(sent).toHaveLength(1);
 
-  // 03:05 the next morning: the tab is empty.
-  await page.clock.setSystemTime(new Date('2026-10-27T03:05:00+07:00'));
+  // 14:05 the same afternoon, past Google's reset: the tab is empty.
+  await page.clock.setSystemTime(new Date('2026-10-26T14:05:00+07:00'));
   await page.reload();
   await page.getByRole('tab', { name: 'Reviews' }).click();
   await expect(page.getByRole('button', { name: 'Write 2 replies' })).toBeVisible();

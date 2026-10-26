@@ -21,7 +21,7 @@ import { post } from './helpers/posts';
 let fetchMock: ReturnType<typeof vi.fn>;
 
 beforeEach(() => {
-  // Today, past 3am: the fixtures' 09:00 attempts are today's.
+  // Today, past the reset (07:00 UTC): the fixtures' 09:00 attempts are today's.
   vi.useFakeTimers({ toFake: ['Date'] });
   vi.setSystemTime(new Date('2026-10-25T12:00:00.000Z'));
   globalThis.indexedDB = new IDBFactory();
@@ -545,6 +545,33 @@ describe("today's attempts", () => {
     ]);
     const text = document.body.textContent ?? '';
     expect(text.indexOf('Streaming in.')).toBeLessThan(text.indexOf('Caption 1.'));
+  });
+
+  test('an attempt made after the reset in an app left open is Attempt 1 of the new day', async () => {
+    await saveBatch(batch(sixPosts));
+    const streamed = post({ id: 'post-1', caption: 'After the reset.' });
+    fetchMock.mockResolvedValue(
+      new Response(
+        new ReadableStream({
+          start(controller) {
+            controller.enqueue(
+              new TextEncoder().encode(encodePostsLine({ type: 'post', index: 0, post: streamed })),
+            );
+          },
+        }),
+        { headers: { 'content-type': 'application/x-ndjson' } },
+      ),
+    );
+    await renderSection();
+    const button = await readyButton();
+    // The next day, past Google's reset (07:00 UTC), with no reload.
+    vi.setSystemTime(new Date('2026-10-26T08:00:00.000Z'));
+    fireEvent.click(button);
+    await screen.findByText('After the reset.');
+    expect(screen.getAllByRole('heading', { name: /^Attempt/ }).map((h) => h.textContent)).toEqual([
+      'Attempt 1',
+    ]);
+    expect(screen.queryByText('Caption 1.')).toBeNull();
   });
 
   test("recent topics include yesterday's", async () => {

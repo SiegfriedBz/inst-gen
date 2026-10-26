@@ -5,7 +5,8 @@ import { REPLY_LIMITS, replyResponseSchema, SCREEN_LOCALES } from './reply';
 
 // The current review and its replies, kept on the phone so a trip to Google
 // Maps never loses them (docs/specs/reviews/reply-drafts, "Kept until a new
-// review or 3am"): one record per owner, gone at 3am on the phone's clock.
+// review or 3am", and docs/specs/platform/one-daily-reset): one record per
+// owner, gone at Google's reset, midnight Pacific.
 // Without IndexedDB nothing is kept.
 
 const edit = z.string().max(REPLY_LIMITS.reply).nullable();
@@ -33,7 +34,7 @@ export async function clearReview(ownerId: string): Promise<void> {
   await db?.delete('reviews', ownerId);
 }
 
-// A record from before today's 3am, or one that no longer fits, is deleted.
+// A record from before today's reset, or one that no longer fits, is deleted.
 export async function loadReview(ownerId: string, now: Date): Promise<ReviewRecord | null> {
   const db = await openStore();
   if (!db) return null;

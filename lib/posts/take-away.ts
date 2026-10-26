@@ -17,7 +17,8 @@ function slug(name: string): string {
 }
 
 // `sen-2026-10-26-attempt-2-suggestion-3-post.jpg`, dated by the attempt's
-// 3am day (docs/specs/posts/suggestions, "Image file names").
+// day (docs/specs/posts/suggestions, "Image file names";
+// docs/specs/platform/one-daily-reset).
 export function imageFileName(
   name: string,
   createdAt: string,

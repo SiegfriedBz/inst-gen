@@ -33,7 +33,8 @@ import { TakeAway } from './take-away';
 
 // "Create your posts" (docs/specs/posts/suggestions): the button that makes
 // an attempt of six suggestions, the suggestions as they stream in, and the
-// attempts made since 3am on the phone's clock, newest on top; anything
+// attempts made since Google's reset (docs/specs/platform/one-daily-reset),
+// newest on top; anything
 // older is cleared when the section loads. Once a plan is saved, its six
 // images are asked for (docs/specs/posts/generate-images) when images are on
 // for this owner.
@@ -297,6 +298,14 @@ export function PostsSection({
   }, [ownerId, tryResume]);
 
   function make() {
+    // An app left open across the reset starts the new day here, so the new
+    // attempt is numbered like the bar counts (docs/specs/platform/one-daily-reset).
+    const from = dayStart(new Date());
+    if (startRef.current && from > startRef.current) {
+      startRef.current = from;
+      setStart(from);
+      void clearBefore(ownerId, from);
+    }
     const run = startPlan({ ownerId, profile, recent: recentPosts(batches) }, onEvent);
     begin(run, { step: 'plan', posts: [] });
   }

@@ -42,7 +42,7 @@ vi.mock('@/lib/posts/image-client', () => ({
 let fetchMock: ReturnType<typeof vi.fn>;
 
 beforeEach(() => {
-  // Today, past 3am: the fixtures' 09:00 attempts are today's.
+  // Today, past the reset (07:00 UTC): the fixtures' 09:00 attempts are today's.
   vi.useFakeTimers({ toFake: ['Date'] });
   vi.setSystemTime(new Date('2026-10-25T12:00:00.000Z'));
   vi.mocked(resumeImages).mockClear();

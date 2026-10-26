@@ -35,7 +35,7 @@ function languageName(code: string, locale: string): string {
 // "Reviews" (docs/specs/reviews/reply-drafts): paste a Google Maps review and
 // the guest's name, get a short and a warmer reply in the guest's language,
 // with translations in the owner's. Only the current review is kept, until a
-// new one or 3am.
+// new one or Google's reset (docs/specs/platform/one-daily-reset).
 // Storage that fails (a full phone) keeps nothing; the tab still works.
 async function keep(work: Promise<void>): Promise<void> {
   try {
@@ -50,8 +50,8 @@ export function ReviewsSection({
 }: {
   ownerId: string;
   profile: Profile;
-  // The tab is showing: a review from before today's 3am goes, even in an app
-  // left open overnight.
+  // The tab is showing: a review from before today's reset goes, even in an
+  // app left open across it.
   active: boolean;
 }) {
   const t = useTranslations('reviews');
