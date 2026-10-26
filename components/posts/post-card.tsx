@@ -3,6 +3,8 @@
 import { useTranslations } from 'next-intl';
 import { type ReactNode, useState } from 'react';
 import { Button } from '@/components/ui/button';
+import { UsageMessage } from '@/components/usage/usage-message';
+import { useAtLimit } from '@/components/usage/usage-provider';
 import type { Flag, Post } from '@/lib/posts/batch';
 import type { PostEdit } from '@/lib/posts/edit';
 import { PostEditor } from './post-editor';
@@ -53,6 +55,7 @@ export function PostCard({
     state?.kind === 'ready' ||
     (state?.kind === 'failed' && state.code !== 'offline' && state.code !== 'images_off');
   const remaking = state?.kind === 'making' || (state?.kind === 'ready' && !!state.making);
+  const newImageLimit = useAtLimit('newImages');
   return (
     <article className="flex flex-col gap-3 rounded-control border border-edge bg-field px-4 py-3">
       {image && <PostImage state={image.state} altText={post.altText} onRetry={image.onRetry} />}
@@ -100,9 +103,14 @@ export function PostCard({
             </button>
           )}
           {image?.onNewImage && canRemake && (
-            <NewImageLink onMake={image.onNewImage} disabled={remaking} />
+            <NewImageLink onMake={image.onNewImage} disabled={remaking || newImageLimit !== null} />
           )}
         </div>
+      )}
+      {!editing && image?.onNewImage && canRemake && newImageLimit && (
+        <p className="text-[13px] text-error">
+          <UsageMessage code={newImageLimit} action="newImages" />
+        </p>
       )}
       {onRewrite && (
         <Button type="button" onClick={onRewrite} disabled={busy}>

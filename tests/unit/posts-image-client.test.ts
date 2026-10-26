@@ -80,6 +80,8 @@ describe("a batch's images from the browser", () => {
       postId: 'post-3',
       imagePrompt: 'Scene 3 at dusk',
       scene: 'detail',
+      // No image on the phone yet: covered by its attempt.
+      first: true,
     });
     waiting.forEach((resolve, i) => {
       resolve(ok(`post-${i + 1}`));

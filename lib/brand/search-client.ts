@@ -1,3 +1,4 @@
+import { noteUsage } from '@/lib/usage/client';
 import { normaliseText } from './normalise';
 import { LIMITS, type Profile } from './profile';
 import { SEARCH_ERROR_CODES, type SearchErrorCode } from './search/errors';
@@ -123,5 +124,7 @@ export async function requestSearch(
   } catch (error) {
     if (deps.signal?.aborted) throw error;
     return { kind: 'error', code: 'search_failed' };
+  } finally {
+    noteUsage();
   }
 }

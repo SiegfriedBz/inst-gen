@@ -285,5 +285,25 @@
       "invalid_request": "Terjadi kesalahan saat menulis balasan. Coba lagi.",
       "offline": "Anda sedang offline. Coba lagi saat kembali online."
     }
+  },
+  "usage": {
+    "left": "Sisa hari ini: {items}",
+    "resets": "Direset pukul {time}",
+    "reads": "{count} kali baca situs",
+    "attempts": "{count} percobaan",
+    "newImages": "{count} gambar baru",
+    "replies": "{count} balasan",
+    "developer": "Tanpa batas harian (pengembang)",
+    "poolEmpty": "Shopfront sudah memakai jatah menulis gratis hari ini. Kembali pukul {time}.",
+    "imagesMonth": "Tidak ada gambar baru sampai {date}.",
+    "unavailable": "Gambar dijeda sebentar. Coba lagi beberapa menit lagi.",
+    "limit": {
+      "attempts": "Anda sudah membuat {limit} percobaan hari ini. Bisa lagi pukul {time}.",
+      "reads": "Anda sudah membaca situs {limit} kali hari ini. Bisa lagi pukul {time}.",
+      "newImages": "Anda sudah membuat {limit} gambar baru hari ini. Bisa lagi pukul {time}.",
+      "replies": "Anda sudah menulis {limit} balasan hari ini. Bisa lagi pukul {time}.",
+      "rewrites": "Teks sudah diperbarui {limit} kali hari ini. Bisa lagi pukul {time}.",
+      "translations": "{limit} terjemahan hari ini sudah habis. Bisa lagi pukul {time}."
+    }
   }
 }

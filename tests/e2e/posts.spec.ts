@@ -8,7 +8,7 @@ const SEN = 'test-lotus-river-sen';
 
 test.use({ locale: 'en-US' });
 
-// Sen is on IMAGE_OWNERS: no test here may reach Google with the fake key.
+// Images are on for every owner: no test here may reach Google with the fake key.
 test.beforeEach(async ({ page }) => {
   await page.route('**/api/posts/image', (route) =>
     route.fulfill({ status: 403, json: { error: 'images_off' } }),

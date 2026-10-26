@@ -18,6 +18,9 @@ export const imageBodySchema = z.object({
   scene: z.enum(SCENES),
   // The owner's words about a new image (docs/specs/posts/editor-download).
   hint: z.string().max(IMAGE_HINT_CHARS).optional(),
+  // An attempt's first image (or its "Try again"), or a new one
+  // (docs/specs/platform/usage-counters, "Images for every owner").
+  first: z.boolean().default(true),
 });
 export type ImageBody = z.infer<typeof imageBodySchema>;
 

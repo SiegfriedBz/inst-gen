@@ -285,5 +285,25 @@
       "invalid_request": "Something went wrong while writing your replies. Try again.",
       "offline": "You're offline. Try again when you're back."
     }
+  },
+  "usage": {
+    "left": "Left today: {items}",
+    "resets": "Resets at {time}",
+    "reads": "{count, plural, one {# website read} other {# website reads}}",
+    "attempts": "{count, plural, one {# attempt} other {# attempts}}",
+    "newImages": "{count, plural, one {# new image} other {# new images}}",
+    "replies": "{count, plural, one {# reply} other {# replies}}",
+    "developer": "No daily limits (developer)",
+    "poolEmpty": "Shopfront has used today's free writing. Back at {time}.",
+    "imagesMonth": "No new images until {date}.",
+    "unavailable": "Images are paused for a moment. Try again in a few minutes.",
+    "limit": {
+      "attempts": "You've made today's {limit} attempts. More at {time}.",
+      "reads": "You've read your website {limit} times today. Again at {time}.",
+      "newImages": "You've made today's {limit} new images. More at {time}.",
+      "replies": "You've written today's {limit} replies. More at {time}.",
+      "rewrites": "Captions were updated {limit} times today. Again at {time}.",
+      "translations": "Today's {limit} translations are used up. More at {time}."
+    }
   }
 }

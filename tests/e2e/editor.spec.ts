@@ -7,7 +7,7 @@ import { fulfilPosts, postsBody } from './helpers/posts-stream';
 
 // The editor and saving to the phone (docs/specs/posts/editor-download), at
 // the phone viewport, with every route mocked. Test values from
-// playwright.config.ts; not secrets. Sen is on IMAGE_OWNERS.
+// playwright.config.ts; not secrets.
 const SEN = 'test-lotus-river-sen';
 const BASE = 'http://localhost:3000';
 

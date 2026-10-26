@@ -285,5 +285,25 @@
       "invalid_request": "Đã có lỗi khi viết câu trả lời. Hãy thử lại.",
       "offline": "Bạn đang ngoại tuyến. Hãy thử lại khi có mạng."
     }
+  },
+  "usage": {
+    "left": "Còn lại hôm nay: {items}",
+    "resets": "Làm mới lúc {time}",
+    "reads": "{count} lần đọc trang web",
+    "attempts": "{count} lần thử",
+    "newImages": "{count} hình mới",
+    "replies": "{count} câu trả lời",
+    "developer": "Không giới hạn hằng ngày (nhà phát triển)",
+    "poolEmpty": "Shopfront đã dùng hết lượt viết miễn phí hôm nay. Quay lại lúc {time}.",
+    "imagesMonth": "Không có hình mới cho đến {date}.",
+    "unavailable": "Tạo hình đang tạm dừng. Hãy thử lại sau vài phút.",
+    "limit": {
+      "attempts": "Bạn đã dùng {limit} lần thử hôm nay. Có thêm lúc {time}.",
+      "reads": "Bạn đã đọc trang web {limit} lần hôm nay. Đọc lại được lúc {time}.",
+      "newImages": "Bạn đã tạo {limit} hình mới hôm nay. Có thêm lúc {time}.",
+      "replies": "Bạn đã viết {limit} câu trả lời hôm nay. Có thêm lúc {time}.",
+      "rewrites": "Chú thích đã được cập nhật {limit} lần hôm nay. Cập nhật lại được lúc {time}.",
+      "translations": "Đã dùng hết {limit} bản dịch hôm nay. Có thêm lúc {time}."
+    }
   }
 }

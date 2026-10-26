@@ -15,6 +15,9 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import { UsageBar } from '@/components/usage/usage-bar';
+import { UsageMessage } from '@/components/usage/usage-message';
+import { useAtLimit } from '@/components/usage/usage-provider';
 import { lastReadLabel } from '@/lib/brand/display';
 import { changedUnsourced, countOwnerEdits, type SectionId } from '@/lib/brand/edit';
 import type { BrandErrorCode, PartialProfile, Profile } from '@/lib/brand/profile';
@@ -31,6 +34,7 @@ import {
 import { holdWakeLock } from '@/lib/brand/wake-lock';
 import { ctaFor } from '@/lib/posts/input';
 import { applyCta } from '@/lib/posts/store';
+import { isUsageCode, type UsageCode } from '@/lib/usage/codes';
 import { PostsSection } from '../posts/posts-section';
 import { BrandPanel, type SearchState } from './panel';
 import { Reading } from './reading';
@@ -66,7 +70,15 @@ export function BrandHome({ ownerId, imagesOn }: { ownerId: string; imagesOn: bo
   const [saved, setSaved] = useState<Profile | null>(null);
   const [ownerEdited, setOwnerEdited] = useState<string[]>([]);
   const [url, setUrl] = useState('');
-  const [error, setError] = useState<BrandErrorCode | 'offline' | null>(null);
+  const [error, setError] = useState<BrandErrorCode | UsageCode | 'offline' | null>(null);
+  const readLimit = useAtLimit('reads');
+  // The server's refusal already says it; the line under the button doesn't
+  // repeat it.
+  const readLimitLine = readLimit && !isUsageCode(error) && (
+    <p className="mt-2 text-[13px] text-error">
+      <UsageMessage code={readLimit} action="reads" />
+    </p>
+  );
   const [notice, setNotice] = useState<Notice>(null);
   const [editing, setEditing] = useState<SectionId | null>(null);
   const [confirm, setConfirm] = useState<'reread' | 'forget' | null>(null);
@@ -303,7 +315,7 @@ export function BrandHome({ ownerId, imagesOn }: { ownerId: string; imagesOn: bo
   }
 
   const edits = saved ? countOwnerEdits(saved, ownerEdited) : 0;
-  const message = (text: string, tone: 'error' | 'note') => (
+  const message = (text: React.ReactNode, tone: 'error' | 'note') => (
     <p
       role={tone === 'error' ? 'alert' : 'note'}
       className={
@@ -321,7 +333,11 @@ export function BrandHome({ ownerId, imagesOn }: { ownerId: string; imagesOn: bo
       <p aria-live="polite" className="sr-only">
         {announce}
       </p>
-      {error && message(t(`errors.${error}`), 'error')}
+      {error &&
+        message(
+          isUsageCode(error) ? <UsageMessage code={error} action="reads" /> : t(`errors.${error}`),
+          'error',
+        )}
       {notice && message(t(`home.${notice}`), 'note')}
 
       {view.kind === 'empty' && (
@@ -340,9 +356,10 @@ export function BrandHome({ ownerId, imagesOn }: { ownerId: string; imagesOn: bo
             value={url}
             onChange={(e) => setUrl(e.target.value)}
           />
-          <Button type="submit" className="mt-3">
+          <Button type="submit" className="mt-3" disabled={readLimit !== null}>
             {t('home.read')}
           </Button>
+          {readLimitLine}
           <p className="mt-2 text-xs text-ink-secondary">{t('home.readHint')}</p>
         </form>
       )}
@@ -361,6 +378,7 @@ export function BrandHome({ ownerId, imagesOn }: { ownerId: string; imagesOn: bo
             <TabsTrigger value="posts">{home('tabs.posts')}</TabsTrigger>
             <TabsTrigger value="reviews">{home('tabs.reviews')}</TabsTrigger>
           </TabsList>
+          <UsageBar tab={tab} />
           <TabsContent value="business" hidden={tab !== 'business'} className="mt-5">
             <p className="mb-4 text-[15px] leading-normal text-ink-secondary">
               {t('home.intro', { name: saved.name.value })}
@@ -380,10 +398,12 @@ export function BrandHome({ ownerId, imagesOn }: { ownerId: string; imagesOn: bo
               <button
                 type="button"
                 onClick={() => (edits > 0 ? setConfirm('reread') : reread())}
-                className="press mt-2 inline-flex h-12 w-full items-center justify-center rounded-control border border-edge px-4 text-[15px] font-medium text-ink outline-none focus-visible:ring-2 focus-visible:ring-accent"
+                disabled={readLimit !== null}
+                className="press mt-2 inline-flex h-12 w-full items-center justify-center rounded-control border border-edge px-4 text-[15px] font-medium text-ink outline-none focus-visible:ring-2 focus-visible:ring-accent disabled:opacity-60"
               >
                 {t('home.reread')}
               </button>
+              {readLimitLine}
               <button
                 type="button"
                 onClick={() => setConfirm('forget')}

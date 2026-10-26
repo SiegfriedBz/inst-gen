@@ -1,5 +1,7 @@
 import type { Profile } from '@/lib/brand/profile';
 import { countryOf } from '@/lib/brand/search-client';
+import { noteUsage } from '@/lib/usage/client';
+import { isUsageCode, type UsageCode } from '@/lib/usage/codes';
 import {
   REPLY_ERROR_CODES,
   type ReplyBody,
@@ -15,7 +17,7 @@ import {
 
 export type RepliesResult =
   | { ok: true; answer: ReplyResponse }
-  | { ok: false; code: ReplyErrorCode | 'offline' | 'signedOut' };
+  | { ok: false; code: ReplyErrorCode | UsageCode | 'offline' | 'signedOut' };
 
 type Deps = { fetch: typeof fetch };
 
@@ -63,12 +65,14 @@ export async function requestReplies(
   } catch {
     return { ok: false, code: 'offline' };
   }
+  // Settled: the usage bar reads again.
+  noteUsage();
   if (response.status === 401) return { ok: false, code: 'signedOut' };
   try {
     const json: unknown = await response.json();
     if (!response.ok) {
       const code = json && typeof json === 'object' ? (json as { error?: unknown }).error : null;
-      return { ok: false, code: isErrorCode(code) ? code : 'model_failed' };
+      return { ok: false, code: isErrorCode(code) || isUsageCode(code) ? code : 'model_failed' };
     }
     return { ok: true, answer: replyResponseSchema.parse(json) };
   } catch {

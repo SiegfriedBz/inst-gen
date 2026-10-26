@@ -4,7 +4,7 @@ import { fulfilRead, streamBody } from './helpers/brand-stream';
 import { fulfilImages } from './helpers/images';
 import { fulfilPosts, postsBody } from './helpers/posts-stream';
 
-// Test values from playwright.config.ts; not secrets. Sen is on IMAGE_OWNERS.
+// Test values from playwright.config.ts; not secrets.
 const SEN = 'test-lotus-river-sen';
 
 test.use({ locale: 'en-US' });

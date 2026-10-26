@@ -65,10 +65,12 @@ index of the code).
 | `components/` | Shared components; `components/ui/` holds the shadcn/ui ones (decision 0007) |
 | `components/brand/` | The home screen: its three tabs, the brand read and panel (reading state, sections, edit forms) |
 | `components/reviews/` | The Reviews tab: the pasted review and its two reply cards |
+| `components/usage/` | The usage bar and the lines shown at a limit |
 | `lib/pilot/` | The pilot gate: passphrases, signed session, gate decision |
 | `lib/brand/` | The brand read: safe fetching, extraction, checks, the profile schema, fixtures and eval scoring; in the browser, the phone's store (IndexedDB), the read client and the owner's edits |
 | `lib/reviews/` | Review replies: the request and answer, the prompt and code's checks, the route's run; in the browser, the name filled in, the current review kept on the phone and the request client |
 | `lib/runs/` | Decision 0005's run record, kept on the phone, and its resume rule |
+| `lib/usage/` | Usage counters: the Pacific day, the limits, the store (Upstash Redis or memory), the meter the routes call; in the browser, the usage answer and its bar |
 | `lib/ai/` | The text-model and image-model modules (the only importers of `@ai-sdk/google`) and the replayer for recorded calls |
 | `proxy.ts` | Runs the gate on every request |
 | `messages/` | next-intl message files, `en.json`, `id.json` and `vi.json`; every visible string lives here |

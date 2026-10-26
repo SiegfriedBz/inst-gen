@@ -32,7 +32,6 @@ const request = (body: unknown) =>
   });
 
 function allowed() {
-  vi.stubEnv('IMAGE_OWNERS', 'sen,svarga');
   vi.stubEnv('GOOGLE_IMAGE_API_KEY', 'k');
 }
 
@@ -58,16 +57,7 @@ describe('POST /api/posts/image', () => {
     expect(await res.json()).toEqual({ error: 'invalid_request' });
   });
 
-  test('an owner not listed answers 403 images_off', async () => {
-    allowed();
-    owner.id = 'dev';
-    const response = await route.POST(request(good));
-    expect(response.status).toBe(403);
-    expect(await response.json()).toEqual({ error: 'images_off' });
-  });
-
   test('no key answers 403 images_off', async () => {
-    vi.stubEnv('IMAGE_OWNERS', 'sen');
     vi.stubEnv('GOOGLE_IMAGE_API_KEY', '');
     vi.spyOn(console, 'error').mockImplementation(() => {});
     const response = await route.POST(request(good));

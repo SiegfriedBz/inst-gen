@@ -4,6 +4,8 @@ import { readPostsLines } from '@/lib/posts/stream';
 import { svargaProfile } from './helpers/brand';
 import { planRecording, post } from './helpers/posts';
 
+// The developer: no owner limits get in the way (docs/specs/platform/usage-counters).
+vi.mock('@/lib/pilot/current-owner', () => ({ getCurrentOwner: async () => 'dev' }));
 vi.mock('@/lib/brand/deps', () => ({
   defaultPostsDeps: () => ({
     model: replayTextModel(

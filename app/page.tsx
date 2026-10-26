@@ -3,6 +3,7 @@ import { BrandHome } from '@/components/brand/brand-home';
 import { LanguageSwitch } from '@/components/language-switch';
 import { SignedInNote, Welcome } from '@/components/screen-text';
 import { ShopfrontMark } from '@/components/shopfront-mark';
+import { UsageProvider } from '@/components/usage/usage-provider';
 import { displayName } from '@/lib/pilot/config';
 import { getCurrentOwner } from '@/lib/pilot/current-owner';
 import { imagesOn } from '@/lib/posts/image-access';
@@ -23,7 +24,9 @@ export default async function HomePage() {
         </div>
       </header>
       <Welcome name={name} />
-      <BrandHome ownerId={ownerId} imagesOn={imagesOn(ownerId)} />
+      <UsageProvider>
+        <BrandHome ownerId={ownerId} imagesOn={imagesOn()} />
+      </UsageProvider>
       <SignedInNote />
     </main>
   );
