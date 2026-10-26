@@ -33,6 +33,11 @@
   Chromium (a scratch config, not committed) and the test passphrases set on
   the command line: the container's own `PILOT_PASSPHRASES` and
   `SESSION_SECRET` take precedence in `playwright.config.ts`. 44 passed.
+- 2026-10-26: Final review (a fresh reviewer): no critical or important
+  finding. Re-graded one minor as important: a page left open past the reset
+  kept its buttons off until a reload. The bar now reads again a second
+  after `resetsAt` (a minute when the phone's clock is already past it).
+  Seven minors deferred, listed in the PR.
 
 ## RED
 
@@ -50,7 +55,7 @@ the limits: `Tests  16 failed | 13 passed (29)`, then
 
 ```
  Test Files  96 passed (96)
-      Tests  1095 passed (1095)
+      Tests  1096 passed (1096)
 ```
 
 (`pnpm check`.) Playwright: `44 passed (53.5s)`.

@@ -33,6 +33,16 @@ export function UsageProvider({ children }: { children: ReactNode }) {
       document.removeEventListener('visibilitychange', onVisible);
     };
   }, [refresh]);
+  // A page left open past the reset reads again when the counts come back,
+  // a second after; a reset already past (a phone clock ahead) waits a minute,
+  // so a wrong clock never loops.
+  const resetsAt = usage?.resetsAt;
+  useEffect(() => {
+    if (!resetsAt) return;
+    const wait = new Date(resetsAt).getTime() - Date.now();
+    const timer = setTimeout(refresh, wait > 0 ? wait + 1_000 : 60_000);
+    return () => clearTimeout(timer);
+  }, [resetsAt, refresh]);
   return <UsageContext value={{ usage, refresh }}>{children}</UsageContext>;
 }
 

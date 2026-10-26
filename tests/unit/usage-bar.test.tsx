@@ -123,6 +123,18 @@ describe('the usage bar', () => {
     await waitFor(() => expect(line().textContent).toContain('2 attempts'));
   });
 
+  test('a page left open past the reset reads the bar again', async () => {
+    // The answer says the counts come back in 100 ms.
+    fetchMock.mockImplementation(async () =>
+      Response.json({ ...base, resetsAt: new Date(Date.now() + 100).toISOString() }),
+    );
+    show('posts');
+    await waitFor(() => expect(fetchMock).toHaveBeenCalledTimes(1));
+    await waitFor(() => expect(fetchMock.mock.calls.length).toBeGreaterThanOrEqual(2), {
+      timeout: 3000,
+    });
+  });
+
   test('in Vietnamese', async () => {
     answer();
     show('posts', 'vi');
