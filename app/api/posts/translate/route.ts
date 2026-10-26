@@ -6,6 +6,7 @@ import {
   translateBodySchema,
 } from '@/lib/posts/translate';
 import { runTranslate } from '@/lib/posts/translate-run';
+import { GIVE_BACK_CODES, giveBackUsage, takeUsage, usageRefusal } from '@/lib/usage/meter';
 
 // Translates one caption for the owner to read in their own language
 // (docs/specs/posts/editor-download). Reached only with a valid session:
@@ -29,8 +30,11 @@ export async function POST(request: Request): Promise<Response> {
   } catch {
     return fail('invalid_request');
   }
+  const usage = await takeUsage({ ownerId, action: 'translations' });
+  if (!usage.ok) return usageRefusal(usage.code, usage.resetsAt);
   const out = await runTranslate(body, ownerId, defaultTranslateDeps(), request.signal);
   if (out.ok) return Response.json(out.response, { headers });
+  if (GIVE_BACK_CODES.has(out.code)) await giveBackUsage(usage.ticket);
   // Nobody is left to read an answer.
   if (out.code === 'aborted') return new Response(null, { status: 499, headers });
   return fail(out.code);

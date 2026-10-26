@@ -9,6 +9,7 @@ import { fakeImageModel, tallPng } from './helpers/images';
 
 const body: ImageBody = {
   postId: 'post-3',
+  first: true,
   imagePrompt: 'Warm oil poured into an open palm beside a lantern at dusk',
   scene: 'detail',
 };

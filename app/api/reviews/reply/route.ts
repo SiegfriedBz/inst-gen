@@ -2,6 +2,7 @@ import { defaultReplyDeps } from '@/lib/brand/deps';
 import { getCurrentOwner } from '@/lib/pilot/current-owner';
 import { REPLY_ERROR_STATUS, type ReplyErrorCode, replyBodySchema } from '@/lib/reviews/reply';
 import { runReply } from '@/lib/reviews/reply-run';
+import { GIVE_BACK_CODES, giveBackUsage, takeUsage, usageRefusal } from '@/lib/usage/meter';
 
 // Writes two replies to a Google Maps review (docs/specs/reviews/reply-drafts).
 // Reached only with a valid session: proxy.ts answers 401 otherwise.
@@ -24,8 +25,11 @@ export async function POST(request: Request): Promise<Response> {
   } catch {
     return fail('invalid_request');
   }
+  const usage = await takeUsage({ ownerId, action: 'replies' });
+  if (!usage.ok) return usageRefusal(usage.code, usage.resetsAt);
   const out = await runReply(body, ownerId, defaultReplyDeps(), request.signal);
   if (out.ok) return Response.json(out.response, { headers });
+  if (GIVE_BACK_CODES.has(out.code)) await giveBackUsage(usage.ticket);
   // Nobody is left to read an answer.
   if (out.code === 'aborted') return new Response(null, { status: 499, headers });
   return fail(out.code);

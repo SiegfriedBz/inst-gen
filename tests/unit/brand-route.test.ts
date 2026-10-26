@@ -24,6 +24,8 @@ const final = {
   visualStyle: null,
 };
 
+// The developer: no owner limits get in the way (docs/specs/platform/usage-counters).
+vi.mock('@/lib/pilot/current-owner', () => ({ getCurrentOwner: async () => 'dev' }));
 vi.mock('@/lib/brand/deps', () => ({
   defaultDeps: () => ({
     transport: site.transport,

@@ -23,7 +23,7 @@ export default async function HomePage() {
         </div>
       </header>
       <Welcome name={name} />
-      <BrandHome ownerId={ownerId} imagesOn={imagesOn(ownerId)} />
+      <BrandHome ownerId={ownerId} imagesOn={imagesOn()} />
       <SignedInNote />
     </main>
   );
