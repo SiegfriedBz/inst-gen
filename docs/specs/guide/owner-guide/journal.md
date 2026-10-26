@@ -40,6 +40,14 @@
   on white, no buttons, links or switch, each section whole on its page,
   Vietnamese diacritics right. The contact line is absent: `.env.local` has
   no `GUIDE_CONTACT` yet.
+- 2026-10-26: The print rules sit at the end of `globals.css`, in one block:
+  `tokens-contrast.test.ts` reads the dark tokens from everything between
+  the dark `@media` and `@theme`, and a print `:root` there failed it; last
+  in the file, the print rule also beats the fade-in without `!important`.
+- 2026-10-26: `posts-fixtures-replay.test.ts`'s replays get a 20 s timeout:
+  karsa-spa takes about 3 s alone, on `develop` too, and passed 5 s under the
+  full suite once this branch added a test file. Not a change in speed: the
+  same 2.9 to 3.0 s on both branches.
 
 ## RED
 
@@ -91,4 +99,12 @@ Task 3, `CI=1 pnpm test:e2e tests/e2e/guide.spec.ts`, and `pnpm guide:pdf`:
 .superpowers/guide/shopfront-guide-en.pdf: 4 pages
 .superpowers/guide/shopfront-guide-id.pdf: 4 pages
 .superpowers/guide/shopfront-guide-vi.pdf: 4 pages
+```
+
+Task 4, `pnpm check` and `CI=1 pnpm test:e2e`:
+
+```
+ Test Files  97 passed (97)
+      Tests  1113 passed (1113)
+  51 passed (23.5s)
 ```
