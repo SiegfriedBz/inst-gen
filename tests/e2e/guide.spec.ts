@@ -91,6 +91,12 @@ test('prints plain, even in dark mode', async ({ page }) => {
   const colours = await page.evaluate(() => ({
     page: getComputedStyle(document.body).backgroundColor,
     heading: getComputedStyle(document.querySelector('h1') as Element).color,
+    // The page's fade-in would freeze at its first, invisible frame on paper.
+    animation: getComputedStyle(document.querySelector('main') as Element).animationName,
   }));
-  expect(colours).toEqual({ page: 'rgb(255, 255, 255)', heading: 'rgb(0, 0, 0)' });
+  expect(colours).toEqual({
+    page: 'rgb(255, 255, 255)',
+    heading: 'rgb(0, 0, 0)',
+    animation: 'none',
+  });
 });

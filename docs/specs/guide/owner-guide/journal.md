@@ -29,6 +29,17 @@
 - 2026-10-26: `[WebServer] Error: ENVIRONMENT_FALLBACK` in the e2e log is
   next-intl's warning about a missing time zone; it shows before this work
   too (Task 2's RED run).
+- 2026-10-26: The first `pnpm guide:pdf` gave blank pages: `main`'s fade-in
+  (`page-in`, from opacity 0) is frozen at its first frame in print, so a
+  phone's print would be blank too. Print now turns the animation off, and
+  the e2e print check asserts it.
+- 2026-10-26: Vietnamese read "Sửa chữ sửa chữ…" (the button's name, then the
+  same verb). The edit line now says "Tap {button} to change…" in all three
+  languages.
+- 2026-10-26: The three PDFs, looked at page by page: 4 A4 pages each, black
+  on white, no buttons, links or switch, each section whole on its page,
+  Vietnamese diacritics right. The contact line is absent: `.env.local` has
+  no `GUIDE_CONTACT` yet.
 
 ## RED
 
@@ -47,6 +58,14 @@ Task 2, `CI=1 pnpm test:e2e tests/e2e/guide.spec.ts`:
   1 passed (2.3m)
 ```
 
+Task 3, `CI=1 pnpm test:e2e tests/e2e/guide.spec.ts -g "prints plain"`:
+
+```
+    -   "animation": "none",
+    +   "animation": "page-in",
+  1 failed
+```
+
 ("the guide is private" passes before the page exists: the gate already
 sends every path without a session to `/enter`.)
 
@@ -63,4 +82,13 @@ Task 2, `CI=1 pnpm test:e2e tests/e2e/guide.spec.ts tests/e2e/home-tabs.spec.ts 
 
 ```
   20 passed (18.8s)
+```
+
+Task 3, `CI=1 pnpm test:e2e tests/e2e/guide.spec.ts`, and `pnpm guide:pdf`:
+
+```
+  7 passed (16.7s)
+.superpowers/guide/shopfront-guide-en.pdf: 4 pages
+.superpowers/guide/shopfront-guide-id.pdf: 4 pages
+.superpowers/guide/shopfront-guide-vi.pdf: 4 pages
 ```

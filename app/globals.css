@@ -47,6 +47,11 @@
     --field-muted: #ffffff;
     --accent: #000000;
   }
+
+  /* Print freezes animations at their first frame: the fade-in's is blank. */
+  main {
+    animation: none !important;
+  }
 }
 
 @theme inline {
