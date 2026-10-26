@@ -4,9 +4,10 @@ import { afterAll, beforeEach, describe, expect, test } from 'vitest';
 import { forgetBrand, resetStoreForTests } from '@/lib/brand/store';
 import { clearReview, loadReview, type ReviewRecord, saveReview } from '@/lib/reviews/store';
 
-// Only the current review, kept until a new one or 3am
-// (docs/specs/reviews/reply-drafts, "Kept until a new review or 3am"). The
-// phone in Da Nang: local times below are the phone's clock.
+// Only the current review, kept until a new one or Google's reset, 14:00 in
+// Da Nang in US summer time (docs/specs/reviews/reply-drafts, "Kept until a
+// new review or 3am", and docs/specs/platform/one-daily-reset). The phone in
+// Da Nang: local times below are the phone's clock.
 const zone = process.env.TZ;
 process.env.TZ = 'Asia/Ho_Chi_Minh';
 afterAll(() => {
@@ -61,10 +62,10 @@ describe('the current review', () => {
     expect(await loadReview('sen', local(26, 23))).toBeNull();
   });
 
-  test('stays until 3am, then is gone for good', async () => {
+  test('stays until the reset, then is gone for good', async () => {
     await saveReview(record());
-    expect(await loadReview('sen', local(27, 2, 59))).not.toBeNull();
-    expect(await loadReview('sen', local(27, 3))).toBeNull();
+    expect(await loadReview('sen', local(27, 13, 59))).not.toBeNull();
+    expect(await loadReview('sen', local(27, 14))).toBeNull();
     // Deleted, not just hidden.
     expect(await loadReview('sen', local(26, 23))).toBeNull();
   });

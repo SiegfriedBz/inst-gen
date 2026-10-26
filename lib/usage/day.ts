@@ -43,6 +43,13 @@ export function usageDay(now: Date): string {
   return `${w.year}-${pad(w.month)}-${pad(w.day)}`;
 }
 
+// The day's start for the screen too (docs/specs/platform/one-daily-reset):
+// suggestions and the review draft go at the same moment the counts come back.
+export function lastReset(now: Date): Date {
+  const w = wallClock(now.getTime());
+  return zonedMidnight(w.year, w.month, w.day);
+}
+
 export function nextReset(now: Date): Date {
   const w = wallClock(now.getTime());
   // Date.UTC rolls the 32nd over into the next month.

@@ -298,7 +298,7 @@ describe('the replies', () => {
     expect(fetchMock).not.toHaveBeenCalled();
   });
 
-  test('opening the tab after 3am empties it, even with the app left open overnight', async () => {
+  test('opening the tab after the reset empties it, even with the app left open', async () => {
     await saveReview({
       ownerId: 'sen',
       name: 'Anna K.',
@@ -311,7 +311,7 @@ describe('the replies', () => {
     const view = render(tab('vi', true));
     expect(await screen.findByText('Thank you, Anna K.! 🙏 Hope to see you again 🪷')).toBeTruthy();
     view.rerender(tab('vi', false));
-    // The next morning, with no reload.
+    // The next day, past the reset (07:00 UTC), with no reload.
     vi.setSystemTime(new Date('2026-10-26T12:00:00.000Z'));
     view.rerender(tab('vi', true));
     expect(await screen.findByText(/Got a new review on Google Maps\?/)).toBeTruthy();

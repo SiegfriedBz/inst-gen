@@ -1,5 +1,5 @@
 import { describe, expect, test } from 'vitest';
-import { nextMonth, nextReset, usageDay, usageMonth } from '@/lib/usage/day';
+import { lastReset, nextMonth, nextReset, usageDay, usageMonth } from '@/lib/usage/day';
 
 // The owner's day for counts ends at midnight Pacific, whatever the phone's
 // clock (docs/specs/platform/usage-counters, "The owner's day").
@@ -30,6 +30,27 @@ describe('the Pacific day', () => {
     );
     expect(nextReset(new Date('2026-11-01T12:00:00Z')).toISOString()).toBe(
       '2026-11-02T08:00:00.000Z',
+    );
+  });
+
+  test('lastReset is the latest midnight Pacific, from the instant itself', () => {
+    expect(lastReset(new Date('2026-11-15T07:59:00Z')).toISOString()).toBe(
+      '2026-11-14T08:00:00.000Z',
+    );
+    expect(lastReset(new Date('2026-11-15T08:00:00Z')).toISOString()).toBe(
+      '2026-11-15T08:00:00.000Z',
+    );
+    expect(lastReset(new Date('2026-07-15T20:00:00Z')).toISOString()).toBe(
+      '2026-07-15T07:00:00.000Z',
+    );
+  });
+
+  test('lastReset on the day the US clocks fall back is midnight PDT', () => {
+    expect(lastReset(new Date('2026-11-01T08:30:00Z')).toISOString()).toBe(
+      '2026-11-01T07:00:00.000Z',
+    );
+    expect(lastReset(new Date('2026-11-01T12:00:00Z')).toISOString()).toBe(
+      '2026-11-01T07:00:00.000Z',
     );
   });
 });
