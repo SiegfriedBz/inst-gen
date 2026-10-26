@@ -61,7 +61,7 @@ for (const slug of slugs) {
     const outcomes = await Promise.all(
       posts.map((post) =>
         makePostImage(
-          { postId: post.id, imagePrompt: post.imagePrompt, scene: post.scene },
+          { postId: post.id, imagePrompt: post.imagePrompt, scene: post.scene, first: true },
           'eval',
           { model, log: (entry) => logs.push(entry) },
           new AbortController().signal,

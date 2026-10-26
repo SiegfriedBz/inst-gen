@@ -5,7 +5,7 @@ export default {
     'scope-enum': [
       2,
       'always',
-      ['harness', 'docs', 'skills', 'ci', 'deps', 'web', 'brand', 'posts'],
+      ['harness', 'docs', 'skills', 'ci', 'deps', 'web', 'brand', 'posts', 'reviews'],
     ],
   },
 };

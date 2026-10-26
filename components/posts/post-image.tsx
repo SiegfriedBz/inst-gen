@@ -7,8 +7,10 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Sheet, SheetContent, SheetTitle } from '@/components/ui/sheet';
+import { UsageMessage } from '@/components/usage/usage-message';
 import { IMAGE_HINT_CHARS, type ImageErrorCode } from '@/lib/posts/image';
 import type { SavedImage } from '@/lib/posts/image-store';
+import { isUsageCode, type UsageCode } from '@/lib/usage/codes';
 import { useObjectUrl } from './object-url';
 
 // One suggestion's image on its card (docs/specs/posts/generate-images, "On
@@ -18,10 +20,12 @@ import { useObjectUrl } from './object-url';
 // (docs/specs/posts/editor-download, "A new image"); it and "See the story
 // image" are links the card places (docs/specs/posts/suggestions).
 
-type ImageFailure = ImageErrorCode | 'no_space' | 'offline';
+type ImageFailure = ImageErrorCode | UsageCode | 'no_space' | 'offline';
 
 export type ImageState =
   | { kind: 'off' }
+  // The image month is full (docs/specs/platform/usage-counters).
+  | { kind: 'month' }
   | { kind: 'none' }
   | { kind: 'making' }
   // `making` while a new image is made; `failure` when it couldn't be.
@@ -115,7 +119,11 @@ function Ready({
           </p>
         )}
       </div>
-      {failure && <p className="mt-2 text-[13px] text-error">{t(`errors.${failure}`)}</p>}
+      {failure && (
+        <p className="mt-2 text-[13px] text-error">
+          <FailureText code={failure} />
+        </p>
+      )}
     </>
   );
 }
@@ -166,6 +174,13 @@ export function PostImage({
       <Ready image={state.image} altText={altText} making={state.making} failure={state.failure} />
     );
   }
+  if (state.kind === 'month') {
+    return (
+      <p className="text-[13px] text-ink-secondary">
+        <UsageMessage code="images_month" action="newImages" />
+      </p>
+    );
+  }
   if (state.kind === 'off' || (state.kind === 'failed' && state.code === 'images_off')) {
     return <p className="text-[13px] text-ink-secondary">{t('off')}</p>;
   }
@@ -177,9 +192,15 @@ export function PostImage({
   if (state.kind === 'none') return retry ?? null;
   return (
     <div className="flex aspect-[4/5] w-full flex-col items-center justify-center gap-2 rounded-control bg-accent-tint px-4 text-center text-[15px] text-accent-tint-ink">
-      <p>{state.kind === 'making' ? t('making') : t(`errors.${state.code}`)}</p>
+      <p>{state.kind === 'making' ? t('making') : <FailureText code={state.code} />}</p>
       {/* An offline image carries on by itself when the phone is back. */}
       {state.kind === 'failed' && state.code !== 'offline' && retry}
     </div>
   );
+}
+
+function FailureText({ code }: { code: ImageFailure }) {
+  const t = useTranslations('posts.images');
+  if (isUsageCode(code)) return <UsageMessage code={code} action="newImages" />;
+  return <>{t(`errors.${code}`)}</>;
 }

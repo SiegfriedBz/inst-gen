@@ -305,7 +305,7 @@ describe('the home tabs', () => {
     release(ndjson([{ type: 'final', profile }]));
     expect(await screen.findByRole('tablist', { name: 'Home' })).toBeTruthy();
     expect(selected('Your business')).toBe('true');
-    expect(selected('Create your posts')).toBe('false');
+    expect(selected('Create Posts')).toBe('false');
     expect(screen.getByText(INTRO)).toBeTruthy();
   });
 
@@ -313,11 +313,24 @@ describe('the home tabs', () => {
     await saveBrand('sen', profile);
     renderHome();
     await screen.findByRole('tablist', { name: 'Home' });
-    expect(selected('Create your posts')).toBe('true');
+    expect(selected('Create Posts')).toBe('true');
     expect(await screen.findByRole('button', { name: 'Make 6 suggestions' })).toBeTruthy();
     expect(screen.getByText(INTRO).closest('[role="tabpanel"]')?.hasAttribute('hidden')).toBe(true);
     await openTab('Your business');
     expect(screen.getByText(INTRO)).toBeTruthy();
+  });
+
+  test('the third tab, Reviews, holds the review form', async () => {
+    await saveBrand('sen', profile);
+    renderHome();
+    await screen.findByRole('tablist', { name: 'Home' });
+    expect(screen.getAllByRole('tab').map((tab) => tab.textContent)).toEqual([
+      'Your business',
+      'Create Posts',
+      'Reviews',
+    ]);
+    await openTab('Reviews');
+    expect(await screen.findByRole('button', { name: 'Write 2 replies' })).toBeTruthy();
   });
 
   test('a re-read lands on Your business and the update waits for the tab', async () => {
@@ -349,7 +362,7 @@ describe('the home tabs', () => {
     await screen.findByText(/Massage at your villa/);
     expect(selected('Your business')).toBe('true');
     expect(urls()).toEqual(['/api/brand/read']);
-    await openTab('Create your posts');
+    await openTab('Create Posts');
     await waitFor(() => expect(urls()).toContain('/api/posts/rewrite'));
   });
 
@@ -368,7 +381,7 @@ describe('the home tabs', () => {
     fireEvent.click(make);
     await waitFor(() => expect(urls()).toContain('/api/posts/plan'));
     await openTab('Your business');
-    await openTab('Create your posts');
+    await openTab('Create Posts');
     expect(signal?.aborted).toBe(false);
   });
 });

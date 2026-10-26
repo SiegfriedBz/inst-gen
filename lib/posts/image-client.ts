@@ -1,6 +1,8 @@
 import { defaultReadDeps, type ReadDeps, type RunningRead } from '@/lib/brand/read-client';
 import { isFinished, newImagesRun, type RunRecord, resumeRun } from '@/lib/runs/run-record';
 import { deleteRun, loadOpenRuns, saveRun, setImageStep } from '@/lib/runs/store';
+import { noteUsage } from '@/lib/usage/client';
+import { isUsageCode, type UsageCode } from '@/lib/usage/codes';
 import type { PostBatch } from './batch';
 import { IMAGE_ERROR_CODES, type ImageErrorCode, imageResponseSchema } from './image';
 import {
@@ -19,7 +21,12 @@ import {
 
 export type ImageEvent =
   | { type: 'image'; image: SavedImage }
-  | { type: 'error'; batchId: string; postId: string; code: ImageErrorCode | 'no_space' }
+  | {
+      type: 'error';
+      batchId: string;
+      postId: string;
+      code: ImageErrorCode | UsageCode | 'no_space';
+    }
   | { type: 'offline'; batchId: string; postId: string }
   | { type: 'signedOut' };
 
@@ -66,11 +73,11 @@ function isErrorCode(value: unknown): value is ImageErrorCode {
   return (IMAGE_ERROR_CODES as readonly unknown[]).includes(value);
 }
 
-async function errorCodeOf(response: Response): Promise<ImageErrorCode> {
+async function errorCodeOf(response: Response): Promise<ImageErrorCode | UsageCode> {
   try {
     const body: unknown = await response.json();
     const code = body && typeof body === 'object' ? (body as { error?: unknown }).error : null;
-    return isErrorCode(code) ? code : 'image_failed';
+    return isErrorCode(code) || isUsageCode(code) ? code : 'image_failed';
   } catch {
     return 'image_failed';
   }
@@ -99,6 +106,11 @@ function request(
     const post = batch.posts.find((p) => p.id === postId);
     try {
       if (!post) throw new Error(`no post ${postId}`);
+      // A post with no image on the phone yet asks for its first one, covered
+      // by its attempt (docs/specs/platform/usage-counters).
+      const first = !(await loadImages(run.ownerId).catch(() => new Map())).has(
+        imageKey(batch.id, postId),
+      );
       const response = await deps.fetch('/api/posts/image', {
         method: 'POST',
         headers: { 'content-type': 'application/json' },
@@ -106,6 +118,7 @@ function request(
           postId,
           imagePrompt: post.imagePrompt,
           scene: post.scene,
+          first,
           ...(run.hint ? { hint: run.hint } : {}),
         }),
         signal: controller.signal,
@@ -177,6 +190,7 @@ function request(
       liveRuns.delete(run.id);
       finished = true;
       if (controller.signal.aborted) await deleteRun(run.id);
+      noteUsage();
     }
   }
 

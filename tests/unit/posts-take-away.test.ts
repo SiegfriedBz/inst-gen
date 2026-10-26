@@ -25,17 +25,21 @@ describe('file names', () => {
     );
   });
 
-  test("the date is the attempt's 3am day on the phone", () => {
+  test("the date is the day the attempt's reset opened, on the phone", () => {
     const zone = process.env.TZ;
     try {
       process.env.TZ = 'Asia/Ho_Chi_Minh';
-      // 00:10 on the 26th in Da Nang: still the 25th's day.
+      // 00:10 on the 26th in Da Nang: the day that opened at 14:00 on the 25th.
       expect(imageFileName('Sen', '2026-10-25T17:10:00.000Z', 2, 3, 'post')).toBe(
         'sen-2026-10-25-attempt-2-suggestion-3-post.jpg',
       );
-      // 06:30 on the 26th in Da Nang, 23:30 on the 25th in UTC.
+      // 06:30 on the 26th in Da Nang: still the 25th's day.
       expect(imageFileName('Sen', '2026-10-25T23:30:00.000Z', 1, 1, 'story')).toBe(
-        'sen-2026-10-26-attempt-1-suggestion-1-story.jpg',
+        'sen-2026-10-25-attempt-1-suggestion-1-story.jpg',
+      );
+      // 14:30 on the 26th in Da Nang: after the reset, the 26th's day.
+      expect(imageFileName('Sen', '2026-10-26T07:30:00.000Z', 1, 1, 'post')).toBe(
+        'sen-2026-10-26-attempt-1-suggestion-1-post.jpg',
       );
     } finally {
       if (zone === undefined) delete process.env.TZ;

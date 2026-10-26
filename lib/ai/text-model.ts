@@ -11,6 +11,7 @@ import {
 } from '@/lib/posts/batch';
 import type { TranslateLocale } from '@/lib/posts/translate';
 import { translatePrompt } from '@/lib/posts/translate-prompt';
+import { type ModelReplies, modelRepliesSchema } from '@/lib/reviews/reply';
 
 // The app's only door to a text model (decision 0003). Callers see the
 // TextModel interface, so tests swap in a replayer and never call the network.
@@ -51,6 +52,9 @@ export interface TextModel {
   // A caption in the owner's language, plain text, not streamed
   // (docs/specs/posts/editor-download).
   translateCaption(text: string, locale: TranslateLocale, signal: AbortSignal): Promise<string>;
+  // Two replies to a review and their translations, in one structured call,
+  // not streamed (docs/specs/reviews/reply-drafts).
+  writeReplies(input: PostsModelCall, signal: AbortSignal): Promise<ModelReplies>;
 }
 
 export class ModelError extends Error {
@@ -237,6 +241,32 @@ export function geminiTextModel(
           maxRetries: 0,
         });
         return result.text.trim();
+      } catch (error) {
+        if (signal.aborted) throw signal.reason;
+        throw toModelError(error);
+      }
+    },
+
+    async writeReplies(input, signal) {
+      const apiKey = process.env.GOOGLE_GENERATIVE_AI_API_KEY;
+      if (!apiKey) throw new ModelError('failed', 'GOOGLE_GENERATIVE_AI_API_KEY is not set');
+      const google = createGoogleGenerativeAI({ apiKey });
+      try {
+        const result = await generateText({
+          model: google(TEXT_MODELS.light),
+          system: input.system,
+          prompt: input.text,
+          output: Output.object({ schema: modelRepliesSchema }),
+          providerOptions: {
+            google: {
+              thinkingConfig: { thinkingLevel: 'low' },
+            } satisfies GoogleLanguageModelOptions,
+          },
+          abortSignal: signal,
+          // A retry spends free quota; the caller reports model_busy instead.
+          maxRetries: 0,
+        });
+        return result.output;
       } catch (error) {
         if (signal.aborted) throw signal.reason;
         throw toModelError(error);

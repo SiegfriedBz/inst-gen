@@ -109,6 +109,8 @@ states ("Making the image…", failures and "Try again", "Make the images").
 
 ### Image file names
 
+> Changed by `platform/one-daily-reset` (2026-10-26): the day starts at Google's reset, midnight Pacific, not at 3am on the phone's clock.
+
 `{name}-{YYYY-MM-DD}-attempt-{a}-suggestion-{n}-post.jpg` and `…-story.jpg`,
 with 2.4's folded name and the date of the attempt's day: the day that starts
 at 3am on the phone's clock, so an attempt made at 00:10 carries the previous
@@ -119,6 +121,8 @@ Android galleries don't show file names; the two images still arrive side by
 side, one near-square and one tall.
 
 ### Suggestions last until 3am
+
+> Changed by `platform/one-daily-reset` (2026-10-26): the day starts at Google's reset, midnight Pacific, not at 3am on the phone's clock.
 
 Suggestions are kept on the phone, as today, so a trip to Instagram or a
 reload never loses them. But **each day starts empty**: the screen shows only

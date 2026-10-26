@@ -22,6 +22,8 @@
     "eval:posts": "tsx scripts/eval-posts.ts",
     "eval:images": "tsx scripts/eval-images.ts",
     "eval:translate": "tsx scripts/eval-translate.ts",
+    "eval:replies": "tsx scripts/eval-replies.ts",
+    "guide:pdf": "tsx scripts/guide-pdf.ts",
     "check": "node scripts/check-docs.mjs && node scripts/check-repo.mjs && biome ci && pnpm typecheck && vitest run",
     "prepare": "lefthook install"
   },
@@ -29,6 +31,7 @@
     "@ai-sdk/google": "4.0.93",
     "@phosphor-icons/react": "2.1.10",
     "@tailwindcss/postcss": "4.3.3",
+    "@upstash/redis": "1.39.0",
     "ai": "7.0.137",
     "cheerio": "1.2.0",
     "class-variance-authority": "0.7.1",

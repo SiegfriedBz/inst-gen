@@ -3,10 +3,14 @@ import { defaultDeps } from '@/lib/brand/deps';
 import { type BrandErrorCode, ERROR_STATUS } from '@/lib/brand/profile';
 import { BrandReadError, prepareRead, streamProfile } from '@/lib/brand/read';
 import { encodeLine } from '@/lib/brand/stream';
+import { getCurrentOwner } from '@/lib/pilot/current-owner';
+import { takeUsage, usageRefusal } from '@/lib/usage/meter';
+import { giveBackOnError } from '@/lib/usage/stream';
 
 // Reads a business's website and streams its brand profile as NDJSON
 // (docs/specs/brand/extract-site/spec.md). Reached only with a valid
-// session: proxy.ts answers 401 otherwise.
+// session: proxy.ts answers 401 otherwise. A read counts once it can start
+// (docs/specs/platform/usage-counters): a bad URL spends nothing.
 
 export const runtime = 'nodejs';
 export const maxDuration = 300;
@@ -18,6 +22,8 @@ function errorResponse(code: BrandErrorCode): Response {
 }
 
 export async function POST(request: Request): Promise<Response> {
+  const ownerId = await getCurrentOwner();
+  if (!ownerId) return Response.json({ error: 'unauthorized' }, { status: 401 });
   let url: string;
   try {
     url = bodySchema.parse(await request.json()).url;
@@ -34,7 +40,9 @@ export async function POST(request: Request): Promise<Response> {
     throw error;
   }
 
-  const lines = streamProfile(prepared, deps, request.signal);
+  const usage = await takeUsage({ ownerId, action: 'reads' });
+  if (!usage.ok) return usageRefusal(usage.code, usage.resetsAt);
+  const lines = giveBackOnError(streamProfile(prepared, deps, request.signal), usage.ticket);
   const encoder = new TextEncoder();
   const body = new ReadableStream<Uint8Array>({
     async pull(controller) {

@@ -3,6 +3,8 @@ import { defaultReadDeps, type ReadDeps, type RunningRead } from '@/lib/brand/re
 import { loadBrand } from '@/lib/brand/store';
 import { newPostsRun, type RunRecord, resumeRun, stepsToRequest } from '@/lib/runs/run-record';
 import { deleteRun, loadOpenRun, saveRun } from '@/lib/runs/store';
+import { noteUsage } from '@/lib/usage/client';
+import { isUsageCode, type UsageCode } from '@/lib/usage/codes';
 import {
   type PlanResult,
   POSTS_ERROR_CODES,
@@ -24,7 +26,7 @@ import { readPostsLines } from './stream';
 export type PostsEvent =
   | { type: 'post'; index: number; post: Post }
   | { type: 'final'; batch: PostBatch }
-  | { type: 'error'; code: PostsErrorCode }
+  | { type: 'error'; code: PostsErrorCode | UsageCode }
   | { type: 'offline' }
   | { type: 'signedOut' };
 
@@ -39,11 +41,11 @@ function isErrorCode(value: unknown): value is PostsErrorCode {
   return (POSTS_ERROR_CODES as readonly unknown[]).includes(value);
 }
 
-async function errorCodeOf(response: Response): Promise<PostsErrorCode> {
+async function errorCodeOf(response: Response): Promise<PostsErrorCode | UsageCode> {
   try {
     const body: unknown = await response.json();
     const code = body && typeof body === 'object' ? (body as { error?: unknown }).error : null;
-    return isErrorCode(code) ? code : 'model_failed';
+    return isErrorCode(code) || isUsageCode(code) ? code : 'model_failed';
   } catch {
     return 'model_failed';
   }
@@ -170,6 +172,7 @@ function request(
       live.delete(run.id);
       finished = true;
       if (controller.signal.aborted) await deleteRun(run.id);
+      noteUsage();
     }
   }
 

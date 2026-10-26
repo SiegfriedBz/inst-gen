@@ -1,0 +1,24 @@
+{
+  "business": "svarga",
+  "locale": "id",
+  "name": "Ольга",
+  "review": "Прекрасный спа! Балийский массаж был очень расслабляющим, персонал внимательный. Немного шумно с улицы, но в целом всё отлично.",
+  "recording": {
+    "modelId": "gemini-3.5-flash-lite",
+    "promptVersion": "reply-2",
+    "partials": [],
+    "final": {
+      "reviewLanguage": "ru",
+      "abusive": false,
+      "reviewTranslation": "Spa yang luar biasa! Pijat Bali sangat menyegarkan, stafnya penuh perhatian. Agak berisik dari luar, namun secara keseluruhan semuanya luar biasa.",
+      "short": {
+        "text": "Спасибо, {name}! 🙏 Рады, что вам понравился балийский массаж и работа персонала. Простите за шум с улицы. Надеемся снова приветствовать вас в Svarga Bali Massage 🌼",
+        "translation": "Terima kasih, {name}! 🙏 Senang Anda menyukai pijat Bali dan staf kami. Mohon maaf atas kebisingan dari jalan. Kami berharap dapat menyambut Anda kembali di Svarga Bali Massage 🌼"
+      },
+      "warm": {
+        "text": "Большое спасибо за отзыв, {name}! 🙏 Нам очень приятно слышать, что массаж был расслабляющим, а персонал окружил вас вниманием. Извините за шум с улицы во время сеанса. Будем счастливы снова провести для вас расслабляющий сеанс в Svarga Bali Massage 🌼",
+        "translation": "Terima kasih banyak atas ulasannya, {name}! 🙏 Kami sangat senang mendengar bahwa pijatnya sangat menyegarkan dan staf kami penuh perhatian. Mohon maaf atas kebisingan dari jalan selama sesi Anda. Kami akan dengan senang hati menyambut Anda kembali untuk sesi relaksasi lainnya di Svarga Bali Massage 🌼"
+      }
+    }
+  }
+}

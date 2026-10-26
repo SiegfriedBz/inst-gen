@@ -1,3 +1,4 @@
+import { usageConfigProblem } from '@/lib/usage/config';
 import { type PilotConfigResult, parsePilotConfig } from './config';
 
 let cached: PilotConfigResult | undefined;
@@ -10,6 +11,8 @@ export function getPilotConfig(): PilotConfigResult {
       PILOT_PASSPHRASES: process.env.PILOT_PASSPHRASES,
       SESSION_SECRET: process.env.SESSION_SECRET,
     });
+    const usageProblem = cached.ok ? usageConfigProblem(process.env) : null;
+    if (usageProblem) cached = { ok: false, problem: usageProblem };
     if (!cached.ok) console.error(`Shopfront isn't configured: ${cached.problem}`);
   }
   return cached;

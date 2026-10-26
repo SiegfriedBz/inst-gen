@@ -74,9 +74,10 @@ most sample replies as written, with $0 spent on everything but images
 | 2.4 | `posts/editor-download`: feed preview, edits, owner's-language view, saving to the phone | spec | done |
 | 2.5 | `platform/home-tabs`: two tabs on the home screen, captions that follow business edits, the language switch at the top right | spec | done |
 | 2.6 | `posts/suggestions`: today's attempts of six suggestions, saved in two steps, cleared at 3am; a faster language switch | spec | done |
-| 2.7 | `reviews/reply-drafts`: warm and short replies, owner's-language view | spec | todo |
-| 2.8 | `platform/usage-counters`: per-owner daily limits in Upstash Redis, the usage bar | spec | todo |
-| 2.9 | `guide/owner-guide`: How-to page and printable PDF, three languages | spec | todo |
+| 2.7 | `reviews/reply-drafts`: warm and short replies, owner's-language view | spec | done |
+| 2.8 | `platform/usage-counters`: per-owner daily limits in Upstash Redis, the usage bar | spec | done |
+| 2.8b | `platform/one-daily-reset`: suggestions and review drafts clear at Google's reset, the same moment the limits come back; one time on screen | spec | done |
+| 2.9 | `guide/owner-guide`: How-to page and printable PDF, three languages | spec | done |
 
 ## Later phases
 
@@ -88,3 +89,4 @@ Each waits for the gate before it. Specs get written when the phase starts.
 | 4 · Public launch | `platform/quotas-abuse` (bot check, region block with a developer pass, blocklist), privacy page, owner's own Gemini key, accounts | One soft-launch week at $0, no abuse |
 | 5 · Paid tier (optional) | Better images, more posts, carousels | Owners ask to post from the app |
 | 6 · Publishing (optional) | Meta App Review, scheduling, direct posting | — |
+| Google Maps connection (optional) | Fetch new reviews and post replies through the Business Profile API, instead of copy and paste (`reviews/reply-drafts`, "Out of scope") | Owners ask for it after the pilot |

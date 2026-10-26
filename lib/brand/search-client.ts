@@ -1,3 +1,4 @@
+import { noteUsage } from '@/lib/usage/client';
 import { normaliseText } from './normalise';
 import { LIMITS, type Profile } from './profile';
 import { SEARCH_ERROR_CODES, type SearchErrorCode } from './search/errors';
@@ -12,7 +13,7 @@ export type SearchOutcome =
   | { kind: 'error'; code: SearchErrorCode }
   | { kind: 'signedOut' };
 
-function countryOf(profile: Profile): SearchBody['country'] {
+export function countryOf(profile: Profile): SearchBody['country'] {
   for (const number of [profile.contact.whatsapp?.value, profile.contact.phone?.value]) {
     if (number?.startsWith('+84')) return 'VN';
     if (number?.startsWith('+62')) return 'ID';
@@ -123,5 +124,7 @@ export async function requestSearch(
   } catch (error) {
     if (deps.signal?.aborted) throw error;
     return { kind: 'error', code: 'search_failed' };
+  } finally {
+    noteUsage();
   }
 }

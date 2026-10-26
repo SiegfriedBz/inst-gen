@@ -7,7 +7,7 @@ import { fulfilPosts, postsBody } from './helpers/posts-stream';
 
 // The editor and saving to the phone (docs/specs/posts/editor-download), at
 // the phone viewport, with every route mocked. Test values from
-// playwright.config.ts; not secrets. Sen is on IMAGE_OWNERS.
+// playwright.config.ts; not secrets.
 const SEN = 'test-lotus-river-sen';
 const BASE = 'http://localhost:3000';
 
@@ -25,7 +25,7 @@ async function readAndMake(
   website: string,
   read: string,
   make: string,
-  postsTab = 'Create your posts',
+  postsTab = 'Create Posts',
 ) {
   await page.getByLabel(website).fill('sendanangmassage.com');
   await page.getByRole('button', { name: read }).click();
@@ -71,7 +71,7 @@ test('an edit is kept after a reload, and the automatic update leaves it alone',
   await page.getByRole('button', { name: 'Edit Where and when' }).click();
   await page.getByLabel('Opening hours').fill('Every day, 9am to midnight');
   await page.getByRole('button', { name: 'Save', exact: true }).click();
-  await page.getByRole('tab', { name: 'Create your posts' }).click();
+  await page.getByRole('tab', { name: 'Create Posts' }).click();
   await expect(page.getByText('Rewritten 2.')).toBeVisible();
   await expect(page.getByText('My own words about warm oil.')).toBeVisible();
   expect(sent).toEqual([5]);

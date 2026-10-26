@@ -1,0 +1,24 @@
+{
+  "business": "sen",
+  "locale": "vi",
+  "name": "김민지",
+  "review": "다낭에서 받은 마사지 중 최고였어요. 직원분들이 친절하고 시설도 깨끗했어요. 다음에 또 올게요!",
+  "recording": {
+    "modelId": "gemini-3.5-flash-lite",
+    "promptVersion": "reply-2",
+    "partials": [],
+    "final": {
+      "reviewLanguage": "ko",
+      "abusive": false,
+      "reviewTranslation": "Đây là dịch vụ mát-xa tuyệt vời nhất tôi từng nhận được ở Đà Nẵng. Nhân viên rất thân thiện và cơ sở vật chất sạch sẽ. Tôi sẽ quay lại lần sau!",
+      "short": {
+        "text": "감사합니다, {name}! 🙏 친절한 직원들과 깨끗한 시설을 마음에 들어 하시니 기쁩니다. 다시 방문해 주세요. 🪷",
+        "translation": "Cảm ơn bạn, {name}! 🙏 Chúng tôi rất vui vì bạn thích nhân viên thân thiện và cơ sở sạch sẽ. Hẹn gặp lại bạn nhé. 🪷"
+      },
+      "warm": {
+        "text": "저희 센 다낭 마사지를 찾아주셔서 진심으로 감사합니다, {name}! 🙏 다낭에서 가장 좋은 기억이 되었다니 저희도 정말 기쁩니다. 따뜻한 발걸음으로 다시 찾아주시기를 기다리겠습니다. 🪷",
+        "translation": "Cảm ơn chân thành vì đã chọn Sen Da Nang Massage, {name}! 🙏 Chúng tôi rất vui khi biết đây là trải nghiệm tuyệt vời nhất của bạn tại Đà Nẵng. Rất mong được đón tiếp bạn trở lại lần nữa. 🪷"
+      }
+    }
+  }
+}

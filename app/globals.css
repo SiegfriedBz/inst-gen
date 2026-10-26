@@ -71,6 +71,29 @@ body {
   }
 }
 
+/* The owner guide on paper or in a PDF (docs/specs/guide/owner-guide,
+   "Printable PDF"): A4, black on white whatever the phone's mode. Last in
+   the file: print freezes animations at their first frame, and the fade-in's
+   is blank, so this must win over the rule above. */
+@page {
+  size: A4;
+  margin: 16mm;
+}
+
+@media print {
+  :root {
+    --page: #ffffff;
+    --ink: #000000;
+    --ink-secondary: #333333;
+    --field-muted: #ffffff;
+    --accent: #000000;
+  }
+
+  main {
+    animation: none;
+  }
+}
+
 @keyframes page-in {
   from {
     opacity: 0;

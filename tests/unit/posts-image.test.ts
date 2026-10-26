@@ -1,6 +1,6 @@
 import { describe, expect, test, vi } from 'vitest';
 import { IMAGE_ERROR_STATUS, imageBodySchema, imageResponseSchema } from '@/lib/posts/image';
-import { imageOwners, imagesOn } from '@/lib/posts/image-access';
+import { imagesOn } from '@/lib/posts/image-access';
 import {
   cleanHint,
   IMAGE_PROMPT_VERSION,
@@ -61,29 +61,17 @@ describe('the image request', () => {
 });
 
 describe('who can make images', () => {
-  test('owner list is trimmed and lower-cased', () => {
-    expect(imageOwners({ IMAGE_OWNERS: ' Sen, svarga ,' })).toEqual(['sen', 'svarga']);
-  });
-
-  test('images are on for a listed owner with a key', () => {
-    expect(imagesOn('sen', { IMAGE_OWNERS: 'sen', GOOGLE_IMAGE_API_KEY: 'k' })).toBe(true);
-  });
-
-  test('off for an owner not listed', () => {
-    expect(imagesOn('dev', { IMAGE_OWNERS: 'sen,svarga', GOOGLE_IMAGE_API_KEY: 'k' })).toBe(false);
+  test('every owner, with the key', () => {
+    expect(imagesOn({ GOOGLE_IMAGE_API_KEY: 'k' })).toBe(true);
   });
 
   test('off for everyone without a key, logged once', () => {
     const error = vi.spyOn(console, 'error').mockImplementation(() => {});
-    expect(imagesOn('sen', { IMAGE_OWNERS: 'sen' })).toBe(false);
-    expect(imagesOn('sen', { IMAGE_OWNERS: 'sen' })).toBe(false);
+    expect(imagesOn({})).toBe(false);
+    expect(imagesOn({})).toBe(false);
     expect(error).toHaveBeenCalledTimes(1);
     expect(error.mock.calls[0][0]).toContain('GOOGLE_IMAGE_API_KEY');
     error.mockRestore();
-  });
-
-  test('off with an empty list', () => {
-    expect(imagesOn('sen', { IMAGE_OWNERS: '', GOOGLE_IMAGE_API_KEY: 'k' })).toBe(false);
   });
 });
 

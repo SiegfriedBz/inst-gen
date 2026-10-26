@@ -1,17 +1,15 @@
-// The owner's day for suggestions (docs/specs/posts/suggestions, "Suggestions
-// last until 3am"): it starts at 3am on the phone's clock, not midnight, so
-// the reset happens while the owner sleeps. Local time throughout.
+import { lastReset } from '@/lib/usage/day';
 
-export const DAY_STARTS_AT_HOUR = 3;
+// The owner's day for suggestions and the review draft
+// (docs/specs/platform/one-daily-reset): it starts at Google's reset, midnight
+// Pacific, the moment the usage counts come back. 14:00 or 15:00 in Da Nang.
 
 export function dayStart(now: Date): Date {
-  const start = new Date(now);
-  start.setHours(DAY_STARTS_AT_HOUR, 0, 0, 0);
-  if (start > now) start.setDate(start.getDate() - 1);
-  return start;
+  return lastReset(now);
 }
 
-// The date of the 3am day an instant belongs to: 00:10 is still yesterday's.
+// The phone's date when an instant's day started: in Da Nang, 10:00 on the
+// 27th is still the day that opened at 14:00 on the 26th.
 export function dayOf(iso: string): string {
   const start = dayStart(new Date(iso));
   const pad = (n: number) => String(n).padStart(2, '0');

@@ -1,13 +1,12 @@
 'use client';
 
 import { useTranslations } from 'next-intl';
-import { useEffect, useRef, useState } from 'react';
+import { CopyText } from '@/components/copy-text';
 import { Button } from '@/components/ui/button';
-import { Sheet, SheetContent, SheetTitle } from '@/components/ui/sheet';
 import type { Post } from '@/lib/posts/batch';
 import { postText } from '@/lib/posts/edit';
 import type { SavedImage } from '@/lib/posts/image-store';
-import { copyToClipboard, imageFileName, saveImageFiles } from '@/lib/posts/take-away';
+import { imageFileName, saveImageFiles } from '@/lib/posts/take-away';
 
 // The two steps that take a suggestion away (docs/specs/posts/suggestions, "A
 // suggestion"): both images to the phone in one share sheet, then the text to
@@ -34,21 +33,7 @@ export function TakeAway({
   n: number;
 }) {
   const t = useTranslations('posts');
-  const [copied, setCopied] = useState(false);
-  const [byHand, setByHand] = useState(false);
-  const box = useRef<HTMLTextAreaElement>(null);
   const text = postText(post, cta);
-
-  useEffect(() => {
-    if (!copied) return;
-    const timer = setTimeout(() => setCopied(false), 2_000);
-    return () => clearTimeout(timer);
-  }, [copied]);
-
-  async function copy() {
-    if (await copyToClipboard(text)) setCopied(true);
-    else setByHand(true);
-  }
 
   function save() {
     if (!image) return;
@@ -77,34 +62,17 @@ export function TakeAway({
           {t('saveImages')}
         </Button>
       )}
-      <Button
-        type="button"
+      <CopyText
+        text={text}
         className={imagesOn ? 'border border-edge bg-field text-ink' : undefined}
-        onClick={copy}
-      >
-        {imagesOn && step(2)}
-        {copied ? t('takeAway.copied') : t('copyText')}
-      </Button>
+        label={
+          <>
+            {imagesOn && step(2)}
+            {t('copyText')}
+          </>
+        }
+      />
       <p className="text-[13px] text-ink-secondary">{imagesOn ? t('howTo') : t('howToTextOnly')}</p>
-      <Sheet open={byHand} onOpenChange={setByHand}>
-        <SheetContent
-          className="flex flex-col gap-3 p-4"
-          onOpenAutoFocus={(event) => {
-            event.preventDefault();
-            box.current?.focus();
-            box.current?.select();
-          }}
-        >
-          <SheetTitle>{t('takeAway.copyHere')}</SheetTitle>
-          <textarea
-            ref={box}
-            readOnly
-            value={text}
-            rows={10}
-            className="w-full rounded-control border border-edge bg-field p-3 text-[15px] text-ink"
-          />
-        </SheetContent>
-      </Sheet>
     </div>
   );
 }

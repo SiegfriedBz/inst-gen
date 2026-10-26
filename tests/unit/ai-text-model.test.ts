@@ -289,3 +289,76 @@ describe('the Google provider', () => {
     expect(importers.sort()).toEqual(['lib/ai/image-model.ts', 'lib/ai/text-model.ts']);
   });
 });
+
+describe('writeReplies', () => {
+  const call = { system: 'reply rules', text: 'Review: Lovely massage.' };
+  const answer = {
+    reviewLanguage: 'en',
+    abusive: false,
+    reviewTranslation: 'Massage tuyệt vời.',
+    short: { text: 'Thank you, {name}! 🪷', translation: 'Cảm ơn {name}! 🪷' },
+    warm: { text: 'Dear {name}, thank you so much 🙏', translation: 'Thân mến {name} 🙏' },
+  };
+
+  afterEach(() => {
+    vi.unstubAllEnvs();
+    vi.unstubAllGlobals();
+  });
+
+  test('uses flash-lite with low thinking, structured, once, with no retries', async () => {
+    vi.stubEnv('GOOGLE_GENERATIVE_AI_API_KEY', 'test-key-not-real');
+    const fetchMock = vi.fn(
+      async (_url: string | URL | Request, _init?: RequestInit) =>
+        new Response(JSON.stringify({ error: { code: 503, message: 'busy' } }), {
+          status: 503,
+          headers: { 'content-type': 'application/json' },
+        }),
+    );
+    vi.stubGlobal('fetch', fetchMock);
+    await expect(
+      geminiTextModel().writeReplies(call, new AbortController().signal),
+    ).rejects.toMatchObject({ kind: 'busy' });
+    expect(fetchMock).toHaveBeenCalledTimes(1);
+    expect(String(fetchMock.mock.calls[0]?.[0])).toContain(TEXT_MODELS.light);
+    const body = String(fetchMock.mock.calls[0]?.[1]?.body);
+    expect(body.toLowerCase()).toContain('"low"');
+    expect(body).toContain('reply rules');
+    expect(body).toContain('reviewTranslation');
+  });
+
+  test('a replayed model answers its recorded replies', async () => {
+    const model = replayTextModel(rec, { replies: { ...rec, partials: [], final: answer } });
+    expect(await model.writeReplies(call, new AbortController().signal)).toEqual(answer);
+  });
+
+  test('a replayed model without replies fails, busy when told, and hangs until aborted', async () => {
+    await expect(
+      replayTextModel(rec).writeReplies(call, new AbortController().signal),
+    ).rejects.toMatchObject({ kind: 'failed' });
+    await expect(
+      replayTextModel(rec, { error: 'busy' }).writeReplies(call, new AbortController().signal),
+    ).rejects.toMatchObject({ kind: 'busy' });
+    const controller = new AbortController();
+    const hanging = replayTextModel(rec, { hang: true }).writeReplies(call, controller.signal);
+    controller.abort(new Error('stop'));
+    await expect(hanging).rejects.toThrow('stop');
+  });
+
+  test('the recorder passes the answer through and records it', async () => {
+    const recorded: unknown[] = [];
+    const inner = replayTextModel(rec, { replies: { ...rec, partials: [], final: answer } });
+    const model = recordingTextModel(
+      inner,
+      { modelId: 'gemini-3.5-flash-lite', promptVersion: 'reply-1' },
+      () => {},
+      () => {},
+      () => {},
+      () => {},
+      (r) => recorded.push(r),
+    );
+    expect(await model.writeReplies(call, new AbortController().signal)).toEqual(answer);
+    expect(recorded).toEqual([
+      { modelId: 'gemini-3.5-flash-lite', promptVersion: 'reply-1', partials: [], final: answer },
+    ]);
+  });
+});
