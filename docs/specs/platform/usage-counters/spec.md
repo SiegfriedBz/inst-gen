@@ -1,7 +1,8 @@
 ---
 title: "Usage counters"
 description: "Per-owner daily limits (3 website reads, 3 attempts, 10 new images, 20 replies, plus hidden caps on caption updates and translations), app-wide daily pools per text model and monthly caps on images ($8) and searches, all counted in Upstash Redis and reset at midnight Pacific; a one-line usage bar under the tabs shows what's left and when it resets, in the phone's time zone; the IMAGE_OWNERS allowlist goes."
-status: draft
+status: approved
+approved: { by: siegfried.bozza@protonmail.com, at: 2026-10-26T06:34:06Z }
 date: "2026-10-26"
 ---
 
