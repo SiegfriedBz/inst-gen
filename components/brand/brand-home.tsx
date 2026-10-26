@@ -15,6 +15,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import { UsageBar } from '@/components/usage/usage-bar';
 import { lastReadLabel } from '@/lib/brand/display';
 import { changedUnsourced, countOwnerEdits, type SectionId } from '@/lib/brand/edit';
 import type { BrandErrorCode, PartialProfile, Profile } from '@/lib/brand/profile';
@@ -361,6 +362,7 @@ export function BrandHome({ ownerId, imagesOn }: { ownerId: string; imagesOn: bo
             <TabsTrigger value="posts">{home('tabs.posts')}</TabsTrigger>
             <TabsTrigger value="reviews">{home('tabs.reviews')}</TabsTrigger>
           </TabsList>
+          <UsageBar tab={tab} />
           <TabsContent value="business" hidden={tab !== 'business'} className="mt-5">
             <p className="mb-4 text-[15px] leading-normal text-ink-secondary">
               {t('home.intro', { name: saved.name.value })}
