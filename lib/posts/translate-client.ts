@@ -1,3 +1,5 @@
+import { noteUsage } from '@/lib/usage/client';
+import { isUsageCode, type UsageCode } from '@/lib/usage/codes';
 import { hashText } from './input';
 import {
   TRANSLATE_ERROR_CODES,
@@ -14,7 +16,7 @@ import { loadTranslation, saveTranslation } from './translation-store';
 
 export type TranslationResult =
   | { ok: true; text: string }
-  | { ok: false; code: TranslateErrorCode | 'offline' | 'signedOut' };
+  | { ok: false; code: TranslateErrorCode | UsageCode | 'offline' | 'signedOut' };
 
 type Deps = { fetch: typeof fetch; now: () => Date };
 
@@ -46,12 +48,14 @@ export async function getTranslation(
   } catch {
     return { ok: false, code: 'offline' };
   }
+  // Settled: the usage bar reads again.
+  noteUsage();
   if (response.status === 401) return { ok: false, code: 'signedOut' };
   try {
     const body: unknown = await response.json();
     if (!response.ok) {
       const code = body && typeof body === 'object' ? (body as { error?: unknown }).error : null;
-      return { ok: false, code: isErrorCode(code) ? code : 'model_failed' };
+      return { ok: false, code: isErrorCode(code) || isUsageCode(code) ? code : 'model_failed' };
     }
     const answer = translateResponseSchema.parse(body);
     await saveTranslation({

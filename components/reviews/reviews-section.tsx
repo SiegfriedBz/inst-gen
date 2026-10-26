@@ -6,18 +6,21 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
+import { UsageMessage } from '@/components/usage/usage-message';
+import { useAtLimit } from '@/components/usage/usage-provider';
 import type { Profile } from '@/lib/brand/profile';
 import { dayStart } from '@/lib/posts/day';
 import { requestReplies } from '@/lib/reviews/client';
 import { fillName } from '@/lib/reviews/name';
 import { REPLY_LIMITS, type ReplyErrorCode, type ScreenLocale } from '@/lib/reviews/reply';
 import { clearReview, loadReview, type ReviewRecord, saveReview } from '@/lib/reviews/store';
+import { isUsageCode, type UsageCode } from '@/lib/usage/codes';
 import { ReplyCard } from './reply-card';
 
 const LINK =
   'inline-flex min-h-11 items-center text-[15px] font-medium text-accent underline underline-offset-4 outline-none focus-visible:ring-2 focus-visible:ring-accent disabled:opacity-60';
 
-type Failure = ReplyErrorCode | 'offline';
+type Failure = ReplyErrorCode | UsageCode | 'offline';
 
 // The review's language, named in the screen's; the code when the browser
 // can't name it.
@@ -60,6 +63,7 @@ export function ReviewsSection({
   const [loaded, setLoaded] = useState(false);
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState<Failure | null>(null);
+  const replyLimit = useAtLimit('replies');
   // A double tap must not send twice: state updates too late for that.
   const sending = useRef(false);
 
@@ -138,7 +142,14 @@ export function ReviewsSection({
       role="alert"
       className="rounded-control border border-error px-4 py-3 text-[15px] text-error"
     >
-      {t(`errors.${error}`)}
+      {isUsageCode(error) ? <UsageMessage code={error} action="replies" /> : t(`errors.${error}`)}
+    </p>
+  );
+  // At 0, the button is off and says when it comes back, unless the server's
+  // refusal already says so.
+  const limitLine = replyLimit && !isUsageCode(error) && (
+    <p className="text-[13px] text-error">
+      <UsageMessage code={replyLimit} action="replies" />
     </p>
   );
 
@@ -172,12 +183,13 @@ export function ReviewsSection({
         </div>
         <Button
           type="button"
-          disabled={busy || review.trim() === ''}
+          disabled={busy || review.trim() === '' || replyLimit !== null}
           onClick={() => void write({ name, review, again: false })}
         >
           {busy ? t('writing') : t('write')}
         </Button>
         {busy && <p className="text-[13px] text-ink-secondary">{t('keepOpen')}</p>}
+        {limitLine}
         {errorLine}
       </section>
     );
@@ -234,11 +246,12 @@ export function ReviewsSection({
         <button
           type="button"
           className={LINK}
-          disabled={busy}
+          disabled={busy || replyLimit !== null}
           onClick={() => void write({ name: record.name, review: record.review, again: true })}
         >
           {busy ? t('writing') : t('again')}
         </button>
+        {limitLine}
         <button type="button" className={LINK} disabled={busy} onClick={() => void startOver()}>
           {t('newReview')}
         </button>

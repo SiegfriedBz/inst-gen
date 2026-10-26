@@ -3,6 +3,8 @@
 import { useTranslations } from 'next-intl';
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { Button } from '@/components/ui/button';
+import { UsageMessage } from '@/components/usage/usage-message';
+import { useAtLimit } from '@/components/usage/usage-provider';
 import type { Profile } from '@/lib/brand/profile';
 import type { RunningRead } from '@/lib/brand/read-client';
 import { holdWakeLock } from '@/lib/brand/wake-lock';
@@ -23,6 +25,7 @@ import { type ImageEvent, resumeImages, startImages } from '@/lib/posts/image-cl
 import { imageKey, loadImages, type SavedImage } from '@/lib/posts/image-store';
 import { ctaFor, profileHash } from '@/lib/posts/input';
 import { clearBefore, loadBatches, recentPosts, saveBatch } from '@/lib/posts/store';
+import { isUsageCode, type UsageCode } from '@/lib/usage/codes';
 import { CaptionTranslation } from './caption-translation';
 import { PostCard } from './post-card';
 import type { ImageState } from './post-image';
@@ -60,7 +63,14 @@ export function PostsSection({
   const brand = useTranslations('brand');
   const [batches, setBatches] = useState<PostBatch[]>([]);
   const [running, setRunning] = useState<Running | null>(null);
-  const [error, setError] = useState<PostsErrorCode | 'offline' | null>(null);
+  const [error, setError] = useState<PostsErrorCode | UsageCode | 'offline' | null>(null);
+  // Which step the error line is about: a plan's limit and a rewrite's differ.
+  const [errorStep, setErrorStep] = useState<Running['step']>('plan');
+  const attemptLimit = useAtLimit('attempts');
+  // The image month is full: no image is asked for until it comes back.
+  const monthFull = useAtLimit('newImages') === 'images_month';
+  const monthFullRef = useRef(monthFull);
+  monthFullRef.current = monthFull;
   // The start of the owner's day, once the section has cleared what came
   // before it: only attempts made since then are shown.
   const [start, setStart] = useState<Date | null>(null);
@@ -196,13 +206,14 @@ export function PostsSection({
         end();
         setError(null);
         setBatches((list) => [event.batch, ...list.filter((b) => b.id !== event.batch.id)]);
-        if (planned && imagesOn) {
+        if (planned && imagesOn && !monthFullRef.current) {
           makeImages(
             event.batch,
             event.batch.posts.map((p) => p.id),
           );
         }
       } else if (event.type === 'error') {
+        setErrorStep(stepRef.current ?? 'plan');
         end();
         setError(event.code);
       } else if (event.type === 'offline') {
@@ -361,6 +372,7 @@ export function PostsSection({
     };
     let state: ImageState;
     if (!imagesOn) state = { kind: 'off' };
+    else if (!saved && !making.has(key) && monthFull) state = { kind: 'month' };
     else if (saved) {
       const failure = failed.get(key);
       state = {
@@ -382,7 +394,7 @@ export function PostsSection({
   }
   return (
     <section className="mt-6 flex flex-col gap-3">
-      <Button type="button" onClick={make} disabled={!cta || held}>
+      <Button type="button" onClick={make} disabled={!cta || held || attemptLimit !== null}>
         {shown.length > 0 ? t('makeMore') : t('make')}
       </Button>
       {shown.length > 0 && (
@@ -397,7 +409,16 @@ export function PostsSection({
           role="alert"
           className="rounded-control border border-error px-4 py-3 text-[15px] text-error"
         >
-          {t(`errors.${error}`)}
+          {isUsageCode(error) ? (
+            <UsageMessage code={error} action={errorStep === 'plan' ? 'attempts' : 'rewrites'} />
+          ) : (
+            t(`errors.${error}`)
+          )}
+        </p>
+      )}
+      {attemptLimit && !isUsageCode(error) && (
+        <p className="text-[13px] text-error">
+          <UsageMessage code={attemptLimit} action="attempts" />
         </p>
       )}
       {start && shown.length === 0 && running?.step !== 'plan' && (
@@ -416,6 +437,7 @@ export function PostsSection({
       {shown.map((batch) => {
         const needsImages =
           imagesOn &&
+          !monthFull &&
           !batch.posts.some((p) => {
             const key = imageKey(batch.id, p.id);
             return images.has(key) || making.has(key);

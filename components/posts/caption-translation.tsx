@@ -2,9 +2,11 @@
 
 import { useLocale, useTranslations } from 'next-intl';
 import { useState } from 'react';
+import { UsageMessage } from '@/components/usage/usage-message';
 import { LOCALE_NAMES } from '@/lib/i18n/locale';
 import { TRANSLATE_LOCALES, type TranslateLocale } from '@/lib/posts/translate';
 import { getTranslation } from '@/lib/posts/translate-client';
+import { isUsageCode, type UsageCode } from '@/lib/usage/codes';
 
 // "Show in Tiếng Việt" or "Show in Bahasa Indonesia" under a caption
 // (docs/specs/posts/editor-download, "The owner's-language view"): read-only,
@@ -15,7 +17,7 @@ type View =
   | { kind: 'closed' }
   | { kind: 'loading' }
   | { kind: 'open'; text: string }
-  | { kind: 'failed'; code: 'model_busy' | 'model_timeout' | 'model_failed' };
+  | { kind: 'failed'; code: 'model_busy' | 'model_timeout' | 'model_failed' | UsageCode };
 
 function isTranslateLocale(locale: string): locale is TranslateLocale {
   return (TRANSLATE_LOCALES as readonly string[]).includes(locale);
@@ -53,7 +55,7 @@ export function CaptionTranslation({
       window.location.assign('/enter');
     } else {
       const code =
-        result.code === 'model_busy' || result.code === 'model_timeout'
+        result.code === 'model_busy' || result.code === 'model_timeout' || isUsageCode(result.code)
           ? result.code
           : 'model_failed';
       setView({ kind: 'failed', code });
@@ -78,7 +80,13 @@ export function CaptionTranslation({
         </div>
       )}
       {view.kind === 'failed' && (
-        <p className="mt-1 text-[13px] text-error">{t(`errors.${view.code}`)}</p>
+        <p className="mt-1 text-[13px] text-error">
+          {isUsageCode(view.code) ? (
+            <UsageMessage code={view.code} action="translations" />
+          ) : (
+            t(`errors.${view.code}`)
+          )}
+        </p>
       )}
     </div>
   );
