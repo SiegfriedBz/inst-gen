@@ -390,14 +390,14 @@
     },
     "posts": {
       "title": "Tạo bài đăng",
-      "make": "Trong <b>{tab}</b>, chạm <b>{button}</b>. Bạn nhận 6 gợi ý, mỗi gợi ý có hình bài đăng, hình story và chữ cho bài đăng.",
+      "make": "Trong <b>{tab}</b>, chạm <b>{button}</b>. Bạn nhận 6 gợi ý, mỗi gợi ý có hình bài đăng, hình story, chữ cho bài đăng và một dòng chữ ngắn cho story.",
       "open": "Chạm vào một gợi ý để mở. Những gợi ý bạn đã lưu và sao chép hiện <b>{saved}</b>.",
       "check": "Gợi ý có dấu <b>{check}</b> có điều cần xem trước khi đăng: mở ra để biết, ví dụ một mức giá không có trên trang web của bạn, hoặc một ưu đãi không khớp với ưu đãi bạn đã đặt.",
       "wait": "Giữ trang mở khoảng một phút trong lúc gợi ý được tạo.",
       "leave": "Nếu bạn rời đi, Shopfront sẽ tiếp tục từ chỗ dừng khi bạn quay lại, nhưng phần đang làm dở sẽ được làm lại và tốn một phần lượt của hôm nay. Vì vậy hãy bắt đầu khi bạn có một phút để chờ, đừng bắt đầu ngay trước một cuộc gọi.",
       "more": "Muốn ý khác? Chạm <b>{button}</b>: gợi ý mới nằm trên, gợi ý cũ vẫn ở bên dưới.",
-      "edit": "Chạm <b>{button}</b> để đổi lời của một gợi ý, và <b>{image}</b> để có hình khác; bạn có thể thêm mô tả ngắn.",
-      "update": "Nếu bạn thay đổi thông tin doanh nghiệp, chú thích sẽ được cập nhật theo. Chữ bạn đã tự sửa thì được giữ nguyên.",
+      "edit": "Chạm <b>{button}</b> để đổi lời của một gợi ý, và <b>{image}</b> để có hình khác; bạn có thể thêm mô tả ngắn. Chữ story không sửa được ở đây: nếu muốn, hãy sửa trên Instagram sau khi dán.",
+      "update": "Nếu bạn thay đổi thông tin doanh nghiệp, chú thích và chữ story sẽ được cập nhật theo. Chữ bạn đã tự sửa thì được giữ nguyên.",
       "offer": "Để đưa ưu đãi hôm nay vào bài đăng, chạm <b>{button}</b> trước khi tạo:",
       "offerKind": "Chọn giảm giá (10%, 15%, 20% hoặc mức của bạn) hoặc tặng thêm: một liệu trình bạn tặng kèm buổi 90 phút.",
       "offerTreatments": "Đánh dấu các liệu trình được áp dụng. Ưu đãi luôn dành cho buổi từ 90 phút trở lên.",
@@ -407,13 +407,13 @@
     },
     "instagram": {
       "title": "Đăng lên Instagram",
-      "save": "Chạm <b>1 {button}</b>. Trên iPhone, chọn \"Lưu 2 hình ảnh\" trong menu hiện ra. Trên Android, cả hai hình được tải thẳng về điện thoại. Hình bài đăng và hình story nằm cạnh nhau trong ảnh của bạn.",
-      "copy": "Chạm <b>2 {button}</b>. Nút này sao chép chú thích, dòng WhatsApp và hashtag, sẵn sàng để dán.",
+      "save": "Chạm <b>{button}</b>. Trên iPhone, chọn \"Lưu 2 hình ảnh\" trong menu hiện ra. Trên Android, cả hai hình được tải thẳng về điện thoại. Hình bài đăng và hình story nằm cạnh nhau trong ảnh của bạn.",
+      "copy": "Chạm <b>{button}</b>. Nút này sao chép chú thích, dòng WhatsApp và hashtag, sẵn sàng để dán.",
       "post": "Bài đăng: trong Instagram, chạm +, rồi Post. Chọn hình bài đăng, dán chữ và chia sẻ.",
-      "story": "Story: chạm +, rồi Story, và chọn hình story. Chạm biểu tượng nhãn dán, chọn \"Link\", dán link WhatsApp của bạn và đặt nhãn dán. Story không cần dán chữ.",
+      "story": "Story: chạm +, rồi Story, và chọn hình story. Chạm biểu tượng nhãn dán, chọn \"Link\", dán link WhatsApp của bạn và đặt nhãn dán. Nếu muốn, chạm <b>{button}</b> trong gợi ý, rồi thêm chữ vào story và dán.",
       "link": "Link WhatsApp của bạn là <code>https://wa.me/</code> và số của bạn kèm mã quốc gia, không có dấu + và không có khoảng trắng. Ví dụ: <code>https://wa.me/84901234567</code>.",
       "alt": "Không bắt buộc: trước khi chia sẻ bài đăng, mục \"Advanced settings\" rồi \"Accessibility\" của Instagram cho phép bạn mô tả hình cho người không nhìn thấy.",
-      "noImages": "Gợi ý không có hình? Hãy đăng ảnh của bạn và dán chữ.",
+      "noImages": "Gợi ý không có hình? Hãy đăng ảnh của bạn và dán chữ, story cũng vậy với chữ story.",
       "never": "Shopfront không bao giờ đăng thay bạn: bạn quyết định những gì được đăng."
     },
     "reviews": {
@@ -434,7 +434,7 @@
     "languages": {
       "title": "Ngôn ngữ",
       "switch": "Nút <b>{lang}</b> ở góc trên bên phải đổi ngôn ngữ của màn hình.",
-      "captions": "Bài đăng được viết bằng tiếng Anh, và câu trả lời đánh giá bằng ngôn ngữ của khách. Hiển thị bằng ngôn ngữ của bạn là để đọc, không phải để đăng."
+      "captions": "Bài đăng và chữ story được viết bằng tiếng Anh, và câu trả lời đánh giá bằng ngôn ngữ của khách. Hiển thị bằng ngôn ngữ của bạn là để đọc, không phải để đăng."
     },
     "trouble": {
       "title": "Khi có sự cố",

@@ -89,6 +89,13 @@ Task 6, the five sheet test files:
       Tests  26 failed | 76 passed (102)
 ```
 
+Task 7, `pnpm exec vitest run tests/unit/guide.test.tsx`:
+
+```
+ Test Files  1 failed (1)
+      Tests  3 failed | 23 passed (26)
+```
+
 ## GREEN
 
 Task 1:
@@ -139,4 +146,11 @@ Task 6, then `pnpm test` (the two recordings still `translate-1`):
       Tests  102 passed (102)
  Test Files  1 failed | 105 passed (106)
       Tests  2 failed | 1439 passed (1441)
+```
+
+Task 7:
+
+```
+ Test Files  1 passed (1)
+      Tests  26 passed (26)
 ```
