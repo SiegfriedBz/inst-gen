@@ -21,6 +21,12 @@
   with the app left open; a free extra's gift is never among its paid
   treatments; the model's last day is written from fixed English names, not
   the device's date formatting.
+- 2026-10-27: `pnpm eval:posts sen svarga --offer --record` (2 Gemini
+  requests, asked first; not a pilot day). Svarga: both offer posts say
+  "10% off for 90-minute sessions until Sunday 1 November", the other four
+  never mention it. Sen: both offer posts carry the badge and their topics
+  name the offer, but their captions don't state it; code flags each with
+  `offer: Sunday 1 November`. The other four are quiet.
 
 ## RED
 
@@ -95,6 +101,14 @@ Final review fixes (`posts-offer`, `posts-offer-store`, `posts-client`,
       Tests  5 failed | 98 passed (103)
 ```
 
+Task 9, the recorded offer plans (`posts-fixtures-replay`), before the
+recording:
+
+```
+ Test Files  1 failed (1)
+      Tests  2 failed | 7 passed (9)
+```
+
 ## GREEN
 
 Task 1:
@@ -166,4 +180,14 @@ Final review fixes:
 ```
  Test Files  4 passed (4)
       Tests  103 passed (103)
+```
+
+Task 9, the eval's summary line, then the replay and everything:
+
+```
+posts eval: 2/2 made · prompt posts-3 · model gemini-3.5-flash-lite
+ Test Files  1 passed (1)
+      Tests  9 passed (9)
+ Test Files  102 passed (102)
+      Tests  1266 passed (1266)
 ```

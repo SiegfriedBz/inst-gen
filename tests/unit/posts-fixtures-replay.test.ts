@@ -2,7 +2,7 @@ import { existsSync } from 'node:fs';
 import { join } from 'node:path';
 import { describe, expect, test } from 'vitest';
 import { replayTextModel } from '@/lib/ai/replay';
-import { FIXTURES_DIR, fixtureProfile, loadFixture } from '@/lib/brand/fixtures';
+import { FIXTURES_DIR, fixtureOffer, fixtureProfile, loadFixture } from '@/lib/brand/fixtures';
 import { streamPlan } from '@/lib/posts/run';
 
 // The post plans recorded by `pnpm eval:posts --record`, replayed through the
@@ -53,5 +53,32 @@ describe('recorded post plans', () => {
     if (profile.highlights.length === 0 && !profile.essence.promise) {
       expect(final.posts.some((p) => p.type === 'proof')).toBe(false);
     }
+  });
+});
+
+// The offer plans recorded by `pnpm eval:posts sen svarga --offer --record`
+// (docs/specs/posts/special-offer, "Checked with the real model").
+describe('recorded offer plans', () => {
+  test.each(['sen', 'svarga'])('%s replays with its offer', { timeout: 20_000 }, async (slug) => {
+    const dir = join(FIXTURES_DIR, slug);
+    const fixture = loadFixture(dir);
+    if (!fixture.postsOffer) throw new Error(`no posts-offer.json for ${slug}`);
+    const profile = await fixtureProfile(dir);
+    const offer = fixtureOffer(profile);
+    const model = replayTextModel(noBrandRead, { posts: fixture.postsOffer.recording });
+    let final = null;
+    for await (const line of streamPlan(
+      { profile, recent: [], offer },
+      { model },
+      new AbortController().signal,
+    )) {
+      if (line.type === 'error') throw new Error(line.code);
+      if (line.type === 'final') final = line.result;
+    }
+    if (!final) throw new Error('no final line');
+    expect(final.offer).toEqual(offer);
+    const carrying = final.posts.filter((p) => p.offer);
+    expect(carrying.length).toBeGreaterThanOrEqual(1);
+    expect(carrying.length).toBeLessThanOrEqual(2);
   });
 });
