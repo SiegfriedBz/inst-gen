@@ -9,9 +9,10 @@ import type {
   PostsErrorCode,
   RewriteBody,
 } from './batch';
-import { checkPlan, checkPost, checkRewrite } from './checks';
+import { carries, checkPlan, checkPost, checkRewrite } from './checks';
 import { postsModelInput, profileHash } from './input';
 import type { PostsLog } from './log';
+import type { Offer } from './offer';
 import {
   POSTS_PROMPT_VERSION,
   planPrompt,
@@ -60,6 +61,7 @@ async function* run<T>(
   step: Step<T>,
   deps: PostsDeps,
   signal: AbortSignal,
+  offer?: Offer,
 ): AsyncGenerator<PostsLine> {
   const started = Date.now();
   const timeout = AbortSignal.timeout(deps.timeoutMs ?? POSTS_TIMEOUT_MS);
@@ -79,9 +81,16 @@ async function* run<T>(
   const streamed: Post[] = [];
   const dropped: Dropped[] = [];
   let seen = 0;
+  // Offer posts kept so far: the first two carry the special offer.
+  let offerPosts = 0;
   function* emit(raws: ModelPost[]): Generator<PostsLine> {
     for (; seen < raws.length; seen += 1) {
-      const checked = checkPost(raws[seen], profile, `post-${seen + 1}`);
+      const type = raws[seen].type.trim().toLowerCase();
+      const context = offer
+        ? { offer, carries: type === 'offer' && carries('offer', offerPosts) }
+        : undefined;
+      const checked = checkPost(raws[seen], profile, `post-${seen + 1}`, context);
+      if (checked.post?.type === 'offer') offerPosts += 1;
       dropped.push(...checked.dropped);
       if (!checked.post) continue;
       streamed.push(checked.post);
@@ -113,6 +122,7 @@ async function* run<T>(
       promptVersion: POSTS_PROMPT_VERSION,
       model,
       profileHash: profileHash(profile),
+      ...(offer ? { offer } : {}),
     };
     entry.kept = result.posts.length;
     entry.flags = result.posts.reduce((n, p) => n + p.unchecked.length, 0);
@@ -142,7 +152,7 @@ export function streamPlan(
       kind: 'plan',
       open: (s) =>
         deps.model.streamPostPlan(
-          { system: planPrompt(), text: planUserText(input, body.recent) },
+          { system: planPrompt(!!body.offer), text: planUserText(input, body.recent, body.offer) },
           s,
         ),
       complete: (partial, done) => {
@@ -153,6 +163,7 @@ export function streamPlan(
     },
     deps,
     signal,
+    body.offer,
   );
 }
 
@@ -168,14 +179,18 @@ export function streamRewrite(
       kind: 'rewrite',
       open: (s) =>
         deps.model.streamPostRewrite(
-          { system: rewritePrompt(), text: rewriteUserText(input, body.posts) },
+          {
+            system: rewritePrompt(!!body.offer),
+            text: rewriteUserText(input, body.posts, body.offer),
+          },
           s,
         ),
       // A rewrite's posts are only shown once all are checked.
       complete: () => null,
-      finish: (final) => checkRewrite(final, body.posts, body.profile),
+      finish: (final) => checkRewrite(final, body.posts, body.profile, body.offer),
     },
     deps,
     signal,
+    body.offer,
   );
 }

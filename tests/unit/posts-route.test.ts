@@ -45,6 +45,30 @@ describe('POST /api/posts/plan', () => {
   });
 });
 
+describe('the special offer in the plan body', () => {
+  const offer = {
+    kind: 'discount',
+    percent: 10,
+    treatments: ['Balinese massage'],
+    until: '2026-10-27',
+    lastDay: 'Tuesday 27 October',
+  };
+  const send = (o: unknown) =>
+    plan.POST(request('plan', JSON.stringify({ profile: svargaProfile(), recent: [], offer: o })));
+
+  test('a treatment the profile does not have answers 400', async () => {
+    expect((await send({ ...offer, treatments: ['Hot stone'] })).status).toBe(400);
+  });
+
+  test('more than 90% answers 400', async () => {
+    expect((await send({ ...offer, percent: 95 })).status).toBe(400);
+  });
+
+  test('a good offer streams', async () => {
+    expect((await send(offer)).status).toBe(200);
+  });
+});
+
 describe('POST /api/posts/rewrite', () => {
   test('an invalid body answers 400 invalid_profile', async () => {
     const response = await rewrite.POST(

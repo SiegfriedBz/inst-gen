@@ -1,6 +1,6 @@
 import { z } from 'zod';
-import { profileSchema } from '@/lib/brand/profile';
-import { offerSchema } from './offer';
+import { type Profile, profileSchema } from '@/lib/brand/profile';
+import { type Offer, offerFits, offerSchema } from './offer';
 
 // A batch of posts made from the brand profile
 // (docs/specs/posts/generate-copy/spec.md). One set of schemas serves the
@@ -115,17 +115,28 @@ export type ModelRewrite = z.infer<typeof modelRewriteSchema>;
 const recentSchema = z.object({ type: z.enum(POST_TYPES), topic: text });
 export type RecentPost = z.infer<typeof recentSchema>;
 
-export const planBodySchema = z.object({
-  profile: profileSchema,
-  recent: z.array(recentSchema).max(POSTS_LIMITS.recent),
-});
+// An offer names only the profile's treatments (docs/specs/posts/special-offer).
+const offerFitsProfile = (body: { profile: Profile; offer?: Offer }) =>
+  !body.offer || offerFits(body.offer, body.profile);
+const OFFER_UNKNOWN = { message: 'the offer names an unknown treatment', path: ['offer'] };
+
+export const planBodySchema = z
+  .object({
+    profile: profileSchema,
+    recent: z.array(recentSchema).max(POSTS_LIMITS.recent),
+    offer: offerSchema.optional(),
+  })
+  .refine(offerFitsProfile, OFFER_UNKNOWN);
 export type PlanBody = z.infer<typeof planBodySchema>;
 
 // Whole posts, so a post the model leaves out keeps what it had.
-export const rewriteBodySchema = z.object({
-  profile: profileSchema,
-  posts: z.array(postSchema).min(1).max(POSTS_LIMITS.posts),
-});
+export const rewriteBodySchema = z
+  .object({
+    profile: profileSchema,
+    posts: z.array(postSchema).min(1).max(POSTS_LIMITS.posts),
+    offer: offerSchema.optional(),
+  })
+  .refine(offerFitsProfile, OFFER_UNKNOWN);
 export type RewriteBody = z.infer<typeof rewriteBodySchema>;
 
 export const POSTS_ERROR_CODES = [

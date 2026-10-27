@@ -24,6 +24,14 @@ Task 2, code's checks (`posts-checks`, `posts-edit`):
       Tests  11 failed | 46 passed (57)
 ```
 
+Task 3, the prompt, the request and the run (`posts-prompt`, `posts-run`,
+`posts-route`):
+
+```
+ Test Files  3 failed (3)
+      Tests  8 failed | 25 passed (33)
+```
+
 ## GREEN
 
 Task 1:
@@ -38,4 +46,11 @@ Task 2:
 ```
  Test Files  3 passed (3)
       Tests  61 passed (61)
+```
+
+Task 3, with the recorded plans replayed:
+
+```
+ Test Files  4 passed (4)
+      Tests  40 passed (40)
 ```

@@ -1,10 +1,11 @@
 import { BANNED_WORDS } from './banned';
 import type { Post, RecentPost } from './batch';
 import type { PostsModelInput } from './input';
+import { OFFER_LIMITS, type Offer } from './offer';
 
 // The post plan's prompts (docs/specs/posts/generate-copy, "What the model
 // writes"). Bump the version with every change, so eval verdicts trace back to it.
-export const POSTS_PROMPT_VERSION = 'posts-2';
+export const POSTS_PROMPT_VERSION = 'posts-3';
 
 const CAPTION_RULES = `Captions:
 - English, in the business's tone words, written to tourists and expats nearby.
@@ -18,7 +19,28 @@ Hashtags: 3 to 5, without "#", lower case, letters and digits only. One or two o
 
 Alt text: at most 125 characters, describing what the image will show, from its image prompt, for someone who can't see it. Never start with "image of".`;
 
-export function planPrompt(): string {
+// The special offer's rules, only when the owner set one
+// (docs/specs/posts/special-offer, "What the model gets").
+const OFFER_RULES = `
+A special offer is given. Exactly 2 offer posts carry the special offer: each leads on one of the offer's treatments, two different ones when the offer has two or more. Each states the offer as given: the same percentage, or the same free treatment; "${OFFER_LIMITS.minutes}-minute" with the treatment; "until" with the last day exactly as given. Never a bigger discount, never other terms, never a price, never "today only" or "this week". The other four posts never mention a discount, a free treatment or a deadline.`;
+
+const REWRITE_OFFER_RULES = `
+
+A special offer is given. A post marked offer: true keeps the offer, stated as given, with "until" and the last day; the other posts never mention it.`;
+
+function offerText(offer: Offer): string {
+  const what =
+    offer.kind === 'discount'
+      ? `- ${offer.percent}% off`
+      : `- Free: ${offer.gift}, with a paid session`;
+  return `### Special offer
+${what}
+- On: ${offer.treatments.join(', ')}
+- Sessions: ${OFFER_LIMITS.minutes} minutes or longer
+- Until: ${offer.lastDay}`;
+}
+
+export function planPrompt(withOffer = false): string {
   return `You plan six Instagram posts for a small business, for an app that makes its posts. You get the business's brand profile, read from its website and checked by the owner, and the topics of its recent posts.
 
 Each post has a type, a topic, a scene, a caption, hashtags, alt text and an image prompt.
@@ -30,7 +52,7 @@ The mix:
 - ritual: how a treatment unfolds (the oils, the warm towels, the quiet), never the staff.
 - tip: a small piece of care advice tied to the trade (stretch after a dive, drink water after a massage).
 - proof: what the profile says about the business (years open, its promise, a rating it quotes). Only when the highlights or the promise give something to say; never an invented review, rating or customer.
-At least 2 offer posts, on 2 different offerings when there are two. At most 2 posts of any type, and at least 4 different types. Never repeat the topic of a recent post.
+At least 2 offer posts, on 2 different offerings when there are two. At most 2 posts of any type, and at least 4 different types. Never repeat the topic of a recent post.${withOffer ? OFFER_RULES : ''}
 
 The topic: one line, at most 12 words, saying what the post is about.
 
@@ -57,25 +79,28 @@ function profileText(input: PostsModelInput): string {
   return `### Brand profile\n${JSON.stringify(input, null, 2)}`;
 }
 
-export function planUserText(input: PostsModelInput, recent: RecentPost[]): string {
+export function planUserText(input: PostsModelInput, recent: RecentPost[], offer?: Offer): string {
   const lines = recent.length ? recent.map((p) => `- ${p.type}: ${p.topic}`).join('\n') : 'None';
-  return `${profileText(input)}\n\n### Recent posts\n${lines}`;
+  const text = `${profileText(input)}\n\n### Recent posts\n${lines}`;
+  return offer ? `${text}\n\n${offerText(offer)}` : text;
 }
 
-export function rewritePrompt(): string {
+export function rewritePrompt(withOffer = false): string {
   return `The owner changed their business's brand profile. You rewrite the captions, hashtags and alt text of their Instagram posts so they fit the new profile. Keep each post's type, topic, scene and image prompt: they don't change. Answer every post, with its id.
 
-${CAPTION_RULES}`;
+${CAPTION_RULES}${withOffer ? REWRITE_OFFER_RULES : ''}`;
 }
 
-export function rewriteUserText(input: PostsModelInput, posts: Post[]): string {
-  const kept = posts.map(({ id, type, topic, scene, caption, imagePrompt }) => ({
+export function rewriteUserText(input: PostsModelInput, posts: Post[], offer?: Offer): string {
+  const kept = posts.map(({ id, type, topic, scene, caption, imagePrompt, offer: carries }) => ({
     id,
     type,
     topic,
     scene,
     caption,
     imagePrompt,
+    ...(offer && carries ? { offer: true } : {}),
   }));
-  return `${profileText(input)}\n\n### Posts\n${JSON.stringify(kept, null, 2)}`;
+  const text = `${profileText(input)}\n\n### Posts\n${JSON.stringify(kept, null, 2)}`;
+  return offer ? `${text}\n\n${offerText(offer)}` : text;
 }
