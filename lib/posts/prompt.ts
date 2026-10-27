@@ -2,10 +2,11 @@ import { BANNED_WORDS } from './banned';
 import type { Post, RecentPost } from './batch';
 import type { PostsModelInput } from './input';
 import { OFFER_LIMITS, type Offer } from './offer';
+import { type Setup, setupLine } from './setup';
 
 // The post plan's prompts (docs/specs/posts/generate-copy, "What the model
 // writes"). Bump the version with every change, so eval verdicts trace back to it.
-export const POSTS_PROMPT_VERSION = 'posts-3';
+export const POSTS_PROMPT_VERSION = 'posts-4';
 
 const CAPTION_RULES = `Captions:
 - English, in the business's tone words, written to tourists and expats nearby.
@@ -22,7 +23,7 @@ Alt text: at most 125 characters, describing what the image will show, from its 
 // The special offer's rules, only when the owner set one
 // (docs/specs/posts/special-offer, "What the model gets").
 const OFFER_RULES = `
-A special offer is given. Exactly 2 offer posts carry the special offer: each leads on one of the offer's treatments, two different ones when the offer has two or more. Each states the offer as given: the same percentage, or the same free treatment; "${OFFER_LIMITS.minutes}-minute" with the treatment; "until" with the last day exactly as given. Never a bigger discount, never other terms, never a price, never "today only" or "this week". Each offer post's first line states the offer, in these words: "<percentage> off our ${OFFER_LIMITS.minutes}-minute <treatment>, until <last day>." or "Free <free treatment> with a ${OFFER_LIMITS.minutes}-minute <treatment>, until <last day>." The other four posts never mention a discount, a free treatment or a deadline.`;
+A special offer is given. Posts 1 and 2 are the two offer posts. Exactly 2 offer posts carry the special offer: each leads on one of the offer's treatments, two different ones when the offer has two or more. Each states the offer as given: the same percentage, or the same free treatment; "${OFFER_LIMITS.minutes}-minute" with the treatment; "until" with the last day exactly as given. Never a bigger discount, never other terms, never a price, never "today only" or "this week". Each offer post's first line states the offer, in these words: "<percentage> off our ${OFFER_LIMITS.minutes}-minute <treatment>, until <last day>." or "Free <free treatment> with a ${OFFER_LIMITS.minutes}-minute <treatment>, until <last day>." The other four posts never mention a discount, a free treatment or a deadline.`;
 
 const REWRITE_OFFER_RULES = `
 
@@ -72,16 +73,28 @@ The image prompt: English, at most 80 words, for an image model making a tall 9:
 - Use the visual style's palette, light and textures, and the essence's senses and place symbols.
 - Never the business's own premises, products or staff as if real.
 
-The scene, and every scene shows the massage: treatment (the therapist's hands at work on the guest), detail (a close view of the treatment: oil poured into a palm, warm towels laid on a back), place (the guest's room, balcony or villa with the massage under way in it), or guest (the guest relaxed during the treatment, the therapist's hands in the frame). At most 2 posts of any scene.`;
+The image set-ups: code gives one set-up per post, in order, under "### Image set-ups". Post 1 uses set-up 1, post 2 uses set-up 2, and so on. Each image prompt shows its set-up's treatment, guests, number of therapists, part of the body, scene and camera; it never changes them, and never adds a guest or a therapist. It names each guest as "a man" or "a woman", and says "two therapists" when there are two. The therapists are women. An offer post leads on its set-up's treatment.
+
+The scene: copy the set-up's scene; every scene shows the massage: treatment (the therapist's hands at work on the guest, from the side), detail (a close view of the hands on the guest's body, such as oil poured onto a back or warm towels laid on a leg; the guest's body is always in the frame), place (the guest's room, balcony or villa with the massage under way in it), or guest (the guest relaxed during the treatment, from above, the therapist's hands in the frame).`;
 }
 
 function profileText(input: PostsModelInput): string {
   return `### Brand profile\n${JSON.stringify(input, null, 2)}`;
 }
 
-export function planUserText(input: PostsModelInput, recent: RecentPost[], offer?: Offer): string {
+// The set-ups come before the offer, so the offer stays the last word.
+export function planUserText(
+  input: PostsModelInput,
+  recent: RecentPost[],
+  offer?: Offer,
+  setups: Setup[] = [],
+): string {
   const lines = recent.length ? recent.map((p) => `- ${p.type}: ${p.topic}`).join('\n') : 'None';
-  const text = `${profileText(input)}\n\n### Recent posts\n${lines}`;
+  let text = `${profileText(input)}\n\n### Recent posts\n${lines}`;
+  if (setups.length) {
+    const list = setups.map((s, i) => `${i + 1}. ${setupLine(s)}`).join('\n');
+    text = `${text}\n\n### Image set-ups\n${list}`;
+  }
   return offer ? `${text}\n\n${offerText(offer)}` : text;
 }
 

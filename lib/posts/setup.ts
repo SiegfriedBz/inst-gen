@@ -256,3 +256,51 @@ export function dealSetups(
     locals,
   }));
 }
+
+// The set-up in words: one line of the post plan's "### Image set-ups", and
+// the cast line code puts first in the image prompt.
+
+const GUESTS: Record<Setup['guests'], string> = {
+  man: 'one guest, a man,',
+  woman: 'one guest, a woman,',
+  couple: 'two guests, a man and a woman,',
+};
+
+const LOOK_WORDS_FOR: Record<LookKey, string> = {
+  fourHands: 'on a massage bed; two therapists working in step, one on each side',
+  couple: 'on two massage beds side by side; two therapists, one at each bed',
+  thai: 'on a floor mattress, in loose cotton clothes; the therapist stretching a leg or an arm, or pressing with her palms',
+  foot: 'sitting back in a reclining chair, feet on a towel; the therapist seated at the feet',
+  stone:
+    "on a massage bed, smooth dark stones laid along the back; the therapist's hands holding one",
+  head: "lying face up on a massage bed, eyes covered by a folded towel; the therapist's hands at the head or shoulders",
+  scrub:
+    "on a massage bed, scrub on the skin, a bowl of it nearby; the therapist's hands spreading it",
+  pregnancy:
+    "lying on her side on a massage bed, propped on pillows; the therapist's hands working gently",
+  plain: "on a massage bed, with warm golden oil; the therapist's hands working",
+};
+
+const CAMERAS: Record<Setup['scene'], string> = {
+  treatment: 'from the side',
+  detail: 'a close view of the hands on the body',
+  place: 'the room with the treatment in it',
+  guest: 'from above',
+};
+
+export function setupLine(setup: Setup): string {
+  const what = setup.treatment ?? 'A massage';
+  return `${what}: ${GUESTS[setup.guests]} ${LOOK_WORDS_FOR[setup.look]}; the ${setup.bodyPart}; scene ${setup.scene}, ${CAMERAS[setup.scene]}.`;
+}
+
+export function castLine(setup: Setup): string {
+  const guests =
+    setup.guests === 'couple'
+      ? 'Two guests, a man and a woman, on two beds side by side.'
+      : `One guest, a ${setup.guests}.`;
+  const therapists =
+    setup.therapists === 2
+      ? `Two therapists, both young ${setup.locals} women.`
+      : `One therapist, a young ${setup.locals} woman.`;
+  return `${guests} ${therapists}`;
+}

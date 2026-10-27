@@ -2,7 +2,15 @@ import { describe, expect, it } from 'vitest';
 import type { Profile } from '@/lib/brand/profile';
 import { SCENES } from '@/lib/posts/batch';
 import type { Offer } from '@/lib/posts/offer';
-import { dealSetups, localsOf, lookOf, type Setup, seededRandom } from '@/lib/posts/setup';
+import {
+  castLine,
+  dealSetups,
+  localsOf,
+  lookOf,
+  type Setup,
+  seededRandom,
+  setupLine,
+} from '@/lib/posts/setup';
 import { senProfile, svargaProfile } from './helpers/brand';
 
 // The image set-ups (docs/specs/posts/varied-images).
@@ -269,5 +277,63 @@ describe('dealSetups', () => {
 
   it('every set-up carries the profile locals', () => {
     for (const s of deal(senProfile())) expect(s.locals).toBe('Vietnamese');
+  });
+});
+
+describe('the set-up in words', () => {
+  const fourHandsMan: Setup = {
+    treatment: 'Four-Hands Massage',
+    look: 'fourHands',
+    guests: 'man',
+    therapists: 2,
+    bodyPart: 'back',
+    scene: 'guest',
+    locals: 'Balinese',
+  };
+
+  it('setupLine for four hands', () => {
+    expect(setupLine(fourHandsMan)).toBe(
+      'Four-Hands Massage: one guest, a man, on a massage bed; two therapists working in step, one on each side; the back; scene guest, from above.',
+    );
+  });
+
+  it('setupLine without a treatment', () => {
+    const line = setupLine({ ...fourHandsMan, treatment: undefined, look: 'plain', therapists: 1 });
+    expect(line.startsWith('A massage: one guest, a man, ')).toBe(true);
+  });
+
+  it('setupLine names every scene with its camera', () => {
+    for (const [scene, camera] of [
+      ['treatment', 'from the side'],
+      ['detail', 'a close view of the hands on the body'],
+      ['place', 'the room with the treatment in it'],
+      ['guest', 'from above'],
+    ] as const) {
+      expect(setupLine({ ...fourHandsMan, scene })).toContain(`scene ${scene}, ${camera}.`);
+    }
+  });
+
+  it('castLine, one guest and one therapist', () => {
+    expect(
+      castLine({
+        ...fourHandsMan,
+        look: 'plain',
+        guests: 'woman',
+        therapists: 1,
+        locals: 'Vietnamese',
+      }),
+    ).toBe('One guest, a woman. One therapist, a young Vietnamese woman.');
+  });
+
+  it('castLine, two therapists', () => {
+    expect(castLine(fourHandsMan)).toBe(
+      'One guest, a man. Two therapists, both young Balinese women.',
+    );
+  });
+
+  it('castLine, a couple', () => {
+    expect(castLine({ ...fourHandsMan, look: 'couple', guests: 'couple' })).toBe(
+      'Two guests, a man and a woman, on two beds side by side. Two therapists, both young Balinese women.',
+    );
   });
 });
