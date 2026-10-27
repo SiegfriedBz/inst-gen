@@ -48,10 +48,15 @@ test('wrong passphrase', async ({ page, context }) => {
 test.describe('without JavaScript', () => {
   test.use({ javaScriptEnabled: false });
 
-  test('Sen signs in', async ({ page }) => {
+  test('Sen signs in', async ({ page, context }) => {
     await signIn(page, SEN);
     await expect(page).toHaveURL('/');
-    await expect(page.getByRole('heading', { name: 'Welcome, Sen' })).toBeVisible();
+    // "Welcome, Sen" needs the phone's store to know no business is saved
+    // (docs/specs/platform/friendlier-home, "The header"); the header names
+    // the spa without it.
+    await expect(page.locator('header').getByText('Sen', { exact: true })).toBeVisible();
+    await expect(page.getByText('Signed in on this phone for 30 days.')).toBeVisible();
+    expect((await context.cookies()).some((c) => c.name === 'shopfront_session')).toBe(true);
   });
 });
 

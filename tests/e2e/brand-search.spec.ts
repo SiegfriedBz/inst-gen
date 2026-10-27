@@ -1,10 +1,11 @@
 import { expect, type Page, test } from '@playwright/test';
 import { senProfile } from '../unit/helpers/brand';
 import { fulfilRead, fulfilSearch, streamBody } from './helpers/brand-stream';
+import { openSection } from './helpers/business-tab';
 
 // Test values from playwright.config.ts; not secrets.
 const SEN = 'test-lotus-river-sen';
-const INTRO = 'This is what we understood about Sen.';
+const TITLE = 'What we know about Sen';
 
 test.use({ locale: 'en-US' });
 
@@ -28,10 +29,12 @@ async function signInAndRead(page: Page) {
 
 test('a read is followed by the search, whose additions show and stay', async ({ page }) => {
   await fulfilRead(page, [streamBody(senProfile())]);
-  const searches = await fulfilSearch(page, answer, 500);
+  // Long enough to open "Your feeling", where the search shows, before it ends.
+  const searches = await fulfilSearch(page, answer, 1_500);
   await signInAndRead(page);
 
-  await expect(page.getByText(INTRO, { exact: false })).toBeVisible();
+  await expect(page.getByRole('heading', { name: TITLE })).toBeVisible();
+  await openSection(page, 'Your feeling');
   await expect(page.getByText('Looking up what people search for…')).toBeVisible();
   await expect(page.getByText('hotel massage da nang')).toBeVisible();
   await expect(page.getByRole('link', { name: 'seen on vietnam.travel' })).toHaveAttribute(
@@ -41,6 +44,7 @@ test('a read is followed by the search, whose additions show and stay', async ({
 
   await page.reload();
   await page.getByRole('tab', { name: 'Your business' }).click();
+  await openSection(page, 'Your feeling');
   await expect(page.getByText('hotel massage da nang')).toBeVisible();
   expect(searches.count()).toBe(1);
 });
@@ -50,9 +54,11 @@ test('a failed search keeps the panel and says so', async ({ page }) => {
   await fulfilSearch(page, { status: 503, error: 'search_busy' });
   await signInAndRead(page);
 
-  await expect(page.getByText(INTRO, { exact: false })).toBeVisible();
+  await expect(page.getByRole('heading', { name: TITLE })).toBeVisible();
+  await openSection(page, 'Your feeling');
   await expect(
     page.getByText("We couldn't look this up today. We'll try again next time."),
   ).toBeVisible();
+  await openSection(page, 'Where and when');
   await expect(page.locator('[data-field]', { hasText: 'Town' })).toContainText('Da Nang');
 });

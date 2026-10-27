@@ -3,6 +3,7 @@ import { senProfile } from '../unit/helpers/brand';
 import { fulfilRead, streamBody } from './helpers/brand-stream';
 import { fulfilImages } from './helpers/images';
 import { fulfilPosts, postsBody } from './helpers/posts-stream';
+import { closeSuggestion, openSuggestion, tile, tileImages } from './helpers/suggestions';
 
 // Test values from playwright.config.ts; not secrets.
 const SEN = 'test-lotus-river-sen';
@@ -28,25 +29,24 @@ test('images follow the captions, stay on the phone, and one is tried again', as
 
   await page.getByRole('button', { name: 'Make 6 suggestions' }).click();
   await expect(page.getByText('Making the image…')).toHaveCount(6);
-  await expect(page.locator('article img')).toHaveCount(5);
-  const third = page.locator('article').nth(2);
+  await expect(tileImages(page)).toHaveCount(5);
   await expect(
-    third.getByText("This image couldn't be made. Try again for a new one."),
+    tile(page, 3).getByText("This image couldn't be made. Try again for a new one."),
   ).toBeVisible();
 
-  await page
-    .locator('article')
-    .first()
-    .getByRole('button', { name: 'See the story image' })
-    .click();
-  await expect(page.getByRole('dialog').locator('img')).toBeVisible();
-  await page.getByRole('button', { name: 'Close' }).click();
-  await expect(page.getByRole('dialog')).toHaveCount(0);
+  const sheet = await openSuggestion(page, 1);
+  await sheet.getByRole('button', { name: 'See the story image' }).click();
+  const story = page.getByRole('dialog', { name: 'See the story image' });
+  await expect(story.locator('img')).toBeVisible();
+  await story.getByRole('button', { name: 'Close' }).click();
+  await expect(story).toHaveCount(0);
+  await closeSuggestion(page);
 
   await page.reload();
-  await expect(page.locator('article img')).toHaveCount(5);
+  await expect(tileImages(page)).toHaveCount(5);
   delete failures['post-3'];
-  await page.locator('article').nth(2).getByRole('button', { name: 'Try again' }).click();
-  await expect(page.locator('article img')).toHaveCount(6);
+  const third = await openSuggestion(page, 3);
+  await third.getByRole('button', { name: 'Try again' }).click();
+  await expect(tileImages(page)).toHaveCount(6);
   expect(images.count()).toBe(7);
 });
