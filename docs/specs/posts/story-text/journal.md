@@ -41,6 +41,62 @@
   viewport matched mockup v6 (three boxed parts, the dashed story part, the
   green buttons). `postsBody` gives story texts only when asked
   (`stories: true`), so the older phone tests keep posts without one.
+- 2026-10-27: `.env.local` was copied unread from the 2.12 worktree
+  (`whats-next-76b948`) at the maintainer's request; the main checkout has
+  none. A first `pnpm eval:posts` run, before the copy, stopped at the
+  missing key: no request spent.
+- 2026-10-27: `pnpm eval:posts sen svarga --record` and `--offer --record`
+  with `posts-5` (4 Gemini requests), then `pnpm eval:translate --record`
+  with `translate-2` (2 Flash-Lite requests), all asked first; not a pilot
+  day. Code made 0 emoji fixes and 0 story cuts on the four plans: the model
+  kept to the flowers and the length by itself. Story texts ran from 58 to
+  115 characters.
+- 2026-10-27: every caption is still one paragraph, so its "first line" is
+  longer than 125 characters and carries the hidden `firstLine` flag, as the
+  `posts-4` captions did (163 to 236): not a regression. The hook now opens
+  the paragraph.
+- 2026-10-27: the replay test's offer check first took the caption's first
+  paragraph as its offer line; the offer line is its first sentence, which
+  each offer story text starts with. The test was fixed, not the code.
+
+### Verdicts, `posts-5` (24 posts)
+
+Caption: hook first and a positive ending? Story text: a fair short version
+that ends well (an offer post's: its offer line and flower, word for word)?
+
+| Plan | Post | Caption | Story text |
+|---|---|---|---|
+| Sen | 1 offer, deep tissue | yes ("…shoulders stiff?" … "ready to rest") | yes (109) |
+| Sen | 2 offer, surf recovery | yes | yes (105) |
+| Sen | 3 local, Da Nang | yes | yes (88) |
+| Sen | 4 ritual, Vietnamese | weak hook: "Gentle stretching and warm oil", a label | yes (105) |
+| Sen | 5 tip, water | yes | yes (90) |
+| Sen | 6 ritual, aroma | weak hook: "Slow and flowing aroma massage" | yes (83) |
+| Svarga | 1 offer, Balinese | yes ("Long flight or tired legs?") | yes (115) |
+| Svarga | 2 moment, flight | yes | yes (112) |
+| Svarga | 3 local, Canggu sun | yes | yes (94) |
+| Svarga | 4 ritual, coconut oil | yes | yes (98) |
+| Svarga | 5 offer, four hands | yes ("Ready for twice the calm?") | yes (101) |
+| Svarga | 6 tip, surf | yes | yes (90) |
+| Sen offer | 1 10% Vietnamese | yes (offer line, "Wake up light tomorrow.") | yes, offer line + 🌸 (81) |
+| Sen offer | 2 10% Thai | yes | yes, offer line + 🌺 (63) |
+| Sen offer | 3 moment, feet | yes | yes (68) |
+| Sen offer | 4 tip, surf | yes | yes (69) |
+| Sen offer | 5 ritual, aroma | yes | yes (75) |
+| Sen offer | 6 proof, in-room | yes ("Simply book and relax.") | **no**: ends "Book on WhatsApp.", a call to action the prompt forbids (76) |
+| Svarga offer | 1 10% Balinese | yes | yes, offer line + 🌸 (79) |
+| Svarga offer | 2 10% four hands | yes | yes, offer line + 🌺 (69) |
+| Svarga offer | 3 moment, waves | yes | yes (85) |
+| Svarga offer | 4 local, Canggu | yes | yes (66) |
+| Svarga offer | 5 ritual, golden oil | yes | yes (63) |
+| Svarga offer | 6 tip, tension | yes | yes (58) |
+
+Pass: every story text within 120 by code's count (max 115); every spa
+caption and story text with flowers and no other emoji, with 0 fixes from
+code; 22 of 24 captions with a hook and a positive ending (bar: 20); 23 of
+24 story texts a fair short version (bar: 20). The translations keep prices,
+durations and flowers; the Vietnamese one writes "500k" where the caption
+says "VND 500k".
 
 ## RED
 
@@ -99,6 +155,13 @@ Task 7, `pnpm exec vitest run tests/unit/guide.test.tsx`:
 ```
  Test Files  1 failed (1)
       Tests  3 failed | 23 passed (26)
+```
+
+Task 9, `pnpm exec vitest run tests/unit/posts-fixtures-replay.test.ts tests/unit/posts-translate-replay.test.ts`, before re-recording:
+
+```
+ Test Files  2 failed (2)
+      Tests  6 failed | 9 passed (15)
 ```
 
 ## GREEN
@@ -164,4 +227,13 @@ Task 8, `pnpm test:e2e tests/e2e/story-text.spec.ts tests/e2e/friendlier-home.sp
 
 ```
   16 passed (24.5s)
+```
+
+Task 9, after re-recording, then `pnpm test`:
+
+```
+ Test Files  2 passed (2)
+      Tests  15 passed (15)
+ Test Files  106 passed (106)
+      Tests  1448 passed (1448)
 ```
