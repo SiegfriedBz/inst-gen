@@ -57,6 +57,8 @@ data to another.)
 
 ### The home screen
 
+
+> Changed by `platform/friendlier-home` (2026-10-27): "Your business" opens with "What we know about {name}" and a block of what's missing.
 `/` stays the only screen. It has three states.
 
 **1. No business yet.** The header, the welcome line, then:
@@ -100,6 +102,8 @@ yet; until 2.2 a muted line at the end says "Your posts are coming soon."
 
 ### The panel
 
+
+> Changed by `platform/friendlier-home` (2026-10-27): on the home screen the sections are rows that open in place, "Your business" open first; empty fields are listed in the missing block instead of "Not found on your site"; the footer is "Read from {site} {when}." with "Read it again" and "Forget this business".
 Five sections, in this order. Each is a card with a title and an "Edit"
 button; the card shows the values, the edit opens a form for that section
 only. Labels are in the owner's language; the profile's content is in

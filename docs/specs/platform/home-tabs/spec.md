@@ -85,6 +85,8 @@ inside the tab, the repeat reads as the tab's first part.
 
 ### The tab row
 
+
+> Changed by `platform/friendlier-home` (2026-10-27): the tabs are a bar fixed to the bottom of the screen, an icon over each label, the open one on a tinted pill; the usage line moves to the top of each tab.
 - Under "Welcome, {name}", full width, in the style of the mockup's option C
   (https://claude.ai/artifact/Gupm6Uyig4XXSJpgh8o2tC, section 1b): one
   segmented bar on the muted field colour (`field-muted`, a 1px soft edge,
@@ -175,6 +177,8 @@ New strings:
 
 ### The language switch at the top right
 
+
+> Changed by `platform/friendlier-home` (2026-10-27): one button with the current code opens the three languages by their full names.
 The row of three language names at the bottom of every screen
 (`platform/i18n`, "The switch") becomes three short codes at the **top
 right** of the header, on the home screen and on `/enter`, as in the
@@ -370,7 +374,7 @@ Scenario: Vietnamese hashtags keep their letters
 - The third tab, review replies: 2.7 `reviews/reply-drafts` adds it to this
   row.
 - Rewriting images after a business edit: never automatic (roadmap rule).
-- Remembering the last tab, sticky tabs, a bottom tab bar.
+- Remembering the last tab, sticky tabs, a bottom tab bar (the bottom bar came with `platform/friendlier-home`).
 - The other minors from 2.4's review (the image-description reminder after a
   resumed image, "Edited" cleared on a dropped rewrite answer, the translate
   client's failure paths, the v4 upgrade reading images at once,

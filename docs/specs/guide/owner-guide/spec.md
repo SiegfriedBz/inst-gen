@@ -29,6 +29,8 @@ that is where the owner already is.
 
 ### Where it lives
 
+
+> Changed by `platform/friendlier-home` (2026-10-27): the "Guide" link is a question-mark icon named "Guide".
 - A page at **`/guide`**, behind the pilot gate like every page (`proxy.ts`
   needs no change). Without a session it redirects to `/enter`, as `/` does.
 - **The way in**: a "Guide" link in the home header, left of the language

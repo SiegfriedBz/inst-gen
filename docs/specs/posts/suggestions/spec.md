@@ -37,6 +37,8 @@ makes ("the post image", "the text for the post").
 
 ### The screen
 
+
+> Changed by `platform/friendlier-home` (2026-10-27): each attempt is a grid of six tiles, three to a row; a tile opens its suggestion in a sheet.
 On "Create your posts" (2.5), top to bottom:
 
 1. The button: **"Make 6 suggestions"** when no suggestion is on screen,
@@ -60,6 +62,8 @@ Gone: the feed preview grid and its two lines, the "Your posts" heading,
 
 ### A suggestion
 
+
+> Changed by `platform/friendlier-home` (2026-10-27): the card is the opened sheet: the post and story images side by side, the two steps pinned at its bottom; a tile shows "Saved and copied" once both steps are done.
 Each suggestion is one card, top to bottom:
 
 1. **The post image** (2.3's post crop), full width.
