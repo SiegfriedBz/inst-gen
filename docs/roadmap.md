@@ -79,6 +79,7 @@ most sample replies as written, with $0 spent on everything but images
 | 2.8b | `platform/one-daily-reset`: suggestions and review drafts clear at Google's reset, the same moment the limits come back; one time on screen | spec | done |
 | 2.9 | `guide/owner-guide`: How-to page and printable PDF, three languages | spec | done |
 | 2.10 | `platform/friendlier-home`: a smaller header, the tabs in a bottom bar, suggestions in a grid ticked when saved and copied, what's missing first on "Your business", one reply at a time on "Reviews" | spec | done |
+| 2.11 | `posts/special-offer`: today's offer in a few taps (a percentage off, or a free treatment, on 90-minute sessions or longer, until a set day), carried by two of the six suggestions, with a badge | spec | in progress |
 
 ## Later phases
 
