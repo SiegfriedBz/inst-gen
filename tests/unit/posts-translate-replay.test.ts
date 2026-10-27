@@ -20,17 +20,22 @@ describe('replayed translations', () => {
   test.each(pairs)('%s in %s keeps its price and duration', async (slug, locale, price) => {
     const recording = JSON.parse(
       readFileSync(join(FIXTURES_DIR, slug, `translate-${locale}.json`), 'utf8'),
-    ) as Recording & { caption: string };
+    ) as Recording & { caption: string; story?: string };
     expect(recording.promptVersion).toBe(TRANSLATE_PROMPT_VERSION);
+    // translate-2: the first post's caption and story text, in one call
+    // (docs/specs/posts/story-text).
+    expect(recording.story).toBeTruthy();
     const empty = { modelId: 'm', promptVersion: 'p', partials: [], final: {} };
     const out = await runTranslate(
-      { text: recording.caption, locale },
+      { text: recording.caption, story: recording.story, locale },
       'sen',
       { model: replayTextModel(empty, { translation: recording }) },
       new AbortController().signal,
     );
     if (!out.ok) throw new Error(`expected ok, got ${out.code}`);
-    expect(out.response.text).toBe(recording.final);
+    const final = recording.final as { caption: string; story: string };
+    expect(out.response.text).toBe(final.caption);
+    expect(out.response.story).toBe(final.story);
     expect(out.response.text).toContain(price);
     expect(out.response.text).toContain('60');
   });

@@ -10,8 +10,9 @@ import { post } from '../../unit/helpers/posts';
 // the real routes or a model.
 export function postsBody(
   profile: Profile,
-  // With an offer, the two offer posts carry it.
-  opts: { error?: PostsErrorCode; caption?: string; offer?: Offer } = {},
+  // With an offer, the two offer posts carry it. With `stories`, each post has
+  // a story text (docs/specs/posts/story-text).
+  opts: { error?: PostsErrorCode; caption?: string; offer?: Offer; stories?: boolean } = {},
 ): string {
   if (opts.error) return encodePostsLine({ type: 'error', code: opts.error });
   const types = ['offer', 'offer', 'moment', 'local', 'ritual', 'tip'] as const;
@@ -22,6 +23,7 @@ export function postsBody(
       topic: `Topic ${i + 1}`,
       caption: `${opts.caption ?? 'Caption'} ${i + 1}.`,
       ...(opts.offer && type === 'offer' ? { offer: true as const } : {}),
+      ...(opts.stories ? { storyText: `Story ${i + 1}. 🌸` } : {}),
     }),
   );
   const lines: PostsLine[] = posts.map((p, index) => ({ type: 'post', index, post: p }));

@@ -2,7 +2,7 @@
 import { act, cleanup, fireEvent, render, screen } from '@testing-library/react';
 import { NextIntlClientProvider } from 'next-intl';
 import { afterEach, describe, expect, test, vi } from 'vitest';
-import { TakeAway } from '@/components/posts/take-away';
+import { CopyPost, CopyStory, SaveImages } from '@/components/posts/take-away';
 import type { SavedImage } from '@/lib/posts/image-store';
 import messages from '@/messages/en.json';
 import { post } from './helpers/posts';
@@ -29,28 +29,33 @@ const image: SavedImage = {
   createdAt: '2026-10-25T10:00:00.000Z',
 };
 
+// The three buttons, each under its part in the sheet
+// (docs/specs/posts/story-text, "What the owner sees").
 function show({
   withImage = true,
   imagesOn = true,
   onTaken,
+  storyText,
 }: {
   withImage?: boolean;
   imagesOn?: boolean;
   onTaken?: (step: 'saved' | 'copied') => void;
+  storyText?: string;
 } = {}) {
   render(
     <NextIntlClientProvider locale="en" messages={messages} timeZone="UTC">
-      <TakeAway
-        post={post()}
-        cta={CTA}
-        image={withImage ? image : undefined}
-        imagesOn={imagesOn}
-        name="Svarga"
-        createdAt="2026-10-25T09:00:00.000Z"
-        attempt={2}
-        n={3}
-        onTaken={onTaken}
-      />
+      {imagesOn && (
+        <SaveImages
+          image={withImage ? image : undefined}
+          name="Svarga"
+          createdAt="2026-10-25T09:00:00.000Z"
+          attempt={2}
+          n={3}
+          onTaken={onTaken}
+        />
+      )}
+      <CopyPost post={post()} cta={CTA} imagesOn={imagesOn} onTaken={onTaken} />
+      {storyText && <CopyStory storyText={storyText} imagesOn={imagesOn} />}
     </NextIntlClientProvider>,
   );
 }
@@ -59,13 +64,13 @@ const stubClipboard = (writeText: () => Promise<void>) =>
   vi.stubGlobal('navigator', { ...navigator, clipboard: { writeText } });
 
 describe('taking a post away', () => {
-  test('Copied for 2 s, then Copy the text again', async () => {
+  test('Copied for 2 s, then Copy post text again', async () => {
     vi.useFakeTimers();
     const writeText = vi.fn(async () => {});
     stubClipboard(writeText);
     show();
     await act(async () => {
-      fireEvent.click(screen.getByRole('button', { name: 'Copy the text' }));
+      fireEvent.click(screen.getByRole('button', { name: 'Copy post text' }));
     });
     expect(writeText).toHaveBeenCalledWith(
       `Warm oil, slow hands.\n\n${CTA}\n\n#canggu #balimassage #aftersurf`,
@@ -74,7 +79,7 @@ describe('taking a post away', () => {
     await act(async () => {
       vi.advanceTimersByTime(2000);
     });
-    expect(screen.getByRole('button', { name: 'Copy the text' })).toBeTruthy();
+    expect(screen.getByRole('button', { name: 'Copy post text' })).toBeTruthy();
   });
 
   test('a refused clipboard opens the sheet with the text selected', async () => {
@@ -83,7 +88,7 @@ describe('taking a post away', () => {
     });
     show();
     await act(async () => {
-      fireEvent.click(screen.getByRole('button', { name: 'Copy the text' }));
+      fireEvent.click(screen.getByRole('button', { name: 'Copy post text' }));
     });
     expect(await screen.findByText('Copy it from here.')).toBeTruthy();
     const box = screen.getByRole('textbox') as HTMLTextAreaElement;
@@ -91,39 +96,39 @@ describe('taking a post away', () => {
     expect(box.readOnly).toBe(true);
   });
 
-  test('Save the 2 images shares both, named by attempt and suggestion', async () => {
+  test('Save post & story images shares both, named by attempt and suggestion', async () => {
     const share = vi.fn(async () => {});
     vi.stubGlobal('navigator', { ...navigator, userAgent: IPHONE, canShare: () => true, share });
     show();
     await act(async () => {
-      fireEvent.click(screen.getByRole('button', { name: 'Save the 2 images' }));
+      fireEvent.click(screen.getByRole('button', { name: 'Save post & story images' }));
     });
     const files = (share.mock.calls[0] as unknown as [{ files: File[] }])[0].files;
     expect(files.map((f) => f.name)).toEqual([
       'svarga-2026-10-25-attempt-2-suggestion-3-post.jpg',
       'svarga-2026-10-25-attempt-2-suggestion-3-story.jpg',
     ]);
+    expect(screen.getByText('On an iPhone, choose "Save 2 Images".')).toBeTruthy();
     expect(
-      screen.getByText(
-        'In Instagram: make a post with the post image and paste the text, then a story with the story image.',
-      ),
+      screen.getByText('In Instagram, make a post with the post image and paste this text.'),
     ).toBeTruthy();
   });
 
-  test('Save the 2 images waits for the image', () => {
+  test('Save post & story images waits for the image', () => {
     show({ withImage: false });
     expect(
-      (screen.getByRole('button', { name: 'Save the 2 images' }) as HTMLButtonElement).disabled,
+      (screen.getByRole('button', { name: 'Save post & story images' }) as HTMLButtonElement)
+        .disabled,
     ).toBe(true);
   });
 
   test('text only without images', () => {
     show({ withImage: false, imagesOn: false });
-    expect(screen.queryByRole('button', { name: 'Save the 2 images' })).toBeNull();
-    const copy = screen.getByRole('button', { name: 'Copy the text' });
-    expect(copy.textContent).toBe('Copy the text');
+    expect(screen.queryByRole('button', { name: 'Save post & story images' })).toBeNull();
+    const copy = screen.getByRole('button', { name: 'Copy post text' });
+    expect(copy.textContent).toBe('Copy post text');
     expect(
-      screen.getByText('In Instagram: make a post with your own photo and paste the text.'),
+      screen.getByText('In Instagram, make a post with your own photo and paste this text.'),
     ).toBeTruthy();
   });
 
@@ -137,7 +142,7 @@ describe('taking a post away', () => {
     });
     show({ onTaken });
     await act(async () => {
-      fireEvent.click(screen.getByRole('button', { name: 'Save the 2 images' }));
+      fireEvent.click(screen.getByRole('button', { name: 'Save post & story images' }));
     });
     expect(onTaken).toHaveBeenCalledWith('saved');
   });
@@ -150,7 +155,7 @@ describe('taking a post away', () => {
     vi.stubGlobal('navigator', { ...navigator, userAgent: IPHONE, canShare: () => true, share });
     show({ onTaken });
     await act(async () => {
-      fireEvent.click(screen.getByRole('button', { name: 'Save the 2 images' }));
+      fireEvent.click(screen.getByRole('button', { name: 'Save post & story images' }));
     });
     expect(onTaken).not.toHaveBeenCalled();
   });
@@ -161,7 +166,7 @@ describe('taking a post away', () => {
     vi.stubGlobal('URL', { ...URL, createObjectURL: () => 'blob:x', revokeObjectURL: () => {} });
     show({ onTaken });
     await act(async () => {
-      fireEvent.click(screen.getByRole('button', { name: 'Save the 2 images' }));
+      fireEvent.click(screen.getByRole('button', { name: 'Save post & story images' }));
     });
     expect(onTaken).toHaveBeenCalledWith('saved');
   });
@@ -171,7 +176,7 @@ describe('taking a post away', () => {
     stubClipboard(async () => {});
     show({ onTaken });
     await act(async () => {
-      fireEvent.click(screen.getByRole('button', { name: 'Copy the text' }));
+      fireEvent.click(screen.getByRole('button', { name: 'Copy post text' }));
     });
     expect(onTaken).toHaveBeenCalledWith('copied');
   });
@@ -183,9 +188,47 @@ describe('taking a post away', () => {
     });
     show({ onTaken });
     await act(async () => {
-      fireEvent.click(screen.getByRole('button', { name: 'Copy the text' }));
+      fireEvent.click(screen.getByRole('button', { name: 'Copy post text' }));
     });
     expect(await screen.findByText('Copy it from here.')).toBeTruthy();
     expect(onTaken).toHaveBeenCalledWith('copied');
+  });
+});
+
+describe('the story text', () => {
+  const STORY = 'Long flight? 🌸 Deep tissue in your room.';
+
+  test('copies the story text and reports no step', async () => {
+    const onTaken = vi.fn();
+    const writeText = vi.fn(async () => {});
+    stubClipboard(writeText);
+    show({ onTaken, storyText: STORY });
+    await act(async () => {
+      fireEvent.click(screen.getByRole('button', { name: 'Copy optional story text' }));
+    });
+    expect(writeText).toHaveBeenCalledWith(STORY);
+    expect(onTaken).not.toHaveBeenCalled();
+    expect(
+      screen.getByText('In Instagram, make a story with the story image, add text and paste.'),
+    ).toBeTruthy();
+  });
+
+  test('a refused clipboard shows the story text to copy by hand', async () => {
+    stubClipboard(async () => {
+      throw new DOMException('denied', 'NotAllowedError');
+    });
+    show({ storyText: STORY });
+    await act(async () => {
+      fireEvent.click(screen.getByRole('button', { name: 'Copy optional story text' }));
+    });
+    expect(await screen.findByText('Copy it from here.')).toBeTruthy();
+    expect((screen.getByRole('textbox') as HTMLTextAreaElement).value).toBe(STORY);
+  });
+
+  test('without images, the hint says your own photo', () => {
+    show({ imagesOn: false, withImage: false, storyText: STORY });
+    expect(
+      screen.getByText('In Instagram, make a story with your own photo, add text and paste.'),
+    ).toBeTruthy();
   });
 });

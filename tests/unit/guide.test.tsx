@@ -53,6 +53,21 @@ describe('the owner guide', () => {
     }
   });
 
+  // The story text (docs/specs/posts/story-text, "The owner guide").
+  test.each(LOCALES)(
+    'names the three buttons without numbers, and the story text, in %s',
+    (locale) => {
+      const m = messagesFor(locale);
+      const instagram = show(locale).querySelector('#instagram');
+      const bold = [...(instagram?.querySelectorAll('b') ?? [])].map((b) => b.textContent);
+      expect(bold).toEqual(
+        expect.arrayContaining([m.posts.saveImages, m.posts.copyText, m.posts.copyStory]),
+      );
+      expect(bold.some((b) => /^[12] /.test(b ?? ''))).toBe(false);
+      expect(instagram?.textContent).not.toContain('A story has no text to paste');
+    },
+  );
+
   test.each(LOCALES)("explains the offer with the app's own words, in %s", (locale) => {
     const m = messagesFor(locale);
     const posts = show(locale).querySelector('#posts');

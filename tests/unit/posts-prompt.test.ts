@@ -10,6 +10,7 @@ import {
   rewritePrompt,
   rewriteUserText,
 } from '@/lib/posts/prompt';
+import { dealSetups, seededRandom, setupLine } from '@/lib/posts/setup';
 import { svargaProfile } from './helpers/brand';
 import { post } from './helpers/posts';
 
@@ -55,7 +56,37 @@ describe('planPrompt', () => {
   });
 
   it('has a version', () => {
-    expect(POSTS_PROMPT_VERSION).toBe('posts-3');
+    expect(POSTS_PROMPT_VERSION).toBe('posts-5');
+  });
+});
+
+describe('the image set-ups', () => {
+  it('planPrompt says post n uses set-up n and never changes it', () => {
+    const prompt = planPrompt();
+    for (const rule of [
+      '### Image set-ups',
+      'Post 1 uses set-up 1',
+      'never changes them, and never adds a guest or a therapist',
+      '"a man" or "a woman"',
+      '"two therapists"',
+      "An offer post leads on its set-up's treatment",
+      "copy the set-up's scene",
+    ]) {
+      expect(prompt).toContain(rule);
+    }
+    expect(prompt).not.toContain('At most 2 posts of any scene');
+    expect(prompt).toContain('never writes "scene" or "set-up" in it');
+  });
+
+  it('the user text lists the set-ups in order, before the offer', () => {
+    const setups = dealSetups(svargaProfile(), undefined, seededRandom('t'));
+    const text = planUserText(postsModelInput(svargaProfile()), [], undefined, setups);
+    const lines = setups.map((s, i) => `${i + 1}. ${setupLine(s)}`).join('\n');
+    expect(text.endsWith(`### Image set-ups\n${lines}`)).toBe(true);
+  });
+
+  it('no set-ups, no section', () => {
+    expect(planUserText(postsModelInput(svargaProfile()), [])).not.toContain('Image set-ups');
   });
 });
 
@@ -120,6 +151,7 @@ describe('the special offer', () => {
       '"until"',
       'never a price',
       "Each offer post's first line states the offer",
+      'Posts 1 and 2 are the two offer posts.',
       '"<percentage> off our 90-minute <treatment>, until <last day>."',
       '"Free <free treatment> with a 90-minute <treatment>, until <last day>."',
     ]) {
@@ -128,7 +160,9 @@ describe('the special offer', () => {
   });
 
   it('ends the plan text with the offer', () => {
-    const text = planUserText(postsModelInput(svargaProfile()), [], offer);
+    const setups = dealSetups(svargaProfile(), offer, seededRandom('t'));
+    const text = planUserText(postsModelInput(svargaProfile()), [], offer, setups);
+    expect(text).toContain('### Image set-ups');
     expect(
       text.endsWith(
         '### Special offer\n- 10% off\n- On: Balinese massage\n- Sessions: 90 minutes or longer\n- Until: Tuesday 27 October',
@@ -149,5 +183,62 @@ describe('the special offer', () => {
     );
     expect(text).toContain('"offer": true');
     expect(text).toContain('### Special offer');
+  });
+});
+
+// Hooks, positive endings, the story text and flowers (docs/specs/posts/story-text).
+describe('the story text and the captions that sell', () => {
+  it('asks for a story text with every post', () => {
+    expect(planPrompt()).toContain(
+      'Each post has a type, a topic, a scene, a caption, a story text, hashtags, alt text and an image prompt.',
+    );
+    expect(planPrompt()).toContain('Story text: a short version of its own caption');
+    expect(planPrompt()).toContain('at most 100 characters, emoji included');
+    expect(planPrompt()).toContain('no call to action: the owner adds a link sticker');
+  });
+
+  it('orders a caption from its hook to a positive ending', () => {
+    const prompt = planPrompt();
+    for (const part of [
+      'Each caption sells, in this order: a hook',
+      'what the guest will feel, rather than what the business does',
+      'one concrete detail that makes it real',
+      'a last sentence on a positive note',
+    ]) {
+      expect(prompt).toContain(part);
+    }
+  });
+
+  it("gives a spa flowers only, and another business today's rule", () => {
+    expect(planPrompt(false, true)).toContain(
+      'Emoji: flowers only, from 🌸 🌺 🌼 🌷 🪷: 1 to 3 in the caption and 1 or 2 in the story text. No other emoji.',
+    );
+    expect(planPrompt(false, false)).toContain(
+      'At most 2 emoji in the caption and at most 2 in the story text.',
+    );
+    expect(planPrompt(false, false)).not.toContain('🌸');
+    expect(planPrompt(false, true)).not.toContain('at most 2 emoji');
+  });
+
+  it("makes an offer post's story text its offer line", () => {
+    expect(planPrompt(true, true)).toContain(
+      "Each offer post's story text is its first line, word for word, followed by one flower.",
+    );
+    expect(planPrompt(true, false)).toContain(
+      "Each offer post's story text is its first line, word for word.",
+    );
+    expect(planPrompt(true, true)).toContain(
+      'The other four posts never mention a discount, a free treatment or a deadline, in their captions or story texts.',
+    );
+  });
+
+  it('rewrites the story texts too', () => {
+    expect(rewritePrompt(false, true)).toContain(
+      'You rewrite the captions, story texts, hashtags and alt text',
+    );
+    expect(rewritePrompt(false, true)).toContain('flowers only');
+    expect(rewritePrompt(true, true)).toContain(
+      "in its caption's first line and as its story text",
+    );
   });
 });

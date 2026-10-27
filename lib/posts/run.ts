@@ -9,7 +9,8 @@ import type {
   PostsErrorCode,
   RewriteBody,
 } from './batch';
-import { carries, checkPlan, checkPost, checkRewrite } from './checks';
+import { carries, checkPlan, checkPost, checkRewrite, setupFlags } from './checks';
+import { isSpa } from './emoji';
 import { postsModelInput, profileHash } from './input';
 import type { PostsLog } from './log';
 import type { Offer } from './offer';
@@ -20,6 +21,7 @@ import {
   rewritePrompt,
   rewriteUserText,
 } from './prompt';
+import { dealSetups, type Setup } from './setup';
 import type { PostsLine } from './stream';
 
 // The post plan and its rewrite, end to end: one streamed model call, each
@@ -32,6 +34,8 @@ export type PostsDeps = {
   modelId?: string;
   timeoutMs?: number;
   log?: (entry: PostsLog) => void;
+  // Deals the image set-ups; seeded in tests and evals.
+  random?: () => number;
 };
 
 export const POSTS_TIMEOUT_MS = 60_000;
@@ -62,6 +66,7 @@ async function* run<T>(
   deps: PostsDeps,
   signal: AbortSignal,
   offer?: Offer,
+  setups?: Setup[],
 ): AsyncGenerator<PostsLine> {
   const started = Date.now();
   const timeout = AbortSignal.timeout(deps.timeoutMs ?? POSTS_TIMEOUT_MS);
@@ -74,6 +79,9 @@ async function* run<T>(
     promptVersion: POSTS_PROMPT_VERSION,
     kept: 0,
     flags: 0,
+    storyCuts: 0,
+    storyCtas: 0,
+    emojiFixes: 0,
     modelMs: null,
     totalMs: 0,
     outcome: 'aborted',
@@ -89,10 +97,12 @@ async function* run<T>(
       const context = offer
         ? { offer, carries: type === 'offer' && carries('offer', offerPosts) }
         : undefined;
-      const checked = checkPost(raws[seen], profile, `post-${seen + 1}`, context);
+      // Set-up n belongs to the n-th post as streamed, dropped or not.
+      const checked = checkPost(raws[seen], profile, `post-${seen + 1}`, context, setups?.[seen]);
       if (checked.post?.type === 'offer') offerPosts += 1;
       dropped.push(...checked.dropped);
       if (!checked.post) continue;
+      dropped.push(...setupFlags(checked.post));
       streamed.push(checked.post);
       yield { type: 'post', index: streamed.length - 1, post: checked.post };
     }
@@ -126,6 +136,13 @@ async function* run<T>(
     };
     entry.kept = result.posts.length;
     entry.flags = result.posts.reduce((n, p) => n + p.unchecked.length, 0);
+    entry.storyCuts = result.dropped.filter(
+      (d) => d.field === 'story' && d.reason.includes(' cut from '),
+    ).length;
+    entry.storyCtas = result.dropped.filter(
+      (d) => d.field === 'story' && d.reason.includes(' story text removed "'),
+    ).length;
+    entry.emojiFixes = result.dropped.filter((d) => d.field === 'emoji').length;
     entry.outcome = 'final';
     yield { type: 'final', result };
   } catch (error) {
@@ -146,24 +163,29 @@ export function streamPlan(
   signal: AbortSignal,
 ): AsyncGenerator<PostsLine> {
   const input = postsModelInput(body.profile);
+  const setups = dealSetups(body.profile, body.offer, deps.random ?? Math.random);
   return run(
     body.profile,
     {
       kind: 'plan',
       open: (s) =>
         deps.model.streamPostPlan(
-          { system: planPrompt(!!body.offer), text: planUserText(input, body.recent, body.offer) },
+          {
+            system: planPrompt(!!body.offer, isSpa(body.profile.category)),
+            text: planUserText(input, body.recent, body.offer, setups),
+          },
           s,
         ),
       complete: (partial, done) => {
         const posts = (partial.posts ?? []) as ModelPost[];
         return done ? posts : posts.slice(0, -1);
       },
-      finish: (_final, streamed, dropped) => checkPlan(streamed, dropped, body.profile),
+      finish: (_final, streamed, dropped) => checkPlan(streamed, dropped, body.profile, body.offer),
     },
     deps,
     signal,
     body.offer,
+    setups,
   );
 }
 
@@ -180,7 +202,7 @@ export function streamRewrite(
       open: (s) =>
         deps.model.streamPostRewrite(
           {
-            system: rewritePrompt(!!body.offer),
+            system: rewritePrompt(!!body.offer, isSpa(body.profile.category)),
             text: rewriteUserText(input, body.posts, body.offer),
           },
           s,

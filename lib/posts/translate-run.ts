@@ -66,7 +66,7 @@ export async function runTranslate(
     locale: body.locale,
     model: TEXT_MODELS.light,
     promptVersion: TRANSLATE_PROMPT_VERSION,
-    charsIn: body.text.length,
+    charsIn: body.text.length + (body.story?.length ?? 0),
     charsOut: null,
     totalMs: 0,
     outcome: 'aborted',
@@ -81,16 +81,33 @@ export async function runTranslate(
       stepSignal.addEventListener('abort', () => reject(stepSignal.reason), { once: true });
     });
     stopped.catch(() => {});
-    const text = await Promise.race([
-      deps.model.translateCaption(body.text, body.locale, stepSignal),
-      stopped,
-    ]);
+    // With its story text, both in one call (docs/specs/posts/story-text).
+    const { story } = body;
+    const answer: { caption: string; story?: string } = story
+      ? await Promise.race([
+          deps.model.translatePost({ caption: body.text, story }, body.locale, stepSignal),
+          stopped,
+        ])
+      : {
+          caption: await Promise.race([
+            deps.model.translateCaption(body.text, body.locale, stepSignal),
+            stopped,
+          ]),
+        };
+    const text = answer.caption;
     // A blocked or cut-off answer comes back empty; it is never kept.
-    if (!text.trim()) throw new ModelError('failed', 'empty translation');
-    entry.charsOut = text.length;
+    if (!text.trim() || (story && !answer.story?.trim())) {
+      throw new ModelError('failed', 'empty translation');
+    }
+    entry.charsOut = text.length + (answer.story?.length ?? 0);
     return end({
       ok: true,
-      response: { text, model: TEXT_MODELS.light, promptVersion: TRANSLATE_PROMPT_VERSION },
+      response: {
+        text,
+        ...(story && answer.story ? { story: answer.story } : {}),
+        model: TEXT_MODELS.light,
+        promptVersion: TRANSLATE_PROMPT_VERSION,
+      },
     });
   } catch (error) {
     if (signal.aborted) return end({ ok: false, code: 'aborted' });

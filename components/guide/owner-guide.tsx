@@ -82,6 +82,7 @@ export function OwnerGuide({
     'posts.edit': { button: t('posts.editText'), image: t('posts.images.newImage') },
     'instagram.save': { button: t('posts.saveImages') },
     'instagram.copy': { button: t('posts.copyText') },
+    'instagram.story': { button: t('posts.copyStory') },
     'reviews.paste': { tab: t('home.tabs.reviews'), button: t('reviews.write') },
     'reviews.pick': { short: t('reviews.short'), warm: t('reviews.warm') },
     'reviews.other': { button: t('reviews.again') },

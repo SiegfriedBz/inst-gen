@@ -1,6 +1,8 @@
 import { z } from 'zod';
 import { type Profile, profileSchema } from '@/lib/brand/profile';
 import { type Offer, offerFits, offerSchema } from './offer';
+import { SCENES } from './scene';
+import { setupSchema } from './setup';
 
 // A batch of posts made from the brand profile
 // (docs/specs/posts/generate-copy/spec.md). One set of schemas serves the
@@ -9,8 +11,7 @@ import { type Offer, offerFits, offerSchema } from './offer';
 export const POST_TYPES = ['offer', 'moment', 'local', 'ritual', 'tip', 'proof'] as const;
 export type PostType = (typeof POST_TYPES)[number];
 
-export const SCENES = ['treatment', 'detail', 'place', 'guest'] as const;
-export type Scene = (typeof SCENES)[number];
+export { SCENES, type Scene } from './scene';
 
 export const POSTS_LIMITS = {
   posts: 6,
@@ -25,6 +26,14 @@ export const POSTS_LIMITS = {
   imagePromptWords: 80,
   topicWords: 12,
   recent: 12,
+  // The story text (docs/specs/posts/story-text): code's limit, counted with
+  // `.length`, and what the model is asked for.
+  storyChars: 120,
+  storyAsked: 100,
+  // A spa's flowers; any other business's emoji.
+  captionFlowers: 3,
+  storyFlowers: 2,
+  otherEmoji: 2,
 } as const;
 
 const text = z.string().min(1);
@@ -64,6 +73,19 @@ export const postSchema = z.object({
   // One of the two posts that carry the batch's special offer
   // (docs/specs/posts/special-offer). Absent on every other post.
   offer: z.literal(true).optional(),
+  // What code set up for its image (docs/specs/posts/varied-images). Absent
+  // on posts saved before it.
+  setup: setupSchema.optional(),
+  // A short version of the caption for the story, and its flags
+  // (docs/specs/posts/story-text). Absent on posts saved before it, and when
+  // code's checks left none.
+  // `.length`, as code cuts it: zod's max counts code points, an emoji as 1.
+  storyText: z
+    .string()
+    .min(1)
+    .refine((text) => text.length <= POSTS_LIMITS.storyChars)
+    .optional(),
+  storyUnchecked: z.array(flagSchema).optional(),
 });
 export type Post = z.infer<typeof postSchema>;
 
@@ -101,6 +123,7 @@ export const modelPostPlanSchema = z.object({
       hashtags: z.array(loose),
       altText: loose,
       imagePrompt: loose,
+      storyText: loose,
     }),
   ),
 });
@@ -108,7 +131,15 @@ export type ModelPostPlan = z.infer<typeof modelPostPlanSchema>;
 export type ModelPost = ModelPostPlan['posts'][number];
 
 export const modelRewriteSchema = z.object({
-  posts: z.array(z.object({ id: loose, caption: loose, hashtags: z.array(loose), altText: loose })),
+  posts: z.array(
+    z.object({
+      id: loose,
+      caption: loose,
+      hashtags: z.array(loose),
+      altText: loose,
+      storyText: loose,
+    }),
+  ),
 });
 export type ModelRewrite = z.infer<typeof modelRewriteSchema>;
 

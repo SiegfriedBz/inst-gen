@@ -39,6 +39,7 @@ export async function makePostImage(
     postId: body.postId,
     scene: body.scene,
     hint: hint !== undefined,
+    cast: body.setup !== undefined,
     model,
     promptVersion: IMAGE_PROMPT_VERSION,
     size: null,
@@ -60,7 +61,7 @@ export async function makePostImage(
     });
     stopped.catch(() => {});
     const file = await Promise.race([
-      deps.model.makeImage(imagePrompt(body.imagePrompt, hint), stepSignal),
+      deps.model.makeImage(imagePrompt(body.imagePrompt, hint, body.setup), stepSignal),
       stopped,
     ]);
     entry.modelMs = Date.now() - started;

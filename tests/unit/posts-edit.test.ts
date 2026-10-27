@@ -14,6 +14,7 @@ import {
   postHash,
   postText,
   staleUnedited,
+  storyFlagsFor,
 } from '@/lib/posts/edit';
 import { profileHash } from '@/lib/posts/input';
 import type { Offer } from '@/lib/posts/offer';
@@ -291,5 +292,35 @@ describe('edits and the special offer', () => {
     const stale = post({ edited: true, offer: true, caption: '20% off, until 27 Oct.' });
     const flags = flagsFor(stale, { ...batch([stale], 'old'), offer }, profile);
     expect(flags.filter((f) => f.kind === 'offer').map((f) => f.text)).toEqual(['20%']);
+  });
+});
+
+// The story text's flags and the owner's edits (docs/specs/posts/story-text).
+describe('the story text', () => {
+  test("an edited post's story flags follow today's details", () => {
+    const flagged = { ...six[0], storyText: 'Only 450k. 🌸', storyUnchecked: [], edited: true };
+    const b = batch([flagged], 'old');
+    expect(storyFlagsFor(flagged, b, profile)).toEqual([{ kind: 'price', text: '450k' }]);
+    const fresh = { ...flagged, profileHash: profileHash(profile) };
+    expect(storyFlagsFor(fresh, batch([fresh], 'old'), profile)).toEqual([]);
+  });
+
+  test('a post without a story text has no story flags', () => {
+    expect(storyFlagsFor(six[0], batch([six[0]], 'old'), profile, false)).toEqual([]);
+  });
+
+  test("editing the caption keeps the story text, its flags checked against today's details", () => {
+    // Checked when the profile still held 450k; today's doesn't.
+    const before = { ...six[0], storyText: 'Only 450k. 🌸', storyUnchecked: [] };
+    const edited = applyEdit(
+      before,
+      { caption: 'New words.', hashtags: 'spa', altText: 'x' },
+      profile,
+    );
+    expect(edited.storyText).toBe('Only 450k. 🌸');
+    expect(edited.storyUnchecked).toEqual([{ kind: 'price', text: '450k' }]);
+    expect(storyFlagsFor(edited, batch([edited], 'old'), profile)).toEqual([
+      { kind: 'price', text: '450k' },
+    ]);
   });
 });

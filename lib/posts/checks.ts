@@ -12,8 +12,11 @@ import {
   SCENES,
   type Scene,
 } from './batch';
+import { addFlower, isSpa, stripEmojis } from './emoji';
 import { ctaFor } from './input';
 import { mentionsDay, OFFER_LIMITS, type Offer, PERCENT } from './offer';
+import type { Setup } from './setup';
+import { cleanStory } from './story';
 
 // Code's checks on the model's posts (docs/specs/posts/generate-copy, "What
 // code checks"): trim, drop or flag, record each change, and never refuse a
@@ -154,30 +157,63 @@ function isScene(value: string): value is Scene {
   return (SCENES as readonly string[]).includes(value);
 }
 
-// The parts of a post the model writes again on a rewrite.
+type Words = Pick<
+  Post,
+  'caption' | 'cta' | 'hashtags' | 'altText' | 'unchecked' | 'storyText' | 'storyUnchecked'
+>;
+
+// A spa's caption keeps up to 3 flowers and no other emoji, and has at least
+// one (docs/specs/posts/story-text, "Code's checks").
+function spaCaption(caption: string, id: string): { caption: string; dropped: Dropped[] } {
+  const stripped = stripEmojis(caption, POSTS_LIMITS.captionFlowers);
+  const added = addFlower(stripped.text);
+  // One record per fixed text, however many changes it took.
+  const fixes = [...stripped.fixes, ...added.fixes];
+  const dropped =
+    fixes.length > 0 ? [{ field: 'emoji', reason: `${id}: caption ${fixes.join(', ')}` }] : [];
+  return { caption: added.text, dropped };
+}
+
+// The parts of a post the model writes again on a rewrite, and what code
+// changed in them.
 function checkedWords(
-  raw: Pick<ModelPost, 'caption' | 'hashtags' | 'altText'>,
+  raw: Pick<ModelPost, 'caption' | 'hashtags' | 'altText' | 'storyText'>,
   profile: Profile,
+  id: string,
   context?: OfferContext,
-): Pick<Post, 'caption' | 'cta' | 'hashtags' | 'altText' | 'unchecked'> {
-  const caption = cutCaption(raw.caption);
+): { words: Words; dropped: Dropped[] } {
+  const spa = isSpa(profile.category);
+  const cut = cutCaption(raw.caption);
+  const { caption, dropped } = spa ? spaCaption(cut, id) : { caption: cut, dropped: [] };
+  const story = cleanStory(raw.storyText, { id, spa });
   return {
-    caption,
-    cta: ctaFor(profile) ?? '',
-    hashtags: cleanHashtags(raw.hashtags),
-    altText: cutChars(raw.altText.replace(/^(an? )?image of /i, ''), POSTS_LIMITS.altTextChars),
-    unchecked: findFlags(caption, profile, context),
+    words: {
+      caption,
+      cta: ctaFor(profile) ?? '',
+      hashtags: cleanHashtags(raw.hashtags),
+      altText: cutChars(raw.altText.replace(/^(an? )?image of /i, ''), POSTS_LIMITS.altTextChars),
+      unchecked: findFlags(caption, profile, context),
+      ...(story.storyText
+        ? {
+            storyText: story.storyText,
+            storyUnchecked: findFlags(story.storyText, profile, context),
+          }
+        : {}),
+    },
+    dropped: [...dropped, ...story.dropped],
   };
 }
 
+// With a set-up, the post takes its scene from it: the model's is not read.
 export function checkPost(
   raw: ModelPost,
   profile: Profile,
   id: string,
   context?: OfferContext,
+  setup?: Setup,
 ): { post: Post | null; dropped: Dropped[] } {
   const type = raw.type.trim().toLowerCase();
-  const scene = raw.scene.trim().toLowerCase();
+  const scene = setup?.scene ?? raw.scene.trim().toLowerCase();
   if (!isType(type))
     return { post: null, dropped: [{ field: 'posts', reason: `unknown type "${raw.type}"` }] };
   if (!isScene(scene)) {
@@ -188,6 +224,7 @@ export function checkPost(
   if (!raw.imagePrompt.trim()) {
     return { post: null, dropped: [{ field: 'posts', reason: 'empty image prompt' }] };
   }
+  const { words, dropped } = checkedWords(raw, profile, id, context);
   return {
     post: {
       id,
@@ -195,11 +232,33 @@ export function checkPost(
       scene,
       topic: cutWords(raw.topic, POSTS_LIMITS.topicWords) || type,
       imagePrompt: cutWords(raw.imagePrompt, POSTS_LIMITS.imagePromptWords),
-      ...checkedWords(raw, profile, context),
+      ...words,
       ...(context?.carries ? { offer: true as const } : {}),
+      ...(setup ? { setup } : {}),
     },
-    dropped: [],
+    dropped,
   };
+}
+
+// The image prompt names the guests and the two therapists its set-up has
+// (docs/specs/posts/varied-images, "Code's checks"). Flagged, never dropped:
+// code's cast line still tells the image model.
+export function setupFlags(post: Post): Dropped[] {
+  if (!post.setup) return [];
+  const { guests, therapists } = post.setup;
+  const needed: { words: string; pattern: RegExp }[] = [];
+  if (guests !== 'woman') needed.push({ words: 'man', pattern: /\bman\b/i });
+  if (guests !== 'man') needed.push({ words: 'woman', pattern: /\bwoman\b/i });
+  // One word may sit inside: "two women therapists".
+  if (therapists === 2) {
+    needed.push({ words: 'two therapists', pattern: /\btwo\s+(?:\w+\s+)?therapists\b/i });
+  }
+  return needed
+    .filter(({ pattern }) => !pattern.test(post.imagePrompt))
+    .map(({ words }) => ({
+      field: 'image',
+      reason: `${post.id}: no "${words}" in the image prompt`,
+    }));
 }
 
 function overused<K extends string>(values: K[], max: number): [K, number][] {
@@ -212,6 +271,7 @@ export function checkPlan(
   posts: Post[],
   dropped: Dropped[],
   profile: Profile,
+  offer?: Offer,
 ): { posts: Post[]; dropped: Dropped[] } {
   const out = [...dropped];
   if (posts.length > POSTS_LIMITS.posts) out.push({ field: 'posts', reason: 'more than 6 posts' });
@@ -231,6 +291,10 @@ export function checkPlan(
   const offers = kept.filter((p) => p.type === 'offer').length;
   if (profile.offerings.length >= 2 && offers < 2) {
     out.push({ field: 'mix', reason: 'fewer than 2 offer posts' });
+  }
+  // With an offer, its set-ups are 1 and 2: so are its posts.
+  if (offer && kept.slice(0, 2).some((p) => p.type !== 'offer')) {
+    out.push({ field: 'mix', reason: 'offer posts are not posts 1 and 2' });
   }
   return { posts: kept, dropped: out };
 }
@@ -254,7 +318,11 @@ export function checkRewrite(
       return post;
     }
     const context = offer ? { offer, carries: post.offer === true } : undefined;
-    return { ...post, ...checkedWords(answer, profile, context) };
+    const checked = checkedWords(answer, profile, post.id, context);
+    dropped.push(...checked.dropped);
+    // The old story text goes with the old caption, even when no new one came.
+    const { storyText: _story, storyUnchecked: _flags, ...rest } = post;
+    return { ...rest, ...checked.words };
   });
   return { posts, dropped };
 }

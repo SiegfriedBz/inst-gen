@@ -46,7 +46,7 @@ describe('POST /api/posts/translate', () => {
     expect(await res.json()).toEqual({
       text: 'Dầu ấm.',
       model: 'gemini-3.5-flash-lite',
-      promptVersion: 'translate-1',
+      promptVersion: 'translate-2',
     });
     expect(sent).toEqual(['Warm oil.']);
   });

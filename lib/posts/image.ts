@@ -1,5 +1,6 @@
 import { z } from 'zod';
 import { POSTS_LIMITS, SCENES } from './batch';
+import { setupSchema } from './setup';
 
 // One post's image (docs/specs/posts/generate-images): what the browser asks
 // for, what the route answers, and how it fails.
@@ -21,6 +22,9 @@ export const imageBodySchema = z.object({
   // An attempt's first image (or its "Try again"), or a new one
   // (docs/specs/platform/usage-counters, "Images for every owner").
   first: z.boolean().default(true),
+  // The post's image set-up (docs/specs/posts/varied-images); absent on posts
+  // saved before it.
+  setup: setupSchema.optional(),
 });
 export type ImageBody = z.infer<typeof imageBodySchema>;
 
