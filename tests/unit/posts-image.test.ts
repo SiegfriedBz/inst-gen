@@ -85,7 +85,7 @@ describe('the image prompt', () => {
       'Keep the subject in the middle of the frame, with calm space above and below it.',
     );
     expect(p).toMatch(/no text, letters, labels, logos or watermarks/i);
-    expect(IMAGE_PROMPT_VERSION).toBe('images-5');
+    expect(IMAGE_PROMPT_VERSION).toBe('images-6');
   });
 });
 
@@ -195,7 +195,13 @@ describe('the set-up and the therapists', () => {
 
   test("the style line holds the spec's therapist sentence", () => {
     expect(IMAGE_STYLE).toContain(
-      'Every therapist is a young local woman with warm, golden-tan skin, as women from here have: smooth, healthy and glowing, yet real, with natural texture; never pale or white, never dark. Her hands and arms are perfectly formed and look healthy: five slender fingers on each hand, clean short nails, natural joints and wrists, no extra or missing fingers, hands or arms.',
+      'Every therapist is a young local woman with warm, golden-tan skin, as women from here have: smooth, healthy and glowing, yet real, with natural texture; never pale or white, never dark. Her hands and arms are perfectly formed and look healthy: five slender fingers on each hand, clean short nails, natural joints and wrists, no extra or missing fingers, hands or arms. Her face is turned away, lowered or out of frame.',
+    );
+  });
+
+  test('never a full face, therapist or guest', () => {
+    expect(IMAGE_STYLE).toContain(
+      "Every guest's face is turned away, resting in the face cradle, covered or out of frame: never a full face.",
     );
   });
 

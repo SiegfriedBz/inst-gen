@@ -186,9 +186,11 @@ Jimbaran, Nusa Dua, Amed, Lovina. Svarga's fixture (town Canggu, host
    texture; never pale or white, never dark. Her hands and arms are perfectly
    formed and look healthy: five slender fingers on each hand, clean short
    nails, natural joints and wrists, no extra or missing fingers, hands or
-   arms."
+   arms. Her face is turned away, lowered or out of frame. Every guest's
+   face is turned away, resting in the face cradle, covered or out of
+   frame: never a full face."
 
-`IMAGE_PROMPT_VERSION` becomes `images-5`. A request without `setup` (a post
+`IMAGE_PROMPT_VERSION` becomes `images-6` (`images-5`, without the two face sentences, showed therapists' faces in profile; the maintainer asked for them on 2026-10-27). A request without `setup` (a post
 from before this spec) gets no cast line; it still gets the new style line,
 with "local" read as Southeast Asian.
 

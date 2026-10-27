@@ -6,7 +6,7 @@ import { castLine, type Setup } from './setup';
 // crop keeps the subject (docs/specs/posts/generate-images, "The model
 // step"). Bump the version with every change.
 
-export const IMAGE_PROMPT_VERSION = 'images-5';
+export const IMAGE_PROMPT_VERSION = 'images-6';
 
 // "local" when the cast line names the therapists' origin; a post saved
 // before set-ups has none, so the style line names it.
@@ -30,7 +30,10 @@ export function imageStyle(who: string): string {
     `Every therapist is a young ${who} woman with warm, golden-tan skin, as women from here have: ` +
     'smooth, healthy and glowing, yet real, with natural texture; never pale or white, never dark. ' +
     'Her hands and arms are perfectly formed and look healthy: five slender fingers on each hand, ' +
-    'clean short nails, natural joints and wrists, no extra or missing fingers, hands or arms.'
+    'clean short nails, natural joints and wrists, no extra or missing fingers, hands or arms. ' +
+    // The maintainer's verdict on images-5: faces showed in profile.
+    'Her face is turned away, lowered or out of frame. ' +
+    "Every guest's face is turned away, resting in the face cradle, covered or out of frame: never a full face."
   );
 }
 
