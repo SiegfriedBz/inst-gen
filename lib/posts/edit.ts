@@ -44,6 +44,11 @@ export function applyEdit(post: Post, edit: PostEdit, profile: Profile, offer?: 
     hashtags: parseHashtags(edit.hashtags),
     altText: edit.altText.trim(),
     unchecked: findFlags(caption, profile, offerContext(post, offer)),
+    // The story text stays, but is checked against today's profile too
+    // (docs/specs/posts/story-text).
+    ...(post.storyText
+      ? { storyUnchecked: findFlags(post.storyText, profile, offerContext(post, offer)) }
+      : {}),
     edited: true,
     altToCheck: false,
     profileHash: profileHash(profile),
@@ -76,6 +81,19 @@ export function flagsFor(post: Post, batch: PostBatch, profile: Profile, newest 
   return (post.edited || !newest) && isPostStale(post, batch, profile)
     ? findFlags(post.caption, profile, offerContext(post, batch.offer))
     : post.unchecked;
+}
+
+// The story text's flags, checked the same way (docs/specs/posts/story-text).
+export function storyFlagsFor(
+  post: Post,
+  batch: PostBatch,
+  profile: Profile,
+  newest = true,
+): Flag[] {
+  if (!post.storyText) return [];
+  return (post.edited || !newest) && isPostStale(post, batch, profile)
+    ? findFlags(post.storyText, profile, offerContext(post, batch.offer))
+    : (post.storyUnchecked ?? []);
 }
 
 // The batch made last. A rewrite moves its batch to the top of the list, so

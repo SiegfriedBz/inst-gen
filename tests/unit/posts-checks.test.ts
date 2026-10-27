@@ -30,6 +30,7 @@ function raw(overrides: Partial<ModelPost> = {}): ModelPost {
     hashtags: ['canggu', 'balimassage', 'aftersurf'],
     altText: 'Hands pressing warm oil into shoulders on a villa deck at dusk',
     imagePrompt: 'A villa deck at dusk',
+    storyText: 'Warm oil tonight. 🌸',
     ...overrides,
   };
 }
@@ -228,8 +229,20 @@ describe('checkRewrite', () => {
   it("keeps the original's type, topic, scene and image prompt", () => {
     const answer = {
       posts: [
-        { id: 'a', caption: 'New words.', hashtags: ['canggu'], altText: 'New alt' },
-        { id: 'b', caption: 'Drink water.', hashtags: ['tip'], altText: 'A glass of water' },
+        {
+          id: 'a',
+          caption: 'New words.',
+          hashtags: ['canggu'],
+          altText: 'New alt',
+          storyText: 'New.',
+        },
+        {
+          id: 'b',
+          caption: 'Drink water.',
+          hashtags: ['tip'],
+          altText: 'A glass of water',
+          storyText: 'Drink water.',
+        },
       ],
     };
     const { posts } = checkRewrite(answer, originals, svargaProfile());
@@ -239,12 +252,15 @@ describe('checkRewrite', () => {
       topic: 'Massage',
       scene: 'treatment',
       imagePrompt: 'Deck at dusk',
-      caption: 'New words.',
+      // Svarga is a spa: code adds its flower (docs/specs/posts/story-text).
+      caption: 'New words. 🌸',
     });
   });
 
   it('keeps an original whose id the model left out', () => {
-    const answer = { posts: [{ id: 'a', caption: 'New.', hashtags: [], altText: 'x' }] };
+    const answer = {
+      posts: [{ id: 'a', caption: 'New.', hashtags: [], altText: 'x', storyText: 'New.' }],
+    };
     const { posts, dropped } = checkRewrite(answer, originals, svargaProfile());
     expect(posts[1]).toEqual(originals[1]);
     expect(dropped).toContainEqual({ field: 'posts', reason: 'no rewrite for b' });
@@ -345,7 +361,15 @@ describe('the special offer', () => {
   it('checkRewrite keeps the badge and checks with the offer', () => {
     const original = post({ id: 'a', offer: true });
     const answer = {
-      posts: [{ id: 'a', caption: '15% off, until 27 Oct.', hashtags: ['canggu'], altText: 'x' }],
+      posts: [
+        {
+          id: 'a',
+          caption: '15% off, until 27 Oct.',
+          hashtags: ['canggu'],
+          altText: 'x',
+          storyText: '15% off, until 27 Oct.',
+        },
+      ],
     };
     const { posts } = checkRewrite(answer, [original], profile(), offer);
     expect(posts[0].offer).toBe(true);
@@ -374,7 +398,8 @@ describe('the image set-ups', () => {
       undefined,
       setup,
     );
-    expect(dropped).toEqual([]);
+    // Only the spa's flower is recorded: no scene was dropped.
+    expect(dropped.filter((d) => d.field !== 'emoji')).toEqual([]);
     expect(checked?.scene).toBe('detail');
     expect(checked?.setup).toEqual(setup);
   });
@@ -471,5 +496,76 @@ describe('the image set-ups', () => {
       field: 'mix',
       reason: 'offer posts are not posts 1 and 2',
     });
+  });
+});
+
+// The story text and the spa's flowers (docs/specs/posts/story-text).
+describe('story text and flowers', () => {
+  const bakery = () => ({ ...svargaProfile(), category: 'bakery' });
+
+  it("fixes a spa's caption and story text emojis, and records each fix", () => {
+    const { post: checked, dropped } = checkPost(
+      raw({
+        caption: 'Warm oil 💆 and slow hands tonight.',
+        storyText: 'Relax tonight 💆 in your room!',
+      }),
+      svargaProfile(),
+      'post-1',
+    );
+    expect(checked?.caption).toBe('Warm oil and slow hands tonight. 🌸');
+    expect(checked?.storyText).toBe('Relax tonight in your room! 🌸');
+    expect(dropped).toEqual([
+      { field: 'emoji', reason: 'post-1: caption removed 💆, added 🌸' },
+      { field: 'emoji', reason: 'post-1: story text removed 💆, added 🌸' },
+    ]);
+  });
+
+  it("leaves another business's emoji as they are", () => {
+    const { post: checked, dropped } = checkPost(
+      raw({ caption: 'Fresh bread 🥐 every morning.', storyText: 'Fresh bread 🥐' }),
+      bakery(),
+      'post-1',
+    );
+    expect(checked?.caption).toBe('Fresh bread 🥐 every morning.');
+    expect(checked?.storyText).toBe('Fresh bread 🥐');
+    expect(dropped).toEqual([]);
+  });
+
+  it("flags a price in the story text apart from the caption's flags", () => {
+    const { post: checked } = checkPost(
+      raw({ storyText: 'Only VND 900k tonight 🌸' }),
+      profileWithPrice('VND 500k'),
+      'post-1',
+    );
+    expect(checked?.storyUnchecked).toEqual([{ kind: 'price', text: 'VND 900k' }]);
+    expect(checked?.unchecked).toEqual([]);
+  });
+
+  it('keeps a post whose story text is missing, with none', () => {
+    const { post: checked, dropped } = checkPost(
+      raw({ storyText: undefined as unknown as string }),
+      bakery(),
+      'post-2',
+    );
+    expect(checked).not.toBeNull();
+    expect(checked?.storyText).toBeUndefined();
+    expect(dropped).toEqual([{ field: 'story', reason: 'post-2: no story text' }]);
+  });
+
+  it("gives a rewritten post the answer's story text, or none", () => {
+    const originals = [
+      post({ id: 'a', storyText: 'Old story. 🌸', storyUnchecked: [] }),
+      post({ id: 'b', storyText: 'Old story. 🌸', storyUnchecked: [] }),
+    ];
+    const answer = {
+      posts: [
+        { id: 'a', caption: 'New.', hashtags: [], altText: 'x', storyText: 'New story. 🌺' },
+        { id: 'b', caption: 'New.', hashtags: [], altText: 'x', storyText: '' },
+      ],
+    };
+    const { posts } = checkRewrite(answer, originals, svargaProfile());
+    expect(posts[0].storyText).toBe('New story. 🌺');
+    expect(posts[1].storyText).toBeUndefined();
+    expect(posts[1].storyUnchecked).toBeUndefined();
   });
 });

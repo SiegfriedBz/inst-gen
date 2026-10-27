@@ -15,7 +15,7 @@ import { loadTranslation, saveTranslation } from './translation-store';
 // asked for, so an answer for an older caption is never shown for a new one.
 
 export type TranslationResult =
-  | { ok: true; text: string }
+  | { ok: true; text: string; story?: string }
   | { ok: false; code: TranslateErrorCode | UsageCode | 'offline' | 'signedOut' };
 
 type Deps = { fetch: typeof fetch; now: () => Date };
@@ -26,24 +26,58 @@ function isErrorCode(value: unknown): value is TranslateErrorCode {
   return (TRANSLATE_ERROR_CODES as readonly unknown[]).includes(value);
 }
 
-export async function getTranslation(
-  input: {
-    ownerId: string;
-    batchId: string;
-    postId: string;
-    caption: string;
-    locale: TranslateLocale;
-  },
+type TranslationInput = {
+  ownerId: string;
+  batchId: string;
+  postId: string;
+  caption: string;
+  // The post's story text, translated in the same request
+  // (docs/specs/posts/story-text, "The owner's language").
+  story?: string;
+  locale: TranslateLocale;
+};
+
+// Requests on their way, so the caption's link and the story text's, tapped
+// one after the other, share one; settled ones are the store's.
+const pending = new Map<string, Promise<TranslationResult>>();
+
+export function getTranslation(
+  input: TranslationInput,
   deps: Deps = defaultDeps(),
 ): Promise<TranslationResult> {
-  const saved = await loadTranslation(input.batchId, input.postId, input.locale, input.caption);
-  if (saved) return { ok: true, text: saved.text };
+  const key = [
+    input.batchId,
+    input.postId,
+    input.locale,
+    hashText(input.caption),
+    input.story ? hashText(input.story) : '',
+  ].join('|');
+  const running = pending.get(key);
+  if (running) return running;
+  const request = translate(input, deps).finally(() => pending.delete(key));
+  pending.set(key, request);
+  return request;
+}
+
+async function translate(input: TranslationInput, deps: Deps): Promise<TranslationResult> {
+  const saved = await loadTranslation(
+    input.batchId,
+    input.postId,
+    input.locale,
+    input.caption,
+    input.story,
+  );
+  if (saved) return { ok: true, text: saved.text, ...(saved.story ? { story: saved.story } : {}) };
   let response: Response;
   try {
     response = await deps.fetch('/api/posts/translate', {
       method: 'POST',
       headers: { 'content-type': 'application/json' },
-      body: JSON.stringify({ text: input.caption, locale: input.locale }),
+      body: JSON.stringify({
+        text: input.caption,
+        ...(input.story ? { story: input.story } : {}),
+        locale: input.locale,
+      }),
     });
   } catch {
     return { ok: false, code: 'offline' };
@@ -65,11 +99,14 @@ export async function getTranslation(
       locale: input.locale,
       captionHash: hashText(input.caption),
       text: answer.text,
+      ...(input.story && answer.story
+        ? { storyHash: hashText(input.story), story: answer.story }
+        : {}),
       model: answer.model,
       promptVersion: answer.promptVersion,
       createdAt: deps.now().toISOString(),
     });
-    return { ok: true, text: answer.text };
+    return { ok: true, text: answer.text, ...(answer.story ? { story: answer.story } : {}) };
   } catch {
     return { ok: false, code: 'model_failed' };
   }

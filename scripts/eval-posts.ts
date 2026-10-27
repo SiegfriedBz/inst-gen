@@ -52,6 +52,12 @@ function print(result: PlanResult): void {
     if (post.setup) console.log(`     set-up: ${setupLine(post.setup)}`);
     console.log(`     image: ${post.imagePrompt}`);
     for (const flag of post.unchecked) console.log(`     ⚠ ${flag.kind}: ${flag.text}`);
+    // The story text and its length as code counts it (docs/specs/posts/story-text).
+    if (post.storyText) console.log(`     story (${post.storyText.length}): ${post.storyText}`);
+    else console.log('     story: none');
+    for (const flag of post.storyUnchecked ?? []) {
+      console.log(`     ⚠ story ${flag.kind}: ${flag.text}`);
+    }
   }
   for (const d of result.dropped) console.log(`  dropped ${d.field}: ${d.reason}`);
 }

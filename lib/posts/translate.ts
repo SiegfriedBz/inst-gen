@@ -1,21 +1,31 @@
 import { z } from 'zod';
+import { POSTS_LIMITS } from './batch';
 import { INSTAGRAM_CAPTION_MAX } from './edit';
 
 // A caption read in the owner's language (docs/specs/posts/editor-download,
 // "The owner's-language view"): what the browser sends, what the route
-// answers, and how it fails. Only the caption goes, never the call to action.
+// answers, and how it fails. Only the caption goes, never the call to action,
+// with its story text when it has one, in the same request
+// (docs/specs/posts/story-text, "The owner's language").
 
 export const TRANSLATE_LOCALES = ['id', 'vi'] as const;
 export type TranslateLocale = (typeof TRANSLATE_LOCALES)[number];
 
 export const translateBodySchema = z.object({
   text: z.string().min(1).max(INSTAGRAM_CAPTION_MAX),
+  // `.length`, as code cuts it: zod's max counts code points.
+  story: z
+    .string()
+    .min(1)
+    .refine((story) => story.length <= POSTS_LIMITS.storyChars)
+    .optional(),
   locale: z.enum(TRANSLATE_LOCALES),
 });
 export type TranslateBody = z.infer<typeof translateBodySchema>;
 
 export const translateResponseSchema = z.object({
   text: z.string().trim().min(1),
+  story: z.string().trim().min(1).optional(),
   model: z.string().min(1),
   promptVersion: z.string().min(1),
 });

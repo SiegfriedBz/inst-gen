@@ -26,6 +26,14 @@ export const POSTS_LIMITS = {
   imagePromptWords: 80,
   topicWords: 12,
   recent: 12,
+  // The story text (docs/specs/posts/story-text): code's limit, counted with
+  // `.length`, and what the model is asked for.
+  storyChars: 120,
+  storyAsked: 100,
+  // A spa's flowers; any other business's emoji.
+  captionFlowers: 3,
+  storyFlowers: 2,
+  otherEmoji: 2,
 } as const;
 
 const text = z.string().min(1);
@@ -68,6 +76,16 @@ export const postSchema = z.object({
   // What code set up for its image (docs/specs/posts/varied-images). Absent
   // on posts saved before it.
   setup: setupSchema.optional(),
+  // A short version of the caption for the story, and its flags
+  // (docs/specs/posts/story-text). Absent on posts saved before it, and when
+  // code's checks left none.
+  // `.length`, as code cuts it: zod's max counts code points, an emoji as 1.
+  storyText: z
+    .string()
+    .min(1)
+    .refine((text) => text.length <= POSTS_LIMITS.storyChars)
+    .optional(),
+  storyUnchecked: z.array(flagSchema).optional(),
 });
 export type Post = z.infer<typeof postSchema>;
 
@@ -105,6 +123,7 @@ export const modelPostPlanSchema = z.object({
       hashtags: z.array(loose),
       altText: loose,
       imagePrompt: loose,
+      storyText: loose,
     }),
   ),
 });
@@ -112,7 +131,15 @@ export type ModelPostPlan = z.infer<typeof modelPostPlanSchema>;
 export type ModelPost = ModelPostPlan['posts'][number];
 
 export const modelRewriteSchema = z.object({
-  posts: z.array(z.object({ id: loose, caption: loose, hashtags: z.array(loose), altText: loose })),
+  posts: z.array(
+    z.object({
+      id: loose,
+      caption: loose,
+      hashtags: z.array(loose),
+      altText: loose,
+      storyText: loose,
+    }),
+  ),
 });
 export type ModelRewrite = z.infer<typeof modelRewriteSchema>;
 

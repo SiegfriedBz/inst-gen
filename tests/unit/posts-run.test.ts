@@ -74,7 +74,7 @@ describe('streamPlan', () => {
     expect(final).toMatchObject({
       type: 'final',
       result: {
-        promptVersion: 'posts-4',
+        promptVersion: 'posts-5',
         model: 'gemini-3.5-flash-lite',
         profileHash: profileHash(svargaProfile()),
       },
@@ -103,6 +103,98 @@ describe('streamPlan', () => {
     const model = replayTextModel(brand, { error: 'failed' });
     const lines = await drain(streamPlan(body(), deps(model), new AbortController().signal));
     expect(lines).toEqual([{ type: 'error', code: 'model_failed' }]);
+  });
+
+  // The spec's scenario "A call to action in the story text" (amended 2026-10-27).
+  test('a call to action goes from the story text, counted story_ctas=1', async () => {
+    const entries: PostsLog[] = [];
+    const one = {
+      ...modelPost(0),
+      caption: 'Warm oil and slow hands after a day in Canggu. 🌸',
+      storyText: 'Professional massage in your room. 🌸 Book on WhatsApp.',
+    };
+    const recording = {
+      modelId: 'm',
+      promptVersion: 'posts-5',
+      partials: [{ posts: [one] }],
+      final: { posts: [one] },
+    };
+    const model = replayTextModel(brand, { posts: recording });
+    const lines = await drain(
+      streamPlan(
+        body(),
+        deps(model, { log: (e) => entries.push(e) }),
+        new AbortController().signal,
+      ),
+    );
+    const final = lines.at(-1);
+    if (final?.type !== 'final') throw new Error('no final');
+    expect(final.result.posts[0].storyText).toBe('Professional massage in your room. 🌸');
+    expect(final.result.dropped).toContainEqual({
+      field: 'story',
+      reason: 'post-1: story text removed "🌸 Book on WhatsApp."',
+    });
+    expect(entries[0].storyCtas).toBe(1);
+  });
+
+  // The spec's scenario "Code fixes a spa's emojis".
+  test('one fixed story text counts emoji_fixes=1', async () => {
+    const entries: PostsLog[] = [];
+    const one = {
+      ...modelPost(0),
+      caption: 'Warm oil and slow hands after a day in Canggu. 🌸',
+      storyText: 'Relax tonight 💆 in your room!',
+    };
+    const recording = {
+      modelId: 'm',
+      promptVersion: 'posts-5',
+      partials: [{ posts: [one] }],
+      final: { posts: [one] },
+    };
+    const model = replayTextModel(brand, { posts: recording });
+    const lines = await drain(
+      streamPlan(
+        body(),
+        deps(model, { log: (e) => entries.push(e) }),
+        new AbortController().signal,
+      ),
+    );
+    const final = lines.at(-1);
+    if (final?.type !== 'final') throw new Error('no final');
+    expect(final.result.posts[0].storyText).toBe('Relax tonight in your room! 🌸');
+    expect(final.result.dropped.filter((d) => d.field === 'emoji')).toEqual([
+      { field: 'emoji', reason: 'post-1: story text removed 💆, added 🌸' },
+    ]);
+    expect(entries[0].emojiFixes).toBe(1);
+  });
+
+  test("a spa's plan and rewrite ask for flowers, another business's don't", async () => {
+    const systems: string[] = [];
+    const inner = replayTextModel(brand, { posts: planRecording() });
+    const model: TextModel = {
+      ...inner,
+      streamPostPlan(input, signal) {
+        systems.push(input.system);
+        return inner.streamPostPlan(input, signal);
+      },
+      streamPostRewrite(input, signal) {
+        systems.push(input.system);
+        return inner.streamPostRewrite(input, signal);
+      },
+    };
+    const bakery = { ...svargaProfile(), category: 'bakery' };
+    await drain(streamPlan(body(), deps(model), new AbortController().signal));
+    await drain(
+      streamPlan({ profile: bakery, recent: [] }, deps(model), new AbortController().signal),
+    );
+    await drain(
+      streamRewrite(
+        { profile: svargaProfile(), posts: [post({ id: 'a' })] },
+        deps(model),
+        new AbortController().signal,
+      ),
+    );
+    expect(systems.map((system) => system.includes('flowers only'))).toEqual([true, false, true]);
   });
 
   test("the model's input holds no WhatsApp number", async () => {
@@ -139,6 +231,22 @@ describe('streamPlan', () => {
     });
     expect(JSON.stringify(entries[0])).not.toContain('Caption');
   });
+  test('counts story cuts and emoji fixes in its log entry', async () => {
+    const entries: PostsLog[] = [];
+    const recording = planRecording();
+    const third = recording.final.posts[2] as ReturnType<typeof modelPost> & { storyText?: string };
+    third.storyText = `${'Calm tonight. '.repeat(10)}Wake up light! 🌺`;
+    const model = replayTextModel(brand, { posts: recording });
+    await drain(
+      streamPlan(
+        body(),
+        deps(model, { log: (e) => entries.push(e) }),
+        new AbortController().signal,
+      ),
+    );
+    // Svarga is a spa: six captions gain a flower, and the cut story text too.
+    expect(entries[0]).toMatchObject({ storyCuts: 1, emojiFixes: 7 });
+  });
 });
 
 describe('streamRewrite', () => {
@@ -165,8 +273,9 @@ describe('streamRewrite', () => {
     const final = lines.at(-1);
     if (final?.type !== 'final') throw new Error('no final');
     expect(final.result.posts.map((p) => [p.imagePrompt, p.caption])).toEqual([
-      ['Deck at dusk', 'New caption a.'],
-      ['A glass', 'New caption b.'],
+      // Svarga is a spa: code adds its flower (docs/specs/posts/story-text).
+      ['Deck at dusk', 'New caption a. 🌸'],
+      ['A glass', 'New caption b. 🌸'],
     ]);
   });
 });
@@ -187,7 +296,7 @@ describe('an old post', () => {
     );
     const final = lines.at(-1);
     if (final?.type !== 'final') throw new Error('no final');
-    expect(final.result.posts[0].caption).toBe('New caption a.');
+    expect(final.result.posts[0].caption).toBe('New caption a. 🌸');
     expect('setup' in final.result.posts[0]).toBe(false);
   });
 });

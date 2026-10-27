@@ -198,14 +198,28 @@
     "make": "Make 6 suggestions",
     "makeMore": "Make 6 new suggestions",
     "moreBelow": "They go on top. Attempt {n} stays below.",
-    "empty": "Each suggestion is 2 images (1 for the post, 1 for the story) and the text for the post, ready for Instagram. Pick the ones you like and save them to your phone.",
-    "emptyTextOnly": "Each suggestion is the text for a post, ready for Instagram. Pick the ones you like and copy them.",
+    "empty": "Each suggestion is 2 images (1 for the post, 1 for the story), the text for the post and a short text for the story, ready for Instagram. Pick the ones you like and save them to your phone.",
+    "emptyTextOnly": "Each suggestion is the text for a post and a short text for a story, ready for Instagram. Pick the ones you like and copy them.",
     "attempt": "Attempt {n}",
     "attemptCount": "{count, plural, one {# suggestion} other {# suggestions}}",
-    "saveImages": "Save the 2 images",
-    "copyText": "Copy the text",
-    "howTo": "In Instagram: make a post with the post image and paste the text, then a story with the story image.",
-    "howToTextOnly": "In Instagram: make a post with your own photo and paste the text.",
+    "saveImages": "Save post & story images",
+    "copyText": "Copy post text",
+    "copyStory": "Copy optional story text",
+    "parts": {
+      "images": "Images",
+      "postImage": "Post",
+      "storyImage": "Story",
+      "postText": "Post text",
+      "storyText": "Story text",
+      "optional": "(optional)"
+    },
+    "hints": {
+      "images": "On an iPhone, choose \"Save 2 Images\".",
+      "post": "In Instagram, make a post with the post image and paste this text.",
+      "postOwnPhoto": "In Instagram, make a post with your own photo and paste this text.",
+      "story": "In Instagram, make a story with the story image, add text and paste.",
+      "storyOwnPhoto": "In Instagram, make a story with your own photo, add text and paste."
+    },
     "editText": "Edit the text",
     "keepOpen": "Keep this page open for about a minute while your posts are made.",
     "flags": {
@@ -376,14 +390,14 @@
     },
     "posts": {
       "title": "Making your posts",
-      "make": "In <b>{tab}</b>, tap <b>{button}</b>. You get 6 suggestions, each with a post image, a story image and the text for the post.",
+      "make": "In <b>{tab}</b>, tap <b>{button}</b>. You get 6 suggestions, each with a post image, a story image, the text for the post and a short text for the story.",
       "open": "Tap a suggestion to open it. The ones you've saved and copied show <b>{saved}</b>.",
       "check": "A suggestion marked <b>{check}</b> has something to look at before you post: open it to see what, like a price that isn't on your website, or an offer that doesn't match the one you set.",
       "wait": "Keep the page open for about a minute while they are made.",
       "leave": "If you leave, Shopfront carries on where it stopped when you come back, but the part it was making is made again and uses some of today's allowance. So start when you have a minute to wait, not just before a call.",
       "more": "Want other ideas? Tap <b>{button}</b>: the new ones go on top, the earlier ones stay below.",
-      "edit": "Tap <b>{button}</b> to change a suggestion's words, and <b>{image}</b> for a different picture; you can add a short hint.",
-      "update": "If you change your business, the captions are updated to match. Text you edited yourself is left alone.",
+      "edit": "Tap <b>{button}</b> to change a suggestion's words, and <b>{image}</b> for a different picture; you can add a short hint. The story text can't be changed here: change it in Instagram after pasting, if you like.",
+      "update": "If you change your business, the captions and story texts are updated to match. Text you edited yourself is left alone.",
       "offer": "To put today's offer in your posts, tap <b>{button}</b> before you make them:",
       "offerKind": "Pick a discount (10%, 15%, 20% or your own) or a free extra: a treatment you give with a 90-minute session.",
       "offerTreatments": "Tick the treatments it's on. An offer is always on sessions of 90 minutes or longer.",
@@ -393,13 +407,13 @@
     },
     "instagram": {
       "title": "Posting on Instagram",
-      "save": "Tap <b>1 {button}</b>. On an iPhone, choose \"Save 2 Images\" in the menu that opens. On Android, both images download to your phone. Either way, the post image and the story image land side by side in your photos.",
-      "copy": "Tap <b>2 {button}</b>. It copies the caption, your WhatsApp line and the hashtags, ready to paste.",
+      "save": "Tap <b>{button}</b>. On an iPhone, choose \"Save 2 Images\" in the menu that opens. On Android, both images download to your phone. Either way, the post image and the story image land side by side in your photos.",
+      "copy": "Tap <b>{button}</b>. It copies the caption, your WhatsApp line and the hashtags, ready to paste.",
       "post": "The post: in Instagram, tap +, then Post. Pick the post image, paste the text and share.",
-      "story": "The story: tap +, then Story, and pick the story image. Tap the sticker icon, choose \"Link\", paste your WhatsApp link and place the sticker. A story has no text to paste.",
+      "story": "The story: tap +, then Story, and pick the story image. Tap the sticker icon, choose \"Link\", paste your WhatsApp link and place the sticker. If you like, tap <b>{button}</b> in the suggestion, then add text to the story and paste it.",
       "link": "Your WhatsApp link is <code>https://wa.me/</code> followed by your number with its country code, with no + and no spaces. For example: <code>https://wa.me/84901234567</code>.",
       "alt": "Optional: before you share a post, Instagram's \"Advanced settings\", then \"Accessibility\", let you describe the image for people who can't see it.",
-      "noImages": "No pictures on your suggestions? Post a photo of your own and paste the text.",
+      "noImages": "No pictures on your suggestions? Post a photo of your own and paste the text, and the same for a story with the story text.",
       "never": "Shopfront never posts for you: you decide what goes out."
     },
     "reviews": {
@@ -420,7 +434,7 @@
     "languages": {
       "title": "Languages",
       "switch": "The <b>{lang}</b> button at the top right changes the language of the screens.",
-      "captions": "Posts are written in English, and review replies in your guest's language. Showing them in your language is for reading, not for posting."
+      "captions": "Posts and story texts are written in English, and review replies in your guest's language. Showing them in your language is for reading, not for posting."
     },
     "trouble": {
       "title": "If something goes wrong",

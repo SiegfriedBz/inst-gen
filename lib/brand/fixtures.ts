@@ -184,6 +184,9 @@ const noModel: TextModel = {
   translateCaption() {
     throw new Error('saving a fixture makes no model call');
   },
+  translatePost() {
+    throw new Error('saving a fixture makes no model call');
+  },
 };
 
 export async function saveFixture(url: string, slug: string): Promise<Manifest> {

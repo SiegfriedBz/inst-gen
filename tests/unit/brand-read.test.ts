@@ -343,6 +343,9 @@ describe('the log line', () => {
       translateCaption() {
         throw new Error('the brand read makes no translation call');
       },
+      translatePost() {
+        throw new Error('the brand read makes no translation call');
+      },
       writeReplies() {
         throw new Error('the brand read makes no reply call');
       },

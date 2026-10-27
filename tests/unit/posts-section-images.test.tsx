@@ -162,16 +162,16 @@ describe('a suggestion with its images', () => {
     await saveImage(image('post-1'));
     await renderSection();
     let sheet = await openTile(1);
-    expect(within(sheet).getByRole('button', { name: /Copy the text/ })).toBeTruthy();
+    expect(within(sheet).getByRole('button', { name: /Copy post text/ })).toBeTruthy();
     const save = within(sheet).getByRole('button', {
-      name: /Save the 2 images/,
+      name: /Save post & story images/,
     }) as HTMLButtonElement;
     await waitFor(() => expect(save.disabled).toBe(false));
     fireEvent.click(within(sheet).getByRole('button', { name: 'Close' }));
     await waitFor(() => expect(screen.queryByRole('dialog')).toBeNull());
     sheet = await openTile(2);
     expect(
-      (within(sheet).getByRole('button', { name: /Save the 2 images/ }) as HTMLButtonElement)
+      (within(sheet).getByRole('button', { name: /Save post & story images/ }) as HTMLButtonElement)
         .disabled,
     ).toBe(true);
     expect(screen.queryByText('Your feed once these are posted')).toBeNull();
@@ -189,10 +189,10 @@ describe('a suggestion with its images', () => {
     await saveImage(image('post-1'));
     const view = await renderSection();
     const sheet = await openTile(1);
-    const save = within(sheet).getByRole('button', { name: /Save the 2 images/ });
+    const save = within(sheet).getByRole('button', { name: /Save post & story images/ });
     await waitFor(() => expect((save as HTMLButtonElement).disabled).toBe(false));
     fireEvent.click(save);
-    fireEvent.click(within(sheet).getByRole('button', { name: /Copy the text/ }));
+    fireEvent.click(within(sheet).getByRole('button', { name: /Copy post text/ }));
     fireEvent.click(within(sheet).getByRole('button', { name: 'Close' }));
     expect(
       await screen.findByRole('button', { name: /^Suggestion 1 of 6\b.*Saved and copied$/ }),

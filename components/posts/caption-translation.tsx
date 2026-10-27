@@ -23,16 +23,22 @@ function isTranslateLocale(locale: string): locale is TranslateLocale {
   return (TRANSLATE_LOCALES as readonly string[]).includes(locale);
 }
 
+// The story text has its own link, under it; one request answers both
+// (docs/specs/posts/story-text, "The owner's language").
 export function CaptionTranslation({
   ownerId,
   batchId,
   postId,
   caption,
+  story,
+  part = 'caption',
 }: {
   ownerId: string;
   batchId: string;
   postId: string;
   caption: string;
+  story?: string;
+  part?: 'caption' | 'story';
 }) {
   const t = useTranslations('posts.translate');
   const locale = useLocale();
@@ -47,10 +53,14 @@ export function CaptionTranslation({
       batchId,
       postId,
       caption,
+      story,
       locale: screenLocale,
     });
-    if (result.ok) {
-      setView({ kind: 'open', text: result.text });
+    const text = result.ok && (part === 'story' ? result.story : result.text);
+    if (result.ok && text) {
+      setView({ kind: 'open', text });
+    } else if (result.ok) {
+      setView({ kind: 'failed', code: 'model_failed' });
     } else if (result.code === 'signedOut') {
       window.location.assign('/enter');
     } else {

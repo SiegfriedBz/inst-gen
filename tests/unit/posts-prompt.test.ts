@@ -56,7 +56,7 @@ describe('planPrompt', () => {
   });
 
   it('has a version', () => {
-    expect(POSTS_PROMPT_VERSION).toBe('posts-4');
+    expect(POSTS_PROMPT_VERSION).toBe('posts-5');
   });
 });
 
@@ -183,5 +183,62 @@ describe('the special offer', () => {
     );
     expect(text).toContain('"offer": true');
     expect(text).toContain('### Special offer');
+  });
+});
+
+// Hooks, positive endings, the story text and flowers (docs/specs/posts/story-text).
+describe('the story text and the captions that sell', () => {
+  it('asks for a story text with every post', () => {
+    expect(planPrompt()).toContain(
+      'Each post has a type, a topic, a scene, a caption, a story text, hashtags, alt text and an image prompt.',
+    );
+    expect(planPrompt()).toContain('Story text: a short version of its own caption');
+    expect(planPrompt()).toContain('at most 100 characters, emoji included');
+    expect(planPrompt()).toContain('no call to action: the owner adds a link sticker');
+  });
+
+  it('orders a caption from its hook to a positive ending', () => {
+    const prompt = planPrompt();
+    for (const part of [
+      'Each caption sells, in this order: a hook',
+      'what the guest will feel, rather than what the business does',
+      'one concrete detail that makes it real',
+      'a last sentence on a positive note',
+    ]) {
+      expect(prompt).toContain(part);
+    }
+  });
+
+  it("gives a spa flowers only, and another business today's rule", () => {
+    expect(planPrompt(false, true)).toContain(
+      'Emoji: flowers only, from 🌸 🌺 🌼 🌷 🪷: 1 to 3 in the caption and 1 or 2 in the story text. No other emoji.',
+    );
+    expect(planPrompt(false, false)).toContain(
+      'At most 2 emoji in the caption and at most 2 in the story text.',
+    );
+    expect(planPrompt(false, false)).not.toContain('🌸');
+    expect(planPrompt(false, true)).not.toContain('at most 2 emoji');
+  });
+
+  it("makes an offer post's story text its offer line", () => {
+    expect(planPrompt(true, true)).toContain(
+      "Each offer post's story text is its first line, word for word, followed by one flower.",
+    );
+    expect(planPrompt(true, false)).toContain(
+      "Each offer post's story text is its first line, word for word.",
+    );
+    expect(planPrompt(true, true)).toContain(
+      'The other four posts never mention a discount, a free treatment or a deadline, in their captions or story texts.',
+    );
+  });
+
+  it('rewrites the story texts too', () => {
+    expect(rewritePrompt(false, true)).toContain(
+      'You rewrite the captions, story texts, hashtags and alt text',
+    );
+    expect(rewritePrompt(false, true)).toContain('flowers only');
+    expect(rewritePrompt(true, true)).toContain(
+      "in its caption's first line and as its story text",
+    );
   });
 });

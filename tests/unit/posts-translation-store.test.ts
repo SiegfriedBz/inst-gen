@@ -122,3 +122,56 @@ describe('getTranslation', () => {
     ).toEqual({ ok: false, code: 'offline' });
   });
 });
+
+// The story text's translation, kept with the caption's
+// (docs/specs/posts/story-text).
+describe('the story text', () => {
+  const STORY = 'Long flight? 🌸';
+  const withStory = { ...input, story: STORY };
+  const answer = () =>
+    Response.json({
+      text: 'Dầu ấm.',
+      story: 'Chuyến bay dài? 🌸',
+      model: 'gemini-3.5-flash-lite',
+      promptVersion: 'translate-2',
+    });
+
+  test('one request asks for both, and both are kept while unchanged', async () => {
+    const fetch = vi.fn(async () => answer());
+    expect(await getTranslation(withStory, deps(fetch))).toEqual({
+      ok: true,
+      text: 'Dầu ấm.',
+      story: 'Chuyến bay dài? 🌸',
+    });
+    const [, init] = fetch.mock.calls[0] as unknown as [string, RequestInit];
+    expect(JSON.parse(init.body as string)).toEqual({ text: CAPTION, story: STORY, locale: 'vi' });
+    expect(await getTranslation(withStory, deps(fetch))).toEqual({
+      ok: true,
+      text: 'Dầu ấm.',
+      story: 'Chuyến bay dài? 🌸',
+    });
+    expect(fetch).toHaveBeenCalledTimes(1);
+    expect(await loadTranslation('b1', 'post-1', 'vi', CAPTION, 'Another story. 🌺')).toBeNull();
+  });
+
+  test("a translation saved before story texts isn't used for a post with one", async () => {
+    await saveTranslation(saved(CAPTION));
+    expect(await loadTranslation('b1', 'post-1', 'vi', CAPTION, STORY)).toBeNull();
+  });
+
+  test('two taps before the answer make one request', async () => {
+    let answerNow: (r: Response) => void = () => {};
+    const fetch = vi.fn(
+      () =>
+        new Promise<Response>((resolve) => {
+          answerNow = resolve;
+        }),
+    );
+    const first = getTranslation(withStory, deps(fetch));
+    const second = getTranslation(withStory, deps(fetch));
+    await vi.waitFor(() => expect(fetch).toHaveBeenCalledTimes(1));
+    answerNow(answer());
+    expect(await first).toEqual(await second);
+    expect(fetch).toHaveBeenCalledTimes(1);
+  });
+});

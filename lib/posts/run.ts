@@ -10,6 +10,7 @@ import type {
   RewriteBody,
 } from './batch';
 import { carries, checkPlan, checkPost, checkRewrite, setupFlags } from './checks';
+import { isSpa } from './emoji';
 import { postsModelInput, profileHash } from './input';
 import type { PostsLog } from './log';
 import type { Offer } from './offer';
@@ -78,6 +79,9 @@ async function* run<T>(
     promptVersion: POSTS_PROMPT_VERSION,
     kept: 0,
     flags: 0,
+    storyCuts: 0,
+    storyCtas: 0,
+    emojiFixes: 0,
     modelMs: null,
     totalMs: 0,
     outcome: 'aborted',
@@ -132,6 +136,13 @@ async function* run<T>(
     };
     entry.kept = result.posts.length;
     entry.flags = result.posts.reduce((n, p) => n + p.unchecked.length, 0);
+    entry.storyCuts = result.dropped.filter(
+      (d) => d.field === 'story' && d.reason.includes(' cut from '),
+    ).length;
+    entry.storyCtas = result.dropped.filter(
+      (d) => d.field === 'story' && d.reason.includes(' story text removed "'),
+    ).length;
+    entry.emojiFixes = result.dropped.filter((d) => d.field === 'emoji').length;
     entry.outcome = 'final';
     yield { type: 'final', result };
   } catch (error) {
@@ -160,7 +171,7 @@ export function streamPlan(
       open: (s) =>
         deps.model.streamPostPlan(
           {
-            system: planPrompt(!!body.offer),
+            system: planPrompt(!!body.offer, isSpa(body.profile.category)),
             text: planUserText(input, body.recent, body.offer, setups),
           },
           s,
@@ -191,7 +202,7 @@ export function streamRewrite(
       open: (s) =>
         deps.model.streamPostRewrite(
           {
-            system: rewritePrompt(!!body.offer),
+            system: rewritePrompt(!!body.offer, isSpa(body.profile.category)),
             text: rewriteUserText(input, body.posts, body.offer),
           },
           s,
