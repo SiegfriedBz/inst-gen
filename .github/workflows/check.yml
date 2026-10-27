@@ -27,6 +27,13 @@ jobs:
 
   e2e:
     runs-on: ubuntu-latest
+    # Playwright's own image: Chromium and the system packages it needs are
+    # already in it. Installing those packages with apt took up to 13 minutes
+    # on some runs. The tag must match @playwright/test in package.json: when
+    # they differ, Playwright stops with "Executable doesn't exist".
+    container:
+      image: mcr.microsoft.com/playwright:v1.64.1-noble
+      options: --user 1001
     steps:
       - uses: actions/checkout@v4
       - uses: pnpm/action-setup@v4
@@ -35,19 +42,6 @@ jobs:
           node-version: 24.21.0
           cache: pnpm
       - run: pnpm install --frozen-lockfile
-      - name: Read the Playwright version
-        id: playwright
-        run: echo "version=$(node -p "require('@playwright/test/package.json').version")" >> "$GITHUB_OUTPUT"
-      - name: Cache the Playwright browser
-        id: browser-cache
-        uses: actions/cache@v4
-        with:
-          path: ~/.cache/ms-playwright
-          key: playwright-${{ runner.os }}-${{ steps.playwright.outputs.version }}
-      - if: steps.browser-cache.outputs.cache-hit != 'true'
-        run: pnpm exec playwright install --with-deps chromium
-      - if: steps.browser-cache.outputs.cache-hit == 'true'
-        run: pnpm exec playwright install-deps chromium
       - run: pnpm test:e2e
       - if: failure()
         uses: actions/upload-artifact@v4
