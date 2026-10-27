@@ -34,7 +34,14 @@ Task 3, bottom bar (`brand-home`):
 Task 4, saved and copied (`posts-taken`, `posts-edit`, `posts-store`):
 
 ```
-      Tests  4 failed | … (posts-taken: Cannot find package '@/lib/posts/taken')
+Error: Cannot find package '@/lib/posts/taken' imported from …/tests/unit/posts-taken.test.ts
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 4 ⎯⎯⎯⎯⎯⎯⎯
+```
+
+Task 5, the two steps report back (`posts-take-away`):
+
+```
+      Tests  4 failed | 6 passed (10)
 ```
 
 ## GREEN
@@ -61,4 +68,10 @@ Task 4 (`posts-taken`, `posts-edit`, `posts-store`, `posts-batch`):
 
 ```
       Tests  41 passed (41)
+```
+
+Task 5 (`posts-take-away`, `reviews-section`):
+
+```
+      Tests  27 passed (27)
 ```
