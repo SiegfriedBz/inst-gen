@@ -309,18 +309,18 @@ describe('the story text', () => {
     expect(storyFlagsFor(six[0], batch([six[0]], 'old'), profile, false)).toEqual([]);
   });
 
-  test('editing the caption keeps the story text and its flags', () => {
-    const before = {
-      ...six[0],
-      storyText: 'Calm tonight. 🌸',
-      storyUnchecked: [{ kind: 'price' as const, text: '450k' }],
-    };
+  test("editing the caption keeps the story text, its flags checked against today's details", () => {
+    // Checked when the profile still held 450k; today's doesn't.
+    const before = { ...six[0], storyText: 'Only 450k. 🌸', storyUnchecked: [] };
     const edited = applyEdit(
       before,
       { caption: 'New words.', hashtags: 'spa', altText: 'x' },
       profile,
     );
-    expect(edited.storyText).toBe('Calm tonight. 🌸');
+    expect(edited.storyText).toBe('Only 450k. 🌸');
     expect(edited.storyUnchecked).toEqual([{ kind: 'price', text: '450k' }]);
+    expect(storyFlagsFor(edited, batch([edited], 'old'), profile)).toEqual([
+      { kind: 'price', text: '450k' },
+    ]);
   });
 });

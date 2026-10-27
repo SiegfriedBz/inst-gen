@@ -105,6 +105,37 @@ describe('streamPlan', () => {
     expect(lines).toEqual([{ type: 'error', code: 'model_failed' }]);
   });
 
+  // The spec's scenario "Code fixes a spa's emojis".
+  test('one fixed story text counts emoji_fixes=1', async () => {
+    const entries: PostsLog[] = [];
+    const one = {
+      ...modelPost(0),
+      caption: 'Warm oil and slow hands after a day in Canggu. 🌸',
+      storyText: 'Relax tonight 💆 in your room!',
+    };
+    const recording = {
+      modelId: 'm',
+      promptVersion: 'posts-5',
+      partials: [{ posts: [one] }],
+      final: { posts: [one] },
+    };
+    const model = replayTextModel(brand, { posts: recording });
+    const lines = await drain(
+      streamPlan(
+        body(),
+        deps(model, { log: (e) => entries.push(e) }),
+        new AbortController().signal,
+      ),
+    );
+    const final = lines.at(-1);
+    if (final?.type !== 'final') throw new Error('no final');
+    expect(final.result.posts[0].storyText).toBe('Relax tonight in your room! 🌸');
+    expect(final.result.dropped.filter((d) => d.field === 'emoji')).toEqual([
+      { field: 'emoji', reason: 'post-1: story text removed 💆, added 🌸' },
+    ]);
+    expect(entries[0].emojiFixes).toBe(1);
+  });
+
   test("a spa's plan and rewrite ask for flowers, another business's don't", async () => {
     const systems: string[] = [];
     const inner = replayTextModel(brand, { posts: planRecording() });

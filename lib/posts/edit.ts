@@ -44,6 +44,11 @@ export function applyEdit(post: Post, edit: PostEdit, profile: Profile, offer?: 
     hashtags: parseHashtags(edit.hashtags),
     altText: edit.altText.trim(),
     unchecked: findFlags(caption, profile, offerContext(post, offer)),
+    // The story text stays, but is checked against today's profile too
+    // (docs/specs/posts/story-text).
+    ...(post.storyText
+      ? { storyUnchecked: findFlags(post.storyText, profile, offerContext(post, offer)) }
+      : {}),
     edited: true,
     altToCheck: false,
     profileHash: profileHash(profile),

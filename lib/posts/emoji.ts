@@ -17,9 +17,10 @@ export function isSpa(category: string): boolean {
 }
 
 // An emoji is one grapheme, with the joiners, skin tones and variation
-// selectors that belong to it.
+// selectors that belong to it; a flag (two regional indicators) or a keycap
+// (1️⃣) is one too.
 const segmenter = new Intl.Segmenter('en', { granularity: 'grapheme' });
-const PICTOGRAPH = /\p{Extended_Pictographic}/u;
+const PICTOGRAPH = /\p{Extended_Pictographic}|\p{Regional_Indicator}|\u20E3/u;
 
 function graphemes(text: string): string[] {
   return Array.from(segmenter.segment(text), (s) => s.segment);
@@ -38,29 +39,31 @@ export function emojisIn(text: string): string[] {
 }
 
 // What a removed emoji leaves: two spaces, a space before a stop, a space at
-// the end of a line.
+// either end of a line, a line left empty.
 function tidy(text: string): string {
   return text
     .replace(/[ \t]{2,}/g, ' ')
     .replace(/ +([.,!?])/g, '$1')
     .replace(/[ \t]+$/gm, '')
     .replace(/^[ \t]+/gm, '')
+    .replace(/\n{3,}/g, '\n\n')
     .trim();
 }
 
 export function stripEmojis(text: string, maxFlowers: number): { text: string; fixes: string[] } {
   const fixes: string[] = [];
   let flowers = 0;
-  const kept = graphemes(text).filter((g) => {
-    if (!isEmoji(g)) return true;
+  // A removed emoji leaves a space, so the words around it stay apart.
+  const kept = graphemes(text).map((g) => {
+    if (!isEmoji(g)) return g;
     if (!isFlower(g)) {
       fixes.push(`removed ${g}`);
-      return false;
+      return ' ';
     }
     flowers += 1;
-    if (flowers <= maxFlowers) return true;
+    if (flowers <= maxFlowers) return g;
     fixes.push(`removed ${g} over ${maxFlowers} flowers`);
-    return false;
+    return ' ';
   });
   return fixes.length > 0 ? { text: tidy(kept.join('')), fixes } : { text, fixes };
 }

@@ -75,3 +75,24 @@ describe('addFlower', () => {
 it('the five flowers', () => {
   expect(FLOWERS).toEqual(['🌸', '🌺', '🌼', '🌷', '🪷']);
 });
+
+// The final review's fixes.
+describe('what a removed emoji leaves', () => {
+  it('keeps two words apart', () => {
+    expect(stripEmojis('Relax💆tonight 🌸', 2).text).toBe('Relax tonight 🌸');
+  });
+
+  it('leaves no extra blank lines where an emoji had its own line', () => {
+    expect(stripEmojis('Line one\n\n💆\n\nLine two 🌸', 3).text).toBe('Line one\n\nLine two 🌸');
+  });
+});
+
+describe('flags and keycaps', () => {
+  it('are emoji too', () => {
+    expect(emojisIn('Da Nang 🇻🇳 at 1️⃣ spot')).toEqual(['🇻🇳', '1️⃣']);
+  });
+
+  it("go from a spa's text", () => {
+    expect(stripEmojis('Hello Da Nang 🇻🇳 🌸', 2).text).toBe('Hello Da Nang 🌸');
+  });
+});

@@ -41,17 +41,19 @@ export function cleanStory(
   { id, spa }: { id: string; spa: boolean },
 ): { storyText?: string; dropped: Dropped[] } {
   const dropped: Dropped[] = [];
-  const emoji = (fixes: string[]) =>
-    dropped.push(...fixes.map((fix) => ({ field: 'emoji', reason: `${id}: story text ${fix}` })));
+  // One record per fixed text, however many changes it took.
+  const fixes: string[] = [];
+  const emoji = () =>
+    fixes.length > 0 ? [{ field: 'emoji', reason: `${id}: story text ${fixes.join(', ')}` }] : [];
   let text = (raw ?? '').replace(HASHTAG_WORD, '').trim();
   if (spa) {
     const stripped = stripEmojis(text, POSTS_LIMITS.storyFlowers);
     text = stripped.text;
-    emoji(stripped.fixes);
+    fixes.push(...stripped.fixes);
   }
   // Nothing left to read: no story text rather than a lone flower.
   if (!/[\p{L}\p{N}]/u.test(text)) {
-    return { dropped: [...dropped, { field: 'story', reason: `${id}: no story text` }] };
+    return { dropped: [...emoji(), { field: 'story', reason: `${id}: no story text` }] };
   }
   const before = text.length;
   text = cutStory(text, POSTS_LIMITS.storyChars);
@@ -67,7 +69,7 @@ export function cleanStory(
   if (needsFlower) {
     const added = addFlower(text);
     text = added.text;
-    emoji(added.fixes);
+    fixes.push(...added.fixes);
   }
-  return { storyText: text, dropped };
+  return { storyText: text, dropped: [...emoji(), ...dropped] };
 }

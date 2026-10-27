@@ -515,10 +515,8 @@ describe('story text and flowers', () => {
     expect(checked?.caption).toBe('Warm oil and slow hands tonight. 🌸');
     expect(checked?.storyText).toBe('Relax tonight in your room! 🌸');
     expect(dropped).toEqual([
-      { field: 'emoji', reason: 'post-1: caption removed 💆' },
-      { field: 'emoji', reason: 'post-1: caption added 🌸' },
-      { field: 'emoji', reason: 'post-1: story text removed 💆' },
-      { field: 'emoji', reason: 'post-1: story text added 🌸' },
+      { field: 'emoji', reason: 'post-1: caption removed 💆, added 🌸' },
+      { field: 'emoji', reason: 'post-1: story text removed 💆, added 🌸' },
     ]);
   });
 

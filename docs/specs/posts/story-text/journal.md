@@ -58,6 +58,21 @@
 - 2026-10-27: the replay test's offer check first took the caption's first
   paragraph as its offer line; the offer line is its first sentence, which
   each offer story text starts with. The test was fixed, not the code.
+- 2026-10-27: final review (a fresh reviewer on the whole branch): no
+  critical finding. Fixed, each with a test that failed first:
+  - editing the caption re-checks the story text's flags against today's
+    profile: before, the story text's warning disappeared once the edited
+    post was no longer out of date;
+  - code records one `emoji` entry per fixed text ("post-1: story text
+    removed 💆, added 🌸"), so `emoji_fixes` counts fixed texts, as the
+    spec's scenario says (`emoji_fixes=1`);
+  - a removed emoji leaves a space, so "Relax💆tonight" becomes "Relax
+    tonight", and a line left empty goes;
+  - flags (🇻🇳) and keycaps (1️⃣) count as emoji, so a spa's text loses them.
+  The four plans' verdicts below hold: code made no emoji fix on them.
+- 2026-10-27: the phone tests can't show the sheet without images: the e2e
+  server always runs with the image key, and `imagesOn` comes from it. The
+  unit tests cover that sheet (`posts-section.test.tsx`).
 
 ### Verdicts, `posts-5` (24 posts)
 
@@ -164,6 +179,13 @@ Task 9, `pnpm exec vitest run tests/unit/posts-fixtures-replay.test.ts tests/uni
       Tests  6 failed | 9 passed (15)
 ```
 
+Final review fixes, the five test files touched:
+
+```
+ Test Files  5 failed (5)
+      Tests  8 failed | 129 passed (137)
+```
+
 ## GREEN
 
 Task 1:
@@ -236,4 +258,13 @@ Task 9, after re-recording, then `pnpm test`:
       Tests  15 passed (15)
  Test Files  106 passed (106)
       Tests  1448 passed (1448)
+```
+
+Final review fixes, then `pnpm test`:
+
+```
+ Test Files  5 passed (5)
+      Tests  137 passed (137)
+ Test Files  106 passed (106)
+      Tests  1453 passed (1453)
 ```

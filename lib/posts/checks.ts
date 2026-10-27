@@ -167,10 +167,10 @@ type Words = Pick<
 function spaCaption(caption: string, id: string): { caption: string; dropped: Dropped[] } {
   const stripped = stripEmojis(caption, POSTS_LIMITS.captionFlowers);
   const added = addFlower(stripped.text);
-  const dropped = [...stripped.fixes, ...added.fixes].map((fix) => ({
-    field: 'emoji',
-    reason: `${id}: caption ${fix}`,
-  }));
+  // One record per fixed text, however many changes it took.
+  const fixes = [...stripped.fixes, ...added.fixes];
+  const dropped =
+    fixes.length > 0 ? [{ field: 'emoji', reason: `${id}: caption ${fixes.join(', ')}` }] : [];
   return { caption: added.text, dropped };
 }
 

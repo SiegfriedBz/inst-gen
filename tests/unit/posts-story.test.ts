@@ -52,9 +52,9 @@ describe('cleanStory', () => {
       spa: true,
     });
     expect(storyText).toBe('Relax tonight in your room! 🌸');
+    // One record per fixed text (the spec's "Code fixes a spa's emojis").
     expect(dropped).toEqual([
-      { field: 'emoji', reason: 'post-4: story text removed 💆' },
-      { field: 'emoji', reason: 'post-4: story text added 🌸' },
+      { field: 'emoji', reason: 'post-4: story text removed 💆, added 🌸' },
     ]);
   });
 
