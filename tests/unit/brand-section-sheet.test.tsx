@@ -4,18 +4,29 @@ import { NextIntlClientProvider } from 'next-intl';
 import { afterEach, describe, expect, test, vi } from 'vitest';
 import { SectionSheet } from '@/components/brand/section-sheet';
 import type { SectionId } from '@/lib/brand/edit';
+import type { FieldKey } from '@/lib/brand/missing';
 import type { Profile } from '@/lib/brand/profile';
 import messages from '@/messages/en.json';
 import { ABOUT, svargaProfile } from './helpers/brand';
 
 afterEach(cleanup);
 
-function renderSheet(section: SectionId, profile: Profile = svargaProfile()) {
+function renderSheet(
+  section: SectionId,
+  profile: Profile = svargaProfile(),
+  focus: FieldKey | null = null,
+) {
   const onSave = vi.fn().mockResolvedValue(undefined);
   const onClose = vi.fn();
   render(
     <NextIntlClientProvider locale="en" messages={messages}>
-      <SectionSheet profile={profile} section={section} onSave={onSave} onClose={onClose} />
+      <SectionSheet
+        profile={profile}
+        section={section}
+        focus={focus}
+        onSave={onSave}
+        onClose={onClose}
+      />
     </NextIntlClientProvider>,
   );
   return { onSave, onClose };
@@ -129,5 +140,30 @@ describe('SectionSheet', () => {
   test('the English hint is shown', () => {
     renderSheet('feeling');
     expect(screen.getByText('Write in English: your posts are in English.')).toBeTruthy();
+  });
+});
+
+describe('a form opened for one field', () => {
+  test('a text field is focused', async () => {
+    renderSheet('contact', svargaProfile(), 'phone');
+    await waitFor(() => expect(document.activeElement).toBe(screen.getByLabelText('Phone')));
+  });
+
+  test("a word list's add field is focused", async () => {
+    renderSheet('feeling', svargaProfile(), 'senses');
+    await waitFor(() =>
+      expect(document.activeElement?.getAttribute('aria-label')).toMatch(
+        /Scents, textures and light/,
+      ),
+    );
+  });
+
+  test("a list's add button is focused", async () => {
+    renderSheet('business', svargaProfile(), 'highlights');
+    await waitFor(() =>
+      expect(
+        document.activeElement?.closest('fieldset')?.querySelector('legend')?.textContent,
+      ).toBe('What your site says about you'),
+    );
   });
 });

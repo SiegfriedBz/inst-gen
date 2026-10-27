@@ -1,7 +1,9 @@
 import { expect, type Page, test } from '@playwright/test';
 import { senProfile } from '../unit/helpers/brand';
 import { fulfilRead, streamBody } from './helpers/brand-stream';
+import { openSection } from './helpers/business-tab';
 import { fulfilPosts, postsBody } from './helpers/posts-stream';
+import { tiles } from './helpers/suggestions';
 
 // Test values from playwright.config.ts; not secrets.
 const SEN = 'test-lotus-river-sen';
@@ -43,14 +45,15 @@ test('posts stream in, stay, and follow a brand edit by themselves', async ({ pa
     page.getByText('Keep this page open for about a minute while your posts are made.'),
   ).toBeVisible();
   await expect(page.getByText('Caption 6.')).toBeVisible();
-  await expect(page.locator('article')).toHaveCount(6);
+  await expect(tiles(page)).toHaveCount(6);
 
   await page.reload();
-  await expect(page.locator('article')).toHaveCount(6);
+  await expect(tiles(page)).toHaveCount(6);
   await expect(page.getByRole('button', { name: 'Make 6 new suggestions' })).toBeVisible();
 
   const rewrites = await fulfilPosts(page, 'rewrite', postsBody(profile, { caption: 'Rewritten' }));
   await page.getByRole('tab', { name: 'Your business' }).click();
+  await openSection(page, 'Where and when');
   await page.getByRole('button', { name: 'Edit Where and when' }).click();
   await page.getByLabel('Opening hours').fill('Every day, 9am to midnight');
   await page.getByRole('button', { name: 'Save' }).click();

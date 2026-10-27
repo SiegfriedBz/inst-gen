@@ -182,6 +182,7 @@ describe('Create Posts', () => {
     await saveBatch(batch([post({ id: 'post-1' })]));
     await saveImage(image('post-1'));
     await posts(true);
+    fireEvent.click(await screen.findByRole('button', { name: /^Suggestion 1 of 1\b/ }));
     const link = (await screen.findByRole('button', {
       name: 'Create new image',
     })) as HTMLButtonElement;
@@ -259,12 +260,12 @@ describe('Reviews', () => {
 });
 
 describe('Your business', () => {
-  test('no read left: "Re-read my website" is off and says when', async () => {
+  test('no read left: "Read it again" is off and says when', async () => {
     usage = left({ reads: 0 });
     await saveBrand('svarga', { ...svargaProfile(), searchedAt: '2026-10-24T09:30:00.000Z' });
-    shown(<BrandHome ownerId="svarga" imagesOn={false} />);
+    shown(<BrandHome ownerId="svarga" name="Svarga" imagesOn={false} />);
     const reread = (await screen.findByRole('button', {
-      name: 'Re-read my website',
+      name: 'Read it again',
       hidden: true,
     })) as HTMLButtonElement;
     await waitFor(() => expect(reread.disabled).toBe(true));

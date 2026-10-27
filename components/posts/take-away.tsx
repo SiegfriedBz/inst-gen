@@ -7,11 +7,13 @@ import type { Post } from '@/lib/posts/batch';
 import { postText } from '@/lib/posts/edit';
 import type { SavedImage } from '@/lib/posts/image-store';
 import { imageFileName, saveImageFiles } from '@/lib/posts/take-away';
+import type { TakenStep } from '@/lib/posts/taken';
 
 // The two steps that take a suggestion away (docs/specs/posts/suggestions, "A
 // suggestion"): both images to the phone in one share sheet, then the text to
 // the clipboard, with how to post them in Instagram. Without images, only the
-// text, unnumbered.
+// text, unnumbered. `onTaken` hears of each step done; a share the owner
+// cancels isn't one (docs/specs/platform/friendlier-home, "Saved and copied").
 export function TakeAway({
   post,
   cta,
@@ -21,6 +23,7 @@ export function TakeAway({
   createdAt,
   attempt,
   n,
+  onTaken,
 }: {
   post: Post;
   cta: string;
@@ -31,18 +34,20 @@ export function TakeAway({
   createdAt: string;
   attempt: number;
   n: number;
+  onTaken?: (step: TakenStep) => void;
 }) {
   const t = useTranslations('posts');
   const text = postText(post, cta);
 
-  function save() {
+  async function save() {
     if (!image) return;
-    void saveImageFiles(
+    const done = await saveImageFiles(
       (['post', 'story'] as const).map((kind) => ({
         blob: image[kind],
         name: imageFileName(name, createdAt, attempt, n, kind),
       })),
     );
+    if (done !== 'cancelled') onTaken?.('saved');
   }
 
   const step = (number: number) => (
@@ -57,13 +62,14 @@ export function TakeAway({
   return (
     <div className="flex flex-col gap-2">
       {imagesOn && (
-        <Button type="button" onClick={save} disabled={!image}>
+        <Button type="button" onClick={() => void save()} disabled={!image}>
           {step(1)}
           {t('saveImages')}
         </Button>
       )}
       <CopyText
         text={text}
+        onCopied={() => onTaken?.('copied')}
         className={imagesOn ? 'border border-edge bg-field text-ink' : undefined}
         label={
           <>

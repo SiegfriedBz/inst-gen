@@ -21,7 +21,8 @@
     "signedIn": "Masuk di ponsel ini selama 30 hari."
   },
   "language": {
-    "label": "Bahasa"
+    "label": "Bahasa",
+    "button": "Bahasa: {name}"
   },
   "notConfigured": "Shopfront belum dikonfigurasi.",
   "brand": {
@@ -83,7 +84,8 @@
       "searching": "Mencari tahu apa yang dicari orang…",
       "searchFailed": "Kami belum bisa mencarinya hari ini. Kami akan mencoba lagi lain kali.",
       "searchEmpty": "Tidak ada yang ditemukan untuk kota Anda.",
-      "notFoundYet": "Belum ditemukan"
+      "notFoundYet": "Belum ditemukan",
+      "toAdd": "{count} untuk ditambahkan"
     },
     "source": {
       "page": "dari {path}",
@@ -156,12 +158,13 @@
       "stop": "Berhenti",
       "announceReading": "Membaca situs web Anda",
       "announceDone": "Selesai: periksa apa yang kami pahami",
-      "intro": "Inilah yang kami pahami tentang {name}. Perbaiki yang salah: postingan Anda ditulis dari sini.",
-      "lastRead": "Terakhir dibaca {when}",
-      "reread": "Baca ulang situs web saya",
+      "reread": "Baca lagi",
       "forget": "Lupakan usaha ini",
       "invalidSaved": "Kami tidak bisa membuka usaha Anda yang tersimpan. Baca situs web Anda lagi.",
-      "notKept": "Browser ini tidak akan menyimpan usaha Anda: Anda perlu membaca situs Anda lagi lain kali."
+      "notKept": "Browser ini tidak akan menyimpan usaha Anda: Anda perlu membaca situs Anda lagi lain kali.",
+      "title": "Yang kami ketahui tentang {name}",
+      "subtitle": "Postingan Anda ditulis dari sini. Perbaiki yang salah.",
+      "readFrom": "Dibaca dari {site} {when}."
     },
     "errors": {
       "invalid_url": "Itu tidak terlihat seperti alamat situs web. Periksa dan coba lagi.",
@@ -184,6 +187,11 @@
       "body": "Ini menghapus semua yang disimpan Shopfront di ponsel ini untuk usaha Anda. Anda bisa membaca situs web Anda lagi kapan saja.",
       "confirm": "Lupakan",
       "cancel": "Batal"
+    },
+    "missing": {
+      "title": "{count} hal yang tidak kami temukan",
+      "body": "Anda bisa membuat postingan tanpa yang di bawah ini, tetapi setiap yang Anda tambahkan membuat postingan Anda lebih tepat.",
+      "add": "Tambah {field}"
     }
   },
   "posts": {
@@ -261,7 +269,12 @@
         "model_timeout": "Terjemahan terlalu lama. Coba lagi.",
         "model_failed": "Ada yang salah dengan terjemahan. Coba lagi."
       }
-    }
+    },
+    "saved": "Disimpan dan disalin",
+    "copiedOnly": "Disalin",
+    "checkText": "Periksa teksnya",
+    "tile": "Saran {n} dari {count}",
+    "sheetTitle": "Percobaan {attempt}, saran {n} dari {count}"
   },
   "reviews": {
     "intro": "Ada ulasan baru di Google Maps? Salin dan tempel di sini. Kami menulis 2 balasan dalam bahasa tamu Anda.",
@@ -272,8 +285,8 @@
     "keepOpen": "Biarkan halaman ini terbuka beberapa detik.",
     "heading": "Ulasan dari {name} · dalam {language}",
     "headingNoName": "Ulasan · dalam {language}",
-    "short": "Balasan singkat",
-    "warm": "Balasan lebih hangat",
+    "short": "Singkat",
+    "warm": "Lebih hangat",
     "abusive": "Ulasan ini mungkin kasar atau palsu. Mungkin lebih baik tidak membalas, atau laporkan di Google Maps. Jika membalas, tetap tenang, seperti di bawah.",
     "howTo": "Di Google Maps: buka ulasannya, ketuk Balas, lalu tempel.",
     "again": "Tulis 2 balasan lain",
@@ -284,7 +297,9 @@
       "model_failed": "Terjadi kesalahan saat menulis balasan. Coba lagi.",
       "invalid_request": "Terjadi kesalahan saat menulis balasan. Coba lagi.",
       "offline": "Anda sedang offline. Coba lagi saat kembali online."
-    }
+    },
+    "which": "Balasan yang mana",
+    "copy": "Salin balasan"
   },
   "usage": {
     "left": "Sisa hari ini: {items}",
@@ -325,14 +340,15 @@
     "business": {
       "title": "Usaha Anda",
       "read": "Ketik situs web Anda dan ketuk <b>{button}</b>. Biarkan halaman tetap terbuka selama Shopfront membacanya; layar tetap menyala dengan sendirinya.",
-      "check": "Periksa apa yang ditemukan, bagian demi bagian. Ketuk <b>{button}</b> untuk memperbaiki atau menambahkan sesuatu.",
-      "missing": "Tambahkan nomor WhatsApp dan kota Anda jika belum ada: setiap postingan diakhiri dengan WhatsApp Anda, dan tagar memakai kota Anda.",
+      "check": "Periksa apa yang ditemukan. Ketuk sebuah bagian untuk melihat semuanya, dan <b>{button}</b> untuk memperbaiki atau menambahkan sesuatu.",
+      "missing": "Di bagian atas, Shopfront menampilkan apa yang tidak ditemukannya: ketuk salah satunya untuk menambahkannya. Tambahkan nomor WhatsApp dan kota Anda lebih dulu: setiap postingan diakhiri dengan WhatsApp Anda, dan tagar memakai kota Anda.",
       "english": "Jika bisa, tulis perubahan Anda dalam bahasa Inggris: postingan ditulis dalam bahasa Inggris.",
       "reread": "<b>{button}</b> mengganti perubahan Anda dengan isi situs web Anda saat ini; Shopfront bertanya dulu. Untuk memakai situs web lain, ketuk <b>{forget}</b> lalu mulai lagi."
     },
     "posts": {
       "title": "Membuat postingan",
       "make": "Di <b>{tab}</b>, ketuk <b>{button}</b>. Anda mendapat 6 saran, masing-masing dengan gambar postingan, gambar story, dan teks postingan.",
+      "open": "Ketuk sebuah saran untuk membukanya. Saran yang sudah Anda simpan dan salin menampilkan <b>{saved}</b>.",
       "wait": "Biarkan halaman tetap terbuka sekitar satu menit selama saran dibuat.",
       "leave": "Jika Anda pergi, Shopfront melanjutkan dari tempat berhenti saat Anda kembali, tetapi bagian yang sedang dibuat akan dibuat ulang dan memakai sebagian jatah hari ini. Jadi mulailah saat Anda punya waktu satu menit, bukan tepat sebelum menelepon.",
       "more": "Ingin ide lain? Ketuk <b>{button}</b>: yang baru muncul di atas, yang sebelumnya tetap di bawah.",
@@ -353,21 +369,21 @@
     "reviews": {
       "title": "Membalas ulasan",
       "paste": "Di Google Maps, buka ulasannya dan salin teksnya. Di <b>{tab}</b>, tempel (nama tamu boleh dikosongkan) lalu ketuk <b>{button}</b>.",
-      "pick": "Pilih balasan yang Anda suka, ubah jika perlu, salin, lalu tempel sebagai balasan Anda di Google Maps. Balasan ditulis dalam bahasa tamu Anda, dan Anda bisa membacanya dalam bahasa Anda.",
+      "pick": "Beralih antara <b>{short}</b> dan <b>{warm}</b> untuk memilih balasan yang Anda suka, ubah jika perlu, salin, lalu tempel sebagai balasan Anda di Google Maps. Balasan ditulis dalam bahasa tamu Anda, dan Anda bisa membacanya dalam bahasa Anda.",
       "other": "Tidak ada yang cocok? Ketuk <b>{button}</b>. Ulasan baru menggantikan ulasan sebelumnya."
     },
     "allowance": {
       "title": "Jatah harian Anda",
       "free": "Shopfront gratis, jadi setiap hari ada batasnya.",
       "limits": "Setiap hari Anda punya {reads}, {attempts} (masing-masing 6 saran), {newImages}, dan {replies}, ditambah pembaruan teks dan terjemahan.",
-      "bar": "Bilah di bagian atas layar menunjukkan sisa hari ini dan jam semuanya kembali.",
+      "bar": "Baris di bagian atas setiap tab menunjukkan sisa hari ini dan jam semuanya kembali.",
       "reset": "Pada jam itu, batas kembali penuh dan saran serta balasan ulasan hari itu hilang dari layar. Simpan yang ingin Anda pakai sebelum itu.",
       "time": "Jam di bilah memakai waktu ponsel Anda: percayai jam itu, bukan jam yang tetap.",
       "month": "Gambar baru juga punya anggaran bulanan untuk seluruh aplikasi. Jika habis, Shopfront memberi tahu kapan gambar tersedia lagi."
     },
     "languages": {
       "title": "Bahasa",
-      "switch": "Huruf di kanan atas (EN, VI, ID) mengganti bahasa layar.",
+      "switch": "Tombol <b>EN</b> di kanan atas mengganti bahasa layar.",
       "captions": "Postingan ditulis dalam bahasa Inggris, dan balasan ulasan dalam bahasa tamu Anda. Menampilkannya dalam bahasa Anda hanya untuk dibaca, bukan untuk diposting."
     },
     "trouble": {

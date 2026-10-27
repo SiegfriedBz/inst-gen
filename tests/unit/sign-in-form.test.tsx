@@ -1,5 +1,5 @@
 // @vitest-environment jsdom
-import { cleanup, render, screen } from '@testing-library/react';
+import { cleanup, fireEvent, render, screen } from '@testing-library/react';
 import { NextIntlClientProvider } from 'next-intl';
 import { afterEach, describe, expect, test, vi } from 'vitest';
 import { SignInFormView } from '@/app/enter/sign-in-form';
@@ -35,12 +35,21 @@ describe('SignInFormView', () => {
   test('field is safe for phone keyboards', () => {
     renderForm({ error: false, attempt: 0 });
     const field = screen.getByLabelText('Passphrase');
-    expect(field.getAttribute('type')).toBe('password');
     expect(field.getAttribute('autocomplete')).toBe('current-password');
     expect(field.getAttribute('autocapitalize')).toBe('none');
     expect(field.getAttribute('autocorrect')).toBe('off');
     expect(field.getAttribute('spellcheck')).toBe('false');
     expect(field.getAttribute('name')).toBe('passphrase');
+  });
+
+  test('the passphrase is always visible: a text field, never dots', () => {
+    renderForm({ error: false, attempt: 0 });
+    const field = screen.getByLabelText('Passphrase') as HTMLInputElement;
+    expect(field.type).toBe('text');
+    fireEvent.change(field, { target: { value: 'lotus-river-moon-sen' } });
+    expect(field.value).toBe('lotus-river-moon-sen');
+    expect(field.type).toBe('text');
+    expect(screen.queryByRole('button', { name: /show|hide/i })).toBeNull();
   });
 
   test('has an Enter button', () => {

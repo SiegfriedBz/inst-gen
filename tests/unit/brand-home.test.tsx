@@ -1,6 +1,6 @@
 // @vitest-environment jsdom
 import 'fake-indexeddb/auto';
-import { cleanup, fireEvent, render, screen, waitFor, within } from '@testing-library/react';
+import { act, cleanup, fireEvent, render, screen, waitFor, within } from '@testing-library/react';
 import { IDBFactory } from 'fake-indexeddb';
 import { NextIntlClientProvider } from 'next-intl';
 import { afterEach, beforeEach, describe, expect, test, vi } from 'vitest';
@@ -21,7 +21,7 @@ import { post } from './helpers/posts';
 // Already searched, so the read tests see no search request.
 const profile: Profile = { ...svargaProfile(), searchedAt: '2026-10-24T09:30:00.000Z' };
 const unsearched = svargaProfile();
-const INTRO = /This is what we understood about Svarga/;
+const INTRO = /What we know about Svarga/;
 
 let fetchMock: ReturnType<typeof vi.fn>;
 
@@ -61,7 +61,7 @@ function deferredFetch() {
 function renderHome() {
   render(
     <NextIntlClientProvider locale="en" messages={messages} timeZone="UTC">
-      <BrandHome ownerId="sen" imagesOn={false} />
+      <BrandHome ownerId="sen" name="Sen" imagesOn={false} />
     </NextIntlClientProvider>,
   );
 }
@@ -78,6 +78,16 @@ async function typeAndRead(url: string) {
 }
 
 describe('BrandHome', () => {
+  test('the welcome shows only before a business is saved', async () => {
+    renderHome();
+    expect(await screen.findByRole('heading', { name: 'Welcome, Sen' })).toBeTruthy();
+    cleanup();
+    await saveBrand('sen', profile);
+    renderHome();
+    await screen.findByRole('tablist');
+    expect(screen.queryByText('Welcome, Sen')).toBeNull();
+  });
+
   test('a first read shows the reading state, then the editable panel, and saves it', async () => {
     const release = deferredFetch();
     renderHome();
@@ -100,7 +110,7 @@ describe('BrandHome', () => {
     await saveBrand('sen', profile);
     renderHome();
     expect(await screen.findByText(INTRO)).toBeTruthy();
-    expect(screen.getByText(/Last read/)).toBeTruthy();
+    expect(screen.getByText(/^Read from svargabalimassage\.com /)).toBeTruthy();
     expect(fetchMock).not.toHaveBeenCalled();
   });
 
@@ -158,7 +168,7 @@ describe('BrandHome', () => {
     await saveBrand('sen', withEdits());
     renderHome();
     await openTab('Your business');
-    fireEvent.click(await screen.findByRole('button', { name: 'Re-read my website' }));
+    fireEvent.click(await screen.findByRole('button', { name: 'Read it again' }));
     expect(await screen.findByText('Read your website again?')).toBeTruthy();
     expect(
       screen.getByText('Your 2 changes will be replaced by what your site says now.'),
@@ -172,7 +182,7 @@ describe('BrandHome', () => {
     await saveBrand('sen', profile, new Date(), ['tone']);
     renderHome();
     await openTab('Your business');
-    fireEvent.click(await screen.findByRole('button', { name: 'Re-read my website' }));
+    fireEvent.click(await screen.findByRole('button', { name: 'Read it again' }));
     expect(
       await screen.findByText('Your 1 change will be replaced by what your site says now.'),
     ).toBeTruthy();
@@ -182,6 +192,7 @@ describe('BrandHome', () => {
     await saveBrand('sen', profile);
     renderHome();
     await openTab('Your business');
+    await openSection('Your feeling');
     fireEvent.click(await screen.findByRole('button', { name: 'Edit Your feeling' }));
     fireEvent.click(await screen.findByRole('button', { name: 'Remove calm' }));
     fireEvent.click(screen.getByRole('button', { name: 'Save' }));
@@ -195,7 +206,7 @@ describe('BrandHome', () => {
     fetchMock.mockResolvedValue(ndjson([{ type: 'final', profile }]));
     renderHome();
     await openTab('Your business');
-    fireEvent.click(await screen.findByRole('button', { name: 'Re-read my website' }));
+    fireEvent.click(await screen.findByRole('button', { name: 'Read it again' }));
     await waitFor(() => expect(fetchMock).toHaveBeenCalledTimes(1));
     expect(fetchMock.mock.calls[0]?.[1]?.body).toBe(JSON.stringify({ url: profile.siteUrl }));
   });
@@ -205,7 +216,7 @@ describe('BrandHome', () => {
     fetchMock.mockResolvedValue(ndjson([{ type: 'error', code: 'model_busy' }]));
     renderHome();
     await openTab('Your business');
-    fireEvent.click(await screen.findByRole('button', { name: 'Re-read my website' }));
+    fireEvent.click(await screen.findByRole('button', { name: 'Read it again' }));
     expect(
       await screen.findByText("Shopfront has used today's free reading. Try again tomorrow."),
     ).toBeTruthy();
@@ -267,6 +278,7 @@ describe('BrandHome', () => {
     await saveBrand('sen', profile);
     renderHome();
     await openTab('Your business');
+    await openSection('Where and when');
     fireEvent.click(await screen.findByRole('button', { name: 'Edit Where and when' }));
     fireEvent.change(await screen.findByLabelText('Opening hours'), {
       target: { value: '9am to midnight' },
@@ -280,6 +292,11 @@ describe('BrandHome', () => {
 
 const tab = (name: string) => screen.getByRole('tab', { name });
 const selected = (name: string) => tab(name).getAttribute('aria-selected');
+// A section of the panel, closed on the home screen until tapped.
+async function openSection(title: string) {
+  fireEvent.click(await screen.findByRole('button', { name: new RegExp(`^${title}`) }));
+}
+
 async function openTab(name: string) {
   const trigger = await screen.findByRole('tab', { name });
   // Radix Tabs switches on mouse down.
@@ -287,6 +304,136 @@ async function openTab(name: string) {
   await waitFor(() => expect(trigger.getAttribute('aria-selected')).toBe('true'));
 }
 const urls = () => fetchMock.mock.calls.map((call) => String(call[0]));
+
+describe('Your business, missing first', () => {
+  async function business(p: Profile = profile) {
+    await saveBrand('sen', p);
+    renderHome();
+    await openTab('Your business');
+  }
+
+  test('title, missing block, sections and footer, in that order', async () => {
+    await business();
+    const panel = screen.getByRole('tabpanel');
+    const order = [
+      'What we know about Svarga',
+      "things we couldn't find",
+      'Your business',
+      'Read from svargabalimassage.com',
+    ].map((part) => (panel.textContent ?? '').indexOf(part));
+    expect(order.every((at) => at >= 0)).toBe(true);
+    expect([...order].sort((a, b) => a - b)).toEqual(order);
+    expect(screen.getByRole('button', { name: 'Add Address' })).toBeTruthy();
+    expect(screen.getByRole('button', { name: 'Add Phone' })).toBeTruthy();
+    expect(screen.queryByText('Not found on your site')).toBeNull();
+    expect(screen.getByRole('button', { name: 'Read it again' })).toBeTruthy();
+    expect(screen.getByRole('button', { name: 'Forget this business' })).toBeTruthy();
+  });
+
+  test('"+ Phone" opens How people reach you with Phone focused', async () => {
+    await business();
+    fireEvent.click(screen.getByRole('button', { name: 'Add Phone' }));
+    const dialog = await screen.findByRole('dialog');
+    expect(within(dialog).getByText('How people reach you')).toBeTruthy();
+    await waitFor(() =>
+      expect(document.activeElement).toBe(within(dialog).getByLabelText('Phone')),
+    );
+  });
+
+  test("the box says posts don't need what's below", async () => {
+    await business();
+    expect(
+      screen.getByText(
+        'You can make posts without the ones below, but each one you add makes your posts more exact.',
+      ),
+    ).toBeTruthy();
+  });
+
+  test('with only WhatsApp missing, no buttons and no line', async () => {
+    const SITE = profile.siteUrl;
+    await business({
+      ...profile,
+      location: { ...profile.location, address: { value: 'Jl. Pantai 1', source: SITE } },
+      contact: {
+        ...profile.contact,
+        whatsapp: null,
+        phone: { value: '+6281111111111', source: SITE },
+        bookingUrl: { value: 'https://example.com/book', source: SITE },
+      },
+      essence: {
+        ...profile.essence,
+        promise: { value: 'Calm hands at your villa', source: SITE },
+        moments: [{ value: 'after a surf', source: SITE }],
+        placeSymbols: ['rice fields'],
+        senses: ['frangipani'],
+        searchTerms: ['canggu massage'],
+      },
+    });
+    expect(screen.getByText("1 thing we couldn't find")).toBeTruthy();
+    expect(screen.queryByText(/You can make posts without/)).toBeNull();
+  });
+
+  test('the WhatsApp warning opens How people reach you with WhatsApp focused', async () => {
+    await business({ ...profile, contact: { ...profile.contact, whatsapp: null } });
+    expect(screen.queryByRole('button', { name: 'Add WhatsApp' })).toBeNull();
+    fireEvent.click(
+      screen.getByRole('button', { name: 'Add your WhatsApp number: every post ends with it.' }),
+    );
+    const dialog = await screen.findByRole('dialog');
+    expect(within(dialog).getByText('How people reach you')).toBeTruthy();
+    await waitFor(() =>
+      expect(document.activeElement).toBe(within(dialog).getByLabelText('WhatsApp')),
+    );
+  });
+
+  test('the town warning opens Where and when with Town focused', async () => {
+    await business({ ...profile, location: { ...profile.location, town: null } });
+    fireEvent.click(
+      screen.getByRole('button', { name: 'Add your town: posts and hashtags use it.' }),
+    );
+    const dialog = await screen.findByRole('dialog');
+    expect(within(dialog).getByText('Where and when')).toBeTruthy();
+    await waitFor(() => expect(document.activeElement).toBe(within(dialog).getByLabelText('Town')));
+  });
+
+  test('nothing missing, no block', async () => {
+    const SITE = profile.siteUrl;
+    await business({
+      ...profile,
+      location: { ...profile.location, address: { value: 'Jl. Pantai 1', source: SITE } },
+      contact: {
+        ...profile.contact,
+        phone: { value: '+6281111111111', source: SITE },
+        bookingUrl: { value: 'https://example.com/book', source: SITE },
+      },
+      essence: {
+        ...profile.essence,
+        promise: { value: 'Calm hands at your villa', source: SITE },
+        moments: [{ value: 'after a surf', source: SITE }],
+        placeSymbols: ['rice fields'],
+        senses: ['frangipani'],
+        searchTerms: ['canggu massage'],
+      },
+    });
+    expect(screen.queryByText(/things? we couldn't find/)).toBeNull();
+  });
+
+  test('a thin profile: every button wraps, each one tall enough to tap', async () => {
+    await business({
+      ...profile,
+      thin: true,
+      location: { town: profile.location.town, area: null, address: null, serviceArea: null },
+      contact: { ...profile.contact, phone: null, email: null, instagram: null },
+      highlights: [],
+      hours: null,
+    });
+    const add = screen.getByRole('button', { name: 'Add Address' });
+    expect(add.parentElement?.className).toContain('flex-wrap');
+    for (const button of within(add.parentElement as HTMLElement).getAllByRole('button')) {
+      expect(button.className).toContain('min-h-11');
+    }
+  });
+});
 
 describe('the home tabs', () => {
   test('no tabs before a read', async () => {
@@ -333,6 +480,56 @@ describe('the home tabs', () => {
     expect(await screen.findByRole('button', { name: 'Write 2 replies' })).toBeTruthy();
   });
 
+  test('the tabs sit in a bar at the bottom, each with an icon', async () => {
+    await saveBrand('sen', profile);
+    renderHome();
+    const list = await screen.findByRole('tablist', { name: 'Home' });
+    const bar = list.closest('[data-tab-bar]');
+    expect(bar).not.toBeNull();
+    expect(bar?.className).toContain('fixed');
+    expect(bar?.className).toContain('bottom-0');
+    for (const tab of screen.getAllByRole('tab')) expect(tab.querySelector('svg')).not.toBeNull();
+  });
+
+  test('no bar before a business is saved', async () => {
+    renderHome();
+    await screen.findByLabelText('Your website');
+    expect(document.querySelector('[data-tab-bar]')).toBeNull();
+  });
+
+  test('the usage line is the first line of each tab', async () => {
+    await saveBrand('sen', profile);
+    renderHome();
+    await screen.findByRole('tablist', { name: 'Home' });
+    const panels = document.querySelectorAll('[role="tabpanel"]');
+    expect(panels).toHaveLength(3);
+    for (const panel of panels) {
+      expect(panel.firstElementChild?.getAttribute('data-testid')).toBe('usage-bar');
+    }
+  });
+
+  test('the bar hides while a text field has focus, whatever the viewport says', async () => {
+    // Android Chrome shrinks innerHeight and the visual viewport together when
+    // the keyboard opens, so their sizes can't tell; focus can.
+    await saveBrand('sen', profile);
+    renderHome();
+    await screen.findByRole('tablist', { name: 'Home' });
+    await openTab('Reviews');
+    const bar = document.querySelector('[data-tab-bar]') as HTMLElement;
+    expect(bar.hidden).toBe(false);
+    const field = await screen.findByLabelText('The review');
+    act(() => field.focus());
+    await waitFor(() => expect(bar.hidden).toBe(true));
+    act(() => field.blur());
+    // Not at once: the tap that took focus away must land before the bar
+    // comes back under the finger.
+    await new Promise((resolve) => setTimeout(resolve, 100));
+    expect(bar.hidden).toBe(true);
+    await waitFor(() => expect(bar.hidden).toBe(false));
+    act(() => screen.getByRole('tab', { name: 'Reviews' }).focus());
+    expect(bar.hidden).toBe(false);
+  });
+
   test('a re-read lands on Your business and the update waits for the tab', async () => {
     await saveBrand('sen', profile);
     const made: PostBatch = {
@@ -358,7 +555,7 @@ describe('the home tabs', () => {
     );
     renderHome();
     await openTab('Your business');
-    fireEvent.click(await screen.findByRole('button', { name: 'Re-read my website' }));
+    fireEvent.click(await screen.findByRole('button', { name: 'Read it again' }));
     await screen.findByText(/Massage at your villa/);
     expect(selected('Your business')).toBe('true');
     expect(urls()).toEqual(['/api/brand/read']);
@@ -396,7 +593,7 @@ describe('a language change', () => {
     );
     const home = (locale: 'en' | 'vi') => (
       <NextIntlClientProvider locale={locale} messages={messagesFor(locale)} timeZone="UTC">
-        <BrandHome ownerId="sen" imagesOn={false} />
+        <BrandHome ownerId="sen" name="Sen" imagesOn={false} />
       </NextIntlClientProvider>
     );
     const view = render(home('en'));
@@ -440,6 +637,7 @@ describe('BrandHome and the essence search', () => {
     routes(async () => Response.json(answer));
     renderHome();
     await typeAndRead('svargabalimassage.com');
+    await openSection('Your feeling');
     expect(await screen.findByRole('link', { name: 'seen on bali.travel' })).toBeTruthy();
     expect(screen.getByText('hotel massage canggu')).toBeTruthy();
     expect(searchCalls()).toHaveLength(1);
@@ -456,6 +654,7 @@ describe('BrandHome and the essence search', () => {
     routes(() => new Promise<Response>(() => {}));
     renderHome();
     await typeAndRead('svargabalimassage.com');
+    await openSection('Your feeling');
     expect(await screen.findByText('Looking up what people search for…')).toBeTruthy();
     expect(screen.getByRole('button', { name: 'Edit Your feeling' })).toBeTruthy();
   });
@@ -464,6 +663,8 @@ describe('BrandHome and the essence search', () => {
     routes(async () => Response.json(answer));
     await saveBrand('sen', unsearched);
     renderHome();
+    await openTab('Your business');
+    await openSection('Your feeling');
     expect(await screen.findByText('hotel massage canggu')).toBeTruthy();
     expect(searchCalls()).toHaveLength(1);
     cleanup();
@@ -477,6 +678,8 @@ describe('BrandHome and the essence search', () => {
     routes(() => new Promise<Response>(() => {}));
     await saveBrand('sen', unsearched);
     renderHome();
+    await openTab('Your business');
+    await openSection('Your feeling');
     await screen.findByText('Looking up what people search for…');
     document.dispatchEvent(new Event('visibilitychange'));
     window.dispatchEvent(new Event('online'));
@@ -489,6 +692,7 @@ describe('BrandHome and the essence search', () => {
     await saveBrand('sen', unsearched);
     renderHome();
     await openTab('Your business');
+    await openSection('Your feeling');
     fireEvent.click(await screen.findByRole('button', { name: 'Edit Your feeling' }));
     await waitFor(() => expect(searchCalls()).toHaveLength(1));
     answerSearch(Response.json(answer));
@@ -506,6 +710,8 @@ describe('BrandHome and the essence search', () => {
     routes(async () => Response.json({ error: 'search_busy' }, { status: 503 }));
     await saveBrand('sen', unsearched);
     renderHome();
+    await openTab('Your business');
+    await openSection('Your feeling');
     expect(
       await screen.findByText("We couldn't look this up today. We'll try again next time."),
     ).toBeTruthy();

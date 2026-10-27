@@ -2,6 +2,7 @@ import { type BrowserContext, expect, type Page, test } from '@playwright/test';
 import en from '@/messages/en.json' with { type: 'json' };
 import id from '@/messages/id.json' with { type: 'json' };
 import vi from '@/messages/vi.json' with { type: 'json' };
+import { pickLanguage } from './helpers/language';
 
 // The owner guide (docs/specs/guide/owner-guide), at the phone viewport.
 
@@ -33,7 +34,7 @@ test('opens from the home screen', async ({ page }) => {
 test('switches language and stays', async ({ page }) => {
   await signIn(page);
   await page.goto('/guide');
-  await page.getByRole('button', { name: 'Tiếng Việt' }).click();
+  await pickLanguage(page, 'Tiếng Việt');
   await expect(page.getByRole('heading', { level: 1 })).toHaveText(vi.guide.title);
   await expect(page).toHaveURL('/guide');
 });
@@ -44,7 +45,7 @@ test.describe('without JavaScript', () => {
   test('switches language and comes back to the guide', async ({ page }) => {
     await signIn(page);
     await page.goto('/guide');
-    await page.getByRole('button', { name: 'Bahasa Indonesia' }).click();
+    await pickLanguage(page, 'Bahasa Indonesia');
     await expect(page).toHaveURL('/guide');
     await expect(page.getByRole('heading', { level: 1 })).toHaveText(id.guide.title);
   });

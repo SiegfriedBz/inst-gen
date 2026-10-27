@@ -58,6 +58,8 @@ there is nothing to gain from per-language addresses.
 
 ### The switch
 
+
+> Changed by `platform/friendlier-home` (2026-10-27): one language button at the top right, opening the three languages by their full names.
 Since 2.5 (`platform/home-tabs`), the switch is three codes, EN · VI · ID, at
 the top right of the screen; see that spec. The rules below still hold
 otherwise.

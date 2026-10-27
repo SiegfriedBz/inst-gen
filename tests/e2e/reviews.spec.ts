@@ -74,9 +74,11 @@ test('paste a review, get two replies, keep them through a reload, lose them at 
   await expect(page.getByText(/^Anna K\.'s review · in English$/)).toBeVisible();
   expect(sent).toHaveLength(1);
   expect(sent[0]).not.toContain('Anna');
+  // One reply at a time, Short first (docs/specs/platform/friendlier-home).
+  await expect(page.getByRole('radio', { name: 'Short' })).toBeChecked();
 
   await page.context().grantPermissions(['clipboard-read', 'clipboard-write']);
-  await page.getByRole('button', { name: 'Copy the text' }).first().click();
+  await page.getByRole('button', { name: 'Copy the reply' }).click();
   await expect(page.getByRole('button', { name: 'Copied' })).toBeVisible();
 
   // A trip to Google Maps reloads the page: the replies stay, with no request.

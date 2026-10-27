@@ -128,20 +128,43 @@ function Ready({
   );
 }
 
-// The 9:16 story full screen, from a small link at the bottom of the card.
-export function StoryLink({ image, altText }: { image: SavedImage; altText: string }) {
+// The 9:16 story full screen, from a small link, or from the story image
+// itself beside the post image (docs/specs/platform/friendlier-home).
+export function StoryLink({
+  image,
+  altText,
+  thumbnail = false,
+}: {
+  image: SavedImage;
+  altText: string;
+  thumbnail?: boolean;
+}) {
   const t = useTranslations('posts.images');
   const [open, setOpen] = useState(false);
-  const story = useObjectUrl(open ? image.story : null);
+  const story = useObjectUrl(open || thumbnail ? image.story : null);
   return (
     <>
-      <button
-        type="button"
-        className="mx-auto inline-flex min-h-11 items-center text-[13px] text-ink-secondary underline underline-offset-4 outline-none focus-visible:ring-2 focus-visible:ring-accent"
-        onClick={() => setOpen(true)}
-      >
-        {t('seeStory')}
-      </button>
+      {thumbnail ? (
+        <button
+          type="button"
+          aria-label={t('seeStory')}
+          className="block w-full overflow-hidden rounded-control outline-none focus-visible:ring-2 focus-visible:ring-accent"
+          onClick={() => setOpen(true)}
+        >
+          {story && (
+            // biome-ignore lint/performance/noImgElement: a blob URL from the phone's store; next/image has nothing to optimise
+            <img src={story} alt="" className="aspect-[9/16] w-full object-cover" />
+          )}
+        </button>
+      ) : (
+        <button
+          type="button"
+          className="mx-auto inline-flex min-h-11 items-center text-[13px] text-ink-secondary underline underline-offset-4 outline-none focus-visible:ring-2 focus-visible:ring-accent"
+          onClick={() => setOpen(true)}
+        >
+          {t('seeStory')}
+        </button>
+      )}
       <Sheet open={open} onOpenChange={setOpen}>
         <SheetContent className="inset-0 h-dvh max-h-none rounded-none bg-black p-0">
           <SheetTitle className="sr-only">{t('seeStory')}</SheetTitle>
@@ -199,7 +222,7 @@ export function PostImage({
   );
 }
 
-function FailureText({ code }: { code: ImageFailure }) {
+export function FailureText({ code }: { code: ImageFailure }) {
   const t = useTranslations('posts.images');
   if (isUsageCode(code)) return <UsageMessage code={code} action="newImages" />;
   return <>{t(`errors.${code}`)}</>;

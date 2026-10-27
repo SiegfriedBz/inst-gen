@@ -34,15 +34,15 @@ test('a first read lands on Your business, and the next open on Create your post
   const posts = page.getByRole('tab', { name: 'Create Posts' });
   await expect(business).toHaveAttribute('aria-selected', 'true');
   await expect(posts).toHaveAttribute('aria-selected', 'false');
-  await expect(page.getByText(/This is what we understood about/)).toBeVisible();
+  await expect(page.getByRole('heading', { name: 'What we know about Sen' })).toBeVisible();
 
   await page.reload();
   await expect(posts).toHaveAttribute('aria-selected', 'true');
   await expect(page.getByRole('button', { name: 'Make 6 suggestions' })).toBeVisible();
-  await expect(page.getByText(/This is what we understood about/)).toBeHidden();
+  await expect(page.getByRole('heading', { name: 'What we know about Sen' })).toBeHidden();
 });
 
-test('Re-read my website hides the tabs until it ends', async ({ page }) => {
+test('Read it again hides the tabs until it ends', async ({ page }) => {
   const profile = senProfile();
   let reads = 0;
   await page.route('**/api/brand/read', async (route) => {
@@ -60,7 +60,7 @@ test('Re-read my website hides the tabs until it ends', async ({ page }) => {
   await signInAndRead(page);
   await page.getByRole('tab', { name: 'Create Posts' }).click();
   await page.getByRole('tab', { name: 'Your business' }).click();
-  await page.getByRole('button', { name: 'Re-read my website' }).click();
+  await page.getByRole('button', { name: 'Read it again' }).click();
   await expect(page.getByText('Reading your website…')).toBeVisible();
   await expect(page.getByRole('tablist')).toHaveCount(0);
   await expect(page.getByRole('tab', { name: 'Your business' })).toHaveAttribute(

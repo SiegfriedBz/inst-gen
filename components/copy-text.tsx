@@ -8,15 +8,18 @@ import { copyToClipboard } from '@/lib/posts/take-away';
 
 // "Copy the text" (docs/specs/posts/editor-download): "Copied" for 2 s, or,
 // when the phone refuses the clipboard, a sheet with the text selected to copy
-// by hand. Shared by a suggestion and a review reply.
+// by hand. Shared by a suggestion and a review reply. `onCopied` hears of
+// both: the text the owner copies by hand counts as copied.
 export function CopyText({
   text,
   label,
   className,
+  onCopied,
 }: {
   text: string;
   label: React.ReactNode;
   className?: string;
+  onCopied?: () => void;
 }) {
   const t = useTranslations('posts');
   const [copied, setCopied] = useState(false);
@@ -32,6 +35,7 @@ export function CopyText({
   async function copy() {
     if (await copyToClipboard(text)) setCopied(true);
     else setByHand(true);
+    onCopied?.();
   }
 
   return (

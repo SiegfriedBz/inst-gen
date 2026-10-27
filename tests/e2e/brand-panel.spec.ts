@@ -1,10 +1,11 @@
 import { expect, type Page, test } from '@playwright/test';
 import { senProfile } from '../unit/helpers/brand';
 import { fulfilRead, streamBody } from './helpers/brand-stream';
+import { openSection } from './helpers/business-tab';
 
 // Test values from playwright.config.ts; not secrets.
 const SEN = 'test-lotus-river-sen';
-const INTRO = 'This is what we understood about Sen.';
+const TITLE = 'What we know about Sen';
 
 test.use({ locale: 'en-US' });
 
@@ -21,6 +22,7 @@ async function readSite(page: Page) {
 }
 
 async function editHours(page: Page, hours: string) {
+  await openSection(page, 'Where and when');
   await page.getByRole('button', { name: 'Edit Where and when' }).click();
   await page.getByLabel('Opening hours').fill(hours);
   await page.getByRole('button', { name: 'Save' }).click();
@@ -32,8 +34,10 @@ test('first read, edit, and reload keeps it', async ({ page }) => {
   await signIn(page);
   await readSite(page);
 
-  await expect(page.getByText(INTRO, { exact: false })).toBeVisible();
+  await expect(page.getByRole('heading', { name: TITLE })).toBeVisible();
+  await openSection(page, 'Where and when');
   await expect(page.locator('[data-field]', { hasText: 'Town' })).toContainText('Da Nang');
+  await openSection(page, 'How people reach you');
   const whatsapp = page.locator('[data-field]', { hasText: '+84898661224' });
   await expect(whatsapp.getByRole('link', { name: 'from /contact' })).toHaveAttribute(
     'href',
@@ -48,7 +52,8 @@ test('first read, edit, and reload keeps it', async ({ page }) => {
   await page.reload();
   // The app opens on the posts from then on (docs/specs/platform/home-tabs).
   await page.getByRole('tab', { name: 'Your business' }).click();
-  await expect(page.getByText(INTRO, { exact: false })).toBeVisible();
+  await expect(page.getByRole('heading', { name: TITLE })).toBeVisible();
+  await openSection(page, 'Where and when');
   await expect(page.getByText('9am to midnight')).toBeVisible();
   expect(reads.count()).toBe(1);
 });
@@ -57,10 +62,10 @@ test('re-read with an edit asks first', async ({ page }) => {
   const reads = await fulfilRead(page, [streamBody(senProfile())]);
   await signIn(page);
   await readSite(page);
-  await expect(page.getByText(INTRO, { exact: false })).toBeVisible();
+  await expect(page.getByRole('heading', { name: TITLE })).toBeVisible();
   await editHours(page, 'Noon to midnight');
 
-  await page.getByRole('button', { name: 'Re-read my website' }).click();
+  await page.getByRole('button', { name: 'Read it again' }).click();
   await expect(page.getByText('Read your website again?')).toBeVisible();
   await expect(
     page.getByText('Your 1 change will be replaced by what your site says now.'),
@@ -74,7 +79,7 @@ test('forget empties the phone', async ({ page }) => {
   await fulfilRead(page, [streamBody(senProfile())]);
   await signIn(page);
   await readSite(page);
-  await expect(page.getByText(INTRO, { exact: false })).toBeVisible();
+  await expect(page.getByRole('heading', { name: TITLE })).toBeVisible();
 
   await page.getByRole('button', { name: 'Forget this business' }).click();
   await expect(page.getByText('Forget Sen?')).toBeVisible();
@@ -83,7 +88,7 @@ test('forget empties the phone', async ({ page }) => {
 
   await page.reload();
   await expect(page.getByLabel('Your website')).toBeVisible();
-  await expect(page.getByText(INTRO, { exact: false })).toBeHidden();
+  await expect(page.getByRole('heading', { name: TITLE })).toBeHidden();
 });
 
 test('a reload mid-read resumes once', async ({ page }) => {
@@ -96,7 +101,7 @@ test('a reload mid-read resumes once', async ({ page }) => {
   await expect(page.getByText("You're offline. We'll carry on when you're back.")).toBeVisible();
 
   await page.reload();
-  await expect(page.getByText(INTRO, { exact: false })).toBeVisible();
+  await expect(page.getByRole('heading', { name: TITLE })).toBeVisible();
   expect(reads.count()).toBe(2);
 });
 

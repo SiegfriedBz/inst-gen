@@ -10,12 +10,17 @@ import { useTranslations } from 'next-intl';
 const linkClass =
   'inline-flex min-h-11 shrink-0 items-center gap-1 rounded-control px-1 text-[13px] font-medium text-accent outline-none focus-visible:ring-2 focus-visible:ring-accent';
 
+// An icon only, named "Guide" (docs/specs/platform/friendlier-home, "The header").
 export function GuideLink() {
   const t = useTranslations('guide');
   return (
-    <Link href="/guide" className={linkClass}>
-      <Question aria-hidden="true" size={18} weight="bold" />
-      {t('link')}
+    <Link
+      href="/guide"
+      aria-label={t('link')}
+      title={t('link')}
+      className="inline-flex size-11 shrink-0 items-center justify-center rounded-control text-ink-secondary outline-none focus-visible:ring-2 focus-visible:ring-accent"
+    >
+      <Question aria-hidden="true" size={22} />
     </Link>
   );
 }

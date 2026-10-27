@@ -227,6 +227,8 @@ It answers, for the signed-in owner:
 
 ### The usage bar
 
+
+> Changed by `platform/friendlier-home` (2026-10-27): the line is the first line of each tab, under the header, since the tabs moved to the bottom.
 One line of small, muted text, **directly under the tab row**, on all three
 tabs, wrapping on a narrow phone. It shows only what that tab spends, then
 when it resets:

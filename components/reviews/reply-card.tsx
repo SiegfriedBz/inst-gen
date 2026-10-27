@@ -10,22 +10,24 @@ import { REPLY_LIMITS } from '@/lib/reviews/reply';
 const LINK =
   'inline-flex min-h-11 items-center self-start text-[15px] font-medium text-accent underline underline-offset-4 outline-none focus-visible:ring-2 focus-visible:ring-accent';
 
-// One reply to a review (docs/specs/reviews/reply-drafts, "The Reviews tab,
-// with replies"): the text as it will be pasted, its translation for the
-// owner, "Edit the text" and "Copy the text". An edited reply loses its
-// translation: it no longer matches.
+// The reply picked with "Short | Warmer" (docs/specs/platform/friendlier-home,
+// after docs/specs/reviews/reply-drafts): the text as it will be pasted, its
+// translation for the owner, "Edit the text" and one copy button. An edited
+// reply loses its translation: it no longer matches. `title` names the edit box.
 export function ReplyCard({
   title,
   text,
   translation,
   edited,
   onSave,
+  copyLabel,
 }: {
   title: string;
   text: string;
   translation: string | null;
   edited: boolean;
   onSave: (text: string) => void;
+  copyLabel: string;
 }) {
   const t = useTranslations('posts');
   const [draft, setDraft] = useState<string | null>(null);
@@ -33,10 +35,9 @@ export function ReplyCard({
 
   return (
     <article className="flex flex-col gap-3 rounded-control border border-edge bg-field px-4 py-3">
-      <h3 className="text-[13px] font-semibold text-ink-secondary">{title}</h3>
       {draft === null ? (
         <>
-          <p className="whitespace-pre-line text-[16px] leading-normal">{text}</p>
+          <p className="whitespace-pre-line text-[17px] leading-normal">{text}</p>
           {translation && !edited && (
             <p
               data-translation
@@ -48,7 +49,7 @@ export function ReplyCard({
           <button type="button" className={LINK} onClick={() => setDraft(text)}>
             {t('editText')}
           </button>
-          <CopyText text={text} label={t('copyText')} />
+          <CopyText text={text} label={copyLabel} />
         </>
       ) : (
         <div className="flex flex-col gap-2">
