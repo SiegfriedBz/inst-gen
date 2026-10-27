@@ -73,6 +73,13 @@
 - 2026-10-27: the phone tests can't show the sheet without images: the e2e
   server always runs with the image key, and `imagesOn` comes from it. The
   unit tests cover that sheet (`posts-section.test.tsx`).
+- 2026-10-27: the spec was amended and approved again (21:54 UTC): code
+  removes every story text sentence with a call to action ("book",
+  "WhatsApp", "DM", "link in bio"…), before the emoji fixes, and counts
+  them in `story_ctas=`. Replaying Sen's recorded offer plan, its sixth
+  story text loses "🌸 Book on WhatsApp." and gets its 🌸 back: "Professional
+  massage delivered to your room in Da Nang. 🌸" (`story_ctas=1
+  emoji_fixes=1`). No new model call.
 
 ### Verdicts, `posts-5` (24 posts)
 
@@ -98,7 +105,7 @@ that ends well (an offer post's: its offer line and flower, word for word)?
 | Sen offer | 3 moment, feet | yes | yes (68) |
 | Sen offer | 4 tip, surf | yes | yes (69) |
 | Sen offer | 5 ritual, aroma | yes | yes (75) |
-| Sen offer | 6 proof, in-room | yes ("Simply book and relax.") | **no**: ends "Book on WhatsApp.", a call to action the prompt forbids (76) |
+| Sen offer | 6 proof, in-room | yes ("Simply book and relax.") | **no**: ended "Book on WhatsApp.", a call to action the prompt forbids (76); since the amendment, code removes it, leaving a plain line without a positive ending |
 | Svarga offer | 1 10% Balinese | yes | yes, offer line + 🌸 (79) |
 | Svarga offer | 2 10% four hands | yes | yes, offer line + 🌺 (69) |
 | Svarga offer | 3 moment, waves | yes | yes (85) |
@@ -186,6 +193,13 @@ Final review fixes, the five test files touched:
       Tests  8 failed | 129 passed (137)
 ```
 
+Call-to-action amendment, `pnpm exec vitest run tests/unit/posts-story.test.ts tests/unit/posts-log.test.ts tests/unit/posts-run.test.ts tests/unit/posts-fixtures-replay.test.ts`:
+
+```
+ Test Files  4 failed (4)
+      Tests  11 failed | 50 passed (61)
+```
+
 ## GREEN
 
 Task 1:
@@ -267,4 +281,13 @@ Final review fixes, then `pnpm test`:
       Tests  137 passed (137)
  Test Files  106 passed (106)
       Tests  1453 passed (1453)
+```
+
+Call-to-action amendment, then `pnpm test`:
+
+```
+ Test Files  4 passed (4)
+      Tests  61 passed (61)
+ Test Files  106 passed (106)
+      Tests  1462 passed (1462)
 ```

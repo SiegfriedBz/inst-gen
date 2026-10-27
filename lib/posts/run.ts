@@ -80,6 +80,7 @@ async function* run<T>(
     kept: 0,
     flags: 0,
     storyCuts: 0,
+    storyCtas: 0,
     emojiFixes: 0,
     modelMs: null,
     totalMs: 0,
@@ -137,6 +138,9 @@ async function* run<T>(
     entry.flags = result.posts.reduce((n, p) => n + p.unchecked.length, 0);
     entry.storyCuts = result.dropped.filter(
       (d) => d.field === 'story' && d.reason.includes(' cut from '),
+    ).length;
+    entry.storyCtas = result.dropped.filter(
+      (d) => d.field === 'story' && d.reason.includes(' story text removed "'),
     ).length;
     entry.emojiFixes = result.dropped.filter((d) => d.field === 'emoji').length;
     entry.outcome = 'final';

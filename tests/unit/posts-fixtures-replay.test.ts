@@ -128,6 +128,8 @@ describe('recorded story texts and flowers', () => {
       expect(flowers(story)).toBeGreaterThanOrEqual(1);
       expect(flowers(story)).toBeLessThanOrEqual(2);
       expect(others(story)).toEqual([]);
+      // No call to action is left (amended 2026-10-27).
+      expect(story).not.toMatch(/\b(book|whatsapp|dm|link in bio)\b/i);
       expect(flowers(post.caption)).toBeGreaterThanOrEqual(1);
       expect(flowers(post.caption)).toBeLessThanOrEqual(3);
       expect(others(post.caption)).toEqual([]);

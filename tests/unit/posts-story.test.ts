@@ -99,3 +99,48 @@ describe('cleanStory', () => {
     expect(storyText?.endsWith('🌸') || storyText?.endsWith('🌺')).toBe(true);
   });
 });
+
+// A call to action goes (docs/specs/posts/story-text, amended 2026-10-27).
+describe('a call to action', () => {
+  it('removes the sentence that holds one, and records it', () => {
+    expect(
+      cleanStory('Relax in your room. Book on WhatsApp.', { id: 'post-6', spa: false }),
+    ).toEqual({
+      storyText: 'Relax in your room.',
+      dropped: [{ field: 'story', reason: 'post-6: story text removed "Book on WhatsApp."' }],
+    });
+  });
+
+  it("gives a spa's flower back when it went with the sentence", () => {
+    const { storyText } = cleanStory('Professional massage in your room. 🌸 Book on WhatsApp.', {
+      id: 'post-6',
+      spa: true,
+    });
+    expect(storyText).toBe('Professional massage in your room. 🌸');
+  });
+
+  it.each([
+    ['Calm tonight. DM us now!', 'Calm tonight.'],
+    ['Calm tonight. Link in bio.', 'Calm tonight.'],
+    ['Tap the link to reserve. Calm tonight.', 'Calm tonight.'],
+    ['Calm tonight! Message us to book.', 'Calm tonight!'],
+  ])('%s', (text, kept) => {
+    expect(cleanStory(text, { id: 'post-1', spa: false }).storyText).toBe(kept);
+  });
+
+  it('keeps a sentence without one', () => {
+    expect(cleanStory('Booked solid? Calm tonight.', { id: 'post-1', spa: false })).toEqual({
+      storyText: 'Booked solid? Calm tonight.',
+      dropped: [],
+    });
+  });
+
+  it('leaves no story text when nothing else is left', () => {
+    expect(cleanStory('Book now!', { id: 'post-2', spa: false })).toEqual({
+      dropped: [
+        { field: 'story', reason: 'post-2: story text removed "Book now!"' },
+        { field: 'story', reason: 'post-2: no story text' },
+      ],
+    });
+  });
+});

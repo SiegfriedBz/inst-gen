@@ -105,6 +105,38 @@ describe('streamPlan', () => {
     expect(lines).toEqual([{ type: 'error', code: 'model_failed' }]);
   });
 
+  // The spec's scenario "A call to action in the story text" (amended 2026-10-27).
+  test('a call to action goes from the story text, counted story_ctas=1', async () => {
+    const entries: PostsLog[] = [];
+    const one = {
+      ...modelPost(0),
+      caption: 'Warm oil and slow hands after a day in Canggu. 🌸',
+      storyText: 'Professional massage in your room. 🌸 Book on WhatsApp.',
+    };
+    const recording = {
+      modelId: 'm',
+      promptVersion: 'posts-5',
+      partials: [{ posts: [one] }],
+      final: { posts: [one] },
+    };
+    const model = replayTextModel(brand, { posts: recording });
+    const lines = await drain(
+      streamPlan(
+        body(),
+        deps(model, { log: (e) => entries.push(e) }),
+        new AbortController().signal,
+      ),
+    );
+    const final = lines.at(-1);
+    if (final?.type !== 'final') throw new Error('no final');
+    expect(final.result.posts[0].storyText).toBe('Professional massage in your room. 🌸');
+    expect(final.result.dropped).toContainEqual({
+      field: 'story',
+      reason: 'post-1: story text removed "🌸 Book on WhatsApp."',
+    });
+    expect(entries[0].storyCtas).toBe(1);
+  });
+
   // The spec's scenario "Code fixes a spa's emojis".
   test('one fixed story text counts emoji_fixes=1', async () => {
     const entries: PostsLog[] = [];

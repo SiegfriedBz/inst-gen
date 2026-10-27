@@ -11,13 +11,14 @@ describe('formatPostsLog', () => {
       kept: 6,
       flags: 1,
       storyCuts: 0,
+      storyCtas: 0,
       emojiFixes: 0,
       modelMs: 9000,
       totalMs: 9010,
       outcome: 'final',
     });
     expect(line).toBe(
-      'posts host=svargabalimassage.com kind=plan model=gemini-3.5-flash-lite prompt=posts-1 kept=6 flags=1 story_cuts=0 emoji_fixes=0 model_ms=9000 total_ms=9010 outcome=final',
+      'posts host=svargabalimassage.com kind=plan model=gemini-3.5-flash-lite prompt=posts-1 kept=6 flags=1 story_cuts=0 story_ctas=0 emoji_fixes=0 model_ms=9000 total_ms=9010 outcome=final',
     );
   });
 
@@ -30,6 +31,7 @@ describe('formatPostsLog', () => {
       kept: 0,
       flags: 0,
       storyCuts: 0,
+      storyCtas: 0,
       emojiFixes: 0,
       modelMs: null,
       totalMs: 5,
@@ -48,11 +50,12 @@ describe('formatPostsLog', () => {
       kept: 6,
       flags: 0,
       storyCuts: 1,
+      storyCtas: 2,
       emojiFixes: 7,
       modelMs: 10,
       totalMs: 12,
       outcome: 'final',
     });
-    expect(line).toContain(' flags=0 story_cuts=1 emoji_fixes=7 model_ms=10 ');
+    expect(line).toContain(' flags=0 story_cuts=1 story_ctas=2 emoji_fixes=7 model_ms=10 ');
   });
 });

@@ -15,6 +15,8 @@ export type PostsLog = {
   // Code's fixes to the story texts and a spa's emojis
   // (docs/specs/posts/story-text): counts only, never the text.
   storyCuts: number;
+  // Story text sentences removed for a call to action (amended 2026-10-27).
+  storyCtas: number;
   emojiFixes: number;
   // null when the step ended before the model answered.
   modelMs: number | null;
@@ -34,6 +36,7 @@ export function formatPostsLog(log: PostsLog): string {
     `kept=${log.kept}`,
     `flags=${log.flags}`,
     `story_cuts=${log.storyCuts}`,
+    `story_ctas=${log.storyCtas}`,
     `emoji_fixes=${log.emojiFixes}`,
     `model_ms=${log.modelMs ?? '-'}`,
     `total_ms=${log.totalMs}`,
