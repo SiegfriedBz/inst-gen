@@ -5,6 +5,7 @@ import * as cheerio from 'cheerio';
 import { z } from 'zod';
 import { type Recording, replayTextModel } from '@/lib/ai/replay';
 import type { TextModel } from '@/lib/ai/text-model';
+import { englishDay, type Offer } from '@/lib/posts/offer';
 import { replaySearchTool, type SearchRecording } from '@/lib/search/replay';
 import { type Expected, expectedSchema } from './eval/score';
 import { type Fetched, type Transport, undiciTransport } from './fetch-safe';
@@ -56,6 +57,8 @@ export type Fixture = {
   recording: Recording | null;
   search: SearchFixture | null;
   posts: PostsFixture | null;
+  // A plan made with `fixtureOffer` (docs/specs/posts/special-offer).
+  postsOffer: PostsFixture | null;
 };
 
 const readJson = (path: string) => JSON.parse(readFileSync(path, 'utf8'));
@@ -64,12 +67,26 @@ export function loadFixture(dir: string): Fixture {
   const recordingPath = join(dir, 'recording.json');
   const searchPath = join(dir, 'search.json');
   const postsPath = join(dir, 'posts.json');
+  const postsOfferPath = join(dir, 'posts-offer.json');
   return {
     manifest: manifestSchema.parse(readJson(join(dir, 'manifest.json'))),
     expected: expectedSchema.parse(readJson(join(dir, 'expected.json'))),
     recording: existsSync(recordingPath) ? (readJson(recordingPath) as Recording) : null,
     search: existsSync(searchPath) ? (readJson(searchPath) as SearchFixture) : null,
     posts: existsSync(postsPath) ? (readJson(postsPath) as PostsFixture) : null,
+    postsOffer: existsSync(postsOfferPath) ? (readJson(postsOfferPath) as PostsFixture) : null,
+  };
+}
+
+// The offer the offer plans are made and replayed with: 10% off the
+// fixture's first two treatments, until a fixed day.
+export function fixtureOffer(profile: Profile): Offer {
+  return {
+    kind: 'discount',
+    percent: 10,
+    treatments: profile.offerings.slice(0, 2).map((o) => o.name),
+    until: '2026-11-01',
+    lastDay: englishDay('2026-11-01'),
   };
 }
 

@@ -5,12 +5,21 @@
 // quota: 1 Gemini request per fixture, from the app's daily pool. A few slugs
 // at a time; never on a pilot day.
 //
-// Usage: pnpm eval:posts [slug…] [--record] [--model=<id>]
+// With --offer, each plan carries the fixture's offer (fixtureOffer: 10% off
+// its first two treatments) and --record saves it as posts-offer.json
+// (docs/specs/posts/special-offer, "Checked with the real model").
+//
+// Usage: pnpm eval:posts [slug…] [--record] [--offer] [--model=<id>]
 import { existsSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { type Recording, recordingTextModel } from '@/lib/ai/replay';
 import { geminiTextModel, TEXT_MODELS } from '@/lib/ai/text-model';
-import { FIXTURES_DIR, fixtureProfile, type PostsFixture } from '@/lib/brand/fixtures';
+import {
+  FIXTURES_DIR,
+  fixtureOffer,
+  fixtureProfile,
+  type PostsFixture,
+} from '@/lib/brand/fixtures';
 import type { PlanResult } from '@/lib/posts/batch';
 import { POSTS_PROMPT_VERSION } from '@/lib/posts/prompt';
 import { streamPlan } from '@/lib/posts/run';
@@ -20,6 +29,7 @@ if (existsSync('.env.local')) process.loadEnvFile('.env.local');
 const DEFAULT_SLUGS = ['sen', 'svarga'];
 const args = process.argv.slice(2);
 const record = args.includes('--record');
+const withOffer = args.includes('--offer');
 const modelId =
   args.find((a) => a.startsWith('--model='))?.slice('--model='.length) ?? TEXT_MODELS.posts;
 const wanted = args.filter((a) => !a.startsWith('--'));
@@ -27,7 +37,9 @@ const slugs = wanted.length > 0 ? wanted : DEFAULT_SLUGS;
 
 function print(result: PlanResult): void {
   for (const [i, post] of result.posts.entries()) {
-    console.log(`\n  ${i + 1}. ${post.type} · ${post.scene} · ${post.topic}`);
+    console.log(
+      `\n  ${i + 1}. ${post.type} · ${post.scene} · ${post.topic}${post.offer ? ' · OFFER' : ''}`,
+    );
     console.log(post.caption.replace(/^/gm, '     '));
     console.log(`     ${post.cta}`);
     console.log(`     ${post.hashtags.map((t) => `#${t}`).join(' ')}`);
@@ -55,8 +67,10 @@ for (const slug of slugs) {
       },
     );
     let result: PlanResult | null = null;
+    const offer = withOffer ? fixtureOffer(profile) : undefined;
+    if (offer) console.log(`\n${slug} · offer: ${JSON.stringify(offer)}`);
     for await (const line of streamPlan(
-      { profile, recent: [] },
+      { profile, recent: [], offer },
       { model, modelId },
       new AbortController().signal,
     )) {
@@ -69,7 +83,8 @@ for (const slug of slugs) {
     print(result);
     if (record && recording) {
       const saved: PostsFixture = { modelId, promptVersion: POSTS_PROMPT_VERSION, recording };
-      writeFileSync(join(dir, 'posts.json'), `${JSON.stringify(saved, null, 2)}\n`);
+      const file = withOffer ? 'posts-offer.json' : 'posts.json';
+      writeFileSync(join(dir, file), `${JSON.stringify(saved, null, 2)}\n`);
     }
   } catch (error) {
     console.log(
