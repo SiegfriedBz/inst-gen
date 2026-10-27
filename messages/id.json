@@ -285,8 +285,8 @@
     "keepOpen": "Biarkan halaman ini terbuka beberapa detik.",
     "heading": "Ulasan dari {name} · dalam {language}",
     "headingNoName": "Ulasan · dalam {language}",
-    "short": "Balasan singkat",
-    "warm": "Balasan lebih hangat",
+    "short": "Singkat",
+    "warm": "Lebih hangat",
     "abusive": "Ulasan ini mungkin kasar atau palsu. Mungkin lebih baik tidak membalas, atau laporkan di Google Maps. Jika membalas, tetap tenang, seperti di bawah.",
     "howTo": "Di Google Maps: buka ulasannya, ketuk Balas, lalu tempel.",
     "again": "Tulis 2 balasan lain",
@@ -297,7 +297,9 @@
       "model_failed": "Terjadi kesalahan saat menulis balasan. Coba lagi.",
       "invalid_request": "Terjadi kesalahan saat menulis balasan. Coba lagi.",
       "offline": "Anda sedang offline. Coba lagi saat kembali online."
-    }
+    },
+    "which": "Balasan yang mana",
+    "copy": "Salin balasan"
   },
   "usage": {
     "left": "Sisa hari ini: {items}",

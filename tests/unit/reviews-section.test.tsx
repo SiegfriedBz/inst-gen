@@ -1,6 +1,6 @@
 // @vitest-environment jsdom
 import 'fake-indexeddb/auto';
-import { cleanup, fireEvent, render, screen, waitFor } from '@testing-library/react';
+import { cleanup, fireEvent, render, screen, waitFor, within } from '@testing-library/react';
 import { IDBFactory } from 'fake-indexeddb';
 import { NextIntlClientProvider } from 'next-intl';
 import { afterEach, beforeEach, describe, expect, test, vi } from 'vitest';
@@ -85,7 +85,7 @@ async function writeReplies(body: ReplyResponse = answer(), name = 'Anna K.') {
   fetchMock.mockResolvedValueOnce(ok(body));
   await paste(REVIEW, name);
   fireEvent.click(writeButton());
-  await screen.findByText('Short reply');
+  await screen.findByRole('radiogroup', { name: 'Which reply' });
 }
 
 const sentBodies = () => fetchMock.mock.calls.map((call) => JSON.parse(String(call[1]?.body)));
@@ -120,7 +120,7 @@ describe('writing', () => {
     expect(screen.getByText('Keep this page open for a few seconds.')).toBeTruthy();
     expect((screen.getByLabelText('The review') as HTMLTextAreaElement).disabled).toBe(true);
     answerNow(ok(answer()));
-    await screen.findByText('Short reply');
+    await screen.findByRole('radiogroup', { name: 'Which reply' });
   });
 
   test('a double tap sends one request', async () => {
@@ -130,7 +130,7 @@ describe('writing', () => {
     const button = writeButton();
     fireEvent.click(button);
     fireEvent.click(button);
-    await screen.findByText('Short reply');
+    await screen.findByRole('radiogroup', { name: 'Which reply' });
     expect(fetchMock).toHaveBeenCalledTimes(1);
   });
 
@@ -170,23 +170,60 @@ describe('writing', () => {
 });
 
 describe('the replies', () => {
-  test('show the review and both replies, with the name and the translations', async () => {
-    renderTab();
+  test('the review, then Short picked: one card, one "Copy the reply"', async () => {
+    renderTab('en');
     await writeReplies();
     expect(screen.getByText(/^Anna K\.'s review · in /)).toBeTruthy();
     expect(screen.getByText(REVIEW)).toBeTruthy();
     expect(screen.getByText('Massage đá nóng tuyệt vời! Phòng hơi lạnh.')).toBeTruthy();
+    const group = screen.getByRole('radiogroup', { name: 'Which reply' });
+    expect(within(group).getByRole('radio', { name: 'Short' }).getAttribute('aria-checked')).toBe(
+      'true',
+    );
+    expect(within(group).getByRole('radio', { name: 'Warmer' }).getAttribute('aria-checked')).toBe(
+      'false',
+    );
     expect(screen.getByText('Thank you, Anna K.! 🙏 Hope to see you again 🪷')).toBeTruthy();
     expect(screen.getByText('Cảm ơn Anna K.! 🪷')).toBeTruthy();
-    expect(screen.getByText('Warmer reply')).toBeTruthy();
+    expect(
+      screen.queryByText('Dear Anna K., sorry about the cold room and the wait. 🙏'),
+    ).toBeNull();
+    expect(screen.getAllByRole('button', { name: 'Copy the reply' })).toHaveLength(1);
+    expect(screen.getByText('In Google Maps: open the review, tap Reply and paste.')).toBeTruthy();
+    expect(screen.getByRole('button', { name: 'Write 2 other replies' })).toBeTruthy();
+    expect(screen.getByRole('button', { name: 'Paste a new review' })).toBeTruthy();
+  });
+
+  test('Warmer shows the warmer reply and its translation', async () => {
+    renderTab('en');
+    await writeReplies();
+    fireEvent.click(screen.getByRole('radio', { name: 'Warmer' }));
     expect(
       screen.getByText('Dear Anna K., sorry about the cold room and the wait. 🙏'),
     ).toBeTruthy();
     expect(screen.getByText('Thân mến Anna K., xin lỗi vì phòng lạnh.')).toBeTruthy();
-    expect(screen.getByText('In Google Maps: open the review, tap Reply and paste.')).toBeTruthy();
-    expect(screen.getByRole('button', { name: 'Write 2 other replies' })).toBeTruthy();
-    expect(screen.getByRole('button', { name: 'Paste a new review' })).toBeTruthy();
-    expect(screen.getAllByRole('button', { name: 'Copy the text' })).toHaveLength(2);
+    expect(screen.queryByText('Thank you, Anna K.! 🙏 Hope to see you again 🪷')).toBeNull();
+  });
+
+  test('"Write 2 other replies" keeps Warmer picked', async () => {
+    renderTab('en');
+    await writeReplies();
+    fireEvent.click(screen.getByRole('radio', { name: 'Warmer' }));
+    fetchMock.mockResolvedValueOnce(
+      ok(answer({ warm: { text: 'Hello {name}, thank you. 🙏', translation: null } })),
+    );
+    fireEvent.click(screen.getByRole('button', { name: 'Write 2 other replies' }));
+    expect(await screen.findByText('Hello Anna K., thank you. 🙏')).toBeTruthy();
+    expect(screen.getByRole('radio', { name: 'Warmer' }).getAttribute('aria-checked')).toBe('true');
+  });
+
+  test('a new review starts on Short', async () => {
+    renderTab('en');
+    await writeReplies();
+    fireEvent.click(screen.getByRole('radio', { name: 'Warmer' }));
+    fireEvent.click(screen.getByRole('button', { name: 'Paste a new review' }));
+    await writeReplies();
+    expect(screen.getByRole('radio', { name: 'Short' }).getAttribute('aria-checked')).toBe('true');
   });
 
   test("the review's language is named in the screen's language", async () => {
@@ -222,10 +259,10 @@ describe('the replies', () => {
     expect(screen.getByText(/This review may be abusive or fake\./)).toBeTruthy();
   });
 
-  test('"Copy the text" copies the reply with the name', async () => {
+  test('"Copy the reply" copies the reply with the name', async () => {
     renderTab();
     await writeReplies();
-    fireEvent.click(screen.getAllByRole('button', { name: 'Copy the text' })[0]);
+    fireEvent.click(screen.getByRole('button', { name: 'Copy the reply' }));
     await waitFor(() =>
       expect(copied).toEqual(['Thank you, Anna K.! 🙏 Hope to see you again 🪷']),
     );
@@ -238,7 +275,7 @@ describe('the replies', () => {
     fetchMock.mockReturnValueOnce(new Promise<Response>((resolve) => (answerNow = resolve)));
     fireEvent.click(screen.getByRole('button', { name: 'Write 2 other replies' }));
     expect(await screen.findByRole('button', { name: 'Writing your replies…' })).toBeTruthy();
-    expect(screen.getByText('Short reply')).toBeTruthy();
+    expect(screen.getByRole('radiogroup', { name: 'Which reply' })).toBeTruthy();
     answerNow(
       ok(
         answer({
@@ -260,14 +297,18 @@ describe('the replies', () => {
   test('an edit shows instead of the reply, hides its translation, and is copied', async () => {
     renderTab();
     await writeReplies();
-    fireEvent.click(screen.getAllByRole('button', { name: 'Edit the text' })[0]);
-    const box = screen.getByRole('textbox', { name: 'Short reply' });
+    fireEvent.click(screen.getByRole('button', { name: 'Edit the text' }));
+    const box = screen.getByRole('textbox', { name: 'Short' });
     fireEvent.change(box, { target: { value: 'Thanks Anna, see you soon! 🪷' } });
     fireEvent.click(screen.getByRole('button', { name: 'Save' }));
     expect(await screen.findByText('Thanks Anna, see you soon! 🪷')).toBeTruthy();
     expect(screen.queryByText('Cảm ơn Anna K.! 🪷')).toBeNull();
+    // The edit stays across a switch to Warmer and back.
+    fireEvent.click(screen.getByRole('radio', { name: 'Warmer' }));
     expect(screen.getByText('Thân mến Anna K., xin lỗi vì phòng lạnh.')).toBeTruthy();
-    fireEvent.click(screen.getAllByRole('button', { name: 'Copy the text' })[0]);
+    fireEvent.click(screen.getByRole('radio', { name: 'Short' }));
+    expect(screen.getByText('Thanks Anna, see you soon! 🪷')).toBeTruthy();
+    fireEvent.click(screen.getByRole('button', { name: 'Copy the reply' }));
     await waitFor(() => expect(copied).toEqual(['Thanks Anna, see you soon! 🪷']));
     expect((await loadReview('sen', new Date()))?.edits.short).toBe(
       'Thanks Anna, see you soon! 🪷',
@@ -295,6 +336,7 @@ describe('the replies', () => {
     });
     renderTab();
     expect(await screen.findByText('Thank you, Anna K.! 🙏 Hope to see you again 🪷')).toBeTruthy();
+    expect(screen.getByRole('radio', { name: 'Short' }).getAttribute('aria-checked')).toBe('true');
     expect(fetchMock).not.toHaveBeenCalled();
   });
 

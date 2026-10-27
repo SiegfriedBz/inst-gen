@@ -285,8 +285,8 @@
     "keepOpen": "Hãy giữ trang này mở trong vài giây.",
     "heading": "Đánh giá của {name} · bằng {language}",
     "headingNoName": "Đánh giá · bằng {language}",
-    "short": "Trả lời ngắn",
-    "warm": "Trả lời ấm áp hơn",
+    "short": "Ngắn",
+    "warm": "Ấm áp hơn",
     "abusive": "Đánh giá này có thể mang tính xúc phạm hoặc giả mạo. Có thể tốt hơn là không trả lời, hoặc báo cáo trên Google Maps. Nếu trả lời, hãy giữ bình tĩnh, như bên dưới.",
     "howTo": "Trên Google Maps: mở đánh giá, nhấn Trả lời rồi dán.",
     "again": "Viết 2 câu trả lời khác",
@@ -297,7 +297,9 @@
       "model_failed": "Đã có lỗi khi viết câu trả lời. Hãy thử lại.",
       "invalid_request": "Đã có lỗi khi viết câu trả lời. Hãy thử lại.",
       "offline": "Bạn đang ngoại tuyến. Hãy thử lại khi có mạng."
-    }
+    },
+    "which": "Chọn câu trả lời",
+    "copy": "Sao chép câu trả lời"
   },
   "usage": {
     "left": "Còn lại hôm nay: {items}",

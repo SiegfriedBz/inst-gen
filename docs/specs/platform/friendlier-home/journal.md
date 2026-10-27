@@ -29,6 +29,11 @@
   (or a list's add field), rather than a key threaded through every form.
 - 2026-10-27: "{count} to add" lives at `brand.panel.toAdd`, beside the
   panel's other words, not `brand.missing.inSection`.
+- 2026-10-27: `reviews.short` and `reviews.warm` become the switch's words
+  ("Short", "Warmer") and also name the edit box; the cards' headings go.
+- 2026-10-27: One full run had `brand-fixtures-replay` (karsa-spa) time out
+  at 5 s under load; it passes alone and on the next full run (99 files,
+  1171 tests). Nothing here touches the brand read.
 
 ## RED
 
@@ -83,6 +88,12 @@ Task 9, Your business (`brand-home`, `brand-panel`, `brand-section-sheet`):
       Tests  28 failed | 49 passed (77)
 ```
 
+Task 10, one reply at a time (`reviews-section`, `reviews-section-storage`):
+
+```
+      Tests  16 failed | 5 passed (21)
+```
+
 ## GREEN
 
 Task 1 (`language-switch`, `i18n-messages`):
@@ -131,4 +142,12 @@ Task 9 (`brand-home`, `brand-panel`, `brand-section-sheet`, `brand-missing`, `us
 
 ```
       Tests  105 passed (105)
+```
+
+Task 10 (`reviews-section`, `reviews-section-storage`), then the full suite:
+
+```
+      Tests  21 passed (21)
+ Test Files  99 passed (99)
+      Tests  1171 passed (1171)
 ```

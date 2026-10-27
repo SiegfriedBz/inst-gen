@@ -285,8 +285,8 @@
     "keepOpen": "Keep this page open for a few seconds.",
     "heading": "{name}'s review · in {language}",
     "headingNoName": "The review · in {language}",
-    "short": "Short reply",
-    "warm": "Warmer reply",
+    "short": "Short",
+    "warm": "Warmer",
     "abusive": "This review may be abusive or fake. It can be better not to reply, or to report it in Google Maps. If you reply, keep it calm, like below.",
     "howTo": "In Google Maps: open the review, tap Reply and paste.",
     "again": "Write 2 other replies",
@@ -297,7 +297,9 @@
       "model_failed": "Something went wrong while writing your replies. Try again.",
       "invalid_request": "Something went wrong while writing your replies. Try again.",
       "offline": "You're offline. Try again when you're back."
-    }
+    },
+    "which": "Which reply",
+    "copy": "Copy the reply"
   },
   "usage": {
     "left": "Left today: {items}",
