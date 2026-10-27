@@ -1,5 +1,6 @@
 'use client';
 
+import { CircleNotch } from '@phosphor-icons/react';
 import { useTranslations } from 'next-intl';
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { Button } from '@/components/ui/button';
@@ -483,6 +484,7 @@ export function PostsSection({
   // against the final details, and the waiting batch stays the newest.
   const waiting = searching && behind.length > 0;
   const held = busy || waiting;
+  const planning = running?.step === 'plan';
 
   // The opened suggestion left the screen: the sheet closes with it.
   const openBatch = open ? shown.find((b) => b.id === open.batchId) : undefined;
@@ -572,7 +574,14 @@ export function PostsSection({
           onAddTreatments?.();
         }}
       />
-      <Button type="button" onClick={make} disabled={!cta || held || attemptLimit !== null}>
+      <Button
+        type="button"
+        onClick={make}
+        disabled={!cta || held || attemptLimit !== null}
+        aria-busy={planning || undefined}
+        className="gap-2"
+      >
+        {planning && <CircleNotch aria-hidden className="animate-spin" size={18} />}
         {shown.length > 0 ? t('makeMore') : t('make')}
       </Button>
       {shown.length > 0 && (
