@@ -377,6 +377,23 @@ export function PostsSection({
   }, [open]);
 
   const cta = ctaFor(profile);
+  // A new WhatsApp number: the text copied before held the old one, so its
+  // posts lose "copied" on screen too (the store's applyCta did it there).
+  useEffect(() => {
+    if (!cta) return;
+    const stale = batches.some((b) => b.posts.some((p) => p.cta !== cta && p.copiedAt));
+    if (!stale) return;
+    batchesRef.current = batches.map((b) => ({
+      ...b,
+      posts: b.posts.map((p) => {
+        if (p.cta === cta || !p.copiedAt) return p;
+        const { copiedAt: _copied, ...rest } = p;
+        return { ...rest, cta };
+      }),
+    }));
+    setBatches(batchesRef.current);
+  }, [cta, batches]);
+
   const busy = running !== null || resuming || imagesResuming || making.size > 0;
   const currentHash = profileHash(profile);
   // Today's attempts, newest on top; older kept records only feed `recent`.
@@ -510,6 +527,7 @@ export function PostsSection({
                 n={index + 1}
                 count={running.posts.length}
                 image={imagesOn ? { kind: 'none' } : { kind: 'off' }}
+                textOnly={!imagesOn}
                 taken={null}
                 check={false}
                 onOpen={() => {}}
@@ -572,14 +590,20 @@ export function PostsSection({
                 <SuggestionTile
                   key={post.id}
                   ref={(el) => {
-                    if (el) tiles.current.set(post.id, el);
-                    else tiles.current.delete(post.id);
+                    // Post ids repeat across attempts: key by both.
+                    const key = imageKey(batch.id, post.id);
+                    if (el) tiles.current.set(key, el);
+                    else tiles.current.delete(key);
                   }}
                   post={post}
                   n={index + 1}
                   count={batch.posts.length}
                   image={imageOf(post, batch, needsImages).state}
-                  taken={takenLabel(post, imagesOn)}
+                  textOnly={
+                    noImage(imageOf(post, batch, needsImages).state) &&
+                    imageOf(post, batch, needsImages).state.kind !== 'month'
+                  }
+                  taken={takenLabel(post, !noImage(imageOf(post, batch, needsImages).state))}
                   check={flagsFor(post, batch, profile, isNewest).some((flag) =>
                     SHOWN_FLAGS.includes(flag.kind),
                   )}
@@ -599,7 +623,7 @@ export function PostsSection({
             count: openBatch.posts.length,
           })}
           onClose={closeSuggestion}
-          onCloseFocus={() => tiles.current.get(openPost.id)?.focus()}
+          onCloseFocus={() => tiles.current.get(imageKey(openBatch.id, openPost.id))?.focus()}
           actions={
             <TakeAway
               post={openPost}
@@ -657,4 +681,12 @@ function AttemptHeading({ n, count }: { n: number; count: number }) {
       <span className="text-[13px] text-ink-secondary">{t('attemptCount', { count })}</span>
     </div>
   );
+}
+
+// No image to save for this suggestion, so the text alone ticks it: images
+// off, paused, or the month full (docs/specs/platform/friendlier-home). A
+// month-full tile still shows its block, saying until when.
+function noImage(state: ImageState): boolean {
+  if (state.kind === 'off' || state.kind === 'month') return true;
+  return state.kind === 'failed' && (state.code === 'images_paused' || state.code === 'images_off');
 }

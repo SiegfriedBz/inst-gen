@@ -35,10 +35,15 @@ export async function applyCta(ownerId: string, cta: string): Promise<PostBatch[
   if (!db) return [];
   const tx = db.transaction('posts', 'readwrite');
   const raw = await tx.store.index('ownerId').getAll(ownerId);
-  // The text copied before held the old number: it's no longer what's on screen.
+  // Only a post whose call to action changes loses "copied": the text copied
+  // before held the old number. The same number keeps it.
   const updated = raw.map((batch) => ({
     ...batch,
-    posts: batch.posts.map(({ copiedAt: _copied, ...post }) => ({ ...post, cta })),
+    posts: batch.posts.map((post) => {
+      if (post.cta === cta) return post;
+      const { copiedAt: _copied, ...rest } = post;
+      return { ...rest, cta };
+    }),
   }));
   await Promise.all(updated.map((batch) => tx.store.put(batch)));
   await tx.done;

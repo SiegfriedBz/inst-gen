@@ -362,4 +362,17 @@ describe('images in the posts section', () => {
     expect(started).toHaveLength(0);
     expect(screen.queryByRole('button', { name: 'Make the images' })).toBeNull();
   });
+
+  test('images paused: a text tile, ticked "Copied" once its text is copied', async () => {
+    await saveBatch(
+      batch(six.map((p, i) => (i === 0 ? { ...p, copiedAt: '2026-10-25T10:30:00.000Z' } : p))),
+    );
+    await renderSection();
+    fireEvent.click(await screen.findByRole('button', { name: 'Make the images' }));
+    await waitFor(() => expect(started).toHaveLength(1));
+    started[0].onEvent({ type: 'error', batchId: 'b1', postId: 'post-1', code: 'images_paused' });
+    expect(
+      await screen.findByRole('button', { name: /^Suggestion 1 of 6\b.*Copied$/ }),
+    ).toBeTruthy();
+  });
 });

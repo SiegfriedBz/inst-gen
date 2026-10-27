@@ -742,4 +742,29 @@ describe('the grid and the sheet', () => {
     );
     expect(await screen.findByRole('dialog', { name: 'Lần thử 1, gợi ý 4/6' })).toBeTruthy();
   });
+
+  test('a new WhatsApp number unticks "Copied" on screen', async () => {
+    await saveBatch(batch(sixPosts.map((p) => ({ ...p, copiedAt: '2026-10-25T10:00:00.000Z' }))));
+    const profile = svargaProfile();
+    profile.contact.whatsapp = { value: '+6289999999999', source: profile.siteUrl };
+    await renderSection(profile);
+    await screen.findByRole('button', { name: /^Suggestion 1 of 6\b/ });
+    await waitFor(() =>
+      expect(screen.queryAllByRole('button', { name: /Copied$/ })).toHaveLength(0),
+    );
+  });
+
+  test('closing gives focus back to the tile of the same attempt', async () => {
+    await saveBatch({ ...batch(sixPosts), id: 'b0', createdAt: '2026-10-25T08:00:00.000Z' });
+    await saveBatch(batch(sixPosts.map((p) => ({ ...p, caption: `New ${p.id}.` }))));
+    await renderSection();
+    const newest = (await screen.findAllByRole('button', { name: /^Suggestion 3 of 6\b/ }))[0];
+    expect(newest.getAttribute('aria-label')).toContain('New post-3.');
+    await waitFor(() => expect((newest as HTMLButtonElement).disabled).toBe(false));
+    fireEvent.click(newest);
+    const sheet = await screen.findByRole('dialog');
+    fireEvent.click(within(sheet).getByRole('button', { name: 'Close' }));
+    await waitFor(() => expect(screen.queryByRole('dialog')).toBeNull());
+    await waitFor(() => expect(document.activeElement).toBe(newest));
+  });
 });

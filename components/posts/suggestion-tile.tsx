@@ -24,6 +24,7 @@ export function SuggestionTile({
   check,
   onOpen,
   disabled = false,
+  textOnly = image.kind === 'off',
   ref,
 }: {
   post: Post;
@@ -34,6 +35,8 @@ export function SuggestionTile({
   check: boolean;
   onOpen: () => void;
   disabled?: boolean;
+  // No image to show or save: a text card.
+  textOnly?: boolean;
   ref?: Ref<HTMLButtonElement>;
 }) {
   const t = useTranslations('posts');
@@ -43,7 +46,6 @@ export function SuggestionTile({
   const name = [t('tile', { n, count }), excerpt, state ?? (check ? t('checkText') : null)]
     .filter(Boolean)
     .join(', ');
-  const textOnly = image.kind === 'off';
   const tick = taken && (
     <span className="absolute top-1.5 right-1.5 flex size-[22px] items-center justify-center rounded-full bg-accent text-on-accent">
       <Check aria-hidden="true" size={13} weight="bold" />

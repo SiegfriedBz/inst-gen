@@ -57,6 +57,15 @@
   the ones below, but each one you add makes your posts more exact.", shown
   only with at least one button below (WhatsApp, which posts need, is never
   one), and was approved again (11:36 UTC).
+- 2026-10-27: Final review, fixed: a new attempt or any business edit erased
+  "copied" from every stored post (`applyCta` now clears it only where the
+  number changes); a new WhatsApp number now unticks "Copied" on screen too;
+  closing a suggestion focuses the tile of its own attempt (post ids repeat
+  across attempts); with images paused or the month full, the text alone
+  ticks a tile, and a paused tile is a text card. The bar-on-focus call
+  stands, but its reason was too strong: Playwright's resize shrinks both
+  viewports by construction, so the run showed the rule couldn't be tested
+  that way, not how phones behave; focus stays the safer signal.
 
 ## RED
 
@@ -141,6 +150,12 @@ The missing box's new line (`brand-home`, after the strings changed):
       Tests  1 failed | 1 passed | 42 skipped (44)
 ```
 
+Final review fixes (`posts-store`, `posts-section`, `posts-section-images`):
+
+```
+      Tests  4 failed | 66 passed (70)
+```
+
 ## GREEN
 
 Task 1 (`language-switch`, `i18n-messages`):
@@ -223,4 +238,13 @@ The missing box's new line (`brand-home`, `i18n-messages`):
 
 ```
       Tests  51 passed (51)
+```
+
+Final review fixes, then `pnpm check` and every e2e test on port 3100:
+
+```
+ Test Files  99 passed (99)
+      Tests  1179 passed (1179)
+  1 skipped
+  60 passed (20.5s)
 ```
