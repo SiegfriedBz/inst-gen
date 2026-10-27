@@ -182,6 +182,7 @@ describe('Create Posts', () => {
     await saveBatch(batch([post({ id: 'post-1' })]));
     await saveImage(image('post-1'));
     await posts(true);
+    fireEvent.click(await screen.findByRole('button', { name: /^Suggestion 1 of 1\b/ }));
     const link = (await screen.findByRole('button', {
       name: 'Create new image',
     })) as HTMLButtonElement;

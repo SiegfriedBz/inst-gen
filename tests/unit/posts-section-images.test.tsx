@@ -1,6 +1,6 @@
 // @vitest-environment jsdom
 import 'fake-indexeddb/auto';
-import { cleanup, fireEvent, render, screen, waitFor } from '@testing-library/react';
+import { cleanup, fireEvent, render, screen, waitFor, within } from '@testing-library/react';
 import { IDBFactory } from 'fake-indexeddb';
 import { NextIntlClientProvider } from 'next-intl';
 import { afterEach, beforeEach, describe, expect, test, vi } from 'vitest';
@@ -10,7 +10,7 @@ import type { Post, PostBatch } from '@/lib/posts/batch';
 import { type ImageEvent, resumeImages } from '@/lib/posts/image-client';
 import { type SavedImage, saveImage } from '@/lib/posts/image-store';
 import { profileHash } from '@/lib/posts/input';
-import { saveBatch } from '@/lib/posts/store';
+import { loadBatches, saveBatch } from '@/lib/posts/store';
 import { encodePostsLine, type PostsLine } from '@/lib/posts/stream';
 import messages from '@/messages/en.json';
 import { svargaProfile } from './helpers/brand';
@@ -141,33 +141,84 @@ const makePosts = async () => {
   return button;
 };
 
+// Opens suggestion n of six and returns its sheet.
+async function openTile(n: number): Promise<HTMLElement> {
+  const name = new RegExp(`^Suggestion ${n} of 6\\b`);
+  // Found again each time: the tiles of a streaming attempt are replaced
+  // once it's kept.
+  await waitFor(() =>
+    expect((screen.getByRole('button', { name }) as HTMLButtonElement).disabled).toBe(false),
+  );
+  fireEvent.click(screen.getByRole('button', { name }));
+  return screen.findByRole('dialog');
+}
+
 describe('a suggestion with its images', () => {
-  test('a card with its image can be copied and saved', async () => {
+  test('an opened suggestion with its image can be copied and saved; one without waits', async () => {
     await saveBatch(batch(six));
     await saveImage(image('post-1'));
     await renderSection();
-    expect(await screen.findAllByRole('button', { name: 'Copy the text' })).toHaveLength(6);
-    const saves = (await screen.findAllByRole('button', {
-      name: 'Save the 2 images',
-    })) as HTMLButtonElement[];
-    expect(saves).toHaveLength(6);
-    await waitFor(() => expect(saves.filter((b) => !b.disabled)).toHaveLength(1));
+    let sheet = await openTile(1);
+    expect(within(sheet).getByRole('button', { name: /Copy the text/ })).toBeTruthy();
+    const save = within(sheet).getByRole('button', {
+      name: /Save the 2 images/,
+    }) as HTMLButtonElement;
+    await waitFor(() => expect(save.disabled).toBe(false));
+    fireEvent.click(within(sheet).getByRole('button', { name: 'Close' }));
+    await waitFor(() => expect(screen.queryByRole('dialog')).toBeNull());
+    sheet = await openTile(2);
+    expect(
+      (within(sheet).getByRole('button', { name: /Save the 2 images/ }) as HTMLButtonElement)
+        .disabled,
+    ).toBe(true);
     expect(screen.queryByText('Your feed once these are posted')).toBeNull();
+  });
+
+  test('save then copy, close: the tile says "Saved and copied", kept after a reload', async () => {
+    vi.stubGlobal('navigator', {
+      ...navigator,
+      canShare: () => true,
+      share: async () => {},
+      clipboard: { writeText: async () => {} },
+    });
+    await saveBatch(batch(six));
+    await saveImage(image('post-1'));
+    const view = await renderSection();
+    const sheet = await openTile(1);
+    const save = within(sheet).getByRole('button', { name: /Save the 2 images/ });
+    await waitFor(() => expect((save as HTMLButtonElement).disabled).toBe(false));
+    fireEvent.click(save);
+    fireEvent.click(within(sheet).getByRole('button', { name: /Copy the text/ }));
+    fireEvent.click(within(sheet).getByRole('button', { name: 'Close' }));
+    expect(
+      await screen.findByRole('button', { name: /^Suggestion 1 of 6\b.*Saved and copied$/ }),
+    ).toBeTruthy();
+    await waitFor(async () => {
+      const [saved] = await loadBatches('svarga');
+      expect(saved.posts[0].savedAt).toBeTruthy();
+      expect(saved.posts[0].copiedAt).toBeTruthy();
+    });
+    view.unmount();
+    await renderSection();
+    expect(
+      await screen.findByRole('button', { name: /^Suggestion 1 of 6\b.*Saved and copied$/ }),
+    ).toBeTruthy();
   });
 
   test('Create new image carries the hint', async () => {
     await saveBatch(batch(six));
     await saveImage(image('post-1'));
     await renderSection();
-    const button = await screen.findByRole('button', { name: 'Create new image' });
+    const sheet = await openTile(1);
+    const button = within(sheet).getByRole('button', { name: 'Create new image' });
     await waitFor(() => expect((button as HTMLButtonElement).disabled).toBe(false));
     fireEvent.click(button);
-    fireEvent.change(screen.getByLabelText('What should change? (optional)'), {
+    fireEvent.change(within(sheet).getByLabelText('What should change? (optional)'), {
       target: { value: 'more green' },
     });
-    fireEvent.click(screen.getByRole('button', { name: 'Make it' }));
+    fireEvent.click(within(sheet).getByRole('button', { name: 'Make it' }));
     expect(started.at(-1)?.input).toMatchObject({ postIds: ['post-1'], hint: 'more green' });
-    expect(screen.getByText('Making the image…')).toBeTruthy();
+    expect(within(sheet).getByText('Making the image…')).toBeTruthy();
   });
 
   test('images for a cleared attempt are not saved', async () => {
@@ -211,7 +262,8 @@ describe('images in the posts section', () => {
     started[0].onEvent({ type: 'error', batchId, postId: 'post-2', code: 'image_blocked' });
     expect(await screen.findByRole('img', { name: 'Alt 1' })).toBeTruthy();
     expect(screen.getByText("This image couldn't be made. Try again for a new one.")).toBeTruthy();
-    fireEvent.click(screen.getByRole('button', { name: 'Try again' }));
+    const sheet = await openTile(2);
+    fireEvent.click(within(sheet).getByRole('button', { name: 'Try again' }));
     expect(started[1].input.postIds).toEqual(['post-2']);
   });
 
@@ -244,11 +296,9 @@ describe('images in the posts section', () => {
       name: 'Make 6 new suggestions',
     })) as HTMLButtonElement;
     expect(more.disabled).toBe(true);
-    const edits = (await screen.findAllByRole('button', {
-      name: 'Edit the text',
-    })) as HTMLButtonElement[];
-    expect(edits).toHaveLength(6);
-    await waitFor(() => expect(edits.every((b) => !b.disabled)).toBe(true));
+    const sheet = await openTile(1);
+    const edit = within(sheet).getByRole('button', { name: 'Edit the text' }) as HTMLButtonElement;
+    await waitFor(() => expect(edit.disabled).toBe(false));
   });
 
   test('a rewrite starts no image', async () => {
@@ -301,13 +351,14 @@ describe('images in the posts section', () => {
     await waitFor(() => expect(resumeCalls.length).toBeGreaterThan(before));
   });
 
-  test('images off: no request, the off line on every card', async () => {
+  test('images off: no request, text tiles, the off line in the opened suggestion', async () => {
     fetchMock.mockResolvedValue(planAnswer(six));
     await renderSection(false);
     fireEvent.click(await makePosts());
-    expect(
-      await screen.findAllByText("Images aren't turned on for your account yet."),
-    ).toHaveLength(6);
+    await screen.findByRole('button', { name: /^Suggestion 6 of 6\b/ });
+    expect(screen.queryAllByRole('img')).toHaveLength(0);
+    const sheet = await openTile(1);
+    expect(within(sheet).getByText("Images aren't turned on for your account yet.")).toBeTruthy();
     expect(started).toHaveLength(0);
     expect(screen.queryByRole('button', { name: 'Make the images' })).toBeNull();
   });

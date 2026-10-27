@@ -262,7 +262,12 @@
         "model_timeout": "The translation took too long. Try again.",
         "model_failed": "Something went wrong with the translation. Try again."
       }
-    }
+    },
+    "saved": "Saved and copied",
+    "copiedOnly": "Copied",
+    "checkText": "Check the text",
+    "tile": "Suggestion {n} of {count}",
+    "sheetTitle": "Attempt {attempt}, suggestion {n} of {count}"
   },
   "reviews": {
     "intro": "Got a new review on Google Maps? Copy it and paste it here. We write 2 replies in your guest's language.",

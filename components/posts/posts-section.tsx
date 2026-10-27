@@ -25,10 +25,13 @@ import { type ImageEvent, resumeImages, startImages } from '@/lib/posts/image-cl
 import { imageKey, loadImages, type SavedImage } from '@/lib/posts/image-store';
 import { ctaFor, profileHash } from '@/lib/posts/input';
 import { clearBefore, loadBatches, recentPosts, saveBatch } from '@/lib/posts/store';
+import { markTaken, type TakenStep, takenLabel } from '@/lib/posts/taken';
 import { isUsageCode, type UsageCode } from '@/lib/usage/codes';
 import { CaptionTranslation } from './caption-translation';
-import { PostCard } from './post-card';
+import { PostCard, SHOWN_FLAGS } from './post-card';
 import type { ImageState } from './post-image';
+import { SuggestionSheet } from './suggestion-sheet';
+import { SuggestionTile } from './suggestion-tile';
 import { TakeAway } from './take-away';
 
 // "Create your posts" (docs/specs/posts/suggestions): the button that makes
@@ -101,6 +104,11 @@ export function PostsSection({
   // Posts whose new image (not a first one) is being made, by `imageKey`: its
   // answer asks the owner to check the image description.
   const remaking = useRef(new Set<string>());
+  // The suggestion opened from its tile (docs/specs/platform/friendlier-home),
+  // and each tile, so focus goes back to the one it came from.
+  const [open, setOpen] = useState<{ batchId: string; postId: string } | null>(null);
+  const tiles = useRef(new Map<string, HTMLButtonElement>());
+  const pushed = useRef(false);
   // The details (by `profileHash`) the automatic update last went out for:
   // never twice for the same details, so a failure or a dropped post waits
   // for the owner, until the tab is opened again.
@@ -333,6 +341,41 @@ export function PostsSection({
     void saveBatch(next);
   }
 
+  // A step done in the sheet, kept on the phone with the attempt.
+  function taken(batchId: string, postId: string, step: TakenStep) {
+    const current = batchesRef.current.find((b) => b.id === batchId);
+    if (!current) return;
+    const next = markTaken(current, postId, step, new Date().toISOString());
+    batchesRef.current = batchesRef.current.map((b) => (b.id === batchId ? next : b));
+    setBatches(batchesRef.current);
+    void saveBatch(next);
+  }
+
+  // The back gesture closes the sheet: opening it adds a history entry.
+  function openSuggestion(batchId: string, postId: string) {
+    setOpen({ batchId, postId });
+    window.history.pushState({ suggestion: true }, '');
+    pushed.current = true;
+  }
+
+  const closeSuggestion = useCallback(() => {
+    setOpen(null);
+    if (pushed.current) {
+      pushed.current = false;
+      window.history.back();
+    }
+  }, []);
+
+  useEffect(() => {
+    if (!open) return;
+    const onPop = () => {
+      pushed.current = false;
+      setOpen(null);
+    };
+    window.addEventListener('popstate', onPop);
+    return () => window.removeEventListener('popstate', onPop);
+  }, [open]);
+
   const cta = ctaFor(profile);
   const busy = running !== null || resuming || imagesResuming || making.size > 0;
   const currentHash = profileHash(profile);
@@ -357,6 +400,13 @@ export function PostsSection({
   const waiting = searching && behind.length > 0;
   const held = busy || waiting;
 
+  // The opened suggestion left the screen: the sheet closes with it.
+  const openBatch = open ? shown.find((b) => b.id === open.batchId) : undefined;
+  const openPost = open ? openBatch?.posts.find((p) => p.id === open.postId) : undefined;
+  useEffect(() => {
+    if (open && !openPost) closeSuggestion();
+  }, [open, openPost, closeSuggestion]);
+
   // Opening the tab again lets a failed update try once more.
   useEffect(() => {
     if (active && !wasActive.current) setTriedHash(null);
@@ -370,6 +420,19 @@ export function PostsSection({
     setTriedHash(currentHash);
     update(next.batch, next.postIds);
   }, [active, searching, busy, triedHash, currentHash, shown, profile, update]);
+
+  // An attempt with no image made or being made: "Make the images" stands
+  // for all six, above its grid.
+  function needsImagesFor(batch: PostBatch): boolean {
+    return (
+      imagesOn &&
+      !monthFull &&
+      !batch.posts.some((p) => {
+        const key = imageKey(batch.id, p.id);
+        return images.has(key) || making.has(key);
+      })
+    );
+  }
 
   function imageOf(post: Post, batch: PostBatch, batchButton: boolean) {
     const retry = () => makeImages(batch, [post.id]);
@@ -438,19 +501,26 @@ export function PostsSection({
       {running?.step === 'plan' && (
         <>
           <AttemptHeading n={shown.length + 1} count={running.posts.length} />
-          {running.posts.map((post) => (
-            <PostCard key={post.id} post={post} cta={cta ?? post.cta} />
-          ))}
+          {/* Still streaming in: shown, not opened until the attempt is kept. */}
+          <div className={GRID}>
+            {running.posts.map((post, index) => (
+              <SuggestionTile
+                key={post.id}
+                post={post}
+                n={index + 1}
+                count={running.posts.length}
+                image={imagesOn ? { kind: 'none' } : { kind: 'off' }}
+                taken={null}
+                check={false}
+                onOpen={() => {}}
+                disabled
+              />
+            ))}
+          </div>
         </>
       )}
       {shown.map((batch) => {
-        const needsImages =
-          imagesOn &&
-          !monthFull &&
-          !batch.posts.some((p) => {
-            const key = imageKey(batch.id, p.id);
-            return images.has(key) || making.has(key);
-          });
+        const needsImages = needsImagesFor(batch);
         const isNewest = batch === newest;
         const stale = isNewest && !updating ? behind : [];
         return (
@@ -497,54 +567,87 @@ export function PostsSection({
                 </Button>
               </div>
             )}
-            {batch.posts.map((post, index) => (
-              <PostCard
-                key={post.id}
-                post={post}
-                cta={cta ?? post.cta}
-                onSave={(edit) => saveEdit(batch.id, post.id, edit)}
-                image={imageOf(post, batch, needsImages)}
-                flags={flagsFor(post, batch, profile, isNewest)}
-                onRewrite={
-                  isNewest && post.edited && isPostStale(post, batch, profile)
-                    ? () => update(batch, [post.id])
-                    : undefined
-                }
-                busy={held}
-                editBusy={running !== null || resuming || waiting}
-                translation={
-                  <CaptionTranslation
-                    key={post.caption}
-                    ownerId={ownerId}
-                    batchId={batch.id}
-                    postId={post.id}
-                    caption={post.caption}
-                  />
-                }
-                takeAway={
-                  <TakeAway
-                    post={post}
-                    cta={cta ?? post.cta}
-                    image={
-                      making.has(imageKey(batch.id, post.id))
-                        ? undefined
-                        : images.get(imageKey(batch.id, post.id))
-                    }
-                    imagesOn={imagesOn}
-                    name={profile.name.value}
-                    createdAt={batch.createdAt}
-                    attempt={numbers.get(batch.id) ?? 1}
-                    n={index + 1}
-                  />
-                }
-              />
-            ))}
+            <div data-testid="attempt-grid" className={GRID}>
+              {batch.posts.map((post, index) => (
+                <SuggestionTile
+                  key={post.id}
+                  ref={(el) => {
+                    if (el) tiles.current.set(post.id, el);
+                    else tiles.current.delete(post.id);
+                  }}
+                  post={post}
+                  n={index + 1}
+                  count={batch.posts.length}
+                  image={imageOf(post, batch, needsImages).state}
+                  taken={takenLabel(post, imagesOn)}
+                  check={flagsFor(post, batch, profile, isNewest).some((flag) =>
+                    SHOWN_FLAGS.includes(flag.kind),
+                  )}
+                  onOpen={() => openSuggestion(batch.id, post.id)}
+                />
+              ))}
+            </div>
           </div>
         );
       })}
+      {openBatch && openPost && (
+        <SuggestionSheet
+          key={`${openBatch.id}-${openPost.id}`}
+          title={t('sheetTitle', {
+            attempt: numbers.get(openBatch.id) ?? 1,
+            n: openBatch.posts.indexOf(openPost) + 1,
+            count: openBatch.posts.length,
+          })}
+          onClose={closeSuggestion}
+          onCloseFocus={() => tiles.current.get(openPost.id)?.focus()}
+          actions={
+            <TakeAway
+              post={openPost}
+              cta={cta ?? openPost.cta}
+              image={
+                making.has(imageKey(openBatch.id, openPost.id))
+                  ? undefined
+                  : images.get(imageKey(openBatch.id, openPost.id))
+              }
+              imagesOn={imagesOn}
+              name={profile.name.value}
+              createdAt={openBatch.createdAt}
+              attempt={numbers.get(openBatch.id) ?? 1}
+              n={openBatch.posts.indexOf(openPost) + 1}
+              onTaken={(step) => taken(openBatch.id, openPost.id, step)}
+            />
+          }
+        >
+          <PostCard
+            post={openPost}
+            cta={cta ?? openPost.cta}
+            onSave={(edit) => saveEdit(openBatch.id, openPost.id, edit)}
+            image={imageOf(openPost, openBatch, needsImagesFor(openBatch))}
+            flags={flagsFor(openPost, openBatch, profile, openBatch === newest)}
+            onRewrite={
+              openBatch === newest && openPost.edited && isPostStale(openPost, openBatch, profile)
+                ? () => update(openBatch, [openPost.id])
+                : undefined
+            }
+            busy={held}
+            editBusy={running !== null || resuming || waiting}
+            translation={
+              <CaptionTranslation
+                key={openPost.caption}
+                ownerId={ownerId}
+                batchId={openBatch.id}
+                postId={openPost.id}
+                caption={openPost.caption}
+              />
+            }
+          />
+        </SuggestionSheet>
+      )}
     </section>
   );
 }
+
+const GRID = 'grid grid-cols-3 gap-x-2 gap-y-3';
 
 function AttemptHeading({ n, count }: { n: number; count: number }) {
   const t = useTranslations('posts');

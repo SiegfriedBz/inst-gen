@@ -10,6 +10,16 @@
 - 2026-10-27: `components/ui/tabs.tsx` is restyled as the bottom bar itself
   rather than overridden from `HomeTabBar`: the home is its only user, and
   overriding the old solid-jade active state class by class was fragile.
+- 2026-10-27: The sheet's close button reuses `posts.images.close` ("Close")
+  rather than adding the spec's `posts.close`: same words, one key.
+- 2026-10-27: A tile in the image-month-full state shows the month line
+  ("No new images until …"), as the spec's "before images are made" block.
+- 2026-10-27: "Show in Tiếng Việt / Bahasa Indonesia" stays under the caption,
+  where `CaptionTranslation` puts it, not on the row with "Edit the text".
+- 2026-10-27: The guard that closes the sheet when its suggestion leaves the
+  screen has no test: while the sheet is open nothing on the page can remove
+  that suggestion (the reset only runs from "Make 6 new suggestions", behind
+  the sheet). It stays for a run resumed in the background.
 
 ## RED
 
@@ -44,6 +54,13 @@ Task 5, the two steps report back (`posts-take-away`):
       Tests  4 failed | 6 passed (10)
 ```
 
+Tasks 6 and 7, the grid and the sheet (`posts-section`, then `posts-section-images`):
+
+```
+      Tests  18 failed | 23 passed (41)
+      Tests  6 failed | 8 passed (14)
+```
+
 ## GREEN
 
 Task 1 (`language-switch`, `i18n-messages`):
@@ -74,4 +91,10 @@ Task 5 (`posts-take-away`, `reviews-section`):
 
 ```
       Tests  27 passed (27)
+```
+
+Tasks 6 and 7 (`posts-section`, `posts-section-images`):
+
+```
+      Tests  55 passed (55)
 ```

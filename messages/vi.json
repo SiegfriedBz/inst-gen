@@ -262,7 +262,12 @@
         "model_timeout": "Bản dịch mất quá lâu. Hãy thử lại.",
         "model_failed": "Đã có lỗi khi dịch. Hãy thử lại."
       }
-    }
+    },
+    "saved": "Đã lưu và sao chép",
+    "copiedOnly": "Đã sao chép",
+    "checkText": "Kiểm tra phần chữ",
+    "tile": "Gợi ý {n}/{count}",
+    "sheetTitle": "Lần thử {attempt}, gợi ý {n}/{count}"
   },
   "reviews": {
     "intro": "Có đánh giá mới trên Google Maps? Hãy sao chép và dán vào đây. Chúng tôi viết 2 câu trả lời bằng ngôn ngữ của khách.",

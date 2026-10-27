@@ -66,17 +66,19 @@ describe('a suggestion card', () => {
   test("a card shows only what the spec keeps, in the spec's order", () => {
     const { container } = show(post({ edited: true }), { withImage: true });
     const text = container.textContent ?? '';
+    // The images and "Create new image" first, then the text, then its link
+    // (docs/specs/platform/friendlier-home).
     const order = [
+      'Create new image',
       'Warm oil, slow hands.',
       CTA,
       '#canggu',
       'Edit the text',
-      'Create new image',
-      'See the story image',
     ].map((part) => text.indexOf(part));
     expect(order.every((at) => at >= 0)).toBe(true);
     expect([...order].sort((a, b) => a - b)).toEqual(order);
     expect(container.querySelector('img')).toBeTruthy();
+    expect(screen.getByRole('button', { name: 'See the story image' })).toBeTruthy();
     for (const gone of ['Offer', 'Post 1', 'Edited', 'Image description', 'Check before posting']) {
       expect(text).not.toContain(gone);
     }

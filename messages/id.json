@@ -262,7 +262,12 @@
         "model_timeout": "Terjemahan terlalu lama. Coba lagi.",
         "model_failed": "Ada yang salah dengan terjemahan. Coba lagi."
       }
-    }
+    },
+    "saved": "Disimpan dan disalin",
+    "copiedOnly": "Disalin",
+    "checkText": "Periksa teksnya",
+    "tile": "Saran {n} dari {count}",
+    "sheetTitle": "Percobaan {attempt}, saran {n} dari {count}"
   },
   "reviews": {
     "intro": "Ada ulasan baru di Google Maps? Salin dan tempel di sini. Kami menulis 2 balasan dalam bahasa tamu Anda.",
