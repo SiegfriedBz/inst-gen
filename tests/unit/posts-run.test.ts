@@ -171,6 +171,27 @@ describe('streamRewrite', () => {
   });
 });
 
+describe('an old post', () => {
+  test('a rewrite keeps a post saved without a set-up', async () => {
+    const answer = {
+      posts: [{ id: 'a', caption: 'New caption a.', hashtags: ['canggu'], altText: 'Alt a' }],
+    };
+    const recording = { modelId: 'm', promptVersion: 'posts-1', partials: [answer], final: answer };
+    const model = replayTextModel(brand, { posts: recording });
+    const lines = await drain(
+      streamRewrite(
+        { profile: svargaProfile(), posts: [post({ id: 'a' })] },
+        deps(model),
+        new AbortController().signal,
+      ),
+    );
+    const final = lines.at(-1);
+    if (final?.type !== 'final') throw new Error('no final');
+    expect(final.result.posts[0].caption).toBe('New caption a.');
+    expect('setup' in final.result.posts[0]).toBe(false);
+  });
+});
+
 describe('the special offer', () => {
   const offer: Offer = {
     kind: 'discount',

@@ -1,26 +1,40 @@
-// What the image model reads: the post's image prompt, then a fixed style
-// line from decision 0004's bake-off, plus one rule so the 4:5 post crop
-// keeps the subject (docs/specs/posts/generate-images, "The model step").
-// Bump the version with every change.
+import { castLine, type Setup } from './setup';
 
-export const IMAGE_PROMPT_VERSION = 'images-4';
+// What the image model reads: code's cast line from the post's set-up
+// (docs/specs/posts/varied-images), the post's image prompt, then a fixed
+// style line from decision 0004's bake-off, plus one rule so the 4:5 post
+// crop keeps the subject (docs/specs/posts/generate-images, "The model
+// step"). Bump the version with every change.
 
-export const IMAGE_STYLE =
-  'Vertical photograph for an Instagram story, shot on a full-frame camera with a 50mm lens. ' +
-  'Low, soft, warm light: dim and intimate, gentle shadows, nothing bright, harsh or overexposed. ' +
-  'A quiet, relaxing mood that invites introspection, as if time has slowed down. ' +
-  'Realistic skin and textures, natural anatomy. No face is visible or recognisable. ' +
-  'The image contains no text, letters, labels, logos or watermarks; bottles and jars are plain. ' +
-  'Keep the subject in the middle of the frame, with calm space above and below it. ' +
-  // The maintainer's verdicts on the first images (journal, 2026-10-25),
-  // repeated from 2.2's image rules in case a post prompt drifts.
-  "The massage is under way in the frame, with the therapist's hands. " +
-  'A guest looks relaxed and alive, never lying still as if asleep. ' +
-  'Beds and linens are neatly made; nothing is messy. ' +
-  'The room is warm and homely, never clinical or hospital-like. ' +
-  'Curtains hang still; there is no wind. ' +
-  'Massage oil is golden oil in clear glass, never a small dark bottle. ' +
-  'Whatever the scene says, the light is dusk, lamps, lanterns or candles.';
+export const IMAGE_PROMPT_VERSION = 'images-5';
+
+// "local" when the cast line names the therapists' origin; a post saved
+// before set-ups has none, so the style line names it.
+export function imageStyle(who: string): string {
+  return (
+    'Vertical photograph for an Instagram story, shot on a full-frame camera with a 50mm lens. ' +
+    'Low, soft, warm light: dim and intimate, gentle shadows, nothing bright, harsh or overexposed. ' +
+    'A quiet, relaxing mood that invites introspection, as if time has slowed down. ' +
+    'Realistic skin and textures, natural anatomy. No face is visible or recognisable. ' +
+    'The image contains no text, letters, labels, logos or watermarks; bottles and jars are plain. ' +
+    'Keep the subject in the middle of the frame, with calm space above and below it. ' +
+    // The maintainer's verdicts on the first images (journal, 2026-10-25),
+    // repeated from 2.2's image rules in case a post prompt drifts.
+    "The massage is under way in the frame, with the therapist's hands. " +
+    'A guest looks relaxed and alive, never lying still as if asleep. ' +
+    'Beds and linens are neatly made; nothing is messy. ' +
+    'The room is warm and homely, never clinical or hospital-like. ' +
+    'Curtains hang still; there is no wind. ' +
+    'Massage oil is golden oil in clear glass, never a small dark bottle. ' +
+    'Whatever the scene says, the light is dusk, lamps, lanterns or candles. ' +
+    `Every therapist is a young ${who} woman with warm, golden-tan skin, as women from here have: ` +
+    'smooth, healthy and glowing, yet real, with natural texture; never pale or white, never dark. ' +
+    'Her hands and arms are perfectly formed and look healthy: five slender fingers on each hand, ' +
+    'clean short nails, natural joints and wrists, no extra or missing fingers, hands or arms.'
+  );
+}
+
+export const IMAGE_STYLE = imageStyle('local');
 
 // Decision 0004: never daylight, grey skies, mist, rain or damp. The post
 // plan's prompt says so too, but its model doesn't always listen (Sen's
@@ -64,9 +78,12 @@ export function cleanHint(raw: string | undefined): string | undefined {
   return hint || undefined;
 }
 
-// The hint comes before the style line, so the style's rules still come last
-// and win.
-export function imagePrompt(postPrompt: string, hint?: string): string {
+// The cast line comes first, so the image model reads the facts before the
+// model's prose; the hint comes before the style line, so the style's rules
+// still come last and win.
+export function imagePrompt(postPrompt: string, hint?: string, setup?: Setup): string {
+  const cast = setup ? `${castLine(setup)} ` : '';
   const asks = hint ? ` The owner asks: ${hint}.` : '';
-  return `${cleanLight(postPrompt.trim())}${asks} ${IMAGE_STYLE}`;
+  const style = imageStyle(setup ? 'local' : 'Southeast Asian');
+  return `${cast}${cleanLight(postPrompt.trim())}${asks} ${style}`;
 }
