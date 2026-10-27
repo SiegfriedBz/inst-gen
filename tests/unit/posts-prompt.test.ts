@@ -119,6 +119,9 @@ describe('the special offer', () => {
       '"90-minute"',
       '"until"',
       'never a price',
+      "Each offer post's first line states the offer",
+      '"<percentage> off our 90-minute <treatment>, until <last day>."',
+      '"Free <free treatment> with a 90-minute <treatment>, until <last day>."',
     ]) {
       expect(prompt).toContain(rule);
     }

@@ -22,7 +22,7 @@ Alt text: at most 125 characters, describing what the image will show, from its 
 // The special offer's rules, only when the owner set one
 // (docs/specs/posts/special-offer, "What the model gets").
 const OFFER_RULES = `
-A special offer is given. Exactly 2 offer posts carry the special offer: each leads on one of the offer's treatments, two different ones when the offer has two or more. Each states the offer as given: the same percentage, or the same free treatment; "${OFFER_LIMITS.minutes}-minute" with the treatment; "until" with the last day exactly as given. Never a bigger discount, never other terms, never a price, never "today only" or "this week". The other four posts never mention a discount, a free treatment or a deadline.`;
+A special offer is given. Exactly 2 offer posts carry the special offer: each leads on one of the offer's treatments, two different ones when the offer has two or more. Each states the offer as given: the same percentage, or the same free treatment; "${OFFER_LIMITS.minutes}-minute" with the treatment; "until" with the last day exactly as given. Never a bigger discount, never other terms, never a price, never "today only" or "this week". Each offer post's first line states the offer, in these words: "<percentage> off our ${OFFER_LIMITS.minutes}-minute <treatment>, until <last day>." or "Free <free treatment> with a ${OFFER_LIMITS.minutes}-minute <treatment>, until <last day>." The other four posts never mention a discount, a free treatment or a deadline.`;
 
 const REWRITE_OFFER_RULES = `
 

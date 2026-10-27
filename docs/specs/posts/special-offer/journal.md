@@ -27,6 +27,12 @@
   never mention it. Sen: both offer posts carry the badge and their topics
   name the offer, but their captions don't state it; code flags each with
   `offer: Sunday 1 November`. The other four are quiet.
+- 2026-10-27: asked and agreed: each offer post states the offer in its
+  first line, in fixed words ("<percentage> off our 90-minute <treatment>,
+  until <last day>."). `posts-3` changed in place, since it never shipped,
+  and both offer plans were recorded again (2 more Gemini requests). Sen
+  and Svarga now open both offer posts with the offer, as given; no `offer`
+  flag in either; the other four quiet.
 
 ## RED
 
@@ -188,6 +194,18 @@ Task 9, the eval's summary line, then the replay and everything:
 posts eval: 2/2 made · prompt posts-3 · model gemini-3.5-flash-lite
  Test Files  1 passed (1)
       Tests  9 passed (9)
+ Test Files  102 passed (102)
+      Tests  1266 passed (1266)
+```
+
+The first-line rule (`posts-prompt`), then the new recordings:
+
+```
+ Test Files  1 failed (1)
+      Tests  1 failed | 12 passed (13)
+ Test Files  2 passed (2)
+      Tests  25 passed (25)
+posts eval: 2/2 made · prompt posts-3 · model gemini-3.5-flash-lite
  Test Files  102 passed (102)
       Tests  1266 passed (1266)
 ```
