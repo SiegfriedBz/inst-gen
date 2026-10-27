@@ -74,7 +74,7 @@ describe('streamPlan', () => {
     expect(final).toMatchObject({
       type: 'final',
       result: {
-        promptVersion: 'posts-4',
+        promptVersion: 'posts-5',
         model: 'gemini-3.5-flash-lite',
         profileHash: profileHash(svargaProfile()),
       },
@@ -103,6 +103,35 @@ describe('streamPlan', () => {
     const model = replayTextModel(brand, { error: 'failed' });
     const lines = await drain(streamPlan(body(), deps(model), new AbortController().signal));
     expect(lines).toEqual([{ type: 'error', code: 'model_failed' }]);
+  });
+
+  test("a spa's plan and rewrite ask for flowers, another business's don't", async () => {
+    const systems: string[] = [];
+    const inner = replayTextModel(brand, { posts: planRecording() });
+    const model: TextModel = {
+      ...inner,
+      streamPostPlan(input, signal) {
+        systems.push(input.system);
+        return inner.streamPostPlan(input, signal);
+      },
+      streamPostRewrite(input, signal) {
+        systems.push(input.system);
+        return inner.streamPostRewrite(input, signal);
+      },
+    };
+    const bakery = { ...svargaProfile(), category: 'bakery' };
+    await drain(streamPlan(body(), deps(model), new AbortController().signal));
+    await drain(
+      streamPlan({ profile: bakery, recent: [] }, deps(model), new AbortController().signal),
+    );
+    await drain(
+      streamRewrite(
+        { profile: svargaProfile(), posts: [post({ id: 'a' })] },
+        deps(model),
+        new AbortController().signal,
+      ),
+    );
+    expect(systems.map((system) => system.includes('flowers only'))).toEqual([true, false, true]);
   });
 
   test("the model's input holds no WhatsApp number", async () => {

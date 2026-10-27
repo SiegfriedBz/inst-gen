@@ -10,6 +10,7 @@ import type {
   RewriteBody,
 } from './batch';
 import { carries, checkPlan, checkPost, checkRewrite, setupFlags } from './checks';
+import { isSpa } from './emoji';
 import { postsModelInput, profileHash } from './input';
 import type { PostsLog } from './log';
 import type { Offer } from './offer';
@@ -166,7 +167,7 @@ export function streamPlan(
       open: (s) =>
         deps.model.streamPostPlan(
           {
-            system: planPrompt(!!body.offer),
+            system: planPrompt(!!body.offer, isSpa(body.profile.category)),
             text: planUserText(input, body.recent, body.offer, setups),
           },
           s,
@@ -197,7 +198,7 @@ export function streamRewrite(
       open: (s) =>
         deps.model.streamPostRewrite(
           {
-            system: rewritePrompt(!!body.offer),
+            system: rewritePrompt(!!body.offer, isSpa(body.profile.category)),
             text: rewriteUserText(input, body.posts, body.offer),
           },
           s,

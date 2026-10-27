@@ -43,6 +43,20 @@ Task 3, `pnpm exec vitest run tests/unit/posts-checks.test.ts tests/unit/posts-r
       Tests  10 failed | 90 passed (100)
 ```
 
+Task 4, `pnpm exec vitest run tests/unit/posts-prompt.test.ts`:
+
+```
+ Test Files  1 failed (1)
+      Tests  6 failed | 15 passed (21)
+```
+
+The run test that the spa flag reaches the prompt was written after the
+code; it was checked to fail with the flag taken out of `run.ts`:
+
+```
+      Tests  1 failed | 21 skipped (22)
+```
+
 ## GREEN
 
 Task 1:
@@ -66,4 +80,13 @@ Task 3, then `pnpm test`:
       Tests  100 passed (100)
  Test Files  105 passed (105)
       Tests  1413 passed (1413)
+```
+
+Task 4, then `pnpm test`:
+
+```
+ Test Files  2 passed (2)
+      Tests  43 passed (43)
+ Test Files  105 passed (105)
+      Tests  1419 passed (1419)
 ```
