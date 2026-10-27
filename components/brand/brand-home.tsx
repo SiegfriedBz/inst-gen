@@ -340,12 +340,20 @@ export function BrandHome({
       {text}
     </p>
   );
-  // 1.2's two warnings, above the missing block on "Your business".
-  const warning = (text: string) => (
-    <p role="note" className="flex items-start gap-1.5 text-[15px] leading-normal text-error">
+  // 1.2's two warnings, above the missing block on "Your business": each is
+  // the button for its field, opening its section's form on it.
+  const warning = (text: string, section: SectionId, field: FieldKey) => (
+    <button
+      type="button"
+      onClick={() => {
+        setFocusField(field);
+        setEditing(section);
+      }}
+      className="press flex min-h-11 items-start gap-1.5 rounded-control py-2 text-left text-[15px] leading-normal text-error outline-none focus-visible:ring-2 focus-visible:ring-accent"
+    >
       <WarningCircle aria-hidden className="mt-1 shrink-0" size={16} />
       {text}
-    </p>
+    </button>
   );
 
   return (
@@ -419,8 +427,9 @@ export function BrandHome({
             </p>
             <div className="mt-4 flex flex-col gap-3">
               {saved.thin && message(t('panel.thin'), 'note')}
-              {!saved.contact.whatsapp?.value?.trim() && warning(t('panel.warnWhatsapp'))}
-              {!saved.location.town?.value?.trim() && warning(t('panel.warnTown'))}
+              {!saved.contact.whatsapp?.value?.trim() &&
+                warning(t('panel.warnWhatsapp'), 'contact', 'whatsapp')}
+              {!saved.location.town?.value?.trim() && warning(t('panel.warnTown'), 'place', 'town')}
               <MissingBlock
                 {...missingFields(saved, search)}
                 onAdd={({ section, field }) => {

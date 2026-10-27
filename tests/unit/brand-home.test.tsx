@@ -373,14 +373,27 @@ describe('Your business, missing first', () => {
     expect(screen.queryByText(/You can make posts without/)).toBeNull();
   });
 
-  test('the WhatsApp warning shows above, never as a button', async () => {
+  test('the WhatsApp warning opens How people reach you with WhatsApp focused', async () => {
     await business({ ...profile, contact: { ...profile.contact, whatsapp: null } });
-    expect(
-      within(screen.getByRole('tabpanel')).getByText(
-        'Add your WhatsApp number: every post ends with it.',
-      ),
-    ).toBeTruthy();
     expect(screen.queryByRole('button', { name: 'Add WhatsApp' })).toBeNull();
+    fireEvent.click(
+      screen.getByRole('button', { name: 'Add your WhatsApp number: every post ends with it.' }),
+    );
+    const dialog = await screen.findByRole('dialog');
+    expect(within(dialog).getByText('How people reach you')).toBeTruthy();
+    await waitFor(() =>
+      expect(document.activeElement).toBe(within(dialog).getByLabelText('WhatsApp')),
+    );
+  });
+
+  test('the town warning opens Where and when with Town focused', async () => {
+    await business({ ...profile, location: { ...profile.location, town: null } });
+    fireEvent.click(
+      screen.getByRole('button', { name: 'Add your town: posts and hashtags use it.' }),
+    );
+    const dialog = await screen.findByRole('dialog');
+    expect(within(dialog).getByText('Where and when')).toBeTruthy();
+    await waitFor(() => expect(document.activeElement).toBe(within(dialog).getByLabelText('Town')));
   });
 
   test('nothing missing, no block', async () => {

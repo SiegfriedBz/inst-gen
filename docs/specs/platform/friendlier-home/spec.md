@@ -2,7 +2,7 @@
 title: "Friendlier home"
 description: "The home screen gets a smaller header (the spa's name, a Guide icon, one language button), its three tabs move to a bar at the bottom, 'Create Posts' becomes a grid of six per attempt that opens one suggestion at a time and ticks the ones saved and copied, 'Your business' shows what's missing first, and 'Reviews' shows one reply at a time with a Short | Warmer switch; the passphrase shows as it is typed."
 status: approved
-approved: { by: siegfried.bozza@protonmail.com, at: 2026-10-27T11:36:03Z }
+approved: { by: siegfried.bozza@protonmail.com, at: "2026-10-27T13:16:24Z" }
 date: "2026-10-27"
 ---
 
@@ -234,7 +234,10 @@ Top to bottom:
    `brand.home.intro`.
 3. The brand notes as today: a failed re-read, "notKept", an invalid saved
    profile, the thin-site notice, and 1.2's two warnings (WhatsApp, town)
-   when those fields are empty.
+   when those fields are empty. Each warning is a button, at least 44px
+   tall, keeping its words, warning icon and error colour: tapping it opens
+   its section's form ("How people reach you", "Where and when") with that
+   field focused, as "+ Phone" does.
 4. **The missing block**, when at least one field is empty: an
    `accent-tint` box with "{count} things we couldn't find" (16px, weight
    500), "You can make posts without the ones below, but each one you add
@@ -247,8 +250,8 @@ Top to bottom:
    - The line says the buttons' fields aren't needed to make posts. It shows
      only when there is at least one button: WhatsApp, which posts do need,
      is never one of them.
-   - WhatsApp and town aren't buttons: their warnings already ask for them
-     (item 3), and they're counted.
+   - WhatsApp and town aren't in the box: their warnings above it are their
+     buttons (item 3), and they're counted.
    - Logo and photos are left out, and not counted: 1.2's forms can remove
      them but not add them (uploading is out of scope).
    - The fields the essence search fills ("What people search for", "Why
@@ -508,6 +511,11 @@ Scenario: What's missing first
 Scenario: Adding from the missing box
   When the owner taps "+ Phone"
   Then the "How people reach you" form opens with the phone field focused
+
+Scenario: The WhatsApp warning opens its field
+  Given the profile has no WhatsApp number
+  When the owner taps "Add your WhatsApp number: every post ends with it."
+  Then the "How people reach you" form opens with the WhatsApp field focused
 
 Scenario: A section opens in place
   Given "Your business" is open

@@ -248,3 +248,27 @@ Final review fixes, then `pnpm check` and every e2e test on port 3100:
   1 skipped
   60 passed (20.5s)
 ```
+
+The WhatsApp and town warnings as buttons (spec amended and approved again on
+2026-10-27). RED (`brand-home`):
+
+```
+     × the WhatsApp warning opens How people reach you with WhatsApp focused 215ms
+     × the town warning opens Where and when with Town focused 79ms
+      Tests  2 failed | 43 skipped (45)
+```
+
+GREEN:
+
+```
+      Tests  45 passed (45)
+```
+
+Then `pnpm check` and every e2e test on port 3100:
+
+```
+ Test Files  99 passed (99)
+      Tests  1180 passed (1180)
+  1 skipped
+  60 passed (21.8s)
+```

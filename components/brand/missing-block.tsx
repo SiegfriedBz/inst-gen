@@ -6,7 +6,7 @@ import type { MissingField } from '@/lib/brand/missing';
 // What Shopfront couldn't find, first on "Your business"
 // (docs/specs/platform/friendlier-home): how many, then one button per field
 // a form can fill, each opening its section's form on that field. WhatsApp
-// and town are counted but have their own warnings, not buttons.
+// and town are counted but not listed: their warnings above are their buttons.
 export function MissingBlock({
   listed,
   count,
