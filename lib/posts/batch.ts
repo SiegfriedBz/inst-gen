@@ -55,6 +55,11 @@ export const postSchema = z.object({
   edited: z.boolean().optional(),
   altToCheck: z.boolean().optional(),
   profileHash: z.string().optional(),
+  // When the owner saved its two images and copied its text, today
+  // (docs/specs/platform/friendlier-home, "Saved and copied"). Absent on
+  // posts saved before it.
+  savedAt: z.iso.datetime().optional(),
+  copiedAt: z.iso.datetime().optional(),
 });
 export type Post = z.infer<typeof postSchema>;
 

@@ -91,6 +91,22 @@ describe('the posts store', () => {
     expect((await loadBatches('svarga'))[0].posts[0].cta).toBe('Book on WhatsApp: +6289999999999');
   });
 
+  test('a new WhatsApp number clears copied on every post, keeps saved', async () => {
+    const NOW = '2026-10-27T10:00:00.000Z';
+    await saveBatch(
+      batch('a', '2026-10-25T09:00:00.000Z', {
+        posts: [
+          post({ id: 'a-0', savedAt: NOW, copiedAt: NOW }),
+          post({ id: 'a-1', copiedAt: NOW }),
+        ],
+      }),
+    );
+    const [updated] = await applyCta('svarga', 'Book on WhatsApp: +6289999999999');
+    expect(updated.posts.map((p) => p.copiedAt)).toEqual([undefined, undefined]);
+    expect(updated.posts[0].savedAt).toBe(NOW);
+    expect((await loadBatches('svarga'))[0].posts[0].copiedAt).toBeUndefined();
+  });
+
   test('a batch saved after a WhatsApp edit gets the new number from applyCta', async () => {
     await saveBatch(batch('a', '2026-10-25T09:00:00.000Z'));
     await applyCta('svarga', 'Book on WhatsApp: +6280000000000');

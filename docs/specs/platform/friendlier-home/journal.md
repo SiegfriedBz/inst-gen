@@ -31,6 +31,12 @@ Task 3, bottom bar (`brand-home`):
       Tests  3 failed | 34 passed (37)
 ```
 
+Task 4, saved and copied (`posts-taken`, `posts-edit`, `posts-store`):
+
+```
+      Tests  4 failed | … (posts-taken: Cannot find package '@/lib/posts/taken')
+```
+
 ## GREEN
 
 Task 1 (`language-switch`, `i18n-messages`):
@@ -49,4 +55,10 @@ Task 3 (`brand-home`):
 
 ```
       Tests  37 passed (37)
+```
+
+Task 4 (`posts-taken`, `posts-edit`, `posts-store`, `posts-batch`):
+
+```
+      Tests  41 passed (41)
 ```
