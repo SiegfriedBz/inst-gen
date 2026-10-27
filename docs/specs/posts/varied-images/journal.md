@@ -62,6 +62,15 @@
   "They look very good": pass. Seen but not failed: several therapists'
   faces show in profile (Svarga 1 to 4) or blurred (Sen 1), and a guest
   under a sheet is hard to tell man or woman (Sen 5, Svarga 5).
+- 2026-10-27: asked by the maintainer: never a full face. The style line
+  gains "Her face is turned away, lowered or out of frame." and "Every
+  guest's face is turned away, resting in the face cradle, covered or out
+  of frame: never a full face."; `images-6`. `pnpm eval:images svarga`
+  (6 images, about $0.30, asked first) remade Svarga's six set-ups. The
+  maintainer's verdict on the therapists' angles: very good on 2 of 6 with
+  `images-5` (3 and 6), on 4 of 6 with `images-6` (2, 3, 4 and 6); in 1
+  and 5 the therapists look down with part of the face showing. No face
+  looks at the camera; two guests show in profile, eyes closed (2 and 3).
 
 ## RED
 
