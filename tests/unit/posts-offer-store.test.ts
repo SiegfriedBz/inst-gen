@@ -1,7 +1,7 @@
 import 'fake-indexeddb/auto';
 import { IDBFactory } from 'fake-indexeddb';
 import { afterAll, beforeEach, expect, test } from 'vitest';
-import { resetStoreForTests } from '@/lib/brand/store';
+import { forgetBrand, resetStoreForTests } from '@/lib/brand/store';
 import { DEFAULT_ANSWERS } from '@/lib/posts/offer';
 import { clearOffer, loadOffer, type OfferRecord, saveOffer } from '@/lib/posts/offer-store';
 import { svargaProfile } from './helpers/brand';
@@ -68,5 +68,11 @@ test('a treatment that left the business leaves the offer and its answers', asyn
 test('clearOffer removes it', async () => {
   await saveOffer(record());
   await clearOffer('sen');
+  expect(await loadOffer('sen', profile(), local(25, 16))).toBeNull();
+});
+
+test('Forget deletes the offer too', async () => {
+  await saveOffer(record());
+  await forgetBrand('sen');
   expect(await loadOffer('sen', profile(), local(25, 16))).toBeNull();
 });

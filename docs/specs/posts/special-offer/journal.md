@@ -15,6 +15,12 @@
   the phone, loaded when Create Posts opens, could arrive after the owner
   tapped "Done" and wipe the new offer. A load now applies only if the offer
   didn't change since it began, and waits for the last write.
+- 2026-10-27: final review fixes. A rewrite sends the batch's offer without
+  the treatments that left the business; Forget deletes the offer; the offer
+  is looked at again whenever the page shows, so it goes at the reset even
+  with the app left open; a free extra's gift is never among its paid
+  treatments; the model's last day is written from fixed English names, not
+  the device's date formatting.
 
 ## RED
 
@@ -74,6 +80,19 @@ Task 8, the owner guide (`guide`):
 ```
  Test Files  1 failed (1)
       Tests  3 failed | 13 passed (16)
+```
+
+Final review fixes (`posts-offer`, `posts-offer-store`, `posts-client`,
+`posts-section`):
+
+```
+     × a free extra's gift is never one of its paid treatments
+     × englishDay doesn't depend on the device's date formatting
+   × Forget deletes the offer too
+     × a rewrite after a treatment left sends the batch's offer without it
+     × with the app left open across the reset, the line goes when the page shows again
+ Test Files  4 failed (4)
+      Tests  5 failed | 98 passed (103)
 ```
 
 ## GREEN
@@ -140,4 +159,11 @@ Task 10, end to end on port 3100 (`special-offer`, then every e2e test):
   2 passed (37.9s)
   1 skipped
   62 passed (48.1s)
+```
+
+Final review fixes:
+
+```
+ Test Files  4 passed (4)
+      Tests  103 passed (103)
 ```

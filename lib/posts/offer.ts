@@ -11,15 +11,29 @@ export const OFFER_LIMITS = { percentMin: 1, percentMax: 90, minutes: 90 } as co
 export type OfferLength = 'today' | '3days' | '1week';
 const LENGTH_DAYS: Record<OfferLength, number> = { today: 0, '3days': 2, '1week': 6 };
 
-// The day as the model reads it: "Tuesday 28 October".
+const WEEKDAYS = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+const MONTH_NAMES = [
+  'January',
+  'February',
+  'March',
+  'April',
+  'May',
+  'June',
+  'July',
+  'August',
+  'September',
+  'October',
+  'November',
+  'December',
+];
+
+// The day as the model reads it: "Tuesday 28 October". Written from fixed
+// names, not the device's date formatting, so the phone and the server
+// always agree on it.
 export function englishDay(until: string): string {
   const [y, m, d] = until.split('-').map(Number);
-  return new Intl.DateTimeFormat('en-GB', {
-    weekday: 'long',
-    day: 'numeric',
-    month: 'long',
-    timeZone: 'UTC',
-  }).format(new Date(Date.UTC(y, m - 1, d)));
+  const weekday = new Date(Date.UTC(y, m - 1, d)).getUTCDay();
+  return `${WEEKDAYS[weekday]} ${d} ${MONTH_NAMES[m - 1]}`;
 }
 
 const name = z.string().trim().min(1);
@@ -78,7 +92,13 @@ export function toOffer(answers: OfferAnswers, today: Date): Offer | null {
   const offer =
     answers.kind === 'discount'
       ? { kind: 'discount' as const, percent: answers.percent, ...base }
-      : { kind: 'freeExtra' as const, gift: answers.gift ?? '', ...base };
+      : {
+          kind: 'freeExtra' as const,
+          gift: answers.gift ?? '',
+          ...base,
+          // The gift is never one of the paid treatments.
+          treatments: answers.treatments.filter((t) => t !== answers.gift),
+        };
   const parsed = offerSchema.safeParse(offer);
   return parsed.success ? parsed.data : null;
 }
@@ -107,26 +127,11 @@ export function pruneOffer(offer: Offer, profile: Profile): Offer | null {
 
 export const PERCENT = /(\d{1,3})\s?%/g;
 
-const MONTHS = [
-  'january',
-  'february',
-  'march',
-  'april',
-  'may',
-  'june',
-  'july',
-  'august',
-  'september',
-  'october',
-  'november',
-  'december',
-];
-
 // The caption names the last day: its number with its month, in either
 // order, full or short ("28 Oct", "October 28th", "the 28th of October").
 export function mentionsDay(caption: string, until: string): boolean {
   const [, m, d] = until.split('-').map(Number);
-  const full = MONTHS[m - 1];
+  const full = MONTH_NAMES[m - 1].toLowerCase();
   const month = `(?:${full}|${full.slice(0, 3)})\\.?`;
   const day = `(?<!\\d)${d}(?:st|nd|rd|th)?(?!\\d)`;
   return new RegExp(`${day}\\s+(?:of\\s+)?${month}\\b|\\b${month}\\s+${day}`, 'i').test(caption);

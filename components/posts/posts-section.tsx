@@ -319,18 +319,29 @@ export function PostsSection({
   // started before a change never overrides it.
   const offerChanges = useRef(0);
   const offerWrite = useRef<Promise<void>>(Promise.resolve());
-
-  // A treatment renamed or removed leaves the offer; yesterday's offer is gone.
+  // A treatment renamed or removed leaves the offer; yesterday's offer is
+  // gone. Looked at again whenever the page shows, so an app left open across
+  // the reset drops it before the owner can make with it.
   useEffect(() => {
     let current = true;
-    const at = offerChanges.current;
-    void (async () => {
-      await offerWrite.current;
-      const record = await loadOffer(ownerId, profile, new Date());
-      if (current && offerChanges.current === at) setOffer(record);
-    })();
+    const look = () => {
+      const at = offerChanges.current;
+      void (async () => {
+        await offerWrite.current;
+        const record = await loadOffer(ownerId, profile, new Date());
+        if (current && offerChanges.current === at) setOffer(record);
+      })();
+    };
+    const onVisible = () => {
+      if (document.visibilityState === 'visible') look();
+    };
+    look();
+    document.addEventListener('visibilitychange', onVisible);
+    window.addEventListener('online', onVisible);
     return () => {
       current = false;
+      document.removeEventListener('visibilitychange', onVisible);
+      window.removeEventListener('online', onVisible);
     };
   }, [ownerId, profile]);
 

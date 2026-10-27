@@ -312,6 +312,29 @@ describe('the special offer in requests', () => {
     expect(bodyOf(0).offer).toEqual(offer);
   });
 
+  test("a rewrite after a treatment left sends the batch's offer without it", async () => {
+    const batch: PostBatch = {
+      ...result,
+      offer: { ...offer, treatments: ['Balinese massage', 'Old name'] },
+      id: 'b1',
+      ownerId: 'svarga',
+      createdAt: '2026-10-24T10:00:00.000Z',
+      profileReadAt: profile.readAt,
+    };
+    await saveBatch(batch);
+    fetchMock.mockResolvedValue(ndjson([{ type: 'final', result }]));
+    await startRewrite({ ownerId: 'svarga', profile, batch, postIds: ['post-1'] }, () => {}, deps)
+      .done;
+    expect(bodyOf(0).offer.treatments).toEqual(['Balinese massage']);
+    const gone = { ...batch, offer: { ...offer, treatments: ['Old name'] } };
+    await startRewrite(
+      { ownerId: 'svarga', profile, batch: gone, postIds: ['post-1'] },
+      () => {},
+      deps,
+    ).done;
+    expect('offer' in bodyOf(1)).toBe(false);
+  });
+
   test('a resumed plan sends the offer kept on the phone', async () => {
     await saveOffer({
       ownerId: 'svarga',

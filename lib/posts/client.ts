@@ -15,7 +15,7 @@ import {
 } from './batch';
 import { mergeRewrite } from './edit';
 import { ctaFor } from './input';
-import type { Offer } from './offer';
+import { type Offer, pruneOffer } from './offer';
 import { loadOffer } from './offer-store';
 import { applyCta, loadBatches, recentPosts, saveBatch } from './store';
 import { readPostsLines } from './stream';
@@ -123,13 +123,18 @@ function request(
             },
       );
       if (controller.signal.aborted) return;
+      // A treatment renamed or removed since leaves the batch's offer too.
+      const batchOffer =
+        input.step === 'rewrite' && input.batch.offer
+          ? pruneOffer(input.batch.offer, profile)
+          : null;
       const body =
         input.step === 'plan'
           ? { profile, recent: input.recent, ...(input.offer ? { offer: input.offer } : {}) }
           : {
               profile,
               posts: input.batch.posts.filter((p) => input.postIds.includes(p.id)),
-              ...(input.batch.offer ? { offer: input.batch.offer } : {}),
+              ...(batchOffer ? { offer: batchOffer } : {}),
             };
       const response = await deps.fetch(`/api/posts/${input.step}`, {
         method: 'POST',

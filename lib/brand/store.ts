@@ -204,7 +204,7 @@ export async function forgetBrand(ownerId: string): Promise<void> {
   const db = await openStore();
   if (!db) return;
   const tx = db.transaction(
-    ['brands', 'runs', 'posts', 'images', 'translations', 'reviews'],
+    ['brands', 'runs', 'posts', 'images', 'translations', 'reviews', 'offers'],
     'readwrite',
   );
   const runIds = await tx.objectStore('runs').index('ownerId').getAllKeys(ownerId);
@@ -214,6 +214,7 @@ export async function forgetBrand(ownerId: string): Promise<void> {
   await Promise.all([
     tx.objectStore('brands').delete(ownerId),
     tx.objectStore('reviews').delete(ownerId),
+    tx.objectStore('offers').delete(ownerId),
     ...runIds.map((id) => tx.objectStore('runs').delete(id)),
     ...batchIds.map((id) => tx.objectStore('posts').delete(id)),
     ...imageIds.map((id) => tx.objectStore('images').delete(id)),

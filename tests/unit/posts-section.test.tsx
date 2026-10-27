@@ -850,6 +850,16 @@ describe('the special offer on Create Posts', () => {
     expect(await addButton()).toBeTruthy();
   });
 
+  test('with the app left open across the reset, the line goes when the page shows again', async () => {
+    await renderSection();
+    await setOffer();
+    vi.setSystemTime(new Date('2026-10-26T12:00:00.000Z'));
+    act(() => {
+      document.dispatchEvent(new Event('visibilitychange'));
+    });
+    expect(await addButton()).toBeTruthy();
+  });
+
   test('the line follows the screen language', async () => {
     const view = await renderSection();
     await setOffer();

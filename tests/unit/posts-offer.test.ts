@@ -1,4 +1,4 @@
-import { describe, expect, test } from 'vitest';
+import { describe, expect, test, vi } from 'vitest';
 import {
   DEFAULT_ANSWERS,
   englishDay,
@@ -121,4 +121,32 @@ describe('mentionsDay', () => {
     '"%s" does not',
     (caption) => expect(mentionsDay(caption, '2026-10-27')).toBe(false),
   );
+});
+
+describe('final review fixes', () => {
+  test("a free extra's gift is never one of its paid treatments", () => {
+    const answers = {
+      ...DEFAULT_ANSWERS,
+      kind: 'freeExtra' as const,
+      gift: 'Foot Reflexology',
+      treatments: ['Foot Reflexology', 'Thai Massage'],
+    };
+    expect(toOffer(answers, new Date(2026, 9, 26))?.treatments).toEqual(['Thai Massage']);
+    expect(
+      toOffer({ ...answers, treatments: ['Foot Reflexology'] }, new Date(2026, 9, 26)),
+    ).toBeNull();
+  });
+
+  test("englishDay doesn't depend on the device's date formatting", () => {
+    const spy = vi
+      .spyOn(Intl, 'DateTimeFormat')
+      .mockImplementation(
+        () => ({ format: () => 'Tuesday, 27 October' }) as unknown as Intl.DateTimeFormat,
+      );
+    try {
+      expect(englishDay('2026-10-27')).toBe('Tuesday 27 October');
+    } finally {
+      spy.mockRestore();
+    }
+  });
 });
