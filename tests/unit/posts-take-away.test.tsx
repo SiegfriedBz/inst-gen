@@ -7,6 +7,9 @@ import type { SavedImage } from '@/lib/posts/image-store';
 import messages from '@/messages/en.json';
 import { post } from './helpers/posts';
 
+const IPHONE =
+  'Mozilla/5.0 (iPhone; CPU iPhone OS 18_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.0 Mobile/15E148 Safari/604.1';
+
 afterEach(() => {
   cleanup();
   vi.useRealTimers();
@@ -90,7 +93,7 @@ describe('taking a post away', () => {
 
   test('Save the 2 images shares both, named by attempt and suggestion', async () => {
     const share = vi.fn(async () => {});
-    vi.stubGlobal('navigator', { ...navigator, canShare: () => true, share });
+    vi.stubGlobal('navigator', { ...navigator, userAgent: IPHONE, canShare: () => true, share });
     show();
     await act(async () => {
       fireEvent.click(screen.getByRole('button', { name: 'Save the 2 images' }));
@@ -126,7 +129,12 @@ describe('taking a post away', () => {
 
   test('a finished share reports "saved"', async () => {
     const onTaken = vi.fn();
-    vi.stubGlobal('navigator', { ...navigator, canShare: () => true, share: async () => {} });
+    vi.stubGlobal('navigator', {
+      ...navigator,
+      userAgent: IPHONE,
+      canShare: () => true,
+      share: async () => {},
+    });
     show({ onTaken });
     await act(async () => {
       fireEvent.click(screen.getByRole('button', { name: 'Save the 2 images' }));
@@ -139,7 +147,7 @@ describe('taking a post away', () => {
     const share = async () => {
       throw new DOMException('cancelled', 'AbortError');
     };
-    vi.stubGlobal('navigator', { ...navigator, canShare: () => true, share });
+    vi.stubGlobal('navigator', { ...navigator, userAgent: IPHONE, canShare: () => true, share });
     show({ onTaken });
     await act(async () => {
       fireEvent.click(screen.getByRole('button', { name: 'Save the 2 images' }));

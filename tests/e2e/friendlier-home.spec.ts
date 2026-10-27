@@ -76,7 +76,8 @@ test('a suggestion saved and copied says so on its tile, after a reload too', as
   page,
   context,
 }) => {
-  // A share sheet that saves: each call counted.
+  // A share sheet, each call counted: on this Android phone it must stay shut
+  // (its sheet has no "save"); the two images download instead.
   await page.addInitScript(() => {
     const shared = window as unknown as { shared: number };
     shared.shared = 0;
@@ -98,10 +99,16 @@ test('a suggestion saved and copied says so on its tile, after a reload too', as
 
   const sheet = await openSuggestion(page, 2);
   await expect(sheet).toHaveAccessibleName('Attempt 1, suggestion 2 of 6');
+  const names: string[] = [];
+  page.on('download', (download) => names.push(download.suggestedFilename()));
   await sheet.getByRole('button', { name: 'Save the 2 images' }).click();
   await expect
-    .poll(() => page.evaluate(() => (window as unknown as { shared: number }).shared))
-    .toBe(1);
+    .poll(() => names)
+    .toEqual([
+      expect.stringMatching(/-attempt-1-suggestion-2-post\.jpg$/),
+      expect.stringMatching(/-attempt-1-suggestion-2-story\.jpg$/),
+    ]);
+  expect(await page.evaluate(() => (window as unknown as { shared: number }).shared)).toBe(0);
   await sheet.getByRole('button', { name: 'Copy the text' }).click();
   await expect(sheet.getByRole('button', { name: 'Copied' })).toBeVisible();
   expect(await page.evaluate(() => navigator.clipboard.readText())).toContain('Caption 2.');
