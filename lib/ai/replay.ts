@@ -2,7 +2,13 @@ import type { DeepPartial, ModelProfile } from '@/lib/brand/profile';
 import type { SearchModelAnswer } from '@/lib/brand/search/prompt';
 import type { ModelPostPlan, ModelRewrite } from '@/lib/posts/batch';
 import type { ModelReplies } from '@/lib/reviews/reply';
-import { ModelError, type ModelStream, type TextModel, toModelStream } from './text-model';
+import {
+  ModelError,
+  type ModelStream,
+  type TextModel,
+  type TranslatedPost,
+  toModelStream,
+} from './text-model';
 
 // Recorded model calls: unit tests replay them, and `pnpm eval:brand --record`
 // writes them.
@@ -38,7 +44,8 @@ export function replayTextModel(
     searchAnswer?: SearchModelAnswer;
     // A post plan or rewrite; without one, both posts calls fail.
     posts?: Recording;
-    // A caption's translation, its `final` the text; without one, it fails.
+    // A caption's translation, its `final` the text, or `{ caption, story }`
+    // for a caption with its story text; without one, it fails.
     translation?: Recording;
     // A review's two replies, its `final` the answer; without one, it fails.
     replies?: Recording;
@@ -70,6 +77,12 @@ export function replayTextModel(
       if (opts.hang) await waitForAbort(signal);
       if (!opts.translation) throw new ModelError('failed', 'no recorded translation');
       return opts.translation.final as string;
+    },
+    async translatePost(_input, _locale, signal) {
+      if (opts.error) throw new ModelError(opts.error, `replayed ${opts.error}`);
+      if (opts.hang) await waitForAbort(signal);
+      if (!opts.translation) throw new ModelError('failed', 'no recorded translation');
+      return opts.translation.final as TranslatedPost;
     },
     async writeReplies(_input, signal) {
       if (opts.error) throw new ModelError(opts.error, `replayed ${opts.error}`);
@@ -130,6 +143,11 @@ export function recordingTextModel(
     },
     async translateCaption(text, locale, signal) {
       const final = await inner.translateCaption(text, locale, signal);
+      onTranslation({ ...meta, partials: [], final });
+      return final;
+    },
+    async translatePost(input, locale, signal) {
+      const final = await inner.translatePost(input, locale, signal);
       onTranslation({ ...meta, partials: [], final });
       return final;
     },

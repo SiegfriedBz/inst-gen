@@ -271,6 +271,50 @@ describe('translateCaption', () => {
   });
 });
 
+describe('translatePost', () => {
+  afterEach(() => {
+    vi.unstubAllEnvs();
+    vi.unstubAllGlobals();
+  });
+
+  test('sends the caption and the story text in one flash-lite call', async () => {
+    vi.stubEnv('GOOGLE_GENERATIVE_AI_API_KEY', 'test-key-not-real');
+    const fetchMock = vi.fn(
+      async (_url: string | URL | Request, _init?: RequestInit) =>
+        new Response(JSON.stringify({ error: { code: 503, message: 'busy' } }), {
+          status: 503,
+          headers: { 'content-type': 'application/json' },
+        }),
+    );
+    vi.stubGlobal('fetch', fetchMock);
+    await expect(
+      geminiTextModel().translatePost(
+        { caption: 'Warm oil.', story: 'Long flight? 🌸' },
+        'vi',
+        new AbortController().signal,
+      ),
+    ).rejects.toMatchObject({ kind: 'busy' });
+    expect(fetchMock).toHaveBeenCalledTimes(1);
+    expect(String(fetchMock.mock.calls[0]?.[0])).toContain(TEXT_MODELS.light);
+    const body = String(fetchMock.mock.calls[0]?.[1]?.body);
+    expect(body).toContain('Warm oil.');
+    expect(body).toContain('Long flight?');
+    expect(body).toContain('Vietnamese');
+  });
+
+  test('a replayed model answers its recorded pair', async () => {
+    const pair = { caption: 'Dầu ấm.', story: 'Chuyến bay dài? 🌸' };
+    const model = replayTextModel(rec, { translation: { ...rec, partials: [], final: pair } });
+    expect(
+      await model.translatePost(
+        { caption: 'Warm oil.', story: 'Long flight? 🌸' },
+        'vi',
+        new AbortController().signal,
+      ),
+    ).toEqual(pair);
+  });
+});
+
 describe('the Google provider', () => {
   function sourceFiles(dir: string): string[] {
     return readdirSync(dir, { withFileTypes: true }).flatMap((entry) => {

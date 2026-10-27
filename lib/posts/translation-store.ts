@@ -13,6 +13,9 @@ export type SavedTranslation = {
   locale: TranslateLocale;
   captionHash: string;
   text: string;
+  // The story text's, asked with the caption (docs/specs/posts/story-text).
+  storyHash?: string;
+  story?: string;
   model: string;
   promptVersion: string;
   createdAt: string;
@@ -23,11 +26,15 @@ export async function loadTranslation(
   postId: string,
   locale: TranslateLocale,
   caption: string,
+  story?: string,
 ): Promise<SavedTranslation | null> {
   const db = await openStore();
   if (!db) return null;
   const saved = await db.get('translations', [batchId, postId, locale]);
-  return saved && saved.captionHash === hashText(caption) ? saved : null;
+  if (!saved || saved.captionHash !== hashText(caption)) return null;
+  // One kept before story texts, or for another story text, isn't enough.
+  if (story && (saved.storyHash !== hashText(story) || !saved.story)) return null;
+  return saved;
 }
 
 export async function saveTranslation(translation: SavedTranslation): Promise<void> {

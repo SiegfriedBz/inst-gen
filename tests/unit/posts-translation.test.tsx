@@ -77,3 +77,41 @@ describe("the owner's-language view", () => {
     ).toBeTruthy();
   });
 });
+
+// The story text's own link (docs/specs/posts/story-text).
+describe("the story text's translation", () => {
+  const STORY = 'Long flight? 🌸';
+
+  test('shows the story text in Tiếng Việt, asked with the caption', async () => {
+    fetchMock.mockResolvedValue(
+      Response.json({
+        text: 'Dầu ấm.',
+        story: 'Chuyến bay dài? 🌸',
+        model: 'gemini-3.5-flash-lite',
+        promptVersion: 'translate-2',
+      }),
+    );
+    render(
+      <NextIntlClientProvider locale="vi" messages={messagesFor('vi')} timeZone="UTC">
+        <CaptionTranslation
+          ownerId="sen"
+          batchId="b1"
+          postId="post-1"
+          caption={CAPTION}
+          story={STORY}
+          part="story"
+        />
+      </NextIntlClientProvider>,
+    );
+    fireEvent.click(
+      screen.getByRole('button', { name: vi_.show.replace('{language}', 'Tiếng Việt') }),
+    );
+    expect(await screen.findByText('Chuyến bay dài? 🌸')).toBeTruthy();
+    expect(screen.queryByText('Dầu ấm.')).toBeNull();
+    expect(JSON.parse((fetchMock.mock.calls[0][1] as RequestInit).body as string)).toEqual({
+      text: CAPTION,
+      story: STORY,
+      locale: 'vi',
+    });
+  });
+});

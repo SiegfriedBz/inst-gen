@@ -1,7 +1,8 @@
-// Translates the first recorded caption of fixtures with the real Flash-Lite,
-// and prints the caption and its translation for the developer to read back
-// for added or lost facts (docs/specs/posts/editor-download, "Tests and
-// evaluation"). Spends 1 Flash-Lite request per pair from the app's daily
+// Translates the first recorded caption of fixtures, with its story text when
+// it has one, with the real Flash-Lite, and prints them and their
+// translations for the developer to read back for added or lost facts
+// (docs/specs/posts/editor-download, "Tests and evaluation";
+// docs/specs/posts/story-text). Spends 1 Flash-Lite request per pair from the app's daily
 // pool. Never on a pilot day.
 //
 // Usage: pnpm eval:translate [slug:locale…] [--record]
@@ -36,10 +37,13 @@ for (const pair of pairs) {
     const posts = JSON.parse(readFileSync(join(dir, 'posts.json'), 'utf8')) as {
       recording: Recording;
     };
-    const caption = (posts.recording.final as ModelPostPlan).posts[0].caption;
+    const first = (posts.recording.final as ModelPostPlan).posts[0];
+    const caption = first.caption;
+    // With its story text, in the same call (docs/specs/posts/story-text).
+    const story = first.storyText?.trim() || undefined;
     let recording: Recording | null = null;
     const out = await runTranslate(
-      { text: caption, locale: locale as TranslateLocale },
+      { text: caption, ...(story ? { story } : {}), locale: locale as TranslateLocale },
       'eval',
       {
         model: recordingTextModel(
@@ -63,8 +67,12 @@ for (const pair of pairs) {
     translated++;
     console.log(`${pair.padEnd(16)}caption:     ${caption}`);
     console.log(`${''.padEnd(16)}translation: ${out.response.text}`);
+    if (story) {
+      console.log(`${''.padEnd(16)}story:       ${story}`);
+      console.log(`${''.padEnd(16)}translation: ${out.response.story}`);
+    }
     if (record && recording) {
-      const saved = { ...(recording as Recording), caption };
+      const saved = { ...(recording as Recording), caption, ...(story ? { story } : {}) };
       writeFileSync(join(dir, `translate-${locale}.json`), `${JSON.stringify(saved, null, 2)}\n`);
     }
   } catch (error) {

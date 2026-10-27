@@ -19,6 +19,17 @@
 - 2026-10-27: four older tests on Svarga (a spa) expected captions without
   a flower; they now expect the " 🌸" code adds, as the spec says.
 
+- 2026-10-27: Task 5 keeps `translateCaption` for a caption alone and adds
+  `translatePost` for a caption with its story text (structured output),
+  rather than replacing the first: fewer stubs to change, and a post saved
+  before story texts asks exactly as before.
+- 2026-10-27: the browser shares one request between the two "Show in…"
+  links while it is on its way; once settled, the phone's store answers.
+  Without IndexedDB, a second tap after the answer asks again.
+- 2026-10-27: until Task 9 re-records them, the Sen and Svarga translation
+  recordings are `translate-1`, so their replay test fails on its version
+  check; the rest of the suite passes.
+
 ## RED
 
 Task 1, `pnpm exec vitest run tests/unit/posts-emoji.test.ts` (no
@@ -57,6 +68,13 @@ code; it was checked to fail with the flag taken out of `run.ts`:
       Tests  1 failed | 21 skipped (22)
 ```
 
+Task 5, the six translation test files:
+
+```
+ Test Files  4 failed | 2 passed (6)
+      Tests  10 failed | 46 passed (56)
+```
+
 ## GREEN
 
 Task 1:
@@ -89,4 +107,13 @@ Task 4, then `pnpm test`:
       Tests  43 passed (43)
  Test Files  105 passed (105)
       Tests  1419 passed (1419)
+```
+
+Task 5, then `pnpm test` (the two recordings still `translate-1`):
+
+```
+ Test Files  5 passed (5)
+      Tests  54 passed (54)
+ Test Files  1 failed | 104 passed (105)
+      Tests  2 failed | 1427 passed (1429)
 ```

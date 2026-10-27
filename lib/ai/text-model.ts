@@ -1,6 +1,6 @@
 import { createGoogleGenerativeAI, type GoogleLanguageModelOptions } from '@ai-sdk/google';
 import { APICallError, generateText, Output, streamText } from 'ai';
-import type { z } from 'zod';
+import { z } from 'zod';
 import { type DeepPartial, type ModelProfile, modelProfileSchema } from '@/lib/brand/profile';
 import { type SearchModelAnswer, searchModelAnswerSchema } from '@/lib/brand/search/prompt';
 import {
@@ -10,7 +10,11 @@ import {
   modelRewriteSchema,
 } from '@/lib/posts/batch';
 import type { TranslateLocale } from '@/lib/posts/translate';
-import { translatePrompt } from '@/lib/posts/translate-prompt';
+import {
+  translatePostPrompt,
+  translatePostText,
+  translatePrompt,
+} from '@/lib/posts/translate-prompt';
 import { type ModelReplies, modelRepliesSchema } from '@/lib/reviews/reply';
 
 // The app's only door to a text model (decision 0003). Callers see the
@@ -41,6 +45,9 @@ export type SearchModelInput = { system: string; text: string };
 
 export type PostsModelCall = { system: string; text: string };
 
+export const translatedPostSchema = z.object({ caption: z.string(), story: z.string() });
+export type TranslatedPost = z.infer<typeof translatedPostSchema>;
+
 export interface TextModel {
   streamBrandProfile(input: BrandModelInput, signal: AbortSignal): ModelStream<ModelProfile>;
   // The essence search's one short call (docs/specs/brand/search-essence).
@@ -52,6 +59,13 @@ export interface TextModel {
   // A caption in the owner's language, plain text, not streamed
   // (docs/specs/posts/editor-download).
   translateCaption(text: string, locale: TranslateLocale, signal: AbortSignal): Promise<string>;
+  // A caption and its story text in one structured call
+  // (docs/specs/posts/story-text, "The owner's language").
+  translatePost(
+    input: TranslatedPost,
+    locale: TranslateLocale,
+    signal: AbortSignal,
+  ): Promise<TranslatedPost>;
   // Two replies to a review and their translations, in one structured call,
   // not streamed (docs/specs/reviews/reply-drafts).
   writeReplies(input: PostsModelCall, signal: AbortSignal): Promise<ModelReplies>;
@@ -241,6 +255,32 @@ export function geminiTextModel(
           maxRetries: 0,
         });
         return result.text.trim();
+      } catch (error) {
+        if (signal.aborted) throw signal.reason;
+        throw toModelError(error);
+      }
+    },
+
+    async translatePost(input, locale, signal) {
+      const apiKey = process.env.GOOGLE_GENERATIVE_AI_API_KEY;
+      if (!apiKey) throw new ModelError('failed', 'GOOGLE_GENERATIVE_AI_API_KEY is not set');
+      const google = createGoogleGenerativeAI({ apiKey });
+      try {
+        const result = await generateText({
+          model: google(TEXT_MODELS.light),
+          system: translatePostPrompt(locale),
+          prompt: translatePostText(input.caption, input.story),
+          output: Output.object({ schema: translatedPostSchema }),
+          providerOptions: {
+            google: {
+              thinkingConfig: { thinkingLevel: 'minimal' },
+            } satisfies GoogleLanguageModelOptions,
+          },
+          abortSignal: signal,
+          // A retry spends free quota; the caller reports model_busy instead.
+          maxRetries: 0,
+        });
+        return { caption: result.output.caption.trim(), story: result.output.story.trim() };
       } catch (error) {
         if (signal.aborted) throw signal.reason;
         throw toModelError(error);
