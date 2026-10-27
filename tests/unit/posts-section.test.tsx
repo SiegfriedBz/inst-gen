@@ -11,6 +11,7 @@ import { messagesFor } from '@/lib/i18n/messages';
 import type { Post, PostBatch } from '@/lib/posts/batch';
 import { loadImages, type SavedImage, saveImage } from '@/lib/posts/image-store';
 import { profileHash } from '@/lib/posts/input';
+import type { Offer } from '@/lib/posts/offer';
 import { loadBatches, saveBatch } from '@/lib/posts/store';
 import { encodePostsLine, type PostsLine } from '@/lib/posts/stream';
 import { newPostsRun } from '@/lib/runs/run-record';
@@ -766,5 +767,188 @@ describe('the grid and the sheet', () => {
     fireEvent.click(within(sheet).getByRole('button', { name: 'Close' }));
     await waitFor(() => expect(screen.queryByRole('dialog')).toBeNull());
     await waitFor(() => expect(document.activeElement).toBe(newest));
+  });
+});
+
+describe('the special offer on Create Posts', () => {
+  const addButton = () => screen.findByRole('button', { name: '+ Special offer' });
+  const planBody = () => {
+    const call = fetchMock.mock.calls.find((c) => String(c[0]).endsWith('/api/posts/plan'));
+    if (!call) throw new Error('no plan request');
+    return JSON.parse((call[1] as RequestInit).body as string);
+  };
+
+  async function setOffer() {
+    fireEvent.click(await addButton());
+    const sheet = await screen.findByRole('dialog', { name: 'Special offer' });
+    fireEvent.click(within(sheet).getByRole('checkbox', { name: 'Balinese massage' }));
+    fireEvent.click(within(sheet).getByRole('button', { name: 'Done' }));
+    return screen.findByRole('button', { name: /^10% off · 1 treatment · until Sun 25 Oct$/ });
+  }
+
+  test('no offer: the button sits above Make, and the plan has no offer', async () => {
+    await renderSection();
+    const add = await addButton();
+    const make = await readyButton();
+    expect(add.compareDocumentPosition(make) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
+    fetchMock.mockResolvedValue(ndjson([{ type: 'error', code: 'model_busy' }]));
+    fireEvent.click(make);
+    await waitFor(() => expect(fetchMock).toHaveBeenCalled());
+    expect('offer' in planBody()).toBe(false);
+  });
+
+  test('Done shows the line, keeps the offer and sends it with the next plan', async () => {
+    await renderSection();
+    await setOffer();
+    expect(screen.queryByRole('button', { name: '+ Special offer' })).toBeNull();
+    fetchMock.mockResolvedValue(ndjson([{ type: 'error', code: 'model_busy' }]));
+    fireEvent.click(await readyButton());
+    await waitFor(() => expect(fetchMock).toHaveBeenCalled());
+    expect(planBody().offer).toMatchObject({
+      kind: 'discount',
+      percent: 10,
+      treatments: ['Balinese massage'],
+      until: '2026-10-25',
+    });
+  });
+
+  test('tapping the line reopens the sheet on its answers', async () => {
+    await renderSection();
+    fireEvent.click(await setOffer());
+    const sheet = await screen.findByRole('dialog', { name: 'Special offer' });
+    expect(
+      (within(sheet).getByRole('checkbox', { name: 'Balinese massage' }) as HTMLInputElement)
+        .checked,
+    ).toBe(true);
+  });
+
+  test('removing it brings the button back and leaves the suggestions as they are', async () => {
+    await saveBatch(batch(sixPosts));
+    await renderSection();
+    await setOffer();
+    fireEvent.click(screen.getByRole('button', { name: 'Remove the offer' }));
+    expect(await addButton()).toBeTruthy();
+    expect(screen.getAllByRole('button', { name: /^Suggestion \d of 6/ })).toHaveLength(6);
+  });
+
+  test('the offer is kept on the phone for the day', async () => {
+    const view = await renderSection();
+    await setOffer();
+    view.unmount();
+    render(section(svargaProfile()));
+    expect(
+      await screen.findByRole('button', { name: /^10% off · 1 treatment · until Sun 25 Oct$/ }),
+    ).toBeTruthy();
+  });
+
+  test('an offer whose last day has passed is gone', async () => {
+    const view = await renderSection();
+    await setOffer();
+    view.unmount();
+    vi.setSystemTime(new Date('2026-10-26T12:00:00.000Z'));
+    render(section(svargaProfile()));
+    expect(await addButton()).toBeTruthy();
+  });
+
+  test('the daily reset leaves the offer, and the next attempt carries it', async () => {
+    // 05:00 UTC, before Google's reset at 07:00; then past it, the same day.
+    vi.setSystemTime(new Date('2026-10-25T05:00:00.000Z'));
+    await renderSection();
+    await setOffer();
+    vi.setSystemTime(new Date('2026-10-25T08:00:00.000Z'));
+    act(() => {
+      document.dispatchEvent(new Event('visibilitychange'));
+    });
+    fetchMock.mockResolvedValue(ndjson([{ type: 'error', code: 'model_busy' }]));
+    fireEvent.click(await readyButton());
+    await waitFor(() => expect(fetchMock).toHaveBeenCalled());
+    expect(planBody().offer).toMatchObject({ percent: 10, until: '2026-10-25' });
+    expect(
+      screen.getByRole('button', { name: /^10% off · 1 treatment · until Sun 25 Oct$/ }),
+    ).toBeTruthy();
+  });
+
+  test('with the app left open past midnight, the line goes when the page shows again', async () => {
+    await renderSection();
+    await setOffer();
+    vi.setSystemTime(new Date('2026-10-26T12:00:00.000Z'));
+    act(() => {
+      document.dispatchEvent(new Event('visibilitychange'));
+    });
+    expect(await addButton()).toBeTruthy();
+  });
+
+  test('the line follows the screen language', async () => {
+    const view = await renderSection();
+    await setOffer();
+    view.rerender(
+      <NextIntlClientProvider locale="vi" messages={messagesFor('vi')} timeZone="UTC">
+        <PostsSection
+          ownerId="svarga"
+          profile={svargaProfile()}
+          imagesOn={false}
+          active
+          searching={false}
+        />
+      </NextIntlClientProvider>,
+    );
+    expect(
+      await screen.findByRole('button', { name: /^Giảm 10% · 1 liệu trình · đến / }),
+    ).toBeTruthy();
+  });
+});
+
+describe('the offer badge', () => {
+  const discount: Offer = {
+    kind: 'discount',
+    percent: 10,
+    treatments: ['Balinese massage'],
+    until: '2026-10-27',
+    lastDay: 'Tuesday 27 October',
+  };
+  const withOffer = (offer: Offer): PostBatch => ({
+    ...batch(sixPosts.map((p, i) => (i < 2 ? { ...p, offer: true as const } : p))),
+    offer,
+  });
+
+  test('exactly the two tiles that carry it show "10% off"', async () => {
+    await saveBatch(withOffer(discount));
+    await renderSection();
+    await screen.findAllByRole('button', { name: /^Suggestion \d of 6/ });
+    expect(screen.getAllByText('10% off')).toHaveLength(2);
+    expect(screen.getByRole('button', { name: /^Suggestion 1 of 6, 10% off,/ })).toBeTruthy();
+    expect(screen.getByRole('button', { name: /^Suggestion 3 of 6, Caption/ })).toBeTruthy();
+  });
+
+  test('the opened post shows the badge and its last day above the caption', async () => {
+    await saveBatch(withOffer(discount));
+    await renderSection();
+    const sheet = await openTile(1);
+    const badge = within(sheet).getByText('10% off');
+    const until = within(sheet).getByText('until Tue 27 Oct');
+    const caption = within(sheet).getByText('Caption 1.');
+    expect(badge.compareDocumentPosition(caption) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
+    expect(until).toBeTruthy();
+  });
+
+  test('a free extra reads "Free extra"', async () => {
+    const free: Offer = {
+      kind: 'freeExtra',
+      gift: 'Balinese massage',
+      treatments: ['Balinese massage'],
+      until: '2026-10-27',
+      lastDay: 'Tuesday 27 October',
+    };
+    await saveBatch(withOffer(free));
+    await renderSection();
+    await screen.findAllByRole('button', { name: /^Suggestion \d of 6/ });
+    expect(screen.getAllByText('Free extra')).toHaveLength(2);
+  });
+
+  test('a batch without an offer has no badge', async () => {
+    await saveBatch(batch(sixPosts));
+    await renderSection();
+    await screen.findAllByRole('button', { name: /^Suggestion \d of 6/ });
+    expect(screen.queryByText('10% off')).toBeNull();
   });
 });

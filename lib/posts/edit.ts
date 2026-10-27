@@ -1,7 +1,8 @@
 import type { Profile } from '@/lib/brand/profile';
 import type { Flag, PlanResult, Post, PostBatch } from './batch';
-import { cleanHashtags, findFlags } from './checks';
+import { cleanHashtags, findFlags, type OfferContext } from './checks';
 import { profileHash } from './input';
+import type { Offer } from './offer';
 
 // The owner's edits to a post, and which posts a change to the business
 // details leaves out of date (docs/specs/posts/editor-download, "Editing a
@@ -33,7 +34,7 @@ export function charsOver(edit: PostEdit, cta: string): number {
 
 // The owner's words, kept whole: no cut at 700 characters. Saving stamps
 // today's profile, since the owner has just read the post against it.
-export function applyEdit(post: Post, edit: PostEdit, profile: Profile): Post {
+export function applyEdit(post: Post, edit: PostEdit, profile: Profile, offer?: Offer): Post {
   const caption = edit.caption.trim();
   // The text copied before is no longer the text on screen.
   const { copiedAt: _copied, ...rest } = post;
@@ -42,11 +43,16 @@ export function applyEdit(post: Post, edit: PostEdit, profile: Profile): Post {
     caption,
     hashtags: parseHashtags(edit.hashtags),
     altText: edit.altText.trim(),
-    unchecked: findFlags(caption, profile),
+    unchecked: findFlags(caption, profile, offerContext(post, offer)),
     edited: true,
     altToCheck: false,
     profileHash: profileHash(profile),
   };
+}
+
+// A post is checked against its batch's offer, if the batch has one.
+function offerContext(post: Post, offer?: Offer): OfferContext | undefined {
+  return offer ? { offer, carries: post.offer === true } : undefined;
 }
 
 export function postHash(post: Post, batch: PostBatch): string {
@@ -68,7 +74,7 @@ export function staleUnedited(batch: PostBatch, profile: Profile): Post[] {
 // (docs/specs/platform/home-tabs).
 export function flagsFor(post: Post, batch: PostBatch, profile: Profile, newest = true): Flag[] {
   return (post.edited || !newest) && isPostStale(post, batch, profile)
-    ? findFlags(post.caption, profile)
+    ? findFlags(post.caption, profile, offerContext(post, batch.offer))
     : post.unchecked;
 }
 

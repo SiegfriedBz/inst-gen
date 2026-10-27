@@ -211,7 +211,8 @@
     "flags": {
       "price": "This price isn't on your website: {text}. Check it before posting.",
       "duration": "This duration isn't on your website: {text}. Check it before posting.",
-      "banned": "Instagram may not allow \"{text}\". Better to change it."
+      "banned": "Instagram may not allow \"{text}\". Better to change it.",
+      "offer": "Check the offer in this text before posting: {text}."
     },
     "stale": "Your business details changed since these posts were made.",
     "update": "Update captions",
@@ -274,7 +275,35 @@
     "copiedOnly": "Copied",
     "checkText": "Check the text",
     "tile": "Suggestion {n} of {count}",
-    "sheetTitle": "Attempt {attempt}, suggestion {n} of {count}"
+    "sheetTitle": "Attempt {attempt}, suggestion {n} of {count}",
+    "offer": {
+      "add": "+ Special offer",
+      "title": "Special offer",
+      "kind": "What kind of offer?",
+      "discount": "A discount",
+      "freeExtra": "A free extra",
+      "other": "Other %",
+      "gift": "Free {gift} with a 90-minute session",
+      "giftPick": "Pick the free treatment",
+      "treatments": "On which treatments?",
+      "rule": "The offer is on {minutes}-minute sessions or longer.",
+      "until": "Until when?",
+      "today": "Today",
+      "days3": "3 days",
+      "week1": "1 week",
+      "untilDate": "until {date}",
+      "date": "{weekday} {day} {month}",
+      "done": "Done",
+      "noTreatments": "Add your treatments on Your business first.",
+      "addTreatments": "Add treatments",
+      "line": "{what} · {count} · until {date}",
+      "count": "{n, plural, one {# treatment} other {# treatments}}",
+      "discountShort": "{percent}% off",
+      "freeShort": "Free {gift}",
+      "remove": "Remove the offer",
+      "badgeDiscount": "{percent}% off",
+      "badgeFree": "Free extra"
+    }
   },
   "reviews": {
     "intro": "Got a new review on Google Maps? Copy it and paste it here. We write 2 replies in your guest's language.",
@@ -339,9 +368,9 @@
     },
     "business": {
       "title": "Your business",
-      "read": "Type your website and tap <b>{button}</b>. Keep the page open while Shopfront reads it; the screen stays on by itself.",
+      "read": "Type your website and tap <b>{button}</b>. Keep the page open for about a minute while Shopfront reads it; the screen stays on by itself.",
       "check": "Check what it found. Tap a section to see all of it, and <b>{button}</b> to fix or add anything.",
-      "missing": "At the top, Shopfront lists what it couldn't find: tap one to add it. Add your WhatsApp number and your town first: every post ends with your WhatsApp, and the hashtags use your town.",
+      "missing": "At the top, Shopfront lists what it couldn't find: tap one to add it. You can make posts without them, but each one you add makes your posts more exact. If your WhatsApp number or your town is missing, a red line says so: tap it to add it. Every post ends with your WhatsApp, and the hashtags use your town.",
       "english": "Write your changes in English if you can: the posts are written in English.",
       "reread": "<b>{button}</b> replaces your changes with what your website says now; Shopfront asks first. To use another website, tap <b>{forget}</b> and start again."
     },
@@ -349,11 +378,18 @@
       "title": "Making your posts",
       "make": "In <b>{tab}</b>, tap <b>{button}</b>. You get 6 suggestions, each with a post image, a story image and the text for the post.",
       "open": "Tap a suggestion to open it. The ones you've saved and copied show <b>{saved}</b>.",
+      "check": "A suggestion marked <b>{check}</b> has something to look at before you post: open it to see what, like a price that isn't on your website, or an offer that doesn't match the one you set.",
       "wait": "Keep the page open for about a minute while they are made.",
       "leave": "If you leave, Shopfront carries on where it stopped when you come back, but the part it was making is made again and uses some of today's allowance. So start when you have a minute to wait, not just before a call.",
       "more": "Want other ideas? Tap <b>{button}</b>: the new ones go on top, the earlier ones stay below.",
       "edit": "Tap <b>{button}</b> to change a suggestion's words, and <b>{image}</b> for a different picture; you can add a short hint.",
-      "update": "If you change your business, the captions are updated to match. Text you edited yourself is left alone."
+      "update": "If you change your business, the captions are updated to match. Text you edited yourself is left alone.",
+      "offer": "To put today's offer in your posts, tap <b>{button}</b> before you make them:",
+      "offerKind": "Pick a discount (10%, 15%, 20% or your own) or a free extra: a treatment you give with a 90-minute session.",
+      "offerTreatments": "Tick the treatments it's on. An offer is always on sessions of 90 minutes or longer.",
+      "offerUntil": "Pick until when: today, 3 days or 1 week. It ends at midnight on its last day, on your phone's clock.",
+      "offerDone": "Tap <b>{done}</b>. Two of your next 6 suggestions tell the offer and are marked <b>{badge}</b> (or <b>{free}</b>); the other four don't.",
+      "offerLine": "The offer stays above <b>{button}</b> until its last day ends. Tap it to change it, or ✕ to remove it. Suggestions already made keep what they say."
     },
     "instagram": {
       "title": "Posting on Instagram",
@@ -377,13 +413,13 @@
       "free": "Shopfront is free, so each day has a limit.",
       "limits": "Each day you have {reads}, {attempts} of 6 suggestions, {newImages} and {replies}, plus caption updates and translations.",
       "bar": "The line at the top of each tab shows what's left today and the time it all comes back.",
-      "reset": "At that time, the limits come back and the day's suggestions and review replies leave the screen. Save what you want to keep before then.",
+      "reset": "At that time, the limits come back and the day's suggestions and review replies leave the screen. Save what you want to keep before then. Your special offer stays: it lasts until its own last day ends.",
       "time": "The time on the bar is in your phone's own time: trust it rather than a fixed hour.",
       "month": "New images also have a monthly budget for the whole app. If it runs out, Shopfront says when images are back."
     },
     "languages": {
       "title": "Languages",
-      "switch": "The <b>EN</b> button at the top right changes the language of the screens.",
+      "switch": "The <b>{lang}</b> button at the top right changes the language of the screens.",
       "captions": "Posts are written in English, and review replies in your guest's language. Showing them in your language is for reading, not for posting."
     },
     "trouble": {

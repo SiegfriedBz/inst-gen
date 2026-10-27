@@ -2,6 +2,7 @@ import { describe, expect, it } from 'vitest';
 import { BANNED_WORDS } from '@/lib/posts/banned';
 import { POST_TYPES, SCENES } from '@/lib/posts/batch';
 import { postsModelInput } from '@/lib/posts/input';
+import type { Offer } from '@/lib/posts/offer';
 import {
   POSTS_PROMPT_VERSION,
   planPrompt,
@@ -54,7 +55,7 @@ describe('planPrompt', () => {
   });
 
   it('has a version', () => {
-    expect(POSTS_PROMPT_VERSION).toBe('posts-2');
+    expect(POSTS_PROMPT_VERSION).toBe('posts-3');
   });
 });
 
@@ -86,5 +87,67 @@ describe('rewritePrompt', () => {
     const text = rewriteUserText(postsModelInput(svargaProfile()), [post({ id: 'abc' })]);
     expect(text).toContain('"id": "abc"');
     expect(text).not.toContain('Book on WhatsApp');
+  });
+});
+
+describe('the special offer', () => {
+  const offer: Offer = {
+    kind: 'discount',
+    percent: 10,
+    treatments: ['Balinese massage'],
+    until: '2026-10-27',
+    lastDay: 'Tuesday 27 October',
+  };
+  const free: Offer = {
+    kind: 'freeExtra',
+    gift: 'Foot Reflexology',
+    treatments: ['Balinese massage'],
+    until: '2026-10-27',
+    lastDay: 'Tuesday 27 October',
+  };
+
+  it('is not in the prompts without an offer', () => {
+    expect(planPrompt()).not.toContain('special offer');
+    expect(rewritePrompt()).not.toContain('special offer');
+  });
+
+  it("says the plan's offer rules with an offer", () => {
+    const prompt = planPrompt(true);
+    for (const rule of [
+      'Exactly 2 offer posts carry the special offer',
+      'never mention a discount, a free treatment or a deadline',
+      '"90-minute"',
+      '"until"',
+      'never a price',
+      "Each offer post's first line states the offer",
+      '"<percentage> off our 90-minute <treatment>, until <last day>."',
+      '"Free <free treatment> with a 90-minute <treatment>, until <last day>."',
+    ]) {
+      expect(prompt).toContain(rule);
+    }
+  });
+
+  it('ends the plan text with the offer', () => {
+    const text = planUserText(postsModelInput(svargaProfile()), [], offer);
+    expect(
+      text.endsWith(
+        '### Special offer\n- 10% off\n- On: Balinese massage\n- Sessions: 90 minutes or longer\n- Until: Tuesday 27 October',
+      ),
+    ).toBe(true);
+    expect(planUserText(postsModelInput(svargaProfile()), [], free)).toContain(
+      '- Free: Foot Reflexology, with a paid session',
+    );
+    expect(planUserText(postsModelInput(svargaProfile()), [])).not.toContain('Special offer');
+  });
+
+  it('keeps the offer in the posts that carry it on a rewrite', () => {
+    expect(rewritePrompt(true)).toContain('A post marked offer: true keeps the offer');
+    const text = rewriteUserText(
+      postsModelInput(svargaProfile()),
+      [post({ id: 'a', offer: true })],
+      offer,
+    );
+    expect(text).toContain('"offer": true');
+    expect(text).toContain('### Special offer');
   });
 });

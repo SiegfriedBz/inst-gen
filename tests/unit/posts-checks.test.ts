@@ -1,6 +1,7 @@
 import { describe, expect, it } from 'vitest';
-import type { ModelPost } from '@/lib/posts/batch';
+import type { Flag, ModelPost } from '@/lib/posts/batch';
 import {
+  carries,
   checkPlan,
   checkPost,
   checkRewrite,
@@ -8,6 +9,7 @@ import {
   cutCaption,
   findFlags,
 } from '@/lib/posts/checks';
+import type { Offer } from '@/lib/posts/offer';
 import { svargaProfile } from './helpers/brand';
 import { post } from './helpers/posts';
 
@@ -244,5 +246,107 @@ describe('checkRewrite', () => {
     const { posts, dropped } = checkRewrite(answer, originals, svargaProfile());
     expect(posts[1]).toEqual(originals[1]);
     expect(dropped).toContainEqual({ field: 'posts', reason: 'no rewrite for b' });
+  });
+});
+
+describe('the special offer', () => {
+  const offer: Offer = {
+    kind: 'discount',
+    percent: 10,
+    treatments: ['Thai Massage'],
+    until: '2026-10-27',
+    lastDay: 'Tuesday 27 October',
+  };
+  const profile = () => profileWithPrice('IDR 450,000', '60 min');
+  const offerFlags = (flags: Flag[]) => flags.filter((f) => f.kind === 'offer').map((f) => f.text);
+
+  it('without an offer, percentages are not looked at', () => {
+    expect(offerFlags(findFlags('15% off this week', profile()))).toEqual([]);
+  });
+
+  it('the offer post states its own offer: nothing flagged', () => {
+    const caption = '10% off a 90-minute Thai Massage, until 27 Oct. Our 90 minutes of calm.';
+    expect(findFlags(caption, profile(), { offer, carries: true })).toEqual([]);
+  });
+
+  it('another percentage is flagged', () => {
+    expect(
+      offerFlags(findFlags('15% off until 27 Oct', profile(), { offer, carries: true })),
+    ).toEqual(['15%']);
+  });
+
+  it('the offer in a post that does not carry it is flagged', () => {
+    expect(offerFlags(findFlags('Now 10% off!', profile(), { offer, carries: false }))).toEqual([
+      '10%',
+    ]);
+  });
+
+  it('100%, 24/7 and ranges are never flagged', () => {
+    const caption = '100% natural oils, open 24/7, 9-10pm. 10% off until 27 Oct.';
+    expect(offerFlags(findFlags(caption, profile(), { offer, carries: true }))).toEqual([]);
+  });
+
+  it('an offer post without the last day is flagged', () => {
+    expect(
+      offerFlags(
+        findFlags('10% off a 90-minute Thai Massage', profile(), { offer, carries: true }),
+      ),
+    ).toEqual(['Tuesday 27 October']);
+  });
+
+  it('90 minutes is a known duration only in a post that carries the offer', () => {
+    const kinds = (c: boolean) =>
+      findFlags('A 90 minutes ritual, until 27 Oct', profile(), { offer, carries: c }).map(
+        (f) => f.kind,
+      );
+    expect(kinds(true)).not.toContain('duration');
+    expect(kinds(false)).toContain('duration');
+  });
+
+  it('a free extra names its gift as a known fact; any percentage is flagged', () => {
+    const free: Offer = {
+      kind: 'freeExtra',
+      gift: 'Foot Reflexology',
+      treatments: ['Thai Massage'],
+      until: offer.until,
+      lastDay: offer.lastDay,
+    };
+    const caption = 'Free Foot Reflexology with a 90-minute Thai Massage, until 27 Oct';
+    expect(findFlags(caption, profile(), { offer: free, carries: true })).toEqual([]);
+    expect(
+      offerFlags(findFlags(`${caption}. 10% off`, profile(), { offer: free, carries: true })),
+    ).toEqual(['10%']);
+  });
+
+  it('only the first two offer posts carry it', () => {
+    expect([
+      carries('offer', 0),
+      carries('offer', 1),
+      carries('offer', 2),
+      carries('tip', 0),
+    ]).toEqual([true, true, false, false]);
+  });
+
+  it('checkPost marks a carrying post and checks it with the offer', () => {
+    const { post: checked } = checkPost(
+      raw({ type: 'offer', caption: '15% off a 90-minute massage, until 27 Oct.' }),
+      profile(),
+      'post-1',
+      { offer, carries: true },
+    );
+    expect(checked?.offer).toBe(true);
+    expect(offerFlags(checked?.unchecked ?? [])).toEqual(['15%']);
+    const { post: plain } = checkPost(raw(), profile(), 'post-2');
+    expect(plain?.offer).toBeUndefined();
+  });
+
+  it('checkRewrite keeps the badge and checks with the offer', () => {
+    const original = post({ id: 'a', offer: true });
+    const answer = {
+      posts: [{ id: 'a', caption: '15% off, until 27 Oct.', hashtags: ['canggu'], altText: 'x' }],
+    };
+    const { posts } = checkRewrite(answer, [original], profile(), offer);
+    expect(posts[0].offer).toBe(true);
+    expect(offerFlags(posts[0].unchecked)).toEqual(['15%']);
   });
 });

@@ -330,6 +330,17 @@ describe('Your business, missing first', () => {
     expect(screen.getByRole('button', { name: 'Forget this business' })).toBeTruthy();
   });
 
+  test('with no treatments, the offer sheet opens Your business on them', async () => {
+    await saveBrand('sen', { ...profile, offerings: [] });
+    renderHome();
+    await openTab('Create Posts');
+    fireEvent.click(await screen.findByRole('button', { name: '+ Special offer' }));
+    const sheet = await screen.findByRole('dialog', { name: 'Special offer' });
+    fireEvent.click(within(sheet).getByRole('button', { name: 'Add treatments' }));
+    await waitFor(() => expect(screen.getByRole('dialog', { name: /Your business/ })).toBeTruthy());
+    expect(screen.queryByRole('dialog', { name: 'Special offer' })).toBeNull();
+  });
+
   test('"+ Phone" opens How people reach you with Phone focused', async () => {
     await business();
     fireEvent.click(screen.getByRole('button', { name: 'Add Phone' }));
