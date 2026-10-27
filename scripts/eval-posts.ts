@@ -9,6 +9,10 @@
 // its first two treatments) and --record saves it as posts-offer.json
 // (docs/specs/posts/special-offer, "Checked with the real model").
 //
+// The image set-ups are dealt with a seed from the slug ("<slug>:offer" with
+// --offer), so a replay of the recording deals the same ones
+// (docs/specs/posts/varied-images).
+//
 // Usage: pnpm eval:posts [slug…] [--record] [--offer] [--model=<id>]
 import { existsSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
@@ -23,6 +27,7 @@ import {
 import type { PlanResult } from '@/lib/posts/batch';
 import { POSTS_PROMPT_VERSION } from '@/lib/posts/prompt';
 import { streamPlan } from '@/lib/posts/run';
+import { seededRandom, setupLine } from '@/lib/posts/setup';
 
 if (existsSync('.env.local')) process.loadEnvFile('.env.local');
 
@@ -44,6 +49,7 @@ function print(result: PlanResult): void {
     console.log(`     ${post.cta}`);
     console.log(`     ${post.hashtags.map((t) => `#${t}`).join(' ')}`);
     console.log(`     alt: ${post.altText}`);
+    if (post.setup) console.log(`     set-up: ${setupLine(post.setup)}`);
     console.log(`     image: ${post.imagePrompt}`);
     for (const flag of post.unchecked) console.log(`     ⚠ ${flag.kind}: ${flag.text}`);
   }
@@ -71,7 +77,7 @@ for (const slug of slugs) {
     if (offer) console.log(`\n${slug} · offer: ${JSON.stringify(offer)}`);
     for await (const line of streamPlan(
       { profile, recent: [], offer },
-      { model, modelId },
+      { model, modelId, random: seededRandom(withOffer ? `${slug}:offer` : slug) },
       new AbortController().signal,
     )) {
       if (line.type === 'error') throw new Error(line.code);

@@ -245,6 +245,30 @@ describe('resuming images', () => {
     expect(bodyOf(fetchMock.mock.calls[1]).hint).toBe('more green');
   });
 
+  test("the post's set-up is in the body, and none for an old post", async () => {
+    const setup = {
+      treatment: 'Foot Reflexology',
+      look: 'foot',
+      guests: 'woman',
+      therapists: 1,
+      bodyPart: 'feet',
+      scene: 'detail',
+      locals: 'Vietnamese',
+    } as const;
+    const withSetup: PostBatch = {
+      ...batch,
+      posts: batch.posts.map((p, i) => (i === 0 ? { ...p, setup } : p)),
+    };
+    await startImages(
+      { ownerId: 'sen', batch: withSetup, postIds: ['post-1', 'post-2'] },
+      () => {},
+      deps,
+    ).done;
+    const bodies = fetchMock.mock.calls.map(bodyOf);
+    expect(bodies.find((b) => b.postId === 'post-1').setup).toEqual(setup);
+    expect('setup' in bodies.find((b) => b.postId === 'post-2')).toBe(false);
+  });
+
   test('no hint, no hint in the body', async () => {
     await make(['post-1']);
     expect('hint' in bodyOf(fetchMock.mock.calls[0])).toBe(false);

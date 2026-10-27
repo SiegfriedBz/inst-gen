@@ -120,6 +120,7 @@ function request(
           scene: post.scene,
           first,
           ...(run.hint ? { hint: run.hint } : {}),
+          ...(post.setup ? { setup: post.setup } : {}),
         }),
         signal: controller.signal,
       });

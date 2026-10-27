@@ -1,4 +1,5 @@
 import { noteUsage } from '@/lib/usage/client';
+import { countryOf } from './country';
 import { normaliseText } from './normalise';
 import { LIMITS, type Profile } from './profile';
 import { SEARCH_ERROR_CODES, type SearchErrorCode } from './search/errors';
@@ -12,17 +13,6 @@ export type SearchOutcome =
   | { kind: 'answered'; answer: SearchAnswer }
   | { kind: 'error'; code: SearchErrorCode }
   | { kind: 'signedOut' };
-
-export function countryOf(profile: Profile): SearchBody['country'] {
-  for (const number of [profile.contact.whatsapp?.value, profile.contact.phone?.value]) {
-    if (number?.startsWith('+84')) return 'VN';
-    if (number?.startsWith('+62')) return 'ID';
-  }
-  const host = new URL(profile.siteUrl).hostname;
-  if (host.endsWith('.vn')) return 'VN';
-  if (host.endsWith('.id')) return 'ID';
-  return null;
-}
 
 // The trade, the place and the essence's values: never the name, contact
 // details or offerings. Null when there is no town or trade to search for.

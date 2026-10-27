@@ -14,6 +14,7 @@ import {
 } from './batch';
 import { ctaFor } from './input';
 import { mentionsDay, OFFER_LIMITS, type Offer, PERCENT } from './offer';
+import type { Setup } from './setup';
 
 // Code's checks on the model's posts (docs/specs/posts/generate-copy, "What
 // code checks"): trim, drop or flag, record each change, and never refuse a
@@ -170,14 +171,16 @@ function checkedWords(
   };
 }
 
+// With a set-up, the post takes its scene from it: the model's is not read.
 export function checkPost(
   raw: ModelPost,
   profile: Profile,
   id: string,
   context?: OfferContext,
+  setup?: Setup,
 ): { post: Post | null; dropped: Dropped[] } {
   const type = raw.type.trim().toLowerCase();
-  const scene = raw.scene.trim().toLowerCase();
+  const scene = setup?.scene ?? raw.scene.trim().toLowerCase();
   if (!isType(type))
     return { post: null, dropped: [{ field: 'posts', reason: `unknown type "${raw.type}"` }] };
   if (!isScene(scene)) {
@@ -197,9 +200,31 @@ export function checkPost(
       imagePrompt: cutWords(raw.imagePrompt, POSTS_LIMITS.imagePromptWords),
       ...checkedWords(raw, profile, context),
       ...(context?.carries ? { offer: true as const } : {}),
+      ...(setup ? { setup } : {}),
     },
     dropped: [],
   };
+}
+
+// The image prompt names the guests and the two therapists its set-up has
+// (docs/specs/posts/varied-images, "Code's checks"). Flagged, never dropped:
+// code's cast line still tells the image model.
+export function setupFlags(post: Post): Dropped[] {
+  if (!post.setup) return [];
+  const { guests, therapists } = post.setup;
+  const needed: { words: string; pattern: RegExp }[] = [];
+  if (guests !== 'woman') needed.push({ words: 'man', pattern: /\bman\b/i });
+  if (guests !== 'man') needed.push({ words: 'woman', pattern: /\bwoman\b/i });
+  // One word may sit inside: "two women therapists".
+  if (therapists === 2) {
+    needed.push({ words: 'two therapists', pattern: /\btwo\s+(?:\w+\s+)?therapists\b/i });
+  }
+  return needed
+    .filter(({ pattern }) => !pattern.test(post.imagePrompt))
+    .map(({ words }) => ({
+      field: 'image',
+      reason: `${post.id}: no "${words}" in the image prompt`,
+    }));
 }
 
 function overused<K extends string>(values: K[], max: number): [K, number][] {
@@ -212,6 +237,7 @@ export function checkPlan(
   posts: Post[],
   dropped: Dropped[],
   profile: Profile,
+  offer?: Offer,
 ): { posts: Post[]; dropped: Dropped[] } {
   const out = [...dropped];
   if (posts.length > POSTS_LIMITS.posts) out.push({ field: 'posts', reason: 'more than 6 posts' });
@@ -231,6 +257,10 @@ export function checkPlan(
   const offers = kept.filter((p) => p.type === 'offer').length;
   if (profile.offerings.length >= 2 && offers < 2) {
     out.push({ field: 'mix', reason: 'fewer than 2 offer posts' });
+  }
+  // With an offer, its set-ups are 1 and 2: so are its posts.
+  if (offer && kept.slice(0, 2).some((p) => p.type !== 'offer')) {
+    out.push({ field: 'mix', reason: 'offer posts are not posts 1 and 2' });
   }
   return { posts: kept, dropped: out };
 }

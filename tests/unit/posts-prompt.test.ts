@@ -10,6 +10,7 @@ import {
   rewritePrompt,
   rewriteUserText,
 } from '@/lib/posts/prompt';
+import { dealSetups, seededRandom, setupLine } from '@/lib/posts/setup';
 import { svargaProfile } from './helpers/brand';
 import { post } from './helpers/posts';
 
@@ -55,7 +56,37 @@ describe('planPrompt', () => {
   });
 
   it('has a version', () => {
-    expect(POSTS_PROMPT_VERSION).toBe('posts-3');
+    expect(POSTS_PROMPT_VERSION).toBe('posts-4');
+  });
+});
+
+describe('the image set-ups', () => {
+  it('planPrompt says post n uses set-up n and never changes it', () => {
+    const prompt = planPrompt();
+    for (const rule of [
+      '### Image set-ups',
+      'Post 1 uses set-up 1',
+      'never changes them, and never adds a guest or a therapist',
+      '"a man" or "a woman"',
+      '"two therapists"',
+      "An offer post leads on its set-up's treatment",
+      "copy the set-up's scene",
+    ]) {
+      expect(prompt).toContain(rule);
+    }
+    expect(prompt).not.toContain('At most 2 posts of any scene');
+    expect(prompt).toContain('never writes "scene" or "set-up" in it');
+  });
+
+  it('the user text lists the set-ups in order, before the offer', () => {
+    const setups = dealSetups(svargaProfile(), undefined, seededRandom('t'));
+    const text = planUserText(postsModelInput(svargaProfile()), [], undefined, setups);
+    const lines = setups.map((s, i) => `${i + 1}. ${setupLine(s)}`).join('\n');
+    expect(text.endsWith(`### Image set-ups\n${lines}`)).toBe(true);
+  });
+
+  it('no set-ups, no section', () => {
+    expect(planUserText(postsModelInput(svargaProfile()), [])).not.toContain('Image set-ups');
   });
 });
 
@@ -120,6 +151,7 @@ describe('the special offer', () => {
       '"until"',
       'never a price',
       "Each offer post's first line states the offer",
+      'Posts 1 and 2 are the two offer posts.',
       '"<percentage> off our 90-minute <treatment>, until <last day>."',
       '"Free <free treatment> with a 90-minute <treatment>, until <last day>."',
     ]) {
@@ -128,7 +160,9 @@ describe('the special offer', () => {
   });
 
   it('ends the plan text with the offer', () => {
-    const text = planUserText(postsModelInput(svargaProfile()), [], offer);
+    const setups = dealSetups(svargaProfile(), offer, seededRandom('t'));
+    const text = planUserText(postsModelInput(svargaProfile()), [], offer, setups);
+    expect(text).toContain('### Image set-ups');
     expect(
       text.endsWith(
         '### Special offer\n- 10% off\n- On: Balinese massage\n- Sessions: 90 minutes or longer\n- Until: Tuesday 27 October',

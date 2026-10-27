@@ -31,7 +31,7 @@ describe('makePostImage', () => {
     if (!out.ok) throw new Error(`expected ok, got ${out.code}`);
     expect(out.response.postId).toBe('post-3');
     expect(out.response.model).toBe('gemini-nano-banana-2.1');
-    expect(out.response.promptVersion).toBe('images-4');
+    expect(out.response.promptVersion).toBe('images-6');
     const story = await sharp(Buffer.from(out.response.story, 'base64')).metadata();
     const post = await sharp(Buffer.from(out.response.post, 'base64')).metadata();
     expect([story.width, story.height, story.format]).toEqual([1080, 1920, 'jpeg']);
@@ -141,8 +141,33 @@ describe('makePostImage', () => {
     const line = formatImageLog(logs[0]);
     expect(line).not.toContain(body.imagePrompt);
     expect(line).toMatch(
-      /^image owner=sen post=post-3 scene=detail hint=no model=gemini-nano-banana-2\.1 prompt=images-4 size=1536x2752 story_bytes=\d+ post_bytes=\d+ model_ms=\d+ total_ms=\d+ outcome=ok usd=0\.05$/,
+      /^image owner=sen post=post-3 scene=detail hint=no cast=no model=gemini-nano-banana-2\.1 prompt=images-6 size=1536x2752 story_bytes=\d+ post_bytes=\d+ model_ms=\d+ total_ms=\d+ outcome=ok usd=0\.05$/,
     );
     expect(formatImageLog(logs[1])).toContain('size=- story_bytes=- post_bytes=-');
+  });
+});
+
+describe('the set-up', () => {
+  const setup = {
+    treatment: 'Foot Reflexology',
+    look: 'foot',
+    guests: 'man',
+    therapists: 1,
+    bodyPart: 'feet',
+    scene: 'detail',
+    locals: 'Vietnamese',
+  } as const;
+
+  test('the model gets the cast line, and the log says it was sent', async () => {
+    const logs: ImageLog[] = [];
+    const model = fakeImageModel(async () => ({ data: png, mediaType: 'image/png' }));
+    await makePostImage(
+      { ...body, setup },
+      'sen',
+      { model, log: (e) => logs.push(e) },
+      new AbortController().signal,
+    );
+    expect(model.prompts).toEqual([imagePrompt(body.imagePrompt, undefined, setup)]);
+    expect(formatImageLog(logs[0])).toContain('hint=no cast=yes');
   });
 });

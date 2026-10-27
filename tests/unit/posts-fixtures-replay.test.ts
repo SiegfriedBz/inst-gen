@@ -4,6 +4,7 @@ import { describe, expect, test } from 'vitest';
 import { replayTextModel } from '@/lib/ai/replay';
 import { FIXTURES_DIR, fixtureOffer, fixtureProfile, loadFixture } from '@/lib/brand/fixtures';
 import { streamPlan } from '@/lib/posts/run';
+import { seededRandom } from '@/lib/posts/setup';
 
 // The post plans recorded by `pnpm eval:posts --record`, replayed through the
 // real checks: no network, no quota.
@@ -35,7 +36,7 @@ describe('recorded post plans', () => {
     let final = null;
     for await (const line of streamPlan(
       { profile, recent: [] },
-      { model },
+      { model, random: seededRandom(slug) },
       new AbortController().signal,
     )) {
       if (line.type === 'error') throw new Error(line.code);
@@ -69,7 +70,7 @@ describe('recorded offer plans', () => {
     let final = null;
     for await (const line of streamPlan(
       { profile, recent: [], offer },
-      { model },
+      { model, random: seededRandom(`${slug}:offer`) },
       new AbortController().signal,
     )) {
       if (line.type === 'error') throw new Error(line.code);

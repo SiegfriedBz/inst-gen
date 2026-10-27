@@ -6,7 +6,9 @@ import {
   IMAGE_PROMPT_VERSION,
   IMAGE_STYLE,
   imagePrompt,
+  imageStyle,
 } from '@/lib/posts/image-prompt';
+import type { Setup } from '@/lib/posts/setup';
 
 describe('the image request', () => {
   test('a prompt of 80 words is taken', () => {
@@ -83,16 +85,16 @@ describe('the image prompt', () => {
       'Keep the subject in the middle of the frame, with calm space above and below it.',
     );
     expect(p).toMatch(/no text, letters, labels, logos or watermarks/i);
-    expect(IMAGE_PROMPT_VERSION).toBe('images-4');
+    expect(IMAGE_PROMPT_VERSION).toBe('images-6');
   });
 });
 
 describe("the owner's hint", () => {
   test('a hint goes before the style line', () => {
     expect(imagePrompt('A room at dusk.', 'more green')).toBe(
-      `A room at dusk. The owner asks: more green. ${IMAGE_STYLE}`,
+      `A room at dusk. The owner asks: more green. ${imageStyle('Southeast Asian')}`,
     );
-    expect(imagePrompt('A room at dusk.')).toBe(`A room at dusk. ${IMAGE_STYLE}`);
+    expect(imagePrompt('A room at dusk.')).toBe(`A room at dusk. ${imageStyle('Southeast Asian')}`);
   });
 
   test('a hint is cleaned', () => {
@@ -164,5 +166,53 @@ describe('light and weather in the post prompt', () => {
     expect(imagePrompt('x')).toContain(
       'Whatever the scene says, the light is dusk, lamps, lanterns or candles.',
     );
+  });
+});
+
+describe('the set-up and the therapists', () => {
+  const fourHandsMan: Setup = {
+    treatment: 'Four-Hands Massage',
+    look: 'fourHands',
+    guests: 'man',
+    therapists: 2,
+    bodyPart: 'back',
+    scene: 'guest',
+    locals: 'Balinese',
+  };
+  const body = { postId: 'p', imagePrompt: 'A room', scene: 'detail' };
+
+  test('cast line first, then the prompt, the hint, the style', () => {
+    expect(imagePrompt('Oil on a back at dusk.', 'more green', fourHandsMan)).toBe(
+      `One guest, a man. Two therapists, both young Balinese women. Oil on a back at dusk. The owner asks: more green. ${IMAGE_STYLE}`,
+    );
+  });
+
+  test('without a set-up: no cast line, therapists read as Southeast Asian', () => {
+    const p = imagePrompt('A room at dusk.');
+    expect(p).toBe(`A room at dusk. ${imageStyle('Southeast Asian')}`);
+    expect(p).toContain('Every therapist is a young Southeast Asian woman');
+  });
+
+  test("the style line holds the spec's therapist sentence", () => {
+    expect(IMAGE_STYLE).toContain(
+      'Every therapist is a young local woman with warm, golden-tan skin, as women from here have: smooth, healthy and glowing, yet real, with natural texture; never pale or white, never dark. Her hands and arms are perfectly formed and look healthy: five slender fingers on each hand, clean short nails, natural joints and wrists, no extra or missing fingers, hands or arms. Her face is turned away, lowered or out of frame.',
+    );
+  });
+
+  test('never a full face, therapist or guest', () => {
+    expect(IMAGE_STYLE).toContain(
+      "Every guest's face is turned away, resting in the face cradle, covered or out of frame: never a full face.",
+    );
+  });
+
+  test('the body accepts a set-up and accepts none', () => {
+    expect(imageBodySchema.safeParse({ ...body, setup: fourHandsMan }).success).toBe(true);
+    expect(imageBodySchema.safeParse(body).success).toBe(true);
+  });
+
+  test('the body refuses a set-up with three therapists', () => {
+    expect(
+      imageBodySchema.safeParse({ ...body, setup: { ...fourHandsMan, therapists: 3 } }).success,
+    ).toBe(false);
   });
 });

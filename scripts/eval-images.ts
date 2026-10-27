@@ -2,7 +2,8 @@
 // writes each story and post crop under .superpowers/eval-images/<slug>/,
 // outside git, for the developer to judge against the spec's rubric
 // (docs/specs/posts/generate-images, "Tests and evaluation"). The posts come
-// from the fixture's recorded plan, so no text call is made.
+// from the fixture's recorded plan, so no text call is made; the set-ups are
+// dealt with the slug's seed, as eval:posts recorded them.
 // ⚠️ It spends about $0.30 of the prepaid image balance per fixture. A slug
 // is required, so it never spends by accident.
 //
@@ -17,6 +18,7 @@ import type { ImageLog } from '@/lib/posts/image-log';
 import { IMAGE_PROMPT_VERSION } from '@/lib/posts/image-prompt';
 import { makePostImage } from '@/lib/posts/image-run';
 import { streamPlan } from '@/lib/posts/run';
+import { castLine, seededRandom } from '@/lib/posts/setup';
 
 if (existsSync('.env.local')) process.loadEnvFile('.env.local');
 
@@ -41,7 +43,7 @@ async function recordedPosts(slug: string): Promise<Post[]> {
   const text = replayTextModel(fixture.posts.recording, { posts: fixture.posts.recording });
   for await (const line of streamPlan(
     { profile, recent: [] },
-    { model: text },
+    { model: text, random: seededRandom(slug) },
     new AbortController().signal,
   )) {
     if (line.type === 'error') throw new Error(line.code);
@@ -61,7 +63,13 @@ for (const slug of slugs) {
     const outcomes = await Promise.all(
       posts.map((post) =>
         makePostImage(
-          { postId: post.id, imagePrompt: post.imagePrompt, scene: post.scene, first: true },
+          {
+            postId: post.id,
+            imagePrompt: post.imagePrompt,
+            scene: post.scene,
+            first: true,
+            ...(post.setup ? { setup: post.setup } : {}),
+          },
           'eval',
           { model, log: (entry) => logs.push(entry) },
           new AbortController().signal,
@@ -81,6 +89,8 @@ for (const slug of slugs) {
           `in ${log?.size ?? '-'}  story ${log?.storyBytes ?? '-'} B  post ${log?.postBytes ?? '-'} B  ` +
           `${out.ok ? 'ok' : out.code}`,
       );
+      const setup = posts[i].setup;
+      if (setup) console.log(`     ${setup.treatment ?? 'A massage'} · ${castLine(setup)}`);
       console.log(`     ${posts[i].imagePrompt}`);
     }
   } catch (error) {
