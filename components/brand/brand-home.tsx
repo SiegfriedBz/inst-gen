@@ -520,6 +520,11 @@ export function BrandHome({
               imagesOn={imagesOn}
               active={tab === 'posts'}
               searching={search === 'running'}
+              onAddTreatments={() => {
+                setFocusField('offerings');
+                setEditing('business');
+                setTab('business');
+              }}
             />
           </TabsContent>
           <TabsContent value="reviews" hidden={tab !== 'reviews'}>

@@ -768,3 +768,103 @@ describe('the grid and the sheet', () => {
     await waitFor(() => expect(document.activeElement).toBe(newest));
   });
 });
+
+describe('the special offer on Create Posts', () => {
+  const addButton = () => screen.findByRole('button', { name: '+ Special offer' });
+  const planBody = () => {
+    const call = fetchMock.mock.calls.find((c) => String(c[0]).endsWith('/api/posts/plan'));
+    if (!call) throw new Error('no plan request');
+    return JSON.parse((call[1] as RequestInit).body as string);
+  };
+
+  async function setOffer() {
+    fireEvent.click(await addButton());
+    const sheet = await screen.findByRole('dialog', { name: 'Special offer' });
+    fireEvent.click(within(sheet).getByRole('checkbox', { name: 'Balinese massage' }));
+    fireEvent.click(within(sheet).getByRole('button', { name: 'Done' }));
+    return screen.findByRole('button', { name: /^10% off · 1 treatment · until Sun 25 Oct$/ });
+  }
+
+  test('no offer: the button sits above Make, and the plan has no offer', async () => {
+    await renderSection();
+    const add = await addButton();
+    const make = await readyButton();
+    expect(add.compareDocumentPosition(make) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
+    fetchMock.mockResolvedValue(ndjson([{ type: 'error', code: 'model_busy' }]));
+    fireEvent.click(make);
+    await waitFor(() => expect(fetchMock).toHaveBeenCalled());
+    expect('offer' in planBody()).toBe(false);
+  });
+
+  test('Done shows the line, keeps the offer and sends it with the next plan', async () => {
+    await renderSection();
+    await setOffer();
+    expect(screen.queryByRole('button', { name: '+ Special offer' })).toBeNull();
+    fetchMock.mockResolvedValue(ndjson([{ type: 'error', code: 'model_busy' }]));
+    fireEvent.click(await readyButton());
+    await waitFor(() => expect(fetchMock).toHaveBeenCalled());
+    expect(planBody().offer).toMatchObject({
+      kind: 'discount',
+      percent: 10,
+      treatments: ['Balinese massage'],
+      until: '2026-10-25',
+    });
+  });
+
+  test('tapping the line reopens the sheet on its answers', async () => {
+    await renderSection();
+    fireEvent.click(await setOffer());
+    const sheet = await screen.findByRole('dialog', { name: 'Special offer' });
+    expect(
+      (within(sheet).getByRole('checkbox', { name: 'Balinese massage' }) as HTMLInputElement)
+        .checked,
+    ).toBe(true);
+  });
+
+  test('removing it brings the button back and leaves the suggestions as they are', async () => {
+    await saveBatch(batch(sixPosts));
+    await renderSection();
+    await setOffer();
+    fireEvent.click(screen.getByRole('button', { name: 'Remove the offer' }));
+    expect(await addButton()).toBeTruthy();
+    expect(screen.getAllByRole('button', { name: /^Suggestion \d of 6/ })).toHaveLength(6);
+  });
+
+  test('the offer is kept on the phone for the day', async () => {
+    const view = await renderSection();
+    await setOffer();
+    view.unmount();
+    render(section(svargaProfile()));
+    expect(
+      await screen.findByRole('button', { name: /^10% off · 1 treatment · until Sun 25 Oct$/ }),
+    ).toBeTruthy();
+  });
+
+  test('an offer from before the reset is gone', async () => {
+    const view = await renderSection();
+    await setOffer();
+    view.unmount();
+    vi.setSystemTime(new Date('2026-10-26T12:00:00.000Z'));
+    render(section(svargaProfile()));
+    expect(await addButton()).toBeTruthy();
+  });
+
+  test('the line follows the screen language', async () => {
+    const view = await renderSection();
+    await setOffer();
+    view.rerender(
+      <NextIntlClientProvider locale="vi" messages={messagesFor('vi')} timeZone="UTC">
+        <PostsSection
+          ownerId="svarga"
+          profile={svargaProfile()}
+          imagesOn={false}
+          active
+          searching={false}
+        />
+      </NextIntlClientProvider>,
+    );
+    expect(
+      await screen.findByRole('button', { name: /^Giảm 10% · 1 liệu trình · đến / }),
+    ).toBeTruthy();
+  });
+});

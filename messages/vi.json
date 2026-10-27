@@ -295,7 +295,12 @@
       "date": "{weekday}, {day} {month}",
       "done": "Xong",
       "noTreatments": "Hãy thêm liệu trình của bạn ở mục Doanh nghiệp trước.",
-      "addTreatments": "Thêm liệu trình"
+      "addTreatments": "Thêm liệu trình",
+      "line": "{what} · {count} · đến {date}",
+      "count": "{n} liệu trình",
+      "discountShort": "Giảm {percent}%",
+      "freeShort": "Tặng {gift}",
+      "remove": "Bỏ ưu đãi"
     }
   },
   "reviews": {

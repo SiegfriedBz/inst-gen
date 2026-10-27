@@ -9,6 +9,8 @@
   posting: {text}.", and `offer` joins the flags shown.
 - 2026-10-27: an offer's day is written from a message, `{weekday} {day}
   {month}`, so English reads "Tue 27 Oct" and each language orders it.
+- 2026-10-27: "Add treatments" in the offer sheet also switches to "Your
+  business", so its form opens over its own tab.
 
 ## RED
 
@@ -49,6 +51,13 @@ Task 5, the offer sheet (`posts-offer-sheet`):
       Tests  no tests
 ```
 
+Task 6, the offer on Create Posts (`posts-section`, `brand-home`):
+
+```
+ Test Files  2 failed (2)
+      Tests  8 failed | 88 passed (96)
+```
+
 ## GREEN
 
 Task 1:
@@ -84,4 +93,11 @@ Task 5:
 ```
  Test Files  1 passed (1)
       Tests  9 passed (9)
+```
+
+Task 6:
+
+```
+ Test Files  2 passed (2)
+      Tests  96 passed (96)
 ```

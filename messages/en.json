@@ -295,7 +295,12 @@
       "date": "{weekday} {day} {month}",
       "done": "Done",
       "noTreatments": "Add your treatments on Your business first.",
-      "addTreatments": "Add treatments"
+      "addTreatments": "Add treatments",
+      "line": "{what} · {count} · until {date}",
+      "count": "{n, plural, one {# treatment} other {# treatments}}",
+      "discountShort": "{percent}% off",
+      "freeShort": "Free {gift}",
+      "remove": "Remove the offer"
     }
   },
   "reviews": {

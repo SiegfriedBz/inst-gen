@@ -295,7 +295,12 @@
       "date": "{weekday}, {day} {month}",
       "done": "Selesai",
       "noTreatments": "Tambahkan dulu perawatan Anda di Usaha Anda.",
-      "addTreatments": "Tambah perawatan"
+      "addTreatments": "Tambah perawatan",
+      "line": "{what} · {count} · sampai {date}",
+      "count": "{n} perawatan",
+      "discountShort": "Diskon {percent}%",
+      "freeShort": "Gratis {gift}",
+      "remove": "Hapus promo"
     }
   },
   "reviews": {
