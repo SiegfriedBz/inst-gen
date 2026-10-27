@@ -78,6 +78,8 @@ async function* run<T>(
     promptVersion: POSTS_PROMPT_VERSION,
     kept: 0,
     flags: 0,
+    storyCuts: 0,
+    emojiFixes: 0,
     modelMs: null,
     totalMs: 0,
     outcome: 'aborted',
@@ -132,6 +134,10 @@ async function* run<T>(
     };
     entry.kept = result.posts.length;
     entry.flags = result.posts.reduce((n, p) => n + p.unchecked.length, 0);
+    entry.storyCuts = result.dropped.filter(
+      (d) => d.field === 'story' && d.reason.includes(' cut from '),
+    ).length;
+    entry.emojiFixes = result.dropped.filter((d) => d.field === 'emoji').length;
     entry.outcome = 'final';
     yield { type: 'final', result };
   } catch (error) {

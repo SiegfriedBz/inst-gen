@@ -12,6 +12,10 @@ export type PostsLog = {
   // Posts in the final line, and flags across them.
   kept: number;
   flags: number;
+  // Code's fixes to the story texts and a spa's emojis
+  // (docs/specs/posts/story-text): counts only, never the text.
+  storyCuts: number;
+  emojiFixes: number;
   // null when the step ended before the model answered.
   modelMs: number | null;
   totalMs: number;
@@ -29,6 +33,8 @@ export function formatPostsLog(log: PostsLog): string {
     `prompt=${log.promptVersion}`,
     `kept=${log.kept}`,
     `flags=${log.flags}`,
+    `story_cuts=${log.storyCuts}`,
+    `emoji_fixes=${log.emojiFixes}`,
     `model_ms=${log.modelMs ?? '-'}`,
     `total_ms=${log.totalMs}`,
     `outcome=${log.outcome}`,

@@ -13,6 +13,11 @@
 - 2026-10-27: when a spa's story text has no flower, code cuts it to 117
   before adding " 🌸", so the flower always fits; the cut is recorded once,
   from the length before to the length after.
+- 2026-10-27: a rewrite drops the post's old story text before taking the
+  answer's, so a rewrite whose answer has none leaves the post with none
+  (the spec's "an empty story text … leaves the post with none").
+- 2026-10-27: four older tests on Svarga (a spa) expected captions without
+  a flower; they now expect the " 🌸" code adds, as the spec says.
 
 ## RED
 
@@ -31,6 +36,13 @@ Task 2, `pnpm exec vitest run tests/unit/posts-story.test.ts tests/unit/posts-ba
       Tests  1 failed | 5 passed (6)
 ```
 
+Task 3, `pnpm exec vitest run tests/unit/posts-checks.test.ts tests/unit/posts-run.test.ts tests/unit/posts-log.test.ts tests/unit/posts-edit.test.ts`:
+
+```
+ Test Files  4 failed (4)
+      Tests  10 failed | 90 passed (100)
+```
+
 ## GREEN
 
 Task 1:
@@ -45,4 +57,13 @@ Task 2:
 ```
  Test Files  2 passed (2)
       Tests  19 passed (19)
+```
+
+Task 3, then `pnpm test`:
+
+```
+ Test Files  4 passed (4)
+      Tests  100 passed (100)
+ Test Files  105 passed (105)
+      Tests  1413 passed (1413)
 ```

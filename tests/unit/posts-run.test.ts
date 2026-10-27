@@ -139,6 +139,22 @@ describe('streamPlan', () => {
     });
     expect(JSON.stringify(entries[0])).not.toContain('Caption');
   });
+  test('counts story cuts and emoji fixes in its log entry', async () => {
+    const entries: PostsLog[] = [];
+    const recording = planRecording();
+    const third = recording.final.posts[2] as ReturnType<typeof modelPost> & { storyText?: string };
+    third.storyText = `${'Calm tonight. '.repeat(10)}Wake up light! 🌺`;
+    const model = replayTextModel(brand, { posts: recording });
+    await drain(
+      streamPlan(
+        body(),
+        deps(model, { log: (e) => entries.push(e) }),
+        new AbortController().signal,
+      ),
+    );
+    // Svarga is a spa: six captions gain a flower, and the cut story text too.
+    expect(entries[0]).toMatchObject({ storyCuts: 1, emojiFixes: 7 });
+  });
 });
 
 describe('streamRewrite', () => {
@@ -165,8 +181,9 @@ describe('streamRewrite', () => {
     const final = lines.at(-1);
     if (final?.type !== 'final') throw new Error('no final');
     expect(final.result.posts.map((p) => [p.imagePrompt, p.caption])).toEqual([
-      ['Deck at dusk', 'New caption a.'],
-      ['A glass', 'New caption b.'],
+      // Svarga is a spa: code adds its flower (docs/specs/posts/story-text).
+      ['Deck at dusk', 'New caption a. 🌸'],
+      ['A glass', 'New caption b. 🌸'],
     ]);
   });
 });
@@ -187,7 +204,7 @@ describe('an old post', () => {
     );
     const final = lines.at(-1);
     if (final?.type !== 'final') throw new Error('no final');
-    expect(final.result.posts[0].caption).toBe('New caption a.');
+    expect(final.result.posts[0].caption).toBe('New caption a. 🌸');
     expect('setup' in final.result.posts[0]).toBe(false);
   });
 });

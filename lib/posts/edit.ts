@@ -78,6 +78,19 @@ export function flagsFor(post: Post, batch: PostBatch, profile: Profile, newest 
     : post.unchecked;
 }
 
+// The story text's flags, checked the same way (docs/specs/posts/story-text).
+export function storyFlagsFor(
+  post: Post,
+  batch: PostBatch,
+  profile: Profile,
+  newest = true,
+): Flag[] {
+  if (!post.storyText) return [];
+  return (post.edited || !newest) && isPostStale(post, batch, profile)
+    ? findFlags(post.storyText, profile, offerContext(post, batch.offer))
+    : (post.storyUnchecked ?? []);
+}
+
 // The batch made last. A rewrite moves its batch to the top of the list, so
 // the list's order doesn't tell.
 export function newestBatch(batches: PostBatch[]): PostBatch | undefined {
