@@ -2,6 +2,7 @@ import { type BrowserContext, expect, type Page, test } from '@playwright/test';
 import id from '@/messages/id.json' with { type: 'json' };
 import vi from '@/messages/vi.json' with { type: 'json' };
 import { senProfile } from '../unit/helpers/brand';
+import { languageButton, languageNav, pickLanguage } from './helpers/language';
 
 // Test values from playwright.config.ts; not secrets.
 const SEN = 'test-lotus-river-sen';
@@ -64,25 +65,25 @@ test.describe('phone in English', () => {
 
   test('switching on / keeps the owner there', async ({ page, context }) => {
     await signIn(page);
-    // One switch, at the top right (docs/specs/platform/home-tabs).
+    // One button, at the top right, showing the current code
+    // (docs/specs/platform/friendlier-home, "The language button").
     await expect(page.getByRole('navigation', { name: 'Language' })).toHaveCount(1);
     const nav = page.locator('header').getByRole('navigation', { name: 'Language' });
-    await expect(nav.locator('[aria-current="true"]')).toContainText('English');
-    await expect(nav.locator('[aria-current="true"]')).toContainText('EN');
+    const button = languageButton(page);
+    await expect(button).toHaveAccessibleName('Language: English');
+    await expect(button).toHaveText('EN');
+    await button.click();
+    await expect(nav.locator('[aria-current="true"]')).toHaveText('English');
     const names = await nav
       .locator('button, [aria-current]')
-      .evaluateAll((items) =>
-        items.map((item) => item.getAttribute('aria-label') ?? item.textContent?.trim() ?? ''),
-      );
-    expect(names.map((name) => name.replace(/EN$/, ''))).toEqual([
-      'English',
-      'Tiếng Việt',
-      'Bahasa Indonesia',
-    ]);
-    await expect(nav.getByRole('button', { name: 'Tiếng Việt' })).toHaveText('VI');
+      .evaluateAll((items) => items.map((item) => item.textContent?.trim() ?? ''));
+    expect(names).toEqual(['English', 'Tiếng Việt', 'Bahasa Indonesia']);
+    await expect(nav.getByRole('button', { name: 'Tiếng Việt' })).toHaveAttribute('lang', 'vi');
     await nav.getByRole('button', { name: 'Tiếng Việt' }).click();
 
     await expect(page).toHaveURL('/');
+    await expect(button).toHaveAccessibleName('Ngôn ngữ: Tiếng Việt');
+    await expect(button).toHaveText('VI');
     await expect(
       page.getByRole('heading', { name: vi.home.welcome.replace('{name}', 'Sen') }),
     ).toBeVisible();
@@ -103,7 +104,7 @@ test.describe('phone in English', () => {
 
     test('the switch works', async ({ page }) => {
       await page.goto('/enter');
-      await page.getByRole('button', { name: 'Bahasa Indonesia' }).click();
+      await pickLanguage(page, 'Bahasa Indonesia');
       await expect(page).toHaveURL('/enter');
       await expect(page.getByLabel(id.enter.label)).toBeVisible();
     });
@@ -132,12 +133,14 @@ test.describe('small phone', () => {
 
 async function expectFits(page: Page) {
   expect(await page.evaluate(() => document.documentElement.scrollWidth)).toBeLessThanOrEqual(320);
-  const entries = page
-    .locator('header')
-    .getByRole('navigation', { name: /./ })
-    .locator('button, [aria-current]');
+  await expect(languageButton(page)).toBeInViewport({ ratio: 1 });
+  // Open, the three languages fit too, with still no sideways scroll.
+  await languageButton(page).click();
+  const entries = languageNav(page).locator('button, [aria-current]');
   await expect(entries).toHaveCount(3);
-  for (const entry of await entries.all()) await expect(entry).toBeInViewport();
+  for (const entry of await entries.all()) await expect(entry).toBeInViewport({ ratio: 1 });
+  expect(await page.evaluate(() => document.documentElement.scrollWidth)).toBeLessThanOrEqual(320);
+  await languageButton(page).click();
 }
 
 test.describe('switching with JavaScript', () => {
@@ -161,7 +164,7 @@ test.describe('switching with JavaScript', () => {
       'aria-selected',
       'true',
     );
-    await page.locator('header').getByRole('button', { name: 'Tiếng Việt' }).click();
+    await pickLanguage(page, 'Tiếng Việt');
     await expect(page.getByRole('tab', { name: vi.home.tabs.business })).toHaveAttribute(
       'aria-selected',
       'true',

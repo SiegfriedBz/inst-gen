@@ -26,7 +26,15 @@ const image: SavedImage = {
   createdAt: '2026-10-25T10:00:00.000Z',
 };
 
-function show({ withImage = true, imagesOn = true } = {}) {
+function show({
+  withImage = true,
+  imagesOn = true,
+  onTaken,
+}: {
+  withImage?: boolean;
+  imagesOn?: boolean;
+  onTaken?: (step: 'saved' | 'copied') => void;
+} = {}) {
   render(
     <NextIntlClientProvider locale="en" messages={messages} timeZone="UTC">
       <TakeAway
@@ -38,6 +46,7 @@ function show({ withImage = true, imagesOn = true } = {}) {
         createdAt="2026-10-25T09:00:00.000Z"
         attempt={2}
         n={3}
+        onTaken={onTaken}
       />
     </NextIntlClientProvider>,
   );
@@ -113,5 +122,62 @@ describe('taking a post away', () => {
     expect(
       screen.getByText('In Instagram: make a post with your own photo and paste the text.'),
     ).toBeTruthy();
+  });
+
+  test('a finished share reports "saved"', async () => {
+    const onTaken = vi.fn();
+    vi.stubGlobal('navigator', { ...navigator, canShare: () => true, share: async () => {} });
+    show({ onTaken });
+    await act(async () => {
+      fireEvent.click(screen.getByRole('button', { name: 'Save the 2 images' }));
+    });
+    expect(onTaken).toHaveBeenCalledWith('saved');
+  });
+
+  test('a cancelled share reports nothing', async () => {
+    const onTaken = vi.fn();
+    const share = async () => {
+      throw new DOMException('cancelled', 'AbortError');
+    };
+    vi.stubGlobal('navigator', { ...navigator, canShare: () => true, share });
+    show({ onTaken });
+    await act(async () => {
+      fireEvent.click(screen.getByRole('button', { name: 'Save the 2 images' }));
+    });
+    expect(onTaken).not.toHaveBeenCalled();
+  });
+
+  test('a download reports "saved"', async () => {
+    const onTaken = vi.fn();
+    vi.stubGlobal('navigator', { ...navigator, canShare: undefined });
+    vi.stubGlobal('URL', { ...URL, createObjectURL: () => 'blob:x', revokeObjectURL: () => {} });
+    show({ onTaken });
+    await act(async () => {
+      fireEvent.click(screen.getByRole('button', { name: 'Save the 2 images' }));
+    });
+    expect(onTaken).toHaveBeenCalledWith('saved');
+  });
+
+  test('a copy reports "copied"', async () => {
+    const onTaken = vi.fn();
+    stubClipboard(async () => {});
+    show({ onTaken });
+    await act(async () => {
+      fireEvent.click(screen.getByRole('button', { name: 'Copy the text' }));
+    });
+    expect(onTaken).toHaveBeenCalledWith('copied');
+  });
+
+  test('the copy-by-hand sheet reports "copied"', async () => {
+    const onTaken = vi.fn();
+    stubClipboard(async () => {
+      throw new DOMException('denied', 'NotAllowedError');
+    });
+    show({ onTaken });
+    await act(async () => {
+      fireEvent.click(screen.getByRole('button', { name: 'Copy the text' }));
+    });
+    expect(await screen.findByText('Copy it from here.')).toBeTruthy();
+    expect(onTaken).toHaveBeenCalledWith('copied');
   });
 });

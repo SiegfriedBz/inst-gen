@@ -1,12 +1,13 @@
 // @vitest-environment jsdom
 import 'fake-indexeddb/auto';
-import { cleanup, fireEvent, render, screen, waitFor } from '@testing-library/react';
+import { act, cleanup, fireEvent, render, screen, waitFor, within } from '@testing-library/react';
 import { IDBFactory } from 'fake-indexeddb';
 import { NextIntlClientProvider } from 'next-intl';
 import { afterEach, beforeEach, describe, expect, test, vi } from 'vitest';
 import { PostsSection } from '@/components/posts/posts-section';
 import type { Profile } from '@/lib/brand/profile';
 import { resetStoreForTests, saveBrand } from '@/lib/brand/store';
+import { messagesFor } from '@/lib/i18n/messages';
 import type { Post, PostBatch } from '@/lib/posts/batch';
 import { loadImages, type SavedImage, saveImage } from '@/lib/posts/image-store';
 import { profileHash } from '@/lib/posts/input';
@@ -99,6 +100,18 @@ const image = (batchId: string, postId: string): SavedImage => ({
 const makeButton = async () =>
   (await screen.findByRole('button', { name: /Make/ })) as HTMLButtonElement;
 
+// Opens suggestion n of an attempt of `count` and returns its sheet.
+async function openTile(n: number, count = 6): Promise<HTMLElement> {
+  const name = new RegExp(`^Suggestion ${n} of ${count}\\b`);
+  // Found again each time: the tiles of a streaming attempt are replaced
+  // once it's kept.
+  await waitFor(() =>
+    expect((screen.getByRole('button', { name }) as HTMLButtonElement).disabled).toBe(false),
+  );
+  fireEvent.click(screen.getByRole('button', { name }));
+  return screen.findByRole('dialog');
+}
+
 const changed = (): Profile => {
   const profile = svargaProfile();
   return { ...profile, summary: { value: 'Massage at your villa', source: profile.siteUrl } };
@@ -184,9 +197,10 @@ describe('captions follow the business by themselves', () => {
     await screen.findByText(UPDATING);
     const more = (await makeButton()) as HTMLButtonElement;
     await waitFor(() => expect(more.disabled).toBe(true));
-    const edits = screen.getAllByRole('button', { name: 'Edit the text' }) as HTMLButtonElement[];
-    expect(edits.every((b) => b.disabled)).toBe(true);
-    const rewrite = screen.getByRole('button', {
+    const sheet = await openTile(1);
+    const edit = within(sheet).getByRole('button', { name: 'Edit the text' }) as HTMLButtonElement;
+    expect(edit.disabled).toBe(true);
+    const rewrite = within(sheet).getByRole('button', {
       name: 'Rewrite this one too',
     }) as HTMLButtonElement;
     expect(rewrite.disabled).toBe(true);
@@ -261,15 +275,17 @@ describe('captions follow the business by themselves', () => {
     });
     await saveBatch(batch(sixPosts));
     await renderSection();
+    const sheet = await openTile(1, 1);
     expect(
-      await screen.findByText("This price isn't on your website: 990k. Check it before posting."),
+      within(sheet).getByText("This price isn't on your website: 990k. Check it before posting."),
     ).toBeTruthy();
   });
 
   test('no stale line when only edited posts are out of date', async () => {
     await saveBatch(batch(sixPosts.map((p) => ({ ...p, edited: true }))));
     await renderSection(changed());
-    expect(await screen.findAllByRole('button', { name: 'Rewrite this one too' })).toHaveLength(6);
+    const sheet = await openTile(1);
+    expect(within(sheet).getByRole('button', { name: 'Rewrite this one too' })).toBeTruthy();
     expect(
       screen.queryByText('Your business details changed since these posts were made.'),
     ).toBeNull();
@@ -280,12 +296,13 @@ describe('captions follow the business by themselves', () => {
     await saveBatch(batch(sixPosts.map((p) => ({ ...p, edited: true }))));
     fetchMock.mockResolvedValue(rewriteAnswer(['post-1']));
     await renderSection(changed());
-    const [button] = await screen.findAllByRole('button', { name: 'Rewrite this one too' });
+    const sheet = await openTile(1);
+    const button = within(sheet).getByRole('button', { name: 'Rewrite this one too' });
     await waitFor(() => expect((button as HTMLButtonElement).disabled).toBe(false));
     fireEvent.click(button);
-    await screen.findByText('New post-1.');
+    await within(sheet).findByText('New post-1.');
     expect(sentIds(fetchMock.mock.calls[0])).toEqual(['post-1']);
-    expect(screen.getAllByRole('button', { name: 'Rewrite this one too' })).toHaveLength(5);
+    expect(within(sheet).queryByRole('button', { name: 'Rewrite this one too' })).toBeNull();
   });
 
   test('edit is disabled while a rewrite runs', async () => {
@@ -294,18 +311,18 @@ describe('captions follow the business by themselves', () => {
     fetchMock.mockReturnValue(new Promise<Response>((resolve) => (answer = resolve)));
     await renderSection(changed());
     await screen.findByText(UPDATING);
-    const edits = (await screen.findAllByRole('button', {
-      name: 'Edit the text',
-    })) as HTMLButtonElement[];
-    await waitFor(() => expect(edits.every((b) => b.disabled)).toBe(true));
+    const tile = await screen.findByRole('button', { name: /^Suggestion 1 of 6\b/ });
+    fireEvent.click(tile);
+    const sheet = await screen.findByRole('dialog');
+    const edit = within(sheet).getByRole('button', { name: 'Edit the text' }) as HTMLButtonElement;
+    await waitFor(() => expect(edit.disabled).toBe(true));
     answer(rewriteAnswer(sixPosts.map((p) => p.id)));
-    await screen.findByText('New post-1.');
+    await within(sheet).findByText('New post-1.');
     await waitFor(() =>
       expect(
-        (screen.getAllByRole('button', { name: 'Edit the text' }) as HTMLButtonElement[]).every(
-          (b) => !b.disabled,
-        ),
-      ).toBe(true),
+        (within(sheet).getByRole('button', { name: 'Edit the text' }) as HTMLButtonElement)
+          .disabled,
+      ).toBe(false),
     );
   });
 
@@ -313,8 +330,9 @@ describe('captions follow the business by themselves', () => {
     const flagged = { ...sixPosts[0], caption: 'Only 990k.', edited: true, unchecked: [] };
     await saveBatch(batch([flagged]));
     await renderSection(changed());
+    const sheet = await openTile(1, 1);
     expect(
-      await screen.findByText("This price isn't on your website: 990k. Check it before posting."),
+      within(sheet).getByText("This price isn't on your website: 990k. Check it before posting."),
     ).toBeTruthy();
   });
 });
@@ -324,12 +342,15 @@ describe('editing in the posts section', () => {
     await saveBatch(batch(sixPosts));
     await renderSection();
     await screen.findByText('Caption 6.');
-    const [edit] = await screen.findAllByRole('button', { name: 'Edit the text' });
+    const sheet = await openTile(1);
+    const edit = within(sheet).getByRole('button', { name: 'Edit the text' });
     await waitFor(() => expect((edit as HTMLButtonElement).disabled).toBe(false));
     fireEvent.click(edit);
-    fireEvent.change(screen.getByLabelText('Caption'), { target: { value: 'My own words.' } });
-    fireEvent.click(screen.getByRole('button', { name: 'Save' }));
-    expect(await screen.findByText('My own words.')).toBeTruthy();
+    fireEvent.change(within(sheet).getByLabelText('Caption'), {
+      target: { value: 'My own words.' },
+    });
+    fireEvent.click(within(sheet).getByRole('button', { name: 'Save' }));
+    expect(await within(sheet).findByText('My own words.')).toBeTruthy();
     await waitFor(async () => {
       const [saved] = await loadBatches('svarga');
       expect(saved.posts[0]).toMatchObject({ caption: 'My own words.', edited: true });
@@ -356,10 +377,10 @@ describe('the posts section', () => {
   test('a card shows the caption, call to action and hashtags, never the prompt', async () => {
     await saveBatch(batch([post({ imagePrompt: 'SECRET PROMPT' })]));
     await renderSection();
-    expect(await screen.findByText('Warm oil, slow hands.')).toBeTruthy();
-    expect(screen.getByText('Warm oil, slow hands.')).toBeTruthy();
-    expect(screen.getByText('Book on WhatsApp: +6281234567890')).toBeTruthy();
-    expect(screen.getByText('#canggu #balimassage #aftersurf')).toBeTruthy();
+    const sheet = await openTile(1, 1);
+    expect(within(sheet).getByText('Warm oil, slow hands.')).toBeTruthy();
+    expect(within(sheet).getByText('Book on WhatsApp: +6281234567890')).toBeTruthy();
+    expect(within(sheet).getByText('#canggu #balimassage #aftersurf')).toBeTruthy();
     expect(screen.queryByText('Image description')).toBeNull();
     expect(screen.queryByText(/SECRET PROMPT/)).toBeNull();
   });
@@ -367,8 +388,10 @@ describe('the posts section', () => {
   test('a flagged post says what to check', async () => {
     await saveBatch(batch([post({ unchecked: [{ kind: 'price', text: '450k' }] })]));
     await renderSection();
+    expect(await screen.findByRole('button', { name: /Check the text$/ })).toBeTruthy();
+    const sheet = await openTile(1, 1);
     expect(
-      await screen.findByText("This price isn't on your website: 450k. Check it before posting."),
+      within(sheet).getByText("This price isn't on your website: 450k. Check it before posting."),
     ).toBeTruthy();
   });
 
@@ -589,5 +612,159 @@ describe("today's attempts", () => {
     await renderSection();
     await readyButton();
     expect(fetchMock).not.toHaveBeenCalled();
+  });
+});
+
+describe('the grid and the sheet', () => {
+  test('an attempt of six is a grid of six buttons, three to a row, no type labels', async () => {
+    await saveBatch(batch(sixPosts));
+    await renderSection();
+    const grid = await screen.findByTestId('attempt-grid');
+    expect(grid.className).toContain('grid-cols-3');
+    expect(within(grid).getAllByRole('button')).toHaveLength(6);
+    expect(grid.textContent).not.toMatch(/Offer|Moment|Local|Ritual|Tip/);
+    expect(screen.queryByRole('dialog')).toBeNull();
+  });
+
+  test("a tile's name: its number, its first words, its state", async () => {
+    const posts = sixPosts.map((p, i) =>
+      i === 1
+        ? { ...p, copiedAt: '2026-10-25T10:00:00.000Z' }
+        : i === 2
+          ? { ...p, unchecked: [{ kind: 'price' as const, text: '450k' }] }
+          : p,
+    );
+    await saveBatch(batch(posts));
+    await renderSection();
+    expect(
+      await screen.findByRole('button', { name: 'Suggestion 2 of 6, Caption 2., Copied' }),
+    ).toBeTruthy();
+    expect(
+      screen.getByRole('button', { name: 'Suggestion 3 of 6, Caption 3., Check the text' }),
+    ).toBeTruthy();
+    expect(screen.getByRole('button', { name: 'Suggestion 1 of 6, Caption 1.' })).toBeTruthy();
+  });
+
+  test('an attempt of four says "of 4", in a partial last row', async () => {
+    await saveBatch(batch(sixPosts.slice(0, 4)));
+    await renderSection();
+    expect(await screen.findByRole('button', { name: /^Suggestion 4 of 4\b/ })).toBeTruthy();
+    expect(within(screen.getByTestId('attempt-grid')).getAllByRole('button')).toHaveLength(4);
+  });
+
+  test('a suggestion streaming in shows as a tile that waits', async () => {
+    fetchMock.mockResolvedValue(
+      new Response(
+        new ReadableStream({
+          start(controller) {
+            controller.enqueue(
+              new TextEncoder().encode(
+                encodePostsLine({ type: 'post', index: 0, post: sixPosts[0] }),
+              ),
+            );
+          },
+        }),
+        { headers: { 'content-type': 'application/x-ndjson' } },
+      ),
+    );
+    await renderSection();
+    fireEvent.click(await readyButton());
+    const tile = (await screen.findByRole('button', {
+      name: /^Suggestion 1 of 1\b/,
+    })) as HTMLButtonElement;
+    expect(tile.disabled).toBe(true);
+  });
+
+  test('a tile opens its sheet with the text, the links and the step', async () => {
+    await saveBatch(batch(sixPosts));
+    await renderSection();
+    const sheet = await openTile(4);
+    expect(screen.getByRole('dialog', { name: 'Attempt 1, suggestion 4 of 6' })).toBe(sheet);
+    expect(within(sheet).getByText('Caption 4.')).toBeTruthy();
+    expect(within(sheet).getByRole('button', { name: 'Edit the text' })).toBeTruthy();
+    expect(within(sheet).getByRole('button', { name: 'Copy the text' })).toBeTruthy();
+    expect(within(sheet).queryByText('See the story image')).toBeNull();
+  });
+
+  test('closing gives focus back to the tile', async () => {
+    await saveBatch(batch(sixPosts));
+    await renderSection();
+    const sheet = await openTile(2);
+    fireEvent.click(within(sheet).getByRole('button', { name: 'Close' }));
+    await waitFor(() => expect(screen.queryByRole('dialog')).toBeNull());
+    await waitFor(() =>
+      expect(document.activeElement).toBe(
+        screen.getByRole('button', { name: /^Suggestion 2 of 6\b/ }),
+      ),
+    );
+  });
+
+  test('copying in the sheet ticks the tile "Copied" and keeps it on the phone', async () => {
+    vi.stubGlobal('navigator', { ...navigator, clipboard: { writeText: async () => {} } });
+    await saveBatch(batch(sixPosts));
+    await renderSection();
+    const sheet = await openTile(3);
+    fireEvent.click(within(sheet).getByRole('button', { name: 'Copy the text' }));
+    fireEvent.click(within(sheet).getByRole('button', { name: 'Close' }));
+    expect(
+      await screen.findByRole('button', { name: /^Suggestion 3 of 6\b.*Copied$/ }),
+    ).toBeTruthy();
+    await waitFor(async () => {
+      const [saved] = await loadBatches('svarga');
+      expect(saved.posts[2].copiedAt).toBeTruthy();
+    });
+  });
+
+  test('the back gesture closes the sheet', async () => {
+    await saveBatch(batch(sixPosts));
+    await renderSection();
+    await openTile(1);
+    act(() => {
+      window.dispatchEvent(new PopStateEvent('popstate'));
+    });
+    await waitFor(() => expect(screen.queryByRole('dialog')).toBeNull());
+  });
+
+  test('a language change keeps the same suggestion open', async () => {
+    await saveBatch(batch(sixPosts));
+    const view = await renderSection();
+    await openTile(4);
+    view.rerender(
+      <NextIntlClientProvider locale="vi" messages={messagesFor('vi')} timeZone="UTC">
+        <PostsSection
+          ownerId="svarga"
+          profile={svargaProfile()}
+          imagesOn={false}
+          active
+          searching={false}
+        />
+      </NextIntlClientProvider>,
+    );
+    expect(await screen.findByRole('dialog', { name: 'Lần thử 1, gợi ý 4/6' })).toBeTruthy();
+  });
+
+  test('a new WhatsApp number unticks "Copied" on screen', async () => {
+    await saveBatch(batch(sixPosts.map((p) => ({ ...p, copiedAt: '2026-10-25T10:00:00.000Z' }))));
+    const profile = svargaProfile();
+    profile.contact.whatsapp = { value: '+6289999999999', source: profile.siteUrl };
+    await renderSection(profile);
+    await screen.findByRole('button', { name: /^Suggestion 1 of 6\b/ });
+    await waitFor(() =>
+      expect(screen.queryAllByRole('button', { name: /Copied$/ })).toHaveLength(0),
+    );
+  });
+
+  test('closing gives focus back to the tile of the same attempt', async () => {
+    await saveBatch({ ...batch(sixPosts), id: 'b0', createdAt: '2026-10-25T08:00:00.000Z' });
+    await saveBatch(batch(sixPosts.map((p) => ({ ...p, caption: `New ${p.id}.` }))));
+    await renderSection();
+    const newest = (await screen.findAllByRole('button', { name: /^Suggestion 3 of 6\b/ }))[0];
+    expect(newest.getAttribute('aria-label')).toContain('New post-3.');
+    await waitFor(() => expect((newest as HTMLButtonElement).disabled).toBe(false));
+    fireEvent.click(newest);
+    const sheet = await screen.findByRole('dialog');
+    fireEvent.click(within(sheet).getByRole('button', { name: 'Close' }));
+    await waitFor(() => expect(screen.queryByRole('dialog')).toBeNull());
+    await waitFor(() => expect(document.activeElement).toBe(newest));
   });
 });

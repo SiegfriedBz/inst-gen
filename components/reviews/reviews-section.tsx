@@ -1,6 +1,7 @@
 'use client';
 
 import { useLocale, useTranslations } from 'next-intl';
+import { RadioGroup } from 'radix-ui';
 import { useEffect, useId, useRef, useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -60,6 +61,9 @@ export function ReviewsSection({
   const [name, setName] = useState('');
   const [review, setReview] = useState('');
   const [record, setRecord] = useState<ReviewRecord | null>(null);
+  // The reply shown (docs/specs/platform/friendlier-home): Short first for each
+  // new review, kept through "Write 2 other replies", never stored.
+  const [which, setWhich] = useState<'short' | 'warm'>('short');
   const [loaded, setLoaded] = useState(false);
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState<Failure | null>(null);
@@ -118,6 +122,7 @@ export function ReviewsSection({
       edits: { short: null, warm: null },
       createdAt: new Date().toISOString(),
     };
+    if (!input.again) setWhich('short');
     setRecord(next);
     await keep(saveReview(next));
   }
@@ -131,6 +136,7 @@ export function ReviewsSection({
 
   async function startOver() {
     setRecord(null);
+    setWhich('short');
     setName('');
     setReview('');
     setError(null);
@@ -198,10 +204,8 @@ export function ReviewsSection({
   const { answer } = record;
   const language = languageName(answer.reviewLanguage, locale);
   const shown = (text: string) => fillName(text, record.name);
-  const cards = [
-    { which: 'short' as const, title: t('short') },
-    { which: 'warm' as const, title: t('warm') },
-  ];
+  const edit = record.edits[which];
+  const draft = answer[which];
 
   return (
     <section className="mt-5 flex flex-col gap-4">
@@ -226,23 +230,34 @@ export function ReviewsSection({
           {t('abusive')}
         </p>
       )}
-      {cards.map(({ which, title }) => {
-        const edit = record.edits[which];
-        const draft = answer[which];
-        return (
-          <ReplyCard
-            key={`${record.createdAt}-${which}`}
-            title={title}
-            text={edit ?? shown(draft.text)}
-            translation={draft.translation && shown(draft.translation)}
-            edited={edit !== null}
-            onSave={(text) => void saveEdit(which, text)}
-          />
-        );
-      })}
+      <RadioGroup.Root
+        aria-label={t('which')}
+        value={which}
+        onValueChange={(value) => setWhich(value as 'short' | 'warm')}
+        className="grid grid-cols-2 gap-1 rounded-control border border-edge bg-field-muted p-1"
+      >
+        {(['short', 'warm'] as const).map((value) => (
+          <RadioGroup.Item
+            key={value}
+            value={value}
+            className="min-h-11 rounded-[9px] text-[15px] text-ink-secondary outline-none focus-visible:ring-2 focus-visible:ring-accent data-[state=checked]:bg-field data-[state=checked]:font-medium data-[state=checked]:text-accent-tint-ink data-[state=checked]:ring-1 data-[state=checked]:ring-accent"
+          >
+            {t(value)}
+          </RadioGroup.Item>
+        ))}
+      </RadioGroup.Root>
+      <ReplyCard
+        key={`${record.createdAt}-${which}`}
+        title={t(which)}
+        text={edit ?? shown(draft.text)}
+        translation={draft.translation && shown(draft.translation)}
+        edited={edit !== null}
+        onSave={(text) => void saveEdit(which, text)}
+        copyLabel={t('copy')}
+      />
       <p className="text-[13px] text-ink-secondary">{t('howTo')}</p>
       {errorLine}
-      <div className="flex flex-col items-center">
+      <div className="flex flex-wrap justify-center gap-x-6">
         <button
           type="button"
           className={LINK}

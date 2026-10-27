@@ -60,6 +60,8 @@ and no locale in the URL.
 
 ### Passphrase screen (`/enter`)
 
+> Changed by `platform/friendlier-home` (2026-10-27): the passphrase field is a plain text field, the passphrase always visible, never dots.
+
 Left-aligned, one column, on a phone first:
 
 1. The "S" mark: a jade tile with a white "S" (a placeholder until there is a

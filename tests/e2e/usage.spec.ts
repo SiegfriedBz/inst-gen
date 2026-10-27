@@ -44,7 +44,8 @@ test('the bar on each tab, and the last attempt used up', async ({ page }) => {
   await fulfilRead(page, [streamBody(senProfile())]);
   await signInAndRead(page);
 
-  const bar = page.getByTestId('usage-bar');
+  // The first line of the open tab (docs/specs/platform/friendlier-home).
+  const bar = page.getByRole('tabpanel').getByTestId('usage-bar');
   await page.getByRole('tab', { name: 'Create Posts' }).click();
   await expect(bar).toHaveText('Left today: 1 attempt, 10 new images · Resets at 15:00');
   await page.getByRole('tab', { name: 'Reviews' }).click();
@@ -76,7 +77,7 @@ test('the bar fits a 320px phone in Vietnamese', async ({ page, context }) => {
   await page.locator('#website').fill('sendanangmassage.com');
   await page.locator('#website').press('Enter');
   await page.getByRole('tab', { name: 'Tạo bài đăng' }).click();
-  await expect(page.getByTestId('usage-bar')).toHaveText(
+  await expect(page.getByRole('tabpanel').getByTestId('usage-bar')).toHaveText(
     'Còn lại hôm nay: 3 lần thử, 10 hình mới · Làm mới lúc 15:00',
   );
   expect(await page.evaluate(() => document.documentElement.scrollWidth)).toBeLessThanOrEqual(320);

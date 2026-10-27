@@ -35,8 +35,10 @@ export function charsOver(edit: PostEdit, cta: string): number {
 // today's profile, since the owner has just read the post against it.
 export function applyEdit(post: Post, edit: PostEdit, profile: Profile): Post {
   const caption = edit.caption.trim();
+  // The text copied before is no longer the text on screen.
+  const { copiedAt: _copied, ...rest } = post;
   return {
-    ...post,
+    ...rest,
     caption,
     hashtags: parseHashtags(edit.hashtags),
     altText: edit.altText.trim(),
@@ -98,7 +100,9 @@ export function mergeRewrite(batch: PostBatch, result: PlanResult, sentIds: stri
   const posts = batch.posts.map((post) => {
     const answer = sentIds.includes(post.id) ? answers.get(post.id) : undefined;
     if (!answer) return { ...post, profileHash: postHash(post, batch) };
-    return { ...answer, edited: false, profileHash: result.profileHash };
+    // New words, same image: what was copied goes, what was saved stays.
+    const saved = post.savedAt ? { savedAt: post.savedAt } : {};
+    return { ...answer, ...saved, edited: false, profileHash: result.profileHash };
   });
   return {
     ...batch,
@@ -113,6 +117,11 @@ export function mergeRewrite(batch: PostBatch, result: PlanResult, sentIds: stri
 export function markNewImage(batch: PostBatch, postId: string): PostBatch {
   return {
     ...batch,
-    posts: batch.posts.map((post) => (post.id === postId ? { ...post, altToCheck: true } : post)),
+    posts: batch.posts.map((post) => {
+      if (post.id !== postId) return post;
+      // The images saved before are no longer the ones on screen.
+      const { savedAt: _saved, ...rest } = post;
+      return { ...rest, altToCheck: true };
+    }),
   };
 }

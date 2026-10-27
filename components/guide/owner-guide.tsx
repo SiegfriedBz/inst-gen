@@ -27,7 +27,7 @@ type Block = string | string[];
 const BLOCKS: Record<SectionId, Block[]> = {
   start: ['passphrase', 'home', ['iphone', 'android'], 'why', 'onePhone'],
   business: ['read', 'check', 'missing', 'english', 'reread'],
-  posts: ['make', 'wait', 'leave', 'more', 'edit', 'update'],
+  posts: ['make', 'open', 'wait', 'leave', 'more', 'edit', 'update'],
   instagram: [['save', 'copy', 'post', 'story'], 'link', 'alt', 'noImages', 'never'],
   reviews: ['paste', 'pick', 'other'],
   allowance: ['free', 'limits', 'bar', 'reset', 'time', 'month'],
@@ -53,11 +53,13 @@ export function OwnerGuide({
     'business.check': { button: t('brand.panel.edit') },
     'business.reread': { button: t('brand.home.reread'), forget: t('brand.home.forget') },
     'posts.make': { tab: t('home.tabs.posts'), button: t('posts.make') },
+    'posts.open': { saved: t('posts.saved') },
     'posts.more': { button: t('posts.makeMore') },
     'posts.edit': { button: t('posts.editText'), image: t('posts.images.newImage') },
     'instagram.save': { button: t('posts.saveImages') },
     'instagram.copy': { button: t('posts.copyText') },
     'reviews.paste': { tab: t('home.tabs.reviews'), button: t('reviews.write') },
+    'reviews.pick': { short: t('reviews.short'), warm: t('reviews.warm') },
     'reviews.other': { button: t('reviews.again') },
     'allowance.limits': {
       reads: t('usage.reads', { count: limits.reads }),

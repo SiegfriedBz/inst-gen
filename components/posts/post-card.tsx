@@ -10,15 +10,15 @@ import type { PostEdit } from '@/lib/posts/edit';
 import { PostEditor } from './post-editor';
 import { type ImageState, NewImageLink, PostImage, StoryLink } from './post-image';
 
-// One suggestion, top to bottom as the owner uses it
-// (docs/specs/posts/suggestions, "A suggestion"): the post image, the text as
-// it will be pasted, plain-word warnings, "Edit the text" and "Create new
-// image", the two steps to take it away, and the story image behind a small
-// link. No type label, number or image description.
+// One suggestion, as its sheet shows it (docs/specs/platform/friendlier-home,
+// "Tapping a tile opens the suggestion"): the post and story images side by
+// side with "Create new image" under them, the text as it will be pasted,
+// plain-word warnings and "Edit the text". The two steps are the sheet's, at
+// its bottom. No type label, number or image description.
 
 // What's worth a word to the owner: a price, a duration or a word Instagram
 // may refuse. The first-line check isn't shown.
-const SHOWN_FLAGS: Flag['kind'][] = ['price', 'duration', 'banned'];
+export const SHOWN_FLAGS: Flag['kind'][] = ['price', 'duration', 'banned'];
 
 export function PostCard({
   post,
@@ -57,8 +57,20 @@ export function PostCard({
   const remaking = state?.kind === 'making' || (state?.kind === 'ready' && !!state.making);
   const newImageLimit = useAtLimit('newImages');
   return (
-    <article className="flex flex-col gap-3 rounded-control border border-edge bg-field px-4 py-3">
-      {image && <PostImage state={image.state} altText={post.altText} onRetry={image.onRetry} />}
+    <article className="flex flex-col gap-3">
+      {state?.kind === 'ready' ? (
+        <div className="grid grid-cols-[2fr_1fr] items-start gap-2">
+          <PostImage state={state} altText={post.altText} onRetry={image?.onRetry} />
+          <StoryLink image={state.image} altText={post.altText} thumbnail />
+        </div>
+      ) : (
+        image && <PostImage state={image.state} altText={post.altText} onRetry={image.onRetry} />
+      )}
+      {!editing && image?.onNewImage && canRemake && (
+        <div className="-mt-1 flex justify-end">
+          <NewImageLink onMake={image.onNewImage} disabled={remaking || newImageLimit !== null} />
+        </div>
+      )}
       {editing && onSave ? (
         <PostEditor
           post={post}
@@ -90,21 +102,16 @@ export function PostCard({
           {t(`flags.${flag.kind}`, { text: flag.text })}
         </p>
       ))}
-      {!editing && (onSave || (image?.onNewImage && canRemake)) && (
-        <div className="flex flex-wrap items-center justify-between gap-x-4">
-          {onSave && (
-            <button
-              type="button"
-              className="inline-flex min-h-11 items-center text-[15px] font-medium text-accent underline underline-offset-4 outline-none focus-visible:ring-2 focus-visible:ring-accent disabled:opacity-60"
-              onClick={() => setEditing(true)}
-              disabled={editBusy}
-            >
-              {t('editText')}
-            </button>
-          )}
-          {image?.onNewImage && canRemake && (
-            <NewImageLink onMake={image.onNewImage} disabled={remaking || newImageLimit !== null} />
-          )}
+      {!editing && onSave && (
+        <div className="flex flex-wrap items-center gap-x-4">
+          <button
+            type="button"
+            className="inline-flex min-h-11 items-center text-[15px] font-medium text-accent underline underline-offset-4 outline-none focus-visible:ring-2 focus-visible:ring-accent disabled:opacity-60"
+            onClick={() => setEditing(true)}
+            disabled={editBusy}
+          >
+            {t('editText')}
+          </button>
         </div>
       )}
       {!editing && image?.onNewImage && canRemake && newImageLimit && (
@@ -118,7 +125,6 @@ export function PostCard({
         </Button>
       )}
       {takeAway}
-      {state?.kind === 'ready' && <StoryLink image={state.image} altText={post.altText} />}
     </article>
   );
 }

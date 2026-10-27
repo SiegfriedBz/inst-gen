@@ -21,7 +21,8 @@
     "signedIn": "Đã đăng nhập trên điện thoại này trong 30 ngày."
   },
   "language": {
-    "label": "Ngôn ngữ"
+    "label": "Ngôn ngữ",
+    "button": "Ngôn ngữ: {name}"
   },
   "notConfigured": "Shopfront chưa được thiết lập.",
   "brand": {
@@ -83,7 +84,8 @@
       "searching": "Đang tìm xem mọi người tìm kiếm gì…",
       "searchFailed": "Hôm nay chúng tôi chưa tra cứu được. Chúng tôi sẽ thử lại lần sau.",
       "searchEmpty": "Không tìm thấy gì cho thành phố của bạn.",
-      "notFoundYet": "Chưa tìm thấy"
+      "notFoundYet": "Chưa tìm thấy",
+      "toAdd": "{count} mục cần thêm"
     },
     "source": {
       "page": "từ {path}",
@@ -156,12 +158,13 @@
       "stop": "Dừng",
       "announceReading": "Đang đọc trang web của bạn",
       "announceDone": "Xong: hãy kiểm tra những gì chúng tôi hiểu",
-      "intro": "Đây là những gì chúng tôi hiểu về {name}. Hãy sửa chỗ nào chưa đúng: bài đăng của bạn được viết từ đây.",
-      "lastRead": "Đọc lần cuối {when}",
-      "reread": "Đọc lại trang web của tôi",
+      "reread": "Đọc lại",
       "forget": "Quên doanh nghiệp này",
       "invalidSaved": "Chúng tôi không mở được doanh nghiệp đã lưu của bạn. Hãy đọc lại trang web.",
-      "notKept": "Trình duyệt này sẽ không lưu doanh nghiệp của bạn: lần sau bạn cần đọc lại trang web."
+      "notKept": "Trình duyệt này sẽ không lưu doanh nghiệp của bạn: lần sau bạn cần đọc lại trang web.",
+      "title": "Những gì chúng tôi biết về {name}",
+      "subtitle": "Bài đăng của bạn được viết từ đây. Hãy sửa chỗ nào chưa đúng.",
+      "readFrom": "Đã đọc từ {site} {when}."
     },
     "errors": {
       "invalid_url": "Đây không giống địa chỉ trang web. Hãy kiểm tra và thử lại.",
@@ -184,6 +187,11 @@
       "body": "Thao tác này xóa mọi thứ Shopfront lưu trên điện thoại này cho doanh nghiệp của bạn. Bạn có thể đọc lại trang web bất cứ lúc nào.",
       "confirm": "Quên",
       "cancel": "Hủy"
+    },
+    "missing": {
+      "title": "{count} mục chúng tôi không tìm thấy",
+      "body": "Bạn vẫn tạo được bài đăng mà không cần các mục bên dưới, nhưng mỗi mục bạn thêm giúp bài đăng chính xác hơn.",
+      "add": "Thêm {field}"
     }
   },
   "posts": {
@@ -261,7 +269,12 @@
         "model_timeout": "Bản dịch mất quá lâu. Hãy thử lại.",
         "model_failed": "Đã có lỗi khi dịch. Hãy thử lại."
       }
-    }
+    },
+    "saved": "Đã lưu và sao chép",
+    "copiedOnly": "Đã sao chép",
+    "checkText": "Kiểm tra phần chữ",
+    "tile": "Gợi ý {n}/{count}",
+    "sheetTitle": "Lần thử {attempt}, gợi ý {n}/{count}"
   },
   "reviews": {
     "intro": "Có đánh giá mới trên Google Maps? Hãy sao chép và dán vào đây. Chúng tôi viết 2 câu trả lời bằng ngôn ngữ của khách.",
@@ -272,8 +285,8 @@
     "keepOpen": "Hãy giữ trang này mở trong vài giây.",
     "heading": "Đánh giá của {name} · bằng {language}",
     "headingNoName": "Đánh giá · bằng {language}",
-    "short": "Trả lời ngắn",
-    "warm": "Trả lời ấm áp hơn",
+    "short": "Ngắn",
+    "warm": "Ấm áp hơn",
     "abusive": "Đánh giá này có thể mang tính xúc phạm hoặc giả mạo. Có thể tốt hơn là không trả lời, hoặc báo cáo trên Google Maps. Nếu trả lời, hãy giữ bình tĩnh, như bên dưới.",
     "howTo": "Trên Google Maps: mở đánh giá, nhấn Trả lời rồi dán.",
     "again": "Viết 2 câu trả lời khác",
@@ -284,7 +297,9 @@
       "model_failed": "Đã có lỗi khi viết câu trả lời. Hãy thử lại.",
       "invalid_request": "Đã có lỗi khi viết câu trả lời. Hãy thử lại.",
       "offline": "Bạn đang ngoại tuyến. Hãy thử lại khi có mạng."
-    }
+    },
+    "which": "Chọn câu trả lời",
+    "copy": "Sao chép câu trả lời"
   },
   "usage": {
     "left": "Còn lại hôm nay: {items}",
@@ -325,14 +340,15 @@
     "business": {
       "title": "Doanh nghiệp của bạn",
       "read": "Nhập trang web của bạn và chạm <b>{button}</b>. Giữ trang mở trong lúc Shopfront đọc; màn hình tự sáng.",
-      "check": "Xem lại những gì tìm được, từng phần một. Chạm <b>{button}</b> để sửa hoặc thêm.",
-      "missing": "Thêm số WhatsApp và thành phố của bạn nếu còn thiếu: mỗi bài đăng kết thúc bằng WhatsApp của bạn, và hashtag dùng tên thành phố.",
+      "check": "Xem lại những gì tìm được. Chạm vào một phần để xem đầy đủ, và chạm <b>{button}</b> để sửa hoặc thêm.",
+      "missing": "Ở trên cùng, Shopfront liệt kê những gì chưa tìm thấy: chạm vào một mục để thêm. Hãy thêm số WhatsApp và thành phố của bạn trước: mỗi bài đăng kết thúc bằng WhatsApp của bạn, và hashtag dùng tên thành phố.",
       "english": "Nếu được, hãy viết thay đổi bằng tiếng Anh: bài đăng được viết bằng tiếng Anh.",
       "reread": "<b>{button}</b> thay các thay đổi của bạn bằng nội dung hiện tại của trang web; Shopfront sẽ hỏi trước. Để dùng trang web khác, chạm <b>{forget}</b> rồi bắt đầu lại."
     },
     "posts": {
       "title": "Tạo bài đăng",
       "make": "Trong <b>{tab}</b>, chạm <b>{button}</b>. Bạn nhận 6 gợi ý, mỗi gợi ý có hình bài đăng, hình story và chữ cho bài đăng.",
+      "open": "Chạm vào một gợi ý để mở. Những gợi ý bạn đã lưu và sao chép hiện <b>{saved}</b>.",
       "wait": "Giữ trang mở khoảng một phút trong lúc gợi ý được tạo.",
       "leave": "Nếu bạn rời đi, Shopfront sẽ tiếp tục từ chỗ dừng khi bạn quay lại, nhưng phần đang làm dở sẽ được làm lại và tốn một phần lượt của hôm nay. Vì vậy hãy bắt đầu khi bạn có một phút để chờ, đừng bắt đầu ngay trước một cuộc gọi.",
       "more": "Muốn ý khác? Chạm <b>{button}</b>: gợi ý mới nằm trên, gợi ý cũ vẫn ở bên dưới.",
@@ -353,21 +369,21 @@
     "reviews": {
       "title": "Trả lời đánh giá",
       "paste": "Trong Google Maps, mở đánh giá và sao chép nội dung. Trong <b>{tab}</b>, dán vào (tên khách có thể bỏ trống) và chạm <b>{button}</b>.",
-      "pick": "Chọn câu trả lời bạn thích, sửa nếu muốn, sao chép rồi dán làm câu trả lời trong Google Maps. Câu trả lời được viết bằng ngôn ngữ của khách, và bạn có thể đọc bằng ngôn ngữ của mình.",
+      "pick": "Chuyển giữa <b>{short}</b> và <b>{warm}</b> để chọn câu trả lời bạn thích, sửa nếu muốn, sao chép rồi dán làm câu trả lời trong Google Maps. Câu trả lời được viết bằng ngôn ngữ của khách, và bạn có thể đọc bằng ngôn ngữ của mình.",
       "other": "Không câu nào hợp? Chạm <b>{button}</b>. Đánh giá mới sẽ thay đánh giá trước."
     },
     "allowance": {
       "title": "Lượt dùng mỗi ngày",
       "free": "Shopfront miễn phí, nên mỗi ngày có giới hạn.",
       "limits": "Mỗi ngày bạn có {reads}, {attempts} (mỗi lần 6 gợi ý), {newImages} và {replies}, cùng với các lần cập nhật chú thích và bản dịch.",
-      "bar": "Thanh ở đầu màn hình cho biết hôm nay còn lại bao nhiêu và giờ mọi thứ được làm mới.",
+      "bar": "Dòng ở đầu mỗi tab cho biết hôm nay còn lại bao nhiêu và giờ mọi thứ được làm mới.",
       "reset": "Vào giờ đó, giới hạn được làm mới, còn các gợi ý và câu trả lời đánh giá trong ngày rời khỏi màn hình. Hãy lưu những gì bạn muốn giữ trước giờ đó.",
       "time": "Giờ trên thanh theo giờ điện thoại của bạn: hãy tin giờ đó thay vì một giờ cố định.",
       "month": "Hình mới còn có ngân sách hằng tháng cho cả ứng dụng. Nếu hết, Shopfront sẽ cho biết khi nào có hình trở lại."
     },
     "languages": {
       "title": "Ngôn ngữ",
-      "switch": "Các chữ ở góc trên bên phải (EN, VI, ID) đổi ngôn ngữ của màn hình.",
+      "switch": "Nút <b>EN</b> ở góc trên bên phải đổi ngôn ngữ của màn hình.",
       "captions": "Bài đăng được viết bằng tiếng Anh, và câu trả lời đánh giá bằng ngôn ngữ của khách. Hiển thị bằng ngôn ngữ của bạn là để đọc, không phải để đăng."
     },
     "trouble": {

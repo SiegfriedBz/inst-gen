@@ -3,6 +3,7 @@ import { senProfile } from '../unit/helpers/brand';
 import { fulfilRead, streamBody } from './helpers/brand-stream';
 import { fulfilImages } from './helpers/images';
 import { fulfilPosts, postsBody } from './helpers/posts-stream';
+import { tileImages, tiles } from './helpers/suggestions';
 
 // Suggestions last until Google's reset, 14:00 in Da Nang in US summer time
 // (docs/specs/posts/suggestions, docs/specs/platform/one-daily-reset), at the
@@ -35,18 +36,18 @@ test("today's suggestions stay through a reload, and Google's reset clears them"
   await expect(page.getByText(/Each suggestion is 2 images/)).toBeVisible();
   await page.getByRole('button', { name: 'Make 6 suggestions' }).click();
   await expect(page.getByRole('heading', { name: 'Attempt 1' })).toBeVisible();
-  await expect(page.locator('article img')).toHaveCount(6);
+  await expect(tileImages(page)).toHaveCount(6);
 
   // 13:55: still today's.
   await page.clock.setSystemTime(new Date('2026-10-26T13:55:00+07:00'));
   await page.reload();
   await expect(page.getByRole('heading', { name: 'Attempt 1' })).toBeVisible();
-  await expect(page.locator('article img')).toHaveCount(6);
+  await expect(tileImages(page)).toHaveCount(6);
 
   // 14:05 the same afternoon, past the reset: a new day starts empty.
   await page.clock.setSystemTime(new Date('2026-10-26T14:05:00+07:00'));
   await page.reload();
   await expect(page.getByText(/Each suggestion is 2 images/)).toBeVisible();
-  await expect(page.locator('article')).toHaveCount(0);
+  await expect(tiles(page)).toHaveCount(0);
   await expect(page.getByRole('button', { name: 'Make 6 suggestions' })).toBeVisible();
 });

@@ -67,6 +67,8 @@ call usually takes a few seconds; it is cut at 20 seconds (below).
 
 ### The Reviews tab, with replies
 
+
+> Changed by `platform/friendlier-home` (2026-10-27): a "Short | Warmer" switch shows one reply card at a time, with one "Copy the reply".
 Top to bottom, as the mockup's 2A:
 
 1. **The review**, in a muted box: a small heading "{name}'s review · in

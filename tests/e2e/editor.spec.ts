@@ -2,8 +2,10 @@ import { expect, type Page, test } from '@playwright/test';
 import vi from '@/messages/vi.json' with { type: 'json' };
 import { senProfile } from '../unit/helpers/brand';
 import { fulfilRead, streamBody } from './helpers/brand-stream';
+import { openSection } from './helpers/business-tab';
 import { fulfilImages } from './helpers/images';
 import { fulfilPosts, postsBody } from './helpers/posts-stream';
+import { closeSuggestion, openSuggestion, tile, tileImages, tiles } from './helpers/suggestions';
 
 // The editor and saving to the phone (docs/specs/posts/editor-download), at
 // the phone viewport, with every route mocked. Test values from
@@ -40,7 +42,7 @@ async function sixPosts(page: Page) {
   const images = await fulfilImages(page, {});
   await signIn(page);
   await readAndMake(page, 'Your website', 'Read my website', 'Make 6 suggestions');
-  await expect(page.locator('article img')).toHaveCount(6);
+  await expect(tileImages(page)).toHaveCount(6);
   return { profile, images };
 }
 
@@ -48,15 +50,16 @@ test('an edit is kept after a reload, and the automatic update leaves it alone',
   page,
 }) => {
   const { profile } = await sixPosts(page);
-  const first = page.locator('article').first();
-  await first.getByRole('button', { name: 'Edit the text' }).click();
-  await first.getByLabel('Caption').fill('My own words about warm oil.');
-  await first.getByRole('button', { name: 'Save', exact: true }).click();
+  let sheet = await openSuggestion(page, 1);
+  await sheet.getByRole('button', { name: 'Edit the text' }).click();
+  await sheet.getByLabel('Caption').fill('My own words about warm oil.');
+  await sheet.getByRole('button', { name: 'Save', exact: true }).click();
+  await closeSuggestion(page);
 
   await page.reload();
-  await expect(
-    page.locator('article').first().getByText('My own words about warm oil.'),
-  ).toBeVisible();
+  sheet = await openSuggestion(page, 1);
+  await expect(sheet.getByText('My own words about warm oil.')).toBeVisible();
+  await closeSuggestion(page);
 
   const sent: number[] = [];
   await page.route('**/api/posts/rewrite', async (route) => {
@@ -68,6 +71,7 @@ test('an edit is kept after a reload, and the automatic update leaves it alone',
     await route.fulfill({ status: 200, contentType: 'application/x-ndjson', body });
   });
   await page.getByRole('tab', { name: 'Your business' }).click();
+  await openSection(page, 'Where and when');
   await page.getByRole('button', { name: 'Edit Where and when' }).click();
   await page.getByLabel('Opening hours').fill('Every day, 9am to midnight');
   await page.getByRole('button', { name: 'Save', exact: true }).click();
@@ -76,8 +80,9 @@ test('an edit is kept after a reload, and the automatic update leaves it alone',
   await expect(page.getByText('My own words about warm oil.')).toBeVisible();
   expect(sent).toEqual([5]);
 
-  await page.getByRole('button', { name: 'Rewrite this one too' }).click();
-  await expect(page.getByText('Rewritten 1.')).toBeVisible();
+  sheet = await openSuggestion(page, 1);
+  await sheet.getByRole('button', { name: 'Rewrite this one too' }).click();
+  await expect(sheet.getByText('Rewritten 1.')).toBeVisible();
   await expect(page.getByText('My own words about warm oil.')).toHaveCount(0);
   expect(sent).toEqual([5, 1]);
 });
@@ -88,11 +93,11 @@ test('a new image carries the hint', async ({ page }) => {
   page.on('request', (request) => {
     if (request.url().endsWith('/api/posts/image')) bodies.push(request.postDataJSON());
   });
-  const first = page.locator('article').first();
-  await first.getByRole('button', { name: 'Create new image' }).click();
-  await first.getByLabel('What should change? (optional)').fill('more green');
-  await first.getByRole('button', { name: 'Make it' }).click();
-  await expect(first.getByText('Making the image…')).toBeHidden();
+  const sheet = await openSuggestion(page, 1);
+  await sheet.getByRole('button', { name: 'Create new image' }).click();
+  await sheet.getByLabel('What should change? (optional)').fill('more green');
+  await sheet.getByRole('button', { name: 'Make it' }).click();
+  await expect(sheet.getByText('Making the image…')).toBeHidden();
   expect(bodies.map((b) => b.hint)).toEqual(['more green']);
   expect(images.count()).toBe(7);
 });
@@ -101,7 +106,8 @@ test('without a share sheet, Save the 2 images downloads both, named', async ({ 
   await sixPosts(page);
   const names: string[] = [];
   page.on('download', (download) => names.push(download.suggestedFilename()));
-  await page.locator('article').nth(1).getByRole('button', { name: 'Save the 2 images' }).click();
+  const sheet = await openSuggestion(page, 2);
+  await sheet.getByRole('button', { name: 'Save the 2 images' }).click();
   await expect.poll(() => names.length).toBe(2);
   expect(names[0]).toMatch(/^sen-\d{4}-\d{2}-\d{2}-attempt-1-suggestion-2-post\.jpg$/);
   expect(names[1]).toMatch(/^sen-\d{4}-\d{2}-\d{2}-attempt-1-suggestion-2-story\.jpg$/);
@@ -117,11 +123,11 @@ test('two attempts stack, newest on top, and keep their own images after a reloa
   await fulfilImages(page, failures);
   await signIn(page);
   await readAndMake(page, 'Your website', 'Read my website', 'Make 6 suggestions');
-  await expect(page.locator('article img')).toHaveCount(6);
+  await expect(tileImages(page)).toHaveCount(6);
   failures['post-1'] = { status: 502, error: 'image_blocked' };
   await page.getByRole('button', { name: 'Make 6 new suggestions' }).click();
-  await expect(page.locator('article')).toHaveCount(12);
-  await expect(page.locator('article img')).toHaveCount(11);
+  await expect(tiles(page)).toHaveCount(12);
+  await expect(tileImages(page)).toHaveCount(11);
   await expect(page.getByRole('heading', { name: /^Attempt/ })).toHaveText([
     'Attempt 2',
     'Attempt 1',
@@ -129,9 +135,9 @@ test('two attempts stack, newest on top, and keep their own images after a reloa
   await expect(page.getByText('They go on top. Attempt 2 stays below.')).toBeVisible();
 
   await page.reload();
-  await expect(page.locator('article img')).toHaveCount(11);
-  await expect(page.locator('article').first().locator('img')).toHaveCount(0);
-  await expect(page.locator('article').nth(6).locator('img')).toHaveCount(1);
+  await expect(tileImages(page)).toHaveCount(11);
+  await expect(tile(page, 1).locator('img')).toHaveCount(0);
+  await expect(tile(page, 1, 1).locator('img')).toHaveCount(1);
 });
 
 test.describe('a Vietnamese screen', () => {
@@ -163,14 +169,15 @@ test.describe('a Vietnamese screen', () => {
       vi.home.tabs.posts,
     );
     const show = vi.posts.translate.show.replace('{language}', 'Tiếng Việt');
-    const first = page.locator('article').first();
-    await first.getByRole('button', { name: show }).click();
-    await expect(first.getByText('Chú thích 1.')).toBeVisible();
+    let sheet = await openSuggestion(page, 1);
+    await sheet.getByRole('button', { name: show }).click();
+    await expect(sheet.getByText('Chú thích 1.')).toBeVisible();
     expect(asked).toEqual([{ text: 'Caption 1.', locale: 'vi' }]);
 
     await page.reload();
-    await page.locator('article').first().getByRole('button', { name: show }).click();
-    await expect(page.locator('article').first().getByText('Chú thích 1.')).toBeVisible();
+    sheet = await openSuggestion(page, 1);
+    await sheet.getByRole('button', { name: show }).click();
+    await expect(sheet.getByText('Chú thích 1.')).toBeVisible();
     expect(asked).toHaveLength(1);
   });
 });

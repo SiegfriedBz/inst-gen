@@ -34,7 +34,9 @@ export function SignInFormView({
         key={state.attempt}
         id="passphrase"
         name="passphrase"
-        type="password"
+        // Always visible, never dots: a few plain words, and a typo is caught
+        // before the wrong-passphrase wait (docs/specs/platform/friendlier-home).
+        type="text"
         autoComplete="current-password"
         autoCapitalize="none"
         autoCorrect="off"

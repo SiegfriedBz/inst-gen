@@ -1,5 +1,5 @@
 // @vitest-environment jsdom
-import { act, cleanup, fireEvent, render, screen } from '@testing-library/react';
+import { act, cleanup, fireEvent, render, screen, within } from '@testing-library/react';
 import { useTranslations } from 'next-intl';
 import { afterEach, describe, expect, test, vi } from 'vitest';
 import { LanguageSwitch } from '@/components/language-switch';
@@ -33,35 +33,79 @@ function show() {
 }
 
 describe('the language switch', () => {
-  test('three codes in the order EN, VI, ID, each named in its own language', () => {
+  const summary = (code: string) => screen.getByText(code).closest('summary') as HTMLElement;
+  const list = () => document.querySelector('form') as HTMLFormElement;
+
+  test('closed: a globe and the current code, named "Language: English"', () => {
     show();
-    const nav = screen.getByRole('navigation', { name: 'Language' });
-    const current = nav.querySelector('[aria-current="true"]');
-    expect(current?.textContent).toContain('EN');
-    expect(current?.textContent).toContain('English');
-    expect(screen.getByRole('button', { name: 'Tiếng Việt' }).textContent).toBe('VI');
-    expect(screen.getByRole('button', { name: 'Bahasa Indonesia' }).textContent).toBe('ID');
-    const order = [...nav.querySelectorAll('[lang]')].map((el) => el.getAttribute('lang'));
+    expect(summary('EN')).not.toBeNull();
+    expect(summary('EN').getAttribute('aria-label')).toBe('Language: English');
+    expect((summary('EN').closest('details') as HTMLDetailsElement).open).toBe(false);
+  });
+
+  test('open: three full names in their own language, the current one checked and inert', () => {
+    show();
+    fireEvent.click(summary('EN'));
+    expect((summary('EN').closest('details') as HTMLDetailsElement).open).toBe(true);
+    const names = within(list())
+      .getAllByRole('button')
+      .map((b) => [b.textContent, b.getAttribute('lang')]);
+    expect(names).toEqual([
+      ['Tiếng Việt', 'vi'],
+      ['Bahasa Indonesia', 'id'],
+    ]);
+    const current = within(list()).getByText('English').closest('[aria-current="true"]');
+    expect(current?.getAttribute('lang')).toBe('en');
+    const order = [...list().querySelectorAll('[lang]')].map((el) => el.getAttribute('lang'));
     expect(order).toEqual(['en', 'vi', 'id']);
   });
 
-  test('a tap switches the screen at once and saves the choice in the background', async () => {
+  test('picking Tiếng Việt switches the screen at once, saves it, and closes the list', async () => {
     show();
+    fireEvent.click(summary('EN'));
     await act(async () => {
       fireEvent.click(screen.getByRole('button', { name: 'Tiếng Việt' }));
     });
     expect(screen.getByRole('heading').textContent).toBe('Chào mừng, Sen');
     expect(document.documentElement.lang).toBe('vi');
     expect(saveLocale).toHaveBeenCalledWith('vi');
-    const nav = screen.getByRole('navigation', { name: 'Ngôn ngữ' });
-    expect(nav.querySelector('[aria-current="true"]')?.textContent).toContain('VI');
+    expect(summary('VI').getAttribute('aria-label')).toBe('Ngôn ngữ: Tiếng Việt');
+    expect((summary('VI').closest('details') as HTMLDetailsElement).open).toBe(false);
+  });
+
+  test('without JavaScript each language is a submit button of the form', () => {
+    show();
+    const vi = screen.getByRole('button', { name: 'Tiếng Việt' });
+    expect(vi.getAttribute('type')).toBe('submit');
+    expect(vi.getAttribute('name')).toBe('locale');
+    expect(vi.getAttribute('value')).toBe('vi');
+    expect(vi.closest('form')?.querySelector('input[name="returnTo"]')?.getAttribute('value')).toBe(
+      '/',
+    );
+  });
+
+  test('Escape closes the list and gives focus back to the button', () => {
+    show();
+    fireEvent.click(summary('EN'));
+    fireEvent.keyDown(document, { key: 'Escape' });
+    expect((summary('EN').closest('details') as HTMLDetailsElement).open).toBe(false);
+    expect(document.activeElement).toBe(summary('EN'));
+  });
+
+  test('a tap outside closes the list', () => {
+    show();
+    fireEvent.click(summary('EN'));
+    fireEvent.pointerDown(screen.getByRole('heading'));
+    expect((summary('EN').closest('details') as HTMLDetailsElement).open).toBe(false);
   });
 
   test("a server render from an earlier tap doesn't switch the screen back", async () => {
     const view = show();
+    fireEvent.click(summary('EN'));
     await act(async () => {
       fireEvent.click(screen.getByRole('button', { name: 'Tiếng Việt' }));
     });
+    fireEvent.click(summary('VI'));
     await act(async () => {
       fireEvent.click(screen.getByRole('button', { name: 'English' }));
     });
@@ -73,6 +117,7 @@ describe('the language switch', () => {
   test('a save that fails offline is tried again once the phone is back', async () => {
     saveLocale.mockRejectedValueOnce(new TypeError('Failed to fetch'));
     show();
+    fireEvent.click(summary('EN'));
     await act(async () => {
       fireEvent.click(screen.getByRole('button', { name: 'Tiếng Việt' }));
     });

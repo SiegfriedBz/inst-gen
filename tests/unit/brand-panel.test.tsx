@@ -14,6 +14,7 @@ function renderPanel(
   editable = true,
   ownerEdited: string[] = [],
   search: SearchState = null,
+  mode: 'reading' | 'home' = 'reading',
 ) {
   const onEdit = vi.fn();
   render(
@@ -24,6 +25,7 @@ function renderPanel(
         onEdit={onEdit}
         ownerEdited={ownerEdited}
         search={search}
+        mode={mode}
       />
     </NextIntlClientProvider>,
   );
@@ -185,5 +187,64 @@ describe('BrandPanel', () => {
     renderPanel(p);
     const link = screen.getByRole('link', { name: 'seen on bali.travel' });
     expect(link.getAttribute('href')).toBe('https://bali.travel/batur');
+  });
+});
+
+describe('the panel on the home screen', () => {
+  const home = (profile: Profile) => renderPanel(profile, true, [], null, 'home');
+  const row = (name: RegExp) => screen.getByRole('button', { name });
+
+  test('Your business open, the other four collapsed with their line', () => {
+    home(svargaProfile());
+    expect(screen.getByText('Svarga')).toBeTruthy();
+    expect(screen.getByRole('button', { name: 'Edit Your business' })).toBeTruthy();
+    for (const title of [
+      /^Where and when/,
+      /^How people reach you/,
+      /^Your look/,
+      /^Your feeling/,
+    ]) {
+      expect(row(title).getAttribute('aria-expanded')).toBe('false');
+    }
+    expect(screen.getByText('Canggu, Every day, 9am to 10pm')).toBeTruthy();
+    expect(screen.getByText('+6281234567890')).toBeTruthy();
+    expect(screen.getByText('relaxing, warm, cared for. calm, warm, caring')).toBeTruthy();
+    expect(screen.queryByText('Canggu, Seminyak and Ubud')).toBeNull();
+    expect(screen.queryByRole('button', { name: 'Edit Where and when' })).toBeNull();
+  });
+
+  test('a row opens in place with its values, their sources and Edit; again closes it', () => {
+    home(svargaProfile());
+    fireEvent.click(row(/^Where and when/));
+    expect(row(/^Where and when/).getAttribute('aria-expanded')).toBe('true');
+    expect(screen.getByText('Canggu, Seminyak and Ubud')).toBeTruthy();
+    expect(screen.getAllByText(/^from /).length).toBeGreaterThan(0);
+    expect(screen.getByRole('button', { name: 'Edit Where and when' })).toBeTruthy();
+    fireEvent.click(row(/^Where and when/));
+    expect(screen.queryByText('Canggu, Seminyak and Ubud')).toBeNull();
+  });
+
+  test('no "Not found on your site" lines, even opened', () => {
+    home(svargaProfile());
+    fireEvent.click(row(/^Where and when/));
+    fireEvent.click(row(/^How people reach you/));
+    expect(screen.queryByText('Not found on your site')).toBeNull();
+    expect(screen.queryByText('Add your WhatsApp number: every post ends with it.')).toBeNull();
+  });
+
+  test('a section with nothing to say gives how many to add', () => {
+    const p = svargaProfile();
+    home({
+      ...p,
+      location: { town: null, area: null, address: null, serviceArea: null },
+      hours: null,
+    });
+    expect(within(row(/^Where and when/)).getByText('5 to add')).toBeTruthy();
+  });
+
+  test('highlights stay in the form, not on the open section', () => {
+    const p = svargaProfile();
+    home(p);
+    expect(screen.queryByText(p.highlights[0].value)).toBeNull();
   });
 });

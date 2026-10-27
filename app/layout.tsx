@@ -23,6 +23,9 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 export const viewport: Viewport = {
+  // The bottom tab bar reaches the phone's edge and pads itself above the
+  // home indicator (docs/specs/platform/friendlier-home).
+  viewportFit: 'cover',
   themeColor: [
     { media: '(prefers-color-scheme: light)', color: '#f6f7f5' },
     { media: '(prefers-color-scheme: dark)', color: '#121614' },

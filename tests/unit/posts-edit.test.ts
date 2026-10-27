@@ -226,3 +226,41 @@ describe('the rewrite merge', () => {
 function edit(p: Post) {
   return { caption: p.caption, hashtags: p.hashtags.join(' '), altText: p.altText };
 }
+
+describe('what clears saved and copied', () => {
+  const NOW = '2026-10-27T10:00:00.000Z';
+
+  test('an edit clears copied, keeps saved', () => {
+    const p = applyEdit(
+      post({ savedAt: NOW, copiedAt: NOW }),
+      { caption: 'New words.', hashtags: '#danang', altText: '' },
+      profile,
+    );
+    expect(p.copiedAt).toBeUndefined();
+    expect(p.savedAt).toBe(NOW);
+  });
+
+  test('a rewritten post loses copied, keeps saved; one not sent keeps both', () => {
+    const b = batch([
+      post({ id: 'p1', savedAt: NOW, copiedAt: NOW }),
+      post({ id: 'p2', savedAt: NOW, copiedAt: NOW }),
+    ]);
+    const result: PlanResult = {
+      posts: [post({ id: 'p1', caption: 'Rewritten.' })],
+      dropped: [],
+      promptVersion: 'posts-1',
+      model: 'm',
+      profileHash: profileHash(changed),
+    };
+    const merged = mergeRewrite(b, result, ['p1']);
+    expect(merged.posts[0]).toMatchObject({ caption: 'Rewritten.', savedAt: NOW });
+    expect(merged.posts[0].copiedAt).toBeUndefined();
+    expect(merged.posts[1]).toMatchObject({ savedAt: NOW, copiedAt: NOW });
+  });
+
+  test('a new image clears saved, keeps copied', () => {
+    const marked = markNewImage(batch([post({ id: 'p1', savedAt: NOW, copiedAt: NOW })]), 'p1');
+    expect(marked.posts[0].savedAt).toBeUndefined();
+    expect(marked.posts[0].copiedAt).toBe(NOW);
+  });
+});
