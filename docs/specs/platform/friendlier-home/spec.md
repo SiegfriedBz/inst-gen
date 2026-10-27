@@ -1,8 +1,8 @@
 ---
 title: "Friendlier home"
-description: "The home screen gets a smaller header (the spa's name, a Guide icon, one language button), its three tabs move to a bar at the bottom, 'Create Posts' becomes a grid of six per attempt that opens one suggestion at a time and ticks the ones saved and copied, 'Your business' shows what's missing first, and 'Reviews' shows one reply at a time with a Short | Warmer switch."
+description: "The home screen gets a smaller header (the spa's name, a Guide icon, one language button), its three tabs move to a bar at the bottom, 'Create Posts' becomes a grid of six per attempt that opens one suggestion at a time and ticks the ones saved and copied, 'Your business' shows what's missing first, and 'Reviews' shows one reply at a time with a Short | Warmer switch; the passphrase shows as it is typed."
 status: approved
-approved: { by: siegfried.bozza@protonmail.com, at: 2026-10-27T10:23:10Z }
+approved: { by: siegfried.bozza@protonmail.com, at: 2026-10-27T11:15:53Z }
 date: "2026-10-27"
 ---
 
@@ -319,6 +319,21 @@ replies, top to bottom:
   picked.
 - The picked half isn't stored: a reload shows Short.
 
+### The passphrase shows as it is typed
+
+On `/enter`, the passphrase field is a plain text field, and the passphrase
+in it is always visible: each letter as the owner types it, and the whole
+passphrase after, until they tap "Enter". It is never hidden: no dots, no
+show or hide button. A passphrase is a few plain words, often
+typed on a small phone in a second language; seeing it is how a typo gets
+caught before the wrong-passphrase wait.
+
+- The field keeps `autocomplete="current-password"`, `autocapitalize="none"`,
+  `autocorrect="off"` and no spell check, so the phone can still offer a saved
+  passphrase and doesn't change what is typed.
+- Everything else in `harness/app-scaffold`'s sign-in holds: a wrong or empty
+  passphrase still empties the field and puts focus back in it.
+
 ### Strings
 
 New or changed, in English, Indonesian and Vietnamese (the developer's
@@ -384,6 +399,8 @@ itself stays as a record:
 - `reviews/reply-drafts`: "The Reviews tab, with replies".
 - `platform/usage-counters`: "The usage bar" (its place).
 - `guide/owner-guide`: "Where it lives" (the Guide link is an icon).
+- `harness/app-scaffold`: the passphrase screen's list (a plain text field,
+  not a password field).
 - The roadmap gains **2.10 `platform/friendlier-home`**, `in progress` with
   this spec, `done` with the PR that ships it.
 
@@ -507,6 +524,11 @@ Scenario: An edit survives a switch
 Scenario: Small phone
   Given a phone 320px wide with the screen in Vietnamese
   Then every tab, the bottom bar and the header fit with no horizontal scroll
+
+Scenario: The passphrase shows as it is typed
+  Given the owner is on /enter
+  When they type "lotus-river-moon-sen" in "Passphrase"
+  Then the field shows "lotus-river-moon-sen", not dots
 ```
 
 ## Known limits
@@ -514,6 +536,8 @@ Scenario: Small phone
 - "Saved and copied" says what happened in Shopfront, not on Instagram. An
   owner who saved and copied but didn't post still sees the tick.
 - Picking a language takes two taps instead of one.
+- Someone looking at the owner's phone can read the passphrase as it is
+  typed.
 - A fixed bottom bar takes 64px of a small screen on every tab.
 - Hiding the bar while the keyboard is up relies on the browser reporting the
   keyboard; on a browser that doesn't, the builder's chosen fallback applies.

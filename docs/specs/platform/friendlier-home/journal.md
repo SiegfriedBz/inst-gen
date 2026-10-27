@@ -34,6 +34,9 @@
 - 2026-10-27: One full run had `brand-fixtures-replay` (karsa-spa) time out
   at 5 s under load; it passes alone and on the next full run (99 files,
   1171 tests). Nothing here touches the brand read.
+- 2026-10-27: The owner asked for the passphrase to be always visible. The
+  spec gained "The passphrase shows as it is typed" and was approved again
+  (11:15 UTC); the field is `type="text"`, nothing else about sign-in moves.
 
 ## RED
 
@@ -94,6 +97,12 @@ Task 10, one reply at a time (`reviews-section`, `reviews-section-storage`):
       Tests  16 failed | 5 passed (21)
 ```
 
+Passphrase always visible (`sign-in-form`):
+
+```
+      Tests  1 failed | 4 passed (5)
+```
+
 ## GREEN
 
 Task 1 (`language-switch`, `i18n-messages`):
@@ -150,4 +159,10 @@ Task 10 (`reviews-section`, `reviews-section-storage`), then the full suite:
       Tests  21 passed (21)
  Test Files  99 passed (99)
       Tests  1171 passed (1171)
+```
+
+Passphrase always visible (`sign-in-form`):
+
+```
+      Tests  5 passed (5)
 ```
