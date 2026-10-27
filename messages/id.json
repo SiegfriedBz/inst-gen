@@ -84,7 +84,8 @@
       "searching": "Mencari tahu apa yang dicari orang…",
       "searchFailed": "Kami belum bisa mencarinya hari ini. Kami akan mencoba lagi lain kali.",
       "searchEmpty": "Tidak ada yang ditemukan untuk kota Anda.",
-      "notFoundYet": "Belum ditemukan"
+      "notFoundYet": "Belum ditemukan",
+      "toAdd": "{count} untuk ditambahkan"
     },
     "source": {
       "page": "dari {path}",
@@ -157,12 +158,13 @@
       "stop": "Berhenti",
       "announceReading": "Membaca situs web Anda",
       "announceDone": "Selesai: periksa apa yang kami pahami",
-      "intro": "Inilah yang kami pahami tentang {name}. Perbaiki yang salah: postingan Anda ditulis dari sini.",
-      "lastRead": "Terakhir dibaca {when}",
-      "reread": "Baca ulang situs web saya",
+      "reread": "Baca lagi",
       "forget": "Lupakan usaha ini",
       "invalidSaved": "Kami tidak bisa membuka usaha Anda yang tersimpan. Baca situs web Anda lagi.",
-      "notKept": "Browser ini tidak akan menyimpan usaha Anda: Anda perlu membaca situs Anda lagi lain kali."
+      "notKept": "Browser ini tidak akan menyimpan usaha Anda: Anda perlu membaca situs Anda lagi lain kali.",
+      "title": "Yang kami ketahui tentang {name}",
+      "subtitle": "Postingan Anda ditulis dari sini. Perbaiki yang salah.",
+      "readFrom": "Dibaca dari {site} {when}."
     },
     "errors": {
       "invalid_url": "Itu tidak terlihat seperti alamat situs web. Periksa dan coba lagi.",
@@ -185,6 +187,11 @@
       "body": "Ini menghapus semua yang disimpan Shopfront di ponsel ini untuk usaha Anda. Anda bisa membaca situs web Anda lagi kapan saja.",
       "confirm": "Lupakan",
       "cancel": "Batal"
+    },
+    "missing": {
+      "title": "{count} hal yang tidak kami temukan",
+      "body": "Setiap yang Anda tambahkan membuat postingan Anda lebih tepat.",
+      "add": "Tambah {field}"
     }
   },
   "posts": {

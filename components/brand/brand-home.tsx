@@ -1,6 +1,6 @@
 'use client';
 
-import { ChatText, ImageSquare, Storefront } from '@phosphor-icons/react';
+import { ChatText, ImageSquare, Storefront, WarningCircle } from '@phosphor-icons/react';
 import { useLocale, useTranslations } from 'next-intl';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { ReviewsSection } from '@/components/reviews/reviews-section';
@@ -22,6 +22,7 @@ import { UsageMessage } from '@/components/usage/usage-message';
 import { useAtLimit } from '@/components/usage/usage-provider';
 import { lastReadLabel } from '@/lib/brand/display';
 import { changedUnsourced, countOwnerEdits, type SectionId } from '@/lib/brand/edit';
+import { type FieldKey, missingFields } from '@/lib/brand/missing';
 import type { BrandErrorCode, PartialProfile, Profile } from '@/lib/brand/profile';
 import { type ReadEvent, type RunningRead, resumeRead, startRead } from '@/lib/brand/read-client';
 import type { SearchAnswer } from '@/lib/brand/search/run';
@@ -39,6 +40,7 @@ import { applyCta } from '@/lib/posts/store';
 import { isUsageCode, type UsageCode } from '@/lib/usage/codes';
 import { PostsSection } from '../posts/posts-section';
 import { type HomeTab, HomeTabBar } from './home-tab-bar';
+import { MissingBlock } from './missing-block';
 import { BrandPanel, type SearchState } from './panel';
 import { Reading } from './reading';
 import { SectionSheet } from './section-sheet';
@@ -90,6 +92,8 @@ export function BrandHome({
   );
   const [notice, setNotice] = useState<Notice>(null);
   const [editing, setEditing] = useState<SectionId | null>(null);
+  // The field "+ Phone" and the like open their section's form on.
+  const [focusField, setFocusField] = useState<FieldKey | null>(null);
   const [confirm, setConfirm] = useState<'reread' | 'forget' | null>(null);
   const [announce, setAnnounce] = useState('');
   const field = useRef<HTMLInputElement>(null);
@@ -336,6 +340,13 @@ export function BrandHome({
       {text}
     </p>
   );
+  // 1.2's two warnings, above the missing block on "Your business".
+  const warning = (text: string) => (
+    <p role="note" className="flex items-start gap-1.5 text-[15px] leading-normal text-error">
+      <WarningCircle aria-hidden className="mt-1 shrink-0" size={16} />
+      {text}
+    </p>
+  );
 
   return (
     <div className={view.kind === 'empty' ? 'flex flex-col' : 'mt-6 flex flex-col'}>
@@ -399,41 +410,66 @@ export function BrandHome({
           />
           <TabsContent value="business" hidden={tab !== 'business'}>
             <UsageBar tab="business" />
-            <p className="mt-5 mb-4 text-[15px] leading-normal text-ink-secondary">
-              {t('home.intro', { name: saved.name.value })}
+            {/* What's missing first (docs/specs/platform/friendlier-home). */}
+            <h2 className="mt-5 text-[22px] leading-tight font-medium tracking-[-0.01em]">
+              {t('home.title', { name: saved.name.value })}
+            </h2>
+            <p className="mt-1 text-[14px] leading-normal text-ink-secondary">
+              {t('home.subtitle')}
             </p>
-            <BrandPanel
-              profile={saved}
-              editable
-              onEdit={setEditing}
-              ownerEdited={ownerEdited}
-              search={search}
-            />
-            <div className="mt-6 flex flex-col gap-2 border-t border-edge pt-4">
-              <p className="truncate text-[15px]">{saved.siteUrl}</p>
-              <p className="text-[13px] text-ink-secondary">
-                {t('home.lastRead', { when: lastReadLabel(saved.readAt, new Date(), locale) })}
+            <div className="mt-4 flex flex-col gap-3">
+              {saved.thin && message(t('panel.thin'), 'note')}
+              {!saved.contact.whatsapp?.value?.trim() && warning(t('panel.warnWhatsapp'))}
+              {!saved.location.town?.value?.trim() && warning(t('panel.warnTown'))}
+              <MissingBlock
+                {...missingFields(saved, search)}
+                onAdd={({ section, field }) => {
+                  setFocusField(field);
+                  setEditing(section);
+                }}
+              />
+              <BrandPanel
+                profile={saved}
+                editable
+                onEdit={(section) => {
+                  setFocusField(null);
+                  setEditing(section);
+                }}
+                ownerEdited={ownerEdited}
+                search={search}
+                mode="home"
+              />
+            </div>
+            <div className="mt-5 flex flex-col gap-1">
+              <p className="text-[13px] leading-normal text-ink-secondary">
+                {t('home.readFrom', {
+                  site: siteLabel(saved.siteUrl),
+                  when: lastReadLabel(saved.readAt, new Date(), locale),
+                })}
               </p>
-              <button
-                type="button"
-                onClick={() => (edits > 0 ? setConfirm('reread') : reread())}
-                disabled={readLimit !== null}
-                className="press mt-2 inline-flex h-12 w-full items-center justify-center rounded-control border border-edge px-4 text-[15px] font-medium text-ink outline-none focus-visible:ring-2 focus-visible:ring-accent disabled:opacity-60"
-              >
-                {t('home.reread')}
-              </button>
+              <div className="flex flex-wrap gap-x-6">
+                <button
+                  type="button"
+                  onClick={() => (edits > 0 ? setConfirm('reread') : reread())}
+                  disabled={readLimit !== null}
+                  className="min-h-11 text-[15px] font-medium text-accent outline-none focus-visible:ring-2 focus-visible:ring-accent disabled:opacity-60"
+                >
+                  {t('home.reread')}
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setConfirm('forget')}
+                  className="min-h-11 text-[15px] font-medium text-error outline-none focus-visible:ring-2 focus-visible:ring-accent"
+                >
+                  {t('home.forget')}
+                </button>
+              </div>
               {readLimitLine}
-              <button
-                type="button"
-                onClick={() => setConfirm('forget')}
-                className="min-h-11 text-[15px] font-medium text-error outline-none focus-visible:ring-2 focus-visible:ring-accent"
-              >
-                {t('home.forget')}
-              </button>
             </div>
             <SectionSheet
               profile={saved}
               section={editing}
+              focus={focusField}
               onSave={saveEdit}
               onClose={() => setEditing(null)}
             />
@@ -485,4 +521,9 @@ export function BrandHome({
       )}
     </div>
   );
+}
+
+// `https://sendanangmassage.com/` → `sendanangmassage.com`.
+function siteLabel(url: string): string {
+  return url.replace(/^https?:\/\//, '').replace(/\/$/, '');
 }

@@ -84,7 +84,8 @@
       "searching": "Đang tìm xem mọi người tìm kiếm gì…",
       "searchFailed": "Hôm nay chúng tôi chưa tra cứu được. Chúng tôi sẽ thử lại lần sau.",
       "searchEmpty": "Không tìm thấy gì cho thành phố của bạn.",
-      "notFoundYet": "Chưa tìm thấy"
+      "notFoundYet": "Chưa tìm thấy",
+      "toAdd": "{count} mục cần thêm"
     },
     "source": {
       "page": "từ {path}",
@@ -157,12 +158,13 @@
       "stop": "Dừng",
       "announceReading": "Đang đọc trang web của bạn",
       "announceDone": "Xong: hãy kiểm tra những gì chúng tôi hiểu",
-      "intro": "Đây là những gì chúng tôi hiểu về {name}. Hãy sửa chỗ nào chưa đúng: bài đăng của bạn được viết từ đây.",
-      "lastRead": "Đọc lần cuối {when}",
-      "reread": "Đọc lại trang web của tôi",
+      "reread": "Đọc lại",
       "forget": "Quên doanh nghiệp này",
       "invalidSaved": "Chúng tôi không mở được doanh nghiệp đã lưu của bạn. Hãy đọc lại trang web.",
-      "notKept": "Trình duyệt này sẽ không lưu doanh nghiệp của bạn: lần sau bạn cần đọc lại trang web."
+      "notKept": "Trình duyệt này sẽ không lưu doanh nghiệp của bạn: lần sau bạn cần đọc lại trang web.",
+      "title": "Những gì chúng tôi biết về {name}",
+      "subtitle": "Bài đăng của bạn được viết từ đây. Hãy sửa chỗ nào chưa đúng.",
+      "readFrom": "Đã đọc từ {site} {when}."
     },
     "errors": {
       "invalid_url": "Đây không giống địa chỉ trang web. Hãy kiểm tra và thử lại.",
@@ -185,6 +187,11 @@
       "body": "Thao tác này xóa mọi thứ Shopfront lưu trên điện thoại này cho doanh nghiệp của bạn. Bạn có thể đọc lại trang web bất cứ lúc nào.",
       "confirm": "Quên",
       "cancel": "Hủy"
+    },
+    "missing": {
+      "title": "{count} mục chúng tôi không tìm thấy",
+      "body": "Mỗi mục bạn thêm giúp bài đăng chính xác hơn.",
+      "add": "Thêm {field}"
     }
   },
   "posts": {

@@ -70,8 +70,8 @@ const FIELDS: { field: FieldKey; section: SectionId; empty: (p: Profile) => bool
   { field: 'moments', section: 'feeling', empty: (p) => noItems(p.essence.moments) },
   { field: 'placeSymbols', section: 'feeling', empty: (p) => noItems(p.essence.placeSymbols) },
   { field: 'senses', section: 'feeling', empty: (p) => noItems(p.essence.senses) },
-  { field: 'tone', section: 'feeling', empty: (p) => noItems(p.tone) },
   { field: 'searchTerms', section: 'feeling', empty: (p) => noItems(p.essence.searchTerms) },
+  { field: 'tone', section: 'feeling', empty: (p) => noItems(p.tone) },
 ];
 
 // Asked for by their own warnings, so counted but never a button.

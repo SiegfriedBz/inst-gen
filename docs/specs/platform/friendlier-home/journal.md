@@ -20,6 +20,15 @@
   screen has no test: while the sheet is open nothing on the page can remove
   that suggestion (the reset only runs from "Make 6 new suggestions", behind
   the sheet). It stays for a run resumed in the background.
+- 2026-10-27: The open "Your business" section keeps today's label-over-value
+  rows, not label beside value: one less layout, the same facts.
+- 2026-10-27: A field left empty by a failed or empty essence search keeps
+  1.3's line ("We couldn't look this up today…") on the home screen, without
+  "Not found · Add": the missing block asks for it.
+- 2026-10-27: "+ Phone" focuses its field by the field's label in the form
+  (or a list's add field), rather than a key threaded through every form.
+- 2026-10-27: "{count} to add" lives at `brand.panel.toAdd`, beside the
+  panel's other words, not `brand.missing.inSection`.
 
 ## RED
 
@@ -68,6 +77,12 @@ Error: Cannot find package '@/lib/brand/missing' imported from …/tests/unit/br
       Tests  no tests
 ```
 
+Task 9, Your business (`brand-home`, `brand-panel`, `brand-section-sheet`):
+
+```
+      Tests  28 failed | 49 passed (77)
+```
+
 ## GREEN
 
 Task 1 (`language-switch`, `i18n-messages`):
@@ -110,4 +125,10 @@ Task 8 (`brand-missing`, `brand-panel`):
 
 ```
       Tests  26 passed (26)
+```
+
+Task 9 (`brand-home`, `brand-panel`, `brand-section-sheet`, `brand-missing`, `usage-limits-ui`, `i18n-messages`):
+
+```
+      Tests  105 passed (105)
 ```

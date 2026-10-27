@@ -84,7 +84,8 @@
       "searching": "Looking up what people search for…",
       "searchFailed": "We couldn't look this up today. We'll try again next time.",
       "searchEmpty": "Nothing found for your town.",
-      "notFoundYet": "Not found yet"
+      "notFoundYet": "Not found yet",
+      "toAdd": "{count} to add"
     },
     "source": {
       "page": "from {path}",
@@ -157,12 +158,13 @@
       "stop": "Stop",
       "announceReading": "Reading your website",
       "announceDone": "Done: check what we understood",
-      "intro": "This is what we understood about {name}. Fix anything that's wrong: your posts are written from it.",
-      "lastRead": "Last read {when}",
-      "reread": "Re-read my website",
+      "reread": "Read it again",
       "forget": "Forget this business",
       "invalidSaved": "We couldn't open your saved business. Read your website again.",
-      "notKept": "This browser won't keep your business: you'll need to read your site again next time."
+      "notKept": "This browser won't keep your business: you'll need to read your site again next time.",
+      "title": "What we know about {name}",
+      "subtitle": "Your posts are written from this. Fix anything that's wrong.",
+      "readFrom": "Read from {site} {when}."
     },
     "errors": {
       "invalid_url": "That doesn't look like a website address. Check it and try again.",
@@ -185,6 +187,11 @@
       "body": "This deletes everything Shopfront keeps on this phone for your business. You can read your website again any time.",
       "confirm": "Forget",
       "cancel": "Cancel"
+    },
+    "missing": {
+      "title": "{count, plural, one {# thing we couldn't find} other {# things we couldn't find}}",
+      "body": "Each one you add makes your posts more exact.",
+      "add": "Add {field}"
     }
   },
   "posts": {

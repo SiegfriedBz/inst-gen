@@ -26,6 +26,7 @@ import {
   type SectionValues,
   sectionValues,
 } from '@/lib/brand/edit';
+import type { FieldKey } from '@/lib/brand/missing';
 import { COLOUR_ROLES, LIMITS, type Profile } from '@/lib/brand/profile';
 import { ChipsField } from './chips-field';
 import { ListField } from './list-field';
@@ -428,14 +429,40 @@ const FORMS: { [S in SectionId]: (props: FormProps<S>) => ReactNode } = {
   feeling: FeelingForm,
 };
 
+// The form opened for one field (docs/specs/platform/friendlier-home, the
+// missing block's "+ Phone"): its input, or a list's own "Add", takes focus.
+function focusField(root: HTMLElement, label: string): boolean {
+  for (const el of root.querySelectorAll('label')) {
+    const target = el.htmlFor ? root.ownerDocument.getElementById(el.htmlFor) : null;
+    if (el.textContent?.trim() === label && target) {
+      target.focus();
+      return true;
+    }
+  }
+  for (const legend of root.querySelectorAll('legend')) {
+    if (legend.textContent?.trim() !== label) continue;
+    const box = legend.parentElement;
+    const add =
+      box?.querySelector<HTMLElement>('input:not([type="hidden"])') ??
+      [...(box?.querySelectorAll<HTMLElement>('button') ?? [])].at(-1);
+    if (add) {
+      add.focus();
+      return true;
+    }
+  }
+  return false;
+}
+
 function SectionForm({
   profile,
   section,
+  focus,
   onSave,
   onClose,
 }: {
   profile: Profile;
   section: SectionId;
+  focus: FieldKey | null;
   onSave: (profile: Profile) => Promise<void>;
   onClose: () => void;
 }) {
@@ -468,7 +495,13 @@ function SectionForm({
 
   return (
     <Sheet open onOpenChange={(open) => !open && requestClose()}>
-      <SheetContent>
+      <SheetContent
+        onOpenAutoFocus={(event) => {
+          if (focus && focusField(event.currentTarget as HTMLElement, panel(`fields.${focus}`))) {
+            event.preventDefault();
+          }
+        }}
+      >
         <form onSubmit={save} noValidate className="flex min-h-0 flex-col">
           <div className="px-5 pt-5 pb-3">
             <SheetTitle>{panel(`sections.${section}`)}</SheetTitle>
@@ -514,11 +547,13 @@ function SectionForm({
 export function SectionSheet({
   profile,
   section,
+  focus = null,
   onSave,
   onClose,
 }: {
   profile: Profile;
   section: SectionId | null;
+  focus?: FieldKey | null;
   onSave: (profile: Profile) => Promise<void>;
   onClose: () => void;
 }) {
@@ -528,6 +563,7 @@ export function SectionSheet({
       key={section}
       profile={profile}
       section={section}
+      focus={focus}
       onSave={onSave}
       onClose={onClose}
     />

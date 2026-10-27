@@ -1,17 +1,21 @@
 'use client';
 
-import { CircleNotch, WarningCircle } from '@phosphor-icons/react';
+import { CaretDown, CircleNotch, WarningCircle } from '@phosphor-icons/react';
 import { useTranslations } from 'next-intl';
-import { createContext, type ReactNode, useContext } from 'react';
+import { createContext, type ReactNode, useContext, useId, useState } from 'react';
 import type { SourceKind } from '@/lib/brand/display';
 import type { SectionId } from '@/lib/brand/edit';
 import type { SearchState } from '@/lib/brand/missing';
-import type { PartialProfile } from '@/lib/brand/profile';
+import { missingFields, missingIn, sectionSummary } from '@/lib/brand/missing';
+import type { PartialProfile, Profile } from '@/lib/brand/profile';
 import { SourceNote } from './source-note';
 
 // The brand panel (docs/specs/brand/brand-panel, "The panel"): five section
 // cards showing what Shopfront understood, each fact with its source. While
-// a read streams it shows a partial profile and nothing can be edited.
+// a read streams it shows a partial profile and nothing can be edited. On the
+// home screen ("home" mode, docs/specs/platform/friendlier-home) the sections
+// are one card of rows that open in place, "Your business" open first; empty
+// fields and their warnings are left to the missing block above it.
 
 type Sourced = { value?: string; source?: string } | null | undefined;
 
@@ -26,6 +30,7 @@ type PanelProps = {
   onEdit: (section: SectionId) => void;
   ownerEdited?: readonly string[];
   search?: SearchState;
+  mode?: 'reading' | 'home';
 };
 
 type FieldProps = {
@@ -44,14 +49,32 @@ function Placeholder() {
   return <span aria-hidden className="mt-1 block h-4 w-2/3 animate-pulse rounded bg-field-muted" />;
 }
 
-const PanelContext = createContext<{ editable: boolean; onEdit: (section: SectionId) => void }>({
+const PanelContext = createContext<{
+  editable: boolean;
+  onEdit: (section: SectionId) => void;
+  home: boolean;
+  // Each section's one line when it's closed, on the home screen.
+  lines: Partial<Record<SectionId, ReactNode>>;
+}>({
   editable: false,
   onEdit: () => {},
+  home: false,
+  lines: {},
 });
 
 function Field({ label, section, filled, warning, empty, after, children }: FieldProps) {
   const t = useTranslations('brand.panel');
-  const { editable, onEdit } = useContext(PanelContext);
+  const { editable, onEdit, home } = useContext(PanelContext);
+  // On the home screen the missing block asks for empty fields; a line that
+  // explains one (a failed search) still shows.
+  if (home && editable && !filled) {
+    return after ? (
+      <div data-field className="py-2.5">
+        <p className="text-[13px] text-ink-secondary">{label}</p>
+        {after}
+      </div>
+    ) : null;
+  }
   return (
     <div data-field className="py-2.5">
       <p className="text-[13px] text-ink-secondary">{label}</p>
@@ -107,22 +130,58 @@ function SourcedField({
 
 function Section({ id, children }: { id: SectionId; children: ReactNode }) {
   const t = useTranslations('brand.panel');
-  const { editable, onEdit } = useContext(PanelContext);
+  const { editable, onEdit, home, lines } = useContext(PanelContext);
+  const [open, setOpen] = useState(id === 'business');
+  const bodyId = useId();
   const title = t(`sections.${id}`);
+  const edit = editable && (
+    <button
+      type="button"
+      aria-label={t('editSection', { section: title })}
+      onClick={() => onEdit(id)}
+      className="min-h-11 px-1 text-[15px] font-medium text-accent outline-none focus-visible:ring-2 focus-visible:ring-accent"
+    >
+      {t('edit')}
+    </button>
+  );
+  if (home) {
+    return (
+      <section>
+        <button
+          type="button"
+          aria-expanded={open}
+          aria-controls={bodyId}
+          onClick={() => setOpen((was) => !was)}
+          className="flex min-h-11 w-full items-center gap-3 px-4 py-3 text-left outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-inset"
+        >
+          <span className="min-w-0 flex-1">
+            <span className="block text-[16px] font-medium">{title}</span>
+            {!open && lines[id] && (
+              <span className="mt-0.5 flex items-center gap-2 text-[13px] text-ink-secondary">
+                {lines[id]}
+              </span>
+            )}
+          </span>
+          <CaretDown
+            aria-hidden="true"
+            size={18}
+            className={`shrink-0 text-ink-secondary transition-transform${open ? ' rotate-180' : ''}`}
+          />
+        </button>
+        {open && (
+          <div id={bodyId} className="px-4 pb-1.5">
+            <div className="flex justify-end">{edit}</div>
+            <div className="divide-y divide-edge">{children}</div>
+          </div>
+        )}
+      </section>
+    );
+  }
   return (
     <section className="rounded-control border border-edge bg-field px-4 pt-3 pb-1.5">
       <div className="flex items-center justify-between">
         <h2 className="text-[17px] font-medium tracking-[-0.01em]">{title}</h2>
-        {editable && (
-          <button
-            type="button"
-            aria-label={t('editSection', { section: title })}
-            onClick={() => onEdit(id)}
-            className="min-h-11 px-1 text-[15px] font-medium text-accent outline-none focus-visible:ring-2 focus-visible:ring-accent"
-          >
-            {t('edit')}
-          </button>
-        )}
+        {edit}
       </div>
       <div className="divide-y divide-edge">{children}</div>
     </section>
@@ -183,6 +242,7 @@ export function BrandPanel({
   onEdit,
   ownerEdited = [],
   search = null,
+  mode = 'reading',
 }: PanelProps) {
   const t = useTranslations('brand.panel');
   const f = (key: string) => t(`fields.${key}` as 'fields.name');
@@ -199,11 +259,19 @@ export function BrandPanel({
   const style = profile.visualStyle;
   const photos = words(profile.photoUrls);
   const logo = text(profile.logoUrl?.value);
+  const home = mode === 'home';
+  const lines = home ? homeLines(profile as Profile, search, t) : {};
 
   return (
-    <PanelContext value={{ editable, onEdit }}>
-      <div className="flex flex-col gap-3">
-        {editable && profile.thin && (
+    <PanelContext value={{ editable, onEdit, home, lines }}>
+      <div
+        className={
+          home
+            ? 'flex flex-col divide-y divide-edge rounded-control border border-edge bg-field'
+            : 'flex flex-col gap-3'
+        }
+      >
+        {editable && profile.thin && !home && (
           <p
             role="note"
             className="rounded-control bg-accent-tint px-4 py-3 text-[15px] text-accent-tint-ink"
@@ -239,17 +307,20 @@ export function BrandPanel({
               ))}
             </ul>
           </Field>
-          <Field label={f('highlights')} section="business" filled={highlights.length > 0}>
-            <ul className="flex flex-col gap-2">
-              {highlights.map((h, i) => (
-                // biome-ignore lint/suspicious/noArrayIndexKey: highlights have no id
-                <li key={i}>
-                  {h?.value}
-                  <SourceNote source={h?.source} />
-                </li>
-              ))}
-            </ul>
-          </Field>
+          {/* On the home screen highlights stay in the form. */}
+          {!home && (
+            <Field label={f('highlights')} section="business" filled={highlights.length > 0}>
+              <ul className="flex flex-col gap-2">
+                {highlights.map((h, i) => (
+                  // biome-ignore lint/suspicious/noArrayIndexKey: highlights have no id
+                  <li key={i}>
+                    {h?.value}
+                    <SourceNote source={h?.source} />
+                  </li>
+                ))}
+              </ul>
+            </Field>
+          )}
         </Section>
 
         <Section id="place">
@@ -405,4 +476,39 @@ export function BrandPanel({
       </div>
     </PanelContext>
   );
+}
+
+// Each section's one line when closed: what it says, else how many to add.
+function homeLines(
+  profile: Profile,
+  search: SearchState,
+  t: ReturnType<typeof useTranslations<'brand.panel'>>,
+): Partial<Record<SectionId, ReactNode>> {
+  const { listed } = missingFields(profile, search);
+  const toAdd = (id: SectionId) => {
+    const count = missingIn(listed, id, profile);
+    return count > 0 ? t('toAdd', { count }) : null;
+  };
+  const line = (id: Exclude<SectionId, 'business'>) => sectionSummary(profile, id) ?? toAdd(id);
+  const cut = (value: string | null | undefined) =>
+    value ? <span className="truncate">{value}</span> : null;
+  const main = profile.colours.find((c) => c.role === 'primary') ?? profile.colours[0];
+  return {
+    business: cut(text(profile.summary?.value) ?? toAdd('business')),
+    place: cut(line('place')),
+    contact: cut(line('contact')),
+    look: (
+      <>
+        {main && (
+          <span
+            aria-hidden
+            className="size-4 shrink-0 rounded-[4px] border border-edge"
+            style={{ backgroundColor: main.hex }}
+          />
+        )}
+        {cut(line('look'))}
+      </>
+    ),
+    feeling: cut(line('feeling')),
+  };
 }
