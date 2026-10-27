@@ -275,7 +275,28 @@
     "copiedOnly": "Copied",
     "checkText": "Check the text",
     "tile": "Suggestion {n} of {count}",
-    "sheetTitle": "Attempt {attempt}, suggestion {n} of {count}"
+    "sheetTitle": "Attempt {attempt}, suggestion {n} of {count}",
+    "offer": {
+      "add": "+ Special offer",
+      "title": "Special offer",
+      "kind": "What kind of offer?",
+      "discount": "A discount",
+      "freeExtra": "A free extra",
+      "other": "Other %",
+      "gift": "Free {gift} with a 90-minute session",
+      "giftPick": "Pick the free treatment",
+      "treatments": "On which treatments?",
+      "rule": "The offer is on {minutes}-minute sessions or longer.",
+      "until": "Until when?",
+      "today": "Today",
+      "days3": "3 days",
+      "week1": "1 week",
+      "untilDate": "until {date}",
+      "date": "{weekday} {day} {month}",
+      "done": "Done",
+      "noTreatments": "Add your treatments on Your business first.",
+      "addTreatments": "Add treatments"
+    }
   },
   "reviews": {
     "intro": "Got a new review on Google Maps? Copy it and paste it here. We write 2 replies in your guest's language.",

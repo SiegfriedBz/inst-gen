@@ -7,6 +7,8 @@
 - 2026-10-27: an `offer` flag needs words on the post card, which the plan
   left out: `posts.flags.offer`, "Check the offer in this text before
   posting: {text}.", and `offer` joins the flags shown.
+- 2026-10-27: an offer's day is written from a message, `{weekday} {day}
+  {month}`, so English reads "Tue 27 Oct" and each language orders it.
 
 ## RED
 
@@ -40,6 +42,13 @@ Task 4, the offer on the phone and in requests (`posts-offer-store`,
       Tests  no tests
 ```
 
+Task 5, the offer sheet (`posts-offer-sheet`):
+
+```
+ Test Files  1 failed (1)
+      Tests  no tests
+```
+
 ## GREEN
 
 Task 1:
@@ -68,4 +77,11 @@ Task 4, with `brand-store`:
 ```
  Test Files  3 passed (3)
       Tests  34 passed (34)
+```
+
+Task 5:
+
+```
+ Test Files  1 passed (1)
+      Tests  9 passed (9)
 ```

@@ -275,7 +275,28 @@
     "copiedOnly": "Disalin",
     "checkText": "Periksa teksnya",
     "tile": "Saran {n} dari {count}",
-    "sheetTitle": "Percobaan {attempt}, saran {n} dari {count}"
+    "sheetTitle": "Percobaan {attempt}, saran {n} dari {count}",
+    "offer": {
+      "add": "+ Promo spesial",
+      "title": "Promo spesial",
+      "kind": "Promo seperti apa?",
+      "discount": "Diskon",
+      "freeExtra": "Bonus gratis",
+      "other": "% lainnya",
+      "gift": "Gratis {gift} dengan sesi 90 menit",
+      "giftPick": "Pilih perawatan gratisnya",
+      "treatments": "Untuk perawatan apa saja?",
+      "rule": "Promo berlaku untuk sesi {minutes} menit atau lebih.",
+      "until": "Sampai kapan?",
+      "today": "Hari ini",
+      "days3": "3 hari",
+      "week1": "1 minggu",
+      "untilDate": "sampai {date}",
+      "date": "{weekday}, {day} {month}",
+      "done": "Selesai",
+      "noTreatments": "Tambahkan dulu perawatan Anda di Usaha Anda.",
+      "addTreatments": "Tambah perawatan"
+    }
   },
   "reviews": {
     "intro": "Ada ulasan baru di Google Maps? Salin dan tempel di sini. Kami menulis 2 balasan dalam bahasa tamu Anda.",

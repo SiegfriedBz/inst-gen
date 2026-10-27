@@ -275,7 +275,28 @@
     "copiedOnly": "Đã sao chép",
     "checkText": "Kiểm tra phần chữ",
     "tile": "Gợi ý {n}/{count}",
-    "sheetTitle": "Lần thử {attempt}, gợi ý {n}/{count}"
+    "sheetTitle": "Lần thử {attempt}, gợi ý {n}/{count}",
+    "offer": {
+      "add": "+ Ưu đãi đặc biệt",
+      "title": "Ưu đãi đặc biệt",
+      "kind": "Loại ưu đãi nào?",
+      "discount": "Giảm giá",
+      "freeExtra": "Tặng thêm",
+      "other": "% khác",
+      "gift": "Tặng {gift} khi dùng buổi 90 phút",
+      "giftPick": "Chọn liệu trình được tặng",
+      "treatments": "Áp dụng cho liệu trình nào?",
+      "rule": "Ưu đãi áp dụng cho buổi từ {minutes} phút trở lên.",
+      "until": "Đến khi nào?",
+      "today": "Hôm nay",
+      "days3": "3 ngày",
+      "week1": "1 tuần",
+      "untilDate": "đến {date}",
+      "date": "{weekday}, {day} {month}",
+      "done": "Xong",
+      "noTreatments": "Hãy thêm liệu trình của bạn ở mục Doanh nghiệp trước.",
+      "addTreatments": "Thêm liệu trình"
+    }
   },
   "reviews": {
     "intro": "Có đánh giá mới trên Google Maps? Hãy sao chép và dán vào đây. Chúng tôi viết 2 câu trả lời bằng ngôn ngữ của khách.",
