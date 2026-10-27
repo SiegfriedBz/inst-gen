@@ -15,6 +15,8 @@ import {
 } from './batch';
 import { mergeRewrite } from './edit';
 import { ctaFor } from './input';
+import type { Offer } from './offer';
+import { loadOffer } from './offer-store';
 import { applyCta, loadBatches, recentPosts, saveBatch } from './store';
 import { readPostsLines } from './stream';
 
@@ -31,7 +33,7 @@ export type PostsEvent =
   | { type: 'signedOut' };
 
 type Input =
-  | { step: 'plan'; recent: RecentPost[] }
+  | { step: 'plan'; recent: RecentPost[]; offer?: Offer }
   | { step: 'rewrite'; batch: PostBatch; postIds: string[] };
 
 const live = new Set<string>();
@@ -123,8 +125,12 @@ function request(
       if (controller.signal.aborted) return;
       const body =
         input.step === 'plan'
-          ? { profile, recent: input.recent }
-          : { profile, posts: input.batch.posts.filter((p) => input.postIds.includes(p.id)) };
+          ? { profile, recent: input.recent, ...(input.offer ? { offer: input.offer } : {}) }
+          : {
+              profile,
+              posts: input.batch.posts.filter((p) => input.postIds.includes(p.id)),
+              ...(input.batch.offer ? { offer: input.batch.offer } : {}),
+            };
       const response = await deps.fetch(`/api/posts/${input.step}`, {
         method: 'POST',
         headers: { 'content-type': 'application/json' },
@@ -184,13 +190,14 @@ function request(
 }
 
 export function startPlan(
-  input: { ownerId: string; profile: Profile; recent: RecentPost[] },
+  input: { ownerId: string; profile: Profile; recent: RecentPost[]; offer?: Offer },
   onEvent: (e: PostsEvent) => void,
   deps: ReadDeps = defaultReadDeps(),
 ): RunningRead {
   const run = newPostsRun({ ownerId: input.ownerId, step: 'plan' }, deps.now(), deps.newId());
   live.add(run.id);
-  return request(run, true, input.profile, { step: 'plan', recent: input.recent }, onEvent, deps);
+  const step: Input = { step: 'plan', recent: input.recent, offer: input.offer };
+  return request(run, true, input.profile, step, onEvent, deps);
 }
 
 // Rewrites the batch's posts named in `postIds`; the others stay as they are.
@@ -239,6 +246,10 @@ export async function resumePosts(
   const input: Input =
     step === 'rewrite' && batch
       ? { step, batch, postIds: run.postIds ?? batch.posts.map((p) => p.id) }
-      : { step: 'plan', recent: recentPosts(batches) };
+      : {
+          step: 'plan',
+          recent: recentPosts(batches),
+          offer: (await loadOffer(ownerId, profile, deps.now()))?.offer,
+        };
   return { ...request(run, false, profile, input, onEvent, deps), step };
 }

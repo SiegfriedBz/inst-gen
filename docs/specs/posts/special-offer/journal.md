@@ -32,6 +32,14 @@ Task 3, the prompt, the request and the run (`posts-prompt`, `posts-run`,
       Tests  8 failed | 25 passed (33)
 ```
 
+Task 4, the offer on the phone and in requests (`posts-offer-store`,
+`posts-client`):
+
+```
+ Test Files  2 failed (2)
+      Tests  no tests
+```
+
 ## GREEN
 
 Task 1:
@@ -53,4 +61,11 @@ Task 3, with the recorded plans replayed:
 ```
  Test Files  4 passed (4)
       Tests  40 passed (40)
+```
+
+Task 4, with `brand-store`:
+
+```
+ Test Files  3 passed (3)
+      Tests  34 passed (34)
 ```

@@ -6,6 +6,8 @@ import { resetStoreForTests, saveBrand } from '@/lib/brand/store';
 import type { PlanResult, PostBatch } from '@/lib/posts/batch';
 import { type PostsEvent, resumePosts, startPlan, startRewrite } from '@/lib/posts/client';
 import { profileHash } from '@/lib/posts/input';
+import { DEFAULT_ANSWERS, type Offer } from '@/lib/posts/offer';
+import { saveOffer } from '@/lib/posts/offer-store';
 import { loadBatches, saveBatch } from '@/lib/posts/store';
 import { encodePostsLine, type PostsLine } from '@/lib/posts/stream';
 import { loadOpenRun } from '@/lib/runs/store';
@@ -272,5 +274,56 @@ describe('a rewrite and an edit saved while it runs', () => {
     const [saved] = await loadBatches('svarga');
     expect(saved.posts[2]).toMatchObject({ caption: 'Saved while it ran.', edited: true });
     expect(saved.posts[0].caption).toBe('New post-1.');
+  });
+});
+
+describe('the special offer in requests', () => {
+  const offer: Offer = {
+    kind: 'discount',
+    percent: 10,
+    treatments: ['Balinese massage'],
+    until: '2026-10-25',
+    lastDay: 'Sunday 25 October',
+  };
+  const bodyOf = (call: number) =>
+    JSON.parse((fetchMock.mock.calls[call][1] as RequestInit).body as string);
+
+  test('a plan sends the offer; without one, no offer key', async () => {
+    fetchMock.mockResolvedValue(ndjson([{ type: 'final', result }]));
+    await startPlan({ ownerId: 'svarga', profile, recent: [], offer }, () => {}, deps).done;
+    expect(bodyOf(0).offer).toEqual(offer);
+    await plan();
+    expect('offer' in bodyOf(1)).toBe(false);
+  });
+
+  test("a rewrite sends its batch's offer", async () => {
+    const batch: PostBatch = {
+      ...result,
+      offer,
+      id: 'b1',
+      ownerId: 'svarga',
+      createdAt: '2026-10-24T10:00:00.000Z',
+      profileReadAt: profile.readAt,
+    };
+    await saveBatch(batch);
+    fetchMock.mockResolvedValue(ndjson([{ type: 'final', result }]));
+    await startRewrite({ ownerId: 'svarga', profile, batch, postIds: ['post-1'] }, () => {}, deps)
+      .done;
+    expect(bodyOf(0).offer).toEqual(offer);
+  });
+
+  test('a resumed plan sends the offer kept on the phone', async () => {
+    await saveOffer({
+      ownerId: 'svarga',
+      answers: { ...DEFAULT_ANSWERS, treatments: ['Balinese massage'] },
+      offer,
+      createdAt: '2026-10-25T09:00:00.000Z',
+    });
+    fetchMock.mockResolvedValueOnce(ndjson(postLines.slice(0, 3)));
+    await startPlan({ ownerId: 'svarga', profile, recent: [], offer }, () => {}, deps).done;
+    fetchMock.mockResolvedValueOnce(ndjson([{ type: 'final', result }]));
+    const running = await resumePosts('svarga', profile, () => {}, deps);
+    await running?.done;
+    expect(bodyOf(1).offer).toEqual(offer);
   });
 });
