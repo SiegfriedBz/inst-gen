@@ -22,7 +22,6 @@
   scratch made by `pnpm guide:pdf`, missing in this worktree and in the
   main checkout; unrelated to this change. The rest of `pnpm check` (biome
   ci, typecheck, Vitest) passes when run on its own.
-
 - 2026-10-27: first real plans for Sen and Svarga (2 Gemini requests,
   asked first): every image prompt followed its set-up. Two fixes came of
   it: "two women therapists" now satisfies the two-therapists check, and
@@ -36,6 +35,17 @@
   pictureless treatments stay excluded whatever the name says; the refill
   takes the least-used treatment each time, so an offer's treatment isn't
   dealt again before the others; a name listed twice is one treatment.
+- 2026-10-27: `pnpm eval:posts sen svarga --record` and `--offer --record`
+  with the final `posts-4` (4 Gemini requests, asked first; not a pilot
+  day). Sen and Svarga, and Svarga's offer plan: every image prompt shows
+  its set-up's treatment, guests and therapists; three men and three women
+  in each plain plan; the couple image has a man and a woman and two
+  therapists; four-hands has "two female therapists". Sen's offer plan
+  slipped one row for posts 3 to 5 (post 3, a foot reflexology set-up,
+  describes a back massage; posts 4 and 5 swap their guests); code flagged
+  two of the three (`no "man"`, `no "woman"`). The cast line still tells
+  the image model who is in the picture, so those images get the dealt
+  guests; the prose may still describe another treatment.
 
 ## RED
 
