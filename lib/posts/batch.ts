@@ -2,6 +2,7 @@ import { z } from 'zod';
 import { type Profile, profileSchema } from '@/lib/brand/profile';
 import { type Offer, offerFits, offerSchema } from './offer';
 import { SCENES } from './scene';
+import { setupSchema } from './setup';
 
 // A batch of posts made from the brand profile
 // (docs/specs/posts/generate-copy/spec.md). One set of schemas serves the
@@ -64,6 +65,9 @@ export const postSchema = z.object({
   // One of the two posts that carry the batch's special offer
   // (docs/specs/posts/special-offer). Absent on every other post.
   offer: z.literal(true).optional(),
+  // What code set up for its image (docs/specs/posts/varied-images). Absent
+  // on posts saved before it.
+  setup: setupSchema.optional(),
 });
 export type Post = z.infer<typeof postSchema>;
 

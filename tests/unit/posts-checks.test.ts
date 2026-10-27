@@ -8,8 +8,10 @@ import {
   cleanHashtags,
   cutCaption,
   findFlags,
+  setupFlags,
 } from '@/lib/posts/checks';
 import type { Offer } from '@/lib/posts/offer';
+import type { Setup } from '@/lib/posts/setup';
 import { svargaProfile } from './helpers/brand';
 import { post } from './helpers/posts';
 
@@ -348,5 +350,119 @@ describe('the special offer', () => {
     const { posts } = checkRewrite(answer, [original], profile(), offer);
     expect(posts[0].offer).toBe(true);
     expect(offerFlags(posts[0].unchecked)).toEqual(['15%']);
+  });
+});
+
+describe('the image set-ups', () => {
+  const setup: Setup = {
+    treatment: 'Balinese massage',
+    look: 'plain',
+    guests: 'man',
+    therapists: 1,
+    bodyPart: 'back',
+    scene: 'detail',
+    locals: 'Balinese',
+  };
+  const withPrompt = (imagePrompt: string, s: Setup) =>
+    post({ id: 'post-1', imagePrompt, setup: s });
+
+  it('checkPost takes the scene from the set-up and keeps the set-up', () => {
+    const { post: checked, dropped } = checkPost(
+      raw({ scene: 'banana' }),
+      svargaProfile(),
+      'post-1',
+      undefined,
+      setup,
+    );
+    expect(dropped).toEqual([]);
+    expect(checked?.scene).toBe('detail');
+    expect(checked?.setup).toEqual(setup);
+  });
+
+  it('without a set-up, an unknown scene still drops the post', () => {
+    expect(checkPost(raw({ scene: 'banana' }), svargaProfile(), 'post-1').post).toBeNull();
+  });
+
+  it('flags a prompt with only "a woman" for a man set-up', () => {
+    expect(setupFlags(withPrompt('A woman relaxes on a bed at dusk', setup))).toEqual([
+      { field: 'image', reason: 'post-1: no "man" in the image prompt' },
+    ]);
+  });
+
+  it('flags a four-hands prompt without "two therapists"', () => {
+    const fourHands: Setup = { ...setup, look: 'fourHands', therapists: 2 };
+    expect(setupFlags(withPrompt('A man on a bed, therapists at work', fourHands))).toEqual([
+      { field: 'image', reason: 'post-1: no "two therapists" in the image prompt' },
+    ]);
+  });
+
+  it('a couple needs both man and woman', () => {
+    const couple: Setup = { ...setup, look: 'couple', guests: 'couple', therapists: 2 };
+    expect(setupFlags(withPrompt('A Man and two therapists', couple))).toEqual([
+      { field: 'image', reason: 'post-1: no "woman" in the image prompt' },
+    ]);
+  });
+
+  it('no flag when the prompt matches', () => {
+    const fourHands: Setup = { ...setup, look: 'fourHands', therapists: 2 };
+    expect(setupFlags(withPrompt('A man on a bed, Two therapists at work', fourHands))).toEqual([]);
+  });
+
+  it('no set-up, no flag', () => {
+    expect(setupFlags(post({ imagePrompt: 'A deck' }))).toEqual([]);
+  });
+
+  const offer: Offer = {
+    kind: 'discount',
+    percent: 10,
+    treatments: ['Balinese massage'],
+    until: '2026-10-27',
+    lastDay: 'Tuesday 27 October',
+  };
+  const plan = (types: string[]) =>
+    types.map((type, i) =>
+      post({
+        id: `p${i}`,
+        type: type as 'offer',
+        scene: (['treatment', 'detail', 'place'] as const)[i % 3],
+      }),
+    );
+
+  it('flags an offer plan whose posts 1 and 2 are not offer posts', () => {
+    const result = checkPlan(
+      plan(['moment', 'offer', 'offer', 'local', 'tip', 'ritual']),
+      [],
+      svargaProfile(),
+      offer,
+    );
+    expect(result.dropped).toContainEqual({
+      field: 'mix',
+      reason: 'offer posts are not posts 1 and 2',
+    });
+  });
+
+  it('no flag when posts 1 and 2 are the offer posts', () => {
+    const result = checkPlan(
+      plan(['offer', 'offer', 'moment', 'local', 'tip', 'ritual']),
+      [],
+      svargaProfile(),
+      offer,
+    );
+    expect(result.dropped).not.toContainEqual({
+      field: 'mix',
+      reason: 'offer posts are not posts 1 and 2',
+    });
+  });
+
+  it('no offer, no position flag', () => {
+    const result = checkPlan(
+      plan(['moment', 'offer', 'offer', 'local', 'tip', 'ritual']),
+      [],
+      svargaProfile(),
+    );
+    expect(result.dropped).not.toContainEqual({
+      field: 'mix',
+      reason: 'offer posts are not posts 1 and 2',
+    });
   });
 });

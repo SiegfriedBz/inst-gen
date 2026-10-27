@@ -5,6 +5,7 @@ import { profileHash } from '@/lib/posts/input';
 import type { PostsLog } from '@/lib/posts/log';
 import type { Offer } from '@/lib/posts/offer';
 import { streamPlan, streamRewrite } from '@/lib/posts/run';
+import { dealSetups, seededRandom, setupLine } from '@/lib/posts/setup';
 import type { PostsLine } from '@/lib/posts/stream';
 import { svargaProfile } from './helpers/brand';
 import { modelPost, planRecording, post } from './helpers/posts';
@@ -18,7 +19,7 @@ async function drain(lines: AsyncIterable<PostsLine>): Promise<PostsLine[]> {
 }
 
 function deps(model: TextModel, extra: { timeoutMs?: number; log?: (e: PostsLog) => void } = {}) {
-  return { model, ...extra };
+  return { model, random: seededRandom('t'), ...extra };
 }
 
 const body = () => ({ profile: svargaProfile(), recent: [] });
@@ -73,7 +74,7 @@ describe('streamPlan', () => {
     expect(final).toMatchObject({
       type: 'final',
       result: {
-        promptVersion: 'posts-3',
+        promptVersion: 'posts-4',
         model: 'gemini-3.5-flash-lite',
         profileHash: profileHash(svargaProfile()),
       },
@@ -239,5 +240,77 @@ describe('the special offer', () => {
     if (final?.type !== 'final') throw new Error('no final');
     expect(final.result.posts[0].offer).toBe(true);
     expect(final.result.posts[0].unchecked).toContainEqual({ kind: 'offer', text: '15%' });
+  });
+});
+
+describe('the image set-ups', () => {
+  const dealt = () => dealSetups(svargaProfile(), undefined, seededRandom('t'));
+
+  function recordingOf(posts: ReturnType<typeof modelPost>[]) {
+    return {
+      modelId: 'm',
+      promptVersion: 'posts-4',
+      partials: posts.map((_, i) => ({ posts: posts.slice(0, i + 1) })),
+      final: { posts },
+    };
+  }
+
+  async function finalOf(recording: ReturnType<typeof planRecording>) {
+    const model = replayTextModel(brand, { posts: recording });
+    const lines = await drain(streamPlan(body(), deps(model), new AbortController().signal));
+    const final = lines.at(-1);
+    if (final?.type !== 'final') throw new Error('no final');
+    return { lines, result: final.result };
+  }
+
+  test('set-up n goes to the n-th streamed post', async () => {
+    const { result } = await finalOf(planRecording());
+    expect(result.posts.map((p) => p.setup)).toEqual(dealt());
+  });
+
+  test("the post's scene is its set-up's, whatever the model wrote", async () => {
+    const { result } = await finalOf(planRecording());
+    expect(result.posts.map((p) => p.scene)).toEqual(dealt().map((s) => s.scene));
+  });
+
+  test('a dropped post takes its set-up with it', async () => {
+    const posts = Array.from({ length: 6 }, (_, i) => modelPost(i));
+    posts[1] = { ...posts[1], type: 'banana' };
+    const { result } = await finalOf(recordingOf(posts));
+    expect(result.posts).toHaveLength(5);
+    expect(result.posts[1].setup).toEqual(dealt()[2]);
+  });
+
+  test('a seventh post gets no set-up and is cut', async () => {
+    const { lines, result } = await finalOf(planRecording(7));
+    const seventh = lines[6];
+    if (seventh.type !== 'post') throw new Error('no seventh post line');
+    expect(seventh.post.setup).toBeUndefined();
+    expect(result.posts).toHaveLength(6);
+  });
+
+  test('a plan of five posts uses set-ups 1 to 5', async () => {
+    const { result } = await finalOf(planRecording(5));
+    expect(result.posts.map((p) => p.setup)).toEqual(dealt().slice(0, 5));
+  });
+
+  test("the model's text holds the set-ups", async () => {
+    let text = '';
+    const inner = replayTextModel(brand, { posts: planRecording() });
+    const model: TextModel = {
+      ...inner,
+      streamPostPlan(input, signal) {
+        text = input.text;
+        return inner.streamPostPlan(input, signal);
+      },
+    };
+    await drain(streamPlan(body(), deps(model), new AbortController().signal));
+    expect(text).toContain('### Image set-ups');
+    expect(text).toContain(`1. ${setupLine(dealt()[0])}`);
+  });
+
+  test('the image prompts are checked against their set-ups', async () => {
+    const { result } = await finalOf(planRecording());
+    expect(result.dropped.some((d) => d.field === 'image')).toBe(true);
   });
 });
