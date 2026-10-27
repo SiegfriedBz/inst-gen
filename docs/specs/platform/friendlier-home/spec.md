@@ -2,7 +2,7 @@
 title: "Friendlier home"
 description: "The home screen gets a smaller header (the spa's name, a Guide icon, one language button), its three tabs move to a bar at the bottom, 'Create Posts' becomes a grid of six per attempt that opens one suggestion at a time and ticks the ones saved and copied, 'Your business' shows what's missing first, and 'Reviews' shows one reply at a time with a Short | Warmer switch; the passphrase shows as it is typed."
 status: approved
-approved: { by: siegfried.bozza@protonmail.com, at: 2026-10-27T11:15:53Z }
+approved: { by: siegfried.bozza@protonmail.com, at: 2026-10-27T11:36:03Z }
 date: "2026-10-27"
 ---
 
@@ -237,12 +237,16 @@ Top to bottom:
    when those fields are empty.
 4. **The missing block**, when at least one field is empty: an
    `accent-tint` box with "{count} things we couldn't find" (16px, weight
-   500), "Each one you add makes your posts more exact.", then one button per
-   empty field, "+ {field}", wrapping, each at least 44px tall, white
-   (`field`) with a 1px `accent` border and `accent-tint-ink` text.
+   500), "You can make posts without the ones below, but each one you add
+   makes your posts more exact.", then one button per empty field,
+   "+ {field}", wrapping, each at least 44px tall, white (`field`) with a
+   1px `accent` border and `accent-tint-ink` text.
    - The fields and their order are 1.2's panel table, section by section,
      with their `brand.panel.fields.*` labels, plus 1.3's "What people search
      for". A field is empty under 1.2's rule (`null` or an empty list).
+   - The line says the buttons' fields aren't needed to make posts. It shows
+     only when there is at least one button: WhatsApp, which posts do need,
+     is never one of them.
    - WhatsApp and town aren't buttons: their warnings already ask for them
      (item 3), and they're counted.
    - Logo and photos are left out, and not counted: 1.2's forms can remove
@@ -352,7 +356,7 @@ key names; these are suggestions.
 | `brand.home.title` | What we know about {name} | Yang kami ketahui tentang {name} | Những gì chúng tôi biết về {name} |
 | `brand.home.subtitle` | Your posts are written from this. Fix anything that's wrong. | Postingan Anda ditulis dari sini. Perbaiki yang salah. | Bài đăng của bạn được viết từ đây. Hãy sửa chỗ nào chưa đúng. |
 | `brand.missing.title` | {count, plural, one {# thing we couldn't find} other {# things we couldn't find}} | {count} hal yang tidak kami temukan | {count} mục chúng tôi không tìm thấy |
-| `brand.missing.body` | Each one you add makes your posts more exact. | Setiap yang Anda tambahkan membuat postingan Anda lebih tepat. | Mỗi mục bạn thêm giúp bài đăng chính xác hơn. |
+| `brand.missing.body` | You can make posts without the ones below, but each one you add makes your posts more exact. | Anda bisa membuat postingan tanpa yang di bawah ini, tetapi setiap yang Anda tambahkan membuat postingan Anda lebih tepat. | Bạn vẫn tạo được bài đăng mà không cần các mục bên dưới, nhưng mỗi mục bạn thêm giúp bài đăng chính xác hơn. |
 | `brand.missing.add` (accessible name) | Add {field} | Tambah {field} | Thêm {field} |
 | `brand.missing.inSection` | {count} to add | {count} untuk ditambahkan | {count} mục cần thêm |
 | `brand.home.readFrom` | Read from {site} {when}. | Dibaca dari {site} {when}. | Đã đọc từ {site} {when}. |

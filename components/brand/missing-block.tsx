@@ -27,9 +27,13 @@ export function MissingBlock({
         <h2 id="missing-title" className="text-[16px] font-medium text-accent-tint-ink">
           {t('missing.title', { count })}
         </h2>
-        <p className="mt-0.5 text-[13px] leading-normal text-accent-tint-ink">
-          {t('missing.body')}
-        </p>
+        {/* Says posts don't need what's below, so only with buttons below:
+            WhatsApp, which posts do need, is never one. */}
+        {listed.length > 0 && (
+          <p className="mt-0.5 text-[13px] leading-normal text-accent-tint-ink">
+            {t('missing.body')}
+          </p>
+        )}
       </div>
       {listed.length > 0 && (
         <div className="flex flex-wrap gap-2">

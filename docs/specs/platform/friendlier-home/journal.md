@@ -52,6 +52,11 @@
   another project's dev server holds 3000, and `reuseExistingServer` would
   have tested that app. "Welcome, Sen" isn't checked without JavaScript any
   more: it now waits for the phone's store.
+- 2026-10-27: The owner asked the missing box to say posts can be made
+  without these fields. The spec's line became "You can make posts without
+  the ones below, but each one you add makes your posts more exact.", shown
+  only with at least one button below (WhatsApp, which posts need, is never
+  one), and was approved again (11:36 UTC).
 
 ## RED
 
@@ -130,6 +135,12 @@ Bar back after a pause (`brand-home`):
       Tests  1 failed | 41 skipped (42)
 ```
 
+The missing box's new line (`brand-home`, after the strings changed):
+
+```
+      Tests  1 failed | 1 passed | 42 skipped (44)
+```
+
 ## GREEN
 
 Task 1 (`language-switch`, `i18n-messages`):
@@ -206,4 +217,10 @@ Bar back after a pause (`brand-home`), then every e2e test on port 3100:
       Tests  42 passed (42)
   1 skipped
   60 passed (21.2s)
+```
+
+The missing box's new line (`brand-home`, `i18n-messages`):
+
+```
+      Tests  51 passed (51)
 ```

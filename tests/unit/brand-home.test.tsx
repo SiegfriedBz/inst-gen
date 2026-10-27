@@ -340,6 +340,39 @@ describe('Your business, missing first', () => {
     );
   });
 
+  test("the box says posts don't need what's below", async () => {
+    await business();
+    expect(
+      screen.getByText(
+        'You can make posts without the ones below, but each one you add makes your posts more exact.',
+      ),
+    ).toBeTruthy();
+  });
+
+  test('with only WhatsApp missing, no buttons and no line', async () => {
+    const SITE = profile.siteUrl;
+    await business({
+      ...profile,
+      location: { ...profile.location, address: { value: 'Jl. Pantai 1', source: SITE } },
+      contact: {
+        ...profile.contact,
+        whatsapp: null,
+        phone: { value: '+6281111111111', source: SITE },
+        bookingUrl: { value: 'https://example.com/book', source: SITE },
+      },
+      essence: {
+        ...profile.essence,
+        promise: { value: 'Calm hands at your villa', source: SITE },
+        moments: [{ value: 'after a surf', source: SITE }],
+        placeSymbols: ['rice fields'],
+        senses: ['frangipani'],
+        searchTerms: ['canggu massage'],
+      },
+    });
+    expect(screen.getByText("1 thing we couldn't find")).toBeTruthy();
+    expect(screen.queryByText(/You can make posts without/)).toBeNull();
+  });
+
   test('the WhatsApp warning shows above, never as a button', async () => {
     await business({ ...profile, contact: { ...profile.contact, whatsapp: null } });
     expect(
