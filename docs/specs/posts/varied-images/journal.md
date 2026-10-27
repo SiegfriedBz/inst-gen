@@ -23,6 +23,20 @@
   main checkout; unrelated to this change. The rest of `pnpm check` (biome
   ci, typecheck, Vitest) passes when run on its own.
 
+- 2026-10-27: first real plans for Sen and Svarga (2 Gemini requests,
+  asked first): every image prompt followed its set-up. Two fixes came of
+  it: "two women therapists" now satisfies the two-therapists check, and
+  the plan prompt tells the model not to write "scene" or "set-up" labels
+  in the image prompt (Sen's had "Scene place…"). Those two recordings were
+  thrown away, made before the fix.
+- 2026-10-27: final review fixes. A couple never takes the close-up scene,
+  which can't show both guests; "room", "tea", "night" and the like exclude
+  a name only when it holds no treatment word ("In-Room Massage" is drawn,
+  "Afternoon Tea" isn't), while gift, voucher, card, children and the
+  pictureless treatments stay excluded whatever the name says; the refill
+  takes the least-used treatment each time, so an offer's treatment isn't
+  dealt again before the others; a name listed twice is one treatment.
+
 ## RED
 
 ```
@@ -36,5 +50,5 @@
 
 ```
  Test Files  103 passed (103)
-      Tests  1359 passed (1359)
+      Tests  1366 passed (1366)
 ```

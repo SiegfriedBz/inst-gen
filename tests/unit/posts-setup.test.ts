@@ -337,3 +337,51 @@ describe('the set-up in words', () => {
     );
   });
 });
+
+// The whole-branch review's findings (journal, 2026-10-27).
+describe('review fixes', () => {
+  it('a couple never gets the close-up scene', () => {
+    const profile = withOfferings(['Couple Massage', ...EIGHT.slice(0, 5)]);
+    for (let i = 0; i < 200; i += 1) {
+      const setups = deal(profile, undefined, `c${i}`);
+      expect(setups.find((s) => s.look === 'couple')?.scene).not.toBe('detail');
+      const scenes = setups.map((s) => s.scene);
+      for (const scene of SCENES) expect(count(scenes, scene)).toBeLessThanOrEqual(2);
+    }
+  });
+
+  it('six couples: no close-up at all', () => {
+    for (const s of deal(withOfferings(['Couple Massage']))) expect(s.scene).not.toBe('detail');
+  });
+
+  it('a treatment word keeps "room", "tea" or "night" from excluding a name', () => {
+    expect(lookOf('In-Room Massage')).toBe('plain');
+    expect(lookOf('Green Tea Body Scrub')).toBe('scrub');
+    expect(lookOf('Late Night Massage')).toBe('plain');
+    expect(lookOf('Afternoon Tea')).toBe('excluded');
+    expect(lookOf('Massage Gift Voucher')).toBe('excluded');
+    expect(lookOf('Kids Massage')).toBe('excluded');
+  });
+
+  it('the offer treatment is not dealt again before the others', () => {
+    const profile = withOfferings(['Thai Massage', 'Aroma Massage', 'Lomi Lomi', 'Relax Massage']);
+    for (let i = 0; i < 50; i += 1) {
+      const treatments = deal(profile, offerOn(['Thai Massage']), `o${i}`).map((s) => s.treatment);
+      expect(count(treatments, 'Thai Massage')).toBe(2);
+    }
+  });
+
+  it('a name listed twice is one treatment', () => {
+    const profile = withOfferings(['Balinese Massage', 'Balinese Massage', ...EIGHT.slice(2, 7)]);
+    for (const seed of ['a', 'b', 'c', 'd']) {
+      const treatments = deal(profile, undefined, seed).map((s) => s.treatment);
+      expect(new Set(treatments).size).toBe(6);
+    }
+  });
+
+  it('one eligible offering fills all six', () => {
+    for (const s of deal(withOfferings(['Aroma Massage', 'Gift Voucher']))) {
+      expect(s.treatment).toBe('Aroma Massage');
+    }
+  });
+});

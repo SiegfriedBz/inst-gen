@@ -3,7 +3,7 @@ import { countryOf } from '@/lib/brand/country';
 import type { Profile } from '@/lib/brand/profile';
 import { hashText } from './input';
 import type { Offer } from './offer';
-import { SCENES } from './scene';
+import { SCENES, type Scene } from './scene';
 
 // Each image's set-up, dealt by code before the post plan
 // (docs/specs/posts/varied-images): which treatment it shows, who is in it,
@@ -37,14 +37,6 @@ const EXCLUDED = [
   'gift',
   'voucher',
   'card',
-  'night',
-  'nights',
-  'room',
-  'drink',
-  'tea',
-  'transfer',
-  'class',
-  'yoga',
   'kid',
   'kids',
   'child',
@@ -57,6 +49,20 @@ const EXCLUDED = [
   'ear candling',
   'reiki',
   'singing bowl',
+];
+
+// Not a treatment either, unless the name also says it is one: "Afternoon
+// Tea" is left out, "Green Tea Body Scrub" and "In-Room Massage" are not.
+const NOT_A_TREATMENT = ['night', 'nights', 'room', 'drink', 'tea', 'transfer', 'class', 'yoga'];
+const TREATMENT = [
+  'massage',
+  'scrub',
+  'facial',
+  'reflexology',
+  'wrap',
+  'stone',
+  'therapy',
+  'treatment',
 ];
 
 // The first row whose words a name holds gives its look; none gives plain.
@@ -77,6 +83,7 @@ const LOOK_WORDS: [Exclude<LookKey, 'plain'>, string[]][] = [
 export function lookOf(name: string): LookKey | 'excluded' {
   const text = plain(name);
   if (holds(text, EXCLUDED)) return 'excluded';
+  if (holds(text, NOT_A_TREATMENT) && !holds(text, TREATMENT)) return 'excluded';
   return LOOK_WORDS.find(([, words]) => holds(text, words))?.[0] ?? 'plain';
 }
 
@@ -181,8 +188,9 @@ function pick<T>(items: readonly T[], random: () => number): T {
   return items[Math.floor(random() * items.length)];
 }
 
-// The six treatments: the offer's first, then the eligible offerings in
-// shuffled passes, each once before any twice.
+// The six treatments: the offer's first, then the least-used eligible
+// offering each time, so each is used once before any twice, the offer's
+// included.
 function dealTreatments(
   profile: Profile,
   offer: Offer | undefined,
@@ -193,17 +201,20 @@ function dealTreatments(
     const offered = shuffled(offer.treatments, random);
     out.push(offered[0], offered[1] ?? offered[0]);
   }
-  const eligible = profile.offerings
-    .map((o) => o.name)
-    .filter((name) => lookOf(name) !== 'excluded');
+  // One name, one treatment, however many durations the profile lists.
+  const eligible = [
+    ...new Set(profile.offerings.map((o) => o.name).filter((n) => lookOf(n) !== 'excluded')),
+  ];
   if (!eligible.length) return [...out, ...Array(SETUPS - out.length).fill(undefined)];
-  let pass = shuffled(
-    eligible.filter((name) => !out.includes(name)),
-    random,
-  );
   while (out.length < SETUPS) {
-    if (!pass.length) pass = shuffled(eligible, random);
-    out.push(pass.shift());
+    const uses = eligible.map((name) => out.filter((t) => t === name).length);
+    const least = Math.min(...uses);
+    out.push(
+      pick(
+        eligible.filter((_, i) => uses[i] === least),
+        random,
+      ),
+    );
   }
   return out;
 }
@@ -244,7 +255,20 @@ export function dealSetups(
     look === 'couple' ? 'couple' : look === 'pregnancy' ? 'woman' : (free.shift() ?? 'man'),
   );
 
-  const scenes = shuffled([...SCENES, ...SCENES], random).slice(0, SETUPS);
+  // Two of each scene to draw from; a couple never takes the close-up, which
+  // can't show both guests on their beds.
+  const pool = shuffled([...SCENES, ...SCENES], random);
+  const take = (fits: (scene: Scene) => boolean) => {
+    const i = pool.findIndex(fits);
+    return pool.splice(i === -1 ? 0 : i, 1)[0];
+  };
+  const scenes: Scene[] = Array(SETUPS);
+  for (const [i, { look }] of looks.entries()) {
+    if (look === 'couple') scenes[i] = take((scene) => scene !== 'detail');
+  }
+  for (const [i, { look }] of looks.entries()) {
+    if (look !== 'couple') scenes[i] = take(() => true);
+  }
 
   return looks.map(({ treatment, look }, i) => ({
     ...(treatment ? { treatment } : {}),
