@@ -39,9 +39,12 @@
   with the final `posts-4` (4 Gemini requests, asked first; not a pilot
   day). Sen and Svarga, and Svarga's offer plan: every image prompt shows
   its set-up's treatment, guests and therapists; three men and three women
-  in each plain plan; four-hands has "two female therapists". The only
-  couple, in Sen's offer plan, has a man and a woman and two female
-  therapists. Sen's offer plan
+  in each plain plan; four-hands has "two female therapists". Both spas
+  offer a Couple and a Four-Hands Massage; each batch draws 6 of their 7
+  or 8 treatments at random, so these four batches drew four-hands three
+  times and the couple once (Sen's offer plan: a man and a woman, two
+  female therapists). The maintainer confirmed it stays random from batch
+  to batch. Sen's offer plan
   slipped one row for posts 3 to 5 (post 3, a foot reflexology set-up,
   describes a back massage; posts 4 and 5 swap their guests); code flagged
   two of the three (`no "man"`, `no "woman"`). The cast line still tells
