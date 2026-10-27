@@ -2,6 +2,7 @@
 import { cleanup, fireEvent, render, screen } from '@testing-library/react';
 import { NextIntlClientProvider } from 'next-intl';
 import { afterEach, describe, expect, test, vi } from 'vitest';
+import { GuideLink } from '@/components/guide/guide-links';
 import { GUIDE_SECTIONS, OwnerGuide } from '@/components/guide/owner-guide';
 import type { Locale } from '@/lib/i18n/locale';
 import { messagesFor } from '@/lib/i18n/messages';
@@ -79,5 +80,19 @@ describe('the owner guide', () => {
     show();
     fireEvent.click(screen.getByRole('button', { name: 'Print or save as PDF' }));
     expect(print).toHaveBeenCalledTimes(1);
+  });
+});
+
+describe('the Guide link', () => {
+  test('is an icon named "Guide"', () => {
+    render(
+      <NextIntlClientProvider locale="en" messages={messagesFor('en')}>
+        <GuideLink />
+      </NextIntlClientProvider>,
+    );
+    const link = screen.getByRole('link', { name: 'Guide' });
+    expect(link.getAttribute('href')).toBe('/guide');
+    expect(link.textContent).toBe('');
+    expect(link.getAttribute('title')).toBe('Guide');
   });
 });

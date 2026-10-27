@@ -3,6 +3,7 @@
 import { useLocale, useTranslations } from 'next-intl';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { ReviewsSection } from '@/components/reviews/reviews-section';
+import { Welcome } from '@/components/screen-text';
 import {
   AlertDialog,
   AlertDialogAction,
@@ -56,7 +57,15 @@ type Notice = 'invalidSaved' | 'notKept' | null;
 
 type HomeTab = 'business' | 'posts' | 'reviews';
 
-export function BrandHome({ ownerId, imagesOn }: { ownerId: string; imagesOn: boolean }) {
+export function BrandHome({
+  ownerId,
+  name,
+  imagesOn,
+}: {
+  ownerId: string;
+  name: string;
+  imagesOn: boolean;
+}) {
   const t = useTranslations('brand');
   // Read by the load callbacks, so a language change doesn't run the load
   // again (a second search, a reload of the brand).
@@ -329,7 +338,13 @@ export function BrandHome({ ownerId, imagesOn }: { ownerId: string; imagesOn: bo
   );
 
   return (
-    <div className="mt-6 flex flex-col">
+    <div className={view.kind === 'empty' ? 'flex flex-col' : 'mt-6 flex flex-col'}>
+      {/* Only before a business is saved: then the header's name says it. */}
+      {view.kind === 'empty' && (
+        <div className="mb-6">
+          <Welcome name={name} />
+        </div>
+      )}
       <p aria-live="polite" className="sr-only">
         {announce}
       </p>

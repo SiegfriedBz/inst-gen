@@ -262,7 +262,7 @@ describe('Your business', () => {
   test('no read left: "Re-read my website" is off and says when', async () => {
     usage = left({ reads: 0 });
     await saveBrand('svarga', { ...svargaProfile(), searchedAt: '2026-10-24T09:30:00.000Z' });
-    shown(<BrandHome ownerId="svarga" imagesOn={false} />);
+    shown(<BrandHome ownerId="svarga" name="Svarga" imagesOn={false} />);
     const reread = (await screen.findByRole('button', {
       name: 'Re-read my website',
       hidden: true,

@@ -16,10 +16,22 @@ Task 1, language button (`tests/unit/language-switch.test.tsx`):
       Tests  7 failed | 1 passed (8)
 ```
 
+Task 2, header (`brand-home`, `guide`):
+
+```
+      Tests  2 failed | 43 passed (45)
+```
+
 ## GREEN
 
 Task 1 (`language-switch`, `i18n-messages`):
 
 ```
       Tests  15 passed (15)
+```
+
+Task 2 (`brand-home`, `guide`):
+
+```
+      Tests  45 passed (45)
 ```

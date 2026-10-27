@@ -61,7 +61,7 @@ function deferredFetch() {
 function renderHome() {
   render(
     <NextIntlClientProvider locale="en" messages={messages} timeZone="UTC">
-      <BrandHome ownerId="sen" imagesOn={false} />
+      <BrandHome ownerId="sen" name="Sen" imagesOn={false} />
     </NextIntlClientProvider>,
   );
 }
@@ -78,6 +78,16 @@ async function typeAndRead(url: string) {
 }
 
 describe('BrandHome', () => {
+  test('the welcome shows only before a business is saved', async () => {
+    renderHome();
+    expect(await screen.findByRole('heading', { name: 'Welcome, Sen' })).toBeTruthy();
+    cleanup();
+    await saveBrand('sen', profile);
+    renderHome();
+    await screen.findByRole('tablist');
+    expect(screen.queryByText('Welcome, Sen')).toBeNull();
+  });
+
   test('a first read shows the reading state, then the editable panel, and saves it', async () => {
     const release = deferredFetch();
     renderHome();
@@ -396,7 +406,7 @@ describe('a language change', () => {
     );
     const home = (locale: 'en' | 'vi') => (
       <NextIntlClientProvider locale={locale} messages={messagesFor(locale)} timeZone="UTC">
-        <BrandHome ownerId="sen" imagesOn={false} />
+        <BrandHome ownerId="sen" name="Sen" imagesOn={false} />
       </NextIntlClientProvider>
     );
     const view = render(home('en'));
