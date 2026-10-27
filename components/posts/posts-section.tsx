@@ -24,7 +24,7 @@ import {
 import { type ImageEvent, resumeImages, startImages } from '@/lib/posts/image-client';
 import { imageKey, loadImages, type SavedImage } from '@/lib/posts/image-store';
 import { ctaFor, profileHash } from '@/lib/posts/input';
-import { DEFAULT_ANSWERS, type OfferAnswers, toOffer } from '@/lib/posts/offer';
+import { DEFAULT_ANSWERS, isOver, type OfferAnswers, toOffer } from '@/lib/posts/offer';
 import { clearOffer, loadOffer, type OfferRecord, saveOffer } from '@/lib/posts/offer-store';
 import { clearBefore, loadBatches, recentPosts, saveBatch } from '@/lib/posts/store';
 import { markTaken, type TakenStep, takenLabel } from '@/lib/posts/taken';
@@ -319,9 +319,9 @@ export function PostsSection({
   // started before a change never overrides it.
   const offerChanges = useRef(0);
   const offerWrite = useRef<Promise<void>>(Promise.resolve());
-  // A treatment renamed or removed leaves the offer; yesterday's offer is
-  // gone. Looked at again whenever the page shows, so an app left open across
-  // the reset drops it before the owner can make with it.
+  // A treatment renamed or removed leaves the offer; one whose last day has
+  // ended is gone. Looked at again whenever the page shows, so an app left
+  // open past midnight drops it before the owner can make with it.
   useEffect(() => {
     let current = true;
     const look = () => {
@@ -365,18 +365,19 @@ export function PostsSection({
     // An app left open across the reset starts the new day here, so the new
     // attempt is numbered like the bar counts (docs/specs/platform/one-daily-reset).
     const from = dayStart(new Date());
-    let todays = offer;
     if (startRef.current && from > startRef.current) {
       startRef.current = from;
       setStart(from);
       void clearBefore(ownerId, from);
-      if (offer && new Date(offer.createdAt) < from) {
-        todays = null;
-        removeOffer();
-      }
+    }
+    // The reset leaves the offer; only the end of its last day removes it.
+    let live = offer;
+    if (offer && isOver(offer.offer, new Date())) {
+      live = null;
+      removeOffer();
     }
     const run = startPlan(
-      { ownerId, profile, recent: recentPosts(batches), offer: todays?.offer },
+      { ownerId, profile, recent: recentPosts(batches), offer: live?.offer },
       onEvent,
     );
     begin(run, { step: 'plan', posts: [] });

@@ -1,13 +1,13 @@
 import { z } from 'zod';
 import type { Profile } from '@/lib/brand/profile';
 import { openStore } from '@/lib/brand/store';
-import { dayStart } from './day';
-import { type OfferAnswers, offerSchema, pruneOffer } from './offer';
+import { isOver, type OfferAnswers, offerSchema, pruneOffer } from './offer';
 
-// Today's special offer, kept on the phone for the owner until Google's
-// reset, like the review draft (docs/specs/posts/special-offer, "How long it
-// lasts"): one record per owner, with the sheet's answers so it reopens on
-// them. Without IndexedDB nothing is kept.
+// Today's special offer, kept on the phone for the owner until midnight at
+// the end of its last day, on the phone's clock; Google's reset leaves it
+// (docs/specs/posts/special-offer, "How long it lasts"): one record per
+// owner, with the sheet's answers so it reopens on them. Without IndexedDB
+// nothing is kept.
 
 const answersSchema = z.object({
   kind: z.enum(['discount', 'freeExtra']),
@@ -35,7 +35,7 @@ export async function clearOffer(ownerId: string): Promise<void> {
   await db?.delete('offers', ownerId);
 }
 
-// A record from before today's reset, one that no longer fits, or one whose
+// A record whose last day has ended, one that no longer fits, or one whose
 // treatments all left the business is deleted; names that left are dropped.
 export async function loadOffer(
   ownerId: string,
@@ -45,8 +45,8 @@ export async function loadOffer(
   const db = await openStore();
   if (!db) return null;
   const parsed = offerRecordSchema.safeParse(await db.get('offers', ownerId));
-  const today = parsed.success && new Date(parsed.data.createdAt) >= dayStart(now);
-  const offer = today ? pruneOffer(parsed.data.offer, profile) : null;
+  const live = parsed.success && !isOver(parsed.data.offer, now);
+  const offer = live ? pruneOffer(parsed.data.offer, profile) : null;
   if (!parsed.success || !offer) {
     await db.delete('offers', ownerId);
     return null;

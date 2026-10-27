@@ -841,7 +841,7 @@ describe('the special offer on Create Posts', () => {
     ).toBeTruthy();
   });
 
-  test('an offer from before the reset is gone', async () => {
+  test('an offer whose last day has passed is gone', async () => {
     const view = await renderSection();
     await setOffer();
     view.unmount();
@@ -850,7 +850,25 @@ describe('the special offer on Create Posts', () => {
     expect(await addButton()).toBeTruthy();
   });
 
-  test('with the app left open across the reset, the line goes when the page shows again', async () => {
+  test('the daily reset leaves the offer, and the next attempt carries it', async () => {
+    // 05:00 UTC, before Google's reset at 07:00; then past it, the same day.
+    vi.setSystemTime(new Date('2026-10-25T05:00:00.000Z'));
+    await renderSection();
+    await setOffer();
+    vi.setSystemTime(new Date('2026-10-25T08:00:00.000Z'));
+    act(() => {
+      document.dispatchEvent(new Event('visibilitychange'));
+    });
+    fetchMock.mockResolvedValue(ndjson([{ type: 'error', code: 'model_busy' }]));
+    fireEvent.click(await readyButton());
+    await waitFor(() => expect(fetchMock).toHaveBeenCalled());
+    expect(planBody().offer).toMatchObject({ percent: 10, until: '2026-10-25' });
+    expect(
+      screen.getByRole('button', { name: /^10% off · 1 treatment · until Sun 25 Oct$/ }),
+    ).toBeTruthy();
+  });
+
+  test('with the app left open past midnight, the line goes when the page shows again', async () => {
     await renderSection();
     await setOffer();
     vi.setSystemTime(new Date('2026-10-26T12:00:00.000Z'));

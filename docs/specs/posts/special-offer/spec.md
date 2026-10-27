@@ -2,7 +2,7 @@
 title: "Special offer"
 description: "On 'Create Posts', the owner can add today's special offer in a few taps (a percentage off, or a free treatment with a paid one, always on 90-minute sessions or longer, until a set day); two of the six suggestions then carry it in their text, with a badge on their tiles, and code checks the captions keep to it."
 status: approved
-approved: { by: siegfried.bozza@protonmail.com, at: 2026-10-27T14:22:58Z }
+approved: { by: siegfried.bozza@protonmail.com, at: 2026-10-27T15:23:16Z }
 date: "2026-10-27"
 ---
 
@@ -31,7 +31,7 @@ and Svarga have it from day one.
 - "Create Posts" gets one optional button above "Make 6 suggestions":
   **"+ Special offer"**. Without an offer, everything works as today.
 - Once an offer is set, the button becomes **the offer's line**, for example
-  "10% off · 2 treatments · until Tue 28 Oct", with an "✕" to remove it.
+  "10% off · 2 treatments · until Tue 27 Oct", with an "✕" to remove it.
   Tapping the line reopens the sheet with the offer's answers.
 - The offer applies to the **next** "Make 6 suggestions" or "Make 6 new
   suggestions". Suggestions already on screen don't change when the offer is
@@ -62,8 +62,9 @@ questions. Questions 1 and 3 have a ready answer; question 2 needs one tap.
      the gift, not what's paid for.
 3. **Until when?** Chips "Today" (default), "3 days", "1 week". The line under
    the chips shows the last day as a date in the screen's language ("until
-   Tue 28 Oct"), from the phone's calendar: "Today" ends today, "3 days" ends
-   two days later, "1 week" six days later.
+   Tue 27 Oct"), from the phone's calendar: "Today" ends today, "3 days" ends
+   two days later, "1 week" six days later. A day ends at midnight in the
+   owner's own time zone, the phone's, wherever the spa is.
 
 When the business has **no treatment at all**, the sheet shows one line, "Add
 your treatments on Your business first.", with a button that opens that form
@@ -77,7 +78,7 @@ The 90-minute minimum is **a fixed rule**, not a setting.
   - its kind, `discount` with the `percent`, or `freeExtra` with the free
     treatment's name;
   - the ticked treatments' names;
-  - the last day, as code writes it in English ("Tuesday 28 October").
+  - the last day, as code writes it in English ("Tuesday 27 October").
 - The route checks it with Zod: percent an integer 1 to 90; every name among
   the profile's treatments; at least one ticked. A request that fails gets
   400, as for any bad body.
@@ -128,7 +129,7 @@ In a batch with an offer:
   badge, rewrites and checks know it after the sheet's answers change.
 - **The badge:** each tile that carries the offer shows a small badge in its
   top corner, in the accent colour: "10% off", or "Free extra". The opened
-  post shows the same badge above the caption, with "until Tue 28 Oct" beside
+  post shows the same badge above the caption, with "until Tue 27 Oct" beside
   it. The badge is the app's: it is never on the downloaded images, and
   "Copy the text" copies only the caption, hashtags and call to action, as
   today.
@@ -137,12 +138,20 @@ In a batch with an offer:
 
 ### How long it lasts
 
-- The offer's answers are kept on the phone (IndexedDB) for the owner, and
-  clear at the daily reset with the suggestions (`platform/one-daily-reset`),
-  so yesterday's offer never slips into today's posts.
-- The offer's last day doesn't remove it before the reset: the owner removes
-  it with "✕".
-- "Make 6 new suggestions" the same day uses the offer again.
+- The offer's answers are kept on the phone (IndexedDB) for the owner, until
+  **midnight at the end of its last day, on the phone's clock**: "Today" lasts
+  until midnight tonight in the owner's time zone, "3 days" until midnight on
+  its third day. Then it goes, so an offer whose last day has passed never
+  slips into a post.
+- The daily reset (`platform/one-daily-reset`, mid-afternoon in Da Nang and
+  Bali) clears the suggestions but not the offer: an offer set in the morning
+  is still there for the afternoon's suggestions, and a 3-day offer is set
+  once, not every day.
+- The owner can remove it earlier with "✕".
+- Every "Make 6 suggestions" or "Make 6 new suggestions" before its end uses
+  the offer again.
+- An app left open past midnight drops the offer as soon as the page shows
+  again, before the owner can make suggestions with it.
 
 ### Languages
 
@@ -213,10 +222,10 @@ Scenario: No treatments
   And there is no "Done"
 
 Scenario: The end date is written as a date
-  Given the phone's date is Sunday 26 October
+  Given the phone's date is Sunday 25 October
   When the owner picks "3 days"
-  Then the sheet shows "until Tue 28 Oct"
-  And the plan request's last day is "Tuesday 28 October"
+  Then the sheet shows "until Tue 27 Oct"
+  And the plan request's last day is "Tuesday 27 October"
 
 Scenario: A wrong percentage is flagged
   Given a 10% offer
@@ -234,8 +243,8 @@ Scenario: 100% is never flagged
   Then that phrase isn't flagged
 
 Scenario: A missing last day is flagged
-  Given a 10% offer until Tuesday 28 October
-  When an offer post's caption says "until 28 Oct"
+  Given a 10% offer until Tuesday 27 October
+  When an offer post's caption says "until 27 Oct"
   Then it isn't flagged
   When another offer post's caption names no day
   Then that post is flagged "Check the text"
@@ -246,9 +255,22 @@ Scenario: Removing the offer
   Then the button reads "+ Special offer" again
   And the suggestions already on screen keep their badges
 
-Scenario: The offer clears at the reset
-  Given an offer set today
-  When the daily reset passes
+Scenario: A "Today" offer ends at midnight on the phone
+  Given a "Today" offer set at 16:00 in Da Nang on Sunday 25 October
+  When the phone's clock passes midnight
+  Then the button reads "+ Special offer"
+
+Scenario: The daily reset leaves the offer
+  Given a "Today" offer set at 10:00 in Da Nang
+  When the daily reset passes at 14:00
+  Then the offer's line is still there
+  And the next suggestions carry the offer
+
+Scenario: A 3-day offer lasts its three days
+  Given a "3 days" offer set on Sunday 25 October
+  When the owner opens Create Posts on Tuesday 27 October
+  Then the line reads "until Tue 27 Oct"
+  When the phone's clock passes midnight that night
   Then the button reads "+ Special offer"
 
 Scenario: A rewrite keeps the offer
@@ -276,6 +298,6 @@ Scenario: A rewrite keeps the offer
 - Reading every session length from the site: the brand read keeps one
   duration per treatment, as today.
 - An offer that changes the images, or text drawn on an image.
-- Several offers at once, offers scheduled ahead, or an offer kept beyond the
-  daily reset.
+- Several offers at once, offers scheduled ahead, or an offer kept past the
+  end of its last day.
 - Offers in review replies.

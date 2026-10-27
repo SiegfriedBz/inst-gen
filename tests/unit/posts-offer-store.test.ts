@@ -6,9 +6,10 @@ import { DEFAULT_ANSWERS } from '@/lib/posts/offer';
 import { clearOffer, loadOffer, type OfferRecord, saveOffer } from '@/lib/posts/offer-store';
 import { svargaProfile } from './helpers/brand';
 
-// Today's offer, kept until Google's reset, 14:00 in Da Nang in US summer
-// time (docs/specs/posts/special-offer, "How long it lasts"). Local times
-// below are the phone's clock in Da Nang.
+// Today's offer, kept until midnight on the phone at the end of its last
+// day; Google's reset, 14:00 in Da Nang in US summer time, leaves it
+// (docs/specs/posts/special-offer, "How long it lasts"). Local times below
+// are the phone's clock in Da Nang.
 const zone = process.env.TZ;
 process.env.TZ = 'Asia/Ho_Chi_Minh';
 afterAll(() => {
@@ -45,15 +46,28 @@ beforeEach(() => {
   resetStoreForTests();
 });
 
-test('saved today, loaded as saved', async () => {
+test('a "Today" offer lasts until midnight on the phone', async () => {
   await saveOffer(record());
-  expect(await loadOffer('sen', profile(), local(26, 10))).toEqual(record());
+  expect(await loadOffer('sen', profile(), local(25, 23))).toEqual(record());
+  expect(await loadOffer('sen', profile(), local(26, 0))).toBeNull();
 });
 
-test('saved before the reset, gone', async () => {
-  await saveOffer(record({ createdAt: local(25, 13).toISOString() }));
-  expect(await loadOffer('sen', profile(), local(25, 15))).toBeNull();
-  expect(await loadOffer('sen', profile(), local(25, 13))).toBeNull();
+test('the daily reset leaves the offer', async () => {
+  // Set at 10:00, before the 14:00 reset in Da Nang.
+  await saveOffer(record({ createdAt: local(25, 10).toISOString() }));
+  expect(await loadOffer('sen', profile(), local(25, 15))).toEqual(
+    record({ createdAt: local(25, 10).toISOString() }),
+  );
+});
+
+test('a 3-day offer lasts its three days', async () => {
+  const threeDays = record({
+    answers: { ...record().answers, length: '3days' },
+    offer: { ...record().offer, until: '2026-10-27', lastDay: 'Tuesday 27 October' },
+  });
+  await saveOffer(threeDays);
+  expect(await loadOffer('sen', profile(), local(27, 20))).toEqual(threeDays);
+  expect(await loadOffer('sen', profile(), local(28, 0))).toBeNull();
 });
 
 test('a treatment that left the business leaves the offer and its answers', async () => {

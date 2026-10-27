@@ -33,6 +33,13 @@
   and both offer plans were recorded again (2 more Gemini requests). Sen
   and Svarga now open both offer posts with the offer, as given; no `offer`
   flag in either; the other four quiet.
+- 2026-10-27: spec amended and approved again: an offer lasts until midnight
+  at the end of its last day, on the phone's clock, and Google's daily reset
+  no longer clears it. The phone's reset of suggestions stays at Google's
+  reset (`platform/one-daily-reset`), so the limits and the screen still
+  start a new day together; to revisit only if the pilot shows owners
+  losing suggestions they meant to post. The spec's example dates were
+  given their right weekdays (Sunday 25 → Tue 27 Oct).
 
 ## RED
 
@@ -113,6 +120,17 @@ recording:
 ```
  Test Files  1 failed (1)
       Tests  2 failed | 7 passed (9)
+```
+
+Offers end at midnight on the phone (`posts-offer-store`, `posts-section`):
+
+```
+   × a "Today" offer lasts until midnight on the phone
+   × the daily reset leaves the offer
+   × a 3-day offer lasts its three days
+     × the daily reset leaves the offer, and the next attempt carries it
+ Test Files  2 failed (2)
+      Tests  4 failed | 58 passed (62)
 ```
 
 ## GREEN
@@ -208,4 +226,16 @@ The first-line rule (`posts-prompt`), then the new recordings:
 posts eval: 2/2 made · prompt posts-3 · model gemini-3.5-flash-lite
  Test Files  102 passed (102)
       Tests  1266 passed (1266)
+```
+
+Offers end at midnight on the phone, then `pnpm check` and every e2e test on
+port 3100:
+
+```
+ Test Files  3 passed (3)
+      Tests  89 passed (89)
+ Test Files  102 passed (102)
+      Tests  1268 passed (1268)
+  1 skipped
+  62 passed (22.8s)
 ```

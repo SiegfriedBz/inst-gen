@@ -86,6 +86,11 @@ export function offerUntil(today: Date, length: OfferLength): string {
   return `${end.getFullYear()}-${pad(end.getMonth() + 1)}-${pad(end.getDate())}`;
 }
 
+// Past midnight at the end of its last day, on the phone's clock.
+export function isOver(offer: Offer, now: Date): boolean {
+  return offerUntil(now, 'today') > offer.until;
+}
+
 export function toOffer(answers: OfferAnswers, today: Date): Offer | null {
   const until = offerUntil(today, answers.length);
   const base = { treatments: answers.treatments, until, lastDay: englishDay(until) };
