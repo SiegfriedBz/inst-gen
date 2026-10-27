@@ -80,3 +80,24 @@
 
 - Vitest, whole suite: `Tests  922 passed (922)`
 - Playwright, whole suite: `39 passed (29.6s)`
+
+## Amendment 2026-10-27: saving on Android
+
+- The owner's Android test: "Save the 2 images" opened a share sheet with no
+  way to save. The spec was amended (approved 2026-10-27): the share sheet
+  only on an iPhone or iPad, a download of both images anywhere else.
+- iPhone or iPad is told from the user agent; iPadOS says it's a Mac, so a
+  Mac user agent with more than one touch point counts as an iPad.
+- The e2e test runs on a Pixel 7: it now expects two downloads, post first,
+  and no share call.
+- Still owed: on a real Android phone, both images show in Instagram's
+  gallery; on a real iPhone, the share sheet still saves both to Photos.
+
+RED (the two new download tests):
+
+- Vitest: `Tests  2 failed | 34 passed (36)`
+
+GREEN:
+
+- Vitest, whole suite: `Tests  1278 passed (1278)`
+- Playwright, `friendlier-home.spec.ts` and `guide.spec.ts`: `16 passed (23.6s)`

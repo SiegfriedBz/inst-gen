@@ -16,6 +16,9 @@ import messages from '@/messages/en.json';
 import { svargaProfile } from './helpers/brand';
 import { post } from './helpers/posts';
 
+const IPHONE =
+  'Mozilla/5.0 (iPhone; CPU iPhone OS 18_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.0 Mobile/15E148 Safari/604.1';
+
 type Start = {
   input: { batch: PostBatch; postIds: string[]; hint?: string };
   onEvent: (e: ImageEvent) => void;
@@ -177,6 +180,7 @@ describe('a suggestion with its images', () => {
   test('save then copy, close: the tile says "Saved and copied", kept after a reload', async () => {
     vi.stubGlobal('navigator', {
       ...navigator,
+      userAgent: IPHONE,
       canShare: () => true,
       share: async () => {},
       clipboard: { writeText: async () => {} },

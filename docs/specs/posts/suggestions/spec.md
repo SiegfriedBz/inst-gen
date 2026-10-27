@@ -2,7 +2,7 @@
 title: "Suggestions"
 description: "'Create your posts' becomes a plain stack of attempts, each of six suggestions (a post image, a story image and the post's text), used one at a time with 'Save the 2 images' and 'Copy the text'; suggestions last until 3am on the phone's clock; the feed preview, type labels, post numbers and image description go; and the language switch gets faster."
 status: approved
-approved: { by: siegfried.bozza@protonmail.com, at: 2026-10-25T19:26:38Z }
+approved: { by: siegfried.bozza@protonmail.com, at: 2026-10-27T17:56:39Z }
 date: "2026-10-25"
 ---
 
@@ -81,9 +81,17 @@ Each suggestion is one card, top to bottom:
 5. Two discreet links on one row: **"Edit the text"** (2.4's "Edit") and
    **"Create new image"** (2.4's "New image", with its optional hint).
 6. Two numbered steps, full width:
-   - **"1 Save the 2 images"**, filled: one share sheet holding both images,
-     post first, so the owner picks "Save 2 images" and finds them side by
-     side in Photos. Without file sharing, both are downloaded.
+   - **"1 Save the 2 images"**, filled. On an iPhone or iPad that can share
+     files: one share sheet holding both images, post first, so the owner
+     picks "Save 2 images" and finds them side by side in Photos (a
+     download there lands in Files, where Instagram doesn't look).
+     Everywhere else, Android included, both are downloaded, post first:
+     Android's share sheet has no save option, while a download lands in
+     the Download folder, which Instagram's gallery shows. Chrome may ask
+     once to allow several downloads from the site. (Amended 2026-10-27,
+     after the owner's Android test opened a share sheet with no way to
+     save; the owner guide's `guide.instagram.save` line changes with it,
+     below.)
    - **"2 Copy the text"**, outlined: copies the text block of point 2, with
      2.4's "Copied" and its "Copy it from here." fallback.
 7. One line: "In Instagram: make a post with the post image and paste the
@@ -197,6 +205,12 @@ preview's, "Image description", the first-line flag, "Edited", "Post {n}",
 the old save and copy labels, "fewer", the type labels where nothing else
 uses them).
 
+Amended 2026-10-27, with the Android save:
+
+| Key | English | Indonesian | Vietnamese |
+|---|---|---|---|
+| `guide.instagram.save` | Tap <b>1 {button}</b>. On an iPhone, choose "Save 2 Images" in the menu that opens. On Android, both images download to your phone. Either way, the post image and the story image land side by side in your photos. | Ketuk <b>1 {button}</b>. Di iPhone, pilih "Simpan 2 Gambar" di menu yang terbuka. Di Android, kedua gambar langsung diunduh ke ponsel Anda. Gambar postingan dan gambar story tersimpan berdampingan di foto Anda. | Chạm <b>1 {button}</b>. Trên iPhone, chọn "Lưu 2 hình ảnh" trong menu hiện ra. Trên Android, cả hai hình được tải thẳng về điện thoại. Hình bài đăng và hình story nằm cạnh nhau trong ảnh của bạn. |
+
 ### The roadmap
 
 This item is **2.6 `posts/suggestions`**. Reviews move to 2.7, usage
@@ -215,7 +229,8 @@ and decisions follow, as 2.5 did. The PR that ships it marks 2.6 `done`.
     links, the two steps, the how-to line and "See the story image", and none
     of what's gone;
   - "Save the 2 images" shares both files in one call, post first, with the
-    new names; without file sharing it downloads both;
+    new names, on an iPhone or iPad that can share files; anywhere else,
+    Android included, it downloads both, post first;
   - "Copy the text" copies `postText`;
   - the editor has no alt text field;
   - the automatic update leaves an attempt from before 3am alone.
@@ -254,12 +269,18 @@ Scenario: 3am, not midnight
   When the owner opens the app at 03:10
   Then none is shown
 
-Scenario: One suggestion, saved
-  Given a suggestion with its two images
+Scenario: One suggestion, saved on an iPhone
+  Given a suggestion with its two images, on an iPhone
   When the owner taps "Save the 2 images"
   Then one share sheet opens with "sen-2026-10-26-attempt-1-suggestion-3-post.jpg" and "sen-2026-10-26-attempt-1-suggestion-3-story.jpg"
   When the owner taps "Copy the text"
   Then the clipboard holds the caption, the call to action and the hashtags
+
+Scenario: One suggestion, saved on an Android phone
+  Given a suggestion with its two images, on an Android phone that can share files
+  When the owner taps "Save the 2 images"
+  Then no share sheet opens
+  And "sen-2026-10-26-attempt-1-suggestion-3-post.jpg" then "sen-2026-10-26-attempt-1-suggestion-3-story.jpg" are downloaded
 
 Scenario: Nothing extra on a card
   Then a suggestion shows no type label, no "Post 1", no image description and no first-line warning

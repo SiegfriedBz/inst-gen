@@ -71,10 +71,27 @@ describe('saving the two images', () => {
     { blob: post, name: 'a-post.jpg' },
     { blob: story, name: 'a-story.jpg' },
   ];
+  const iPhone =
+    'Mozilla/5.0 (iPhone; CPU iPhone OS 18_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.0 Mobile/15E148 Safari/604.1';
+  const iPad =
+    'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.0 Safari/605.1.15';
+  const android =
+    'Mozilla/5.0 (Linux; Android 14; Pixel 7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Mobile Safari/537.36';
+  const downloads = () => {
+    URL.createObjectURL = vi.fn(() => 'blob:file');
+    URL.revokeObjectURL = vi.fn();
+    const clicked: string[] = [];
+    vi.spyOn(HTMLAnchorElement.prototype, 'click').mockImplementation(function (
+      this: HTMLAnchorElement,
+    ) {
+      clicked.push(this.download);
+    });
+    return clicked;
+  };
 
-  test('both images go in one share, post first', async () => {
+  test('on an iPhone, both images go in one share, post first', async () => {
     const share = vi.fn(async () => {});
-    const nav = { canShare: () => true, share } as unknown as Navigator;
+    const nav = { userAgent: iPhone, canShare: () => true, share } as unknown as Navigator;
     expect(await saveImageFiles(files, { navigator: nav, document })).toBe('shared');
     expect(share).toHaveBeenCalledTimes(1);
     const shared = (share.mock.calls[0] as unknown as [{ files: File[] }])[0].files;
@@ -87,23 +104,49 @@ describe('saving the two images', () => {
       throw new DOMException('closed', 'AbortError');
     });
     const click = vi.spyOn(HTMLAnchorElement.prototype, 'click');
-    const nav = { canShare: () => true, share } as unknown as Navigator;
+    const nav = { userAgent: iPhone, canShare: () => true, share } as unknown as Navigator;
     expect(await saveImageFiles(files, { navigator: nav, document })).toBe('cancelled');
     expect(click).not.toHaveBeenCalled();
   });
 
+  test('an iPad, which says it is a Mac, shares too', async () => {
+    const share = vi.fn(async () => {});
+    const nav = {
+      userAgent: iPad,
+      maxTouchPoints: 5,
+      canShare: () => true,
+      share,
+    } as unknown as Navigator;
+    expect(await saveImageFiles(files, { navigator: nav, document })).toBe('shared');
+  });
+
+  // Android's share sheet has no "save": the owner's test, 2026-10-27.
+  test('on Android, both images download, post first, even where files can be shared', async () => {
+    const clicked = downloads();
+    const share = vi.fn(async () => {});
+    const nav = { userAgent: android, canShare: () => true, share } as unknown as Navigator;
+    expect(await saveImageFiles(files, { navigator: nav, document })).toBe('downloaded');
+    expect(share).not.toHaveBeenCalled();
+    expect(clicked).toEqual(['a-post.jpg', 'a-story.jpg']);
+  });
+
+  test('a Mac without touch downloads', async () => {
+    const clicked = downloads();
+    const nav = {
+      userAgent: iPad,
+      maxTouchPoints: 0,
+      canShare: () => true,
+      share: vi.fn(),
+    } as unknown as Navigator;
+    expect(await saveImageFiles(files, { navigator: nav, document })).toBe('downloaded');
+    expect(clicked).toHaveLength(2);
+  });
+
   test('without file sharing both images download', async () => {
-    URL.createObjectURL = vi.fn(() => 'blob:file');
-    URL.revokeObjectURL = vi.fn();
-    const clicked: string[] = [];
-    vi.spyOn(HTMLAnchorElement.prototype, 'click').mockImplementation(function (
-      this: HTMLAnchorElement,
-    ) {
-      clicked.push(this.download);
-    });
-    expect(await saveImageFiles(files, { navigator: {} as Navigator, document })).toBe(
-      'downloaded',
-    );
+    const clicked = downloads();
+    expect(
+      await saveImageFiles(files, { navigator: { userAgent: iPhone } as Navigator, document }),
+    ).toBe('downloaded');
     expect(clicked).toEqual(['a-post.jpg', 'a-story.jpg']);
   });
 });
