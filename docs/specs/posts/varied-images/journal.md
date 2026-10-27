@@ -50,6 +50,18 @@
   two of the three (`no "man"`, `no "woman"`). The cast line still tells
   the image model who is in the picture, so those images get the dealt
   guests; the prose may still describe another treatment.
+- 2026-10-27: `pnpm eval:images sen svarga` with `posts-4` and `images-5`
+  (12 images, about $0.60, asked first), all made on the first try, 20 to
+  36 s each. Set-ups shown: Sen, deep tissue on a man's back, a close view
+  of a man's arm, foot reflexology for a man in a reclining chair, a woman
+  from above, four-hands on a woman's legs with two therapists, a woman's
+  arm; Svarga, a woman's back, foot reflexology for a man, a man's arm, a
+  lulur scrub with its bowl, four-hands on a man's legs with two
+  therapists, a woman from above. Therapists warm and tanned in all 12;
+  Svarga's in Balinese sarongs. The maintainer's verdict on the twelve:
+  "They look very good": pass. Seen but not failed: several therapists'
+  faces show in profile (Svarga 1 to 4) or blurred (Sen 1), and a guest
+  under a sheet is hard to tell man or woman (Sen 5, Svarga 5).
 
 ## RED
 
