@@ -78,6 +78,7 @@ most sample replies as written, with $0 spent on everything but images
 | 2.8 | `platform/usage-counters`: per-owner daily limits in Upstash Redis, the usage bar | spec | done |
 | 2.8b | `platform/one-daily-reset`: suggestions and review drafts clear at Google's reset, the same moment the limits come back; one time on screen | spec | done |
 | 2.9 | `guide/owner-guide`: How-to page and printable PDF, three languages | spec | done |
+| 2.10 | `platform/friendlier-home`: a smaller header, the tabs in a bottom bar, suggestions in a grid ticked when saved and copied, what's missing first on "Your business", one reply at a time on "Reviews" | spec | in progress |
 
 ## Later phases
 
