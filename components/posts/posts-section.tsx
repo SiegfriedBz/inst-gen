@@ -315,12 +315,20 @@ export function PostsSection({
     };
   }, [ownerId, tryResume]);
 
+  // The owner's last change to the offer, and its write to the phone: a load
+  // started before a change never overrides it.
+  const offerChanges = useRef(0);
+  const offerWrite = useRef<Promise<void>>(Promise.resolve());
+
   // A treatment renamed or removed leaves the offer; yesterday's offer is gone.
   useEffect(() => {
     let current = true;
-    void loadOffer(ownerId, profile, new Date()).then((record) => {
-      if (current) setOffer(record);
-    });
+    const at = offerChanges.current;
+    void (async () => {
+      await offerWrite.current;
+      const record = await loadOffer(ownerId, profile, new Date());
+      if (current && offerChanges.current === at) setOffer(record);
+    })();
     return () => {
       current = false;
     };
@@ -330,14 +338,16 @@ export function PostsSection({
     const made = toOffer(answers, new Date());
     if (!made) return;
     const record = { ownerId, answers, offer: made, createdAt: new Date().toISOString() };
+    offerChanges.current += 1;
     setOffer(record);
     setOfferOpen(false);
-    void saveOffer(record);
+    offerWrite.current = saveOffer(record);
   }
 
   function removeOffer() {
+    offerChanges.current += 1;
     setOffer(null);
-    void clearOffer(ownerId);
+    offerWrite.current = clearOffer(ownerId);
   }
 
   function make() {
