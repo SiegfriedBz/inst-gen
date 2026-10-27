@@ -462,10 +462,9 @@ describe('the home tabs', () => {
     }
   });
 
-  test('the bar hides while typing with the keyboard up', async () => {
-    const viewport = Object.assign(new EventTarget(), { height: 800 });
-    vi.stubGlobal('visualViewport', viewport);
-    vi.stubGlobal('innerHeight', 800);
+  test('the bar hides while a text field has focus, whatever the viewport says', async () => {
+    // Android Chrome shrinks innerHeight and the visual viewport together when
+    // the keyboard opens, so their sizes can't tell; focus can.
     await saveBrand('sen', profile);
     renderHome();
     await screen.findByRole('tablist', { name: 'Home' });
@@ -474,14 +473,11 @@ describe('the home tabs', () => {
     expect(bar.hidden).toBe(false);
     const field = await screen.findByLabelText('The review');
     act(() => field.focus());
-    expect(bar.hidden).toBe(false);
-    viewport.height = 400;
-    await act(async () => {
-      viewport.dispatchEvent(new Event('resize'));
-    });
-    expect(bar.hidden).toBe(true);
+    await waitFor(() => expect(bar.hidden).toBe(true));
     act(() => field.blur());
     await waitFor(() => expect(bar.hidden).toBe(false));
+    act(() => screen.getByRole('tab', { name: 'Reviews' }).focus());
+    expect(bar.hidden).toBe(false);
   });
 
   test('a re-read lands on Your business and the update waits for the tab', async () => {

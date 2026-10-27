@@ -37,6 +37,12 @@
 - 2026-10-27: The owner asked for the passphrase to be always visible. The
   spec gained "The passphrase shows as it is typed" and was approved again
   (11:15 UTC); the field is `type="text"`, nothing else about sign-in moves.
+- 2026-10-27: The bottom bar hides while a text field has focus, not when the
+  visual viewport is under 75% of the window: the e2e run showed both shrink
+  together, as Android Chrome's do when the keyboard opens, so the size rule
+  would never fire on the pilot's phones. On a phone, a focused text field is
+  the keyboard being up; on a desktop the bar also hides while typing, which
+  costs nothing.
 
 ## RED
 
@@ -103,6 +109,12 @@ Passphrase always visible (`sign-in-form`):
       Tests  1 failed | 4 passed (5)
 ```
 
+Bar hides on focus (`brand-home`, the rewritten test):
+
+```
+      Tests  1 failed | 41 skipped (42)
+```
+
 ## GREEN
 
 Task 1 (`language-switch`, `i18n-messages`):
@@ -165,4 +177,10 @@ Passphrase always visible (`sign-in-form`):
 
 ```
       Tests  5 passed (5)
+```
+
+Bar hides on focus (`brand-home`):
+
+```
+      Tests  42 passed (42)
 ```
