@@ -453,6 +453,38 @@ describe('the posts section', () => {
     await waitFor(() => expect(fetchMock).toHaveBeenCalledTimes(1));
   });
 
+  test('the button spins while the suggestions are being made', async () => {
+    let answer: (response: Response) => void = () => {};
+    fetchMock.mockImplementation(() => new Promise<Response>((resolve) => (answer = resolve)));
+    await renderSection();
+    const button = await readyButton();
+    expect(button.querySelector('.animate-spin')).toBeNull();
+    fireEvent.click(button);
+    await waitFor(() => expect(button.getAttribute('aria-busy')).toBe('true'));
+    expect(button.querySelector('.animate-spin')).not.toBeNull();
+    // The plan is asked for a tick after the click: answer it once it has been.
+    await waitFor(() => expect(fetchMock).toHaveBeenCalledTimes(1));
+    const p = post({ id: 'post-1' });
+    answer(
+      ndjson([
+        { type: 'post', index: 0, post: p },
+        {
+          type: 'final',
+          result: {
+            posts: [p],
+            dropped: [],
+            promptVersion: 'posts-1',
+            model: 'm',
+            profileHash: profileHash(svargaProfile()),
+          },
+        },
+      ]),
+    );
+    expect(await screen.findByText('Warm oil, slow hands.')).toBeTruthy();
+    await waitFor(() => expect(button.querySelector('.animate-spin')).toBeNull());
+    expect(button.getAttribute('aria-busy')).toBeNull();
+  });
+
   test('a dropped stream clears the cards and asks once more while online', async () => {
     const p = post({ id: 'post-1' });
     const final: PostsLine = {
