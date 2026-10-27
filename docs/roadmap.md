@@ -81,7 +81,7 @@ most sample replies as written, with $0 spent on everything but images
 | 2.10 | `platform/friendlier-home`: a smaller header, the tabs in a bottom bar, suggestions in a grid ticked when saved and copied, what's missing first on "Your business", one reply at a time on "Reviews" | spec | done |
 | 2.11 | `posts/special-offer`: today's offer in a few taps (a percentage off, or a free treatment, on 90-minute sessions or longer, until a set day), carried by two of the six suggestions, with a badge | spec | done |
 | 2.12 | `posts/varied-images`: code sets up each image before the plan (the spa's own treatments, men and women half and half, two therapists for four hands), and local therapists with healthy, tanned skin and perfect hands | spec | done |
-| 2.13 | `posts/story-text`: a short version of each caption for its story; captions built on basic marketing, a hook first and a positive note to end; flower emojis for spas in captions and stories | spec | todo |
+| 2.13 | `posts/story-text`: a short version of each caption for its story; captions built on basic marketing, a hook first and a positive note to end; flower emojis for spas in captions and stories | spec | in progress |
 
 ## Later phases
 
