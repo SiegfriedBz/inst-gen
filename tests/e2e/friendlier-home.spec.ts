@@ -101,7 +101,7 @@ test('a suggestion saved and copied says so on its tile, after a reload too', as
   await expect(sheet).toHaveAccessibleName('Attempt 1, suggestion 2 of 6');
   const names: string[] = [];
   page.on('download', (download) => names.push(download.suggestedFilename()));
-  await sheet.getByRole('button', { name: 'Save the 2 images' }).click();
+  await sheet.getByRole('button', { name: 'Save post & story images' }).click();
   await expect
     .poll(() => names)
     .toEqual([
@@ -109,7 +109,7 @@ test('a suggestion saved and copied says so on its tile, after a reload too', as
       expect.stringMatching(/-attempt-1-suggestion-2-story\.jpg$/),
     ]);
   expect(await page.evaluate(() => (window as unknown as { shared: number }).shared)).toBe(0);
-  await sheet.getByRole('button', { name: 'Copy the text' }).click();
+  await sheet.getByRole('button', { name: 'Copy post text' }).click();
   await expect(sheet.getByRole('button', { name: 'Copied' })).toBeVisible();
   expect(await page.evaluate(() => navigator.clipboard.readText())).toContain('Caption 2.');
   await closeSuggestion(page);

@@ -36,6 +36,11 @@
 - 2026-10-27: the three buttons are the app's one `Button` style (filled
   accent), as on mockup v6; "Copy post text" loses the outlined look the
   second step had.
+- 2026-10-27: the phone tests (Task 8) were written after Task 6's code, so
+  they have no RED run of their own; screenshots of the sheet at the Pixel 7
+  viewport matched mockup v6 (three boxed parts, the dashed story part, the
+  green buttons). `postsBody` gives story texts only when asked
+  (`stories: true`), so the older phone tests keep posts without one.
 
 ## RED
 
@@ -153,4 +158,10 @@ Task 7:
 ```
  Test Files  1 passed (1)
       Tests  26 passed (26)
+```
+
+Task 8, `pnpm test:e2e tests/e2e/story-text.spec.ts tests/e2e/friendlier-home.spec.ts tests/e2e/editor.spec.ts`:
+
+```
+  16 passed (24.5s)
 ```

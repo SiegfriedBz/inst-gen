@@ -102,12 +102,12 @@ test('a new image carries the hint', async ({ page }) => {
   expect(images.count()).toBe(7);
 });
 
-test('without a share sheet, Save the 2 images downloads both, named', async ({ page }) => {
+test('without a share sheet, Save post & story images downloads both, named', async ({ page }) => {
   await sixPosts(page);
   const names: string[] = [];
   page.on('download', (download) => names.push(download.suggestedFilename()));
   const sheet = await openSuggestion(page, 2);
-  await sheet.getByRole('button', { name: 'Save the 2 images' }).click();
+  await sheet.getByRole('button', { name: 'Save post & story images' }).click();
   await expect.poll(() => names.length).toBe(2);
   expect(names[0]).toMatch(/^sen-\d{4}-\d{2}-\d{2}-attempt-1-suggestion-2-post\.jpg$/);
   expect(names[1]).toMatch(/^sen-\d{4}-\d{2}-\d{2}-attempt-1-suggestion-2-story\.jpg$/);
