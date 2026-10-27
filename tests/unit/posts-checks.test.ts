@@ -30,6 +30,7 @@ function raw(overrides: Partial<ModelPost> = {}): ModelPost {
     hashtags: ['canggu', 'balimassage', 'aftersurf'],
     altText: 'Hands pressing warm oil into shoulders on a villa deck at dusk',
     imagePrompt: 'A villa deck at dusk',
+    storyText: 'Warm oil tonight. 🌸',
     ...overrides,
   };
 }
@@ -228,8 +229,20 @@ describe('checkRewrite', () => {
   it("keeps the original's type, topic, scene and image prompt", () => {
     const answer = {
       posts: [
-        { id: 'a', caption: 'New words.', hashtags: ['canggu'], altText: 'New alt' },
-        { id: 'b', caption: 'Drink water.', hashtags: ['tip'], altText: 'A glass of water' },
+        {
+          id: 'a',
+          caption: 'New words.',
+          hashtags: ['canggu'],
+          altText: 'New alt',
+          storyText: 'New.',
+        },
+        {
+          id: 'b',
+          caption: 'Drink water.',
+          hashtags: ['tip'],
+          altText: 'A glass of water',
+          storyText: 'Drink water.',
+        },
       ],
     };
     const { posts } = checkRewrite(answer, originals, svargaProfile());
@@ -244,7 +257,9 @@ describe('checkRewrite', () => {
   });
 
   it('keeps an original whose id the model left out', () => {
-    const answer = { posts: [{ id: 'a', caption: 'New.', hashtags: [], altText: 'x' }] };
+    const answer = {
+      posts: [{ id: 'a', caption: 'New.', hashtags: [], altText: 'x', storyText: 'New.' }],
+    };
     const { posts, dropped } = checkRewrite(answer, originals, svargaProfile());
     expect(posts[1]).toEqual(originals[1]);
     expect(dropped).toContainEqual({ field: 'posts', reason: 'no rewrite for b' });
@@ -345,7 +360,15 @@ describe('the special offer', () => {
   it('checkRewrite keeps the badge and checks with the offer', () => {
     const original = post({ id: 'a', offer: true });
     const answer = {
-      posts: [{ id: 'a', caption: '15% off, until 27 Oct.', hashtags: ['canggu'], altText: 'x' }],
+      posts: [
+        {
+          id: 'a',
+          caption: '15% off, until 27 Oct.',
+          hashtags: ['canggu'],
+          altText: 'x',
+          storyText: '15% off, until 27 Oct.',
+        },
+      ],
     };
     const { posts } = checkRewrite(answer, [original], profile(), offer);
     expect(posts[0].offer).toBe(true);

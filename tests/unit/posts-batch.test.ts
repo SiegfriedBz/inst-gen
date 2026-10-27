@@ -22,6 +22,21 @@ describe('batchSchema', () => {
     expect(batchSchema.safeParse(batch(posts)).success).toBe(true);
   });
 
+  it('keeps a story text of at most 120 characters, and its flags', () => {
+    const story = post({ storyText: `${'a'.repeat(117)} 🌸`, storyUnchecked: [] });
+    expect(batchSchema.parse(batch([story])).posts[0]).toMatchObject({
+      storyText: story.storyText,
+      storyUnchecked: [],
+    });
+    expect(
+      batchSchema.safeParse(batch([post({ storyText: `${'a'.repeat(118)} 🌸` })])).success,
+    ).toBe(false);
+  });
+
+  it('accepts a post saved before story texts', () => {
+    expect(batchSchema.safeParse(batch([post()])).success).toBe(true);
+  });
+
   it('keeps the editor fields', () => {
     const edited = post({ edited: true, altToCheck: true, profileHash: 'h1' });
     const parsed = batchSchema.parse(batch([edited]));
