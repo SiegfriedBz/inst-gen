@@ -53,6 +53,11 @@ describe('the owner guide', () => {
     }
   });
 
+  test.each(LOCALES)('shows the special offer in the posts section, in %s', (locale) => {
+    const posts = show(locale).querySelector('#posts')?.textContent ?? '';
+    expect(posts).toContain(messagesFor(locale).posts.offer.add);
+  });
+
   test('the numbers come from the limits', () => {
     const changed = show('en', {
       limits: { reads: 3, attempts: 4, newImages: 10, replies: 20 },

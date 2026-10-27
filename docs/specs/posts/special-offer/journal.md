@@ -65,6 +65,13 @@ Task 7, the badge (`posts-section`):
       Tests  3 failed | 51 passed (54)
 ```
 
+Task 8, the owner guide (`guide`):
+
+```
+ Test Files  1 failed (1)
+      Tests  3 failed | 13 passed (16)
+```
+
 ## GREEN
 
 Task 1:
@@ -114,4 +121,11 @@ Task 7, with `posts-take-away` and `i18n-messages`:
 ```
  Test Files  3 passed (3)
       Tests  71 passed (71)
+```
+
+Task 8, with `i18n-messages`:
+
+```
+ Test Files  2 passed (2)
+      Tests  23 passed (23)
 ```
