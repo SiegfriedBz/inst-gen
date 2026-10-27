@@ -16,6 +16,7 @@ import {
   staleUnedited,
 } from '@/lib/posts/edit';
 import { profileHash } from '@/lib/posts/input';
+import type { Offer } from '@/lib/posts/offer';
 import { senProfile } from './helpers/brand';
 import { post } from './helpers/posts';
 
@@ -262,5 +263,33 @@ describe('what clears saved and copied', () => {
     const marked = markNewImage(batch([post({ id: 'p1', savedAt: NOW, copiedAt: NOW })]), 'p1');
     expect(marked.posts[0].savedAt).toBeUndefined();
     expect(marked.posts[0].copiedAt).toBe(NOW);
+  });
+});
+
+describe('edits and the special offer', () => {
+  const offer: Offer = {
+    kind: 'discount',
+    percent: 10,
+    treatments: ['Vietnamese Traditional Massage'],
+    until: '2026-10-27',
+    lastDay: 'Tuesday 27 October',
+  };
+  const kinds = (p: Post) => p.unchecked.filter((f) => f.kind === 'offer').map((f) => f.text);
+
+  test("an edit of an offer post is checked against the batch's offer", () => {
+    const edited = applyEdit(
+      post({ offer: true }),
+      { caption: '15% off, until 27 Oct.', hashtags: '', altText: 'x' },
+      profile,
+      offer,
+    );
+    expect(kinds(edited)).toEqual(['15%']);
+    expect(edited.offer).toBe(true);
+  });
+
+  test("an out-of-date post's flags use the batch's offer", () => {
+    const stale = post({ edited: true, offer: true, caption: '20% off, until 27 Oct.' });
+    const flags = flagsFor(stale, { ...batch([stale], 'old'), offer }, profile);
+    expect(flags.filter((f) => f.kind === 'offer').map((f) => f.text)).toEqual(['20%']);
   });
 });

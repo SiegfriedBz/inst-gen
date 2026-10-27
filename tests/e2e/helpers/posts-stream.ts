@@ -2,6 +2,7 @@ import type { Page } from '@playwright/test';
 import type { Profile } from '@/lib/brand/profile';
 import type { PostsErrorCode } from '@/lib/posts/batch';
 import { profileHash } from '@/lib/posts/input';
+import type { Offer } from '@/lib/posts/offer';
 import { encodePostsLine, type PostsLine } from '@/lib/posts/stream';
 import { post } from '../../unit/helpers/posts';
 
@@ -9,7 +10,8 @@ import { post } from '../../unit/helpers/posts';
 // the real routes or a model.
 export function postsBody(
   profile: Profile,
-  opts: { error?: PostsErrorCode; caption?: string } = {},
+  // With an offer, the two offer posts carry it.
+  opts: { error?: PostsErrorCode; caption?: string; offer?: Offer } = {},
 ): string {
   if (opts.error) return encodePostsLine({ type: 'error', code: opts.error });
   const types = ['offer', 'offer', 'moment', 'local', 'ritual', 'tip'] as const;
@@ -19,6 +21,7 @@ export function postsBody(
       type,
       topic: `Topic ${i + 1}`,
       caption: `${opts.caption ?? 'Caption'} ${i + 1}.`,
+      ...(opts.offer && type === 'offer' ? { offer: true as const } : {}),
     }),
   );
   const lines: PostsLine[] = posts.map((p, index) => ({ type: 'post', index, post: p }));
@@ -30,6 +33,7 @@ export function postsBody(
       promptVersion: 'posts-1',
       model: 'm',
       profileHash: profileHash(profile),
+      ...(opts.offer ? { offer: opts.offer } : {}),
     },
   });
   return lines.map(encodePostsLine).join('');

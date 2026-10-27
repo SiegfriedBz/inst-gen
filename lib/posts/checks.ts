@@ -13,6 +13,7 @@ import {
   type Scene,
 } from './batch';
 import { ctaFor } from './input';
+import { mentionsDay, OFFER_LIMITS, type Offer, PERCENT } from './offer';
 
 // Code's checks on the model's posts (docs/specs/posts/generate-copy, "What
 // code checks"): trim, drop or flag, record each change, and never refuse a
@@ -58,7 +59,32 @@ function escapeRegex(text: string): string {
   return text.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 }
 
-export function findFlags(caption: string, profile: Profile): Flag[] {
+// The batch's special offer, and whether this post is one of the two that
+// carry it (docs/specs/posts/special-offer, "Code's checks").
+export type OfferContext = { offer: Offer; carries: boolean };
+
+// The first two offer posts of a batch with an offer carry it.
+export function carries(type: PostType, offerPostsBefore: number): boolean {
+  return type === 'offer' && offerPostsBefore < 2;
+}
+
+function offerFlags(caption: string, { offer, carries }: OfferContext): Flag[] {
+  const flags: Flag[] = [];
+  for (const match of caption.matchAll(PERCENT)) {
+    const n = Number(match[1]);
+    // "100% natural" is never an offer.
+    if (n > OFFER_LIMITS.percentMax) continue;
+    if (!carries || offer.kind !== 'discount' || n !== offer.percent) {
+      flags.push({ kind: 'offer', text: `${n}%` });
+    }
+  }
+  if (carries && !mentionsDay(caption, offer.until)) {
+    flags.push({ kind: 'offer', text: offer.lastDay });
+  }
+  return flags;
+}
+
+export function findFlags(caption: string, profile: Profile, context?: OfferContext): Flag[] {
   const flags: Flag[] = [];
   const prices = profilePrices(profile);
   for (const match of caption.match(PRICE) ?? []) {
@@ -66,6 +92,7 @@ export function findFlags(caption: string, profile: Profile): Flag[] {
     if (!prices.has(amount(text))) flags.push({ kind: 'price', text });
   }
   const durations = profileDurations(profile);
+  if (context?.carries) durations.add(OFFER_LIMITS.minutes);
   for (const match of caption.matchAll(DURATION)) {
     if (!durations.has(minutes(match[1], match[2]))) {
       flags.push({ kind: 'duration', text: match[0].trim() });
@@ -80,6 +107,7 @@ export function findFlags(caption: string, profile: Profile): Flag[] {
   if (firstLine.length > POSTS_LIMITS.firstLineChars) {
     flags.push({ kind: 'firstLine', text: firstLine });
   }
+  if (context) flags.push(...offerFlags(caption, context));
   return flags;
 }
 
@@ -130,6 +158,7 @@ function isScene(value: string): value is Scene {
 function checkedWords(
   raw: Pick<ModelPost, 'caption' | 'hashtags' | 'altText'>,
   profile: Profile,
+  context?: OfferContext,
 ): Pick<Post, 'caption' | 'cta' | 'hashtags' | 'altText' | 'unchecked'> {
   const caption = cutCaption(raw.caption);
   return {
@@ -137,7 +166,7 @@ function checkedWords(
     cta: ctaFor(profile) ?? '',
     hashtags: cleanHashtags(raw.hashtags),
     altText: cutChars(raw.altText.replace(/^(an? )?image of /i, ''), POSTS_LIMITS.altTextChars),
-    unchecked: findFlags(caption, profile),
+    unchecked: findFlags(caption, profile, context),
   };
 }
 
@@ -145,6 +174,7 @@ export function checkPost(
   raw: ModelPost,
   profile: Profile,
   id: string,
+  context?: OfferContext,
 ): { post: Post | null; dropped: Dropped[] } {
   const type = raw.type.trim().toLowerCase();
   const scene = raw.scene.trim().toLowerCase();
@@ -165,7 +195,8 @@ export function checkPost(
       scene,
       topic: cutWords(raw.topic, POSTS_LIMITS.topicWords) || type,
       imagePrompt: cutWords(raw.imagePrompt, POSTS_LIMITS.imagePromptWords),
-      ...checkedWords(raw, profile),
+      ...checkedWords(raw, profile, context),
+      ...(context?.carries ? { offer: true as const } : {}),
     },
     dropped: [],
   };
@@ -208,6 +239,7 @@ export function checkRewrite(
   raw: ModelRewrite,
   original: Post[],
   profile: Profile,
+  offer?: Offer,
 ): { posts: Post[]; dropped: Dropped[] } {
   const dropped: Dropped[] = [];
   const byId = new Map(raw.posts.map((p) => [p.id, p]));
@@ -221,7 +253,8 @@ export function checkRewrite(
       dropped.push({ field: 'posts', reason: `no rewrite for ${post.id}` });
       return post;
     }
-    return { ...post, ...checkedWords(answer, profile) };
+    const context = offer ? { offer, carries: post.offer === true } : undefined;
+    return { ...post, ...checkedWords(answer, profile, context) };
   });
   return { posts, dropped };
 }

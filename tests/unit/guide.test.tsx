@@ -53,6 +53,49 @@ describe('the owner guide', () => {
     }
   });
 
+  test.each(LOCALES)("explains the offer with the app's own words, in %s", (locale) => {
+    const m = messagesFor(locale);
+    const posts = show(locale).querySelector('#posts');
+    const text = posts?.textContent ?? '';
+    for (const name of [
+      m.posts.offer.add,
+      m.posts.offer.done,
+      m.posts.offer.badgeFree,
+      m.posts.checkText,
+    ]) {
+      expect(text).toContain(name);
+    }
+    // The everyday steps first, the offer's four steps last.
+    const lists = posts?.querySelectorAll('ol') ?? [];
+    expect(lists).toHaveLength(1);
+    expect(lists[0].querySelectorAll('li')).toHaveLength(4);
+    expect(posts?.lastElementChild?.textContent).toContain('✕');
+  });
+
+  test.each(LOCALES)('your business is three numbered steps, in %s', (locale) => {
+    const steps = show(locale).querySelectorAll('#business ol li');
+    expect(steps).toHaveLength(3);
+    expect(steps[0].textContent).toContain(messagesFor(locale).brand.home.read);
+  });
+
+  test.each([
+    ['en', 'EN'],
+    ['id', 'ID'],
+    ['vi', 'VI'],
+  ] as [Locale, string][])(
+    'names the language button by the code it shows, in %s',
+    (locale, code) => {
+      const languages = show(locale).querySelector('#languages')?.textContent ?? '';
+      expect(languages).toContain(code);
+      if (code !== 'EN') expect(languages).not.toContain('EN');
+    },
+  );
+
+  test('says the offer stays through the reset', () => {
+    const allowance = show('en').querySelector('#allowance')?.textContent ?? '';
+    expect(allowance).toContain('Your special offer stays');
+  });
+
   test('the numbers come from the limits', () => {
     const changed = show('en', {
       limits: { reads: 3, attempts: 4, newImages: 10, replies: 20 },

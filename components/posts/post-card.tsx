@@ -7,6 +7,8 @@ import { UsageMessage } from '@/components/usage/usage-message';
 import { useAtLimit } from '@/components/usage/usage-provider';
 import type { Flag, Post } from '@/lib/posts/batch';
 import type { PostEdit } from '@/lib/posts/edit';
+import type { Offer } from '@/lib/posts/offer';
+import { OfferBadge } from './offer-badge';
 import { PostEditor } from './post-editor';
 import { type ImageState, NewImageLink, PostImage, StoryLink } from './post-image';
 
@@ -16,9 +18,9 @@ import { type ImageState, NewImageLink, PostImage, StoryLink } from './post-imag
 // plain-word warnings and "Edit the text". The two steps are the sheet's, at
 // its bottom. No type label, number or image description.
 
-// What's worth a word to the owner: a price, a duration or a word Instagram
-// may refuse. The first-line check isn't shown.
-export const SHOWN_FLAGS: Flag['kind'][] = ['price', 'duration', 'banned'];
+// What's worth a word to the owner: a price, a duration, a word Instagram
+// may refuse, or a caption off the special offer. The first-line check isn't shown.
+export const SHOWN_FLAGS: Flag['kind'][] = ['price', 'duration', 'banned', 'offer'];
 
 export function PostCard({
   post,
@@ -31,6 +33,7 @@ export function PostCard({
   editBusy = busy,
   translation,
   takeAway,
+  offer,
 }: {
   post: Post;
   cta: string;
@@ -46,6 +49,8 @@ export function PostCard({
   editBusy?: boolean;
   translation?: ReactNode;
   takeAway?: ReactNode;
+  // The batch's special offer, when this post carries it.
+  offer?: Offer;
 }) {
   const t = useTranslations('posts');
   const [editing, setEditing] = useState(false);
@@ -83,6 +88,11 @@ export function PostCard({
         />
       ) : (
         <div>
+          {offer && (
+            <div className="mb-2">
+              <OfferBadge offer={offer} until />
+            </div>
+          )}
           <p className="whitespace-pre-line text-[15px] leading-normal text-ink">{post.caption}</p>
           {translation}
           {cta && <p className="mt-3 text-[15px] leading-normal text-ink">{cta}</p>}

@@ -24,10 +24,14 @@ import {
 import { type ImageEvent, resumeImages, startImages } from '@/lib/posts/image-client';
 import { imageKey, loadImages, type SavedImage } from '@/lib/posts/image-store';
 import { ctaFor, profileHash } from '@/lib/posts/input';
+import { DEFAULT_ANSWERS, isOver, type OfferAnswers, toOffer } from '@/lib/posts/offer';
+import { clearOffer, loadOffer, type OfferRecord, saveOffer } from '@/lib/posts/offer-store';
 import { clearBefore, loadBatches, recentPosts, saveBatch } from '@/lib/posts/store';
 import { markTaken, type TakenStep, takenLabel } from '@/lib/posts/taken';
 import { isUsageCode, type UsageCode } from '@/lib/usage/codes';
 import { CaptionTranslation } from './caption-translation';
+import { OfferLine } from './offer-line';
+import { OfferSheet } from './offer-sheet';
 import { PostCard, SHOWN_FLAGS } from './post-card';
 import type { ImageState } from './post-image';
 import { SuggestionSheet } from './suggestion-sheet';
@@ -54,6 +58,7 @@ export function PostsSection({
   imagesOn,
   active,
   searching,
+  onAddTreatments,
 }: {
   ownerId: string;
   profile: Profile;
@@ -62,10 +67,15 @@ export function PostsSection({
   active: boolean;
   // The essence search is running: its answer changes the details again.
   searching: boolean;
+  // Opens "Your business" on its treatments, for an offer with none.
+  onAddTreatments?: () => void;
 }) {
   const t = useTranslations('posts');
   const brand = useTranslations('brand');
   const [batches, setBatches] = useState<PostBatch[]>([]);
+  // Today's special offer (docs/specs/posts/special-offer), kept on the phone.
+  const [offer, setOffer] = useState<OfferRecord | null>(null);
+  const [offerOpen, setOfferOpen] = useState(false);
   const [running, setRunning] = useState<Running | null>(null);
   const [error, setError] = useState<PostsErrorCode | UsageCode | 'offline' | null>(null);
   // Which step the error line is about: a plan's limit and a rewrite's differ.
@@ -305,6 +315,52 @@ export function PostsSection({
     };
   }, [ownerId, tryResume]);
 
+  // The owner's last change to the offer, and its write to the phone: a load
+  // started before a change never overrides it.
+  const offerChanges = useRef(0);
+  const offerWrite = useRef<Promise<void>>(Promise.resolve());
+  // A treatment renamed or removed leaves the offer; one whose last day has
+  // ended is gone. Looked at again whenever the page shows, so an app left
+  // open past midnight drops it before the owner can make with it.
+  useEffect(() => {
+    let current = true;
+    const look = () => {
+      const at = offerChanges.current;
+      void (async () => {
+        await offerWrite.current;
+        const record = await loadOffer(ownerId, profile, new Date());
+        if (current && offerChanges.current === at) setOffer(record);
+      })();
+    };
+    const onVisible = () => {
+      if (document.visibilityState === 'visible') look();
+    };
+    look();
+    document.addEventListener('visibilitychange', onVisible);
+    window.addEventListener('online', onVisible);
+    return () => {
+      current = false;
+      document.removeEventListener('visibilitychange', onVisible);
+      window.removeEventListener('online', onVisible);
+    };
+  }, [ownerId, profile]);
+
+  function keepOffer(answers: OfferAnswers) {
+    const made = toOffer(answers, new Date());
+    if (!made) return;
+    const record = { ownerId, answers, offer: made, createdAt: new Date().toISOString() };
+    offerChanges.current += 1;
+    setOffer(record);
+    setOfferOpen(false);
+    offerWrite.current = saveOffer(record);
+  }
+
+  function removeOffer() {
+    offerChanges.current += 1;
+    setOffer(null);
+    offerWrite.current = clearOffer(ownerId);
+  }
+
   function make() {
     // An app left open across the reset starts the new day here, so the new
     // attempt is numbered like the bar counts (docs/specs/platform/one-daily-reset).
@@ -314,7 +370,16 @@ export function PostsSection({
       setStart(from);
       void clearBefore(ownerId, from);
     }
-    const run = startPlan({ ownerId, profile, recent: recentPosts(batches) }, onEvent);
+    // The reset leaves the offer; only the end of its last day removes it.
+    let live = offer;
+    if (offer && isOver(offer.offer, new Date())) {
+      live = null;
+      removeOffer();
+    }
+    const run = startPlan(
+      { ownerId, profile, recent: recentPosts(batches), offer: live?.offer },
+      onEvent,
+    );
     begin(run, { step: 'plan', posts: [] });
   }
 
@@ -334,7 +399,9 @@ export function PostsSection({
     if (!current) return;
     const next: PostBatch = {
       ...current,
-      posts: current.posts.map((p) => (p.id === postId ? applyEdit(p, edit, profile) : p)),
+      posts: current.posts.map((p) =>
+        p.id === postId ? applyEdit(p, edit, profile, current.offer) : p,
+      ),
     };
     batchesRef.current = batchesRef.current.map((b) => (b.id === batchId ? next : b));
     setBatches(batchesRef.current);
@@ -483,6 +550,28 @@ export function PostsSection({
   }
   return (
     <section className="mt-6 flex flex-col gap-3">
+      {offer ? (
+        <OfferLine offer={offer.offer} onOpen={() => setOfferOpen(true)} onRemove={removeOffer} />
+      ) : (
+        <button
+          type="button"
+          onClick={() => setOfferOpen(true)}
+          className="press min-h-11 self-start rounded-control border border-accent bg-field px-4 text-[15px] text-accent-tint-ink outline-none focus-visible:ring-2 focus-visible:ring-accent"
+        >
+          {t('offer.add')}
+        </button>
+      )}
+      <OfferSheet
+        open={offerOpen}
+        onOpenChange={setOfferOpen}
+        treatments={profile.offerings.map((o) => o.name)}
+        answers={offer?.answers ?? DEFAULT_ANSWERS}
+        onDone={keepOffer}
+        onAddTreatments={() => {
+          setOfferOpen(false);
+          onAddTreatments?.();
+        }}
+      />
       <Button type="button" onClick={make} disabled={!cta || held || attemptLimit !== null}>
         {shown.length > 0 ? t('makeMore') : t('make')}
       </Button>
@@ -607,6 +696,7 @@ export function PostsSection({
                   check={flagsFor(post, batch, profile, isNewest).some((flag) =>
                     SHOWN_FLAGS.includes(flag.kind),
                   )}
+                  offer={post.offer ? batch.offer : undefined}
                   onOpen={() => openSuggestion(batch.id, post.id)}
                 />
               ))}
@@ -644,6 +734,7 @@ export function PostsSection({
         >
           <PostCard
             post={openPost}
+            offer={openPost.offer ? openBatch.offer : undefined}
             cta={cta ?? openPost.cta}
             onSave={(edit) => saveEdit(openBatch.id, openPost.id, edit)}
             image={imageOf(openPost, openBatch, needsImagesFor(openBatch))}
