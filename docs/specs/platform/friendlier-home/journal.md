@@ -43,6 +43,15 @@
   would never fire on the pilot's phones. On a phone, a focused text field is
   the keyboard being up; on a desktop the bar also hides while typing, which
   costs nothing.
+- 2026-10-27: The bar comes back 300 ms after focus leaves a field, not at
+  once: in the e2e run at 320px, the tap on "Write 2 replies" that took focus
+  away was swallowed by the bar reappearing under it. A field getting focus
+  still hides it at once.
+- 2026-10-27: The e2e tests were updated to the new layout by a subagent
+  (tests/e2e only), then run through a scratch Playwright config on port 3100:
+  another project's dev server holds 3000, and `reuseExistingServer` would
+  have tested that app. "Welcome, Sen" isn't checked without JavaScript any
+  more: it now waits for the phone's store.
 
 ## RED
 
@@ -110,6 +119,12 @@ Passphrase always visible (`sign-in-form`):
 ```
 
 Bar hides on focus (`brand-home`, the rewritten test):
+
+```
+      Tests  1 failed | 41 skipped (42)
+```
+
+Bar back after a pause (`brand-home`):
 
 ```
       Tests  1 failed | 41 skipped (42)
@@ -183,4 +198,12 @@ Bar hides on focus (`brand-home`):
 
 ```
       Tests  42 passed (42)
+```
+
+Bar back after a pause (`brand-home`), then every e2e test on port 3100:
+
+```
+      Tests  42 passed (42)
+  1 skipped
+  60 passed (21.2s)
 ```

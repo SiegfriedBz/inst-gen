@@ -9,6 +9,10 @@ import { useEffect, useState } from 'react';
 // the visual viewport together when the keyboard opens, so sizes can't tell.
 
 const NOT_TEXT = new Set(['checkbox', 'radio', 'button', 'submit', 'reset', 'file', 'color']);
+// How long the bar waits to come back once focus leaves a field: the tap
+// that took focus away (on "Write 2 replies", say) must land before the bar
+// reappears under the finger.
+const BACK_AFTER_MS = 300;
 
 function isTextField(el: Element | null): boolean {
   if (el instanceof HTMLTextAreaElement) return true;
@@ -18,14 +22,24 @@ function isTextField(el: Element | null): boolean {
 export function useTyping(): boolean {
   const [typing, setTyping] = useState(false);
   useEffect(() => {
+    let timer: ReturnType<typeof setTimeout> | undefined;
     const check = () => setTyping(isTextField(document.activeElement));
-    // Focus leaves before it lands on the next element: check once it has.
-    const later = () => setTimeout(check, 0);
-    document.addEventListener('focusin', check);
-    document.addEventListener('focusout', later);
+    // Hides at once; shows again only once focus has stayed off a field.
+    const onIn = () => {
+      if (!isTextField(document.activeElement)) return;
+      clearTimeout(timer);
+      setTyping(true);
+    };
+    const onOut = () => {
+      clearTimeout(timer);
+      timer = setTimeout(check, BACK_AFTER_MS);
+    };
+    document.addEventListener('focusin', onIn);
+    document.addEventListener('focusout', onOut);
     return () => {
-      document.removeEventListener('focusin', check);
-      document.removeEventListener('focusout', later);
+      clearTimeout(timer);
+      document.removeEventListener('focusin', onIn);
+      document.removeEventListener('focusout', onOut);
     };
   }, []);
   return typing;

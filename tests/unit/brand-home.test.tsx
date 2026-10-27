@@ -475,6 +475,10 @@ describe('the home tabs', () => {
     act(() => field.focus());
     await waitFor(() => expect(bar.hidden).toBe(true));
     act(() => field.blur());
+    // Not at once: the tap that took focus away must land before the bar
+    // comes back under the finger.
+    await new Promise((resolve) => setTimeout(resolve, 100));
+    expect(bar.hidden).toBe(true);
     await waitFor(() => expect(bar.hidden).toBe(false));
     act(() => screen.getByRole('tab', { name: 'Reviews' }).focus());
     expect(bar.hidden).toBe(false);
