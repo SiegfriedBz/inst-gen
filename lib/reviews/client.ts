@@ -1,5 +1,5 @@
+import { countryOf } from '@/lib/brand/country';
 import type { Profile } from '@/lib/brand/profile';
-import { countryOf } from '@/lib/brand/search-client';
 import { noteUsage } from '@/lib/usage/client';
 import { isUsageCode, type UsageCode } from '@/lib/usage/codes';
 import {
