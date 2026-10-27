@@ -1,5 +1,6 @@
 'use client';
 
+import { ChatText, ImageSquare, Storefront } from '@phosphor-icons/react';
 import { useLocale, useTranslations } from 'next-intl';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { ReviewsSection } from '@/components/reviews/reviews-section';
@@ -15,7 +16,7 @@ import {
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import { Tabs, TabsContent } from '@/components/ui/tabs';
 import { UsageBar } from '@/components/usage/usage-bar';
 import { UsageMessage } from '@/components/usage/usage-message';
 import { useAtLimit } from '@/components/usage/usage-provider';
@@ -37,6 +38,7 @@ import { ctaFor } from '@/lib/posts/input';
 import { applyCta } from '@/lib/posts/store';
 import { isUsageCode, type UsageCode } from '@/lib/usage/codes';
 import { PostsSection } from '../posts/posts-section';
+import { type HomeTab, HomeTabBar } from './home-tab-bar';
 import { BrandPanel, type SearchState } from './panel';
 import { Reading } from './reading';
 import { SectionSheet } from './section-sheet';
@@ -54,8 +56,6 @@ type View =
   | { kind: 'panel' };
 
 type Notice = 'invalidSaved' | 'notKept' | null;
-
-type HomeTab = 'business' | 'posts' | 'reviews';
 
 export function BrandHome({
   ownerId,
@@ -387,15 +387,19 @@ export function BrandHome({
       )}
 
       {view.kind === 'panel' && saved && (
-        <Tabs value={tab} onValueChange={(value) => setTab(value as HomeTab)}>
-          <TabsList aria-label={home('tabs.label')}>
-            <TabsTrigger value="business">{home('tabs.business')}</TabsTrigger>
-            <TabsTrigger value="posts">{home('tabs.posts')}</TabsTrigger>
-            <TabsTrigger value="reviews">{home('tabs.reviews')}</TabsTrigger>
-          </TabsList>
-          <UsageBar tab={tab} />
-          <TabsContent value="business" hidden={tab !== 'business'} className="mt-5">
-            <p className="mb-4 text-[15px] leading-normal text-ink-secondary">
+        // Room under the last line for the bottom bar.
+        <Tabs value={tab} onValueChange={(value) => setTab(value as HomeTab)} className="pb-24">
+          <HomeTabBar
+            label={home('tabs.label')}
+            tabs={[
+              { value: 'business', label: home('tabs.business'), icon: Storefront },
+              { value: 'posts', label: home('tabs.posts'), icon: ImageSquare },
+              { value: 'reviews', label: home('tabs.reviews'), icon: ChatText },
+            ]}
+          />
+          <TabsContent value="business" hidden={tab !== 'business'}>
+            <UsageBar tab="business" />
+            <p className="mt-5 mb-4 text-[15px] leading-normal text-ink-secondary">
               {t('home.intro', { name: saved.name.value })}
             </p>
             <BrandPanel
@@ -464,6 +468,7 @@ export function BrandHome({
             </AlertDialog>
           </TabsContent>
           <TabsContent value="posts" hidden={tab !== 'posts'}>
+            <UsageBar tab="posts" />
             <PostsSection
               ownerId={ownerId}
               profile={saved}
@@ -473,6 +478,7 @@ export function BrandHome({
             />
           </TabsContent>
           <TabsContent value="reviews" hidden={tab !== 'reviews'}>
+            <UsageBar tab="reviews" />
             <ReviewsSection ownerId={ownerId} profile={saved} active={tab === 'reviews'} />
           </TabsContent>
         </Tabs>

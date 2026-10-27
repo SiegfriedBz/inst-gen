@@ -7,6 +7,9 @@
 - 2026-10-27: Tasks 6 and 7 (the grid and the sheet) run as one unit: the
   grid removes the cards whose buttons the existing posts tests click, and
   only the sheet brings them back.
+- 2026-10-27: `components/ui/tabs.tsx` is restyled as the bottom bar itself
+  rather than overridden from `HomeTabBar`: the home is its only user, and
+  overriding the old solid-jade active state class by class was fragile.
 
 ## RED
 
@@ -22,6 +25,12 @@ Task 2, header (`brand-home`, `guide`):
       Tests  2 failed | 43 passed (45)
 ```
 
+Task 3, bottom bar (`brand-home`):
+
+```
+      Tests  3 failed | 34 passed (37)
+```
+
 ## GREEN
 
 Task 1 (`language-switch`, `i18n-messages`):
@@ -34,4 +43,10 @@ Task 2 (`brand-home`, `guide`):
 
 ```
       Tests  45 passed (45)
+```
+
+Task 3 (`brand-home`):
+
+```
+      Tests  37 passed (37)
 ```

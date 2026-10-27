@@ -1,6 +1,6 @@
 // @vitest-environment jsdom
 import 'fake-indexeddb/auto';
-import { cleanup, fireEvent, render, screen, waitFor, within } from '@testing-library/react';
+import { act, cleanup, fireEvent, render, screen, waitFor, within } from '@testing-library/react';
 import { IDBFactory } from 'fake-indexeddb';
 import { NextIntlClientProvider } from 'next-intl';
 import { afterEach, beforeEach, describe, expect, test, vi } from 'vitest';
@@ -341,6 +341,56 @@ describe('the home tabs', () => {
     ]);
     await openTab('Reviews');
     expect(await screen.findByRole('button', { name: 'Write 2 replies' })).toBeTruthy();
+  });
+
+  test('the tabs sit in a bar at the bottom, each with an icon', async () => {
+    await saveBrand('sen', profile);
+    renderHome();
+    const list = await screen.findByRole('tablist', { name: 'Home' });
+    const bar = list.closest('[data-tab-bar]');
+    expect(bar).not.toBeNull();
+    expect(bar?.className).toContain('fixed');
+    expect(bar?.className).toContain('bottom-0');
+    for (const tab of screen.getAllByRole('tab')) expect(tab.querySelector('svg')).not.toBeNull();
+  });
+
+  test('no bar before a business is saved', async () => {
+    renderHome();
+    await screen.findByLabelText('Your website');
+    expect(document.querySelector('[data-tab-bar]')).toBeNull();
+  });
+
+  test('the usage line is the first line of each tab', async () => {
+    await saveBrand('sen', profile);
+    renderHome();
+    await screen.findByRole('tablist', { name: 'Home' });
+    const panels = document.querySelectorAll('[role="tabpanel"]');
+    expect(panels).toHaveLength(3);
+    for (const panel of panels) {
+      expect(panel.firstElementChild?.getAttribute('data-testid')).toBe('usage-bar');
+    }
+  });
+
+  test('the bar hides while typing with the keyboard up', async () => {
+    const viewport = Object.assign(new EventTarget(), { height: 800 });
+    vi.stubGlobal('visualViewport', viewport);
+    vi.stubGlobal('innerHeight', 800);
+    await saveBrand('sen', profile);
+    renderHome();
+    await screen.findByRole('tablist', { name: 'Home' });
+    await openTab('Reviews');
+    const bar = document.querySelector('[data-tab-bar]') as HTMLElement;
+    expect(bar.hidden).toBe(false);
+    const field = await screen.findByLabelText('The review');
+    act(() => field.focus());
+    expect(bar.hidden).toBe(false);
+    viewport.height = 400;
+    await act(async () => {
+      viewport.dispatchEvent(new Event('resize'));
+    });
+    expect(bar.hidden).toBe(true);
+    act(() => field.blur());
+    await waitFor(() => expect(bar.hidden).toBe(false));
   });
 
   test('a re-read lands on Your business and the update waits for the tab', async () => {

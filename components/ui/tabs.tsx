@@ -4,8 +4,9 @@ import { Tabs as TabsPrimitive } from 'radix-ui';
 import type * as React from 'react';
 import { cn } from '@/lib/utils';
 
-// shadcn/ui tabs on Radix, restyled to the Shopfront tokens: one segmented
-// bar, the open tab filled with the accent (docs/specs/platform/home-tabs).
+// shadcn/ui tabs on Radix, restyled to the Shopfront tokens as a bottom bar:
+// an icon over each label, the open tab's icon on a tinted pill, never solid
+// jade (docs/specs/platform/friendlier-home).
 // Every panel stays mounted, so switching never stops what a hidden one is
 // doing; the caller hides the panels that aren't open.
 
@@ -17,10 +18,7 @@ function TabsList({ className, ...props }: React.ComponentProps<typeof TabsPrimi
   return (
     <TabsPrimitive.List
       data-slot="tabs-list"
-      className={cn(
-        'grid auto-cols-fr grid-flow-col gap-1 rounded-[14px] border border-edge/40 bg-field-muted p-1',
-        className,
-      )}
+      className={cn('grid auto-cols-fr grid-flow-col', className)}
       {...props}
     />
   );
@@ -31,7 +29,7 @@ function TabsTrigger({ className, ...props }: React.ComponentProps<typeof TabsPr
     <TabsPrimitive.Trigger
       data-slot="tabs-trigger"
       className={cn(
-        'flex min-h-11 items-center justify-center rounded-[10px] px-1.5 py-1 text-center text-sm leading-tight font-medium text-ink-secondary outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-field-muted data-[state=active]:bg-accent data-[state=active]:text-on-accent',
+        'group flex min-h-11 flex-col items-center justify-center gap-0.5 px-1 text-center text-[12px] leading-tight text-ink-secondary outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-inset data-[state=active]:font-medium data-[state=active]:text-accent-tint-ink',
         className,
       )}
       {...props}
