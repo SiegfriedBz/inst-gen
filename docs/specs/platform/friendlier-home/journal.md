@@ -61,6 +61,13 @@ Tasks 6 and 7, the grid and the sheet (`posts-section`, then `posts-section-imag
       Tests  6 failed | 8 passed (14)
 ```
 
+Task 8, what's missing (`brand-missing`):
+
+```
+Error: Cannot find package '@/lib/brand/missing' imported from …/tests/unit/brand-missing.test.ts
+      Tests  no tests
+```
+
 ## GREEN
 
 Task 1 (`language-switch`, `i18n-messages`):
@@ -97,4 +104,10 @@ Tasks 6 and 7 (`posts-section`, `posts-section-images`):
 
 ```
       Tests  55 passed (55)
+```
+
+Task 8 (`brand-missing`, `brand-panel`):
+
+```
+      Tests  26 passed (26)
 ```

@@ -5,6 +5,7 @@ import { useTranslations } from 'next-intl';
 import { createContext, type ReactNode, useContext } from 'react';
 import type { SourceKind } from '@/lib/brand/display';
 import type { SectionId } from '@/lib/brand/edit';
+import type { SearchState } from '@/lib/brand/missing';
 import type { PartialProfile } from '@/lib/brand/profile';
 import { SourceNote } from './source-note';
 
@@ -17,9 +18,7 @@ type Sourced = { value?: string; source?: string } | null | undefined;
 const text = (value: unknown): string | undefined =>
   typeof value === 'string' && value.trim() ? value : undefined;
 
-// Where the essence search stands (docs/specs/brand/search-essence): null
-// when it isn't running and has nothing to say.
-export type SearchState = 'running' | 'failed' | 'empty' | null;
+export type { SearchState } from '@/lib/brand/missing';
 
 type PanelProps = {
   profile: PartialProfile;
