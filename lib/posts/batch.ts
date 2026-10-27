@@ -1,6 +1,7 @@
 import { z } from 'zod';
 import { type Profile, profileSchema } from '@/lib/brand/profile';
 import { type Offer, offerFits, offerSchema } from './offer';
+import { SCENES } from './scene';
 
 // A batch of posts made from the brand profile
 // (docs/specs/posts/generate-copy/spec.md). One set of schemas serves the
@@ -9,8 +10,7 @@ import { type Offer, offerFits, offerSchema } from './offer';
 export const POST_TYPES = ['offer', 'moment', 'local', 'ritual', 'tip', 'proof'] as const;
 export type PostType = (typeof POST_TYPES)[number];
 
-export const SCENES = ['treatment', 'detail', 'place', 'guest'] as const;
-export type Scene = (typeof SCENES)[number];
+export { SCENES, type Scene } from './scene';
 
 export const POSTS_LIMITS = {
   posts: 6,
