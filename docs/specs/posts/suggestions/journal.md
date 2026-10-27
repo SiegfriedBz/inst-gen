@@ -56,6 +56,16 @@
   latest choice, once the phone is back online. Minor findings are listed in
   the PR.
 
+- 2026-10-27: Asked by the owner after the pilot started, as a small polish
+  outside the spec: "Make 6 suggestions" shows a spinning circle, and is
+  `aria-busy`, while the six are being planned; it stops when they arrive or
+  the plan fails. Only while planning: a caption update or images being made
+  keep the button disabled without the spinner. RED, the new test alone:
+  `Tests  1 failed | 56 skipped (57)`; GREEN, `posts-section.test.tsx`:
+  `Tests  57 passed (57)`. The test first failed 1 run in 5: it answered the
+  plan before `fetch` was called (the plan is asked for a tick after the
+  tap), so it now waits for the call; 0 failures in 15 runs after.
+
 ## Still owed (the owners, during the pilot)
 
 - On a real iPhone and a real Android phone: "Save the 2 images" opens one
@@ -70,3 +80,24 @@
 
 - Vitest, whole suite: `Tests  922 passed (922)`
 - Playwright, whole suite: `39 passed (29.6s)`
+
+## Amendment 2026-10-27: saving on Android
+
+- The owner's Android test: "Save the 2 images" opened a share sheet with no
+  way to save. The spec was amended (approved 2026-10-27): the share sheet
+  only on an iPhone or iPad, a download of both images anywhere else.
+- iPhone or iPad is told from the user agent; iPadOS says it's a Mac, so a
+  Mac user agent with more than one touch point counts as an iPad.
+- The e2e test runs on a Pixel 7: it now expects two downloads, post first,
+  and no share call.
+- Still owed: on a real Android phone, both images show in Instagram's
+  gallery; on a real iPhone, the share sheet still saves both to Photos.
+
+RED (the two new download tests):
+
+- Vitest: `Tests  2 failed | 34 passed (36)`
+
+GREEN:
+
+- Vitest, whole suite: `Tests  1278 passed (1278)`
+- Playwright, `friendlier-home.spec.ts` and `guide.spec.ts`: `16 passed (23.6s)`
