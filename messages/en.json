@@ -211,7 +211,8 @@
     "flags": {
       "price": "This price isn't on your website: {text}. Check it before posting.",
       "duration": "This duration isn't on your website: {text}. Check it before posting.",
-      "banned": "Instagram may not allow \"{text}\". Better to change it."
+      "banned": "Instagram may not allow \"{text}\". Better to change it.",
+      "offer": "Check the offer in this text before posting: {text}."
     },
     "stale": "Your business details changed since these posts were made.",
     "update": "Update captions",

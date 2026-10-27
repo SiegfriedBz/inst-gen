@@ -211,7 +211,8 @@
     "flags": {
       "price": "Harga ini tidak ada di situs Anda: {text}. Periksa sebelum memposting.",
       "duration": "Durasi ini tidak ada di situs Anda: {text}. Periksa sebelum memposting.",
-      "banned": "Instagram mungkin tidak mengizinkan \"{text}\". Sebaiknya diganti."
+      "banned": "Instagram mungkin tidak mengizinkan \"{text}\". Sebaiknya diganti.",
+      "offer": "Periksa penawaran di teks ini sebelum memposting: {text}."
     },
     "stale": "Detail bisnis Anda berubah sejak postingan ini dibuat.",
     "update": "Perbarui keterangan",

@@ -334,7 +334,9 @@ export function PostsSection({
     if (!current) return;
     const next: PostBatch = {
       ...current,
-      posts: current.posts.map((p) => (p.id === postId ? applyEdit(p, edit, profile) : p)),
+      posts: current.posts.map((p) =>
+        p.id === postId ? applyEdit(p, edit, profile, current.offer) : p,
+      ),
     };
     batchesRef.current = batchesRef.current.map((b) => (b.id === batchId ? next : b));
     setBatches(batchesRef.current);

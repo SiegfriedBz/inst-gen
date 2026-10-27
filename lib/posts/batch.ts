@@ -1,5 +1,6 @@
 import { z } from 'zod';
 import { profileSchema } from '@/lib/brand/profile';
+import { offerSchema } from './offer';
 
 // A batch of posts made from the brand profile
 // (docs/specs/posts/generate-copy/spec.md). One set of schemas serves the
@@ -29,7 +30,7 @@ export const POSTS_LIMITS = {
 const text = z.string().min(1);
 
 // What code flagged in a caption, for the owner to check before posting.
-export const FLAG_KINDS = ['price', 'duration', 'banned', 'firstLine'] as const;
+export const FLAG_KINDS = ['price', 'duration', 'banned', 'firstLine', 'offer'] as const;
 const flagSchema = z.object({ kind: z.enum(FLAG_KINDS), text: z.string() });
 export type Flag = z.infer<typeof flagSchema>;
 
@@ -60,6 +61,9 @@ export const postSchema = z.object({
   // posts saved before it.
   savedAt: z.iso.datetime().optional(),
   copiedAt: z.iso.datetime().optional(),
+  // One of the two posts that carry the batch's special offer
+  // (docs/specs/posts/special-offer). Absent on every other post.
+  offer: z.literal(true).optional(),
 });
 export type Post = z.infer<typeof postSchema>;
 
@@ -70,6 +74,8 @@ export const planResultSchema = z.object({
   promptVersion: text,
   model: text,
   profileHash: text,
+  // The special offer the batch was made with, if any.
+  offer: offerSchema.optional(),
 });
 export type PlanResult = z.infer<typeof planResultSchema>;
 

@@ -4,6 +4,9 @@
 
 - 2026-10-27: the spec's example "Sunday 26 October" is a Monday in 2026; the
   plan and its tests use Sunday 25 October, "until Tue 27 Oct".
+- 2026-10-27: an `offer` flag needs words on the post card, which the plan
+  left out: `posts.flags.offer`, "Check the offer in this text before
+  posting: {text}.", and `offer` joins the flags shown.
 
 ## RED
 
@@ -14,6 +17,13 @@ Task 1, the offer module (`posts-offer`):
       Tests  no tests
 ```
 
+Task 2, code's checks (`posts-checks`, `posts-edit`):
+
+```
+ Test Files  2 failed (2)
+      Tests  11 failed | 46 passed (57)
+```
+
 ## GREEN
 
 Task 1:
@@ -21,4 +31,11 @@ Task 1:
 ```
  Test Files  1 passed (1)
       Tests  25 passed (25)
+```
+
+Task 2:
+
+```
+ Test Files  3 passed (3)
+      Tests  61 passed (61)
 ```

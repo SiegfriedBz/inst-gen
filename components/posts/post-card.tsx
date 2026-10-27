@@ -16,9 +16,9 @@ import { type ImageState, NewImageLink, PostImage, StoryLink } from './post-imag
 // plain-word warnings and "Edit the text". The two steps are the sheet's, at
 // its bottom. No type label, number or image description.
 
-// What's worth a word to the owner: a price, a duration or a word Instagram
-// may refuse. The first-line check isn't shown.
-export const SHOWN_FLAGS: Flag['kind'][] = ['price', 'duration', 'banned'];
+// What's worth a word to the owner: a price, a duration, a word Instagram
+// may refuse, or a caption off the special offer. The first-line check isn't shown.
+export const SHOWN_FLAGS: Flag['kind'][] = ['price', 'duration', 'banned', 'offer'];
 
 export function PostCard({
   post,
