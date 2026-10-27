@@ -11,6 +11,10 @@
   {month}`, so English reads "Tue 27 Oct" and each language orders it.
 - 2026-10-27: "Add treatments" in the offer sheet also switches to "Your
   business", so its form opens over its own tab.
+- 2026-10-27: a race found while running everything: the offer stored on
+  the phone, loaded when Create Posts opens, could arrive after the owner
+  tapped "Done" and wipe the new offer. A load now applies only if the offer
+  didn't change since it began, and waits for the last write.
 
 ## RED
 
@@ -128,4 +132,12 @@ Task 8, with `i18n-messages`:
 ```
  Test Files  2 passed (2)
       Tests  23 passed (23)
+```
+
+Task 10, end to end on port 3100 (`special-offer`, then every e2e test):
+
+```
+  2 passed (37.9s)
+  1 skipped
+  62 passed (48.1s)
 ```
