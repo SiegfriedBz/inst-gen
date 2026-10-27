@@ -7,6 +7,8 @@ import { UsageMessage } from '@/components/usage/usage-message';
 import { useAtLimit } from '@/components/usage/usage-provider';
 import type { Flag, Post } from '@/lib/posts/batch';
 import type { PostEdit } from '@/lib/posts/edit';
+import type { Offer } from '@/lib/posts/offer';
+import { OfferBadge } from './offer-badge';
 import { PostEditor } from './post-editor';
 import { type ImageState, NewImageLink, PostImage, StoryLink } from './post-image';
 
@@ -31,6 +33,7 @@ export function PostCard({
   editBusy = busy,
   translation,
   takeAway,
+  offer,
 }: {
   post: Post;
   cta: string;
@@ -46,6 +49,8 @@ export function PostCard({
   editBusy?: boolean;
   translation?: ReactNode;
   takeAway?: ReactNode;
+  // The batch's special offer, when this post carries it.
+  offer?: Offer;
 }) {
   const t = useTranslations('posts');
   const [editing, setEditing] = useState(false);
@@ -83,6 +88,11 @@ export function PostCard({
         />
       ) : (
         <div>
+          {offer && (
+            <div className="mb-2">
+              <OfferBadge offer={offer} until />
+            </div>
+          )}
           <p className="whitespace-pre-line text-[15px] leading-normal text-ink">{post.caption}</p>
           {translation}
           {cta && <p className="mt-3 text-[15px] leading-normal text-ink">{cta}</p>}

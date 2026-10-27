@@ -5,7 +5,9 @@ import { useTranslations } from 'next-intl';
 import type { Ref } from 'react';
 import { UsageMessage } from '@/components/usage/usage-message';
 import type { Post } from '@/lib/posts/batch';
+import type { Offer } from '@/lib/posts/offer';
 import { useObjectUrl } from './object-url';
+import { OfferBadge, offerBadgeText } from './offer-badge';
 import { FailureText, type ImageState } from './post-image';
 
 // One suggestion in its attempt's grid (docs/specs/platform/friendlier-home,
@@ -25,6 +27,7 @@ export function SuggestionTile({
   onOpen,
   disabled = false,
   textOnly = image.kind === 'off',
+  offer,
   ref,
 }: {
   post: Post;
@@ -37,15 +40,29 @@ export function SuggestionTile({
   disabled?: boolean;
   // No image to show or save: a text card.
   textOnly?: boolean;
+  // The batch's special offer, when this suggestion carries it.
+  offer?: Offer;
   ref?: Ref<HTMLButtonElement>;
 }) {
   const t = useTranslations('posts');
+  const offerT = useTranslations('posts.offer');
+  const badgeText = offer ? offerBadgeText(offerT, offer) : null;
   const excerpt = post.caption.split(/\s+/).slice(0, EXCERPT_WORDS).join(' ');
   const state =
     taken === 'savedAndCopied' ? t('saved') : taken === 'copied' ? t('copiedOnly') : null;
-  const name = [t('tile', { n, count }), excerpt, state ?? (check ? t('checkText') : null)]
+  const name = [
+    t('tile', { n, count }),
+    badgeText,
+    excerpt,
+    state ?? (check ? t('checkText') : null),
+  ]
     .filter(Boolean)
     .join(', ');
+  const badge = offer && (
+    <span className="absolute top-1.5 left-1.5">
+      <OfferBadge offer={offer} />
+    </span>
+  );
   const tick = taken && (
     <span className="absolute top-1.5 right-1.5 flex size-[22px] items-center justify-center rounded-full bg-accent text-on-accent">
       <Check aria-hidden="true" size={13} weight="bold" />
@@ -64,11 +81,13 @@ export function SuggestionTile({
       {textOnly ? (
         <span className="relative block w-full rounded-control border border-edge bg-field px-2.5 py-2 text-[14px] leading-snug text-ink">
           <span className="line-clamp-6">{post.caption}</span>
+          {badge}
           {tick}
         </span>
       ) : (
         <span className="relative block">
           <TileImage state={image} altText={post.altText} />
+          {badge}
           {tick}
         </span>
       )}

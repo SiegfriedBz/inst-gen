@@ -674,6 +674,7 @@ export function PostsSection({
                   check={flagsFor(post, batch, profile, isNewest).some((flag) =>
                     SHOWN_FLAGS.includes(flag.kind),
                   )}
+                  offer={post.offer ? batch.offer : undefined}
                   onOpen={() => openSuggestion(batch.id, post.id)}
                 />
               ))}
@@ -711,6 +712,7 @@ export function PostsSection({
         >
           <PostCard
             post={openPost}
+            offer={openPost.offer ? openBatch.offer : undefined}
             cta={cta ?? openPost.cta}
             onSave={(edit) => saveEdit(openBatch.id, openPost.id, edit)}
             image={imageOf(openPost, openBatch, needsImagesFor(openBatch))}

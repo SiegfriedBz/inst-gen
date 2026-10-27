@@ -58,6 +58,13 @@ Task 6, the offer on Create Posts (`posts-section`, `brand-home`):
       Tests  8 failed | 88 passed (96)
 ```
 
+Task 7, the badge (`posts-section`):
+
+```
+ Test Files  1 failed (1)
+      Tests  3 failed | 51 passed (54)
+```
+
 ## GREEN
 
 Task 1:
@@ -100,4 +107,11 @@ Task 6:
 ```
  Test Files  2 passed (2)
       Tests  96 passed (96)
+```
+
+Task 7, with `posts-take-away` and `i18n-messages`:
+
+```
+ Test Files  3 passed (3)
+      Tests  71 passed (71)
 ```

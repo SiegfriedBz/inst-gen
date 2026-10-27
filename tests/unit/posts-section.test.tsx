@@ -11,6 +11,7 @@ import { messagesFor } from '@/lib/i18n/messages';
 import type { Post, PostBatch } from '@/lib/posts/batch';
 import { loadImages, type SavedImage, saveImage } from '@/lib/posts/image-store';
 import { profileHash } from '@/lib/posts/input';
+import type { Offer } from '@/lib/posts/offer';
 import { loadBatches, saveBatch } from '@/lib/posts/store';
 import { encodePostsLine, type PostsLine } from '@/lib/posts/stream';
 import { newPostsRun } from '@/lib/runs/run-record';
@@ -866,5 +867,60 @@ describe('the special offer on Create Posts', () => {
     expect(
       await screen.findByRole('button', { name: /^Giảm 10% · 1 liệu trình · đến / }),
     ).toBeTruthy();
+  });
+});
+
+describe('the offer badge', () => {
+  const discount: Offer = {
+    kind: 'discount',
+    percent: 10,
+    treatments: ['Balinese massage'],
+    until: '2026-10-27',
+    lastDay: 'Tuesday 27 October',
+  };
+  const withOffer = (offer: Offer): PostBatch => ({
+    ...batch(sixPosts.map((p, i) => (i < 2 ? { ...p, offer: true as const } : p))),
+    offer,
+  });
+
+  test('exactly the two tiles that carry it show "10% off"', async () => {
+    await saveBatch(withOffer(discount));
+    await renderSection();
+    await screen.findAllByRole('button', { name: /^Suggestion \d of 6/ });
+    expect(screen.getAllByText('10% off')).toHaveLength(2);
+    expect(screen.getByRole('button', { name: /^Suggestion 1 of 6, 10% off,/ })).toBeTruthy();
+    expect(screen.getByRole('button', { name: /^Suggestion 3 of 6, Caption/ })).toBeTruthy();
+  });
+
+  test('the opened post shows the badge and its last day above the caption', async () => {
+    await saveBatch(withOffer(discount));
+    await renderSection();
+    const sheet = await openTile(1);
+    const badge = within(sheet).getByText('10% off');
+    const until = within(sheet).getByText('until Tue 27 Oct');
+    const caption = within(sheet).getByText('Caption 1.');
+    expect(badge.compareDocumentPosition(caption) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
+    expect(until).toBeTruthy();
+  });
+
+  test('a free extra reads "Free extra"', async () => {
+    const free: Offer = {
+      kind: 'freeExtra',
+      gift: 'Balinese massage',
+      treatments: ['Balinese massage'],
+      until: '2026-10-27',
+      lastDay: 'Tuesday 27 October',
+    };
+    await saveBatch(withOffer(free));
+    await renderSection();
+    await screen.findAllByRole('button', { name: /^Suggestion \d of 6/ });
+    expect(screen.getAllByText('Free extra')).toHaveLength(2);
+  });
+
+  test('a batch without an offer has no badge', async () => {
+    await saveBatch(batch(sixPosts));
+    await renderSection();
+    await screen.findAllByRole('button', { name: /^Suggestion \d of 6/ });
+    expect(screen.queryByText('10% off')).toBeNull();
   });
 });
