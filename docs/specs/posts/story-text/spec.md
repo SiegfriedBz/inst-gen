@@ -2,7 +2,7 @@
 title: "Story text"
 description: "Each suggestion gets a short story text (at most 120 characters, counted so that it fits on Instagram), a short version of its caption that the owner may copy and paste on the story in Instagram; captions follow basic marketing (a hook first, a positive note to end); spas get flower emojis; the suggestion sheet becomes three boxed parts, each with its own button."
 status: approved
-approved: { by: siegfried.bozza@protonmail.com, at: 2026-10-27T21:11:19Z }
+approved: { by: siegfried.bozza@protonmail.com, at: 2026-10-27T21:54:32Z }
 date: "2026-10-27"
 ---
 
@@ -162,6 +162,18 @@ Code never trusts the model to count. On each post's story text, in the
 plan and in every rewrite:
 
 - Trim it, and remove any hashtag (`#word`).
+- **Remove a call to action.** Every sentence of the story text that holds
+  one of these, as whole words, case ignored, is removed: "book",
+  "booking", "reserve", "call us", "message us", "contact us", "DM",
+  "WhatsApp", "link in bio", "tap the link", "click". A sentence ends at
+  ".", "!" or "?" followed by a space or the end; whatever follows it, an
+  emoji included, starts the next one. This comes before the emoji fixes
+  and the length check, so a spa's story text that lost its flower with
+  the sentence gets 🌸 back; when no sentence is left, the post has no
+  story text. Each removed sentence is recorded in the batch's `dropped`
+  list (field `story`): `post-6: story text removed "Book on WhatsApp."`.
+  (Amended 2026-10-27, after Sen's offer plan on `posts-5` wrote "…in Da
+  Nang. 🌸 Book on WhatsApp." although the prompt forbids it.)
 - **Length**, counted as JavaScript counts a string (`.length`, UTF-16 code
   units): 🌸 counts 2, an emoji built from several pieces (🧘‍♀️, 🏵️) counts
   more. An emoji takes about the room of two letters on the story, so it is
@@ -190,14 +202,16 @@ An emoji is a pictograph (`\p{Extended_Pictographic}`) with any joiner,
 variation selector or skin tone that belongs to it. Other businesses' texts
 are not touched.
 
-**Where code records its fixes.** Every cut and every emoji fix goes:
+**Where code records its fixes.** Every cut, every call to action removed
+and every emoji fix goes:
 
 1. in the batch's `dropped` list (field `story` or `emoji`, with the post's
    id and what changed), saved with the batch on the phone and never shown
    to the owner, as 2.2's fixes are today;
 2. in what `pnpm eval:posts` prints, for the developer's verdicts;
-3. as two counts in the server's one log line per plan or rewrite
-   (`lib/posts/log.ts`): `story_cuts=` and `emoji_fixes=`, numbers only,
+3. as counts in the server's one log line per plan or rewrite
+   (`lib/posts/log.ts`): `story_cuts=`, `story_ctas=` (sentences removed
+   for a call to action; amended 2026-10-27) and `emoji_fixes=`, numbers only,
    never the text, so the developer sees in Vercel's logs how often the
    model misses during the pilot.
 
@@ -304,10 +318,13 @@ The guide's lines are in "The owner guide" above.
   the plan and rewrite prompts for a spa and for another business; the
   story text's length count with flowers and a several-piece emoji; the cut
   (whole sentences, then whole words, never inside an emoji, a `dropped`
-  entry); hashtags removed; an empty story text; the story text's flags,
+  entry); hashtags removed; a call to action removed ("Book on WhatsApp.",
+  "DM us", "link in bio"; a sentence without one kept; nothing left means
+  no story text; a spa's flower given back) and its record; an empty
+  story text; the story text's flags,
   with and without an offer; the spa emoji fixes (another emoji removed, a
   joined emoji removed whole, flowers over the limit, 🌸 added) and their
-  records; the two log counts; a rewrite carrying a new
+  records; the three log counts; a rewrite carrying a new
   story text; the translation request and answer with and without a story
   text, and the phone's store reusing both while unchanged; a post without a
   story text showing no story part; copying the story text leaving the tile
@@ -373,6 +390,14 @@ Scenario: Code fixes a spa's emojis
   And the batch's dropped list records the fix
   And the server's log line counts emoji_fixes=1
 
+Scenario: A call to action in the story text
+  Given Sen's profile
+  And the model writes the story text "Professional massage in your room. 🌸 Book on WhatsApp."
+  When code checks it
+  Then the story text is "Professional massage in your room. 🌸"
+  And the batch's dropped list records the removed sentence
+  And the server's log line counts story_ctas=1
+
 Scenario: A story text too long
   Given the model writes a story text of 140 characters in three sentences
   When code checks it
@@ -417,6 +442,9 @@ Scenario: Editing the caption
 - **A cut story text may lose its ending.** Code keeps whole sentences, so a
   story text cut after its first sentence loses the positive note; the
   `dropped` entry shows how often in the eval.
+- **The call-to-action list is short and English.** "Ring us" or "Pesan
+  sekarang" would stay; "book" also goes from a sentence like "Book lovers
+  welcome", which a massage spa's story text is unlikely to hold.
 - **The story text doesn't follow the owner's edits.** An owner who changes
   a price in the caption must change it on the story in Instagram too.
 - **The owner places the text.** Font, colour and place on the story are
