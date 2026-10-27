@@ -29,6 +29,13 @@
 - 2026-10-27: until Task 9 re-records them, the Sen and Svarga translation
   recordings are `translate-1`, so their replay test fails on its version
   check; the rest of the suite passes.
+- 2026-10-27: without images, the sheet keeps the line that says why there
+  are no pictures ("Images aren't turned on for your account yet."), above
+  the parts: the spec drops the Images part, not that line, and the
+  friendlier-home test for it still holds.
+- 2026-10-27: the three buttons are the app's one `Button` style (filled
+  accent), as on mockup v6; "Copy post text" loses the outlined look the
+  second step had.
 
 ## RED
 
@@ -75,6 +82,13 @@ Task 5, the six translation test files:
       Tests  10 failed | 46 passed (56)
 ```
 
+Task 6, the five sheet test files:
+
+```
+ Test Files  4 failed | 1 passed (5)
+      Tests  26 failed | 76 passed (102)
+```
+
 ## GREEN
 
 Task 1:
@@ -116,4 +130,13 @@ Task 5, then `pnpm test` (the two recordings still `translate-1`):
       Tests  54 passed (54)
  Test Files  1 failed | 104 passed (105)
       Tests  2 failed | 1427 passed (1429)
+```
+
+Task 6, then `pnpm test` (the two recordings still `translate-1`):
+
+```
+ Test Files  5 passed (5)
+      Tests  102 passed (102)
+ Test Files  1 failed | 105 passed (106)
+      Tests  2 failed | 1439 passed (1441)
 ```

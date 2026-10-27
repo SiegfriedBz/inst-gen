@@ -715,7 +715,7 @@ describe('the grid and the sheet', () => {
     expect(screen.getByRole('dialog', { name: 'Attempt 1, suggestion 4 of 6' })).toBe(sheet);
     expect(within(sheet).getByText('Caption 4.')).toBeTruthy();
     expect(within(sheet).getByRole('button', { name: 'Edit the text' })).toBeTruthy();
-    expect(within(sheet).getByRole('button', { name: 'Copy the text' })).toBeTruthy();
+    expect(within(sheet).getByRole('button', { name: 'Copy post text' })).toBeTruthy();
     expect(within(sheet).queryByText('See the story image')).toBeNull();
   });
 
@@ -737,7 +737,7 @@ describe('the grid and the sheet', () => {
     await saveBatch(batch(sixPosts));
     await renderSection();
     const sheet = await openTile(3);
-    fireEvent.click(within(sheet).getByRole('button', { name: 'Copy the text' }));
+    fireEvent.click(within(sheet).getByRole('button', { name: 'Copy post text' }));
     fireEvent.click(within(sheet).getByRole('button', { name: 'Close' }));
     expect(
       await screen.findByRole('button', { name: /^Suggestion 3 of 6\b.*Copied$/ }),
@@ -982,5 +982,66 @@ describe('the offer badge', () => {
     await renderSection();
     await screen.findAllByRole('button', { name: /^Suggestion \d of 6/ });
     expect(screen.queryByText('10% off')).toBeNull();
+  });
+});
+
+// The story text in the sheet (docs/specs/posts/story-text).
+describe('the story text', () => {
+  const withStories = sixPosts.map((p, i) => ({ ...p, storyText: `Story ${i + 1}. 🌸` }));
+
+  test('the sheet without images has Post text 1 and Story text 2', async () => {
+    await saveBatch(batch(withStories));
+    await renderSection();
+    const sheet = await openTile(2);
+    expect(
+      within(sheet)
+        .getAllByRole('region')
+        .map((part) => within(part).getByRole('heading').textContent),
+    ).toEqual(['1Post text', '2Story text (optional)']);
+    expect(within(sheet).getByText('Story 2. 🌸')).toBeTruthy();
+    expect(within(sheet).getByRole('button', { name: 'Copy optional story text' })).toBeTruthy();
+  });
+
+  test('copying the story text leaves the tile as it was', async () => {
+    vi.stubGlobal('navigator', { ...navigator, clipboard: { writeText: async () => {} } });
+    await saveBatch(batch(withStories));
+    await renderSection();
+    const sheet = await openTile(3);
+    fireEvent.click(within(sheet).getByRole('button', { name: 'Copy optional story text' }));
+    fireEvent.click(within(sheet).getByRole('button', { name: 'Close' }));
+    const tile = await screen.findByRole('button', { name: /^Suggestion 3 of 6\b/ });
+    expect(tile.getAttribute('aria-label') ?? tile.textContent).not.toMatch(/Copied/);
+    const [saved] = await loadBatches('svarga');
+    expect(saved.posts[2].copiedAt).toBeUndefined();
+  });
+
+  test("a story text's price shows on its tile and in its part", async () => {
+    const flagged = withStories.map((p, i) =>
+      i === 0
+        ? {
+            ...p,
+            storyText: 'Only 900k tonight. 🌸',
+            storyUnchecked: [{ kind: 'price' as const, text: '900k' }],
+          }
+        : p,
+    );
+    await saveBatch(batch(flagged));
+    await renderSection();
+    expect(
+      await screen.findByRole('button', { name: /^Suggestion 1 of 6\b.*Check the text/ }),
+    ).toBeTruthy();
+    const sheet = await openTile(1);
+    const story = within(sheet).getByRole('region', { name: 'Story text (optional)' });
+    expect(within(story).getByRole('note').textContent).toContain('900k');
+  });
+
+  test('a batch saved before story texts opens with no story part', async () => {
+    await saveBatch(batch(sixPosts));
+    await renderSection();
+    expect(
+      (await screen.findByRole('button', { name: /^Suggestion 2 of 6\b/ })).textContent,
+    ).not.toMatch(/Check the text/);
+    const sheet = await openTile(1);
+    expect(within(sheet).queryByRole('region', { name: 'Story text (optional)' })).toBeNull();
   });
 });

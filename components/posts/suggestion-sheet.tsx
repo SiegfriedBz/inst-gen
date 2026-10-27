@@ -7,21 +7,20 @@ import { Sheet, SheetContent, SheetTitle } from '@/components/ui/sheet';
 
 // One suggestion opened from its tile (docs/specs/platform/friendlier-home,
 // "Tapping a tile opens the suggestion"): a sheet from the bottom, a small
-// title and a close button, the suggestion scrolling, and its two steps
-// pinned at the bottom. Open while mounted; the caller decides when.
+// title and a close button, and the suggestion scrolling, its buttons in its
+// parts (docs/specs/posts/story-text). Open while mounted; the caller decides
+// when.
 export function SuggestionSheet({
   title,
   onClose,
   onCloseFocus,
   children,
-  actions,
 }: {
   title: string;
   onClose: () => void;
   // Where focus goes once it's closed: the tile it came from.
   onCloseFocus?: () => void;
   children: ReactNode;
-  actions: ReactNode;
 }) {
   const t = useTranslations('posts.images');
   return (
@@ -48,9 +47,8 @@ export function SuggestionSheet({
             <X aria-hidden="true" size={22} />
           </button>
         </div>
-        <div className="min-h-0 flex-1 overflow-y-auto px-5 pb-4">{children}</div>
-        <div className="border-t border-edge/40 px-5 pt-3 pb-[max(1.5rem,env(safe-area-inset-bottom))]">
-          {actions}
+        <div className="min-h-0 flex-1 overflow-y-auto px-5 pb-[max(1.5rem,env(safe-area-inset-bottom))]">
+          {children}
         </div>
       </SheetContent>
     </Sheet>

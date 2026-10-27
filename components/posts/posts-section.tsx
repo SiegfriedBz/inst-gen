@@ -21,6 +21,7 @@ import {
   newestBatch,
   type PostEdit,
   staleUnedited,
+  storyFlagsFor,
 } from '@/lib/posts/edit';
 import { type ImageEvent, resumeImages, startImages } from '@/lib/posts/image-client';
 import { imageKey, loadImages, type SavedImage } from '@/lib/posts/image-store';
@@ -37,7 +38,7 @@ import { PostCard, SHOWN_FLAGS } from './post-card';
 import type { ImageState } from './post-image';
 import { SuggestionSheet } from './suggestion-sheet';
 import { SuggestionTile } from './suggestion-tile';
-import { TakeAway } from './take-away';
+import { CopyPost, CopyStory, SaveImages } from './take-away';
 
 // "Create your posts" (docs/specs/posts/suggestions): the button that makes
 // an attempt of six suggestions, the suggestions as they stream in, and the
@@ -702,9 +703,10 @@ export function PostsSection({
                     imageOf(post, batch, needsImages).state.kind !== 'month'
                   }
                   taken={takenLabel(post, !noImage(imageOf(post, batch, needsImages).state))}
-                  check={flagsFor(post, batch, profile, isNewest).some((flag) =>
-                    SHOWN_FLAGS.includes(flag.kind),
-                  )}
+                  check={[
+                    ...flagsFor(post, batch, profile, isNewest),
+                    ...storyFlagsFor(post, batch, profile, isNewest),
+                  ].some((flag) => SHOWN_FLAGS.includes(flag.kind))}
                   offer={post.offer ? batch.offer : undefined}
                   onOpen={() => openSuggestion(batch.id, post.id)}
                 />
@@ -723,23 +725,6 @@ export function PostsSection({
           })}
           onClose={closeSuggestion}
           onCloseFocus={() => tiles.current.get(imageKey(openBatch.id, openPost.id))?.focus()}
-          actions={
-            <TakeAway
-              post={openPost}
-              cta={cta ?? openPost.cta}
-              image={
-                making.has(imageKey(openBatch.id, openPost.id))
-                  ? undefined
-                  : images.get(imageKey(openBatch.id, openPost.id))
-              }
-              imagesOn={imagesOn}
-              name={profile.name.value}
-              createdAt={openBatch.createdAt}
-              attempt={numbers.get(openBatch.id) ?? 1}
-              n={openBatch.posts.indexOf(openPost) + 1}
-              onTaken={(step) => taken(openBatch.id, openPost.id, step)}
-            />
-          }
         >
           <PostCard
             post={openPost}
@@ -747,7 +732,36 @@ export function PostsSection({
             cta={cta ?? openPost.cta}
             onSave={(edit) => saveEdit(openBatch.id, openPost.id, edit)}
             image={imageOf(openPost, openBatch, needsImagesFor(openBatch))}
+            imagesOn={imagesOn}
             flags={flagsFor(openPost, openBatch, profile, openBatch === newest)}
+            storyFlags={storyFlagsFor(openPost, openBatch, profile, openBatch === newest)}
+            saveImages={
+              imagesOn && (
+                <SaveImages
+                  image={
+                    making.has(imageKey(openBatch.id, openPost.id))
+                      ? undefined
+                      : images.get(imageKey(openBatch.id, openPost.id))
+                  }
+                  name={profile.name.value}
+                  createdAt={openBatch.createdAt}
+                  attempt={numbers.get(openBatch.id) ?? 1}
+                  n={openBatch.posts.indexOf(openPost) + 1}
+                  onTaken={(step) => taken(openBatch.id, openPost.id, step)}
+                />
+              )
+            }
+            copyPost={
+              <CopyPost
+                post={openPost}
+                cta={cta ?? openPost.cta}
+                imagesOn={imagesOn}
+                onTaken={(step) => taken(openBatch.id, openPost.id, step)}
+              />
+            }
+            copyStory={
+              openPost.storyText && <CopyStory storyText={openPost.storyText} imagesOn={imagesOn} />
+            }
             onRewrite={
               openBatch === newest && openPost.edited && isPostStale(openPost, openBatch, profile)
                 ? () => update(openBatch, [openPost.id])
@@ -757,12 +771,26 @@ export function PostsSection({
             editBusy={running !== null || resuming || waiting}
             translation={
               <CaptionTranslation
-                key={openPost.caption}
+                key={`${openPost.caption}|${openPost.storyText ?? ''}`}
                 ownerId={ownerId}
                 batchId={openBatch.id}
                 postId={openPost.id}
                 caption={openPost.caption}
+                story={openPost.storyText}
               />
+            }
+            storyTranslation={
+              openPost.storyText && (
+                <CaptionTranslation
+                  key={`${openPost.caption}|${openPost.storyText}`}
+                  ownerId={ownerId}
+                  batchId={openBatch.id}
+                  postId={openPost.id}
+                  caption={openPost.caption}
+                  story={openPost.storyText}
+                  part="story"
+                />
+              )
             }
           />
         </SuggestionSheet>
