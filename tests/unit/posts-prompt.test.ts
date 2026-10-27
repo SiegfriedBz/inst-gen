@@ -75,6 +75,7 @@ describe('the image set-ups', () => {
       expect(prompt).toContain(rule);
     }
     expect(prompt).not.toContain('At most 2 posts of any scene');
+    expect(prompt).toContain('never writes "scene" or "set-up" in it');
   });
 
   it('the user text lists the set-ups in order, before the offer', () => {

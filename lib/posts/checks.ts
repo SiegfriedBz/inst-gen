@@ -212,14 +212,19 @@ export function checkPost(
 export function setupFlags(post: Post): Dropped[] {
   if (!post.setup) return [];
   const { guests, therapists } = post.setup;
-  const needed = [
-    ...(guests === 'woman' ? [] : ['man']),
-    ...(guests === 'man' ? [] : ['woman']),
-    ...(therapists === 2 ? ['two therapists'] : []),
-  ];
+  const needed: { words: string; pattern: RegExp }[] = [];
+  if (guests !== 'woman') needed.push({ words: 'man', pattern: /\bman\b/i });
+  if (guests !== 'man') needed.push({ words: 'woman', pattern: /\bwoman\b/i });
+  // One word may sit inside: "two women therapists".
+  if (therapists === 2) {
+    needed.push({ words: 'two therapists', pattern: /\btwo\s+(?:\w+\s+)?therapists\b/i });
+  }
   return needed
-    .filter((words) => !new RegExp(`\\b${words}\\b`, 'i').test(post.imagePrompt))
-    .map((words) => ({ field: 'image', reason: `${post.id}: no "${words}" in the image prompt` }));
+    .filter(({ pattern }) => !pattern.test(post.imagePrompt))
+    .map(({ words }) => ({
+      field: 'image',
+      reason: `${post.id}: no "${words}" in the image prompt`,
+    }));
 }
 
 function overused<K extends string>(values: K[], max: number): [K, number][] {

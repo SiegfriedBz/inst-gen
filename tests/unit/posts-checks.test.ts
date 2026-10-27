@@ -403,6 +403,13 @@ describe('the image set-ups', () => {
     ]);
   });
 
+  it('"two women therapists" names the two therapists', () => {
+    const fourHands: Setup = { ...setup, look: 'fourHands', therapists: 2 };
+    expect(
+      setupFlags(withPrompt("Two women therapists work on a man's shoulders", fourHands)),
+    ).toEqual([]);
+  });
+
   it('no flag when the prompt matches', () => {
     const fourHands: Setup = { ...setup, look: 'fourHands', therapists: 2 };
     expect(setupFlags(withPrompt('A man on a bed, Two therapists at work', fourHands))).toEqual([]);
