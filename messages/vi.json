@@ -368,22 +368,28 @@
     },
     "business": {
       "title": "Doanh nghiệp của bạn",
-      "read": "Nhập trang web của bạn và chạm <b>{button}</b>. Giữ trang mở trong lúc Shopfront đọc; màn hình tự sáng.",
+      "read": "Nhập trang web của bạn và chạm <b>{button}</b>. Giữ trang mở khoảng một phút trong lúc Shopfront đọc; màn hình tự sáng.",
       "check": "Xem lại những gì tìm được. Chạm vào một phần để xem đầy đủ, và chạm <b>{button}</b> để sửa hoặc thêm.",
-      "missing": "Ở trên cùng, Shopfront liệt kê những gì chưa tìm thấy: chạm vào một mục để thêm. Hãy thêm số WhatsApp và thành phố của bạn trước: mỗi bài đăng kết thúc bằng WhatsApp của bạn, và hashtag dùng tên thành phố.",
+      "missing": "Ở trên cùng, Shopfront liệt kê những gì chưa tìm thấy: chạm vào một mục để thêm. Bạn vẫn tạo được bài đăng khi thiếu chúng, nhưng mỗi mục bạn thêm giúp bài đăng chính xác hơn. Nếu thiếu số WhatsApp hoặc thành phố của bạn, một dòng màu đỏ sẽ báo: chạm vào đó để thêm. Mỗi bài đăng kết thúc bằng WhatsApp của bạn, và hashtag dùng tên thành phố.",
       "english": "Nếu được, hãy viết thay đổi bằng tiếng Anh: bài đăng được viết bằng tiếng Anh.",
       "reread": "<b>{button}</b> thay các thay đổi của bạn bằng nội dung hiện tại của trang web; Shopfront sẽ hỏi trước. Để dùng trang web khác, chạm <b>{forget}</b> rồi bắt đầu lại."
     },
     "posts": {
       "title": "Tạo bài đăng",
       "make": "Trong <b>{tab}</b>, chạm <b>{button}</b>. Bạn nhận 6 gợi ý, mỗi gợi ý có hình bài đăng, hình story và chữ cho bài đăng.",
-      "offer": "Trước đó, chạm <b>{button}</b> để thêm ưu đãi hôm nay: hai trong 6 gợi ý sẽ nhắc đến ưu đãi.",
       "open": "Chạm vào một gợi ý để mở. Những gợi ý bạn đã lưu và sao chép hiện <b>{saved}</b>.",
+      "check": "Gợi ý có dấu <b>{check}</b> có điều cần xem trước khi đăng: mở ra để biết, ví dụ một mức giá không có trên trang web của bạn, hoặc một ưu đãi không khớp với ưu đãi bạn đã đặt.",
       "wait": "Giữ trang mở khoảng một phút trong lúc gợi ý được tạo.",
       "leave": "Nếu bạn rời đi, Shopfront sẽ tiếp tục từ chỗ dừng khi bạn quay lại, nhưng phần đang làm dở sẽ được làm lại và tốn một phần lượt của hôm nay. Vì vậy hãy bắt đầu khi bạn có một phút để chờ, đừng bắt đầu ngay trước một cuộc gọi.",
       "more": "Muốn ý khác? Chạm <b>{button}</b>: gợi ý mới nằm trên, gợi ý cũ vẫn ở bên dưới.",
       "edit": "Chạm <b>{button}</b> để đổi lời của một gợi ý, và <b>{image}</b> để có hình khác; bạn có thể thêm mô tả ngắn.",
-      "update": "Nếu bạn thay đổi thông tin doanh nghiệp, chú thích sẽ được cập nhật theo. Chữ bạn đã tự sửa thì được giữ nguyên."
+      "update": "Nếu bạn thay đổi thông tin doanh nghiệp, chú thích sẽ được cập nhật theo. Chữ bạn đã tự sửa thì được giữ nguyên.",
+      "offer": "Để đưa ưu đãi hôm nay vào bài đăng, chạm <b>{button}</b> trước khi tạo:",
+      "offerKind": "Chọn giảm giá (10%, 15%, 20% hoặc mức của bạn) hoặc tặng thêm: một liệu trình bạn tặng kèm buổi 90 phút.",
+      "offerTreatments": "Đánh dấu các liệu trình được áp dụng. Ưu đãi luôn dành cho buổi từ 90 phút trở lên.",
+      "offerUntil": "Chọn đến khi nào: hôm nay, 3 ngày hoặc 1 tuần. Ưu đãi kết thúc lúc nửa đêm ngày cuối cùng, theo giờ trên điện thoại của bạn.",
+      "offerDone": "Chạm <b>{done}</b>. Hai trong 6 gợi ý tiếp theo nhắc đến ưu đãi và có dấu <b>{badge}</b> (hoặc <b>{free}</b>); bốn gợi ý còn lại thì không.",
+      "offerLine": "Ưu đãi nằm phía trên <b>{button}</b> cho đến hết ngày cuối cùng. Chạm vào để đổi, hoặc chạm ✕ để bỏ. Các gợi ý đã tạo giữ nguyên nội dung."
     },
     "instagram": {
       "title": "Đăng lên Instagram",
@@ -407,13 +413,13 @@
       "free": "Shopfront miễn phí, nên mỗi ngày có giới hạn.",
       "limits": "Mỗi ngày bạn có {reads}, {attempts} (mỗi lần 6 gợi ý), {newImages} và {replies}, cùng với các lần cập nhật chú thích và bản dịch.",
       "bar": "Dòng ở đầu mỗi tab cho biết hôm nay còn lại bao nhiêu và giờ mọi thứ được làm mới.",
-      "reset": "Vào giờ đó, giới hạn được làm mới, còn các gợi ý và câu trả lời đánh giá trong ngày rời khỏi màn hình. Hãy lưu những gì bạn muốn giữ trước giờ đó.",
+      "reset": "Vào giờ đó, giới hạn được làm mới, còn các gợi ý và câu trả lời đánh giá trong ngày rời khỏi màn hình. Hãy lưu những gì bạn muốn giữ trước giờ đó. Ưu đãi đặc biệt của bạn vẫn giữ nguyên: nó kéo dài đến hết ngày cuối cùng của nó.",
       "time": "Giờ trên thanh theo giờ điện thoại của bạn: hãy tin giờ đó thay vì một giờ cố định.",
       "month": "Hình mới còn có ngân sách hằng tháng cho cả ứng dụng. Nếu hết, Shopfront sẽ cho biết khi nào có hình trở lại."
     },
     "languages": {
       "title": "Ngôn ngữ",
-      "switch": "Nút <b>EN</b> ở góc trên bên phải đổi ngôn ngữ của màn hình.",
+      "switch": "Nút <b>{lang}</b> ở góc trên bên phải đổi ngôn ngữ của màn hình.",
       "captions": "Bài đăng được viết bằng tiếng Anh, và câu trả lời đánh giá bằng ngôn ngữ của khách. Hiển thị bằng ngôn ngữ của bạn là để đọc, không phải để đăng."
     },
     "trouble": {

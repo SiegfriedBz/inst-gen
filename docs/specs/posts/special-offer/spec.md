@@ -2,7 +2,7 @@
 title: "Special offer"
 description: "On 'Create Posts', the owner can add today's special offer in a few taps (a percentage off, or a free treatment with a paid one, always on 90-minute sessions or longer, until a set day); two of the six suggestions then carry it in their text, with a badge on their tiles, and code checks the captions keep to it."
 status: approved
-approved: { by: siegfried.bozza@protonmail.com, at: 2026-10-27T15:23:16Z }
+approved: { by: siegfried.bozza@protonmail.com, at: 2026-10-27T15:33:16Z }
 date: "2026-10-27"
 ---
 
@@ -160,8 +160,53 @@ In a batch with an offer:
   language.
 - Captions stay in English, as every caption. The owner's-language view
   translates them as today, offer included.
-- The owner guide gains one short step on "+ Special offer", in its three
-  languages.
+- The owner guide (`guide/owner-guide`) is brought up to date with the app,
+  in its three languages; see "The owner guide" below.
+
+### The owner guide
+
+The guide is brought up to date with the app and made easier to follow: the
+everyday steps first, numbered where the owner does them in order, the
+optional offer after them. Buttons, tabs and labels are named with the app's
+own strings, as the guide does today (shown in bold here). Every other line
+of the guide was checked against the app and stays as it is. English text:
+
+- **Your business** becomes three numbered steps, then its two other lines:
+  1. "Type your website and tap **Read my website**. Keep the page open for
+     about a minute while Shopfront reads it; the screen stays on by itself."
+  2. "Check what it found. Tap a section to see all of it, and **Edit** to
+     fix or add anything."
+  3. "At the top, Shopfront lists what it couldn't find: tap one to add it.
+     You can make posts without them, but each one you add makes your posts
+     more exact. If your WhatsApp number or your town is missing, a red line
+     says so: tap it to add it. Every post ends with your WhatsApp, and the
+     hashtags use your town."
+- **Making your posts** keeps its lines in today's order, with one more
+  after "Tap a suggestion to open it…": "A suggestion marked **Check the
+  text** has something to look at before you post: open it to see what,
+  like a price that isn't on your website, or an offer that doesn't match
+  the one you set."
+- **Making your posts** ends with the offer, as numbered steps:
+  - "To put today's offer in your posts, tap **+ Special offer** before you
+    make them:"
+    1. "Pick a discount (10%, 15%, 20% or your own) or a free extra: a
+       treatment you give with a 90-minute session."
+    2. "Tick the treatments it's on. An offer is always on sessions of 90
+       minutes or longer."
+    3. "Pick until when: today, 3 days or 1 week. It ends at midnight on its
+       last day, on your phone's clock."
+    4. "Tap **Done**. Two of your next 6 suggestions tell the offer and are
+       marked **10% off** (or **Free extra**); the other four don't."
+  - "The offer stays above **Make 6 suggestions** until its last day ends.
+    Tap it to change it, or ✕ to remove it. Suggestions already made keep
+    what they say."
+- **Your daily allowance**, the reset line gains: "Your special offer stays:
+  it lasts until its own last day ends."
+- **Languages**: the button is named by the code it shows in the screen's
+  language (**EN**, **ID** or **VI**), not always "EN".
+
+Indonesian and Vietnamese say the same, in the guide's tone. The printable
+PDFs are made again with `pnpm guide:pdf`.
 
 ### Checked with the real model
 
@@ -272,6 +317,11 @@ Scenario: A 3-day offer lasts its three days
   Then the line reads "until Tue 27 Oct"
   When the phone's clock passes midnight that night
   Then the button reads "+ Special offer"
+
+Scenario: The guide explains the offer
+  Given the owner guide in English, Indonesian or Vietnamese
+  Then its posts section names "+ Special offer", "Done" and "Check the text" as the app does
+  And its language line names the code the language button shows
 
 Scenario: A rewrite keeps the offer
   Given today's suggestions were made with a 10% offer

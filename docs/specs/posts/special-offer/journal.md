@@ -40,6 +40,13 @@
   start a new day together; to revisit only if the pilot shows owners
   losing suggestions they meant to post. The spec's example dates were
   given their right weekdays (Sunday 25 → Tue 27 Oct).
+- 2026-10-27: spec amended and approved again for the owner guide: every
+  line checked against the app; "Your business" as three numbered steps;
+  "Check the text" explained; the offer's four steps at the end of "Making
+  your posts"; the offer staying through the reset; the language button
+  named by the code it shows (EN, ID, VI), not always "EN". Screenshots were
+  discussed and set aside for now. The value is `lang`, since `code` is
+  already the guide's tag for links like `https://wa.me/`.
 
 ## RED
 
@@ -131,6 +138,13 @@ Offers end at midnight on the phone (`posts-offer-store`, `posts-section`):
      × the daily reset leaves the offer, and the next attempt carries it
  Test Files  2 failed (2)
       Tests  4 failed | 58 passed (62)
+```
+
+The owner guide (`guide`):
+
+```
+ Test Files  1 failed (1)
+      Tests  9 failed | 14 passed (23)
 ```
 
 ## GREEN
@@ -238,4 +252,19 @@ port 3100:
       Tests  1268 passed (1268)
   1 skipped
   62 passed (22.8s)
+```
+
+The owner guide, with `i18n-messages`, then `pnpm check`, every e2e test on
+port 3100 and `pnpm guide:pdf`:
+
+```
+ Test Files  2 passed (2)
+      Tests  30 passed (30)
+ Test Files  102 passed (102)
+      Tests  1275 passed (1275)
+  1 skipped
+  62 passed (22.5s)
+.superpowers/guide/shopfront-guide-en.pdf: 4 pages
+.superpowers/guide/shopfront-guide-id.pdf: 4 pages
+.superpowers/guide/shopfront-guide-vi.pdf: 4 pages
 ```

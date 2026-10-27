@@ -1,6 +1,6 @@
 'use client';
 
-import { useTranslations } from 'next-intl';
+import { useLocale, useTranslations } from 'next-intl';
 import type { ReactNode } from 'react';
 import { Button } from '@/components/ui/button';
 import { OWNER_LIMITS } from '@/lib/usage/limits';
@@ -26,8 +26,22 @@ type SectionId = (typeof GUIDE_SECTIONS)[number];
 type Block = string | string[];
 const BLOCKS: Record<SectionId, Block[]> = {
   start: ['passphrase', 'home', ['iphone', 'android'], 'why', 'onePhone'],
-  business: ['read', 'check', 'missing', 'english', 'reread'],
-  posts: ['make', 'offer', 'open', 'wait', 'leave', 'more', 'edit', 'update'],
+  business: [['read', 'check', 'missing'], 'english', 'reread'],
+  // The everyday steps first; the optional offer last
+  // (docs/specs/posts/special-offer, "The owner guide").
+  posts: [
+    'make',
+    'open',
+    'check',
+    'wait',
+    'leave',
+    'more',
+    'edit',
+    'update',
+    'offer',
+    ['offerKind', 'offerTreatments', 'offerUntil', 'offerDone'],
+    'offerLine',
+  ],
   instagram: [['save', 'copy', 'post', 'story'], 'link', 'alt', 'noImages', 'never'],
   reviews: ['paste', 'pick', 'other'],
   allowance: ['free', 'limits', 'bar', 'reset', 'time', 'month'],
@@ -45,6 +59,7 @@ export function OwnerGuide({
   limits?: Limits;
 }) {
   const t = useTranslations();
+  const locale = useLocale();
 
   // What each line names: the app's own button and tab names, and the limits.
   const values: Record<string, Record<string, ReactNode>> = {
@@ -53,7 +68,15 @@ export function OwnerGuide({
     'business.check': { button: t('brand.panel.edit') },
     'business.reread': { button: t('brand.home.reread'), forget: t('brand.home.forget') },
     'posts.make': { tab: t('home.tabs.posts'), button: t('posts.make') },
+    'posts.check': { check: t('posts.checkText') },
     'posts.offer': { button: t('posts.offer.add') },
+    'posts.offerDone': {
+      done: t('posts.offer.done'),
+      badge: t('posts.offer.badgeDiscount', { percent: 10 }),
+      free: t('posts.offer.badgeFree'),
+    },
+    'posts.offerLine': { button: t('posts.make') },
+    'languages.switch': { lang: locale.toUpperCase() },
     'posts.open': { saved: t('posts.saved') },
     'posts.more': { button: t('posts.makeMore') },
     'posts.edit': { button: t('posts.editText'), image: t('posts.images.newImage') },
