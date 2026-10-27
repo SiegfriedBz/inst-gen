@@ -96,3 +96,16 @@ describe('the Guide link', () => {
     expect(link.getAttribute('title')).toBe('Guide');
   });
 });
+
+describe('the guide follows the friendlier home', () => {
+  test('it names the new controls', () => {
+    show('en');
+    expect(screen.getByText(/Tap a suggestion to open it/)).toBeTruthy();
+    expect(screen.getByText(/button at the top right changes the language/)).toBeTruthy();
+    expect(screen.getByText(/Switch between/)).toBeTruthy();
+    expect(screen.getByText(/Shopfront lists what it couldn't find/)).toBeTruthy();
+    expect(screen.getByText(/The line at the top of each tab/)).toBeTruthy();
+    expect(document.body.textContent).toContain('Saved and copied');
+    expect(document.body.textContent).not.toContain('EN, VI, ID');
+  });
+});

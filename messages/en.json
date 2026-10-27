@@ -340,14 +340,15 @@
     "business": {
       "title": "Your business",
       "read": "Type your website and tap <b>{button}</b>. Keep the page open while Shopfront reads it; the screen stays on by itself.",
-      "check": "Check what it found, section by section. Tap <b>{button}</b> to fix or add anything.",
-      "missing": "Add your WhatsApp number and your town if they're missing: every post ends with your WhatsApp, and the hashtags use your town.",
+      "check": "Check what it found. Tap a section to see all of it, and <b>{button}</b> to fix or add anything.",
+      "missing": "At the top, Shopfront lists what it couldn't find: tap one to add it. Add your WhatsApp number and your town first: every post ends with your WhatsApp, and the hashtags use your town.",
       "english": "Write your changes in English if you can: the posts are written in English.",
       "reread": "<b>{button}</b> replaces your changes with what your website says now; Shopfront asks first. To use another website, tap <b>{forget}</b> and start again."
     },
     "posts": {
       "title": "Making your posts",
       "make": "In <b>{tab}</b>, tap <b>{button}</b>. You get 6 suggestions, each with a post image, a story image and the text for the post.",
+      "open": "Tap a suggestion to open it. The ones you've saved and copied show <b>{saved}</b>.",
       "wait": "Keep the page open for about a minute while they are made.",
       "leave": "If you leave, Shopfront carries on where it stopped when you come back, but the part it was making is made again and uses some of today's allowance. So start when you have a minute to wait, not just before a call.",
       "more": "Want other ideas? Tap <b>{button}</b>: the new ones go on top, the earlier ones stay below.",
@@ -368,21 +369,21 @@
     "reviews": {
       "title": "Replying to reviews",
       "paste": "In Google Maps, open the review and copy its text. In <b>{tab}</b>, paste it (the guest's name is optional) and tap <b>{button}</b>.",
-      "pick": "Pick the reply you like, change it if you want, copy it, and paste it as your reply in Google Maps. Replies are written in your guest's language, and you can read them in yours.",
+      "pick": "Switch between <b>{short}</b> and <b>{warm}</b> to pick the reply you like, change it if you want, copy it, and paste it as your reply in Google Maps. Replies are written in your guest's language, and you can read them in yours.",
       "other": "Neither fits? Tap <b>{button}</b>. A new review replaces the last one."
     },
     "allowance": {
       "title": "Your daily allowance",
       "free": "Shopfront is free, so each day has a limit.",
       "limits": "Each day you have {reads}, {attempts} of 6 suggestions, {newImages} and {replies}, plus caption updates and translations.",
-      "bar": "The bar at the top of the screen shows what's left today and the time it all comes back.",
+      "bar": "The line at the top of each tab shows what's left today and the time it all comes back.",
       "reset": "At that time, the limits come back and the day's suggestions and review replies leave the screen. Save what you want to keep before then.",
       "time": "The time on the bar is in your phone's own time: trust it rather than a fixed hour.",
       "month": "New images also have a monthly budget for the whole app. If it runs out, Shopfront says when images are back."
     },
     "languages": {
       "title": "Languages",
-      "switch": "The letters at the top right (EN, VI, ID) change the language of the screens.",
+      "switch": "The <b>EN</b> button at the top right changes the language of the screens.",
       "captions": "Posts are written in English, and review replies in your guest's language. Showing them in your language is for reading, not for posting."
     },
     "trouble": {
