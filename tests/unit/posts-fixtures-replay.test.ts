@@ -87,7 +87,7 @@ describe('recorded offer plans', () => {
 });
 
 // Sen's and Svarga's plans (docs/specs/posts/story-text, "Tests and
-// evaluation"), re-recorded with posts-7 but for Svarga's offer plan, still
+// evaluation"), re-recorded with posts-8 but for Svarga's offer plan, still
 // posts-6 (docs/specs/posts/day-and-night-images, journal): every post has a
 // story text that fits, and every text holds flowers and no other emoji.
 describe('recorded story texts and flowers', () => {

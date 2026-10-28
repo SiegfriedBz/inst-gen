@@ -142,6 +142,11 @@
   in soft shade, sun and daylight words become "soft light", "bright"
   becomes "warm" again (day and night), and the post plan never calls a
   room bright (`images-9`, `posts-8`). Nights unchanged.
+- 2026-10-28: `posts-8` recorded for Sen (plan and offer plan) and Svarga
+  (plan), 3 Flash-Lite requests, first try each; Svarga's offer plan stays
+  `posts-6`. Two of the nine day prompts still say "bright" (code swaps it
+  to "warm"); most prompts no longer name plants (the style line does). A
+  surfboard on Sen's moment post, where it is allowed.
 
 ## RED
 
