@@ -24,7 +24,8 @@ describe('planPrompt', () => {
       '80 words',
       'never from behind',
       'No text',
-      'golden hour',
+      'late afternoon',
+      'lanterns',
       'No call to action',
     ]) {
       expect(prompt).toContain(rule);
@@ -56,21 +57,47 @@ describe('planPrompt', () => {
   });
 
   it('has a version', () => {
-    expect(POSTS_PROMPT_VERSION).toBe('posts-6');
+    expect(POSTS_PROMPT_VERSION).toBe('posts-7');
   });
 });
 
-// docs/specs/posts/golden-hour-images
-describe('golden hour and the place', () => {
-  it('asks for golden hour, never dusk', () => {
+// docs/specs/posts/day-and-night-images
+describe('day, night and the place', () => {
+  it('the light follows the set-up', () => {
     const prompt = planPrompt();
+    expect(prompt).toContain("Light follows the set-up's last word.");
     expect(prompt).toContain(
-      'Light is golden hour: the low, warm sun of late afternoon comes in through open doors or a wide window, with lamps or candles lit; the room glows honey and amber.',
+      'Day: late afternoon, lamps lit inside and soft natural daylight from the garden through open doors or a wide window; soft and warm, never sunbeams across the room or harsh sun.',
     );
     expect(prompt).toContain(
-      'never harsh midday sun, a grey sky, mist, rain or damp, never a dark or dim room',
+      'Night: evening, lamps and candles giving the room a warm, golden glow, the garden outside lit by lanterns under a deep blue sky; warm and inviting, never dark or gloomy.',
     );
-    expect(prompt).not.toMatch(/\bdusk\b/);
+    expect(prompt).toContain('Never a grey sky, mist, rain or damp.');
+    expect(prompt).toContain('scene, camera and light');
+    expect(prompt).not.toMatch(/golden hour|\bdusk\b/i);
+  });
+
+  it('the visual style gives palette and textures, not light', () => {
+    expect(planPrompt()).toContain("Use the visual style's palette and textures");
+    const profile = svargaProfile();
+    const light = profile.visualStyle?.light as string;
+    const text = planUserText(postsModelInput(profile), []);
+    expect(light).toBeTruthy();
+    expect(text).not.toContain(light);
+    expect(text).toContain(profile.visualStyle?.palette as string);
+    expect(postsModelInput(profile).visualStyle?.light).toBe(light);
+  });
+
+  it('a profile with no visual style still plans', () => {
+    const input = { ...postsModelInput(svargaProfile()), visualStyle: null };
+    expect(planUserText(input, [])).toContain('"visualStyle": null');
+  });
+
+  it('the rewrite still reads the whole visual style', () => {
+    const profile = svargaProfile();
+    expect(rewriteUserText(postsModelInput(profile), [post()])).toContain(
+      profile.visualStyle?.light as string,
+    );
   });
 
   it('opens the room onto the place', () => {

@@ -122,6 +122,12 @@ Day and night, Task 3, the style line by light (`posts-image.test.ts`, `posts-im
       Tests  8 failed | 108 passed (116)
 ```
 
+Day and night, Task 4, the post plan follows the light (`posts-prompt.test.ts`, `posts-run.test.ts`):
+
+```
+      Tests  5 failed | 46 passed (51)
+```
+
 ## GREEN
 
 Day and night, Task 1 (`posts-setup.test.ts`, `posts-fixtures-replay.test.ts`):
@@ -167,4 +173,12 @@ Day and night, Task 3, then the whole suite:
       Tests  116 passed (116)
  Test Files  106 passed (106)
       Tests  1547 passed (1547)
+```
+
+Day and night, Task 4, then the whole suite:
+
+```
+      Tests  51 passed (51)
+ Test Files  106 passed (106)
+      Tests  1550 passed (1550)
 ```
