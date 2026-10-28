@@ -6,8 +6,10 @@ import { OFFER_LIMITS, type Offer } from './offer';
 import { type Setup, setupLine } from './setup';
 
 // The post plan's prompts (docs/specs/posts/generate-copy, "What the model
-// writes"). Bump the version with every change, so eval verdicts trace back to it.
-export const POSTS_PROMPT_VERSION = 'posts-5';
+// writes"); the light, the open room and the sign of the guest's day from
+// docs/specs/posts/golden-hour-images. Bump the version with every change,
+// so eval verdicts trace back to it.
+export const POSTS_PROMPT_VERSION = 'posts-6';
 
 // Code decides the emoji rule: flowers only for a spa
 // (docs/specs/posts/story-text, "Emojis").
@@ -76,15 +78,17 @@ ${captionRules(spa)}
 The image prompt: English, at most 80 words, for an image model making a tall 9:16 photo.
 - The massage is in every image: a therapist's hands working on a guest, or oil or towels being used for a treatment. Only what the business offers: a tool or treatment appears only if the offerings hold it. Never a guest alone, never an empty room, never a drink or a prop on its own.
 - A guest looks relaxed and alive, with the therapist there: never lying still as if asleep.
-- Light is always low, soft and warm: dusk, a lamp, lanterns, candles. Never bright sun, grey sky, mist, rain or damp.
+- Light is golden hour: the low, warm sun of late afternoon comes in through open doors or a wide window, with lamps or candles lit; the room glows honey and amber. Bright and happy: never harsh midday sun, a grey sky, mist, rain or damp, never a dark or dim room.
 - Places look clean, tidy and cared for: beds and linens neatly made, nothing rumpled or messy; no mould, stains, wet stone or worn surfaces.
 - Rooms are warm and homely, like a boutique hotel or villa; never clinical or hospital-like.
-- Still air: curtains hang still, no wind.
+- The room opens onto the outside: open doors, a wide window or a balcony onto green plants that grow in that place, and the sea or a pool where the place has one.
+- Still air: curtains open and hanging still, no wind.
 - Oil looks like massage oil: golden oil in a clear glass bottle, or poured into a palm; never a small dark bottle that could pass for medicine.
 - For a business that goes to its guests (its service area says so), the scene is the guest's hotel room, balcony or villa, never a spa building.
 - A guest is shown never from behind. No recognisable face.
 - No text, logos or labels anywhere in the image; bottles are plain.
 - Use the visual style's palette, light and textures, and the essence's senses and place symbols.
+- Only in a moment post's image, one small, plain object from that moment may show (a surfboard against the balcony rail, hiking boots by the door, a suitcase, a closed laptop): far in the background, half hidden and out of focus, never near the guest and never the subject, with no logo or text. Most images have none.
 - Never the business's own premises, products or staff as if real.
 
 The image set-ups: code gives one set-up per post, in order, under "### Image set-ups". Post 1 uses set-up 1, post 2 uses set-up 2, and so on. Each image prompt shows its set-up's treatment, guests, number of therapists, part of the body, scene and camera; it never changes them, and never adds a guest or a therapist. It names each guest as "a man" or "a woman", and says "two therapists" when there are two. The therapists are women. The image prompt describes the photo itself: it never writes "scene" or "set-up" in it, nor a scene's name as a label. An offer post leads on its set-up's treatment.

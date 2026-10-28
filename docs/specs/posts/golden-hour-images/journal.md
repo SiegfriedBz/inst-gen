@@ -47,6 +47,12 @@ Task 2, the style line (`posts-image.test.ts`, `posts-image-run.test.ts`):
       Tests  15 failed | 56 passed (71)
 ```
 
+Task 3, the post plan's prompt (`posts-prompt.test.ts`, `posts-run.test.ts`):
+
+```
+      Tests  7 failed | 41 passed (48)
+```
+
 ## GREEN
 
 Task 1:
@@ -59,4 +65,17 @@ Task 2:
 
 ```
       Tests  71 passed (71)
+```
+
+Task 3:
+
+```
+      Tests  48 passed (48)
+```
+
+Whole suite after Task 3:
+
+```
+ Test Files  106 passed (106)
+      Tests  1497 passed (1497)
 ```

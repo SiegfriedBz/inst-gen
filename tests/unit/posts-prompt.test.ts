@@ -24,7 +24,7 @@ describe('planPrompt', () => {
       '80 words',
       'never from behind',
       'No text',
-      'dusk',
+      'golden hour',
       'No call to action',
     ]) {
       expect(prompt).toContain(rule);
@@ -41,7 +41,7 @@ describe('planPrompt', () => {
       'relaxed and alive',
       'neatly made',
       'never clinical or hospital-like',
-      'curtains hang still',
+      'curtains open and hanging still',
       'golden oil in a clear glass bottle',
       'never a small dark bottle',
     ]) {
@@ -56,7 +56,36 @@ describe('planPrompt', () => {
   });
 
   it('has a version', () => {
-    expect(POSTS_PROMPT_VERSION).toBe('posts-5');
+    expect(POSTS_PROMPT_VERSION).toBe('posts-6');
+  });
+});
+
+// docs/specs/posts/golden-hour-images
+describe('golden hour and the place', () => {
+  it('asks for golden hour, never dusk', () => {
+    const prompt = planPrompt();
+    expect(prompt).toContain(
+      'Light is golden hour: the low, warm sun of late afternoon comes in through open doors or a wide window, with lamps or candles lit; the room glows honey and amber.',
+    );
+    expect(prompt).toContain(
+      'never harsh midday sun, a grey sky, mist, rain or damp, never a dark or dim room',
+    );
+    expect(prompt).not.toMatch(/\bdusk\b/);
+  });
+
+  it('opens the room onto the place', () => {
+    expect(planPrompt()).toContain(
+      'The room opens onto the outside: open doors, a wide window or a balcony onto green plants that grow in that place, and the sea or a pool where the place has one.',
+    );
+  });
+
+  it("allows a sign of the guest's day only in a moment post", () => {
+    const prompt = planPrompt();
+    expect(prompt).toContain(
+      "Only in a moment post's image, one small, plain object from that moment may show",
+    );
+    expect(prompt).toContain('far in the background, half hidden and out of focus');
+    expect(prompt).toContain('Most images have none.');
   });
 });
 
