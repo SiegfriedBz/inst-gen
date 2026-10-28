@@ -39,19 +39,24 @@ export function imageStyle(who: string): string {
 
 export const IMAGE_STYLE = imageStyle('local');
 
-// Decision 0004: never daylight, grey skies, mist, rain or damp. The post
-// plan's prompt says so too, but its model doesn't always listen (Sen's
-// "sunlit" room, journal), so code swaps those words before the image model
-// reads them. Whole words only; the first letter's case is kept.
+// Every image is lit at golden hour (docs/specs/posts/golden-hour-images);
+// decision 0004 keeps out grey skies, mist, rain and damp. The post plan's
+// model doesn't always listen, and posts saved with posts-5 say the light is
+// low ("Soft low lighting"), so code swaps dark, dusk and midday words before
+// the image model reads them. The order matters: "bright sunlight" becomes
+// "low golden sun", which the "low" row leaves alone. Whole words only; the
+// first letter's case is kept.
 const LIGHT: [RegExp, string][] = [
-  [/\bbright (?:sunlight|sunshine|sun)\b/gi, 'warm lamplight'],
-  [/\bsunlit\b/gi, 'lamp-lit'],
-  [/\bbright\b/gi, 'warm'],
-  [/\bsunny\b/gi, 'warm'],
-  [/\b(?:sunlight|sunshine|daylight)\b/gi, 'lamplight'],
-  [/\bin the (?:morning|afternoon)\b/gi, 'at dusk'],
-  [/\b(?:morning|afternoon|midday|noon|daytime)\b/gi, 'dusk'],
-  [/\b(?:overcast |grey |gray )+sky\b/gi, 'dusk sky'],
+  [/\bbright (?:sunlight|sunshine|sun)\b/gi, 'low golden sun'],
+  [/\bsunny\b/gi, 'golden'],
+  [/\bdaylight\b/gi, 'golden-hour light'],
+  [/\b(?:in the (?:morning|afternoon|evening)|at (?:dusk|night))\b/gi, 'at golden hour'],
+  [/\b(?:morning|midday|noon|daytime|dusk|evening|night)\b/gi, 'golden hour'],
+  [/\bdimly lit\b/gi, 'warmly lit'],
+  [/\b(?:dim|darkened)\b/gi, 'warm'],
+  [/\blow\b(?=(?:,?\s+(?:and\s+)?(?:soft|warm))*,?\s+(?:light|lighting)\b)/gi, 'golden-hour'],
+  [/\ban? (?:overcast |grey |gray )+sky\b/gi, 'a golden sky'],
+  [/\b(?:overcast |grey |gray )+sky\b/gi, 'golden sky'],
   [/\bovercast\b/gi, 'calm'],
   [/\b(?:misty|foggy)\b/gi, 'quiet'],
   [/\b(?:damp|wet)\b/gi, 'clean'],
