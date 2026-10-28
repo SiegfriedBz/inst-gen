@@ -28,6 +28,10 @@
 - 2026-10-28: four older tests used "at dusk" in their sample prompts, which
   the new table now turns into golden hour; their samples say "at golden
   hour" instead, as they test the prompt's order, not its light.
+- 2026-10-28: the test that grey skies, mist, rain and damp are dropped now
+  checks `cleanLight` alone: the new style line names them to forbid them
+  ("never … a grey sky, mist or rain"), so the whole prompt holds the words.
+  The log line's test also moves to `images-7`.
 
 ## RED
 
@@ -37,10 +41,22 @@ Task 1, the swap table (`tests/unit/posts-image.test.ts`):
       Tests  22 failed | 33 passed (55)
 ```
 
+Task 2, the style line (`posts-image.test.ts`, `posts-image-run.test.ts`):
+
+```
+      Tests  15 failed | 56 passed (71)
+```
+
 ## GREEN
 
 Task 1:
 
 ```
       Tests  55 passed (55)
+```
+
+Task 2:
+
+```
+      Tests  71 passed (71)
 ```

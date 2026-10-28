@@ -5,7 +5,6 @@ import {
   cleanHint,
   cleanLight,
   IMAGE_PROMPT_VERSION,
-  IMAGE_STYLE,
   imagePrompt,
   imageStyle,
 } from '@/lib/posts/image-prompt';
@@ -86,18 +85,16 @@ describe('the image prompt', () => {
       'Keep the subject in the middle of the frame, with calm space above and below it.',
     );
     expect(p).toMatch(/no text, letters, labels, logos or watermarks/i);
-    expect(IMAGE_PROMPT_VERSION).toBe('images-6');
+    expect(IMAGE_PROMPT_VERSION).toBe('images-7');
   });
 });
 
 describe("the owner's hint", () => {
   test('a hint goes before the style line', () => {
     expect(imagePrompt('A room at golden hour.', 'more green')).toBe(
-      `A room at golden hour. The owner asks: more green. ${imageStyle('Southeast Asian')}`,
+      `A room at golden hour. The owner asks: more green. ${imageStyle()}`,
     );
-    expect(imagePrompt('A room at golden hour.')).toBe(
-      `A room at golden hour. ${imageStyle('Southeast Asian')}`,
-    );
+    expect(imagePrompt('A room at golden hour.')).toBe(`A room at golden hour. ${imageStyle()}`);
   });
 
   test('a hint is cleaned', () => {
@@ -176,9 +173,7 @@ describe('light and weather in the post prompt', () => {
   });
 
   test('grey skies, mist, rain and damp are dropped', () => {
-    const p = imagePrompt(
-      'A balcony under an overcast grey sky, misty garden, rain on damp stone.',
-    );
+    const p = cleanLight('A balcony under an overcast grey sky, misty garden, rain on damp stone.');
     expect(p).not.toMatch(/overcast|grey sky|mist|rain|damp/i);
   });
 
@@ -197,7 +192,7 @@ describe('light and weather in the post prompt', () => {
       'A guest looks relaxed and alive, never lying still as if asleep.',
       'Beds and linens are neatly made; nothing is messy.',
       'The room is warm and homely, never clinical or hospital-like.',
-      'Curtains hang still; there is no wind.',
+      'Curtains are open and hang still; there is no wind.',
       'Massage oil is golden oil in clear glass, never a small dark bottle.',
     ]) {
       expect(p).toContain(rule);
@@ -206,7 +201,64 @@ describe('light and weather in the post prompt', () => {
 
   test('the style line says the light wins over the scene', () => {
     expect(imagePrompt('x')).toContain(
-      'Whatever the scene says, the light is dusk, lamps, lanterns or candles.',
+      'Whatever the scene says, the light is golden hour: the low warm sun from outside, with lamps or candles lit.',
+    );
+  });
+});
+
+describe('golden hour and the place', () => {
+  test('golden hour, never dusk or dim', () => {
+    const style = imageStyle('Vietnamese');
+    expect(style).toContain(
+      'Whatever the scene says, the light is golden hour: the low warm sun from outside, with lamps or candles lit.',
+    );
+    expect(style).toContain('a treat the guest has earned');
+    expect(style).not.toMatch(/\bdusk\b|dim and intimate|introspection/i);
+  });
+
+  test("Sen's room: Vietnamese, palms and bamboo, a lotus, never frangipani", () => {
+    const style = imageStyle('Vietnamese');
+    expect(style).toContain('a Vietnamese boutique hotel room or villa');
+    expect(style).toContain('areca palms, bamboo, banana leaves and coconut palms');
+    expect(style).toContain('a pink lotus floating in a bowl of water');
+    expect(style).not.toMatch(/frangipani/i);
+  });
+
+  test("Svarga's room: Balinese villa, frangipani, never a lotus", () => {
+    const style = imageStyle('Balinese');
+    expect(style).toContain('a Balinese villa room');
+    expect(style).toContain('frangipani trees, banana leaves, coconut palms and ferns');
+    expect(style).toContain('frangipani flowers on the tray');
+    expect(style).not.toMatch(/lotus/i);
+  });
+
+  test('no set-up: Southeast Asian row and therapists', () => {
+    const p = imagePrompt('A room.');
+    expect(p).toBe(`A room. ${imageStyle()}`);
+    expect(p).toContain('tropical greenery: palms, banana leaves and ferns');
+    expect(p).toContain('orchids in a small vase');
+    expect(p).toContain('Every therapist is a young Southeast Asian woman');
+  });
+
+  test('a set-up passes its locals to the style line', () => {
+    const setup: Setup = {
+      look: 'plain',
+      guests: 'woman',
+      therapists: 1,
+      bodyPart: 'back',
+      scene: 'place',
+      locals: 'Vietnamese',
+    };
+    expect(imagePrompt('A room.', undefined, setup)).toBe(
+      `One guest, a woman. One therapist, a young Vietnamese woman. A room. ${imageStyle('Vietnamese')}`,
+    );
+  });
+
+  test('only plants of the place, a discreet sign of the day', () => {
+    const style = imageStyle('Balinese');
+    expect(style).toContain('never plants from elsewhere');
+    expect(style).toContain(
+      "Any object from the guest's day is small, far in the background and out of focus.",
     );
   });
 });
@@ -225,24 +277,24 @@ describe('the set-up and the therapists', () => {
 
   test('cast line first, then the prompt, the hint, the style', () => {
     expect(imagePrompt('Oil on a back at golden hour.', 'more green', fourHandsMan)).toBe(
-      `One guest, a man. Two therapists, both young Balinese women. Oil on a back at golden hour. The owner asks: more green. ${IMAGE_STYLE}`,
+      `One guest, a man. Two therapists, both young Balinese women. Oil on a back at golden hour. The owner asks: more green. ${imageStyle('Balinese')}`,
     );
   });
 
   test('without a set-up: no cast line, therapists read as Southeast Asian', () => {
     const p = imagePrompt('A room at golden hour.');
-    expect(p).toBe(`A room at golden hour. ${imageStyle('Southeast Asian')}`);
+    expect(p).toBe(`A room at golden hour. ${imageStyle()}`);
     expect(p).toContain('Every therapist is a young Southeast Asian woman');
   });
 
   test("the style line holds the spec's therapist sentence", () => {
-    expect(IMAGE_STYLE).toContain(
+    expect(imageStyle('Balinese')).toContain(
       'Every therapist is a young local woman with warm, golden-tan skin, as women from here have: smooth, healthy and glowing, yet real, with natural texture; never pale or white, never dark. Her hands and arms are perfectly formed and look healthy: five slender fingers on each hand, clean short nails, natural joints and wrists, no extra or missing fingers, hands or arms. Her face is turned away, lowered or out of frame.',
     );
   });
 
   test('never a full face, therapist or guest', () => {
-    expect(IMAGE_STYLE).toContain(
+    expect(imageStyle('Balinese')).toContain(
       "Every guest's face is turned away, resting in the face cradle, covered or out of frame: never a full face.",
     );
   });
