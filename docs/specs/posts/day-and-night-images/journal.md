@@ -116,6 +116,12 @@ Day and night, Task 2, swaps by light (`posts-image.test.ts`):
       Tests  39 failed | 63 passed (102)
 ```
 
+Day and night, Task 3, the style line by light (`posts-image.test.ts`, `posts-image-run.test.ts`):
+
+```
+      Tests  8 failed | 108 passed (116)
+```
+
 ## GREEN
 
 Day and night, Task 1 (`posts-setup.test.ts`, `posts-fixtures-replay.test.ts`):
@@ -153,4 +159,12 @@ Day and night, Task 2:
 
 ```
       Tests  102 passed (102)
+```
+
+Day and night, Task 3, then the whole suite:
+
+```
+      Tests  116 passed (116)
+ Test Files  106 passed (106)
+      Tests  1547 passed (1547)
 ```

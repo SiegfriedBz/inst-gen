@@ -1,13 +1,13 @@
 import { castLine, type Light, type Locals, type Setup } from './setup';
 
 // What the image model reads: code's cast line from the post's set-up
-// (docs/specs/posts/varied-images), the post's image prompt, then a fixed
-// style line from decision 0004's bake-off, plus one rule so the 4:5 post
-// crop keeps the subject (docs/specs/posts/generate-images, "The model
-// step"), lit at golden hour in the place's own room
-// (docs/specs/posts/golden-hour-images). Bump the version with every change.
+// (docs/specs/posts/varied-images), the post's image prompt, then a style
+// line from decision 0004's bake-off, plus one rule so the 4:5 post crop
+// keeps the subject (docs/specs/posts/generate-images, "The model step"); the
+// style line follows the set-up's day or night and the place's own room
+// (docs/specs/posts/day-and-night-images). Bump the version with every change.
 
-export const IMAGE_PROMPT_VERSION = 'images-7';
+export const IMAGE_PROMPT_VERSION = 'images-8';
 
 // The room a tourist pictures for their stay, the green plants of the place
 // seen through its doors, and the place's flower, by the therapists' origin.
@@ -34,18 +34,38 @@ export const PLACES: Record<Locals, { room: string; view: string; flower: string
   },
 };
 
+// Day at the brightness of Svarga's 27 Oct images, night a warm glow, never
+// dark (the maintainer, 2026-10-28).
+const LIGHTING: Record<Light, { light: string; whatever: string; view: string }> = {
+  day: {
+    light:
+      'Late afternoon: lamps are lit inside, and soft natural daylight comes in from the garden through open doors or a wide window. ' +
+      'Soft and warm, never sunbeams across the room, never harsh sun or blown-out windows, never a grey sky, mist or rain. ',
+    whatever:
+      'Whatever the scene says, it is late afternoon: soft daylight from outside, with lamps lit. ',
+    view: 'in soft daylight',
+  },
+  night: {
+    light:
+      'Evening: lamps and candles give the room a warm, golden glow, and the garden outside is lit by lanterns under a deep blue sky. ' +
+      'Warm and inviting, never dark, dim or gloomy, never a grey sky, mist or rain. ',
+    whatever:
+      'Whatever the scene says, it is evening: lamps and candles lit, the garden lit by lanterns under a deep blue sky. ',
+    view: 'lit by lanterns at night',
+  },
+};
+
 // With the set-up's locals, the cast line names the therapists' origin, so
 // the style line says "local"; a post saved before set-ups has none, so the
 // style line names them Southeast Asian and takes that row's place.
-export function imageStyle(locals?: Locals): string {
+export function imageStyle(locals?: Locals, light: Light = 'day'): string {
   const who = locals ? 'local' : 'Southeast Asian';
   const place = PLACES[locals ?? 'Southeast Asian'];
+  const lighting = LIGHTING[light];
   return (
     'Vertical photograph for an Instagram story, shot on a full-frame camera with a 50mm lens. ' +
-    'Golden hour: the low, warm sun of late afternoon comes in through open doors or a wide window, ' +
-    'and lamps or candles are lit; the room glows honey and amber. ' +
-    'Bright and happy, never harsh midday sun, a grey sky, mist or rain, never a dark or dim room. ' +
-    'A warm, bright and happy holiday mood: calm and restful, a treat the guest has earned. ' +
+    lighting.light +
+    'A warm, happy holiday mood: calm and restful, a treat the guest has earned. ' +
     'Realistic skin and textures, natural anatomy. No face is visible or recognisable. ' +
     'The image contains no text, letters, labels, logos or watermarks; bottles and jars are plain. ' +
     'Keep the subject in the middle of the frame, with calm space above and below it. ' +
@@ -57,8 +77,8 @@ export function imageStyle(locals?: Locals): string {
     'The room is warm and homely, never clinical or hospital-like. ' +
     'Curtains are open and hang still; there is no wind. ' +
     'Massage oil is golden oil in clear glass, never a small dark bottle. ' +
-    'Whatever the scene says, the light is golden hour: the low warm sun from outside, with lamps or candles lit. ' +
-    `When the room shows, it is ${place.room}, open onto ${place.view}, lit by the golden sun; ` +
+    lighting.whatever +
+    `When the room shows, it is ${place.room}, open onto ${place.view}, ${lighting.view}; ` +
     'only green plants that grow here, never plants from elsewhere. ' +
     `When a tray, a table or the room shows, a touch of the place: ${place.flower}; no other kind of flower. ` +
     "Any object from the guest's day is small, far in the background and out of focus. " +
@@ -151,6 +171,8 @@ export function cleanHint(raw: string | undefined): string | undefined {
 export function imagePrompt(postPrompt: string, hint?: string, setup?: Setup): string {
   const cast = setup ? `${castLine(setup)} ` : '';
   const asks = hint ? ` The owner asks: ${hint}.` : '';
-  const style = imageStyle(setup?.locals);
-  return `${cast}${cleanLight(postPrompt.trim())}${asks} ${style}`;
+  // A set-up saved before lights were dealt, or none, is a day.
+  const light = setup?.light ?? 'day';
+  const style = imageStyle(setup?.locals, light);
+  return `${cast}${cleanLight(postPrompt.trim(), light)}${asks} ${style}`;
 }

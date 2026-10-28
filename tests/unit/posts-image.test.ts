@@ -85,7 +85,7 @@ describe('the image prompt', () => {
       'Keep the subject in the middle of the frame, with calm space above and below it.',
     );
     expect(p).toMatch(/no text, letters, labels, logos or watermarks/i);
-    expect(IMAGE_PROMPT_VERSION).toBe('images-7');
+    expect(IMAGE_PROMPT_VERSION).toBe('images-8');
   });
 });
 
@@ -267,19 +267,75 @@ describe('light and weather in the post prompt', () => {
 
   test('the style line says the light wins over the scene', () => {
     expect(imagePrompt('x')).toContain(
-      'Whatever the scene says, the light is golden hour: the low warm sun from outside, with lamps or candles lit.',
+      'Whatever the scene says, it is late afternoon: soft daylight from outside, with lamps lit.',
     );
   });
 });
 
-describe('golden hour and the place', () => {
-  test('golden hour, never dusk or dim', () => {
-    const style = imageStyle('Vietnamese');
+describe('day, night and the place', () => {
+  const setup: Setup = {
+    look: 'plain',
+    guests: 'woman',
+    therapists: 1,
+    bodyPart: 'back',
+    scene: 'place',
+    locals: 'Vietnamese',
+  };
+
+  test('a day image: late afternoon, soft daylight, no sunbeams', () => {
+    const style = imageStyle('Vietnamese', 'day');
     expect(style).toContain(
-      'Whatever the scene says, the light is golden hour: the low warm sun from outside, with lamps or candles lit.',
+      'Late afternoon: lamps are lit inside, and soft natural daylight comes in from the garden through open doors or a wide window.',
     );
-    expect(style).toContain('a treat the guest has earned');
-    expect(style).not.toMatch(/\bdusk\b|dim and intimate|introspection/i);
+    expect(style).toContain('never sunbeams across the room, never harsh sun or blown-out windows');
+    expect(style).toContain(
+      'Whatever the scene says, it is late afternoon: soft daylight from outside, with lamps lit.',
+    );
+    expect(style).toContain(
+      'open onto a garden of areca palms, bamboo, banana leaves and coconut palms, in soft daylight;',
+    );
+    expect(style).not.toMatch(/golden hour|evening/i);
+  });
+
+  test('a night image: lamps, candles, lanterns, never dark', () => {
+    const style = imageStyle('Balinese', 'night');
+    expect(style).toContain(
+      'Evening: lamps and candles give the room a warm, golden glow, and the garden outside is lit by lanterns under a deep blue sky.',
+    );
+    expect(style).toContain('Warm and inviting, never dark, dim or gloomy');
+    expect(style).toContain(
+      'Whatever the scene says, it is evening: lamps and candles lit, the garden lit by lanterns under a deep blue sky.',
+    );
+    expect(style).toContain('lit by lanterns at night;');
+    expect(style).not.toMatch(/late afternoon|daylight/i);
+  });
+
+  test('day and night share the mood, never the old dim one', () => {
+    for (const light of ['day', 'night'] as const) {
+      const style = imageStyle('Vietnamese', light);
+      expect(style).toContain(
+        'A warm, happy holiday mood: calm and restful, a treat the guest has earned.',
+      );
+      expect(style).not.toMatch(/\bdusk\b|dim and intimate|introspection|golden hour/i);
+    }
+  });
+
+  test('a night set-up swaps its prompt and gets the night line', () => {
+    const p = imagePrompt('A sunlit room.', undefined, { ...setup, light: 'night' });
+    expect(p).toContain('A lamp-lit room.');
+    expect(p.endsWith(imageStyle('Vietnamese', 'night'))).toBe(true);
+  });
+
+  test('an old post is a day: no light in its set-up, or no set-up', () => {
+    expect(imagePrompt('A warm, low-lit room at dusk.', undefined, setup)).toContain(
+      'A warm, softly lit room in the late afternoon.',
+    );
+    expect(
+      imagePrompt('A warm, low-lit room at dusk.', undefined, setup).endsWith(
+        imageStyle('Vietnamese', 'day'),
+      ),
+    ).toBe(true);
+    expect(imagePrompt('A room.').endsWith(imageStyle(undefined, 'day'))).toBe(true);
   });
 
   test("Sen's room: Vietnamese, palms and bamboo, a lotus, never frangipani", () => {
@@ -307,14 +363,6 @@ describe('golden hour and the place', () => {
   });
 
   test('a set-up passes its locals to the style line', () => {
-    const setup: Setup = {
-      look: 'plain',
-      guests: 'woman',
-      therapists: 1,
-      bodyPart: 'back',
-      scene: 'place',
-      locals: 'Vietnamese',
-    };
     expect(imagePrompt('A room.', undefined, setup)).toBe(
       `One guest, a woman. One therapist, a young Vietnamese woman. A room. ${imageStyle('Vietnamese')}`,
     );
