@@ -80,6 +80,9 @@
 - 2026-10-28: once, in a full Vitest run, `brand-fixtures-replay` timed out
   at 5 s on karsa-spa (a brand read, untouched here); alone it passes in
   time. Load on the machine, not this change.
+- 2026-10-28: four older tests sampled prompts "at golden hour", which the
+  day swap now writes "in the late afternoon"; their samples say "in the
+  late afternoon" instead, as they test the prompt's order, not its light.
 
 ## RED
 
@@ -105,6 +108,12 @@ Day and night, Task 1, the set-up's light (`posts-setup.test.ts`):
 
 ```
       Tests  5 failed | 58 passed (63)
+```
+
+Day and night, Task 2, swaps by light (`posts-image.test.ts`):
+
+```
+      Tests  39 failed | 63 passed (102)
 ```
 
 ## GREEN
@@ -138,4 +147,10 @@ Whole suite after Task 3:
 ```
  Test Files  106 passed (106)
       Tests  1497 passed (1497)
+```
+
+Day and night, Task 2:
+
+```
+      Tests  102 passed (102)
 ```

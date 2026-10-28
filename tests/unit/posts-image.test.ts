@@ -79,8 +79,8 @@ describe('who can make images', () => {
 
 describe('the image prompt', () => {
   test('the prompt ends with the style line and asks for a centred subject', () => {
-    const p = imagePrompt('  Warm oil on shoulders at golden hour. ');
-    expect(p.startsWith('Warm oil on shoulders at golden hour. ')).toBe(true);
+    const p = imagePrompt('  Warm oil on shoulders in the late afternoon. ');
+    expect(p.startsWith('Warm oil on shoulders in the late afternoon. ')).toBe(true);
     expect(p).toContain(
       'Keep the subject in the middle of the frame, with calm space above and below it.',
     );
@@ -91,10 +91,12 @@ describe('the image prompt', () => {
 
 describe("the owner's hint", () => {
   test('a hint goes before the style line', () => {
-    expect(imagePrompt('A room at golden hour.', 'more green')).toBe(
-      `A room at golden hour. The owner asks: more green. ${imageStyle()}`,
+    expect(imagePrompt('A room in the late afternoon.', 'more green')).toBe(
+      `A room in the late afternoon. The owner asks: more green. ${imageStyle()}`,
     );
-    expect(imagePrompt('A room at golden hour.')).toBe(`A room at golden hour. ${imageStyle()}`);
+    expect(imagePrompt('A room in the late afternoon.')).toBe(
+      `A room in the late afternoon. ${imageStyle()}`,
+    );
   });
 
   test('a hint is cleaned', () => {
@@ -143,55 +145,97 @@ const POSTS_5_PROMPTS = [
 ];
 
 describe('light and weather in the post prompt', () => {
-  // Golden hour for every image (docs/specs/posts/golden-hour-images); grey
-  // skies, mist, rain and damp stay out (decision 0004's bake-off).
+  // Words of the other light, and of dark or harsh light, are swapped by the
+  // set-up's light (docs/specs/posts/day-and-night-images); grey skies, mist,
+  // rain and damp stay out (decision 0004's bake-off).
   test.each([
-    ['Bright sunlight on the towels', 'Low golden sun on the towels'],
-    ['A sunny balcony', 'A golden balcony'],
-    ['Daylight through the window', 'Golden-hour light through the window'],
-    ['A villa in the morning', 'A villa at golden hour'],
-    ['Oil on a back at dusk', 'Oil on a back at golden hour'],
-    ['A balcony at night', 'A balcony at golden hour'],
-    ['Midday on the terrace', 'Golden hour on the terrace'],
-    ['A dimly lit room', 'A warmly lit room'],
-    ['A dim room', 'A warm room'],
-    ['A darkened villa', 'A warm villa'],
-    ['Low, soft and warm lighting', 'Golden-hour, soft and warm lighting'],
-    ['Soft low lighting', 'Soft golden-hour lighting'],
-    ['Warm low light', 'Warm golden-hour light'],
-    ['A warm, low-lit hotel room', 'A warm, golden-lit hotel room'],
-    ['A low lit room', 'A golden-lit room'],
-    ['Low-light interior', 'Golden-hour light interior'],
-    ['A dimly-lit room', 'A warmly lit room'],
-    ['Soft low candlelight', 'Soft golden candlelight'],
-    ['Low warm lamp light', 'Golden warm lamp light'],
-    ['low lamplight', 'golden lamplight'],
-    [
-      'A dimly lit villa at dusk, sunny balcony at midday',
-      'A warmly lit villa at golden hour, golden balcony at golden hour',
-    ],
-    ['an overcast sky over a misty, wet terrace', 'a golden sky over a quiet, clean terrace'],
-  ])('%s → %s', (input, output) => {
-    expect(cleanLight(input)).toBe(output);
+    ['Bright sunlight on the towels', 'Soft daylight on the towels'],
+    ['Sunbeams across the bed', 'Soft light across the bed'],
+    ['A sunset balcony', 'A late afternoon balcony'],
+    ['Golden hour sunlight flooding the room', 'Late afternoon soft daylight flooding the room'],
+    ['low warm golden sun', 'gentle warm golden soft daylight'],
+    ['A sunlit, sunny room', 'A softly lit, soft room'],
+    ['A golden-hour glow', 'A late afternoon glow'],
+    ['A villa at dusk', 'A villa in the late afternoon'],
+    ['A balcony at night', 'A balcony in the late afternoon'],
+    ['Evening on the terrace', 'Late afternoon on the terrace'],
+    ['A villa in the morning', 'A villa in the late afternoon'],
+    ['Midday on the terrace', 'Late afternoon on the terrace'],
+    ['A warm, low-lit hotel room', 'A warm, softly lit hotel room'],
+    ['A dimly lit room', 'A softly lit room'],
+    ['A dimly-lit room', 'A softly lit room'],
+    ['A dim, darkened room', 'A soft, soft room'],
+    ['Low, soft and warm lighting', 'Gentle, soft and warm lighting'],
+    ['Soft low lighting', 'Soft gentle lighting'],
+    ['Low warm lamp light', 'Gentle warm lamp light'],
+    ['Low-light interior', 'Soft light interior'],
+    ['an overcast sky over a misty, wet terrace', 'a soft blue sky over a quiet, clean terrace'],
+  ])('day: %s → %s', (input, output) => {
+    expect(cleanLight(input, 'day')).toBe(output);
   });
 
   test.each([
-    'A clean, sunlit Da Nang hotel room',
-    'Sunlight and sunshine on a bright villa room',
-    'Late afternoon on the balcony',
+    [
+      'Golden hour light streams through a sunlit window',
+      'Evening light streams through a lamp-lit window',
+    ],
+    ['Bright sunlight on the towels', 'Lamplight on the towels'],
+    ['Sunbeams across the bed', 'Lamplight across the bed'],
+    ['Daylight and sunshine', 'Lamplight and lamplight'],
+    ['A sunny balcony', 'A warm balcony'],
+    ['A villa in the afternoon', 'A villa in the evening'],
+    ['Late afternoon on the terrace', 'Evening on the terrace'],
+    ['A villa in the morning', 'A villa in the evening'],
+    ['Midday on the terrace', 'Evening on the terrace'],
+    ['A sunrise view', 'A evening view'],
+    ['A warm, low-lit hotel room', 'A warm, warmly lit hotel room'],
+    ['A dimly lit room', 'A warmly lit room'],
+    ['A dim room', 'A warm room'],
+    ['Low, soft and warm lighting', 'Glowing, soft and warm lighting'],
+    ['Soft low candlelight', 'Soft glowing candlelight'],
+    ['Low-light interior', 'Warm light interior'],
+    ['an overcast sky', 'a deep blue sky'],
+  ])('night: %s → %s', (input, output) => {
+    expect(cleanLight(input, 'night')).toBe(output);
+  });
+
+  test.each([
+    'A sunflower on a table',
+    'Sunday',
+    'A sun lounger by the pool',
+    'A sun deck',
+    'A bright villa room',
     'Smooth dark stones along the back',
     'Golden oil in clear glass, never a small dark bottle',
     'A low table beside the bed',
-  ])('%s stays as written', (text) => {
-    expect(cleanLight(text)).toBe(text);
+  ])('%s stays as written, day and night', (text) => {
+    expect(cleanLight(text, 'day')).toBe(text);
+    expect(cleanLight(text, 'night')).toBe(text);
   });
 
-  // "New image" on a post saved with posts-5 must not stay dim.
-  test.each(POSTS_5_PROMPTS)('a posts-5 prompt loses its low light: %s', (prompt) => {
-    const out = cleanLight(prompt);
+  test.each(['Late afternoon on the balcony', 'Daylight through the window'])(
+    '%s stays as written by day',
+    (text) => {
+      expect(cleanLight(text, 'day')).toBe(text);
+    },
+  );
+
+  test('a balcony at night stays as written by night', () => {
+    expect(cleanLight('A balcony at night', 'night')).toBe('A balcony at night');
+  });
+
+  test('the light is day when none is given', () => {
+    expect(cleanLight('A villa at dusk')).toBe('A villa in the late afternoon');
+  });
+
+  // "New image" on a post saved with posts-5 (no light: a day) must not stay
+  // dim, nor turn sunny.
+  test.each(POSTS_5_PROMPTS)('a posts-5 prompt, as a day, loses its low light: %s', (prompt) => {
+    const out = cleanLight(prompt, 'day');
     expect(out).not.toMatch(/\blow\b[^.]*\blight/i);
     expect(out).not.toMatch(/\blow[- ]lit\b/i);
     expect(out).not.toMatch(/\b(?:dim|dimly|dusk)\b/i);
+    expect(out).not.toMatch(/\bsun\b/i);
   });
 
   test('grey skies, mist, rain and damp are dropped', () => {
@@ -298,14 +342,14 @@ describe('the set-up and the therapists', () => {
   const body = { postId: 'p', imagePrompt: 'A room', scene: 'detail' };
 
   test('cast line first, then the prompt, the hint, the style', () => {
-    expect(imagePrompt('Oil on a back at golden hour.', 'more green', fourHandsMan)).toBe(
-      `One guest, a man. Two therapists, both young Balinese women. Oil on a back at golden hour. The owner asks: more green. ${imageStyle('Balinese')}`,
+    expect(imagePrompt('Oil on a back in the late afternoon.', 'more green', fourHandsMan)).toBe(
+      `One guest, a man. Two therapists, both young Balinese women. Oil on a back in the late afternoon. The owner asks: more green. ${imageStyle('Balinese')}`,
     );
   });
 
   test('without a set-up: no cast line, therapists read as Southeast Asian', () => {
-    const p = imagePrompt('A room at golden hour.');
-    expect(p).toBe(`A room at golden hour. ${imageStyle()}`);
+    const p = imagePrompt('A room in the late afternoon.');
+    expect(p).toBe(`A room in the late afternoon. ${imageStyle()}`);
     expect(p).toContain('Every therapist is a young Southeast Asian woman');
   });
 

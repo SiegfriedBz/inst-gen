@@ -1,4 +1,4 @@
-import { castLine, type Locals, type Setup } from './setup';
+import { castLine, type Light, type Locals, type Setup } from './setup';
 
 // What the image model reads: code's cast line from the post's set-up
 // (docs/specs/posts/varied-images), the post's image prompt, then a fixed
@@ -72,31 +72,52 @@ export function imageStyle(locals?: Locals): string {
   );
 }
 
-// Every image is lit at golden hour (docs/specs/posts/golden-hour-images);
+// Each image is a day or a night (docs/specs/posts/day-and-night-images), and
 // decision 0004 keeps out grey skies, mist, rain and damp. The post plan's
-// model doesn't always listen, and posts saved with posts-5 say the light is
-// low ("Soft low lighting"), so code swaps dark, dusk and midday words before
-// the image model reads them. The order matters: "bright sunlight" becomes
-// "low golden sun", which the "low" row leaves alone. Whole words only; the
-// first letter's case is kept.
-const LIGHT: [RegExp, string][] = [
-  [/\bbright (?:sunlight|sunshine|sun)\b/gi, 'low golden sun'],
-  [/\bsunny\b/gi, 'golden'],
-  [/\bdaylight\b/gi, 'golden-hour light'],
-  [/\b(?:in the (?:morning|afternoon|evening)|at (?:dusk|night))\b/gi, 'at golden hour'],
-  [/\b(?:morning|midday|noon|daytime|dusk|evening|night)\b/gi, 'golden hour'],
-  [/\bdimly[- ]lit\b/gi, 'warmly lit'],
-  [/\b(?:dim|darkened)\b/gi, 'warm'],
-  [/\blow[- ]lit\b/gi, 'golden-lit'],
-  [/\blow-light\b/gi, 'golden-hour light'],
-  [/\blow\b(?=(?:,?\s+(?:and\s+)?(?:soft|warm))*,?\s+(?:light|lighting)\b)/gi, 'golden-hour'],
-  [/\blow\b(?=(?:,?\s+(?:and\s+)?(?:soft|warm))*,?\s+(?:lamp ?light|candlelight)\b)/gi, 'golden'],
-  [/\ban? (?:overcast |grey |gray )+sky\b/gi, 'a golden sky'],
-  [/\b(?:overcast |grey |gray )+sky\b/gi, 'golden sky'],
-  [/\bovercast\b/gi, 'calm'],
-  [/\b(?:misty|foggy)\b/gi, 'quiet'],
-  [/\b(?:damp|wet)\b/gi, 'clean'],
-  [/\b(?:rainy|rain|mist|fog)\b/gi, ''],
+// model doesn't always listen, posts saved with posts-5 say the light is low
+// ("Soft low lighting"), and the brand's own light can still slip in, so code
+// swaps words of the other light, and of dark or harsh light, before the image
+// model reads them: the day column for a day, the night column for a night,
+// null where a word is kept. Rows run top to bottom: "bright sunlight" is
+// swapped once, phrases go before their words, and the "low" row sees what the
+// sun rows wrote. Whole words only; the first letter's case is kept.
+const LIGHT: [RegExp, string | null, string | null][] = [
+  [/\bbright (?:sunlight|sunshine|sun)\b/gi, 'soft daylight', 'lamplight'],
+  [/\b(?:sunbeams?|sun rays)\b/gi, 'soft light', 'lamplight'],
+  [/\b(?:sunset|sunrise)\b/gi, 'late afternoon', 'evening'],
+  [/\b(?:sunlight|sunshine)\b/gi, 'soft daylight', 'lamplight'],
+  [
+    /\bsun\b(?! (?:loungers?|deck|hat|beds?|terrace|umbrella|shade|cream|screen)\b)/gi,
+    'soft daylight',
+    'lamplight',
+  ],
+  [/\bdaylight\b/gi, null, 'lamplight'],
+  [/\bsunlit\b/gi, 'softly lit', 'lamp-lit'],
+  [/\bsunny\b/gi, 'soft', 'warm'],
+  [
+    /\b(?:in the (?:morning|afternoon)|at golden[- ]hour)\b/gi,
+    'in the late afternoon',
+    'in the evening',
+  ],
+  [/\b(?:in the evening|at (?:dusk|night))\b/gi, 'in the late afternoon', null],
+  [/\bgolden[- ]hour\b/gi, 'late afternoon', 'evening'],
+  [/\b(?:morning|midday|noon|daytime)\b/gi, 'late afternoon', 'evening'],
+  [/\b(?:late )?afternoon\b/gi, null, 'evening'],
+  [/\b(?:dusk|evening|night)\b/gi, 'late afternoon', null],
+  [/\b(?:dimly|low)[- ]lit\b/gi, 'softly lit', 'warmly lit'],
+  [/\b(?:dim|darkened)\b/gi, 'soft', 'warm'],
+  [/\blow-light\b/gi, 'soft light', 'warm light'],
+  [
+    /\blow\b(?=(?:,?\s+(?:and\s+)?(?:soft|warm|golden))*,?\s+(?:light|lighting|daylight|lamp ?light|candlelight)\b)/gi,
+    'gentle',
+    'glowing',
+  ],
+  [/\ban? (?:overcast |grey |gray )+sky\b/gi, 'a soft blue sky', 'a deep blue sky'],
+  [/\b(?:overcast |grey |gray )+sky\b/gi, 'soft blue sky', 'deep blue sky'],
+  [/\bovercast\b/gi, 'calm', 'calm'],
+  [/\b(?:misty|foggy)\b/gi, 'quiet', 'quiet'],
+  [/\b(?:damp|wet)\b/gi, 'clean', 'clean'],
+  [/\b(?:rainy|rain|mist|fog)\b/gi, '', ''],
 ];
 
 function keepCase(found: string, replacement: string): string {
@@ -104,9 +125,11 @@ function keepCase(found: string, replacement: string): string {
   return replacement[0].toUpperCase() + replacement.slice(1);
 }
 
-export function cleanLight(text: string): string {
+export function cleanLight(text: string, light: Light = 'day'): string {
   let out = text;
-  for (const [pattern, replacement] of LIGHT) {
+  for (const [pattern, day, night] of LIGHT) {
+    const replacement = light === 'day' ? day : night;
+    if (replacement === null) continue;
     out = out.replace(pattern, (found) => keepCase(found, replacement));
   }
   return out.replace(/ {2,}/g, ' ').replace(/ ([,.;:])/g, '$1');
