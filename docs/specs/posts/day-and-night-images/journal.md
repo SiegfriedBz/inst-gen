@@ -83,6 +83,25 @@
 - 2026-10-28: four older tests sampled prompts "at golden hour", which the
   day swap now writes "in the late afternoon"; their samples say "in the
   late afternoon" instead, as they test the prompt's order, not its light.
+- 2026-10-28: `posts-7` recorded for Sen (plan and offer plan) and Svarga
+  (plan): 5 Flash-Lite requests. Svarga's offer plan failed the replay
+  twice: first both offer captions left out the offer (code's own flag,
+  "offer: Sunday 1 November"), then they put a hook before the offer line,
+  which the replay test refuses (an offer post's story text must start with
+  its caption's first sentence). The same happened on the first `posts-6`
+  try. The caption rules ask both for "a hook first" (2.13) and for "the
+  offer post's first line states the offer" (2.11), and the model keeps the
+  hook; that conflict is older than this spec and is left for its own fix.
+  Svarga's offer fixture stays the `posts-6` one, which passes: its captions
+  don't depend on the light.
+- 2026-10-28: reading the 18 `posts-7` image prompts against their set-ups:
+  every day prompt says late afternoon with lamps lit and soft daylight
+  through open doors; every night prompt says evening, lamps and candles,
+  and lanterns under a deep (or dark) blue sky; three of each per batch. All
+  six day prompts call the room "bright" ("Bright hotel room", "a bright
+  villa room"), which the spec keeps unswapped; to watch in the images.
+  Signs of the guest's day: one surfboard, on a Sen `offer` post, where none
+  should be. Four night prompts don't name plants; the style line adds them.
 
 ## RED
 
