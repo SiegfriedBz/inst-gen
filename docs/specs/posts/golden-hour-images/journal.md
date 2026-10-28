@@ -32,6 +32,26 @@
   checks `cleanLight` alone: the new style line names them to forbid them
   ("never … a grey sky, mist or rain"), so the whole prompt holds the words.
   The log line's test also moves to `images-7`.
+- 2026-10-28: `pnpm check` stops at `check-repo` in this worktree only:
+  AGENTS.md cites `.superpowers/guide/`, and the check looks at it because
+  the worktree has a `.superpowers/` scratch folder (the plan's ledger)
+  without the guide in it. `biome ci`, `pnpm typecheck` and `vitest run`
+  were run directly instead, all green; CI has no `.superpowers/`.
+- 2026-10-28: `posts-6` recorded for Sen and Svarga, with and without the
+  offer: 6 Flash-Lite requests, not 4. Sen's first plan hit
+  `model_timeout`, and Svarga's first offer plan put a hook before the offer
+  line in both offer captions (2.13's rule, untouched here), which the
+  replay test refuses; each was recorded once more. Reading the 24 image
+  prompts: all at golden hour, none with dusk, dim, low, night or midday
+  light; 21 name green plants, a garden or foliage outside (the style line
+  adds them to the other 3). Signs of the guest's day: a surfboard on both
+  Svarga moment posts and a suitcase on Sen's offer-batch moment post, as
+  asked; but hiking boots on Sen's moment post (Sen's moments are a surf, a
+  long flight and laptop days, not a hike) and a surfboard on Sen's
+  offer-batch `local` post, where none should be. The images will show
+  whether they stay discreet. Every caption's first line runs over 125
+  characters (code's 2.13 warning), as it did on every `posts-5` post: not
+  from this change.
 
 ## RED
 
