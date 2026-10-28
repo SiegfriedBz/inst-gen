@@ -112,7 +112,8 @@ describe("the owner's hint", () => {
 });
 
 // The image prompts of Sen's and Svarga's posts-5 plans, as saved on the
-// phones (tests/fixtures/sites/{sen,svarga}/posts.json before posts-6).
+// phones (tests/fixtures/sites/{sen,svarga}/posts.json and posts-offer.json
+// before posts-6).
 const POSTS_5_PROMPTS = [
   "A tall 9:16 photo showing a man lying relaxed on a massage bed in a hotel room. A female therapist's hands work with warm golden oil on his back. Low, soft and warm lighting, clean and tidy room, still air, no text.",
   "A tall 9:16 photo from the side showing a female therapist working on a man's arm on a massage bed. Warm golden oil is visible. Soft low lighting, clean boutique hotel room, still air, no text.",
@@ -126,6 +127,19 @@ const POSTS_5_PROMPTS = [
   "A tall 9:16 photo from above of a woman relaxed on a massage bed, a female therapist's hands spreading scrub, a bowl nearby. Warm lighting, clean white linens, still air, no text.",
   'A tall 9:16 photo of a man on a massage bed with two female therapists working in step, one on each side, focusing on the legs, in a villa room. Warm lamp light, clean linens, still air, no text.',
   "A tall 9:16 photo from above of a woman relaxed on a massage bed with warm golden oil, a female therapist's hands working on the shoulders and neck. Warm lighting, clean room, still air, no text.",
+  // posts-offer.json, before posts-6.
+  "A photo of a woman lying relaxed on a massage bed in a hotel room in Da Nang. A female therapist's hands are working on her legs, using warm golden oil. Low soft warm lighting, clean white linens, still air. No text.",
+  'A photo of a man lying relaxed on a floor mattress in a hotel room in Da Nang, wearing loose cotton clothes. A female therapist is stretching his leg using palm pressure. Low soft warm lighting, tidy room, still air. No text.',
+  'A photo of a man sitting relaxed in a reclining chair in a hotel room in Da Nang, with his feet resting on a clean towel. A female therapist is seated at his feet performing reflexology. Low soft warm lighting, tidy room. No text.',
+  "A photo of a man lying relaxed on a massage bed in a hotel room in Da Nang. A female therapist's hands are working on his back using warm golden oil. Low soft warm lighting, clean linens, still air. No text.",
+  "A photo from above of a woman lying relaxed on a massage bed in a hotel room in Da Nang. A female therapist's hands are working on her shoulders and neck with warm golden oil. Low soft warm lighting, tidy room. No text.",
+  'A photo of a man and a woman lying relaxed on two massage beds side by side in a hotel room in Da Nang. Two female therapists are working on their arms and hands. Low soft warm lighting, clean linens, still air. No text.',
+  "A woman relaxing on a massage bed in a warm, low-lit hotel room in Canggu. A therapist's hands work gently on her shoulders and neck using warm golden oil. Clean white linens, soft lamplight, tropical ambiance. Vertical 9:16 ratio.",
+  'A man resting on a massage bed in a warmly lit villa room. Two female therapists work in step, one on each side, focusing on his legs. Soft ambient light, neat linens, serene atmosphere. Vertical 9:16 ratio.',
+  "A close view of a female therapist's hands working on a woman's back with warm golden oil on a massage bed. Low soft light, clean room, peaceful mood. Vertical 9:16 ratio.",
+  'A woman on a massage bed in a clean, warm villa room receiving a Balinese lulur scrub. A bowl of scrub is nearby, and a female therapist spreads it gently on her arm. Low soft lighting, tidy linens. Vertical 9:16 ratio.',
+  'A man sitting back in a reclining chair with his feet on a towel in a warm, dimly lit room. A female therapist is seated at his feet performing reflexology. Soft lamp light, homely feel. Vertical 9:16 ratio.',
+  "A man resting on a massage bed in a warm villa room. A female therapist's hands work deeply on his back. Low soft lighting, clean room, peaceful ambiance. Vertical 9:16 ratio.",
 ];
 
 describe('light and weather in the post prompt', () => {
@@ -145,6 +159,13 @@ describe('light and weather in the post prompt', () => {
     ['Low, soft and warm lighting', 'Golden-hour, soft and warm lighting'],
     ['Soft low lighting', 'Soft golden-hour lighting'],
     ['Warm low light', 'Warm golden-hour light'],
+    ['A warm, low-lit hotel room', 'A warm, golden-lit hotel room'],
+    ['A low lit room', 'A golden-lit room'],
+    ['Low-light interior', 'Golden-hour light interior'],
+    ['A dimly-lit room', 'A warmly lit room'],
+    ['Soft low candlelight', 'Soft golden candlelight'],
+    ['Low warm lamp light', 'Golden warm lamp light'],
+    ['low lamplight', 'golden lamplight'],
     [
       'A dimly lit villa at dusk, sunny balcony at midday',
       'A warmly lit villa at golden hour, golden balcony at golden hour',
@@ -169,7 +190,8 @@ describe('light and weather in the post prompt', () => {
   test.each(POSTS_5_PROMPTS)('a posts-5 prompt loses its low light: %s', (prompt) => {
     const out = cleanLight(prompt);
     expect(out).not.toMatch(/\blow\b[^.]*\blight/i);
-    expect(out).not.toMatch(/\b(?:dim|dusk)\b/i);
+    expect(out).not.toMatch(/\blow[- ]lit\b/i);
+    expect(out).not.toMatch(/\b(?:dim|dimly|dusk)\b/i);
   });
 
   test('grey skies, mist, rain and damp are dropped', () => {

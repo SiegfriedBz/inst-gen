@@ -52,6 +52,28 @@
   whether they stay discreet. Every caption's first line runs over 125
   characters (code's 2.13 warning), as it did on every `posts-5` post: not
   from this change.
+- 2026-10-28: the first `pnpm eval:images sen svarga` with `images-7` gave
+  12 `image_timeout` at 60 s and no image; a timing script a minute later
+  first failed with "Cannot connect to API", then, with the maintainer's
+  go-ahead ($0.10), made Sen's first post twice with no cut-off: `images-6`'s
+  style line in 34 s (916 thinking tokens), `images-7`'s in 41 s (1,268
+  thinking tokens, 461 words against 321). The new line costs about 6 s,
+  well under the 60 s cut-off, so the timeouts were the network or Google at
+  that moment, not the prompt. The `images-7` image shows the spec's room:
+  a wide window onto banana leaves, palms and bamboo in golden light, lamps
+  lit, a pink lotus in a bowl on a rattan table (mean brightness 113,
+  against 104 for `images-6`).
+- 2026-10-28: the whole-branch review found `posts-5` offer prompts saying
+  "low-lit" ("a warm, low-lit hotel room in Canggu"), which the "low" row
+  missed. Rows added: "dimly-lit" with a hyphen, "low-lit" or "low lit" →
+  "golden-lit", "low-light" → "golden-hour light", and "low" before lamp
+  light or candlelight → "golden". The twelve `posts-5` offer prompts joined
+  the test's list. RED `Tests  8 failed | 72 passed (80)`, GREEN
+  `Tests  80 passed (80)`; whole suite `Tests  1516 passed (1516)`.
+- 2026-10-28: on the two test images, the maintainer: "There should be a mix
+  of images for the day and images for the night, as for now the 2 images
+  you show me looks too much bright". Golden hour for every image is
+  dropped; the spec goes back to the maintainer before more images.
 
 ## RED
 
