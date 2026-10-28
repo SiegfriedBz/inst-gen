@@ -7,7 +7,7 @@ import { castLine, type Light, type Locals, type Setup } from './setup';
 // style line follows the set-up's day or night and the place's own room
 // (docs/specs/posts/day-and-night-images). Bump the version with every change.
 
-export const IMAGE_PROMPT_VERSION = 'images-8';
+export const IMAGE_PROMPT_VERSION = 'images-9';
 
 // The room a tourist pictures for their stay, the green plants of the place
 // seen through its doors, and the place's flower, by the therapists' origin.
@@ -34,16 +34,17 @@ export const PLACES: Record<Locals, { room: string; view: string; flower: string
   },
 };
 
-// Day at the brightness of Svarga's 27 Oct images, night a warm glow, never
+// Day at the brightness of Svarga's 27 Oct images, never brighter: the lamps
+// are the main light and the garden is in shade; night a warm glow, never
 // dark (the maintainer, 2026-10-28).
 const LIGHTING: Record<Light, { light: string; whatever: string; view: string }> = {
   day: {
     light:
-      'Late afternoon: lamps are lit inside, and soft natural daylight comes in from the garden through open doors or a wide window. ' +
-      'Soft and warm, never sunbeams across the room, never harsh sun or blown-out windows, never a grey sky, mist or rain. ',
+      'Late afternoon: the lamps lit inside are the main light, and the garden outside, seen through open doors or a wide window, is in soft shade, with no sunlight on it. ' +
+      'Warm and calm, never bright: never sunbeams across the room, a sunlit garden, harsh sun or blown-out windows, never a grey sky, mist or rain. ',
     whatever:
-      'Whatever the scene says, it is late afternoon: soft daylight from outside, with lamps lit. ',
-    view: 'in soft daylight',
+      'Whatever the scene says, it is late afternoon: the lamps lit inside are the main light, the garden outside in soft shade. ',
+    view: 'in soft shade',
   },
   night: {
     light:
@@ -102,16 +103,18 @@ export function imageStyle(locals?: Locals, light: Light = 'day'): string {
 // swapped once, phrases go before their words, and the "low" row sees what the
 // sun rows wrote. Whole words only; the first letter's case is kept.
 const LIGHT: [RegExp, string | null, string | null][] = [
-  [/\bbright (?:sunlight|sunshine|sun)\b/gi, 'soft daylight', 'lamplight'],
+  [/\bbright (?:sunlight|sunshine|sun)\b/gi, 'soft light', 'lamplight'],
+  [/\bbrightly lit\b/gi, 'warmly lit', 'warmly lit'],
+  [/\bbright\b/gi, 'warm', 'warm'],
   [/\b(?:sunbeams?|sun rays)\b/gi, 'soft light', 'lamplight'],
   [/\b(?:sunset|sunrise)\b/gi, 'late afternoon', 'evening'],
-  [/\b(?:sunlight|sunshine)\b/gi, 'soft daylight', 'lamplight'],
+  [/\b(?:sunlight|sunshine)\b/gi, 'soft light', 'lamplight'],
   [
     /\bsun\b(?! (?:loungers?|deck|hat|beds?|terrace|umbrella|shade|cream|screen)\b)/gi,
-    'soft daylight',
+    'soft light',
     'lamplight',
   ],
-  [/\bdaylight\b/gi, null, 'lamplight'],
+  [/\bdaylight\b/gi, 'soft light', 'lamplight'],
   [/\bsunlit\b/gi, 'softly lit', 'lamp-lit'],
   [/\bsunny\b/gi, 'soft', 'warm'],
   [

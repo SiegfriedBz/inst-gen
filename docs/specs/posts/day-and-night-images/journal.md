@@ -187,6 +187,12 @@ Day and night, Task 4, the post plan follows the light (`posts-prompt.test.ts`, 
       Tests  5 failed | 46 passed (51)
 ```
 
+Day and night, Task 7, a softer day (`posts-image`, `posts-image-run`, `posts-prompt`, `posts-run`):
+
+```
+      Tests  18 failed | 154 passed (172)
+```
+
 ## GREEN
 
 Day and night, Task 1 (`posts-setup.test.ts`, `posts-fixtures-replay.test.ts`):
@@ -240,4 +246,10 @@ Day and night, Task 4, then the whole suite:
       Tests  51 passed (51)
  Test Files  106 passed (106)
       Tests  1550 passed (1550)
+```
+
+Day and night, Task 7:
+
+```
+      Tests  172 passed (172)
 ```

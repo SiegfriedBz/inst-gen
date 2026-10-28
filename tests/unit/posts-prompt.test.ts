@@ -57,7 +57,7 @@ describe('planPrompt', () => {
   });
 
   it('has a version', () => {
-    expect(POSTS_PROMPT_VERSION).toBe('posts-7');
+    expect(POSTS_PROMPT_VERSION).toBe('posts-8');
   });
 });
 
@@ -67,7 +67,10 @@ describe('day, night and the place', () => {
     const prompt = planPrompt();
     expect(prompt).toContain("Light follows the set-up's last word.");
     expect(prompt).toContain(
-      'Day: late afternoon, lamps lit inside and soft natural daylight from the garden through open doors or a wide window; soft and warm, never sunbeams across the room or harsh sun.',
+      'Day: late afternoon, the lamps lit inside the main light, the garden outside, through open doors or a wide window, in soft shade with no sunlight on it; warm and calm, never sunbeams across the room, a sunlit garden or harsh sun.',
+    );
+    expect(prompt).toContain(
+      'Never a grey sky, mist, rain or damp. Never call a room or its light bright.',
     );
     expect(prompt).toContain(
       'Night: evening, lamps and candles giving the room a warm, golden glow, the garden outside lit by lanterns under a deep blue sky; warm and inviting, never dark or gloomy.',

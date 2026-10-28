@@ -9,7 +9,7 @@ import { type Setup, setupLine } from './setup';
 // writes"); the day or night light, the open room and the sign of the guest's
 // day from docs/specs/posts/day-and-night-images. Bump the version with every
 // change, so eval verdicts trace back to it.
-export const POSTS_PROMPT_VERSION = 'posts-7';
+export const POSTS_PROMPT_VERSION = 'posts-8';
 
 // Code decides the emoji rule: flowers only for a spa
 // (docs/specs/posts/story-text, "Emojis").
@@ -78,7 +78,7 @@ ${captionRules(spa)}
 The image prompt: English, at most 80 words, for an image model making a tall 9:16 photo.
 - The massage is in every image: a therapist's hands working on a guest, or oil or towels being used for a treatment. Only what the business offers: a tool or treatment appears only if the offerings hold it. Never a guest alone, never an empty room, never a drink or a prop on its own.
 - A guest looks relaxed and alive, with the therapist there: never lying still as if asleep.
-- Light follows the set-up's last word. Day: late afternoon, lamps lit inside and soft natural daylight from the garden through open doors or a wide window; soft and warm, never sunbeams across the room or harsh sun. Night: evening, lamps and candles giving the room a warm, golden glow, the garden outside lit by lanterns under a deep blue sky; warm and inviting, never dark or gloomy. Never a grey sky, mist, rain or damp.
+- Light follows the set-up's last word. Day: late afternoon, the lamps lit inside the main light, the garden outside, through open doors or a wide window, in soft shade with no sunlight on it; warm and calm, never sunbeams across the room, a sunlit garden or harsh sun. Night: evening, lamps and candles giving the room a warm, golden glow, the garden outside lit by lanterns under a deep blue sky; warm and inviting, never dark or gloomy. Never a grey sky, mist, rain or damp. Never call a room or its light bright.
 - Places look clean, tidy and cared for: beds and linens neatly made, nothing rumpled or messy; no mould, stains, wet stone or worn surfaces.
 - Rooms are warm and homely, like a boutique hotel or villa; never clinical or hospital-like.
 - The room opens onto the outside: open doors, a wide window or a balcony onto green plants that grow in that place, and the sea or a pool where the place has one.

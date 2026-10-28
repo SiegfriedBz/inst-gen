@@ -85,7 +85,7 @@ describe('the image prompt', () => {
       'Keep the subject in the middle of the frame, with calm space above and below it.',
     );
     expect(p).toMatch(/no text, letters, labels, logos or watermarks/i);
-    expect(IMAGE_PROMPT_VERSION).toBe('images-8');
+    expect(IMAGE_PROMPT_VERSION).toBe('images-9');
   });
 });
 
@@ -149,11 +149,16 @@ describe('light and weather in the post prompt', () => {
   // set-up's light (docs/specs/posts/day-and-night-images); grey skies, mist,
   // rain and damp stay out (decision 0004's bake-off).
   test.each([
-    ['Bright sunlight on the towels', 'Soft daylight on the towels'],
+    ['Bright sunlight on the towels', 'Soft light on the towels'],
+    ['A bright villa room', 'A warm villa room'],
+    ['A brightly lit room', 'A warmly lit room'],
+    ['Sunlight on the bed', 'Soft light on the bed'],
+    ['Daylight through the window', 'Soft light through the window'],
+    ['The sun on the terrace', 'The soft light on the terrace'],
     ['Sunbeams across the bed', 'Soft light across the bed'],
     ['A sunset balcony', 'A late afternoon balcony'],
-    ['Golden hour sunlight flooding the room', 'Late afternoon soft daylight flooding the room'],
-    ['low warm golden sun', 'gentle warm golden soft daylight'],
+    ['Golden hour sunlight flooding the room', 'Late afternoon soft light flooding the room'],
+    ['low warm golden sun', 'gentle warm golden soft light'],
     ['A sunlit, sunny room', 'A softly lit, soft room'],
     ['A golden-hour glow', 'A late afternoon glow'],
     ['A villa at dusk', 'A villa in the late afternoon'],
@@ -180,6 +185,8 @@ describe('light and weather in the post prompt', () => {
       'Evening light streams through a lamp-lit window',
     ],
     ['Bright sunlight on the towels', 'Lamplight on the towels'],
+    ['A bright villa room', 'A warm villa room'],
+    ['A brightly lit room', 'A warmly lit room'],
     ['Sunbeams across the bed', 'Lamplight across the bed'],
     ['Daylight and sunshine', 'Lamplight and lamplight'],
     ['A sunny balcony', 'A warm balcony'],
@@ -204,7 +211,6 @@ describe('light and weather in the post prompt', () => {
     'Sunday',
     'A sun lounger by the pool',
     'A sun deck',
-    'A bright villa room',
     'Smooth dark stones along the back',
     'Golden oil in clear glass, never a small dark bottle',
     'A low table beside the bed',
@@ -213,12 +219,9 @@ describe('light and weather in the post prompt', () => {
     expect(cleanLight(text, 'night')).toBe(text);
   });
 
-  test.each(['Late afternoon on the balcony', 'Daylight through the window'])(
-    '%s stays as written by day',
-    (text) => {
-      expect(cleanLight(text, 'day')).toBe(text);
-    },
-  );
+  test.each(['Late afternoon on the balcony'])('%s stays as written by day', (text) => {
+    expect(cleanLight(text, 'day')).toBe(text);
+  });
 
   test('a balcony at night stays as written by night', () => {
     expect(cleanLight('A balcony at night', 'night')).toBe('A balcony at night');
@@ -267,7 +270,7 @@ describe('light and weather in the post prompt', () => {
 
   test('the style line says the light wins over the scene', () => {
     expect(imagePrompt('x')).toContain(
-      'Whatever the scene says, it is late afternoon: soft daylight from outside, with lamps lit.',
+      'Whatever the scene says, it is late afternoon: the lamps lit inside are the main light, the garden outside in soft shade.',
     );
   });
 });
@@ -282,19 +285,21 @@ describe('day, night and the place', () => {
     locals: 'Vietnamese',
   };
 
-  test('a day image: late afternoon, soft daylight, no sunbeams', () => {
+  test('a day image: lamps the main light, the garden in soft shade, never bright', () => {
     const style = imageStyle('Vietnamese', 'day');
     expect(style).toContain(
-      'Late afternoon: lamps are lit inside, and soft natural daylight comes in from the garden through open doors or a wide window.',
-    );
-    expect(style).toContain('never sunbeams across the room, never harsh sun or blown-out windows');
-    expect(style).toContain(
-      'Whatever the scene says, it is late afternoon: soft daylight from outside, with lamps lit.',
+      'Late afternoon: the lamps lit inside are the main light, and the garden outside, seen through open doors or a wide window, is in soft shade, with no sunlight on it.',
     );
     expect(style).toContain(
-      'open onto a garden of areca palms, bamboo, banana leaves and coconut palms, in soft daylight;',
+      'Warm and calm, never bright: never sunbeams across the room, a sunlit garden, harsh sun or blown-out windows, never a grey sky, mist or rain.',
     );
-    expect(style).not.toMatch(/golden hour|evening/i);
+    expect(style).toContain(
+      'Whatever the scene says, it is late afternoon: the lamps lit inside are the main light, the garden outside in soft shade.',
+    );
+    expect(style).toContain(
+      'open onto a garden of areca palms, bamboo, banana leaves and coconut palms, in soft shade;',
+    );
+    expect(style).not.toMatch(/golden hour|evening|daylight/i);
   });
 
   test('a night image: lamps, candles, lanterns, never dark', () => {
