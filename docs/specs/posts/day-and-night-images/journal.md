@@ -74,6 +74,12 @@
   of images for the day and images for the night, as for now the 2 images
   you show me looks too much bright". Golden hour for every image is
   dropped; the spec goes back to the maintainer before more images.
+- 2026-10-28: the maintainer approved "Day and night images": day at the
+  brightness of Svarga's 27 Oct images, three day and three night per batch.
+  The spec folder moved from `golden-hour-images` to `day-and-night-images`.
+- 2026-10-28: once, in a full Vitest run, `brand-fixtures-replay` timed out
+  at 5 s on karsa-spa (a brand read, untouched here); alone it passes in
+  time. Load on the machine, not this change.
 
 ## RED
 
@@ -95,7 +101,19 @@ Task 3, the post plan's prompt (`posts-prompt.test.ts`, `posts-run.test.ts`):
       Tests  7 failed | 41 passed (48)
 ```
 
+Day and night, Task 1, the set-up's light (`posts-setup.test.ts`):
+
+```
+      Tests  5 failed | 58 passed (63)
+```
+
 ## GREEN
+
+Day and night, Task 1 (`posts-setup.test.ts`, `posts-fixtures-replay.test.ts`):
+
+```
+      Tests  76 passed (76)
+```
 
 Task 1:
 

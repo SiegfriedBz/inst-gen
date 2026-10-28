@@ -151,6 +151,11 @@ export const BODY_PARTS = [
 ] as const;
 export type BodyPart = (typeof BODY_PARTS)[number];
 
+// Day or night (docs/specs/posts/day-and-night-images); a set-up saved before
+// lights were dealt has none, and is a day.
+export const LIGHTS = ['day', 'night'] as const;
+export type Light = (typeof LIGHTS)[number];
+
 export const setupSchema = z.object({
   treatment: z.string().min(1).optional(),
   look: z.enum(LOOKS),
@@ -159,6 +164,7 @@ export const setupSchema = z.object({
   bodyPart: z.enum(BODY_PARTS),
   scene: z.enum(SCENES),
   locals: z.enum(LOCALS),
+  light: z.enum(LIGHTS).optional(),
 });
 export type Setup = z.infer<typeof setupSchema>;
 
@@ -270,6 +276,10 @@ export function dealSetups(
     if (look !== 'couple') scenes[i] = take(() => true);
   }
 
+  // Three days and three nights, drawn last so the rest of a deal stays as
+  // it was before lights were dealt.
+  const lights = shuffled(['day', 'day', 'day', 'night', 'night', 'night'] as Light[], random);
+
   return looks.map(({ treatment, look }, i) => ({
     ...(treatment ? { treatment } : {}),
     look,
@@ -278,6 +288,7 @@ export function dealSetups(
     bodyPart: bodyParts[i],
     scene: scenes[i],
     locals,
+    light: lights[i] ?? 'day',
   }));
 }
 
@@ -314,7 +325,7 @@ const CAMERAS: Record<Setup['scene'], string> = {
 
 export function setupLine(setup: Setup): string {
   const what = setup.treatment ?? 'A massage';
-  return `${what}: ${GUESTS[setup.guests]} ${LOOK_WORDS_FOR[setup.look]}; the ${setup.bodyPart}; scene ${setup.scene}, ${CAMERAS[setup.scene]}.`;
+  return `${what}: ${GUESTS[setup.guests]} ${LOOK_WORDS_FOR[setup.look]}; the ${setup.bodyPart}; scene ${setup.scene}, ${CAMERAS[setup.scene]}; ${setup.light ?? 'day'}.`;
 }
 
 export function castLine(setup: Setup): string {
