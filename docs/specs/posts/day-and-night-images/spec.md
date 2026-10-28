@@ -1,8 +1,8 @@
 ---
 title: "Day and night images"
-description: "Code deals each batch three day images and three night images: day in soft late-afternoon light at the brightness of Svarga's 27 Oct images, night in a warm glow of lamps and candles, never dark; each in the room a tourist pictures for their stay, open onto the place's own green plants, with the place's flower and, on a moment post only, one discreet sign of the guest's day."
+description: "Code deals each batch three day images and three night images: day in late afternoon, lamps the main light and the garden in soft shade, at the brightness of Svarga's 27 Oct images, night in a warm glow of lamps and candles, never dark; each in the room a tourist pictures for their stay, open onto the place's own green plants, with the place's flower and, on a moment post only, one discreet sign of the guest's day."
 status: approved
-approved: { by: siegfried.bozza@protonmail.com, at: 2026-10-28T19:32:36Z }
+approved: { by: siegfried.bozza@protonmail.com, at: 2026-10-28T20:14:16Z }
 date: "2026-10-28"
 ---
 
@@ -35,7 +35,10 @@ A first version of this spec lit every image at golden hour. Two test images
 made with it (journal, 2026-10-28) came out too bright, sun streaming into
 the room, and the maintainer asked for "a mix of images for the day and
 images for the night", with the day at the brightness of Svarga's 27 Oct
-images.
+images. The first day and night images (`images-8`, journal) came out with
+days far brighter than that (mean 98 to 131 against 58 to 82, a sunlit
+garden through open doors), and the maintainer found them too bright: by
+day, the lamps are now the main light and the garden is in soft shade.
 
 The fix is built with the people who book in mind: tourists and expats just
 off a long flight, after a surf or a hike, or after days at a laptop, who
@@ -68,10 +71,11 @@ saved before set-ups has no set-up and is also a day.
 
 ### The two lights
 
-**Day.** Late afternoon, at the brightness of Svarga's 27 Oct images: lamps
-are lit inside, and the garden of local plants outside, seen through open
-doors or a wide window, sits in soft natural light. Soft and warm: never
-sunbeams across the room, never harsh sun or blown-out windows.
+**Day.** Late afternoon, at the brightness of Svarga's 27 Oct images, never
+brighter: the lamps lit inside are the main light, and the garden of local
+plants outside, seen through open doors or a wide window, is in soft shade,
+with no sunlight on it. Warm and calm, never bright: never sunbeams across
+the room, a sunlit garden, harsh sun or blown-out windows.
 
 **Night.** Evening: lamps and candles give the room a warm, golden glow;
 through the window or open doors, the garden of local plants is lit by
@@ -95,7 +99,7 @@ behaviour, which lives in specs.
 When the room is in the frame (every scene but `detail`, the close view of
 the hands), it is **the room a tourist pictures for their stay**, and it
 **opens onto the outside**: open doors, a wide window or a balcony onto
-green plants of the place, in soft daylight by day and lit by lanterns at
+green plants of the place, in soft shade by day and lit by lanterns at
 night. Curtains are open and hang still. Where the town or service area is
 by the sea, the sea may show beyond the plants; where it suits a villa, a
 pool may show.
@@ -147,7 +151,8 @@ calm and restful, a treat the guest has earned. Day and night share it.
 `planPrompt` (`lib/posts/prompt.ts`):
 
 - The light rule follows the set-up: a day set-up gets the day light above,
-  a night set-up the night light; never a grey sky, mist, rain or damp.
+  a night set-up the night light; never a grey sky, mist, rain or damp. An
+  image prompt never calls a room or its light bright.
 - The room rule gains: the room opens onto the outside, onto green plants
   that grow in that place, and the sea or a pool where the place has one.
 - "Use the visual style's palette, light and textures" becomes "palette and
@@ -160,7 +165,7 @@ calm and restful, a treat the guest has earned. Day and night share it.
   the light.
 - New: the sign of the guest's day, in a `moment` post only, as above.
 
-`POSTS_PROMPT_VERSION` becomes `posts-7`.
+`POSTS_PROMPT_VERSION` becomes `posts-8`.
 
 ### What code swaps in the post's image prompt
 
@@ -171,12 +176,14 @@ The owner's hint is not swapped.
 
 | The post's image prompt says | Day: code writes | Night: code writes |
 |---|---|---|
-| bright sun, bright sunlight, bright sunshine | soft daylight | lamplight |
+| bright sun, bright sunlight, bright sunshine | soft light | lamplight |
+| brightly lit | warmly lit | warmly lit |
+| bright | warm | warm |
 | sunbeams, sun rays | soft light | lamplight |
 | sunset, sunrise | late afternoon | evening |
-| sunlight, sunshine | soft daylight | lamplight |
-| sun, except before lounger, loungers, deck, hat, bed, beds, terrace, umbrella, shade, cream or screen | soft daylight | lamplight |
-| daylight | (kept) | lamplight |
+| sunlight, sunshine | soft light | lamplight |
+| sun, except before lounger, loungers, deck, hat, bed, beds, terrace, umbrella, shade, cream or screen | soft light | lamplight |
+| daylight | soft light | lamplight |
 | sunlit | softly lit | lamp-lit |
 | sunny | soft | warm |
 | golden hour, golden-hour | late afternoon | evening |
@@ -197,9 +204,12 @@ The owner's hint is not swapped.
 
 The rows run top to bottom, so "bright sunlight" is swapped once, and the
 "low" row sees what the sun rows wrote ("low golden sun" by day becomes
-"gentle golden soft daylight"). The day keeps no sun at all: the golden-hour
-test images showed that sun in the prompt gives sunbeams across the room.
-"Bright" alone and "dark" alone are not swapped: "dark" describes things
+"gentle golden soft light"). The day keeps no sun and no daylight at all:
+the golden-hour test images and the first day images showed that sun or
+daylight in the prompt gives a sunlit room. "Bright" is "warm" again, by
+day and by night, as it was before `images-7`: the 27 Oct images were made
+with that swap, and every `posts-7` day prompt called the room "bright".
+"Dark" alone is not swapped: it describes things
 that should stay dark, a hot stone and the small dark bottle the rules
 forbid. The "low" and "dim" rows matter for posts already saved on the
 phones: their `posts-5` image prompts say the light is low ("Low, soft and
@@ -216,11 +226,12 @@ light:
 - asks for the day or the night light above, and the new mood, in place of
   the dim light and the introspective mood;
 - ends its light rule with "whatever the scene says, it is late afternoon:
-  soft daylight from outside, with lamps lit" by day, or "whatever the scene
+  the lamps lit inside are the main light, the garden outside in soft
+  shade" by day, or "whatever the scene
   says, it is evening: lamps and candles lit, the garden lit by lanterns
   under a deep blue sky" by night;
 - gains the place's room, view and flower from the table above, by
-  `locals`, the view in soft daylight or lit by lanterns;
+  `locals`, the view in soft shade or lit by lanterns;
 - says any object from the guest's day is small, far in the background and
   out of focus;
 - keeps everything else: the camera, the centred subject, no text, the
@@ -232,7 +243,7 @@ on the light, the room, the plants and the flower, as it already wins on the
 light today. A hint can still ask for anything else (more green, a balcony,
 towels on the legs).
 
-`IMAGE_PROMPT_VERSION` becomes `images-8`.
+`IMAGE_PROMPT_VERSION` becomes `images-9`.
 
 ### Tests and evaluation
 
@@ -241,23 +252,26 @@ towels on the legs).
   before, fewer than six with the extra one a day); the set-up schema with
   and without `light`; the set-up line ending with the light; each row of
   the swap table for day and for night, and the words it leaves alone
-  (bright, dark stones, the small dark bottle, a low table, a sun lounger,
-  a sun deck); the plan's user text without `visualStyle.light`, and the
+  (dark stones, the small dark bottle, a low table, a sun lounger, a sun
+  deck); the plan's user text without `visualStyle.light`, and the
   profile hash unchanged; the twenty-four
   recorded `posts-5` image prompts of Sen and Svarga (plan and offer plan),
   read as day, coming out with no low, dim or dusk light; the style line for
-  each light (day: late afternoon, soft daylight, never sunbeams; night:
+  each light (day: late afternoon, lamps the main light, the garden in soft
+  shade, never bright, never sunbeams or a sunlit garden; night:
   evening, lamps, candles, lanterns, never dark) and for each `locals`
   (room, plants, flower), with no lotus for Balinese and no frangipani for
   Vietnamese; a request without a set-up getting a day and the `Southeast
   Asian` row; the post plan's prompt holding the day and night lights, the
-  open room, "palette and textures" and the `moment`-only sign; both
-  versions bumped.
+  open room, "palette and textures", never calling a room bright, and the
+  `moment`-only sign; both versions bumped.
 - `pnpm eval:posts sen svarga --record` re-records both fixtures with
-  `posts-7` (1 Gemini request each), and again with `--offer` for
+  `posts-8` (1 Gemini request each), and again with `--offer` for
   `posts-offer.json`.
-- `pnpm eval:images sen svarga` makes their twelve images with `images-8`
-  (about $0.60 of the prepaid balance; the developer is asked first).
+- `pnpm eval:images sen svarga` makes their twelve images with `images-9`
+  (about $0.60 of the prepaid balance; the developer is asked first). When
+  Google is slow, the images may be made one at a time with a longer
+  cut-off, as on 28 Oct.
 - The maintainer looks at both spas' images side by side, next to Svarga's
   27 Oct images. For each image: is a day image as bright as those, never
   brighter, with no sunbeams or blown-out window; is a night image warm and
@@ -294,8 +308,8 @@ Scenario: The same seed, the same lights
 Scenario: A day image
   Given a set-up with light "day"
   When the image prompt is built
-  Then the style line asks for late afternoon, lamps lit and soft daylight from the garden
-  And never sunbeams across the room or harsh sun
+  Then the style line asks for late afternoon, the lamps inside as the main light and the garden in soft shade
+  And never a bright room, sunbeams across the room, a sunlit garden or harsh sun
 
 Scenario: A night image
   Given a set-up with light "night"
@@ -334,11 +348,11 @@ Scenario: Svarga's room
   And it never names a lotus
 
 Scenario: A sign of the guest's day, only on a moment post
-  Given a batch planned with posts-7
+  Given a batch planned with posts-8
   Then the post plan's prompt allows one small object from the guest's day only in a moment post's image, far in the background and out of focus
 
 Scenario: Sen looks like Svarga
-  Given Sen's and Svarga's twelve images made with images-8
+  Given Sen's and Svarga's twelve images made with images-9
   When the maintainer looks at them next to Svarga's 27 Oct images
   Then each spa has three day images and three night images
   And the day images are as bright as Svarga's 27 Oct images, and the night images warm, not dark

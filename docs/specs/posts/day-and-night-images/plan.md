@@ -359,3 +359,16 @@ git commit -m "docs(posts): day and night images judged, roadmap 2.14 done"
 ```
 
 Push the branch over SSH and give the person a paste-ready PR title and body, base `develop` (no `gh`).
+
+### Task 7: A softer day (spec amended 2026-10-28)
+
+The maintainer found the `images-8` days too bright. Same files and tests as Tasks 2–4; `IMAGE_PROMPT_VERSION = 'images-9'`, `POSTS_PROMPT_VERSION = 'posts-8'`.
+
+- [ ] **Step 1: Failing tests.** Swaps: by day, "bright sunlight", "sunlight", "sun" and "daylight" → "soft light"; "A bright villa room" → "A warm villa room" and "a brightly lit room" → "a warmly lit room", by day and by night. Day style line holds (exact copy): "Late afternoon: the lamps lit inside are the main light, and the garden outside, seen through open doors or a wide window, is in soft shade, with no sunlight on it. Warm and calm, never bright: never sunbeams across the room, a sunlit garden, harsh sun or blown-out windows, never a grey sky, mist or rain." and "Whatever the scene says, it is late afternoon: the lamps lit inside are the main light, the garden outside in soft shade." and the view "in soft shade". The plan's day rule (exact): "Day: late afternoon, the lamps lit inside the main light, the garden outside, through open doors or a wide window, in soft shade with no sunlight on it; warm and calm, never sunbeams across the room, a sunlit garden or harsh sun." followed, after the weather sentence, by "Never call a room or its light bright." Versions bumped.
+- [ ] **Step 2: Run them to see them fail.** `pnpm exec vitest run tests/unit/posts-image.test.ts tests/unit/posts-image-run.test.ts tests/unit/posts-prompt.test.ts tests/unit/posts-run.test.ts`
+- [ ] **Step 3: Implement** the rows (the "bright" rows after "bright sun…"), the day copy and the plan rule.
+- [ ] **Step 4: Run them to see them pass, then** `pnpm exec biome ci && pnpm typecheck && pnpm exec vitest run`.
+- [ ] **Step 5: Commit** `feat(posts): a softer day, lamps the main light and the garden in shade`.
+- [ ] **Step 6: Re-record** Sen's plan and offer plan and Svarga's plan with `posts-8` (3 requests; Svarga's offer plan stays `posts-6`, as before), replay, commit.
+- [ ] **Step 7: Images.** Ask, then make the twelve with `images-9` (one at a time if Google is slow); sheet next to the 27 Oct row and the `images-8` row; the maintainer's verdict; then Task 6's Step 4.
+

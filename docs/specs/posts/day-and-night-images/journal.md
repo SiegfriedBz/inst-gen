@@ -1,4 +1,4 @@
-# Golden-hour images: journal
+# Day and night images: journal
 
 ## Calls made along the way
 
@@ -102,6 +102,46 @@
   villa room"), which the spec keeps unswapped; to watch in the images.
   Signs of the guest's day: one surfboard, on a Sen `offer` post, where none
   should be. Four night prompts don't name plants; the style line adds them.
+- 2026-10-28: `pnpm eval:images sen svarga` with `images-8` (the maintainer's
+  go-ahead): 11 of 12 `image_timeout` at 60 s, as on the first `images-7`
+  run, though Node reached Google in 1 s just before. The one that came
+  back, Sen's night moment post, took 36 s and is what the spec asks: warm
+  lamps and candles, a deep blue sky, a lantern-lit garden of banana leaves
+  and palms, rattan, a lotus in a bowl (mean brightness 90). Single images,
+  or two at once, came back in 34–41 s; six at once mostly don't. On 27 Oct
+  six at once took 24–35 s. Google's side today, most likely; the app also
+  makes six at once with a 60 s cut-off.
+- 2026-10-28: with the maintainer's go-ahead, the other 11 made one at a
+  time with a 150 s cut-off: 10 came back in 23 to 147 s (Svarga's first
+  took 93 s, Sen's second 147 s) and Sen's first, a day, timed out at 150 s.
+  Google was slow for single images too that evening, so the six-at-once
+  timeouts are mostly Google's; the longer style line adds about 6 s
+  (41 s against 34 s on one post), which a control run of `images-6` six at
+  once, not made, would settle.
+- 2026-10-28: mean brightness of the story images, 0 to 255. Svarga 27 Oct
+  (the reference): 58, 82, 67, 66, 60, 65. Svarga `images-8`: day 112, 98,
+  106; night 85, 106, 96. Sen `images-8`: day (missing), 131, 116; night
+  90, 89, 102. Every room shown opens onto green plants of the place:
+  thatched roofs, carved wood and frangipani at Svarga; rattan, palms,
+  banana leaves and a lotus bowl at Sen. Nights show a deep blue sky and
+  lanterns. A surfboard shows on Sen's second (day, offer) image, on the
+  balcony.
+- 2026-10-28: the whole-branch review found that both fixture profiles have
+  `visualStyle: null` (`visualStyleOf` returns null with no photos, and the
+  fixtures have none), so Svarga's "soft morning light" never reached the
+  eval's post plans, on 27 Oct or since. The Goal's explanation holds for a
+  live profile read with photos, not for the eval images: those were
+  brighter at Svarga because of its villas, Bali and its place symbols
+  ("tropical garden", "balinese bamboo pavilion"). The review also notes
+  that the 27 Oct reference images were made while `cleanLight` still
+  swapped "bright" to "warm", and every `posts-7` day prompt now says
+  "bright".
+- 2026-10-28: the maintainer's verdict on the `images-8` sheet: the day
+  images are too bright next to Svarga's 27 Oct row. The spec was amended
+  and approved again: by day the lamps are the main light and the garden is
+  in soft shade, sun and daylight words become "soft light", "bright"
+  becomes "warm" again (day and night), and the post plan never calls a
+  room bright (`images-9`, `posts-8`). Nights unchanged.
 
 ## RED
 
