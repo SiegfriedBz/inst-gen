@@ -46,6 +46,20 @@
   anywhere in an offer post"). The replay test now also refuses a price in
   an offer post's caption: the two `posts-9` recordings fail it, and are
   kept out of the branch.
+- 2026-10-29: the whole-branch review (a fresh reviewer, up to `2878e24`):
+  no Critical issue, one Important one, fixed: on a spa, when the model's
+  line in other words was followed by its own flower, code added 🌸 before
+  it ("… November. 🌸 🌺 Long flight?"). The line now takes the flower that
+  already leads the rest. Minors left for later: a paragraph break after a
+  replaced line becomes a space; a rewrite of a post without a set-up may
+  take another offered treatment's line from the answer's caption; a flower
+  written with U+FE0F isn't taken as a flower; a line with no space after
+  its full stop drops the next sentence too; a rewrite's prompt promises a
+  line it can't give when no treatment is found; the story counts include
+  records on a story text code then replaces.
+- 2026-10-29: one whole-suite run timed out on the brand-read replay of
+  `karsa-spa` (5 s, under load); alone it passes in 8 s, and the next
+  whole-suite run passed: not this change.
 
 ## RED
 

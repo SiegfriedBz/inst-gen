@@ -82,6 +82,21 @@ describe('putOfferLineFirst', () => {
     });
   });
 
+  it("keeps one flower after the line: the caption's own, never two in a row", () => {
+    const other =
+      '10% off our 90-minute thai massage, until Sunday 1 November. 🌺 Long flight? Feel light.';
+    const fixed = putOfferLineFirst(other, LINE, offer, true);
+    expect(fixed).toEqual({ caption: `${LINE} 🌺 Long flight? Feel light.`, fix: 'put first' });
+    expect(offerStory(LINE, fixed.caption, undefined, true).storyText).toBe(`${LINE} 🌺`);
+    expect(putOfferLineFirst(`🌸 ${LINE} 🌸 Feel light.`, LINE, offer, true).caption).toBe(
+      `${LINE} 🌸 Feel light.`,
+    );
+    expect(putOfferLineFirst('🌸 Long flight? Feel light.', LINE, offer, true)).toEqual({
+      caption: `${LINE} 🌸 Long flight? Feel light.`,
+      fix: 'added',
+    });
+  });
+
   it('leaves the line alone when the caption was only the offer', () => {
     expect(putOfferLineFirst('10% off, until 1 Nov!', LINE, offer, false)).toEqual({
       caption: LINE,

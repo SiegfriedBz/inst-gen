@@ -36,6 +36,17 @@ export function statesOffer(sentence: string, offer: Offer): boolean {
   return /\bfree\b/i.test(sentence) && sentence.toLowerCase().includes(offer.gift.toLowerCase());
 }
 
+function isFlower(text: string): boolean {
+  return (FLOWERS as readonly string[]).includes(text);
+}
+
+// The flower that opens the text, if any.
+function leadingFlower(text: string): string | null {
+  const next = text.trimStart();
+  const first = emojisIn(next)[0];
+  return first && isFlower(first) && next.startsWith(first) ? first : null;
+}
+
 export function putOfferLineFirst(
   caption: string,
   line: string,
@@ -46,24 +57,20 @@ export function putOfferLineFirst(
   if (text.startsWith(line)) return { caption: text, fix: null };
   const all = sentences(text);
   const kept = all.filter((sentence) => !statesOffer(sentence, offer));
-  const rest = kept.join('').trim();
-  const head = spa ? `${line} ${FLOWER}` : line;
+  let rest = kept.join('').trim();
+  // A spa's line takes the flower that already leads the rest: one, not two.
+  const lead = spa ? leadingFlower(rest) : null;
+  if (lead) rest = rest.slice(lead.length).trim();
+  const head = spa ? `${line} ${lead ?? FLOWER}` : line;
   return {
     caption: rest ? `${head} ${rest}` : head,
     fix: kept.length < all.length ? 'put first' : 'added',
   };
 }
 
-function isFlower(text: string): boolean {
-  return (FLOWERS as readonly string[]).includes(text);
-}
-
 // The flower right after the line in the caption, if any.
 function flowerAfter(line: string, caption: string): string | null {
-  if (!caption.startsWith(line)) return null;
-  const next = caption.slice(line.length).trimStart();
-  const first = emojisIn(next)[0];
-  return first && isFlower(first) && next.startsWith(first) ? first : null;
+  return caption.startsWith(line) ? leadingFlower(caption.slice(line.length)) : null;
 }
 
 export function offerStory(
