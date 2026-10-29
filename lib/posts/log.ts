@@ -18,6 +18,9 @@ export type PostsLog = {
   // Story text sentences removed for a call to action (amended 2026-10-27).
   storyCtas: number;
   emojiFixes: number;
+  // Code's fixes to the offer posts' lines and story texts
+  // (docs/specs/posts/offer-line-first).
+  offerFixes: number;
   // null when the step ended before the model answered.
   modelMs: number | null;
   totalMs: number;
@@ -38,6 +41,7 @@ export function formatPostsLog(log: PostsLog): string {
     `story_cuts=${log.storyCuts}`,
     `story_ctas=${log.storyCtas}`,
     `emoji_fixes=${log.emojiFixes}`,
+    `offer_fixes=${log.offerFixes}`,
     `model_ms=${log.modelMs ?? '-'}`,
     `total_ms=${log.totalMs}`,
     `outcome=${log.outcome}`,

@@ -40,6 +40,13 @@ Task 2, code's checks (`tests/unit/posts-checks.test.ts`):
       Tests  4 failed | 51 passed (55)
 ```
 
+Task 3, the log count (`posts-log.test.ts`, `posts-run.test.ts`):
+
+```
+ Test Files  2 failed (2)
+      Tests  3 failed | 25 passed (28)
+```
+
 ## GREEN
 
 Task 1 (`posts-offer-line.test.ts`, `posts-story.test.ts`):
@@ -54,4 +61,11 @@ Task 2 (`posts-checks`, `posts-run`, `posts-edit`):
 ```
  Test Files  3 passed (3)
       Tests  106 passed (106)
+```
+
+Task 3:
+
+```
+ Test Files  2 passed (2)
+      Tests  28 passed (28)
 ```
