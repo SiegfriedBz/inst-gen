@@ -5,6 +5,7 @@ import { replayTextModel } from '@/lib/ai/replay';
 import { FIXTURES_DIR, fixtureOffer, fixtureProfile, loadFixture } from '@/lib/brand/fixtures';
 import type { PlanResult } from '@/lib/posts/batch';
 import { emojisIn, FLOWERS } from '@/lib/posts/emoji';
+import { offerLine, offerTreatment } from '@/lib/posts/offer-line';
 import { streamPlan } from '@/lib/posts/run';
 import { seededRandom } from '@/lib/posts/setup';
 
@@ -87,9 +88,10 @@ describe('recorded offer plans', () => {
 });
 
 // Sen's and Svarga's plans (docs/specs/posts/story-text, "Tests and
-// evaluation"), re-recorded with posts-8 but for Svarga's offer plan, still
-// posts-6 (docs/specs/posts/day-and-night-images, journal): every post has a
-// story text that fits, and every text holds flowers and no other emoji.
+// evaluation"): the offer plans on posts-9 (docs/specs/posts/offer-line-first),
+// the plans without an offer on posts-8, whose prompt posts-9 left unchanged.
+// Every post has a story text that fits, and every text holds flowers and no
+// other emoji.
 describe('recorded story texts and flowers', () => {
   const flowers = (text: string) =>
     emojisIn(text).filter((e) => (FLOWERS as readonly string[]).includes(e)).length;
@@ -134,9 +136,16 @@ describe('recorded story texts and flowers', () => {
       expect(flowers(post.caption)).toBeGreaterThanOrEqual(1);
       expect(flowers(post.caption)).toBeLessThanOrEqual(3);
       expect(others(post.caption)).toEqual([]);
-      // An offer post's story text is its offer line: the caption's first sentence.
-      const offerLine = post.caption.match(/^[^\n]*?[.!?](?=\s|$)/)?.[0] ?? '';
-      if (post.offer) expect(story.startsWith(offerLine)).toBe(true);
+      // An offer post opens on its line, and its story text is that line and a
+      // flower (docs/specs/posts/offer-line-first).
+      if (post.offer && result.offer) {
+        const treatment = offerTreatment(result.offer, post.setup?.treatment, post.caption);
+        const line = offerLine(result.offer, treatment ?? '');
+        expect(post.caption.startsWith(line)).toBe(true);
+        expect(story.startsWith(line)).toBe(true);
+        expect(flowers(story.slice(line.length))).toBe(1);
+        expect(story.slice(line.length).trim()).toMatch(/^\p{Extended_Pictographic}$/u);
+      }
     }
   });
 });
