@@ -1,7 +1,8 @@
 ---
 title: "Offer line first"
 description: "An offer post's caption always opens on its offer line, which code writes from the offer and the post's treatment: the prompt says it in one place, and code puts the line first, and makes it the story text, whenever the model gets it wrong."
-status: draft
+status: approved
+approved: { by: siegfried.bozza@protonmail.com, at: 2026-10-29T08:56:11Z }
 date: "2026-10-29"
 ---
 
@@ -110,8 +111,10 @@ and in every rewrite, before the spa's emoji fixes and the flags:
    cleanup, and the offer line is never cut (developer's call). Cutting it
    would lose "until <last day>". With Sen's and Svarga's treatments the
    longest line, a free extra, is 116 characters with its flower, under
-   2.13's 120. A longer one, from another business's long names, stays whole
-   and goes over 120.
+   2.13's 120. A longer one, from another business's long names, leaves the
+   post without a story text, recorded as `post-n: offer line too long for
+   the story text`. (Amended 2026-10-29, before the plan: the batch refuses a
+   story text over 120, so the line can't go over.)
 
 Each change is recorded in the batch's `dropped` list, field `offer`, never
 shown to the owner:
@@ -144,7 +147,7 @@ owner's screens, strings and the owner guide all stay as they are.
   - a caption without the offer;
   - a non-spa caption (no flower added);
   - the story text replaced, kept when it is already right (with another
-    flower than the caption's too), and never cut;
+    flower than the caption's too), never cut, and none when the line is too long;
   - the `dropped` records and `offer_fixes=`;
   - a rewrite that loses its offer line;
   - the prompts with and without an offer (`posts-9`, the order stated
@@ -210,8 +213,8 @@ Scenario: Svarga's offer plan
   a wrong percentage, as today.
 - A treatment name that already holds a duration ("Balinese Massage 60
   min") reads oddly after "90-minute". Neither pilot spa has one.
-- An offer post's story text may run over 120 characters when its treatment
-  names are long (above); neither pilot spa's are.
+- An offer post gets no story text when its line runs over 120 characters
+  (above); neither pilot spa's treatment names are long enough for that.
 - Removing every sentence that names the last day may drop a sentence that
   said more than the offer. The owner reads each post before posting it.
 
