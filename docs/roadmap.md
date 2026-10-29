@@ -82,6 +82,7 @@ most sample replies as written, with $0 spent on everything but images
 | 2.11 | `posts/special-offer`: today's offer in a few taps (a percentage off, or a free treatment, on 90-minute sessions or longer, until a set day), carried by two of the six suggestions, with a badge | spec | done |
 | 2.12 | `posts/varied-images`: code sets up each image before the plan (the spa's own treatments, men and women half and half, two therapists for four hands), and local therapists with healthy, tanned skin and perfect hands | spec | done |
 | 2.13 | `posts/story-text`: a short version of each caption for its story; captions built on basic marketing, a hook first and a positive note to end; flower emojis for spas in captions and stories | spec | done |
+| 2.13b | `posts/offer-line-first`: an offer post always opens on its offer line, the hook, and its story text is that line; code writes it whenever the model misses | spec | in progress |
 | 2.14 | `posts/day-and-night-images`: Sen's images as warm and bright as Svarga's: three day and three night images per batch, the room a tourist pictures open onto the place's green plants, the place's flower, and a discreet sign of the guest's day on moment posts | spec | done |
 
 ## Later phases
