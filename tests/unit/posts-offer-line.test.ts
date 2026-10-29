@@ -1,6 +1,8 @@
 import { describe, expect, it } from 'vitest';
+import { PRICE_PATTERN } from '@/lib/posts/checks';
 import type { Offer } from '@/lib/posts/offer';
 import {
+  dropPrices,
   offerLine,
   offerStory,
   offerTreatment,
@@ -132,5 +134,29 @@ describe('offerStory', () => {
   it('gives no story text rather than one over 120', () => {
     const long = `Free Foot Reflexology with a 90-minute ${'Very '.repeat(12)}Long Massage, until Sunday 1 November.`;
     expect(offerStory(long, long, undefined, true)).toEqual({ fix: 'too long' });
+  });
+});
+
+// Amended 2026-10-29: never a price after the line.
+describe('dropPrices', () => {
+  it('drops each sentence with a price after the line, keeping its flower', () => {
+    const caption = `${LINE} 🌸 Let expert hands melt away your tension. Enjoy a 90-minute session for IDR 350k. Wake up light tomorrow. 🌺`;
+    expect(dropPrices(caption, LINE, PRICE_PATTERN)).toEqual({
+      caption: `${LINE} 🌸 Let expert hands melt away your tension. Wake up light tomorrow. 🌺`,
+      removed: ['Enjoy a 90-minute session for IDR 350k.'],
+    });
+    expect(
+      dropPrices(`${LINE} 🌸 Only VND 500k for 60 min. Feel light.`, LINE, PRICE_PATTERN).caption,
+    ).toBe(`${LINE} 🌸 Feel light.`);
+    expect(dropPrices(`${LINE} Feel light.`, LINE, PRICE_PATTERN)).toEqual({
+      caption: `${LINE} Feel light.`,
+      removed: [],
+    });
+  });
+
+  it('never takes the line itself for a price, and keeps paragraphs', () => {
+    expect(
+      dropPrices(`${LINE}\n\nFeel light. Just 250.000đ.\n\nWake up light.`, LINE, PRICE_PATTERN),
+    ).toEqual({ caption: `${LINE}\n\nFeel light.\n\nWake up light.`, removed: ['Just 250.000đ.'] });
   });
 });

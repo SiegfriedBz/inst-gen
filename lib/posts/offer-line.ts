@@ -87,3 +87,23 @@ export function offerStory(
   if (text.length > POSTS_LIMITS.storyChars) return { fix: 'too long' };
   return { storyText: text, fix: 'set' };
 }
+
+// After its line, a post that carries the offer never gives a price (amended
+// 2026-10-29): each sentence that holds one goes, the line's flower stays.
+export function dropPrices(
+  caption: string,
+  line: string,
+  price: RegExp,
+): { caption: string; removed: string[] } {
+  const rest = caption.slice(line.length);
+  const lead = leadingFlower(rest);
+  const body = lead ? rest.trimStart().slice(lead.length) : rest;
+  const removed: string[] = [];
+  const kept = sentences(body).filter((sentence) => {
+    if (!price.test(sentence)) return true;
+    removed.push(sentence.trim());
+    return false;
+  });
+  if (removed.length === 0) return { caption, removed };
+  return { caption: `${lead ? `${line} ${lead}` : line}${kept.join('')}`, removed };
+}

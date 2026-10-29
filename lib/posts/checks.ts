@@ -15,7 +15,7 @@ import {
 import { addFlower, isSpa, stripEmojis } from './emoji';
 import { ctaFor } from './input';
 import { mentionsDay, OFFER_LIMITS, type Offer, PERCENT } from './offer';
-import { offerLine, offerStory, offerTreatment, putOfferLineFirst } from './offer-line';
+import { dropPrices, offerLine, offerStory, offerTreatment, putOfferLineFirst } from './offer-line';
 import type { Setup } from './setup';
 import { cleanStory } from './story';
 
@@ -27,6 +27,9 @@ import { cleanStory } from './story';
 // its amount (250k → 250000, 350.000đ → 350000). Best effort, as the spec says.
 const PRICE =
   /(?:(?:\$|USD|VND|IDR|Rp\.?|đ)\s?\d[\d.,]*\s?[kK]?\b|\d[\d.,]*\s?(?:[kK]\b|VND\b|IDR\b|USD\b|đ|\$))/g;
+// The same, for one test at a time: a price in an offer post goes
+// (docs/specs/posts/offer-line-first, amended 2026-10-29).
+export const PRICE_PATTERN = new RegExp(PRICE.source);
 const NUMBER = /\d[\d.,]*\s?[kK]?\b/g;
 const DURATION = /(\d+(?:[.,]\d+)?)\s?(minutes?|mins?|hours?|hrs?|h)\b/gi;
 
@@ -200,10 +203,14 @@ function lineFirst(
   }
   const line = offerLine(offer, treatment);
   const fixed = putOfferLineFirst(caption, line, offer, spa);
+  const priced = dropPrices(fixed.caption, line, PRICE_PATTERN);
   return {
     line,
-    caption: fixed.caption,
-    dropped: fixed.fix ? [{ field: 'offer', reason: `${id}: ${LINE_FIXES[fixed.fix]}` }] : [],
+    caption: priced.caption,
+    dropped: [
+      ...(fixed.fix ? [{ field: 'offer', reason: `${id}: ${LINE_FIXES[fixed.fix]}` }] : []),
+      ...priced.removed.map((s) => ({ field: 'offer', reason: `${id}: price removed "${s}"` })),
+    ],
   };
 }
 

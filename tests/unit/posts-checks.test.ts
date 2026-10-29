@@ -473,6 +473,31 @@ describe('the special offer', () => {
     });
   });
 
+  it('checkPost removes a price after the line, only in a post that carries the offer', () => {
+    const caption = `${LINE} 🌸 Warm oil. Only IDR 450,000 tonight. Wake up light.`;
+    const { post: checked, dropped } = checkPost(
+      raw({ type: 'offer', caption, storyText: `${LINE} 🌸` }),
+      profile(),
+      'post-1',
+      { offer, carries: true },
+      thaiSetup,
+    );
+    expect(checked?.caption).toBe(`${LINE} 🌸 Warm oil. Wake up light.`);
+    expect(checked?.unchecked.map((f) => f.kind)).not.toContain('price');
+    expect(dropped).toContainEqual({
+      field: 'offer',
+      reason: 'post-1: price removed "Only IDR 450,000 tonight."',
+    });
+    const { post: other } = checkPost(
+      raw({ type: 'offer', caption: 'Warm oil. Only IDR 450,000 tonight. 🌸' }),
+      profile(),
+      'post-3',
+      { offer, carries: false },
+      thaiSetup,
+    );
+    expect(other?.caption).toContain('IDR 450,000');
+  });
+
   it('checkRewrite puts the line back first on an old post without a set-up', () => {
     const original = post({ id: 'a', offer: true, caption: `${LINE} Warm oil.` });
     const answer = {
