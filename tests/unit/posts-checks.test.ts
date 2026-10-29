@@ -375,6 +375,122 @@ describe('the special offer', () => {
     expect(posts[0].offer).toBe(true);
     expect(offerFlags(posts[0].unchecked)).toEqual(['15%']);
   });
+
+  // The offer line first (docs/specs/posts/offer-line-first).
+  const LINE = '10% off our 90-minute Thai Massage, until Tuesday 27 October.';
+  const thaiSetup: Setup = {
+    treatment: 'Thai Massage',
+    look: 'plain',
+    guests: 'man',
+    therapists: 1,
+    bodyPart: 'back',
+    scene: 'treatment',
+    locals: 'Balinese',
+  };
+  const offerRecords = (dropped: { field: string; reason: string }[]) =>
+    dropped.filter((d) => d.field === 'offer');
+
+  it('checkPost puts the offer line before a hook, and sets the story text', () => {
+    const { post: checked, dropped } = checkPost(
+      raw({
+        type: 'offer',
+        caption: `Long flight? 🌸 ${LINE} Feel light again.`,
+        storyText: 'Long flight? 🌸',
+      }),
+      profile(),
+      'post-1',
+      { offer, carries: true },
+      thaiSetup,
+    );
+    expect(checked?.caption).toBe(`${LINE} 🌸 Long flight? Feel light again.`);
+    expect(checked?.storyText).toBe(`${LINE} 🌸`);
+    expect(dropped).toContainEqual({ field: 'offer', reason: 'post-1: offer line put first' });
+    expect(dropped).toContainEqual({
+      field: 'offer',
+      reason: 'post-1: story text set to the offer line',
+    });
+  });
+
+  it('checkPost adds a missing offer line, and the last day is no longer flagged', () => {
+    const { post: checked, dropped } = checkPost(
+      raw({ type: 'offer' }),
+      profile(),
+      'post-2',
+      { offer, carries: true },
+      thaiSetup,
+    );
+    expect(checked?.caption.startsWith(LINE)).toBe(true);
+    expect(offerFlags(checked?.unchecked ?? [])).toEqual([]);
+    expect(dropped).toContainEqual({ field: 'offer', reason: 'post-2: offer line added' });
+  });
+
+  it('checkPost keeps a post that is already right, with no offer record', () => {
+    const caption = `${LINE} 🌺 Long flight? Warm oil and slow hands.`;
+    const { post: checked, dropped } = checkPost(
+      raw({ type: 'offer', caption, storyText: `${LINE} 🌺` }),
+      profile(),
+      'post-1',
+      { offer, carries: true },
+      thaiSetup,
+    );
+    expect(checked?.caption).toBe(caption);
+    expect(checked?.storyText).toBe(`${LINE} 🌺`);
+    expect(offerRecords(dropped)).toEqual([]);
+  });
+
+  it('a post that does not carry the offer is left as written', () => {
+    const { post: checked, dropped } = checkPost(
+      raw({ type: 'moment', caption: 'Long flight? 🌸 Warm oil and slow hands.' }),
+      profile(),
+      'post-3',
+      { offer, carries: false },
+      thaiSetup,
+    );
+    expect(checked?.caption).toBe('Long flight? 🌸 Warm oil and slow hands.');
+    expect(offerRecords(dropped)).toEqual([]);
+  });
+
+  it("uses the caption's treatment when the set-up's is not on offer, else records none", () => {
+    const { post: named } = checkPost(
+      raw({ type: 'offer', caption: 'Long flight? Our thai massage waits.' }),
+      profile(),
+      'post-3',
+      { offer, carries: true },
+      { ...thaiSetup, treatment: 'Hot Stone' },
+    );
+    expect(named?.caption.startsWith(LINE)).toBe(true);
+    const { post: left, dropped } = checkPost(
+      raw({ type: 'offer', caption: 'Long flight? Warm oil.' }),
+      profile(),
+      'post-3',
+      { offer, carries: true },
+    );
+    // Only the spa's flower fix touches it.
+    expect(left?.caption).toBe('Long flight? Warm oil. 🌸');
+    expect(dropped).toContainEqual({
+      field: 'offer',
+      reason: 'post-3: no treatment for the offer line',
+    });
+  });
+
+  it('checkRewrite puts the line back first on an old post without a set-up', () => {
+    const original = post({ id: 'a', offer: true, caption: `${LINE} Warm oil.` });
+    const answer = {
+      posts: [
+        {
+          id: 'a',
+          caption: 'Long flight? Our thai massage, 10% off until 27 Oct.',
+          hashtags: ['canggu'],
+          altText: 'x',
+          storyText: 'Long flight?',
+        },
+      ],
+    };
+    const { posts, dropped } = checkRewrite(answer, [original], profile(), offer);
+    expect(posts[0].caption.startsWith(LINE)).toBe(true);
+    expect(posts[0].storyText).toBe(`${LINE} 🌸`);
+    expect(dropped).toContainEqual({ field: 'offer', reason: 'a: offer line put first' });
+  });
 });
 
 describe('the image set-ups', () => {

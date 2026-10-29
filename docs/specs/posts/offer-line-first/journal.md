@@ -33,6 +33,13 @@ Task 1, the offer line (`tests/unit/posts-offer-line.test.ts`):
       Tests  no tests
 ```
 
+Task 2, code's checks (`tests/unit/posts-checks.test.ts`):
+
+```
+ Test Files  1 failed (1)
+      Tests  4 failed | 51 passed (55)
+```
+
 ## GREEN
 
 Task 1 (`posts-offer-line.test.ts`, `posts-story.test.ts`):
@@ -40,4 +47,11 @@ Task 1 (`posts-offer-line.test.ts`, `posts-story.test.ts`):
 ```
  Test Files  2 passed (2)
       Tests  32 passed (32)
+```
+
+Task 2 (`posts-checks`, `posts-run`, `posts-edit`):
+
+```
+ Test Files  3 passed (3)
+      Tests  106 passed (106)
 ```
