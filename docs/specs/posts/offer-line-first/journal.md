@@ -67,6 +67,19 @@
   "never a price" doesn't hold against the caption rules' concrete detail.
   The recording is kept out of the branch; the other 2 requests are held
   until the maintainer chooses the next step.
+- 2026-10-29: the maintainer chose that code removes a price from an offer
+  post, then approved the written amendment (the spec's "Code's checks",
+  step 3; plan Task 7). The prompt stays `posts-10`, so Svarga's `posts-10`
+  recording is kept: replayed through the price step, each offer caption
+  loses one sentence ("Enjoy a traditional 90-minute session featuring warm
+  golden oil for IDR 350k.", "Experience a 90-minute session in your room
+  for IDR 680k."), no flag is left, and the replay passes. Both captions
+  now run under 250 characters (the prompt's ask; code doesn't enforce it).
+- 2026-10-29: Sen recorded with `posts-10` (the 2nd of the 3 requests
+  allowed): both offer captions open on their line, no price, story texts
+  the line and its flower, nothing in `dropped`; the replay passes on the
+  first try. In all: 5 Flash-Lite requests today (3 on `posts-9`, 2 on
+  `posts-10`); 1 of the 3 allowed for `posts-10` is left unspent.
 
 ## RED
 
@@ -98,6 +111,12 @@ Task 4, the prompt (`posts-prompt.test.ts`, `posts-run.test.ts`):
       Tests  7 failed | 47 passed (54)
 ```
 
+Task 7, prices out of offer posts (`posts-offer-line`, `posts-checks`):
+
+```
+      Tests  3 failed | 67 passed (70)
+```
+
 ## GREEN
 
 Task 1 (`posts-offer-line.test.ts`, `posts-story.test.ts`):
@@ -127,4 +146,20 @@ spa and another business before and after: no difference.
 ```
  Test Files  2 passed (2)
       Tests  54 passed (54)
+```
+
+The review's fix, two flowers in a row (`posts-offer-line`, then the whole
+suite):
+
+```
+      Tests  1 failed | 11 passed (12)
+ Test Files  107 passed (107)
+      Tests  1576 passed (1576)
+```
+
+Task 7 (`posts-offer-line`, `posts-checks`, `posts-run`):
+
+```
+ Test Files  3 passed (3)
+      Tests  95 passed (95)
 ```

@@ -87,14 +87,14 @@ describe('recorded offer plans', () => {
   });
 });
 
-// Sen's and Svarga's plans (docs/specs/posts/story-text, "Tests and
-// evaluation"): the offer plans on posts-9 (docs/specs/posts/offer-line-first),
-// the plans without an offer on posts-8, whose prompt posts-9 left unchanged.
-// Every post has a story text that fits, and every text holds flowers and no
-// other emoji.
 // A currency next to a number, or a number with k: "IDR 250k", "VND 500k".
 const PRICE = /(?:IDR|VND|USD|Rp|đ|\$)\s?\d|\d[\d.,]*\s?(?:k|VND|IDR|USD|đ)\b/i;
 
+// Sen's and Svarga's plans (docs/specs/posts/story-text, "Tests and
+// evaluation"): the offer plans on posts-10 (docs/specs/posts/offer-line-first),
+// the plans without an offer on posts-8, whose prompt posts-10 left unchanged.
+// Every post has a story text that fits, and every text holds flowers and no
+// other emoji.
 describe('recorded story texts and flowers', () => {
   const flowers = (text: string) =>
     emojisIn(text).filter((e) => (FLOWERS as readonly string[]).includes(e)).length;
