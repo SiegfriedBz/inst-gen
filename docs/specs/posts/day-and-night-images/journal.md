@@ -147,6 +147,17 @@
   `posts-6`. Two of the nine day prompts still say "bright" (code swaps it
   to "warm"); most prompts no longer name plants (the style line does). A
   surfboard on Sen's moment post, where it is allowed.
+- 2026-10-28: `images-9`, the twelve made one at a time (19 to 50 s each,
+  all back; about $0.60). Mean brightness, day then night. Svarga: day 82,
+  113, 86 (average 94, against 105 for `images-8`); night 61, 82, 71
+  (average 71, against 96). Sen: day 105, 97, 91 (average 98, against
+  124); night 111, 80, 85 (average 92). The 27 Oct reference: 58 to 82.
+  Days are softer than `images-8`, with the lamps carrying the room and the
+  garden green but no longer sunlit; still brighter on average than the
+  reference, mostly from the wide windows.
+- 2026-10-29: the maintainer's verdict on the `images-9` sheets (Svarga 27 Oct,
+  `images-8` and `images-9`, one sheet per spa): "They pass". Roadmap 2.14 is
+  done.
 
 ## RED
 
