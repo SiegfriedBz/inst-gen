@@ -38,7 +38,7 @@ export function cutStory(text: string, max: number): string {
 
 // Sentences end at ".", "!" or "?" before a space or the end; what follows,
 // an emoji included, starts the next one.
-function sentences(text: string): string[] {
+export function sentences(text: string): string[] {
   const ends = [...text.matchAll(/[.!?](?=\s|$)/g)].map((m) => m.index + 1);
   const starts = [0, ...ends];
   return starts.map((start, i) => text.slice(start, ends[i])).filter((s) => s.trim());

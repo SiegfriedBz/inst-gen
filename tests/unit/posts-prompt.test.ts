@@ -57,7 +57,7 @@ describe('planPrompt', () => {
   });
 
   it('has a version', () => {
-    expect(POSTS_PROMPT_VERSION).toBe('posts-8');
+    expect(POSTS_PROMPT_VERSION).toBe('posts-10');
   });
 });
 
@@ -206,31 +206,68 @@ describe('the special offer', () => {
     for (const rule of [
       'Exactly 2 offer posts carry the special offer',
       'never mention a discount, a free treatment or a deadline',
-      '"90-minute"',
-      '"until"',
       'never a price',
-      "Each offer post's first line states the offer",
       'Posts 1 and 2 are the two offer posts.',
-      '"<percentage> off our 90-minute <treatment>, until <last day>."',
-      '"Free <free treatment> with a 90-minute <treatment>, until <last day>."',
     ]) {
       expect(prompt).toContain(rule);
     }
   });
 
-  it('ends the plan text with the offer', () => {
+  it('says the order once, by the hook: the offer line comes first', () => {
+    const prompt = planPrompt(true, true);
+    expect(prompt).toContain(
+      'on a post that carries the special offer, the hook is its offer line, word for word, with nothing before it, and a question or a promise may follow it',
+    );
+    expect(prompt).toContain(
+      `Each offer post's caption starts with its offer line, given under "### Special offer", word for word.`,
+    );
+    expect(prompt).not.toContain('<percentage>');
+    // posts-9 dropped 2.11's "as given" sentence, and 4 of 6 offer posts then
+    // quoted a price (docs/specs/posts/offer-line-first, journal).
+    expect(prompt).toContain(
+      'one concrete detail that makes it real (the treatment, its price or duration when the profile gives them, the place; on a post that carries the special offer, never a price and never another session length)',
+    );
+    expect(prompt).toContain(
+      'Never a bigger discount, never other terms, never a price, never another session length, never "today only" or "this week", anywhere in an offer post.',
+    );
+    expect(planPrompt(false, true)).toContain(
+      '(the treatment, its price or duration when the profile gives them, the place);',
+    );
+    expect(prompt).not.toContain('first line states the offer');
+    expect(planPrompt(false, true)).not.toContain('offer line');
+  });
+
+  it('ends the plan text with the offer and its two lines, from set-ups 1 and 2', () => {
     const setups = dealSetups(svargaProfile(), offer, seededRandom('t'));
     const text = planUserText(postsModelInput(svargaProfile()), [], offer, setups);
     expect(text).toContain('### Image set-ups');
     expect(
       text.endsWith(
-        '### Special offer\n- 10% off\n- On: Balinese massage\n- Sessions: 90 minutes or longer\n- Until: Tuesday 27 October',
+        "### Special offer\n- 10% off\n- On: Balinese massage\n- Sessions: 90 minutes or longer\n- Until: Tuesday 27 October\n- Post 1's offer line: 10% off our 90-minute Balinese massage, until Tuesday 27 October.\n- Post 2's offer line: 10% off our 90-minute Balinese massage, until Tuesday 27 October.",
       ),
     ).toBe(true);
     expect(planUserText(postsModelInput(svargaProfile()), [], free)).toContain(
       '- Free: Foot Reflexology, with a paid session',
     );
     expect(planUserText(postsModelInput(svargaProfile()), [])).not.toContain('Special offer');
+  });
+
+  it("gives a rewrite each carrying post's line, by id", () => {
+    const text = rewriteUserText(
+      postsModelInput(svargaProfile()),
+      [
+        post({ id: 'post-1', offer: true, caption: 'Our Balinese massage.' }),
+        post({ id: 'post-3' }),
+      ],
+      offer,
+    );
+    expect(text).toContain(
+      "- post-1's offer line: 10% off our 90-minute Balinese massage, until Tuesday 27 October.",
+    );
+    expect(text).not.toContain("post-3's offer line");
+    expect(rewritePrompt(true, true)).toContain(
+      'A post marked offer: true keeps the offer: its caption starts with its offer line, given under "### Special offer", word for word, and its story text is that line, followed by one flower; the other posts never mention it.',
+    );
   });
 
   it('keeps the offer in the posts that carry it on a rewrite', () => {
@@ -281,10 +318,10 @@ describe('the story text and the captions that sell', () => {
 
   it("makes an offer post's story text its offer line", () => {
     expect(planPrompt(true, true)).toContain(
-      "Each offer post's story text is its first line, word for word, followed by one flower.",
+      "Each offer post's story text is its offer line, word for word, followed by one flower.",
     );
     expect(planPrompt(true, false)).toContain(
-      "Each offer post's story text is its first line, word for word.",
+      "Each offer post's story text is its offer line, word for word.",
     );
     expect(planPrompt(true, true)).toContain(
       'The other four posts never mention a discount, a free treatment or a deadline, in their captions or story texts.',
@@ -296,8 +333,8 @@ describe('the story text and the captions that sell', () => {
       'You rewrite the captions, story texts, hashtags and alt text',
     );
     expect(rewritePrompt(false, true)).toContain('flowers only');
-    expect(rewritePrompt(true, true)).toContain(
-      "in its caption's first line and as its story text",
+    expect(rewritePrompt(true, false)).toContain(
+      'and its story text is that line; the other posts',
     );
   });
 });
