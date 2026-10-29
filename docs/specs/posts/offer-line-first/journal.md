@@ -163,3 +163,10 @@ Task 7 (`posts-offer-line`, `posts-checks`, `posts-run`):
  Test Files  3 passed (3)
       Tests  95 passed (95)
 ```
+
+`pnpm check` at the end of the branch:
+
+```
+ Test Files  107 passed (107)
+      Tests  1579 passed (1579)
+```
