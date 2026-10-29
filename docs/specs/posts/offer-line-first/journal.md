@@ -23,6 +23,29 @@
   text then, recorded. The maintainer approved the amendment.
 - 2026-10-29: the branch starts from `claude/svarga-sen-light-levels-fa82e3`
   (roadmap 2.14), not yet merged into `develop`.
+- 2026-10-29: `pnpm check` stops at the repo check in a fresh worktree:
+  `AGENTS.md` cites `.superpowers/guide/`, which only `pnpm guide:pdf`
+  makes. An empty, git-ignored `.superpowers/guide/` lets it run: 107 test
+  files, 1575 tests passed.
+- 2026-10-29: `posts-9` recorded with the maintainer's go-ahead, 3
+  Flash-Lite requests, the `.env.local` copied from the 2.14 worktree.
+  Svarga, recorded: both offer captions open on their line, word for word,
+  with their flower; story texts the line and its flower; no `offer` fix by
+  code, nothing in `dropped`; the replay passes on the first try. Svarga
+  once more, not recorded: the same, no `offer` fix (two in a row). Sen,
+  recorded: the same, no `offer` fix; the replay passes.
+- 2026-10-29: but 4 of those 6 offer captions quote a price ("for IDR
+  250k", "VND 500k for 60 min" under a 90-minute offer), against none of
+  the 20 offer captions recorded from `posts-3` to `posts-8`. `posts-9`
+  dropped 2.11's sentence "Each states the offer as given: …", which
+  framed "never a price"; the caption rules' "one concrete detail (… its
+  price or duration when the profile gives them …)" then won. 2.11 and this
+  spec forbid a price in an offer post, so the fix stays inside the spec:
+  `posts-10` says it next to the concrete detail, only with an offer, and
+  in the offer rules ("never a price, never another session length, …
+  anywhere in an offer post"). The replay test now also refuses a price in
+  an offer post's caption: the two `posts-9` recordings fail it, and are
+  kept out of the branch.
 
 ## RED
 

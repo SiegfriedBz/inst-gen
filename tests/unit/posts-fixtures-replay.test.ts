@@ -92,6 +92,9 @@ describe('recorded offer plans', () => {
 // the plans without an offer on posts-8, whose prompt posts-9 left unchanged.
 // Every post has a story text that fits, and every text holds flowers and no
 // other emoji.
+// A currency next to a number, or a number with k: "IDR 250k", "VND 500k".
+const PRICE = /(?:IDR|VND|USD|Rp|đ|\$)\s?\d|\d[\d.,]*\s?(?:k|VND|IDR|USD|đ)\b/i;
+
 describe('recorded story texts and flowers', () => {
   const flowers = (text: string) =>
     emojisIn(text).filter((e) => (FLOWERS as readonly string[]).includes(e)).length;
@@ -145,6 +148,8 @@ describe('recorded story texts and flowers', () => {
         expect(story.startsWith(line)).toBe(true);
         expect(flowers(story.slice(line.length))).toBe(1);
         expect(story.slice(line.length).trim()).toMatch(/^\p{Extended_Pictographic}$/u);
+        // Never a price next to the offer (docs/specs/posts/special-offer).
+        expect(post.caption).not.toMatch(PRICE);
       }
     }
   });

@@ -11,7 +11,7 @@ import { type Setup, setupLine } from './setup';
 // day from docs/specs/posts/day-and-night-images; the offer line first from
 // docs/specs/posts/offer-line-first. Bump the version with every change, so
 // eval verdicts trace back to it.
-export const POSTS_PROMPT_VERSION = 'posts-9';
+export const POSTS_PROMPT_VERSION = 'posts-10';
 
 // Code decides the emoji rule: flowers only for a spa
 // (docs/specs/posts/story-text, "Emojis").
@@ -26,7 +26,7 @@ function emojiRule(spa: boolean): string {
 // With an offer, the offer line is the hook (docs/specs/posts/offer-line-first).
 const captionRules = (spa: boolean, withOffer = false) => `Captions:
 - English, in the business's tone words, written to tourists and expats nearby.
-- Each caption sells, in this order: a hook, its first line of at most 125 characters, that works on its own and stops a tourist scrolling (a question or a promise they feel, such as "Long flight?"), since it is all Instagram shows before "more"${withOffer ? '; on a post that carries the special offer, the hook is its offer line, word for word, with nothing before it, and a question or a promise may follow it' : ''}; what the guest will feel, rather than what the business does; one concrete detail that makes it real (the treatment, its price or duration when the profile gives them, the place); and a last sentence on a positive note, a good feeling or a warm promise (such as "Wake up light tomorrow.").
+- Each caption sells, in this order: a hook, its first line of at most 125 characters, that works on its own and stops a tourist scrolling (a question or a promise they feel, such as "Long flight?"), since it is all Instagram shows before "more"${withOffer ? '; on a post that carries the special offer, the hook is its offer line, word for word, with nothing before it, and a question or a promise may follow it' : ''}; what the guest will feel, rather than what the business does; one concrete detail that makes it real (the treatment, its price or duration when the profile gives them, the place${withOffer ? '; on a post that carries the special offer, never a price and never another session length' : ''}); and a last sentence on a positive note, a good feeling or a warm promise (such as "Wake up light tomorrow.").
 - 250 to 700 characters in all. Short paragraphs, no hashtags in the text.
 - ${emojiRule(spa)}
 - Facts only from the profile: a price, a duration, a number of years, a place name or a claim appears only if the profile holds it, written as the profile writes it. Feelings, senses and place symbols are yours to use freely.
@@ -42,7 +42,7 @@ Story text: a short version of its own caption, for the post's Instagram story, 
 // The special offer's rules, only when the owner set one
 // (docs/specs/posts/special-offer, "What the model gets").
 const offerRules = (spa: boolean) => `
-A special offer is given. Posts 1 and 2 are the two offer posts. Exactly 2 offer posts carry the special offer: each leads on one of the offer's treatments, two different ones when the offer has two or more. Each offer post's caption starts with its offer line, given under "### Special offer", word for word. Never a bigger discount, never other terms, never a price, never "today only" or "this week". Each offer post's story text is its offer line, word for word${spa ? ', followed by one flower' : ''}. The other four posts never mention a discount, a free treatment or a deadline, in their captions or story texts.`;
+A special offer is given. Posts 1 and 2 are the two offer posts. Exactly 2 offer posts carry the special offer: each leads on one of the offer's treatments, two different ones when the offer has two or more. Each offer post's caption starts with its offer line, given under "### Special offer", word for word. Never a bigger discount, never other terms, never a price, never another session length, never "today only" or "this week", anywhere in an offer post. Each offer post's story text is its offer line, word for word${spa ? ', followed by one flower' : ''}. The other four posts never mention a discount, a free treatment or a deadline, in their captions or story texts.`;
 
 const rewriteOfferRules = (spa: boolean) => `
 

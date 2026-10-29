@@ -57,7 +57,7 @@ describe('planPrompt', () => {
   });
 
   it('has a version', () => {
-    expect(POSTS_PROMPT_VERSION).toBe('posts-9');
+    expect(POSTS_PROMPT_VERSION).toBe('posts-10');
   });
 });
 
@@ -222,6 +222,17 @@ describe('the special offer', () => {
       `Each offer post's caption starts with its offer line, given under "### Special offer", word for word.`,
     );
     expect(prompt).not.toContain('<percentage>');
+    // posts-9 dropped 2.11's "as given" sentence, and 4 of 6 offer posts then
+    // quoted a price (docs/specs/posts/offer-line-first, journal).
+    expect(prompt).toContain(
+      'one concrete detail that makes it real (the treatment, its price or duration when the profile gives them, the place; on a post that carries the special offer, never a price and never another session length)',
+    );
+    expect(prompt).toContain(
+      'Never a bigger discount, never other terms, never a price, never another session length, never "today only" or "this week", anywhere in an offer post.',
+    );
+    expect(planPrompt(false, true)).toContain(
+      '(the treatment, its price or duration when the profile gives them, the place);',
+    );
     expect(prompt).not.toContain('first line states the offer');
     expect(planPrompt(false, true)).not.toContain('offer line');
   });
