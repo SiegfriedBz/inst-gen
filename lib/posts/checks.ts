@@ -15,6 +15,7 @@ import {
 import { addFlower, isSpa, stripEmojis } from './emoji';
 import { ctaFor } from './input';
 import { mentionsDay, OFFER_LIMITS, type Offer, PERCENT } from './offer';
+import { dropPrices, offerLine, offerStory, offerTreatment, putOfferLineFirst } from './offer-line';
 import type { Setup } from './setup';
 import { cleanStory } from './story';
 
@@ -26,6 +27,9 @@ import { cleanStory } from './story';
 // its amount (250k → 250000, 350.000đ → 350000). Best effort, as the spec says.
 const PRICE =
   /(?:(?:\$|USD|VND|IDR|Rp\.?|đ)\s?\d[\d.,]*\s?[kK]?\b|\d[\d.,]*\s?(?:[kK]\b|VND\b|IDR\b|USD\b|đ|\$))/g;
+// The same, for one test at a time: a price in an offer post goes
+// (docs/specs/posts/offer-line-first, amended 2026-10-29).
+export const PRICE_PATTERN = new RegExp(PRICE.source);
 const NUMBER = /\d[\d.,]*\s?[kK]?\b/g;
 const DURATION = /(\d+(?:[.,]\d+)?)\s?(minutes?|mins?|hours?|hrs?|h)\b/gi;
 
@@ -174,6 +178,42 @@ function spaCaption(caption: string, id: string): { caption: string; dropped: Dr
   return { caption: added.text, dropped };
 }
 
+const LINE_FIXES = { 'put first': 'offer line put first', added: 'offer line added' } as const;
+const STORY_FIXES = {
+  set: 'story text set to the offer line',
+  'too long': 'offer line too long for the story text',
+} as const;
+
+// A post that carries the offer opens on its line, written by code
+// (docs/specs/posts/offer-line-first): null when no treatment gives one.
+function lineFirst(
+  caption: string,
+  id: string,
+  { offer }: OfferContext,
+  spa: boolean,
+  setupTreatment?: string,
+): { line: string | null; caption: string; dropped: Dropped[] } {
+  const treatment = offerTreatment(offer, setupTreatment, caption);
+  if (!treatment) {
+    return {
+      line: null,
+      caption,
+      dropped: [{ field: 'offer', reason: `${id}: no treatment for the offer line` }],
+    };
+  }
+  const line = offerLine(offer, treatment);
+  const fixed = putOfferLineFirst(caption, line, offer, spa);
+  const priced = dropPrices(fixed.caption, line, PRICE_PATTERN);
+  return {
+    line,
+    caption: priced.caption,
+    dropped: [
+      ...(fixed.fix ? [{ field: 'offer', reason: `${id}: ${LINE_FIXES[fixed.fix]}` }] : []),
+      ...priced.removed.map((s) => ({ field: 'offer', reason: `${id}: price removed "${s}"` })),
+    ],
+  };
+}
+
 // The parts of a post the model writes again on a rewrite, and what code
 // changed in them.
 function checkedWords(
@@ -181,11 +221,23 @@ function checkedWords(
   profile: Profile,
   id: string,
   context?: OfferContext,
+  setupTreatment?: string,
 ): { words: Words; dropped: Dropped[] } {
   const spa = isSpa(profile.category);
-  const cut = cutCaption(raw.caption);
+  const offered = context?.carries
+    ? lineFirst(raw.caption, id, context, spa, setupTreatment)
+    : { line: null, caption: raw.caption, dropped: [] };
+  const cut = cutCaption(offered.caption);
   const { caption, dropped } = spa ? spaCaption(cut, id) : { caption: cut, dropped: [] };
   const story = cleanStory(raw.storyText, { id, spa });
+  let storyText = story.storyText;
+  const storyDropped = [...story.dropped];
+  if (offered.line) {
+    const fixed = offerStory(offered.line, caption, storyText, spa);
+    storyText = fixed.storyText;
+    if (fixed.fix)
+      storyDropped.push({ field: 'offer', reason: `${id}: ${STORY_FIXES[fixed.fix]}` });
+  }
   return {
     words: {
       caption,
@@ -193,14 +245,14 @@ function checkedWords(
       hashtags: cleanHashtags(raw.hashtags),
       altText: cutChars(raw.altText.replace(/^(an? )?image of /i, ''), POSTS_LIMITS.altTextChars),
       unchecked: findFlags(caption, profile, context),
-      ...(story.storyText
+      ...(storyText
         ? {
-            storyText: story.storyText,
-            storyUnchecked: findFlags(story.storyText, profile, context),
+            storyText,
+            storyUnchecked: findFlags(storyText, profile, context),
           }
         : {}),
     },
-    dropped: [...dropped, ...story.dropped],
+    dropped: [...offered.dropped, ...dropped, ...storyDropped],
   };
 }
 
@@ -224,7 +276,7 @@ export function checkPost(
   if (!raw.imagePrompt.trim()) {
     return { post: null, dropped: [{ field: 'posts', reason: 'empty image prompt' }] };
   }
-  const { words, dropped } = checkedWords(raw, profile, id, context);
+  const { words, dropped } = checkedWords(raw, profile, id, context, setup?.treatment);
   return {
     post: {
       id,
@@ -318,7 +370,7 @@ export function checkRewrite(
       return post;
     }
     const context = offer ? { offer, carries: post.offer === true } : undefined;
-    const checked = checkedWords(answer, profile, post.id, context);
+    const checked = checkedWords(answer, profile, post.id, context, post.setup?.treatment);
     dropped.push(...checked.dropped);
     // The old story text goes with the old caption, even when no new one came.
     const { storyText: _story, storyUnchecked: _flags, ...rest } = post;

@@ -82,6 +82,7 @@ async function* run<T>(
     storyCuts: 0,
     storyCtas: 0,
     emojiFixes: 0,
+    offerFixes: 0,
     modelMs: null,
     totalMs: 0,
     outcome: 'aborted',
@@ -143,6 +144,10 @@ async function* run<T>(
       (d) => d.field === 'story' && d.reason.includes(' story text removed "'),
     ).length;
     entry.emojiFixes = result.dropped.filter((d) => d.field === 'emoji').length;
+    // A post without a treatment is left as written: not a fix.
+    entry.offerFixes = result.dropped.filter(
+      (d) => d.field === 'offer' && !d.reason.endsWith('no treatment for the offer line'),
+    ).length;
     entry.outcome = 'final';
     yield { type: 'final', result };
   } catch (error) {

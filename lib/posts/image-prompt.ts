@@ -1,20 +1,72 @@
-import { castLine, type Setup } from './setup';
+import { castLine, type Light, type Locals, type Setup } from './setup';
 
 // What the image model reads: code's cast line from the post's set-up
-// (docs/specs/posts/varied-images), the post's image prompt, then a fixed
-// style line from decision 0004's bake-off, plus one rule so the 4:5 post
-// crop keeps the subject (docs/specs/posts/generate-images, "The model
-// step"). Bump the version with every change.
+// (docs/specs/posts/varied-images), the post's image prompt, then a style
+// line from decision 0004's bake-off, plus one rule so the 4:5 post crop
+// keeps the subject (docs/specs/posts/generate-images, "The model step"); the
+// style line follows the set-up's day or night and the place's own room
+// (docs/specs/posts/day-and-night-images). Bump the version with every change.
 
-export const IMAGE_PROMPT_VERSION = 'images-6';
+export const IMAGE_PROMPT_VERSION = 'images-9';
 
-// "local" when the cast line names the therapists' origin; a post saved
-// before set-ups has none, so the style line names it.
-export function imageStyle(who: string): string {
+// The room a tourist pictures for their stay, the green plants of the place
+// seen through its doors, and the place's flower, by the therapists' origin.
+export const PLACES: Record<Locals, { room: string; view: string; flower: string }> = {
+  Balinese: {
+    room: 'a Balinese villa room with carved and natural wood, rattan and a thatched alang-alang roof',
+    view: 'a tropical garden of frangipani trees, banana leaves, coconut palms and ferns',
+    flower: 'frangipani flowers on the tray',
+  },
+  Indonesian: {
+    room: 'an Indonesian villa room with natural wood and rattan',
+    view: 'a tropical garden of banana leaves, palms and ferns',
+    flower: 'frangipani flowers on the tray',
+  },
+  Vietnamese: {
+    room: 'a Vietnamese boutique hotel room or villa with warm wood, rattan and bamboo',
+    view: 'a garden of areca palms, bamboo, banana leaves and coconut palms',
+    flower: 'a pink lotus floating in a bowl of water',
+  },
+  'Southeast Asian': {
+    room: 'a tropical boutique hotel room or villa with warm wood and rattan',
+    view: 'tropical greenery: palms, banana leaves and ferns',
+    flower: 'orchids in a small vase',
+  },
+};
+
+// Day at the brightness of Svarga's 27 Oct images, never brighter: the lamps
+// are the main light and the garden is in shade; night a warm glow, never
+// dark (the maintainer, 2026-10-28).
+const LIGHTING: Record<Light, { light: string; whatever: string; view: string }> = {
+  day: {
+    light:
+      'Late afternoon: the lamps lit inside are the main light, and the garden outside, seen through open doors or a wide window, is in soft shade, with no sunlight on it. ' +
+      'Warm and calm, never bright: never sunbeams across the room, a sunlit garden, harsh sun or blown-out windows, never a grey sky, mist or rain. ',
+    whatever:
+      'Whatever the scene says, it is late afternoon: the lamps lit inside are the main light, the garden outside in soft shade. ',
+    view: 'in soft shade',
+  },
+  night: {
+    light:
+      'Evening: lamps and candles give the room a warm, golden glow, and the garden outside is lit by lanterns under a deep blue sky. ' +
+      'Warm and inviting, never dark, dim or gloomy, never a grey sky, mist or rain. ',
+    whatever:
+      'Whatever the scene says, it is evening: lamps and candles lit, the garden lit by lanterns under a deep blue sky. ',
+    view: 'lit by lanterns at night',
+  },
+};
+
+// With the set-up's locals, the cast line names the therapists' origin, so
+// the style line says "local"; a post saved before set-ups has none, so the
+// style line names them Southeast Asian and takes that row's place.
+export function imageStyle(locals?: Locals, light: Light = 'day'): string {
+  const who = locals ? 'local' : 'Southeast Asian';
+  const place = PLACES[locals ?? 'Southeast Asian'];
+  const lighting = LIGHTING[light];
   return (
     'Vertical photograph for an Instagram story, shot on a full-frame camera with a 50mm lens. ' +
-    'Low, soft, warm light: dim and intimate, gentle shadows, nothing bright, harsh or overexposed. ' +
-    'A quiet, relaxing mood that invites introspection, as if time has slowed down. ' +
+    lighting.light +
+    'A warm, happy holiday mood: calm and restful, a treat the guest has earned. ' +
     'Realistic skin and textures, natural anatomy. No face is visible or recognisable. ' +
     'The image contains no text, letters, labels, logos or watermarks; bottles and jars are plain. ' +
     'Keep the subject in the middle of the frame, with calm space above and below it. ' +
@@ -24,9 +76,13 @@ export function imageStyle(who: string): string {
     'A guest looks relaxed and alive, never lying still as if asleep. ' +
     'Beds and linens are neatly made; nothing is messy. ' +
     'The room is warm and homely, never clinical or hospital-like. ' +
-    'Curtains hang still; there is no wind. ' +
+    'Curtains are open and hang still; there is no wind. ' +
     'Massage oil is golden oil in clear glass, never a small dark bottle. ' +
-    'Whatever the scene says, the light is dusk, lamps, lanterns or candles. ' +
+    lighting.whatever +
+    `When the room shows, it is ${place.room}, open onto ${place.view}, ${lighting.view}; ` +
+    'only green plants that grow here, never plants from elsewhere. ' +
+    `When a tray, a table or the room shows, a touch of the place: ${place.flower}; no other kind of flower. ` +
+    "Any object from the guest's day is small, far in the background and out of focus. " +
     `Every therapist is a young ${who} woman with warm, golden-tan skin, as women from here have: ` +
     'smooth, healthy and glowing, yet real, with natural texture; never pale or white, never dark. ' +
     'Her hands and arms are perfectly formed and look healthy: five slender fingers on each hand, ' +
@@ -37,25 +93,54 @@ export function imageStyle(who: string): string {
   );
 }
 
-export const IMAGE_STYLE = imageStyle('local');
-
-// Decision 0004: never daylight, grey skies, mist, rain or damp. The post
-// plan's prompt says so too, but its model doesn't always listen (Sen's
-// "sunlit" room, journal), so code swaps those words before the image model
-// reads them. Whole words only; the first letter's case is kept.
-const LIGHT: [RegExp, string][] = [
-  [/\bbright (?:sunlight|sunshine|sun)\b/gi, 'warm lamplight'],
-  [/\bsunlit\b/gi, 'lamp-lit'],
-  [/\bbright\b/gi, 'warm'],
-  [/\bsunny\b/gi, 'warm'],
-  [/\b(?:sunlight|sunshine|daylight)\b/gi, 'lamplight'],
-  [/\bin the (?:morning|afternoon)\b/gi, 'at dusk'],
-  [/\b(?:morning|afternoon|midday|noon|daytime)\b/gi, 'dusk'],
-  [/\b(?:overcast |grey |gray )+sky\b/gi, 'dusk sky'],
-  [/\bovercast\b/gi, 'calm'],
-  [/\b(?:misty|foggy)\b/gi, 'quiet'],
-  [/\b(?:damp|wet)\b/gi, 'clean'],
-  [/\b(?:rainy|rain|mist|fog)\b/gi, ''],
+// Each image is a day or a night (docs/specs/posts/day-and-night-images), and
+// decision 0004 keeps out grey skies, mist, rain and damp. The post plan's
+// model doesn't always listen, posts saved with posts-5 say the light is low
+// ("Soft low lighting"), and the brand's own light can still slip in, so code
+// swaps words of the other light, and of dark or harsh light, before the image
+// model reads them: the day column for a day, the night column for a night,
+// null where a word is kept. Rows run top to bottom: "bright sunlight" is
+// swapped once, phrases go before their words, and the "low" row sees what the
+// sun rows wrote. Whole words only; the first letter's case is kept.
+const LIGHT: [RegExp, string | null, string | null][] = [
+  [/\bbright (?:sunlight|sunshine|sun)\b/gi, 'soft light', 'lamplight'],
+  [/\bbrightly lit\b/gi, 'warmly lit', 'warmly lit'],
+  [/\bbright\b/gi, 'warm', 'warm'],
+  [/\b(?:sunbeams?|sun rays)\b/gi, 'soft light', 'lamplight'],
+  [/\b(?:sunset|sunrise)\b/gi, 'late afternoon', 'evening'],
+  [/\b(?:sunlight|sunshine)\b/gi, 'soft light', 'lamplight'],
+  [
+    /\bsun\b(?! (?:loungers?|deck|hat|beds?|terrace|umbrella|shade|cream|screen)\b)/gi,
+    'soft light',
+    'lamplight',
+  ],
+  [/\bdaylight\b/gi, 'soft light', 'lamplight'],
+  [/\bsunlit\b/gi, 'softly lit', 'lamp-lit'],
+  [/\bsunny\b/gi, 'soft', 'warm'],
+  [
+    /\b(?:in the (?:morning|afternoon)|at golden[- ]hour)\b/gi,
+    'in the late afternoon',
+    'in the evening',
+  ],
+  [/\b(?:in the evening|at (?:dusk|night))\b/gi, 'in the late afternoon', null],
+  [/\bgolden[- ]hour\b/gi, 'late afternoon', 'evening'],
+  [/\b(?:morning|midday|noon|daytime)\b/gi, 'late afternoon', 'evening'],
+  [/\b(?:late )?afternoon\b/gi, null, 'evening'],
+  [/\b(?:dusk|evening|night)\b/gi, 'late afternoon', null],
+  [/\b(?:dimly|low)[- ]lit\b/gi, 'softly lit', 'warmly lit'],
+  [/\b(?:dim|darkened)\b/gi, 'soft', 'warm'],
+  [/\blow-light\b/gi, 'soft light', 'warm light'],
+  [
+    /\blow\b(?=(?:,?\s+(?:and\s+)?(?:soft|warm|golden))*,?\s+(?:light|lighting|daylight|lamp ?light|candlelight)\b)/gi,
+    'gentle',
+    'glowing',
+  ],
+  [/\ban? (?:overcast |grey |gray )+sky\b/gi, 'a soft blue sky', 'a deep blue sky'],
+  [/\b(?:overcast |grey |gray )+sky\b/gi, 'soft blue sky', 'deep blue sky'],
+  [/\bovercast\b/gi, 'calm', 'calm'],
+  [/\b(?:misty|foggy)\b/gi, 'quiet', 'quiet'],
+  [/\b(?:damp|wet)\b/gi, 'clean', 'clean'],
+  [/\b(?:rainy|rain|mist|fog)\b/gi, '', ''],
 ];
 
 function keepCase(found: string, replacement: string): string {
@@ -63,9 +148,11 @@ function keepCase(found: string, replacement: string): string {
   return replacement[0].toUpperCase() + replacement.slice(1);
 }
 
-export function cleanLight(text: string): string {
+export function cleanLight(text: string, light: Light = 'day'): string {
   let out = text;
-  for (const [pattern, replacement] of LIGHT) {
+  for (const [pattern, day, night] of LIGHT) {
+    const replacement = light === 'day' ? day : night;
+    if (replacement === null) continue;
     out = out.replace(pattern, (found) => keepCase(found, replacement));
   }
   return out.replace(/ {2,}/g, ' ').replace(/ ([,.;:])/g, '$1');
@@ -87,6 +174,8 @@ export function cleanHint(raw: string | undefined): string | undefined {
 export function imagePrompt(postPrompt: string, hint?: string, setup?: Setup): string {
   const cast = setup ? `${castLine(setup)} ` : '';
   const asks = hint ? ` The owner asks: ${hint}.` : '';
-  const style = imageStyle(setup ? 'local' : 'Southeast Asian');
-  return `${cast}${cleanLight(postPrompt.trim())}${asks} ${style}`;
+  // A set-up saved before lights were dealt, or none, is a day.
+  const light = setup?.light ?? 'day';
+  const style = imageStyle(setup?.locals, light);
+  return `${cast}${cleanLight(postPrompt.trim(), light)}${asks} ${style}`;
 }

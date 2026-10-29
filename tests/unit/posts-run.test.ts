@@ -74,7 +74,7 @@ describe('streamPlan', () => {
     expect(final).toMatchObject({
       type: 'final',
       result: {
-        promptVersion: 'posts-5',
+        promptVersion: 'posts-10',
         model: 'gemini-3.5-flash-lite',
         profileHash: profileHash(svargaProfile()),
       },
@@ -338,6 +338,20 @@ describe('the special offer', () => {
     ]);
     expect(final.result.posts[2].unchecked).toContainEqual({ kind: 'offer', text: '10%' });
     expect(final.result.offer).toEqual(offer);
+  });
+
+  test('counts offer_fixes, but not a post without a treatment', async () => {
+    const entries: PostsLog[] = [];
+    const model = replayTextModel(brand, { posts: threeOffers() });
+    await drain(
+      streamPlan(
+        { ...body(), offer },
+        deps(model, { log: (e) => entries.push(e) }),
+        new AbortController().signal,
+      ),
+    );
+    // Posts 1 and 2 lack the offer line and a story text: 2 added, 2 stories set.
+    expect(entries[0].offerFixes).toBe(4);
   });
 
   test('without an offer, no post carries one', async () => {
