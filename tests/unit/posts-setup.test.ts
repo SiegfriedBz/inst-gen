@@ -10,6 +10,7 @@ import {
   type Setup,
   seededRandom,
   setupLine,
+  setupSchema,
 } from '@/lib/posts/setup';
 import { senProfile, svargaProfile } from './helpers/brand';
 
@@ -280,6 +281,90 @@ describe('dealSetups', () => {
   });
 });
 
+// Day and night (docs/specs/posts/day-and-night-images): Sen's deal for seed
+// 't' as it was before lights were dealt.
+const SEN_DEAL_BEFORE = [
+  {
+    treatment: 'Vietnamese Traditional Massage',
+    look: 'plain',
+    guests: 'man',
+    therapists: 1,
+    bodyPart: 'shoulders and neck',
+    scene: 'guest',
+    locals: 'Vietnamese',
+  },
+  {
+    treatment: 'Foot Reflexology',
+    look: 'foot',
+    guests: 'man',
+    therapists: 1,
+    bodyPart: 'feet',
+    scene: 'treatment',
+    locals: 'Vietnamese',
+  },
+  {
+    treatment: 'Vietnamese Traditional Massage',
+    look: 'plain',
+    guests: 'man',
+    therapists: 1,
+    bodyPart: 'back',
+    scene: 'detail',
+    locals: 'Vietnamese',
+  },
+  {
+    treatment: 'Foot Reflexology',
+    look: 'foot',
+    guests: 'woman',
+    therapists: 1,
+    bodyPart: 'feet',
+    scene: 'place',
+    locals: 'Vietnamese',
+  },
+  {
+    treatment: 'Vietnamese Traditional Massage',
+    look: 'plain',
+    guests: 'woman',
+    therapists: 1,
+    bodyPart: 'arms and hands',
+    scene: 'detail',
+    locals: 'Vietnamese',
+  },
+  {
+    treatment: 'Foot Reflexology',
+    look: 'foot',
+    guests: 'woman',
+    therapists: 1,
+    bodyPart: 'feet',
+    scene: 'place',
+    locals: 'Vietnamese',
+  },
+];
+
+describe('day and night', () => {
+  it('three days and three nights', () => {
+    const lights = deal(senProfile()).map((s) => s.light);
+    expect(count(lights, 'day')).toBe(3);
+    expect(count(lights, 'night')).toBe(3);
+  });
+
+  it('the same seed, the same lights', () => {
+    expect(deal(senProfile(), undefined, 'x').map((s) => s.light)).toEqual(
+      deal(senProfile(), undefined, 'x').map((s) => s.light),
+    );
+  });
+
+  it('the lights come last: the rest of the deal is as before', () => {
+    expect(deal(senProfile()).map(({ light: _, ...rest }) => rest)).toEqual(SEN_DEAL_BEFORE);
+  });
+
+  it('the schema takes a light, none, and refuses another', () => {
+    const setup = SEN_DEAL_BEFORE[0];
+    expect(setupSchema.safeParse(setup).success).toBe(true);
+    expect(setupSchema.safeParse({ ...setup, light: 'night' }).success).toBe(true);
+    expect(setupSchema.safeParse({ ...setup, light: 'dusk' }).success).toBe(false);
+  });
+});
+
 describe('the set-up in words', () => {
   const fourHandsMan: Setup = {
     treatment: 'Four-Hands Massage',
@@ -293,8 +378,13 @@ describe('the set-up in words', () => {
 
   it('setupLine for four hands', () => {
     expect(setupLine(fourHandsMan)).toBe(
-      'Four-Hands Massage: one guest, a man, on a massage bed; two therapists working in step, one on each side; the back; scene guest, from above.',
+      'Four-Hands Massage: one guest, a man, on a massage bed; two therapists working in step, one on each side; the back; scene guest, from above; day.',
     );
+  });
+
+  it('setupLine ends with the light, day when missing', () => {
+    expect(setupLine({ ...fourHandsMan, light: 'night' })).toMatch(/; night\.$/);
+    expect(setupLine(fourHandsMan)).toMatch(/; day\.$/);
   });
 
   it('setupLine without a treatment', () => {
@@ -309,7 +399,7 @@ describe('the set-up in words', () => {
       ['place', 'the room with the treatment in it'],
       ['guest', 'from above'],
     ] as const) {
-      expect(setupLine({ ...fourHandsMan, scene })).toContain(`scene ${scene}, ${camera}.`);
+      expect(setupLine({ ...fourHandsMan, scene })).toContain(`scene ${scene}, ${camera};`);
     }
   });
 

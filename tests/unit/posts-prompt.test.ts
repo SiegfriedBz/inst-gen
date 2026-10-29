@@ -24,7 +24,8 @@ describe('planPrompt', () => {
       '80 words',
       'never from behind',
       'No text',
-      'dusk',
+      'late afternoon',
+      'lanterns',
       'No call to action',
     ]) {
       expect(prompt).toContain(rule);
@@ -41,7 +42,7 @@ describe('planPrompt', () => {
       'relaxed and alive',
       'neatly made',
       'never clinical or hospital-like',
-      'curtains hang still',
+      'curtains open and hanging still',
       'golden oil in a clear glass bottle',
       'never a small dark bottle',
     ]) {
@@ -56,7 +57,65 @@ describe('planPrompt', () => {
   });
 
   it('has a version', () => {
-    expect(POSTS_PROMPT_VERSION).toBe('posts-5');
+    expect(POSTS_PROMPT_VERSION).toBe('posts-8');
+  });
+});
+
+// docs/specs/posts/day-and-night-images
+describe('day, night and the place', () => {
+  it('the light follows the set-up', () => {
+    const prompt = planPrompt();
+    expect(prompt).toContain("Light follows the set-up's last word.");
+    expect(prompt).toContain(
+      'Day: late afternoon, the lamps lit inside the main light, the garden outside, through open doors or a wide window, in soft shade with no sunlight on it; warm and calm, never sunbeams across the room, a sunlit garden or harsh sun.',
+    );
+    expect(prompt).toContain(
+      'Never a grey sky, mist, rain or damp. Never call a room or its light bright.',
+    );
+    expect(prompt).toContain(
+      'Night: evening, lamps and candles giving the room a warm, golden glow, the garden outside lit by lanterns under a deep blue sky; warm and inviting, never dark or gloomy.',
+    );
+    expect(prompt).toContain('Never a grey sky, mist, rain or damp.');
+    expect(prompt).toContain('scene, camera and light');
+    expect(prompt).not.toMatch(/golden hour|\bdusk\b/i);
+  });
+
+  it('the visual style gives palette and textures, not light', () => {
+    expect(planPrompt()).toContain("Use the visual style's palette and textures");
+    const profile = svargaProfile();
+    const light = profile.visualStyle?.light as string;
+    const text = planUserText(postsModelInput(profile), []);
+    expect(light).toBeTruthy();
+    expect(text).not.toContain(light);
+    expect(text).toContain(profile.visualStyle?.palette as string);
+    expect(postsModelInput(profile).visualStyle?.light).toBe(light);
+  });
+
+  it('a profile with no visual style still plans', () => {
+    const input = { ...postsModelInput(svargaProfile()), visualStyle: null };
+    expect(planUserText(input, [])).toContain('"visualStyle": null');
+  });
+
+  it('the rewrite still reads the whole visual style', () => {
+    const profile = svargaProfile();
+    expect(rewriteUserText(postsModelInput(profile), [post()])).toContain(
+      profile.visualStyle?.light as string,
+    );
+  });
+
+  it('opens the room onto the place', () => {
+    expect(planPrompt()).toContain(
+      'The room opens onto the outside: open doors, a wide window or a balcony onto green plants that grow in that place, and the sea or a pool where the place has one.',
+    );
+  });
+
+  it("allows a sign of the guest's day only in a moment post", () => {
+    const prompt = planPrompt();
+    expect(prompt).toContain(
+      "Only in a moment post's image, one small, plain object from that moment may show",
+    );
+    expect(prompt).toContain('far in the background, half hidden and out of focus');
+    expect(prompt).toContain('Most images have none.');
   });
 });
 

@@ -86,9 +86,10 @@ describe('recorded offer plans', () => {
   });
 });
 
-// Sen's and Svarga's plans re-recorded with posts-5 (docs/specs/posts/story-text,
-// "Tests and evaluation"): every post has a story text that fits, and every
-// text holds flowers and no other emoji.
+// Sen's and Svarga's plans (docs/specs/posts/story-text, "Tests and
+// evaluation"), re-recorded with posts-8 but for Svarga's offer plan, still
+// posts-6 (docs/specs/posts/day-and-night-images, journal): every post has a
+// story text that fits, and every text holds flowers and no other emoji.
 describe('recorded story texts and flowers', () => {
   const flowers = (text: string) =>
     emojisIn(text).filter((e) => (FLOWERS as readonly string[]).includes(e)).length;
