@@ -3,13 +3,15 @@ import { POSTS_LIMITS, type Post, type RecentPost } from './batch';
 import { FLOWERS } from './emoji';
 import type { PostsModelInput } from './input';
 import { OFFER_LIMITS, type Offer } from './offer';
+import { offerLine, offerTreatment } from './offer-line';
 import { type Setup, setupLine } from './setup';
 
 // The post plan's prompts (docs/specs/posts/generate-copy, "What the model
 // writes"); the day or night light, the open room and the sign of the guest's
-// day from docs/specs/posts/day-and-night-images. Bump the version with every
-// change, so eval verdicts trace back to it.
-export const POSTS_PROMPT_VERSION = 'posts-8';
+// day from docs/specs/posts/day-and-night-images; the offer line first from
+// docs/specs/posts/offer-line-first. Bump the version with every change, so
+// eval verdicts trace back to it.
+export const POSTS_PROMPT_VERSION = 'posts-9';
 
 // Code decides the emoji rule: flowers only for a spa
 // (docs/specs/posts/story-text, "Emojis").
@@ -21,9 +23,10 @@ function emojiRule(spa: boolean): string {
 
 // Captions built on basic marketing, a hook first and a positive note to end,
 // and the story text (docs/specs/posts/story-text, "What the model writes").
-const captionRules = (spa: boolean) => `Captions:
+// With an offer, the offer line is the hook (docs/specs/posts/offer-line-first).
+const captionRules = (spa: boolean, withOffer = false) => `Captions:
 - English, in the business's tone words, written to tourists and expats nearby.
-- Each caption sells, in this order: a hook, its first line of at most 125 characters, that works on its own and stops a tourist scrolling (a question or a promise they feel, such as "Long flight?"), since it is all Instagram shows before "more"; what the guest will feel, rather than what the business does; one concrete detail that makes it real (the treatment, its price or duration when the profile gives them, the place); and a last sentence on a positive note, a good feeling or a warm promise (such as "Wake up light tomorrow.").
+- Each caption sells, in this order: a hook, its first line of at most 125 characters, that works on its own and stops a tourist scrolling (a question or a promise they feel, such as "Long flight?"), since it is all Instagram shows before "more"${withOffer ? '; on a post that carries the special offer, the hook is its offer line, word for word, with nothing before it, and a question or a promise may follow it' : ''}; what the guest will feel, rather than what the business does; one concrete detail that makes it real (the treatment, its price or duration when the profile gives them, the place); and a last sentence on a positive note, a good feeling or a warm promise (such as "Wake up light tomorrow.").
 - 250 to 700 characters in all. Short paragraphs, no hashtags in the text.
 - ${emojiRule(spa)}
 - Facts only from the profile: a price, a duration, a number of years, a place name or a claim appears only if the profile holds it, written as the profile writes it. Feelings, senses and place symbols are yours to use freely.
@@ -39,13 +42,14 @@ Story text: a short version of its own caption, for the post's Instagram story, 
 // The special offer's rules, only when the owner set one
 // (docs/specs/posts/special-offer, "What the model gets").
 const offerRules = (spa: boolean) => `
-A special offer is given. Posts 1 and 2 are the two offer posts. Exactly 2 offer posts carry the special offer: each leads on one of the offer's treatments, two different ones when the offer has two or more. Each states the offer as given: the same percentage, or the same free treatment; "${OFFER_LIMITS.minutes}-minute" with the treatment; "until" with the last day exactly as given. Never a bigger discount, never other terms, never a price, never "today only" or "this week". Each offer post's first line states the offer, in these words: "<percentage> off our ${OFFER_LIMITS.minutes}-minute <treatment>, until <last day>." or "Free <free treatment> with a ${OFFER_LIMITS.minutes}-minute <treatment>, until <last day>." Each offer post's story text is its first line, word for word${spa ? ', followed by one flower' : ''}. The other four posts never mention a discount, a free treatment or a deadline, in their captions or story texts.`;
+A special offer is given. Posts 1 and 2 are the two offer posts. Exactly 2 offer posts carry the special offer: each leads on one of the offer's treatments, two different ones when the offer has two or more. Each offer post's caption starts with its offer line, given under "### Special offer", word for word. Never a bigger discount, never other terms, never a price, never "today only" or "this week". Each offer post's story text is its offer line, word for word${spa ? ', followed by one flower' : ''}. The other four posts never mention a discount, a free treatment or a deadline, in their captions or story texts.`;
 
-const REWRITE_OFFER_RULES = `
+const rewriteOfferRules = (spa: boolean) => `
 
-A special offer is given. A post marked offer: true keeps the offer, stated as given, with "until" and the last day, in its caption's first line and as its story text; the other posts never mention it.`;
+A special offer is given. A post marked offer: true keeps the offer: its caption starts with its offer line, given under "### Special offer", word for word, and its story text is that line${spa ? ', followed by one flower' : ''}; the other posts never mention it.`;
 
-function offerText(offer: Offer): string {
+// Each post that carries the offer, by name, with its line in full.
+function offerText(offer: Offer, lines: [string, string][] = []): string {
   const what =
     offer.kind === 'discount'
       ? `- ${offer.percent}% off`
@@ -54,7 +58,14 @@ function offerText(offer: Offer): string {
 ${what}
 - On: ${offer.treatments.join(', ')}
 - Sessions: ${OFFER_LIMITS.minutes} minutes or longer
-- Until: ${offer.lastDay}`;
+- Until: ${offer.lastDay}${lines.map(([name, line]) => `\n- ${name}'s offer line: ${line}`).join('')}`;
+}
+
+// The line of a post, from its set-up's treatment or, for a post saved
+// without one, the treatment its caption names.
+function lineOf(offer: Offer, setupTreatment: string | undefined, caption = ''): string | null {
+  const treatment = offerTreatment(offer, setupTreatment, caption);
+  return treatment ? offerLine(offer, treatment) : null;
 }
 
 export function planPrompt(withOffer = false, spa = false): string {
@@ -73,7 +84,7 @@ At least 2 offer posts, on 2 different offerings when there are two. At most 2 p
 
 The topic: one line, at most 12 words, saying what the post is about.
 
-${captionRules(spa)}
+${captionRules(spa, withOffer)}
 
 The image prompt: English, at most 80 words, for an image model making a tall 9:16 photo.
 - The massage is in every image: a therapist's hands working on a guest, or oil or towels being used for a treatment. Only what the business offers: a tool or treatment appears only if the offerings hold it. Never a guest alone, never an empty room, never a drink or a prop on its own.
@@ -122,13 +133,19 @@ export function planUserText(
     const list = setups.map((s, i) => `${i + 1}. ${setupLine(s)}`).join('\n');
     text = `${text}\n\n### Image set-ups\n${list}`;
   }
-  return offer ? `${text}\n\n${offerText(offer)}` : text;
+  if (!offer) return text;
+  // Posts 1 and 2 use set-ups 1 and 2, whose treatments are the offer's.
+  const offerLines = setups.slice(0, 2).flatMap((s, i): [string, string][] => {
+    const line = lineOf(offer, s.treatment);
+    return line ? [[`Post ${i + 1}`, line]] : [];
+  });
+  return `${text}\n\n${offerText(offer, offerLines)}`;
 }
 
 export function rewritePrompt(withOffer = false, spa = false): string {
   return `The owner changed their business's brand profile. You rewrite the captions, story texts, hashtags and alt text of their Instagram posts so they fit the new profile. Keep each post's type, topic, scene and image prompt: they don't change. Answer every post, with its id.
 
-${captionRules(spa)}${withOffer ? REWRITE_OFFER_RULES : ''}`;
+${captionRules(spa, withOffer)}${withOffer ? rewriteOfferRules(spa) : ''}`;
 }
 
 export function rewriteUserText(input: PostsModelInput, posts: Post[], offer?: Offer): string {
@@ -142,5 +159,10 @@ export function rewriteUserText(input: PostsModelInput, posts: Post[], offer?: O
     ...(offer && carries ? { offer: true } : {}),
   }));
   const text = `${profileText(input)}\n\n### Posts\n${JSON.stringify(kept, null, 2)}`;
-  return offer ? `${text}\n\n${offerText(offer)}` : text;
+  if (!offer) return text;
+  const offerLines = posts.flatMap((p): [string, string][] => {
+    const line = p.offer ? lineOf(offer, p.setup?.treatment, p.caption) : null;
+    return line ? [[p.id, line]] : [];
+  });
+  return `${text}\n\n${offerText(offer, offerLines)}`;
 }

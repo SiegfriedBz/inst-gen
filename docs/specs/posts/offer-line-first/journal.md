@@ -47,6 +47,13 @@ Task 3, the log count (`posts-log.test.ts`, `posts-run.test.ts`):
       Tests  3 failed | 25 passed (28)
 ```
 
+Task 4, the prompt (`posts-prompt.test.ts`, `posts-run.test.ts`):
+
+```
+ Test Files  2 failed (2)
+      Tests  7 failed | 47 passed (54)
+```
+
 ## GREEN
 
 Task 1 (`posts-offer-line.test.ts`, `posts-story.test.ts`):
@@ -68,4 +75,12 @@ Task 3:
 ```
  Test Files  2 passed (2)
       Tests  28 passed (28)
+```
+
+Task 4, then the plan and rewrite prompts without an offer, printed for a
+spa and another business before and after: no difference.
+
+```
+ Test Files  2 passed (2)
+      Tests  54 passed (54)
 ```
