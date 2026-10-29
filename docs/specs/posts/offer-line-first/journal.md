@@ -60,6 +60,13 @@
 - 2026-10-29: one whole-suite run timed out on the brand-read replay of
   `karsa-spa` (5 s, under load); alone it passes in 8 s, and the next
   whole-suite run passed: not this change.
+- 2026-10-29: `posts-10` recorded for Svarga, with the maintainer's
+  go-ahead for 3 more requests (1 spent): both offer captions open on their
+  line, with no `offer` fix, but both still quote a price ("a traditional
+  90-minute session featuring warm golden oil for IDR 350k"). The prompt's
+  "never a price" doesn't hold against the caption rules' concrete detail.
+  The recording is kept out of the branch; the other 2 requests are held
+  until the maintainer chooses the next step.
 
 ## RED
 

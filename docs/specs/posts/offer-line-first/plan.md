@@ -447,3 +447,48 @@ git commit -m "test(posts): re-record Sen's and Svarga's offer plans with posts-
 - [ ] **Step 1:** Run `pnpm check`. Expected: every step green. Copy the Vitest summary to GREEN.
 - [ ] **Step 2:** Set 2.13b to `done`, commit `docs(posts): offer line first, roadmap 2.13b done`.
 - [ ] **Step 3:** `git push -u origin claude/offer-line-first`; give the maintainer a paste-ready PR title and body for github.com, base `develop`, noting that it is stacked on the 2.14 branch until that PR merges.
+
+### Task 7: Prices out of the posts that carry the offer (amended 2026-10-29)
+
+Runs before Task 5's recordings and Task 6. The spec's "Code's checks", step 3.
+
+**Files:**
+- Modify: `lib/posts/checks.ts` (export the price pattern as `PRICE_PATTERN`, a non-global `RegExp` built from today's `PRICE` source; `checkedWords` calls `dropPrices`)
+- Modify: `lib/posts/offer-line.ts` (`dropPrices`)
+- Test: `tests/unit/posts-offer-line.test.ts`, `tests/unit/posts-checks.test.ts`
+
+**Interfaces:**
+- Produces: `dropPrices(caption: string, line: string, price: RegExp): { caption: string; removed: string[] }`: the caption must start with `line`; the flower leading the rest stays; each sentence after it that `price` matches is dropped and returned, trimmed.
+- `checkedWords` records each as `{ field: 'offer', reason: `${id}: price removed "${sentence}"` }`, after the line's own record; `offer_fixes=` counts them (Task 3's filter already does).
+
+- [ ] **Step 1: Write the failing tests**
+
+```ts
+it('drops each sentence with a price after the line, keeping its flower', () => {
+  const caption = `${LINE} 🌸 Let expert hands melt away your tension. Enjoy a 90-minute session for IDR 350k. Wake up light tomorrow. 🌺`;
+  expect(dropPrices(caption, LINE, PRICE_PATTERN)).toEqual({
+    caption: `${LINE} 🌸 Let expert hands melt away your tension. Wake up light tomorrow. 🌺`,
+    removed: ['Enjoy a 90-minute session for IDR 350k.'],
+  });
+  expect(dropPrices(`${LINE} 🌸 Only VND 500k for 60 min. Feel light.`, LINE, PRICE_PATTERN).caption).toBe(
+    `${LINE} 🌸 Feel light.`,
+  );
+  expect(dropPrices(`${LINE} Feel light.`, LINE, PRICE_PATTERN)).toEqual({ caption: `${LINE} Feel light.`, removed: [] });
+});
+```
+
+In `posts-checks.test.ts`, `describe('the special offer')`: `checkPost` on a carrying post (`thaiSetup`) whose caption is `${LINE} 🌸 Warm oil. Only IDR 450,000 tonight. Wake up light.` gives `${LINE} 🌸 Warm oil. Wake up light.`, no `price` flag, and the record `post-1: price removed "Only IDR 450,000 tonight."`; the same caption on a post with `carries: false` keeps its price.
+
+- [ ] **Step 2: Run them to see them fail**
+
+Run: `pnpm exec vitest run tests/unit/posts-offer-line.test.ts tests/unit/posts-checks.test.ts`
+Expected: FAIL (`dropPrices` and `PRICE_PATTERN` missing). Copy to RED.
+
+- [ ] **Step 3: Write `dropPrices` and call it in `checkedWords` after `putOfferLineFirst`, only when the line is known**
+
+- [ ] **Step 4: Run them, then the replay test on Svarga's `posts-10` recording (from `.superpowers/sdd/plan/svarga-posts-offer-posts-10.json`)**
+
+Run: `pnpm exec vitest run tests/unit/posts-offer-line.test.ts tests/unit/posts-checks.test.ts tests/unit/posts-run.test.ts tests/unit/posts-fixtures-replay.test.ts`
+Expected: PASS, Svarga's offer plan included. Copy to GREEN.
+
+- [ ] **Step 5: Commit**, then record Sen with `posts-10` (Task 5, Step 4: 1 Flash-Lite request, already allowed) and commit both fixtures.

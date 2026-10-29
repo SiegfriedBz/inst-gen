@@ -115,6 +115,28 @@ and in every rewrite, before the spa's emoji fixes and the flags:
    post without a story text, recorded as `post-n: offer line too long for
    the story text`. (Amended 2026-10-29, before the plan: the batch refuses a
    story text over 120, so the line can't go over.)
+3. **Prices.** After its line, every sentence of the caption that holds a
+   price is removed, whether the profile holds that price or not: 2.11 says
+   an offer post never gives one, and a price beside "10% off" leaves the
+   guest guessing which it is. A price is what 2.6's price flag looks for:
+   a currency next to a number, or a number with "k" ("IDR 350k", "VND
+   500k", "250.000đ"). Sentences end as in step 1; the flower right after
+   the line stays even when the sentence that follows it goes. Each removed
+   sentence is recorded as `post-1: price removed "Enjoy a 90-minute
+   session for IDR 350k."`. Only when code has the line (a treatment was
+   found); the other posts keep their prices, as today.
+   - "10% off our 90-minute Traditional Balinese Massage, until Sunday 1
+     November. 🌸 Let expert hands melt away your travel tension. Enjoy a
+     traditional 90-minute session for IDR 350k. Wake up light tomorrow. 🌺"
+     becomes "10% off our 90-minute Traditional Balinese Massage, until
+     Sunday 1 November. 🌸 Let expert hands melt away your travel tension.
+     Wake up light tomorrow. 🌺"
+
+   (Amended 2026-10-29, after the recordings: the line came first in every
+   recording, but `posts-9` put a price in 4 of 6 offer captions, against
+   none of the 20 from `posts-3` to `posts-8`, and `posts-10`, whose prompt
+   says "never a price" twice, in 2 of 2, both made up. The maintainer chose
+   that code removes them.)
 
 Each change is recorded in the batch's `dropped` list, field `offer`, never
 shown to the owner:
@@ -122,7 +144,8 @@ shown to the owner:
 - `post-1: offer line put first` (an offer sentence was removed or
   replaced),
 - `post-1: offer line added` (the caption had none),
-- `post-1: story text set to the offer line`.
+- `post-1: story text set to the offer line`,
+- `post-1: price removed "…"` (amended 2026-10-29).
 
 The server's one log line per plan or rewrite gains `offer_fixes=`, the
 count of those entries. It holds numbers only, as 2.13's counts do.
@@ -150,11 +173,14 @@ owner's screens, strings and the owner guide all stay as they are.
     flower than the caption's too), never cut, and none when the line is too long;
   - the `dropped` records and `offer_fixes=`;
   - a rewrite that loses its offer line;
+  - a price after the line: removed with its sentence, the flower after the
+    line kept, a price in another post kept, and its record;
   - the prompts with and without an offer (`posts-9`, the order stated
     once, the lines given in the plan's and the rewrite's text, no-offer
     prompts unchanged).
 - The replay test checks more than today: each offer post's caption starts
-  with its exact offer line, and its story text is that line and a flower.
+  with its exact offer line, holds no price, and its story text is that
+  line and a flower.
 - `pnpm eval:posts svarga --offer --record`, then
   `pnpm eval:posts sen --offer --record`: 2 Flash-Lite requests from the
   app's daily pool. Svarga's is run once more to see two in a row (1 more
@@ -163,6 +189,11 @@ owner's screens, strings and the owner guide all stay as they are.
   aim is none, but the replay passes either way.
 - `posts.json` for every slug stays on `posts-8`: its prompt is unchanged
   (developer's call).
+- Amended 2026-10-29: the prompt is `posts-10` (it says "never a price"
+  beside the concrete detail, with an offer only). Svarga's `posts-10`
+  recording, made before the price step, is kept: code's price step makes
+  it pass. Sen is recorded once with `posts-10` (1 Flash-Lite request,
+  within the 3 the maintainer allowed).
 
 ## Acceptance criteria
 
@@ -193,6 +224,12 @@ Scenario: A rewrite keeps the offer line first
   When the owner edits the business and the rewrite opens post 1 on a hook
   Then post 1's rewritten caption opens on its offer line
   And its story text is that line and a flower
+
+Scenario: A price after the offer line
+  Given the same offer
+  When post 1's caption is its offer line, then "Let expert hands melt away your travel tension. Enjoy a 90-minute session for IDR 350k. Wake up light tomorrow."
+  Then post 1's caption keeps every sentence but "Enjoy a 90-minute session for IDR 350k."
+  And the batch's dropped list holds 'post-1: price removed "Enjoy a 90-minute session for IDR 350k."'
 
 Scenario: The other posts don't change
   Given the same offer
