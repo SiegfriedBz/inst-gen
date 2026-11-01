@@ -57,6 +57,15 @@ describe('repeatRecords', () => {
     expect(repeatRecords(story(true))).toEqual([]);
   });
 
+  it('leaves out offer posts opening on the same offer line', () => {
+    const line = '10% off our 90-minute Balinese Massage, until Sunday 1 November.';
+    const posts = [
+      at(1, `${line} 🌸 Sore back? Rest.`, { offer: true }),
+      at(2, `${line} 🌺 Long day? Unwind.`, { offer: true }),
+    ];
+    expect(repeatRecords(posts)).toEqual([]);
+  });
+
   it('records nothing when every post differs', () => {
     const posts = Array.from({ length: 6 }, (_, i) =>
       at(i + 1, `Hook ${i}? Body ${i}. End ${i}. 🌸`, { storyText: `Story ${i}. 🌺` }),

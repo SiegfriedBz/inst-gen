@@ -106,7 +106,10 @@ prints the records with the other `dropped` lines.
    split as 2.13's story-text rule says; flowers and other emoji are left
    out, case and spaces ignored. Story texts are checked the same way, as
    `story text "…" in …`, except on offer posts, whose story text is their
-   offer line by design.
+   offer line by design. Nor are offer posts' first sentences: an offer
+   post opens on its offer line, and two offer posts on the same treatment
+   share it. (Amended 2026-11-01, after the final review: a one-treatment
+   offer recorded a repeat in every batch.)
 2. **The light.** On each post, when a day post's caption or story text
    holds `sleep`, `asleep`, `bedtime`, `wake`, `waking` or
    `tomorrow morning` (not `bed`: the massage bed is in day posts too), or a night post's holds `this afternoon`, `this

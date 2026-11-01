@@ -44,10 +44,16 @@ function shared(posts: Post[], pick: (post: Post) => string | undefined, what: s
 }
 
 export function repeatRecords(posts: Post[]): Dropped[] {
+  // An offer post opens on its offer line, by design: two on the same
+  // treatment share it.
   return [
-    ...shared(posts, (p) => plainSentences(p.caption)[0], 'first sentence'),
+    ...shared(
+      posts.filter((p) => !p.offer),
+      (p) => plainSentences(p.caption)[0],
+      'first sentence',
+    ),
     ...shared(posts, (p) => plainSentences(p.caption).at(-1), 'last sentence'),
-    // An offer post's story text is its offer line, by design.
+    // Its story text is that line too.
     ...shared(
       posts.filter((p) => !p.offer),
       (p) => plainSentences(p.storyText ?? '').at(-1),
