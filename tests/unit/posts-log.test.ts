@@ -14,12 +14,14 @@ describe('formatPostsLog', () => {
       storyCtas: 0,
       emojiFixes: 0,
       offerFixes: 0,
+      repeats: 0,
+      lightMisses: 0,
       modelMs: 9000,
       totalMs: 9010,
       outcome: 'final',
     });
     expect(line).toBe(
-      'posts host=svargabalimassage.com kind=plan model=gemini-3.5-flash-lite prompt=posts-1 kept=6 flags=1 story_cuts=0 story_ctas=0 emoji_fixes=0 offer_fixes=0 model_ms=9000 total_ms=9010 outcome=final',
+      'posts host=svargabalimassage.com kind=plan model=gemini-3.5-flash-lite prompt=posts-1 kept=6 flags=1 story_cuts=0 story_ctas=0 emoji_fixes=0 offer_fixes=0 repeats=0 light_misses=0 model_ms=9000 total_ms=9010 outcome=final',
     );
   });
 
@@ -35,6 +37,8 @@ describe('formatPostsLog', () => {
       storyCtas: 0,
       emojiFixes: 0,
       offerFixes: 0,
+      repeats: 0,
+      lightMisses: 0,
       modelMs: null,
       totalMs: 5,
       outcome: 'model_busy',
@@ -43,7 +47,7 @@ describe('formatPostsLog', () => {
     expect(line).toContain('error="quota \\"exceeded\\" retry later"');
   });
 
-  test('counts story cuts, emoji and offer fixes, never their text', () => {
+  test('counts story cuts, emoji and offer fixes, repeats and light misses, never their text', () => {
     const line = formatPostsLog({
       host: 'h',
       kind: 'plan',
@@ -55,12 +59,14 @@ describe('formatPostsLog', () => {
       storyCtas: 2,
       emojiFixes: 7,
       offerFixes: 3,
+      repeats: 2,
+      lightMisses: 1,
       modelMs: 10,
       totalMs: 12,
       outcome: 'final',
     });
     expect(line).toContain(
-      ' flags=0 story_cuts=1 story_ctas=2 emoji_fixes=7 offer_fixes=3 model_ms=10 ',
+      ' flags=0 story_cuts=1 story_ctas=2 emoji_fixes=7 offer_fixes=3 repeats=2 light_misses=1 model_ms=10 ',
     );
   });
 });

@@ -83,6 +83,8 @@ async function* run<T>(
     storyCtas: 0,
     emojiFixes: 0,
     offerFixes: 0,
+    repeats: 0,
+    lightMisses: 0,
     modelMs: null,
     totalMs: 0,
     outcome: 'aborted',
@@ -148,6 +150,10 @@ async function* run<T>(
     entry.offerFixes = result.dropped.filter(
       (d) => d.field === 'offer' && !d.reason.endsWith('no treatment for the offer line'),
     ).length;
+    entry.repeats = result.dropped.filter(
+      (d) => d.field === 'mix' && /^(first sentence|last sentence|story text) "/.test(d.reason),
+    ).length;
+    entry.lightMisses = result.dropped.filter((d) => d.field === 'light').length;
     entry.outcome = 'final';
     yield { type: 'final', result };
   } catch (error) {

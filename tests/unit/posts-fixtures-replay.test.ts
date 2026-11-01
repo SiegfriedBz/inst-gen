@@ -8,6 +8,7 @@ import { emojisIn, FLOWERS } from '@/lib/posts/emoji';
 import { offerLine, offerTreatment } from '@/lib/posts/offer-line';
 import { streamPlan } from '@/lib/posts/run';
 import { seededRandom } from '@/lib/posts/setup';
+import { repeatRecords } from '@/lib/posts/variety';
 
 // The post plans recorded by `pnpm eval:posts --record`, replayed through the
 // real checks: no network, no quota.
@@ -88,13 +89,13 @@ describe('recorded offer plans', () => {
 });
 
 // A currency next to a number, or a number with k: "IDR 250k", "VND 500k".
+const STOP_BEFORE_EMOJI = /(?<!\.)\.\s*\p{Extended_Pictographic}/u;
 const PRICE = /(?:IDR|VND|USD|Rp|đ|\$)\s?\d|\d[\d.,]*\s?(?:k|VND|IDR|USD|đ)\b/i;
 
 // Sen's and Svarga's plans (docs/specs/posts/story-text, "Tests and
-// evaluation"): the offer plans on posts-10 (docs/specs/posts/offer-line-first),
-// the plans without an offer on posts-8, whose prompt posts-10 left unchanged.
+// evaluation"), all four on posts-11 (docs/specs/posts/day-and-night-copy).
 // Every post has a story text that fits, and every text holds flowers and no
-// other emoji.
+// other emoji; no two captions end on the same sentence.
 describe('recorded story texts and flowers', () => {
   const flowers = (text: string) =>
     emojisIn(text).filter((e) => (FLOWERS as readonly string[]).includes(e)).length;
@@ -127,6 +128,9 @@ describe('recorded story texts and flowers', () => {
     ['svarga', true],
   ] as const)('%s (offer: %s)', { timeout: 20_000 }, async (slug, withOffer) => {
     const result = await replay(slug, withOffer);
+    expect(repeatRecords(result.posts).filter((d) => d.reason.startsWith('last sentence'))).toEqual(
+      [],
+    );
     for (const post of result.posts) {
       expect(post.storyText).toBeTruthy();
       const story = post.storyText ?? '';
@@ -139,11 +143,14 @@ describe('recorded story texts and flowers', () => {
       expect(flowers(post.caption)).toBeGreaterThanOrEqual(1);
       expect(flowers(post.caption)).toBeLessThanOrEqual(3);
       expect(others(post.caption)).toEqual([]);
-      // An offer post opens on its line, and its story text is that line and a
-      // flower (docs/specs/posts/offer-line-first).
+      // No stop right before an emoji (docs/specs/posts/day-and-night-copy).
+      expect(post.caption).not.toMatch(STOP_BEFORE_EMOJI);
+      expect(story).not.toMatch(STOP_BEFORE_EMOJI);
+      // An offer post opens on its line, its stop gone before the flower, and
+      // its story text is that line and a flower (docs/specs/posts/offer-line-first).
       if (post.offer && result.offer) {
         const treatment = offerTreatment(result.offer, post.setup?.treatment, post.caption);
-        const line = offerLine(result.offer, treatment ?? '');
+        const line = offerLine(result.offer, treatment ?? '').replace(/\.$/, '');
         expect(post.caption.startsWith(line)).toBe(true);
         expect(story.startsWith(line)).toBe(true);
         expect(flowers(story.slice(line.length))).toBe(1);

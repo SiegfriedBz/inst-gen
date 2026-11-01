@@ -10,6 +10,7 @@ import {
   findFlags,
   setupFlags,
 } from '@/lib/posts/checks';
+import { dropStopsBeforeEmoji } from '@/lib/posts/emoji';
 import type { Offer } from '@/lib/posts/offer';
 import type { Setup } from '@/lib/posts/setup';
 import { svargaProfile } from './helpers/brand';
@@ -167,6 +168,74 @@ describe('checkPost', () => {
   });
 });
 
+// docs/specs/posts/day-and-night-copy, "No stop before an emoji".
+describe('no stop before an emoji', () => {
+  it('removes it from the caption and the story text, keeping a question mark', () => {
+    const { post: checked } = checkPost(
+      raw({
+        caption: 'Sore feet? 🌺 Feel light again. Wake up rested. 🌸',
+        storyText: 'Sore feet? 🌺 Rest well. 🌸',
+      }),
+      svargaProfile(),
+      'p1',
+    );
+    expect(checked?.caption).toBe('Sore feet? 🌺 Feel light again. Wake up rested 🌸');
+    expect(checked?.storyText).toBe('Sore feet? 🌺 Rest well 🌸');
+  });
+
+  it('removes it after a flower code adds', () => {
+    const { post: checked } = checkPost(
+      raw({ caption: 'Warm oil. Slow hands.' }),
+      svargaProfile(),
+      'p1',
+    );
+    expect(checked?.caption).toBe('Warm oil. Slow hands 🌸');
+  });
+
+  it("removes it after an offer post's line, in its caption and story text", () => {
+    const offer: Offer = {
+      kind: 'discount',
+      percent: 10,
+      treatments: ['Balinese massage'],
+      until: '2026-10-27',
+      lastDay: 'Tuesday 27 October',
+    };
+    const { post: checked } = checkPost(
+      raw({ caption: 'Long flight? 🌸 Our Balinese massage melts it away. Rest. 🌺' }),
+      svargaProfile(),
+      'post-1',
+      { offer, carries: true },
+    );
+    const line = '10% off our 90-minute Balinese massage, until Tuesday 27 October';
+    expect(checked?.caption.startsWith(`${line} 🌸 Long flight?`)).toBe(true);
+    expect(checked?.storyText).toBe(`${line} 🌸`);
+  });
+
+  it('flags quote the text without it', () => {
+    const caption = `${'Long words here. '.repeat(10)}End. 🌸`;
+    const { post: checked } = checkPost(raw({ caption }), svargaProfile(), 'p1');
+    const firstLine = checked?.unchecked.find((f) => f.kind === 'firstLine');
+    expect(firstLine?.text.endsWith('End 🌸')).toBe(true);
+  });
+
+  it('removes it in a rewrite', () => {
+    const answer = {
+      posts: [
+        {
+          id: 'a',
+          caption: 'New words. 🌺',
+          hashtags: ['canggu'],
+          altText: 'Alt',
+          storyText: 'New. 🌸',
+        },
+      ],
+    };
+    const { posts } = checkRewrite(answer, [post({ id: 'a' })], svargaProfile());
+    expect(posts[0].caption).toBe('New words 🌺');
+    expect(posts[0].storyText).toBe('New 🌸');
+  });
+});
+
 describe('checkPlan', () => {
   it('keeps 6 of 7 posts and records a type used 3 times', () => {
     const types = ['offer', 'offer', 'offer', 'moment', 'local', 'tip', 'ritual'] as const;
@@ -214,6 +283,44 @@ describe('checkPlan', () => {
   });
 });
 
+// docs/specs/posts/day-and-night-copy, "Code's checks".
+describe('repeats in a plan and a rewrite', () => {
+  const ending = 'Wake up light tomorrow.';
+  const captions = [
+    `Sore legs? Warm oil. ${ending}`,
+    'Busy day? Rest.',
+    `Long walk? Slow hands. ${ending}`,
+  ];
+  const record = { field: 'mix', reason: `last sentence "${ending}" in p0, p2` };
+
+  it('checkPlan records them and keeps the posts', () => {
+    const posts = captions.map((caption, i) =>
+      post({ id: `p${i}`, caption, type: (['offer', 'tip', 'local'] as const)[i] }),
+    );
+    const result = checkPlan(posts, [], svargaProfile());
+    expect(result.dropped).toContainEqual(record);
+    expect(result.posts.map((p) => p.caption)).toEqual(captions);
+  });
+
+  it('checkRewrite records them', () => {
+    const originals = captions.map((_, i) => post({ id: `p${i}` }));
+    const answer = {
+      posts: captions.map((caption, i) => ({
+        id: `p${i}`,
+        caption,
+        hashtags: ['canggu'],
+        altText: 'Hands',
+        storyText: `Story ${i}.`,
+      })),
+    };
+    // Code adds Svarga's flower, then removes the stop before it.
+    expect(checkRewrite(answer, originals, svargaProfile()).dropped).toContainEqual({
+      field: 'mix',
+      reason: `last sentence "Wake up light tomorrow" in p0, p2`,
+    });
+  });
+});
+
 describe('checkRewrite', () => {
   const originals = [
     post({
@@ -253,7 +360,7 @@ describe('checkRewrite', () => {
       scene: 'treatment',
       imagePrompt: 'Deck at dusk',
       // Svarga is a spa: code adds its flower (docs/specs/posts/story-text).
-      caption: 'New words. 🌸',
+      caption: 'New words 🌸',
     });
   });
 
@@ -378,6 +485,8 @@ describe('the special offer', () => {
 
   // The offer line first (docs/specs/posts/offer-line-first).
   const LINE = '10% off our 90-minute Thai Massage, until Tuesday 27 October.';
+  // The line as the owner sees it before an emoji (docs/specs/posts/day-and-night-copy).
+  const SHOWN = LINE.slice(0, -1);
   const thaiSetup: Setup = {
     treatment: 'Thai Massage',
     look: 'plain',
@@ -402,8 +511,8 @@ describe('the special offer', () => {
       { offer, carries: true },
       thaiSetup,
     );
-    expect(checked?.caption).toBe(`${LINE} 🌸 Long flight? Feel light again.`);
-    expect(checked?.storyText).toBe(`${LINE} 🌸`);
+    expect(checked?.caption).toBe(`${SHOWN} 🌸 Long flight? Feel light again.`);
+    expect(checked?.storyText).toBe(`${SHOWN} 🌸`);
     expect(dropped).toContainEqual({ field: 'offer', reason: 'post-1: offer line put first' });
     expect(dropped).toContainEqual({
       field: 'offer',
@@ -419,7 +528,7 @@ describe('the special offer', () => {
       { offer, carries: true },
       thaiSetup,
     );
-    expect(checked?.caption.startsWith(LINE)).toBe(true);
+    expect(checked?.caption.startsWith(SHOWN)).toBe(true);
     expect(offerFlags(checked?.unchecked ?? [])).toEqual([]);
     expect(dropped).toContainEqual({ field: 'offer', reason: 'post-2: offer line added' });
   });
@@ -433,8 +542,8 @@ describe('the special offer', () => {
       { offer, carries: true },
       thaiSetup,
     );
-    expect(checked?.caption).toBe(caption);
-    expect(checked?.storyText).toBe(`${LINE} 🌺`);
+    expect(checked?.caption).toBe(dropStopsBeforeEmoji(caption));
+    expect(checked?.storyText).toBe(`${SHOWN} 🌺`);
     expect(offerRecords(dropped)).toEqual([]);
   });
 
@@ -458,7 +567,7 @@ describe('the special offer', () => {
       { offer, carries: true },
       { ...thaiSetup, treatment: 'Hot Stone' },
     );
-    expect(named?.caption.startsWith(LINE)).toBe(true);
+    expect(named?.caption.startsWith(SHOWN)).toBe(true);
     const { post: left, dropped } = checkPost(
       raw({ type: 'offer', caption: 'Long flight? Warm oil.' }),
       profile(),
@@ -466,7 +575,7 @@ describe('the special offer', () => {
       { offer, carries: true },
     );
     // Only the spa's flower fix touches it.
-    expect(left?.caption).toBe('Long flight? Warm oil. 🌸');
+    expect(left?.caption).toBe('Long flight? Warm oil 🌸');
     expect(dropped).toContainEqual({
       field: 'offer',
       reason: 'post-3: no treatment for the offer line',
@@ -482,7 +591,7 @@ describe('the special offer', () => {
       { offer, carries: true },
       thaiSetup,
     );
-    expect(checked?.caption).toBe(`${LINE} 🌸 Warm oil. Wake up light.`);
+    expect(checked?.caption).toBe(`${SHOWN} 🌸 Warm oil. Wake up light.`);
     expect(checked?.unchecked.map((f) => f.kind)).not.toContain('price');
     expect(dropped).toContainEqual({
       field: 'offer',
@@ -496,6 +605,20 @@ describe('the special offer', () => {
       thaiSetup,
     );
     expect(other?.caption).toContain('IDR 450,000');
+  });
+
+  it('checkRewrite keeps a line the model copied without its stop', () => {
+    const shown = `${SHOWN} 🌸 Long flight? Warm oil.`;
+    const original = post({ id: 'a', offer: true, caption: shown, setup: thaiSetup });
+    const answer = {
+      posts: [
+        { id: 'a', caption: shown, hashtags: ['canggu'], altText: 'x', storyText: `${SHOWN} 🌸` },
+      ],
+    };
+    const { posts, dropped } = checkRewrite(answer, [original], profile(), offer);
+    expect(posts[0].caption).toBe(shown);
+    expect(posts[0].storyText).toBe(`${SHOWN} 🌸`);
+    expect(offerRecords(dropped)).toEqual([]);
   });
 
   it('checkRewrite puts the line back first on an old post without a set-up', () => {
@@ -512,8 +635,8 @@ describe('the special offer', () => {
       ],
     };
     const { posts, dropped } = checkRewrite(answer, [original], profile(), offer);
-    expect(posts[0].caption.startsWith(LINE)).toBe(true);
-    expect(posts[0].storyText).toBe(`${LINE} 🌸`);
+    expect(posts[0].caption.startsWith(SHOWN)).toBe(true);
+    expect(posts[0].storyText).toBe(`${SHOWN} 🌸`);
     expect(dropped).toContainEqual({ field: 'offer', reason: 'a: offer line put first' });
   });
 });
@@ -653,7 +776,7 @@ describe('story text and flowers', () => {
       svargaProfile(),
       'post-1',
     );
-    expect(checked?.caption).toBe('Warm oil and slow hands tonight. 🌸');
+    expect(checked?.caption).toBe('Warm oil and slow hands tonight 🌸');
     expect(checked?.storyText).toBe('Relax tonight in your room! 🌸');
     expect(dropped).toEqual([
       { field: 'emoji', reason: 'post-1: caption removed 💆, added 🌸' },
@@ -705,7 +828,7 @@ describe('story text and flowers', () => {
       ],
     };
     const { posts } = checkRewrite(answer, originals, svargaProfile());
-    expect(posts[0].storyText).toBe('New story. 🌺');
+    expect(posts[0].storyText).toBe('New story 🌺');
     expect(posts[1].storyText).toBeUndefined();
     expect(posts[1].storyUnchecked).toBeUndefined();
   });

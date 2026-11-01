@@ -74,7 +74,7 @@ describe('streamPlan', () => {
     expect(final).toMatchObject({
       type: 'final',
       result: {
-        promptVersion: 'posts-10',
+        promptVersion: 'posts-11',
         model: 'gemini-3.5-flash-lite',
         profileHash: profileHash(svargaProfile()),
       },
@@ -129,7 +129,7 @@ describe('streamPlan', () => {
     );
     const final = lines.at(-1);
     if (final?.type !== 'final') throw new Error('no final');
-    expect(final.result.posts[0].storyText).toBe('Professional massage in your room. 🌸');
+    expect(final.result.posts[0].storyText).toBe('Professional massage in your room 🌸');
     expect(final.result.dropped).toContainEqual({
       field: 'story',
       reason: 'post-1: story text removed "🌸 Book on WhatsApp."',
@@ -274,8 +274,8 @@ describe('streamRewrite', () => {
     if (final?.type !== 'final') throw new Error('no final');
     expect(final.result.posts.map((p) => [p.imagePrompt, p.caption])).toEqual([
       // Svarga is a spa: code adds its flower (docs/specs/posts/story-text).
-      ['Deck at dusk', 'New caption a. 🌸'],
-      ['A glass', 'New caption b. 🌸'],
+      ['Deck at dusk', 'New caption a 🌸'],
+      ['A glass', 'New caption b 🌸'],
     ]);
   });
 });
@@ -296,7 +296,7 @@ describe('an old post', () => {
     );
     const final = lines.at(-1);
     if (final?.type !== 'final') throw new Error('no final');
-    expect(final.result.posts[0].caption).toBe('New caption a. 🌸');
+    expect(final.result.posts[0].caption).toBe('New caption a 🌸');
     expect('setup' in final.result.posts[0]).toBe(false);
   });
 });
@@ -352,6 +352,22 @@ describe('the special offer', () => {
     );
     // Posts 1 and 2 lack the offer line and a story text: 2 added, 2 stories set.
     expect(entries[0].offerFixes).toBe(4);
+  });
+
+  // docs/specs/posts/day-and-night-copy: the six recorded captions share
+  // their last sentence, and hold no word of the other time of day.
+  test('counts repeats and light misses', async () => {
+    const entries: PostsLog[] = [];
+    const model = replayTextModel(brand, { posts: planRecording() });
+    await drain(
+      streamPlan(
+        body(),
+        deps(model, { log: (e) => entries.push(e) }),
+        new AbortController().signal,
+      ),
+    );
+    expect(entries[0].repeats).toBe(1);
+    expect(entries[0].lightMisses).toBe(0);
   });
 
   test('without an offer, no post carries one', async () => {
