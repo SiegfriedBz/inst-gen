@@ -38,6 +38,15 @@ export function emojisIn(text: string): string[] {
   return graphemes(text).filter(isEmoji);
 }
 
+// The emoji takes the place of a stop right before it, spaces or a line break
+// between them allowed; "?", "!" and "..." stay
+// (docs/specs/posts/day-and-night-copy, "No stop before an emoji").
+const STOP_BEFORE_EMOJI = new RegExp(`(?<!\\.)\\.(?=\\s*(?:${PICTOGRAPH.source}))`, 'gu');
+
+export function dropStopsBeforeEmoji(text: string): string {
+  return text.replace(STOP_BEFORE_EMOJI, '');
+}
+
 // What a removed emoji leaves: two spaces, a space before a stop, a space at
 // either end of a line, a line left empty.
 function tidy(text: string): string {

@@ -9,9 +9,10 @@ import { type Setup, setupLine } from './setup';
 // The post plan's prompts (docs/specs/posts/generate-copy, "What the model
 // writes"); the day or night light, the open room and the sign of the guest's
 // day from docs/specs/posts/day-and-night-images; the offer line first from
-// docs/specs/posts/offer-line-first. Bump the version with every change, so
-// eval verdicts trace back to it.
-export const POSTS_PROMPT_VERSION = 'posts-10';
+// docs/specs/posts/offer-line-first; copy that follows the post's light, with
+// no example to copy, from docs/specs/posts/day-and-night-copy. Bump the
+// version with every change, so eval verdicts trace back to it.
+export const POSTS_PROMPT_VERSION = 'posts-11';
 
 // Code decides the emoji rule: flowers only for a spa
 // (docs/specs/posts/story-text, "Emojis").
@@ -24,9 +25,17 @@ function emojiRule(spa: boolean): string {
 // Captions built on basic marketing, a hook first and a positive note to end,
 // and the story text (docs/specs/posts/story-text, "What the model writes").
 // With an offer, the offer line is the hook (docs/specs/posts/offer-line-first).
-const captionRules = (spa: boolean, withOffer = false) => `Captions:
+// The copy follows the post's light, quoting no example
+// (docs/specs/posts/day-and-night-copy).
+const captionRules = (
+  spa: boolean,
+  withOffer = false,
+  lightFrom = 'the last word of its set-up',
+) => `Captions:
 - English, in the business's tone words, written to tourists and expats nearby.
-- Each caption sells, in this order: a hook, its first line of at most 125 characters, that works on its own and stops a tourist scrolling (a question or a promise they feel, such as "Long flight?"), since it is all Instagram shows before "more"${withOffer ? '; on a post that carries the special offer, the hook is its offer line, word for word, with nothing before it, and a question or a promise may follow it' : ''}; what the guest will feel, rather than what the business does; one concrete detail that makes it real (the treatment, its price or duration when the profile gives them, the place${withOffer ? '; on a post that carries the special offer, never a price and never another session length' : ''}); and a last sentence on a positive note, a good feeling or a warm promise (such as "Wake up light tomorrow.").
+- Each caption sells, in this order: a hook, its first line of at most 125 characters, that works on its own and stops a tourist scrolling (a question or a promise the guest feels, about their own day), since it is all Instagram shows before "more"${withOffer ? '; on a post that carries the special offer, the hook is its offer line, word for word, with nothing before it, and a question or a promise may follow it' : ''}; what the guest will feel, rather than what the business does; one concrete detail that makes it real (the treatment, its price or duration when the profile gives them, the place${withOffer ? '; on a post that carries the special offer, never a price and never another session length' : ''}); and a last sentence on a positive note: a feeling in the body, what the rest of the day or night holds, or a warm promise.
+- Each caption and story text follows its post's light, ${lightFrom}. Day: the guest's afternoon, a break in the middle of the day after the beach, a surf, a walk round town or a morning at the laptop, with the evening still ahead (a sunset, dinner, a night out); never sleep, bed or waking up. Night: the guest's evening, the day done, unwinding in the room, a deep sleep, the next day ahead; never the afternoon, the midday sun or the morning just past.
+- The captions open differently and end differently: never the same first sentence, never the same last sentence, and never the same idea said twice in other words. Never reuse a phrase from these instructions.
 - 250 to 700 characters in all. Short paragraphs, no hashtags in the text.
 - ${emojiRule(spa)}
 - Facts only from the profile: a price, a duration, a number of years, a place name or a claim appears only if the profile holds it, written as the profile writes it. Feelings, senses and place symbols are yours to use freely.
@@ -145,19 +154,23 @@ export function planUserText(
 export function rewritePrompt(withOffer = false, spa = false): string {
   return `The owner changed their business's brand profile. You rewrite the captions, story texts, hashtags and alt text of their Instagram posts so they fit the new profile. Keep each post's type, topic, scene and image prompt: they don't change. Answer every post, with its id.
 
-${captionRules(spa, withOffer)}${withOffer ? rewriteOfferRules(spa) : ''}`;
+${captionRules(spa, withOffer, 'its "light"')}${withOffer ? rewriteOfferRules(spa) : ''}`;
 }
 
 export function rewriteUserText(input: PostsModelInput, posts: Post[], offer?: Offer): string {
-  const kept = posts.map(({ id, type, topic, scene, caption, imagePrompt, offer: carries }) => ({
-    id,
-    type,
-    topic,
-    scene,
-    caption,
-    imagePrompt,
-    ...(offer && carries ? { offer: true } : {}),
-  }));
+  const kept = posts.map(
+    ({ id, type, topic, scene, setup, caption, imagePrompt, offer: carries }) => ({
+      id,
+      type,
+      topic,
+      scene,
+      // A post saved without a set-up, or a set-up without a light, is a day.
+      light: setup?.light ?? 'day',
+      caption,
+      imagePrompt,
+      ...(offer && carries ? { offer: true } : {}),
+    }),
+  );
   const text = `${profileText(input)}\n\n### Posts\n${JSON.stringify(kept, null, 2)}`;
   if (!offer) return text;
   const offerLines = posts.flatMap((p): [string, string][] => {
