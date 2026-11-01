@@ -13,18 +13,25 @@ const WRONG_WORDS = {
   night: ['this afternoon', 'this morning', 'midday', 'noon'],
 } as const;
 
-function withoutEmoji(text: string): string {
-  let out = text;
-  for (const emoji of new Set(emojisIn(text))) out = out.replaceAll(emoji, ' ');
-  return out.replace(/\s+/g, ' ').trim();
-}
+// An emoji ends a sentence, as a stop does: code removes the stop before it
+// (docs/specs/posts/day-and-night-copy, "No stop before an emoji").
+const BREAK = '\u0000';
 
 // The sentences of a text, emoji removed, empty ones left out: a flower
 // after the last stop is not a sentence of its own.
 function plainSentences(text: string): string[] {
-  return sentences(text)
-    .map(withoutEmoji)
-    .filter((s) => s !== '');
+  let out = text;
+  for (const emoji of new Set(emojisIn(text))) out = out.replaceAll(emoji, BREAK);
+  return out
+    .split(BREAK)
+    .flatMap(sentences)
+    .map((s) => s.replace(/\s+/g, ' ').trim())
+    .filter((s) => /[\p{L}\p{N}]/u.test(s));
+}
+
+// "…tomorrow 🌺" and "…tomorrow." are the same sentence.
+function keyOf(sentence: string): string {
+  return sentence.replace(/[.!?]+$/, '').toLowerCase();
 }
 
 // Posts that share a sentence, in post order: one record per sentence.
@@ -33,7 +40,7 @@ function shared(posts: Post[], pick: (post: Post) => string | undefined, what: s
   for (const post of posts) {
     const sentence = pick(post);
     if (!sentence) continue;
-    const key = sentence.toLowerCase();
+    const key = keyOf(sentence);
     const group = groups.get(key) ?? { shown: sentence, ids: [] };
     group.ids.push(post.id);
     groups.set(key, group);

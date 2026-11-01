@@ -1,5 +1,12 @@
 import { describe, expect, it } from 'vitest';
-import { addFlower, emojisIn, FLOWERS, isSpa, stripEmojis } from '@/lib/posts/emoji';
+import {
+  addFlower,
+  dropStopsBeforeEmoji,
+  emojisIn,
+  FLOWERS,
+  isSpa,
+  stripEmojis,
+} from '@/lib/posts/emoji';
 
 // Flower emojis for spas, fixed by code (docs/specs/posts/story-text, "Code's
 // checks").
@@ -95,4 +102,23 @@ describe('flags and keycaps', () => {
   it("go from a spa's text", () => {
     expect(stripEmojis('Hello Da Nang 🇻🇳 🌸', 2).text).toBe('Hello Da Nang 🌸');
   });
+});
+
+// docs/specs/posts/day-and-night-copy, "No stop before an emoji".
+describe('dropStopsBeforeEmoji', () => {
+  it.each([
+    ['Wake up rested. 🌺', 'Wake up rested 🌺'],
+    ['Feel light again. Wake up rested.🌸', 'Feel light again. Wake up rested🌸'],
+    ['Calm hands.\n\n🌼 More below.', 'Calm hands\n\n🌼 More below.'],
+    ['Glow on. ✨ Book now.', 'Glow on ✨ Book now.'],
+  ])('removes the stop in %j', (text, expected) => {
+    expect(dropStopsBeforeEmoji(text)).toBe(expected);
+  });
+
+  it.each(['Sore feet? 🌺 Rest.', 'Hello! 🌸', 'Wait for it... 🌸', 'No emoji here. Just words.'])(
+    'keeps %j',
+    (text) => {
+      expect(dropStopsBeforeEmoji(text)).toBe(text);
+    },
+  );
 });

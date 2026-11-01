@@ -109,7 +109,8 @@ prints the records with the other `dropped` lines.
    offer line by design. Nor are offer posts' first sentences: an offer
    post opens on its offer line, and two offer posts on the same treatment
    share it. (Amended 2026-11-01, after the final review: a one-treatment
-   offer recorded a repeat in every batch.)
+   offer recorded a repeat in every batch. Approved by the maintainer,
+   2026-11-01T14:36:10Z.)
 2. **The light.** On each post, when a day post's caption or story text
    holds `sleep`, `asleep`, `bedtime`, `wake`, `waking` or
    `tomorrow morning` (not `bed`: the massage bed is in day posts too), or a night post's holds `this afternoon`, `this
@@ -118,6 +119,34 @@ prints the records with the other `dropped` lines.
 
 The server's log line per plan or rewrite gains `repeats=` and
 `light_misses=`, the counts of those records, numbers only.
+
+### No stop before an emoji
+
+(Amended 2026-11-01, after the recordings: the maintainer finds a "." before
+an emoji needless. The `posts-11` recordings mix "tomorrow. 🌺" and
+"evening 🌸". Approved by the maintainer, 2026-11-01T14:36:10Z.)
+
+In every caption and story text the model writes, in the plan and in every
+rewrite, code removes a "." that comes right before an emoji, spaces or a
+line break between them allowed: the emoji takes the stop's place.
+
+- "Wake up light tomorrow. 🌺" becomes "Wake up light tomorrow 🌺".
+- "Sore feet? 🌺" and "Hello! 🌸" stay: only "." goes.
+- "..." stays, and a "." with no emoji after it stays.
+- The offer line too: "10% off our 90-minute Thai Massage, until Sunday 1
+  November. 🌸 Long flight?" becomes "…until Sunday 1 November 🌸 Long
+  flight?", and its story text "…until Sunday 1 November 🌸".
+
+It is the last change code makes to a caption or a story text: after the
+offer line, the prices, the story cleanup and the spa's flowers, which all
+find sentences by their stop, and before the flags, so a flag quotes the
+text the owner sees. Nothing is recorded: it is how every caption is
+written, not a fix. The prompt doesn't change, and stays `posts-11`; the
+recordings stay as they are, since code applies it when they replay.
+
+Code's records (above) read an emoji as the end of a sentence, and compare
+sentences without their last ".", "!" or "?", so "…tomorrow 🌺" and
+"…tomorrow." are the same sentence.
 
 ### What doesn't change
 
@@ -137,9 +166,17 @@ strings and the owner guide stay as they are.
     when all differ;
   - the light records: day with "sleep", night with "this afternoon",
     whole words only ("awakening" is no `wake`), none on a clean batch;
-  - `repeats=` and `light_misses=` in the log line.
+  - `repeats=` and `light_misses=` in the log line;
+  - the stop before an emoji: removed before a flower and before another
+    emoji, with spaces or a line break between; "?", "!", "..." and a stop
+    without an emoji kept; on an offer post's caption and story text; in a
+    rewrite; the flags quoting the text without it (amended 2026-11-01);
+  - the records splitting at an emoji: "Rest here 🌸 Feel new 🌺" has two
+    sentences, and "…tomorrow 🌺" and "…tomorrow." are one repeat.
 - The replay test checks, on Sen's and Svarga's plans with and without an
-  offer, that no two captions share their last sentence.
+  offer, that no two captions share their last sentence, and that no caption
+  or story text holds a "." right before an emoji; an offer post's caption
+  starts with its offer line, its "." gone when an emoji follows it.
 - `pnpm eval:posts sen svarga --record`, then
   `pnpm eval:posts sen svarga --offer --record`: 4 Flash-Lite requests from
   the app's daily pool. The developer asks the maintainer first, never on a
@@ -180,6 +217,12 @@ Scenario: A rewrite keeps the light
   When the owner edits the business and the captions are rewritten
   Then the rewrite's user text gives post-3 "light": "night"
 
+Scenario: No stop before an emoji
+  Given the model ends post 1's caption "Feel light again. Wake up rested. 🌺"
+  When code checks the plan
+  Then post 1's caption ends "Feel light again. Wake up rested 🌺"
+  And a caption opening "Sore feet? 🌺" keeps its question mark
+
 Scenario: Offer posts keep their line
   Given a special offer and a night set-up on post 1
   When the plan is made
@@ -198,6 +241,9 @@ Scenario: Offer posts keep their line
   are for the eval, not for the owner.
 - Six endings across one batch differ; the same ending may come back in
   tomorrow's batch. 2.6's recent posts carry topics, not sentences.
+
+- The stop goes only from what the model writes. A caption the owner
+  edits, and a translation into their language, keep theirs.
 
 ## Out of scope
 

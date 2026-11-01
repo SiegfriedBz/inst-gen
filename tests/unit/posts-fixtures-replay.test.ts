@@ -89,6 +89,7 @@ describe('recorded offer plans', () => {
 });
 
 // A currency next to a number, or a number with k: "IDR 250k", "VND 500k".
+const STOP_BEFORE_EMOJI = /(?<!\.)\.\s*\p{Extended_Pictographic}/u;
 const PRICE = /(?:IDR|VND|USD|Rp|đ|\$)\s?\d|\d[\d.,]*\s?(?:k|VND|IDR|USD|đ)\b/i;
 
 // Sen's and Svarga's plans (docs/specs/posts/story-text, "Tests and
@@ -142,11 +143,14 @@ describe('recorded story texts and flowers', () => {
       expect(flowers(post.caption)).toBeGreaterThanOrEqual(1);
       expect(flowers(post.caption)).toBeLessThanOrEqual(3);
       expect(others(post.caption)).toEqual([]);
-      // An offer post opens on its line, and its story text is that line and a
-      // flower (docs/specs/posts/offer-line-first).
+      // No stop right before an emoji (docs/specs/posts/day-and-night-copy).
+      expect(post.caption).not.toMatch(STOP_BEFORE_EMOJI);
+      expect(story).not.toMatch(STOP_BEFORE_EMOJI);
+      // An offer post opens on its line, its stop gone before the flower, and
+      // its story text is that line and a flower (docs/specs/posts/offer-line-first).
       if (post.offer && result.offer) {
         const treatment = offerTreatment(result.offer, post.setup?.treatment, post.caption);
-        const line = offerLine(result.offer, treatment ?? '');
+        const line = offerLine(result.offer, treatment ?? '').replace(/\.$/, '');
         expect(post.caption.startsWith(line)).toBe(true);
         expect(story.startsWith(line)).toBe(true);
         expect(flowers(story.slice(line.length))).toBe(1);

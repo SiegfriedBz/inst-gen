@@ -66,6 +66,19 @@ describe('repeatRecords', () => {
     expect(repeatRecords(posts)).toEqual([]);
   });
 
+  it('reads an emoji as the end of a sentence, and ignores the last stop', () => {
+    const posts = [
+      at(1, 'Rest here 🌸 Feel new 🌺'),
+      at(2, 'Rest here. Smile.'),
+      at(3, 'Busy day? Wake up light tomorrow 🌺'),
+      at(4, 'Long walk? Wake up light tomorrow!'),
+    ];
+    expect(repeatRecords(posts)).toEqual([
+      { field: 'mix', reason: 'first sentence "Rest here" in post-1, post-2' },
+      { field: 'mix', reason: 'last sentence "Wake up light tomorrow" in post-3, post-4' },
+    ]);
+  });
+
   it('records nothing when every post differs', () => {
     const posts = Array.from({ length: 6 }, (_, i) =>
       at(i + 1, `Hook ${i}? Body ${i}. End ${i}. 🌸`, { storyText: `Story ${i}. 🌺` }),

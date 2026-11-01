@@ -12,7 +12,7 @@ import {
   SCENES,
   type Scene,
 } from './batch';
-import { addFlower, isSpa, stripEmojis } from './emoji';
+import { addFlower, dropStopsBeforeEmoji, isSpa, stripEmojis } from './emoji';
 import { ctaFor } from './input';
 import { mentionsDay, OFFER_LIMITS, type Offer, PERCENT } from './offer';
 import { dropPrices, offerLine, offerStory, offerTreatment, putOfferLineFirst } from './offer-line';
@@ -185,6 +185,17 @@ const STORY_FIXES = {
   'too long': 'offer line too long for the story text',
 } as const;
 
+// A rewrite's model sees the offer line as the owner does, its stop gone
+// before the flower (docs/specs/posts/day-and-night-copy), and may copy it so:
+// the stop comes back for the offer steps, and goes again at the end.
+function withLineStop(text: string, line: string): string {
+  const shown = line.replace(/\.$/, '');
+  const rest = text.slice(shown.length);
+  return text.startsWith(shown) && /^\s*\p{Extended_Pictographic}/u.test(rest)
+    ? `${line}${rest}`
+    : text;
+}
+
 // A post that carries the offer opens on its line, written by code
 // (docs/specs/posts/offer-line-first): null when no treatment gives one.
 function lineFirst(
@@ -203,7 +214,7 @@ function lineFirst(
     };
   }
   const line = offerLine(offer, treatment);
-  const fixed = putOfferLineFirst(caption, line, offer, spa);
+  const fixed = putOfferLineFirst(withLineStop(caption, line), line, offer, spa);
   const priced = dropPrices(fixed.caption, line, PRICE_PATTERN);
   return {
     line,
@@ -234,18 +245,27 @@ function checkedWords(
   let storyText = story.storyText;
   const storyDropped = [...story.dropped];
   if (offered.line) {
-    const fixed = offerStory(offered.line, caption, storyText, spa);
+    const fixed = offerStory(
+      offered.line,
+      caption,
+      storyText && withLineStop(storyText, offered.line),
+      spa,
+    );
     storyText = fixed.storyText;
     if (fixed.fix)
       storyDropped.push({ field: 'offer', reason: `${id}: ${STORY_FIXES[fixed.fix]}` });
   }
+  // Last, once every step that finds sentences by their stop is done; the
+  // flags quote the text the owner sees.
+  const shown = dropStopsBeforeEmoji(caption);
+  if (storyText) storyText = dropStopsBeforeEmoji(storyText);
   return {
     words: {
-      caption,
+      caption: shown,
       cta: ctaFor(profile) ?? '',
       hashtags: cleanHashtags(raw.hashtags),
       altText: cutChars(raw.altText.replace(/^(an? )?image of /i, ''), POSTS_LIMITS.altTextChars),
-      unchecked: findFlags(caption, profile, context),
+      unchecked: findFlags(shown, profile, context),
       ...(storyText
         ? {
             storyText,

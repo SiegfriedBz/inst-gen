@@ -20,6 +20,24 @@
 - 2026-11-01: `posts-11` recorded with the maintainer's go-ahead, 4
   Flash-Lite requests: `pnpm eval:posts sen svarga --record`, then with
   `--offer`. One run each, no re-record.
+- 2026-11-01: the final review found one important point: two offer posts
+  on one treatment open on the same offer line, so every one-treatment
+  offer batch recorded a first-sentence repeat. Offer posts are left out of
+  that check. The spec was amended and the maintainer approved it.
+- 2026-11-01: the maintainer found the "." before an emoji needless
+  ("tomorrow. 🌺"), and chose to fold it into 2.14b rather than a later
+  item. Spec amended ("No stop before an emoji") and approved. Code removes
+  it last, after the steps that find sentences by their stop; the records
+  read an emoji as a sentence end, which also settles the review's point
+  that "…tomorrow." and "…tomorrow 🌺" weren't one repeat. Twelve older
+  tests expected ". 🌸" and now expect " 🌸".
+- 2026-11-01: building it showed a rewrite risk: the model now sees an offer
+  caption whose line has no stop before its flower, and may copy it so; code
+  then took the line for missing and dropped the hook after it ("Long
+  flight?"). Code puts the stop back on the line for the offer steps, in the
+  caption and the story text, and removes it again at the end (developer's
+  call; test "checkRewrite keeps a line the model copied without its stop").
+  No new recording: the prompt is unchanged.
 
 ### What the recordings show
 
@@ -76,6 +94,18 @@ Seen along the way, not this item's:
 Svarga's old `posts-10` offer recording, failed with `last sentence "Wake up
 light tomorrow." in post-1, post-2, post-3, post-4, post-5, post-6`.
 
+The stop before an emoji, before the code: 14 new tests failed
+(`posts-emoji`, `posts-checks`, `posts-variety`), and with the rule turned
+off, the replay failed on `sen (offer: false)`, `sen (offer: true)` and
+`svarga (offer: true)`, the three recordings that hold ". 🌸".
+
+```
+ Tests  1 failed | 63 passed (64)
+```
+
+(`posts-checks.test.ts`, the stopless offer line in a rewrite: the hook
+was lost.)
+
 ## GREEN
 
 ```
@@ -83,3 +113,10 @@ light tomorrow." in post-1, post-2, post-3, post-4, post-5, post-6`.
 ```
 
 (`posts-fixtures-replay.test.ts`, on the four `posts-11` recordings.)
+
+```
+ Tests  1 failed | 1614 passed (1615)
+```
+
+(`pnpm test`, after the stop before an emoji; the one failure is the
+karsa-spa brand-replay timeout above.)

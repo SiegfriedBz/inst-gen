@@ -129,7 +129,7 @@ describe('streamPlan', () => {
     );
     const final = lines.at(-1);
     if (final?.type !== 'final') throw new Error('no final');
-    expect(final.result.posts[0].storyText).toBe('Professional massage in your room. 🌸');
+    expect(final.result.posts[0].storyText).toBe('Professional massage in your room 🌸');
     expect(final.result.dropped).toContainEqual({
       field: 'story',
       reason: 'post-1: story text removed "🌸 Book on WhatsApp."',
@@ -274,8 +274,8 @@ describe('streamRewrite', () => {
     if (final?.type !== 'final') throw new Error('no final');
     expect(final.result.posts.map((p) => [p.imagePrompt, p.caption])).toEqual([
       // Svarga is a spa: code adds its flower (docs/specs/posts/story-text).
-      ['Deck at dusk', 'New caption a. 🌸'],
-      ['A glass', 'New caption b. 🌸'],
+      ['Deck at dusk', 'New caption a 🌸'],
+      ['A glass', 'New caption b 🌸'],
     ]);
   });
 });
@@ -296,7 +296,7 @@ describe('an old post', () => {
     );
     const final = lines.at(-1);
     if (final?.type !== 'final') throw new Error('no final');
-    expect(final.result.posts[0].caption).toBe('New caption a. 🌸');
+    expect(final.result.posts[0].caption).toBe('New caption a 🌸');
     expect('setup' in final.result.posts[0]).toBe(false);
   });
 });
