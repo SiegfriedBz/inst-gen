@@ -57,7 +57,7 @@ describe('planPrompt', () => {
   });
 
   it('has a version', () => {
-    expect(POSTS_PROMPT_VERSION).toBe('posts-10');
+    expect(POSTS_PROMPT_VERSION).toBe('posts-11');
   });
 });
 
@@ -336,5 +336,48 @@ describe('the story text and the captions that sell', () => {
     expect(rewritePrompt(true, false)).toContain(
       'and its story text is that line; the other posts',
     );
+  });
+});
+
+// docs/specs/posts/day-and-night-copy
+describe('day and night copy', () => {
+  const prompts = [
+    ['plan', planPrompt(false, true)],
+    ['plan with an offer', planPrompt(true, true)],
+    ['rewrite', rewritePrompt(false, true)],
+    ['rewrite with an offer', rewritePrompt(true, true)],
+  ] as const;
+
+  it.each(prompts)('the %s prompt quotes no example and asks for different posts', (_, prompt) => {
+    expect(prompt).not.toContain('Wake up light');
+    expect(prompt).not.toContain('Long flight?');
+    expect(prompt).toContain('Never reuse a phrase from these instructions.');
+    expect(prompt).toContain('never the same first sentence, never the same last sentence');
+  });
+
+  it('the plan says the copy follows the set-up', () => {
+    expect(planPrompt()).toContain(
+      "Each caption and story text follows its post's light, the last word of its set-up.",
+    );
+  });
+
+  it('the rewrite says the copy follows the post\'s "light"', () => {
+    expect(rewritePrompt()).toContain(
+      'Each caption and story text follows its post\'s light, its "light".',
+    );
+  });
+
+  it('the rewrite gives each post its light, a day without a set-up', () => {
+    const [setup] = dealSetups(svargaProfile(), undefined, seededRandom('t'));
+    const text = rewriteUserText(postsModelInput(svargaProfile()), [
+      post({ id: 'a', setup: { ...setup, light: 'night' } }),
+      post({ id: 'b' }),
+    ]);
+    const posts = JSON.parse(text.split('### Posts\n')[1]);
+    expect(posts.map((p: { light: string }) => p.light)).toEqual(['night', 'day']);
+  });
+
+  it('keeps the moments to post about in the mix', () => {
+    expect(planPrompt()).toContain('(after a surf, a hike, a long flight)');
   });
 });
