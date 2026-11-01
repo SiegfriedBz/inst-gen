@@ -354,6 +354,22 @@ describe('the special offer', () => {
     expect(entries[0].offerFixes).toBe(4);
   });
 
+  // docs/specs/posts/day-and-night-copy: the six recorded captions share
+  // their last sentence, and hold no word of the other time of day.
+  test('counts repeats and light misses', async () => {
+    const entries: PostsLog[] = [];
+    const model = replayTextModel(brand, { posts: planRecording() });
+    await drain(
+      streamPlan(
+        body(),
+        deps(model, { log: (e) => entries.push(e) }),
+        new AbortController().signal,
+      ),
+    );
+    expect(entries[0].repeats).toBe(1);
+    expect(entries[0].lightMisses).toBe(0);
+  });
+
   test('without an offer, no post carries one', async () => {
     const model = replayTextModel(brand, { posts: planRecording() });
     const lines = await drain(streamPlan(body(), deps(model), new AbortController().signal));
