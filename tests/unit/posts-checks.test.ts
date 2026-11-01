@@ -214,6 +214,40 @@ describe('checkPlan', () => {
   });
 });
 
+// docs/specs/posts/day-and-night-copy, "Code's checks".
+describe('repeats in a plan and a rewrite', () => {
+  const ending = 'Wake up light tomorrow.';
+  const captions = [
+    `Sore legs? Warm oil. ${ending}`,
+    'Busy day? Rest.',
+    `Long walk? Slow hands. ${ending}`,
+  ];
+  const record = { field: 'mix', reason: `last sentence "${ending}" in p0, p2` };
+
+  it('checkPlan records them and keeps the posts', () => {
+    const posts = captions.map((caption, i) =>
+      post({ id: `p${i}`, caption, type: (['offer', 'tip', 'local'] as const)[i] }),
+    );
+    const result = checkPlan(posts, [], svargaProfile());
+    expect(result.dropped).toContainEqual(record);
+    expect(result.posts.map((p) => p.caption)).toEqual(captions);
+  });
+
+  it('checkRewrite records them', () => {
+    const originals = captions.map((_, i) => post({ id: `p${i}` }));
+    const answer = {
+      posts: captions.map((caption, i) => ({
+        id: `p${i}`,
+        caption,
+        hashtags: ['canggu'],
+        altText: 'Hands',
+        storyText: `Story ${i}.`,
+      })),
+    };
+    expect(checkRewrite(answer, originals, svargaProfile()).dropped).toContainEqual(record);
+  });
+});
+
 describe('checkRewrite', () => {
   const originals = [
     post({
