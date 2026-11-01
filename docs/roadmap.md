@@ -84,7 +84,7 @@ most sample replies as written, with $0 spent on everything but images
 | 2.13 | `posts/story-text`: a short version of each caption for its story; captions built on basic marketing, a hook first and a positive note to end; flower emojis for spas in captions and stories | spec | done |
 | 2.13b | `posts/offer-line-first`: an offer post always opens on its offer line, the hook, and its story text is that line; code writes it whenever the model misses, and removes a price from it | spec | done |
 | 2.14 | `posts/day-and-night-images`: Sen's images as warm and bright as Svarga's: three day and three night images per batch, the room a tourist pictures open onto the place's green plants, the place's flower, and a discreet sign of the guest's day on moment posts | spec | done |
-| 2.14b | `posts/day-and-night-copy`: each caption and story text follows its post's light, three day and three night; no example sentence in the prompt to copy, six different openings and endings, and code records any that repeat | spec | in progress |
+| 2.14b | `posts/day-and-night-copy`: each caption and story text follows its post's light, three day and three night; no example sentence in the prompt to copy, six different openings and endings, and code records any that repeat | spec | done |
 
 ## Later phases
 
