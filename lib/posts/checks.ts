@@ -20,7 +20,7 @@ import { mentionsDay, OFFER_LIMITS, type Offer, PERCENT } from './offer';
 import { dropPrices, offerLine, offerStory, offerTreatment, putOfferLineFirst } from './offer-line';
 import type { Setup } from './setup';
 import { cleanStory } from './story';
-import { lightRecords, repeatRecords } from './variety';
+import { copyRecords, lightRecords, repeatRecords } from './variety';
 
 // Code's checks on the model's posts (docs/specs/posts/generate-copy, "What
 // code checks"): trim, drop or flag, record each change, and never refuse a
@@ -377,7 +377,7 @@ export function checkPlan(
   if (offer && kept.slice(0, 2).some((p) => p.type !== 'offer')) {
     out.push({ field: 'mix', reason: 'offer posts are not posts 1 and 2' });
   }
-  out.push(...repeatRecords(kept), ...kept.flatMap(lightRecords));
+  out.push(...repeatRecords(kept), ...kept.flatMap(lightRecords), ...copyRecords(kept, profile));
   return { posts: kept, dropped: out };
 }
 
@@ -406,6 +406,10 @@ export function checkRewrite(
     const { storyText: _story, storyUnchecked: _flags, ...rest } = post;
     return { ...rest, ...checked.words };
   });
-  dropped.push(...repeatRecords(posts), ...posts.flatMap(lightRecords));
+  dropped.push(
+    ...repeatRecords(posts),
+    ...posts.flatMap(lightRecords),
+    ...copyRecords(posts, profile),
+  );
   return { posts, dropped };
 }

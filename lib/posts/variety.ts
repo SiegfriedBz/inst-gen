@@ -1,3 +1,4 @@
+import type { Profile } from '@/lib/brand/profile';
 import type { Dropped, Post } from './batch';
 import { emojisIn } from './emoji';
 import { sentences } from './story';
@@ -76,4 +77,152 @@ export function lightRecords(post: Post): Dropped[] {
   return WRONG_WORDS[light]
     .filter((word) => new RegExp(`\\b${word}\\b`, 'i').test(text))
     .map((word) => ({ field: 'light', reason: `${post.id} (${light}): "${word}"` }));
+}
+
+// The copy records of docs/specs/posts/marketing-copy ("Code's records"), in
+// its order: question hooks, stock words, endings, places, story texts and
+// calls to action. Records only, on the captions as code leaves them.
+
+// Words the captions lean on, recorded in 3 captions or more; the list may
+// grow.
+const STOCK_WORDS = [
+  'feel',
+  'completely',
+  'deeply',
+  'truly',
+  'ultimate',
+  'pure',
+  'melt',
+  'unwind',
+  'indulge',
+  'bliss',
+  'golden oil',
+];
+const STOCK_AT = 3;
+
+// A sentence that asks the guest to act. One that only names WhatsApp ("we
+// reply on WhatsApp within about 5 minutes") answers a doubt, and isn't one.
+const ASKS =
+  /\b(?:book (?:now|today|your|a)|message us|contact us|call us|dm us|write to us|link in bio|tap the link|click)\b/i;
+
+function escapeRegex(text: string): string {
+  return text.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+}
+
+// Whole words: "feeling" doesn't hold "feel".
+function holdsWords(text: string, words: string): boolean {
+  return new RegExp(`(?:^|[^\\p{L}\\p{N}])${escapeRegex(words)}(?:$|[^\\p{L}\\p{N}])`, 'u').test(
+    text,
+  );
+}
+
+// Lower case, accents gone ("đ" as "d"), one space between words.
+function folded(text: string): string {
+  return text
+    .normalize('NFD')
+    .replace(/\p{M}/gu, '')
+    .replace(/[đĐ]/g, 'd')
+    .toLowerCase()
+    .replace(/\s+/g, ' ');
+}
+
+// The business's places: its town, area and service area, split at commas
+// and "and", and its place symbols. A symbol that opens on two capitalised
+// words or more also goes by them: "My Khe" for "My Khe beach at dusk".
+function placeNames(profile: Profile): string[] {
+  const { town, area, serviceArea } = profile.location;
+  const names = new Set<string>();
+  const given = [town, area, serviceArea]
+    .flatMap((place) => (place?.value ?? '').split(/,|\band\b/))
+    .concat(profile.essence.placeSymbols)
+    .map((name) => name.trim())
+    .filter(Boolean);
+  for (const name of given) {
+    names.add(folded(name));
+    const words = name.split(/\s+/);
+    const lead = words.findIndex((word) => !/^\p{Lu}/u.test(word));
+    if (lead >= 2) names.add(folded(words.slice(0, lead).join(' ')));
+  }
+  return [...names];
+}
+
+function questionHooks(posts: Post[]): Dropped[] {
+  const ids = posts
+    .filter((p) => !p.offer && plainSentences(p.caption)[0]?.endsWith('?'))
+    .map((p) => p.id);
+  return ids.length > 1 ? [{ field: 'mix', reason: `question hooks in ${ids.join(', ')}` }] : [];
+}
+
+function stockWords(posts: Post[]): Dropped[] {
+  return STOCK_WORDS.flatMap((word) => {
+    const ids = posts.filter((p) => holdsWords(folded(p.caption), word)).map((p) => p.id);
+    return ids.length >= STOCK_AT
+      ? [{ field: 'words', reason: `"${word}" in ${ids.join(', ')}` }]
+      : [];
+  });
+}
+
+// Last sentences that start with the same word, shown as the first writes it.
+function endings(posts: Post[]): Dropped[] {
+  const groups = new Map<string, { shown: string; ids: string[] }>();
+  for (const post of posts) {
+    const word = plainSentences(post.caption)
+      .at(-1)
+      ?.match(/[\p{L}\p{N}']+/u)?.[0];
+    if (!word) continue;
+    const group = groups.get(word.toLowerCase()) ?? { shown: word, ids: [] };
+    group.ids.push(post.id);
+    groups.set(word.toLowerCase(), group);
+  }
+  return [...groups.values()]
+    .filter((g) => g.ids.length > 1)
+    .map((g) => ({
+      field: 'mix',
+      reason: `endings start with "${g.shown}" in ${g.ids.join(', ')}`,
+    }));
+}
+
+// A profile with no place has nothing to name.
+function placeRecords(posts: Post[], profile: Profile): Dropped[] {
+  const names = placeNames(profile);
+  if (names.length === 0) return [];
+  return posts
+    .filter((p) => !names.some((name) => holdsWords(folded(p.caption), name)))
+    .map((p) => ({ field: 'words', reason: `${p.id} names no place` }));
+}
+
+// An offer post's story text is its offer line, by design.
+function storyRecords(post: Post): Dropped[] {
+  const story = post.storyText?.trim();
+  if (post.offer || !story) return [];
+  const records: Dropped[] = [];
+  const treatment = post.setup?.treatment;
+  if (treatment && folded(story).startsWith(folded(treatment))) {
+    records.push({ field: 'story', reason: `${post.id}: story text starts with "${treatment}"` });
+  }
+  const first = plainSentences(post.caption)[0];
+  if (first && folded(story).includes(folded(keyOf(first)))) {
+    records.push({
+      field: 'story',
+      reason: `${post.id}: story text holds the caption's first sentence`,
+    });
+  }
+  return records;
+}
+
+function askRecords(post: Post): Dropped[] {
+  return plainSentences(post.caption)
+    .filter((sentence) => ASKS.test(sentence))
+    .map((sentence) => ({ field: 'cta', reason: `${post.id}: "${sentence}"` }));
+}
+
+export function copyRecords(posts: Post[], profile: Profile): Dropped[] {
+  return [
+    ...questionHooks(posts),
+    ...stockWords(posts),
+    ...endings(posts),
+    ...placeRecords(posts, profile),
+    ...posts.flatMap(storyRecords),
+    ...posts.flatMap(askRecords),
+  ];
 }
