@@ -25,7 +25,7 @@ import {
 } from '@/lib/posts/edit';
 import { type ImageEvent, resumeImages, startImages } from '@/lib/posts/image-client';
 import { imageKey, loadImages, type SavedImage } from '@/lib/posts/image-store';
-import { ctaFor, profileHash } from '@/lib/posts/input';
+import { ctaFor, postCta, profileHash } from '@/lib/posts/input';
 import { DEFAULT_ANSWERS, isOver, type OfferAnswers, toOffer } from '@/lib/posts/offer';
 import { clearOffer, loadOffer, type OfferRecord, saveOffer } from '@/lib/posts/offer-store';
 import { clearBefore, loadBatches, recentPosts, saveBatch } from '@/lib/posts/store';
@@ -448,20 +448,24 @@ export function PostsSection({
   const cta = ctaFor(profile);
   // A new WhatsApp number: the text copied before held the old one, so its
   // posts lose "copied" on screen too (the store's applyCta did it there).
+  // Each post has its own line: the offer's end comes first on a post that
+  // carries the offer.
   useEffect(() => {
     if (!cta) return;
-    const stale = batches.some((b) => b.posts.some((p) => p.cta !== cta && p.copiedAt));
+    const lineOf = (p: Post, b: PostBatch) => postCta(profile, p, b.offer) ?? cta;
+    const stale = batches.some((b) => b.posts.some((p) => p.cta !== lineOf(p, b) && p.copiedAt));
     if (!stale) return;
     batchesRef.current = batches.map((b) => ({
       ...b,
       posts: b.posts.map((p) => {
-        if (p.cta === cta || !p.copiedAt) return p;
+        const line = lineOf(p, b);
+        if (p.cta === line || !p.copiedAt) return p;
         const { copiedAt: _copied, ...rest } = p;
-        return { ...rest, cta };
+        return { ...rest, cta: line };
       }),
     }));
     setBatches(batchesRef.current);
-  }, [cta, batches]);
+  }, [cta, profile, batches]);
 
   const busy = running !== null || resuming || imagesResuming || making.size > 0;
   const currentHash = profileHash(profile);
@@ -729,7 +733,7 @@ export function PostsSection({
           <PostCard
             post={openPost}
             offer={openPost.offer ? openBatch.offer : undefined}
-            cta={cta ?? openPost.cta}
+            cta={postCta(profile, openPost, openBatch.offer) ?? openPost.cta}
             onSave={(edit) => saveEdit(openBatch.id, openPost.id, edit)}
             image={imageOf(openPost, openBatch, needsImagesFor(openBatch))}
             imagesOn={imagesOn}
@@ -754,7 +758,7 @@ export function PostsSection({
             copyPost={
               <CopyPost
                 post={openPost}
-                cta={cta ?? openPost.cta}
+                cta={postCta(profile, openPost, openBatch.offer) ?? openPost.cta}
                 imagesOn={imagesOn}
                 onTaken={(step) => taken(openBatch.id, openPost.id, step)}
               />

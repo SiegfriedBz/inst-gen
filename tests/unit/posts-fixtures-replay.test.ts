@@ -164,6 +164,10 @@ describe('recorded story texts and flowers', () => {
         expect(story.slice(line.length).trim()).toMatch(/^\p{Extended_Pictographic}$/u);
         // Never a price next to the offer (docs/specs/posts/special-offer).
         expect(post.caption).not.toMatch(PRICE);
+        // The offer's end before WhatsApp (docs/specs/posts/marketing-copy).
+        expect(post.cta.startsWith(`Offer ends ${result.offer.lastDay}. Book on WhatsApp: `)).toBe(
+          true,
+        );
       }
     }
   });

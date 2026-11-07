@@ -433,6 +433,20 @@ describe('the special offer', () => {
   const profile = () => profileWithPrice('IDR 450,000', '60 min');
   const offerFlags = (flags: Flag[]) => flags.filter((f) => f.kind === 'offer').map((f) => f.text);
 
+  // docs/specs/posts/marketing-copy, "The offer's end, by the WhatsApp line".
+  it('gives only a post that carries the offer its end before the WhatsApp line', () => {
+    const { post: carrying } = checkPost(raw({ type: 'offer' }), profile(), 'post-1', {
+      offer,
+      carries: true,
+    });
+    expect(carrying?.cta).toBe('Offer ends Tuesday 27 October. Book on WhatsApp: +6281234567890');
+    const { post: other } = checkPost(raw({ type: 'moment' }), profile(), 'post-3', {
+      offer,
+      carries: false,
+    });
+    expect(other?.cta).toBe('Book on WhatsApp: +6281234567890');
+  });
+
   it('without an offer, percentages are not looked at', () => {
     expect(offerFlags(findFlags('15% off this week', profile()))).toEqual([]);
   });

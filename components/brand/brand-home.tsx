@@ -319,8 +319,7 @@ export function BrandHome({
       : ownerEdited;
     const kept = await saveBrand(ownerId, profile, new Date(), edited);
     // A WhatsApp edit reaches every post's call to action, with no model call.
-    const cta = ctaFor(profile);
-    if (kept && cta) await applyCta(ownerId, cta);
+    if (kept && ctaFor(profile)) await applyCta(ownerId, profile);
     setSaved(profile);
     setOwnerEdited(edited);
     if (!kept) setNotice('notKept');

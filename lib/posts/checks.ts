@@ -270,7 +270,7 @@ function checkedWords(
   return {
     words: {
       caption: shown,
-      cta: ctaFor(profile) ?? '',
+      cta: ctaFor(profile, context?.carries ? context.offer : undefined) ?? '',
       hashtags: tags.tags,
       altText: cutChars(raw.altText.replace(/^(an? )?image of /i, ''), POSTS_LIMITS.altTextChars),
       unchecked: findFlags(shown, profile, context),
