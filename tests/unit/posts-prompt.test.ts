@@ -57,7 +57,7 @@ describe('planPrompt', () => {
   });
 
   it('has a version', () => {
-    expect(POSTS_PROMPT_VERSION).toBe('posts-11');
+    expect(POSTS_PROMPT_VERSION).toBe('posts-12');
   });
 });
 
@@ -141,11 +141,13 @@ describe('the image set-ups', () => {
     const setups = dealSetups(svargaProfile(), undefined, seededRandom('t'));
     const text = planUserText(postsModelInput(svargaProfile()), [], undefined, setups);
     const lines = setups.map((s, i) => `${i + 1}. ${setupLine(s)}`).join('\n');
-    expect(text.endsWith(`### Image set-ups\n${lines}`)).toBe(true);
+    // Their hook styles follow them (docs/specs/posts/marketing-copy).
+    expect(text).toContain(`### Image set-ups\n${lines}\n\n### Hooks\n`);
   });
 
   it('no set-ups, no section', () => {
     expect(planUserText(postsModelInput(svargaProfile()), [])).not.toContain('Image set-ups');
+    expect(planUserText(postsModelInput(svargaProfile()), [])).not.toContain('### Hooks');
   });
 });
 
@@ -216,22 +218,17 @@ describe('the special offer', () => {
   it('says the order once, by the hook: the offer line comes first', () => {
     const prompt = planPrompt(true, true);
     expect(prompt).toContain(
-      'on a post that carries the special offer, the hook is its offer line, word for word, with nothing before it, and a question or a promise may follow it',
+      'on a post that carries the special offer, the hook is its offer line, word for word, with nothing before it.',
     );
     expect(prompt).toContain(
       `Each offer post's caption starts with its offer line, given under "### Special offer", word for word.`,
     );
     expect(prompt).not.toContain('<percentage>');
     // posts-9 dropped 2.11's "as given" sentence, and 4 of 6 offer posts then
-    // quoted a price (docs/specs/posts/offer-line-first, journal).
-    expect(prompt).toContain(
-      'one concrete detail that makes it real (the treatment, its price or duration when the profile gives them, the place; on a post that carries the special offer, never a price and never another session length)',
-    );
+    // quoted a price (docs/specs/posts/offer-line-first, journal); posts-12
+    // gives no price on any post (docs/specs/posts/marketing-copy).
     expect(prompt).toContain(
       'Never a bigger discount, never other terms, never a price, never another session length, never "today only" or "this week", anywhere in an offer post.',
-    );
-    expect(planPrompt(false, true)).toContain(
-      '(the treatment, its price or duration when the profile gives them, the place);',
     );
     expect(prompt).not.toContain('first line states the offer');
     expect(planPrompt(false, true)).not.toContain('offer line');
@@ -288,18 +285,20 @@ describe('the story text and the captions that sell', () => {
     expect(planPrompt()).toContain(
       'Each post has a type, a topic, a scene, a caption, a story text, hashtags, alt text and an image prompt.',
     );
-    expect(planPrompt()).toContain('Story text: a short version of its own caption');
+    expect(planPrompt()).toContain('Story text: its own line');
     expect(planPrompt()).toContain('at most 100 characters, emoji included');
-    expect(planPrompt()).toContain('no call to action: the owner adds a link sticker');
+    expect(planPrompt()).toContain('no call to action, and never the words');
+    expect(planPrompt()).toContain('the sticker asks');
   });
 
-  it('orders a caption from its hook to a positive ending', () => {
+  it('gives each type its job', () => {
     const prompt = planPrompt();
     for (const part of [
-      'Each caption sells, in this order: a hook',
+      'The mix, each type with its own job:',
+      'Only offer posts sell a treatment',
       'what the guest will feel, rather than what the business does',
-      'one concrete detail that makes it real',
-      'a last sentence on a positive note',
+      'How a caption ends follows its type.',
+      'Every ending stays warm',
     ]) {
       expect(prompt).toContain(part);
     }
@@ -351,7 +350,9 @@ describe('day and night copy', () => {
   it.each(prompts)('the %s prompt quotes no example and asks for different posts', (_, prompt) => {
     expect(prompt).not.toContain('Wake up light');
     expect(prompt).not.toContain('Long flight?');
-    expect(prompt).toContain('Never reuse a phrase from these instructions.');
+    expect(prompt).toContain(
+      'Never reuse a phrase from these instructions or from the image set-ups',
+    );
     expect(prompt).toContain('never the same first sentence, never the same last sentence');
   });
 
@@ -379,5 +380,100 @@ describe('day and night copy', () => {
 
   it('keeps the moments to post about in the mix', () => {
     expect(planPrompt()).toContain('(after a surf, a hike, a long flight)');
+  });
+});
+
+// docs/specs/posts/marketing-copy
+describe('marketing copy', () => {
+  const prompts = [
+    ['plan', planPrompt(false, true)],
+    ['plan with an offer', planPrompt(true, true)],
+    ['rewrite', rewritePrompt(false, true)],
+    ['rewrite with an offer', rewritePrompt(true, true)],
+  ] as const;
+  const styles = [
+    "- question: asks about the guest's own day.",
+    '- scene: drops the guest into a moment they are living, in the present tense, with no question.',
+    "- place: opens on one of the business's places or place symbols.",
+    "- number: opens on a number that isn't a price: a duration, a time of day, a count.",
+    '- fact: opens on a plain fact from the profile: a highlight, or its promise.',
+    "- promise: opens on what the guest's body will feel after.",
+  ];
+  const jobs = [
+    '- offer: makes the guest want one treatment or package now',
+    '- moment: a reason people come (after a surf, a hike, a long flight)',
+    "- local: the town or area and something it's known for",
+    '- ritual: how a treatment unfolds, through the senses',
+    '- tip: one piece of care advice a guest can use today, worth saving',
+    '- proof: what the profile says about the business',
+  ];
+  const offer: Offer = {
+    kind: 'discount',
+    percent: 10,
+    treatments: ['Balinese massage'],
+    until: '2026-10-27',
+    lastDay: 'Tuesday 27 October',
+  };
+
+  it.each(prompts)('the %s prompt gives the hook styles, the jobs and the rules', (_, prompt) => {
+    for (const line of [...styles, ...jobs]) expect(prompt).toContain(line);
+    for (const rule of [
+      'Only offer posts sell a treatment',
+      'alone on its line',
+      'Never a price, anywhere.',
+      'never asks the guest to book or message',
+      'the sticker asks',
+    ]) {
+      expect(prompt).toContain(rule);
+    }
+  });
+
+  it.each(prompts)('the %s prompt drops the words the model copied, and prices', (_, prompt) => {
+    for (const gone of [
+      'after the beach',
+      'a walk round town',
+      'a sunset, dinner',
+      'canggu, danang',
+      'massagedanang',
+      'its price or duration',
+      'Each caption sells',
+      'a short version of its own caption',
+    ]) {
+      expect(prompt).not.toContain(gone);
+    }
+  });
+
+  it('names the offer line as a hook only with an offer', () => {
+    expect(planPrompt(true)).toContain(
+      'A post that carries the special offer has none: its offer line is its hook.',
+    );
+    expect(planPrompt()).not.toContain('special offer');
+    expect(rewritePrompt()).not.toContain('special offer');
+  });
+
+  it('lists the hooks after the set-ups', () => {
+    const setups = dealSetups(svargaProfile(), undefined, seededRandom('t'));
+    const text = planUserText(postsModelInput(svargaProfile()), [], undefined, setups);
+    const hooks = setups.map((s, i) => `${i + 1}. ${s.hook}`).join('\n');
+    expect(text).toContain(`### Hooks\n${hooks}`);
+    expect(text.indexOf('### Hooks')).toBeGreaterThan(text.indexOf('### Image set-ups'));
+  });
+
+  it('gives the offer posts "offer line", the offer still last', () => {
+    const setups = dealSetups(svargaProfile(), offer, seededRandom('t'));
+    const text = planUserText(postsModelInput(svargaProfile()), [], offer, setups);
+    expect(text).toContain('### Hooks\n1. offer line\n2. offer line\n3. ');
+    expect(text.indexOf('### Special offer')).toBeGreaterThan(text.indexOf('### Hooks'));
+  });
+
+  it("gives a rewrite each post's hook, none without a set-up", () => {
+    const [setup] = dealSetups(svargaProfile(), undefined, seededRandom('t'));
+    const text = rewriteUserText(postsModelInput(svargaProfile()), [
+      post({ id: 'a', setup: { ...setup, hook: 'place' } }),
+      post({ id: 'b' }),
+    ]);
+    const posts = JSON.parse(text.split('### Posts\n')[1]);
+    expect(posts[0].hook).toBe('place');
+    expect('hook' in posts[1]).toBe(false);
   });
 });

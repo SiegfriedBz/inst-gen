@@ -34,6 +34,13 @@ describe('cutStory', () => {
 });
 
 describe('cleanStory', () => {
+  // A highlight said without 2.13's words stays (docs/specs/posts/marketing-copy).
+  it('keeps a highlight said without the call-to-action words', () => {
+    expect(cleanStory('Replies in about 5 minutes 🌸', { id: 'post-1', spa: true }).storyText).toBe(
+      'Replies in about 5 minutes 🌸',
+    );
+  });
+
   it('limits are 120 and 100', () => {
     expect(POSTS_LIMITS.storyChars).toBe(120);
     expect(POSTS_LIMITS.storyAsked).toBe(100);
