@@ -156,6 +156,11 @@ export type BodyPart = (typeof BODY_PARTS)[number];
 export const LIGHTS = ['day', 'night'] as const;
 export type Light = (typeof LIGHTS)[number];
 
+// How each caption opens (docs/specs/posts/marketing-copy, "Hook styles,
+// dealt by code"). A set-up dealt before them has none.
+export const HOOKS = ['question', 'scene', 'place', 'number', 'fact', 'promise'] as const;
+export type Hook = (typeof HOOKS)[number];
+
 export const setupSchema = z.object({
   treatment: z.string().min(1).optional(),
   look: z.enum(LOOKS),
@@ -165,6 +170,7 @@ export const setupSchema = z.object({
   scene: z.enum(SCENES),
   locals: z.enum(LOCALS),
   light: z.enum(LIGHTS).optional(),
+  hook: z.enum(HOOKS).optional(),
 });
 export type Setup = z.infer<typeof setupSchema>;
 
@@ -280,6 +286,13 @@ export function dealSetups(
   // it was before lights were dealt.
   const lights = shuffled(['day', 'day', 'day', 'night', 'night', 'night'] as Light[], random);
 
+  // Six hook styles, one each; with an offer, posts 1 and 2 open on its line
+  // and the other four take four of the six. Drawn after the lights, so a
+  // seed still deals what it dealt before (docs/specs/posts/marketing-copy).
+  const hooks: (Hook | undefined)[] = offer
+    ? [undefined, undefined, ...shuffled(HOOKS, random).slice(0, 4)]
+    : shuffled(HOOKS, random);
+
   return looks.map(({ treatment, look }, i) => ({
     ...(treatment ? { treatment } : {}),
     look,
@@ -289,6 +302,7 @@ export function dealSetups(
     scene: scenes[i],
     locals,
     light: lights[i] ?? 'day',
+    ...(hooks[i] ? { hook: hooks[i] } : {}),
   }));
 }
 

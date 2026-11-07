@@ -5,6 +5,7 @@ import type { Offer } from '@/lib/posts/offer';
 import {
   castLine,
   dealSetups,
+  HOOKS,
   localsOf,
   lookOf,
   type Setup,
@@ -354,7 +355,9 @@ describe('day and night', () => {
   });
 
   it('the lights come last: the rest of the deal is as before', () => {
-    expect(deal(senProfile()).map(({ light: _, ...rest }) => rest)).toEqual(SEN_DEAL_BEFORE);
+    expect(deal(senProfile()).map(({ light: _, hook: __, ...rest }) => rest)).toEqual(
+      SEN_DEAL_BEFORE,
+    );
   });
 
   it('the schema takes a light, none, and refuses another', () => {
@@ -362,6 +365,53 @@ describe('day and night', () => {
     expect(setupSchema.safeParse(setup).success).toBe(true);
     expect(setupSchema.safeParse({ ...setup, light: 'night' }).success).toBe(true);
     expect(setupSchema.safeParse({ ...setup, light: 'dusk' }).success).toBe(false);
+  });
+});
+
+// Hook styles (docs/specs/posts/marketing-copy, "Hook styles, dealt by code").
+describe('hook styles', () => {
+  it('six different styles without an offer', () => {
+    const hooks = deal(senProfile()).map((s) => s.hook);
+    expect(hooks.every((hook) => hook !== undefined)).toBe(true);
+    expect(new Set(hooks).size).toBe(6);
+  });
+
+  it('with an offer: none on set-ups 1 and 2, four different ones on 3 to 6', () => {
+    const hooks = deal(withOfferings(EIGHT), offerOn(['Aroma Massage'])).map((s) => s.hook);
+    expect(hooks.slice(0, 2)).toEqual([undefined, undefined]);
+    const rest = hooks.slice(2);
+    expect(new Set(rest).size).toBe(4);
+    for (const hook of rest) expect(HOOKS).toContain(hook);
+  });
+
+  it('the same seed, the same hooks', () => {
+    expect(deal(senProfile(), undefined, 'x').map((s) => s.hook)).toEqual(
+      deal(senProfile(), undefined, 'x').map((s) => s.hook),
+    );
+  });
+
+  it('the hooks come last: the lights are as before', () => {
+    expect(deal(senProfile()).map((s) => s.light)).toEqual([
+      'day',
+      'night',
+      'night',
+      'day',
+      'night',
+      'day',
+    ]);
+  });
+
+  it('the schema takes a hook, none, and refuses another', () => {
+    const setup = SEN_DEAL_BEFORE[0];
+    expect(setupSchema.safeParse({ ...setup, hook: 'scene' }).success).toBe(true);
+    expect(setupSchema.safeParse(setup).success).toBe(true);
+    expect(setupSchema.safeParse({ ...setup, hook: 'teaser' }).success).toBe(false);
+  });
+
+  it('the image never sees the hook', () => {
+    const [setup] = deal(senProfile());
+    const { hook: _, ...bare } = setup;
+    expect(setupLine({ ...bare, hook: 'scene' })).toBe(setupLine(bare));
   });
 });
 
