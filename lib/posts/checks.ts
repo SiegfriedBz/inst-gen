@@ -13,6 +13,7 @@ import {
   type Scene,
 } from './batch';
 import { addFlower, dropStopsBeforeEmoji, isSpa, stripEmojis } from './emoji';
+import { hookOnItsLine } from './hook-line';
 import { ctaFor } from './input';
 import { mentionsDay, OFFER_LIMITS, type Offer, PERCENT } from './offer';
 import { dropPrices, offerLine, offerStory, offerTreatment, putOfferLineFirst } from './offer-line';
@@ -255,9 +256,10 @@ function checkedWords(
     if (fixed.fix)
       storyDropped.push({ field: 'offer', reason: `${id}: ${STORY_FIXES[fixed.fix]}` });
   }
-  // Last, once every step that finds sentences by their stop is done; the
-  // flags quote the text the owner sees.
-  const shown = dropStopsBeforeEmoji(caption);
+  // The hook goes alone on its line, after the flowers and the offer steps;
+  // the stops before an emoji go last, once every step that finds sentences by
+  // their stop is done. The flags quote the text the owner sees.
+  const shown = dropStopsBeforeEmoji(hookOnItsLine(caption));
   if (storyText) storyText = dropStopsBeforeEmoji(storyText);
   return {
     words: {

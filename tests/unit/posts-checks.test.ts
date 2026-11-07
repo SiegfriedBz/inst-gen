@@ -10,7 +10,7 @@ import {
   findFlags,
   setupFlags,
 } from '@/lib/posts/checks';
-import { dropStopsBeforeEmoji } from '@/lib/posts/emoji';
+import { applyEdit } from '@/lib/posts/edit';
 import type { Offer } from '@/lib/posts/offer';
 import type { Setup } from '@/lib/posts/setup';
 import { svargaProfile } from './helpers/brand';
@@ -179,7 +179,7 @@ describe('no stop before an emoji', () => {
       svargaProfile(),
       'p1',
     );
-    expect(checked?.caption).toBe('Sore feet? 🌺 Feel light again. Wake up rested 🌸');
+    expect(checked?.caption).toBe('Sore feet? 🌺\n\nFeel light again. Wake up rested 🌸');
     expect(checked?.storyText).toBe('Sore feet? 🌺 Rest well 🌸');
   });
 
@@ -189,7 +189,7 @@ describe('no stop before an emoji', () => {
       svargaProfile(),
       'p1',
     );
-    expect(checked?.caption).toBe('Warm oil. Slow hands 🌸');
+    expect(checked?.caption).toBe('Warm oil.\n\nSlow hands 🌸');
   });
 
   it("removes it after an offer post's line, in its caption and story text", () => {
@@ -207,12 +207,12 @@ describe('no stop before an emoji', () => {
       { offer, carries: true },
     );
     const line = '10% off our 90-minute Balinese massage, until Tuesday 27 October';
-    expect(checked?.caption.startsWith(`${line} 🌸 Long flight?`)).toBe(true);
+    expect(checked?.caption.startsWith(`${line} 🌸\n\nLong flight?`)).toBe(true);
     expect(checked?.storyText).toBe(`${line} 🌸`);
   });
 
   it('flags quote the text without it', () => {
-    const caption = `${'Long words here. '.repeat(10)}End. 🌸`;
+    const caption = `${'Long words here, '.repeat(10)}End. 🌸`;
     const { post: checked } = checkPost(raw({ caption }), svargaProfile(), 'p1');
     const firstLine = checked?.unchecked.find((f) => f.kind === 'firstLine');
     expect(firstLine?.text.endsWith('End 🌸')).toBe(true);
@@ -233,6 +233,54 @@ describe('no stop before an emoji', () => {
     const { posts } = checkRewrite(answer, [post({ id: 'a' })], svargaProfile());
     expect(posts[0].caption).toBe('New words 🌺');
     expect(posts[0].storyText).toBe('New 🌸');
+  });
+});
+
+// docs/specs/posts/marketing-copy, "The hook alone on the first line".
+describe('the hook alone on its line', () => {
+  it("puts a plan caption's first sentence and its flower on their own line", () => {
+    const { post: checked } = checkPost(
+      raw({ caption: 'Sore shoulders from the paddle out? 🌸 Our therapists come to your villa.' }),
+      svargaProfile(),
+      'post-2',
+    );
+    expect(checked?.caption).toBe(
+      'Sore shoulders from the paddle out? 🌸\n\nOur therapists come to your villa.',
+    );
+  });
+
+  it('puts the hook alone in a rewrite', () => {
+    const answer = {
+      posts: [
+        {
+          id: 'a',
+          caption: 'Sore feet? 🌺 Warm oil helps.',
+          hashtags: ['canggu'],
+          altText: 'Alt',
+          storyText: 'Rest well 🌸',
+        },
+      ],
+    };
+    const { posts } = checkRewrite(answer, [post({ id: 'a' })], svargaProfile());
+    expect(posts[0].caption).toBe('Sore feet? 🌺\n\nWarm oil helps.');
+  });
+
+  it('measures the hook, not the whole caption, for the first line flag', () => {
+    const caption =
+      `Sore shoulders after the surf? ${'Warm oil and slow hands on your back. '.repeat(8)}`.trim();
+    expect(caption.length).toBeGreaterThanOrEqual(300);
+    const { post: checked } = checkPost(raw({ caption }), svargaProfile(), 'p1');
+    expect(checked?.unchecked.filter((f) => f.kind === 'firstLine')).toEqual([]);
+  });
+
+  it("leaves an owner's one-block caption as typed", () => {
+    const caption = 'Sore feet? 🌺 Warm oil helps. Rest well.';
+    const edited = applyEdit(
+      post(),
+      { caption, hashtags: 'spa', altText: 'Hands' },
+      svargaProfile(),
+    );
+    expect(edited.caption).toBe(caption);
   });
 });
 
@@ -511,7 +559,7 @@ describe('the special offer', () => {
       { offer, carries: true },
       thaiSetup,
     );
-    expect(checked?.caption).toBe(`${SHOWN} 🌸 Long flight? Feel light again.`);
+    expect(checked?.caption).toBe(`${SHOWN} 🌸\n\nLong flight? Feel light again.`);
     expect(checked?.storyText).toBe(`${SHOWN} 🌸`);
     expect(dropped).toContainEqual({ field: 'offer', reason: 'post-1: offer line put first' });
     expect(dropped).toContainEqual({
@@ -542,12 +590,12 @@ describe('the special offer', () => {
       { offer, carries: true },
       thaiSetup,
     );
-    expect(checked?.caption).toBe(dropStopsBeforeEmoji(caption));
+    expect(checked?.caption).toBe(`${SHOWN} 🌺\n\nLong flight? Warm oil and slow hands.`);
     expect(checked?.storyText).toBe(`${SHOWN} 🌺`);
     expect(offerRecords(dropped)).toEqual([]);
   });
 
-  it('a post that does not carry the offer is left as written', () => {
+  it('a post that does not carry the offer gets no offer step', () => {
     const { post: checked, dropped } = checkPost(
       raw({ type: 'moment', caption: 'Long flight? 🌸 Warm oil and slow hands.' }),
       profile(),
@@ -555,7 +603,7 @@ describe('the special offer', () => {
       { offer, carries: false },
       thaiSetup,
     );
-    expect(checked?.caption).toBe('Long flight? 🌸 Warm oil and slow hands.');
+    expect(checked?.caption).toBe('Long flight? 🌸\n\nWarm oil and slow hands.');
     expect(offerRecords(dropped)).toEqual([]);
   });
 
@@ -574,8 +622,8 @@ describe('the special offer', () => {
       'post-3',
       { offer, carries: true },
     );
-    // Only the spa's flower fix touches it.
-    expect(left?.caption).toBe('Long flight? Warm oil 🌸');
+    // Only the spa's flower and the hook's line touch it.
+    expect(left?.caption).toBe('Long flight?\n\nWarm oil 🌸');
     expect(dropped).toContainEqual({
       field: 'offer',
       reason: 'post-3: no treatment for the offer line',
@@ -591,7 +639,7 @@ describe('the special offer', () => {
       { offer, carries: true },
       thaiSetup,
     );
-    expect(checked?.caption).toBe(`${SHOWN} 🌸 Warm oil. Wake up light.`);
+    expect(checked?.caption).toBe(`${SHOWN} 🌸\n\nWarm oil. Wake up light.`);
     expect(checked?.unchecked.map((f) => f.kind)).not.toContain('price');
     expect(dropped).toContainEqual({
       field: 'offer',
@@ -608,7 +656,7 @@ describe('the special offer', () => {
   });
 
   it('checkRewrite keeps a line the model copied without its stop', () => {
-    const shown = `${SHOWN} 🌸 Long flight? Warm oil.`;
+    const shown = `${SHOWN} 🌸\n\nLong flight? Warm oil.`;
     const original = post({ id: 'a', offer: true, caption: shown, setup: thaiSetup });
     const answer = {
       posts: [

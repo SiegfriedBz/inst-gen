@@ -145,6 +145,10 @@ describe('recorded story texts and flowers', () => {
       expect(others(post.caption)).toEqual([]);
       // No stop right before an emoji (docs/specs/posts/day-and-night-copy).
       expect(post.caption).not.toMatch(STOP_BEFORE_EMOJI);
+      // The hook alone on its first line (docs/specs/posts/marketing-copy).
+      const hook = post.caption.split('\n')[0];
+      expect(hook.length).toBeLessThanOrEqual(125);
+      expect(hook.match(/[.!?](?=\s|$)/g)?.length ?? 0).toBeLessThanOrEqual(1);
       expect(story).not.toMatch(STOP_BEFORE_EMOJI);
       // An offer post opens on its line, its stop gone before the flower, and
       // its story text is that line and a flower (docs/specs/posts/offer-line-first).
