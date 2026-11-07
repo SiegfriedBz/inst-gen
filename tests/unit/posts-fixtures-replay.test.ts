@@ -5,6 +5,7 @@ import { replayTextModel } from '@/lib/ai/replay';
 import { FIXTURES_DIR, fixtureOffer, fixtureProfile, loadFixture } from '@/lib/brand/fixtures';
 import type { PlanResult } from '@/lib/posts/batch';
 import { emojisIn, FLOWERS } from '@/lib/posts/emoji';
+import { dropForeignTags } from '@/lib/posts/foreign-tags';
 import { offerLine, offerTreatment } from '@/lib/posts/offer-line';
 import { streamPlan } from '@/lib/posts/run';
 import { seededRandom } from '@/lib/posts/setup';
@@ -54,6 +55,8 @@ describe('recorded post plans', () => {
       expect(post.hashtags.length).toBeGreaterThanOrEqual(1);
       expect(post.hashtags.length).toBeLessThanOrEqual(5);
       for (const tag of post.hashtags) expect(tag).toMatch(/^[a-z0-9]+$/);
+      // No town of another country (docs/specs/posts/marketing-copy).
+      expect(dropForeignTags(post.hashtags, profile).dropped).toEqual([]);
     }
     if (profile.highlights.length === 0 && !profile.essence.promise) {
       expect(final.posts.some((p) => p.type === 'proof')).toBe(false);

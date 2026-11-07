@@ -13,6 +13,7 @@ import {
   type Scene,
 } from './batch';
 import { addFlower, dropStopsBeforeEmoji, isSpa, stripEmojis } from './emoji';
+import { dropForeignTags } from './foreign-tags';
 import { hookOnItsLine } from './hook-line';
 import { ctaFor } from './input';
 import { mentionsDay, OFFER_LIMITS, type Offer, PERCENT } from './offer';
@@ -261,11 +262,16 @@ function checkedWords(
   // their stop is done. The flags quote the text the owner sees.
   const shown = dropStopsBeforeEmoji(hookOnItsLine(caption));
   if (storyText) storyText = dropStopsBeforeEmoji(storyText);
+  const tags = dropForeignTags(cleanHashtags(raw.hashtags), profile);
+  const tagsDropped = tags.dropped.map(({ tag, place }) => ({
+    field: 'hashtags',
+    reason: `${id}: "${tag}" names ${place}`,
+  }));
   return {
     words: {
       caption: shown,
       cta: ctaFor(profile) ?? '',
-      hashtags: cleanHashtags(raw.hashtags),
+      hashtags: tags.tags,
       altText: cutChars(raw.altText.replace(/^(an? )?image of /i, ''), POSTS_LIMITS.altTextChars),
       unchecked: findFlags(shown, profile, context),
       ...(storyText
@@ -275,7 +281,7 @@ function checkedWords(
           }
         : {}),
     },
-    dropped: [...offered.dropped, ...dropped, ...storyDropped],
+    dropped: [...offered.dropped, ...dropped, ...storyDropped, ...tagsDropped],
   };
 }
 
