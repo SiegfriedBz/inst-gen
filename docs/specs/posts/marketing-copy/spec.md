@@ -1,8 +1,7 @@
 ---
 title: "Marketing copy"
 description: "Captions and story texts follow rules taken from two marketing skill libraries (decision 0009), on the two posts of an attempt (2.17b): code gives each post a hook style, the hook stands alone on the first line, each post type has its own job and only offer posts sell, each caption names one of the business's real places, the two captions of an attempt differ in shape, story texts give a reason to message, an offer post's WhatsApp line gives the offer's end, and code records what still repeats."
-status: approved
-approved: { by: siegfried.bozza@protonmail.com, at: 2026-11-08T13:32:48Z }
+status: draft
 date: "2026-11-07"
 ---
 
@@ -403,8 +402,10 @@ Unit tests (Vitest) for:
 
 The replay test checks, on Sen's and Svarga's `posts-14` plans with and
 without an offer: at most one hook ends in "?"; every caption's first line is
-one sentence of at most 125 characters; no caption or story text holds a
-price; no hashtag names a town of another country.
+one sentence, and one over 125 characters carries its `firstLine` flag
+(amended 2026-11-08: a `posts-14` hook of Svarga's runs to 136, and the
+maintainer accepted the recordings); no caption or story text holds a price;
+no hashtag names a town of another country.
 
 `pnpm eval:posts sen svarga --record`, then `pnpm eval:posts sen svarga
 --offer --record`: 4 Flash-Lite requests from the app's daily pool. The
@@ -500,12 +501,17 @@ Scenario: A recorded plan
   Given Sen's plan recorded with posts-14, without an offer
   When the replay test runs it
   Then at most one hook ends in "?"
-  And every caption's first line is one sentence of at most 125 characters
+  And every caption's first line is one sentence, flagged when over 125 characters
   And no caption or story text holds a price
 ```
 
 ## Known limits
 
+- The model follows the place, shape and hook-length rules most of the time,
+  not always: in the `posts-14` recordings, Sen's plan without an offer names
+  no place, and Svarga's two captions share a shape, one hook running to 136
+  characters. The maintainer accepted them (2026-11-08); the journal has the
+  scores.
 - Hook styles and type jobs are words in a prompt. Code tells a question by
   its "?", not a scene from a promise: the journal judges the rest.
 - Each attempt deals two of the six styles again. Records are per attempt,
