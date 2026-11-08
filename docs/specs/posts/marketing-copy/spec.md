@@ -1,8 +1,7 @@
 ---
 title: "Marketing copy"
 description: "Captions and story texts follow rules taken from two marketing skill libraries (decision 0009), on the two posts of an attempt (2.17b): code gives each post a hook style, the hook stands alone on the first line, each post type has its own job and only offer posts sell, each caption names one of the business's real places, the two captions of an attempt differ in shape, story texts give a reason to message, an offer post's WhatsApp line gives the offer's end, and code records what still repeats."
-status: approved
-approved: { by: siegfried.bozza@protonmail.com, at: 2026-11-08T13:44:01Z }
+status: draft
 date: "2026-11-07"
 ---
 
@@ -230,6 +229,13 @@ The facts rule gains qualities: "signature", "expert", "best", or any
 quality the profile doesn't claim, appears only if the profile holds it (CH
 `ad-creative/SKILL.md`: no invented claims).
 
+Amended 2026-11-08, after the final review: code's `duration` flag (2.2),
+which the owner sees ("This duration isn't on your website"), also accepts a
+duration that the profile's highlights or promise give. "WhatsApp replies in
+about 5 minutes", from Svarga's highlight "WhatsApp replies in ~5 mins", an
+ending this item asks for, is then no warning, in a caption or a story text.
+Any other duration is still flagged.
+
 ### Story text
 
 Each story text is its own line, for the story the owner makes with the story
@@ -388,6 +394,9 @@ Unit tests (Vitest) for:
   line on an offer post; no change when the hook already stands alone; the
   `firstLine` flag measuring the hook;
 - the price removal: 2.17b's tests (amended 2026-11-08);
+- the duration flag: a duration a highlight or the promise gives isn't
+  flagged, in a caption or a story text; another one is (amended
+  2026-11-08);
 - the story: "Rest your feet this evening 🌺 Book in your villa." keeps
   "Rest your feet this evening 🌺" and records "Book in your villa."
   (amended 2026-11-08);
@@ -464,6 +473,11 @@ Scenario: The hook alone on the first line
   Given the model writes post 2's caption "Sore shoulders from the paddle out? 🌸 Our therapists come to your villa."
   When code checks the plan
   Then post 2's caption is "Sore shoulders from the paddle out? 🌸", a blank line, then "Our therapists come to your villa."
+
+Scenario: A highlight's duration is no warning
+  Given Svarga's highlight "WhatsApp replies in ~5 mins"
+  When post 2's caption ends "WhatsApp replies in about 5 minutes."
+  Then post 2 has no duration flag
 
 Scenario: A story text keeps its line before the flower
   Given the model writes post 2's story text "Rest your feet this evening 🌺 Book in your villa."
