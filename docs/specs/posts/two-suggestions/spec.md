@@ -1,7 +1,8 @@
 ---
 title: "Two suggestions an attempt"
 description: "An attempt makes two suggestions instead of six, each with its post image and story image: with a special offer both carry it, otherwise one offer post and one of another type; one day and one night; the buttons, the grid and the owner guide say two, in three languages."
-status: draft
+status: approved
+approved: { by: siegfried.bozza@protonmail.com, at: 2026-11-08T11:38:16Z }
 date: "2026-11-08"
 ---
 
