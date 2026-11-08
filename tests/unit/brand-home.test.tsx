@@ -472,7 +472,7 @@ describe('the home tabs', () => {
     renderHome();
     await screen.findByRole('tablist', { name: 'Home' });
     expect(selected('Create Posts')).toBe('true');
-    expect(await screen.findByRole('button', { name: 'Make 6 suggestions' })).toBeTruthy();
+    expect(await screen.findByRole('button', { name: 'Make 2 suggestions' })).toBeTruthy();
     expect(screen.getByText(INTRO).closest('[role="tabpanel"]')?.hasAttribute('hidden')).toBe(true);
     await openTab('Your business');
     expect(screen.getByText(INTRO)).toBeTruthy();
@@ -583,7 +583,7 @@ describe('the home tabs', () => {
     });
     renderHome();
     const make = (await screen.findByRole('button', {
-      name: 'Make 6 suggestions',
+      name: 'Make 2 suggestions',
     })) as HTMLButtonElement;
     await waitFor(() => expect(make.disabled).toBe(false));
     fireEvent.click(make);

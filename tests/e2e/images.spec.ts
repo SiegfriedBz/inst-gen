@@ -29,17 +29,14 @@ test('two images follow the captions, stay on the phone, and one is tried again'
   await page.getByRole('button', { name: 'Read my website' }).click();
   await page.getByRole('tab', { name: 'Create Posts' }).click();
 
-  // The posts have no set-ups, so all are days: the first two get images
-  // (docs/specs/posts/two-images).
-  await page.getByRole('button', { name: 'Make 6 suggestions' }).click();
+  // An attempt is two suggestions, each with its images
+  // (docs/specs/posts/two-suggestions).
+  await page.getByRole('button', { name: 'Make 2 suggestions' }).click();
   await expect(page.getByText('Making the image…')).toHaveCount(2);
   await expect(tileImages(page)).toHaveCount(1);
   await expect(
     tile(page, 2).getByText("This image couldn't be made. Try again for a new one."),
   ).toBeVisible();
-  for (const n of [3, 4, 5, 6]) {
-    await expect(tile(page, n).getByText(`Caption ${n}.`)).toBeVisible();
-  }
 
   const sheet = await openSuggestion(page, 1);
   await sheet.getByRole('button', { name: 'See the story image' }).click();
@@ -57,18 +54,5 @@ test('two images follow the captions, stay on the phone, and one is tried again'
   await expect(tileImages(page)).toHaveCount(2);
   await closeSuggestion(page);
 
-  const fourth = await openSuggestion(page, 4);
-  await expect(
-    fourth.getByText(
-      'Only 2 suggestions of each attempt come with images. Create one for this suggestion, or use a photo of your own.',
-    ),
-  ).toBeVisible();
-  await expect(fourth.getByRole('button', { name: 'Save post & story images' })).toHaveCount(0);
-  await fourth.getByRole('button', { name: 'Create new image' }).click();
-  await fourth.getByRole('button', { name: 'Make it' }).click();
-  await expect(fourth.getByRole('button', { name: 'Save post & story images' })).toBeEnabled();
-  await closeSuggestion(page);
-  await expect(tile(page, 4).locator('img')).toHaveCount(1);
-  await expect(tileImages(page)).toHaveCount(3);
-  expect(images.count()).toBe(4);
+  expect(images.count()).toBe(3);
 });

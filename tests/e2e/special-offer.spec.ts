@@ -48,8 +48,8 @@ test('an offer set in the sheet goes with the plan, and its two posts show the b
     });
   });
   await fulfilImages(page, {});
-  await page.getByRole('button', { name: 'Make 6 suggestions' }).click();
-  await expect(tiles(page)).toHaveCount(6);
+  await page.getByRole('button', { name: 'Make 2 suggestions' }).click();
+  await expect(tiles(page)).toHaveCount(2);
   expect(sent.offer?.percent).toBe(10);
   await expect(page.getByTestId('attempt-grid').getByText('10% off')).toHaveCount(2);
   // The two offer posts are the two with images (docs/specs/posts/two-images).

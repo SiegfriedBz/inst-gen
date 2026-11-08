@@ -195,10 +195,10 @@
     }
   },
   "posts": {
-    "make": "Make 6 suggestions",
-    "makeMore": "Make 6 new suggestions",
+    "make": "Make 2 suggestions",
+    "makeMore": "Make 2 new suggestions",
     "moreBelow": "They go on top. Attempt {n} stays below.",
-    "empty": "You get 6 suggestions, each with the text for a post and a short text for a story, ready for Instagram; 2 of them also come with a post image and a story image. Pick the ones you like and save them to your phone.",
+    "empty": "Each suggestion is 2 images (1 for the post, 1 for the story), the text for the post and a short text for the story, ready for Instagram. Pick the ones you like and save them to your phone.",
     "emptyTextOnly": "Each suggestion is the text for a post and a short text for a story, ready for Instagram. Pick the ones you like and copy them.",
     "attempt": "Attempt {n}",
     "attemptCount": "{count, plural, one {# suggestion} other {# suggestions}}",

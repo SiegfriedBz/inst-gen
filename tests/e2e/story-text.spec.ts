@@ -25,7 +25,7 @@ async function sixWithStories(
     website: 'Your website',
     read: 'Read my website',
     tab: 'Create Posts',
-    make: 'Make 6 suggestions',
+    make: 'Make 2 suggestions',
   },
 ) {
   const profile = senProfile();
@@ -65,7 +65,7 @@ test.describe('an English screen', () => {
     await expect(parts.nth(2).getByRole('button', { name: 'Copied' })).toBeVisible();
     expect(await page.evaluate(() => navigator.clipboard.readText())).toBe('Story 2. 🌸');
     await closeSuggestion(page);
-    await expect(tile(page, 2)).toHaveAccessibleName('Suggestion 2 of 6, Caption 2.');
+    await expect(tile(page, 2)).toHaveAccessibleName('Suggestion 2 of 2, Caption 2.');
   });
 });
 
