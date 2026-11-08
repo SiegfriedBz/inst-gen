@@ -189,6 +189,36 @@ describe('Create Posts', () => {
     await waitFor(() => expect(link.disabled).toBe(true));
     expect(screen.getByText("You've made today's 10 new images. More at 14:00.")).toBeTruthy();
   });
+
+  // Suggestions 3 to 6 of an attempt get no image (docs/specs/posts/two-images).
+  async function sixWithTwoImages() {
+    const six = Array.from({ length: 6 }, (_, i) => post({ id: `post-${i + 1}` }));
+    await saveBatch(batch(six));
+    await saveImage(image('post-1'));
+    await saveImage(image('post-2'));
+    await posts(true);
+    fireEvent.click(await screen.findByRole('button', { name: /^Suggestion 4 of 6\b/ }));
+    return screen.findByRole('dialog');
+  }
+
+  test("no new image left: a suggestion without an image can't get one", async () => {
+    usage = left({ newImages: 0 });
+    await sixWithTwoImages();
+    const link = (await screen.findByRole('button', {
+      name: 'Create new image',
+    })) as HTMLButtonElement;
+    await waitFor(() => expect(link.disabled).toBe(true));
+    expect(screen.getByText("You've made today's 10 new images. More at 14:00.")).toBeTruthy();
+  });
+
+  test('the image month full: a suggestion without an image says until when', async () => {
+    usage = { ...full, images: { ...full.images, monthFull: true } };
+    await sixWithTwoImages();
+    expect(await screen.findByText('No new images until November 1.')).toBeTruthy();
+    expect(screen.queryByRole('button', { name: 'Create new image' })).toBeNull();
+    const tile = screen.getByRole('button', { name: /^Suggestion 4 of 6\b/, hidden: true });
+    expect(tile.querySelector('.aspect-\\[4\\/5\\]')).toBeNull();
+  });
 });
 
 describe('images say which are first', () => {

@@ -75,6 +75,12 @@ wording follows `platform/i18n`'s rules (plain words, `Anda`, `bạn`).
      business" and start again.
 
 3. **Making your posts**, with what decision 0005 requires:
+
+   > Changed by `posts/two-images` (2026-11-08): the 6 suggestions each come
+   > with the text; two of them also come with a post image and a story
+   > image, and "Create new image" gives one to any other, from the day's
+   > new images.
+
    - Tap the make button: you get 6 suggestions, each with a post image, a
      story image and the text.
    - Keep the page open for about a minute. If you leave, Shopfront carries

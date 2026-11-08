@@ -42,7 +42,7 @@ async function sixPosts(page: Page) {
   const images = await fulfilImages(page, {});
   await signIn(page);
   await readAndMake(page, 'Your website', 'Read my website', 'Make 6 suggestions');
-  await expect(tileImages(page)).toHaveCount(6);
+  await expect(tileImages(page)).toHaveCount(2);
   return { profile, images };
 }
 
@@ -99,7 +99,7 @@ test('a new image carries the hint', async ({ page }) => {
   await sheet.getByRole('button', { name: 'Make it' }).click();
   await expect(sheet.getByText('Making the image…')).toBeHidden();
   expect(bodies.map((b) => b.hint)).toEqual(['more green']);
-  expect(images.count()).toBe(7);
+  expect(images.count()).toBe(3);
 });
 
 test('without a share sheet, Save post & story images downloads both, named', async ({ page }) => {
@@ -123,11 +123,11 @@ test('two attempts stack, newest on top, and keep their own images after a reloa
   await fulfilImages(page, failures);
   await signIn(page);
   await readAndMake(page, 'Your website', 'Read my website', 'Make 6 suggestions');
-  await expect(tileImages(page)).toHaveCount(6);
+  await expect(tileImages(page)).toHaveCount(2);
   failures['post-1'] = { status: 502, error: 'image_blocked' };
   await page.getByRole('button', { name: 'Make 6 new suggestions' }).click();
   await expect(tiles(page)).toHaveCount(12);
-  await expect(tileImages(page)).toHaveCount(11);
+  await expect(tileImages(page)).toHaveCount(3);
   await expect(page.getByRole('heading', { name: /^Attempt/ })).toHaveText([
     'Attempt 2',
     'Attempt 1',
@@ -135,7 +135,7 @@ test('two attempts stack, newest on top, and keep their own images after a reloa
   await expect(page.getByText('They go on top. Attempt 2 stays below.')).toBeVisible();
 
   await page.reload();
-  await expect(tileImages(page)).toHaveCount(11);
+  await expect(tileImages(page)).toHaveCount(3);
   await expect(tile(page, 1).locator('img')).toHaveCount(0);
   await expect(tile(page, 1, 1).locator('img')).toHaveCount(1);
 });

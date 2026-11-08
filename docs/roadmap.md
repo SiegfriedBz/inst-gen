@@ -85,6 +85,7 @@ most sample replies as written, with $0 spent on everything but images
 | 2.13b | `posts/offer-line-first`: an offer post always opens on its offer line, the hook, and its story text is that line; code writes it whenever the model misses, and removes a price from it | spec | done |
 | 2.14 | `posts/day-and-night-images`: Sen's images as warm and bright as Svarga's: three day and three night images per batch, the room a tourist pictures open onto the place's green plants, the place's flower, and a discreet sign of the guest's day on moment posts | spec | done |
 | 2.14b | `posts/day-and-night-copy`: each caption and story text follows its post's light, three day and three night; no example sentence in the prompt to copy, six different openings and endings, and code records any that repeat | spec | done |
+| 2.17 | `posts/two-images`: two images an attempt instead of six, to cut the image spend: the two offer posts, or one day and one night; the other four are text, and the owner can create an image for any of them from the day's new images; the owner guide says so | spec | done |
 
 ## Later phases
 

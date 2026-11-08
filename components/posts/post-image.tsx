@@ -27,6 +27,9 @@ export type ImageState =
   // The image month is full (docs/specs/platform/usage-counters).
   | { kind: 'month' }
   | { kind: 'none' }
+  // Not one of the attempt's two images (docs/specs/posts/two-images);
+  // `month` when the image month is full, so none can be created.
+  | { kind: 'skipped'; month?: boolean }
   | { kind: 'making' }
   // `making` while a new image is made; `failure` when it couldn't be.
   | { kind: 'ready'; image: SavedImage; making?: boolean; failure?: ImageFailure }
@@ -195,6 +198,13 @@ export function PostImage({
   if (state.kind === 'ready') {
     return (
       <Ready image={state.image} altText={altText} making={state.making} failure={state.failure} />
+    );
+  }
+  if (state.kind === 'skipped') {
+    return (
+      <p className="text-[13px] text-ink-secondary">
+        {state.month ? <UsageMessage code="images_month" action="newImages" /> : t('none')}
+      </p>
     );
   }
   if (state.kind === 'month') {

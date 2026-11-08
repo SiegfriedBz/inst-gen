@@ -88,6 +88,7 @@ export function PostCard({
   const state = image?.state;
   const canRemake =
     state?.kind === 'ready' ||
+    (state?.kind === 'skipped' && !state.month) ||
     (state?.kind === 'failed' && state.code !== 'offline' && state.code !== 'images_off');
   const remaking = state?.kind === 'making' || (state?.kind === 'ready' && !!state.making);
   const newImageLimit = useAtLimit('newImages');
@@ -129,7 +130,8 @@ export function PostCard({
               <UsageMessage code={newImageLimit} action="newImages" />
             </p>
           )}
-          {saveImages}
+          {/* Nothing to save until an image is created. */}
+          {state?.kind !== 'skipped' && saveImages}
         </SheetPart>
       )}
       <SheetPart n={textPart} title={t('parts.postText')}>
