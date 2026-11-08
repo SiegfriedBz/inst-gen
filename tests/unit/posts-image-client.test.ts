@@ -76,13 +76,16 @@ describe("a batch's images from the browser", () => {
     await vi.waitFor(() => expect(fetchMock).toHaveBeenCalledTimes(6));
     expect(isImageRunning('b1', 'post-1')).toBe(true);
     expect(fetchMock.mock.calls[0][0]).toBe('/api/posts/image');
-    expect(bodyOf(fetchMock.mock.calls[2])).toEqual({
-      postId: 'post-3',
-      imagePrompt: 'Scene 3 at dusk',
+    const bodies = fetchMock.mock.calls.map(bodyOf);
+    expect(bodies.find((b) => b.postId === 'post-1')).toEqual({
+      postId: 'post-1',
+      imagePrompt: 'Scene 1 at dusk',
       scene: 'detail',
-      // No image on the phone yet: covered by its attempt.
+      // Picked, with no image on the phone yet: covered by its attempt.
       first: true,
     });
+    // Not one of the attempt's two (docs/specs/posts/two-images): a new image.
+    expect(bodies.find((b) => b.postId === 'post-3')?.first).toBe(false);
     waiting.forEach((resolve, i) => {
       resolve(ok(`post-${i + 1}`));
     });
@@ -114,6 +117,18 @@ describe("a batch's images from the browser", () => {
     ]);
     expect((await loadImages('sen')).size).toBe(5);
     expect(await loadOpenRuns('sen', 'images')).toEqual([]);
+  });
+
+  test('a skipped post asks as a new image', async () => {
+    await make(['post-4']);
+    expect(bodyOf(fetchMock.mock.calls[0])).toMatchObject({ postId: 'post-4', first: false });
+  });
+
+  test('a picked post whose first image failed asks again as first', async () => {
+    fetchMock.mockResolvedValueOnce(Response.json({ error: 'image_blocked' }, { status: 502 }));
+    await make(['post-1']);
+    await make(['post-1']);
+    expect(fetchMock.mock.calls.map((call) => bodyOf(call).first)).toEqual([true, true]);
   });
 
   test('an unknown error answer is image_failed', async () => {

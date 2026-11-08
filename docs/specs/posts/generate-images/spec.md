@@ -32,6 +32,8 @@ download, and phase 2's gate needs them in front of the owners.
 
 ### When images are made
 
+> Changed by `posts/two-images` (2026-11-08): an attempt asks for two images, not six: the two offer posts when it has an offer, otherwise one day and one night post. The other four are text, and the owner can create an image for any of them, as a new image.
+
 Images are made **automatically after the captions**: when a batch's `plan`
 step is saved as done, the run gains six `image` steps, one per post, and the
 browser asks for all six at once (decision 0005: "Image (×6, in parallel)").

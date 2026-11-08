@@ -59,6 +59,8 @@ before anything else is judged.
 
 ### Day or night: code deals it
 
+> Changed by `posts/two-images` (2026-11-08): set-ups are still dealt three days and three nights, but an attempt without an offer pictures only one day and one night post; the others are text until the owner creates their image.
+
 Each set-up (2.12, `lib/posts/setup.ts`) gains a `light`, `day` or `night`.
 Code deals **three of each** per batch of six, in a random order from the
 batch's seed, after the other fields, so the rest of a deal stays as it was.
