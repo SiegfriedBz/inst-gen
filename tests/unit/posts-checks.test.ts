@@ -409,6 +409,20 @@ describe('no stop before an emoji', () => {
 
 // docs/specs/posts/marketing-copy, "The hook alone on the first line".
 describe('the hook alone on its line', () => {
+  // Review Focus 1: the price goes first, so the next sentence is the hook
+  // (the removal is docs/specs/posts/two-suggestions').
+  it('makes the next sentence the hook when the first held a price', () => {
+    const { post: checked } = checkPost(
+      raw({
+        caption:
+          'Only IDR 250k for an hour? Rest in Canggu tonight. Warm oil and slow hands follow 🌸',
+      }),
+      svargaProfile(),
+      'post-2',
+    );
+    expect(checked?.caption).toBe('Rest in Canggu tonight.\n\nWarm oil and slow hands follow 🌸');
+  });
+
   it("puts a plan caption's first sentence and its flower on their own line", () => {
     const { post: checked } = checkPost(
       raw({ caption: 'Sore shoulders from the paddle out? 🌸 Our therapists come to your villa.' }),

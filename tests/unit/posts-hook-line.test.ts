@@ -38,6 +38,13 @@ describe('hookOnItsLine', () => {
     );
   });
 
+  // The final review: "11 p.m." isn't a sentence's end.
+  it('never ends the hook at a stop a lower-case word follows', () => {
+    expect(hookOnItsLine('Open until 11 p.m. tonight, we come to you. Warm oil.')).toBe(
+      'Open until 11 p.m. tonight, we come to you.\n\nWarm oil.',
+    );
+  });
+
   it('never ends the hook at an emoji inside a sentence', () => {
     expect(hookOnItsLine('Frangipani 🌸 petals on the tray. Warm oil.')).toBe(
       'Frangipani 🌸 petals on the tray.\n\nWarm oil.',
