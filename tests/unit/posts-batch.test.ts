@@ -1,5 +1,6 @@
 import { describe, expect, it } from 'vitest';
-import { batchSchema, type Post } from '@/lib/posts/batch';
+import { batchSchema, type Post, rewriteBodySchema } from '@/lib/posts/batch';
+import { svargaProfile } from './helpers/brand';
 import { post } from './helpers/posts';
 
 function batch(posts: Post[]) {
@@ -17,9 +18,16 @@ function batch(posts: Post[]) {
 }
 
 describe('batchSchema', () => {
+  // An attempt saved before two suggestions (docs/specs/posts/two-suggestions)
+  // holds six: it still loads, and its captions still update.
   it('accepts a six-post batch', () => {
     const posts = Array.from({ length: 6 }, (_, i) => post({ id: `p${i}` }));
     expect(batchSchema.safeParse(batch(posts)).success).toBe(true);
+  });
+
+  it("a caption update sends a six-post attempt's posts", () => {
+    const posts = Array.from({ length: 6 }, (_, i) => post({ id: `p${i}` }));
+    expect(rewriteBodySchema.safeParse({ profile: svargaProfile(), posts }).success).toBe(true);
   });
 
   it('keeps a story text of at most 120 characters, and its flags', () => {

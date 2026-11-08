@@ -56,8 +56,41 @@ describe('planPrompt', () => {
     expect(prompt).not.toMatch(/stones/);
   });
 
+  // docs/specs/posts/two-suggestions
+  it('plans two posts: an offer post and one of another type', () => {
+    const prompt = planPrompt();
+    expect(prompt).toContain('You plan two Instagram posts');
+    expect(prompt).toContain(
+      'Post 1 is an offer post. Post 2 is one of the other types: moment, local, ritual, tip or proof. Never repeat the topic of a recent post.',
+    );
+    expect(prompt).not.toMatch(/six|At least 2 offer posts|at least 4 different types/);
+  });
+
+  it('with an offer, both posts are offer posts', () => {
+    const prompt = planPrompt(true);
+    expect(prompt).toContain(
+      'Posts 1 and 2 are both offer posts. Never repeat the topic of a recent post.',
+    );
+    expect(prompt).not.toContain('Post 2 is one of the other types');
+  });
+
+  it('never a price, in a plan or a caption update', () => {
+    for (const prompt of [
+      planPrompt(),
+      planPrompt(true, true),
+      rewritePrompt(),
+      rewritePrompt(true),
+    ]) {
+      expect(prompt).toContain('- Never a price, in a caption or a story text.');
+      expect(prompt).not.toMatch(/its price|with its price|a price, a duration/);
+    }
+    expect(planPrompt()).toContain(
+      '- offer: one treatment or package, what it does for the guest, with its duration when the profile gives it.',
+    );
+  });
+
   it('has a version', () => {
-    expect(POSTS_PROMPT_VERSION).toBe('posts-11');
+    expect(POSTS_PROMPT_VERSION).toBe('posts-12');
   });
 });
 
@@ -204,8 +237,7 @@ describe('the special offer', () => {
   it("says the plan's offer rules with an offer", () => {
     const prompt = planPrompt(true);
     for (const rule of [
-      'Exactly 2 offer posts carry the special offer',
-      'never mention a discount, a free treatment or a deadline',
+      'Both carry the special offer',
       'never a price',
       'Posts 1 and 2 are the two offer posts.',
     ]) {
@@ -225,13 +257,13 @@ describe('the special offer', () => {
     // posts-9 dropped 2.11's "as given" sentence, and 4 of 6 offer posts then
     // quoted a price (docs/specs/posts/offer-line-first, journal).
     expect(prompt).toContain(
-      'one concrete detail that makes it real (the treatment, its price or duration when the profile gives them, the place; on a post that carries the special offer, never a price and never another session length)',
+      'one concrete detail that makes it real (the treatment, its duration when the profile gives it, the place; on a post that carries the special offer, never another session length)',
     );
     expect(prompt).toContain(
       'Never a bigger discount, never other terms, never a price, never another session length, never "today only" or "this week", anywhere in an offer post.',
     );
     expect(planPrompt(false, true)).toContain(
-      '(the treatment, its price or duration when the profile gives them, the place);',
+      '(the treatment, its duration when the profile gives it, the place);',
     );
     expect(prompt).not.toContain('first line states the offer');
     expect(planPrompt(false, true)).not.toContain('offer line');
@@ -323,9 +355,7 @@ describe('the story text and the captions that sell', () => {
     expect(planPrompt(true, false)).toContain(
       "Each offer post's story text is its offer line, word for word.",
     );
-    expect(planPrompt(true, true)).toContain(
-      'The other four posts never mention a discount, a free treatment or a deadline, in their captions or story texts.',
-    );
+    expect(planPrompt(true, true)).not.toContain('other four');
   });
 
   it('rewrites the story texts too', () => {

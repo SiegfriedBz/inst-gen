@@ -6,7 +6,7 @@ import { encodePostsLine } from '@/lib/posts/stream';
 import { takeUsage, usageRefusal } from '@/lib/usage/meter';
 import { giveBackOnError } from '@/lib/usage/stream';
 
-// Plans six posts from the brand profile and streams them as
+// Plans two posts from the brand profile and streams them as
 // NDJSON (docs/specs/posts/generate-copy). Reached only with a valid session:
 // proxy.ts answers 401 otherwise.
 

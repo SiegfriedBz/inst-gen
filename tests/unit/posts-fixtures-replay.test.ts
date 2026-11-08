@@ -48,7 +48,8 @@ describe('recorded post plans', () => {
     }
     if (!final) throw new Error('no final line');
     expect(final.posts.length).toBeGreaterThanOrEqual(1);
-    expect(final.posts.length).toBeLessThanOrEqual(6);
+    // Recorded as six (posts-11); an attempt keeps two (docs/specs/posts/two-suggestions).
+    expect(final.posts.length).toBeLessThanOrEqual(2);
     for (const post of final.posts) {
       if (profile.contact.whatsapp) expect(post.cta).toMatch(/^Book on WhatsApp: /);
       expect(post.hashtags.length).toBeGreaterThanOrEqual(1);

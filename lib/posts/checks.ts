@@ -17,7 +17,7 @@ import { ctaFor } from './input';
 import { mentionsDay, OFFER_LIMITS, type Offer, PERCENT } from './offer';
 import { dropPrices, offerLine, offerStory, offerTreatment, putOfferLineFirst } from './offer-line';
 import type { Setup } from './setup';
-import { cleanStory } from './story';
+import { cleanStory, sentences } from './story';
 import { lightRecords, repeatRecords } from './variety';
 
 // Code's checks on the model's posts (docs/specs/posts/generate-copy, "What
@@ -239,11 +239,18 @@ function checkedWords(
   const offered = context?.carries
     ? lineFirst(raw.caption, id, context, spa, setupTreatment)
     : { line: null, caption: raw.caption, dropped: [] };
-  const cut = cutCaption(offered.caption);
+  // A post that carries the offer lost its prices after its line.
+  const priced = offered.line
+    ? { text: offered.caption, dropped: [] }
+    : withoutPrices(offered.caption, id);
+  const cut = cutCaption(priced.text);
   const { caption, dropped } = spa ? spaCaption(cut, id) : { caption: cut, dropped: [] };
-  const story = cleanStory(raw.storyText, { id, spa });
+  const storyPriced = raw.storyText
+    ? withoutPrices(raw.storyText, id)
+    : { text: raw.storyText, dropped: [] };
+  const story = cleanStory(storyPriced.text?.trim() || undefined, { id, spa });
   let storyText = story.storyText;
-  const storyDropped = [...story.dropped];
+  const storyDropped = [...storyPriced.dropped, ...story.dropped];
   if (offered.line) {
     const fixed = offerStory(
       offered.line,
@@ -273,7 +280,7 @@ function checkedWords(
           }
         : {}),
     },
-    dropped: [...offered.dropped, ...dropped, ...storyDropped],
+    dropped: [...offered.dropped, ...priced.dropped, ...dropped, ...storyDropped],
   };
 }
 
@@ -334,6 +341,30 @@ export function setupFlags(post: Post): Dropped[] {
     }));
 }
 
+// The model wrote more posts than an attempt keeps.
+export const MORE_POSTS: Dropped = {
+  field: 'posts',
+  reason: `more than ${POSTS_LIMITS.posts} posts`,
+};
+
+// Never a price, in a caption or a story text
+// (docs/specs/posts/two-suggestions): each sentence that holds one goes, or
+// the part of it an emoji ends ("…villa 🌸 IDR 250k for 60 min.").
+function withoutPrices(text: string, id: string): { text: string; dropped: Dropped[] } {
+  const parts = sentences(text).flatMap((s) =>
+    s.split(/(?<=\p{Extended_Pictographic}\uFE0F?)(?=\s)/u),
+  );
+  const removed = parts.filter((part) => PRICE_PATTERN.test(part));
+  if (removed.length === 0) return { text, dropped: [] };
+  return {
+    text: parts
+      .filter((part) => !removed.includes(part))
+      .join('')
+      .trim(),
+    dropped: removed.map((s) => ({ field: 'price', reason: `${id}: price removed "${s.trim()}"` })),
+  };
+}
+
 function overused<K extends string>(values: K[], max: number): [K, number][] {
   const counts = new Map<K, number>();
   for (const value of values) counts.set(value, (counts.get(value) ?? 0) + 1);
@@ -347,7 +378,7 @@ export function checkPlan(
   offer?: Offer,
 ): { posts: Post[]; dropped: Dropped[] } {
   const out = [...dropped];
-  if (posts.length > POSTS_LIMITS.posts) out.push({ field: 'posts', reason: 'more than 6 posts' });
+  if (posts.length > POSTS_LIMITS.posts) out.push(MORE_POSTS);
   const kept = posts.slice(0, POSTS_LIMITS.posts);
   for (const [type, n] of overused(
     kept.map((p) => p.type),
@@ -361,9 +392,9 @@ export function checkPlan(
   )) {
     out.push({ field: 'mix', reason: `scene ${scene} used ${n} times` });
   }
-  const offers = kept.filter((p) => p.type === 'offer').length;
-  if (profile.offerings.length >= 2 && offers < 2) {
-    out.push({ field: 'mix', reason: 'fewer than 2 offer posts' });
+  // Post 1 sells (docs/specs/posts/two-suggestions).
+  if (profile.offerings.length > 0 && !kept.some((p) => p.type === 'offer')) {
+    out.push({ field: 'mix', reason: 'no offer post' });
   }
   // With an offer, its set-ups are 1 and 2: so are its posts.
   if (offer && kept.slice(0, 2).some((p) => p.type !== 'offer')) {

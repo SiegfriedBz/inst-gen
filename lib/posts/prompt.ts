@@ -12,7 +12,7 @@ import { type Setup, setupLine } from './setup';
 // docs/specs/posts/offer-line-first; copy that follows the post's light, with
 // no example to copy, from docs/specs/posts/day-and-night-copy. Bump the
 // version with every change, so eval verdicts trace back to it.
-export const POSTS_PROMPT_VERSION = 'posts-11';
+export const POSTS_PROMPT_VERSION = 'posts-12';
 
 // Code decides the emoji rule: flowers only for a spa
 // (docs/specs/posts/story-text, "Emojis").
@@ -33,12 +33,13 @@ const captionRules = (
   lightFrom = 'the last word of its set-up',
 ) => `Captions:
 - English, in the business's tone words, written to tourists and expats nearby.
-- Each caption sells, in this order: a hook, its first line of at most 125 characters, that works on its own and stops a tourist scrolling (a question or a promise the guest feels, about their own day), since it is all Instagram shows before "more"${withOffer ? '; on a post that carries the special offer, the hook is its offer line, word for word, with nothing before it, and a question or a promise may follow it' : ''}; what the guest will feel, rather than what the business does; one concrete detail that makes it real (the treatment, its price or duration when the profile gives them, the place${withOffer ? '; on a post that carries the special offer, never a price and never another session length' : ''}); and a last sentence on a positive note: a feeling in the body, what the rest of the day or night holds, or a warm promise.
+- Each caption sells, in this order: a hook, its first line of at most 125 characters, that works on its own and stops a tourist scrolling (a question or a promise the guest feels, about their own day), since it is all Instagram shows before "more"${withOffer ? '; on a post that carries the special offer, the hook is its offer line, word for word, with nothing before it, and a question or a promise may follow it' : ''}; what the guest will feel, rather than what the business does; one concrete detail that makes it real (the treatment, its duration when the profile gives it, the place${withOffer ? '; on a post that carries the special offer, never another session length' : ''}); and a last sentence on a positive note: a feeling in the body, what the rest of the day or night holds, or a warm promise.
 - Each caption and story text follows its post's light, ${lightFrom}. Day: the guest's afternoon, a break in the middle of the day after the beach, a surf, a walk round town or a morning at the laptop, with the evening still ahead (a sunset, dinner, a night out); never sleep, bed or waking up. Night: the guest's evening, the day done, unwinding in the room, a deep sleep, the next day ahead; never the afternoon, the midday sun or the morning just past.
 - The captions open differently and end differently: never the same first sentence, never the same last sentence, and never the same idea said twice in other words. Never reuse a phrase from these instructions.
 - 250 to 700 characters in all. Short paragraphs, no hashtags in the text.
 - ${emojiRule(spa)}
-- Facts only from the profile: a price, a duration, a number of years, a place name or a claim appears only if the profile holds it, written as the profile writes it. Feelings, senses and place symbols are yours to use freely.
+- Never a price, in a caption or a story text.
+- Facts only from the profile: a duration, a number of years, a place name or a claim appears only if the profile holds it, written as the profile writes it. Feelings, senses and place symbols are yours to use freely.
 - No call to action and no contact details: the app adds "Book on WhatsApp" with the number after every caption.
 - Never these words, nor anything that suggests more than a professional treatment: ${BANNED_WORDS.join(', ')}.
 
@@ -51,7 +52,7 @@ Story text: a short version of its own caption, for the post's Instagram story, 
 // The special offer's rules, only when the owner set one
 // (docs/specs/posts/special-offer, "What the model gets").
 const offerRules = (spa: boolean) => `
-A special offer is given. Posts 1 and 2 are the two offer posts. Exactly 2 offer posts carry the special offer: each leads on one of the offer's treatments, two different ones when the offer has two or more. Each offer post's caption starts with its offer line, given under "### Special offer", word for word. Never a bigger discount, never other terms, never a price, never another session length, never "today only" or "this week", anywhere in an offer post. Each offer post's story text is its offer line, word for word${spa ? ', followed by one flower' : ''}. The other four posts never mention a discount, a free treatment or a deadline, in their captions or story texts.`;
+A special offer is given. Posts 1 and 2 are the two offer posts. Both carry the special offer: each leads on one of the offer's treatments, two different ones when the offer has two or more. Each offer post's caption starts with its offer line, given under "### Special offer", word for word. Never a bigger discount, never other terms, never a price, never another session length, never "today only" or "this week", anywhere in an offer post. Each offer post's story text is its offer line, word for word${spa ? ', followed by one flower' : ''}.`;
 
 const rewriteOfferRules = (spa: boolean) => `
 
@@ -78,18 +79,18 @@ function lineOf(offer: Offer, setupTreatment: string | undefined, caption = ''):
 }
 
 export function planPrompt(withOffer = false, spa = false): string {
-  return `You plan six Instagram posts for a small business, for an app that makes its posts. You get the business's brand profile, read from its website and checked by the owner, and the topics of its recent posts.
+  return `You plan two Instagram posts for a small business, for an app that makes its posts. You get the business's brand profile, read from its website and checked by the owner, and the topics of its recent posts.
 
 Each post has a type, a topic, a scene, a caption, a story text, hashtags, alt text and an image prompt.
 
 The mix:
-- offer: one treatment or package, what it does for the guest, with its price and duration when the profile gives them.
+- offer: one treatment or package, what it does for the guest, with its duration when the profile gives it.
 - moment: a reason people come (after a surf, a hike, a long flight), from the essence's moments.
 - local: the town or area and what it's known for, tied back to the business.
 - ritual: how a treatment unfolds (the oils, the warm towels, the quiet), never the staff.
 - tip: a small piece of care advice tied to the trade (stretch after a dive, drink water after a massage).
 - proof: what the profile says about the business (years open, its promise, a rating it quotes). Only when the highlights or the promise give something to say; never an invented review, rating or customer.
-At least 2 offer posts, on 2 different offerings when there are two. At most 2 posts of any type, and at least 4 different types. Never repeat the topic of a recent post.${withOffer ? offerRules(spa) : ''}
+${withOffer ? 'Posts 1 and 2 are both offer posts.' : 'Post 1 is an offer post. Post 2 is one of the other types: moment, local, ritual, tip or proof.'} Never repeat the topic of a recent post.${withOffer ? offerRules(spa) : ''}
 
 The topic: one line, at most 12 words, saying what the post is about.
 
