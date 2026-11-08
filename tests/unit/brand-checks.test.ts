@@ -367,6 +367,7 @@ describe('a model answer past the limits', () => {
         textures: 'linen',
         mood: 'calm',
       },
+      staffLook: { value: Array.from({ length: 40 }, () => 'white').join(' '), source: 'model' },
     };
     expect(modelProfileSchema.safeParse(long).success).toBe(true);
   });
@@ -420,7 +421,8 @@ describe('finalise', () => {
     const { profile } = run({ category: 'massage spa', tone: ['calm', 'warm', 'caring'] });
     const final = finalise(profile, meta);
     expect(final).toMatchObject({
-      schemaVersion: 2,
+      schemaVersion: 3,
+      staffLook: null,
       promptVersion: 'brand-1',
       searchedAt: null,
       searchPromptVersion: null,

@@ -352,7 +352,7 @@ export function finalise(
   const contact = profile.contact ?? {};
   return profileSchema.parse({
     ...profile,
-    schemaVersion: 2,
+    schemaVersion: 3,
     readAt: meta.readAt,
     promptVersion: meta.promptVersion,
     thin: meta.thin,
@@ -387,5 +387,6 @@ export function finalise(
     visualStyle: profile.visualStyle ?? null,
     searchedAt: null,
     searchPromptVersion: null,
+    staffLook: profile.staffLook ?? null,
   });
 }

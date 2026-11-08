@@ -74,19 +74,16 @@ describe('ERROR_STATUS', () => {
 });
 
 describe('profile version 2', () => {
-  test('upgrades a v1 profile to v2 with empty search fields', () => {
-    const { searchedAt: _a, searchPromptVersion: _b, ...rest } = senProfile();
+  test('upgrades a v1 profile to v3 with empty search fields and no look', () => {
+    const { searchedAt: _a, searchPromptVersion: _b, staffLook: _d, ...rest } = senProfile();
     const { searchTerms: _c, ...essence } = rest.essence;
     const v1 = { ...rest, schemaVersion: 1, essence };
     const up = profileSchema.parse(upgradeProfile(v1));
-    expect(up.schemaVersion).toBe(2);
+    expect(up.schemaVersion).toBe(3);
     expect(up.essence.searchTerms).toEqual([]);
     expect(up.searchedAt).toBeNull();
     expect(up.searchPromptVersion).toBeNull();
-  });
-
-  test('leaves a v2 profile as it is', () => {
-    expect(upgradeProfile(senProfile())).toEqual(senProfile());
+    expect(up.staffLook).toBeNull();
   });
 
   test('refuses a search term over 6 words', () => {
@@ -98,6 +95,38 @@ describe('profile version 2', () => {
   test('refuses a ninth search term', () => {
     const p = senProfile();
     p.essence.searchTerms = Array.from({ length: 9 }, (_, i) => `term ${i}`);
+    expect(profileSchema.safeParse(p).success).toBe(false);
+  });
+});
+
+// The therapists' look (docs/specs/posts/therapists-look).
+describe('profile version 3', () => {
+  test('upgrades a v2 profile to v3 with no look, the rest as it was', () => {
+    const { staffLook: _a, ...rest } = senProfile();
+    const v2 = { ...rest, schemaVersion: 2 };
+    expect(profileSchema.parse(upgradeProfile(v2))).toEqual(senProfile());
+  });
+
+  test('leaves a v3 profile as it is', () => {
+    expect(upgradeProfile(senProfile())).toEqual(senProfile());
+  });
+
+  test('accepts a look', () => {
+    const p = senProfile();
+    p.staffLook = { value: 'a white tunic, white trousers', source: 'model' };
+    expect(profileSchema.safeParse(p).success).toBe(true);
+  });
+
+  test('refuses a look over 30 words', () => {
+    const p = senProfile();
+    p.staffLook = { value: Array(31).fill('white').join(' '), source: 'model' };
+    expect(profileSchema.safeParse(p).success).toBe(false);
+  });
+
+  test('refuses a look over 300 characters', () => {
+    const p = senProfile();
+    p.staffLook = { value: Array(25).fill('abcdefghijkl').join(' '), source: 'model' };
+    expect(p.staffLook.value.length).toBe(324);
     expect(profileSchema.safeParse(p).success).toBe(false);
   });
 });
