@@ -1,7 +1,8 @@
 ---
 title: "Marketing copy"
 description: "Captions and story texts follow rules taken from two marketing skill libraries (decision 0009), on the two posts of an attempt (2.17b): code gives each post a hook style, the hook stands alone on the first line, each post type has its own job and only offer posts sell, each caption names one of the business's real places, the two captions of an attempt differ in shape, story texts give a reason to message, an offer post's WhatsApp line gives the offer's end, and code records what still repeats."
-status: draft
+status: approved
+approved: { by: siegfried.bozza@protonmail.com, at: 2026-11-08T14:05:21Z }
 date: "2026-11-07"
 ---
 
