@@ -119,8 +119,9 @@ describe('lightRecords', () => {
 
 // docs/specs/posts/marketing-copy, "Code's records".
 describe('copyRecords', () => {
-  // Svarga's places, as its read profile holds them: the town, the area, the
-  // service area's towns and the place symbols.
+  // Svarga's places, as its read profile holds them: the town, the area and
+  // the service area's towns. Its place symbols are no place (amended
+  // 2026-11-08).
   const svarga = () => {
     const profile = svargaProfile();
     profile.essence.placeSymbols = ['frangipani', 'coconut oil'];
@@ -135,7 +136,7 @@ describe('copyRecords', () => {
     expect(
       reasons([
         at(1, 'Sore shoulders after the surf in Canggu? Warm hands help.'),
-        at(2, 'Frangipani on the tray. Slow strokes follow.'),
+        at(2, 'Frangipani on the tray in Canggu. Slow strokes follow.'),
         at(3, 'Ninety minutes in Seminyak, start to end.'),
       ]),
     ).toEqual([]);
@@ -180,7 +181,7 @@ describe('copyRecords', () => {
     ).toEqual(['mix: endings start with "Drift" in post-3, post-5']);
   });
 
-  it('records a caption that names no place of the business', () => {
+  it('records a caption that names no real place: a flower or an oil is none', () => {
     expect(
       reasons([
         at(1, 'Slow hands on a long back.'),
@@ -189,15 +190,26 @@ describe('copyRecords', () => {
         at(4, "Canggu's quiet lanes."),
         at(5, 'Seminyak, then rest.'),
       ]),
-    ).toEqual(['words: post-1 names no place']);
+    ).toEqual([
+      'words: post-1 names no place',
+      'words: post-2 names no place',
+      'words: post-3 names no place',
+    ]);
   });
 
-  it('reads a place symbol by its leading capitalised words: My Khe for My Khe beach', () => {
+  it('reads a landmark by its leading capitalised words: My Khe for My Khe beach', () => {
     const profile = senProfile();
-    profile.essence.placeSymbols = ['My Khe beach at dusk', 'lotus flowers'];
+    profile.essence.placeSymbols = ['My Khe beach at dusk', 'Marble Mountains', 'lotus flowers'];
     profile.location.serviceArea = null;
     expect(
-      reasons([at(1, 'A swim at My Khe, then rest.'), at(2, 'After a lotus, rest.')], profile),
+      reasons(
+        [
+          at(1, 'A swim at My Khe, then rest.'),
+          at(2, 'Lotus flowers by the bed.'),
+          at(3, 'Marble Mountains at dawn.'),
+        ],
+        profile,
+      ),
     ).toEqual(['words: post-2 names no place']);
   });
 

@@ -90,7 +90,7 @@ describe('planPrompt', () => {
   });
 
   it('has a version', () => {
-    expect(POSTS_PROMPT_VERSION).toBe('posts-13');
+    expect(POSTS_PROMPT_VERSION).toBe('posts-14');
   });
 });
 
@@ -424,7 +424,7 @@ describe('marketing copy', () => {
   const styles = [
     "- question: asks about the guest's own day.",
     '- scene: drops the guest into a moment they are living, in the present tense, with no question.',
-    "- place: opens on one of the business's places or place symbols.",
+    "- place: opens on one of the business's real places: its town or area, a place it serves, or a landmark.",
     "- number: opens on a number that isn't a price: a duration, a time of day, a count.",
     '- fact: opens on a plain fact from the profile: a highlight, or its promise.',
     "- promise: opens on what the guest's body will feel after.",
@@ -451,11 +451,21 @@ describe('marketing copy', () => {
       'Only offer posts sell a treatment',
       'alone on its line',
       '- Never a price, in a caption or a story text.',
+      "Each caption names one of the business's real places, as its profile writes it",
+      'A flower, a plant, an oil or an object is never a place',
       'never asks the guest to book or message',
       'the sticker asks',
     ]) {
       expect(prompt).toContain(rule);
     }
+  });
+
+  // Amended 2026-11-08, after the posts-13 recordings.
+  it('gives the plan two shapes, and the rewrite none', () => {
+    const shape = "post 1's caption has two paragraphs after its hook and post 2's has three";
+    expect(planPrompt()).toContain(shape);
+    expect(planPrompt(true, true)).toContain(shape);
+    expect(rewritePrompt()).not.toContain('two paragraphs after its hook');
   });
 
   it.each(prompts)('the %s prompt drops the words the model copied, and prices', (_, prompt) => {

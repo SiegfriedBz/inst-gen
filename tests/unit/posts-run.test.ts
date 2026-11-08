@@ -99,7 +99,7 @@ describe('streamPlan', () => {
     expect(final).toMatchObject({
       type: 'final',
       result: {
-        promptVersion: 'posts-13',
+        promptVersion: 'posts-14',
         model: 'gemini-3.5-flash-lite',
         profileHash: profileHash(svargaProfile()),
       },
@@ -157,7 +157,7 @@ describe('streamPlan', () => {
     expect(final.result.posts[0].storyText).toBe('Professional massage in your room 🌸');
     expect(final.result.dropped).toContainEqual({
       field: 'story',
-      reason: 'post-1: story text removed "🌸 Book on WhatsApp."',
+      reason: 'post-1: story text removed "Book on WhatsApp."',
     });
     expect(entries[0].storyCtas).toBe(1);
   });

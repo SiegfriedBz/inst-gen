@@ -135,6 +135,20 @@ describe('a call to action', () => {
     expect(cleanStory(text, { id: 'post-1', spa: false }).storyText).toBe(kept);
   });
 
+  // A sentence also ends at an emoji a new one follows
+  // (docs/specs/posts/marketing-copy, amended 2026-11-08).
+  it('removes only the sentence after a flower', () => {
+    expect(
+      cleanStory('Rest your feet this evening 🌺 Book in your villa.', { id: 'post-2', spa: true }),
+    ).toEqual({
+      storyText: 'Rest your feet this evening 🌺',
+      dropped: [{ field: 'story', reason: 'post-2: story text removed "Book in your villa."' }],
+    });
+    expect(
+      cleanStory('Frangipani 🌸 petals on the tray.', { id: 'post-1', spa: true }).storyText,
+    ).toBe('Frangipani 🌸 petals on the tray.');
+  });
+
   it('keeps a sentence without one', () => {
     expect(cleanStory('Booked solid? Calm tonight.', { id: 'post-1', spa: false })).toEqual({
       storyText: 'Booked solid? Calm tonight.',

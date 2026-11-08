@@ -127,14 +127,16 @@ function folded(text: string): string {
 }
 
 // The business's places: its town, area and service area, split at commas
-// and "and", and its place symbols. A symbol that opens on two capitalised
-// words or more also goes by them: "My Khe" for "My Khe beach at dusk".
+// and "and", and its landmarks, the place symbols written as names ("My Khe
+// beach", never "frangipani": amended 2026-11-08). A landmark that opens on two
+// capitalised words or more also goes by them: "My Khe" for "My Khe beach at
+// dusk".
 function placeNames(profile: Profile): string[] {
   const { town, area, serviceArea } = profile.location;
   const names = new Set<string>();
   const given = [town, area, serviceArea]
     .flatMap((place) => (place?.value ?? '').split(/,|\band\b/))
-    .concat(profile.essence.placeSymbols)
+    .concat(profile.essence.placeSymbols.filter((symbol) => /^\p{Lu}/u.test(symbol.trim())))
     .map((name) => name.trim())
     .filter(Boolean);
   for (const name of given) {
