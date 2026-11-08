@@ -24,13 +24,20 @@ import { lightRecords, repeatRecords } from './variety';
 // code checks"): trim, drop or flag, record each change, and never refuse a
 // whole batch for one bad item.
 
-// A price: a currency mark next to a number, or a number with k/K. Compared on
-// its amount (250k → 250000, 350.000đ → 350000). Best effort, as the spec says.
-const PRICE =
-  /(?:(?:\$|USD|VND|IDR|Rp\.?|đ)\s?\d[\d.,]*\s?[kK]?\b|\d[\d.,]*\s?(?:[kK]\b|VND\b|IDR\b|USD\b|đ|\$))/g;
-// The same, for one test at a time: a price in an offer post goes
-// (docs/specs/posts/offer-line-first, amended 2026-10-29).
-export const PRICE_PATTERN = new RegExp(PRICE.source);
+// A price: a currency mark next to a number, or a number with k/K (but not
+// "10k steps" or "a 5K run"), rb or jt. Compared on its amount (250k →
+// 250000, 350.000đ → 350000). Best effort, as the spec says; the currencies
+// of the pilot and the fixtures (docs/specs/posts/two-suggestions).
+const BEFORE = String.raw`\$|USD|VNĐ|VND|IDR|Rp\.?|đ|₫|€|EUR|£|฿|THB|Baht|RM|MYR`;
+const AFTER = String.raw`VNĐ|VND|IDR|USD|đ|₫|\$|€|EUR|£|฿|THB|Baht|RM|MYR|rb|ribu|jt|juta`;
+const NOT_MONEY = String.raw`\s*(?:steps?|runs?|races?|km|miles?|views?|followers?|likes?)\b`;
+const PRICE = new RegExp(
+  String.raw`(?:(?<!\p{L})(?:${BEFORE})\s?\d[\d.,]*\s?(?:[kK]|rb|ribu|jt|juta)?(?!\p{L})|\d[\d.,]*\s?(?:[kK](?!${NOT_MONEY})(?!\p{L})|(?:${AFTER})(?!\p{L})))`,
+  'giu',
+);
+// The same, for one test at a time: a price goes from every caption and story
+// text (docs/specs/posts/offer-line-first, docs/specs/posts/two-suggestions).
+export const PRICE_PATTERN = new RegExp(PRICE.source, 'iu');
 const NUMBER = /\d[\d.,]*\s?[kK]?\b/g;
 const DURATION = /(\d+(?:[.,]\d+)?)\s?(minutes?|mins?|hours?|hrs?|h)\b/gi;
 
@@ -43,7 +50,9 @@ function amount(text: string): number {
     last === -1 || digits.length - last - 1 === 3
       ? Number(digits.replace(/[.,]/g, ''))
       : Number(digits.replace(/[.,]/g, (_sep, i) => (i === last ? '.' : '')));
-  return /k\s*$/i.test(text.trim()) ? value * 1000 : value;
+  const end = text.trim();
+  if (/(?:jt|juta)$/i.test(end)) return value * 1_000_000;
+  return /(?:k|rb|ribu)$/i.test(end) ? value * 1000 : value;
 }
 
 function minutes(value: string, unit: string): number {
@@ -305,6 +314,9 @@ export function checkPost(
     return { post: null, dropped: [{ field: 'posts', reason: 'empty image prompt' }] };
   }
   const { words, dropped } = checkedWords(raw, profile, id, context, setup?.treatment);
+  if (!hasWords(words.caption)) {
+    return { post: null, dropped: [...dropped, { field: 'posts', reason: 'empty caption' }] };
+  }
   return {
     post: {
       id,
@@ -348,11 +360,12 @@ export const MORE_POSTS: Dropped = {
 };
 
 // Never a price, in a caption or a story text
-// (docs/specs/posts/two-suggestions): each sentence that holds one goes, or
-// the part of it an emoji ends ("…villa 🌸 IDR 250k for 60 min.").
+// (docs/specs/posts/two-suggestions): each sentence or line that holds one
+// goes, or the part of a sentence an emoji ends before a new capital ("…villa
+// 🌸 IDR 250k for 60 min."). Line and paragraph breaks stay.
 function withoutPrices(text: string, id: string): { text: string; dropped: Dropped[] } {
   const parts = sentences(text).flatMap((s) =>
-    s.split(/(?<=\p{Extended_Pictographic}\uFE0F?)(?=\s)/u),
+    s.split(/(?<=\n)|(?<=\p{Extended_Pictographic}\uFE0F?)(?=\s+\p{Lu})/u),
   );
   const removed = parts.filter((part) => PRICE_PATTERN.test(part));
   if (removed.length === 0) return { text, dropped: [] };
@@ -360,10 +373,16 @@ function withoutPrices(text: string, id: string): { text: string; dropped: Dropp
     text: parts
       .filter((part) => !removed.includes(part))
       .join('')
+      .replace(/[ \t]*\n[ \t]*/g, '\n')
+      .replace(/\n{3,}/g, '\n\n')
+      .replace(/ {2,}/g, ' ')
       .trim(),
     dropped: removed.map((s) => ({ field: 'price', reason: `${id}: price removed "${s.trim()}"` })),
   };
 }
+
+// A caption with no word left (every sentence held a price).
+const hasWords = (text: string) => /\p{L}/u.test(text);
 
 function overused<K extends string>(values: K[], max: number): [K, number][] {
   const counts = new Map<K, number>();
@@ -425,6 +444,10 @@ export function checkRewrite(
     const context = offer ? { offer, carries: post.offer === true } : undefined;
     const checked = checkedWords(answer, profile, post.id, context, post.setup?.treatment);
     dropped.push(...checked.dropped);
+    if (!hasWords(checked.words.caption)) {
+      dropped.push({ field: 'posts', reason: `no rewrite for ${post.id}` });
+      return post;
+    }
     // The old story text goes with the old caption, even when no new one came.
     const { storyText: _story, storyUnchecked: _flags, ...rest } = post;
     return { ...rest, ...checked.words };

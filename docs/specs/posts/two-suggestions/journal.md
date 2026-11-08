@@ -70,3 +70,35 @@ Task 3, the screen:
 
 `pnpm guide:pdf`: the three PDFs say 2 suggestions, read back in each
 language; no contact line, since there is no `.env.local` here.
+
+## Final review
+
+A fresh reviewer read the whole branch: ready with fixes. It replayed the
+seven `posts-11` recordings (two posts each, one day and one night, no price
+left) and dealt couples, pregnancies and offers 300 times each, with no
+broken rule.
+
+- Fixed: removing prices could leave a caption with no words (lines with no
+  stop were one "sentence"). Lines now split too; a caption left with no
+  word drops the post, and a caption update left with none keeps the old
+  post.
+- Fixed: a paragraph lost its break when its first sentence went.
+- Fixed: an emoji splits a sentence only before a new capital, so "…IDR
+  250k 🌸 is waiting for you." goes whole.
+- Fixed: "After 10k steps" and "a 5K run" are no longer prices.
+- Fixed: ₫, VNĐ, vnd, rb and jt (the pilot), and Baht, ฿, RM, € and £ (the
+  fixtures) are prices.
+- Added: the recorded plans' replay checks that no caption or story text
+  keeps a price.
+- Left as minor: `checkPlan` doesn't record two offer posts without an
+  offer; an offer post's story-text price is counted as `price_fixes`; a
+  third model post can be kept without a set-up when post 1 or 2 is
+  dropped; the run reads every post the model writes before ending.
+
+After the fixes, `pnpm check`:
+
+```
+ Test Files  109 passed (109)
+      Tests  1655 passed (1655)
+```
+

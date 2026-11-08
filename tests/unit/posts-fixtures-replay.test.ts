@@ -156,9 +156,11 @@ describe('recorded story texts and flowers', () => {
         expect(story.startsWith(line)).toBe(true);
         expect(flowers(story.slice(line.length))).toBe(1);
         expect(story.slice(line.length).trim()).toMatch(/^\p{Extended_Pictographic}$/u);
-        // Never a price next to the offer (docs/specs/posts/special-offer).
-        expect(post.caption).not.toMatch(PRICE);
       }
+      // Never a price, in any caption or story text
+      // (docs/specs/posts/two-suggestions).
+      expect(post.caption).not.toMatch(PRICE);
+      expect(story).not.toMatch(PRICE);
     }
   });
 });

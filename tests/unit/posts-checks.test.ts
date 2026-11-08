@@ -111,6 +111,92 @@ describe('never a price', () => {
     });
   });
 
+  // The final review's fixes (docs/specs/posts/two-suggestions, journal).
+  it('lines without stops: only the line with a price goes, the breaks stay', () => {
+    const caption = 'Warm oil after the surf\nOnly 350k for an hour\nRest well tonight';
+    const { post: checked } = checkPost(raw({ type: 'moment', caption }), svargaProfile(), 'p1');
+    expect(checked?.caption).toContain('Warm oil after the surf\nRest well tonight');
+    expect(checked?.caption).not.toContain('350k');
+  });
+
+  it('a paragraph keeps its break when its first sentence goes', () => {
+    const caption =
+      'Sore after the surf?\n\nOnly 350k for 60 minutes. Feel your shoulders drop.\n\nRest well tonight.';
+    const { post: checked } = checkPost(raw({ type: 'moment', caption }), svargaProfile(), 'p1');
+    expect(checked?.caption.startsWith('Sore after the surf?\n\nFeel your shoulders drop.')).toBe(
+      true,
+    );
+  });
+
+  it('a sentence an emoji splits mid-way goes whole', () => {
+    const caption = 'Warm oil. Our 60-minute massage, IDR 250k 🌸 is waiting for you. Rest well.';
+    const { post: checked } = checkPost(raw({ type: 'moment', caption }), svargaProfile(), 'p1');
+    expect(checked?.caption).not.toContain('is waiting for you');
+    expect(checked?.caption).toContain('Rest well');
+  });
+
+  it('a caption left with no words is dropped', () => {
+    const { post: checked, dropped } = checkPost(
+      raw({ type: 'moment', caption: 'Only 350k. From $25.' }),
+      svargaProfile(),
+      'p1',
+    );
+    expect(checked).toBeNull();
+    expect(dropped).toContainEqual({ field: 'posts', reason: 'empty caption' });
+  });
+
+  it('a caption update left with no words keeps the old post', () => {
+    const old = post({ id: 'a', type: 'tip', caption: 'Drink water after a massage.' });
+    const answer = {
+      posts: [
+        {
+          id: 'a',
+          caption: 'Only $30 tonight.',
+          hashtags: ['bali'],
+          altText: 'Oil',
+          storyText: 'Rest well.',
+        },
+      ],
+    };
+    const { posts, dropped } = checkRewrite(answer, [old], svargaProfile());
+    expect(posts[0]).toEqual(old);
+    expect(dropped).toContainEqual({ field: 'posts', reason: 'no rewrite for a' });
+  });
+
+  it('steps, runs and screens are not prices', () => {
+    for (const sentence of [
+      'After 10k steps round the Old Quarter, your legs deserve this.',
+      'Stretch after a 5K run on the beach.',
+    ]) {
+      const { post: checked } = checkPost(
+        raw({ type: 'moment', caption: `Warm oil. ${sentence} Rest well.` }),
+        svargaProfile(),
+        'p1',
+      );
+      expect(checked?.caption).toContain(sentence);
+    }
+  });
+
+  it("the pilot's and fixtures' price forms go", () => {
+    for (const price of [
+      'Only 350.000₫ tonight.',
+      'Just VNĐ 350.000 a session.',
+      'Only 350k vnd tonight.',
+      'Just Rp300rb a session.',
+      'Only 1,500 Baht tonight.',
+      'Only ฿900 tonight.',
+      'Just RM 16.00 a session.',
+      'Only €55 tonight.',
+    ]) {
+      const { post: checked } = checkPost(
+        raw({ type: 'moment', caption: `Warm oil. ${price} Rest well.` }),
+        svargaProfile(),
+        'p1',
+      );
+      expect(checked?.caption, price).not.toContain(price.split(' ')[1]);
+    }
+  });
+
   it('a caption without a price is left alone', () => {
     const { dropped } = checkPost(
       raw({ caption: 'Warm oil, 90 minutes of calm.' }),
