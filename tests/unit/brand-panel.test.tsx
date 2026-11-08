@@ -248,3 +248,14 @@ describe('the panel on the home screen', () => {
     expect(screen.queryByText(p.highlights[0].value)).toBeNull();
   });
 });
+
+// docs/specs/posts/therapists-look, "\"Your look\"".
+describe("the therapists' look", () => {
+  test('"Your look" shows it as our guess from your photos', () => {
+    const look = 'a white tunic, white trousers, dark hair in a neat low bun';
+    renderPanel({ ...svargaProfile(), staffLook: { value: look, source: 'model' } });
+    const row = screen.getByText(look).closest('[data-field]') as HTMLElement;
+    expect(within(row).getByText("Your therapists' look")).toBeTruthy();
+    expect(within(row).getByText('our guess from your photos')).toBeTruthy();
+  });
+});

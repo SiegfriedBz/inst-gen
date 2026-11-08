@@ -167,3 +167,34 @@ describe('a form opened for one field', () => {
     );
   });
 });
+
+// docs/specs/posts/therapists-look, "\"Your look\"".
+describe("the therapists' look in the form", () => {
+  test('saves the look as the owner wrote it', async () => {
+    const { onSave } = renderSheet('look');
+    expect(screen.getByText('Up to 30 words')).toBeTruthy();
+    fireEvent.change(screen.getByLabelText("Your therapists' look"), {
+      target: { value: 'a pale green tunic, white trousers, hair in a low bun' },
+    });
+    fireEvent.click(screen.getByRole('button', { name: 'Save' }));
+    await waitFor(() => expect(onSave).toHaveBeenCalledTimes(1));
+    expect(saved(onSave).staffLook).toEqual({
+      value: 'a pale green tunic, white trousers, hair in a low bun',
+      source: 'owner',
+    });
+  });
+
+  test('a look that names a man keeps the sheet open with the message', async () => {
+    const { onSave } = renderSheet('look');
+    fireEvent.change(screen.getByLabelText("Your therapists' look"), {
+      target: { value: 'dark navy tunics; the men wear white shirts' },
+    });
+    fireEvent.click(screen.getByRole('button', { name: 'Save' }));
+    expect(
+      await screen.findByText(
+        'Describe what your women therapists wear: the images always show women.',
+      ),
+    ).toBeTruthy();
+    expect(onSave).not.toHaveBeenCalled();
+  });
+});

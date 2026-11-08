@@ -2,6 +2,7 @@ import { parsePhoneNumberFromString } from 'libphonenumber-js';
 import { z } from 'zod';
 import { toE164 } from './phone';
 import { COLOUR_ROLES, OWNER_SOURCE, type Profile, profileSchema } from './profile';
+import { namesAMan } from './staff-look';
 
 // The owner's edits to one section of the brand panel
 // (docs/specs/brand/brand-panel, "Editing" and "What an edit changes").
@@ -53,6 +54,8 @@ export type LookValues = {
   colours: ColourValues[];
   photoUrls: string[];
   style: StyleValues;
+  // The therapists' look (docs/specs/posts/therapists-look).
+  staffLook: string;
 };
 export type FeelingValues = {
   promise: string;
@@ -82,6 +85,7 @@ export type FieldError =
   | 'needCountryCode'
   | 'styleIncomplete'
   | 'needColour'
+  | 'namesAMan'
   | 'invalid';
 
 export type ApplyResult =
@@ -129,6 +133,7 @@ export function sectionValues<S extends SectionId>(profile: Profile, section: S)
       style: Object.fromEntries(
         STYLE_PARTS.map((part) => [part, profile.visualStyle?.[part] ?? '']),
       ) as StyleValues,
+      staffLook: textOf(profile.staffLook),
     }),
     feeling: () => ({
       promise: textOf(profile.essence.promise),
@@ -327,6 +332,8 @@ function build(profile: Profile, section: SectionId, values: SectionValues[Secti
     const parts = STYLE_PARTS.map((part) => v.style[part].trim());
     const filled = parts.filter(Boolean).length;
     if (filled > 0 && filled < parts.length) errors.style = 'styleIncomplete';
+    // The images always show women (docs/specs/posts/therapists-look).
+    if (namesAMan(v.staffLook)) errors.staffLook = 'namesAMan';
     next = {
       ...profile,
       logoUrl: v.keepLogo ? profile.logoUrl : null,
@@ -336,6 +343,7 @@ function build(profile: Profile, section: SectionId, values: SectionValues[Secti
         filled === 0
           ? null
           : (Object.fromEntries(STYLE_PARTS.map((part, i) => [part, parts[i]])) as StyleValues),
+      staffLook: field(profile.staffLook, v.staffLook),
     };
   } else {
     const v = values as FeelingValues;
@@ -410,6 +418,7 @@ export function countOwnerEdits(profile: Profile, ownerEdited: readonly string[]
     profile.hours,
     profile.logoUrl,
     profile.essence.promise,
+    profile.staffLook,
     ...Object.values(profile.location),
     ...Object.values(profile.contact),
     ...profile.offerings,
