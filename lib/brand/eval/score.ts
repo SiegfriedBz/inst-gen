@@ -3,6 +3,7 @@ import type { PageTexts } from '../checks';
 import { hexToRgb } from '../extract/colours';
 import { normaliseText } from '../normalise';
 import type { Profile } from '../profile';
+import { namesAMan } from '../staff-look';
 
 export { normaliseText };
 
@@ -17,6 +18,9 @@ export const expectedSchema = z.object({
   offerings: z.array(z.string().min(1)),
   brandColours: z.array(z.string().regex(/^#[0-9a-f]{6}$/)),
   thin: z.boolean(),
+  // Words the therapists' look must hold, one of them at least
+  // (docs/specs/posts/therapists-look); scored only where given.
+  staffLookWords: z.array(z.string().min(1)).optional(),
 });
 
 export type Expected = z.infer<typeof expectedSchema>;
@@ -106,6 +110,14 @@ export function scoreFixture(
   }
 
   if (profile.thin !== expected.thin) failures.push('thin');
+
+  if (expected.staffLookWords?.length) {
+    const look = profile.staffLook?.value ?? '';
+    const said = expected.staffLookWords.some((w) =>
+      normaliseText(look).includes(normaliseText(w)),
+    );
+    if (!said || namesAMan(look)) failures.push('staffLook');
+  }
 
   return { pass: failures.length === 0, failures };
 }

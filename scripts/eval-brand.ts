@@ -68,6 +68,9 @@ while (queue.length > 0) {
         outcome = `${score.pass ? 'PASS' : 'FAIL'}  ${score.failures.join(',') || '-'}  dropped=${streamed.profile.dropped.length}`;
         const p = streamed.profile;
         console.log(`    tone: ${p.tone.join(', ')} · style: ${p.visualStyle?.summary ?? 'none'}`);
+        console.log(
+          `    look: ${p.staffLook ? `${p.staffLook.value} (${p.staffLook.source})` : 'none'}`,
+        );
         const e = p.essence;
         console.log(
           `    essence: ${e.promise?.value ?? '-'} | ${e.feeling.join(', ')} | place: ${e.placeSymbols.join(', ')} | senses: ${e.senses.join(', ')} | moments: ${e.moments.map((m) => m.value).join(', ')}`,

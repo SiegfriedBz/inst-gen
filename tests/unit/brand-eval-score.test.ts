@@ -113,3 +113,27 @@ describe('scoreFixture', () => {
     expect(score(undefined, { thin: true }).failures).toEqual(['thin']);
   });
 });
+
+// docs/specs/posts/therapists-look, "Checked with the real model".
+describe("the look's words", () => {
+  const white = { staffLookWords: ['white'] };
+  const withLook = (value: string) => (p: Profile) => {
+    p.staffLook = { value, source: 'model' };
+  };
+
+  test('a look with one of the words passes', () => {
+    expect(score(withLook('a white tunic, white trousers, hair in a bun'), white).pass).toBe(true);
+  });
+
+  test.each([
+    ['no look', () => {}],
+    ['a look without the words', withLook('a black top, black trousers')],
+    ['a look that names a man', withLook('white shirts on the men')],
+  ])('%s fails on staffLook', (_, change) => {
+    expect(score(change, white).failures).toEqual(['staffLook']);
+  });
+
+  test('without words, the look is not scored', () => {
+    expect(score(withLook('a black top')).pass).toBe(true);
+  });
+});

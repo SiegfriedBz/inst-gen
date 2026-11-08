@@ -10,6 +10,7 @@ import {
   type Profile,
   profileSchema,
 } from './profile';
+import { cutLook, namesAMan } from './staff-look';
 
 // Merges what code found with what the model streams, and keeps only what
 // the pages read can back up (spec, "Checks after the model call"). Pure, so
@@ -161,6 +162,27 @@ type Check = 'phone' | 'email' | 'none';
 
 const firstWords = (value: string, max: number) =>
   value.trim().split(/\s+/).slice(0, max).join(' ');
+
+// The therapists' look (docs/specs/posts/therapists-look): from a page read,
+// or from the photos when there were some; never one that names a man; cut
+// to the profile's limits. A look still streaming, with no source yet, is
+// left out without a note.
+function staffLookOf(
+  fact: DeepPartial<Sourced> | null | undefined,
+  ctx: Ctx,
+  dropped: Dropped[],
+): Sourced | null {
+  if (!fact?.value || !fact.source) return null;
+  const source = normaliseSource(fact.source, ctx.pagesRead);
+  const drop = (reason: string) => {
+    dropped.push({ field: 'staffLook', reason });
+    return null;
+  };
+  if (!source) return drop('unknown_source');
+  if (source === MODEL && ctx.photos === 0) return drop('no_photos');
+  if (namesAMan(fact.value)) return drop('names_a_man');
+  return { value: cutLook(fact.value), source };
+}
 
 // No photos, no style; a style summary is cut to its word limit.
 function visualStyleOf(
@@ -339,6 +361,7 @@ export function mergeAndCheck(
     colours,
     essence,
     visualStyle: visualStyleOf(model.visualStyle, ctx.photos),
+    staffLook: staffLookOf(model.staffLook, ctx, dropped),
   };
   return { profile, dropped };
 }
