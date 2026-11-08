@@ -81,6 +81,9 @@ wording follows `platform/i18n`'s rules (plain words, `Anda`, `bạn`).
    > image, and "Create new image" gives one to any other, from the day's
    > new images.
 
+   > Changed by `posts/two-suggestions` (2026-11-08): you get 2 suggestions,
+   > each with a post image, a story image and the text.
+
    - Tap the make button: you get 6 suggestions, each with a post image, a
      story image and the text.
    - Keep the page open for about a minute. If you leave, Shopfront carries

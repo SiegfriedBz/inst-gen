@@ -29,6 +29,8 @@ fast.
 
 ## Behaviour
 
+> Changed by `posts/two-suggestions` (2026-11-08): an attempt is two suggestions, not six; the buttons read "Make 2 suggestions" and "Make 2 new suggestions", and the grid shows two tiles to a row.
+
 ### Words
 
 What 2.2 to 2.5 call a batch is an **attempt**; each of its posts is a

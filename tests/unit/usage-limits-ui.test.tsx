@@ -129,7 +129,7 @@ async function posts(imagesOn = false) {
 }
 
 const makeButton = async () =>
-  (await screen.findByRole('button', { name: /Make 6 (new )?suggestions/ })) as HTMLButtonElement;
+  (await screen.findByRole('button', { name: /Make 2 (new )?suggestions/ })) as HTMLButtonElement;
 
 describe('Create Posts', () => {
   test('no attempt left: the button is off and says when', async () => {

@@ -36,6 +36,8 @@ brand edits.
 
 ## Behaviour
 
+> Changed by `posts/two-suggestions` (2026-11-08): the plan asks for two posts, not six: with a special offer both carry it, otherwise an offer post and one of another type; and never a price, in a caption or a story text: code removes any sentence that holds one.
+
 ### Starting a batch
 
 At the bottom of the brand panel, under the five sections, a button **"Make

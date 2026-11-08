@@ -42,12 +42,12 @@ import { SuggestionTile } from './suggestion-tile';
 import { CopyPost, CopyStory, SaveImages } from './take-away';
 
 // "Create your posts" (docs/specs/posts/suggestions): the button that makes
-// an attempt of six suggestions, the suggestions as they stream in, and the
-// attempts made since Google's reset (docs/specs/platform/one-daily-reset),
-// newest on top; anything
-// older is cleared when the section loads. Once a plan is saved, two of its
-// six images are asked for (docs/specs/posts/generate-images,
-// docs/specs/posts/two-images) when images are on for this owner.
+// an attempt of two suggestions (docs/specs/posts/two-suggestions), the
+// suggestions as they stream in, and the attempts made since Google's reset
+// (docs/specs/platform/one-daily-reset), newest on top; anything older is
+// cleared when the section loads. Once a plan is saved, its images are asked
+// for (docs/specs/posts/generate-images; an attempt saved with six asks for
+// two, docs/specs/posts/two-images) when images are on for this owner.
 // While its tab shows, the newest batch's captions follow the business
 // details by themselves (docs/specs/platform/home-tabs).
 
@@ -809,7 +809,9 @@ export function PostsSection({
   );
 }
 
-const GRID = 'grid grid-cols-3 gap-x-2 gap-y-3';
+// Two tiles to a row: an attempt is two suggestions
+// (docs/specs/posts/two-suggestions).
+const GRID = 'grid grid-cols-2 gap-x-2 gap-y-3';
 
 function AttemptHeading({ n, count }: { n: number; count: number }) {
   const t = useTranslations('posts');

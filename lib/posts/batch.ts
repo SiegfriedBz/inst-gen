@@ -14,7 +14,10 @@ export type PostType = (typeof POST_TYPES)[number];
 export { SCENES, type Scene } from './scene';
 
 export const POSTS_LIMITS = {
-  posts: 6,
+  // Two suggestions an attempt (docs/specs/posts/two-suggestions).
+  posts: 2,
+  // An attempt saved before that holds six: it still loads and updates.
+  savedPosts: 6,
   perType: 2,
   perScene: 2,
   firstLineChars: 125,
@@ -91,7 +94,7 @@ export type Post = z.infer<typeof postSchema>;
 
 // What a route's final line carries.
 export const planResultSchema = z.object({
-  posts: z.array(postSchema).max(POSTS_LIMITS.posts),
+  posts: z.array(postSchema).max(POSTS_LIMITS.savedPosts),
   dropped: z.array(droppedSchema),
   promptVersion: text,
   model: text,
@@ -164,7 +167,7 @@ export type PlanBody = z.infer<typeof planBodySchema>;
 export const rewriteBodySchema = z
   .object({
     profile: profileSchema,
-    posts: z.array(postSchema).min(1).max(POSTS_LIMITS.posts),
+    posts: z.array(postSchema).min(1).max(POSTS_LIMITS.savedPosts),
     offer: offerSchema.optional(),
   })
   .refine(offerFitsProfile, OFFER_UNKNOWN);
