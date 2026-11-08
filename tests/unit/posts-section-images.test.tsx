@@ -138,7 +138,7 @@ async function renderSection(imagesOn = true) {
 
 const makePosts = async () => {
   const button = (await screen.findByRole('button', {
-    name: /Make 6 (new )?suggestions/,
+    name: /Make 2 (new )?suggestions/,
   })) as HTMLButtonElement;
   await waitFor(() => expect(button.disabled).toBe(false));
   return button;
@@ -251,6 +251,20 @@ describe('images in the posts section', () => {
     expect(screen.getAllByRole('img')).toHaveLength(1);
   });
 
+  // Two suggestions an attempt (docs/specs/posts/two-suggestions).
+  test('an attempt of two: both images, two tiles to a row', async () => {
+    fetchMock.mockResolvedValue(planAnswer(six.slice(0, 2)));
+    await renderSection();
+    const make = await makePosts();
+    expect(make.textContent).toBe('Make 2 suggestions');
+    fireEvent.click(make);
+    await waitFor(() => expect(started).toHaveLength(1));
+    expect(started[0].input.postIds).toEqual(['post-1', 'post-2']);
+    expect(await screen.findAllByText('Making the image…')).toHaveLength(2);
+    expect(screen.getByTestId('attempt-grid').className).toContain('grid-cols-2');
+    expect(screen.getByRole('button', { name: 'Make 2 new suggestions' })).toBeTruthy();
+  });
+
   test('a saved plan starts its two images', async () => {
     fetchMock.mockResolvedValue(planAnswer(six));
     await renderSection();
@@ -299,7 +313,7 @@ describe('images in the posts section', () => {
     fireEvent.click(await makePosts());
     await waitFor(() => expect(started).toHaveLength(1));
     const more = (await screen.findByRole('button', {
-      name: 'Make 6 new suggestions',
+      name: 'Make 2 new suggestions',
     })) as HTMLButtonElement;
     expect(more.disabled).toBe(true);
     expect(
@@ -319,7 +333,7 @@ describe('images in the posts section', () => {
     fireEvent.click(await makePosts());
     await waitFor(() => expect(started).toHaveLength(1));
     const more = (await screen.findByRole('button', {
-      name: 'Make 6 new suggestions',
+      name: 'Make 2 new suggestions',
     })) as HTMLButtonElement;
     expect(more.disabled).toBe(true);
     const sheet = await openTile(1);

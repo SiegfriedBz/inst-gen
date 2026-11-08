@@ -93,13 +93,13 @@ test('a suggestion saved and copied says so on its tile, after a reload too', as
   const profile = await savedBrand(page);
   await fulfilPosts(page, 'plan', postsBody(profile));
   await fulfilImages(page, {});
-  await page.getByRole('button', { name: 'Make 6 suggestions' }).click();
+  await page.getByRole('button', { name: 'Make 2 suggestions' }).click();
   // Two images an attempt (docs/specs/posts/two-images).
   await expect(tileImages(page)).toHaveCount(2);
-  await expect(tile(page, 2)).toHaveAccessibleName('Suggestion 2 of 6, Caption 2.');
+  await expect(tile(page, 2)).toHaveAccessibleName('Suggestion 2 of 2, Caption 2.');
 
   const sheet = await openSuggestion(page, 2);
-  await expect(sheet).toHaveAccessibleName('Attempt 1, suggestion 2 of 6');
+  await expect(sheet).toHaveAccessibleName('Attempt 1, suggestion 2 of 2');
   const names: string[] = [];
   page.on('download', (download) => names.push(download.suggestedFilename()));
   await sheet.getByRole('button', { name: 'Save post & story images' }).click();
@@ -117,20 +117,20 @@ test('a suggestion saved and copied says so on its tile, after a reload too', as
   await expect(tile(page, 2)).toBeFocused();
 
   await expect(tile(page, 2)).toHaveAccessibleName(
-    'Suggestion 2 of 6, Caption 2., Saved and copied',
+    'Suggestion 2 of 2, Caption 2., Saved and copied',
   );
-  for (const n of [1, 3, 4, 5, 6]) {
+  for (const n of [1]) {
     await expect(tile(page, n)).not.toHaveAccessibleName(/Saved and copied/);
   }
 
   await page.reload();
   await expect(tile(page, 2)).toHaveAccessibleName(
-    'Suggestion 2 of 6, Caption 2., Saved and copied',
+    'Suggestion 2 of 2, Caption 2., Saved and copied',
   );
-  await expect(tiles(page)).toHaveCount(6);
+  await expect(tiles(page)).toHaveCount(2);
 
   // The back gesture closes a suggestion too, and stays on the home screen.
-  await openSuggestion(page, 3);
+  await openSuggestion(page, 1);
   await page.goBack();
   await expect(page.getByRole('dialog')).toHaveCount(0);
   await expect(page).toHaveURL('/');

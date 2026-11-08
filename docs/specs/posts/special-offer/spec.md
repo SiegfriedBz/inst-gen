@@ -26,6 +26,8 @@ and Svarga have it from day one.
 
 ## Behaviour
 
+> Changed by `posts/two-suggestions` (2026-11-08): an attempt is two suggestions, and with an offer both carry it.
+
 ### The button
 
 - "Create Posts" gets one optional button above "Make 6 suggestions":

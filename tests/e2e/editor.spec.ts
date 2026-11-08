@@ -41,7 +41,7 @@ async function sixPosts(page: Page) {
   await fulfilPosts(page, 'plan', postsBody(profile));
   const images = await fulfilImages(page, {});
   await signIn(page);
-  await readAndMake(page, 'Your website', 'Read my website', 'Make 6 suggestions');
+  await readAndMake(page, 'Your website', 'Read my website', 'Make 2 suggestions');
   await expect(tileImages(page)).toHaveCount(2);
   return { profile, images };
 }
@@ -78,13 +78,13 @@ test('an edit is kept after a reload, and the automatic update leaves it alone',
   await page.getByRole('tab', { name: 'Create Posts' }).click();
   await expect(page.getByText('Rewritten 2.')).toBeVisible();
   await expect(page.getByText('My own words about warm oil.')).toBeVisible();
-  expect(sent).toEqual([5]);
+  expect(sent).toEqual([1]);
 
   sheet = await openSuggestion(page, 1);
   await sheet.getByRole('button', { name: 'Rewrite this one too' }).click();
   await expect(sheet.getByText('Rewritten 1.')).toBeVisible();
   await expect(page.getByText('My own words about warm oil.')).toHaveCount(0);
-  expect(sent).toEqual([5, 1]);
+  expect(sent).toEqual([1, 1]);
 });
 
 test('a new image carries the hint', async ({ page }) => {
@@ -122,11 +122,11 @@ test('two attempts stack, newest on top, and keep their own images after a reloa
   const failures: Record<string, { status: number; error: string }> = {};
   await fulfilImages(page, failures);
   await signIn(page);
-  await readAndMake(page, 'Your website', 'Read my website', 'Make 6 suggestions');
+  await readAndMake(page, 'Your website', 'Read my website', 'Make 2 suggestions');
   await expect(tileImages(page)).toHaveCount(2);
   failures['post-1'] = { status: 502, error: 'image_blocked' };
-  await page.getByRole('button', { name: 'Make 6 new suggestions' }).click();
-  await expect(tiles(page)).toHaveCount(12);
+  await page.getByRole('button', { name: 'Make 2 new suggestions' }).click();
+  await expect(tiles(page)).toHaveCount(4);
   await expect(tileImages(page)).toHaveCount(3);
   await expect(page.getByRole('heading', { name: /^Attempt/ })).toHaveText([
     'Attempt 2',

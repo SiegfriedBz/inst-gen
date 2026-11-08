@@ -57,6 +57,8 @@ before anything else is judged.
 
 ## Behaviour
 
+> Changed by `posts/two-suggestions` (2026-11-08): code deals two set-ups an attempt, one day and one night.
+
 ### Day or night: code deals it
 
 > Changed by `posts/two-images` (2026-11-08): set-ups are still dealt three days and three nights, but an attempt without an offer pictures only one day and one night post; the others are text until the owner creates their image.
