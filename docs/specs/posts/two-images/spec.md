@@ -34,6 +34,8 @@ for.
 
 ## Behaviour
 
+> Changed by `posts/two-suggestions` (2026-11-08): the maintainer wanted two suggestions a round, not six with two images: an attempt now plans two posts, both with their images. This spec's pick and text tiles stay for attempts saved with six.
+
 ### Which two suggestions get an image
 
 Code picks them once the attempt's six suggestions are saved, from the

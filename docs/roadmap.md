@@ -86,7 +86,7 @@ most sample replies as written, with $0 spent on everything but images
 | 2.14 | `posts/day-and-night-images`: Sen's images as warm and bright as Svarga's: three day and three night images per batch, the room a tourist pictures open onto the place's green plants, the place's flower, and a discreet sign of the guest's day on moment posts | spec | done |
 | 2.14b | `posts/day-and-night-copy`: each caption and story text follows its post's light, three day and three night; no example sentence in the prompt to copy, six different openings and endings, and code records any that repeat | spec | done |
 | 2.17 | `posts/two-images`: two images an attempt instead of six, to cut the image spend: the two offer posts, or one day and one night; the other four are text, and the owner can create an image for any of them from the day's new images; the owner guide says so | spec | done |
-| 2.17b | `posts/two-suggestions`: two suggestions an attempt instead of six, each with its images: with an offer both carry it, otherwise one offer post and one of another type, one day and one night; the buttons, the grid and the owner guide say two | spec | in progress |
+| 2.17b | `posts/two-suggestions`: two suggestions an attempt instead of six, each with its images: with an offer both carry it, otherwise one offer post and one of another type, one day and one night; never a price in a caption or a story text; the buttons, the grid and the owner guide say two | spec | done |
 
 ## Later phases
 
