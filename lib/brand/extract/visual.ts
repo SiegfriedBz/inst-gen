@@ -47,9 +47,21 @@ export function findLogo(html: string, pageUrl: URL, jsonLdLogo?: string): URL |
 
 const SIZE_SUFFIX = /-(\d{2,5})x(\d{2,5})(?=\.[a-z]+$)/i;
 
+// The image file's path: an image Next.js serves through its optimiser
+// (/_next/image?url=…) is the file its `url` names.
+function filePath(url: URL): string {
+  const file = url.pathname.endsWith('/_next/image') ? url.searchParams.get('url') : null;
+  if (!file) return url.pathname;
+  try {
+    return new URL(file, url).pathname;
+  } catch {
+    return url.pathname;
+  }
+}
+
 // The file name without size suffixes or query, so variants count once.
 function photoKey(url: URL): string {
-  return `${url.host}${url.pathname.replace(SIZE_SUFFIX, '')}`.toLowerCase();
+  return `${url.host}${filePath(url).replace(SIZE_SUFFIX, '')}`.toLowerCase();
 }
 
 type Candidate = { url: URL; size: number; og: boolean; order: number };
@@ -75,10 +87,9 @@ function declaredSize(url: URL, width?: string, height?: string, fromSrcset = 0)
 }
 
 function refused(url: URL, alt?: string): boolean {
+  const path = filePath(url);
   return (
-    /\.svg$/i.test(url.pathname) ||
-    /logo|icon|favicon|sprite/i.test(url.pathname) ||
-    /logo|icon/i.test(alt ?? '')
+    /\.svg$/i.test(path) || /logo|icon|favicon|sprite/i.test(path) || /logo|icon/i.test(alt ?? '')
   );
 }
 
