@@ -173,6 +173,8 @@ describe("the therapists' look in the form", () => {
   test('saves the look as the owner wrote it', async () => {
     const { onSave } = renderSheet('look');
     expect(screen.getByText('Up to 30 words')).toBeTruthy();
+    // Several lines, so a 30-word look shows whole on a phone (the final review).
+    expect(screen.getByLabelText("Your therapists' look").tagName).toBe('TEXTAREA');
     fireEvent.change(screen.getByLabelText("Your therapists' look"), {
       target: { value: 'a pale green tunic, white trousers, hair in a low bun' },
     });

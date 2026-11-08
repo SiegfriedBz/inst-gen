@@ -319,6 +319,7 @@ function LookForm({ values, set, error, profile }: FormProps<'look'>) {
       </fieldset>
       <TextField
         label={l.field('staffLook')}
+        multiline
         value={v.staffLook}
         onChange={(staffLook) => set({ ...v, staffLook })}
         hint={l.words(LIMITS.staffLookWords)}
