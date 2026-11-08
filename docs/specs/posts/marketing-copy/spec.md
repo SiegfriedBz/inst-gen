@@ -1,8 +1,7 @@
 ---
 title: "Marketing copy"
-description: "Captions and story texts follow rules taken from two marketing skill libraries (decision 0009), on the two posts of an attempt (2.17b): code gives each post a hook style, the hook stands alone on the first line, each post type has its own job and only offer posts sell, each caption uses something only the business has, story texts give a reason to message, an offer post's WhatsApp line gives the offer's end, and code records what still repeats."
-status: approved
-approved: { by: siegfried.bozza@protonmail.com, at: 2026-11-08T13:04:57Z }
+description: "Captions and story texts follow rules taken from two marketing skill libraries (decision 0009), on the two posts of an attempt (2.17b): code gives each post a hook style, the hook stands alone on the first line, each post type has its own job and only offer posts sell, each caption names one of the business's places, the two captions of an attempt differ in shape, story texts give a reason to message, an offer post's WhatsApp line gives the offer's end, and code records what still repeats."
+status: draft
 date: "2026-11-07"
 ---
 
@@ -65,6 +64,12 @@ two posts an attempt instead of six and removes every price from captions and
 story texts. This item now writes those two posts: its rules stay, counted on
 two, and the price removal is 2.17b's.
 
+Amended again 2026-11-08, after `posts-13`'s recordings: one caption in 8
+named a place of the business, both captions of each plan had one shape, and
+one story text was lost to a "Book" after its flower. Each caption now names
+a place, the two captions get different shapes, and a story sentence also
+ends at an emoji (below).
+
 Success: in each new recording, Sen's and Svarga's, with and without an
 offer, at most one hook is a question; every caption's first line is its
 hook, alone; no caption or story text holds a price; each tip post gives a
@@ -126,6 +131,14 @@ edit keeps their lines.
 Code's `firstLine` flag, which the owner doesn't see, then measures the hook:
 today it fires on every caption, since none has a line break.
 
+### Two shapes
+
+Amended 2026-11-08. In the plan, post 1's caption has two paragraphs after its
+hook and post 2's has three, so the two captions of an attempt differ in shape
+(the shape check under "Evaluation": `posts-13` gave both captions of each
+plan one shape). A paragraph holds one or two sentences. The plan prompt asks
+for it; the rewrite prompt doesn't.
+
 ### Each type its job
 
 Only offer posts sell (IG `ig-content-planner/SKILL.md`: promotion in one or
@@ -154,11 +167,12 @@ guests find them in the business's own menu (the maintainer, 2026-11-07; IG
 captions don't point to a menu: a pointer in every caption would repeat, and
 not every business has one (developer's call).
 
-In place of the price, each caption uses one thing only this business has:
-one of its places or place symbols, a sense or a moment from its essence, or
-a highlight (CH `copywriting/SKILL.md`: if a competitor could write the
-sentence, it fails; CH `copywriting/references/ai-tells.md`: every claim
-needs a number, a name, a mechanism or a concrete action).
+In place of the price, each caption names one of the business's places or
+place symbols, as its profile writes it, and may add a sense or a moment from
+its essence, or a highlight (CH `copywriting/SKILL.md`: if a competitor could
+write the sentence, it fails; CH `copywriting/references/ai-tells.md`: every
+claim needs a number, a name, a mechanism or a concrete action). Amended
+2026-11-08: given the choice, the model named a place in 1 caption of 8.
 
 The price removal is 2.17b's (amended 2026-11-08): code removes each sentence
 or line that holds a price from every caption and story text the model
@@ -227,7 +241,10 @@ Code still removes a story sentence that holds 2.13's call-to-action words
 (book, reserve, WhatsApp, message us, DM, link in bio, click…), so the prompt
 asks for the reason without them: "replies in about 5 minutes", not "we reply
 on WhatsApp in 5 minutes" (developer's call: the sticker already says
-WhatsApp, and 2.13's removal stays as it is).
+WhatsApp). Amended 2026-11-08: a sentence there also ends at an emoji that a
+new sentence follows (a capital letter or a digit), as the hook's does, so
+"Rest your feet this evening 🌺 Book in your villa." keeps "Rest your feet
+this evening 🌺". `posts-13` lost a whole story text to such a "Book".
 
 ### Hashtags
 
@@ -263,8 +280,9 @@ The prompt names both lines the app adds; the model writes neither.
 
 ### What the model gets
 
-`posts-13`, with or without an offer (amended 2026-11-08: `posts-12` is
-2.17b's prompt). The plan prompt changes:
+`posts-14`, with or without an offer (amended 2026-11-08: `posts-12` is
+2.17b's prompt; `posts-13`, this item's first two-post prompt, is in the
+journal). The plan prompt changes:
 
 - **Who writes.** "You plan two Instagram posts for a small business, and
   write them as its owner would, to guests nearby." (CH
@@ -277,13 +295,13 @@ The prompt names both lines the app adds; the model writes neither.
   '### Hooks'", the six styles as above, and that a post carrying the offer
   opens on its offer line instead.
 - **The captions.** The hook alone on its first line, then short paragraphs
-  with a blank line between them; the guest's feeling rather than what the
-  business does; one thing only this business has; never a price; the
-  endings by type; the light in fewer words; never a phrase from these
-  instructions or from the image set-ups; plain words; 250 to 700 characters
-  in all. The emoji rule, the facts rule (with qualities), the banned words
-  and the rule against a call to action stay, the last naming both of the
-  app's lines.
+  with a blank line between them, two on post 1 and three on post 2; the
+  guest's feeling rather than what the business does; a place of the
+  business in each caption; never a price; the endings by type; the light in
+  fewer words; never a phrase from these instructions or from the image
+  set-ups; plain words; 250 to 700 characters in all. The emoji rule, the
+  facts rule (with qualities), the banned words and the rule against a call
+  to action stay, the last naming both of the app's lines.
 - **The story text** and **the hashtags** as above, with no example.
 
 The user text gains `### Hooks` after `### Image set-ups`, one line per post
@@ -349,10 +367,11 @@ and strings, and the owner guide.
 
 Unit tests (Vitest) for:
 
-- the prompts: `posts-13`; the six hook styles and the type jobs; none of
+- the prompts: `posts-14`; the six hook styles and the type jobs; none of
   "after the beach", "a walk round town", "a sunset, dinner", "canggu,
   danang", "massagedanang" and "its price or duration" left; the story and
-  hashtag rules; with and without an offer; the rewrite prompt;
+  hashtag rules; with and without an offer; the rewrite prompt; a place in
+  each caption, and the plan's two shapes (amended 2026-11-08);
 - the deal: two different styles without an offer, none with an offer
   (amended 2026-11-08); the same seed dealing the same; `### Hooks` after the
   set-ups in the user text; the rewrite's user text giving each post its
@@ -361,6 +380,9 @@ Unit tests (Vitest) for:
   line on an offer post; no change when the hook already stands alone; the
   `firstLine` flag measuring the hook;
 - the price removal: 2.17b's tests (amended 2026-11-08);
+- the story: "Rest your feet this evening 🌺 Book in your villa." keeps
+  "Rest your feet this evening 🌺" and records "Book in your villa."
+  (amended 2026-11-08);
 - hashtags: "massagedanang" dropped for a Canggu business, and recorded;
   "canggu", "seminyak" and "balimassage" kept; no check when the country
   can't be read;
@@ -371,7 +393,7 @@ Unit tests (Vitest) for:
   places, story texts, calls to action ("we reply on WhatsApp within about 5
   minutes" not recorded); none on a clean batch.
 
-The replay test checks, on Sen's and Svarga's `posts-13` plans with and
+The replay test checks, on Sen's and Svarga's `posts-14` plans with and
 without an offer: at most one hook ends in "?"; every caption's first line is
 one sentence of at most 125 characters; no caption or story text holds a
 price; no hashtag names a town of another country.
@@ -433,6 +455,11 @@ Scenario: The hook alone on the first line
   When code checks the plan
   Then post 2's caption is "Sore shoulders from the paddle out? 🌸", a blank line, then "Our therapists come to your villa."
 
+Scenario: A story text keeps its line before the flower
+  Given the model writes post 2's story text "Rest your feet this evening 🌺 Book in your villa."
+  When code checks the plan
+  Then post 2's story text is "Rest your feet this evening 🌺"
+
 Scenario: A hashtag from another country
   Given a business in Canggu, Bali
   When the model gives post 2 the hashtag "massagedanang"
@@ -462,7 +489,7 @@ Scenario: A rewrite keeps the hook styles
   Then the rewrite's user text gives post-2 "hook": "place"
 
 Scenario: A recorded plan
-  Given Sen's plan recorded with posts-13, without an offer
+  Given Sen's plan recorded with posts-14, without an offer
   When the replay test runs it
   Then at most one hook ends in "?"
   And every caption's first line is one sentence of at most 125 characters
