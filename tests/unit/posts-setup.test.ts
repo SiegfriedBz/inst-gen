@@ -136,20 +136,26 @@ const deal = (profile: Profile, offer?: Offer, seed = 't') =>
 const count = <T>(values: T[], value: T) => values.filter((v) => v === value).length;
 
 describe('dealSetups', () => {
-  it('deals six', () => {
-    expect(deal(senProfile())).toHaveLength(6);
+  // Two suggestions an attempt (docs/specs/posts/two-suggestions).
+  it('deals two', () => {
+    expect(deal(senProfile())).toHaveLength(2);
   });
 
-  it('six different treatments when there are six or more', () => {
+  it('two different treatments when there are two or more', () => {
     const treatments = deal(withOfferings(EIGHT)).map((s) => s.treatment);
-    expect(new Set(treatments).size).toBe(6);
+    expect(new Set(treatments).size).toBe(2);
     for (const t of treatments) expect(EIGHT).toContain(t);
   });
 
-  it('each offering once before any twice when fewer', () => {
+  it('each offering once', () => {
     const treatments = deal(senProfile()).map((s) => s.treatment);
-    expect(count(treatments, 'Vietnamese Traditional Massage')).toBe(3);
-    expect(count(treatments, 'Foot Reflexology')).toBe(3);
+    expect(count(treatments, 'Vietnamese Traditional Massage')).toBe(1);
+    expect(count(treatments, 'Foot Reflexology')).toBe(1);
+  });
+
+  it('one offering: both set-ups on it', () => {
+    const treatments = deal(withOfferings(['Aroma Massage'])).map((s) => s.treatment);
+    expect(treatments).toEqual(['Aroma Massage', 'Aroma Massage']);
   });
 
   it('the excluded offerings are never drawn', () => {
@@ -166,41 +172,43 @@ describe('dealSetups', () => {
     }
   });
 
-  it('no eligible offering: six plain set-ups without a treatment', () => {
+  it('no eligible offering: two plain set-ups without a treatment', () => {
+    expect(deal(withOfferings(['Gift Voucher']))).toHaveLength(2);
     for (const s of deal(withOfferings(['Gift Voucher']))) {
       expect(s.treatment).toBeUndefined();
       expect(s.look).toBe('plain');
     }
   });
 
-  it('half men, half women without a couple', () => {
+  it('one man and one woman without a couple', () => {
     for (const seed of ['a', 'b', 'c']) {
       const guests = deal(withOfferings(EIGHT), undefined, seed).map((s) => s.guests);
-      expect(count(guests, 'man')).toBe(3);
-      expect(count(guests, 'woman')).toBe(3);
+      expect(count(guests, 'man')).toBe(1);
+      expect(count(guests, 'woman')).toBe(1);
     }
   });
 
-  it('a couple: two therapists, and 3 men, 2 women among the others', () => {
-    const profile = withOfferings(['Couple Massage', ...EIGHT.slice(0, 5)]);
-    const setups = deal(profile);
-    const couple = setups.filter((s) => s.guests === 'couple');
-    expect(couple).toHaveLength(1);
-    expect(couple[0].therapists).toBe(2);
-    const guests = setups.map((s) => s.guests);
-    expect(count(guests, 'man')).toBe(3);
-    expect(count(guests, 'woman')).toBe(2);
+  it('a couple: two therapists, never the close-up, and a man beside it', () => {
+    const profile = withOfferings(['Couple Massage', 'Aroma Massage']);
+    for (const seed of ['a', 'b', 'c', 'd']) {
+      const setups = deal(profile, undefined, seed);
+      const couple = setups.filter((s) => s.guests === 'couple');
+      expect(couple).toHaveLength(1);
+      expect(couple[0].therapists).toBe(2);
+      expect(couple[0].scene).not.toBe('detail');
+      expect(setups.find((s) => s.guests !== 'couple')?.guests).toBe('man');
+    }
   });
 
   it('a pregnancy is always a woman and counts as one', () => {
-    const profile = withOfferings(['Pregnancy Massage', ...EIGHT.slice(0, 5)]);
+    const profile = withOfferings(['Pregnancy Massage', 'Aroma Massage']);
     for (const seed of ['a', 'b', 'c', 'd']) {
       const setups = deal(profile, undefined, seed);
       const pregnancy = setups.find((s) => s.look === 'pregnancy');
       expect(pregnancy?.guests).toBe('woman');
       const guests = setups.map((s) => s.guests);
-      expect(count(guests, 'man')).toBe(3);
-      expect(count(guests, 'woman')).toBe(3);
+      expect(count(guests, 'man')).toBe(1);
+      expect(count(guests, 'woman')).toBe(1);
     }
   });
 
@@ -219,32 +227,26 @@ describe('dealSetups', () => {
   });
 
   it('feet for reflexology, whole body for thai, back for stone, head for a facial', () => {
-    const profile = withOfferings([
-      'Foot Reflexology',
-      'Thai Massage',
-      'Hot Stone',
-      'Balinese Facial',
-      'Aroma Massage',
-      'Lomi Lomi',
-    ]);
-    const part = (look: Setup['look']) => deal(profile).find((s) => s.look === look)?.bodyPart;
-    expect(part('foot')).toBe('feet');
-    expect(part('thai')).toBe('whole body');
-    expect(part('stone')).toBe('back');
-    expect(part('head')).toBe('head');
+    const part = (names: string[], look: Setup['look']) =>
+      deal(withOfferings(names)).find((s) => s.look === look)?.bodyPart;
+    expect(part(['Foot Reflexology', 'Thai Massage'], 'foot')).toBe('feet');
+    expect(part(['Foot Reflexology', 'Thai Massage'], 'thai')).toBe('whole body');
+    expect(part(['Hot Stone', 'Balinese Facial'], 'stone')).toBe('back');
+    expect(part(['Hot Stone', 'Balinese Facial'], 'head')).toBe('head');
   });
 
-  it('the plain look never repeats a body part three times', () => {
+  it('two plain set-ups work on two different body parts', () => {
     for (const seed of ['a', 'b', 'c', 'd', 'e']) {
-      const parts = deal(withOfferings(EIGHT), undefined, seed).map((s) => s.bodyPart);
-      for (const part of new Set(parts)) expect(count(parts, part)).toBeLessThanOrEqual(2);
+      const parts = deal(withOfferings(['Aroma Massage']), undefined, seed).map((s) => s.bodyPart);
+      expect(new Set(parts).size).toBe(2);
     }
   });
 
-  it('no scene more than twice', () => {
+  it('two different scenes', () => {
     for (let i = 0; i < 50; i += 1) {
       const scenes = deal(withOfferings(EIGHT), undefined, `s${i}`).map((s) => s.scene);
-      for (const scene of SCENES) expect(count(scenes, scene)).toBeLessThanOrEqual(2);
+      expect(new Set(scenes).size).toBe(2);
+      for (const scene of scenes) expect(SCENES).toContain(scene);
     }
   });
 
@@ -270,7 +272,7 @@ describe('dealSetups', () => {
     expect(setups[0].look).toBe('plain');
   });
 
-  it('the same seed deals the same six', () => {
+  it('the same seed deals the same two', () => {
     expect(deal(withOfferings(EIGHT), undefined, 'x')).toEqual(
       deal(withOfferings(EIGHT), undefined, 'x'),
     );
@@ -281,70 +283,13 @@ describe('dealSetups', () => {
   });
 });
 
-// Day and night (docs/specs/posts/day-and-night-images): Sen's deal for seed
-// 't' as it was before lights were dealt.
-const SEN_DEAL_BEFORE = [
-  {
-    treatment: 'Vietnamese Traditional Massage',
-    look: 'plain',
-    guests: 'man',
-    therapists: 1,
-    bodyPart: 'shoulders and neck',
-    scene: 'guest',
-    locals: 'Vietnamese',
-  },
-  {
-    treatment: 'Foot Reflexology',
-    look: 'foot',
-    guests: 'man',
-    therapists: 1,
-    bodyPart: 'feet',
-    scene: 'treatment',
-    locals: 'Vietnamese',
-  },
-  {
-    treatment: 'Vietnamese Traditional Massage',
-    look: 'plain',
-    guests: 'man',
-    therapists: 1,
-    bodyPart: 'back',
-    scene: 'detail',
-    locals: 'Vietnamese',
-  },
-  {
-    treatment: 'Foot Reflexology',
-    look: 'foot',
-    guests: 'woman',
-    therapists: 1,
-    bodyPart: 'feet',
-    scene: 'place',
-    locals: 'Vietnamese',
-  },
-  {
-    treatment: 'Vietnamese Traditional Massage',
-    look: 'plain',
-    guests: 'woman',
-    therapists: 1,
-    bodyPart: 'arms and hands',
-    scene: 'detail',
-    locals: 'Vietnamese',
-  },
-  {
-    treatment: 'Foot Reflexology',
-    look: 'foot',
-    guests: 'woman',
-    therapists: 1,
-    bodyPart: 'feet',
-    scene: 'place',
-    locals: 'Vietnamese',
-  },
-];
-
 describe('day and night', () => {
-  it('three days and three nights', () => {
-    const lights = deal(senProfile()).map((s) => s.light);
-    expect(count(lights, 'day')).toBe(3);
-    expect(count(lights, 'night')).toBe(3);
+  it('one day and one night', () => {
+    for (const seed of ['a', 'b', 'c', 'd']) {
+      const lights = deal(senProfile(), undefined, seed).map((s) => s.light);
+      expect(count(lights, 'day')).toBe(1);
+      expect(count(lights, 'night')).toBe(1);
+    }
   });
 
   it('the same seed, the same lights', () => {
@@ -353,12 +298,17 @@ describe('day and night', () => {
     );
   });
 
-  it('the lights come last: the rest of the deal is as before', () => {
-    expect(deal(senProfile()).map(({ light: _, ...rest }) => rest)).toEqual(SEN_DEAL_BEFORE);
-  });
-
   it('the schema takes a light, none, and refuses another', () => {
-    const setup = SEN_DEAL_BEFORE[0];
+    // A set-up saved before lights were dealt.
+    const setup = {
+      treatment: 'Vietnamese Traditional Massage',
+      look: 'plain',
+      guests: 'man',
+      therapists: 1,
+      bodyPart: 'shoulders and neck',
+      scene: 'guest',
+      locals: 'Vietnamese',
+    };
     expect(setupSchema.safeParse(setup).success).toBe(true);
     expect(setupSchema.safeParse({ ...setup, light: 'night' }).success).toBe(true);
     expect(setupSchema.safeParse({ ...setup, light: 'dusk' }).success).toBe(false);
@@ -465,11 +415,11 @@ describe('review fixes', () => {
     const profile = withOfferings(['Balinese Massage', 'Balinese Massage', ...EIGHT.slice(2, 7)]);
     for (const seed of ['a', 'b', 'c', 'd']) {
       const treatments = deal(profile, undefined, seed).map((s) => s.treatment);
-      expect(new Set(treatments).size).toBe(6);
+      expect(new Set(treatments).size).toBe(2);
     }
   });
 
-  it('one eligible offering fills all six', () => {
+  it('one eligible offering fills both', () => {
     for (const s of deal(withOfferings(['Aroma Massage', 'Gift Voucher']))) {
       expect(s.treatment).toBe('Aroma Massage');
     }
