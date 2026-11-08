@@ -1,8 +1,7 @@
 ---
 title: "Two suggestions an attempt"
-description: "An attempt makes two suggestions instead of six, each with its post image and story image: with a special offer both carry it, otherwise one offer post and one of another type; one day and one night; the buttons, the grid and the owner guide say two, in three languages."
-status: approved
-approved: { by: siegfried.bozza@protonmail.com, at: 2026-11-08T11:38:16Z }
+description: "An attempt makes two suggestions instead of six, each with its post image and story image: with a special offer both carry it, otherwise one offer post and one of another type; one day and one night; never a price in a caption or a story text; the buttons, the grid and the owner guide say two, in three languages."
+status: draft
 date: "2026-11-08"
 ---
 
@@ -20,9 +19,14 @@ story image, as every suggestion had before 2.17. An attempt's images cost
 about $0.10 (two images at $0.05, decision 0004), and the suggestions arrive
 faster, since the model writes two posts instead of six.
 
+The maintainer also said, 2026-11-08: "THERE SHOULD NEVER BE PRICES IN THE
+POSTS OR STORIES TEXT". Today only a post that carries the special offer
+drops its prices (`posts/offer-line-first`); the other posts may quote one.
+This item removes them everywhere (amended 2026-11-08).
+
 Success: "Make 2 suggestions" gives two suggestions, both with images. Nothing
-on screen or in the guide still says 6, and no suggestion is left without an
-image.
+on screen or in the guide still says 6, no suggestion is left without an
+image, and no caption or story text holds a price.
 
 ## Behaviour
 
@@ -52,6 +56,27 @@ The post plan asks for **two posts**. The number is one constant,
 - The prompt version goes up (`POSTS_PROMPT_VERSION`), with the prompt's
   "six" changed to "two" and its mix rules as above. The caption, story text,
   image prompt and scene rules don't change.
+
+### Never a price
+
+No caption and no story text holds a price, with or without an offer, in a
+plan or a caption update (amended 2026-11-08).
+
+- **The prompt** says it: "Never a price, in a caption or a story text."
+  The caption's concrete detail is the treatment, its duration or the place;
+  an offer post is "what it does for the guest, with its duration when the
+  profile gives it". Facts from the profile no longer list a price.
+- **Code removes what the model writes anyway:** each sentence of a caption
+  or a story text that holds a price goes (code's existing price pattern:
+  a currency mark next to a number, or a number with k), as offer posts
+  already do. The offer line and a leading flower stay. A story text left
+  empty goes, and the sheet shows no story part for that post.
+- Each removal is recorded, `{ field: 'price', reason: '<id>: price removed
+  "<sentence>"' }` (an offer post's keep their `offer` field, as today), and
+  counted in the run's log line as `price_fixes=`.
+- The owner can still type a price in "Edit the text": that's their words.
+- "This price isn't on your website" (the `price` warning) stays in code but
+  no longer shows, since code removes every price first.
 
 ### Images
 
@@ -87,6 +112,8 @@ images:
 - **Making your posts:** "You get 2 suggestions, each with a post image, a
   story image, the text for the post and a short text for the story."
 - **Editing:** "Create new image" is for a different picture, as before 2.17.
+- **Check the text:** its example is "a session length that isn't on your
+  website" instead of a price.
 - **The offer:** "Your next 2 suggestions both tell the offer and are marked
   {badge} (or {free})."
 - **No picture:** as before 2.17, for an account with images off.
@@ -106,6 +133,7 @@ the developer's.
 | `guide.posts.edit` | Tap {button} to change a suggestion's words, and {image} for a different picture; you can add a short hint. The story text can't be changed here: change it in Instagram after pasting, if you like. | Ketuk {button} untuk mengubah kata-kata sebuah saran, dan {image} untuk gambar lain; Anda bisa menambahkan petunjuk singkat. Teks story tidak bisa diubah di sini: ubah di Instagram setelah ditempel, jika mau. | Chạm {button} để đổi lời của một gợi ý, và {image} để có hình khác; bạn có thể thêm mô tả ngắn. Chữ story không sửa được ở đây: nếu muốn, hãy sửa trên Instagram sau khi dán. |
 | `guide.posts.offerDone` | Tap {done}. Your next 2 suggestions both tell the offer and are marked {badge} (or {free}). | Ketuk {done}. 2 saran berikutnya sama-sama menyebutkan promo dan bertanda {badge} (atau {free}). | Chạm {done}. Cả 2 gợi ý tiếp theo đều nhắc đến ưu đãi và có dấu {badge} (hoặc {free}). |
 | `guide.instagram.noImages` | No pictures on your suggestions? Post a photo of your own and paste the text, and the same for a story with the story text. | Saran Anda tanpa gambar? Posting foto Anda sendiri dan tempel teksnya, begitu juga untuk story dengan teks story. | (unchanged) |
+| `guide.posts.check` | A suggestion marked {check} has something to look at before you post: open it to see what, like a session length that isn't on your website, or an offer that doesn't match the one you set. | Saran yang bertanda {check} punya sesuatu yang perlu dilihat sebelum Anda memposting: buka untuk melihatnya, misalnya durasi sesi yang tidak ada di situs Anda, atau promo yang tidak sesuai dengan yang Anda pasang. | Gợi ý có dấu {check} có điều cần xem trước khi đăng: mở ra để biết, ví dụ một thời lượng buổi không có trên trang web của bạn, hoặc một ưu đãi không khớp với ưu đãi bạn đã đặt. |
 | `guide.allowance.limits` | Each day you have {reads}, {attempts} of 2 suggestions, {newImages} and {replies}, plus caption updates and translations. | Setiap hari Anda punya {reads}, {attempts} (masing-masing 2 saran), {newImages}, dan {replies}, ditambah pembaruan teks dan terjemahan. | Mỗi ngày bạn có {reads}, {attempts} (mỗi lần 2 gợi ý), {newImages} và {replies}, cùng với các lần cập nhật chú thích và bản dịch. |
 
 The guide keys keep their `<b>` tags, as today. `posts.images.none` stays,
@@ -128,6 +156,8 @@ The PR that ships this item:
 - Vitest: the deal gives two set-ups, one day and one night, the offer's
   treatments first with an offer; the prompt says two and its mix rules;
   `checkPlan` keeps two, records "more than 2 posts" and "no offer post";
+  a price is removed from a caption and a story text without an offer, on a
+  plan and on a caption update, recorded, and the prompts say never a price;
   the recorded plans (six posts, `posts-11`) replay to a checked batch of
   two; the section asks for both images after an attempt; the buttons and
   the empty line.
@@ -155,6 +185,11 @@ Scenario: Both suggestions carry the offer
   When they make an attempt
   Then both suggestions tell the offer and show its badge
 
+Scenario: Never a price
+  Given the model writes "Only 350k for 60 minutes." in a caption without an offer
+  Then that sentence is removed from the caption
+  And "price removed" is recorded for that post
+
 Scenario: The button says two
   Given an attempt was made today
   Then the button reads "Make 2 new suggestions"
@@ -173,8 +208,11 @@ Scenario: The guide says two
   offer posts): variety now comes across attempts and from "never repeat a
   recent topic".
 - **Roadmap 2.15 (`posts/marketing-copy`) is in progress on its own branch
-  and rewrites the same plan prompt.** Whichever lands second merges the
-  prompt by hand: two posts, and 2.15's rules.
+  and rewrites the same plan prompt,** including its own "never a price"
+  rule. Whichever lands second merges the prompt by hand: two posts, and
+  2.15's rules.
+- **The price pattern is best effort:** "350 thousand dong" written out in
+  words isn't caught.
 - Attempts made before this ships keep six suggestions until the day's reset.
 
 ## Out of scope
