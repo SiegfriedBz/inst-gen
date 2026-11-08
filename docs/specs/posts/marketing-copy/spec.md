@@ -1,6 +1,6 @@
 ---
 title: "Marketing copy"
-description: "Captions and story texts follow rules taken from two marketing skill libraries (decision 0009), on the two posts of an attempt (2.17b): code gives each post a hook style, the hook stands alone on the first line, each post type has its own job and only offer posts sell, each caption names one of the business's places, the two captions of an attempt differ in shape, story texts give a reason to message, an offer post's WhatsApp line gives the offer's end, and code records what still repeats."
+description: "Captions and story texts follow rules taken from two marketing skill libraries (decision 0009), on the two posts of an attempt (2.17b): code gives each post a hook style, the hook stands alone on the first line, each post type has its own job and only offer posts sell, each caption names one of the business's real places, the two captions of an attempt differ in shape, story texts give a reason to message, an offer post's WhatsApp line gives the offer's end, and code records what still repeats."
 status: draft
 date: "2026-11-07"
 ---
@@ -36,7 +36,7 @@ Svarga's plans without an offer (12 posts, `gemini-3.5-flash-lite`):
 | Captions with a line break | 0 of 12: each is one block of four sentences | Line breaks are punctuation (IG `references/voice-rules.md`) |
 | Captions with a price; story texts with one | 10 of 12; 10 of 12 | Don't hard-sell (IG `references/voice-rules.md`) |
 | Tip posts that give a tip | 0 of 2: both sell a treatment and its price | Promotion in one or two posts a week (IG `ig-content-planner/SKILL.md`) |
-| Captions naming a place of the business | 1 of 12: My Khe, Marble Mountains, Mount Batur and coconut oil never appear | If a competitor could write the sentence, it fails (CH `copywriting/SKILL.md`) |
+| Captions naming a place of the business | 1 of 12: My Khe, Marble Mountains and Mount Batur never appear | If a competitor could write the sentence, it fails (CH `copywriting/SKILL.md`) |
 | Captions answering a guest's doubt | 1 of 12: no deposit, replies in about 5 minutes and open until 23:00 never appear | State a real absence once, near the call to action (CH `copywriting/SKILL.md`) |
 | Story texts that only name the treatment | 5 of Svarga's 6 | A headline must not caption the image (CH `ad-creative/references/hook-system.md`) |
 | Stock words | "feel" in 11, "completely" in 6; three endings start with "Drift" | No empty intensifiers, no neat closing line (CH `copywriting/references/ai-tells.md`) |
@@ -67,7 +67,7 @@ two, and the price removal is 2.17b's.
 Amended again 2026-11-08, after `posts-13`'s recordings: one caption in 8
 named a place of the business, both captions of each plan had one shape, and
 one story text was lost to a "Book" after its flower. Each caption now names
-a place, the two captions get different shapes, and a story sentence also
+a real place, the two captions get different shapes, and a story sentence also
 ends at an emoji (below).
 
 Success: in each new recording, Sen's and Svarga's, with and without an
@@ -90,7 +90,7 @@ Code deals each post a hook style before the plan, as it deals the light
 |---|---|
 | `question` | asks about the guest's own day |
 | `scene` | drops the guest into a moment they are living, in the present tense, with no question |
-| `place` | opens on one of the business's places or place symbols |
+| `place` | opens on one of the business's real places: its town or area, a place it serves, or a landmark |
 | `number` | opens on a number that isn't a price: a duration, a time of day, a count |
 | `fact` | opens on a plain fact from the profile: a highlight, or its promise |
 | `promise` | opens on what the guest's body will feel after |
@@ -167,12 +167,16 @@ guests find them in the business's own menu (the maintainer, 2026-11-07; IG
 captions don't point to a menu: a pointer in every caption would repeat, and
 not every business has one (developer's call).
 
-In place of the price, each caption names one of the business's places or
-place symbols, as its profile writes it, and may add a sense or a moment from
-its essence, or a highlight (CH `copywriting/SKILL.md`: if a competitor could
-write the sentence, it fails; CH `copywriting/references/ai-tells.md`: every
-claim needs a number, a name, a mechanism or a concrete action). Amended
-2026-11-08: given the choice, the model named a place in 1 caption of 8.
+In place of the price, each caption names one of the business's real places,
+as its profile writes it: its town or area, a place it serves, or a landmark
+among its place symbols, a symbol written as a name (My Khe beach, Marble
+Mountains). A flower, a plant, an oil or an object is never a place (the
+maintainer, 2026-11-08); a caption may still use one as a detail, as it may a
+sense or a moment from its essence, or a highlight (CH `copywriting/SKILL.md`:
+if a competitor could write the sentence, it fails; CH
+`copywriting/references/ai-tells.md`: every claim needs a number, a name, a
+mechanism or a concrete action). Amended 2026-11-08: given the choice, the
+model named a place in 1 caption of 8.
 
 The price removal is 2.17b's (amended 2026-11-08): code removes each sentence
 or line that holds a price from every caption and story text the model
@@ -296,7 +300,7 @@ journal). The plan prompt changes:
   opens on its offer line instead.
 - **The captions.** The hook alone on its first line, then short paragraphs
   with a blank line between them, two on post 1 and three on post 2; the
-  guest's feeling rather than what the business does; a place of the
+  guest's feeling rather than what the business does; a real place of the
   business in each caption; never a price; the endings by type; the light in
   fewer words; never a phrase from these instructions or from the image
   set-ups; plain words; 250 to 700 characters in all. The emoji rule, the
@@ -337,8 +341,9 @@ plan and in every rewrite, on the captions as code leaves them:
    same word: `{ field: 'mix', reason: 'endings start with "Drift" in post-1,
    post-2' }`.
 4. **Places.** A caption that names none of the business's town, area,
-   service-area places or place symbols: `{ field: 'words', reason: 'post-2
-   names no place' }`. Case and accents ignored; how loosely a place matches
+   service-area places or landmarks (place symbols written as names; never a
+   flower, a plant, an oil or an object, amended 2026-11-08): `{ field:
+   'words', reason: 'post-2 names no place' }`. Case and accents ignored; how loosely a place matches
    ("My Khe" for "My Khe beach") is the developer's call.
 5. **Story texts.** On a post not carrying the offer, a story text that
    starts with its set-up's treatment, or holds its caption's first
@@ -371,7 +376,9 @@ Unit tests (Vitest) for:
   "after the beach", "a walk round town", "a sunset, dinner", "canggu,
   danang", "massagedanang" and "its price or duration" left; the story and
   hashtag rules; with and without an offer; the rewrite prompt; a place in
-  each caption, and the plan's two shapes (amended 2026-11-08);
+  each caption, and the plan's two shapes (amended 2026-11-08); the places
+  record: "frangipani" and "coconut oil" are no place, "My Khe beach" and
+  "Marble Mountains" are;
 - the deal: two different styles without an offer, none with an offer
   (amended 2026-11-08); the same seed dealing the same; `### Hooks` after the
   set-ups in the user text; the rewrite's user text giving each post its
