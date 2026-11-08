@@ -198,7 +198,7 @@
     "make": "Tạo 6 gợi ý",
     "makeMore": "Tạo 6 gợi ý mới",
     "moreBelow": "Gợi ý mới nằm ở trên. Lần thử {n} vẫn ở bên dưới.",
-    "empty": "Mỗi gợi ý gồm 2 hình (1 cho bài đăng, 1 cho story), phần chữ cho bài đăng và một dòng chữ ngắn cho story, sẵn sàng cho Instagram. Chọn những gợi ý bạn thích và lưu vào điện thoại.",
+    "empty": "Bạn nhận 6 gợi ý, mỗi gợi ý có phần chữ cho bài đăng và một dòng chữ ngắn cho story, sẵn sàng cho Instagram; 2 gợi ý trong số đó có thêm hình bài đăng và hình story. Chọn những gợi ý bạn thích và lưu vào điện thoại.",
     "emptyTextOnly": "Mỗi gợi ý là phần chữ cho một bài đăng và một dòng chữ ngắn cho story, sẵn sàng cho Instagram. Chọn những gợi ý bạn thích và sao chép.",
     "attempt": "Lần thử {n}",
     "attemptCount": "{count} gợi ý",
@@ -247,6 +247,7 @@
       "retry": "Thử lại",
       "close": "Đóng",
       "off": "Hình ảnh chưa được bật cho tài khoản của bạn.",
+      "none": "Mỗi lần thử chỉ có 2 gợi ý kèm hình. Hãy tạo hình cho gợi ý này, hoặc dùng ảnh của bạn.",
       "errors": {
         "images_paused": "Hình ảnh tạm dừng. Chú thích của bạn đã sẵn sàng.",
         "image_blocked": "Không thể tạo hình ảnh này. Hãy thử lại để có hình mới.",

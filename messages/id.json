@@ -198,7 +198,7 @@
     "make": "Buat 6 saran",
     "makeMore": "Buat 6 saran baru",
     "moreBelow": "Saran baru muncul di atas. Percobaan {n} tetap di bawah.",
-    "empty": "Setiap saran berisi 2 gambar (1 untuk postingan, 1 untuk story), teks untuk postingan, dan teks singkat untuk story, siap untuk Instagram. Pilih yang Anda suka dan simpan di ponsel Anda.",
+    "empty": "Anda mendapat 6 saran, masing-masing dengan teks untuk postingan dan teks singkat untuk story, siap untuk Instagram; 2 di antaranya juga dilengkapi gambar postingan dan gambar story. Pilih yang Anda suka dan simpan di ponsel Anda.",
     "emptyTextOnly": "Setiap saran berisi teks untuk postingan dan teks singkat untuk story, siap untuk Instagram. Pilih yang Anda suka dan salin.",
     "attempt": "Percobaan {n}",
     "attemptCount": "{count} saran",
@@ -247,6 +247,7 @@
       "retry": "Coba lagi",
       "close": "Tutup",
       "off": "Gambar belum diaktifkan untuk akun Anda.",
+      "none": "Hanya 2 saran di setiap percobaan yang dilengkapi gambar. Buat gambar untuk saran ini, atau pakai foto Anda sendiri.",
       "errors": {
         "images_paused": "Gambar dijeda untuk sementara. Keterangan Anda sudah siap.",
         "image_blocked": "Gambar ini tidak bisa dibuat. Coba lagi untuk gambar baru.",

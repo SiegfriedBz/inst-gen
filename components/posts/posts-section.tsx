@@ -24,6 +24,7 @@ import {
   storyFlagsFor,
 } from '@/lib/posts/edit';
 import { type ImageEvent, resumeImages, startImages } from '@/lib/posts/image-client';
+import { imagePosts } from '@/lib/posts/image-pick';
 import { imageKey, loadImages, type SavedImage } from '@/lib/posts/image-store';
 import { ctaFor, profileHash } from '@/lib/posts/input';
 import { DEFAULT_ANSWERS, isOver, type OfferAnswers, toOffer } from '@/lib/posts/offer';
@@ -228,10 +229,7 @@ export function PostsSection({
         setError(null);
         setBatches((list) => [event.batch, ...list.filter((b) => b.id !== event.batch.id)]);
         if (planned && imagesOn && !monthFullRef.current) {
-          makeImages(
-            event.batch,
-            event.batch.posts.map((p) => p.id),
-          );
+          makeImages(event.batch, imagePosts(event.batch));
         }
       } else if (event.type === 'error') {
         setErrorStep(stepRef.current ?? 'plan');
@@ -509,7 +507,7 @@ export function PostsSection({
   }, [active, searching, busy, triedHash, currentHash, shown, profile, update]);
 
   // An attempt with no image made or being made: "Make the images" stands
-  // for all six, above its grid.
+  // for its two (docs/specs/posts/two-images), above its grid.
   function needsImagesFor(batch: PostBatch): boolean {
     return (
       imagesOn &&
@@ -529,8 +527,13 @@ export function PostsSection({
       if (saved) remaking.current.add(key);
       makeImages(batch, [post.id], hint.trim() || undefined);
     };
+    // Not one of the attempt's two, and no image asked for since: text, with
+    // "Create new image" (docs/specs/posts/two-images).
+    const skipped =
+      !saved && !making.has(key) && !failed.has(key) && !imagePosts(batch).includes(post.id);
     let state: ImageState;
     if (!imagesOn) state = { kind: 'off' };
+    else if (skipped) state = { kind: 'skipped', ...(monthFull ? { month: true } : {}) };
     else if (!saved && !making.has(key) && monthFull) state = { kind: 'month' };
     else if (saved) {
       const failure = failed.get(key);
@@ -646,12 +649,7 @@ export function PostsSection({
             {needsImages && (
               <Button
                 type="button"
-                onClick={() =>
-                  makeImages(
-                    batch,
-                    batch.posts.map((p) => p.id),
-                  )
-                }
+                onClick={() => makeImages(batch, imagePosts(batch))}
                 disabled={held}
               >
                 {t('images.make')}
@@ -812,9 +810,10 @@ function AttemptHeading({ n, count }: { n: number; count: number }) {
 }
 
 // No image to save for this suggestion, so the text alone ticks it: images
-// off, paused, or the month full (docs/specs/platform/friendlier-home). A
-// month-full tile still shows its block, saying until when.
+// off, paused, the month full (docs/specs/platform/friendlier-home), or not
+// one of the attempt's two (docs/specs/posts/two-images). A month-full tile
+// still shows its block, saying until when.
 function noImage(state: ImageState): boolean {
-  if (state.kind === 'off' || state.kind === 'month') return true;
+  if (state.kind === 'off' || state.kind === 'month' || state.kind === 'skipped') return true;
   return state.kind === 'failed' && (state.code === 'images_paused' || state.code === 'images_off');
 }
