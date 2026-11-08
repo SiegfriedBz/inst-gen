@@ -156,6 +156,11 @@ export type BodyPart = (typeof BODY_PARTS)[number];
 export const LIGHTS = ['day', 'night'] as const;
 export type Light = (typeof LIGHTS)[number];
 
+// How each caption opens (docs/specs/posts/marketing-copy, "Hook styles,
+// dealt by code"). A set-up dealt before them has none.
+export const HOOKS = ['question', 'scene', 'place', 'number', 'fact', 'promise'] as const;
+export type Hook = (typeof HOOKS)[number];
+
 export const setupSchema = z.object({
   treatment: z.string().min(1).optional(),
   look: z.enum(LOOKS),
@@ -165,6 +170,7 @@ export const setupSchema = z.object({
   scene: z.enum(SCENES),
   locals: z.enum(LOCALS),
   light: z.enum(LIGHTS).optional(),
+  hook: z.enum(HOOKS).optional(),
 });
 export type Setup = z.infer<typeof setupSchema>;
 
@@ -285,6 +291,11 @@ export function dealSetups(
     random,
   );
 
+  // A different hook style for each post; with an offer, both posts open on
+  // its line instead. Drawn after the lights, so a seed still deals what it
+  // dealt before (docs/specs/posts/marketing-copy).
+  const hooks: (Hook | undefined)[] = offer ? [] : shuffled(HOOKS, random);
+
   return looks.map(({ treatment, look }, i) => ({
     ...(treatment ? { treatment } : {}),
     look,
@@ -294,6 +305,7 @@ export function dealSetups(
     scene: scenes[i],
     locals,
     light: lights[i] ?? 'day',
+    ...(hooks[i] ? { hook: hooks[i] } : {}),
   }));
 }
 
@@ -333,14 +345,17 @@ export function setupLine(setup: Setup): string {
   return `${what}: ${GUESTS[setup.guests]} ${LOOK_WORDS_FOR[setup.look]}; the ${setup.bodyPart}; scene ${setup.scene}, ${CAMERAS[setup.scene]}; ${setup.light ?? 'day'}.`;
 }
 
-export function castLine(setup: Setup): string {
+// With the therapists' look (docs/specs/posts/therapists-look), the
+// therapists are named with it, and two are dressed alike.
+export function castLine(setup: Setup, staffLook?: string): string {
   const guests =
     setup.guests === 'couple'
       ? 'Two guests, a man and a woman, on two beds side by side.'
       : `One guest, a ${setup.guests}.`;
-  const therapists =
-    setup.therapists === 2
-      ? `Two therapists, both young ${setup.locals} women.`
-      : `One therapist, a young ${setup.locals} woman.`;
-  return `${guests} ${therapists}`;
+  const two = setup.therapists === 2;
+  const therapists = two
+    ? `Two therapists, both young ${setup.locals} women${staffLook ? ', dressed alike' : ''}.`
+    : `One therapist, a young ${setup.locals} woman.`;
+  const look = staffLook ? ` ${two ? 'Their' : 'Her'} look: ${staffLook}.` : '';
+  return `${guests} ${therapists}${look}`;
 }

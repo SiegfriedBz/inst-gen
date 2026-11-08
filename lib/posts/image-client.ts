@@ -93,6 +93,7 @@ function request(
   postIds: string[],
   onEvent: (e: ImageEvent) => void,
   deps: ReadDeps,
+  staffLook?: string,
 ): RunningRead {
   const controller = new AbortController();
   let finished = false;
@@ -123,6 +124,7 @@ function request(
           first,
           ...(run.hint ? { hint: run.hint } : {}),
           ...(post.setup ? { setup: post.setup } : {}),
+          ...(staffLook ? { staffLook } : {}),
         }),
         signal: controller.signal,
       });
@@ -204,8 +206,16 @@ function request(
   return { stop, done: go() };
 }
 
+// `staffLook` is the therapists' look on "Your business" when the images are
+// asked for (docs/specs/posts/therapists-look).
 export function startImages(
-  input: { ownerId: string; batch: PostBatch; postIds: string[]; hint?: string },
+  input: {
+    ownerId: string;
+    batch: PostBatch;
+    postIds: string[];
+    hint?: string;
+    staffLook?: string;
+  },
   onEvent: (e: ImageEvent) => void,
   deps: ReadDeps = defaultReadDeps(),
 ): RunningRead {
@@ -220,16 +230,18 @@ export function startImages(
     deps.newId(),
   );
   liveRuns.add(run.id);
-  return request(run, true, input.batch, input.postIds, onEvent, deps);
+  return request(run, true, input.batch, input.postIds, onEvent, deps, input.staffLook);
 }
 
-// Asks again for the images this owner's open runs lost, or returns null when
-// there are none to ask for. `keys` are the posts' `imageKey`s.
+// Asks again for the images this owner's open runs lost, with the therapists'
+// look as it is now, or returns null when there are none to ask for. `keys`
+// are the posts' `imageKey`s.
 export async function resumeImages(
   ownerId: string,
   batches: PostBatch[],
   onEvent: (e: ImageEvent) => void,
   deps: ReadDeps = defaultReadDeps(),
+  staffLook?: string,
 ): Promise<(RunningRead & { postIds: string[]; keys: string[] }) | null> {
   const open = await loadOpenRuns(ownerId, 'images');
   const saved = await loadImages(ownerId);
@@ -276,7 +288,7 @@ export async function resumeImages(
     }
     liveRuns.add(run.id);
     resumed.push({
-      ...request(current, false, batch, pending, onEvent, deps),
+      ...request(current, false, batch, pending, onEvent, deps, staffLook),
       postIds: pending,
       keys: pending.map((id) => imageKey(batch.id, id)),
     });

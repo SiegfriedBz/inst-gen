@@ -13,12 +13,14 @@ import {
   type Scene,
 } from './batch';
 import { addFlower, dropStopsBeforeEmoji, isSpa, stripEmojis } from './emoji';
+import { dropForeignTags } from './foreign-tags';
+import { hookOnItsLine } from './hook-line';
 import { ctaFor } from './input';
 import { mentionsDay, OFFER_LIMITS, type Offer, PERCENT } from './offer';
 import { dropPrices, offerLine, offerStory, offerTreatment, putOfferLineFirst } from './offer-line';
 import type { Setup } from './setup';
 import { cleanStory, sentences } from './story';
-import { lightRecords, repeatRecords } from './variety';
+import { copyRecords, lightRecords, repeatRecords } from './variety';
 
 // Code's checks on the model's posts (docs/specs/posts/generate-copy, "What
 // code checks"): trim, drop or flag, record each change, and never refuse a
@@ -65,9 +67,17 @@ function profilePrices(profile: Profile): Set<number> {
   return new Set(prices.map(amount));
 }
 
+// The offerings' durations, and those a highlight or the promise gives
+// ("WhatsApp replies in ~5 mins": docs/specs/posts/marketing-copy, amended
+// 2026-11-08).
 function profileDurations(profile: Profile): Set<number> {
-  const found = profile.offerings.flatMap((o) =>
-    o.duration ? [...o.duration.matchAll(DURATION)].map((m) => minutes(m[1], m[2])) : [],
+  const texts = [
+    ...profile.offerings.map((o) => o.duration ?? ''),
+    ...profile.highlights.map((h) => h.value),
+    profile.essence.promise?.value ?? '',
+  ];
+  const found = texts.flatMap((text) =>
+    [...text.matchAll(DURATION)].map((m) => minutes(m[1], m[2])),
   );
   return new Set(found);
 }
@@ -271,15 +281,21 @@ function checkedWords(
     if (fixed.fix)
       storyDropped.push({ field: 'offer', reason: `${id}: ${STORY_FIXES[fixed.fix]}` });
   }
-  // Last, once every step that finds sentences by their stop is done; the
-  // flags quote the text the owner sees.
-  const shown = dropStopsBeforeEmoji(caption);
+  // The hook goes alone on its line, after the flowers and the offer steps;
+  // the stops before an emoji go last, once every step that finds sentences by
+  // their stop is done. The flags quote the text the owner sees.
+  const shown = dropStopsBeforeEmoji(hookOnItsLine(caption));
   if (storyText) storyText = dropStopsBeforeEmoji(storyText);
+  const tags = dropForeignTags(cleanHashtags(raw.hashtags), profile);
+  const tagsDropped = tags.dropped.map(({ tag, place }) => ({
+    field: 'hashtags',
+    reason: `${id}: "${tag}" names ${place}`,
+  }));
   return {
     words: {
       caption: shown,
-      cta: ctaFor(profile) ?? '',
-      hashtags: cleanHashtags(raw.hashtags),
+      cta: ctaFor(profile, context?.carries ? context.offer : undefined) ?? '',
+      hashtags: tags.tags,
       altText: cutChars(raw.altText.replace(/^(an? )?image of /i, ''), POSTS_LIMITS.altTextChars),
       unchecked: findFlags(shown, profile, context),
       ...(storyText
@@ -289,7 +305,7 @@ function checkedWords(
           }
         : {}),
     },
-    dropped: [...offered.dropped, ...priced.dropped, ...dropped, ...storyDropped],
+    dropped: [...offered.dropped, ...priced.dropped, ...dropped, ...storyDropped, ...tagsDropped],
   };
 }
 
@@ -419,7 +435,7 @@ export function checkPlan(
   if (offer && kept.slice(0, 2).some((p) => p.type !== 'offer')) {
     out.push({ field: 'mix', reason: 'offer posts are not posts 1 and 2' });
   }
-  out.push(...repeatRecords(kept), ...kept.flatMap(lightRecords));
+  out.push(...repeatRecords(kept), ...kept.flatMap(lightRecords), ...copyRecords(kept, profile));
   return { posts: kept, dropped: out };
 }
 
@@ -452,6 +468,10 @@ export function checkRewrite(
     const { storyText: _story, storyUnchecked: _flags, ...rest } = post;
     return { ...rest, ...checked.words };
   });
-  dropped.push(...repeatRecords(posts), ...posts.flatMap(lightRecords));
+  dropped.push(
+    ...repeatRecords(posts),
+    ...posts.flatMap(lightRecords),
+    ...copyRecords(posts, profile),
+  );
   return { posts, dropped };
 }

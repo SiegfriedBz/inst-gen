@@ -5,6 +5,7 @@ import type { Offer } from '@/lib/posts/offer';
 import {
   castLine,
   dealSetups,
+  HOOKS,
   localsOf,
   lookOf,
   type Setup,
@@ -315,6 +316,43 @@ describe('day and night', () => {
   });
 });
 
+// Hook styles (docs/specs/posts/marketing-copy, "Hook styles, dealt by code").
+describe('hook styles', () => {
+  it('two different styles without an offer', () => {
+    const hooks = deal(senProfile()).map((s) => s.hook);
+    expect(new Set(hooks).size).toBe(2);
+    for (const hook of hooks) expect(HOOKS).toContain(hook);
+  });
+
+  it('none with an offer: both posts open on its line', () => {
+    const hooks = deal(withOfferings(EIGHT), offerOn(['Aroma Massage'])).map((s) => s.hook);
+    expect(hooks).toEqual([undefined, undefined]);
+  });
+
+  it('the same seed, the same hooks', () => {
+    expect(deal(senProfile(), undefined, 'x').map((s) => s.hook)).toEqual(
+      deal(senProfile(), undefined, 'x').map((s) => s.hook),
+    );
+  });
+
+  it('the hooks come last: the lights are as before', () => {
+    expect(deal(senProfile()).map((s) => s.light)).toEqual(['night', 'day']);
+  });
+
+  it('the schema takes a hook, none, and refuses another', () => {
+    const { hook: _, ...setup } = deal(senProfile())[0];
+    expect(setupSchema.safeParse({ ...setup, hook: 'scene' }).success).toBe(true);
+    expect(setupSchema.safeParse(setup).success).toBe(true);
+    expect(setupSchema.safeParse({ ...setup, hook: 'teaser' }).success).toBe(false);
+  });
+
+  it('the image never sees the hook', () => {
+    const [setup] = deal(senProfile());
+    const { hook: _, ...bare } = setup;
+    expect(setupLine({ ...bare, hook: 'scene' })).toBe(setupLine(bare));
+  });
+});
+
 describe('the set-up in words', () => {
   const fourHandsMan: Setup = {
     treatment: 'Four-Hands Massage',
@@ -423,5 +461,37 @@ describe('review fixes', () => {
     for (const s of deal(withOfferings(['Aroma Massage', 'Gift Voucher']))) {
       expect(s.treatment).toBe('Aroma Massage');
     }
+  });
+});
+
+// docs/specs/posts/therapists-look, "Every image made from now on".
+describe("castLine with the therapists' look", () => {
+  const fourHandsMan: Setup = {
+    treatment: 'Four-Hands Massage',
+    look: 'fourHands',
+    guests: 'man',
+    therapists: 2,
+    bodyPart: 'back',
+    scene: 'treatment',
+    locals: 'Balinese',
+  };
+  const look = 'a white tunic, white trousers, dark hair in a neat low bun';
+
+  it('one therapist: her look', () => {
+    expect(
+      castLine({ ...fourHandsMan, look: 'plain', therapists: 1, locals: 'Vietnamese' }, look),
+    ).toBe(
+      'One guest, a man. One therapist, a young Vietnamese woman. Her look: a white tunic, white trousers, dark hair in a neat low bun.',
+    );
+  });
+
+  it('two therapists: dressed alike', () => {
+    expect(castLine(fourHandsMan, look)).toBe(
+      'One guest, a man. Two therapists, both young Balinese women, dressed alike. Their look: a white tunic, white trousers, dark hair in a neat low bun.',
+    );
+  });
+
+  it('no look: as before', () => {
+    expect(castLine(fourHandsMan, undefined)).toBe(castLine(fourHandsMan));
   });
 });

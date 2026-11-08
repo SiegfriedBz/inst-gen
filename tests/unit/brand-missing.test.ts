@@ -24,6 +24,7 @@ function full(): Profile {
       senses: ['frangipani'],
       searchTerms: ['canggu massage'],
     },
+    staffLook: { value: 'a white tunic, white trousers', source: 'model' },
   };
 }
 
@@ -132,5 +133,21 @@ describe('a line per section', () => {
     };
     expect(sectionSummary(empty, 'place')).toBeNull();
     expect(sectionSummary({ ...p, visualStyle: null }, 'look')).toBeNull();
+  });
+});
+
+// docs/specs/posts/therapists-look, "\"Your look\"".
+describe("the therapists' look", () => {
+  test('missing in "Your look", right after the visual style', () => {
+    const r = missingFields({ ...full(), visualStyle: null, staffLook: null }, null);
+    expect(r.listed).toEqual([
+      { field: 'visualStyle', section: 'look' },
+      { field: 'staffLook', section: 'look' },
+    ]);
+    expect(r.count).toBe(2);
+  });
+
+  test('not missing once it is set', () => {
+    expect(missingFields(full(), null).listed).toEqual([]);
   });
 });

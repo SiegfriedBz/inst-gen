@@ -9,6 +9,7 @@ import {
   imageStyle,
 } from '@/lib/posts/image-prompt';
 import type { Setup } from '@/lib/posts/setup';
+import images9 from '../fixtures/image-prompt/images-9.json';
 
 describe('the image request', () => {
   test('a prompt of 80 words is taken', () => {
@@ -85,7 +86,7 @@ describe('the image prompt', () => {
       'Keep the subject in the middle of the frame, with calm space above and below it.',
     );
     expect(p).toMatch(/no text, letters, labels, logos or watermarks/i);
-    expect(IMAGE_PROMPT_VERSION).toBe('images-9');
+    expect(IMAGE_PROMPT_VERSION).toBe('images-10');
   });
 });
 
@@ -427,5 +428,58 @@ describe('the set-up and the therapists', () => {
     expect(
       imageBodySchema.safeParse({ ...body, setup: { ...fourHandsMan, therapists: 3 } }).success,
     ).toBe(false);
+  });
+});
+
+// docs/specs/posts/therapists-look, "Every image made from now on".
+describe("the therapists' look", () => {
+  const look = 'a white tunic, white trousers, dark hair in a neat low bun';
+  const setup: Setup = {
+    treatment: 'Aroma Massage',
+    look: 'plain',
+    guests: 'man',
+    therapists: 1,
+    bodyPart: 'back',
+    scene: 'treatment',
+    locals: 'Vietnamese',
+    light: 'day',
+  };
+  const last = `Every therapist's look, whatever the scene says: ${look}.`;
+
+  test.each(images9.cases)('without a look, images-9 word for word: $name', (c) => {
+    expect(imagePrompt(c.postPrompt, c.hint, c.setup as Setup | undefined)).toBe(c.imagePrompt);
+  });
+
+  test('the cast line gives the look first, and the last rules again', () => {
+    const p = imagePrompt('Oil on a back.', undefined, setup, look);
+    expect(
+      p.startsWith(
+        `One guest, a man. One therapist, a young Vietnamese woman. Her look: ${look}. `,
+      ),
+    ).toBe(true);
+    const face = p.indexOf('Her face is turned away, lowered or out of frame. ');
+    const rule = p.indexOf(last);
+    expect(face).toBeGreaterThan(-1);
+    expect(rule).toBeGreaterThan(face);
+    expect(p.indexOf("Every guest's face")).toBeGreaterThan(rule);
+  });
+
+  test('the style line holds the look only when one is given', () => {
+    expect(imageStyle('Vietnamese', 'day', look)).toContain(last);
+    expect(imageStyle('Vietnamese', 'day')).not.toContain("Every therapist's look");
+  });
+
+  test('a post with no set-up gets the look in the last rules only', () => {
+    const p = imagePrompt('Oil on a back.', undefined, undefined, look);
+    expect(p).not.toContain('Her look:');
+    expect(p).toContain(last);
+  });
+
+  test('the request takes a look of 300 characters, not 301 nor an empty one', () => {
+    const base = { postId: 'p', imagePrompt: 'Oil on a back', scene: 'detail' };
+    const take = (staffLook: string) => imageBodySchema.safeParse({ ...base, staffLook }).success;
+    expect(take('a'.repeat(300))).toBe(true);
+    expect(take('a'.repeat(301))).toBe(false);
+    expect(take('')).toBe(false);
   });
 });

@@ -13,12 +13,27 @@ import type { PostBatch } from '@/lib/posts/batch';
 import { staleUnedited } from '@/lib/posts/edit';
 import { imageKey, loadImages, type SavedImage, saveImage } from '@/lib/posts/image-store';
 import { hashText, profileHash } from '@/lib/posts/input';
+import type { Offer } from '@/lib/posts/offer';
 import { applyCta, clearBefore, loadBatches, recentPosts, saveBatch } from '@/lib/posts/store';
 import { loadTranslation, saveTranslation } from '@/lib/posts/translation-store';
 import { newPostsRun } from '@/lib/runs/run-record';
 import { loadOpenRun, saveRun } from '@/lib/runs/store';
 import { svargaProfile } from './helpers/brand';
 import { post } from './helpers/posts';
+
+const OFFER: Offer = {
+  kind: 'discount',
+  percent: 10,
+  treatments: ['Balinese massage'],
+  until: '2026-10-27',
+  lastDay: 'Tuesday 27 October',
+};
+
+function withWhatsApp(value: string) {
+  const profile = svargaProfile();
+  profile.contact.whatsapp = { value, source: profile.siteUrl };
+  return profile;
+}
 
 beforeEach(() => {
   globalThis.indexedDB = new IDBFactory();
@@ -86,7 +101,7 @@ describe('the posts store', () => {
 
   test("applyCta changes every post's cta and nothing else", async () => {
     await saveBatch(batch('a', '2026-10-25T09:00:00.000Z'));
-    const [updated] = await applyCta('svarga', 'Book on WhatsApp: +6289999999999');
+    const [updated] = await applyCta('svarga', withWhatsApp('+6289999999999'));
     expect(updated.posts.every((p) => p.cta === 'Book on WhatsApp: +6289999999999')).toBe(true);
     expect(updated.posts[0].caption).toBe('Warm oil, slow hands.');
     expect((await loadBatches('svarga'))[0].posts[0].cta).toBe('Book on WhatsApp: +6289999999999');
@@ -98,7 +113,7 @@ describe('the posts store', () => {
     await saveBatch(
       batch('a', '2026-10-25T09:00:00.000Z', { posts: [post({ id: 'a-0', cta, copiedAt: NOW })] }),
     );
-    const [kept] = await applyCta('svarga', cta);
+    const [kept] = await applyCta('svarga', svargaProfile());
     expect(kept.posts[0].copiedAt).toBe(NOW);
   });
 
@@ -112,17 +127,48 @@ describe('the posts store', () => {
         ],
       }),
     );
-    const [updated] = await applyCta('svarga', 'Book on WhatsApp: +6289999999999');
+    const [updated] = await applyCta('svarga', withWhatsApp('+6289999999999'));
     expect(updated.posts.map((p) => p.copiedAt)).toEqual([undefined, undefined]);
     expect(updated.posts[0].savedAt).toBe(NOW);
     expect((await loadBatches('svarga'))[0].posts[0].copiedAt).toBeUndefined();
   });
 
+  // docs/specs/posts/marketing-copy, "The offer's end, by the WhatsApp line".
+  test("applyCta gives the offer's end only to the posts that carry the offer", async () => {
+    await saveBatch(
+      batch('a', '2026-10-25T09:00:00.000Z', {
+        offer: OFFER,
+        posts: [post({ id: 'a-0', offer: true }), post({ id: 'a-1' })],
+      }),
+    );
+    const [updated] = await applyCta('svarga', svargaProfile());
+    expect(updated.posts.map((p) => p.cta)).toEqual([
+      'Offer ends Tuesday 27 October. Book on WhatsApp: +6281234567890',
+      'Book on WhatsApp: +6281234567890',
+    ]);
+  });
+
+  test('a post whose own line is unchanged keeps copied', async () => {
+    const NOW = '2026-10-27T10:00:00.000Z';
+    const line = 'Offer ends Tuesday 27 October. Book on WhatsApp: +6281234567890';
+    await saveBatch(
+      batch('a', '2026-10-25T09:00:00.000Z', {
+        offer: OFFER,
+        posts: [
+          post({ id: 'a-0', offer: true, cta: line, copiedAt: NOW }),
+          post({ id: 'a-1', copiedAt: NOW }),
+        ],
+      }),
+    );
+    const [kept] = await applyCta('svarga', svargaProfile());
+    expect(kept.posts.map((p) => p.copiedAt)).toEqual([NOW, NOW]);
+  });
+
   test('a batch saved after a WhatsApp edit gets the new number from applyCta', async () => {
     await saveBatch(batch('a', '2026-10-25T09:00:00.000Z'));
-    await applyCta('svarga', 'Book on WhatsApp: +6280000000000');
+    await applyCta('svarga', withWhatsApp('+6280000000000'));
     await saveBatch(batch('b', '2026-10-25T10:00:00.000Z'));
-    const batches = await applyCta('svarga', 'Book on WhatsApp: +6280000000000');
+    const batches = await applyCta('svarga', withWhatsApp('+6280000000000'));
     expect(batches.flatMap((b) => b.posts).every((p) => p.cta.endsWith('+6280000000000'))).toBe(
       true,
     );

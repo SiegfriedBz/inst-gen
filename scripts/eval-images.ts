@@ -12,7 +12,7 @@ import { existsSync, mkdirSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { geminiImageModel, IMAGE_MODEL, IMAGE_USD } from '@/lib/ai/image-model';
 import { replayTextModel } from '@/lib/ai/replay';
-import { FIXTURES_DIR, fixtureProfile, loadFixture } from '@/lib/brand/fixtures';
+import { CACHE_DIR, FIXTURES_DIR, fixtureProfile, loadFixture } from '@/lib/brand/fixtures';
 import type { Post } from '@/lib/posts/batch';
 import type { ImageLog } from '@/lib/posts/image-log';
 import { IMAGE_PROMPT_VERSION } from '@/lib/posts/image-prompt';
@@ -35,11 +35,12 @@ if (!apiKey) {
 const model = geminiImageModel(apiKey);
 const OUT = join('.superpowers', 'eval-images');
 
-async function recordedPosts(slug: string): Promise<Post[]> {
+async function recordedPosts(slug: string): Promise<{ posts: Post[]; staffLook?: string }> {
   const dir = join(FIXTURES_DIR, slug);
   const fixture = loadFixture(dir);
   if (!fixture.posts) throw new Error(`no posts.json for ${slug}`);
-  const profile = await fixtureProfile(dir);
+  // With the cached photos, so the therapists' look the read saw is kept.
+  const profile = await fixtureProfile(dir, { imageCache: join(CACHE_DIR, slug) });
   const text = replayTextModel(fixture.posts.recording, { posts: fixture.posts.recording });
   for await (const line of streamPlan(
     { profile, recent: [] },
@@ -47,7 +48,9 @@ async function recordedPosts(slug: string): Promise<Post[]> {
     new AbortController().signal,
   )) {
     if (line.type === 'error') throw new Error(line.code);
-    if (line.type === 'final') return line.result.posts;
+    if (line.type === 'final') {
+      return { posts: line.result.posts, staffLook: profile.staffLook?.value };
+    }
   }
   throw new Error('no final line');
 }
@@ -55,7 +58,7 @@ async function recordedPosts(slug: string): Promise<Post[]> {
 let spent = 0;
 for (const slug of slugs) {
   try {
-    const posts = await recordedPosts(slug);
+    const { posts, staffLook } = await recordedPosts(slug);
     const dir = join(OUT, slug);
     mkdirSync(dir, { recursive: true });
     const started = Date.now();
@@ -69,6 +72,7 @@ for (const slug of slugs) {
             scene: post.scene,
             first: true,
             ...(post.setup ? { setup: post.setup } : {}),
+            ...(staffLook ? { staffLook } : {}),
           },
           'eval',
           { model, log: (entry) => logs.push(entry) },
@@ -90,7 +94,9 @@ for (const slug of slugs) {
           `${out.ok ? 'ok' : out.code}`,
       );
       const setup = posts[i].setup;
-      if (setup) console.log(`     ${setup.treatment ?? 'A massage'} · ${castLine(setup)}`);
+      if (setup) {
+        console.log(`     ${setup.treatment ?? 'A massage'} · ${castLine(setup, staffLook)}`);
+      }
       console.log(`     ${posts[i].imagePrompt}`);
     }
   } catch (error) {

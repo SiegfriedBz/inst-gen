@@ -408,6 +408,7 @@ export function BrandPanel({
             </dl>
             <SourceNote source={madeBy('visualStyle')} kind="guess" />
           </Field>
+          <SourcedField label={f('staffLook')} section="look" field={profile.staffLook} />
           <Field label={f('photos')} section="look" filled={photos.length > 0}>
             <ul className="mt-1 grid grid-cols-3 gap-2">
               {photos.map((url) => (

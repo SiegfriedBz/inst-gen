@@ -169,6 +169,8 @@ limits).
 
 ### The model call
 
+> Changed by `posts/therapists-look` (2026-11-08): the visual style still never describes people, and a new field, `staffLook`, says what the staff wear and their hair, from a page or from the photos (`brand-8`).
+
 One structured call to `gemini-3.5-flash-lite` (decision 0003's model swap,
 made after the eval: `gemini-3.8-flash` took about 110 s a read on the free
 tier; see the journal), through the AI SDK's
@@ -249,6 +251,8 @@ Before the final profile is sent, code removes what can't be backed up:
   reason), for the eval report and the journal, not for the owner.
 
 ### The brand profile
+
+> Changed by `posts/therapists-look` (2026-11-08): the profile is version 3, with `staffLook`, a sourced value of at most 30 words and 300 characters, or `null`; a profile saved as version 1 or 2 opens as version 3 with no look.
 
 `lib/brand/profile.ts` holds the zod schema and its TypeScript type. One
 schema serves the model's output, the route's response, and later the

@@ -979,6 +979,23 @@ describe('the offer badge', () => {
     expect(screen.getAllByText('Free extra')).toHaveLength(2);
   });
 
+  // docs/specs/posts/marketing-copy, "The offer's end, by the WhatsApp line".
+  test("an offer post keeps its copied tick and shows the offer's end before WhatsApp", async () => {
+    const NOW = '2026-10-25T10:00:00.000Z';
+    const line = 'Offer ends Tuesday 27 October. Book on WhatsApp: +6281234567890';
+    const offered = withOffer(discount);
+    await saveBatch({
+      ...offered,
+      posts: offered.posts.map((p) => ({ ...p, copiedAt: NOW, ...(p.offer ? { cta: line } : {}) })),
+    });
+    await renderSection();
+    const sheet = await openTile(1);
+    expect(within(sheet).getByText(line)).toBeTruthy();
+    fireEvent.click(within(sheet).getByRole('button', { name: 'Close' }));
+    await waitFor(() => expect(screen.queryByRole('dialog')).toBeNull());
+    expect(screen.getAllByRole('button', { name: /Copied$/ })).toHaveLength(6);
+  });
+
   test('a batch without an offer has no badge', async () => {
     await saveBatch(batch(sixPosts));
     await renderSection();

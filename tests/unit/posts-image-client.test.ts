@@ -348,3 +348,36 @@ describe('resuming images', () => {
     await run.done;
   });
 });
+
+// docs/specs/posts/therapists-look, "Every image made from now on".
+describe("the therapists' look", () => {
+  const look = 'a white tunic, white trousers, dark hair in a neat low bun';
+
+  test('every request carries the look', async () => {
+    await startImages(
+      { ownerId: 'sen', batch, postIds: ['post-1', 'post-2'], staffLook: look },
+      () => {},
+      deps,
+    ).done;
+    expect(fetchMock.mock.calls.map(bodyOf).map((b) => b.staffLook)).toEqual([look, look]);
+  });
+
+  test.each([undefined, ''])('with no look (%j), none is sent', async (staffLook) => {
+    await startImages({ ownerId: 'sen', batch, postIds: ['post-1'], staffLook }, () => {}, deps)
+      .done;
+    expect('staffLook' in bodyOf(fetchMock.mock.calls[0])).toBe(false);
+  });
+
+  test('an image asked for again carries the look given then', async () => {
+    await saveRun(
+      newImagesRun(
+        { ownerId: 'sen', batchId: batch.id, postIds: ['post-1'] },
+        new Date('2026-10-25T09:00:00Z'),
+        'lost-run',
+      ),
+    );
+    const resumed = await resumeImages('sen', [batch], () => {}, deps, look);
+    await resumed?.done;
+    expect(bodyOf(fetchMock.mock.calls[0]).staffLook).toBe(look);
+  });
+});

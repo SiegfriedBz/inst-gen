@@ -1,7 +1,17 @@
+import { mkdtempSync, writeFileSync } from 'node:fs';
+import { tmpdir } from 'node:os';
+import { join } from 'node:path';
+import sharp from 'sharp';
 import { describe, expect, test } from 'vitest';
 import { replayTextModel } from '@/lib/ai/replay';
 import { scoreFixture } from '@/lib/brand/eval/score';
-import { fixtureTransport, imageCacheName, loadFixture } from '@/lib/brand/fixtures';
+import {
+  FIXTURES_DIR,
+  fixtureProfile,
+  fixtureTransport,
+  imageCacheName,
+  loadFixture,
+} from '@/lib/brand/fixtures';
 import { prepareRead, streamProfile } from '@/lib/brand/read';
 
 const DIR = 'tests/fixtures/sites/_sample';
@@ -82,5 +92,27 @@ describe('the _sample fixture', () => {
       'https://www.lotusbay.example/',
       'https://www.lotusbay.example/prices',
     ]);
+  });
+});
+
+// The eval scripts read a fixture's profile with its cached photos, so what
+// the recorded read saw in them (the visual style, the therapists' look) is
+// kept (docs/specs/posts/therapists-look, journal). Tests read it without.
+describe('a fixture profile with its cached photos', () => {
+  test("keeps Sen's recorded look, which is dropped without them", async () => {
+    const dir = join(FIXTURES_DIR, 'sen');
+    const cache = mkdtempSync(join(tmpdir(), 'fixture-cache-'));
+    const jpeg = await sharp({
+      create: { width: 8, height: 8, channels: 3, background: '#ffffff' },
+    })
+      .jpeg()
+      .toBuffer();
+    for (const image of loadFixture(dir).manifest.images) {
+      writeFileSync(join(cache, imageCacheName(image.url)), jpeg);
+    }
+    const withPhotos = await fixtureProfile(dir, { imageCache: cache });
+    expect(withPhotos.staffLook?.source).toBe('model');
+    expect(withPhotos.staffLook?.value).toMatch(/white/);
+    expect((await fixtureProfile(dir)).staffLook).toBeNull();
   });
 });

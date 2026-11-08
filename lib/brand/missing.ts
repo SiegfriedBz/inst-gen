@@ -29,6 +29,7 @@ export type FieldKey =
   | 'bookingUrl'
   | 'colours'
   | 'visualStyle'
+  | 'staffLook'
   | 'promise'
   | 'feeling'
   | 'moments'
@@ -65,6 +66,7 @@ const FIELDS: { field: FieldKey; section: SectionId; empty: (p: Profile) => bool
   { field: 'bookingUrl', section: 'contact', empty: (p) => noValue(p.contact.bookingUrl) },
   { field: 'colours', section: 'look', empty: (p) => noItems(p.colours) },
   { field: 'visualStyle', section: 'look', empty: (p) => p.visualStyle === null },
+  { field: 'staffLook', section: 'look', empty: (p) => noValue(p.staffLook) },
   { field: 'promise', section: 'feeling', empty: (p) => noValue(p.essence.promise) },
   { field: 'feeling', section: 'feeling', empty: (p) => noItems(p.essence.feeling) },
   { field: 'moments', section: 'feeling', empty: (p) => noItems(p.essence.moments) },

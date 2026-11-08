@@ -1,6 +1,6 @@
 {
   "siteUrl": "https://svargabalimassage.com/",
-  "savedAt": "2026-10-24T09:41:59.791Z",
+  "savedAt": "2026-11-08T15:58:27.099Z",
   "files": [
     {
       "path": "robots.txt",
@@ -16,23 +16,39 @@
     },
     {
       "path": "css/0.css",
-      "url": "https://www.svargabalimassage.com/_next/static/immutable/chunks/3m-ncc7a-p30q.css",
-      "finalUrl": "https://www.svargabalimassage.com/_next/static/immutable/chunks/3m-ncc7a-p30q.css",
+      "url": "https://www.svargabalimassage.com/_next/static/immutable/chunks/3u3owz7rtthtk.css",
+      "finalUrl": "https://www.svargabalimassage.com/_next/static/immutable/chunks/3u3owz7rtthtk.css",
       "contentType": "text/css"
     }
   ],
   "images": [
     {
-      "url": "https://www.svargabalimassage.com/_next/image?url=%2Fimages%2Fhero.jpg&w=3840&q=75",
+      "url": "https://www.svargabalimassage.com/images/og-share.jpg",
       "contentType": "image/jpeg"
     },
     {
-      "url": "https://www.svargabalimassage.com/images/og-share.jpg",
+      "url": "https://www.svargabalimassage.com/_next/image?url=%2Fimages%2Fhero-mobile.jpg&w=3840&q=65",
       "contentType": "image/jpeg"
     },
     {
       "url": "https://www.svargabalimassage.com/android-chrome-512x512.png",
       "contentType": "image/png"
+    },
+    {
+      "url": "https://www.svargabalimassage.com/_next/image?url=%2Fimages%2Ftreatments%2Ftreatment-traditional-balinese.jpg&w=3840&q=75",
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://www.svargabalimassage.com/_next/image?url=%2Fimages%2Ftreatments%2Ftreatment-four-hands.jpg&w=3840&q=75",
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://www.svargabalimassage.com/_next/image?url=%2Fimages%2Ftreatments%2Ftreatment-couple-massage.jpg&w=3840&q=75",
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://www.svargabalimassage.com/_next/image?url=%2Fimages%2Ftreatments%2Ftreatment-deep-tissue.jpg&w=3840&q=75",
+      "contentType": "image/jpeg"
     }
   ]
 }
