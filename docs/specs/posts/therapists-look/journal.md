@@ -63,6 +63,8 @@
   brown (Deep Tissue). Each look is from the photos (`model`), and both
   fixtures pass. In the four images, every therapist wears her spa's look,
   with the hair in a bun.
+- 2026-11-08: the maintainer's verdict on the four images: "Yes, they're
+  right", Svarga's dark brown included.
 
 ## RED
 
