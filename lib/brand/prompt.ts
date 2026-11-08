@@ -1,7 +1,7 @@
 import type { CodeFacts } from './extract/structured';
 
 // Bump with every change to the prompt, so eval scores trace back to it.
-export const BRAND_PROMPT_VERSION = 'brand-8';
+export const BRAND_PROMPT_VERSION = 'brand-9';
 
 export function brandPrompt(): string {
   return `You read a small business's website and describe its brand, for an app that writes its Instagram posts and review replies.
@@ -34,7 +34,7 @@ Field notes:
 - essence.senses: up to 5 scents, textures, lights or sounds of this business's experience, where it happens. For a service that comes to the customer, that is the customer's own place (soft hotel lighting, a villa deck at sunset), not a shop.
 - essence.moments: up to 6 short moments when people need the business, a few words each, from what the pages say (after a surf at My Khe, after a long flight), each with its page URL. Leave it empty when no page names one.
 - visualStyle.summary: at most 12 words, like "warm tropical, soft light, natural textures".
-- staffLook: what the staff who give the service (for a spa, its therapists) wear, and their hair, for an image model to dress them alike: the top (its cut, sleeves, collar and colour), the trousers or skirt and their colour, anything else they wear for work, then the hair. One phrase of at most 30 words, with no "she", "they" or name, for example "a white short-sleeved tunic with a small stand-up collar, white trousers, dark hair in a neat low bun". When a page says what they wear, use it, with that page's URL; otherwise what the photos show, with the source "model"; when the photos disagree, what most of them show. Only what the women wear: never name a man, and leave it empty when only men are shown. Never a face, skin, body or age. Leave it empty when no page or photo shows the staff.`;
+- staffLook: what the staff who give the service (for a spa, its therapists) wear, and their hair, for an image model to dress them alike: the top (its cut, sleeves, collar and colour), the trousers or skirt and their colour, anything else they wear for work, then the hair. One phrase of at most 30 words, with no "she", "they" or name, for example "a white short-sleeved tunic with a small stand-up collar, white trousers, dark hair in a neat low bun". When a page says what they wear, use it, with that page's URL; otherwise what the photos show, with the source "model"; when the photos disagree, what most of them show. Only what the women wear: never name a man, and leave it empty when only men are shown. Never a face, skin, body or age, or anything that suggests more than a professional treatment. Leave it empty when no page or photo shows the staff.`;
 }
 
 export function brandUserText(pages: { url: string; text: string }[], facts: CodeFacts[]): string {

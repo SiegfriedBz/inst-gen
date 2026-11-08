@@ -3,8 +3,8 @@ import type { CodeFacts } from '@/lib/brand/extract/structured';
 import { BRAND_PROMPT_VERSION, brandPrompt, brandUserText } from '@/lib/brand/prompt';
 
 describe('brand prompt', () => {
-  test('is at brand-8', () => {
-    expect(BRAND_PROMPT_VERSION).toBe('brand-8');
+  test('is at brand-9', () => {
+    expect(BRAND_PROMPT_VERSION).toBe('brand-9');
   });
 
   // docs/specs/posts/therapists-look, "What the brand read writes down".
@@ -24,6 +24,7 @@ describe('brand prompt', () => {
     'never name a man',
     'the source "model"',
     'Never a face, skin, body or age',
+    'or anything that suggests more than a professional treatment',
   ])('the look\'s note says "%s"', (phrase) => {
     expect(brandPrompt()).toContain(phrase);
   });

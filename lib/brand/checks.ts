@@ -172,7 +172,7 @@ function staffLookOf(
   ctx: Ctx,
   dropped: Dropped[],
 ): Sourced | null {
-  if (!fact?.value || !fact.source) return null;
+  if (!fact?.value?.trim() || !fact.source) return null;
   const source = normaliseSource(fact.source, ctx.pagesRead);
   const drop = (reason: string) => {
     dropped.push({ field: 'staffLook', reason });

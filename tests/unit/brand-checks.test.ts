@@ -502,4 +502,22 @@ describe("the therapists' look", () => {
   test('no look is null', () => {
     expect(run({ staffLook: null }).profile.staffLook).toBeNull();
   });
+
+  test('a look of only spaces is null, and the read still ends', () => {
+    const { profile, dropped } = run({
+      category: 'massage spa',
+      tone: ['calm', 'warm', 'caring'],
+      staffLook: { value: '   ', source: 'model' },
+    });
+    expect(profile.staffLook).toBeNull();
+    expect(dropped).toEqual([]);
+    expect(
+      finalise(profile, {
+        readAt: '2026-11-08T09:00:00.000Z',
+        promptVersion: 'brand-9',
+        thin: false,
+        dropped,
+      }).staffLook,
+    ).toBeNull();
+  });
 });
