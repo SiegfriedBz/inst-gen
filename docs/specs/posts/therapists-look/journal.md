@@ -92,6 +92,11 @@
   `/.netlify/images`) still give one photo; each photo is fetched at its
   largest size; `eval:images` spends without the look when the photo cache
   is missing.
+- 2026-11-08: 2.15 (#47) reached `develop` after this branch was pushed.
+  Merging it gave one conflict, the roadmap's rows, both kept in number
+  order. `lib/posts/setup.ts`, `components/posts/posts-section.tsx` and two
+  test files merged by themselves; 2.15's recorded plans replay on the new
+  Sen and Svarga profiles.
 
 ## RED
 
@@ -158,4 +163,16 @@ images eval: 2 fixture(s) · prompt images-10 · model gemini-nano-banana-2.1 ·
 ```
   1 skipped
   65 passed (20.7s)
+```
+
+After merging `develop` (2.15), `pnpm test` and `pnpm test:e2e`:
+
+```
+ Test Files  112 passed (112)
+      Tests  1787 passed (1787)
+```
+
+```
+  1 skipped
+  65 passed (24.6s)
 ```
