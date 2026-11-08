@@ -1,7 +1,8 @@
 ---
 title: "The therapists' look in images"
 description: "The brand read writes down what the therapists wear and how their hair is done, from what the site says or its photos show; the owner sees and can change it in \"Your look\"; every image made from then on dresses the therapists that way, while captions and story texts stay as they are and the therapists stay women."
-status: draft
+status: approved
+approved: { by: siegfried.bozza@protonmail.com, at: 2026-11-08T15:27:09Z }
 date: "2026-11-08"
 ---
 
