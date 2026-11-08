@@ -4,6 +4,8 @@
 
 **Goal:** Captions and story texts follow the rules taken from two marketing skill libraries: a hook style dealt by code, the hook alone on its first line, a job per type, no prices, story texts that give a reason to message, the offer's end by the WhatsApp line, and records of what still repeats.
 
+**Amended 2026-11-08:** 2.17b (`posts/two-suggestions`) is merged in: two posts an attempt, and its own removal of every price. The prompt is `posts-13`; Task 5 is superseded by 2.17b's removal; Task 10 records a stock word in two captions. Run Task 10, then Tasks 3 and 9.
+
 **Architecture:** Hook styles are dealt last in `dealSetups` (`lib/posts/setup.ts`) and kept on the set-up, like the light. The prompt (`lib/posts/prompt.ts`, `posts-12`) gets the new rules and a `### Hooks` section. Code's fixes run in `checkedWords` (`lib/posts/checks.ts`), from two new modules (`hook-line.ts`, `foreign-tags.ts`) and a general price removal; the offer-aware WhatsApp line comes from `ctaFor` (`lib/posts/input.ts`) and reaches the store and the posts screen. The new records join `lib/posts/variety.ts`. Sen's and Svarga's plans are recorded right after the prompt, so every later task is tested on `posts-12` output.
 
 **Tech Stack:** TypeScript, Next.js, Vitest, pnpm.
@@ -12,11 +14,11 @@
 
 ## Global Constraints
 
-- Prompt version: `posts-12`, with or without an offer.
-- Hook styles, in this order: `question`, `scene`, `place`, `number`, `fact`, `promise`. With an offer, set-ups 1 and 2 have none.
+- Prompt version: `posts-13`, with or without an offer (amended 2026-11-08; `posts-12` is 2.17b's).
+- Hook styles, in this order: `question`, `scene`, `place`, `number`, `fact`, `promise`. Without an offer, the two set-ups get two different ones; with an offer, set-ups 1 and 2 have none.
 - The hook's break: two line breaks (`\n\n`) after the first sentence and the emoji right after it.
 - Calls to action: `Book on WhatsApp: <number>`; on a post carrying the offer, `Offer ends <lastDay>. Book on WhatsApp: <number>`.
-- Prices: 2.13b's `PRICE_PATTERN` (`lib/posts/checks.ts`); durations stay.
+- Prices: 2.17b's `withoutPrices` and `PRICE_PATTERN` (`lib/posts/checks.ts`); durations stay.
 - Records never change a post and are never shown to the owner. Their reasons, exactly:
   - `question hooks in post-2, post-5` (field `mix`)
   - `"feel" in post-1, post-2, post-4` (field `words`)
@@ -26,7 +28,7 @@
   - `post-4: "Message us on WhatsApp today."` (field `cta`)
   - `post-3: price removed "…"` and `post-3: story text price removed "…"` (field `price`)
   - `post-6: "massagedanang" names Da Nang` (field `hashtags`)
-- Stock words: feel, completely, deeply, truly, ultimate, pure, melt, unwind, indulge, bliss, golden oil; whole words, case ignored; recorded at 3 captions or more.
+- Stock words: feel, completely, deeply, truly, ultimate, pure, melt, unwind, indulge, bliss, golden oil; whole words, case ignored; recorded at 2 captions or more (amended 2026-11-08).
 - The 4 Flash-Lite requests for recordings need the maintainer's yes first, never on a pilot day.
 - No new screen string: "Offer ends" is English caption text, as "Book on WhatsApp" is.
 - Commits: Conventional Commits, scope `posts`; stage files by path.
@@ -122,17 +124,17 @@
 - [ ] **Step 4: Run** `pnpm exec vitest run tests/unit/posts-*.test.ts`. Expected: PASS.
 - [ ] **Step 5: Commit** `feat(posts): hooks, a job per type, no prices and story lines in the prompt (roadmap 2.15)`.
 
-### Task 3: Record Sen's and Svarga's `posts-12` plans
+### Task 3: Record Sen's and Svarga's `posts-13` plans
 
 **Files:**
 - Modify: `tests/fixtures/sites/{sen,svarga}/posts.json`, `tests/fixtures/sites/{sen,svarga}/posts-offer.json`
 - Create: `docs/specs/posts/marketing-copy/journal.md` (from `docs/templates/journal.md`)
 
 - [ ] **Step 1: Ask the maintainer** in chat: "Record Sen's and Svarga's plans now? 4 Flash-Lite requests from today's pool." Wait for a yes; never on a pilot day.
-- [ ] **Step 2: Run** `pnpm eval:posts sen svarga --record`, then `pnpm eval:posts sen svarga --offer --record`. Expected: `posts eval: 2/2 made · prompt posts-12` twice, four fixture files rewritten.
+- [ ] **Step 2: Run** `pnpm eval:posts sen svarga --record`, then `pnpm eval:posts sen svarga --offer --record`. Expected: `posts eval: 2/2 made · prompt posts-13` twice, four fixture files rewritten, two posts each. Then add the replay check that no plan has a `question hooks` record (Task 8's ruling).
 - [ ] **Step 3: Run** `pnpm test`. Expected: PASS. A replay that fails here is a finding, not a test to loosen: journal it, and ask the maintainer before a prompt change and a new recording.
-- [ ] **Step 4: Journal** the calls made so far (the type jobs in the rewrite; `Replies in about 5 minutes` in story texts; the recording order) and each plan's six hooks with their dealt styles.
-- [ ] **Step 5: Commit** `test(posts): record posts-12 plans for Sen and Svarga (roadmap 2.15)` with the four fixtures and the journal.
+- [ ] **Step 4: Journal** the calls made so far (the type jobs in the rewrite; `Replies in about 5 minutes` in story texts; the recording order) and each plan's two hooks with their dealt styles.
+- [ ] **Step 5: Commit** `test(posts): record posts-13 plans for Sen and Svarga (roadmap 2.15)` with the four fixtures and the journal.
 
 ### Task 4: The hook alone on its first line
 
@@ -159,6 +161,8 @@
 - [ ] **Step 5: Commit** `feat(posts): the hook alone on the caption's first line (roadmap 2.15)`.
 
 ### Task 5: No prices in captions and story texts
+
+Superseded 2026-11-08: 2.17b's `withoutPrices` removes each sentence or line with a price from every caption and story text, and records it. Not built.
 
 **Files:**
 - Modify: `lib/posts/checks.ts` (`checkedWords`, `checkPost`, `checkRewrite`)
@@ -252,8 +256,22 @@
 - Modify: `scripts/eval-posts.ts`, `AGENTS.md` (the `eval:posts` row), `docs/roadmap.md` (2.15 `done`), `docs/specs/posts/marketing-copy/journal.md`
 
 - [ ] **Step 1: Add `--replay` to `pnpm eval:posts`:** it prints the recorded plans through today's checks with `replayTextModel`, no request; `--record` with it is an error. `print` adds `hook: <style>` under the set-up. The `AGENTS.md` row names the flag.
-- [ ] **Step 2: Run** `pnpm eval:posts sen svarga --replay` and `--replay --offer`. Expected: four plans printed, `posts eval: 2/2 made · prompt posts-12`, no request.
-- [ ] **Step 3: Journal the evaluation:** per plan, the six hooks with their styles, the six endings, the story texts, the hashtags and code's records; the spec's checklist table with a `posts-12` column next to `posts-11`'s, and the pass verdict. A check that doesn't pass: say why, and ask the maintainer before any prompt change and new recording.
+- [ ] **Step 2: Run** `pnpm eval:posts sen svarga --replay` and `--replay --offer`. Expected: four plans printed, `posts eval: 2/2 made · prompt posts-13`, no request.
+- [ ] **Step 3: Journal the evaluation:** per plan, the two hooks with their styles, the two endings, the story texts, the hashtags and code's records; the spec's checklist table with a `posts-13` column of shares next to `posts-11`'s, and the pass verdict. A check that doesn't pass: say why, and ask the maintainer before any prompt change and new recording.
 - [ ] **Step 4: Run** `pnpm check`. Expected: every step passes. Copy the RED and GREEN summary lines into the journal.
 - [ ] **Step 5: Commit** `docs(posts): marketing copy journal and replay evaluation (roadmap 2.15)`; set 2.15 to `done` in the roadmap in the same commit.
 - [ ] **Step 6: Push** the branch with plain `git` over SSH, and give the maintainer the PR to `develop`: its title and full body, ready to paste on github.com.
+
+### Task 10: Stock words in two captions
+
+Added 2026-11-08 (spec amended for two posts an attempt).
+
+**Files:**
+- Modify: `lib/posts/variety.ts` (`STOCK_AT`)
+- Test: `tests/unit/posts-variety.test.ts`
+
+- [ ] **Step 1: Change the failing tests:** `completely` in 2 captions is recorded as `"completely" in post-1, post-2` (field `words`); in 1 caption it isn't.
+- [ ] **Step 2: Run** `pnpm exec vitest run tests/unit/posts-variety.test.ts`. Expected: FAIL on the 2-caption case.
+- [ ] **Step 3: Implement:** `STOCK_AT = 2`.
+- [ ] **Step 4: Run** `pnpm exec vitest run tests/unit/posts-*.test.ts`. Expected: PASS.
+- [ ] **Step 5: Commit** `feat(posts): a stock word in both captions is recorded (roadmap 2.15)`.
