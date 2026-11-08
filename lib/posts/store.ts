@@ -1,5 +1,7 @@
+import type { Profile } from '@/lib/brand/profile';
 import { openStore } from '@/lib/brand/store';
 import { batchSchema, POSTS_LIMITS, type PostBatch, type RecentPost } from './batch';
+import { postCta } from './input';
 
 // Batches of posts kept on the phone (docs/specs/posts/generate-copy, "On the
 // phone"), in the brand's database. Without IndexedDB nothing is kept.
@@ -28,9 +30,11 @@ export function recentPosts(batches: PostBatch[]): RecentPost[] {
     .slice(0, POSTS_LIMITS.recent);
 }
 
-// Sets the call to action on every post the owner has, in one transaction:
-// a WhatsApp edit needs no model call. Returns the batches, newest first.
-export async function applyCta(ownerId: string, cta: string): Promise<PostBatch[]> {
+// Sets each post's call to action, in one transaction: a WhatsApp edit needs
+// no model call, and a post that carries the offer keeps the offer's end
+// before it (docs/specs/posts/marketing-copy). Returns the batches, newest
+// first.
+export async function applyCta(ownerId: string, profile: Profile): Promise<PostBatch[]> {
   const db = await openStore();
   if (!db) return [];
   const tx = db.transaction('posts', 'readwrite');
@@ -40,7 +44,8 @@ export async function applyCta(ownerId: string, cta: string): Promise<PostBatch[
   const updated = raw.map((batch) => ({
     ...batch,
     posts: batch.posts.map((post) => {
-      if (post.cta === cta) return post;
+      const cta = postCta(profile, post, batch.offer);
+      if (cta === null || post.cta === cta) return post;
       const { copiedAt: _copied, ...rest } = post;
       return { ...rest, cta };
     }),

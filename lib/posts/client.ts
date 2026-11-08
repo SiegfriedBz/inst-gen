@@ -93,9 +93,8 @@ async function toBatch(
 async function keep(batch: PostBatch): Promise<PostBatch> {
   await saveBatch(batch);
   const saved = await loadBrand(batch.ownerId);
-  const cta = saved.kind === 'saved' ? ctaFor(saved.record.profile) : null;
-  if (!cta) return batch;
-  const batches = await applyCta(batch.ownerId, cta);
+  if (saved.kind !== 'saved' || !ctaFor(saved.record.profile)) return batch;
+  const batches = await applyCta(batch.ownerId, saved.record.profile);
   return batches.find((b) => b.id === batch.id) ?? batch;
 }
 

@@ -5,6 +5,7 @@ import type { Offer } from '@/lib/posts/offer';
 import {
   castLine,
   dealSetups,
+  HOOKS,
   localsOf,
   lookOf,
   type Setup,
@@ -312,6 +313,43 @@ describe('day and night', () => {
     expect(setupSchema.safeParse(setup).success).toBe(true);
     expect(setupSchema.safeParse({ ...setup, light: 'night' }).success).toBe(true);
     expect(setupSchema.safeParse({ ...setup, light: 'dusk' }).success).toBe(false);
+  });
+});
+
+// Hook styles (docs/specs/posts/marketing-copy, "Hook styles, dealt by code").
+describe('hook styles', () => {
+  it('two different styles without an offer', () => {
+    const hooks = deal(senProfile()).map((s) => s.hook);
+    expect(new Set(hooks).size).toBe(2);
+    for (const hook of hooks) expect(HOOKS).toContain(hook);
+  });
+
+  it('none with an offer: both posts open on its line', () => {
+    const hooks = deal(withOfferings(EIGHT), offerOn(['Aroma Massage'])).map((s) => s.hook);
+    expect(hooks).toEqual([undefined, undefined]);
+  });
+
+  it('the same seed, the same hooks', () => {
+    expect(deal(senProfile(), undefined, 'x').map((s) => s.hook)).toEqual(
+      deal(senProfile(), undefined, 'x').map((s) => s.hook),
+    );
+  });
+
+  it('the hooks come last: the lights are as before', () => {
+    expect(deal(senProfile()).map((s) => s.light)).toEqual(['night', 'day']);
+  });
+
+  it('the schema takes a hook, none, and refuses another', () => {
+    const { hook: _, ...setup } = deal(senProfile())[0];
+    expect(setupSchema.safeParse({ ...setup, hook: 'scene' }).success).toBe(true);
+    expect(setupSchema.safeParse(setup).success).toBe(true);
+    expect(setupSchema.safeParse({ ...setup, hook: 'teaser' }).success).toBe(false);
+  });
+
+  it('the image never sees the hook', () => {
+    const [setup] = deal(senProfile());
+    const { hook: _, ...bare } = setup;
+    expect(setupLine({ ...bare, hook: 'scene' })).toBe(setupLine(bare));
   });
 });
 

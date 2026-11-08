@@ -1,8 +1,8 @@
 import { describe, expect, it } from 'vitest';
 import type { Post } from '@/lib/posts/batch';
 import { dealSetups, seededRandom } from '@/lib/posts/setup';
-import { lightRecords, repeatRecords } from '@/lib/posts/variety';
-import { svargaProfile } from './helpers/brand';
+import { copyRecords, lightRecords, repeatRecords } from '@/lib/posts/variety';
+import { senProfile, svargaProfile } from './helpers/brand';
 import { post } from './helpers/posts';
 
 // docs/specs/posts/day-and-night-copy, "Code's checks".
@@ -114,5 +114,139 @@ describe('lightRecords', () => {
     expect(
       lightRecords(at(5, 'Calm hands.', { light: 'night', storyText: 'Your midday break. 🌸' })),
     ).toEqual([{ field: 'light', reason: 'post-5 (night): "midday"' }]);
+  });
+});
+
+// docs/specs/posts/marketing-copy, "Code's records".
+describe('copyRecords', () => {
+  // Svarga's places, as its read profile holds them: the town, the area and
+  // the service area's towns. Its place symbols are no place (amended
+  // 2026-11-08).
+  const svarga = () => {
+    const profile = svargaProfile();
+    profile.essence.placeSymbols = ['frangipani', 'coconut oil'];
+    return profile;
+  };
+  const at = (n: number, caption: string, more: Partial<Post> = {}) =>
+    post({ id: `post-${n}`, caption, ...more });
+  const reasons = (posts: Post[], profile = svarga()) =>
+    copyRecords(posts, profile).map((d) => `${d.field}: ${d.reason}`);
+
+  it('records nothing on a clean batch', () => {
+    expect(
+      reasons([
+        at(1, 'Sore shoulders after the surf in Canggu? Warm hands help.'),
+        at(2, 'Frangipani on the tray in Canggu. Slow strokes follow.'),
+        at(3, 'Ninety minutes in Seminyak, start to end.'),
+      ]),
+    ).toEqual([]);
+  });
+
+  it('records two question hooks, never an offer post or one alone', () => {
+    const offerPost = at(1, 'Long flight to Bali? Ten percent off.', { offer: true });
+    expect(
+      reasons([
+        offerPost,
+        at(2, 'Sore feet in Canggu? Warm oil helps.'),
+        at(3, 'Quiet hands in Ubud.'),
+        at(4, 'Slow evening in Seminyak.'),
+        at(5, 'Tired legs after Bali? Rest now.'),
+      ]),
+    ).toEqual(['mix: question hooks in post-2, post-5']);
+    expect(reasons([offerPost, at(2, 'Sore feet in Canggu? Warm oil helps.')])).toEqual([]);
+  });
+
+  // Both captions of a plan (docs/specs/posts/marketing-copy, amended 2026-11-08).
+  it('records a stock word in 2 captions, whole words, case aside', () => {
+    expect(
+      reasons([at(1, 'Completely calm in Canggu.'), at(2, 'Rest COMPLETELY in Ubud.')]),
+    ).toEqual(['words: "completely" in post-1, post-2']);
+    expect(
+      reasons([at(1, 'Golden oil first, in Canggu.'), at(2, 'Then golden oil, in Ubud.')]),
+    ).toEqual(['words: "golden oil" in post-1, post-2']);
+    expect(reasons([at(1, 'A good feeling in Canggu.'), at(2, 'Feeling light in Ubud.')])).toEqual(
+      [],
+    );
+    expect(reasons([at(1, 'Completely calm in Canggu.'), at(2, 'Rest now in Ubud.')])).toEqual([]);
+  });
+
+  it('records endings that start with the same word, as the first one writes it', () => {
+    expect(
+      reasons([
+        at(1, 'Warm hands in Canggu.'),
+        at(3, 'Canggu at dusk. Drift off slowly. 🌸'),
+        at(4, 'Slow evening in Ubud.'),
+        at(5, 'Canggu calm. drift away tonight.'),
+      ]),
+    ).toEqual(['mix: endings start with "Drift" in post-3, post-5']);
+  });
+
+  it('records a caption that names no real place: a flower or an oil is none', () => {
+    expect(
+      reasons([
+        at(1, 'Slow hands on a long back.'),
+        at(2, 'Frangipani on the tray.'),
+        at(3, 'Warm coconut oil, slowly.'),
+        at(4, "Canggu's quiet lanes."),
+        at(5, 'Seminyak, then rest.'),
+      ]),
+    ).toEqual([
+      'words: post-1 names no place',
+      'words: post-2 names no place',
+      'words: post-3 names no place',
+    ]);
+  });
+
+  it('reads a landmark by its leading capitalised words: My Khe for My Khe beach', () => {
+    const profile = senProfile();
+    profile.essence.placeSymbols = ['My Khe beach at dusk', 'Marble Mountains', 'lotus flowers'];
+    profile.location.serviceArea = null;
+    expect(
+      reasons(
+        [
+          at(1, 'A swim at My Khe, then rest.'),
+          at(2, 'Lotus flowers by the bed.'),
+          at(3, 'Marble Mountains at dawn.'),
+        ],
+        profile,
+      ),
+    ).toEqual(['words: post-2 names no place']);
+  });
+
+  it('records a story text that starts with its treatment or holds the first sentence', () => {
+    const [deal] = dealSetups(svarga(), undefined, seededRandom('t'));
+    const treated = { ...deal, treatment: 'Deep Tissue Tension Release' };
+    expect(
+      reasons([
+        at(3, 'Knots from the paddle in Canggu?', {
+          setup: treated,
+          storyText: 'deep tissue tension release tonight 🌸',
+        }),
+        at(4, 'Long day on the scooter in Ubud.', {
+          storyText: 'Long day on the scooter in Ubud? We come to you 🌸',
+        }),
+        at(1, 'Long flight to Bali? Ten percent off.', {
+          offer: true,
+          setup: treated,
+          storyText: 'Deep Tissue Tension Release, 10% off 🌸',
+        }),
+      ]),
+    ).toEqual([
+      'story: post-3: story text starts with "Deep Tissue Tension Release"',
+      "story: post-4: story text holds the caption's first sentence",
+    ]);
+  });
+
+  it('records a sentence that asks the guest to act, never one that names WhatsApp', () => {
+    expect(
+      reasons([
+        at(4, 'Warm hands in Canggu. Message us on WhatsApp today.'),
+        at(5, 'We reply on WhatsApp within about 5 minutes, in Ubud.'),
+        at(6, 'Book now for tonight in Bali.'),
+      ]),
+    ).toEqual([
+      'cta: post-4: "Message us on WhatsApp today."',
+      'cta: post-6: "Book now for tonight in Bali."',
+    ]);
   });
 });

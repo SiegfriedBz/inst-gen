@@ -34,6 +34,13 @@ describe('cutStory', () => {
 });
 
 describe('cleanStory', () => {
+  // A highlight said without 2.13's words stays (docs/specs/posts/marketing-copy).
+  it('keeps a highlight said without the call-to-action words', () => {
+    expect(cleanStory('Replies in about 5 minutes 🌸', { id: 'post-1', spa: true }).storyText).toBe(
+      'Replies in about 5 minutes 🌸',
+    );
+  });
+
   it('limits are 120 and 100', () => {
     expect(POSTS_LIMITS.storyChars).toBe(120);
     expect(POSTS_LIMITS.storyAsked).toBe(100);
@@ -126,6 +133,20 @@ describe('a call to action', () => {
     ['Calm tonight! Message us to book.', 'Calm tonight!'],
   ])('%s', (text, kept) => {
     expect(cleanStory(text, { id: 'post-1', spa: false }).storyText).toBe(kept);
+  });
+
+  // A sentence also ends at an emoji a new one follows
+  // (docs/specs/posts/marketing-copy, amended 2026-11-08).
+  it('removes only the sentence after a flower', () => {
+    expect(
+      cleanStory('Rest your feet this evening 🌺 Book in your villa.', { id: 'post-2', spa: true }),
+    ).toEqual({
+      storyText: 'Rest your feet this evening 🌺',
+      dropped: [{ field: 'story', reason: 'post-2: story text removed "Book in your villa."' }],
+    });
+    expect(
+      cleanStory('Frangipani 🌸 petals on the tray.', { id: 'post-1', spa: true }).storyText,
+    ).toBe('Frangipani 🌸 petals on the tray.');
   });
 
   it('keeps a sentence without one', () => {

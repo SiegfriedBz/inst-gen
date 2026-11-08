@@ -22,11 +22,11 @@ export function isSpa(category: string): boolean {
 const segmenter = new Intl.Segmenter('en', { granularity: 'grapheme' });
 const PICTOGRAPH = /\p{Extended_Pictographic}|\p{Regional_Indicator}|\u20E3/u;
 
-function graphemes(text: string): string[] {
+export function graphemes(text: string): string[] {
   return Array.from(segmenter.segment(text), (s) => s.segment);
 }
 
-function isEmoji(grapheme: string): boolean {
+export function isEmoji(grapheme: string): boolean {
   return PICTOGRAPH.test(grapheme);
 }
 

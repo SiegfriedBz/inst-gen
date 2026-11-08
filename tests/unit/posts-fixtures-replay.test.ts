@@ -5,6 +5,7 @@ import { replayTextModel } from '@/lib/ai/replay';
 import { FIXTURES_DIR, fixtureOffer, fixtureProfile, loadFixture } from '@/lib/brand/fixtures';
 import type { PlanResult } from '@/lib/posts/batch';
 import { emojisIn, FLOWERS } from '@/lib/posts/emoji';
+import { dropForeignTags } from '@/lib/posts/foreign-tags';
 import { offerLine, offerTreatment } from '@/lib/posts/offer-line';
 import { streamPlan } from '@/lib/posts/run';
 import { seededRandom } from '@/lib/posts/setup';
@@ -55,6 +56,8 @@ describe('recorded post plans', () => {
       expect(post.hashtags.length).toBeGreaterThanOrEqual(1);
       expect(post.hashtags.length).toBeLessThanOrEqual(5);
       for (const tag of post.hashtags) expect(tag).toMatch(/^[a-z0-9]+$/);
+      // No town of another country (docs/specs/posts/marketing-copy).
+      expect(dropForeignTags(post.hashtags, profile).dropped).toEqual([]);
     }
     if (profile.highlights.length === 0 && !profile.essence.promise) {
       expect(final.posts.some((p) => p.type === 'proof')).toBe(false);
@@ -132,6 +135,8 @@ describe('recorded story texts and flowers', () => {
     expect(repeatRecords(result.posts).filter((d) => d.reason.startsWith('last sentence'))).toEqual(
       [],
     );
+    // At most one hook is a question (docs/specs/posts/marketing-copy).
+    expect(result.dropped.filter((d) => d.reason.startsWith('question hooks'))).toEqual([]);
     for (const post of result.posts) {
       expect(post.storyText).toBeTruthy();
       const story = post.storyText ?? '';
@@ -146,6 +151,11 @@ describe('recorded story texts and flowers', () => {
       expect(others(post.caption)).toEqual([]);
       // No stop right before an emoji (docs/specs/posts/day-and-night-copy).
       expect(post.caption).not.toMatch(STOP_BEFORE_EMOJI);
+      // The hook alone on its first line; one over 125 characters is flagged
+      // (docs/specs/posts/marketing-copy, amended 2026-11-08).
+      const hook = post.caption.split('\n')[0];
+      if (hook.length > 125) expect(post.unchecked.map((f) => f.kind)).toContain('firstLine');
+      expect(hook.match(/[.!?](?=\s|$)/g)?.length ?? 0).toBeLessThanOrEqual(1);
       expect(story).not.toMatch(STOP_BEFORE_EMOJI);
       // An offer post opens on its line, its stop gone before the flower, and
       // its story text is that line and a flower (docs/specs/posts/offer-line-first).
@@ -156,6 +166,10 @@ describe('recorded story texts and flowers', () => {
         expect(story.startsWith(line)).toBe(true);
         expect(flowers(story.slice(line.length))).toBe(1);
         expect(story.slice(line.length).trim()).toMatch(/^\p{Extended_Pictographic}$/u);
+        // The offer's end before WhatsApp (docs/specs/posts/marketing-copy).
+        expect(post.cta.startsWith(`Offer ends ${result.offer.lastDay}. Book on WhatsApp: `)).toBe(
+          true,
+        );
       }
       // Never a price, in any caption or story text
       // (docs/specs/posts/two-suggestions).

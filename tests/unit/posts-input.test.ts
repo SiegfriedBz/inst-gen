@@ -1,5 +1,6 @@
 import { describe, expect, it } from 'vitest';
-import { ctaFor, postsModelInput, profileHash } from '@/lib/posts/input';
+import { ctaFor, postCta, postsModelInput, profileHash } from '@/lib/posts/input';
+import type { Offer } from '@/lib/posts/offer';
 import { svargaProfile } from './helpers/brand';
 
 function withContact() {
@@ -9,6 +10,14 @@ function withContact() {
   profile.essence.searchTerms = ['massage canggu'];
   return profile;
 }
+
+const OFFER: Offer = {
+  kind: 'discount',
+  percent: 10,
+  treatments: ['Balinese massage'],
+  until: '2026-10-27',
+  lastDay: 'Tuesday 27 October',
+};
 
 describe('postsModelInput', () => {
   it('holds no contact field and no address', () => {
@@ -57,6 +66,27 @@ describe('ctaFor', () => {
     const profile = svargaProfile();
     profile.contact.whatsapp = null;
     expect(ctaFor(profile)).toBeNull();
+    expect(ctaFor(profile, OFFER)).toBeNull();
+  });
+
+  // docs/specs/posts/marketing-copy, "The offer's end, by the WhatsApp line".
+  it("puts the offer's end before the line", () => {
+    const profile = svargaProfile();
+    profile.contact.whatsapp = { value: '+84 905 123 456', source: profile.siteUrl };
+    expect(ctaFor(profile, OFFER)).toBe(
+      'Offer ends Tuesday 27 October. Book on WhatsApp: +84 905 123 456',
+    );
+  });
+});
+
+describe('postCta', () => {
+  it("gives the offer's end only to a post that carries the offer", () => {
+    const profile = svargaProfile();
+    expect(postCta(profile, { offer: true }, OFFER)).toBe(
+      'Offer ends Tuesday 27 October. Book on WhatsApp: +6281234567890',
+    );
+    expect(postCta(profile, {}, OFFER)).toBe('Book on WhatsApp: +6281234567890');
+    expect(postCta(profile, { offer: true })).toBe('Book on WhatsApp: +6281234567890');
   });
 });
 
