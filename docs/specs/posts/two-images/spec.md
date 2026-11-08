@@ -1,7 +1,8 @@
 ---
 title: "Two images an attempt"
 description: "An attempt of six suggestions gets two images instead of six, to cut the image spend by two thirds: the two offer posts when there is an offer, otherwise one day and one night post; the other four are text, and the owner can create an image for any of them from the day's new images; the owner guide says so in its three languages."
-status: draft
+status: approved
+approved: { by: siegfried.bozza@protonmail.com, at: 2026-11-08T10:53:11Z }
 date: "2026-11-08"
 ---
 
