@@ -13,6 +13,8 @@ export type ImageLog = {
   hint: boolean;
   // Whether code's cast line, from the post's set-up, went first.
   cast: boolean;
+  // Whether the therapists' look went with it (docs/specs/posts/therapists-look).
+  look: boolean;
   model: string;
   promptVersion: string;
   // The size the model returned, as "1536x2752"; null before it answered.
@@ -36,6 +38,7 @@ export function formatImageLog(log: ImageLog): string {
     `scene=${log.scene}`,
     `hint=${log.hint ? 'yes' : 'no'}`,
     `cast=${log.cast ? 'yes' : 'no'}`,
+    `look=${log.look ? 'yes' : 'no'}`,
     `model=${log.model}`,
     `prompt=${log.promptVersion}`,
     `size=${log.size ?? '-'}`,

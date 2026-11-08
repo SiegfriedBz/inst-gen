@@ -1,4 +1,5 @@
 import { z } from 'zod';
+import { LIMITS } from '@/lib/brand/profile';
 import { POSTS_LIMITS, SCENES } from './batch';
 import { setupSchema } from './setup';
 
@@ -25,6 +26,9 @@ export const imageBodySchema = z.object({
   // The post's image set-up (docs/specs/posts/varied-images); absent on posts
   // saved before it.
   setup: setupSchema.optional(),
+  // The therapists' look on "Your business" when the image is asked for
+  // (docs/specs/posts/therapists-look); absent when there is none.
+  staffLook: z.string().min(1).max(LIMITS.staffLookChars).optional(),
 });
 export type ImageBody = z.infer<typeof imageBodySchema>;
 

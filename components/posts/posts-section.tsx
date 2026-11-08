@@ -7,7 +7,7 @@ import { Button } from '@/components/ui/button';
 import { UsageMessage } from '@/components/usage/usage-message';
 import { useAtLimit } from '@/components/usage/usage-provider';
 import type { Profile } from '@/lib/brand/profile';
-import type { RunningRead } from '@/lib/brand/read-client';
+import { defaultReadDeps, type RunningRead } from '@/lib/brand/read-client';
 import { holdWakeLock } from '@/lib/brand/wake-lock';
 import type { Post, PostBatch, PostsErrorCode } from '@/lib/posts/batch';
 import { type PostsEvent, resumePosts, startPlan, startRewrite } from '@/lib/posts/client';
@@ -187,8 +187,19 @@ export function PostsSection({
 
   const makeImages = useCallback(
     (batch: PostBatch, postIds: string[], hint?: string) => {
+      // The therapists' look as it is now (docs/specs/posts/therapists-look).
+      const staffLook = profileRef.current.staffLook?.value;
       trackImages(
-        startImages({ ownerId, batch, postIds, ...(hint ? { hint } : {}) }, onImageEvent),
+        startImages(
+          {
+            ownerId,
+            batch,
+            postIds,
+            ...(hint ? { hint } : {}),
+            ...(staffLook ? { staffLook } : {}),
+          },
+          onImageEvent,
+        ),
         postIds.map((id) => imageKey(batch.id, id)),
       );
     },
@@ -201,7 +212,13 @@ export function PostsSection({
     try {
       const from = startRef.current;
       const today = from ? batchesRef.current.filter((b) => new Date(b.createdAt) >= from) : [];
-      const run = await resumeImages(ownerId, today, onImageEvent);
+      const run = await resumeImages(
+        ownerId,
+        today,
+        onImageEvent,
+        defaultReadDeps(),
+        profileRef.current.staffLook?.value,
+      );
       if (!run) return;
       if (!mounted.current) run.stop();
       else trackImages(run, run.keys);

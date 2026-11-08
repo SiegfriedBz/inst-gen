@@ -59,3 +59,13 @@ describe('ctaFor', () => {
     expect(ctaFor(profile)).toBeNull();
   });
 });
+
+// docs/specs/posts/therapists-look: the look never reaches the post plan.
+describe("the therapists' look", () => {
+  it('changes neither the model input nor the hash', () => {
+    const base = svargaProfile();
+    const dressed = { ...base, staffLook: { value: 'a white tunic', source: 'model' } };
+    expect(postsModelInput(dressed)).toEqual(postsModelInput(base));
+    expect(profileHash(dressed)).toBe(profileHash(base));
+  });
+});

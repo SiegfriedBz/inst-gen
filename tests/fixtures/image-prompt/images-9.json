@@ -1,0 +1,41 @@
+{
+  "version": "images-9",
+  "cases": [
+    {
+      "name": "one therapist, day",
+      "postPrompt": "A therapist's hands spread warm golden oil along a guest's back in a villa room, the garden seen through open doors.",
+      "setup": {
+        "treatment": "Aroma Massage",
+        "look": "plain",
+        "guests": "man",
+        "therapists": 1,
+        "bodyPart": "back",
+        "scene": "treatment",
+        "locals": "Vietnamese",
+        "light": "day"
+      },
+      "imagePrompt": "One guest, a man. One therapist, a young Vietnamese woman. A therapist's hands spread warm golden oil along a guest's back in a villa room, the garden seen through open doors. Vertical photograph for an Instagram story, shot on a full-frame camera with a 50mm lens. Late afternoon: the lamps lit inside are the main light, and the garden outside, seen through open doors or a wide window, is in soft shade, with no sunlight on it. Warm and calm, never bright: never sunbeams across the room, a sunlit garden, harsh sun or blown-out windows, never a grey sky, mist or rain. A warm, happy holiday mood: calm and restful, a treat the guest has earned. Realistic skin and textures, natural anatomy. No face is visible or recognisable. The image contains no text, letters, labels, logos or watermarks; bottles and jars are plain. Keep the subject in the middle of the frame, with calm space above and below it. The massage is under way in the frame, with the therapist's hands. A guest looks relaxed and alive, never lying still as if asleep. Beds and linens are neatly made; nothing is messy. The room is warm and homely, never clinical or hospital-like. Curtains are open and hang still; there is no wind. Massage oil is golden oil in clear glass, never a small dark bottle. Whatever the scene says, it is late afternoon: the lamps lit inside are the main light, the garden outside in soft shade. When the room shows, it is a Vietnamese boutique hotel room or villa with warm wood, rattan and bamboo, open onto a garden of areca palms, bamboo, banana leaves and coconut palms, in soft shade; only green plants that grow here, never plants from elsewhere. When a tray, a table or the room shows, a touch of the place: a pink lotus floating in a bowl of water; no other kind of flower. Any object from the guest's day is small, far in the background and out of focus. Every therapist is a young local woman with warm, golden-tan skin, as women from here have: smooth, healthy and glowing, yet real, with natural texture; never pale or white, never dark. Her hands and arms are perfectly formed and look healthy: five slender fingers on each hand, clean short nails, natural joints and wrists, no extra or missing fingers, hands or arms. Her face is turned away, lowered or out of frame. Every guest's face is turned away, resting in the face cradle, covered or out of frame: never a full face."
+    },
+    {
+      "name": "two therapists, night, a hint",
+      "postPrompt": "A therapist's hands spread warm golden oil along a guest's back in a villa room, the garden seen through open doors.",
+      "hint": "add a lotus",
+      "setup": {
+        "treatment": "Four-Hands Massage",
+        "look": "fourHands",
+        "guests": "woman",
+        "therapists": 2,
+        "bodyPart": "legs",
+        "scene": "place",
+        "locals": "Balinese",
+        "light": "night"
+      },
+      "imagePrompt": "One guest, a woman. Two therapists, both young Balinese women. A therapist's hands spread warm golden oil along a guest's back in a villa room, the garden seen through open doors. The owner asks: add a lotus. Vertical photograph for an Instagram story, shot on a full-frame camera with a 50mm lens. Evening: lamps and candles give the room a warm, golden glow, and the garden outside is lit by lanterns under a deep blue sky. Warm and inviting, never dark, dim or gloomy, never a grey sky, mist or rain. A warm, happy holiday mood: calm and restful, a treat the guest has earned. Realistic skin and textures, natural anatomy. No face is visible or recognisable. The image contains no text, letters, labels, logos or watermarks; bottles and jars are plain. Keep the subject in the middle of the frame, with calm space above and below it. The massage is under way in the frame, with the therapist's hands. A guest looks relaxed and alive, never lying still as if asleep. Beds and linens are neatly made; nothing is messy. The room is warm and homely, never clinical or hospital-like. Curtains are open and hang still; there is no wind. Massage oil is golden oil in clear glass, never a small dark bottle. Whatever the scene says, it is evening: lamps and candles lit, the garden lit by lanterns under a deep blue sky. When the room shows, it is a Balinese villa room with carved and natural wood, rattan and a thatched alang-alang roof, open onto a tropical garden of frangipani trees, banana leaves, coconut palms and ferns, lit by lanterns at night; only green plants that grow here, never plants from elsewhere. When a tray, a table or the room shows, a touch of the place: frangipani flowers on the tray; no other kind of flower. Any object from the guest's day is small, far in the background and out of focus. Every therapist is a young local woman with warm, golden-tan skin, as women from here have: smooth, healthy and glowing, yet real, with natural texture; never pale or white, never dark. Her hands and arms are perfectly formed and look healthy: five slender fingers on each hand, clean short nails, natural joints and wrists, no extra or missing fingers, hands or arms. Her face is turned away, lowered or out of frame. Every guest's face is turned away, resting in the face cradle, covered or out of frame: never a full face."
+    },
+    {
+      "name": "no set-up",
+      "postPrompt": "A therapist's hands spread warm golden oil along a guest's back in a villa room, the garden seen through open doors.",
+      "imagePrompt": "A therapist's hands spread warm golden oil along a guest's back in a villa room, the garden seen through open doors. Vertical photograph for an Instagram story, shot on a full-frame camera with a 50mm lens. Late afternoon: the lamps lit inside are the main light, and the garden outside, seen through open doors or a wide window, is in soft shade, with no sunlight on it. Warm and calm, never bright: never sunbeams across the room, a sunlit garden, harsh sun or blown-out windows, never a grey sky, mist or rain. A warm, happy holiday mood: calm and restful, a treat the guest has earned. Realistic skin and textures, natural anatomy. No face is visible or recognisable. The image contains no text, letters, labels, logos or watermarks; bottles and jars are plain. Keep the subject in the middle of the frame, with calm space above and below it. The massage is under way in the frame, with the therapist's hands. A guest looks relaxed and alive, never lying still as if asleep. Beds and linens are neatly made; nothing is messy. The room is warm and homely, never clinical or hospital-like. Curtains are open and hang still; there is no wind. Massage oil is golden oil in clear glass, never a small dark bottle. Whatever the scene says, it is late afternoon: the lamps lit inside are the main light, the garden outside in soft shade. When the room shows, it is a tropical boutique hotel room or villa with warm wood and rattan, open onto tropical greenery: palms, banana leaves and ferns, in soft shade; only green plants that grow here, never plants from elsewhere. When a tray, a table or the room shows, a touch of the place: orchids in a small vase; no other kind of flower. Any object from the guest's day is small, far in the background and out of focus. Every therapist is a young Southeast Asian woman with warm, golden-tan skin, as women from here have: smooth, healthy and glowing, yet real, with natural texture; never pale or white, never dark. Her hands and arms are perfectly formed and look healthy: five slender fingers on each hand, clean short nails, natural joints and wrists, no extra or missing fingers, hands or arms. Her face is turned away, lowered or out of frame. Every guest's face is turned away, resting in the face cradle, covered or out of frame: never a full face."
+    }
+  ]
+}
