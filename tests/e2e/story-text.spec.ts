@@ -37,7 +37,7 @@ async function sixWithStories(
   await page.getByRole('button', { name: words.read }).click();
   await page.getByRole('tab', { name: words.tab }).click();
   await page.getByRole('button', { name: words.make }).click();
-  await expect(tileImages(page)).toHaveCount(6);
+  await expect(tileImages(page)).toHaveCount(2);
 }
 
 test.describe('an English screen', () => {

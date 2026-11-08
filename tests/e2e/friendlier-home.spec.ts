@@ -94,7 +94,8 @@ test('a suggestion saved and copied says so on its tile, after a reload too', as
   await fulfilPosts(page, 'plan', postsBody(profile));
   await fulfilImages(page, {});
   await page.getByRole('button', { name: 'Make 6 suggestions' }).click();
-  await expect(tileImages(page)).toHaveCount(6);
+  // Two images an attempt (docs/specs/posts/two-images).
+  await expect(tileImages(page)).toHaveCount(2);
   await expect(tile(page, 2)).toHaveAccessibleName('Suggestion 2 of 6, Caption 2.');
 
   const sheet = await openSuggestion(page, 2);
@@ -236,7 +237,7 @@ test.describe('small phone', () => {
 
       await page.getByRole('tab', { name: m.home.tabs.posts }).click();
       await page.getByRole('button', { name: m.posts.make }).click();
-      await expect(tileImages(page)).toHaveCount(6);
+      await expect(tileImages(page)).toHaveCount(2);
       expect(await scrollWidth(page), `Create Posts in ${code}`).toBeLessThanOrEqual(320);
 
       await page.getByRole('tab', { name: m.home.tabs.business }).click();
