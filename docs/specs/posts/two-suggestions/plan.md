@@ -18,6 +18,7 @@
 - Records: `more than 2 posts`, `no offer post`; `offer posts are not posts 1 and 2` stays; `fewer than 2 offer posts` and the four-types rule go.
 - Strings exactly as the spec's table, in `en.json`, `id.json` and `vi.json`, in the same commit.
 - No recording without the maintainer's yes (4 Flash-Lite requests).
+- Never a price: each caption or story-text sentence with a price goes, `{ field: 'price', reason: '<id>: price removed "<sentence>"' }`; offer posts keep their `offer` records.
 - Commits: Conventional Commits, scope `posts` or `docs`; stage by path; author SiegfriedBz, protonmail email.
 
 ## Review Focus
@@ -50,6 +51,16 @@
 - [ ] **Step 4:** Run them, then `pnpm test`. Expected: PASS; fix other tests that pinned `posts-11` or six planned posts.
 - [ ] **Step 5:** Commit `feat(posts): plan two posts an attempt (roadmap 2.17b)`.
 
+### Task 2b: Never a price (spec amended 2026-11-08)
+
+**Files:** Modify `lib/posts/prompt.ts` (caption rules, the offer type's line, facts from the profile), `lib/posts/checks.ts` (`checkedWords`), `lib/posts/run.ts` and `lib/posts/log.ts` (`price_fixes=`); Test `tests/unit/posts-checks.test.ts`, `tests/unit/posts-prompt.test.ts`, `tests/unit/posts-run.test.ts`, `tests/unit/posts-log.test.ts` if it exists
+
+- [ ] **Step 1:** Tests: a post without the offer loses each caption sentence with a price (`350k`, `$25`, `Rp 300.000`), recorded `{ field: 'price', reason: 'post-1: price removed "<sentence>"' }`; the same in a story text, and a story text left empty goes; a caption update does the same; the plan and rewrite prompts say "Never a price, in a caption or a story text." and no longer ask for a price; the log line counts `price_fixes=`.
+- [ ] **Step 2:** Run them. Expected: FAIL.
+- [ ] **Step 3:** Implement with `dropPrices(text, '', PRICE_PATTERN)` for posts that don't carry the offer.
+- [ ] **Step 4:** Run them, then `pnpm test`. Expected: PASS.
+- [ ] **Step 5:** Commit `feat(posts): never a price in a caption or a story text (roadmap 2.17b)`.
+
 ### Task 3: The screen says two
 
 **Files:** Modify `components/posts/posts-section.tsx` (`GRID`, header comment), `messages/*.json` (`posts.make`, `posts.makeMore`, `posts.empty`); unit tests whose button names say 6; `tests/e2e/helpers/posts-stream.ts` (two posts; with an offer both carry it) and the e2e specs that count six tiles or open tiles 3 to 6
@@ -62,7 +73,7 @@
 
 ### Task 4: The guide and the documents
 
-**Files:** `messages/*.json` (`guide.posts.make`, `guide.posts.edit`, `guide.posts.offerDone`, `guide.instagram.noImages`, `guide.allowance.limits`), `tests/e2e/guide.spec.ts`, the six specs the spec names (dated notes), `docs/specs/posts/two-suggestions/journal.md`, `docs/roadmap.md`
+**Files:** `messages/*.json` (`guide.posts.check`, `guide.posts.make`, `guide.posts.edit`, `guide.posts.offerDone`, `guide.instagram.noImages`, `guide.allowance.limits`), `tests/e2e/guide.spec.ts`, the six specs the spec names (dated notes), `docs/specs/posts/two-suggestions/journal.md`, `docs/roadmap.md`
 
 - [ ] **Step 1:** Change the guide strings and the guide's e2e check (Indonesian "Making your posts" line).
 - [ ] **Step 2:** Run `pnpm test` and `pnpm test:e2e tests/e2e/guide.spec.ts`. Expected: PASS.
