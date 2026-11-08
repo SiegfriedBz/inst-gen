@@ -1,8 +1,7 @@
 ---
 title: "Marketing copy"
-description: "Captions and story texts follow rules taken from two marketing skill libraries (decision 0009): code gives each post a hook style, the hook stands alone on the first line, each post type has its own job and only offer posts sell, no price anywhere, each caption uses something only the business has, story texts give a reason to message, an offer post's WhatsApp line gives the offer's end, and code records what still repeats."
-status: approved
-approved: { by: siegfried.bozza@protonmail.com, at: 2026-11-07T12:00:41Z }
+description: "Captions and story texts follow rules taken from two marketing skill libraries (decision 0009), on the two posts of an attempt (2.17b): code gives each post a hook style, the hook stands alone on the first line, each post type has its own job and only offer posts sell, each caption uses something only the business has, story texts give a reason to message, an offer post's WhatsApp line gives the offer's end, and code records what still repeats."
+status: draft
 date: "2026-11-07"
 ---
 
@@ -60,13 +59,18 @@ The causes are in the prompt and in code:
 - every image set-up names a treatment (2.12), so every caption leads on one;
 - code records only sentences that are identical (2.14b).
 
+Amended 2026-11-08: 2.17b (`posts/two-suggestions`), released that day, makes
+two posts an attempt instead of six and removes every price from captions and
+story texts. This item now writes those two posts: its rules stay, counted on
+two, and the price removal is 2.17b's.
+
 Success: in each new recording, Sen's and Svarga's, with and without an
 offer, at most one hook is a question; every caption's first line is its
 hook, alone; no caption or story text holds a price; each tip post gives a
-tip; at least 4 of the 6 captions name a place of the business; no story text
-starts with its treatment's name; no hashtag names a town of another country;
-and every checklist score under "Evaluation" beats `posts-11`'s. Phase 2's
-gate (Sen and Svarga "would post at least 4 of their 6 drafts") still holds.
+tip; at least one of each plan's two captions names a place of the business;
+no story text starts with its treatment's name; no hashtag names a town of
+another country; and every checklist score under "Evaluation" beats
+`posts-11`'s. The maintainer would post at least one of each plan's two.
 
 ## Behaviour
 
@@ -85,10 +89,10 @@ Code deals each post a hook style before the plan, as it deals the light
 | `fact` | opens on a plain fact from the profile: a highlight, or its promise |
 | `promise` | opens on what the guest's body will feel after |
 
-- Without an offer, the six posts get the six styles, one each, in a
-  shuffled order: one hook at most is a question.
+- Without an offer, the two posts get two different styles out of the six,
+  in a shuffled order: one hook at most is a question (amended 2026-11-08).
 - With an offer, posts 1 and 2 carry it and open on its offer line (2.13b):
-  they get no style. Posts 3 to 6 get four different styles out of the six.
+  they get no style.
 - The deal uses the plan's random, as the set-ups do, so the eval's seed
   from the slug (`<slug>`, `<slug>:offer`) deals the same styles on every
   replay. It comes after the set-ups and their light, so a seed still deals
@@ -112,7 +116,7 @@ The model is asked for it. When a caption's first line holds more than its
 first sentence, code puts a blank line (two line breaks) after that first
 sentence and any emoji right after it. On an offer post, the first sentence
 is its offer line. A caption whose first line is already one sentence doesn't
-change. It comes after the price removal (below) and the spa's flowers, so
+change. It comes after 2.17b's price removal and the spa's flowers, so
 the hook is the sentence the owner sees first. Nothing is recorded: it is how
 every caption is written, as with the stop before an emoji (2.14b). It
 applies to what the model writes, in the plan and in rewrites; an owner's
@@ -138,8 +142,8 @@ image still shows a treatment (2.12); the caption doesn't have to lead on it.
 | tip | one piece of care advice a guest can use today, worth saving (IG `references/voice-rules.md`: give a reason to save it) |
 | proof | one highlight or the promise, stated plainly; never an invented review, rating or customer |
 
-The mix doesn't change (2.2): at least 2 offer posts, at most 2 of a type, at
-least 4 types; with an offer, posts 1 and 2 are its offer posts.
+The mix is 2.17b's (amended 2026-11-08): post 1 is an offer post and post 2
+one of the other types; with an offer, both are its offer posts.
 
 ### No prices; something only this business has
 
@@ -155,13 +159,9 @@ a highlight (CH `copywriting/SKILL.md`: if a competitor could write the
 sentence, it fails; CH `copywriting/references/ai-tells.md`: every claim
 needs a number, a name, a mechanism or a concrete action).
 
-Code removes, from every caption and story text the model writes, each
-sentence that holds a price, with 2.13b's price pattern, and records it:
-`{ field: 'price', reason: 'post-3: price removed "Just VND 500k for 60
-minutes."' }`. This is 2.13b's removal, now on every post and on story texts;
-an offer post records it as 2.13b does. A story text left with nothing is
-absent, as when code's checks leave none (2.13). A caption left with nothing
-is dropped, as an empty caption is (2.2), and recorded. An owner's edit keeps
+The price removal is 2.17b's (amended 2026-11-08): code removes each sentence
+or line that holds a price from every caption and story text the model
+writes, and records it. This item adds none of its own. An owner's edit keeps
 its prices, and their `price` flag (2.2), as today.
 
 ### Endings
@@ -172,9 +172,9 @@ could close any post):
 
 - an offer or a moment post ends by answering one doubt a guest may have,
   with a highlight from the profile, as the profile gives it: free travel, no
-  deposit, fast replies, late hours (CH `copywriting/SKILL.md`). Each
-  highlight is used once at most in the six. With no highlight in the
-  profile, it ends on what changes for the guest;
+  deposit, fast replies, late hours (CH `copywriting/SKILL.md`). The two
+  captions never use the same highlight (amended 2026-11-08). With no
+  highlight in the profile, it ends on what changes for the guest;
 - a tip ends on its tip, a ritual on its last sensation, a proof post on its
   fact, a local post on what ties the place to the business.
 
@@ -237,7 +237,7 @@ most; IG `ig-hashtag-strategist/SKILL.md`: every tag describes the post). The
 prompt loses its examples ("canggu, danang", "massagedanang, aftersurf").
 
 Code drops a hashtag that names a town or area in another country than the
-business's, and records it: `{ field: 'hashtags', reason: 'post-6:
+business's, and records it: `{ field: 'hashtags', reason: 'post-2:
 "massagedanang" names Da Nang' }`. Code holds the main tourist towns and
 areas of Vietnam and Indonesia (Bali's are already in `BALI_PLACES`, for
 2.12); the business's country is `countryOf` (`lib/brand/country.ts`). A
@@ -262,15 +262,16 @@ The prompt names both lines the app adds; the model writes neither.
 
 ### What the model gets
 
-`posts-12`, with or without an offer. The plan prompt changes:
+`posts-13`, with or without an offer (amended 2026-11-08: `posts-12` is
+2.17b's prompt). The plan prompt changes:
 
-- **Who writes.** "You plan six Instagram posts for a small business, and
+- **Who writes.** "You plan two Instagram posts for a small business, and
   write them as its owner would, to guests nearby." (CH
   `copywriting/references/ai-tells.md`: name who is writing.)
-- **The mix.** Each type with its job (above), and: "Only offer posts sell a
-  treatment; the other types earn the guest's attention, name a treatment
-  once at most, and never in their first line." The offer type loses "with
-  its price".
+- **The mix.** Each type with its job (above), 2.17b's post 1 and post 2,
+  and: "Only offer posts sell a treatment; the other types earn the guest's
+  attention, name a treatment once at most, and never in their first line."
+  The offer type loses "with its price".
 - **The hooks.** "Code gives each post a hook style, in order, under
   '### Hooks'", the six styles as above, and that a post carrying the offer
   opens on its offer line instead.
@@ -305,26 +306,27 @@ them; `pnpm eval:posts` prints them with the other `dropped` lines. In the
 plan and in every rewrite, on the captions as code leaves them:
 
 1. **Questions.** Two or more posts not carrying the offer whose first
-   sentence ends in "?": `{ field: 'mix', reason: 'question hooks in post-2,
-   post-5' }`.
-2. **Stock words.** A word or phrase from a short list in 3 or more
-   captions: `{ field: 'words', reason: '"feel" in post-1, post-2, post-4' }`.
+   sentence ends in "?": `{ field: 'mix', reason: 'question hooks in post-1,
+   post-2' }`.
+2. **Stock words.** A word or phrase from a short list in 2 or more
+   captions, both of a plan (amended 2026-11-08): `{ field: 'words', reason:
+   '"feel" in post-1, post-2' }`.
    The list starts with feel, completely, deeply, truly, ultimate, pure,
    melt, unwind, indulge, bliss and golden oil; whole words, case ignored.
    The developer may add to it.
 3. **Endings.** Two or more captions whose last sentences start with the
-   same word: `{ field: 'mix', reason: 'endings start with "Drift" in post-3,
-   post-5' }`.
+   same word: `{ field: 'mix', reason: 'endings start with "Drift" in post-1,
+   post-2' }`.
 4. **Places.** A caption that names none of the business's town, area,
    service-area places or place symbols: `{ field: 'words', reason: 'post-2
    names no place' }`. Case and accents ignored; how loosely a place matches
    ("My Khe" for "My Khe beach") is the developer's call.
 5. **Story texts.** On a post not carrying the offer, a story text that
    starts with its set-up's treatment, or holds its caption's first
-   sentence: `{ field: 'story', reason: 'post-3: story text starts with "Deep
+   sentence: `{ field: 'story', reason: 'post-2: story text starts with "Deep
    Tissue Tension Release"' }`.
 6. **Calls to action.** A caption sentence that asks the guest to book,
-   message, call or write: `{ field: 'cta', reason: 'post-4: "Message us on
+   message, call or write: `{ field: 'cta', reason: 'post-2: "Message us on
    WhatsApp today."' }`. The app's WhatsApp line is the only call to action
    (CH `marketing-psychology/SKILL.md`: one clear call to action beats
    three), and the new endings, which answer a doubt, could drift into one.
@@ -346,31 +348,29 @@ and strings, and the owner guide.
 
 Unit tests (Vitest) for:
 
-- the prompts: `posts-12`; the six hook styles and the type jobs; none of
+- the prompts: `posts-13`; the six hook styles and the type jobs; none of
   "after the beach", "a walk round town", "a sunset, dinner", "canggu,
   danang", "massagedanang" and "its price or duration" left; the story and
   hashtag rules; with and without an offer; the rewrite prompt;
-- the deal: six different styles without an offer; none on posts 1 and 2 and
-  four different ones on posts 3 to 6 with an offer; the same seed dealing
-  the same; `### Hooks` after the set-ups in the user text; the rewrite's user
-  text giving each post its hook, and none for a post saved without one;
+- the deal: two different styles without an offer, none with an offer
+  (amended 2026-11-08); the same seed dealing the same; `### Hooks` after the
+  set-ups in the user text; the rewrite's user text giving each post its
+  hook, and none for a post saved without one;
 - the line break: put after the first sentence and its emoji; after the offer
   line on an offer post; no change when the hook already stands alone; the
   `firstLine` flag measuring the hook;
-- the removals: a sentence with a price from a caption and from a story text,
-  each recorded; a story text left with nothing is absent; an owner's edit
-  keeps its price;
+- the price removal: 2.17b's tests (amended 2026-11-08);
 - hashtags: "massagedanang" dropped for a Canggu business, and recorded;
   "canggu", "seminyak" and "balimassage" kept; no check when the country
   can't be read;
 - the call to action: "Offer ends … Book on WhatsApp: …" on an offer post,
   "Book on WhatsApp: …" on the others; a WhatsApp edit updating both; the
   copied text holding each post's own line;
-- each record: questions, stock words (in 3 captions, not 2), endings,
+- each record: questions, stock words (in 2 captions, not 1), endings,
   places, story texts, calls to action ("we reply on WhatsApp within about 5
   minutes" not recorded); none on a clean batch.
 
-The replay test checks, on Sen's and Svarga's `posts-12` plans with and
+The replay test checks, on Sen's and Svarga's `posts-13` plans with and
 without an offer: at most one hook ends in "?"; every caption's first line is
 one sentence of at most 125 characters; no caption or story text holds a
 price; no hashtag names a town of another country.
@@ -384,8 +384,8 @@ they gain a line break and lose their prices, and their tests follow
 
 ### Evaluation
 
-The journal shows, for each new plan, the six hooks with their styles, the
-six endings, the story texts, the hashtags and code's records, next to
+The journal shows, for each new plan, the two hooks with their styles, the
+two endings, the story texts, the hashtags and code's records, next to
 `posts-11`'s. The developer scores both with these checks, from the
 libraries' own checklists (IG `ig-caption-writer/references/caption-checklist.md`
 and `ig-humanizer/references/audit-checklist.md`; CH
@@ -404,10 +404,11 @@ audit, on the 12 posts without an offer:
 | The captions differ in shape (sentence count and order) | no: 12 of 12 have four sentences in one order |
 | The story text is more than a bare title | 6 of 12 |
 
-Pass: on the 12 new posts without an offer, Sen's and Svarga's together,
-every check scores strictly higher than `posts-11`'s 12 in the table, the
-shape check passing when neither plan's captions all share one shape; and the
-maintainer would post at least 4 of each plan's 6. The offer plans are scored
+Pass: on the 4 new posts without an offer, Sen's and Svarga's together, every
+check's share beats `posts-11`'s share of its 12 in the table (amended
+2026-11-08), the shape check passing when neither plan's two captions share
+one shape; and the maintainer would post at least one of each plan's two. The
+offer plans are scored
 the same way, for the journal, with no pass mark. When a check doesn't pass,
 the journal says why, and the maintainer decides whether the prompt changes
 and the plans are recorded again (4 more requests, with their go-ahead).
@@ -415,59 +416,52 @@ and the plans are recorded again (4 more requests, with their go-ahead).
 ## Acceptance criteria
 
 ```gherkin
-Scenario: Six hook styles without an offer
+Scenario: Two hook styles without an offer
   Given a plan without a special offer
   When code deals the set-ups
-  Then the six posts get six different hook styles
+  Then the two posts get two different hook styles
   And the user text lists them under "### Hooks"
 
-Scenario: Hook styles with an offer
+Scenario: No hook style with an offer
   Given a plan with a special offer
   When code deals the set-ups
   Then posts 1 and 2 get no hook style
-  And posts 3 to 6 get four different ones
 
 Scenario: The hook alone on the first line
   Given the model writes post 2's caption "Sore shoulders from the paddle out? 🌸 Our therapists come to your villa."
   When code checks the plan
   Then post 2's caption is "Sore shoulders from the paddle out? 🌸", a blank line, then "Our therapists come to your villa."
 
-Scenario: A price is removed
-  Given post 3's caption holds the sentence "Just VND 500k for 60 minutes."
-  When code checks the plan
-  Then post 3's caption no longer holds it
-  And the batch's dropped list holds 'post-3: price removed "Just VND 500k for 60 minutes."'
-
 Scenario: A hashtag from another country
   Given a business in Canggu, Bali
-  When the model gives post 6 the hashtag "massagedanang"
-  Then post 6 keeps its other hashtags without it
-  And the batch's dropped list holds 'post-6: "massagedanang" names Da Nang'
+  When the model gives post 2 the hashtag "massagedanang"
+  Then post 2 keeps its other hashtags without it
+  And the batch's dropped list holds 'post-2: "massagedanang" names Da Nang'
 
 Scenario: The offer's end by the WhatsApp line
   Given a special offer until Tuesday 27 October, and the WhatsApp number +84 90 123 4567
   When the plan is made
   Then posts 1 and 2 have the call to action "Offer ends Tuesday 27 October. Book on WhatsApp: +84 90 123 4567"
-  And posts 3 to 6 have "Book on WhatsApp: +84 90 123 4567"
+  And a plan without the offer gives both posts "Book on WhatsApp: +84 90 123 4567"
 
 Scenario: Question hooks are recorded
-  Given a plan without an offer whose posts 2 and 5 open on a question
+  Given a plan without an offer whose posts 1 and 2 open on a question
   When code checks the plan
-  Then the batch's dropped list holds 'question hooks in post-2, post-5'
+  Then the batch's dropped list holds 'question hooks in post-1, post-2'
   And both captions stay as the model wrote them
 
 Scenario: A stock word is recorded
-  Given "completely" in the captions of posts 1, 3 and 4
+  Given "completely" in the captions of posts 1 and 2
   When code checks the plan
-  Then the batch's dropped list holds '"completely" in post-1, post-3, post-4'
+  Then the batch's dropped list holds '"completely" in post-1, post-2'
 
 Scenario: A rewrite keeps the hook styles
-  Given a batch whose post 4 has the hook style "place"
+  Given a batch whose post 2 has the hook style "place"
   When the owner edits the business and the captions are rewritten
-  Then the rewrite's user text gives post-4 "hook": "place"
+  Then the rewrite's user text gives post-2 "hook": "place"
 
 Scenario: A recorded plan
-  Given Sen's plan recorded with posts-12, without an offer
+  Given Sen's plan recorded with posts-13, without an offer
   When the replay test runs it
   Then at most one hook ends in "?"
   And every caption's first line is one sentence of at most 125 characters
@@ -478,8 +472,9 @@ Scenario: A recorded plan
 
 - Hook styles and type jobs are words in a prompt. Code tells a question by
   its "?", not a scene from a promise: the journal judges the rest.
-- The same six styles come every day, in another order. Records are per
-  batch; tomorrow's batch may repeat today's words, as 2.14b's endings may.
+- Each attempt deals two of the six styles again. Records are per attempt,
+  on its two captions: an attempt may repeat the words of the one before it,
+  and nothing records it (amended 2026-11-08).
 - Records don't rewrite: a batch can still reach the owner with two hooks
   that are questions. The owner reads each post before posting it.
 - The places record matches names: a caption can name a place in other words
