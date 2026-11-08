@@ -34,12 +34,15 @@ export async function makePostImage(
   const stepSignal = AbortSignal.any([signal, timeout]);
   const model = deps.modelId ?? IMAGE_MODEL;
   const hint = cleanHint(body.hint);
+  // One line, without a closing full stop, as for the hint.
+  const staffLook = cleanHint(body.staffLook);
   const entry: ImageLog = {
     owner: ownerId,
     postId: body.postId,
     scene: body.scene,
     hint: hint !== undefined,
     cast: body.setup !== undefined,
+    look: staffLook !== undefined,
     model,
     promptVersion: IMAGE_PROMPT_VERSION,
     size: null,
@@ -61,7 +64,7 @@ export async function makePostImage(
     });
     stopped.catch(() => {});
     const file = await Promise.race([
-      deps.model.makeImage(imagePrompt(body.imagePrompt, hint, body.setup), stepSignal),
+      deps.model.makeImage(imagePrompt(body.imagePrompt, hint, body.setup, staffLook), stepSignal),
       stopped,
     ]);
     entry.modelMs = Date.now() - started;

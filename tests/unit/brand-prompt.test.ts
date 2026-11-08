@@ -3,8 +3,30 @@ import type { CodeFacts } from '@/lib/brand/extract/structured';
 import { BRAND_PROMPT_VERSION, brandPrompt, brandUserText } from '@/lib/brand/prompt';
 
 describe('brand prompt', () => {
-  test('is at brand-7', () => {
-    expect(BRAND_PROMPT_VERSION).toBe('brand-7');
+  test('is at brand-9', () => {
+    expect(BRAND_PROMPT_VERSION).toBe('brand-9');
+  });
+
+  // docs/specs/posts/therapists-look, "What the brand read writes down".
+  test('the visual style still never describes people', () => {
+    expect(brandPrompt()).toContain(
+      "3. The visual style describes the photos' palette, light, textures and mood, for an image model to imitate. Never describe people in it. Leave it empty when no photos are given.",
+    );
+  });
+
+  test.each([
+    '- staffLook: ',
+    'the top (its cut, sleeves, collar and colour), the trousers or skirt and their colour',
+    'then the hair',
+    'at most 30 words',
+    'a white short-sleeved tunic with a small stand-up collar, white trousers, dark hair in a neat low bun',
+    'what most of them show',
+    'never name a man',
+    'the source "model"',
+    'Never a face, skin, body or age',
+    'or anything that suggests more than a professional treatment',
+  ])('the look\'s note says "%s"', (phrase) => {
+    expect(brandPrompt()).toContain(phrase);
   });
 
   test.each([

@@ -172,4 +172,33 @@ describe('photoCandidates', () => {
       ]),
     ).toHaveLength(1);
   });
+
+  // Next.js serves every image through /_next/image?url=…: each file counts
+  // once, by its own path (docs/specs/posts/therapists-look, journal).
+  const optimised = (file: string, sizes = [640, 3840]) =>
+    `<img alt="" srcset="${sizes
+      .map((w) => `/_next/image?url=${encodeURIComponent(file)}&amp;w=${w}&amp;q=75 ${w}w`)
+      .join(', ')}">`;
+  const files = (urls: URL[]) => urls.map((u) => u.searchParams.get('url') ?? u.pathname);
+
+  test('each image Next.js serves counts once, by its own file', () => {
+    const html = ['/images/a.jpg', '/images/b.jpg', '/images/c.jpg'].map((f) => optimised(f));
+    expect(files(photoCandidates([{ html: html.join(''), url: HOME }]))).toEqual([
+      '/images/a.jpg',
+      '/images/b.jpg',
+      '/images/c.jpg',
+    ]);
+  });
+
+  test('the same file Next.js serves in two sizes counts once, the larger', () => {
+    const html = optimised('/images/a.jpg', [750]) + optimised('/images/a.jpg', [1920]);
+    const urls = photoCandidates([{ html, url: HOME }]);
+    expect(urls).toHaveLength(1);
+    expect(urls[0].searchParams.get('w')).toBe('1920');
+  });
+
+  test('a logo or an SVG served by Next.js is no photo', () => {
+    const html = optimised('/images/logo-lotus.png') + optimised('/images/leaf.svg');
+    expect(photoCandidates([{ html, url: HOME }])).toEqual([]);
+  });
 });

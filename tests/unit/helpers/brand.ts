@@ -5,7 +5,7 @@ export const ABOUT = 'https://svargabalimassage.com/about';
 
 export function svargaProfile(): Profile {
   return {
-    schemaVersion: 2,
+    schemaVersion: 3,
     siteUrl: SITE,
     readAt: '2026-10-24T09:00:00.000Z',
     pagesRead: [SITE, ABOUT],
@@ -66,6 +66,7 @@ export function svargaProfile(): Profile {
     dropped: [],
     searchedAt: null,
     searchPromptVersion: null,
+    staffLook: null,
   };
 }
 

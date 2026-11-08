@@ -345,14 +345,17 @@ export function setupLine(setup: Setup): string {
   return `${what}: ${GUESTS[setup.guests]} ${LOOK_WORDS_FOR[setup.look]}; the ${setup.bodyPart}; scene ${setup.scene}, ${CAMERAS[setup.scene]}; ${setup.light ?? 'day'}.`;
 }
 
-export function castLine(setup: Setup): string {
+// With the therapists' look (docs/specs/posts/therapists-look), the
+// therapists are named with it, and two are dressed alike.
+export function castLine(setup: Setup, staffLook?: string): string {
   const guests =
     setup.guests === 'couple'
       ? 'Two guests, a man and a woman, on two beds side by side.'
       : `One guest, a ${setup.guests}.`;
-  const therapists =
-    setup.therapists === 2
-      ? `Two therapists, both young ${setup.locals} women.`
-      : `One therapist, a young ${setup.locals} woman.`;
-  return `${guests} ${therapists}`;
+  const two = setup.therapists === 2;
+  const therapists = two
+    ? `Two therapists, both young ${setup.locals} women${staffLook ? ', dressed alike' : ''}.`
+    : `One therapist, a young ${setup.locals} woman.`;
+  const look = staffLook ? ` ${two ? 'Their' : 'Her'} look: ${staffLook}.` : '';
+  return `${guests} ${therapists}${look}`;
 }

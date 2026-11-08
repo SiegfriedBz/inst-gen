@@ -90,11 +90,19 @@ export function fixtureOffer(profile: Profile): Offer {
   };
 }
 
-// The fixture's profile from its recorded brand read: no model call.
-export async function replayedProfile(dir: string): Promise<Profile> {
+// The fixture's profile from its recorded brand read: no model call. Without
+// `imageCache` no photo is read, so what the read saw in them (the visual
+// style, the therapists' look) is dropped; the eval scripts pass the cache.
+export async function replayedProfile(
+  dir: string,
+  opts: { imageCache?: string } = {},
+): Promise<Profile> {
   const fixture = loadFixture(dir);
   if (!fixture.recording) throw new Error('no recording.json');
-  const deps = { transport: fixtureTransport(dir), model: replayTextModel(fixture.recording) };
+  const deps = {
+    transport: fixtureTransport(dir, opts),
+    model: replayTextModel(fixture.recording),
+  };
   const signal = new AbortController().signal;
   const prepared = await prepareRead(fixture.manifest.siteUrl, deps, signal);
   for await (const line of streamProfile(prepared, deps, signal)) {
@@ -106,8 +114,11 @@ export async function replayedProfile(dir: string): Promise<Profile> {
 
 // The profile an owner would have: the recorded brand read, with the
 // recorded essence search merged in when the fixture has one.
-export async function fixtureProfile(dir: string): Promise<Profile> {
-  const profile = await replayedProfile(dir);
+export async function fixtureProfile(
+  dir: string,
+  opts: { imageCache?: string } = {},
+): Promise<Profile> {
+  const profile = await replayedProfile(dir, opts);
   const { search, recording } = loadFixture(dir);
   if (!search || !recording) return profile;
   const answer = await runSearch(

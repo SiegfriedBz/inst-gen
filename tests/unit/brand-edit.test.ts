@@ -263,3 +263,51 @@ describe('applying a section edit', () => {
     expect(countOwnerEdits(p, ['tone', 'visualStyle'])).toBe(2);
   });
 });
+
+// docs/specs/posts/therapists-look, "\"Your look\"".
+describe("the therapists' look", () => {
+  const white = 'a white tunic, white trousers, dark hair in a neat low bun';
+  const withLook = (): Profile => ({ ...p, staffLook: { value: white, source: 'model' } });
+
+  test('the form holds its text, or nothing', () => {
+    expect((sectionValues(withLook(), 'look') as LookValues).staffLook).toBe(white);
+    expect((sectionValues(p, 'look') as LookValues).staffLook).toBe('');
+  });
+
+  test("a new look is the owner's", () => {
+    const saved = ok(look(p, { staffLook: '  a pale green tunic, white trousers ' }));
+    expect(saved.staffLook).toEqual({
+      value: 'a pale green tunic, white trousers',
+      source: 'owner',
+    });
+    expect(countOwnerEdits(saved)).toBe(1);
+  });
+
+  test('the same look keeps its source', () => {
+    expect(ok(look(withLook(), {})).staffLook).toEqual({ value: white, source: 'model' });
+  });
+
+  test('a look of only spaces is null', () => {
+    expect(ok(look(withLook(), { staffLook: '   ' })).staffLook).toBeNull();
+  });
+
+  test('31 words are too many', () => {
+    expect(look(p, { staffLook: Array(31).fill('white').join(' ') })).toEqual({
+      ok: false,
+      errors: { staffLook: 'tooManyWords' },
+    });
+  });
+
+  test('over 300 characters is refused', () => {
+    const result = look(p, { staffLook: Array(25).fill('abcdefghijkl').join(' ') });
+    expect(result.ok).toBe(false);
+    if (!result.ok) expect(Object.keys(result.errors)).toEqual(['staffLook']);
+  });
+
+  test('a look that names a man is refused', () => {
+    expect(look(p, { staffLook: 'dark navy tunics; the men wear white shirts' })).toEqual({
+      ok: false,
+      errors: { staffLook: 'namesAMan' },
+    });
+  });
+});

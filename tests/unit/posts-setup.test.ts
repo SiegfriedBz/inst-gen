@@ -463,3 +463,35 @@ describe('review fixes', () => {
     }
   });
 });
+
+// docs/specs/posts/therapists-look, "Every image made from now on".
+describe("castLine with the therapists' look", () => {
+  const fourHandsMan: Setup = {
+    treatment: 'Four-Hands Massage',
+    look: 'fourHands',
+    guests: 'man',
+    therapists: 2,
+    bodyPart: 'back',
+    scene: 'treatment',
+    locals: 'Balinese',
+  };
+  const look = 'a white tunic, white trousers, dark hair in a neat low bun';
+
+  it('one therapist: her look', () => {
+    expect(
+      castLine({ ...fourHandsMan, look: 'plain', therapists: 1, locals: 'Vietnamese' }, look),
+    ).toBe(
+      'One guest, a man. One therapist, a young Vietnamese woman. Her look: a white tunic, white trousers, dark hair in a neat low bun.',
+    );
+  });
+
+  it('two therapists: dressed alike', () => {
+    expect(castLine(fourHandsMan, look)).toBe(
+      'One guest, a man. Two therapists, both young Balinese women, dressed alike. Their look: a white tunic, white trousers, dark hair in a neat low bun.',
+    );
+  });
+
+  it('no look: as before', () => {
+    expect(castLine(fourHandsMan, undefined)).toBe(castLine(fourHandsMan));
+  });
+});

@@ -90,3 +90,19 @@ describe('POST /api/posts/image', () => {
     }
   });
 });
+
+// docs/specs/posts/therapists-look, "Every image made from now on".
+describe("the therapists' look", () => {
+  test('a look over 300 characters answers 400 invalid_request', async () => {
+    allowed();
+    const res = await route.POST(request({ ...good, staffLook: 'a'.repeat(301) }));
+    expect(res.status).toBe(400);
+    expect(await res.json()).toEqual({ error: 'invalid_request' });
+  });
+
+  test('a look of 300 characters is taken', async () => {
+    allowed();
+    const res = await route.POST(request({ ...good, staffLook: 'a'.repeat(300) }));
+    expect(res.status).toBe(200);
+  });
+});

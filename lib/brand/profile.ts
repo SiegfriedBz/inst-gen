@@ -76,6 +76,10 @@ export const LIMITS = {
   searchTermWords: 6,
   searchMoments: 3,
   searchSymbols: 2,
+  // The therapists' look (docs/specs/posts/therapists-look); the characters
+  // match what the image route takes.
+  staffLookWords: 30,
+  staffLookChars: 300,
 } as const;
 
 // What the model fills in. It has no limits: a model answer a word or an item
@@ -125,12 +129,13 @@ export const modelProfileSchema = z.object({
   visualStyle: z
     .object({ summary: loose, palette: loose, light: loose, textures: loose, mood: loose })
     .nullable(),
+  staffLook: looseSourced,
 });
 
 export type ModelProfile = z.infer<typeof modelProfileSchema>;
 
 export const profileSchema = z.object({
-  schemaVersion: z.literal(2),
+  schemaVersion: z.literal(3),
   siteUrl: z.url(),
   readAt: z.iso.datetime(),
   pagesRead: z.array(z.url()).min(1).max(8),
@@ -165,23 +170,30 @@ export const profileSchema = z.object({
   // When the essence search last succeeded, and with which prompt.
   searchedAt: z.iso.datetime().nullable(),
   searchPromptVersion: text.nullable(),
+  // What the therapists wear, and their hair, for the images
+  // (docs/specs/posts/therapists-look): a page's URL, "model" from the
+  // photos, or "owner".
+  staffLook: sourced(maxWords(LIMITS.staffLookWords).max(LIMITS.staffLookChars)).nullable(),
 });
 
 export type Profile = z.infer<typeof profileSchema>;
 
-// A profile saved as version 1 (before the essence search) read as version 2;
-// anything else comes back unchanged, for the schema to judge.
+// A profile saved as version 1 (before the essence search) or 2 (before the
+// therapists' look) read as version 3; anything else comes back unchanged,
+// for the schema to judge.
 export function upgradeProfile(raw: unknown): unknown {
   if (!raw || typeof raw !== 'object') return raw;
   const profile = raw as { schemaVersion?: unknown; essence?: unknown };
+  if (profile.schemaVersion === 2) return { ...profile, schemaVersion: 3, staffLook: null };
   if (profile.schemaVersion !== 1) return raw;
   const essence = profile.essence && typeof profile.essence === 'object' ? profile.essence : {};
   return {
     ...profile,
-    schemaVersion: 2,
+    schemaVersion: 3,
     essence: { ...essence, searchTerms: [] },
     searchedAt: null,
     searchPromptVersion: null,
+    staffLook: null,
   };
 }
 

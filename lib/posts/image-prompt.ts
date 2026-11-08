@@ -5,9 +5,11 @@ import { castLine, type Light, type Locals, type Setup } from './setup';
 // line from decision 0004's bake-off, plus one rule so the 4:5 post crop
 // keeps the subject (docs/specs/posts/generate-images, "The model step"); the
 // style line follows the set-up's day or night and the place's own room
-// (docs/specs/posts/day-and-night-images). Bump the version with every change.
+// (docs/specs/posts/day-and-night-images); the therapists' look goes with the
+// cast and again in the last rules (docs/specs/posts/therapists-look). Bump
+// the version with every change.
 
-export const IMAGE_PROMPT_VERSION = 'images-9';
+export const IMAGE_PROMPT_VERSION = 'images-10';
 
 // The room a tourist pictures for their stay, the green plants of the place
 // seen through its doors, and the place's flower, by the therapists' origin.
@@ -59,7 +61,7 @@ const LIGHTING: Record<Light, { light: string; whatever: string; view: string }>
 // With the set-up's locals, the cast line names the therapists' origin, so
 // the style line says "local"; a post saved before set-ups has none, so the
 // style line names them Southeast Asian and takes that row's place.
-export function imageStyle(locals?: Locals, light: Light = 'day'): string {
+export function imageStyle(locals?: Locals, light: Light = 'day', staffLook?: string): string {
   const who = locals ? 'local' : 'Southeast Asian';
   const place = PLACES[locals ?? 'Southeast Asian'];
   const lighting = LIGHTING[light];
@@ -89,6 +91,7 @@ export function imageStyle(locals?: Locals, light: Light = 'day'): string {
     'clean short nails, natural joints and wrists, no extra or missing fingers, hands or arms. ' +
     // The maintainer's verdict on images-5: faces showed in profile.
     'Her face is turned away, lowered or out of frame. ' +
+    (staffLook ? `Every therapist's look, whatever the scene says: ${staffLook}. ` : '') +
     "Every guest's face is turned away, resting in the face cradle, covered or out of frame: never a full face."
   );
 }
@@ -169,13 +172,18 @@ export function cleanHint(raw: string | undefined): string | undefined {
 }
 
 // The cast line comes first, so the image model reads the facts before the
-// model's prose; the hint comes before the style line, so the style's rules
-// still come last and win.
-export function imagePrompt(postPrompt: string, hint?: string, setup?: Setup): string {
-  const cast = setup ? `${castLine(setup)} ` : '';
+// model's prose; the hint comes before the style line, so the style's rules,
+// the therapists' look among them, still come last and win.
+export function imagePrompt(
+  postPrompt: string,
+  hint?: string,
+  setup?: Setup,
+  staffLook?: string,
+): string {
+  const cast = setup ? `${castLine(setup, staffLook)} ` : '';
   const asks = hint ? ` The owner asks: ${hint}.` : '';
   // A set-up saved before lights were dealt, or none, is a day.
   const light = setup?.light ?? 'day';
-  const style = imageStyle(setup?.locals, light);
+  const style = imageStyle(setup?.locals, light, staffLook);
   return `${cast}${cleanLight(postPrompt.trim(), light)}${asks} ${style}`;
 }

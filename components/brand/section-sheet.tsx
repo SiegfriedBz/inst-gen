@@ -317,6 +317,14 @@ function LookForm({ values, set, error, profile }: FormProps<'look'>) {
         ))}
         {error('style') && <p className="text-xs text-error">{error('style')}</p>}
       </fieldset>
+      <TextField
+        label={l.field('staffLook')}
+        multiline
+        value={v.staffLook}
+        onChange={(staffLook) => set({ ...v, staffLook })}
+        hint={l.words(LIMITS.staffLookWords)}
+        error={error('staffLook')}
+      />
       {profile.photoUrls.length > 0 && (
         <div className="flex flex-col gap-1.5">
           <p className="text-[13px] text-ink-secondary">{l.field('photos')}</p>

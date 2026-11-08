@@ -26,13 +26,19 @@ async function replay(slug: string): Promise<{ profile: Profile; pages: Map<stri
 }
 
 describe('recorded brand reads', () => {
-  test.each(slugs)('%s replays to a profile that passes the schema', async (slug) => {
-    const { profile } = await replay(slug);
-    expect(profileSchema.safeParse(profile).success).toBe(true);
-    for (const source of [profile.name.source, ...profile.offerings.map((o) => o.source)]) {
-      expect(profile.pagesRead).toContain(source);
-    }
-  });
+  // About 3 s alone (karsa-spa); the default 5 s is too tight when the whole
+  // suite runs at once, as for the post plans' replays.
+  test.each(slugs)(
+    '%s replays to a profile that passes the schema',
+    { timeout: 20_000 },
+    async (slug) => {
+      const { profile } = await replay(slug);
+      expect(profileSchema.safeParse(profile).success).toBe(true);
+      for (const source of [profile.name.source, ...profile.offerings.map((o) => o.source)]) {
+        expect(profile.pagesRead).toContain(source);
+      }
+    },
+  );
 
   test.each([
     ['svarga', /svarga/i, 'Canggu', '6285607052972'],

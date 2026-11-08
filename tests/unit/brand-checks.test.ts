@@ -367,6 +367,7 @@ describe('a model answer past the limits', () => {
         textures: 'linen',
         mood: 'calm',
       },
+      staffLook: { value: Array.from({ length: 40 }, () => 'white').join(' '), source: 'model' },
     };
     expect(modelProfileSchema.safeParse(long).success).toBe(true);
   });
@@ -420,7 +421,8 @@ describe('finalise', () => {
     const { profile } = run({ category: 'massage spa', tone: ['calm', 'warm', 'caring'] });
     const final = finalise(profile, meta);
     expect(final).toMatchObject({
-      schemaVersion: 2,
+      schemaVersion: 3,
+      staffLook: null,
       promptVersion: 'brand-1',
       searchedAt: null,
       searchPromptVersion: null,
@@ -445,5 +447,77 @@ describe('finalise', () => {
       },
     );
     expect(() => finalise(profile, meta)).toThrow();
+  });
+});
+
+// docs/specs/posts/therapists-look, "Code's checks".
+describe("the therapists' look", () => {
+  const look = 'a white short-sleeved tunic, white trousers, dark hair in a neat low bun';
+
+  test('a look a page says keeps the page', () => {
+    const { profile, dropped } = run({ staffLook: { value: look, source: '/about' } });
+    expect(profile.staffLook).toEqual({ value: look, source: ABOUT });
+    expect(dropped).toEqual([]);
+  });
+
+  test("a look from the photos is the model's", () => {
+    const { profile } = run({ staffLook: { value: look, source: 'model' } });
+    expect(profile.staffLook).toEqual({ value: look, source: 'model' });
+  });
+
+  test('a look from the photos, with no photo read, is dropped', () => {
+    const { profile, dropped } = run({ staffLook: { value: look, source: 'model' } }, undefined, 0);
+    expect(profile.staffLook).toBeNull();
+    expect(dropped).toEqual([{ field: 'staffLook', reason: 'no_photos' }]);
+  });
+
+  test('a look from another site is dropped', () => {
+    const { profile, dropped } = run({
+      staffLook: { value: look, source: 'https://other.vn/' },
+    });
+    expect(profile.staffLook).toBeNull();
+    expect(dropped).toEqual([{ field: 'staffLook', reason: 'unknown_source' }]);
+  });
+
+  test('a look that names a man is dropped', () => {
+    const { profile, dropped } = run({
+      staffLook: { value: 'dark navy tunics; the men wear brown shirts', source: 'model' },
+    });
+    expect(profile.staffLook).toBeNull();
+    expect(dropped).toEqual([{ field: 'staffLook', reason: 'names_a_man' }]);
+  });
+
+  test('a 40-word look is cut to fit', () => {
+    const parts = Array.from({ length: 8 }, (_, i) => `part ${i} of the look`);
+    const { profile } = run({ staffLook: { value: parts.join(', '), source: 'model' } });
+    expect(profile.staffLook?.value).toBe(parts.slice(0, 6).join(', '));
+  });
+
+  test('a look still streaming, with no source yet, is left out without a note', () => {
+    const { profile, dropped } = run({ staffLook: { value: look } });
+    expect(profile.staffLook).toBeNull();
+    expect(dropped).toEqual([]);
+  });
+
+  test('no look is null', () => {
+    expect(run({ staffLook: null }).profile.staffLook).toBeNull();
+  });
+
+  test('a look of only spaces is null, and the read still ends', () => {
+    const { profile, dropped } = run({
+      category: 'massage spa',
+      tone: ['calm', 'warm', 'caring'],
+      staffLook: { value: '   ', source: 'model' },
+    });
+    expect(profile.staffLook).toBeNull();
+    expect(dropped).toEqual([]);
+    expect(
+      finalise(profile, {
+        readAt: '2026-11-08T09:00:00.000Z',
+        promptVersion: 'brand-9',
+        thin: false,
+        dropped,
+      }).staffLook,
+    ).toBeNull();
   });
 });
