@@ -135,6 +135,8 @@ describe('recorded story texts and flowers', () => {
     expect(repeatRecords(result.posts).filter((d) => d.reason.startsWith('last sentence'))).toEqual(
       [],
     );
+    // At most one hook is a question (docs/specs/posts/marketing-copy).
+    expect(result.dropped.filter((d) => d.reason.startsWith('question hooks'))).toEqual([]);
     for (const post of result.posts) {
       expect(post.storyText).toBeTruthy();
       const story = post.storyText ?? '';
@@ -149,9 +151,10 @@ describe('recorded story texts and flowers', () => {
       expect(others(post.caption)).toEqual([]);
       // No stop right before an emoji (docs/specs/posts/day-and-night-copy).
       expect(post.caption).not.toMatch(STOP_BEFORE_EMOJI);
-      // The hook alone on its first line (docs/specs/posts/marketing-copy).
+      // The hook alone on its first line; one over 125 characters is flagged
+      // (docs/specs/posts/marketing-copy, amended 2026-11-08).
       const hook = post.caption.split('\n')[0];
-      expect(hook.length).toBeLessThanOrEqual(125);
+      if (hook.length > 125) expect(post.unchecked.map((f) => f.kind)).toContain('firstLine');
       expect(hook.match(/[.!?](?=\s|$)/g)?.length ?? 0).toBeLessThanOrEqual(1);
       expect(story).not.toMatch(STOP_BEFORE_EMOJI);
       // An offer post opens on its line, its stop gone before the flower, and

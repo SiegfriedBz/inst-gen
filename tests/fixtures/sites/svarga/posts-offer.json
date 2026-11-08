@@ -1,9 +1,9 @@
 {
   "modelId": "gemini-3.5-flash-lite",
-  "promptVersion": "posts-12",
+  "promptVersion": "posts-14",
   "recording": {
     "modelId": "gemini-3.5-flash-lite",
-    "promptVersion": "posts-12",
+    "promptVersion": "posts-14",
     "partials": [
       {
         "posts": []
@@ -12,7 +12,7 @@
         "posts": [
           {
             "type": "offer",
-            "topic": "Traditional Balinese Massage 10% off"
+            "topic": "90-minute Traditional Balinese Massage with"
           }
         ]
       },
@@ -20,9 +20,9 @@
         "posts": [
           {
             "type": "offer",
-            "topic": "Traditional Balinese Massage 10% off",
-            "scene": "treatment",
-            "caption": "10% off our 90-"
+            "topic": "90-minute Traditional Balinese Massage with a discount",
+            "scene": "treatment, from the side",
+            "caption": "10% off"
           }
         ]
       },
@@ -30,9 +30,9 @@
         "posts": [
           {
             "type": "offer",
-            "topic": "Traditional Balinese Massage 10% off",
-            "scene": "treatment",
-            "caption": "10% off our 90-minute Traditional Balinese Massage, until Sunday 1 November. How would it feel to completely unwind in your own room as"
+            "topic": "90-minute Traditional Balinese Massage with a discount",
+            "scene": "treatment, from the side",
+            "caption": "10% off our 90-minute Traditional Balinese Massage, until Sunday 1 November.\n\nWarm coconut oil eases"
           }
         ]
       },
@@ -40,9 +40,9 @@
         "posts": [
           {
             "type": "offer",
-            "topic": "Traditional Balinese Massage 10% off",
-            "scene": "treatment",
-            "caption": "10% off our 90-minute Traditional Balinese Massage, until Sunday 1 November. How would it feel to completely unwind in your own room as the day turns to evening? Experience soothing strokes with warm coconut oil right where you are staying in Canggu. Feel the gentle"
+            "topic": "90-minute Traditional Balinese Massage with a discount",
+            "scene": "treatment, from the side",
+            "caption": "10% off our 90-minute Traditional Balinese Massage, until Sunday 1 November.\n\nWarm coconut oil eases tired muscles in your Canggu room while evening lamps cast a golden glow across fresh linens.\n\nExperienced local therapists bring"
           }
         ]
       },
@@ -50,11 +50,249 @@
         "posts": [
           {
             "type": "offer",
-            "topic": "Traditional Balinese Massage 10% off",
-            "scene": "treatment",
-            "caption": "10% off our 90-minute Traditional Balinese Massage, until Sunday 1 November. How would it feel to completely unwind in your own room as the day turns to evening? Experience soothing strokes with warm coconut oil right where you are staying in Canggu. Feel the gentle release of tension as a calm evening awaits you under the tropical stars 🌸",
+            "topic": "90-minute Traditional Balinese Massage with a discount",
+            "scene": "treatment, from the side",
+            "caption": "10% off our 90-minute Traditional Balinese Massage, until Sunday 1 November.\n\nWarm coconut oil eases tired muscles in your Canggu room while evening lamps cast a golden glow across fresh linens.\n\nExperienced local therapists bring deep relief right to your private villa.\n\nTravel within Canggu, Pererenan, Seminyak, and"
+          }
+        ]
+      },
+      {
+        "posts": [
+          {
+            "type": "offer",
+            "topic": "90-minute Traditional Balinese Massage with a discount",
+            "scene": "treatment, from the side",
+            "caption": "10% off our 90-minute Traditional Balinese Massage, until Sunday 1 November.\n\nWarm coconut oil eases tired muscles in your Canggu room while evening lamps cast a golden glow across fresh linens.\n\nExperienced local therapists bring deep relief right to your private villa.\n\nTravel within Canggu, Pererenan, Seminyak, and Kerobokan is free.",
             "hashtags": [
-              "cang"
+              "canggu",
+              "massagecanggu",
+              "balinesemassage",
+              "spabali"
+            ],
+            "altText": ""
+          }
+        ]
+      },
+      {
+        "posts": [
+          {
+            "type": "offer",
+            "topic": "90-minute Traditional Balinese Massage with a discount",
+            "scene": "treatment, from the side",
+            "caption": "10% off our 90-minute Traditional Balinese Massage, until Sunday 1 November.\n\nWarm coconut oil eases tired muscles in your Canggu room while evening lamps cast a golden glow across fresh linens.\n\nExperienced local therapists bring deep relief right to your private villa.\n\nTravel within Canggu, Pererenan, Seminyak, and Kerobokan is free.",
+            "hashtags": [
+              "canggu",
+              "massagecanggu",
+              "balinesemassage",
+              "spabali"
+            ],
+            "altText": "A man relaxing on a massage bed during a traditional balinese massage at night.",
+            "imagePrompt": "A man"
+          }
+        ]
+      },
+      {
+        "posts": [
+          {
+            "type": "offer",
+            "topic": "90-minute Traditional Balinese Massage with a discount",
+            "scene": "treatment, from the side",
+            "caption": "10% off our 90-minute Traditional Balinese Massage, until Sunday 1 November.\n\nWarm coconut oil eases tired muscles in your Canggu room while evening lamps cast a golden glow across fresh linens.\n\nExperienced local therapists bring deep relief right to your private villa.\n\nTravel within Canggu, Pererenan, Seminyak, and Kerobokan is free.",
+            "hashtags": [
+              "canggu",
+              "massagecanggu",
+              "balinesemassage",
+              "spabali"
+            ],
+            "altText": "A man relaxing on a massage bed during a traditional balinese massage at night.",
+            "imagePrompt": "A man lying on a massage bed in a hotel room at night, with warm golden oil on his shoulders and neck. A woman therapist's hands are"
+          }
+        ]
+      },
+      {
+        "posts": [
+          {
+            "type": "offer",
+            "topic": "90-minute Traditional Balinese Massage with a discount",
+            "scene": "treatment, from the side",
+            "caption": "10% off our 90-minute Traditional Balinese Massage, until Sunday 1 November.\n\nWarm coconut oil eases tired muscles in your Canggu room while evening lamps cast a golden glow across fresh linens.\n\nExperienced local therapists bring deep relief right to your private villa.\n\nTravel within Canggu, Pererenan, Seminyak, and Kerobokan is free.",
+            "hashtags": [
+              "canggu",
+              "massagecanggu",
+              "balinesemassage",
+              "spabali"
+            ],
+            "altText": "A man relaxing on a massage bed during a traditional balinese massage at night.",
+            "imagePrompt": "A man lying on a massage bed in a hotel room at night, with warm golden oil on his shoulders and neck. A woman therapist's hands are working on his upper back. Warm lamps give the room a golden glow, and the dark tropical garden is visible through open glass"
+          }
+        ]
+      },
+      {
+        "posts": [
+          {
+            "type": "offer",
+            "topic": "90-minute Traditional Balinese Massage with a discount",
+            "scene": "treatment, from the side",
+            "caption": "10% off our 90-minute Traditional Balinese Massage, until Sunday 1 November.\n\nWarm coconut oil eases tired muscles in your Canggu room while evening lamps cast a golden glow across fresh linens.\n\nExperienced local therapists bring deep relief right to your private villa.\n\nTravel within Canggu, Pererenan, Seminyak, and Kerobokan is free.",
+            "hashtags": [
+              "canggu",
+              "massagecanggu",
+              "balinesemassage",
+              "spabali"
+            ],
+            "altText": "A man relaxing on a massage bed during a traditional balinese massage at night.",
+            "imagePrompt": "A man lying on a massage bed in a hotel room at night, with warm golden oil on his shoulders and neck. A woman therapist's hands are working on his upper back. Warm lamps give the room a golden glow, and the dark tropical garden is visible through open glass doors. Side view, vertical 9:16 format.",
+            "storyText": "10% off"
+          }
+        ]
+      },
+      {
+        "posts": [
+          {
+            "type": "offer",
+            "topic": "90-minute Traditional Balinese Massage with a discount",
+            "scene": "treatment, from the side",
+            "caption": "10% off our 90-minute Traditional Balinese Massage, until Sunday 1 November.\n\nWarm coconut oil eases tired muscles in your Canggu room while evening lamps cast a golden glow across fresh linens.\n\nExperienced local therapists bring deep relief right to your private villa.\n\nTravel within Canggu, Pererenan, Seminyak, and Kerobokan is free.",
+            "hashtags": [
+              "canggu",
+              "massagecanggu",
+              "balinesemassage",
+              "spabali"
+            ],
+            "altText": "A man relaxing on a massage bed during a traditional balinese massage at night.",
+            "imagePrompt": "A man lying on a massage bed in a hotel room at night, with warm golden oil on his shoulders and neck. A woman therapist's hands are working on his upper back. Warm lamps give the room a golden glow, and the dark tropical garden is visible through open glass doors. Side view, vertical 9:16 format.",
+            "storyText": "10% off our 90-minute Traditional Balinese Massage, until Sunday 1 November. 🌸"
+          },
+          {
+            "type": "offer",
+            "topic": "90-minute Four-Hands Massage"
+          }
+        ]
+      },
+      {
+        "posts": [
+          {
+            "type": "offer",
+            "topic": "90-minute Traditional Balinese Massage with a discount",
+            "scene": "treatment, from the side",
+            "caption": "10% off our 90-minute Traditional Balinese Massage, until Sunday 1 November.\n\nWarm coconut oil eases tired muscles in your Canggu room while evening lamps cast a golden glow across fresh linens.\n\nExperienced local therapists bring deep relief right to your private villa.\n\nTravel within Canggu, Pererenan, Seminyak, and Kerobokan is free.",
+            "hashtags": [
+              "canggu",
+              "massagecanggu",
+              "balinesemassage",
+              "spabali"
+            ],
+            "altText": "A man relaxing on a massage bed during a traditional balinese massage at night.",
+            "imagePrompt": "A man lying on a massage bed in a hotel room at night, with warm golden oil on his shoulders and neck. A woman therapist's hands are working on his upper back. Warm lamps give the room a golden glow, and the dark tropical garden is visible through open glass doors. Side view, vertical 9:16 format.",
+            "storyText": "10% off our 90-minute Traditional Balinese Massage, until Sunday 1 November. 🌸"
+          },
+          {
+            "type": "offer",
+            "topic": "90-minute Four-Hands Massage promotion",
+            "scene": "guest, from above",
+            "caption": "10% off our "
+          }
+        ]
+      },
+      {
+        "posts": [
+          {
+            "type": "offer",
+            "topic": "90-minute Traditional Balinese Massage with a discount",
+            "scene": "treatment, from the side",
+            "caption": "10% off our 90-minute Traditional Balinese Massage, until Sunday 1 November.\n\nWarm coconut oil eases tired muscles in your Canggu room while evening lamps cast a golden glow across fresh linens.\n\nExperienced local therapists bring deep relief right to your private villa.\n\nTravel within Canggu, Pererenan, Seminyak, and Kerobokan is free.",
+            "hashtags": [
+              "canggu",
+              "massagecanggu",
+              "balinesemassage",
+              "spabali"
+            ],
+            "altText": "A man relaxing on a massage bed during a traditional balinese massage at night.",
+            "imagePrompt": "A man lying on a massage bed in a hotel room at night, with warm golden oil on his shoulders and neck. A woman therapist's hands are working on his upper back. Warm lamps give the room a golden glow, and the dark tropical garden is visible through open glass doors. Side view, vertical 9:16 format.",
+            "storyText": "10% off our 90-minute Traditional Balinese Massage, until Sunday 1 November. 🌸"
+          },
+          {
+            "type": "offer",
+            "topic": "90-minute Four-Hands Massage promotion",
+            "scene": "guest, from above",
+            "caption": "10% off our 90-minute Four-Hands Massage, until Sunday 1 November.\n\nGentle rhythmic strokes synchronize to"
+          }
+        ]
+      },
+      {
+        "posts": [
+          {
+            "type": "offer",
+            "topic": "90-minute Traditional Balinese Massage with a discount",
+            "scene": "treatment, from the side",
+            "caption": "10% off our 90-minute Traditional Balinese Massage, until Sunday 1 November.\n\nWarm coconut oil eases tired muscles in your Canggu room while evening lamps cast a golden glow across fresh linens.\n\nExperienced local therapists bring deep relief right to your private villa.\n\nTravel within Canggu, Pererenan, Seminyak, and Kerobokan is free.",
+            "hashtags": [
+              "canggu",
+              "massagecanggu",
+              "balinesemassage",
+              "spabali"
+            ],
+            "altText": "A man relaxing on a massage bed during a traditional balinese massage at night.",
+            "imagePrompt": "A man lying on a massage bed in a hotel room at night, with warm golden oil on his shoulders and neck. A woman therapist's hands are working on his upper back. Warm lamps give the room a golden glow, and the dark tropical garden is visible through open glass doors. Side view, vertical 9:16 format.",
+            "storyText": "10% off our 90-minute Traditional Balinese Massage, until Sunday 1 November. 🌸"
+          },
+          {
+            "type": "offer",
+            "topic": "90-minute Four-Hands Massage promotion",
+            "scene": "guest, from above",
+            "caption": "10% off our 90-minute Four-Hands Massage, until Sunday 1 November.\n\nGentle rhythmic strokes synchronize to release tension as two therapists work in calm harmony on your arms and hands.\n\nSoft afternoon light filters through the open windows of your"
+          }
+        ]
+      },
+      {
+        "posts": [
+          {
+            "type": "offer",
+            "topic": "90-minute Traditional Balinese Massage with a discount",
+            "scene": "treatment, from the side",
+            "caption": "10% off our 90-minute Traditional Balinese Massage, until Sunday 1 November.\n\nWarm coconut oil eases tired muscles in your Canggu room while evening lamps cast a golden glow across fresh linens.\n\nExperienced local therapists bring deep relief right to your private villa.\n\nTravel within Canggu, Pererenan, Seminyak, and Kerobokan is free.",
+            "hashtags": [
+              "canggu",
+              "massagecanggu",
+              "balinesemassage",
+              "spabali"
+            ],
+            "altText": "A man relaxing on a massage bed during a traditional balinese massage at night.",
+            "imagePrompt": "A man lying on a massage bed in a hotel room at night, with warm golden oil on his shoulders and neck. A woman therapist's hands are working on his upper back. Warm lamps give the room a golden glow, and the dark tropical garden is visible through open glass doors. Side view, vertical 9:16 format.",
+            "storyText": "10% off our 90-minute Traditional Balinese Massage, until Sunday 1 November. 🌸"
+          },
+          {
+            "type": "offer",
+            "topic": "90-minute Four-Hands Massage promotion",
+            "scene": "guest, from above",
+            "caption": "10% off our 90-minute Four-Hands Massage, until Sunday 1 November.\n\nGentle rhythmic strokes synchronize to release tension as two therapists work in calm harmony on your arms and hands.\n\nSoft afternoon light filters through the open windows of your quiet Seminyak villa into the peaceful room.\n\nRest easy knowing experienced local therapists arrive promptly with all needed"
+          }
+        ]
+      },
+      {
+        "posts": [
+          {
+            "type": "offer",
+            "topic": "90-minute Traditional Balinese Massage with a discount",
+            "scene": "treatment, from the side",
+            "caption": "10% off our 90-minute Traditional Balinese Massage, until Sunday 1 November.\n\nWarm coconut oil eases tired muscles in your Canggu room while evening lamps cast a golden glow across fresh linens.\n\nExperienced local therapists bring deep relief right to your private villa.\n\nTravel within Canggu, Pererenan, Seminyak, and Kerobokan is free.",
+            "hashtags": [
+              "canggu",
+              "massagecanggu",
+              "balinesemassage",
+              "spabali"
+            ],
+            "altText": "A man relaxing on a massage bed during a traditional balinese massage at night.",
+            "imagePrompt": "A man lying on a massage bed in a hotel room at night, with warm golden oil on his shoulders and neck. A woman therapist's hands are working on his upper back. Warm lamps give the room a golden glow, and the dark tropical garden is visible through open glass doors. Side view, vertical 9:16 format.",
+            "storyText": "10% off our 90-minute Traditional Balinese Massage, until Sunday 1 November. 🌸"
+          },
+          {
+            "type": "offer",
+            "topic": "90-minute Four-Hands Massage promotion",
+            "scene": "guest, from above",
+            "caption": "10% off our 90-minute Four-Hands Massage, until Sunday 1 November.\n\nGentle rhythmic strokes synchronize to release tension as two therapists work in calm harmony on your arms and hands.\n\nSoft afternoon light filters through the open windows of your quiet Seminyak villa into the peaceful room.\n\nRest easy knowing experienced local therapists arrive promptly with all needed supplies.\n\nWhatsApp replies in about 5 minutes to set your time.",
+            "hashtags": [
+              "semin"
             ]
           }
         ]
@@ -63,170 +301,31 @@
         "posts": [
           {
             "type": "offer",
-            "topic": "Traditional Balinese Massage 10% off",
-            "scene": "treatment",
-            "caption": "10% off our 90-minute Traditional Balinese Massage, until Sunday 1 November. How would it feel to completely unwind in your own room as the day turns to evening? Experience soothing strokes with warm coconut oil right where you are staying in Canggu. Feel the gentle release of tension as a calm evening awaits you under the tropical stars 🌸",
+            "topic": "90-minute Traditional Balinese Massage with a discount",
+            "scene": "treatment, from the side",
+            "caption": "10% off our 90-minute Traditional Balinese Massage, until Sunday 1 November.\n\nWarm coconut oil eases tired muscles in your Canggu room while evening lamps cast a golden glow across fresh linens.\n\nExperienced local therapists bring deep relief right to your private villa.\n\nTravel within Canggu, Pererenan, Seminyak, and Kerobokan is free.",
             "hashtags": [
               "canggu",
-              "bali",
-              "massagedanang",
-              "balinesemassage"
-            ]
-          }
-        ]
-      },
-      {
-        "posts": [
-          {
-            "type": "offer",
-            "topic": "Traditional Balinese Massage 10% off",
-            "scene": "treatment",
-            "caption": "10% off our 90-minute Traditional Balinese Massage, until Sunday 1 November. How would it feel to completely unwind in your own room as the day turns to evening? Experience soothing strokes with warm coconut oil right where you are staying in Canggu. Feel the gentle release of tension as a calm evening awaits you under the tropical stars 🌸",
-            "hashtags": [
-              "canggu",
-              "bali",
-              "massagedanang",
-              "balinesemassage"
+              "massagecanggu",
+              "balinesemassage",
+              "spabali"
             ],
-            "altText": "A therapist's hands working on a man's shoulders with warm oil in"
-          }
-        ]
-      },
-      {
-        "posts": [
-          {
-            "type": "offer",
-            "topic": "Traditional Balinese Massage 10% off",
-            "scene": "treatment",
-            "caption": "10% off our 90-minute Traditional Balinese Massage, until Sunday 1 November. How would it feel to completely unwind in your own room as the day turns to evening? Experience soothing strokes with warm coconut oil right where you are staying in Canggu. Feel the gentle release of tension as a calm evening awaits you under the tropical stars 🌸",
-            "hashtags": [
-              "canggu",
-              "bali",
-              "massagedanang",
-              "balinesemassage"
-            ],
-            "altText": "A therapist's hands working on a man's shoulders with warm oil in a softly lit room at night.",
-            "imagePrompt": "A tall 9:16 photo of a traditional"
-          }
-        ]
-      },
-      {
-        "posts": [
-          {
-            "type": "offer",
-            "topic": "Traditional Balinese Massage 10% off",
-            "scene": "treatment",
-            "caption": "10% off our 90-minute Traditional Balinese Massage, until Sunday 1 November. How would it feel to completely unwind in your own room as the day turns to evening? Experience soothing strokes with warm coconut oil right where you are staying in Canggu. Feel the gentle release of tension as a calm evening awaits you under the tropical stars 🌸",
-            "hashtags": [
-              "canggu",
-              "bali",
-              "massagedanang",
-              "balinesemassage"
-            ],
-            "altText": "A therapist's hands working on a man's shoulders with warm oil in a softly lit room at night.",
-            "imagePrompt": "A tall 9:16 photo of a traditional balinese massage. One guest, a man, lying on a massage bed, with warm golden oil. The therapist's hands working on"
-          }
-        ]
-      },
-      {
-        "posts": [
-          {
-            "type": "offer",
-            "topic": "Traditional Balinese Massage 10% off",
-            "scene": "treatment",
-            "caption": "10% off our 90-minute Traditional Balinese Massage, until Sunday 1 November. How would it feel to completely unwind in your own room as the day turns to evening? Experience soothing strokes with warm coconut oil right where you are staying in Canggu. Feel the gentle release of tension as a calm evening awaits you under the tropical stars 🌸",
-            "hashtags": [
-              "canggu",
-              "bali",
-              "massagedanang",
-              "balinesemassage"
-            ],
-            "altText": "A therapist's hands working on a man's shoulders with warm oil in a softly lit room at night.",
-            "imagePrompt": "A tall 9:16 photo of a traditional balinese massage. One guest, a man, lying on a massage bed, with warm golden oil. The therapist's hands working on the shoulders and neck. Scene treatment, from the side. Night, lamps and candles giving the room a warm golden glow, the garden outside lit"
-          }
-        ]
-      },
-      {
-        "posts": [
-          {
-            "type": "offer",
-            "topic": "Traditional Balinese Massage 10% off",
-            "scene": "treatment",
-            "caption": "10% off our 90-minute Traditional Balinese Massage, until Sunday 1 November. How would it feel to completely unwind in your own room as the day turns to evening? Experience soothing strokes with warm coconut oil right where you are staying in Canggu. Feel the gentle release of tension as a calm evening awaits you under the tropical stars 🌸",
-            "hashtags": [
-              "canggu",
-              "bali",
-              "massagedanang",
-              "balinesemassage"
-            ],
-            "altText": "A therapist's hands working on a man's shoulders with warm oil in a softly lit room at night.",
-            "imagePrompt": "A tall 9:16 photo of a traditional balinese massage. One guest, a man, lying on a massage bed, with warm golden oil. The therapist's hands working on the shoulders and neck. Scene treatment, from the side. Night, lamps and candles giving the room a warm golden glow, the garden outside lit by lanterns under a deep blue sky. Clean, tidy room, warm and homely like a boutique hotel. No text, no logos"
-          }
-        ]
-      },
-      {
-        "posts": [
-          {
-            "type": "offer",
-            "topic": "Traditional Balinese Massage 10% off",
-            "scene": "treatment",
-            "caption": "10% off our 90-minute Traditional Balinese Massage, until Sunday 1 November. How would it feel to completely unwind in your own room as the day turns to evening? Experience soothing strokes with warm coconut oil right where you are staying in Canggu. Feel the gentle release of tension as a calm evening awaits you under the tropical stars 🌸",
-            "hashtags": [
-              "canggu",
-              "bali",
-              "massagedanang",
-              "balinesemassage"
-            ],
-            "altText": "A therapist's hands working on a man's shoulders with warm oil in a softly lit room at night.",
-            "imagePrompt": "A tall 9:16 photo of a traditional balinese massage. One guest, a man, lying on a massage bed, with warm golden oil. The therapist's hands working on the shoulders and neck. Scene treatment, from the side. Night, lamps and candles giving the room a warm golden glow, the garden outside lit by lanterns under a deep blue sky. Clean, tidy room, warm and homely like a boutique hotel. No text, no logos.",
-            "storyText": "10% off our 90-minute Traditional Balinese Massage, until"
-          }
-        ]
-      },
-      {
-        "posts": [
-          {
-            "type": "offer",
-            "topic": "Traditional Balinese Massage 10% off",
-            "scene": "treatment",
-            "caption": "10% off our 90-minute Traditional Balinese Massage, until Sunday 1 November. How would it feel to completely unwind in your own room as the day turns to evening? Experience soothing strokes with warm coconut oil right where you are staying in Canggu. Feel the gentle release of tension as a calm evening awaits you under the tropical stars 🌸",
-            "hashtags": [
-              "canggu",
-              "bali",
-              "massagedanang",
-              "balinesemassage"
-            ],
-            "altText": "A therapist's hands working on a man's shoulders with warm oil in a softly lit room at night.",
-            "imagePrompt": "A tall 9:16 photo of a traditional balinese massage. One guest, a man, lying on a massage bed, with warm golden oil. The therapist's hands working on the shoulders and neck. Scene treatment, from the side. Night, lamps and candles giving the room a warm golden glow, the garden outside lit by lanterns under a deep blue sky. Clean, tidy room, warm and homely like a boutique hotel. No text, no logos.",
-            "storyText": "10% off our 90-minute Traditional Balinese Massage, until Sunday 1 November. 🌸"
-          },
-          {
-            "type": "offer"
-          }
-        ]
-      },
-      {
-        "posts": [
-          {
-            "type": "offer",
-            "topic": "Traditional Balinese Massage 10% off",
-            "scene": "treatment",
-            "caption": "10% off our 90-minute Traditional Balinese Massage, until Sunday 1 November. How would it feel to completely unwind in your own room as the day turns to evening? Experience soothing strokes with warm coconut oil right where you are staying in Canggu. Feel the gentle release of tension as a calm evening awaits you under the tropical stars 🌸",
-            "hashtags": [
-              "canggu",
-              "bali",
-              "massagedanang",
-              "balinesemassage"
-            ],
-            "altText": "A therapist's hands working on a man's shoulders with warm oil in a softly lit room at night.",
-            "imagePrompt": "A tall 9:16 photo of a traditional balinese massage. One guest, a man, lying on a massage bed, with warm golden oil. The therapist's hands working on the shoulders and neck. Scene treatment, from the side. Night, lamps and candles giving the room a warm golden glow, the garden outside lit by lanterns under a deep blue sky. Clean, tidy room, warm and homely like a boutique hotel. No text, no logos.",
+            "altText": "A man relaxing on a massage bed during a traditional balinese massage at night.",
+            "imagePrompt": "A man lying on a massage bed in a hotel room at night, with warm golden oil on his shoulders and neck. A woman therapist's hands are working on his upper back. Warm lamps give the room a golden glow, and the dark tropical garden is visible through open glass doors. Side view, vertical 9:16 format.",
             "storyText": "10% off our 90-minute Traditional Balinese Massage, until Sunday 1 November. 🌸"
           },
           {
             "type": "offer",
-            "topic": "Four-Hands Massage 10% off",
-            "scene": "guest",
-            "caption": ""
+            "topic": "90-minute Four-Hands Massage promotion",
+            "scene": "guest, from above",
+            "caption": "10% off our 90-minute Four-Hands Massage, until Sunday 1 November.\n\nGentle rhythmic strokes synchronize to release tension as two therapists work in calm harmony on your arms and hands.\n\nSoft afternoon light filters through the open windows of your quiet Seminyak villa into the peaceful room.\n\nRest easy knowing experienced local therapists arrive promptly with all needed supplies.\n\nWhatsApp replies in about 5 minutes to set your time.",
+            "hashtags": [
+              "seminyak",
+              "massageseminyak",
+              "fourhands",
+              "balispa"
+            ],
+            "altText": "A woman relaxing on a massage bed with two therapists working in step from above."
           }
         ]
       },
@@ -234,24 +333,32 @@
         "posts": [
           {
             "type": "offer",
-            "topic": "Traditional Balinese Massage 10% off",
-            "scene": "treatment",
-            "caption": "10% off our 90-minute Traditional Balinese Massage, until Sunday 1 November. How would it feel to completely unwind in your own room as the day turns to evening? Experience soothing strokes with warm coconut oil right where you are staying in Canggu. Feel the gentle release of tension as a calm evening awaits you under the tropical stars 🌸",
+            "topic": "90-minute Traditional Balinese Massage with a discount",
+            "scene": "treatment, from the side",
+            "caption": "10% off our 90-minute Traditional Balinese Massage, until Sunday 1 November.\n\nWarm coconut oil eases tired muscles in your Canggu room while evening lamps cast a golden glow across fresh linens.\n\nExperienced local therapists bring deep relief right to your private villa.\n\nTravel within Canggu, Pererenan, Seminyak, and Kerobokan is free.",
             "hashtags": [
               "canggu",
-              "bali",
-              "massagedanang",
-              "balinesemassage"
+              "massagecanggu",
+              "balinesemassage",
+              "spabali"
             ],
-            "altText": "A therapist's hands working on a man's shoulders with warm oil in a softly lit room at night.",
-            "imagePrompt": "A tall 9:16 photo of a traditional balinese massage. One guest, a man, lying on a massage bed, with warm golden oil. The therapist's hands working on the shoulders and neck. Scene treatment, from the side. Night, lamps and candles giving the room a warm golden glow, the garden outside lit by lanterns under a deep blue sky. Clean, tidy room, warm and homely like a boutique hotel. No text, no logos.",
+            "altText": "A man relaxing on a massage bed during a traditional balinese massage at night.",
+            "imagePrompt": "A man lying on a massage bed in a hotel room at night, with warm golden oil on his shoulders and neck. A woman therapist's hands are working on his upper back. Warm lamps give the room a golden glow, and the dark tropical garden is visible through open glass doors. Side view, vertical 9:16 format.",
             "storyText": "10% off our 90-minute Traditional Balinese Massage, until Sunday 1 November. 🌸"
           },
           {
             "type": "offer",
-            "topic": "Four-Hands Massage 10% off",
-            "scene": "guest",
-            "caption": "10% off our 90-minute Four-Hands Massage, until Sunday 1 November. Ready to experience"
+            "topic": "90-minute Four-Hands Massage promotion",
+            "scene": "guest, from above",
+            "caption": "10% off our 90-minute Four-Hands Massage, until Sunday 1 November.\n\nGentle rhythmic strokes synchronize to release tension as two therapists work in calm harmony on your arms and hands.\n\nSoft afternoon light filters through the open windows of your quiet Seminyak villa into the peaceful room.\n\nRest easy knowing experienced local therapists arrive promptly with all needed supplies.\n\nWhatsApp replies in about 5 minutes to set your time.",
+            "hashtags": [
+              "seminyak",
+              "massageseminyak",
+              "fourhands",
+              "balispa"
+            ],
+            "altText": "A woman relaxing on a massage bed with two therapists working in step from above.",
+            "imagePrompt": "A woman lying on a massage bed during the day, relaxed and awake. Two women therapists work in step, one"
           }
         ]
       },
@@ -259,24 +366,32 @@
         "posts": [
           {
             "type": "offer",
-            "topic": "Traditional Balinese Massage 10% off",
-            "scene": "treatment",
-            "caption": "10% off our 90-minute Traditional Balinese Massage, until Sunday 1 November. How would it feel to completely unwind in your own room as the day turns to evening? Experience soothing strokes with warm coconut oil right where you are staying in Canggu. Feel the gentle release of tension as a calm evening awaits you under the tropical stars 🌸",
+            "topic": "90-minute Traditional Balinese Massage with a discount",
+            "scene": "treatment, from the side",
+            "caption": "10% off our 90-minute Traditional Balinese Massage, until Sunday 1 November.\n\nWarm coconut oil eases tired muscles in your Canggu room while evening lamps cast a golden glow across fresh linens.\n\nExperienced local therapists bring deep relief right to your private villa.\n\nTravel within Canggu, Pererenan, Seminyak, and Kerobokan is free.",
             "hashtags": [
               "canggu",
-              "bali",
-              "massagedanang",
-              "balinesemassage"
+              "massagecanggu",
+              "balinesemassage",
+              "spabali"
             ],
-            "altText": "A therapist's hands working on a man's shoulders with warm oil in a softly lit room at night.",
-            "imagePrompt": "A tall 9:16 photo of a traditional balinese massage. One guest, a man, lying on a massage bed, with warm golden oil. The therapist's hands working on the shoulders and neck. Scene treatment, from the side. Night, lamps and candles giving the room a warm golden glow, the garden outside lit by lanterns under a deep blue sky. Clean, tidy room, warm and homely like a boutique hotel. No text, no logos.",
+            "altText": "A man relaxing on a massage bed during a traditional balinese massage at night.",
+            "imagePrompt": "A man lying on a massage bed in a hotel room at night, with warm golden oil on his shoulders and neck. A woman therapist's hands are working on his upper back. Warm lamps give the room a golden glow, and the dark tropical garden is visible through open glass doors. Side view, vertical 9:16 format.",
             "storyText": "10% off our 90-minute Traditional Balinese Massage, until Sunday 1 November. 🌸"
           },
           {
             "type": "offer",
-            "topic": "Four-Hands Massage 10% off",
-            "scene": "guest",
-            "caption": "10% off our 90-minute Four-Hands Massage, until Sunday 1 November. Ready to experience complete relaxation during your bright afternoon break? Feel the synchronized touch of two therapists working in harmony on your arms and hands inside"
+            "topic": "90-minute Four-Hands Massage promotion",
+            "scene": "guest, from above",
+            "caption": "10% off our 90-minute Four-Hands Massage, until Sunday 1 November.\n\nGentle rhythmic strokes synchronize to release tension as two therapists work in calm harmony on your arms and hands.\n\nSoft afternoon light filters through the open windows of your quiet Seminyak villa into the peaceful room.\n\nRest easy knowing experienced local therapists arrive promptly with all needed supplies.\n\nWhatsApp replies in about 5 minutes to set your time.",
+            "hashtags": [
+              "seminyak",
+              "massageseminyak",
+              "fourhands",
+              "balispa"
+            ],
+            "altText": "A woman relaxing on a massage bed with two therapists working in step from above.",
+            "imagePrompt": "A woman lying on a massage bed during the day, relaxed and awake. Two women therapists work in step, one on each side, focusing on her arms and hands. The room opens onto a green tropical garden in soft shade. Overhead"
           }
         ]
       },
@@ -284,30 +399,33 @@
         "posts": [
           {
             "type": "offer",
-            "topic": "Traditional Balinese Massage 10% off",
-            "scene": "treatment",
-            "caption": "10% off our 90-minute Traditional Balinese Massage, until Sunday 1 November. How would it feel to completely unwind in your own room as the day turns to evening? Experience soothing strokes with warm coconut oil right where you are staying in Canggu. Feel the gentle release of tension as a calm evening awaits you under the tropical stars 🌸",
+            "topic": "90-minute Traditional Balinese Massage with a discount",
+            "scene": "treatment, from the side",
+            "caption": "10% off our 90-minute Traditional Balinese Massage, until Sunday 1 November.\n\nWarm coconut oil eases tired muscles in your Canggu room while evening lamps cast a golden glow across fresh linens.\n\nExperienced local therapists bring deep relief right to your private villa.\n\nTravel within Canggu, Pererenan, Seminyak, and Kerobokan is free.",
             "hashtags": [
               "canggu",
-              "bali",
-              "massagedanang",
-              "balinesemassage"
+              "massagecanggu",
+              "balinesemassage",
+              "spabali"
             ],
-            "altText": "A therapist's hands working on a man's shoulders with warm oil in a softly lit room at night.",
-            "imagePrompt": "A tall 9:16 photo of a traditional balinese massage. One guest, a man, lying on a massage bed, with warm golden oil. The therapist's hands working on the shoulders and neck. Scene treatment, from the side. Night, lamps and candles giving the room a warm golden glow, the garden outside lit by lanterns under a deep blue sky. Clean, tidy room, warm and homely like a boutique hotel. No text, no logos.",
+            "altText": "A man relaxing on a massage bed during a traditional balinese massage at night.",
+            "imagePrompt": "A man lying on a massage bed in a hotel room at night, with warm golden oil on his shoulders and neck. A woman therapist's hands are working on his upper back. Warm lamps give the room a golden glow, and the dark tropical garden is visible through open glass doors. Side view, vertical 9:16 format.",
             "storyText": "10% off our 90-minute Traditional Balinese Massage, until Sunday 1 November. 🌸"
           },
           {
             "type": "offer",
-            "topic": "Four-Hands Massage 10% off",
-            "scene": "guest",
-            "caption": "10% off our 90-minute Four-Hands Massage, until Sunday 1 November. Ready to experience complete relaxation during your bright afternoon break? Feel the synchronized touch of two therapists working in harmony on your arms and hands inside your private villa. Enjoy the peaceful afternoon light and carry that restful feeling into a wonderful evening 🌺",
+            "topic": "90-minute Four-Hands Massage promotion",
+            "scene": "guest, from above",
+            "caption": "10% off our 90-minute Four-Hands Massage, until Sunday 1 November.\n\nGentle rhythmic strokes synchronize to release tension as two therapists work in calm harmony on your arms and hands.\n\nSoft afternoon light filters through the open windows of your quiet Seminyak villa into the peaceful room.\n\nRest easy knowing experienced local therapists arrive promptly with all needed supplies.\n\nWhatsApp replies in about 5 minutes to set your time.",
             "hashtags": [
-              "canggu",
-              "bali",
-              "massagedanang",
-              "spaday"
-            ]
+              "seminyak",
+              "massageseminyak",
+              "fourhands",
+              "balispa"
+            ],
+            "altText": "A woman relaxing on a massage bed with two therapists working in step from above.",
+            "imagePrompt": "A woman lying on a massage bed during the day, relaxed and awake. Two women therapists work in step, one on each side, focusing on her arms and hands. The room opens onto a green tropical garden in soft shade. Overhead view, vertical 9:16 format.",
+            "storyText": "10% off our 9"
           }
         ]
       },
@@ -315,230 +433,32 @@
         "posts": [
           {
             "type": "offer",
-            "topic": "Traditional Balinese Massage 10% off",
-            "scene": "treatment",
-            "caption": "10% off our 90-minute Traditional Balinese Massage, until Sunday 1 November. How would it feel to completely unwind in your own room as the day turns to evening? Experience soothing strokes with warm coconut oil right where you are staying in Canggu. Feel the gentle release of tension as a calm evening awaits you under the tropical stars 🌸",
+            "topic": "90-minute Traditional Balinese Massage with a discount",
+            "scene": "treatment, from the side",
+            "caption": "10% off our 90-minute Traditional Balinese Massage, until Sunday 1 November.\n\nWarm coconut oil eases tired muscles in your Canggu room while evening lamps cast a golden glow across fresh linens.\n\nExperienced local therapists bring deep relief right to your private villa.\n\nTravel within Canggu, Pererenan, Seminyak, and Kerobokan is free.",
             "hashtags": [
               "canggu",
-              "bali",
-              "massagedanang",
-              "balinesemassage"
+              "massagecanggu",
+              "balinesemassage",
+              "spabali"
             ],
-            "altText": "A therapist's hands working on a man's shoulders with warm oil in a softly lit room at night.",
-            "imagePrompt": "A tall 9:16 photo of a traditional balinese massage. One guest, a man, lying on a massage bed, with warm golden oil. The therapist's hands working on the shoulders and neck. Scene treatment, from the side. Night, lamps and candles giving the room a warm golden glow, the garden outside lit by lanterns under a deep blue sky. Clean, tidy room, warm and homely like a boutique hotel. No text, no logos.",
+            "altText": "A man relaxing on a massage bed during a traditional balinese massage at night.",
+            "imagePrompt": "A man lying on a massage bed in a hotel room at night, with warm golden oil on his shoulders and neck. A woman therapist's hands are working on his upper back. Warm lamps give the room a golden glow, and the dark tropical garden is visible through open glass doors. Side view, vertical 9:16 format.",
             "storyText": "10% off our 90-minute Traditional Balinese Massage, until Sunday 1 November. 🌸"
           },
           {
             "type": "offer",
-            "topic": "Four-Hands Massage 10% off",
-            "scene": "guest",
-            "caption": "10% off our 90-minute Four-Hands Massage, until Sunday 1 November. Ready to experience complete relaxation during your bright afternoon break? Feel the synchronized touch of two therapists working in harmony on your arms and hands inside your private villa. Enjoy the peaceful afternoon light and carry that restful feeling into a wonderful evening 🌺",
+            "topic": "90-minute Four-Hands Massage promotion",
+            "scene": "guest, from above",
+            "caption": "10% off our 90-minute Four-Hands Massage, until Sunday 1 November.\n\nGentle rhythmic strokes synchronize to release tension as two therapists work in calm harmony on your arms and hands.\n\nSoft afternoon light filters through the open windows of your quiet Seminyak villa into the peaceful room.\n\nRest easy knowing experienced local therapists arrive promptly with all needed supplies.\n\nWhatsApp replies in about 5 minutes to set your time.",
             "hashtags": [
-              "canggu",
-              "bali",
-              "massagedanang",
-              "spaday"
+              "seminyak",
+              "massageseminyak",
+              "fourhands",
+              "balispa"
             ],
-            "altText": "A woman relaxing on a massage bed while two therapists work in step"
-          }
-        ]
-      },
-      {
-        "posts": [
-          {
-            "type": "offer",
-            "topic": "Traditional Balinese Massage 10% off",
-            "scene": "treatment",
-            "caption": "10% off our 90-minute Traditional Balinese Massage, until Sunday 1 November. How would it feel to completely unwind in your own room as the day turns to evening? Experience soothing strokes with warm coconut oil right where you are staying in Canggu. Feel the gentle release of tension as a calm evening awaits you under the tropical stars 🌸",
-            "hashtags": [
-              "canggu",
-              "bali",
-              "massagedanang",
-              "balinesemassage"
-            ],
-            "altText": "A therapist's hands working on a man's shoulders with warm oil in a softly lit room at night.",
-            "imagePrompt": "A tall 9:16 photo of a traditional balinese massage. One guest, a man, lying on a massage bed, with warm golden oil. The therapist's hands working on the shoulders and neck. Scene treatment, from the side. Night, lamps and candles giving the room a warm golden glow, the garden outside lit by lanterns under a deep blue sky. Clean, tidy room, warm and homely like a boutique hotel. No text, no logos.",
-            "storyText": "10% off our 90-minute Traditional Balinese Massage, until Sunday 1 November. 🌸"
-          },
-          {
-            "type": "offer",
-            "topic": "Four-Hands Massage 10% off",
-            "scene": "guest",
-            "caption": "10% off our 90-minute Four-Hands Massage, until Sunday 1 November. Ready to experience complete relaxation during your bright afternoon break? Feel the synchronized touch of two therapists working in harmony on your arms and hands inside your private villa. Enjoy the peaceful afternoon light and carry that restful feeling into a wonderful evening 🌺",
-            "hashtags": [
-              "canggu",
-              "bali",
-              "massagedanang",
-              "spaday"
-            ],
-            "altText": "A woman relaxing on a massage bed while two therapists work in step on her arms from above.",
-            "imagePrompt": "A tall 9:16 photo of a four-hands massage. One"
-          }
-        ]
-      },
-      {
-        "posts": [
-          {
-            "type": "offer",
-            "topic": "Traditional Balinese Massage 10% off",
-            "scene": "treatment",
-            "caption": "10% off our 90-minute Traditional Balinese Massage, until Sunday 1 November. How would it feel to completely unwind in your own room as the day turns to evening? Experience soothing strokes with warm coconut oil right where you are staying in Canggu. Feel the gentle release of tension as a calm evening awaits you under the tropical stars 🌸",
-            "hashtags": [
-              "canggu",
-              "bali",
-              "massagedanang",
-              "balinesemassage"
-            ],
-            "altText": "A therapist's hands working on a man's shoulders with warm oil in a softly lit room at night.",
-            "imagePrompt": "A tall 9:16 photo of a traditional balinese massage. One guest, a man, lying on a massage bed, with warm golden oil. The therapist's hands working on the shoulders and neck. Scene treatment, from the side. Night, lamps and candles giving the room a warm golden glow, the garden outside lit by lanterns under a deep blue sky. Clean, tidy room, warm and homely like a boutique hotel. No text, no logos.",
-            "storyText": "10% off our 90-minute Traditional Balinese Massage, until Sunday 1 November. 🌸"
-          },
-          {
-            "type": "offer",
-            "topic": "Four-Hands Massage 10% off",
-            "scene": "guest",
-            "caption": "10% off our 90-minute Four-Hands Massage, until Sunday 1 November. Ready to experience complete relaxation during your bright afternoon break? Feel the synchronized touch of two therapists working in harmony on your arms and hands inside your private villa. Enjoy the peaceful afternoon light and carry that restful feeling into a wonderful evening 🌺",
-            "hashtags": [
-              "canggu",
-              "bali",
-              "massagedanang",
-              "spaday"
-            ],
-            "altText": "A woman relaxing on a massage bed while two therapists work in step on her arms from above.",
-            "imagePrompt": "A tall 9:16 photo of a four-hands massage. One guest, a woman, on a massage bed. Two therapists working in step, one on each side. The arms and hands."
-          }
-        ]
-      },
-      {
-        "posts": [
-          {
-            "type": "offer",
-            "topic": "Traditional Balinese Massage 10% off",
-            "scene": "treatment",
-            "caption": "10% off our 90-minute Traditional Balinese Massage, until Sunday 1 November. How would it feel to completely unwind in your own room as the day turns to evening? Experience soothing strokes with warm coconut oil right where you are staying in Canggu. Feel the gentle release of tension as a calm evening awaits you under the tropical stars 🌸",
-            "hashtags": [
-              "canggu",
-              "bali",
-              "massagedanang",
-              "balinesemassage"
-            ],
-            "altText": "A therapist's hands working on a man's shoulders with warm oil in a softly lit room at night.",
-            "imagePrompt": "A tall 9:16 photo of a traditional balinese massage. One guest, a man, lying on a massage bed, with warm golden oil. The therapist's hands working on the shoulders and neck. Scene treatment, from the side. Night, lamps and candles giving the room a warm golden glow, the garden outside lit by lanterns under a deep blue sky. Clean, tidy room, warm and homely like a boutique hotel. No text, no logos.",
-            "storyText": "10% off our 90-minute Traditional Balinese Massage, until Sunday 1 November. 🌸"
-          },
-          {
-            "type": "offer",
-            "topic": "Four-Hands Massage 10% off",
-            "scene": "guest",
-            "caption": "10% off our 90-minute Four-Hands Massage, until Sunday 1 November. Ready to experience complete relaxation during your bright afternoon break? Feel the synchronized touch of two therapists working in harmony on your arms and hands inside your private villa. Enjoy the peaceful afternoon light and carry that restful feeling into a wonderful evening 🌺",
-            "hashtags": [
-              "canggu",
-              "bali",
-              "massagedanang",
-              "spaday"
-            ],
-            "altText": "A woman relaxing on a massage bed while two therapists work in step on her arms from above.",
-            "imagePrompt": "A tall 9:16 photo of a four-hands massage. One guest, a woman, on a massage bed. Two therapists working in step, one on each side. The arms and hands. Scene guest, from above. Day, late afternoon, the lamps lit inside the main light, the garden outside through wide"
-          }
-        ]
-      },
-      {
-        "posts": [
-          {
-            "type": "offer",
-            "topic": "Traditional Balinese Massage 10% off",
-            "scene": "treatment",
-            "caption": "10% off our 90-minute Traditional Balinese Massage, until Sunday 1 November. How would it feel to completely unwind in your own room as the day turns to evening? Experience soothing strokes with warm coconut oil right where you are staying in Canggu. Feel the gentle release of tension as a calm evening awaits you under the tropical stars 🌸",
-            "hashtags": [
-              "canggu",
-              "bali",
-              "massagedanang",
-              "balinesemassage"
-            ],
-            "altText": "A therapist's hands working on a man's shoulders with warm oil in a softly lit room at night.",
-            "imagePrompt": "A tall 9:16 photo of a traditional balinese massage. One guest, a man, lying on a massage bed, with warm golden oil. The therapist's hands working on the shoulders and neck. Scene treatment, from the side. Night, lamps and candles giving the room a warm golden glow, the garden outside lit by lanterns under a deep blue sky. Clean, tidy room, warm and homely like a boutique hotel. No text, no logos.",
-            "storyText": "10% off our 90-minute Traditional Balinese Massage, until Sunday 1 November. 🌸"
-          },
-          {
-            "type": "offer",
-            "topic": "Four-Hands Massage 10% off",
-            "scene": "guest",
-            "caption": "10% off our 90-minute Four-Hands Massage, until Sunday 1 November. Ready to experience complete relaxation during your bright afternoon break? Feel the synchronized touch of two therapists working in harmony on your arms and hands inside your private villa. Enjoy the peaceful afternoon light and carry that restful feeling into a wonderful evening 🌺",
-            "hashtags": [
-              "canggu",
-              "bali",
-              "massagedanang",
-              "spaday"
-            ],
-            "altText": "A woman relaxing on a massage bed while two therapists work in step on her arms from above.",
-            "imagePrompt": "A tall 9:16 photo of a four-hands massage. One guest, a woman, on a massage bed. Two therapists working in step, one on each side. The arms and hands. Scene guest, from above. Day, late afternoon, the lamps lit inside the main light, the garden outside through wide windows in soft shade with no sunlight on it. Clean, tidy room, warm and homely. No text, no logos."
-          }
-        ]
-      },
-      {
-        "posts": [
-          {
-            "type": "offer",
-            "topic": "Traditional Balinese Massage 10% off",
-            "scene": "treatment",
-            "caption": "10% off our 90-minute Traditional Balinese Massage, until Sunday 1 November. How would it feel to completely unwind in your own room as the day turns to evening? Experience soothing strokes with warm coconut oil right where you are staying in Canggu. Feel the gentle release of tension as a calm evening awaits you under the tropical stars 🌸",
-            "hashtags": [
-              "canggu",
-              "bali",
-              "massagedanang",
-              "balinesemassage"
-            ],
-            "altText": "A therapist's hands working on a man's shoulders with warm oil in a softly lit room at night.",
-            "imagePrompt": "A tall 9:16 photo of a traditional balinese massage. One guest, a man, lying on a massage bed, with warm golden oil. The therapist's hands working on the shoulders and neck. Scene treatment, from the side. Night, lamps and candles giving the room a warm golden glow, the garden outside lit by lanterns under a deep blue sky. Clean, tidy room, warm and homely like a boutique hotel. No text, no logos.",
-            "storyText": "10% off our 90-minute Traditional Balinese Massage, until Sunday 1 November. 🌸"
-          },
-          {
-            "type": "offer",
-            "topic": "Four-Hands Massage 10% off",
-            "scene": "guest",
-            "caption": "10% off our 90-minute Four-Hands Massage, until Sunday 1 November. Ready to experience complete relaxation during your bright afternoon break? Feel the synchronized touch of two therapists working in harmony on your arms and hands inside your private villa. Enjoy the peaceful afternoon light and carry that restful feeling into a wonderful evening 🌺",
-            "hashtags": [
-              "canggu",
-              "bali",
-              "massagedanang",
-              "spaday"
-            ],
-            "altText": "A woman relaxing on a massage bed while two therapists work in step on her arms from above.",
-            "imagePrompt": "A tall 9:16 photo of a four-hands massage. One guest, a woman, on a massage bed. Two therapists working in step, one on each side. The arms and hands. Scene guest, from above. Day, late afternoon, the lamps lit inside the main light, the garden outside through wide windows in soft shade with no sunlight on it. Clean, tidy room, warm and homely. No text, no logos.",
-            "storyText": "10% off our 90-minute Four-Hands Massage, until Sunday 1 November"
-          }
-        ]
-      },
-      {
-        "posts": [
-          {
-            "type": "offer",
-            "topic": "Traditional Balinese Massage 10% off",
-            "scene": "treatment",
-            "caption": "10% off our 90-minute Traditional Balinese Massage, until Sunday 1 November. How would it feel to completely unwind in your own room as the day turns to evening? Experience soothing strokes with warm coconut oil right where you are staying in Canggu. Feel the gentle release of tension as a calm evening awaits you under the tropical stars 🌸",
-            "hashtags": [
-              "canggu",
-              "bali",
-              "massagedanang",
-              "balinesemassage"
-            ],
-            "altText": "A therapist's hands working on a man's shoulders with warm oil in a softly lit room at night.",
-            "imagePrompt": "A tall 9:16 photo of a traditional balinese massage. One guest, a man, lying on a massage bed, with warm golden oil. The therapist's hands working on the shoulders and neck. Scene treatment, from the side. Night, lamps and candles giving the room a warm golden glow, the garden outside lit by lanterns under a deep blue sky. Clean, tidy room, warm and homely like a boutique hotel. No text, no logos.",
-            "storyText": "10% off our 90-minute Traditional Balinese Massage, until Sunday 1 November. 🌸"
-          },
-          {
-            "type": "offer",
-            "topic": "Four-Hands Massage 10% off",
-            "scene": "guest",
-            "caption": "10% off our 90-minute Four-Hands Massage, until Sunday 1 November. Ready to experience complete relaxation during your bright afternoon break? Feel the synchronized touch of two therapists working in harmony on your arms and hands inside your private villa. Enjoy the peaceful afternoon light and carry that restful feeling into a wonderful evening 🌺",
-            "hashtags": [
-              "canggu",
-              "bali",
-              "massagedanang",
-              "spaday"
-            ],
-            "altText": "A woman relaxing on a massage bed while two therapists work in step on her arms from above.",
-            "imagePrompt": "A tall 9:16 photo of a four-hands massage. One guest, a woman, on a massage bed. Two therapists working in step, one on each side. The arms and hands. Scene guest, from above. Day, late afternoon, the lamps lit inside the main light, the garden outside through wide windows in soft shade with no sunlight on it. Clean, tidy room, warm and homely. No text, no logos.",
+            "altText": "A woman relaxing on a massage bed with two therapists working in step from above.",
+            "imagePrompt": "A woman lying on a massage bed during the day, relaxed and awake. Two women therapists work in step, one on each side, focusing on her arms and hands. The room opens onto a green tropical garden in soft shade. Overhead view, vertical 9:16 format.",
             "storyText": "10% off our 90-minute Four-Hands Massage, until Sunday 1 November. 🌺"
           }
         ]
@@ -548,32 +468,32 @@
       "posts": [
         {
           "type": "offer",
-          "topic": "Traditional Balinese Massage 10% off",
-          "scene": "treatment",
-          "caption": "10% off our 90-minute Traditional Balinese Massage, until Sunday 1 November. How would it feel to completely unwind in your own room as the day turns to evening? Experience soothing strokes with warm coconut oil right where you are staying in Canggu. Feel the gentle release of tension as a calm evening awaits you under the tropical stars 🌸",
+          "topic": "90-minute Traditional Balinese Massage with a discount",
+          "scene": "treatment, from the side",
+          "caption": "10% off our 90-minute Traditional Balinese Massage, until Sunday 1 November.\n\nWarm coconut oil eases tired muscles in your Canggu room while evening lamps cast a golden glow across fresh linens.\n\nExperienced local therapists bring deep relief right to your private villa.\n\nTravel within Canggu, Pererenan, Seminyak, and Kerobokan is free.",
           "hashtags": [
             "canggu",
-            "bali",
-            "massagedanang",
-            "balinesemassage"
+            "massagecanggu",
+            "balinesemassage",
+            "spabali"
           ],
-          "altText": "A therapist's hands working on a man's shoulders with warm oil in a softly lit room at night.",
-          "imagePrompt": "A tall 9:16 photo of a traditional balinese massage. One guest, a man, lying on a massage bed, with warm golden oil. The therapist's hands working on the shoulders and neck. Scene treatment, from the side. Night, lamps and candles giving the room a warm golden glow, the garden outside lit by lanterns under a deep blue sky. Clean, tidy room, warm and homely like a boutique hotel. No text, no logos.",
+          "altText": "A man relaxing on a massage bed during a traditional balinese massage at night.",
+          "imagePrompt": "A man lying on a massage bed in a hotel room at night, with warm golden oil on his shoulders and neck. A woman therapist's hands are working on his upper back. Warm lamps give the room a golden glow, and the dark tropical garden is visible through open glass doors. Side view, vertical 9:16 format.",
           "storyText": "10% off our 90-minute Traditional Balinese Massage, until Sunday 1 November. 🌸"
         },
         {
           "type": "offer",
-          "topic": "Four-Hands Massage 10% off",
-          "scene": "guest",
-          "caption": "10% off our 90-minute Four-Hands Massage, until Sunday 1 November. Ready to experience complete relaxation during your bright afternoon break? Feel the synchronized touch of two therapists working in harmony on your arms and hands inside your private villa. Enjoy the peaceful afternoon light and carry that restful feeling into a wonderful evening 🌺",
+          "topic": "90-minute Four-Hands Massage promotion",
+          "scene": "guest, from above",
+          "caption": "10% off our 90-minute Four-Hands Massage, until Sunday 1 November.\n\nGentle rhythmic strokes synchronize to release tension as two therapists work in calm harmony on your arms and hands.\n\nSoft afternoon light filters through the open windows of your quiet Seminyak villa into the peaceful room.\n\nRest easy knowing experienced local therapists arrive promptly with all needed supplies.\n\nWhatsApp replies in about 5 minutes to set your time.",
           "hashtags": [
-            "canggu",
-            "bali",
-            "massagedanang",
-            "spaday"
+            "seminyak",
+            "massageseminyak",
+            "fourhands",
+            "balispa"
           ],
-          "altText": "A woman relaxing on a massage bed while two therapists work in step on her arms from above.",
-          "imagePrompt": "A tall 9:16 photo of a four-hands massage. One guest, a woman, on a massage bed. Two therapists working in step, one on each side. The arms and hands. Scene guest, from above. Day, late afternoon, the lamps lit inside the main light, the garden outside through wide windows in soft shade with no sunlight on it. Clean, tidy room, warm and homely. No text, no logos.",
+          "altText": "A woman relaxing on a massage bed with two therapists working in step from above.",
+          "imagePrompt": "A woman lying on a massage bed during the day, relaxed and awake. Two women therapists work in step, one on each side, focusing on her arms and hands. The room opens onto a green tropical garden in soft shade. Overhead view, vertical 9:16 format.",
           "storyText": "10% off our 90-minute Four-Hands Massage, until Sunday 1 November. 🌺"
         }
       ]
