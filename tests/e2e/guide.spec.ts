@@ -37,9 +37,9 @@ test('switches language and stays', async ({ page }) => {
   await pickLanguage(page, 'Tiếng Việt');
   await expect(page.getByRole('heading', { level: 1 })).toHaveText(vi.guide.title);
   await expect(page).toHaveURL('/guide');
-  // Two of the six come with images (docs/specs/posts/two-images).
+  // Two suggestions, each with its images (docs/specs/posts/two-suggestions).
   await expect(
-    page.getByText('Hai gợi ý trong số đó có thêm hình bài đăng và hình story.'),
+    page.getByText('Bạn nhận 2 gợi ý, mỗi gợi ý có hình bài đăng, hình story', { exact: false }),
   ).toBeVisible();
 });
 

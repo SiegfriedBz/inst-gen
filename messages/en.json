@@ -391,19 +391,19 @@
     },
     "posts": {
       "title": "Making your posts",
-      "make": "In <b>{tab}</b>, tap <b>{button}</b>. You get 6 suggestions, each with the text for the post and a short text for the story. Two of them also come with a post image and a story image.",
+      "make": "In <b>{tab}</b>, tap <b>{button}</b>. You get 2 suggestions, each with a post image, a story image, the text for the post and a short text for the story.",
       "open": "Tap a suggestion to open it. The ones you've saved and copied show <b>{saved}</b>.",
-      "check": "A suggestion marked <b>{check}</b> has something to look at before you post: open it to see what, like a price that isn't on your website, or an offer that doesn't match the one you set.",
+      "check": "A suggestion marked <b>{check}</b> has something to look at before you post: open it to see what, like a session length that isn't on your website, or an offer that doesn't match the one you set.",
       "wait": "Keep the page open for about a minute while they are made.",
       "leave": "If you leave, Shopfront carries on where it stopped when you come back, but the part it was making is made again and uses some of today's allowance. So start when you have a minute to wait, not just before a call.",
       "more": "Want other ideas? Tap <b>{button}</b>: the new ones go on top, the earlier ones stay below.",
-      "edit": "Tap <b>{button}</b> to change a suggestion's words, and <b>{image}</b> for a different picture, or for one on a suggestion that has none; you can add a short hint. Each one uses one of the day's new images. The story text can't be changed here: change it in Instagram after pasting, if you like.",
+      "edit": "Tap <b>{button}</b> to change a suggestion's words, and <b>{image}</b> for a different picture; you can add a short hint. The story text can't be changed here: change it in Instagram after pasting, if you like.",
       "update": "If you change your business, the captions and story texts are updated to match. Text you edited yourself is left alone.",
       "offer": "To put today's offer in your posts, tap <b>{button}</b> before you make them:",
       "offerKind": "Pick a discount (10%, 15%, 20% or your own) or a free extra: a treatment you give with a 90-minute session.",
       "offerTreatments": "Tick the treatments it's on. An offer is always on sessions of 90 minutes or longer.",
       "offerUntil": "Pick until when: today, 3 days or 1 week. It ends at midnight on its last day, on your phone's clock.",
-      "offerDone": "Tap <b>{done}</b>. Two of your next 6 suggestions tell the offer and are marked <b>{badge}</b> (or <b>{free}</b>), and they are the two with images; the other four don't.",
+      "offerDone": "Tap <b>{done}</b>. Your next 2 suggestions both tell the offer and are marked <b>{badge}</b> (or <b>{free}</b>).",
       "offerLine": "The offer stays above <b>{button}</b> until its last day ends. Tap it to change it, or ✕ to remove it. Suggestions already made keep what they say."
     },
     "instagram": {
@@ -414,7 +414,7 @@
       "story": "The story: tap +, then Story, and pick the story image. Tap the sticker icon, choose \"Link\", paste your WhatsApp link and place the sticker. If you like, tap <b>{button}</b> in the suggestion, then add text to the story and paste it.",
       "link": "Your WhatsApp link is <code>https://wa.me/</code> followed by your number with its country code, with no + and no spaces. For example: <code>https://wa.me/84901234567</code>.",
       "alt": "Optional: before you share a post, Instagram's \"Advanced settings\", then \"Accessibility\", let you describe the image for people who can't see it.",
-      "noImages": "No picture on a suggestion? Post a photo of your own and paste the text, and the same for a story with the story text.",
+      "noImages": "No pictures on your suggestions? Post a photo of your own and paste the text, and the same for a story with the story text.",
       "never": "Shopfront never posts for you: you decide what goes out."
     },
     "reviews": {
@@ -426,7 +426,7 @@
     "allowance": {
       "title": "Your daily allowance",
       "free": "Shopfront is free, so each day has a limit.",
-      "limits": "Each day you have {reads}, {attempts} of 6 suggestions, {newImages} and {replies}, plus caption updates and translations.",
+      "limits": "Each day you have {reads}, {attempts} of 2 suggestions, {newImages} and {replies}, plus caption updates and translations.",
       "bar": "The line at the top of each tab shows what's left today and the time it all comes back.",
       "reset": "At that time, the limits come back and the day's suggestions and review replies leave the screen. Save what you want to keep before then. Your special offer stays: it lasts until its own last day ends.",
       "time": "The time on the bar is in your phone's own time: trust it rather than a fixed hour.",
