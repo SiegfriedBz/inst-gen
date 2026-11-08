@@ -237,6 +237,31 @@ describe('findFlags: durations', () => {
     expect(findFlags('90 min of calm', profile)).toEqual([]);
     expect(findFlags('60 min of calm', profile)).toEqual([{ kind: 'duration', text: '60 min' }]);
   });
+
+  // A duration a highlight or the promise gives is the profile's too
+  // (docs/specs/posts/marketing-copy, amended 2026-11-08).
+  it("takes a highlight's and the promise's durations, and flags another", () => {
+    const profile = svargaProfile();
+    profile.highlights = [{ value: 'WhatsApp replies in ~5 mins', source: profile.siteUrl }];
+    profile.essence.promise = { value: 'At your door within 30 minutes', source: profile.siteUrl };
+    expect(findFlags('WhatsApp replies in about 5 minutes.', profile)).toEqual([]);
+    expect(findFlags('At your villa within 30 minutes.', profile)).toEqual([]);
+    expect(findFlags('Ready in 45 minutes.', profile)).toEqual([
+      { kind: 'duration', text: '45 minutes' },
+    ]);
+  });
+
+  it("gives a story text the highlight's duration too", () => {
+    const profile = svargaProfile();
+    profile.highlights = [{ value: 'WhatsApp replies in ~5 mins', source: profile.siteUrl }];
+    const { post } = checkPost(
+      raw({ storyText: 'Replies in about 5 minutes 🌸' }),
+      profile,
+      'post-2',
+    );
+    expect(post?.storyText).toBe('Replies in about 5 minutes 🌸');
+    expect(post?.storyUnchecked ?? []).toEqual([]);
+  });
 });
 
 describe('findFlags: words and lengths', () => {

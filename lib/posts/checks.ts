@@ -67,9 +67,17 @@ function profilePrices(profile: Profile): Set<number> {
   return new Set(prices.map(amount));
 }
 
+// The offerings' durations, and those a highlight or the promise gives
+// ("WhatsApp replies in ~5 mins": docs/specs/posts/marketing-copy, amended
+// 2026-11-08).
 function profileDurations(profile: Profile): Set<number> {
-  const found = profile.offerings.flatMap((o) =>
-    o.duration ? [...o.duration.matchAll(DURATION)].map((m) => minutes(m[1], m[2])) : [],
+  const texts = [
+    ...profile.offerings.map((o) => o.duration ?? ''),
+    ...profile.highlights.map((h) => h.value),
+    profile.essence.promise?.value ?? '',
+  ];
+  const found = texts.flatMap((text) =>
+    [...text.matchAll(DURATION)].map((m) => minutes(m[1], m[2])),
   );
   return new Set(found);
 }
