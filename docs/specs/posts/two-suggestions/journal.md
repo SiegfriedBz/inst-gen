@@ -25,9 +25,16 @@
   before" went: two set-ups change every deal, under `posts-12`.
 - 2026-11-08: the two commits planned for Tasks 2 and 2b became one: both
   change the same prompt and checks.
-- 2026-11-08: no new recordings. The `posts-11` recordings (six posts)
-  replay to checked batches of two. `pnpm eval:posts` on Sen and Svarga
-  (4 Flash-Lite requests) waits for the maintainer's yes.
+- 2026-11-08: `posts-12` recorded with the maintainer's yes, 4 Flash-Lite
+  requests: `pnpm eval:posts sen svarga --record`, then with `--offer`. One
+  run each, no re-record. Without an offer, each spa got an offer post and a
+  moment post, one day and one night, no price. With the offer, both posts
+  carried it, on its two treatments, one day and one night, no price.
+  Seen, not this item's: Svarga's offer plan tagged `#massagedanang` (2.15
+  drops a tag naming another country's town), Sen's `#deaptissue`, and every
+  caption runs as one paragraph, so the first-line check (not shown to the
+  owner) flags all four plain posts. The other fixtures keep their `posts-11`
+  recordings, which replay to two posts.
 
 ## RED
 
