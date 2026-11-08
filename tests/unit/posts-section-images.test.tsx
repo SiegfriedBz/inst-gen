@@ -454,6 +454,43 @@ describe('a suggestion without an image (docs/specs/posts/two-images)', () => {
     expect(await within(tileOf(3)).findByRole('img', { name: 'Alt 3' })).toBeTruthy();
   });
 
+  test('its copy hints say to use a photo of your own', async () => {
+    await saveBatch(
+      batch(six.map((p, i) => (i === 3 ? { ...p, storyText: 'Warm oil tonight.' } : p))),
+    );
+    await saveImage(image('post-1'));
+    await saveImage(image('post-2'));
+    await renderSection();
+    const sheet = await openTile(4);
+    expect(
+      within(sheet).getByText('In Instagram, make a post with your own photo and paste this text.'),
+    ).toBeTruthy();
+    expect(
+      within(sheet).getByText(
+        'In Instagram, make a story with your own photo, add text and paste.',
+      ),
+    ).toBeTruthy();
+    expect(within(sheet).queryByText(/with the post image/)).toBeNull();
+  });
+
+  test('Make the images stays until one of the two has an image', async () => {
+    await saveBatch(batch(six));
+    await renderSection();
+    await screen.findByRole('button', { name: 'Make the images' });
+    const sheet = await openTile(4);
+    fireEvent.click(within(sheet).getByRole('button', { name: 'Create new image' }));
+    fireEvent.click(within(sheet).getByRole('button', { name: 'Make it' }));
+    expect(started.at(-1)?.input.postIds).toEqual(['post-4']);
+    started.at(-1)?.onEvent({ type: 'image', image: image('post-4') });
+    release();
+    fireEvent.click(within(sheet).getByRole('button', { name: 'Close' }));
+    await waitFor(() => expect(screen.queryByRole('dialog')).toBeNull());
+    const button = screen.getByRole('button', { name: 'Make the images' }) as HTMLButtonElement;
+    await waitFor(() => expect(button.disabled).toBe(false));
+    fireEvent.click(button);
+    expect(started.at(-1)?.input.postIds).toEqual(['post-1', 'post-2']);
+  });
+
   test('its tile is ticked by its text', async () => {
     await saveBatch(
       batch(six.map((p, i) => (i === 3 ? { ...p, copiedAt: '2026-10-25T10:30:00.000Z' } : p))),

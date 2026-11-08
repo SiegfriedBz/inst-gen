@@ -65,3 +65,27 @@ Task 3, the screens:
 `pnpm guide:pdf` wrote the three PDFs (4 pages each), read back in each
 language. No `.env.local` here, so they have no contact line: rebuild them
 where `GUIDE_CONTACT` is set before handing them over.
+
+## Final review
+
+A fresh reviewer read the whole branch: ready with fixes.
+
+- Fixed: a suggestion without an image told the owner to post "the post
+  image" and "the story image" under its copy buttons. Its hints now say to
+  use a photo of their own, as with images off. Test: "its copy hints say to
+  use a photo of your own".
+- Fixed: on an attempt showing "Make the images", creating an image for
+  another suggestion hid the button and left the two picked tiles blank.
+  The button now counts only the picked two. Test: "Make the images stays
+  until one of the two has an image", seen failing without the fix.
+- Not fixed, deploy day only: an image run lost mid-way before the deploy
+  and resumed after it asks for posts 3 to 6 as new images, and a post 3 to
+  6 whose first image failed before the deploy becomes a text suggestion.
+  Deploy outside the spas' working hours, or accept it for one day.
+
+After the fixes, `pnpm check`:
+
+```
+ Test Files  109 passed (109)
+      Tests  1634 passed (1634)
+```

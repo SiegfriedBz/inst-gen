@@ -45,9 +45,9 @@ import { CopyPost, CopyStory, SaveImages } from './take-away';
 // an attempt of six suggestions, the suggestions as they stream in, and the
 // attempts made since Google's reset (docs/specs/platform/one-daily-reset),
 // newest on top; anything
-// older is cleared when the section loads. Once a plan is saved, its six
-// images are asked for (docs/specs/posts/generate-images) when images are on
-// for this owner.
+// older is cleared when the section loads. Once a plan is saved, two of its
+// six images are asked for (docs/specs/posts/generate-images,
+// docs/specs/posts/two-images) when images are on for this owner.
 // While its tab shows, the newest batch's captions follow the business
 // details by themselves (docs/specs/platform/home-tabs).
 
@@ -506,17 +506,24 @@ export function PostsSection({
     update(next.batch, next.postIds);
   }, [active, searching, busy, triedHash, currentHash, shown, profile, update]);
 
-  // An attempt with no image made or being made: "Make the images" stands
-  // for its two (docs/specs/posts/two-images), above its grid.
+  // An attempt whose two picked posts have no image made or being made:
+  // "Make the images" stands for them (docs/specs/posts/two-images), above
+  // its grid. An image created for another suggestion doesn't count.
   function needsImagesFor(batch: PostBatch): boolean {
     return (
       imagesOn &&
       !monthFull &&
-      !batch.posts.some((p) => {
-        const key = imageKey(batch.id, p.id);
+      !imagePosts(batch).some((id) => {
+        const key = imageKey(batch.id, id);
         return images.has(key) || making.has(key);
       })
     );
+  }
+
+  // Whether this suggestion has, or will have, its own pictures: if not, the
+  // copy hints say to use a photo of the owner's own.
+  function pictured(post: Post, batch: PostBatch): boolean {
+    return imagesOn && !noImage(imageOf(post, batch, needsImagesFor(batch)).state);
   }
 
   function imageOf(post: Post, batch: PostBatch, batchButton: boolean) {
@@ -753,12 +760,17 @@ export function PostsSection({
               <CopyPost
                 post={openPost}
                 cta={cta ?? openPost.cta}
-                imagesOn={imagesOn}
+                imagesOn={pictured(openPost, openBatch)}
                 onTaken={(step) => taken(openBatch.id, openPost.id, step)}
               />
             }
             copyStory={
-              openPost.storyText && <CopyStory storyText={openPost.storyText} imagesOn={imagesOn} />
+              openPost.storyText && (
+                <CopyStory
+                  storyText={openPost.storyText}
+                  imagesOn={pictured(openPost, openBatch)}
+                />
+              )
             }
             onRewrite={
               openBatch === newest && openPost.edited && isPostStale(openPost, openBatch, profile)
