@@ -36,6 +36,177 @@ function raw(overrides: Partial<ModelPost> = {}): ModelPost {
   };
 }
 
+// docs/specs/posts/two-suggestions, "Never a price".
+describe('never a price', () => {
+  it('a caption loses each sentence with a price, recorded', () => {
+    const caption = 'Warm oil after a surf. Only 350k for 60 minutes. Sleep well tonight.';
+    const { post: checked, dropped } = checkPost(
+      raw({ type: 'moment', caption }),
+      profileWithPrice('350,000 VND'),
+      'post-2',
+    );
+    expect(checked?.caption).not.toContain('350k');
+    expect(checked?.caption).toContain('Warm oil after a surf.');
+    expect(checked?.caption).toContain('Sleep well tonight');
+    expect(dropped).toContainEqual({
+      field: 'price',
+      reason: 'post-2: price removed "Only 350k for 60 minutes."',
+    });
+  });
+
+  it('dollar and rupiah prices go too, even ones the profile holds', () => {
+    for (const price of ['From $25.', 'Just Rp 300.000 a session.']) {
+      const { post: checked } = checkPost(
+        raw({ caption: `Warm oil. ${price} Rest well.` }),
+        profileWithPrice('Rp 300.000'),
+        'post-1',
+      );
+      expect(checked?.caption).not.toMatch(/\$25|300\.000/);
+    }
+  });
+
+  it('a story text loses its sentence with a price, recorded', () => {
+    const { post: checked, dropped } = checkPost(
+      raw({ storyText: 'Treat yourself tonight. From $25.' }),
+      svargaProfile(),
+      'post-1',
+    );
+    expect(checked?.storyText).toContain('Treat yourself tonight');
+    expect(checked?.storyText).not.toContain('$25');
+    expect(dropped).toContainEqual({ field: 'price', reason: 'post-1: price removed "From $25."' });
+  });
+
+  it('a story text keeps its words before an emoji, and loses the price after it', () => {
+    const storyText =
+      'Traditional Balinese Massage in your villa 🌸 IDR 250k for 60 min of pure relaxation.';
+    const { post: checked, dropped } = checkPost(raw({ storyText }), svargaProfile(), 'post-1');
+    expect(checked?.storyText).toBe('Traditional Balinese Massage in your villa 🌸');
+    expect(dropped).toContainEqual({
+      field: 'price',
+      reason: 'post-1: price removed "IDR 250k for 60 min of pure relaxation."',
+    });
+  });
+
+  it('a caption update loses its prices too', () => {
+    const answer = {
+      posts: [
+        {
+          id: 'a',
+          caption: 'Warm oil. Only $30 tonight. Rest well.',
+          hashtags: ['canggu'],
+          altText: 'Oil',
+          storyText: 'Rest well.',
+        },
+      ],
+    };
+    const { posts, dropped } = checkRewrite(
+      answer,
+      [post({ id: 'a', type: 'tip' })],
+      svargaProfile(),
+    );
+    expect(posts[0].caption).not.toContain('$30');
+    expect(dropped).toContainEqual({
+      field: 'price',
+      reason: 'a: price removed "Only $30 tonight."',
+    });
+  });
+
+  // The final review's fixes (docs/specs/posts/two-suggestions, journal).
+  it('lines without stops: only the line with a price goes, the breaks stay', () => {
+    const caption = 'Warm oil after the surf\nOnly 350k for an hour\nRest well tonight';
+    const { post: checked } = checkPost(raw({ type: 'moment', caption }), svargaProfile(), 'p1');
+    expect(checked?.caption).toContain('Warm oil after the surf\nRest well tonight');
+    expect(checked?.caption).not.toContain('350k');
+  });
+
+  it('a paragraph keeps its break when its first sentence goes', () => {
+    const caption =
+      'Sore after the surf?\n\nOnly 350k for 60 minutes. Feel your shoulders drop.\n\nRest well tonight.';
+    const { post: checked } = checkPost(raw({ type: 'moment', caption }), svargaProfile(), 'p1');
+    expect(checked?.caption.startsWith('Sore after the surf?\n\nFeel your shoulders drop.')).toBe(
+      true,
+    );
+  });
+
+  it('a sentence an emoji splits mid-way goes whole', () => {
+    const caption = 'Warm oil. Our 60-minute massage, IDR 250k 🌸 is waiting for you. Rest well.';
+    const { post: checked } = checkPost(raw({ type: 'moment', caption }), svargaProfile(), 'p1');
+    expect(checked?.caption).not.toContain('is waiting for you');
+    expect(checked?.caption).toContain('Rest well');
+  });
+
+  it('a caption left with no words is dropped', () => {
+    const { post: checked, dropped } = checkPost(
+      raw({ type: 'moment', caption: 'Only 350k. From $25.' }),
+      svargaProfile(),
+      'p1',
+    );
+    expect(checked).toBeNull();
+    expect(dropped).toContainEqual({ field: 'posts', reason: 'empty caption' });
+  });
+
+  it('a caption update left with no words keeps the old post', () => {
+    const old = post({ id: 'a', type: 'tip', caption: 'Drink water after a massage.' });
+    const answer = {
+      posts: [
+        {
+          id: 'a',
+          caption: 'Only $30 tonight.',
+          hashtags: ['bali'],
+          altText: 'Oil',
+          storyText: 'Rest well.',
+        },
+      ],
+    };
+    const { posts, dropped } = checkRewrite(answer, [old], svargaProfile());
+    expect(posts[0]).toEqual(old);
+    expect(dropped).toContainEqual({ field: 'posts', reason: 'no rewrite for a' });
+  });
+
+  it('steps, runs and screens are not prices', () => {
+    for (const sentence of [
+      'After 10k steps round the Old Quarter, your legs deserve this.',
+      'Stretch after a 5K run on the beach.',
+    ]) {
+      const { post: checked } = checkPost(
+        raw({ type: 'moment', caption: `Warm oil. ${sentence} Rest well.` }),
+        svargaProfile(),
+        'p1',
+      );
+      expect(checked?.caption).toContain(sentence);
+    }
+  });
+
+  it("the pilot's and fixtures' price forms go", () => {
+    for (const price of [
+      'Only 350.000₫ tonight.',
+      'Just VNĐ 350.000 a session.',
+      'Only 350k vnd tonight.',
+      'Just Rp300rb a session.',
+      'Only 1,500 Baht tonight.',
+      'Only ฿900 tonight.',
+      'Just RM 16.00 a session.',
+      'Only €55 tonight.',
+    ]) {
+      const { post: checked } = checkPost(
+        raw({ type: 'moment', caption: `Warm oil. ${price} Rest well.` }),
+        svargaProfile(),
+        'p1',
+      );
+      expect(checked?.caption, price).not.toContain(price.split(' ')[1]);
+    }
+  });
+
+  it('a caption without a price is left alone', () => {
+    const { dropped } = checkPost(
+      raw({ caption: 'Warm oil, 90 minutes of calm.' }),
+      svargaProfile(),
+      'p1',
+    );
+    expect(dropped.filter((d) => d.field === 'price')).toEqual([]);
+  });
+});
+
 describe('findFlags: prices', () => {
   it('does not flag a price the profile holds, however it is written', () => {
     const profile = profileWithPrice('350,000 VND');
@@ -285,22 +456,13 @@ describe('the hook alone on its line', () => {
 });
 
 describe('checkPlan', () => {
-  it('keeps 6 of 7 posts and records a type used 3 times', () => {
-    const types = ['offer', 'offer', 'offer', 'moment', 'local', 'tip', 'ritual'] as const;
-    const scenes = [
-      'treatment',
-      'detail',
-      'place',
-      'guest',
-      'treatment',
-      'detail',
-      'place',
-    ] as const;
-    const posts = types.map((type, i) => post({ id: `p${i}`, type, scene: scenes[i] }));
+  // docs/specs/posts/two-suggestions
+  it('keeps 2 of 3 posts', () => {
+    const types = ['offer', 'moment', 'local'] as const;
+    const posts = types.map((type, i) => post({ id: `p${i}`, type }));
     const result = checkPlan(posts, [], svargaProfile());
-    expect(result.posts).toHaveLength(6);
-    expect(result.dropped).toContainEqual({ field: 'posts', reason: 'more than 6 posts' });
-    expect(result.dropped).toContainEqual({ field: 'mix', reason: 'type offer used 3 times' });
+    expect(result.posts.map((p) => p.id)).toEqual(['p0', 'p1']);
+    expect(result.dropped).toContainEqual({ field: 'posts', reason: 'more than 2 posts' });
   });
 
   it('keeps a short batch from a thin profile without failing', () => {
@@ -310,36 +472,45 @@ describe('checkPlan', () => {
     const posts = ['offer', 'moment', 'local', 'tip'].map((type, i) =>
       post({ id: `p${i}`, type: type as 'offer' }),
     );
-    const result = checkPlan(posts, [], profile);
-    expect(result.posts).toHaveLength(4);
+    const result = checkPlan(posts.slice(0, 1), [], profile);
+    expect(result.posts).toHaveLength(1);
   });
 
-  it('records fewer than 2 offers when the profile has two offerings', () => {
-    const profile = svargaProfile();
-    profile.offerings.push({ name: 'Foot massage', source: profile.siteUrl });
-    const posts = ['offer', 'moment', 'local', 'tip', 'ritual', 'proof'].map((type, i) =>
-      post({
-        id: `p${i}`,
-        type: type as 'offer',
-        scene: (['treatment', 'detail', 'place'] as const)[i % 3],
-      }),
+  it('records no offer post', () => {
+    const posts = ['moment', 'local'].map((type, i) =>
+      post({ id: `p${i}`, type: type as 'moment', scene: 'detail' }),
     );
-    expect(checkPlan(posts, [], profile).dropped).toContainEqual({
-      field: 'mix',
-      reason: 'fewer than 2 offer posts',
-    });
+    const dropped = checkPlan(posts, [], svargaProfile()).dropped;
+    expect(dropped).toContainEqual({ field: 'mix', reason: 'no offer post' });
+    expect(dropped.some((d) => d.reason === 'fewer than 2 offer posts')).toBe(false);
+  });
+
+  it('an offer post and another: nothing recorded on the mix', () => {
+    const posts = [
+      post({ id: 'p0', type: 'offer', scene: 'treatment', caption: 'Sore legs? Warm oil.' }),
+      post({
+        id: 'p1',
+        type: 'moment',
+        scene: 'detail',
+        caption: 'After a long walk, slow hands.',
+      }),
+    ];
+    expect(checkPlan(posts, [], svargaProfile()).dropped.filter((d) => d.field === 'mix')).toEqual(
+      [],
+    );
   });
 });
 
 // docs/specs/posts/day-and-night-copy, "Code's checks".
 describe('repeats in a plan and a rewrite', () => {
   const ending = 'Wake up light tomorrow.';
+  // Posts 1 and 2: an attempt keeps two (docs/specs/posts/two-suggestions).
   const captions = [
     `Sore legs? Warm oil. ${ending}`,
-    'Busy day? Rest.',
     `Long walk? Slow hands. ${ending}`,
+    'Busy day? Rest.',
   ];
-  const record = { field: 'mix', reason: `last sentence "${ending}" in p0, p2` };
+  const record = { field: 'mix', reason: `last sentence "${ending}" in p0, p1` };
 
   it('checkPlan records them and keeps the posts', () => {
     const posts = captions.map((caption, i) =>
@@ -347,7 +518,7 @@ describe('repeats in a plan and a rewrite', () => {
     );
     const result = checkPlan(posts, [], svargaProfile());
     expect(result.dropped).toContainEqual(record);
-    expect(result.posts.map((p) => p.caption)).toEqual(captions);
+    expect(result.posts.map((p) => p.caption)).toEqual(captions.slice(0, 2));
   });
 
   it('checkRewrite records them', () => {
@@ -364,7 +535,7 @@ describe('repeats in a plan and a rewrite', () => {
     // Code adds Svarga's flower, then removes the stop before it.
     expect(checkRewrite(answer, originals, svargaProfile()).dropped).toContainEqual({
       field: 'mix',
-      reason: `last sentence "Wake up light tomorrow" in p0, p2`,
+      reason: `last sentence "Wake up light tomorrow" in p0, p1`,
     });
   });
 });
@@ -666,7 +837,8 @@ describe('the special offer', () => {
       { offer, carries: false },
       thaiSetup,
     );
-    expect(other?.caption).toContain('IDR 450,000');
+    // Not the offer's, but never a price (docs/specs/posts/two-suggestions).
+    expect(other?.caption).not.toContain('IDR 450,000');
   });
 
   it('checkRewrite keeps a line the model copied without its stop', () => {
@@ -857,13 +1029,13 @@ describe('story text and flowers', () => {
     expect(dropped).toEqual([]);
   });
 
-  it("flags a price in the story text apart from the caption's flags", () => {
+  it('removes a story text that was only a price', () => {
     const { post: checked } = checkPost(
       raw({ storyText: 'Only VND 900k tonight 🌸' }),
       profileWithPrice('VND 500k'),
       'post-1',
     );
-    expect(checked?.storyUnchecked).toEqual([{ kind: 'price', text: 'VND 900k' }]);
+    expect(checked?.storyText).toBeUndefined();
     expect(checked?.unchecked).toEqual([]);
   });
 

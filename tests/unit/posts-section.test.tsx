@@ -369,10 +369,10 @@ describe('the posts section', () => {
     expect(screen.getByText('Add your WhatsApp number: every post ends with it.')).toBeTruthy();
   });
 
-  test('reads "Make 6 new suggestions" when an attempt is on screen', async () => {
+  test('reads "Make 2 new suggestions" when an attempt is on screen', async () => {
     await saveBatch(batch([post()]));
     await renderSection();
-    expect(await screen.findByRole('button', { name: 'Make 6 new suggestions' })).toBeTruthy();
+    expect(await screen.findByRole('button', { name: 'Make 2 new suggestions' })).toBeTruthy();
   });
 
   test('a card shows the caption, call to action and hashtags, never the prompt', async () => {
@@ -566,13 +566,13 @@ describe("today's attempts", () => {
 
   test('the button and its line', async () => {
     const view = await renderSection();
-    expect(await screen.findByRole('button', { name: 'Make 6 suggestions' })).toBeTruthy();
+    expect(await screen.findByRole('button', { name: 'Make 2 suggestions' })).toBeTruthy();
     expect(await screen.findByText(/Each suggestion is the text for a post/)).toBeTruthy();
     expect(screen.queryByText(/stays below/)).toBeNull();
     view.unmount();
     await saveBatch(batch(sixPosts));
     await renderSection();
-    expect(await screen.findByRole('button', { name: 'Make 6 new suggestions' })).toBeTruthy();
+    expect(await screen.findByRole('button', { name: 'Make 2 new suggestions' })).toBeTruthy();
     expect(await screen.findByText('They go on top. Attempt 1 stays below.')).toBeTruthy();
     expect(screen.queryByText(/Each suggestion is/)).toBeNull();
   });
@@ -649,11 +649,13 @@ describe("today's attempts", () => {
 });
 
 describe('the grid and the sheet', () => {
-  test('an attempt of six is a grid of six buttons, three to a row, no type labels', async () => {
+  // Two to a row (docs/specs/posts/two-suggestions); an attempt saved
+  // before holds six.
+  test('an attempt is a grid of buttons, two to a row, no type labels', async () => {
     await saveBatch(batch(sixPosts));
     await renderSection();
     const grid = await screen.findByTestId('attempt-grid');
-    expect(grid.className).toContain('grid-cols-3');
+    expect(grid.className).toContain('grid-cols-2');
     expect(within(grid).getAllByRole('button')).toHaveLength(6);
     expect(grid.textContent).not.toMatch(/Offer|Moment|Local|Ritual|Tip/);
     expect(screen.queryByRole('dialog')).toBeNull();

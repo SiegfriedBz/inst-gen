@@ -10,12 +10,14 @@ const SEN = 'test-lotus-river-sen';
 
 test.use({ locale: 'en-US' });
 
-test('images follow the captions, stay on the phone, and one is tried again', async ({ page }) => {
+test('two images follow the captions, stay on the phone, and one is tried again', async ({
+  page,
+}) => {
   const profile = senProfile();
   await fulfilRead(page, [streamBody(profile)]);
   await fulfilPosts(page, 'plan', postsBody(profile));
   const failures: Record<string, { status: number; error: string }> = {
-    'post-3': { status: 502, error: 'image_blocked' },
+    'post-2': { status: 502, error: 'image_blocked' },
   };
   const images = await fulfilImages(page, failures, 500);
 
@@ -27,11 +29,13 @@ test('images follow the captions, stay on the phone, and one is tried again', as
   await page.getByRole('button', { name: 'Read my website' }).click();
   await page.getByRole('tab', { name: 'Create Posts' }).click();
 
-  await page.getByRole('button', { name: 'Make 6 suggestions' }).click();
-  await expect(page.getByText('Making the image…')).toHaveCount(6);
-  await expect(tileImages(page)).toHaveCount(5);
+  // An attempt is two suggestions, each with its images
+  // (docs/specs/posts/two-suggestions).
+  await page.getByRole('button', { name: 'Make 2 suggestions' }).click();
+  await expect(page.getByText('Making the image…')).toHaveCount(2);
+  await expect(tileImages(page)).toHaveCount(1);
   await expect(
-    tile(page, 3).getByText("This image couldn't be made. Try again for a new one."),
+    tile(page, 2).getByText("This image couldn't be made. Try again for a new one."),
   ).toBeVisible();
 
   const sheet = await openSuggestion(page, 1);
@@ -43,10 +47,12 @@ test('images follow the captions, stay on the phone, and one is tried again', as
   await closeSuggestion(page);
 
   await page.reload();
-  await expect(tileImages(page)).toHaveCount(5);
-  delete failures['post-3'];
-  const third = await openSuggestion(page, 3);
-  await third.getByRole('button', { name: 'Try again' }).click();
-  await expect(tileImages(page)).toHaveCount(6);
-  expect(images.count()).toBe(7);
+  await expect(tileImages(page)).toHaveCount(1);
+  delete failures['post-2'];
+  const second = await openSuggestion(page, 2);
+  await second.getByRole('button', { name: 'Try again' }).click();
+  await expect(tileImages(page)).toHaveCount(2);
+  await closeSuggestion(page);
+
+  expect(images.count()).toBe(3);
 });

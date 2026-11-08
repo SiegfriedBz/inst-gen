@@ -24,6 +24,7 @@ import {
   storyFlagsFor,
 } from '@/lib/posts/edit';
 import { type ImageEvent, resumeImages, startImages } from '@/lib/posts/image-client';
+import { imagePosts } from '@/lib/posts/image-pick';
 import { imageKey, loadImages, type SavedImage } from '@/lib/posts/image-store';
 import { ctaFor, postCta, profileHash } from '@/lib/posts/input';
 import { DEFAULT_ANSWERS, isOver, type OfferAnswers, toOffer } from '@/lib/posts/offer';
@@ -41,12 +42,12 @@ import { SuggestionTile } from './suggestion-tile';
 import { CopyPost, CopyStory, SaveImages } from './take-away';
 
 // "Create your posts" (docs/specs/posts/suggestions): the button that makes
-// an attempt of six suggestions, the suggestions as they stream in, and the
-// attempts made since Google's reset (docs/specs/platform/one-daily-reset),
-// newest on top; anything
-// older is cleared when the section loads. Once a plan is saved, its six
-// images are asked for (docs/specs/posts/generate-images) when images are on
-// for this owner.
+// an attempt of two suggestions (docs/specs/posts/two-suggestions), the
+// suggestions as they stream in, and the attempts made since Google's reset
+// (docs/specs/platform/one-daily-reset), newest on top; anything older is
+// cleared when the section loads. Once a plan is saved, its images are asked
+// for (docs/specs/posts/generate-images; an attempt saved with six asks for
+// two, docs/specs/posts/two-images) when images are on for this owner.
 // While its tab shows, the newest batch's captions follow the business
 // details by themselves (docs/specs/platform/home-tabs).
 
@@ -228,10 +229,7 @@ export function PostsSection({
         setError(null);
         setBatches((list) => [event.batch, ...list.filter((b) => b.id !== event.batch.id)]);
         if (planned && imagesOn && !monthFullRef.current) {
-          makeImages(
-            event.batch,
-            event.batch.posts.map((p) => p.id),
-          );
+          makeImages(event.batch, imagePosts(event.batch));
         }
       } else if (event.type === 'error') {
         setErrorStep(stepRef.current ?? 'plan');
@@ -512,17 +510,24 @@ export function PostsSection({
     update(next.batch, next.postIds);
   }, [active, searching, busy, triedHash, currentHash, shown, profile, update]);
 
-  // An attempt with no image made or being made: "Make the images" stands
-  // for all six, above its grid.
+  // An attempt whose two picked posts have no image made or being made:
+  // "Make the images" stands for them (docs/specs/posts/two-images), above
+  // its grid. An image created for another suggestion doesn't count.
   function needsImagesFor(batch: PostBatch): boolean {
     return (
       imagesOn &&
       !monthFull &&
-      !batch.posts.some((p) => {
-        const key = imageKey(batch.id, p.id);
+      !imagePosts(batch).some((id) => {
+        const key = imageKey(batch.id, id);
         return images.has(key) || making.has(key);
       })
     );
+  }
+
+  // Whether this suggestion has, or will have, its own pictures: if not, the
+  // copy hints say to use a photo of the owner's own.
+  function pictured(post: Post, batch: PostBatch): boolean {
+    return imagesOn && !noImage(imageOf(post, batch, needsImagesFor(batch)).state);
   }
 
   function imageOf(post: Post, batch: PostBatch, batchButton: boolean) {
@@ -533,8 +538,13 @@ export function PostsSection({
       if (saved) remaking.current.add(key);
       makeImages(batch, [post.id], hint.trim() || undefined);
     };
+    // Not one of the attempt's two, and no image asked for since: text, with
+    // "Create new image" (docs/specs/posts/two-images).
+    const skipped =
+      !saved && !making.has(key) && !failed.has(key) && !imagePosts(batch).includes(post.id);
     let state: ImageState;
     if (!imagesOn) state = { kind: 'off' };
+    else if (skipped) state = { kind: 'skipped', ...(monthFull ? { month: true } : {}) };
     else if (!saved && !making.has(key) && monthFull) state = { kind: 'month' };
     else if (saved) {
       const failure = failed.get(key);
@@ -650,12 +660,7 @@ export function PostsSection({
             {needsImages && (
               <Button
                 type="button"
-                onClick={() =>
-                  makeImages(
-                    batch,
-                    batch.posts.map((p) => p.id),
-                  )
-                }
+                onClick={() => makeImages(batch, imagePosts(batch))}
                 disabled={held}
               >
                 {t('images.make')}
@@ -759,12 +764,17 @@ export function PostsSection({
               <CopyPost
                 post={openPost}
                 cta={postCta(profile, openPost, openBatch.offer) ?? openPost.cta}
-                imagesOn={imagesOn}
+                imagesOn={pictured(openPost, openBatch)}
                 onTaken={(step) => taken(openBatch.id, openPost.id, step)}
               />
             }
             copyStory={
-              openPost.storyText && <CopyStory storyText={openPost.storyText} imagesOn={imagesOn} />
+              openPost.storyText && (
+                <CopyStory
+                  storyText={openPost.storyText}
+                  imagesOn={pictured(openPost, openBatch)}
+                />
+              )
             }
             onRewrite={
               openBatch === newest && openPost.edited && isPostStale(openPost, openBatch, profile)
@@ -803,7 +813,9 @@ export function PostsSection({
   );
 }
 
-const GRID = 'grid grid-cols-3 gap-x-2 gap-y-3';
+// Two tiles to a row: an attempt is two suggestions
+// (docs/specs/posts/two-suggestions).
+const GRID = 'grid grid-cols-2 gap-x-2 gap-y-3';
 
 function AttemptHeading({ n, count }: { n: number; count: number }) {
   const t = useTranslations('posts');
@@ -816,9 +828,10 @@ function AttemptHeading({ n, count }: { n: number; count: number }) {
 }
 
 // No image to save for this suggestion, so the text alone ticks it: images
-// off, paused, or the month full (docs/specs/platform/friendlier-home). A
-// month-full tile still shows its block, saying until when.
+// off, paused, the month full (docs/specs/platform/friendlier-home), or not
+// one of the attempt's two (docs/specs/posts/two-images). A month-full tile
+// still shows its block, saying until when.
 function noImage(state: ImageState): boolean {
-  if (state.kind === 'off' || state.kind === 'month') return true;
+  if (state.kind === 'off' || state.kind === 'month' || state.kind === 'skipped') return true;
   return state.kind === 'failed' && (state.code === 'images_paused' || state.code === 'images_off');
 }

@@ -25,21 +25,46 @@ function deps(model: TextModel, extra: { timeoutMs?: number; log?: (e: PostsLog)
 const body = () => ({ profile: svargaProfile(), recent: [] });
 
 describe('streamPlan', () => {
-  test('yields six post lines then a final', async () => {
-    const model = replayTextModel(brand, { posts: planRecording() });
+  // Two suggestions an attempt (docs/specs/posts/two-suggestions).
+  test('yields two post lines then a final', async () => {
+    const model = replayTextModel(brand, { posts: planRecording(2) });
     const lines = await drain(streamPlan(body(), deps(model), new AbortController().signal));
-    expect(lines.map((l) => l.type)).toEqual([
-      'post',
-      'post',
-      'post',
-      'post',
-      'post',
-      'post',
-      'final',
-    ]);
-    expect(lines.slice(0, 6).map((l) => (l.type === 'post' ? l.index : -1))).toEqual([
-      0, 1, 2, 3, 4, 5,
-    ]);
+    expect(lines.map((l) => l.type)).toEqual(['post', 'post', 'final']);
+    expect(lines.slice(0, 2).map((l) => (l.type === 'post' ? l.index : -1))).toEqual([0, 1]);
+  });
+
+  test('a model that writes six streams two, and the rest is recorded once', async () => {
+    const model = replayTextModel(brand, { posts: planRecording(6) });
+    const lines = await drain(streamPlan(body(), deps(model), new AbortController().signal));
+    expect(lines.filter((l) => l.type === 'post')).toHaveLength(2);
+    const final = lines.at(-1);
+    if (final?.type !== 'final') throw new Error('no final');
+    expect(final.result.posts.map((p) => p.id)).toEqual(['post-1', 'post-2']);
+    expect(final.result.dropped.filter((d) => d.reason === 'more than 2 posts')).toHaveLength(1);
+  });
+
+  test('counts price_fixes', async () => {
+    const entries: PostsLog[] = [];
+    const posts = [0, 1].map((i) => modelPost(i));
+    posts[1] = { ...posts[1], type: 'moment', caption: 'Warm oil. Only 350k tonight. Rest well.' };
+    const recording = {
+      modelId: 'm',
+      promptVersion: 'posts-12',
+      partials: posts.map((_, i) => ({ posts: posts.slice(0, i + 1) })),
+      final: { posts },
+    };
+    const model = replayTextModel(brand, { posts: recording });
+    const lines = await drain(
+      streamPlan(
+        body(),
+        deps(model, { log: (e) => entries.push(e) }),
+        new AbortController().signal,
+      ),
+    );
+    const final = lines.at(-1);
+    if (final?.type !== 'final') throw new Error('no final');
+    expect(final.result.posts[1].caption).not.toContain('350k');
+    expect(entries[0].priceFixes).toBe(1);
   });
 
   test('a post line comes as soon as the next post starts', async () => {
@@ -74,13 +99,13 @@ describe('streamPlan', () => {
     expect(final).toMatchObject({
       type: 'final',
       result: {
-        promptVersion: 'posts-12',
+        promptVersion: 'posts-13',
         model: 'gemini-3.5-flash-lite',
         profileHash: profileHash(svargaProfile()),
       },
     });
     if (final?.type !== 'final') throw new Error('no final');
-    expect(final.result.posts).toHaveLength(6);
+    expect(final.result.posts).toHaveLength(2);
     expect(final.result.posts[0].cta).toBe('Book on WhatsApp: +6281234567890');
     expect(final.result.posts[0].hashtags).toEqual(['canggu', 'balimassage', 'aftersurf']);
   });
@@ -226,7 +251,7 @@ describe('streamPlan', () => {
     expect(entries[0]).toMatchObject({
       host: 'svargabalimassage.com',
       kind: 'plan',
-      kept: 6,
+      kept: 2,
       outcome: 'final',
     });
     expect(JSON.stringify(entries[0])).not.toContain('Caption');
@@ -234,8 +259,10 @@ describe('streamPlan', () => {
   test('counts story cuts and emoji fixes in its log entry', async () => {
     const entries: PostsLog[] = [];
     const recording = planRecording();
-    const third = recording.final.posts[2] as ReturnType<typeof modelPost> & { storyText?: string };
-    third.storyText = `${'Calm tonight. '.repeat(10)}Wake up light! 🌺`;
+    const second = recording.final.posts[1] as ReturnType<typeof modelPost> & {
+      storyText?: string;
+    };
+    second.storyText = `${'Calm tonight. '.repeat(10)}Wake up light! 🌺`;
     const model = replayTextModel(brand, { posts: recording });
     await drain(
       streamPlan(
@@ -244,8 +271,8 @@ describe('streamPlan', () => {
         new AbortController().signal,
       ),
     );
-    // Svarga is a spa: six captions gain a flower, and the cut story text too.
-    expect(entries[0]).toMatchObject({ storyCuts: 1, emojiFixes: 7 });
+    // Svarga is a spa: the two captions gain a flower, and the cut story text too.
+    expect(entries[0]).toMatchObject({ storyCuts: 1, emojiFixes: 3 });
   });
 });
 
@@ -321,22 +348,15 @@ describe('the special offer', () => {
     };
   }
 
-  test('the first two offer posts carry it; a third is flagged', async () => {
+  test('both offer posts carry it; a third post is cut', async () => {
     const model = replayTextModel(brand, { posts: threeOffers() });
     const lines = await drain(
       streamPlan({ ...body(), offer }, deps(model), new AbortController().signal),
     );
     const final = lines.at(-1);
     if (final?.type !== 'final') throw new Error('no final');
-    expect(final.result.posts.map((p) => p.offer === true)).toEqual([
-      true,
-      true,
-      false,
-      false,
-      false,
-      false,
-    ]);
-    expect(final.result.posts[2].unchecked).toContainEqual({ kind: 'offer', text: '10%' });
+    expect(final.result.posts.map((p) => p.offer === true)).toEqual([true, true]);
+    expect(final.result.dropped).toContainEqual({ field: 'posts', reason: 'more than 2 posts' });
     expect(final.result.offer).toEqual(offer);
   });
 
@@ -433,25 +453,25 @@ describe('the image set-ups', () => {
     expect(result.posts.map((p) => p.scene)).toEqual(dealt().map((s) => s.scene));
   });
 
-  test('a dropped post takes its set-up with it', async () => {
-    const posts = Array.from({ length: 6 }, (_, i) => modelPost(i));
+  test('a dropped post takes its set-up with it; the post after it has none', async () => {
+    const posts = Array.from({ length: 3 }, (_, i) => modelPost(i));
     posts[1] = { ...posts[1], type: 'banana' };
     const { result } = await finalOf(recordingOf(posts));
-    expect(result.posts).toHaveLength(5);
-    expect(result.posts[1].setup).toEqual(dealt()[2]);
+    expect(result.posts).toHaveLength(2);
+    expect(result.posts[0].setup).toEqual(dealt()[0]);
+    expect(result.posts[1].setup).toBeUndefined();
   });
 
-  test('a seventh post gets no set-up and is cut', async () => {
-    const { lines, result } = await finalOf(planRecording(7));
-    const seventh = lines[6];
-    if (seventh.type !== 'post') throw new Error('no seventh post line');
-    expect(seventh.post.setup).toBeUndefined();
-    expect(result.posts).toHaveLength(6);
+  test('a third post is never streamed and is cut', async () => {
+    const { lines, result } = await finalOf(planRecording(3));
+    expect(lines.filter((l) => l.type === 'post')).toHaveLength(2);
+    expect(result.posts).toHaveLength(2);
+    expect(result.dropped).toContainEqual({ field: 'posts', reason: 'more than 2 posts' });
   });
 
-  test('a plan of five posts uses set-ups 1 to 5', async () => {
-    const { result } = await finalOf(planRecording(5));
-    expect(result.posts.map((p) => p.setup)).toEqual(dealt().slice(0, 5));
+  test('a plan of one post uses set-up 1', async () => {
+    const { result } = await finalOf(planRecording(1));
+    expect(result.posts.map((p) => p.setup)).toEqual(dealt().slice(0, 1));
   });
 
   test("the model's text holds the set-ups", async () => {

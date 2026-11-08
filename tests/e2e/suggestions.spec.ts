@@ -34,20 +34,20 @@ test("today's suggestions stay through a reload, and Google's reset clears them"
   await signInAndRead(page);
 
   await expect(page.getByText(/Each suggestion is 2 images/)).toBeVisible();
-  await page.getByRole('button', { name: 'Make 6 suggestions' }).click();
+  await page.getByRole('button', { name: 'Make 2 suggestions' }).click();
   await expect(page.getByRole('heading', { name: 'Attempt 1' })).toBeVisible();
-  await expect(tileImages(page)).toHaveCount(6);
+  await expect(tileImages(page)).toHaveCount(2);
 
   // 13:55: still today's.
   await page.clock.setSystemTime(new Date('2026-10-26T13:55:00+07:00'));
   await page.reload();
   await expect(page.getByRole('heading', { name: 'Attempt 1' })).toBeVisible();
-  await expect(tileImages(page)).toHaveCount(6);
+  await expect(tileImages(page)).toHaveCount(2);
 
   // 14:05 the same afternoon, past the reset: a new day starts empty.
   await page.clock.setSystemTime(new Date('2026-10-26T14:05:00+07:00'));
   await page.reload();
   await expect(page.getByText(/Each suggestion is 2 images/)).toBeVisible();
   await expect(tiles(page)).toHaveCount(0);
-  await expect(page.getByRole('button', { name: 'Make 6 suggestions' })).toBeVisible();
+  await expect(page.getByRole('button', { name: 'Make 2 suggestions' })).toBeVisible();
 });

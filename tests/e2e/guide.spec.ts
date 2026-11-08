@@ -37,6 +37,10 @@ test('switches language and stays', async ({ page }) => {
   await pickLanguage(page, 'Tiếng Việt');
   await expect(page.getByRole('heading', { level: 1 })).toHaveText(vi.guide.title);
   await expect(page).toHaveURL('/guide');
+  // Two suggestions, each with its images (docs/specs/posts/two-suggestions).
+  await expect(
+    page.getByText('Bạn nhận 2 gợi ý, mỗi gợi ý có hình bài đăng, hình story', { exact: false }),
+  ).toBeVisible();
 });
 
 test.describe('without JavaScript', () => {

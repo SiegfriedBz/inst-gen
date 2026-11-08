@@ -1,9 +1,10 @@
 import { expect, type Page, test } from '@playwright/test';
 import { senProfile } from '../unit/helpers/brand';
 import { fulfilRead, streamBody } from './helpers/brand-stream';
+import { fulfilImages } from './helpers/images';
 import { pickLanguage } from './helpers/language';
 import { postsBody } from './helpers/posts-stream';
-import { tiles } from './helpers/suggestions';
+import { tile, tiles } from './helpers/suggestions';
 
 // The special offer (docs/specs/posts/special-offer), at the phone viewport,
 // with every route mocked. Test passphrase from playwright.config.ts; not a
@@ -46,10 +47,17 @@ test('an offer set in the sheet goes with the plan, and its two posts show the b
       body: postsBody(senProfile(), { offer: offer as never }),
     });
   });
-  await page.getByRole('button', { name: 'Make 6 suggestions' }).click();
-  await expect(tiles(page)).toHaveCount(6);
+  await fulfilImages(page, {});
+  await page.getByRole('button', { name: 'Make 2 suggestions' }).click();
+  await expect(tiles(page)).toHaveCount(2);
   expect(sent.offer?.percent).toBe(10);
   await expect(page.getByTestId('attempt-grid').getByText('10% off')).toHaveCount(2);
+  // The two offer posts are the two with images (docs/specs/posts/two-images).
+  for (const n of [1, 2]) {
+    await expect(tile(page, n).getByText('10% off')).toBeVisible();
+    await expect(tile(page, n).locator('img')).toHaveCount(1);
+  }
+  await expect(page.getByTestId('attempt-grid').locator('img')).toHaveCount(2);
 });
 
 test('no sideways scroll at 320px in vi with the sheet open', async ({ page }) => {

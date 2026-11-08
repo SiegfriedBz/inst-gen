@@ -138,7 +138,7 @@ async function renderSection(imagesOn = true) {
 
 const makePosts = async () => {
   const button = (await screen.findByRole('button', {
-    name: /Make 6 (new )?suggestions/,
+    name: /Make 2 (new )?suggestions/,
   })) as HTMLButtonElement;
   await waitFor(() => expect(button.disabled).toBe(false));
   return button;
@@ -155,6 +155,11 @@ async function openTile(n: number): Promise<HTMLElement> {
   fireEvent.click(screen.getByRole('button', { name }));
   return screen.findByRole('dialog');
 }
+
+// The tile of suggestion n of six, and its image box when it isn't a text tile.
+const tileOf = (n: number) =>
+  screen.getByRole('button', { name: new RegExp(`^Suggestion ${n} of 6\\b`) });
+const imageBox = (tile: HTMLElement) => tile.querySelector('.aspect-\\[4\\/5\\]');
 
 describe('a suggestion with its images', () => {
   test('an opened suggestion with its image can be copied and saved; one without waits', async () => {
@@ -246,14 +251,45 @@ describe('images in the posts section', () => {
     expect(screen.getAllByRole('img')).toHaveLength(1);
   });
 
-  test('a saved plan starts its six images', async () => {
+  // Two suggestions an attempt (docs/specs/posts/two-suggestions).
+  test('an attempt of two: both images, two tiles to a row', async () => {
+    fetchMock.mockResolvedValue(planAnswer(six.slice(0, 2)));
+    await renderSection();
+    const make = await makePosts();
+    expect(make.textContent).toBe('Make 2 suggestions');
+    fireEvent.click(make);
+    await waitFor(() => expect(started).toHaveLength(1));
+    expect(started[0].input.postIds).toEqual(['post-1', 'post-2']);
+    expect(await screen.findAllByText('Making the image…')).toHaveLength(2);
+    expect(screen.getByTestId('attempt-grid').className).toContain('grid-cols-2');
+    expect(screen.getByRole('button', { name: 'Make 2 new suggestions' })).toBeTruthy();
+  });
+
+  test('a saved plan starts its two images', async () => {
     fetchMock.mockResolvedValue(planAnswer(six));
     await renderSection();
     fireEvent.click(await makePosts());
     await waitFor(() => expect(started).toHaveLength(1));
-    expect(started[0].input.postIds).toEqual(six.map((p) => p.id));
-    expect(await screen.findAllByText('Making the image…')).toHaveLength(6);
+    // No set-ups, so every post is a day: the first two
+    // (docs/specs/posts/two-images).
+    expect(started[0].input.postIds).toEqual(['post-1', 'post-2']);
+    expect(await screen.findAllByText('Making the image…')).toHaveLength(2);
     expect(screen.queryByRole('button', { name: 'Make the images' })).toBeNull();
+  });
+
+  test("a saved plan's other four are text tiles", async () => {
+    fetchMock.mockResolvedValue(planAnswer(six));
+    await renderSection();
+    fireEvent.click(await makePosts());
+    await waitFor(() => expect(started).toHaveLength(1));
+    await screen.findAllByText('Making the image…');
+    for (const n of [1, 2]) {
+      expect(within(tileOf(n)).getByText('Making the image…')).toBeTruthy();
+    }
+    for (const n of [3, 4, 5, 6]) {
+      expect(imageBox(tileOf(n))).toBeNull();
+      expect(within(tileOf(n)).getByText(`Caption ${n}.`)).toBeTruthy();
+    }
   });
 
   test('images arrive on their cards, and a failure says why', async () => {
@@ -277,15 +313,15 @@ describe('images in the posts section', () => {
     fireEvent.click(await makePosts());
     await waitFor(() => expect(started).toHaveLength(1));
     const more = (await screen.findByRole('button', {
-      name: 'Make 6 new suggestions',
+      name: 'Make 2 new suggestions',
     })) as HTMLButtonElement;
     expect(more.disabled).toBe(true);
     expect(
       screen.getByText('Keep this page open for about a minute while your posts are made.'),
     ).toBeTruthy();
     const batchId = started[0].input.batch.id;
-    for (const p of six) {
-      started[0].onEvent({ type: 'image', image: { ...image(p.id), batchId } });
+    for (const id of started[0].input.postIds) {
+      started[0].onEvent({ type: 'image', image: { ...image(id), batchId } });
     }
     release();
     await waitFor(() => expect(more.disabled).toBe(false));
@@ -297,7 +333,7 @@ describe('images in the posts section', () => {
     fireEvent.click(await makePosts());
     await waitFor(() => expect(started).toHaveLength(1));
     const more = (await screen.findByRole('button', {
-      name: 'Make 6 new suggestions',
+      name: 'Make 2 new suggestions',
     })) as HTMLButtonElement;
     expect(more.disabled).toBe(true);
     const sheet = await openTile(1);
@@ -323,7 +359,7 @@ describe('images in the posts section', () => {
     await renderSection();
     const button = await screen.findByRole('button', { name: 'Make the images' });
     fireEvent.click(button);
-    expect(started[0].input.postIds).toEqual(six.map((p) => p.id));
+    expect(started[0].input.postIds).toEqual(['post-1', 'post-2']);
   });
 
   test('Make the images waits while lost images are looked up', async () => {
@@ -348,9 +384,7 @@ describe('images in the posts section', () => {
     const before = resumeCalls.length;
     const batchId = started[0].input.batch.id;
     started[0].onEvent({ type: 'offline', batchId, postId: 'post-1' });
-    for (const p of six.slice(1)) {
-      started[0].onEvent({ type: 'image', image: { ...image(p.id), batchId } });
-    }
+    started[0].onEvent({ type: 'image', image: { ...image('post-2'), batchId } });
     release();
     await waitFor(() => expect(resumeCalls.length).toBeGreaterThan(before));
   });
@@ -377,6 +411,109 @@ describe('images in the posts section', () => {
     started[0].onEvent({ type: 'error', batchId: 'b1', postId: 'post-1', code: 'images_paused' });
     expect(
       await screen.findByRole('button', { name: /^Suggestion 1 of 6\b.*Copied$/ }),
+    ).toBeTruthy();
+  });
+});
+
+describe('a suggestion without an image (docs/specs/posts/two-images)', () => {
+  const none =
+    'Only 2 suggestions of each attempt come with images. Create one for this suggestion, or use a photo of your own.';
+
+  test('its sheet says why, offers Create new image, and has no save button', async () => {
+    await saveBatch(batch(six));
+    await saveImage(image('post-1'));
+    await saveImage(image('post-2'));
+    await renderSection();
+    const sheet = await openTile(4);
+    expect(within(sheet).getByText(none)).toBeTruthy();
+    expect(within(sheet).queryByRole('button', { name: /Save post & story images/ })).toBeNull();
+    const create = within(sheet).getByRole('button', { name: 'Create new image' });
+    await waitFor(() => expect((create as HTMLButtonElement).disabled).toBe(false));
+    fireEvent.click(create);
+    fireEvent.click(within(sheet).getByRole('button', { name: 'Make it' }));
+    expect(started.at(-1)?.input.postIds).toEqual(['post-4']);
+    expect(await within(sheet).findByText('Making the image…')).toBeTruthy();
+    started.at(-1)?.onEvent({ type: 'image', image: image('post-4') });
+    expect(await within(sheet).findByRole('img', { name: 'Alt 4' })).toBeTruthy();
+    expect(within(sheet).queryByText(none)).toBeNull();
+    const save = within(sheet).getByRole('button', { name: /Save post & story images/ });
+    await waitFor(() => expect((save as HTMLButtonElement).disabled).toBe(false));
+  });
+
+  test('its tile shows the image once it is made', async () => {
+    await saveBatch(batch(six));
+    await saveImage(image('post-1'));
+    await saveImage(image('post-2'));
+    await renderSection();
+    const sheet = await openTile(3);
+    fireEvent.click(within(sheet).getByRole('button', { name: 'Create new image' }));
+    fireEvent.click(within(sheet).getByRole('button', { name: 'Make it' }));
+    fireEvent.click(within(sheet).getByRole('button', { name: 'Close' }));
+    await waitFor(() => expect(screen.queryByRole('dialog')).toBeNull());
+    expect(within(tileOf(3)).getByText('Making the image…')).toBeTruthy();
+    started.at(-1)?.onEvent({
+      type: 'error',
+      batchId: 'b1',
+      postId: 'post-3',
+      code: 'image_blocked',
+    });
+    expect(
+      await within(tileOf(3)).findByText("This image couldn't be made. Try again for a new one."),
+    ).toBeTruthy();
+    const again = await openTile(3);
+    fireEvent.click(within(again).getByRole('button', { name: 'Try again' }));
+    expect(started.at(-1)?.input.postIds).toEqual(['post-3']);
+    started.at(-1)?.onEvent({ type: 'image', image: image('post-3') });
+    fireEvent.click(within(again).getByRole('button', { name: 'Close' }));
+    expect(await within(tileOf(3)).findByRole('img', { name: 'Alt 3' })).toBeTruthy();
+  });
+
+  test('its copy hints say to use a photo of your own', async () => {
+    await saveBatch(
+      batch(six.map((p, i) => (i === 3 ? { ...p, storyText: 'Warm oil tonight.' } : p))),
+    );
+    await saveImage(image('post-1'));
+    await saveImage(image('post-2'));
+    await renderSection();
+    const sheet = await openTile(4);
+    expect(
+      within(sheet).getByText('In Instagram, make a post with your own photo and paste this text.'),
+    ).toBeTruthy();
+    expect(
+      within(sheet).getByText(
+        'In Instagram, make a story with your own photo, add text and paste.',
+      ),
+    ).toBeTruthy();
+    expect(within(sheet).queryByText(/with the post image/)).toBeNull();
+  });
+
+  test('Make the images stays until one of the two has an image', async () => {
+    await saveBatch(batch(six));
+    await renderSection();
+    await screen.findByRole('button', { name: 'Make the images' });
+    const sheet = await openTile(4);
+    fireEvent.click(within(sheet).getByRole('button', { name: 'Create new image' }));
+    fireEvent.click(within(sheet).getByRole('button', { name: 'Make it' }));
+    expect(started.at(-1)?.input.postIds).toEqual(['post-4']);
+    started.at(-1)?.onEvent({ type: 'image', image: image('post-4') });
+    release();
+    fireEvent.click(within(sheet).getByRole('button', { name: 'Close' }));
+    await waitFor(() => expect(screen.queryByRole('dialog')).toBeNull());
+    const button = screen.getByRole('button', { name: 'Make the images' }) as HTMLButtonElement;
+    await waitFor(() => expect(button.disabled).toBe(false));
+    fireEvent.click(button);
+    expect(started.at(-1)?.input.postIds).toEqual(['post-1', 'post-2']);
+  });
+
+  test('its tile is ticked by its text', async () => {
+    await saveBatch(
+      batch(six.map((p, i) => (i === 3 ? { ...p, copiedAt: '2026-10-25T10:30:00.000Z' } : p))),
+    );
+    await saveImage(image('post-1'));
+    await saveImage(image('post-2'));
+    await renderSection();
+    expect(
+      await screen.findByRole('button', { name: /^Suggestion 4 of 6\b.*Copied$/ }),
     ).toBeTruthy();
   });
 });

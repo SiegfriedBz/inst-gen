@@ -79,6 +79,8 @@ UTC**.
 - **"Try again"** on a failed first image is still a first image: it is
   covered by the attempt, not taken from the 10.
 
+> Changed by `posts/two-images` (2026-11-08): an attempt covers its two first images, not six; an image for one of its other four suggestions is a new image, from the 10, with `first: false`.
+
 ### The text pools
 
 Gemini's free quota is per model, so the app keeps **one daily pool per model

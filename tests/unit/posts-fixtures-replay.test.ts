@@ -49,7 +49,8 @@ describe('recorded post plans', () => {
     }
     if (!final) throw new Error('no final line');
     expect(final.posts.length).toBeGreaterThanOrEqual(1);
-    expect(final.posts.length).toBeLessThanOrEqual(6);
+    // Recorded as six (posts-11); an attempt keeps two (docs/specs/posts/two-suggestions).
+    expect(final.posts.length).toBeLessThanOrEqual(2);
     for (const post of final.posts) {
       if (profile.contact.whatsapp) expect(post.cta).toMatch(/^Book on WhatsApp: /);
       expect(post.hashtags.length).toBeGreaterThanOrEqual(1);
@@ -162,13 +163,15 @@ describe('recorded story texts and flowers', () => {
         expect(story.startsWith(line)).toBe(true);
         expect(flowers(story.slice(line.length))).toBe(1);
         expect(story.slice(line.length).trim()).toMatch(/^\p{Extended_Pictographic}$/u);
-        // Never a price next to the offer (docs/specs/posts/special-offer).
-        expect(post.caption).not.toMatch(PRICE);
         // The offer's end before WhatsApp (docs/specs/posts/marketing-copy).
         expect(post.cta.startsWith(`Offer ends ${result.offer.lastDay}. Book on WhatsApp: `)).toBe(
           true,
         );
       }
+      // Never a price, in any caption or story text
+      // (docs/specs/posts/two-suggestions).
+      expect(post.caption).not.toMatch(PRICE);
+      expect(story).not.toMatch(PRICE);
     }
   });
 });

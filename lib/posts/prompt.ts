@@ -11,10 +11,10 @@ import { HOOKS, type Hook, type Setup, setupLine } from './setup';
 // day from docs/specs/posts/day-and-night-images; the offer line first from
 // docs/specs/posts/offer-line-first; copy that follows the post's light, with
 // no example to copy, from docs/specs/posts/day-and-night-copy; hook styles,
-// a job per type, no prices and story lines from
-// docs/specs/posts/marketing-copy. Bump the version with every change, so eval
-// verdicts trace back to it.
-export const POSTS_PROMPT_VERSION = 'posts-12';
+// a job per type and story lines from docs/specs/posts/marketing-copy; two
+// posts an attempt and never a price from docs/specs/posts/two-suggestions.
+// Bump the version with every change, so eval verdicts trace back to it.
+export const POSTS_PROMPT_VERSION = 'posts-13';
 
 // Code decides the emoji rule: flowers only for a spa
 // (docs/specs/posts/story-text, "Emojis").
@@ -62,13 +62,14 @@ const captionRules = (
 - English, in the business's tone words, written as its owner would, to tourists and expats nearby.
 - The first line is the hook, alone on its line, at most 125 characters: it works on its own and stops a tourist scrolling, since it is all Instagram shows before "more". It follows its post's hook style, ${hookFrom}${withOffer ? '; on a post that carries the special offer, the hook is its offer line, word for word, with nothing before it' : ''}.
 - Then short paragraphs, with a blank line between them: what the guest will feel, rather than what the business does.
-- Each caption uses one thing only this business has: one of its places or place symbols, a sense or a moment from its essence, or a highlight. Never a price, anywhere.
-- How a caption ends follows its type. An offer or a moment post ends by answering one doubt a guest may have, with a highlight from the profile, each highlight once at most in the six; with no highlight, it ends on what changes for the guest. A tip ends on its tip, a ritual on its last sensation, a proof post on its fact, a local post on what ties the place to the business. Every ending stays warm, states its highlight and never asks the guest to book or message. No two endings start with the same word.
+- Each caption uses one thing only this business has: one of its places or place symbols, a sense or a moment from its essence, or a highlight.
+- How a caption ends follows its type. An offer or a moment post ends by answering one doubt a guest may have, with a highlight from the profile, never the same highlight twice; with no highlight, it ends on what changes for the guest. A tip ends on its tip, a ritual on its last sensation, a proof post on its fact, a local post on what ties the place to the business. Every ending stays warm, states its highlight and never asks the guest to book or message. No two endings start with the same word.
 - Each caption and story text follows its post's light, ${lightFrom}. Day: the guest's afternoon, with the evening still ahead; never sleep, bed or waking up. Night: the guest's evening, the day done; never the afternoon, the midday sun or the morning just past.
 - The captions open differently and end differently: never the same first sentence, never the same last sentence, and never the same idea said twice in other words. Never reuse a phrase from these instructions or from the image set-ups: the set-ups describe the photos, and the captions draw on the profile's senses.
 - Plain, concrete words: never a word that only adds intensity, such as completely, deeply, truly, ultimate or pure.
 - 250 to 700 characters in all. No hashtags in the text.
 - ${emojiRule(spa)}
+- Never a price, in a caption or a story text.
 - Facts only from the profile: a duration, a number of years, a place name, a quality (signature, expert, best) or a claim appears only if the profile holds it, written as the profile writes it. Feelings, senses and place symbols are yours to use freely.
 - No call to action and no contact details: the app adds "Book on WhatsApp" with the number after every caption${withOffer ? ", with the offer's end before it on a post that carries the special offer" : ''}.
 - Never these words, nor anything that suggests more than a professional treatment: ${BANNED_WORDS.join(', ')}.
@@ -82,7 +83,7 @@ Story text: its own line for the post's Instagram story, which the owner pastes 
 // The special offer's rules, only when the owner set one
 // (docs/specs/posts/special-offer, "What the model gets").
 const offerRules = (spa: boolean) => `
-A special offer is given. Posts 1 and 2 are the two offer posts. Exactly 2 offer posts carry the special offer: each leads on one of the offer's treatments, two different ones when the offer has two or more. Each offer post's caption starts with its offer line, given under "### Special offer", word for word. Never a bigger discount, never other terms, never a price, never another session length, never "today only" or "this week", anywhere in an offer post. Each offer post's story text is its offer line, word for word${spa ? ', followed by one flower' : ''}. The other four posts never mention a discount, a free treatment or a deadline, in their captions or story texts.`;
+A special offer is given. Posts 1 and 2 are the two offer posts. Both carry the special offer: each leads on one of the offer's treatments, two different ones when the offer has two or more. Each offer post's caption starts with its offer line, given under "### Special offer", word for word. Never a bigger discount, never other terms, never a price, never another session length, never "today only" or "this week", anywhere in an offer post. Each offer post's story text is its offer line, word for word${spa ? ', followed by one flower' : ''}.`;
 
 const rewriteOfferRules = (spa: boolean) => `
 
@@ -109,13 +110,13 @@ function lineOf(offer: Offer, setupTreatment: string | undefined, caption = ''):
 }
 
 export function planPrompt(withOffer = false, spa = false): string {
-  return `You plan six Instagram posts for a small business, and write them as its owner would, to guests nearby. You get the business's brand profile, read from its website and checked by the owner, and the topics of its recent posts.
+  return `You plan two Instagram posts for a small business, and write them as its owner would, to guests nearby. You get the business's brand profile, read from its website and checked by the owner, and the topics of its recent posts.
 
 Each post has a type, a topic, a scene, a caption, a story text, hashtags, alt text and an image prompt.
 
 The mix, each type with its own job:
 ${TYPE_JOBS}
-At least 2 offer posts, on 2 different offerings when there are two. At most 2 posts of any type, and at least 4 different types. Never repeat the topic of a recent post.${withOffer ? offerRules(spa) : ''}
+${withOffer ? 'Posts 1 and 2 are both offer posts.' : 'Post 1 is an offer post. Post 2 is one of the other types: moment, local, ritual, tip or proof.'} Never repeat the topic of a recent post.${withOffer ? offerRules(spa) : ''}
 
 The topic: one line, at most 12 words, saying what the post is about.
 

@@ -21,6 +21,7 @@ export type PostsLog = {
   // Code's fixes to the offer posts' lines and story texts
   // (docs/specs/posts/offer-line-first).
   offerFixes: number;
+  priceFixes: number;
   // Code's records of sentences two posts share, and of words of the other
   // time of day (docs/specs/posts/day-and-night-copy).
   repeats: number;
@@ -46,6 +47,7 @@ export function formatPostsLog(log: PostsLog): string {
     `story_ctas=${log.storyCtas}`,
     `emoji_fixes=${log.emojiFixes}`,
     `offer_fixes=${log.offerFixes}`,
+    `price_fixes=${log.priceFixes}`,
     `repeats=${log.repeats}`,
     `light_misses=${log.lightMisses}`,
     `model_ms=${log.modelMs ?? '-'}`,

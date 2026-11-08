@@ -5,6 +5,7 @@ import { noteUsage } from '@/lib/usage/client';
 import { isUsageCode, type UsageCode } from '@/lib/usage/codes';
 import type { PostBatch } from './batch';
 import { IMAGE_ERROR_CODES, type ImageErrorCode, imageResponseSchema } from './image';
+import { imagePosts } from './image-pick';
 import {
   ImageStoreFullError,
   imageKey,
@@ -106,11 +107,12 @@ function request(
     const post = batch.posts.find((p) => p.id === postId);
     try {
       if (!post) throw new Error(`no post ${postId}`);
-      // A post with no image on the phone yet asks for its first one, covered
-      // by its attempt (docs/specs/platform/usage-counters).
-      const first = !(await loadImages(run.ownerId).catch(() => new Map())).has(
-        imageKey(batch.id, postId),
-      );
+      // One of the attempt's two picked posts with no image on the phone yet
+      // asks for its first one, covered by its attempt; any other image is a
+      // new one (docs/specs/platform/usage-counters, docs/specs/posts/two-images).
+      const first =
+        imagePosts(batch).includes(postId) &&
+        !(await loadImages(run.ownerId).catch(() => new Map())).has(imageKey(batch.id, postId));
       const response = await deps.fetch('/api/posts/image', {
         method: 'POST',
         headers: { 'content-type': 'application/json' },

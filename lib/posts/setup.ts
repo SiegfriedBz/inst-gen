@@ -174,7 +174,9 @@ export const setupSchema = z.object({
 });
 export type Setup = z.infer<typeof setupSchema>;
 
-const SETUPS = 6;
+// Two suggestions an attempt (docs/specs/posts/two-suggestions); the same
+// number as POSTS_LIMITS.posts, which can't be imported here.
+const SETUPS = 2;
 
 // Where the hands work for a look; the others take the free parts.
 const FIXED_PARTS: Partial<Record<LookKey, readonly BodyPart[]>> = {
@@ -200,7 +202,7 @@ function pick<T>(items: readonly T[], random: () => number): T {
   return items[Math.floor(random() * items.length)];
 }
 
-// The six treatments: the offer's first, then the least-used eligible
+// The treatments: the offer's first, then the least-used eligible
 // offering each time, so each is used once before any twice, the offer's
 // included.
 function dealTreatments(
@@ -267,9 +269,9 @@ export function dealSetups(
     look === 'couple' ? 'couple' : look === 'pregnancy' ? 'woman' : (free.shift() ?? 'man'),
   );
 
-  // Two of each scene to draw from; a couple never takes the close-up, which
-  // can't show both guests on their beds.
-  const pool = shuffled([...SCENES, ...SCENES], random);
+  // Each scene once to draw from, so the two differ; a couple never takes the
+  // close-up, which can't show both guests on their beds.
+  const pool = shuffled(SCENES, random);
   const take = (fits: (scene: Scene) => boolean) => {
     const i = pool.findIndex(fits);
     return pool.splice(i === -1 ? 0 : i, 1)[0];
@@ -282,16 +284,17 @@ export function dealSetups(
     if (look !== 'couple') scenes[i] = take(() => true);
   }
 
-  // Three days and three nights, drawn last so the rest of a deal stays as
-  // it was before lights were dealt.
-  const lights = shuffled(['day', 'day', 'day', 'night', 'night', 'night'] as Light[], random);
+  // Half days and half nights, drawn last.
+  const half = SETUPS / 2;
+  const lights = shuffled(
+    [...Array(half).fill('day'), ...Array(half).fill('night')] as Light[],
+    random,
+  );
 
-  // Six hook styles, one each; with an offer, posts 1 and 2 open on its line
-  // and the other four take four of the six. Drawn after the lights, so a
-  // seed still deals what it dealt before (docs/specs/posts/marketing-copy).
-  const hooks: (Hook | undefined)[] = offer
-    ? [undefined, undefined, ...shuffled(HOOKS, random).slice(0, 4)]
-    : shuffled(HOOKS, random);
+  // A different hook style for each post; with an offer, both posts open on
+  // its line instead. Drawn after the lights, so a seed still deals what it
+  // dealt before (docs/specs/posts/marketing-copy).
+  const hooks: (Hook | undefined)[] = offer ? [] : shuffled(HOOKS, random);
 
   return looks.map(({ treatment, look }, i) => ({
     ...(treatment ? { treatment } : {}),

@@ -1,15 +1,16 @@
 import { ModelError, type ModelStream, TEXT_MODELS, type TextModel } from '@/lib/ai/text-model';
 import { describeModelError } from '@/lib/brand/read-log';
-import type {
-  Dropped,
-  ModelPost,
-  PlanBody,
-  PlanResult,
-  Post,
-  PostsErrorCode,
-  RewriteBody,
+import {
+  type Dropped,
+  type ModelPost,
+  type PlanBody,
+  type PlanResult,
+  POSTS_LIMITS,
+  type Post,
+  type PostsErrorCode,
+  type RewriteBody,
 } from './batch';
-import { carries, checkPlan, checkPost, checkRewrite, setupFlags } from './checks';
+import { carries, checkPlan, checkPost, checkRewrite, MORE_POSTS, setupFlags } from './checks';
 import { isSpa } from './emoji';
 import { postsModelInput, profileHash } from './input';
 import type { PostsLog } from './log';
@@ -83,6 +84,7 @@ async function* run<T>(
     storyCtas: 0,
     emojiFixes: 0,
     offerFixes: 0,
+    priceFixes: 0,
     repeats: 0,
     lightMisses: 0,
     modelMs: null,
@@ -96,6 +98,12 @@ async function* run<T>(
   let offerPosts = 0;
   function* emit(raws: ModelPost[]): Generator<PostsLine> {
     for (; seen < raws.length; seen += 1) {
+      // An attempt keeps two posts (docs/specs/posts/two-suggestions): the
+      // rest are never shown, and recorded once.
+      if (streamed.length >= POSTS_LIMITS.posts) {
+        if (!dropped.includes(MORE_POSTS)) dropped.push(MORE_POSTS);
+        continue;
+      }
       const type = raws[seen].type.trim().toLowerCase();
       const context = offer
         ? { offer, carries: type === 'offer' && carries('offer', offerPosts) }
@@ -150,6 +158,7 @@ async function* run<T>(
     entry.offerFixes = result.dropped.filter(
       (d) => d.field === 'offer' && !d.reason.endsWith('no treatment for the offer line'),
     ).length;
+    entry.priceFixes = result.dropped.filter((d) => d.field === 'price').length;
     entry.repeats = result.dropped.filter(
       (d) => d.field === 'mix' && /^(first sentence|last sentence|story text) "/.test(d.reason),
     ).length;

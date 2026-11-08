@@ -54,10 +54,10 @@ test('the bar on each tab, and the last attempt used up', async ({ page }) => {
   await expect(bar).toHaveText('Left today: 2 website reads · Resets at 15:00');
 
   await page.getByRole('tab', { name: 'Create Posts' }).click();
-  await page.getByRole('button', { name: /Make 6 suggestions/ }).click();
+  await page.getByRole('button', { name: /Make 2 suggestions/ }).click();
   await expect(page.getByText("You've made today's 3 attempts. More at 15:00.")).toBeVisible();
   await expect(bar).toHaveText('Left today: 0 attempts, 10 new images · Resets at 15:00');
-  await expect(page.getByRole('button', { name: /Make 6 suggestions/ })).toBeDisabled();
+  await expect(page.getByRole('button', { name: /Make 2 suggestions/ })).toBeDisabled();
 });
 
 test('the bar fits a 320px phone in Vietnamese', async ({ page, context }) => {
