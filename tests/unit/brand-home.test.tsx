@@ -379,6 +379,7 @@ describe('Your business, missing first', () => {
         senses: ['frangipani'],
         searchTerms: ['canggu massage'],
       },
+      staffLook: { value: 'a white tunic, white trousers', source: 'model' },
     });
     expect(screen.getByText("1 thing we couldn't find")).toBeTruthy();
     expect(screen.queryByText(/You can make posts without/)).toBeNull();
@@ -425,6 +426,7 @@ describe('Your business, missing first', () => {
         senses: ['frangipani'],
         searchTerms: ['canggu massage'],
       },
+      staffLook: { value: 'a white tunic, white trousers', source: 'model' },
     });
     expect(screen.queryByText(/things? we couldn't find/)).toBeNull();
   });
