@@ -10,6 +10,10 @@ const HASHTAG_WORD = /(^|\s)#[\p{L}\p{M}\p{N}_]+/gu;
 const CALL_TO_ACTION =
   /\b(book|booking|reserve|call us|message us|contact us|dm|whatsapp|link in bio|tap the link|click)\b/i;
 const segmenter = new Intl.Segmenter('en', { granularity: 'grapheme' });
+// A sentence also ends at an emoji a new one follows, its stop gone ("…evening
+// 🌺 Book in your villa."), as the hook's does (docs/specs/posts/marketing-copy,
+// amended 2026-11-08).
+const AT_EMOJI = /(?<=\p{Extended_Pictographic}\uFE0F?)(?=\s+[\p{Lu}\d])/u;
 
 // The longest start of `text` within `max` that ends at one of `ends`.
 function longestUpTo(text: string, ends: number[], max: number): string | null {
@@ -58,11 +62,13 @@ export function cleanStory(
   const emoji = () =>
     fixes.length > 0 ? [{ field: 'emoji', reason: `${id}: story text ${fixes.join(', ')}` }] : [];
   let text = (raw ?? '').replace(HASHTAG_WORD, '').trim();
-  const kept = sentences(text).filter((sentence) => {
-    if (!CALL_TO_ACTION.test(sentence)) return true;
-    dropped.push({ field: 'story', reason: `${id}: story text removed "${sentence.trim()}"` });
-    return false;
-  });
+  const kept = sentences(text)
+    .flatMap((sentence) => sentence.split(AT_EMOJI))
+    .filter((sentence) => {
+      if (!CALL_TO_ACTION.test(sentence)) return true;
+      dropped.push({ field: 'story', reason: `${id}: story text removed "${sentence.trim()}"` });
+      return false;
+    });
   text = kept.join('').trim();
   if (spa) {
     const stripped = stripEmojis(text, POSTS_LIMITS.storyFlowers);

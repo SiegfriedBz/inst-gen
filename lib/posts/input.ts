@@ -1,4 +1,6 @@
 import type { Profile } from '@/lib/brand/profile';
+import type { Post } from './batch';
+import type { Offer } from './offer';
 
 // What the post plan's model sees of the profile: public business facts only.
 // Contact details and the street address never go to Gemini's free tier
@@ -64,7 +66,21 @@ export function profileHash(profile: Profile): string {
   return hashText(sortedJson(postsModelInput(profile)));
 }
 
-export function ctaFor(profile: Profile): string | null {
+// The line after a caption: the WhatsApp number, with the offer's end before
+// it when an offer is given (docs/specs/posts/marketing-copy, "The offer's end,
+// by the WhatsApp line").
+export function ctaFor(profile: Profile, offer?: Offer): string | null {
   const whatsapp = profile.contact.whatsapp?.value;
-  return whatsapp ? `Book on WhatsApp: ${whatsapp}` : null;
+  if (!whatsapp) return null;
+  const book = `Book on WhatsApp: ${whatsapp}`;
+  return offer ? `Offer ends ${offer.lastDay}. ${book}` : book;
+}
+
+// A post's own line: the offer's end only on a post that carries the offer.
+export function postCta(
+  profile: Profile,
+  post: Pick<Post, 'offer'>,
+  batchOffer?: Offer,
+): string | null {
+  return ctaFor(profile, post.offer ? batchOffer : undefined);
 }

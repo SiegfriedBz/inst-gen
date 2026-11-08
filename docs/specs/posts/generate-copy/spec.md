@@ -210,7 +210,9 @@ batch for one bad item.
 - **Prices and numbers.** Every price-like string in a caption (a currency
   symbol or code next to a number, or a number followed by `k`, `VND`, `IDR`,
   `$`, `USD`) must match a `price` in `offerings`, compared on its digits.
-  Every duration ("60 minutes", "90 min", "1 hour") must match a `duration`.
+  Every duration ("60 minutes", "90 min", "1 hour") must match a `duration`
+  (amended 2026-11-08 by `posts/marketing-copy`: or a duration the
+  profile's highlights or promise give).
   A caption with an unmatched one keeps its text and gets a flag,
   `unchecked: ["price 450k"]`, shown to the owner (see "On the screen").
   The check is best effort and says so.
