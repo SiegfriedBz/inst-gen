@@ -61,10 +61,37 @@
   photo, twice, and one of the couple's therapists), navy (four hands, the
   other couple's therapist) and black (Traditional Balinese), and a man in
   brown (Deep Tissue). Each look is from the photos (`model`), and both
-  fixtures pass. In the four images, every therapist wears her spa's look,
+  fixtures pass. With six photos, Sen's read took 12.6 s and Svarga's 9.4 s. In the four images, every therapist wears her spa's look,
   with the hair in a bun.
 - 2026-11-08: the maintainer's verdict on the four images: "Yes, they're
   right", Svarga's dark brown included.
+- 2026-11-08: the whole-branch review (a fresh reviewer) found no critical
+  issue and two important ones, both from the plan, now fixed test first:
+  the look's note lacked the spec's "or anything that suggests more than a
+  professional treatment" (now `brand-9`, not `brand-8` as the spec says),
+  and the look's field took one line, showing about 40 of its characters on
+  a phone (now several lines, like the summary and the promise). A look of
+  only spaces failed the whole read; it is now no look.
+- 2026-11-08: Sen's and Svarga's recordings stay at `brand-8`, as other
+  fixtures keep older versions: the clause only restricts, and their looks
+  hold nothing it forbids.
+- 2026-11-08: on the day this ships, a page loaded before the deploy sends a
+  version 2 profile, which the posts routes refuse until a reload, and can't
+  read a version 3 answer, so "Read it again" spends a read and fails. As at
+  1.3's version bump: owners reload the app (close and reopen it) before
+  "Read it again".
+- 2026-11-08: left for later, from the review: a cut look can keep a
+  trailing space, so saving "Your look" unchanged then says "added by you";
+  a look under 30 words but over 300 characters says "That is too many."
+  under "Up to 30 words"; the brand panel spec's dated notes swallow the
+  next paragraph (no blank line after them).
+- 2026-11-08: a second look, at the two fixes made after the review began
+  (Next.js images, the eval's cached photos), found nothing to fix. Left for
+  later: a small image Next.js renders with `fill` or `sizes` (an avatar, a
+  badge) can count as a photo; other image optimisers (`/_vercel/image`,
+  `/.netlify/images`) still give one photo; each photo is fetched at its
+  largest size; `eval:images` spends without the look when the photo cache
+  is missing.
 
 ## RED
 
@@ -117,4 +144,18 @@ brand eval: 2/2 passed · prompt brand-8 · model gemini-3.5-flash-lite
 
 ```
 images eval: 2 fixture(s) · prompt images-10 · model gemini-nano-banana-2.1 · about $0.20 spent ($0.05 an image)
+```
+
+`pnpm check`, at the end of the branch, after the review's fixes:
+
+```
+ Test Files  110 passed (110)
+      Tests  1731 passed (1731)
+```
+
+`pnpm test:e2e`, at the end of the branch, after the review's fixes:
+
+```
+  1 skipped
+  65 passed (20.7s)
 ```
