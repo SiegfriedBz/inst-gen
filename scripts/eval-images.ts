@@ -12,7 +12,7 @@ import { existsSync, mkdirSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { geminiImageModel, IMAGE_MODEL, IMAGE_USD } from '@/lib/ai/image-model';
 import { replayTextModel } from '@/lib/ai/replay';
-import { FIXTURES_DIR, fixtureProfile, loadFixture } from '@/lib/brand/fixtures';
+import { CACHE_DIR, FIXTURES_DIR, fixtureProfile, loadFixture } from '@/lib/brand/fixtures';
 import type { Post } from '@/lib/posts/batch';
 import type { ImageLog } from '@/lib/posts/image-log';
 import { IMAGE_PROMPT_VERSION } from '@/lib/posts/image-prompt';
@@ -39,7 +39,8 @@ async function recordedPosts(slug: string): Promise<{ posts: Post[]; staffLook?:
   const dir = join(FIXTURES_DIR, slug);
   const fixture = loadFixture(dir);
   if (!fixture.posts) throw new Error(`no posts.json for ${slug}`);
-  const profile = await fixtureProfile(dir);
+  // With the cached photos, so the therapists' look the read saw is kept.
+  const profile = await fixtureProfile(dir, { imageCache: join(CACHE_DIR, slug) });
   const text = replayTextModel(fixture.posts.recording, { posts: fixture.posts.recording });
   for await (const line of streamPlan(
     { profile, recent: [] },
