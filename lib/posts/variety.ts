@@ -83,8 +83,8 @@ export function lightRecords(post: Post): Dropped[] {
 // its order: question hooks, stock words, endings, places, story texts and
 // calls to action. Records only, on the captions as code leaves them.
 
-// Words the captions lean on, recorded in 3 captions or more; the list may
-// grow.
+// Words the captions lean on, recorded in 2 captions or more, both of a plan
+// (amended 2026-11-08); the list may grow.
 const STOCK_WORDS = [
   'feel',
   'completely',
@@ -98,7 +98,7 @@ const STOCK_WORDS = [
   'bliss',
   'golden oil',
 ];
-const STOCK_AT = 3;
+const STOCK_AT = 2;
 
 // A sentence that asks the guest to act. One that only names WhatsApp ("we
 // reply on WhatsApp within about 5 minutes") answers a doubt, and isn't one.

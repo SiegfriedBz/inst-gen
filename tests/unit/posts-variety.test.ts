@@ -155,27 +155,18 @@ describe('copyRecords', () => {
     expect(reasons([offerPost, at(2, 'Sore feet in Canggu? Warm oil helps.')])).toEqual([]);
   });
 
-  it('records a stock word in 3 captions, whole words, case aside', () => {
+  // Both captions of a plan (docs/specs/posts/marketing-copy, amended 2026-11-08).
+  it('records a stock word in 2 captions, whole words, case aside', () => {
     expect(
-      reasons([
-        at(1, 'Completely calm in Canggu.'),
-        at(2, 'Rest completely in Ubud.'),
-        at(3, 'Bali, COMPLETELY new.'),
-        at(4, 'A good feeling in Seminyak.'),
-        at(5, 'Golden oil, warm, in Canggu.'),
-        at(6, 'Feeling light in Ubud.'),
-      ]),
-    ).toEqual(['words: "completely" in post-1, post-2, post-3']);
+      reasons([at(1, 'Completely calm in Canggu.'), at(2, 'Rest COMPLETELY in Ubud.')]),
+    ).toEqual(['words: "completely" in post-1, post-2']);
     expect(
-      reasons([
-        at(1, 'Golden oil first, in Canggu.'),
-        at(2, 'Then golden oil, in Ubud.'),
-        at(3, 'Warm golden oil in Bali.'),
-      ]),
-    ).toEqual(['words: "golden oil" in post-1, post-2, post-3']);
-    expect(
-      reasons([at(1, 'Completely calm in Canggu.'), at(2, 'Rest completely in Ubud.')]),
-    ).toEqual([]);
+      reasons([at(1, 'Golden oil first, in Canggu.'), at(2, 'Then golden oil, in Ubud.')]),
+    ).toEqual(['words: "golden oil" in post-1, post-2']);
+    expect(reasons([at(1, 'A good feeling in Canggu.'), at(2, 'Feeling light in Ubud.')])).toEqual(
+      [],
+    );
+    expect(reasons([at(1, 'Completely calm in Canggu.'), at(2, 'Rest now in Ubud.')])).toEqual([]);
   });
 
   it('records endings that start with the same word, as the first one writes it', () => {
