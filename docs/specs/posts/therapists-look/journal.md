@@ -38,6 +38,31 @@
 - 2026-11-08: `pnpm check` fails in a worktree whose scratch folder
   `.superpowers/` has no `guide/` (AGENTS.md cites `.superpowers/guide/`);
   an empty one was made here. CI has no `.superpowers/` and skips the check.
+- 2026-11-08: saving the new sites showed the read gave each one photo
+  besides its og:image: every image a Next.js site serves has the path
+  `/_next/image`, and the read keyed photos by path. Sen's would have been
+  its top photo, the black top. Each such image now counts once by its own
+  file (`lib/brand/extract/visual.ts`, test first), so both sites give 6
+  photos; Sen's are its og image, its top photo and four white-tunic
+  treatment photos.
+- 2026-11-08: the replayed fixture profile counts no photo (the image cache
+  isn't in git), so it dropped the recorded look as `no_photos`, and
+  `pnpm eval:images` would have sent none. `fixtureProfile` takes an
+  optional image cache, which `eval:images` passes; tests still read
+  without it.
+- 2026-11-08: with the maintainer's yes (not a pilot day), the new sites
+  were saved (`pnpm fixtures:save`), read once each with the real model and
+  recorded (`pnpm eval:brand sen svarga --record`, 2 Flash-Lite requests),
+  and their images made (`pnpm eval:images sen svarga`, 4 images, about
+  $0.20). Sen's look: "a white short-sleeved tunic with a small stand-up
+  collar, white trousers, dark hair in a neat low bun". Svarga's: "a dark
+  brown short-sleeved top with a V-neck wrap collar, dark brown trousers,
+  dark hair in a neat low bun"; its six photos mix dark brown (its top
+  photo, twice, and one of the couple's therapists), navy (four hands, the
+  other couple's therapist) and black (Traditional Balinese), and a man in
+  brown (Deep Tissue). Each look is from the photos (`model`), and both
+  fixtures pass. In the four images, every therapist wears her spa's look,
+  with the hair in a bun.
 
 ## RED
 
@@ -78,4 +103,16 @@ Task 4, every new image:
 
 ```
   1 passed (21.8s)
+```
+
+`pnpm eval:brand sen svarga --record`:
+
+```
+brand eval: 2/2 passed · prompt brand-8 · model gemini-3.5-flash-lite
+```
+
+`pnpm eval:images sen svarga`:
+
+```
+images eval: 2 fixture(s) · prompt images-10 · model gemini-nano-banana-2.1 · about $0.20 spent ($0.05 an image)
 ```
