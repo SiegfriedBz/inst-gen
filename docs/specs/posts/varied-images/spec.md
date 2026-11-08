@@ -155,6 +155,8 @@ them changes.
 
 ### What the image model gets
 
+> Changed by `posts/therapists-look` (2026-11-08): with the therapists' look, the cast line names it ("Her look: …", or "dressed alike. Their look: …" for two), and the style line's therapist rules end on "Every therapist's look, whatever the scene says: …" (`images-10`); without one, the prompt is as below.
+
 The image request (2.3) gains an optional `setup` and an optional `locals`,
 both checked with zod. `locals` is the therapists' origin, worked out by code
 from the profile when the batch is planned and kept with the set-up:
