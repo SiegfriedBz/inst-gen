@@ -1,7 +1,8 @@
 ---
 title: "Answers to guests' questions"
 description: "A fourth home tab, 'Questions': the owner pastes a guest's question and gets one answer in the guest's language, from the business's own details, with its translation in the owner's language, from one Flash-Lite call. A question that asks for or mentions sex always gets 'we offer only professional therapeutic massage', and an answer the owner marks as final ends with a call to book, asking only for the booking details the guest hasn't given yet in the conversation; code makes sure of both."
-status: draft
+status: approved
+approved: { by: siegfried.bozza@protonmail.com, at: 2026-11-10T13:36:16Z }
 date: "2026-11-10"
 ---
 
