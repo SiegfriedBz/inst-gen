@@ -24,7 +24,7 @@ function show(
 const LOCALES: Locale[] = ['en', 'id', 'vi'];
 
 describe('the owner guide', () => {
-  test.each(LOCALES)('shows the eight sections in order, in %s', (locale) => {
+  test.each(LOCALES)('shows the nine sections in order, in %s', (locale) => {
     show(locale);
     const guide = messagesFor(locale).guide;
     const headings = screen.getAllByRole('heading', { level: 2 }).map((h) => h.textContent);
@@ -48,9 +48,25 @@ describe('the owner guide', () => {
       m.posts.make,
       m.brand.home.read,
       m.reviews.write,
+      m.questions.write,
+      m.questions.final,
+      m.questions.next,
+      m.questions.newConversation,
+      m.home.tabs.questions,
     ]) {
       expect(text).toContain(name);
     }
+  });
+
+  // docs/specs/questions/answer-drafts, "The owner guide".
+  test.each(LOCALES)('explains the Questions tab after the reviews, in %s', (locale) => {
+    show(locale);
+    const order = [...document.querySelectorAll('section[id]')].map((section) => section.id);
+    expect(order.indexOf('questions')).toBe(order.indexOf('reviews') + 1);
+    const questions = document.getElementById('questions')?.textContent ?? '';
+    const m = messagesFor(locale).guide.questions;
+    expect(questions).toContain(m.sex);
+    expect(questions).toContain(m.send);
   });
 
   // The story text (docs/specs/posts/story-text, "The owner guide").
@@ -113,13 +129,14 @@ describe('the owner guide', () => {
 
   test('the numbers come from the limits', () => {
     const changed = show('en', {
-      limits: { reads: 3, attempts: 4, newImages: 10, replies: 20 },
+      limits: { reads: 3, attempts: 4, newImages: 10, replies: 20, answers: 20 },
     }).textContent;
     expect(changed).toContain('4 attempts');
     cleanup();
     const text = show('en').textContent;
     expect(text).toContain('3 attempts');
     expect(text).toContain('20 replies');
+    expect(text).toContain('20 answers');
   });
 
   test('no contact, no contact line', () => {

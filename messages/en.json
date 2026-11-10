@@ -14,7 +14,8 @@
       "label": "Home",
       "business": "Your business",
       "posts": "Create Posts",
-      "reviews": "Reviews"
+      "reviews": "Reviews",
+      "questions": "Questions"
     },
     "welcome": "Welcome, {name}",
     "websiteLabel": "Your website",
@@ -347,6 +348,44 @@
     "which": "Which reply",
     "copy": "Copy the reply"
   },
+  "questions": {
+    "intro": "Got a question from a guest? Copy it and paste it here. We write an answer in your guest's language, from your business details.",
+    "label": "The guest's question",
+    "hint": "Leave out the guest's name and phone number.",
+    "final": "Make it the final answer",
+    "finalHint": "It ends by asking the guest to book.",
+    "write": "Write an answer",
+    "writing": "Writing your answer…",
+    "keepOpen": "Keep this page open for a few seconds.",
+    "heading": "The guest's question · in {language}",
+    "sexual": "This question mentions sex. Your answer says you offer only professional therapeutic massage.",
+    "unanswered": "Your business details don't answer all of this question. Check the answer before you send it.",
+    "answer": "Your answer",
+    "copy": "Copy the answer",
+    "flags": {
+      "price": "This price isn't on your website: {text}. Check it before sending.",
+      "duration": "This duration isn't on your website: {text}. Check it before sending.",
+      "number": "This number isn't on your website: {text}. Check it before sending."
+    },
+    "howTo": "Paste it in your chat with the guest.",
+    "again": "Write another answer",
+    "next": "Paste the next message",
+    "newConversation": "New conversation",
+    "known": {
+      "title": "What this guest has told you",
+      "place": "Staying at: {value}",
+      "day": "Day: {value}",
+      "time": "Time: {value}",
+      "hint": "Another guest? Start a new conversation first."
+    },
+    "errors": {
+      "model_busy": "Shopfront has used today's free writing. Try again tomorrow.",
+      "model_timeout": "Writing your answer took too long. Try again.",
+      "model_failed": "Something went wrong while writing your answer. Try again.",
+      "invalid_request": "Something went wrong while writing your answer. Try again.",
+      "offline": "You're offline. Try again when you're back."
+    }
+  },
   "usage": {
     "left": "Left today: {items}",
     "resets": "Resets at {time}",
@@ -354,6 +393,7 @@
     "attempts": "{count, plural, one {# attempt} other {# attempts}}",
     "newImages": "{count, plural, one {# new image} other {# new images}}",
     "replies": "{count, plural, one {# reply} other {# replies}}",
+    "answers": "{count, plural, one {# answer} other {# answers}}",
     "developer": "No daily limits (developer)",
     "poolEmpty": "Shopfront has used today's free writing. Back at {time}.",
     "imagesMonth": "No new images until {date}.",
@@ -363,6 +403,7 @@
       "reads": "You've read your website {limit} times today. Again at {time}.",
       "newImages": "You've made today's {limit} new images. More at {time}.",
       "replies": "You've written today's {limit} replies. More at {time}.",
+      "answers": "You've written today's {limit} answers. More at {time}.",
       "rewrites": "Captions were updated {limit} times today. Again at {time}.",
       "translations": "Today's {limit} translations are used up. More at {time}."
     }
@@ -425,19 +466,28 @@
       "pick": "Switch between <b>{short}</b> and <b>{warm}</b> to pick the reply you like, change it if you want, copy it, and paste it as your reply in Google Maps. Replies are written in your guest's language, and you can read them in yours.",
       "other": "Neither fits? Tap <b>{button}</b>. A new review replaces the last one."
     },
+    "questions": {
+      "title": "Answering guests' questions",
+      "paste": "When a guest asks you something on WhatsApp or Instagram (your treatments, prices, hours, where you go), copy their message. In <b>{tab}</b>, paste it and tap <b>{button}</b>.",
+      "send": "Read the answer, change it if you want, then copy it and paste it in your chat with the guest.",
+      "final": "When the guest has asked what they wanted to know, tick <b>{final}</b>: the answer then ends by asking them to book.",
+      "remember": "Shopfront remembers where the guest is staying, and the day and the time they gave, so the final answer asks only for what's missing. For the same guest's next message, tap <b>{next}</b>. Before another guest's message, tap <b>{new}</b>.",
+      "details": "Answers use only your business details. When something isn't in them, the answer says you'll check, and Shopfront tells you: answer that part yourself.",
+      "sex": "If a guest asks for sex, the answer always says you offer only professional therapeutic massage."
+    },
     "allowance": {
       "title": "Your daily allowance",
       "free": "Shopfront is free, so each day has a limit.",
-      "limits": "Each day you have {reads}, {attempts} of 2 suggestions, {newImages} and {replies}, plus caption updates and translations.",
+      "limits": "Each day you have {reads}, {attempts} of 2 suggestions, {newImages}, {replies} and {answers}, plus caption updates and translations.",
       "bar": "The line at the top of each tab shows what's left today and the time it all comes back.",
-      "reset": "At that time, the limits come back and the day's suggestions and review replies leave the screen. Save what you want to keep before then. Your special offer stays: it lasts until its own last day ends.",
+      "reset": "At that time, the limits come back and the day's suggestions, review replies and answers leave the screen. Save what you want to keep before then. Your special offer stays: it lasts until its own last day ends.",
       "time": "The time on the bar is in your phone's own time: trust it rather than a fixed hour.",
       "month": "New images also have a monthly budget for the whole app. If it runs out, Shopfront says when images are back."
     },
     "languages": {
       "title": "Languages",
       "switch": "The <b>{lang}</b> button at the top right changes the language of the screens.",
-      "captions": "Posts and story texts are written in English, and review replies in your guest's language. Showing them in your language is for reading, not for posting."
+      "captions": "Posts and story texts are written in English, and review replies and answers in your guest's language. Showing them in your language is for reading, not for posting."
     },
     "trouble": {
       "title": "If something goes wrong",

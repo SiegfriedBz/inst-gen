@@ -28,7 +28,7 @@ test('opens from the home screen', async ({ page }) => {
   await page.locator('header').getByRole('link', { name: en.guide.link }).click();
   await expect(page).toHaveURL('/guide');
   await expect(page.getByRole('heading', { level: 1 })).toHaveText(en.guide.title);
-  await expect(page.getByRole('heading', { level: 2 })).toHaveCount(8);
+  await expect(page.getByRole('heading', { level: 2 })).toHaveCount(9);
 });
 
 test('switches language and stays', async ({ page }) => {

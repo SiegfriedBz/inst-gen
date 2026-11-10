@@ -11,6 +11,8 @@ export const OWNER_LIMITS = {
   translations: 30,
   newImages: 10,
   replies: 20,
+  // Answers to guests' questions (docs/specs/questions/answer-drafts).
+  answers: 20,
 } as const;
 export type LimitedAction = keyof typeof OWNER_LIMITS;
 

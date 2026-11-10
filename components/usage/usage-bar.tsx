@@ -10,7 +10,7 @@ import { useUsage } from './usage-provider';
 // today, and when it comes back (docs/specs/platform/usage-counters, "The
 // usage bar"). Empty, at its height, until the answer comes.
 
-type Tab = 'business' | 'posts' | 'reviews';
+type Tab = 'business' | 'posts' | 'reviews' | 'questions';
 
 const MARK = '\u0000';
 
@@ -37,9 +37,11 @@ export function UsageBar({ tab }: { tab: Tab }) {
           ? ['reads']
           : tab === 'reviews'
             ? ['replies']
-            : imagesShown
-              ? ['attempts', 'newImages']
-              : ['attempts'];
+            : tab === 'questions'
+              ? ['answers']
+              : imagesShown
+                ? ['attempts', 'newImages']
+                : ['attempts'];
       const items = actions.map((action, i) => (
         <Fragment key={action}>
           {i > 0 && ', '}

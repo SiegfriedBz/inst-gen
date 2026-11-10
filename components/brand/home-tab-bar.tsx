@@ -4,11 +4,11 @@ import type { Icon } from '@phosphor-icons/react';
 import { TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { useTyping } from './use-typing';
 
-export type HomeTab = 'business' | 'posts' | 'reviews';
+export type HomeTab = 'business' | 'posts' | 'reviews' | 'questions';
 
-// The three home tabs in a bar fixed to the bottom of the screen, an icon over
-// each label (docs/specs/platform/friendlier-home, "The tabs move to a bottom
-// bar"). It sits inside the home's <Tabs>, and hides while the keyboard is up.
+// The home tabs in a bar fixed to the bottom of the screen, an icon over each
+// label (docs/specs/platform/friendlier-home, "The tabs move to a bottom bar");
+// four since docs/specs/questions/answer-drafts. It sits inside the home's <Tabs>, and hides while the keyboard is up.
 export function HomeTabBar({
   label,
   tabs,

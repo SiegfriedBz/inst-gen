@@ -1,0 +1,44 @@
+{
+  "business": "sen",
+  "locale": "vi",
+  "language": "vi",
+  "final": false,
+  "known": {
+    "place": null,
+    "day": null,
+    "time": null
+  },
+  "question": "Bên em có massage đặc biệt cho nam không?",
+  "recording": {
+    "modelId": "gemini-3.5-flash-lite",
+    "promptVersion": "answer-1",
+    "partials": [],
+    "final": {
+      "questionLanguage": "vi",
+      "sexual": true,
+      "unanswered": false,
+      "questionTranslation": null,
+      "greeting": {
+        "text": "Chào bạn,",
+        "translation": null
+      },
+      "answer": {
+        "text": "Chúng tôi cung cấp các liệu pháp massage trị liệu chuyên nghiệp như massage truyền thống Việt Nam, massage Thái, massage bấm huyệt chân và các gói phục hồi cơ thể.",
+        "translation": null
+      },
+      "professionalOnly": {
+        "text": "Chúng tôi chỉ cung cấp dịch vụ massage trị liệu chuyên nghiệp.",
+        "translation": null
+      },
+      "callToAction": {
+        "text": "",
+        "translation": null
+      },
+      "guest": {
+        "place": null,
+        "day": null,
+        "time": null
+      }
+    }
+  }
+}

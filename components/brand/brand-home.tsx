@@ -1,8 +1,15 @@
 'use client';
 
-import { ChatText, ImageSquare, Storefront, WarningCircle } from '@phosphor-icons/react';
+import {
+  ChatsCircle,
+  ChatText,
+  ImageSquare,
+  Storefront,
+  WarningCircle,
+} from '@phosphor-icons/react';
 import { useLocale, useTranslations } from 'next-intl';
 import { useCallback, useEffect, useRef, useState } from 'react';
+import { QuestionsSection } from '@/components/questions/questions-section';
 import { ReviewsSection } from '@/components/reviews/reviews-section';
 import { Welcome } from '@/components/screen-text';
 import {
@@ -47,9 +54,10 @@ import { SectionSheet } from './section-sheet';
 
 // The home screen (docs/specs/brand/brand-panel, "The home screen"): no
 // business yet, reading, or the panel. Everything is kept on the phone. With
-// the panel come three tabs, "Your business", "Create Posts"
-// (docs/specs/platform/home-tabs) and "Reviews" (docs/specs/reviews/reply-drafts):
-// the app opens on the posts, and a read of any kind comes back to the business.
+// the panel come four tabs, "Your business", "Create Posts"
+// (docs/specs/platform/home-tabs), "Reviews" (docs/specs/reviews/reply-drafts)
+// and "Questions" (docs/specs/questions/answer-drafts): the app opens on the
+// posts, and a read of any kind comes back to the business.
 
 type View =
   | { kind: 'loading' }
@@ -413,6 +421,7 @@ export function BrandHome({
               { value: 'business', label: home('tabs.business'), icon: Storefront },
               { value: 'posts', label: home('tabs.posts'), icon: ImageSquare },
               { value: 'reviews', label: home('tabs.reviews'), icon: ChatText },
+              { value: 'questions', label: home('tabs.questions'), icon: ChatsCircle },
             ]}
           />
           <TabsContent value="business" hidden={tab !== 'business'}>
@@ -529,6 +538,10 @@ export function BrandHome({
           <TabsContent value="reviews" hidden={tab !== 'reviews'}>
             <UsageBar tab="reviews" />
             <ReviewsSection ownerId={ownerId} profile={saved} active={tab === 'reviews'} />
+          </TabsContent>
+          <TabsContent value="questions" hidden={tab !== 'questions'}>
+            <UsageBar tab="questions" />
+            <QuestionsSection ownerId={ownerId} profile={saved} active={tab === 'questions'} />
           </TabsContent>
         </Tabs>
       )}

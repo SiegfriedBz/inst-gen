@@ -5,6 +5,7 @@ import type { ImageDeps } from '@/lib/posts/image-run';
 import { formatPostsLog } from '@/lib/posts/log';
 import type { PostsDeps } from '@/lib/posts/run';
 import { formatTranslateLog, type TranslateDeps } from '@/lib/posts/translate-run';
+import { type AnswerDeps, formatAnswerLog } from '@/lib/questions/answer-run';
 import { formatReplyLog, type ReplyDeps } from '@/lib/reviews/reply-run';
 import { tavilySearchTool } from '@/lib/search/tavily';
 import { undiciTransport } from './fetch-safe';
@@ -64,5 +65,14 @@ export function defaultReplyDeps(): ReplyDeps {
   return {
     model: geminiTextModel(),
     log: (entry) => console.info(formatReplyLog(entry)),
+  };
+}
+
+// The real model, for the guests' questions route
+// (docs/specs/questions/answer-drafts).
+export function defaultAnswerDeps(): AnswerDeps {
+  return {
+    model: geminiTextModel(),
+    log: (entry) => console.info(formatAnswerLog(entry)),
   };
 }

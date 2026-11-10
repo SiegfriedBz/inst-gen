@@ -3,6 +3,7 @@ import type { PostBatch } from '@/lib/posts/batch';
 import type { SavedImage } from '@/lib/posts/image-store';
 import type { OfferRecord } from '@/lib/posts/offer-store';
 import type { SavedTranslation } from '@/lib/posts/translation-store';
+import type { ConversationRecord } from '@/lib/questions/store';
 import type { ReviewRecord } from '@/lib/reviews/store';
 import type { RunRecord } from '@/lib/runs/run-record';
 import { type Profile, profileSchema, upgradeProfile } from './profile';
@@ -47,10 +48,12 @@ export interface ShopfrontDb extends DBSchema {
   reviews: { key: string; value: ReviewRecord };
   // Today's special offer (docs/specs/posts/special-offer).
   offers: { key: string; value: OfferRecord };
+  // The current conversation with a guest (docs/specs/questions/answer-drafts).
+  questions: { key: string; value: ConversationRecord };
 }
 
 const DB_NAME = 'shopfront';
-const DB_VERSION = 6;
+const DB_VERSION = 7;
 
 let opening: Promise<IDBPDatabase<ShopfrontDb> | null> | null = null;
 let persistAsked = false;
@@ -95,6 +98,9 @@ async function open(): Promise<IDBPDatabase<ShopfrontDb> | null> {
         }
         if (oldVersion < 6) {
           db.createObjectStore('offers', { keyPath: 'ownerId' });
+        }
+        if (oldVersion < 7) {
+          db.createObjectStore('questions', { keyPath: 'ownerId' });
         }
       },
       // Another tab still has an older version open: the page works without
@@ -204,7 +210,7 @@ export async function forgetBrand(ownerId: string): Promise<void> {
   const db = await openStore();
   if (!db) return;
   const tx = db.transaction(
-    ['brands', 'runs', 'posts', 'images', 'translations', 'reviews', 'offers'],
+    ['brands', 'runs', 'posts', 'images', 'translations', 'reviews', 'offers', 'questions'],
     'readwrite',
   );
   const runIds = await tx.objectStore('runs').index('ownerId').getAllKeys(ownerId);
@@ -215,6 +221,7 @@ export async function forgetBrand(ownerId: string): Promise<void> {
     tx.objectStore('brands').delete(ownerId),
     tx.objectStore('reviews').delete(ownerId),
     tx.objectStore('offers').delete(ownerId),
+    tx.objectStore('questions').delete(ownerId),
     ...runIds.map((id) => tx.objectStore('runs').delete(id)),
     ...batchIds.map((id) => tx.objectStore('posts').delete(id)),
     ...imageIds.map((id) => tx.objectStore('images').delete(id)),

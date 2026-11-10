@@ -488,9 +488,19 @@ describe('the home tabs', () => {
       'Your business',
       'Create Posts',
       'Reviews',
+      'Questions',
     ]);
     await openTab('Reviews');
     expect(await screen.findByRole('button', { name: 'Write 2 replies' })).toBeTruthy();
+  });
+
+  // docs/specs/questions/answer-drafts, "The tabs".
+  test('the fourth tab, Questions, holds the question form', async () => {
+    await saveBrand('sen', profile);
+    renderHome();
+    await screen.findByRole('tablist', { name: 'Home' });
+    await openTab('Questions');
+    expect(await screen.findByRole('button', { name: 'Write an answer' })).toBeTruthy();
   });
 
   test('the tabs sit in a bar at the bottom, each with an icon', async () => {
@@ -515,7 +525,7 @@ describe('the home tabs', () => {
     renderHome();
     await screen.findByRole('tablist', { name: 'Home' });
     const panels = document.querySelectorAll('[role="tabpanel"]');
-    expect(panels).toHaveLength(3);
+    expect(panels).toHaveLength(4);
     for (const panel of panels) {
       expect(panel.firstElementChild?.getAttribute('data-testid')).toBe('usage-bar');
     }

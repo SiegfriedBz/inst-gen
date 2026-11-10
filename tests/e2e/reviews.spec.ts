@@ -99,12 +99,13 @@ test.describe('small phone', () => {
   test.use({ viewport: { width: 320, height: 640 } });
 
   for (const code of ['en', 'vi']) {
-    test(`three tabs fit 320px in ${code}`, async ({ page, context }) => {
+    // Four since docs/specs/questions/answer-drafts.
+    test(`four tabs fit 320px in ${code}`, async ({ page, context }) => {
       await saveLocale(context, code);
       await fulfilRead(page, [streamBody(senProfile())]);
       await signInAndRead(page);
       const tabs = page.getByRole('tab');
-      await expect(tabs).toHaveCount(3);
+      await expect(tabs).toHaveCount(4);
       for (const tab of await tabs.all()) await expect(tab).toBeInViewport({ ratio: 1 });
       expect(await page.evaluate(() => document.documentElement.scrollWidth)).toBeLessThanOrEqual(
         320,

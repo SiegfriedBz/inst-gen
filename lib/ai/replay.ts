@@ -1,6 +1,7 @@
 import type { DeepPartial, ModelProfile } from '@/lib/brand/profile';
 import type { SearchModelAnswer } from '@/lib/brand/search/prompt';
 import type { ModelPostPlan, ModelRewrite } from '@/lib/posts/batch';
+import type { ModelAnswer } from '@/lib/questions/question';
 import type { ModelReplies } from '@/lib/reviews/reply';
 import {
   ModelError,
@@ -49,6 +50,8 @@ export function replayTextModel(
     translation?: Recording;
     // A review's two replies, its `final` the answer; without one, it fails.
     replies?: Recording;
+    // A guest's answer, its `final` the model's parts; without one, it fails.
+    answers?: Recording;
   } = {},
 ): TextModel {
   function replay<T>(recording: Recording | undefined, signal: AbortSignal) {
@@ -90,6 +93,12 @@ export function replayTextModel(
       if (!opts.replies) throw new ModelError('failed', 'no recorded replies');
       return opts.replies.final as ModelReplies;
     },
+    async writeAnswer(_input, signal) {
+      if (opts.error) throw new ModelError(opts.error, `replayed ${opts.error}`);
+      if (opts.hang) await waitForAbort(signal);
+      if (!opts.answers) throw new ModelError('failed', 'no recorded answer');
+      return opts.answers.final as ModelAnswer;
+    },
     async searchEssence(_input, signal) {
       if (opts.error) throw new ModelError(opts.error, `replayed ${opts.error}`);
       if (opts.hang) await waitForAbort(signal);
@@ -120,6 +129,7 @@ export function recordingTextModel(
   onPosts: (recording: Recording) => void = () => {},
   onTranslation: (recording: Recording) => void = () => {},
   onReplies: (recording: Recording) => void = () => {},
+  onAnswer: (recording: Recording) => void = () => {},
 ): TextModel {
   function record<T>(stream: ModelStream<T>) {
     async function* run(): AsyncGenerator<DeepPartial<T>, T> {
@@ -154,6 +164,11 @@ export function recordingTextModel(
     async writeReplies(input, signal) {
       const final = await inner.writeReplies(input, signal);
       onReplies({ ...meta, partials: [], final });
+      return final;
+    },
+    async writeAnswer(input, signal) {
+      const final = await inner.writeAnswer(input, signal);
+      onAnswer({ ...meta, partials: [], final });
       return final;
     },
     async searchEssence(input, signal) {
