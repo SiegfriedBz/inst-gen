@@ -13,17 +13,17 @@ import { type Setup, setupLine } from './setup';
 // no example to copy, from docs/specs/posts/day-and-night-copy; hook styles,
 // a job per type and story lines from docs/specs/posts/marketing-copy; two
 // posts an attempt and never a price from docs/specs/posts/two-suggestions;
-// three short paragraphs, a question first, the offer line second, a fact last
-// and no setting from docs/specs/posts/short-captions. Bump the version with
-// every change, so eval verdicts trace back to it.
-export const POSTS_PROMPT_VERSION = 'posts-16';
+// three short paragraphs, a question first, the offer line second, a fact last,
+// two flowers and no setting from docs/specs/posts/short-captions. Bump the
+// version with every change, so eval verdicts trace back to it.
+export const POSTS_PROMPT_VERSION = 'posts-17';
 
 // Code decides the emoji rule: flowers only for a spa
 // (docs/specs/posts/story-text, "Emojis").
 function emojiRule(spa: boolean): string {
   return spa
-    ? `Emoji: flowers only, from ${FLOWERS.join(' ')}: 1 to ${POSTS_LIMITS.captionFlowers} in the caption and 1 or ${POSTS_LIMITS.storyFlowers} in the story text. No other emoji.`
-    : `At most ${POSTS_LIMITS.otherEmoji} emoji in the caption and at most ${POSTS_LIMITS.otherEmoji} in the story text.`;
+    ? `Emoji: flowers only, from ${FLOWERS.join(' ')}: exactly ${POSTS_LIMITS.captionFlowers} in the caption, one right after the question and one at its very end, and exactly ${POSTS_LIMITS.storyFlowers} in the story text, at its end. No other emoji.`
+    : `At most ${POSTS_LIMITS.otherEmoji} emoji in the caption and at most ${POSTS_LIMITS.otherStoryEmoji} in the story text.`;
 }
 
 // Each type's job: only offer posts sell (docs/specs/posts/marketing-copy,

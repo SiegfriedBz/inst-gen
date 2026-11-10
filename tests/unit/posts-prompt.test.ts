@@ -90,7 +90,7 @@ describe('planPrompt', () => {
   });
 
   it('has a version', () => {
-    expect(POSTS_PROMPT_VERSION).toBe('posts-16');
+    expect(POSTS_PROMPT_VERSION).toBe('posts-17');
   });
 });
 
@@ -341,10 +341,10 @@ describe('the story text and the captions that sell', () => {
 
   it("gives a spa flowers only, and another business today's rule", () => {
     expect(planPrompt(false, true)).toContain(
-      'Emoji: flowers only, from 🌸 🌺 🌼 🌷 🪷: 1 to 3 in the caption and 1 or 2 in the story text. No other emoji.',
+      'Emoji: flowers only, from 🌸 🌺 🌼 🌷 🪷: exactly 2 in the caption, one right after the question and one at its very end, and exactly 1 in the story text, at its end. No other emoji.',
     );
     expect(planPrompt(false, false)).toContain(
-      'At most 2 emoji in the caption and at most 2 in the story text.',
+      'At most 2 emoji in the caption and at most 1 in the story text.',
     );
     expect(planPrompt(false, false)).not.toContain('🌸');
     expect(planPrompt(false, true)).not.toContain('at most 2 emoji');

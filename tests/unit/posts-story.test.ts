@@ -165,3 +165,19 @@ describe('a call to action', () => {
     });
   });
 });
+
+// One flower in a spa's story text (docs/specs/posts/short-captions, amended
+// 2026-11-10).
+describe('one flower in a story text', () => {
+  it('keeps the first flower only', () => {
+    const { storyText, dropped } = cleanStory('Rest tonight 🌸 in your room 🌺', {
+      id: 'post-1',
+      spa: true,
+    });
+    expect(storyText).toBe('Rest tonight 🌸 in your room');
+    expect(dropped).toContainEqual({
+      field: 'emoji',
+      reason: 'post-1: story text removed 🌺 over 1 flower',
+    });
+  });
+});

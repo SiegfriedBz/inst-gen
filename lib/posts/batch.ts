@@ -39,10 +39,12 @@ export const POSTS_LIMITS = {
   // `.length`, and what the model is asked for.
   storyChars: 120,
   storyAsked: 100,
-  // A spa's flowers; any other business's emoji.
-  captionFlowers: 3,
-  storyFlowers: 2,
+  // A spa's flowers, exactly; any other business's emoji, at most
+  // (docs/specs/posts/short-captions, amended 2026-11-10).
+  captionFlowers: 2,
+  storyFlowers: 1,
   otherEmoji: 2,
+  otherStoryEmoji: 1,
 } as const;
 
 const text = z.string().min(1);

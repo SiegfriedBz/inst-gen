@@ -12,7 +12,7 @@ import {
   SCENES,
   type Scene,
 } from './batch';
-import { addFlower, dropStopsBeforeEmoji, isSpa, stripEmojis } from './emoji';
+import { dropStopsBeforeEmoji, isSpa, stripEmojis, twoFlowers } from './emoji';
 import { dropForeignTags } from './foreign-tags';
 import { hookOnItsLine } from './hook-line';
 import { ctaFor } from './input';
@@ -191,17 +191,18 @@ type Words = Pick<
 // one (docs/specs/posts/story-text, "Code's checks").
 function spaCaption(caption: string, id: string): { caption: string; dropped: Dropped[] } {
   const stripped = stripEmojis(caption, POSTS_LIMITS.captionFlowers);
-  const added = addFlower(stripped.text);
   // One record per fixed text, however many changes it took.
-  const fixes = [...stripped.fixes, ...added.fixes];
   const dropped =
-    fixes.length > 0 ? [{ field: 'emoji', reason: `${id}: caption ${fixes.join(', ')}` }] : [];
-  return { caption: added.text, dropped };
+    stripped.fixes.length > 0
+      ? [{ field: 'emoji', reason: `${id}: caption ${stripped.fixes.join(', ')}` }]
+      : [];
+  return { caption: stripped.text, dropped };
 }
 
 // At most three paragraphs, counted as the owner sees them once the hook is
 // alone on its line, then the cut (docs/specs/posts/short-captions). A spa's
-// caption that lost its only flower to either gets one back, as 2.13 adds one.
+// caption then gets its two flowers, so neither step removes one (amended
+// 2026-11-10).
 function shortCaption(
   caption: string,
   id: string,
@@ -210,7 +211,7 @@ function shortCaption(
   const kept = keepParagraphs(hookOnItsLine(caption), id);
   const cut = cutCaption(kept.caption);
   if (!spa) return { caption: cut, dropped: kept.dropped };
-  const added = addFlower(cut);
+  const added = twoFlowers(cut);
   const back =
     added.fixes.length > 0
       ? [{ field: 'emoji', reason: `${id}: caption ${added.fixes.join(', ')}` }]

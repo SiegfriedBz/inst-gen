@@ -151,13 +151,13 @@ describe('recorded story texts and flowers', () => {
       }
       const story = post.storyText ?? '';
       expect(story.length).toBeLessThanOrEqual(120);
-      if (story) expect(flowers(story)).toBeGreaterThanOrEqual(1);
-      expect(flowers(story)).toBeLessThanOrEqual(2);
+      // Two flowers in a caption, one in a story text (docs/specs/posts/short-captions,
+      // amended 2026-11-10).
+      if (story) expect(flowers(story)).toBe(1);
       expect(others(story)).toEqual([]);
       // No call to action is left (amended 2026-10-27).
       expect(story).not.toMatch(/\b(book|whatsapp|dm|link in bio)\b/i);
-      expect(flowers(post.caption)).toBeGreaterThanOrEqual(1);
-      expect(flowers(post.caption)).toBeLessThanOrEqual(3);
+      expect(flowers(post.caption)).toBe(2);
       expect(others(post.caption)).toEqual([]);
       // No stop right before an emoji (docs/specs/posts/day-and-night-copy).
       expect(post.caption).not.toMatch(STOP_BEFORE_EMOJI);
