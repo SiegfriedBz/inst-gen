@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import type { Post } from '@/lib/posts/batch';
 import { dealSetups, seededRandom } from '@/lib/posts/setup';
-import { copyRecords, lightRecords, repeatRecords } from '@/lib/posts/variety';
+import { copyRecords, lightRecords, repeatRecords, sentenceWords } from '@/lib/posts/variety';
 import { senProfile, svargaProfile } from './helpers/brand';
 import { post } from './helpers/posts';
 
@@ -148,7 +148,7 @@ describe('copyRecords', () => {
       reasons([
         offerPost,
         at(2, 'Sore feet in Canggu? Warm oil helps.'),
-        at(3, 'Quiet hands in Ubud.'),
+        at(3, 'Firm hands in Ubud.'),
         at(4, 'Slow evening in Seminyak.'),
         at(5, 'Tired legs after Bali? Rest now.'),
       ]),
@@ -159,7 +159,7 @@ describe('copyRecords', () => {
   // Both captions of a plan (docs/specs/posts/marketing-copy, amended 2026-11-08).
   it('records a stock word in 2 captions, whole words, case aside', () => {
     expect(
-      reasons([at(1, 'Completely calm in Canggu.'), at(2, 'Rest COMPLETELY in Ubud.')]),
+      reasons([at(1, 'Completely loose in Canggu.'), at(2, 'Rest COMPLETELY in Ubud.')]),
     ).toEqual(['words: "completely" in post-1, post-2']);
     expect(
       reasons([at(1, 'Golden oil first, in Canggu.'), at(2, 'Then golden oil, in Ubud.')]),
@@ -167,7 +167,7 @@ describe('copyRecords', () => {
     expect(reasons([at(1, 'A good feeling in Canggu.'), at(2, 'Feeling light in Ubud.')])).toEqual(
       [],
     );
-    expect(reasons([at(1, 'Completely calm in Canggu.'), at(2, 'Rest now in Ubud.')])).toEqual([]);
+    expect(reasons([at(1, 'Completely loose in Canggu.'), at(2, 'Rest now in Ubud.')])).toEqual([]);
   });
 
   it('records endings that start with the same word, as the first one writes it', () => {
@@ -176,7 +176,7 @@ describe('copyRecords', () => {
         at(1, 'Warm hands in Canggu.'),
         at(3, 'Canggu at dusk. Drift off slowly. 🌸'),
         at(4, 'Slow evening in Ubud.'),
-        at(5, 'Canggu calm. drift away tonight.'),
+        at(5, 'Canggu nights. drift away tonight.'),
       ]),
     ).toEqual(['mix: endings start with "Drift" in post-3, post-5']);
   });
@@ -187,7 +187,7 @@ describe('copyRecords', () => {
         at(1, 'Slow hands on a long back.'),
         at(2, 'Frangipani on the tray.'),
         at(3, 'Warm coconut oil, slowly.'),
-        at(4, "Canggu's quiet lanes."),
+        at(4, "Canggu's busy lanes."),
         at(5, 'Seminyak, then rest.'),
       ]),
     ).toEqual([
@@ -248,5 +248,44 @@ describe('copyRecords', () => {
       'cta: post-4: "Message us on WhatsApp today."',
       'cta: post-6: "Book now for tonight in Bali."',
     ]);
+  });
+
+  // docs/specs/posts/short-captions, "Code's records".
+  const fifteen = 'Warm hands work the knots out of your back after a long day in Canggu.';
+  const sixteen = 'Warm hands work the knots out of your back after a long busy day in Canggu.';
+
+  it('records a sentence of more than 15 words', () => {
+    expect(reasons([at(2, fifteen)])).toEqual([]);
+    expect(reasons([at(2, sixteen)])).toEqual([
+      'words: post-2: 16 words in "Warm hands work the…"',
+    ]);
+  });
+
+  it("never counts an offer post's offer line", () => {
+    const second = 'Slow hands ease the stiff legs you carry home from a long busy day in Canggu.';
+    expect(reasons([at(1, `${sixteen} ${second}`, { offer: true })])).toEqual([
+      'words: post-1: 16 words in "Slow hands ease the…"',
+    ]);
+  });
+
+  it('records the words of a setting, as they come, in a caption and a story text', () => {
+    expect(
+      reasons([at(1, 'Evening lamps cast a golden glow across fresh linens in Canggu.')]),
+    ).toEqual(['words: post-1 describes the setting: "lamps", "glow", "linens"']);
+    expect(
+      reasons([
+        at(1, 'Warm hands in Canggu.', { storyText: 'A soft glow waits in your room tonight 🌺' }),
+      ]),
+    ).toEqual(['words: post-1\'s story text describes the setting: "glow"']);
+  });
+
+  it('records no setting for a body that feels light', () => {
+    expect(reasons([at(1, 'Your legs feel light again in Canggu.')])).toEqual([]);
+  });
+});
+
+describe('sentenceWords', () => {
+  it('counts the words of each sentence, emoji aside', () => {
+    expect(sentenceWords('Sore legs? 🌸 Our therapists come to you.')).toEqual([2, 5]);
   });
 });
