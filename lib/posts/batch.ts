@@ -21,7 +21,12 @@ export const POSTS_LIMITS = {
   perType: 2,
   perScene: 2,
   firstLineChars: 125,
-  captionMin: 250,
+  // At most three short paragraphs, the hook counted, and what the model is
+  // asked for (docs/specs/posts/short-captions).
+  paragraphs: 3,
+  sentenceWords: 15,
+  captionMin: 80,
+  captionAsked: 280,
   captionMax: 700,
   hashtagsMin: 3,
   hashtags: 5,
