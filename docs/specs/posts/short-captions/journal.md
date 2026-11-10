@@ -52,8 +52,91 @@
   recording of an earlier draft was kept, and the spec names `posts-15`.
 - 2026-11-10: the eval reads the AI key from `.env.local`, copied from the
   worktree the `posts-14` recordings used. It stays out of git.
+- 2026-11-10: a fresh reviewer read the branch at `posts-15`: no critical
+  issue. Fixed: an offer post whose line code added kept the model's
+  displaced hook and lost its body. Its other findings are under "Deferred";
+  the maintainer's call on the doubt check came next.
+- 2026-11-10: the maintainer's verdict on `posts-15`: "these posts are very
+  bad, also the first sentence should finish with a question mark". Shown two
+  examples, they chose them, and chose the question before the offer line. The
+  spec was amended and approved: every caption is a question, what the
+  massage does (or the offer line, now second), and one fact from the
+  highlights; no hook styles; the pointers to the profile's senses go.
+  `posts-16`.
+- 2026-11-10: `posts-16`'s first run of Sen's plan wrote "Book on WhatsApp"
+  as a fourth paragraph in both captions, copied from the prompt's own words
+  for the app's line; the paragraph limit then kept it and dropped the fact.
+  The prompt no longer quotes the line, and that run was dropped. Svarga's
+  plan failed twice with `model_busy` before it recorded. This round took 7
+  calls: 5 that came back, one of them dropped, and 2 `model_busy`.
+- 2026-11-10: Sen's offer plan came back with single line breaks; code now
+  puts a blank line between every caption's paragraphs, as the maintainer's
+  examples have.
+- 2026-11-10: the maintainer: "2 emojis per post copy is good and 1 for
+  story". The spec was amended and approved: a spa's caption has exactly 2
+  flowers, one after its question and one at its end, and its story text 1;
+  code makes sure of both, after the paragraph limit and the cut. `posts-17`
+  changes only those words; its recordings stay `posts-16`'s, replayed through
+  code's checks. The maintainer: "good to go".
 
-## Evaluation
+## Evaluation, `posts-16` and `posts-17`
+
+The `posts-16` recordings, replayed through `posts-17`'s checks, each caption
+as the owner sees it, its paragraphs split by " / ":
+
+**Sen, without an offer**
+
+1. "Tired in Da Nang? 🌸" / "Slow pressure loosens deep tension in your back
+   and shoulders for 60 min." / "Trained local therapists bring all fresh
+   linens to your room 🌸". Story: "60 min deep tissue relief in your room 🌸".
+2. "Sore after surfing My Khe? 🌺" / "Targeted massage eases tired muscles and
+   heavy legs." / "Free travel in our core areas 🌸". Story: "Easy recovery
+   after the surf 🌺".
+
+**Svarga, without an offer**
+
+1. "Tired after a long day in Canggu? 🌸" / "Long strokes and palm pressure
+   loosen tight muscles and melt away your stress." / "Experienced local
+   therapists bring fresh linens and natural oils right to your door 🌸".
+2. "Sore after a long flight to Pererenan? 🌺" / "Firm pressure and gentle
+   stretches release travel tension and soothe your tired body." / "Local
+   therapists bring five plus years of spa experience straight to your hotel
+   room 🌸".
+
+**Sen, with the offer**
+
+1. "Tired in Da Nang today? 🌸" / "10% off our 90-minute Vietnamese
+   Traditional Massage, until Sunday 1 November." / "Trained local therapists
+   bring everything needed for your session 🌸".
+2. "Stiff after walking around Da Nang? 🌺" / "10% off our 90-minute Thai
+   Massage, until Sunday 1 November." / "Linens, towels and oils included
+   with every visit 🌸".
+
+**Svarga, with the offer** (code put both lines second)
+
+1. "Need a break in Canggu today? 🌸" / "10% off our 90-minute Traditional
+   Balinese Massage, until Sunday 1 November." / "Experienced local
+   therapists with 5+ years of spa and villa experience 🌸".
+2. "Ready to unwind in Bali this afternoon? 🌺" / "10% off our 90-minute
+   Four-Hands Massage, until Sunday 1 November." / "Fresh linens, towels, and
+   natural oils provided 🌸".
+
+| Check | posts-14 | posts-15 | posts-16 and 17 |
+|---|---|---|---|
+| At most three paragraphs, the hook counted | 3 of 8 | 8 of 8 | 8 of 8, three each |
+| At most 300 characters before the WhatsApp line | 2 of 8 | 8 of 8 | 8 of 8: 115 to 219 |
+| No sentence over 15 words | 1 of 8 | 6 of 8 | 8 of 8 |
+| Doesn't describe the setting | 4 of 8 | 8 of 8 | 8 of 8 |
+| Names a real place of the business | 6 of 8 | 8 of 8 | 8 of 8 |
+| Ends by answering a guest's doubt | 7 of 8 | 5 of 8 | 8 of 8 |
+| The hook is a question | 1 of 8 | 3 of 8 | 8 of 8 |
+| Two flowers in the caption, one in the story text | — | — | 8 of 8 |
+
+Verdict: a full pass, and the maintainer said "good to go" (2026-11-10).
+Code's records: "linens" in 4 captions, a highlight of both spas, and "names
+no place" on Svarga's post 2, which names Pererenan (2.15's record, below).
+
+## Evaluation, `posts-15` (first draft, rejected)
 
 `posts-15`, replayed with `pnpm eval:posts sen svarga --replay` and
 `--replay --offer`, no request: each caption as code leaves it, its
@@ -186,6 +269,27 @@ Task 1: `Tests  4 passed (4)`. Task 2: `Tests  98 passed (98)`. Task 3:
       Tests  1814 passed (1814)
 ```
 
+Task 6, the question first and the offer line second:
+
+```
+ Test Files  4 failed | 1 passed (5)
+      Tests  34 failed | 165 passed (199)
+```
+
+Task 7, two flowers:
+
+```
+ Test Files  5 failed (5)
+      Tests  11 failed | 239 passed (250)
+```
+
+`pnpm check`, with `posts-17`:
+
+```
+ Test Files  113 passed (113)
+      Tests  1823 passed (1823)
+```
+
 ## Deferred
 
 - 2.15's places record doesn't split the parentheses in Svarga's new service
@@ -193,4 +297,13 @@ Task 1: `Tests  4 passed (4)`. Task 2: `Tests  98 passed (98)`. Task 3:
 - The setting list's "linen" and "linens" fire on a highlight both spas give.
   Records only.
 - A story text that opens on "Book" still goes whole (2.13), leaving the post
-  with none: 1 of 8 here, as in `posts-13`.
+  with none: 1 of 8 in `posts-15`, none in `posts-16`.
+- Code still deals a hook style into each set-up, which the prompt no longer
+  reads.
+- Sen's `SyntaxError`, on 3 of its 9 `posts-15` calls, none of `posts-16`'s:
+  the log line now says why such an answer stopped.
+- From the final review, unchanged: a caption that opens on a line break
+  doesn't get its hook split; a hashtag-only line in a caption counts as its
+  last paragraph; `lib/posts/edit.ts` still says "no cut at 700 characters";
+  the replay test's three-paragraph check can't fail (its hook and flower
+  checks can).
