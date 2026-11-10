@@ -10,8 +10,8 @@ const SEN = 'test-lotus-river-sen';
 const answer = (attempts: number) => ({
   resetsAt: '2026-11-15T08:00:00.000Z',
   limited: true,
-  left: { reads: 2, attempts, newImages: 10, replies: 20 },
-  limits: { reads: 3, attempts: 3, newImages: 10, replies: 20 },
+  left: { reads: 2, attempts, newImages: 10, replies: 20, answers: 20 },
+  limits: { reads: 3, attempts: 3, newImages: 10, replies: 20, answers: 20 },
   poolEmpty: false,
   images: { on: true, monthFull: false, backAt: '2026-12-01T00:00:00.000Z' },
 });
@@ -50,6 +50,9 @@ test('the bar on each tab, and the last attempt used up', async ({ page }) => {
   await expect(bar).toHaveText('Left today: 1 attempt, 10 new images · Resets at 15:00');
   await page.getByRole('tab', { name: 'Reviews' }).click();
   await expect(bar).toHaveText('Left today: 20 replies · Resets at 15:00');
+  // docs/specs/questions/answer-drafts, "The daily limit".
+  await page.getByRole('tab', { name: 'Questions' }).click();
+  await expect(bar).toHaveText('Left today: 20 answers · Resets at 15:00');
   await page.getByRole('tab', { name: 'Your business' }).click();
   await expect(bar).toHaveText('Left today: 2 website reads · Resets at 15:00');
 
