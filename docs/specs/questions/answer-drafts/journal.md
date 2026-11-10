@@ -13,8 +13,9 @@
   captions), which changes `lib/posts/checks.ts`. Nothing here touches that
   file: the answers read prices with their own copy of its amount reader
   (`lib/questions/flags.ts`), and the flower and emoji helpers are exported
-  from `lib/reviews/checks.ts` instead. The roadmap row for 2.19 waits until
-  `develop` holds 2.18's row, so the two rows never conflict.
+  from `lib/reviews/checks.ts` instead. Both branches add their roadmap row
+  at the same place: once 2.18 is merged, this branch shows a one-line
+  conflict there, and both rows stay.
 - 2026-11-10: the model writes its call to action on every call, empty when
   the answer isn't final, rather than a part that may be missing: a plain
   shape for Gemini's structured output. Code leaves it out of an answer that
@@ -27,6 +28,24 @@
   name the language as the browser does.
 - 2026-11-10: `pnpm eval:answers --record`, 8 Flash-Lite requests with the
   maintainer's yes: all 8 came back.
+- 2026-11-10: a fresh reviewer read the whole branch. Fixed after it:
+  - "New conversation" could be tapped while an answer was being written,
+    and the late answer brought the last guest's details back. Every button
+    that clears the conversation is now off while an answer is written.
+  - A tab left open across the daily reset kept the guest's details and
+    dated them today on the next tap. Now the next tap starts the new day:
+    "Paste the next message" clears everything, and an answer written after
+    the reset sends none of the details told before it. "Write another
+    answer" sends the question again, without the old answer.
+  - Three phrases added to code's word list beyond the spec's ("special
+    service", "full service", "massage plus") flagged innocent questions
+    ("Is it a full service spa?"); they're gone. "Same-sex" and "the sex of
+    the therapist" no longer count as asking for sex; the rest of the
+    question is still checked.
+  - Missing tests: the language switch, the wait, each error line, the limit
+    line at 0, a conversation from before the reset, the log's
+    `sexual=words`. The replay test now checks that the recorded call to
+    book ends each final answer, and that the others have none.
 
 ## Evaluation
 
@@ -94,6 +113,19 @@ Task 8's:
       Tests  7 failed | 22 passed (29)
 ```
 
+After the review, the new tests on the word list and the tab, then the two
+on an answer written after the reset:
+
+```
+ Test Files  2 failed | 2 passed (4)
+      Tests  7 failed | 46 passed (53)
+```
+
+```
+ Test Files  1 failed (1)
+      Tests  4 failed | 17 passed (21)
+```
+
 ## GREEN
 
 Task 1: `Tests  15 passed (15)`. Task 2: `Tests  21 passed (21)`, with the
@@ -115,4 +147,18 @@ spec's mocked answer gained `answers`; before it, the bar read nothing:
 
 ```
   6 passed (10.8s)
+```
+
+After the review: the tab `Tests  21 passed (21)`, the word list with the
+checks and the run `Tests  33 passed (33)`, `pnpm check`:
+
+```
+ Test Files  123 passed (123)
+      Tests  1884 passed (1884)
+```
+
+and the Questions and usage specs:
+
+```
+  6 passed (10.7s)
 ```

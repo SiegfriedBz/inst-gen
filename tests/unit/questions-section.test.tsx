@@ -7,6 +7,7 @@ import { afterEach, beforeEach, describe, expect, test, vi } from 'vitest';
 import { QuestionsSection } from '@/components/questions/questions-section';
 import { resetStoreForTests } from '@/lib/brand/store';
 import type { AnswerResponse } from '@/lib/questions/question';
+import { loadConversation, saveConversation } from '@/lib/questions/store';
 import messages from '@/messages/en.json';
 import { senProfile } from './helpers/brand';
 
@@ -57,9 +58,9 @@ function answer(over: Partial<AnswerResponse> = {}): AnswerResponse {
 const ok = (body: unknown) => Response.json(body);
 const sent = (i = 0) => JSON.parse(String(fetchMock.mock.calls[i]?.[1]?.body));
 
-function tab() {
+function tab(locale = 'vi') {
   return (
-    <NextIntlClientProvider locale="vi" messages={messages} timeZone="UTC">
+    <NextIntlClientProvider locale={locale} messages={messages} timeZone="UTC">
       <QuestionsSection ownerId="sen" profile={senProfile()} active />
     </NextIntlClientProvider>
   );
@@ -203,5 +204,141 @@ describe('another answer, an edit, a reload', () => {
     render(tab());
     expect(await screen.findByText(/Thai Massage, 60 min: VND 500k/)).toBeTruthy();
     expect(fetchMock).toHaveBeenCalledTimes(1);
+  });
+});
+
+// The final review (docs/specs/questions/answer-drafts, journal).
+describe('one guest at a time', () => {
+  test('"New conversation" is off while an answer is written, and clears the store', async () => {
+    fetchMock.mockResolvedValueOnce(
+      ok(answer({ guest: { place: 'Hyatt', day: null, time: null } })),
+    );
+    let release: (response: Response) => void = () => {};
+    fetchMock.mockImplementationOnce(
+      () =>
+        new Promise<Response>((resolve) => {
+          release = resolve;
+        }),
+    );
+    render(tab());
+    await ask();
+    fireEvent.click(await screen.findByRole('button', { name: 'Paste the next message' }));
+    await ask('Another guest: how much is it?');
+    const reset = await screen.findByRole('button', { name: 'New conversation' });
+    expect((reset as HTMLButtonElement).disabled).toBe(true);
+    release(ok(answer()));
+    await screen.findByText(messages.questions.howTo);
+    fireEvent.click(screen.getByRole('button', { name: 'New conversation' }));
+    await box();
+    expect(await loadConversation('sen', new Date())).toBeNull();
+  });
+
+  test('the daily reset clears what the guest told, with the tab still open', async () => {
+    fetchMock.mockResolvedValueOnce(
+      ok(answer({ guest: { place: 'Hyatt', day: null, time: null } })),
+    );
+    render(tab());
+    await ask();
+    await screen.findByText('Staying at: Hyatt');
+    // 16:00 in Da Nang: past Google's reset, 08:00Z in November.
+    vi.setSystemTime(new Date('2026-11-10T09:00:00.000Z'));
+    fireEvent.click(screen.getByRole('button', { name: 'Paste the next message' }));
+    await box();
+    expect(screen.queryByText('Staying at: Hyatt')).toBeNull();
+    expect(await loadConversation('sen', new Date())).toBeNull();
+  });
+
+  test('a message written after the reset sends none of the details told before it', async () => {
+    fetchMock.mockResolvedValueOnce(
+      ok(answer({ guest: { place: 'Hyatt', day: null, time: null } })),
+    );
+    fetchMock.mockResolvedValueOnce(ok(answer()));
+    render(tab());
+    await ask();
+    fireEvent.click(await screen.findByRole('button', { name: 'Paste the next message' }));
+    await screen.findByText('Staying at: Hyatt');
+    vi.setSystemTime(new Date('2026-11-10T09:00:00.000Z'));
+    await ask('And tomorrow at 6 pm?');
+    await waitFor(() => expect(fetchMock).toHaveBeenCalledTimes(2));
+    expect(sent(1).known).toEqual({ place: null, day: null, time: null });
+    expect(screen.queryByText('Staying at: Hyatt')).toBeNull();
+  });
+
+  test('"Write another answer" after the reset keeps the question, not the old answer', async () => {
+    fetchMock.mockResolvedValueOnce(
+      ok(answer({ guest: { place: 'Hyatt', day: null, time: null } })),
+    );
+    fetchMock.mockResolvedValueOnce(ok(answer()));
+    render(tab());
+    await ask();
+    await screen.findByText('Staying at: Hyatt');
+    vi.setSystemTime(new Date('2026-11-10T09:00:00.000Z'));
+    fireEvent.click(screen.getByRole('button', { name: 'Write another answer' }));
+    await waitFor(() => expect(fetchMock).toHaveBeenCalledTimes(2));
+    expect(sent(1).question).toBe(sent(0).question);
+    expect(sent(1).known).toEqual({ place: null, day: null, time: null });
+    expect(sent(1).avoid).toBeNull();
+  });
+
+  test('a conversation from before the reset opens as an empty tab', async () => {
+    await saveConversation({
+      ownerId: 'sen',
+      known: { place: 'Hyatt', day: null, time: null },
+      current: null,
+      updatedAt: '2026-11-09T04:00:00.000Z',
+    });
+    render(tab());
+    await box();
+    expect(screen.queryByText('Staying at: Hyatt')).toBeNull();
+  });
+});
+
+describe('the language, the wait and the errors', () => {
+  test('a language switch keeps the answer, and the next request uses the new language', async () => {
+    fetchMock.mockResolvedValueOnce(ok(answer()));
+    fetchMock.mockResolvedValueOnce(ok(answer()));
+    const view = render(tab('vi'));
+    await ask();
+    await screen.findByText('Massage Thái giá bao nhiêu?');
+    view.rerender(tab('en'));
+    expect(screen.getByText('Massage Thái giá bao nhiêu?')).toBeTruthy();
+    fireEvent.click(screen.getByRole('button', { name: 'Write another answer' }));
+    await waitFor(() => expect(fetchMock).toHaveBeenCalledTimes(2));
+    expect(sent(1).locale).toBe('en');
+  });
+
+  test('while an answer is written', async () => {
+    fetchMock.mockImplementationOnce(() => new Promise(() => {}));
+    render(tab());
+    await ask();
+    expect(await screen.findByRole('button', { name: 'Writing your answer…' })).toBeTruthy();
+    expect(screen.getByText(messages.questions.keepOpen)).toBeTruthy();
+    expect(((await box()) as HTMLTextAreaElement).disabled).toBe(true);
+  });
+
+  test.each([
+    ['model_busy', 503],
+    ['model_failed', 502],
+    ['invalid_request', 400],
+  ] as const)('the %s line', async (code, status) => {
+    fetchMock.mockResolvedValueOnce(Response.json({ error: code }, { status }));
+    render(tab());
+    await ask();
+    expect(await screen.findByText(messages.questions.errors[code])).toBeTruthy();
+  });
+
+  test('the offline line, and a usage refusal', async () => {
+    fetchMock.mockRejectedValueOnce(new TypeError('offline'));
+    fetchMock.mockResolvedValueOnce(
+      Response.json(
+        { error: 'limit_reached', resetsAt: '2026-11-10T08:00:00.000Z' },
+        { status: 429 },
+      ),
+    );
+    render(tab());
+    await ask();
+    expect(await screen.findByText(messages.questions.errors.offline)).toBeTruthy();
+    fireEvent.click(write());
+    expect(await screen.findByText(/You've written today's 20 answers\. More at/)).toBeTruthy();
   });
 });

@@ -8,6 +8,7 @@ import { afterAll, afterEach, beforeEach, describe, expect, test, vi } from 'vit
 import { BrandHome } from '@/components/brand/brand-home';
 import { CaptionTranslation } from '@/components/posts/caption-translation';
 import { PostsSection } from '@/components/posts/posts-section';
+import { QuestionsSection } from '@/components/questions/questions-section';
 import { ReviewsSection } from '@/components/reviews/reviews-section';
 import { UsageProvider } from '@/components/usage/usage-provider';
 import { resetStoreForTests, saveBrand } from '@/lib/brand/store';
@@ -248,6 +249,23 @@ describe('the translation', () => {
     expect(
       await screen.findByText("Today's 30 translations are used up. More at 14:00."),
     ).toBeTruthy();
+  });
+});
+
+// docs/specs/questions/answer-drafts, "The daily limit".
+describe('Questions', () => {
+  test('no answer left: the button is off and says when', async () => {
+    usage = left({ answers: 0 });
+    shown(<QuestionsSection ownerId="sen" profile={senProfile()} active />);
+    expect(
+      await screen.findByText("You've written today's 20 answers. More at 14:00."),
+    ).toBeTruthy();
+    fireEvent.change(screen.getByLabelText("The guest's question"), {
+      target: { value: 'How much?' },
+    });
+    expect(
+      (screen.getByRole('button', { name: 'Write an answer' }) as HTMLButtonElement).disabled,
+    ).toBe(true);
   });
 });
 

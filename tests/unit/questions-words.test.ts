@@ -11,14 +11,23 @@ describe('mentionsSex', () => {
     '有色情服务吗',
     'Ada pijat plus?',
     'SEXY massage?',
+    // Taking out "same-sex" leaves the rest of the question checked.
+    'Same-sex couple here: do you offer sex?',
   ])('catches %s', (question) => {
     expect(mentionsSex(question)).toBe(true);
   });
 
-  it.each(['Thai massage for 2 at 9 pm', 'We stay in Essex', 'A spa massage, please'])(
-    'leaves %s alone',
-    (question) => {
-      expect(mentionsSex(question)).toBe(false);
-    },
-  );
+  it.each([
+    'Thai massage for 2 at 9 pm',
+    'We stay in Essex',
+    'A spa massage, please',
+    // The final review: innocent questions it used to flag.
+    'Can I get a Thai massage plus a foot scrub?',
+    'Is it a full service spa?',
+    'Do you have a special service for couples?',
+    'Do you welcome same-sex couples?',
+    'Can I choose the sex of the therapist?',
+  ])('leaves %s alone', (question) => {
+    expect(mentionsSex(question)).toBe(false);
+  });
 });

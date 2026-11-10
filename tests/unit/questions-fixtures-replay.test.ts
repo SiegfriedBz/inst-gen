@@ -33,6 +33,16 @@ const fixtures: Fixture[] = readdirSync(DIR)
 // The three that ask for sex; the Vietnamese one holds no word from code's list.
 const SEX = ['sen-happy-ending-en', 'sen-special-vi', 'svarga-intim-ru'];
 const noBrandRead = { modelId: 'm', promptVersion: 'p', partials: [], final: {} };
+// Code replaces flowers, and takes every emoji out of an answer about sex.
+const plain = (text: string) =>
+  text
+    .replace(/\p{Extended_Pictographic}|\uFE0F/gu, '')
+    .replace(/\s+/g, ' ')
+    .trim();
+const recordedCall = (fixture: Fixture) => {
+  const final = fixture.recording?.final as { callToAction: { text: string } } | undefined;
+  return plain(final?.callToAction.text ?? '');
+};
 
 describe('recorded answers', () => {
   test('every made-up question has its recording', () => {
@@ -57,7 +67,10 @@ describe('recorded answers', () => {
     // No price, duration or number the details don't hold.
     expect(answer.flags).toEqual([]);
     if (fixture.language === fixture.locale) expect(answer.answer.translation).toBeNull();
-    // Three paragraphs on a final answer (greeting, answer, call to action).
-    if (fixture.final) expect(answer.answer.text.split('\n\n').length).toBeGreaterThanOrEqual(2);
+    // The recorded call to book ends each final answer; the others have none.
+    if (fixture.final) {
+      expect(recordedCall(fixture)).not.toBe('');
+      expect(plain(answer.answer.text.split('\n\n').at(-1) ?? '')).toBe(recordedCall(fixture));
+    } else expect(recordedCall(fixture)).toBe('');
   });
 });

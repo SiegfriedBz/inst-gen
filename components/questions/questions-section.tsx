@@ -55,10 +55,23 @@ async function keep(work: Promise<void>): Promise<void> {
 const hasDetail = (known: Guest) =>
   known.place !== null || known.day !== null || known.time !== null;
 
+// A conversation from before Google's reset is gone, even in an app left open
+// across it (docs/specs/platform/one-daily-reset).
+const isOld = (record: ConversationRecord) => new Date(record.updatedAt) < dayStart(new Date());
+
 // "What this guest has told you": the booking details kept for the
 // conversation, so a final answer asks only for what's missing
 // (docs/specs/questions/answer-drafts).
-function KnownBox({ known, onReset }: { known: Guest; onReset?: () => void }) {
+function KnownBox({
+  known,
+  onReset,
+  disabled = false,
+}: {
+  known: Guest;
+  onReset?: () => void;
+  // While an answer is written: it would come back with this guest's details.
+  disabled?: boolean;
+}) {
   const t = useTranslations('questions');
   if (!hasDetail(known)) return null;
   return (
@@ -76,7 +89,7 @@ function KnownBox({ known, onReset }: { known: Guest; onReset?: () => void }) {
         )}
       </div>
       {onReset && (
-        <button type="button" className={OUTLINE} onClick={onReset}>
+        <button type="button" className={OUTLINE} disabled={disabled} onClick={onReset}>
           {t('newConversation')}
         </button>
       )}
@@ -130,7 +143,7 @@ export function QuestionsSection({
   }, [ownerId]);
 
   useEffect(() => {
-    if (!active || !record || new Date(record.updatedAt) >= dayStart(new Date())) return;
+    if (!active || !record || !isOld(record)) return;
     setRecord(null);
     setQuestion('');
     setFinal(false);
@@ -143,14 +156,23 @@ export function QuestionsSection({
     sending.current = true;
     setBusy(true);
     setError(null);
+    // An app left open across the reset starts the new day here: what the
+    // guest told before it goes, and the answer with it; the question stays.
+    let live = record;
+    if (record && isOld(record)) {
+      live = null;
+      setRecord(null);
+      setQuestion(input.question);
+      await keep(clearConversation(ownerId));
+    }
     const out = await requestAnswer({
       question: input.question,
       final,
       locale,
       profile,
-      known: record?.known ?? NO_GUEST,
+      known: live?.known ?? NO_GUEST,
       // The answer as the model wrote it, never the owner's edit.
-      avoid: input.again && record?.current ? record.current.answer.answer.text : null,
+      avoid: input.again && live?.current ? live.current.answer.answer.text : null,
     });
     sending.current = false;
     setBusy(false);
@@ -187,6 +209,7 @@ export function QuestionsSection({
   // The same guest's next message: what they told stays.
   async function nextMessage() {
     if (!record) return;
+    if (isOld(record)) return newConversation();
     const next = { ...record, current: null, updatedAt: new Date().toISOString() };
     setRecord(next);
     setQuestion('');
@@ -244,7 +267,7 @@ export function QuestionsSection({
     return (
       <section className="mt-5 flex flex-col gap-4">
         <p className="text-[15px] leading-normal text-ink-secondary">{t('intro')}</p>
-        <KnownBox known={known} onReset={() => void newConversation()} />
+        <KnownBox known={known} disabled={busy} onReset={() => void newConversation()} />
         <div className="flex flex-col gap-1.5">
           <Label htmlFor={`${id}-question`}>{t('label')}</Label>
           <Textarea

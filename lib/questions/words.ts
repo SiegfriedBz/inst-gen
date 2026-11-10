@@ -16,9 +16,6 @@ export const SEX_WORDS: readonly string[] = [
   'blow job',
   'blowjob',
   'extra service',
-  'special service',
-  'full service',
-  'massage plus',
   // Vietnamese: tình dục, kích dục
   'tinh duc',
   'kich duc',
@@ -51,6 +48,11 @@ function fold(text: string): string {
 
 const LATIN = /^[a-z0-9 +-]+$/;
 
+// Phrases that hold "sex" without asking for it, taken out before the list is
+// looked for: "same-sex couples", "the sex of the therapist".
+const INNOCENT =
+  /\b(?:same|opposite)[ -]sex\b|\bsex of (?:(?:the|my|your|a) )?(?:therapist|masseuse|masseur)s?\b/g;
+
 function escapeRegex(text: string): string {
   return text.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 }
@@ -63,6 +65,6 @@ const MATCHERS = SEX_WORDS.map((word) => {
 });
 
 export function mentionsSex(text: string): boolean {
-  const folded = fold(text);
+  const folded = fold(text).replace(INNOCENT, ' ');
   return MATCHERS.some((matcher) => matcher.test(folded));
 }

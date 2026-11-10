@@ -94,4 +94,15 @@ describe('runAnswer', () => {
     for (const word of ['Hyatt', 'tomorrow', 'free travel', 'Hello'])
       expect(line).not.toContain(word);
   });
+
+  test("says the word list fired when the model didn't", async () => {
+    const logs: AnswerLog[] = [];
+    await runAnswer(
+      { ...body, question: 'Do you do happy ending?' },
+      'sen',
+      { model: replayTextModel(rec(answer), { answers: rec(answer) }), log: (e) => logs.push(e) },
+      signal(),
+    );
+    expect(formatAnswerLog(logs[0])).toContain(' sexual=words ');
+  });
 });
