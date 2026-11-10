@@ -31,9 +31,11 @@ import {
   type PostsFixture,
 } from '@/lib/brand/fixtures';
 import type { PlanResult } from '@/lib/posts/batch';
+import { paragraphsOf } from '@/lib/posts/paragraphs';
 import { POSTS_PROMPT_VERSION } from '@/lib/posts/prompt';
 import { streamPlan } from '@/lib/posts/run';
 import { seededRandom, setupLine } from '@/lib/posts/setup';
+import { sentenceWords } from '@/lib/posts/variety';
 
 if (existsSync('.env.local')) process.loadEnvFile('.env.local');
 
@@ -64,6 +66,12 @@ function print(result: PlanResult): void {
       `\n  ${i + 1}. ${post.type} · ${post.scene} · ${post.topic}${post.offer ? ' · OFFER' : ''}`,
     );
     console.log(post.caption.replace(/^/gm, '     '));
+    // What docs/specs/posts/short-captions scores: paragraphs, length, the
+    // longest sentence.
+    const longest = Math.max(0, ...sentenceWords(post.caption));
+    console.log(
+      `     shape: ${paragraphsOf(post.caption).length} paragraphs · ${post.caption.length} chars · longest sentence ${longest} words`,
+    );
     console.log(`     ${post.cta}`);
     console.log(`     ${post.hashtags.map((t) => `#${t}`).join(' ')}`);
     console.log(`     alt: ${post.altText}`);

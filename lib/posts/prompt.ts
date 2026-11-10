@@ -12,9 +12,10 @@ import { HOOKS, type Hook, type Setup, setupLine } from './setup';
 // docs/specs/posts/offer-line-first; copy that follows the post's light, with
 // no example to copy, from docs/specs/posts/day-and-night-copy; hook styles,
 // a job per type and story lines from docs/specs/posts/marketing-copy; two
-// posts an attempt and never a price from docs/specs/posts/two-suggestions.
+// posts an attempt and never a price from docs/specs/posts/two-suggestions;
+// three short paragraphs and no setting from docs/specs/posts/short-captions.
 // Bump the version with every change, so eval verdicts trace back to it.
-export const POSTS_PROMPT_VERSION = 'posts-14';
+export const POSTS_PROMPT_VERSION = 'posts-15';
 
 // Code decides the emoji rule: flowers only for a spa
 // (docs/specs/posts/story-text, "Emojis").
@@ -26,10 +27,10 @@ function emojiRule(spa: boolean): string {
 
 // Each type's job: only offer posts sell (docs/specs/posts/marketing-copy,
 // "Each type its job"). The plan and the rewrite share it.
-const TYPE_JOBS = `- offer: makes the guest want one treatment or package now: the sore spot it answers, how it feels, what changes after; its duration when the profile gives it.
-- moment: a reason people come (after a surf, a hike, a long flight), from the essence's moments: puts the guest back in that moment, then the relief.
-- local: the town or area and something it's known for, useful to a visitor, tied back to the business in the last lines.
-- ritual: how a treatment unfolds, through the senses (the oils, the warm towels, the quiet), never the staff.
+const TYPE_JOBS = `- offer: makes the guest want one treatment or package now: the sore spot it answers and what changes after; its duration when the profile gives it.
+- moment: a reason people come (after a surf, a hike, a long flight), from the essence's moments: names that moment in a few words, then what the massage does for it.
+- local: the town or area and something it's known for, useful to a visitor, tied back to the business in its last paragraph.
+- ritual: the steps of one treatment, in plain words (where it starts, what it works on, how long), never the staff.
 - tip: one piece of care advice a guest can use today, worth saving (stretch after a dive, drink water after a massage).
 - proof: what the profile says about the business (years open, its promise, a highlight, a rating it quotes), stated plainly. Only when the highlights or the promise give something to say; never an invented review, rating or customer.
 Only offer posts sell a treatment; the other types earn the guest's attention, name a treatment once at most, and never in their first line.`;
@@ -38,7 +39,8 @@ Only offer posts sell a treatment; the other types earn the guest's attention, n
 // dealt by code"), each described with no example to copy.
 const HOOK_WORDS: Record<Hook, string> = {
   question: "asks about the guest's own day.",
-  scene: 'drops the guest into a moment they are living, in the present tense, with no question.',
+  scene:
+    'names a moment the guest is living, in a few plain words, in the present tense, with no question.',
   place:
     "opens on one of the business's real places: its town or area, a place it serves, or a landmark.",
   number: "opens on a number that isn't a price: a duration, a time of day, a count.",
@@ -62,16 +64,17 @@ const captionRules = (
 ) => `Captions:
 - English, in the business's tone words, written as its owner would, to tourists and expats nearby.
 - The first line is the hook, alone on its line, at most 125 characters: it works on its own and stops a tourist scrolling, since it is all Instagram shows before "more". It follows its post's hook style, ${hookFrom}${withOffer ? '; on a post that carries the special offer, the hook is its offer line, word for word, with nothing before it' : ''}.
-- Then short paragraphs, with a blank line between them: what the guest will feel, rather than what the business does.
+- Then one or two short paragraphs, with a blank line between them: at most three paragraphs in all, the hook counted. A paragraph is one or two short sentences, and a sentence holds at most ${POSTS_LIMITS.sentenceWords} words, the hook's too. Say what the massage does for the guest, plainly: the sore spot it answers, what changes after, and one practical fact (a real place, a highlight).
+- Never describe the setting: the light, the sky, the sunset, the garden, the room, the lamps, candles or linens, the oil's colour, or how quiet, calm or peaceful it is. Never describe what the photo shows: the image prompt's light, room and garden are for the image only. The story text follows the same rule.
 - Each caption names one of the business's real places, as its profile writes it: its town or area, a place it serves, or a landmark among its place symbols. A flower, a plant, an oil or an object is never a place; a caption may still use one as a detail, as it may a sense or a moment from its essence, or a highlight.
 - How a caption ends follows its type. An offer or a moment post ends by answering one doubt a guest may have, with a highlight from the profile, never the same highlight twice; with no highlight, it ends on what changes for the guest. A tip ends on its tip, a ritual on its last sensation, a proof post on its fact, a local post on what ties the place to the business. Every ending stays warm, states its highlight and never asks the guest to book or message. No two endings start with the same word.
-- Each caption and story text follows its post's light, ${lightFrom}. Day: the guest's afternoon, with the evening still ahead; never sleep, bed or waking up. Night: the guest's evening, the day done; never the afternoon, the midday sun or the morning just past.
+- A caption or story text that says when follows its post's light, ${lightFrom}: a day post speaks of the guest's afternoon, with the evening still ahead, never of sleep, bed or waking up; a night post of the guest's evening, the day done, never of the afternoon, the midday sun or the morning just past. It need not say when, and never describes the light.
 - The captions open differently and end differently: never the same first sentence, never the same last sentence, and never the same idea said twice in other words. Never reuse a phrase from these instructions or from the image set-ups: the set-ups describe the photos, and the captions draw on the profile's senses.
 - Plain, concrete words: never a word that only adds intensity, such as completely, deeply, truly, ultimate or pure.
-- 250 to 700 characters in all. No hashtags in the text.
+- ${POSTS_LIMITS.captionMin} to ${POSTS_LIMITS.captionAsked} characters in all, before the app's WhatsApp line. No hashtags in the text.
 - ${emojiRule(spa)}
 - Never a price, in a caption or a story text.
-- Facts only from the profile: a duration, a number of years, a place name, a quality (signature, expert, best) or a claim appears only if the profile holds it, written as the profile writes it. Feelings, senses and place symbols are yours to use freely.
+- Facts only from the profile: a duration, a number of years, a place name, a quality (signature, expert, best) or a claim appears only if the profile holds it, written as the profile writes it. Feelings and place symbols are yours to use, in a few words.
 - No call to action and no contact details: the app adds "Book on WhatsApp" with the number after every caption${withOffer ? ", with the offer's end before it on a post that carries the special offer" : ''}.
 - Never these words, nor anything that suggests more than a professional treatment: ${BANNED_WORDS.join(', ')}.
 
@@ -125,7 +128,7 @@ ${hookStyles(`The hooks: code gives each post a hook style, in order, under "###
 
 ${captionRules(spa, withOffer)}
 
-Shapes: post 1's caption has two paragraphs after its hook and post 2's has three, so the two read differently; a paragraph holds one or two sentences.
+Shapes: post 1's caption has two paragraphs after its hook and post 2's has one, so the two read differently; a paragraph holds one or two short sentences.
 
 The image prompt: English, at most 80 words, for an image model making a tall 9:16 photo.
 - The massage is in every image: a therapist's hands working on a guest, or oil or towels being used for a treatment. Only what the business offers: a tool or treatment appears only if the offerings hold it. Never a guest alone, never an empty room, never a drink or a prop on its own.

@@ -20,7 +20,7 @@ describe('planPrompt', () => {
     for (const word of [...POST_TYPES, ...SCENES, ...BANNED_WORDS]) expect(prompt).toContain(word);
     for (const rule of [
       '125',
-      '700',
+      '280',
       '80 words',
       'never from behind',
       'No text',
@@ -85,12 +85,12 @@ describe('planPrompt', () => {
       expect(prompt).not.toMatch(/its price|with its price|a price, a duration/);
     }
     expect(planPrompt()).toContain(
-      '- offer: makes the guest want one treatment or package now: the sore spot it answers, how it feels, what changes after; its duration when the profile gives it.',
+      '- offer: makes the guest want one treatment or package now: the sore spot it answers and what changes after; its duration when the profile gives it.',
     );
   });
 
   it('has a version', () => {
-    expect(POSTS_PROMPT_VERSION).toBe('posts-14');
+    expect(POSTS_PROMPT_VERSION).toBe('posts-15');
   });
 });
 
@@ -328,7 +328,7 @@ describe('the story text and the captions that sell', () => {
     for (const part of [
       'The mix, each type with its own job:',
       'Only offer posts sell a treatment',
-      'what the guest will feel, rather than what the business does',
+      'Say what the massage does for the guest, plainly',
       'How a caption ends follows its type.',
       'Every ending stays warm',
     ]) {
@@ -388,13 +388,13 @@ describe('day and night copy', () => {
 
   it('the plan says the copy follows the set-up', () => {
     expect(planPrompt()).toContain(
-      "Each caption and story text follows its post's light, the last word of its set-up.",
+      "A caption or story text that says when follows its post's light, the last word of its set-up",
     );
   });
 
   it('the rewrite says the copy follows the post\'s "light"', () => {
     expect(rewritePrompt()).toContain(
-      'Each caption and story text follows its post\'s light, its "light".',
+      'A caption or story text that says when follows its post\'s light, its "light"',
     );
   });
 
@@ -423,7 +423,7 @@ describe('marketing copy', () => {
   ] as const;
   const styles = [
     "- question: asks about the guest's own day.",
-    '- scene: drops the guest into a moment they are living, in the present tense, with no question.',
+    '- scene: names a moment the guest is living, in a few plain words, in the present tense, with no question.',
     "- place: opens on one of the business's real places: its town or area, a place it serves, or a landmark.",
     "- number: opens on a number that isn't a price: a duration, a time of day, a count.",
     '- fact: opens on a plain fact from the profile: a highlight, or its promise.',
@@ -433,7 +433,7 @@ describe('marketing copy', () => {
     '- offer: makes the guest want one treatment or package now',
     '- moment: a reason people come (after a surf, a hike, a long flight)',
     "- local: the town or area and something it's known for",
-    '- ritual: how a treatment unfolds, through the senses',
+    '- ritual: the steps of one treatment, in plain words',
     '- tip: one piece of care advice a guest can use today, worth saving',
     '- proof: what the profile says about the business',
   ];
@@ -462,7 +462,7 @@ describe('marketing copy', () => {
 
   // Amended 2026-11-08, after the posts-13 recordings.
   it('gives the plan two shapes, and the rewrite none', () => {
-    const shape = "post 1's caption has two paragraphs after its hook and post 2's has three";
+    const shape = "post 1's caption has two paragraphs after its hook and post 2's has one";
     expect(planPrompt()).toContain(shape);
     expect(planPrompt(true, true)).toContain(shape);
     expect(rewritePrompt()).not.toContain('two paragraphs after its hook');
@@ -516,5 +516,42 @@ describe('marketing copy', () => {
     const posts = JSON.parse(text.split('### Posts\n')[1]);
     expect(posts[0].hook).toBe('place');
     expect('hook' in posts[1]).toBe(false);
+  });
+});
+
+// docs/specs/posts/short-captions
+describe('short captions', () => {
+  const prompts = [
+    ['plan', planPrompt(false, true)],
+    ['plan with an offer', planPrompt(true, true)],
+    ['rewrite', rewritePrompt(false, true)],
+    ['rewrite with an offer', rewritePrompt(true, true)],
+  ] as const;
+
+  it.each(prompts)('the %s prompt asks for three short paragraphs, no setting', (_, prompt) => {
+    for (const rule of [
+      'at most three paragraphs in all, the hook counted',
+      'a sentence holds at most 15 words',
+      '80 to 280 characters in all',
+      'Never describe the setting',
+      'Never describe what the photo shows',
+      'Feelings and place symbols are yours to use, in a few words.',
+      'It need not say when, and never describes the light.',
+    ]) {
+      expect(prompt).toContain(rule);
+    }
+  });
+
+  it.each(prompts)('the %s prompt drops what made captions long', (_, prompt) => {
+    for (const gone of [
+      'what the guest will feel, rather than what the business does',
+      'through the senses',
+      'how it feels',
+      'puts the guest back',
+      'senses and place symbols are yours to use freely',
+      '250 to 700',
+    ]) {
+      expect(prompt).not.toContain(gone);
+    }
   });
 });
