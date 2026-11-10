@@ -55,6 +55,7 @@ const ACTION_MODEL: Partial<Record<MeteredAction, string>> = {
   rewrites: TEXT_MODELS.posts,
   translations: TEXT_MODELS.light,
   replies: TEXT_MODELS.light,
+  answers: TEXT_MODELS.light,
 };
 
 const isImage = (action: MeteredAction) => action === 'firstImages' || action === 'newImages';

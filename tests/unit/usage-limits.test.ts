@@ -20,6 +20,7 @@ describe('per-owner limits', () => {
       translations: 30,
       newImages: 10,
       replies: 20,
+      answers: 20,
     });
   });
 

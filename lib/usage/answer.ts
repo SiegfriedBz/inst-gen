@@ -8,10 +8,17 @@ const counts = z.object({
   attempts: z.number().int().min(0),
   newImages: z.number().int().min(0),
   replies: z.number().int().min(0),
+  answers: z.number().int().min(0),
 });
 export type BarCounts = z.infer<typeof counts>;
 export type BarAction = keyof BarCounts;
-export const BAR_ACTIONS: readonly BarAction[] = ['reads', 'attempts', 'newImages', 'replies'];
+export const BAR_ACTIONS: readonly BarAction[] = [
+  'reads',
+  'attempts',
+  'newImages',
+  'replies',
+  'answers',
+];
 
 export const usageAnswerSchema = z.object({
   resetsAt: z.string(),

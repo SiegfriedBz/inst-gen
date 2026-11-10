@@ -354,6 +354,7 @@
     "attempts": "{count, plural, one {# attempt} other {# attempts}}",
     "newImages": "{count, plural, one {# new image} other {# new images}}",
     "replies": "{count, plural, one {# reply} other {# replies}}",
+    "answers": "{count, plural, one {# answer} other {# answers}}",
     "developer": "No daily limits (developer)",
     "poolEmpty": "Shopfront has used today's free writing. Back at {time}.",
     "imagesMonth": "No new images until {date}.",
@@ -363,6 +364,7 @@
       "reads": "You've read your website {limit} times today. Again at {time}.",
       "newImages": "You've made today's {limit} new images. More at {time}.",
       "replies": "You've written today's {limit} replies. More at {time}.",
+      "answers": "You've written today's {limit} answers. More at {time}.",
       "rewrites": "Captions were updated {limit} times today. Again at {time}.",
       "translations": "Today's {limit} translations are used up. More at {time}."
     }

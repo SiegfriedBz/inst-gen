@@ -48,6 +48,23 @@ const replies = {
   },
 };
 
+const answers = {
+  modelId: 'm',
+  promptVersion: 'p',
+  partials: [],
+  final: {
+    questionLanguage: 'en',
+    sexual: false,
+    unanswered: false,
+    questionTranslation: 'Giá?',
+    greeting: { text: 'Hello!', translation: 'Xin chào!' },
+    answer: { text: 'Thai Massage, 60 min.', translation: 'Massage Thái, 60 phút.' },
+    professionalOnly: { text: 'We offer only professional therapeutic massage.', translation: 'x' },
+    callToAction: { text: '', translation: null },
+    guest: { place: null, day: null, time: null },
+  },
+};
+
 const state = {
   owner: 'sen' as string | null,
   mode: 'ok' as 'ok' | 'busy' | 'midstream',
@@ -73,6 +90,7 @@ function textModel(): TextModel {
     ...(state.mode === 'busy' ? { error: 'busy' as const } : {}),
     posts: planRecording(),
     replies,
+    answers,
     translation: { ...rec, final: 'Dầu ấm.' },
     searchAnswer: { searchTerms: ['hotel massage da nang'], moments: [], placeSymbols: [] },
   });
@@ -100,6 +118,7 @@ vi.mock('@/lib/brand/deps', () => ({
   defaultPostsDeps: () => ({ model: textModel() }),
   defaultTranslateDeps: () => ({ model: textModel() }),
   defaultReplyDeps: () => ({ model: textModel() }),
+  defaultAnswerDeps: () => ({ model: textModel() }),
   defaultImageDeps: () =>
     process.env.GOOGLE_IMAGE_API_KEY
       ? {
@@ -119,6 +138,7 @@ const rewrite = await import('@/app/api/posts/rewrite/route');
 const translate = await import('@/app/api/posts/translate/route');
 const reply = await import('@/app/api/reviews/reply/route');
 const image = await import('@/app/api/posts/image/route');
+const answer = await import('@/app/api/questions/answer/route');
 
 beforeAll(async () => {
   png = await tallPng();
@@ -197,6 +217,39 @@ const cases: Case[] = [
           imagePrompt: 'Hot stones on a balcony at dusk',
           scene: 'detail',
           first: false,
+        }),
+      ),
+  },
+  {
+    name: 'answer',
+    action: 'answers',
+    call: () =>
+      answer.POST(
+        req('/api/questions/answer', {
+          question: 'How much is a Thai massage?',
+          final: false,
+          locale: 'vi',
+          business: {
+            name: 'Sen Spa',
+            summary: null,
+            category: 'massage spa',
+            offerings: [],
+            highlights: [],
+            hours: null,
+            town: null,
+            area: null,
+            serviceArea: null,
+            contact: {
+              whatsapp: null,
+              phone: null,
+              email: null,
+              instagram: null,
+              bookingUrl: null,
+            },
+          },
+          country: 'VN',
+          known: { place: null, day: null, time: null },
+          avoid: null,
         }),
       ),
   },

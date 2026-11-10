@@ -35,12 +35,12 @@ afterAll(() => {
   else process.env.TZ = zone;
 });
 
-const allLeft = { reads: 3, attempts: 3, newImages: 10, replies: 20 };
+const allLeft = { reads: 3, attempts: 3, newImages: 10, replies: 20, answers: 20 };
 const full: UsageAnswer = {
   resetsAt: '2026-10-26T07:00:00.000Z',
   limited: true,
   left: allLeft,
-  limits: { reads: 3, attempts: 3, newImages: 10, replies: 20 },
+  limits: { reads: 3, attempts: 3, newImages: 10, replies: 20, answers: 20 },
   poolEmpty: false,
   images: { on: true, monthFull: false, backAt: '2026-11-01T00:00:00.000Z' },
 };
