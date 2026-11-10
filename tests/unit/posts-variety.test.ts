@@ -129,8 +129,12 @@ describe('copyRecords', () => {
   };
   const at = (n: number, caption: string, more: Partial<Post> = {}) =>
     post({ id: `post-${n}`, caption, ...more });
+  // Each test reads its own record; the hook's has a test of its own
+  // (docs/specs/posts/short-captions, amended 2026-11-10).
   const reasons = (posts: Post[], profile = svarga()) =>
-    copyRecords(posts, profile).map((d) => `${d.field}: ${d.reason}`);
+    copyRecords(posts, profile)
+      .filter((d) => !d.reason.endsWith('hook is no question'))
+      .map((d) => `${d.field}: ${d.reason}`);
 
   it('records nothing on a clean batch', () => {
     expect(
@@ -142,18 +146,22 @@ describe('copyRecords', () => {
     ).toEqual([]);
   });
 
-  it('records two question hooks, never an offer post or one alone', () => {
-    const offerPost = at(1, 'Long flight to Bali? Ten percent off.', { offer: true });
-    expect(
-      reasons([
-        offerPost,
-        at(2, 'Sore feet in Canggu? Warm oil helps.'),
-        at(3, 'Firm hands in Ubud.'),
-        at(4, 'Slow evening in Seminyak.'),
-        at(5, 'Tired legs after Bali? Rest now.'),
-      ]),
-    ).toEqual(['mix: question hooks in post-2, post-5']);
-    expect(reasons([offerPost, at(2, 'Sore feet in Canggu? Warm oil helps.')])).toEqual([]);
+  // Amended 2026-11-10: every hook is a question, an offer post's too.
+  it('records a hook that is no question, on any post', () => {
+    const records = copyRecords(
+      [
+        at(1, 'Long flight to Bali? Ten percent off.', { offer: true }),
+        at(2, 'Tired feet after a long walk through Seminyak.'),
+        at(3, 'Ten percent off in Canggu. Sore feet?', { offer: true }),
+        at(4, 'Sore feet in Canggu? 🌸 Warm oil helps.'),
+      ],
+      svarga(),
+    ).map((d) => `${d.field}: ${d.reason}`);
+    expect(records.filter((r) => r.endsWith('hook is no question'))).toEqual([
+      'mix: post-2: hook is no question',
+      'mix: post-3: hook is no question',
+    ]);
+    expect(records.some((r) => r.includes('question hooks in'))).toBe(false);
   });
 
   // Both captions of a plan (docs/specs/posts/marketing-copy, amended 2026-11-08).
@@ -263,9 +271,9 @@ describe('copyRecords', () => {
 
   it("never counts an offer post's offer line", () => {
     const second = 'Slow hands ease the stiff legs you carry home from a long busy day in Canggu.';
-    expect(reasons([at(1, `${sixteen} ${second}`, { offer: true })])).toEqual([
-      'words: post-1: 16 words in "Slow hands ease the…"',
-    ]);
+    expect(
+      reasons([at(1, `Sore legs in Canggu?\n\n${sixteen}\n\n${second}`, { offer: true })]),
+    ).toEqual(['words: post-1: 16 words in "Slow hands ease the…"']);
   });
 
   it('records the words of a setting, as they come, in a caption and a story text', () => {

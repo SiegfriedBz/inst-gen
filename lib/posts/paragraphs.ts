@@ -28,25 +28,19 @@ export function paragraphsOf(caption: string): string[] {
   return groups(caption).map((lines) => lines.join('\n'));
 }
 
-// Past three: the hook, the paragraph after it and the last one stay, since on
-// an offer or a moment post the last answers a guest's doubt. When code put the
-// offer line before the model's own hook (`displaced`), that hook goes first:
-// the line took its place. Under the limit, the caption comes back as it was.
+// Past three: the question, the paragraph after it (an offer post's line) and
+// the last one, its fact, stay. Every paragraph gets a blank line after it, as
+// the maintainer's examples have (amended 2026-11-10).
 export function keepParagraphs(
   caption: string,
   id: string,
-  displaced = false,
 ): { caption: string; dropped: Dropped[] } {
   const all = groups(caption);
-  const max = POSTS_LIMITS.paragraphs;
-  if (all.length <= max) return { caption, dropped: [] };
-  const rest = displaced ? [all[0], ...all.slice(2)] : all;
-  const gone = displaced ? [all[1]] : [];
-  const kept = rest.length <= max ? rest : [rest[0], rest[1], rest[rest.length - 1]];
-  if (rest.length > max) gone.push(...rest.slice(2, -1));
+  const over = all.length > POSTS_LIMITS.paragraphs;
+  const kept = over ? [all[0], all[1], all[all.length - 1]] : all;
   return {
     caption: kept.map((lines) => lines.join('\n')).join('\n\n'),
-    dropped: gone.map((lines) => ({
+    dropped: (over ? all.slice(2, -1) : []).map((lines) => ({
       field: 'caption',
       reason: `${id}: paragraph dropped "${lines.join(' ')}"`,
     })),

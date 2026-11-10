@@ -3,9 +3,13 @@ import { keepParagraphs, paragraphsOf } from '@/lib/posts/paragraphs';
 
 // docs/specs/posts/short-captions, "At most three short paragraphs".
 describe('keepParagraphs', () => {
-  it('keeps three paragraphs as they are', () => {
-    const caption = 'Hook?\n\nOne.\nTwo.';
-    expect(keepParagraphs(caption, 'post-1')).toEqual({ caption, dropped: [] });
+  // A blank line between paragraphs, as the maintainer's examples have
+  // (docs/specs/posts/short-captions, amended 2026-11-10).
+  it('keeps three paragraphs, a blank line between them', () => {
+    expect(keepParagraphs('Hook?\n\nOne.\nTwo.', 'post-1')).toEqual({
+      caption: 'Hook?\n\nOne.\n\nTwo.',
+      dropped: [],
+    });
   });
 
   it('keeps the first, the second and the last of five', () => {
@@ -22,22 +26,6 @@ describe('keepParagraphs', () => {
     const three = 'A.\n🌸\n\nB.\n\nC.';
     expect(keepParagraphs(three, 'post-1')).toEqual({ caption: three, dropped: [] });
     expect(keepParagraphs('🌸\nA.\n\nB.\n\nC.\n\nD.', 'post-1').caption).toBe('🌸\nA.\n\nB.\n\nD.');
-  });
-});
-
-// Code put the offer line before the model's own hook: that hook goes first
-// (docs/specs/posts/short-captions, final review).
-describe('keepParagraphs after the offer line was put first', () => {
-  it("drops the model's displaced hook first", () => {
-    expect(keepParagraphs('L.\n\nH.\n\nA.\n\nB.', 'post-1', true)).toEqual({
-      caption: 'L.\n\nA.\n\nB.',
-      dropped: [{ field: 'caption', reason: 'post-1: paragraph dropped "H."' }],
-    });
-  });
-
-  it('keeps three paragraphs as they are', () => {
-    const caption = 'L.\n\nH.\n\nA.';
-    expect(keepParagraphs(caption, 'post-1', true)).toEqual({ caption, dropped: [] });
   });
 });
 

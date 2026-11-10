@@ -1,11 +1,14 @@
 import { POSTS_LIMITS } from './batch';
 import { emojisIn, FLOWERS } from './emoji';
+import { hookOnItsLine } from './hook-line';
 import { mentionsDay, OFFER_LIMITS, type Offer } from './offer';
+import { paragraphsOf } from './paragraphs';
 import { sentences } from './story';
 
 // An offer post's line, written by code from the offer and the post's
-// treatment, put first in its caption and used as its story text
-// (docs/specs/posts/offer-line-first).
+// treatment, put second in its caption, after the question, and used as its
+// story text (docs/specs/posts/offer-line-first; second since
+// docs/specs/posts/short-captions, amended 2026-11-10).
 
 const FLOWER = '🌸';
 
@@ -47,25 +50,41 @@ function leadingFlower(text: string): string | null {
   return first && isFlower(first) && next.startsWith(first) ? first : null;
 }
 
-export function putOfferLineFirst(
+const hasWords = (text: string) => /[\p{L}\p{N}]/u.test(text);
+const LEADING_EMOJI = /^(?:\s|\p{Extended_Pictographic}|\uFE0F)*/u;
+
+// The line as the caption's second paragraph, word for word. Paragraph by
+// paragraph, the sentences that state the offer go; the first paragraph left
+// gives the question (its first sentence and the emoji after it), then the
+// line, then the rest.
+export function putOfferLineSecond(
   caption: string,
   line: string,
   offer: Offer,
-  spa: boolean,
-): { caption: string; fix: 'put first' | 'added' | null } {
+): { caption: string; fix: 'put second' | 'added' | null } {
   const text = caption.trim();
-  if (text.startsWith(line)) return { caption: text, fix: null };
-  const all = sentences(text);
-  const kept = all.filter((sentence) => !statesOffer(sentence, offer));
-  let rest = kept.join('').trim();
-  // A spa's line takes the flower that already leads the rest: one, not two.
-  const lead = spa ? leadingFlower(rest) : null;
-  if (lead) rest = rest.slice(lead.length).trim();
-  const head = spa ? `${line} ${lead ?? FLOWER}` : line;
-  return {
-    caption: rest ? `${head} ${rest}` : head,
-    fix: kept.length < all.length ? 'put first' : 'added',
-  };
+  const bare = line.replace(/\.$/, '');
+  if (paragraphsOf(text)[1]?.startsWith(bare)) return { caption: text, fix: null };
+  let stated = false;
+  const kept = paragraphsOf(text)
+    .map((paragraph) =>
+      sentences(paragraph)
+        .map((sentence) => {
+          if (!statesOffer(sentence, offer)) return sentence;
+          stated = true;
+          // The emoji that ended the sentence before stays with it.
+          return sentence.match(LEADING_EMOJI)?.[0] ?? '';
+        })
+        .join('')
+        .replace(/[ \t]{2,}/g, ' ')
+        .trim(),
+    )
+    .filter(hasWords);
+  const fix = stated ? 'put second' : 'added';
+  if (kept.length === 0) return { caption: line, fix };
+  const [first, ...others] = kept;
+  const [hook, ...after] = paragraphsOf(hookOnItsLine(first));
+  return { caption: [hook, line, ...after, ...others].join('\n\n'), fix };
 }
 
 // The flower right after the line in the caption, if any.
@@ -90,20 +109,3 @@ export function offerStory(
 
 // After its line, a post that carries the offer never gives a price (amended
 // 2026-10-29): each sentence that holds one goes, the line's flower stays.
-export function dropPrices(
-  caption: string,
-  line: string,
-  price: RegExp,
-): { caption: string; removed: string[] } {
-  const rest = caption.slice(line.length);
-  const lead = leadingFlower(rest);
-  const body = lead ? rest.trimStart().slice(lead.length) : rest;
-  const removed: string[] = [];
-  const kept = sentences(body).filter((sentence) => {
-    if (!price.test(sentence)) return true;
-    removed.push(sentence.trim());
-    return false;
-  });
-  if (removed.length === 0) return { caption, removed };
-  return { caption: `${lead ? `${line} ${lead}` : line}${kept.join('')}`, removed };
-}

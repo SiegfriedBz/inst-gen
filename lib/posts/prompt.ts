@@ -4,7 +4,7 @@ import { FLOWERS } from './emoji';
 import type { PostsModelInput } from './input';
 import { OFFER_LIMITS, type Offer } from './offer';
 import { offerLine, offerTreatment } from './offer-line';
-import { HOOKS, type Hook, type Setup, setupLine } from './setup';
+import { type Setup, setupLine } from './setup';
 
 // The post plan's prompts (docs/specs/posts/generate-copy, "What the model
 // writes"); the day or night light, the open room and the sign of the guest's
@@ -13,9 +13,10 @@ import { HOOKS, type Hook, type Setup, setupLine } from './setup';
 // no example to copy, from docs/specs/posts/day-and-night-copy; hook styles,
 // a job per type and story lines from docs/specs/posts/marketing-copy; two
 // posts an attempt and never a price from docs/specs/posts/two-suggestions;
-// three short paragraphs and no setting from docs/specs/posts/short-captions.
-// Bump the version with every change, so eval verdicts trace back to it.
-export const POSTS_PROMPT_VERSION = 'posts-15';
+// three short paragraphs, a question first, the offer line second, a fact last
+// and no setting from docs/specs/posts/short-captions. Bump the version with
+// every change, so eval verdicts trace back to it.
+export const POSTS_PROMPT_VERSION = 'posts-16';
 
 // Code decides the emoji rule: flowers only for a spa
 // (docs/specs/posts/story-text, "Emojis").
@@ -35,47 +36,30 @@ const TYPE_JOBS = `- offer: makes the guest want one treatment or package now: t
 - proof: what the profile says about the business (years open, its promise, a highlight, a rating it quotes), stated plainly. Only when the highlights or the promise give something to say; never an invented review, rating or customer.
 Only offer posts sell a treatment; the other types earn the guest's attention, name a treatment once at most, and never in their first line.`;
 
-// The hook styles code deals (docs/specs/posts/marketing-copy, "Hook styles,
-// dealt by code"), each described with no example to copy.
-const HOOK_WORDS: Record<Hook, string> = {
-  question: "asks about the guest's own day.",
-  scene:
-    'names a moment the guest is living, in a few plain words, in the present tense, with no question.',
-  place:
-    "opens on one of the business's real places: its town or area, a place it serves, or a landmark.",
-  number: "opens on a number that isn't a price: a duration, a time of day, a count.",
-  fact: 'opens on a plain fact from the profile: a highlight, or its promise.',
-  promise: "opens on what the guest's body will feel after.",
-};
-
-const hookStyles = (intro: string) =>
-  `${intro}\n${HOOKS.map((hook) => `- ${hook}: ${HOOK_WORDS[hook]}`).join('\n')}`;
-
-// Captions with a hook alone on their first line, built on a style code
-// deals, ending as their type asks, with no price and no example to copy;
-// the story text, a line of its own (docs/specs/posts/marketing-copy). With
-// an offer, the offer line is the hook (docs/specs/posts/offer-line-first).
-// The copy follows the post's light (docs/specs/posts/day-and-night-copy).
+// Captions of three paragraphs: a question alone on the first line, what the
+// massage does or the offer line, one fact; no price and no example to copy
+// (docs/specs/posts/short-captions, amended 2026-11-10); the story text, a line
+// of its own (docs/specs/posts/marketing-copy). The copy follows the post's
+// light (docs/specs/posts/day-and-night-copy).
 const captionRules = (
   spa: boolean,
   withOffer = false,
   lightFrom = 'the last word of its set-up',
-  hookFrom = 'as given under "### Hooks"',
 ) => `Captions:
 - English, in the business's tone words, written as its owner would, to tourists and expats nearby.
-- The first line is the hook, alone on its line, at most 125 characters: it works on its own and stops a tourist scrolling, since it is all Instagram shows before "more". It follows its post's hook style, ${hookFrom}${withOffer ? '; on a post that carries the special offer, the hook is its offer line, word for word, with nothing before it' : ''}.
-- Then one or two short paragraphs, with a blank line between them: at most three paragraphs in all, the hook counted. A paragraph is one or two short sentences, one idea each, and a sentence holds at most ${POSTS_LIMITS.sentenceWords} words, the hook's too. Say what the massage does for the guest, plainly: the sore spot it answers, what changes after, and one practical fact (a real place, a highlight).
+- The first line is the hook, alone on its line: a short question that ends with "?", at most 12 words and 125 characters, about the guest's sore spot and the moment it comes from, often with one of the business's places. It stops a tourist scrolling, since it is all Instagram shows before "more".${withOffer ? ' A post that carries the special offer opens on its question too; its offer line comes right after it.' : ''}
+- Then two more paragraphs, with a blank line between them: three in all, never more. The second says what the massage does for the guest, plainly, doing its type's job: one or two short sentences, one idea each, and a sentence holds at most ${POSTS_LIMITS.sentenceWords} words, the hook's too.${withOffer ? ' On a post that carries the special offer, the second paragraph is its offer line, word for word, and nothing else.' : ''} The third is one fact from the profile's highlights, stated plainly in one short sentence: never the same highlight in both captions.
 - Never describe the setting: the light, the sky, the sunset, the garden, the room, the lamps, candles or linens, the oil's colour, or how quiet, calm or peaceful it is. Never describe what the photo shows: the image prompt's light, room and garden are for the image only. The story text follows the same rule.
-- Each caption names one of the business's real places, as its profile writes it, in its hook or the paragraph right after it: its town or area, a place it serves, or a landmark among its place symbols. A flower, a plant, an oil or an object is never a place; a caption may still use one as a detail, as it may a sense or a moment from its essence, or a highlight.
-- How a caption ends follows its type. An offer or a moment post ends by answering one doubt a guest may have, with a highlight from the profile, never the same highlight twice; with no highlight, it ends on what changes for the guest. A tip ends on its tip, a ritual on its last sensation, a proof post on its fact, a local post on what ties the place to the business. Every ending stays warm, states its highlight and never asks the guest to book or message. No two endings start with the same word.
+- Each caption names one of the business's real places, as its profile writes it, in its hook or the paragraph right after it: its town or area, a place it serves, or a landmark among its place symbols. A flower, a plant, an oil or an object is never a place; a caption may still use one as a detail, as it may a moment from its essence.
+- The caption ends on its fact, warm and plain, and never asks the guest to book or message. No two endings start with the same word.
 - A caption or story text that says when follows its post's light, ${lightFrom}: a day post speaks of the guest's afternoon, with the evening still ahead, never of sleep, bed or waking up; a night post of the guest's evening, the day done, never of the afternoon, the midday sun or the morning just past. It need not say when, and never describes the light.
-- The captions open differently and end differently: never the same first sentence, never the same last sentence, and never the same idea said twice in other words. Never reuse a phrase from these instructions or from the image set-ups: the set-ups describe the photos, and the captions draw on the profile's senses.
+- The captions open differently and end differently: never the same first sentence, never the same last sentence, and never the same idea said twice in other words. Never reuse a phrase from these instructions or from the image set-ups: the set-ups describe the photos.
 - Plain, concrete words: never a word that only adds intensity, such as completely, deeply, truly, ultimate or pure.
 - ${POSTS_LIMITS.captionMin} to ${POSTS_LIMITS.captionAsked} characters in all, the hook included, before the app's WhatsApp line. No hashtags in the text.
 - ${emojiRule(spa)}
 - Never a price, in a caption or a story text.
 - Facts only from the profile: a duration, a number of years, a place name, a quality (signature, expert, best) or a claim appears only if the profile holds it, written as the profile writes it. Feelings and place symbols are yours to use, in a few words.
-- No call to action and no contact details: the app adds "Book on WhatsApp" with the number after every caption${withOffer ? ", with the offer's end before it on a post that carries the special offer" : ''}.
+- No call to action and no contact details, ever: the app adds its own booking line with the number after the caption, so the caption never writes one. Its last paragraph is its fact.${withOffer ? " On a post that carries the special offer, the app's line also gives the offer's end." : ''}
 - Never these words, nor anything that suggests more than a professional treatment: ${BANNED_WORDS.join(', ')}.
 
 Hashtags: 3 to 5, without "#", lower case, letters and digits only. One on the business's town or area, as its profile names it; the others on the post's treatment, moment or place, drawing on the essence's search terms. Never a town or area the profile doesn't name.
@@ -87,11 +71,11 @@ Story text: its own line for the post's Instagram story, which the owner pastes 
 // The special offer's rules, only when the owner set one
 // (docs/specs/posts/special-offer, "What the model gets").
 const offerRules = (spa: boolean) => `
-A special offer is given. Posts 1 and 2 are the two offer posts. Both carry the special offer: each leads on one of the offer's treatments, two different ones when the offer has two or more. Each offer post's caption starts with its offer line, given under "### Special offer", word for word. Never a bigger discount, never other terms, never a price, never another session length, never "today only" or "this week", anywhere in an offer post. Each offer post's story text is its offer line, word for word${spa ? ', followed by one flower' : ''}.`;
+A special offer is given. Posts 1 and 2 are the two offer posts. Both carry the special offer: each leads on one of the offer's treatments, two different ones when the offer has two or more. Each offer post's caption opens on its question, then its offer line, given under "### Special offer", word for word, as its second paragraph. Never a bigger discount, never other terms, never a price, never another session length, never "today only" or "this week", anywhere in an offer post. Each offer post's story text is its offer line, word for word${spa ? ', followed by one flower' : ''}.`;
 
 const rewriteOfferRules = (spa: boolean) => `
 
-A special offer is given. A post marked offer: true keeps the offer: its caption starts with its offer line, given under "### Special offer", word for word, and its story text is that line${spa ? ', followed by one flower' : ''}; the other posts never mention it.`;
+A special offer is given. A post marked offer: true keeps the offer: its caption opens on its question, then its offer line, given under "### Special offer", word for word, as its second paragraph, and its story text is that line${spa ? ', followed by one flower' : ''}; the other posts never mention it.`;
 
 // Each post that carries the offer, by name, with its line in full.
 function offerText(offer: Offer, lines: [string, string][] = []): string {
@@ -124,11 +108,7 @@ ${withOffer ? 'Posts 1 and 2 are both offer posts.' : 'Post 1 is an offer post. 
 
 The topic: one line, at most 12 words, saying what the post is about.
 
-${hookStyles(`The hooks: code gives each post a hook style, in order, under "### Hooks": post 1 takes hook 1, and so on.${withOffer ? ' A post that carries the special offer has none: its offer line is its hook.' : ''}`)}
-
 ${captionRules(spa, withOffer)}
-
-Shapes: post 1's caption is exactly three paragraphs: its hook, one on what the massage does for the guest, and its ending. Post 2's is exactly two: its hook, then one paragraph of two short sentences, what the massage does for the guest and its ending. So the two read differently; a paragraph holds one or two short sentences, and a caption never has more paragraphs than its shape.
 
 The image prompt: English, at most 80 words, for an image model making a tall 9:16 photo.
 - The massage is in every image: a therapist's hands working on a guest, or oil or towels being used for a treatment. Only what the business offers: a tool or treatment appears only if the offerings hold it. Never a guest alone, never an empty room, never a drink or a prop on its own.
@@ -176,9 +156,6 @@ export function planUserText(
   if (setups.length) {
     const list = setups.map((s, i) => `${i + 1}. ${setupLine(s)}`).join('\n');
     text = `${text}\n\n### Image set-ups\n${list}`;
-    // A post that carries the offer has no style: its offer line is its hook.
-    const hooks = setups.map((s, i) => `${i + 1}. ${s.hook ?? 'offer line'}`).join('\n');
-    text = `${text}\n\n### Hooks\n${hooks}`;
   }
   if (!offer) return text;
   // Posts 1 and 2 use set-ups 1 and 2, whose treatments are the offer's.
@@ -195,9 +172,7 @@ export function rewritePrompt(withOffer = false, spa = false): string {
 Each post keeps its type's job:
 ${TYPE_JOBS}
 
-${hookStyles('The hooks: each post\'s "hook" names its hook style; a post without one keeps the kind of hook it has.')}
-
-${captionRules(spa, withOffer, 'its "light"', 'as its "hook" gives it, when it has one')}${withOffer ? rewriteOfferRules(spa) : ''}`;
+${captionRules(spa, withOffer, 'its "light"')}${withOffer ? rewriteOfferRules(spa) : ''}`;
 }
 
 export function rewriteUserText(input: PostsModelInput, posts: Post[], offer?: Offer): string {
@@ -209,8 +184,6 @@ export function rewriteUserText(input: PostsModelInput, posts: Post[], offer?: O
       scene,
       // A post saved without a set-up, or a set-up without a light, is a day.
       light: setup?.light ?? 'day',
-      // Its hook style, when code dealt one (docs/specs/posts/marketing-copy).
-      ...(setup?.hook ? { hook: setup.hook } : {}),
       caption,
       imagePrompt,
       ...(offer && carries ? { offer: true } : {}),

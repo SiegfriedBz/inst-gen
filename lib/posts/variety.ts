@@ -1,6 +1,7 @@
 import type { Profile } from '@/lib/brand/profile';
 import { type Dropped, POSTS_LIMITS, type Post } from './batch';
 import { emojisIn } from './emoji';
+import { paragraphsOf } from './paragraphs';
 import { sentences } from './story';
 
 // Code's records on a batch's copy (docs/specs/posts/day-and-night-copy,
@@ -80,8 +81,10 @@ export function lightRecords(post: Post): Dropped[] {
 }
 
 // The copy records of docs/specs/posts/marketing-copy ("Code's records"), in
-// its order: question hooks, stock words, endings, places, story texts and
-// calls to action. Records only, on the captions as code leaves them.
+// its order: hooks (that aren't questions since
+// docs/specs/posts/short-captions, amended 2026-11-10), stock words, endings,
+// places, story texts and calls to action. Records only, on the captions as
+// code leaves them.
 
 // Words the captions lean on, recorded in 2 captions or more, both of a plan
 // (amended 2026-11-08); the list may grow.
@@ -157,11 +160,11 @@ function placeNames(profile: Profile): string[] {
   return [...names];
 }
 
-function questionHooks(posts: Post[]): Dropped[] {
-  const ids = posts
-    .filter((p) => !p.offer && plainSentences(p.caption)[0]?.endsWith('?'))
-    .map((p) => p.id);
-  return ids.length > 1 ? [{ field: 'mix', reason: `question hooks in ${ids.join(', ')}` }] : [];
+// Every hook is a question, an offer post's too.
+function hookRecords(posts: Post[]): Dropped[] {
+  return posts
+    .filter((p) => !plainSentences(p.caption)[0]?.endsWith('?'))
+    .map((p) => ({ field: 'mix', reason: `${p.id}: hook is no question` }));
 }
 
 function stockWords(posts: Post[]): Dropped[] {
@@ -264,10 +267,12 @@ export function sentenceWords(text: string): number[] {
   return plainSentences(text).map((sentence) => sentence.match(WORD)?.length ?? 0);
 }
 
-// An offer post opens on its offer line, and its story text is that line:
-// code writes both.
+// An offer post's second paragraph is its offer line, and its story text is
+// that line: code writes both.
 function longSentences(post: Post): Dropped[] {
-  const caption = plainSentences(post.caption).slice(post.offer ? 1 : 0);
+  const caption = paragraphsOf(post.caption)
+    .filter((_, i) => !post.offer || i !== 1)
+    .flatMap(plainSentences);
   const story = post.offer ? [] : plainSentences(post.storyText ?? '');
   return [...caption, ...story].flatMap((sentence) => {
     const words = sentence.match(WORD) ?? [];
@@ -307,7 +312,7 @@ function settingRecords(post: Post): Dropped[] {
 
 export function copyRecords(posts: Post[], profile: Profile): Dropped[] {
   return [
-    ...questionHooks(posts),
+    ...hookRecords(posts),
     ...stockWords(posts),
     ...endings(posts),
     ...placeRecords(posts, profile),

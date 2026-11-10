@@ -117,7 +117,8 @@ describe('never a price', () => {
   it('lines without stops: only the line with a price goes, the breaks stay', () => {
     const caption = 'Warm oil after the surf\nOnly 350k for an hour\nRest well tonight';
     const { post: checked } = checkPost(raw({ type: 'moment', caption }), svargaProfile(), 'p1');
-    expect(checked?.caption).toContain('Warm oil after the surf\nRest well tonight');
+    // A blank line now, as between any paragraphs (docs/specs/posts/short-captions).
+    expect(checked?.caption).toContain('Warm oil after the surf\n\nRest well tonight');
     expect(checked?.caption).not.toContain('350k');
   });
 
@@ -391,7 +392,7 @@ describe('no stop before an emoji', () => {
     expect(checked?.caption).toBe('Warm oil.\n\nSlow hands 🌸');
   });
 
-  it("removes it after an offer post's line, in its caption and story text", () => {
+  it("removes it after an offer post's question, in its caption and story text", () => {
     const offer: Offer = {
       kind: 'discount',
       percent: 10,
@@ -406,7 +407,7 @@ describe('no stop before an emoji', () => {
       { offer, carries: true },
     );
     const line = '10% off our 90-minute Balinese massage, until Tuesday 27 October';
-    expect(checked?.caption.startsWith(`${line} 🌸\n\nLong flight?`)).toBe(true);
+    expect(checked?.caption.startsWith(`Long flight? 🌸\n\n${line}.\n\n`)).toBe(true);
     expect(checked?.storyText).toBe(`${line} 🌸`);
   });
 
@@ -534,7 +535,7 @@ describe('checkPlan', () => {
         id: 'p1',
         type: 'moment',
         scene: 'detail',
-        caption: 'After a long walk, slow hands.',
+        caption: 'Long walk? Slow hands.',
       }),
     ];
     expect(checkPlan(posts, [], svargaProfile()).dropped.filter((d) => d.field === 'mix')).toEqual(
@@ -758,7 +759,9 @@ describe('the special offer', () => {
     expect(offerFlags(posts[0].unchecked)).toEqual(['15%']);
   });
 
-  // The offer line first (docs/specs/posts/offer-line-first).
+  // The offer line, second since docs/specs/posts/short-captions (amended
+  // 2026-11-10), after the question; first before it
+  // (docs/specs/posts/offer-line-first).
   const LINE = '10% off our 90-minute Thai Massage, until Tuesday 27 October.';
   // The line as the owner sees it before an emoji (docs/specs/posts/day-and-night-copy).
   const SHOWN = LINE.slice(0, -1);
@@ -774,7 +777,7 @@ describe('the special offer', () => {
   const offerRecords = (dropped: { field: string; reason: string }[]) =>
     dropped.filter((d) => d.field === 'offer');
 
-  it('checkPost puts the offer line before a hook, and sets the story text', () => {
+  it('checkPost puts the offer line after the question, and sets the story text', () => {
     const { post: checked, dropped } = checkPost(
       raw({
         type: 'offer',
@@ -786,9 +789,9 @@ describe('the special offer', () => {
       { offer, carries: true },
       thaiSetup,
     );
-    expect(checked?.caption).toBe(`${SHOWN} 🌸\n\nLong flight? Feel light again.`);
+    expect(checked?.caption).toBe(`Long flight? 🌸\n\n${LINE}\n\nFeel light again.`);
     expect(checked?.storyText).toBe(`${SHOWN} 🌸`);
-    expect(dropped).toContainEqual({ field: 'offer', reason: 'post-1: offer line put first' });
+    expect(dropped).toContainEqual({ field: 'offer', reason: 'post-1: offer line put second' });
     expect(dropped).toContainEqual({
       field: 'offer',
       reason: 'post-1: story text set to the offer line',
@@ -803,13 +806,13 @@ describe('the special offer', () => {
       { offer, carries: true },
       thaiSetup,
     );
-    expect(checked?.caption.startsWith(SHOWN)).toBe(true);
+    expect(paragraphsOf(checked?.caption ?? '')[1]?.startsWith(SHOWN)).toBe(true);
     expect(offerFlags(checked?.unchecked ?? [])).toEqual([]);
     expect(dropped).toContainEqual({ field: 'offer', reason: 'post-2: offer line added' });
   });
 
   it('checkPost keeps a post that is already right, with no offer record', () => {
-    const caption = `${LINE} 🌺 Long flight? Warm oil and slow hands.`;
+    const caption = `Long flight? 🌺\n\n${LINE}\n\nWarm oil and slow hands.`;
     const { post: checked, dropped } = checkPost(
       raw({ type: 'offer', caption, storyText: `${LINE} 🌺` }),
       profile(),
@@ -817,7 +820,7 @@ describe('the special offer', () => {
       { offer, carries: true },
       thaiSetup,
     );
-    expect(checked?.caption).toBe(`${SHOWN} 🌺\n\nLong flight? Warm oil and slow hands.`);
+    expect(checked?.caption).toBe(caption);
     expect(checked?.storyText).toBe(`${SHOWN} 🌺`);
     expect(offerRecords(dropped)).toEqual([]);
   });
@@ -842,7 +845,7 @@ describe('the special offer', () => {
       { offer, carries: true },
       { ...thaiSetup, treatment: 'Hot Stone' },
     );
-    expect(named?.caption.startsWith(SHOWN)).toBe(true);
+    expect(paragraphsOf(named?.caption ?? '')[1]?.startsWith(SHOWN)).toBe(true);
     const { post: left, dropped } = checkPost(
       raw({ type: 'offer', caption: 'Long flight? Warm oil.' }),
       profile(),
@@ -857,8 +860,8 @@ describe('the special offer', () => {
     });
   });
 
-  it('checkPost removes a price after the line, only in a post that carries the offer', () => {
-    const caption = `${LINE} 🌸 Warm oil. Only IDR 450,000 tonight. Wake up light.`;
+  it('checkPost removes a price after the line, as from any caption', () => {
+    const caption = `Long flight? 🌸\n\n${LINE}\n\nWarm oil. Only IDR 450,000 tonight. Wake up light.`;
     const { post: checked, dropped } = checkPost(
       raw({ type: 'offer', caption, storyText: `${LINE} 🌸` }),
       profile(),
@@ -866,10 +869,10 @@ describe('the special offer', () => {
       { offer, carries: true },
       thaiSetup,
     );
-    expect(checked?.caption).toBe(`${SHOWN} 🌸\n\nWarm oil. Wake up light.`);
+    expect(checked?.caption).toBe(`Long flight? 🌸\n\n${LINE}\n\nWarm oil. Wake up light.`);
     expect(checked?.unchecked.map((f) => f.kind)).not.toContain('price');
     expect(dropped).toContainEqual({
-      field: 'offer',
+      field: 'price',
       reason: 'post-1: price removed "Only IDR 450,000 tonight."',
     });
     const { post: other } = checkPost(
@@ -884,7 +887,7 @@ describe('the special offer', () => {
   });
 
   it('checkRewrite keeps a line the model copied without its stop', () => {
-    const shown = `${SHOWN} 🌸\n\nLong flight? Warm oil.`;
+    const shown = `Long flight? 🌸\n\n${SHOWN}\n\nWarm oil.`;
     const original = post({ id: 'a', offer: true, caption: shown, setup: thaiSetup });
     const answer = {
       posts: [
@@ -897,7 +900,7 @@ describe('the special offer', () => {
     expect(offerRecords(dropped)).toEqual([]);
   });
 
-  it('checkRewrite puts the line back first on an old post without a set-up', () => {
+  it('checkRewrite puts the line second on an old post without a set-up', () => {
     const original = post({ id: 'a', offer: true, caption: `${LINE} Warm oil.` });
     const answer = {
       posts: [
@@ -911,9 +914,9 @@ describe('the special offer', () => {
       ],
     };
     const { posts, dropped } = checkRewrite(answer, [original], profile(), offer);
-    expect(posts[0].caption.startsWith(SHOWN)).toBe(true);
+    expect(paragraphsOf(posts[0].caption)[1]?.startsWith(SHOWN)).toBe(true);
     expect(posts[0].storyText).toBe(`${SHOWN} 🌸`);
-    expect(dropped).toContainEqual({ field: 'offer', reason: 'a: offer line put first' });
+    expect(dropped).toContainEqual({ field: 'offer', reason: 'a: offer line put second' });
   });
 });
 
@@ -1160,7 +1163,8 @@ describe('short captions', () => {
     expect(dropped.filter((d) => d.field === 'caption')).toHaveLength(2);
   });
 
-  it('keeps an offer post on its offer line', () => {
+  // Amended 2026-11-10: the question first, the offer line second.
+  it('keeps an offer caption of five paragraphs to its question, its line and its last', () => {
     const { post: checked } = checkPost(
       raw({
         caption:
@@ -1170,42 +1174,47 @@ describe('short captions', () => {
       'post-1',
       { offer, carries: true },
     );
-    expect(checked?.caption).toBe(
-      `${line} 🌸\n\nOur Balinese massage eases it.\n\nNo deposit needed.`,
-    );
+    expect(checked?.caption).toBe(`Long flight? 🌸\n\n${line}.\n\nNo deposit needed.`);
   });
 
-  it('drops the hook the offer line displaced, never the body', () => {
+  it('puts the offer line second when the model wrote it first', () => {
     const { post: checked, dropped } = checkPost(
       raw({
-        caption:
-          'Long flight? 🌸\n\nOur Balinese massage eases tight legs in Canggu.\n\nNo deposit needed.',
+        caption: `${line}. Tight hips after a day in Canggu? 🌸\n\nWe come to your villa.`,
       }),
       svargaProfile(),
       'post-1',
       { offer, carries: true },
     );
     expect(checked?.caption).toBe(
-      `${line} 🌸\n\nOur Balinese massage eases tight legs in Canggu.\n\nNo deposit needed.`,
+      `Tight hips after a day in Canggu? 🌸\n\n${line}.\n\nWe come to your villa.`,
     );
-    expect(dropped).toContainEqual({
-      field: 'caption',
-      reason: 'post-1: paragraph dropped "Long flight? 🌸"',
-    });
+    expect(dropped).toContainEqual({ field: 'offer', reason: 'post-1: offer line put second' });
   });
 
-  it('keeps the first, second and last paragraphs when the model opened on its line', () => {
-    const { post: checked } = checkPost(
-      raw({
-        caption: `${line}. 🌸\n\nOur Balinese massage eases it.\n\nThen rest.\n\nNo deposit needed.`,
-      }),
+  it('adds the offer line second when the model left it out', () => {
+    const { post: checked, dropped } = checkPost(
+      raw({ caption: 'Tight hips after a day in Canggu? 🌸 Our Balinese massage loosens them.' }),
       svargaProfile(),
       'post-1',
       { offer, carries: true },
     );
     expect(checked?.caption).toBe(
-      `${line} 🌸\n\nOur Balinese massage eases it.\n\nNo deposit needed.`,
+      `Tight hips after a day in Canggu? 🌸\n\n${line}.\n\nOur Balinese massage loosens them.`,
     );
+    expect(dropped).toContainEqual({ field: 'offer', reason: 'post-1: offer line added' });
+  });
+
+  it('removes a price after the question on an offer post', () => {
+    const { post: checked } = checkPost(
+      raw({
+        caption: `Tight hips in Canggu? 🌸\n\n${line}.\n\nOnly IDR 250k for an hour. No deposit needed.`,
+      }),
+      svargaProfile(),
+      'post-1',
+      { offer, carries: true },
+    );
+    expect(checked?.caption).toBe(`Tight hips in Canggu? 🌸\n\n${line}.\n\nNo deposit needed.`);
   });
 
   it("gives a spa's caption a flower back when its only one went", () => {
