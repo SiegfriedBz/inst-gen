@@ -5,7 +5,7 @@ import type { ReactNode } from 'react';
 import { Button } from '@/components/ui/button';
 import { OWNER_LIMITS } from '@/lib/usage/limits';
 
-// The owner guide (docs/specs/guide/owner-guide): one page, eight sections,
+// The owner guide (docs/specs/guide/owner-guide): one page, nine sections,
 // in the screen's language. Buttons are named with their own strings and the
 // daily numbers come from the limits, so the guide follows the app.
 
@@ -15,6 +15,8 @@ export const GUIDE_SECTIONS = [
   'posts',
   'instagram',
   'reviews',
+  // docs/specs/questions/answer-drafts, "The owner guide".
+  'questions',
   'allowance',
   'languages',
   'trouble',
@@ -44,12 +46,13 @@ const BLOCKS: Record<SectionId, Block[]> = {
   ],
   instagram: [['save', 'copy', 'post', 'story'], 'link', 'alt', 'noImages', 'never'],
   reviews: ['paste', 'pick', 'other'],
+  questions: ['paste', 'send', 'final', 'remember', 'details', 'sex'],
   allowance: ['free', 'limits', 'bar', 'reset', 'time', 'month'],
   languages: ['switch', 'captions'],
   trouble: ['limit', 'pool', 'paused', 'gone', 'contact'],
 };
 
-type Limits = Record<'reads' | 'attempts' | 'newImages' | 'replies', number>;
+type Limits = Record<'reads' | 'attempts' | 'newImages' | 'replies' | 'answers', number>;
 
 export function OwnerGuide({
   contact,
@@ -86,11 +89,15 @@ export function OwnerGuide({
     'reviews.paste': { tab: t('home.tabs.reviews'), button: t('reviews.write') },
     'reviews.pick': { short: t('reviews.short'), warm: t('reviews.warm') },
     'reviews.other': { button: t('reviews.again') },
+    'questions.paste': { tab: t('home.tabs.questions'), button: t('questions.write') },
+    'questions.final': { final: t('questions.final') },
+    'questions.remember': { next: t('questions.next'), new: t('questions.newConversation') },
     'allowance.limits': {
       reads: t('usage.reads', { count: limits.reads }),
       attempts: t('usage.attempts', { count: limits.attempts }),
       newImages: t('usage.newImages', { count: limits.newImages }),
       replies: t('usage.replies', { count: limits.replies }),
+      answers: t('usage.answers', { count: limits.answers }),
     },
     'trouble.contact': {
       contact: contact && (

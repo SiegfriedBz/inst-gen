@@ -466,19 +466,28 @@
       "pick": "Chuyển giữa <b>{short}</b> và <b>{warm}</b> để chọn câu trả lời bạn thích, sửa nếu muốn, sao chép rồi dán làm câu trả lời trong Google Maps. Câu trả lời được viết bằng ngôn ngữ của khách, và bạn có thể đọc bằng ngôn ngữ của mình.",
       "other": "Không câu nào hợp? Chạm <b>{button}</b>. Đánh giá mới sẽ thay đánh giá trước."
     },
+    "questions": {
+      "title": "Trả lời câu hỏi của khách",
+      "paste": "Khi khách hỏi qua WhatsApp hoặc Instagram (dịch vụ, giá, giờ mở cửa, nơi bạn phục vụ), hãy sao chép tin nhắn của họ. Trong <b>{tab}</b>, dán vào và chạm <b>{button}</b>.",
+      "send": "Đọc câu trả lời, sửa nếu muốn, rồi sao chép và dán vào cuộc trò chuyện với khách.",
+      "final": "Khi khách đã hỏi hết những gì họ muốn biết, hãy đánh dấu <b>{final}</b>: câu trả lời sẽ kết thúc bằng lời mời khách đặt lịch.",
+      "remember": "Shopfront nhớ nơi khách đang ở, cùng ngày và giờ họ đã nói, nên câu trả lời cuối chỉ hỏi những gì còn thiếu. Với tin nhắn tiếp theo của cùng khách, chạm <b>{next}</b>. Trước tin nhắn của khách khác, chạm <b>{new}</b>.",
+      "details": "Câu trả lời chỉ dùng thông tin doanh nghiệp của bạn. Khi thiếu thông tin, câu trả lời sẽ nói bạn sẽ kiểm tra lại, và Shopfront báo cho bạn: hãy tự trả lời phần đó.",
+      "sex": "Nếu khách hỏi về dịch vụ tình dục, câu trả lời luôn nói rằng bạn chỉ cung cấp massage trị liệu chuyên nghiệp."
+    },
     "allowance": {
       "title": "Lượt dùng mỗi ngày",
       "free": "Shopfront miễn phí, nên mỗi ngày có giới hạn.",
-      "limits": "Mỗi ngày bạn có {reads}, {attempts} (mỗi lần 2 gợi ý), {newImages} và {replies}, cùng với các lần cập nhật chú thích và bản dịch.",
+      "limits": "Mỗi ngày bạn có {reads}, {attempts} (mỗi lần 2 gợi ý), {newImages}, {replies} và {answers}, cùng với các lần cập nhật chú thích và bản dịch.",
       "bar": "Dòng ở đầu mỗi tab cho biết hôm nay còn lại bao nhiêu và giờ mọi thứ được làm mới.",
-      "reset": "Vào giờ đó, giới hạn được làm mới, còn các gợi ý và câu trả lời đánh giá trong ngày rời khỏi màn hình. Hãy lưu những gì bạn muốn giữ trước giờ đó. Ưu đãi đặc biệt của bạn vẫn giữ nguyên: nó kéo dài đến hết ngày cuối cùng của nó.",
+      "reset": "Vào giờ đó, giới hạn được làm mới, còn các gợi ý, câu trả lời đánh giá và câu trả lời cho câu hỏi trong ngày rời khỏi màn hình. Hãy lưu những gì bạn muốn giữ trước giờ đó. Ưu đãi đặc biệt của bạn vẫn giữ nguyên: nó kéo dài đến hết ngày cuối cùng của nó.",
       "time": "Giờ trên thanh theo giờ điện thoại của bạn: hãy tin giờ đó thay vì một giờ cố định.",
       "month": "Hình mới còn có ngân sách hằng tháng cho cả ứng dụng. Nếu hết, Shopfront sẽ cho biết khi nào có hình trở lại."
     },
     "languages": {
       "title": "Ngôn ngữ",
       "switch": "Nút <b>{lang}</b> ở góc trên bên phải đổi ngôn ngữ của màn hình.",
-      "captions": "Bài đăng và chữ story được viết bằng tiếng Anh, và câu trả lời đánh giá bằng ngôn ngữ của khách. Hiển thị bằng ngôn ngữ của bạn là để đọc, không phải để đăng."
+      "captions": "Bài đăng và chữ story được viết bằng tiếng Anh, còn câu trả lời đánh giá và câu trả lời cho câu hỏi bằng ngôn ngữ của khách. Hiển thị bằng ngôn ngữ của bạn là để đọc, không phải để đăng."
     },
     "trouble": {
       "title": "Khi có sự cố",

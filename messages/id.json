@@ -466,19 +466,28 @@
       "pick": "Beralih antara <b>{short}</b> dan <b>{warm}</b> untuk memilih balasan yang Anda suka, ubah jika perlu, salin, lalu tempel sebagai balasan Anda di Google Maps. Balasan ditulis dalam bahasa tamu Anda, dan Anda bisa membacanya dalam bahasa Anda.",
       "other": "Tidak ada yang cocok? Ketuk <b>{button}</b>. Ulasan baru menggantikan ulasan sebelumnya."
     },
+    "questions": {
+      "title": "Menjawab pertanyaan tamu",
+      "paste": "Saat tamu bertanya lewat WhatsApp atau Instagram (perawatan, harga, jam buka, area layanan Anda), salin pesannya. Di <b>{tab}</b>, tempel lalu ketuk <b>{button}</b>.",
+      "send": "Baca jawabannya, ubah jika perlu, lalu salin dan tempel di obrolan Anda dengan tamu.",
+      "final": "Jika tamu sudah menanyakan semua yang ingin mereka tahu, centang <b>{final}</b>: jawabannya akan diakhiri dengan ajakan untuk memesan.",
+      "remember": "Shopfront mengingat tempat tamu menginap, serta hari dan jam yang mereka sebutkan, jadi jawaban terakhir hanya menanyakan yang belum ada. Untuk pesan berikutnya dari tamu yang sama, ketuk <b>{next}</b>. Sebelum pesan dari tamu lain, ketuk <b>{new}</b>.",
+      "details": "Jawaban hanya memakai detail usaha Anda. Jika sesuatu tidak ada di sana, jawaban menyebut Anda akan memeriksanya, dan Shopfront memberi tahu Anda: jawab bagian itu sendiri.",
+      "sex": "Jika tamu meminta layanan seks, jawabannya selalu menyatakan bahwa Anda hanya menawarkan pijat terapi profesional."
+    },
     "allowance": {
       "title": "Jatah harian Anda",
       "free": "Shopfront gratis, jadi setiap hari ada batasnya.",
-      "limits": "Setiap hari Anda punya {reads}, {attempts} (masing-masing 2 saran), {newImages}, dan {replies}, ditambah pembaruan teks dan terjemahan.",
+      "limits": "Setiap hari Anda punya {reads}, {attempts} (masing-masing 2 saran), {newImages}, {replies}, dan {answers}, ditambah pembaruan teks dan terjemahan.",
       "bar": "Baris di bagian atas setiap tab menunjukkan sisa hari ini dan jam semuanya kembali.",
-      "reset": "Pada jam itu, batas kembali penuh dan saran serta balasan ulasan hari itu hilang dari layar. Simpan yang ingin Anda pakai sebelum itu. Promo spesial Anda tetap ada: berlaku sampai hari terakhirnya sendiri berakhir.",
+      "reset": "Pada jam itu, batas kembali penuh dan saran, balasan ulasan, serta jawaban hari itu hilang dari layar. Simpan yang ingin Anda pakai sebelum itu. Promo spesial Anda tetap ada: berlaku sampai hari terakhirnya sendiri berakhir.",
       "time": "Jam di bilah memakai waktu ponsel Anda: percayai jam itu, bukan jam yang tetap.",
       "month": "Gambar baru juga punya anggaran bulanan untuk seluruh aplikasi. Jika habis, Shopfront memberi tahu kapan gambar tersedia lagi."
     },
     "languages": {
       "title": "Bahasa",
       "switch": "Tombol <b>{lang}</b> di kanan atas mengganti bahasa layar.",
-      "captions": "Postingan dan teks story ditulis dalam bahasa Inggris, dan balasan ulasan dalam bahasa tamu Anda. Menampilkannya dalam bahasa Anda hanya untuk dibaca, bukan untuk diposting."
+      "captions": "Postingan dan teks story ditulis dalam bahasa Inggris, sedangkan balasan ulasan dan jawaban dalam bahasa tamu Anda. Menampilkannya dalam bahasa Anda hanya untuk dibaca, bukan untuk diposting."
     },
     "trouble": {
       "title": "Jika ada masalah",
