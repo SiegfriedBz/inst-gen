@@ -14,7 +14,8 @@
       "label": "Trang chính",
       "business": "Doanh nghiệp",
       "posts": "Tạo bài đăng",
-      "reviews": "Đánh giá"
+      "reviews": "Đánh giá",
+      "questions": "Câu hỏi"
     },
     "welcome": "Chào mừng, {name}",
     "websiteLabel": "Trang web của bạn",
@@ -346,6 +347,44 @@
     },
     "which": "Chọn câu trả lời",
     "copy": "Sao chép câu trả lời"
+  },
+  "questions": {
+    "intro": "Có câu hỏi từ khách? Hãy sao chép và dán vào đây. Chúng tôi viết câu trả lời bằng ngôn ngữ của khách, dựa trên thông tin doanh nghiệp của bạn.",
+    "label": "Câu hỏi của khách",
+    "hint": "Đừng ghi tên và số điện thoại của khách.",
+    "final": "Làm câu trả lời cuối cùng",
+    "finalHint": "Câu trả lời sẽ kết thúc bằng lời mời khách đặt lịch.",
+    "write": "Viết câu trả lời",
+    "writing": "Đang viết câu trả lời…",
+    "keepOpen": "Hãy giữ trang này mở trong vài giây.",
+    "heading": "Câu hỏi của khách · bằng {language}",
+    "sexual": "Câu hỏi này có nhắc đến tình dục. Câu trả lời của bạn nói rằng bạn chỉ cung cấp massage trị liệu chuyên nghiệp.",
+    "unanswered": "Thông tin doanh nghiệp của bạn chưa trả lời hết câu hỏi này. Hãy kiểm tra câu trả lời trước khi gửi.",
+    "answer": "Câu trả lời của bạn",
+    "copy": "Sao chép câu trả lời",
+    "flags": {
+      "price": "Giá này không có trên trang web của bạn: {text}. Hãy kiểm tra trước khi gửi.",
+      "duration": "Thời lượng này không có trên trang web của bạn: {text}. Hãy kiểm tra trước khi gửi.",
+      "number": "Số này không có trên trang web của bạn: {text}. Hãy kiểm tra trước khi gửi."
+    },
+    "howTo": "Dán vào cuộc trò chuyện với khách.",
+    "again": "Viết câu trả lời khác",
+    "next": "Dán tin nhắn tiếp theo",
+    "newConversation": "Cuộc trò chuyện mới",
+    "known": {
+      "title": "Những gì khách này đã cho biết",
+      "place": "Ở tại: {value}",
+      "day": "Ngày: {value}",
+      "time": "Giờ: {value}",
+      "hint": "Khách khác? Hãy bắt đầu cuộc trò chuyện mới trước."
+    },
+    "errors": {
+      "model_busy": "Shopfront đã dùng hết lượt viết miễn phí hôm nay. Hãy thử lại vào ngày mai.",
+      "model_timeout": "Viết câu trả lời mất quá lâu. Hãy thử lại.",
+      "model_failed": "Đã có lỗi khi viết câu trả lời. Hãy thử lại.",
+      "invalid_request": "Đã có lỗi khi viết câu trả lời. Hãy thử lại.",
+      "offline": "Bạn đang ngoại tuyến. Hãy thử lại khi có mạng."
+    }
   },
   "usage": {
     "left": "Còn lại hôm nay: {items}",

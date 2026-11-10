@@ -14,7 +14,8 @@
       "label": "Beranda",
       "business": "Usaha Anda",
       "posts": "Buat postingan",
-      "reviews": "Ulasan"
+      "reviews": "Ulasan",
+      "questions": "Pertanyaan"
     },
     "welcome": "Selamat datang, {name}",
     "websiteLabel": "Situs web Anda",
@@ -346,6 +347,44 @@
     },
     "which": "Balasan yang mana",
     "copy": "Salin balasan"
+  },
+  "questions": {
+    "intro": "Ada pertanyaan dari tamu? Salin dan tempel di sini. Kami menulis jawaban dalam bahasa tamu Anda, dari detail usaha Anda.",
+    "label": "Pertanyaan tamu",
+    "hint": "Jangan sertakan nama dan nomor telepon tamu.",
+    "final": "Jadikan jawaban terakhir",
+    "finalHint": "Jawaban diakhiri dengan ajakan kepada tamu untuk memesan.",
+    "write": "Tulis jawaban",
+    "writing": "Sedang menulis jawaban…",
+    "keepOpen": "Biarkan halaman ini terbuka beberapa detik.",
+    "heading": "Pertanyaan tamu · dalam {language}",
+    "sexual": "Pertanyaan ini menyinggung seks. Jawaban Anda menyatakan bahwa Anda hanya menawarkan pijat terapi profesional.",
+    "unanswered": "Detail usaha Anda tidak menjawab semua pertanyaan ini. Periksa jawabannya sebelum mengirim.",
+    "answer": "Jawaban Anda",
+    "copy": "Salin jawaban",
+    "flags": {
+      "price": "Harga ini tidak ada di situs Anda: {text}. Periksa sebelum mengirim.",
+      "duration": "Durasi ini tidak ada di situs Anda: {text}. Periksa sebelum mengirim.",
+      "number": "Nomor ini tidak ada di situs Anda: {text}. Periksa sebelum mengirim."
+    },
+    "howTo": "Tempel di obrolan Anda dengan tamu.",
+    "again": "Tulis jawaban lain",
+    "next": "Tempel pesan berikutnya",
+    "newConversation": "Percakapan baru",
+    "known": {
+      "title": "Yang sudah disampaikan tamu ini",
+      "place": "Menginap di: {value}",
+      "day": "Hari: {value}",
+      "time": "Jam: {value}",
+      "hint": "Tamu lain? Mulai percakapan baru dulu."
+    },
+    "errors": {
+      "model_busy": "Shopfront sudah memakai jatah menulis gratis hari ini. Coba lagi besok.",
+      "model_timeout": "Menulis jawaban terlalu lama. Coba lagi.",
+      "model_failed": "Terjadi kesalahan saat menulis jawaban. Coba lagi.",
+      "invalid_request": "Terjadi kesalahan saat menulis jawaban. Coba lagi.",
+      "offline": "Anda sedang offline. Coba lagi saat kembali online."
+    }
   },
   "usage": {
     "left": "Sisa hari ini: {items}",
