@@ -192,6 +192,9 @@ const noModel: TextModel = {
   writeReplies() {
     throw new Error('saving a fixture makes no model call');
   },
+  writeAnswer() {
+    throw new Error('saving a fixture makes no model call');
+  },
   translateCaption() {
     throw new Error('saving a fixture makes no model call');
   },

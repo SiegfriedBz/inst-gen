@@ -334,6 +334,38 @@ describe('the Google provider', () => {
   });
 });
 
+// docs/specs/questions/answer-drafts, "The model call".
+describe('writeAnswer', () => {
+  afterEach(() => {
+    vi.unstubAllEnvs();
+    vi.unstubAllGlobals();
+  });
+
+  test('uses flash-lite with low thinking, structured, once, with no retries', async () => {
+    vi.stubEnv('GOOGLE_GENERATIVE_AI_API_KEY', 'test-key-not-real');
+    const fetchMock = vi.fn(
+      async (_url: string | URL | Request, _init?: RequestInit) =>
+        new Response(JSON.stringify({ error: { code: 503, message: 'busy' } }), {
+          status: 503,
+          headers: { 'content-type': 'application/json' },
+        }),
+    );
+    vi.stubGlobal('fetch', fetchMock);
+    await expect(
+      geminiTextModel().writeAnswer(
+        { system: 'answer rules', text: 'Message: hi' },
+        new AbortController().signal,
+      ),
+    ).rejects.toMatchObject({ kind: 'busy' });
+    expect(fetchMock).toHaveBeenCalledTimes(1);
+    expect(String(fetchMock.mock.calls[0]?.[0])).toContain(TEXT_MODELS.light);
+    const body = String(fetchMock.mock.calls[0]?.[1]?.body);
+    expect(body.toLowerCase()).toContain('"low"');
+    expect(body).toContain('answer rules');
+    expect(body).toContain('professionalOnly');
+  });
+});
+
 describe('writeReplies', () => {
   const call = { system: 'reply rules', text: 'Review: Lovely massage.' };
   const answer = {
