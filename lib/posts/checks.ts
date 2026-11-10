@@ -18,6 +18,7 @@ import { hookOnItsLine } from './hook-line';
 import { ctaFor } from './input';
 import { mentionsDay, OFFER_LIMITS, type Offer, PERCENT } from './offer';
 import { dropPrices, offerLine, offerStory, offerTreatment, putOfferLineFirst } from './offer-line';
+import { keepParagraphs } from './paragraphs';
 import type { Setup } from './setup';
 import { cleanStory, sentences } from './story';
 import { copyRecords, lightRecords, repeatRecords } from './variety';
@@ -198,6 +199,25 @@ function spaCaption(caption: string, id: string): { caption: string; dropped: Dr
   return { caption: added.text, dropped };
 }
 
+// At most three paragraphs, counted as the owner sees them once the hook is
+// alone on its line, then the cut (docs/specs/posts/short-captions). A spa's
+// caption that lost its only flower to either gets one back, as 2.13 adds one.
+function shortCaption(
+  caption: string,
+  id: string,
+  spa: boolean,
+): { caption: string; dropped: Dropped[] } {
+  const kept = keepParagraphs(hookOnItsLine(caption), id);
+  const cut = cutCaption(kept.caption);
+  if (!spa) return { caption: cut, dropped: kept.dropped };
+  const added = addFlower(cut);
+  const back =
+    added.fixes.length > 0
+      ? [{ field: 'emoji', reason: `${id}: caption ${added.fixes.join(', ')}` }]
+      : [];
+  return { caption: added.text, dropped: [...kept.dropped, ...back] };
+}
+
 const LINE_FIXES = { 'put first': 'offer line put first', added: 'offer line added' } as const;
 const STORY_FIXES = {
   set: 'story text set to the offer line',
@@ -262,8 +282,9 @@ function checkedWords(
   const priced = offered.line
     ? { text: offered.caption, dropped: [] }
     : withoutPrices(offered.caption, id);
-  const cut = cutCaption(priced.text);
-  const { caption, dropped } = spa ? spaCaption(cut, id) : { caption: cut, dropped: [] };
+  const { caption, dropped } = spa
+    ? spaCaption(priced.text, id)
+    : { caption: priced.text, dropped: [] };
   const storyPriced = raw.storyText
     ? withoutPrices(raw.storyText, id)
     : { text: raw.storyText, dropped: [] };
@@ -281,10 +302,12 @@ function checkedWords(
     if (fixed.fix)
       storyDropped.push({ field: 'offer', reason: `${id}: ${STORY_FIXES[fixed.fix]}` });
   }
-  // The hook goes alone on its line, after the flowers and the offer steps;
-  // the stops before an emoji go last, once every step that finds sentences by
-  // their stop is done. The flags quote the text the owner sees.
-  const shown = dropStopsBeforeEmoji(hookOnItsLine(caption));
+  // The hook goes alone on its line, after the flowers and the offer steps,
+  // then the paragraphs and the cut; the stops before an emoji go last, once
+  // every step that finds sentences by their stop is done. The flags quote the
+  // text the owner sees.
+  const short = shortCaption(caption, id, spa);
+  const shown = dropStopsBeforeEmoji(short.caption);
   if (storyText) storyText = dropStopsBeforeEmoji(storyText);
   const tags = dropForeignTags(cleanHashtags(raw.hashtags), profile);
   const tagsDropped = tags.dropped.map(({ tag, place }) => ({
@@ -305,7 +328,14 @@ function checkedWords(
           }
         : {}),
     },
-    dropped: [...offered.dropped, ...priced.dropped, ...dropped, ...storyDropped, ...tagsDropped],
+    dropped: [
+      ...offered.dropped,
+      ...priced.dropped,
+      ...dropped,
+      ...short.dropped,
+      ...storyDropped,
+      ...tagsDropped,
+    ],
   };
 }
 

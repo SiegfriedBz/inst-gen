@@ -27,7 +27,8 @@ export const POSTS_LIMITS = {
   sentenceWords: 15,
   captionMin: 80,
   captionAsked: 280,
-  captionMax: 700,
+  // Code's cut, at the last full sentence before it.
+  captionMax: 400,
   hashtagsMin: 3,
   hashtags: 5,
   altTextChars: 125,

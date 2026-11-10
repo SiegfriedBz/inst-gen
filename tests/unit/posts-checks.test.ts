@@ -11,7 +11,9 @@ import {
   setupFlags,
 } from '@/lib/posts/checks';
 import { applyEdit } from '@/lib/posts/edit';
+import { emojisIn, FLOWERS } from '@/lib/posts/emoji';
 import type { Offer } from '@/lib/posts/offer';
+import { paragraphsOf } from '@/lib/posts/paragraphs';
 import type { Setup } from '@/lib/posts/setup';
 import { svargaProfile } from './helpers/brand';
 import { post } from './helpers/posts';
@@ -279,11 +281,12 @@ describe('findFlags: words and lengths', () => {
 });
 
 describe('cutCaption', () => {
-  it('cuts a caption over 700 characters at the last full sentence', () => {
+  it('cuts a caption over 400 characters at the last full sentence', () => {
     const sentence = 'Warm oil and slow hands after a long day. ';
     const caption = sentence.repeat(20).trim();
     const cut = cutCaption(caption);
-    expect(cut.length).toBeLessThanOrEqual(700);
+    expect(cut.length).toBeLessThanOrEqual(400);
+    expect(cut.length).toBeGreaterThan(350);
     expect(cut.endsWith('day.')).toBe(true);
   });
 
@@ -1104,5 +1107,132 @@ describe('story text and flowers', () => {
     expect(posts[0].storyText).toBe('New story 🌺');
     expect(posts[1].storyText).toBeUndefined();
     expect(posts[1].storyUnchecked).toBeUndefined();
+  });
+});
+
+// docs/specs/posts/short-captions, "At most three short paragraphs".
+describe('short captions', () => {
+  const offer: Offer = {
+    kind: 'discount',
+    percent: 10,
+    treatments: ['Balinese massage'],
+    until: '2026-10-27',
+    lastDay: 'Tuesday 27 October',
+  };
+  const hasFlower = (text: string) =>
+    emojisIn(text).some((e) => (FLOWERS as readonly string[]).includes(e));
+  // Three paragraphs, over 400 characters in all.
+  const long = 'Warm oil and slow hands work the knots out of your back. '.repeat(4).trim();
+
+  it('counts a first line of two sentences as two, and keeps the last', () => {
+    const { post: checked, dropped } = checkPost(
+      raw({
+        caption:
+          'Sore legs after Mount Batur? 🌸 Our therapists come to your villa.\n\nNo deposit needed.\n\nFree travel in Canggu.',
+      }),
+      svargaProfile(),
+      'post-1',
+    );
+    expect(checked?.caption).toBe(
+      'Sore legs after Mount Batur? 🌸\n\nOur therapists come to your villa.\n\nFree travel in Canggu.',
+    );
+    expect(dropped).toContainEqual({
+      field: 'caption',
+      reason: 'post-1: paragraph dropped "No deposit needed."',
+    });
+  });
+
+  it('holds a caption update to three paragraphs', () => {
+    const answer = {
+      posts: [
+        {
+          id: 'a',
+          caption: 'Sore feet? 🌺\n\nWarm oil helps.\n\nThen rest.\n\nSleep well.\n\nFree travel.',
+          hashtags: ['canggu'],
+          altText: 'Alt',
+          storyText: 'Rest well 🌸',
+        },
+      ],
+    };
+    const { posts, dropped } = checkRewrite(answer, [post({ id: 'a' })], svargaProfile());
+    expect(posts[0].caption).toBe('Sore feet? 🌺\n\nWarm oil helps.\n\nFree travel.');
+    expect(dropped.filter((d) => d.field === 'caption')).toHaveLength(2);
+  });
+
+  it('keeps an offer post on its offer line', () => {
+    const { post: checked } = checkPost(
+      raw({
+        caption:
+          'Long flight? 🌸\n\nOur Balinese massage eases it.\n\nTwo.\n\nThree.\n\nNo deposit needed.',
+      }),
+      svargaProfile(),
+      'post-1',
+      { offer, carries: true },
+    );
+    const caption = checked?.caption ?? '';
+    expect(
+      caption.startsWith('10% off our 90-minute Balinese massage, until Tuesday 27 October'),
+    ).toBe(true);
+    expect(paragraphsOf(caption)).toHaveLength(3);
+  });
+
+  it("gives a spa's caption a flower back when its only one went", () => {
+    const { post: checked, dropped } = checkPost(
+      raw({
+        type: 'moment',
+        caption:
+          'Sore legs?\n\nOur therapists come to you.\n\nWarm oil 🌺 for tired feet.\n\nFree travel in Canggu.',
+      }),
+      svargaProfile(),
+      'post-2',
+    );
+    const caption = checked?.caption ?? '';
+    expect(paragraphsOf(caption)).toHaveLength(3);
+    expect(hasFlower(caption)).toBe(true);
+    expect(dropped).toContainEqual({ field: 'emoji', reason: 'post-2: caption added 🌸' });
+  });
+
+  it('flags nothing in a paragraph that went', () => {
+    const { post: checked } = checkPost(
+      raw({
+        type: 'moment',
+        caption:
+          'Sore legs? 🌸\n\nOur therapists come to you.\n\nA 45 minutes ritual.\n\nThen rest.\n\nFree travel in Canggu.',
+      }),
+      svargaProfile(),
+      'post-2',
+    );
+    expect(checked?.unchecked.filter((f) => f.kind === 'duration')).toEqual([]);
+  });
+
+  it('cuts three long paragraphs at 400 characters, on a full sentence', () => {
+    const profile = { ...svargaProfile(), category: 'cafe' };
+    const { post: checked } = checkPost(
+      raw({ caption: `Sore back after the hike?\n\n${long}\n\n${long}` }),
+      profile,
+      'post-1',
+    );
+    const caption = checked?.caption ?? '';
+    expect(caption.length).toBeLessThanOrEqual(400);
+    expect(caption.endsWith('back.')).toBe(true);
+  });
+
+  it("gives a spa's cut caption its flower back", () => {
+    const { post: checked } = checkPost(
+      raw({ caption: `Sore back after the hike?\n\n${long}\n\n${long} 🌸` }),
+      svargaProfile(),
+      'post-1',
+    );
+    expect(checked?.caption.endsWith('back 🌸')).toBe(true);
+  });
+
+  it("keeps an owner's caption of five paragraphs", () => {
+    const caption = 'A.\n\nB.\n\nC.\n\nD.\n\nE.';
+    const edited = applyEdit(
+      post(),
+      { caption, hashtags: 'spa', altText: 'Hands' },
+      svargaProfile(),
+    );
+    expect(edited.caption).toBe(caption);
   });
 });
