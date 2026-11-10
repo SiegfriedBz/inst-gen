@@ -1,6 +1,6 @@
 ---
 title: "Answers to guests' questions"
-description: "A fourth home tab, 'Questions': the owner pastes a guest's question and gets one answer in the guest's language, from the business's own details, with its translation in the owner's language, from one Flash-Lite call. A question that asks for or mentions sex always gets 'we offer only professional therapeutic massage', and an answer the owner marks as final ends with a call to book; code makes sure of both."
+description: "A fourth home tab, 'Questions': the owner pastes a guest's question and gets one answer in the guest's language, from the business's own details, with its translation in the owner's language, from one Flash-Lite call. A question that asks for or mentions sex always gets 'we offer only professional therapeutic massage', and an answer the owner marks as final ends with a call to book, asking only for the booking details the guest hasn't given yet in the conversation; code makes sure of both."
 status: draft
 date: "2026-11-10"
 ---
@@ -22,7 +22,10 @@ ask for sex. The maintainer asked for a tab that writes the answers, next to
 - answers that end with a call to action, but not every one: a guest may
   ask several questions in a row. Each question is answered on its own, and
   the owner ticks a box when the answer should be the final one; only that
-  answer ends with a call to book (the maintainer, 2026-11-10).
+  answer ends with a call to book (the maintainer, 2026-11-10);
+- the final answer must not ask again for what the guest already said, such
+  as where they're staying, and a button starts a conversation from scratch
+  (the maintainer, 2026-11-10).
 
 This item adds a fourth home tab, **"Questions"**. The owner pastes the
 guest's message, taps one button, and gets **one answer ready to paste in the
@@ -32,7 +35,8 @@ owner's own language so they know what they send. It works like "Reviews"
 
 Success: on the made-up questions under "Prompt and eval", every answer is in
 the guest's language and uses only facts from the business's details. Every
-final answer ends with its call to action, and no other answer has one. Every
+final answer ends with its call to action, never asking for a booking detail
+the guest already gave, and no other answer has one. Every
 answer to a question that asks for or mentions sex says the business offers
 only professional therapeutic massage. The maintainer would send most answers
 as written.
@@ -53,12 +57,15 @@ Top to bottom:
 
 1. One line: "Got a question from a guest? Copy it and paste it here. We write
    an answer in your guest's language, from your business details."
-2. **"The guest's question"**, a text box of about 5 lines, at most 2,000
+2. When the guest has already given booking details in this conversation,
+   the box **"What this guest has told you"** (below), with the button
+   **"New conversation"** under it.
+3. **"The guest's question"**, a text box of about 5 lines, at most 2,000
    characters, pasted as is. Under it, in small text: "Leave out the guest's
    name and phone number."
-3. A checkbox, **"Make it the final answer"**, off at first, with "It ends by
-   asking the guest to book." under it in small text.
-4. The button **"Write an answer"**, full width, disabled while the question
+4. A checkbox, **"Make it the final answer"**, off for each new question,
+   with "It ends by asking the guest to book." under it in small text.
+5. The button **"Write an answer"**, full width, disabled while the question
    is empty (after trimming).
 
 There is no name field: an answer greets the guest without a name, and the
@@ -77,29 +84,57 @@ Top to bottom:
 1. **The question**, in a muted box: a small heading "The guest's question ·
    in {language}", the question as pasted, then, under a thin line, **the
    question in the owner's language**.
-2. When the question asks for or mentions sex, a calm note: "This question
+2. The box **"What this guest has told you"**, when the guest has given any
+   booking detail.
+3. When the question asks for or mentions sex, a calm note: "This question
    mentions sex. Your answer says you offer only professional therapeutic
    massage."
-3. When the business's details don't answer all of it, a note: "Your
+4. When the business's details don't answer all of it, a note: "Your
    business details don't answer all of this question. Check the answer
    before you send it."
-4. One card, **"Your answer"**: the answer as it will be pasted; under a thin
+5. One card, **"Your answer"**: the answer as it will be pasted; under a thin
    line, **the answer in the owner's language**; any check line (below); the
    link **"Edit the text"**; the button **"Copy the answer"**, with 2.4's
    "Copied" and "Copy it from here." fallback. It is 2.7's reply card.
-5. One line: "Paste it in your chat with the guest."
-6. The checkbox **"Make it the final answer"**, ticked as it was for this
+6. One line: "Paste it in your chat with the guest."
+7. The checkbox **"Make it the final answer"**, ticked as it was for this
    answer.
-7. Two links: **"Write another answer"** and **"Paste a new question"**.
+8. Two links, **"Write another answer"** and **"Paste the next message"**,
+   then the button **"New conversation"**.
 
 The owner's language and the language's name follow 2.7. The owner's language
 is the screen's, and no translation shows when the question is already in it.
 A language switch keeps the answer and the language of its translation.
 
-### Another answer, an edit, a new question
+### What this guest has told you
 
-These work as 2.7's "Write 2 other replies", "Edit the text" and "Paste a new
-review":
+The final answer asks for the day, the time and where the guest is staying.
+A guest often gives them along the way, in an earlier message. So the tab
+keeps them for the conversation, and the final answer asks only for those
+still missing (the maintainer, 2026-11-10):
+
+- With each answer, the model gives the booking details the guest has told
+  so far: where they're staying, the day and the time, each as the guest put
+  it, written in the owner's language. It reads them from the message and
+  from the details kept before, which go with each request.
+- Code merges them into the kept ones: a detail the model gives replaces the
+  one kept, since the guest may change their mind ("make it 8 pm"); a detail
+  it leaves out stays as it was.
+- The box shows each kept detail on its line, in the owner's language:
+  "Staying at: {value}", "Day: {value}", "Time: {value}". Under the box, in
+  small text: "Another guest? Start a new conversation first."
+- Any answer may use them ("yes, your hotel is in our free travel area").
+- A final answer asks only for the details still missing. When none is
+  missing, it asks the guest to confirm the booking with them.
+- They go with "New conversation" and at the daily reset. "Paste the next
+  message" keeps them.
+
+The details stay on the phone between requests, and leave it only inside the
+next request, as the guest's own message did.
+
+### Another answer, an edit, the next message, a new conversation
+
+The first two work as 2.7's "Write 2 other replies" and "Edit the text":
 
 - "Write another answer" spends one more request for a new answer to the same
   question, final or not as the checkbox is ticked now: an owner who wants
@@ -110,18 +145,29 @@ review":
 - "Edit the text" opens the editor on the answer. After a save, the card
   shows the edited text without its translation, and "Copy the answer" copies
   it. No request.
-- "Paste a new question" clears the question and the answer, with no
-  confirmation.
+- "Paste the next message" clears the question and the answer, and keeps
+  what this guest has told you, for the same guest's next message.
+- "New conversation" clears the question, the answer and what the guest has
+  told you, for another guest.
 
-### Kept until a new question or the daily reset
+Neither asks for a confirmation: nothing is lost that a new message can't
+give back.
 
-Only the current question is kept on the phone (IndexedDB, as the review is):
-the question, whether its answer is the final one, its language and
-translation, the notes, the answer as the model wrote it, its translation and
-checks, the owner's edit, the screen language they were made in, and when. It goes when the owner taps "Paste a new
-question", when a new "Write an answer" succeeds, or at Google's reset (2.8b),
-as the review does. What the owner types but hasn't sent isn't kept. A failed
-request keeps the question as typed and shows the error under the button.
+### Kept until a new conversation or the daily reset
+
+Only the current conversation is kept on the phone (IndexedDB, as the review
+is): what the guest has told you, and the current question with whether its
+answer is the final one, its language and translation, the notes, the answer
+as the model wrote it, its translation and checks, the owner's edit, the
+screen language they were made in, and when.
+
+- "Paste the next message" clears the question and its answer; a new "Write
+  an answer" replaces them.
+- "New conversation" and Google's reset (2.8b) clear everything, as the
+  reset clears the review.
+- What the owner types but hasn't sent isn't kept.
+- A failed request keeps the question as typed, and shows the error under the
+  button.
 
 ### What leaves the phone
 
@@ -165,7 +211,9 @@ What the model is asked for, and what code makes sure of:
   "Make it the final answer", one sentence asks the guest to book now, by
   saying what the business needs to book: the day and the time, and, for a
   business that goes to its guests (its service area says so), where they're
-  staying. The model writes it in its own field, in the guest's language, and
+  staying. It asks only for what the guest hasn't told yet ("What this guest
+  has told you"). The model writes it in its own field, in the guest's
+  language, and
   code puts it last, so no final answer ends without one. It holds no phone
   number or link: the owner pastes the answer in the chat where the guest
   asked (developer's call).
@@ -225,6 +273,8 @@ seconds. It returns:
 
 - the question's language, as a BCP 47 code;
 - `sexual` and `unanswered`;
+- what the guest has told so far: where they're staying, the day and the
+  time, each in the owner's language, or none;
 - the question in the owner's language, or nothing when it is already in it;
 - the greeting, the answer, the line on professional massage and, on a final
   answer, the call to action, each with its translation in the owner's
@@ -248,14 +298,16 @@ others. It takes:
   with their descriptions, durations and prices, its highlights and hours,
   its town, area and service area, and its contact details;
 - its country (`VN`, `ID` or none);
+- what this guest has told you, kept from the conversation;
 - for "Write another answer", the answer shown.
 
 It answers the built result with its checks, the model and the prompt
 version, or an error code, as 2.7's route does (`invalid_request`,
 `model_busy`, `model_timeout`, `model_failed`). Its one log line holds the
 owner, the model, the prompt version, the characters in and out, the
-question's language, `sexual` and which check fired, `unanswered`, the time
-and the outcome. It never holds the question or the answer.
+question's language, `sexual` and which check fired, `unanswered`, which
+booking details are known (`known=place,day`), the time and the outcome. It
+never holds the question, the answer or a detail's value.
 
 Errors show under the button, in the owner's language, as 2.7's do with
 "answer" in place of "replies" (strings below). Signed out answers as the
@@ -281,6 +333,10 @@ reviews":
   chat with the guest."
 - "When the guest has asked what they wanted to know, tick <b>{final}</b>:
   the answer then ends by asking them to book."
+- "Shopfront remembers where the guest is staying, and the day and the time
+  they gave, so the final answer asks only for what's missing. For the same
+  guest's next message, tap <b>{next}</b>. Before another guest's message,
+  tap <b>{new}</b>."
 - "Answers use only your business details. When something isn't in them, the
   answer says you'll check, and Shopfront tells you: answer that part
   yourself."
@@ -309,9 +365,12 @@ maintainer can print new PDFs with `pnpm guide:pdf`.
   - Svarga, English: open at 10 pm tonight, for a guest staying in Uluwatu,
     outside the service area;
   - Svarga, Indonesian, final: the price of a 60-minute Balinese massage at a
-    Seminyak villa, on an Indonesian screen (no translation);
+    Seminyak villa, on an Indonesian screen (no translation); the villa is in
+    the message, so the call to action asks only for the day and the time;
   - Svarga, Russian: whether there are "intimate" services;
-  - Svarga, English, final: paying by card, which the details don't say.
+  - Svarga, English, final: paying by card, which the details don't say,
+    with a villa in Pererenan and "tomorrow" kept from before, so the call to
+    action asks only for the time.
 - `pnpm eval:answers [slug…] [--record]` runs them with the real model and
   prints each answer with code's checks; `--record` saves the calls the unit
   tests replay. ⚠️ 1 Flash-Lite request per question from the app's daily
@@ -321,7 +380,8 @@ maintainer can print new PDFs with `pnpm guide:pdf`.
 
 The journal shows each recorded answer with its translation, and scores it:
 in the guest's language; a call to action at the end of each final answer,
-and none on the others; using only facts from the details; the line on every question that mentions sex, and on none
+asking for no detail the guest gave, and none on the others; the details the
+guest gave; using only facts from the details; the line on every question that mentions sex, and on none
 of the others; the card question marked unanswered. Pass: all of it on the 8,
 and the maintainer would send at least 6 of the 8 as written. When a check
 fails, the journal says why, and the maintainer decides whether the prompt
@@ -355,7 +415,13 @@ keys.
 | `questions.flags.number` | This number isn't on your website: {text}. Check it before sending. | Nomor ini tidak ada di situs Anda: {text}. Periksa sebelum mengirim. | Số này không có trên trang web của bạn: {text}. Hãy kiểm tra trước khi gửi. |
 | `questions.howTo` | Paste it in your chat with the guest. | Tempel di obrolan Anda dengan tamu. | Dán vào cuộc trò chuyện với khách. |
 | `questions.again` | Write another answer | Tulis jawaban lain | Viết câu trả lời khác |
-| `questions.newQuestion` | Paste a new question | Tempel pertanyaan baru | Dán câu hỏi mới |
+| `questions.next` | Paste the next message | Tempel pesan berikutnya | Dán tin nhắn tiếp theo |
+| `questions.newConversation` | New conversation | Percakapan baru | Cuộc trò chuyện mới |
+| `questions.known.title` | What this guest has told you | Yang sudah disampaikan tamu ini | Những gì khách này đã cho biết |
+| `questions.known.place` | Staying at: {value} | Menginap di: {value} | Ở tại: {value} |
+| `questions.known.day` | Day: {value} | Hari: {value} | Ngày: {value} |
+| `questions.known.time` | Time: {value} | Jam: {value} | Giờ: {value} |
+| `questions.known.hint` | Another guest? Start a new conversation first. | Tamu lain? Mulai percakapan baru dulu. | Khách khác? Hãy bắt đầu cuộc trò chuyện mới trước. |
 | `questions.errors.model_busy` | (as `posts.errors.model_busy`) | (as `posts.errors.model_busy`) | (as `posts.errors.model_busy`) |
 | `questions.errors.model_timeout` | Writing your answer took too long. Try again. | Menulis jawaban terlalu lama. Coba lagi. | Viết câu trả lời mất quá lâu. Hãy thử lại. |
 | `questions.errors.model_failed`, `questions.errors.invalid_request` | Something went wrong while writing your answer. Try again. | Terjadi kesalahan saat menulis jawaban. Coba lagi. | Đã có lỗi khi viết câu trả lời. Hãy thử lại. |
@@ -366,6 +432,7 @@ keys.
 | `guide.questions.paste` | When a guest asks you something on WhatsApp or Instagram (your treatments, prices, hours, where you go), copy their message. In <b>{tab}</b>, paste it and tap <b>{button}</b>. | Saat tamu bertanya lewat WhatsApp atau Instagram (perawatan, harga, jam buka, area layanan Anda), salin pesannya. Di <b>{tab}</b>, tempel lalu ketuk <b>{button}</b>. | Khi khách hỏi qua WhatsApp hoặc Instagram (dịch vụ, giá, giờ mở cửa, nơi bạn phục vụ), hãy sao chép tin nhắn của họ. Trong <b>{tab}</b>, dán vào và chạm <b>{button}</b>. |
 | `guide.questions.send` | Read the answer, change it if you want, then copy it and paste it in your chat with the guest. | Baca jawabannya, ubah jika perlu, lalu salin dan tempel di obrolan Anda dengan tamu. | Đọc câu trả lời, sửa nếu muốn, rồi sao chép và dán vào cuộc trò chuyện với khách. |
 | `guide.questions.final` | When the guest has asked what they wanted to know, tick <b>{final}</b>: the answer then ends by asking them to book. | Jika tamu sudah menanyakan semua yang ingin mereka tahu, centang <b>{final}</b>: jawabannya akan diakhiri dengan ajakan untuk memesan. | Khi khách đã hỏi hết những gì họ muốn biết, hãy đánh dấu <b>{final}</b>: câu trả lời sẽ kết thúc bằng lời mời khách đặt lịch. |
+| `guide.questions.remember` | Shopfront remembers where the guest is staying, and the day and the time they gave, so the final answer asks only for what's missing. For the same guest's next message, tap <b>{next}</b>. Before another guest's message, tap <b>{new}</b>. | Shopfront mengingat tempat tamu menginap, serta hari dan jam yang mereka sebutkan, jadi jawaban terakhir hanya menanyakan yang belum ada. Untuk pesan berikutnya dari tamu yang sama, ketuk <b>{next}</b>. Sebelum pesan dari tamu lain, ketuk <b>{new}</b>. | Shopfront nhớ nơi khách đang ở, cùng ngày và giờ họ đã nói, nên câu trả lời cuối chỉ hỏi những gì còn thiếu. Với tin nhắn tiếp theo của cùng khách, chạm <b>{next}</b>. Trước tin nhắn của khách khác, chạm <b>{new}</b>. |
 | `guide.questions.details` | Answers use only your business details. When something isn't in them, the answer says you'll check, and Shopfront tells you: answer that part yourself. | Jawaban hanya memakai detail usaha Anda. Jika sesuatu tidak ada di sana, jawaban menyebut Anda akan memeriksanya, dan Shopfront memberi tahu Anda: jawab bagian itu sendiri. | Câu trả lời chỉ dùng thông tin doanh nghiệp của bạn. Khi thiếu thông tin, câu trả lời sẽ nói bạn sẽ kiểm tra lại, và Shopfront báo cho bạn: hãy tự trả lời phần đó. |
 | `guide.questions.sex` | If a guest asks for sex, the answer always says you offer only professional therapeutic massage. | Jika tamu meminta layanan seks, jawabannya selalu menyatakan bahwa Anda hanya menawarkan pijat terapi profesional. | Nếu khách hỏi về dịch vụ tình dục, câu trả lời luôn nói rằng bạn chỉ cung cấp massage trị liệu chuyên nghiệp. |
 | `guide.allowance.limits` (changed) | Each day you have {reads}, {attempts} of 2 suggestions, {newImages}, {replies} and {answers}, plus caption updates and translations. | Setiap hari Anda punya {reads}, {attempts} (masing-masing 2 saran), {newImages}, {replies}, dan {answers}, ditambah pembaruan teks dan terjemahan. | Mỗi ngày bạn có {reads}, {attempts} (mỗi lần 2 gợi ý), {newImages}, {replies} và {answers}, cùng với các lần cập nhật chú thích và bản dịch. |
@@ -389,14 +456,19 @@ keys.
     empty greeting, needed line, or call to action on a final answer
     failing;
   - the price, duration and number checks;
+  - the guest's details: merged into the kept ones, a new one replacing the
+    old and a missing one kept; sent with the next request; shown in the box;
+    kept by "Paste the next message"; cleared by "New conversation" and at
+    the reset; a final answer's prompt naming only the missing ones;
   - the phone's removals: a number, an email and a link replaced; "room 405"
     kept;
   - the word list: each language's example caught, "massage" and "spa" not;
   - the route: 401 without a session, 400 on a bad body, each error code, the
     log line without the question or the answer, the count taken and given
     back, replayed answers;
-  - the store: kept across a reload, replaced by a new question, cleared by
-    "Paste a new question", gone after the reset;
+  - the store: kept across a reload; the question and answer replaced by a
+    new one and cleared by "Paste the next message", the details kept; all of
+    it cleared by "New conversation" and gone after the reset;
   - the tab: the empty state, the button off on an empty question, the
     checkbox off at first and sent with the request, the waiting state, the answer with its translation, no translation when the
     question is in the screen's language, both notes, a check line, "Write
@@ -436,6 +508,29 @@ Scenario: The final answer
   When they write an answer
   Then the answer ends by asking for the day, the time and where the guest is staying
 
+Scenario: The final answer asks only for what's missing
+  Given the guest wrote "We're staying at the Hyatt" in an earlier message
+  And "What this guest has told you" shows "Staying at: Hyatt"
+  When the owner pastes "How much is a Thai massage?", ticks "Make it the final answer" and writes an answer
+  Then the answer ends by asking for the day and the time
+  And it doesn't ask where the guest is staying
+
+Scenario: The guest changes their mind
+  Given "What this guest has told you" shows "Time: 7 pm"
+  When the guest's next message says "Can we make it 8 pm?"
+  Then the box shows "Time: 8 pm"
+
+Scenario: The next message from the same guest
+  Given an answer and the guest's details are shown
+  When the owner taps "Paste the next message"
+  Then the question box is empty
+  And "What this guest has told you" still shows the details
+
+Scenario: A new conversation
+  Given an answer and the guest's details are shown
+  When the owner taps "New conversation"
+  Then the question, the answer and the details are gone
+
 Scenario: Another answer, now final
   Given an answer written without "Make it the final answer"
   When the owner ticks it and taps "Write another answer"
@@ -467,9 +562,9 @@ Scenario: The guest's number stays on the phone
   Then the request holds "Call me on [number], room 405"
 
 Scenario: A trip to the chat keeps the answer
-  Given an answer is shown
+  Given an answer and the guest's details are shown
   When the page reloads before the daily reset
-  Then the same question and answer show, with no new request
+  Then the same question, answer and details show, with no new request
 
 Scenario: Another answer
   When the owner taps "Write another answer"
@@ -496,6 +591,14 @@ Scenario: Four tabs fit
   old price there is an old price in the answer.
 - The checks find prices, durations and numbers, not a wrong treatment name.
 - An edited answer loses its translation line.
+- One conversation at a time: an owner who chats with several guests taps
+  "New conversation" between them, or one guest's details reach another's
+  final answer. The box shows whose details the answer will use.
+- The details are the model's reading of each message: it can miss one or
+  misread it. The owner sees them in the box, and can start again.
+- The daily reset clears a conversation too, in the afternoon in Da Nang and
+  Bali (2.8b: 3 pm and 4 pm in November): a guest who writes again after it
+  is asked again for their details.
 
 ## Out of scope
 
@@ -503,8 +606,9 @@ Scenario: Four tabs fit
   the model to use.
 - Ready-made answers to tap without a request.
 - A WhatsApp or Instagram connection, to read messages or send answers.
-- A conversation kept in the tab, so an answer knows what was said before:
-  the maintainer chose one message at a time (2026-11-10).
+- The guest's earlier messages themselves: each question is answered on its
+  own, and only the booking details are kept (the maintainer, 2026-11-10).
+- Several conversations at once, one for each guest.
 - A history of questions and answers, or more than one question at a time.
 - A guest's name in the answer.
 - Posts and review replies: their prompts don't change.
