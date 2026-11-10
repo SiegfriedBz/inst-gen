@@ -1,7 +1,8 @@
 ---
 title: "Short captions"
 description: "Every caption the model writes has at most three short paragraphs, its hook counted, in plain words: what the massage does for the guest, never a description of the light, the room or the calm. Code drops any paragraph past the third, and records long sentences and the words of a setting."
-status: draft
+status: approved
+approved: { by: siegfried.bozza@protonmail.com, at: 2026-11-10T09:15:54Z }
 date: "2026-11-10"
 ---
 
