@@ -461,11 +461,14 @@ describe('marketing copy', () => {
   });
 
   // Amended 2026-11-08, after the posts-13 recordings.
+  // Amended 2026-11-10, after the first posts-15 run: exact paragraphs
+  // (docs/specs/posts/short-captions).
   it('gives the plan two shapes, and the rewrite none', () => {
-    const shape = "post 1's caption has two paragraphs after its hook and post 2's has one";
+    const shape =
+      "post 1's caption is exactly three paragraphs: its hook, one on what the massage does for the guest, and its ending. Post 2's is exactly two: its hook, then one paragraph of two short sentences, what the massage does for the guest and its ending.";
     expect(planPrompt()).toContain(shape);
     expect(planPrompt(true, true)).toContain(shape);
-    expect(rewritePrompt()).not.toContain('two paragraphs after its hook');
+    expect(rewritePrompt()).not.toContain('exactly three paragraphs');
   });
 
   it.each(prompts)('the %s prompt drops the words the model copied, and prices', (_, prompt) => {
@@ -532,11 +535,14 @@ describe('short captions', () => {
     for (const rule of [
       'at most three paragraphs in all, the hook counted',
       'a sentence holds at most 15 words',
+      'one idea each',
       '80 to 280 characters in all',
       'Never describe the setting',
       'Never describe what the photo shows',
       'Feelings and place symbols are yours to use, in a few words.',
       'It need not say when, and never describes the light.',
+      'in its hook or the paragraph right after it',
+      'characters in all, the hook included',
     ]) {
       expect(prompt).toContain(rule);
     }

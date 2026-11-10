@@ -7,6 +7,7 @@ import type { PlanResult } from '@/lib/posts/batch';
 import { emojisIn, FLOWERS } from '@/lib/posts/emoji';
 import { dropForeignTags } from '@/lib/posts/foreign-tags';
 import { offerLine, offerTreatment } from '@/lib/posts/offer-line';
+import { paragraphsOf } from '@/lib/posts/paragraphs';
 import { streamPlan } from '@/lib/posts/run';
 import { seededRandom } from '@/lib/posts/setup';
 import { repeatRecords } from '@/lib/posts/variety';
@@ -138,10 +139,18 @@ describe('recorded story texts and flowers', () => {
     // At most one hook is a question (docs/specs/posts/marketing-copy).
     expect(result.dropped.filter((d) => d.reason.startsWith('question hooks'))).toEqual([]);
     for (const post of result.posts) {
-      expect(post.storyText).toBeTruthy();
+      // A story text that only asked to book went whole, and code says so
+      // (docs/specs/posts/story-text): Svarga's posts-15 plan has one
+      // (docs/specs/posts/short-captions, journal).
+      if (!post.storyText) {
+        expect(result.dropped).toContainEqual({
+          field: 'story',
+          reason: `${post.id}: no story text`,
+        });
+      }
       const story = post.storyText ?? '';
       expect(story.length).toBeLessThanOrEqual(120);
-      expect(flowers(story)).toBeGreaterThanOrEqual(1);
+      if (story) expect(flowers(story)).toBeGreaterThanOrEqual(1);
       expect(flowers(story)).toBeLessThanOrEqual(2);
       expect(others(story)).toEqual([]);
       // No call to action is left (amended 2026-10-27).
@@ -171,6 +180,9 @@ describe('recorded story texts and flowers', () => {
           true,
         );
       }
+      // At most three paragraphs, the hook counted
+      // (docs/specs/posts/short-captions).
+      expect(paragraphsOf(post.caption).length).toBeLessThanOrEqual(3);
       // Never a price, in any caption or story text
       // (docs/specs/posts/two-suggestions).
       expect(post.caption).not.toMatch(PRICE);

@@ -89,7 +89,7 @@ most sample replies as written, with $0 spent on everything but images
 | 2.16 | `posts/therapists-look`: the therapists in every new image dressed as on the spa's own site: the brand read writes down what they wear and their hair, shown in "Your look" where the owner can change it; captions and story texts unchanged; the therapists stay women | spec | done |
 | 2.17 | `posts/two-images`: two images an attempt instead of six, to cut the image spend: the two offer posts, or one day and one night; the other four are text, and the owner can create an image for any of them from the day's new images; the owner guide says so | spec | done |
 | 2.17b | `posts/two-suggestions`: two suggestions an attempt instead of six, each with its images: with an offer both carry it, otherwise one offer post and one of another type, one day and one night; never a price in a caption or a story text; the buttons, the grid and the owner guide say two | spec | done |
-| 2.18 | `posts/short-captions`: at most three short paragraphs a caption, the hook counted, in plain words: what the massage does for the guest, never a description of the light, the room or the calm; code drops any paragraph past the third | spec | in progress |
+| 2.18 | `posts/short-captions`: at most three short paragraphs a caption, the hook counted, in plain words: what the massage does for the guest, never a description of the light, the room or the calm; code drops any paragraph past the third | spec | done |
 
 ## Later phases
 

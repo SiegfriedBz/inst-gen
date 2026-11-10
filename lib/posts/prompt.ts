@@ -64,14 +64,14 @@ const captionRules = (
 ) => `Captions:
 - English, in the business's tone words, written as its owner would, to tourists and expats nearby.
 - The first line is the hook, alone on its line, at most 125 characters: it works on its own and stops a tourist scrolling, since it is all Instagram shows before "more". It follows its post's hook style, ${hookFrom}${withOffer ? '; on a post that carries the special offer, the hook is its offer line, word for word, with nothing before it' : ''}.
-- Then one or two short paragraphs, with a blank line between them: at most three paragraphs in all, the hook counted. A paragraph is one or two short sentences, and a sentence holds at most ${POSTS_LIMITS.sentenceWords} words, the hook's too. Say what the massage does for the guest, plainly: the sore spot it answers, what changes after, and one practical fact (a real place, a highlight).
+- Then one or two short paragraphs, with a blank line between them: at most three paragraphs in all, the hook counted. A paragraph is one or two short sentences, one idea each, and a sentence holds at most ${POSTS_LIMITS.sentenceWords} words, the hook's too. Say what the massage does for the guest, plainly: the sore spot it answers, what changes after, and one practical fact (a real place, a highlight).
 - Never describe the setting: the light, the sky, the sunset, the garden, the room, the lamps, candles or linens, the oil's colour, or how quiet, calm or peaceful it is. Never describe what the photo shows: the image prompt's light, room and garden are for the image only. The story text follows the same rule.
-- Each caption names one of the business's real places, as its profile writes it: its town or area, a place it serves, or a landmark among its place symbols. A flower, a plant, an oil or an object is never a place; a caption may still use one as a detail, as it may a sense or a moment from its essence, or a highlight.
+- Each caption names one of the business's real places, as its profile writes it, in its hook or the paragraph right after it: its town or area, a place it serves, or a landmark among its place symbols. A flower, a plant, an oil or an object is never a place; a caption may still use one as a detail, as it may a sense or a moment from its essence, or a highlight.
 - How a caption ends follows its type. An offer or a moment post ends by answering one doubt a guest may have, with a highlight from the profile, never the same highlight twice; with no highlight, it ends on what changes for the guest. A tip ends on its tip, a ritual on its last sensation, a proof post on its fact, a local post on what ties the place to the business. Every ending stays warm, states its highlight and never asks the guest to book or message. No two endings start with the same word.
 - A caption or story text that says when follows its post's light, ${lightFrom}: a day post speaks of the guest's afternoon, with the evening still ahead, never of sleep, bed or waking up; a night post of the guest's evening, the day done, never of the afternoon, the midday sun or the morning just past. It need not say when, and never describes the light.
 - The captions open differently and end differently: never the same first sentence, never the same last sentence, and never the same idea said twice in other words. Never reuse a phrase from these instructions or from the image set-ups: the set-ups describe the photos, and the captions draw on the profile's senses.
 - Plain, concrete words: never a word that only adds intensity, such as completely, deeply, truly, ultimate or pure.
-- ${POSTS_LIMITS.captionMin} to ${POSTS_LIMITS.captionAsked} characters in all, before the app's WhatsApp line. No hashtags in the text.
+- ${POSTS_LIMITS.captionMin} to ${POSTS_LIMITS.captionAsked} characters in all, the hook included, before the app's WhatsApp line. No hashtags in the text.
 - ${emojiRule(spa)}
 - Never a price, in a caption or a story text.
 - Facts only from the profile: a duration, a number of years, a place name, a quality (signature, expert, best) or a claim appears only if the profile holds it, written as the profile writes it. Feelings and place symbols are yours to use, in a few words.
@@ -128,7 +128,7 @@ ${hookStyles(`The hooks: code gives each post a hook style, in order, under "###
 
 ${captionRules(spa, withOffer)}
 
-Shapes: post 1's caption has two paragraphs after its hook and post 2's has one, so the two read differently; a paragraph holds one or two short sentences.
+Shapes: post 1's caption is exactly three paragraphs: its hook, one on what the massage does for the guest, and its ending. Post 2's is exactly two: its hook, then one paragraph of two short sentences, what the massage does for the guest and its ending. So the two read differently; a paragraph holds one or two short sentences, and a caption never has more paragraphs than its shape.
 
 The image prompt: English, at most 80 words, for an image model making a tall 9:16 photo.
 - The massage is in every image: a therapist's hands working on a guest, or oil or towels being used for a treatment. Only what the business offers: a tool or treatment appears only if the offerings hold it. Never a guest alone, never an empty room, never a drink or a prop on its own.

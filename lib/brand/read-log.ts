@@ -1,4 +1,4 @@
-import { APICallError } from 'ai';
+import { APICallError, NoObjectGeneratedError } from 'ai';
 import type { BrandErrorCode } from './profile';
 
 // One line in the server log per brand read, so a timeout or a model failure
@@ -42,9 +42,15 @@ export function formatReadLog(log: ReadLog): string {
 // since its message can quote the model's output and so the owner's details.
 export function describeModelError(error: unknown): string {
   let innermost: unknown = error;
+  // An answer that isn't the JSON asked for: why it stopped and how long it
+  // ran, never what it said.
+  let stopped = '';
   for (let e = error; e instanceof Error; e = e.cause) {
     if (APICallError.isInstance(e)) return `${e.name} ${e.statusCode ?? '-'}: ${e.message}`;
+    if (NoObjectGeneratedError.isInstance(e)) {
+      stopped = ` (finish ${e.finishReason ?? '-'}, ${e.usage?.outputTokens ?? '-'} tokens out)`;
+    }
     innermost = e;
   }
-  return innermost instanceof Error ? innermost.name : typeof innermost;
+  return `${innermost instanceof Error ? innermost.name : typeof innermost}${stopped}`;
 }
