@@ -1,0 +1,44 @@
+{
+  "business": "sen",
+  "locale": "vi",
+  "language": "ko",
+  "final": false,
+  "known": {
+    "place": null,
+    "day": null,
+    "time": null
+  },
+  "question": "커플 마사지는 얼마예요? 호텔로 와 주시나요?",
+  "recording": {
+    "modelId": "gemini-3.5-flash-lite",
+    "promptVersion": "answer-1",
+    "partials": [],
+    "final": {
+      "questionLanguage": "ko",
+      "sexual": false,
+      "unanswered": false,
+      "questionTranslation": "Giá massage cặp đôi là bao nhiêu? Các bạn có đến khách sạn không?",
+      "greeting": {
+        "text": "안녕하세요!",
+        "translation": "Xin chào!"
+      },
+      "answer": {
+        "text": "네, 저희는 고객님의 호텔이나 아파트로 직접 방문하여 마사지를 제공합니다. 커플 마사지는 다음과 같습니다:\n- Couple Massage, 60 min, $31 VND 800k 🪷",
+        "translation": "Vâng, chúng tôi cung cấp dịch vụ massage trực tiếp tại khách sạn hoặc căn hộ của bạn. Massage cặp đôi như sau:\n- Couple Massage, 60 min, $31 VND 800k 🪷"
+      },
+      "professionalOnly": {
+        "text": "저희는 전문적인 치료 목적의 마사지만 제공합니다.",
+        "translation": "Chúng tôi chỉ cung cấp dịch vụ massage trị liệu chuyên nghiệp."
+      },
+      "callToAction": {
+        "text": "",
+        "translation": null
+      },
+      "guest": {
+        "place": null,
+        "day": null,
+        "time": null
+      }
+    }
+  }
+}

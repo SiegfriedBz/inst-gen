@@ -1,0 +1,44 @@
+{
+  "business": "sen",
+  "locale": "vi",
+  "language": "en",
+  "final": true,
+  "known": {
+    "place": null,
+    "day": null,
+    "time": null
+  },
+  "question": "Hi! Which massages do you have and how much? We're staying at a hotel near My Khe beach.",
+  "recording": {
+    "modelId": "gemini-3.5-flash-lite",
+    "promptVersion": "answer-1",
+    "partials": [],
+    "final": {
+      "questionLanguage": "en",
+      "sexual": false,
+      "unanswered": false,
+      "questionTranslation": "Xin chào! Các bạn có những loại massage nào và giá bao nhiêu? Chúng tôi đang ở một khách sạn gần bãi biển Mỹ Khê.",
+      "greeting": {
+        "text": "Hello!",
+        "translation": "Xin chào!"
+      },
+      "answer": {
+        "text": "We offer these professional massages in your room:\n- Vietnamese Traditional Massage, 60 min, $19 VND 500k\n- Thai Massage, 60 min, $19 VND 500k\n- Four-Hands Massage, 60 min, $31 VND 800k\n- Couple Massage, 60 min, $31 VND 800k\n- Surf & Sport Recovery Massage, 60 min, $23 VND 600k\n- Deep Tissue Tension Release, 60 min, $19 VND 500k\n- Aroma Massage, 60 min, $19 VND 500k\n- Foot Reflexology, 60 min, $17 VND 450k",
+        "translation": "Chúng tôi cung cấp các dịch vụ massage chuyên nghiệp tại phòng của bạn:\n- Massage truyền thống Việt Nam, 60 phút, $19 VND 500k\n- Massage Thái, 60 phút, $19 VND 500k\n- Massage 4 tay, 60 phút, $31 VND 800k\n- Massage cặp đôi, 60 phút, $31 VND 800k\n- Massage phục hồi thể thao và lướt sóng, 60 phút, $23 VND 600k\n- Massage giải phóng cơ sâu, 60 phút, $19 VND 500k\n- Massage hương thơm, 60 phút, $19 VND 500k\n- Massage bấm huyệt chân, 60 phút, $17 VND 450k"
+      },
+      "professionalOnly": {
+        "text": "We provide professional therapeutic massage only.",
+        "translation": "Chúng tôi chỉ cung cấp dịch vụ massage trị liệu chuyên nghiệp."
+      },
+      "callToAction": {
+        "text": "Please let us know your hotel name, preferred day, and time to book your massage now 🪷",
+        "translation": "Vui lòng cho chúng tôi biết tên khách sạn, ngày và thời gian bạn muốn để đặt lịch massage ngay nhé 🪷"
+      },
+      "guest": {
+        "place": "a hotel near My Khe beach",
+        "day": null,
+        "time": null
+      }
+    }
+  }
+}

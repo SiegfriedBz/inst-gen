@@ -1,0 +1,44 @@
+{
+  "business": "svarga",
+  "locale": "id",
+  "language": "en",
+  "final": false,
+  "known": {
+    "place": null,
+    "day": null,
+    "time": null
+  },
+  "question": "Are you open at 10pm tonight? I'm staying in Uluwatu.",
+  "recording": {
+    "modelId": "gemini-3.5-flash-lite",
+    "promptVersion": "answer-1",
+    "partials": [],
+    "final": {
+      "questionLanguage": "en",
+      "sexual": false,
+      "unanswered": true,
+      "questionTranslation": "Apakah kalian buka jam 10 malam ini? Saya menginap di Uluwatu.",
+      "greeting": {
+        "text": "Hello!",
+        "translation": "Halo!"
+      },
+      "answer": {
+        "text": "Our hours are Monday to Sunday 08:30-23:00, and our team will check and reply regarding your location and slot tonight. 🌼",
+        "translation": "Jam operasional kami Senin sampai Minggu 08:30-23:00, dan tim kami akan mengecek serta membalas terkait lokasi dan slot malam ini. 🌼"
+      },
+      "professionalOnly": {
+        "text": "We offer professional therapeutic massage.",
+        "translation": "Kami menawarkan pijat terapi profesional."
+      },
+      "callToAction": {
+        "text": "",
+        "translation": null
+      },
+      "guest": {
+        "place": "Uluwatu",
+        "day": "tonight",
+        "time": "10pm"
+      }
+    }
+  }
+}
