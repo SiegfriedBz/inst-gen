@@ -129,7 +129,7 @@ as the owner sees it, its paragraphs split by " / ":
 | Doesn't describe the setting | 4 of 8 | 8 of 8 | 8 of 8 |
 | Names a real place of the business | 6 of 8 | 8 of 8 | 8 of 8 |
 | Ends by answering a guest's doubt | 7 of 8 | 5 of 8 | 8 of 8 |
-| The hook is a question | 1 of 8 | 3 of 8 | 8 of 8 |
+| The hook is a question | 1 of 8 | 1 of 8 | 8 of 8 |
 | Two flowers in the caption, one in the story text | — | — | 8 of 8 |
 
 Verdict: a full pass, and the maintainer said "good to go" (2026-11-10).
