@@ -1,6 +1,6 @@
 ---
 title: "Answers to guests' questions"
-description: "A fourth home tab, 'Questions': the owner pastes a guest's question and gets one answer in the guest's language, from the business's own details, with its translation in the owner's language, from one Flash-Lite call. A question that asks for or mentions sex always gets 'we offer only professional therapeutic massage', and every answer ends with a call to book; code makes sure of both."
+description: "A fourth home tab, 'Questions': the owner pastes a guest's question and gets one answer in the guest's language, from the business's own details, with its translation in the owner's language, from one Flash-Lite call. A question that asks for or mentions sex always gets 'we offer only professional therapeutic massage', and an answer the owner marks as final ends with a call to book; code makes sure of both."
 status: draft
 date: "2026-11-10"
 ---
@@ -19,7 +19,10 @@ ask for sex. The maintainer asked for a tab that writes the answers, next to
   "What are the prices?";
 - when a question asks for sex or mentions it, the answer must say the
   business offers only professional therapeutic massage;
-- every answer ends with a call to action.
+- answers that end with a call to action, but not every one: a guest may
+  ask several questions in a row. Each question is answered on its own, and
+  the owner ticks a box when the answer should be the final one; only that
+  answer ends with a call to book (the maintainer, 2026-11-10).
 
 This item adds a fourth home tab, **"Questions"**. The owner pastes the
 guest's message, taps one button, and gets **one answer ready to paste in the
@@ -28,10 +31,11 @@ owner's own language so they know what they send. It works like "Reviews"
 (2.7, 2.10): copy and paste, nothing to learn, on cheap and slow phones.
 
 Success: on the made-up questions under "Prompt and eval", every answer is in
-the guest's language, ends with its call to action, and uses only facts from
-the business's details. Every answer to a question that asks for or mentions
-sex says the business offers only professional therapeutic massage. The
-maintainer would send most answers as written.
+the guest's language and uses only facts from the business's details. Every
+final answer ends with its call to action, and no other answer has one. Every
+answer to a question that asks for or mentions sex says the business offers
+only professional therapeutic massage. The maintainer would send most answers
+as written.
 
 ## Behaviour
 
@@ -52,7 +56,9 @@ Top to bottom:
 2. **"The guest's question"**, a text box of about 5 lines, at most 2,000
    characters, pasted as is. Under it, in small text: "Leave out the guest's
    name and phone number."
-3. The button **"Write an answer"**, full width, disabled while the question
+3. A checkbox, **"Make it the final answer"**, off at first, with "It ends by
+   asking the guest to book." under it in small text.
+4. The button **"Write an answer"**, full width, disabled while the question
    is empty (after trimming).
 
 There is no name field: an answer greets the guest without a name, and the
@@ -82,7 +88,9 @@ Top to bottom:
    link **"Edit the text"**; the button **"Copy the answer"**, with 2.4's
    "Copied" and "Copy it from here." fallback. It is 2.7's reply card.
 5. One line: "Paste it in your chat with the guest."
-6. Two links: **"Write another answer"** and **"Paste a new question"**.
+6. The checkbox **"Make it the final answer"**, ticked as it was for this
+   answer.
+7. Two links: **"Write another answer"** and **"Paste a new question"**.
 
 The owner's language and the language's name follow 2.7. The owner's language
 is the screen's, and no translation shows when the question is already in it.
@@ -94,9 +102,11 @@ These work as 2.7's "Write 2 other replies", "Edit the text" and "Paste a new
 review":
 
 - "Write another answer" spends one more request for a new answer to the same
-  question. The request holds the answer last written, as the model wrote it
-  and without the owner's edit, so the new one says it differently. The new
-  answer replaces the one shown, and the edit goes with it.
+  question, final or not as the checkbox is ticked now: an owner who wants
+  the call to book ticks it and taps the link. The request holds the answer
+  last written, as the model wrote it and without the owner's edit, so the new
+  one says it differently. The new answer replaces the one shown, and the
+  edit goes with it.
 - "Edit the text" opens the editor on the answer. After a save, the card
   shows the edited text without its translation, and "Copy the answer" copies
   it. No request.
@@ -106,9 +116,9 @@ review":
 ### Kept until a new question or the daily reset
 
 Only the current question is kept on the phone (IndexedDB, as the review is):
-the question, its language and translation, the notes, the answer as the
-model wrote it, its translation and checks, the owner's edit, the screen
-language they were made in, and when. It goes when the owner taps "Paste a new
+the question, whether its answer is the final one, its language and
+translation, the notes, the answer as the model wrote it, its translation and
+checks, the owner's edit, the screen language they were made in, and when. It goes when the owner taps "Paste a new
 question", when a new "Write an answer" succeeds, or at Google's reset (2.8b),
 as the review does. What the owner types but hasn't sent isn't kept. A failed
 request keeps the question as typed and shows the error under the button.
@@ -151,13 +161,18 @@ What the model is asked for, and what code makes sure of:
   guest asked, in 1 to 4 short sentences, plain and warm, in the business's
   tone words. More than two treatments go one per line ("Thai Massage, 60
   min: VND 500k"). The maintainer wants easy reading (2.18).
-- **The call to action, last.** One sentence asks the guest to book now, by
+- **The call to action, on the final answer only.** When the owner ticks
+  "Make it the final answer", one sentence asks the guest to book now, by
   saying what the business needs to book: the day and the time, and, for a
   business that goes to its guests (its service area says so), where they're
   staying. The model writes it in its own field, in the guest's language, and
-  code puts it last, so no answer ends without one. It holds no phone number
-  or link: the owner pastes the answer in the chat where the guest asked
-  (developer's call).
+  code puts it last, so no final answer ends without one. It holds no phone
+  number or link: the owner pastes the answer in the chat where the guest
+  asked (developer's call).
+- **Any other answer** ends once it has answered: no call to action, and no
+  question back unless the answer needs one (which massage the guest means).
+  The box is off at first, since the guest may ask more (the maintainer,
+  2026-11-10).
 - **Sex.** The question may ask for sex, a sexual service or anything more
   than a professional massage, or mention sex at all, in any language and
   with any euphemism ("happy ending", "extra service", "massage plus"). Then
@@ -167,8 +182,8 @@ What the model is asked for, and what code makes sure of:
   word list (below). When either says so, code puts the line right after the
   greeting, so it is always there, and the tab shows its note. Such an answer
   is calm, short and polite, with no emoji. It never repeats the guest's
-  words, never jokes, and still ends with its call to action, for a
-  professional massage.
+  words and never jokes. A final one still ends with its call to action, for
+  a professional massage.
 - **A business that isn't a spa** (2.13's test) gets no such line: its answer
   speaks only of what the business offers, and no note shows (developer's
   call: the line names massage).
@@ -211,21 +226,23 @@ seconds. It returns:
 - the question's language, as a BCP 47 code;
 - `sexual` and `unanswered`;
 - the question in the owner's language, or nothing when it is already in it;
-- the greeting, the answer, the call to action and the line on professional
-  massage, each with its translation in the owner's language, or none when the
-  question is in it.
+- the greeting, the answer, the line on professional massage and, on a final
+  answer, the call to action, each with its translation in the owner's
+  language, or none when the question is in it.
 
 Code builds the answer from its parts, each a paragraph: the greeting, with
-the line after it when it is needed; the answer; then the call to action. It
-builds the translation the same way. An empty greeting or call to action, or
-an empty line when it is needed, fails as `model_failed`. So does an empty
-answer, unless the question mentions sex: the line and the call to action are
-enough then.
+the line after it when it is needed; the answer; then, on a final answer, the
+call to action. It builds the translation the same way. An empty greeting, an
+empty call to action on a final answer, or an empty line when it is needed,
+fails as `model_failed`. So does an empty answer, unless the question
+mentions sex: the line is enough then. On an answer that isn't final, a call
+to action the model writes anyway is left out.
 
 A route, `POST /api/questions/answer`, sits behind the pilot session like the
 others. It takes:
 
 - the question, as the phone sent it;
+- whether it is the final answer;
 - the screen's language;
 - the business's details: its name, summary and category, its treatments
   with their descriptions, durations and prices, its highlights and hours,
@@ -261,7 +278,9 @@ reviews":
   treatments, prices, hours, where you go), copy their message. In
   <b>{tab}</b>, paste it and tap <b>{button}</b>."
 - "Read the answer, change it if you want, then copy it and paste it in your
-  chat with the guest. It ends by asking them to book."
+  chat with the guest."
+- "When the guest has asked what they wanted to know, tick <b>{final}</b>:
+  the answer then ends by asking them to book."
 - "Answers use only your business details. When something isn't in them, the
   answer says you'll check, and Shopfront tells you: answer that part
   yourself."
@@ -278,20 +297,21 @@ maintainer can print new PDFs with `pnpm guide:pdf`.
 - The prompt is versioned (`answer-1`) and lives next to the route's code, in
   `lib/questions/`.
 - `tests/fixtures/questions/` holds made-up questions, written for this item
-  (no real guest's words). Each says its business, the screen's language and
-  the question:
-  - Sen, English: which massages, and how much, from a hotel near My Khe;
+  (no real guest's words). Each says its business, the screen's language,
+  whether its answer is the final one, and the question:
+  - Sen, English, final: which massages, and how much, from a hotel near My
+    Khe;
   - Sen, Korean: the price of a couple massage, and whether they come to the
     hotel;
-  - Sen, English: "happy ending?";
+  - Sen, English, final: "happy ending?";
   - Sen, Vietnamese: a "special" massage, with no word from code's list, so
     only the model can flag it;
   - Svarga, English: open at 10 pm tonight, for a guest staying in Uluwatu,
     outside the service area;
-  - Svarga, Indonesian: the price of a 60-minute Balinese massage at a
+  - Svarga, Indonesian, final: the price of a 60-minute Balinese massage at a
     Seminyak villa, on an Indonesian screen (no translation);
   - Svarga, Russian: whether there are "intimate" services;
-  - Svarga, English: paying by card, which the details don't say.
+  - Svarga, English, final: paying by card, which the details don't say.
 - `pnpm eval:answers [slug…] [--record]` runs them with the real model and
   prints each answer with code's checks; `--record` saves the calls the unit
   tests replay. ⚠️ 1 Flash-Lite request per question from the app's daily
@@ -300,8 +320,8 @@ maintainer can print new PDFs with `pnpm guide:pdf`.
 - commitlint gets a `questions` scope.
 
 The journal shows each recorded answer with its translation, and scores it:
-in the guest's language; ending with its call to action; using only facts
-from the details; the line on every question that mentions sex, and on none
+in the guest's language; a call to action at the end of each final answer,
+and none on the others; using only facts from the details; the line on every question that mentions sex, and on none
 of the others; the card question marked unanswered. Pass: all of it on the 8,
 and the maintainer would send at least 6 of the 8 as written. When a check
 fails, the journal says why, and the maintainer decides whether the prompt
@@ -320,6 +340,8 @@ keys.
 | `questions.intro` | Got a question from a guest? Copy it and paste it here. We write an answer in your guest's language, from your business details. | Ada pertanyaan dari tamu? Salin dan tempel di sini. Kami menulis jawaban dalam bahasa tamu Anda, dari detail usaha Anda. | Có câu hỏi từ khách? Hãy sao chép và dán vào đây. Chúng tôi viết câu trả lời bằng ngôn ngữ của khách, dựa trên thông tin doanh nghiệp của bạn. |
 | `questions.label` | The guest's question | Pertanyaan tamu | Câu hỏi của khách |
 | `questions.hint` | Leave out the guest's name and phone number. | Jangan sertakan nama dan nomor telepon tamu. | Đừng ghi tên và số điện thoại của khách. |
+| `questions.final` | Make it the final answer | Jadikan jawaban terakhir | Làm câu trả lời cuối cùng |
+| `questions.finalHint` | It ends by asking the guest to book. | Jawaban diakhiri dengan ajakan kepada tamu untuk memesan. | Câu trả lời sẽ kết thúc bằng lời mời khách đặt lịch. |
 | `questions.write` | Write an answer | Tulis jawaban | Viết câu trả lời |
 | `questions.writing` | Writing your answer… | Sedang menulis jawaban… | Đang viết câu trả lời… |
 | `questions.keepOpen` | (as `reviews.keepOpen`) | (as `reviews.keepOpen`) | (as `reviews.keepOpen`) |
@@ -342,7 +364,8 @@ keys.
 | `usage.limit.answers` | You've written today's {limit} answers. More at {time}. | Anda sudah menulis {limit} jawaban hari ini. Bisa lagi pukul {time}. | Bạn đã viết {limit} câu trả lời cho câu hỏi hôm nay. Có thêm lúc {time}. |
 | `guide.questions.title` | Answering guests' questions | Menjawab pertanyaan tamu | Trả lời câu hỏi của khách |
 | `guide.questions.paste` | When a guest asks you something on WhatsApp or Instagram (your treatments, prices, hours, where you go), copy their message. In <b>{tab}</b>, paste it and tap <b>{button}</b>. | Saat tamu bertanya lewat WhatsApp atau Instagram (perawatan, harga, jam buka, area layanan Anda), salin pesannya. Di <b>{tab}</b>, tempel lalu ketuk <b>{button}</b>. | Khi khách hỏi qua WhatsApp hoặc Instagram (dịch vụ, giá, giờ mở cửa, nơi bạn phục vụ), hãy sao chép tin nhắn của họ. Trong <b>{tab}</b>, dán vào và chạm <b>{button}</b>. |
-| `guide.questions.send` | Read the answer, change it if you want, then copy it and paste it in your chat with the guest. It ends by asking them to book. | Baca jawabannya, ubah jika perlu, lalu salin dan tempel di obrolan Anda dengan tamu. Jawaban selalu diakhiri dengan ajakan untuk memesan. | Đọc câu trả lời, sửa nếu muốn, rồi sao chép và dán vào cuộc trò chuyện với khách. Câu trả lời luôn kết thúc bằng lời mời khách đặt lịch. |
+| `guide.questions.send` | Read the answer, change it if you want, then copy it and paste it in your chat with the guest. | Baca jawabannya, ubah jika perlu, lalu salin dan tempel di obrolan Anda dengan tamu. | Đọc câu trả lời, sửa nếu muốn, rồi sao chép và dán vào cuộc trò chuyện với khách. |
+| `guide.questions.final` | When the guest has asked what they wanted to know, tick <b>{final}</b>: the answer then ends by asking them to book. | Jika tamu sudah menanyakan semua yang ingin mereka tahu, centang <b>{final}</b>: jawabannya akan diakhiri dengan ajakan untuk memesan. | Khi khách đã hỏi hết những gì họ muốn biết, hãy đánh dấu <b>{final}</b>: câu trả lời sẽ kết thúc bằng lời mời khách đặt lịch. |
 | `guide.questions.details` | Answers use only your business details. When something isn't in them, the answer says you'll check, and Shopfront tells you: answer that part yourself. | Jawaban hanya memakai detail usaha Anda. Jika sesuatu tidak ada di sana, jawaban menyebut Anda akan memeriksanya, dan Shopfront memberi tahu Anda: jawab bagian itu sendiri. | Câu trả lời chỉ dùng thông tin doanh nghiệp của bạn. Khi thiếu thông tin, câu trả lời sẽ nói bạn sẽ kiểm tra lại, và Shopfront báo cho bạn: hãy tự trả lời phần đó. |
 | `guide.questions.sex` | If a guest asks for sex, the answer always says you offer only professional therapeutic massage. | Jika tamu meminta layanan seks, jawabannya selalu menyatakan bahwa Anda hanya menawarkan pijat terapi profesional. | Nếu khách hỏi về dịch vụ tình dục, câu trả lời luôn nói rằng bạn chỉ cung cấp massage trị liệu chuyên nghiệp. |
 | `guide.allowance.limits` (changed) | Each day you have {reads}, {attempts} of 2 suggestions, {newImages}, {replies} and {answers}, plus caption updates and translations. | Setiap hari Anda punya {reads}, {attempts} (masing-masing 2 saran), {newImages}, {replies}, dan {answers}, ditambah pembaruan teks dan terjemahan. | Mỗi ngày bạn có {reads}, {attempts} (mỗi lần 2 gợi ý), {newImages}, {replies} và {answers}, cùng với các lần cập nhật chú thích và bản dịch. |
@@ -353,15 +376,18 @@ keys.
 
 - Vitest:
   - the prompt: the language, the facts-only rule, prices with treatments,
-    the shape, the call to action, the line on professional massage, the
-    emoji, the banned words, the answer to avoid;
-  - building the answer: greeting, line, answer and call to action, and the
-    translation the same way; the line added when the model flags the
+    the shape, the call to action on a final answer and none otherwise, the
+    line on professional massage, the emoji, the banned words, the answer to
+    avoid;
+  - building the answer: greeting, line, answer and, on a final answer, the
+    call to action, and the translation the same way; a call to action left
+    out of an answer that isn't final; the line added when the model flags the
     question, when only the word list does, and not otherwise; no line for a
     business that isn't a spa; no emoji when the question mentions sex;
     another flower replaced; a sentence holding a banned word removed;
     translations dropped when the question is in the screen's language; an
-    empty greeting, call to action or needed line failing;
+    empty greeting, needed line, or call to action on a final answer
+    failing;
   - the price, duration and number checks;
   - the phone's removals: a number, an email and a link replaced; "room 405"
     kept;
@@ -372,9 +398,10 @@ keys.
   - the store: kept across a reload, replaced by a new question, cleared by
     "Paste a new question", gone after the reset;
   - the tab: the empty state, the button off on an empty question, the
-    waiting state, the answer with its translation, no translation when the
+    checkbox off at first and sent with the request, the waiting state, the answer with its translation, no translation when the
     question is in the screen's language, both notes, a check line, "Write
-    another answer" sending the shown answer and replacing it, an edit hiding
+    another answer" sending the shown answer and the checkbox as ticked now,
+    and replacing it, an edit hiding
     the translation, "Copy the answer" copying the edited text, each error
     line, the limit line;
   - the usage bar on the new tab, and the guide's new section in three
@@ -397,14 +424,27 @@ Scenario: An answer in the guest's language
   When they paste "Hi, which massages do you have and how much? We're near My Khe beach."
   And tap "Viết câu trả lời"
   Then an answer in English names Sen's treatments, each with its duration and price, one per line
-  And it ends by asking for the day, the time and where the guest is staying
   And the question and the answer show in Vietnamese under them
+
+Scenario: Not the final answer
+  Given "Make it the final answer" isn't ticked
+  When the owner writes an answer
+  Then the answer ends once it has answered, with no call to action
+
+Scenario: The final answer
+  Given Sen's owner ticks "Make it the final answer"
+  When they write an answer
+  Then the answer ends by asking for the day, the time and where the guest is staying
+
+Scenario: Another answer, now final
+  Given an answer written without "Make it the final answer"
+  When the owner ticks it and taps "Write another answer"
+  Then the new answer ends with its call to action
 
 Scenario: A question that mentions sex
   When Sen's owner pastes "Do you do happy ending?"
   Then the answer says Sen offers only professional therapeutic massage, right after its greeting
   And it has no emoji
-  And it ends with its call to action
   And the note says the question mentions sex
 
 Scenario: The word list catches what the model misses
@@ -463,6 +503,8 @@ Scenario: Four tabs fit
   the model to use.
 - Ready-made answers to tap without a request.
 - A WhatsApp or Instagram connection, to read messages or send answers.
+- A conversation kept in the tab, so an answer knows what was said before:
+  the maintainer chose one message at a time (2026-11-10).
 - A history of questions and answers, or more than one question at a time.
 - A guest's name in the answer.
 - Posts and review replies: their prompts don't change.
