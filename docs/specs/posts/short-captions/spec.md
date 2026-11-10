@@ -1,7 +1,8 @@
 ---
 title: "Short captions"
 description: "Every caption the model writes is three short paragraphs in plain words: a question, what the massage does for the guest (or, with an offer, the offer line), and one fact from the business's highlights; never a description of the light, the room or the calm. Code holds a caption to three paragraphs and puts an offer post's line second, and records long sentences, setting words and hooks that aren't questions."
-status: draft
+status: approved
+approved: { by: siegfried.bozza@protonmail.com, at: 2026-11-10T11:11:40Z }
 date: "2026-11-10"
 ---
 
