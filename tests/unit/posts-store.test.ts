@@ -58,7 +58,7 @@ function batch(id: string, createdAt: string, overrides: Partial<PostBatch> = {}
 }
 
 describe('the posts store', () => {
-  test('a version-1 database opens as version 6, its brand kept and empty posts, reviews and offers stores', async () => {
+  test('a version-1 database opens as version 7, its brand kept and empty posts, reviews, offers and questions stores', async () => {
     const old = await openDB('shopfront', 1, {
       upgrade(db) {
         db.createObjectStore('brands', { keyPath: 'ownerId' });
@@ -75,9 +75,11 @@ describe('the posts store', () => {
     expect((await loadBrand('svarga')).kind).toBe('saved');
     expect(await loadBatches('svarga')).toEqual([]);
     const db = await openStore();
-    expect(db?.version).toBe(6);
+    expect(db?.version).toBe(7);
     expect(db?.objectStoreNames.contains('reviews')).toBe(true);
     expect(db?.objectStoreNames.contains('offers')).toBe(true);
+    // The guests' questions (docs/specs/questions/answer-drafts).
+    expect(db?.objectStoreNames.contains('questions')).toBe(true);
   });
 
   test('loadBatches returns newest first, this owner only', async () => {

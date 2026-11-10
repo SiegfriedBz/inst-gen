@@ -1,0 +1,44 @@
+{
+  "business": "svarga",
+  "locale": "id",
+  "language": "id",
+  "final": true,
+  "known": {
+    "place": null,
+    "day": null,
+    "time": null
+  },
+  "question": "Berapa harga pijat Bali 60 menit? Bisa datang ke villa saya di Seminyak?",
+  "recording": {
+    "modelId": "gemini-3.5-flash-lite",
+    "promptVersion": "answer-1",
+    "partials": [],
+    "final": {
+      "questionLanguage": "id",
+      "sexual": false,
+      "unanswered": false,
+      "questionTranslation": null,
+      "greeting": {
+        "text": "Halo!",
+        "translation": null
+      },
+      "answer": {
+        "text": "Traditional Balinese Massage, 60 min, IDR 250k. Tentu saja, kami bisa datang langsung ke villa Anda di Seminyak dengan gratis biaya perjalanan.",
+        "translation": null
+      },
+      "professionalOnly": {
+        "text": "Kami hanya menyediakan pijat terapi profesional.",
+        "translation": null
+      },
+      "callToAction": {
+        "text": "Silakan beri tahu kami hari dan waktu yang Anda inginkan untuk memesan sekarang 🌼",
+        "translation": null
+      },
+      "guest": {
+        "place": "Seminyak",
+        "day": null,
+        "time": null
+      }
+    }
+  }
+}

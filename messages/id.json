@@ -14,7 +14,8 @@
       "label": "Beranda",
       "business": "Usaha Anda",
       "posts": "Buat postingan",
-      "reviews": "Ulasan"
+      "reviews": "Ulasan",
+      "questions": "Pertanyaan"
     },
     "welcome": "Selamat datang, {name}",
     "websiteLabel": "Situs web Anda",
@@ -347,6 +348,44 @@
     "which": "Balasan yang mana",
     "copy": "Salin balasan"
   },
+  "questions": {
+    "intro": "Ada pertanyaan dari tamu? Salin dan tempel di sini. Kami menulis jawaban dalam bahasa tamu Anda, dari detail usaha Anda.",
+    "label": "Pertanyaan tamu",
+    "hint": "Jangan sertakan nama dan nomor telepon tamu.",
+    "final": "Jadikan jawaban terakhir",
+    "finalHint": "Jawaban diakhiri dengan ajakan kepada tamu untuk memesan.",
+    "write": "Tulis jawaban",
+    "writing": "Sedang menulis jawaban…",
+    "keepOpen": "Biarkan halaman ini terbuka beberapa detik.",
+    "heading": "Pertanyaan tamu · dalam {language}",
+    "sexual": "Pertanyaan ini menyinggung seks. Jawaban Anda menyatakan bahwa Anda hanya menawarkan pijat terapi profesional.",
+    "unanswered": "Detail usaha Anda tidak menjawab semua pertanyaan ini. Periksa jawabannya sebelum mengirim.",
+    "answer": "Jawaban Anda",
+    "copy": "Salin jawaban",
+    "flags": {
+      "price": "Harga ini tidak ada di situs Anda: {text}. Periksa sebelum mengirim.",
+      "duration": "Durasi ini tidak ada di situs Anda: {text}. Periksa sebelum mengirim.",
+      "number": "Nomor ini tidak ada di situs Anda: {text}. Periksa sebelum mengirim."
+    },
+    "howTo": "Tempel di obrolan Anda dengan tamu.",
+    "again": "Tulis jawaban lain",
+    "next": "Tempel pesan berikutnya",
+    "newConversation": "Percakapan baru",
+    "known": {
+      "title": "Yang sudah disampaikan tamu ini",
+      "place": "Menginap di: {value}",
+      "day": "Hari: {value}",
+      "time": "Jam: {value}",
+      "hint": "Tamu lain? Mulai percakapan baru dulu."
+    },
+    "errors": {
+      "model_busy": "Shopfront sudah memakai jatah menulis gratis hari ini. Coba lagi besok.",
+      "model_timeout": "Menulis jawaban terlalu lama. Coba lagi.",
+      "model_failed": "Terjadi kesalahan saat menulis jawaban. Coba lagi.",
+      "invalid_request": "Terjadi kesalahan saat menulis jawaban. Coba lagi.",
+      "offline": "Anda sedang offline. Coba lagi saat kembali online."
+    }
+  },
   "usage": {
     "left": "Sisa hari ini: {items}",
     "resets": "Direset pukul {time}",
@@ -354,6 +393,7 @@
     "attempts": "{count} percobaan",
     "newImages": "{count} gambar baru",
     "replies": "{count} balasan",
+    "answers": "{count} jawaban",
     "developer": "Tanpa batas harian (pengembang)",
     "poolEmpty": "Shopfront sudah memakai jatah menulis gratis hari ini. Kembali pukul {time}.",
     "imagesMonth": "Tidak ada gambar baru sampai {date}.",
@@ -363,6 +403,7 @@
       "reads": "Anda sudah membaca situs {limit} kali hari ini. Bisa lagi pukul {time}.",
       "newImages": "Anda sudah membuat {limit} gambar baru hari ini. Bisa lagi pukul {time}.",
       "replies": "Anda sudah menulis {limit} balasan hari ini. Bisa lagi pukul {time}.",
+      "answers": "Anda sudah menulis {limit} jawaban hari ini. Bisa lagi pukul {time}.",
       "rewrites": "Teks sudah diperbarui {limit} kali hari ini. Bisa lagi pukul {time}.",
       "translations": "{limit} terjemahan hari ini sudah habis. Bisa lagi pukul {time}."
     }
@@ -425,19 +466,28 @@
       "pick": "Beralih antara <b>{short}</b> dan <b>{warm}</b> untuk memilih balasan yang Anda suka, ubah jika perlu, salin, lalu tempel sebagai balasan Anda di Google Maps. Balasan ditulis dalam bahasa tamu Anda, dan Anda bisa membacanya dalam bahasa Anda.",
       "other": "Tidak ada yang cocok? Ketuk <b>{button}</b>. Ulasan baru menggantikan ulasan sebelumnya."
     },
+    "questions": {
+      "title": "Menjawab pertanyaan tamu",
+      "paste": "Saat tamu bertanya lewat WhatsApp atau Instagram (perawatan, harga, jam buka, area layanan Anda), salin pesannya. Di <b>{tab}</b>, tempel lalu ketuk <b>{button}</b>.",
+      "send": "Baca jawabannya, ubah jika perlu, lalu salin dan tempel di obrolan Anda dengan tamu.",
+      "final": "Jika tamu sudah menanyakan semua yang ingin mereka tahu, centang <b>{final}</b>: jawabannya akan diakhiri dengan ajakan untuk memesan.",
+      "remember": "Shopfront mengingat tempat tamu menginap, serta hari dan jam yang mereka sebutkan, jadi jawaban terakhir hanya menanyakan yang belum ada. Untuk pesan berikutnya dari tamu yang sama, ketuk <b>{next}</b>. Sebelum pesan dari tamu lain, ketuk <b>{new}</b>.",
+      "details": "Jawaban hanya memakai detail usaha Anda. Jika sesuatu tidak ada di sana, jawaban menyebut Anda akan memeriksanya, dan Shopfront memberi tahu Anda: jawab bagian itu sendiri.",
+      "sex": "Jika tamu meminta layanan seks, jawabannya selalu menyatakan bahwa Anda hanya menawarkan pijat terapi profesional."
+    },
     "allowance": {
       "title": "Jatah harian Anda",
       "free": "Shopfront gratis, jadi setiap hari ada batasnya.",
-      "limits": "Setiap hari Anda punya {reads}, {attempts} (masing-masing 2 saran), {newImages}, dan {replies}, ditambah pembaruan teks dan terjemahan.",
+      "limits": "Setiap hari Anda punya {reads}, {attempts} (masing-masing 2 saran), {newImages}, {replies}, dan {answers}, ditambah pembaruan teks dan terjemahan.",
       "bar": "Baris di bagian atas setiap tab menunjukkan sisa hari ini dan jam semuanya kembali.",
-      "reset": "Pada jam itu, batas kembali penuh dan saran serta balasan ulasan hari itu hilang dari layar. Simpan yang ingin Anda pakai sebelum itu. Promo spesial Anda tetap ada: berlaku sampai hari terakhirnya sendiri berakhir.",
+      "reset": "Pada jam itu, batas kembali penuh dan saran, balasan ulasan, serta jawaban hari itu hilang dari layar. Simpan yang ingin Anda pakai sebelum itu. Promo spesial Anda tetap ada: berlaku sampai hari terakhirnya sendiri berakhir.",
       "time": "Jam di bilah memakai waktu ponsel Anda: percayai jam itu, bukan jam yang tetap.",
       "month": "Gambar baru juga punya anggaran bulanan untuk seluruh aplikasi. Jika habis, Shopfront memberi tahu kapan gambar tersedia lagi."
     },
     "languages": {
       "title": "Bahasa",
       "switch": "Tombol <b>{lang}</b> di kanan atas mengganti bahasa layar.",
-      "captions": "Postingan dan teks story ditulis dalam bahasa Inggris, dan balasan ulasan dalam bahasa tamu Anda. Menampilkannya dalam bahasa Anda hanya untuk dibaca, bukan untuk diposting."
+      "captions": "Postingan dan teks story ditulis dalam bahasa Inggris, sedangkan balasan ulasan dan jawaban dalam bahasa tamu Anda. Menampilkannya dalam bahasa Anda hanya untuk dibaca, bukan untuk diposting."
     },
     "trouble": {
       "title": "Jika ada masalah",

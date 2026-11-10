@@ -349,6 +349,9 @@ describe('the log line', () => {
       writeReplies() {
         throw new Error('the brand read makes no reply call');
       },
+      writeAnswer() {
+        throw new Error('the brand read makes no answer call');
+      },
       streamPostPlan() {
         throw new Error('the brand read makes no posts call');
       },

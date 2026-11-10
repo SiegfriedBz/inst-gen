@@ -19,8 +19,8 @@ afterAll(() => {
 const base: UsageAnswer = {
   resetsAt: '2026-11-15T08:00:00.000Z',
   limited: true,
-  left: { reads: 2, attempts: 2, newImages: 10, replies: 20 },
-  limits: { reads: 3, attempts: 3, newImages: 10, replies: 20 },
+  left: { reads: 2, attempts: 2, newImages: 10, replies: 20, answers: 20 },
+  limits: { reads: 3, attempts: 3, newImages: 10, replies: 20, answers: 20 },
   poolEmpty: false,
   images: { on: true, monthFull: false, backAt: '2026-12-01T00:00:00.000Z' },
 };
@@ -39,7 +39,7 @@ function answer(over: Partial<UsageAnswer> = {}) {
   fetchMock.mockImplementation(async () => Response.json({ ...base, ...over }));
 }
 
-function show(tab: 'business' | 'posts' | 'reviews', locale: 'en' | 'vi' = 'en') {
+function show(tab: 'business' | 'posts' | 'reviews' | 'questions', locale: 'en' | 'vi' = 'en') {
   return render(
     <NextIntlClientProvider locale={locale} messages={messagesFor(locale)}>
       <UsageProvider>
@@ -74,8 +74,17 @@ describe('the usage bar', () => {
     );
   });
 
+  // docs/specs/questions/answer-drafts, "The daily limit".
+  test('on the questions tab', async () => {
+    answer();
+    show('questions');
+    await waitFor(() =>
+      expect(line().textContent).toBe('Left today: 20 answers · Resets at 15:00'),
+    );
+  });
+
   test('a count at 0 in the error colour', async () => {
-    answer({ left: { reads: 2, attempts: 0, newImages: 10, replies: 20 } });
+    answer({ left: { reads: 2, attempts: 0, newImages: 10, replies: 20, answers: 20 } });
     show('posts');
     await waitFor(() => expect(screen.getByText('0 attempts').className).toContain('text-error'));
   });

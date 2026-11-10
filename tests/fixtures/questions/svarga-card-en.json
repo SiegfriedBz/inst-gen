@@ -1,0 +1,44 @@
+{
+  "business": "svarga",
+  "locale": "id",
+  "language": "en",
+  "final": true,
+  "known": {
+    "place": "a villa in Pererenan",
+    "day": "tomorrow",
+    "time": null
+  },
+  "question": "Can I pay by card?",
+  "recording": {
+    "modelId": "gemini-3.5-flash-lite",
+    "promptVersion": "answer-1",
+    "partials": [],
+    "final": {
+      "questionLanguage": "en",
+      "sexual": false,
+      "unanswered": true,
+      "questionTranslation": "Bisakah saya membayar dengan kartu?",
+      "greeting": {
+        "text": "Hello!",
+        "translation": "Halo!"
+      },
+      "answer": {
+        "text": "Our team will check if card payment is available and reply to you shortly.",
+        "translation": "Tim kami akan memeriksa apakah pembayaran dengan kartu tersedia dan segera membalas Anda."
+      },
+      "professionalOnly": {
+        "text": "We offer only professional therapeutic massage.",
+        "translation": "Kami hanya menawarkan pijat terapi profesional."
+      },
+      "callToAction": {
+        "text": "Please let us know what time you would like your massage tomorrow. 🌼",
+        "translation": "Beri tahu kami jam berapa Anda ingin pijat besok. 🌼"
+      },
+      "guest": {
+        "place": "a villa in Pererenan",
+        "day": "tomorrow",
+        "time": null
+      }
+    }
+  }
+}
