@@ -1119,6 +1119,7 @@ describe('short captions', () => {
     until: '2026-10-27',
     lastDay: 'Tuesday 27 October',
   };
+  const line = '10% off our 90-minute Balinese massage, until Tuesday 27 October';
   const hasFlower = (text: string) =>
     emojisIn(text).some((e) => (FLOWERS as readonly string[]).includes(e));
   // Three paragraphs, over 400 characters in all.
@@ -1169,11 +1170,42 @@ describe('short captions', () => {
       'post-1',
       { offer, carries: true },
     );
-    const caption = checked?.caption ?? '';
-    expect(
-      caption.startsWith('10% off our 90-minute Balinese massage, until Tuesday 27 October'),
-    ).toBe(true);
-    expect(paragraphsOf(caption)).toHaveLength(3);
+    expect(checked?.caption).toBe(
+      `${line} 🌸\n\nOur Balinese massage eases it.\n\nNo deposit needed.`,
+    );
+  });
+
+  it('drops the hook the offer line displaced, never the body', () => {
+    const { post: checked, dropped } = checkPost(
+      raw({
+        caption:
+          'Long flight? 🌸\n\nOur Balinese massage eases tight legs in Canggu.\n\nNo deposit needed.',
+      }),
+      svargaProfile(),
+      'post-1',
+      { offer, carries: true },
+    );
+    expect(checked?.caption).toBe(
+      `${line} 🌸\n\nOur Balinese massage eases tight legs in Canggu.\n\nNo deposit needed.`,
+    );
+    expect(dropped).toContainEqual({
+      field: 'caption',
+      reason: 'post-1: paragraph dropped "Long flight? 🌸"',
+    });
+  });
+
+  it('keeps the first, second and last paragraphs when the model opened on its line', () => {
+    const { post: checked } = checkPost(
+      raw({
+        caption: `${line}. 🌸\n\nOur Balinese massage eases it.\n\nThen rest.\n\nNo deposit needed.`,
+      }),
+      svargaProfile(),
+      'post-1',
+      { offer, carries: true },
+    );
+    expect(checked?.caption).toBe(
+      `${line} 🌸\n\nOur Balinese massage eases it.\n\nNo deposit needed.`,
+    );
   });
 
   it("gives a spa's caption a flower back when its only one went", () => {

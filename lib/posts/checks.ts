@@ -206,8 +206,9 @@ function shortCaption(
   caption: string,
   id: string,
   spa: boolean,
+  displaced: boolean,
 ): { caption: string; dropped: Dropped[] } {
-  const kept = keepParagraphs(hookOnItsLine(caption), id);
+  const kept = keepParagraphs(hookOnItsLine(caption), id, displaced);
   const cut = cutCaption(kept.caption);
   if (!spa) return { caption: cut, dropped: kept.dropped };
   const added = addFlower(cut);
@@ -243,12 +244,13 @@ function lineFirst(
   { offer }: OfferContext,
   spa: boolean,
   setupTreatment?: string,
-): { line: string | null; caption: string; dropped: Dropped[] } {
+): { line: string | null; caption: string; displaced: boolean; dropped: Dropped[] } {
   const treatment = offerTreatment(offer, setupTreatment, caption);
   if (!treatment) {
     return {
       line: null,
       caption,
+      displaced: false,
       dropped: [{ field: 'offer', reason: `${id}: no treatment for the offer line` }],
     };
   }
@@ -258,6 +260,8 @@ function lineFirst(
   return {
     line,
     caption: priced.caption,
+    // Code put the line before the model's own hook.
+    displaced: fixed.fix !== null,
     dropped: [
       ...(fixed.fix ? [{ field: 'offer', reason: `${id}: ${LINE_FIXES[fixed.fix]}` }] : []),
       ...priced.removed.map((s) => ({ field: 'offer', reason: `${id}: price removed "${s}"` })),
@@ -277,7 +281,7 @@ function checkedWords(
   const spa = isSpa(profile.category);
   const offered = context?.carries
     ? lineFirst(raw.caption, id, context, spa, setupTreatment)
-    : { line: null, caption: raw.caption, dropped: [] };
+    : { line: null, caption: raw.caption, displaced: false, dropped: [] };
   // A post that carries the offer lost its prices after its line.
   const priced = offered.line
     ? { text: offered.caption, dropped: [] }
@@ -306,7 +310,7 @@ function checkedWords(
   // then the paragraphs and the cut; the stops before an emoji go last, once
   // every step that finds sentences by their stop is done. The flags quote the
   // text the owner sees.
-  const short = shortCaption(caption, id, spa);
+  const short = shortCaption(caption, id, spa, offered.displaced);
   const shown = dropStopsBeforeEmoji(short.caption);
   if (storyText) storyText = dropStopsBeforeEmoji(storyText);
   const tags = dropForeignTags(cleanHashtags(raw.hashtags), profile);

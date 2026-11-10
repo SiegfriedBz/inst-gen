@@ -25,6 +25,22 @@ describe('keepParagraphs', () => {
   });
 });
 
+// Code put the offer line before the model's own hook: that hook goes first
+// (docs/specs/posts/short-captions, final review).
+describe('keepParagraphs after the offer line was put first', () => {
+  it("drops the model's displaced hook first", () => {
+    expect(keepParagraphs('L.\n\nH.\n\nA.\n\nB.', 'post-1', true)).toEqual({
+      caption: 'L.\n\nA.\n\nB.',
+      dropped: [{ field: 'caption', reason: 'post-1: paragraph dropped "H."' }],
+    });
+  });
+
+  it('keeps three paragraphs as they are', () => {
+    const caption = 'L.\n\nH.\n\nA.';
+    expect(keepParagraphs(caption, 'post-1', true)).toEqual({ caption, dropped: [] });
+  });
+});
+
 describe('paragraphsOf', () => {
   it('blank and space-only lines are no paragraph', () => {
     expect(paragraphsOf('A.\n \n\nB.')).toEqual(['A.', 'B.']);
