@@ -5,7 +5,8 @@ import type { ModelReplies, ReplyBody, ScreenLocale } from './reply';
 // flower, no emoji on an abusive review, and no translation into the
 // language the review is already in.
 
-const FLOWERS = /🌸|🌺|🌷|🌹|💮|🪷|🌼|🏵️?/gu;
+// Shared with the answers to guests' questions (lib/questions/checks.ts).
+export const FLOWER_EMOJI = /🌸|🌺|🌷|🌹|💮|🪷|🌼|🏵️?/gu;
 const EMOJI = /\p{Extended_Pictographic}️?|‍|️/gu;
 
 export function flowerFor(country: ReplyBody['country']): '🪷' | '🌼' | '🌸' {
@@ -18,7 +19,7 @@ export function sameLanguage(code: string, locale: ScreenLocale): boolean {
   return code.split('-')[0].toLowerCase() === locale;
 }
 
-function noEmoji(text: string): string {
+export function noEmoji(text: string): string {
   return text
     .replace(EMOJI, '')
     .replace(/ +([,.!?])/g, '$1')
@@ -32,7 +33,7 @@ export function checkReplies(
 ): ModelReplies | null {
   const same = sameLanguage(answer.reviewLanguage, ctx.locale);
   const clean = (text: string) => {
-    const flowered = text.replace(FLOWERS, ctx.flower);
+    const flowered = text.replace(FLOWER_EMOJI, ctx.flower);
     return (answer.abusive ? noEmoji(flowered) : flowered).trim();
   };
   const translation = (text: string | null) => {
