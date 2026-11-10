@@ -1,8 +1,7 @@
 ---
 title: "Short captions"
-description: "Every caption the model writes has at most three short paragraphs, its hook counted, in plain words: what the massage does for the guest, never a description of the light, the room or the calm. Code drops any paragraph past the third, and records long sentences and the words of a setting."
-status: approved
-approved: { by: siegfried.bozza@protonmail.com, at: 2026-11-10T09:15:54Z }
+description: "Every caption the model writes is three short paragraphs in plain words: a question, what the massage does for the guest (or, with an offer, the offer line), and one fact from the business's highlights; never a description of the light, the room or the calm. Code holds a caption to three paragraphs and puts an offer post's line second, and records long sentences, setting words and hooks that aren't questions."
+status: draft
 date: "2026-11-10"
 ---
 
@@ -49,11 +48,36 @@ The causes, in `posts-14`'s prompt and in code:
 - code keeps every paragraph the model writes, and cuts a caption only past
   700 characters.
 
+Amended 2026-11-10, after the first `posts-15` recordings (the journal). The
+maintainer found them "very bad", and asked that the first sentence end with a
+question mark. Shown two examples, they chose them as the model to follow, and
+chose the question before the offer line when there is an offer:
+
+```
+Sore shoulders after a surf at My Khe? 🌸
+
+Our therapists come to your hotel and work the knots out of your back and arms.
+
+Free travel in our core areas.
+```
+
+```
+Tight hips after a day exploring Da Nang? 🌸
+
+10% off our 90-minute Thai Massage, until Sunday 1 November.
+
+We come to your hotel, with free travel in our core areas.
+```
+
+Both are the developer's, from Sen's profile. They aren't sent to the model:
+the prompt describes them in its own words (2.14b).
+
 Success: in the new recordings, Sen's and Svarga's, with and without an offer,
-no caption has more than three paragraphs, none is over 300 characters before
-the WhatsApp line, and none describes the light, the room, the garden or the
-calm. Each still names a real place and ends as its type asks (2.15). The
-maintainer would post at least one of each plan's two.
+every caption is three paragraphs: a question, what the massage does (or the
+offer line), and one fact from the highlights. None is over 300 characters
+before the WhatsApp line, and none describes the light, the room, the garden
+or the calm. Each still names a real place. The maintainer would post at least
+one of each plan's two.
 
 ## Behaviour
 
@@ -64,12 +88,57 @@ the hook stands alone on its first line, 2.15, and reads as a paragraph). The
 app's WhatsApp line and the hashtags come after the caption, as today, and
 aren't counted.
 
-- Post 1's caption is its hook and two paragraphs; post 2's, its hook and
-  one. The two captions of an attempt still differ in shape (2.15). Post 1, an
-  offer post, keeps room to answer a guest's doubt after its treatment.
-- A paragraph is one or two short sentences. A sentence holds at most 15
-  words, the hook too; the offer line is code's (2.13b) and isn't held to it.
+- Every caption is exactly three paragraphs (amended 2026-11-10, replacing
+  the two shapes of the first draft):
+  1. the hook, a short question (below);
+  2. what the massage does for the guest, doing its type's job, in one or two
+     short sentences; on a post that carries the offer, its offer line instead
+     (below);
+  3. one fact from the business's highlights, stated plainly in one short
+     sentence: free travel, no deposit, linens and oils included. The two
+     captions of an attempt never use the same one (2.15). It replaces 2.15's
+     endings by type.
+- A sentence holds at most 15 words, the hook too; the offer line is code's
+  (2.13b) and isn't held to it.
 - 80 to 280 characters in all, before the WhatsApp line.
+
+The two captions of an attempt now share one shape, as the maintainer's
+examples do: 2.15's two shapes go (developer's call).
+
+### The hook, a question
+
+Amended 2026-11-10. Every caption opens on a short question that ends with
+"?", alone on its first line (2.15): the guest's sore spot and the moment it
+comes from, often with one of the business's places, in at most 12 words. The
+model is no longer given 2.15's hook styles: code still deals one into each
+set-up, as before, and the prompt doesn't read it (developer's call: the
+set-ups and the random they use stay as they are). 2.15's record of two
+question hooks becomes its opposite: a hook that isn't a question is recorded
+(below).
+
+A post that carries the offer opens on its question too, then its offer line.
+
+### With an offer: the question, then the offer line
+
+Amended 2026-11-10, after the maintainer's choice. On a post that carries the
+offer, the offer line is the caption's second paragraph, word for word, right
+after the question. It replaces 2.13b's "an offer post always opens on its
+offer line": code now puts the line second where it put it first.
+
+- When the model wrote the line as its second paragraph, word for word, it
+  stays.
+- When it wrote it anywhere else, the sentences that state the offer go
+  (2.13b), and the line goes in as the second paragraph, after the caption's
+  first sentence and any emoji right after it.
+- When it left it out, the line goes in the same way.
+- Each fix is recorded, as 2.13b's are: `offer line put second`, `offer line
+  added`.
+- The paragraph limit keeps the first, the second and the last paragraphs, so
+  the line always stays.
+
+The rest of 2.13b stands: the line's words, the price removed from the rest of
+the caption, the story text that is the offer line, and the offer's end by the
+WhatsApp line (2.15).
 
 The model is asked for all of it. Code makes sure of the three paragraphs.
 When the model writes more, the caption keeps its hook, the paragraph after it
@@ -125,6 +194,10 @@ The prompt changes with it:
 - **The facts rule.** "Feelings, senses and place symbols are yours to use
   freely" becomes "Feelings and place symbols are yours to use, in a few
   words".
+- **The senses.** Amended 2026-11-10: the caption rules' two pointers to the
+  profile's senses go, "as it may a sense" and "the captions draw on the
+  profile's senses". Both spas' senses describe the setting ("soft hotel
+  lighting", "gentle tropical breeze").
 - **The image prompt.** Its light, room and garden are for the image only.
   The caption rules add: "Never describe what the photo shows." 2.15's "never
   reuse a phrase from these instructions or from the image set-ups" stays.
@@ -146,18 +219,21 @@ leaves them, in the plan and in every caption update:
    tranquil, afternoon light, evening light, soft light and golden light. It
    leaves out "light" alone, since "feel light" isn't a setting. The developer
    may add to the list.
+3. **Hooks that aren't questions.** Amended 2026-11-10: a caption whose first
+   sentence doesn't end with "?": `{ field: 'mix', reason: 'post-2: hook is no
+   question' }`. It replaces 2.15's record of two question hooks.
 
-2.15's records stay, its stock words with them.
+2.15's other records stay, its stock words with them.
 
 ### What doesn't change
 
 These stay as they are:
 
-- the hook styles and how code deals them (2.15), apart from the `scene`
-  style's words;
+- how code deals the hook styles into the set-ups (2.15), though the prompt no
+  longer reads them (amended 2026-11-10);
 - the hook alone on its first line, and its 125-character flag;
-- a real place in each caption, and the endings by type;
-- the offer line first (2.13b), and the offer's end by the WhatsApp line;
+- a real place in each caption;
+- the offer line's words (2.13b), and the offer's end by the WhatsApp line;
 - never a price (2.17b);
 - the emoji rules and the hashtags;
 - the story text's limits: 100 characters asked, 120 checked;
@@ -169,7 +245,7 @@ These stay as they are:
 
 Unit tests (Vitest) for:
 
-- the prompts: `posts-15`; at most three paragraphs; the shapes, two
+- the prompts (first draft): `posts-15`; at most three paragraphs; the shapes, two
   paragraphs after the hook on post 1 and one on post 2; 15 words; 80 to 280
   characters; the setting rule. None of "what the guest will feel", "through
   the senses", "how it feels", "puts the guest back", "senses and place
@@ -183,11 +259,19 @@ Unit tests (Vitest) for:
 - the cut at 400 characters;
 - the records: a sentence of 16 words recorded, one of 15 not; the offer line
   not counted; "glow" recorded in a caption and in a story text; "feel light"
-  not recorded.
+  not recorded;
+- amended 2026-11-10: the prompt's question hook, its three paragraphs for
+  every post, its fact last, its offer line second, and no hook styles, no
+  `### Hooks` and no pointer to the senses; `posts-16`; a hook with no "?"
+  recorded, and two question hooks no longer; the offer line put second when
+  the model wrote it first or elsewhere, added second when it left it out, and
+  kept when the model wrote it second; an offer caption of five paragraphs
+  keeping its question, its line and its last.
 
-The replay test checks Sen's and Svarga's `posts-15` plans, with and without
-an offer: no caption has more than three paragraphs, and no caption or story
-text holds a price. Older recordings (`posts-1`'s karsa-spa, orient-spa and
+The replay test checks Sen's and Svarga's `posts-16` plans, with and without
+an offer: no caption has more than three paragraphs, every hook ends with "?",
+an offer post's second paragraph is its offer line, and no caption or story
+text holds a price (amended 2026-11-10). Older recordings (`posts-1`'s karsa-spa, orient-spa and
 serenity-bali), replayed through today's checks, lose their extra paragraphs,
 and their tests follow (developer's call).
 
@@ -209,12 +293,13 @@ them on:
 | Doesn't describe the setting | 4 of 8 |
 | Names a real place of the business | 6 of 8 |
 | Ends by answering a guest's doubt | 7 of 8 |
+| The hook is a question (amended 2026-11-10) | 1 of 8 |
 
 Pass, on the 8 new captions:
 
-- the first, second and fourth checks pass on all 8;
+- the first, second and fourth checks pass on all 8, and so does the last;
 - the third passes on at least 6;
-- the last two do no worse than `posts-14`;
+- the place and doubt checks do no worse than `posts-14`;
 - and the maintainer would post at least one of each plan's two.
 
 When a check fails, the journal says why. The maintainer decides whether the
@@ -247,6 +332,23 @@ Scenario: A spa's caption that loses its only flower
   Then post 2's caption has three paragraphs
   And it holds a flower
 
+Scenario: The hook is no question
+  Given the model writes post 2's caption opening "Tired feet after a long walk through Seminyak."
+  When code checks the plan
+  Then the batch's dropped list holds 'post-2: hook is no question'
+
+Scenario: The offer line goes second
+  Given a special offer, and the model writes post 1's caption "10% off our 90-minute Thai Massage, until Sunday 1 November. Tight hips after a day exploring Da Nang? 🌸", then "We come to your hotel."
+  When code checks the plan
+  Then post 1's caption is "Tight hips after a day exploring Da Nang? 🌸", the offer line, then "We come to your hotel.", each a paragraph
+  And the batch's dropped list holds 'post-1: offer line put second'
+
+Scenario: The offer line added second
+  Given a special offer, and the model writes post 1's caption "Tight hips after a day exploring Da Nang? 🌸 We come to your hotel."
+  When code checks the plan
+  Then post 1's caption is "Tight hips after a day exploring Da Nang? 🌸", the offer line, then "We come to your hotel.", each a paragraph
+  And the batch's dropped list holds 'post-1: offer line added'
+
 Scenario: The owner's own caption
   Given the owner edits post 1's caption into five paragraphs
   When they save it
@@ -264,7 +366,7 @@ Scenario: A long sentence
   Then the batch's dropped list records it as a long sentence
 
 Scenario: A recorded plan
-  Given Sen's plan recorded with posts-15, without an offer
+  Given Sen's plan recorded with posts-16, without an offer
   When the replay test runs it
   Then no caption has more than three paragraphs
   And no caption or story text holds a price
@@ -279,8 +381,12 @@ Scenario: A recorded plan
   them, and one can name a garden for a good reason and still be recorded.
 - Dropping a paragraph between the second and the last can leave a gap in
   what the caption says. The owner reads each post before posting it.
-- The model may still write two paragraphs after the hook on post 2, or one
-  on post 1. Code makes sure of three at most, not of each shape.
+- The model may still write fewer than three paragraphs. Code makes sure of
+  three at most, not of each paragraph's job.
+- Code can't turn a statement into a question: a hook without "?" reaches the
+  owner, and the record shows it (amended 2026-11-10).
+- Every hook names a sore spot and a moment, so hooks can look alike from one
+  day to the next; nothing records repeats across days (2.15).
 
 ## Out of scope
 
