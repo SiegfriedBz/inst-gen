@@ -213,3 +213,18 @@ git commit -m "docs(docs): record posts-15 and mark roadmap 2.18 done"
 ```
 
 - [ ] **Step 6: Push and open the PR to `develop`** on github.com: a fresh reviewer reads the whole branch first, then the title and the full description go to the maintainer, ready to paste.
+
+### Task 6: A question first, the offer line second (the spec amended 2026-11-10)
+
+**Files:**
+- Modify: `lib/posts/offer-line.ts` (`putOfferLineSecond` replaces `putOfferLineFirst` and `dropPrices`), `lib/posts/checks.ts` (`lineSecond`, every caption's prices through `withoutPrices`, no `displaced`), `lib/posts/paragraphs.ts` (no `displaced`), `lib/posts/variety.ts` (a hook that is no question recorded, in place of two question hooks), `lib/posts/prompt.ts` (`posts-16`)
+- Test: `tests/unit/posts-offer-line.test.ts`, `posts-checks.test.ts`, `posts-paragraphs.test.ts`, `posts-variety.test.ts`, `posts-prompt.test.ts`, `posts-run.test.ts`, `posts-fixtures-replay.test.ts`
+
+**Interfaces:**
+- Produces: `putOfferLineSecond(caption: string, line: string, offer: Offer): { caption: string; fix: 'put second' | 'added' | null }`; `keepParagraphs(caption, id)` as in Task 1; the record `{ field: 'mix', reason: '<id>: hook is no question' }`.
+
+- [ ] **Step 1: Write the failing tests**: the spec's three new scenarios; `putOfferLineSecond` keeping a line written second, moving one written first or in the model's own words, adding a missing one, and giving the line alone when the caption only stated the offer; an offer caption of five paragraphs keeping its question, its line and its last; a price after the question removed on an offer post; the hook record on any post, the old record gone; the prompt's question hook, three paragraphs for every post, fact last, line second, no hook styles, no `### Hooks`, no senses, `posts-16`.
+- [ ] **Step 2: Run them and see them fail.**
+- [ ] **Step 3: Implement.** Paragraph by paragraph, the sentences that state the offer go; the first paragraph left gives the hook (`hookOnItsLine`), then the line, then the rest.
+- [ ] **Step 4: Run them, then `pnpm check`, and see them pass.** Tests of 2.13b's line first change to the line second, each named in the journal.
+- [ ] **Step 5: Commit**, then record Sen's and Svarga's plans again (4 requests, the maintainer's yes) and score them as Task 5 did.
