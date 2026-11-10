@@ -182,3 +182,25 @@ The amendment: `Tests  52 passed (52)`, with the client and the checks, and
  Test Files  123 passed (123)
       Tests  1901 passed (1901)
 ```
+
+## Deferred
+
+From the final review, unchanged:
+
+- The price, duration and number checks read English units only ("phút",
+  "menit" and "jam" aren't read).
+- The prompt doesn't say what `[number]`, `[email]` and `[link]` stand for.
+- A link without `http(s)://` or `www.` (example.com/page) isn't removed.
+- Spellings code's word list doesn't hold ("happy-ending", "handjobs") pass
+  it; the model's own check still runs.
+- The log line says `sexual=no` on a failed run.
+- Two check lines with the same text would share a React key.
+- On the answer view, the limit line sits inside the row of links.
+- The call to book is worded much the same in every final answer.
+- The phone's removals can make a question of 2,000 characters a few
+  characters longer, and the server then refuses it.
+- `AGENTS.md` still says the owner guide has eight sections and the home
+  screen three tabs.
+
+Found while fixing: a "Forget" made while an answer is being written lets
+the late answer be saved again. The Reviews tab has the same window.
