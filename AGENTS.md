@@ -63,8 +63,8 @@ index of the code).
 | `scripts/` | Repo checks and the skills copy |
 | `app/` | Next.js App Router: pages, the `/enter` sign-in, the `/guide` owner guide, API routes |
 | `components/` | Shared components; `components/ui/` holds the shadcn/ui ones (decision 0007) |
-| `components/guide/` | The owner guide: its eight sections and the links in and out |
-| `components/brand/` | The home screen: its three tabs, the brand read and panel (reading state, sections, edit forms) |
+| `components/guide/` | The owner guide: its nine sections and the links in and out |
+| `components/brand/` | The home screen: its four tabs, the brand read and panel (reading state, sections, edit forms) |
 | `components/reviews/` | The Reviews tab: the pasted review and its two reply cards |
 | `components/questions/` | The Questions tab: the pasted question, its answer card and what the guest has told |
 | `components/usage/` | The usage bar and the lines shown at a limit |

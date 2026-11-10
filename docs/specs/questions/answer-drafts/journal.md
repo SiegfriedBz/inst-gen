@@ -199,8 +199,6 @@ From the final review, unchanged:
 - The call to book is worded much the same in every final answer.
 - The phone's removals can make a question of 2,000 characters a few
   characters longer, and the server then refuses it.
-- `AGENTS.md` still says the owner guide has eight sections and the home
-  screen three tabs.
 
 Found while fixing: a "Forget" made while an answer is being written lets
 the late answer be saved again. The Reviews tab has the same window.
