@@ -11,6 +11,8 @@ describe('mentionsSex', () => {
     '有色情服务吗',
     'Ada pijat plus?',
     'SEXY massage?',
+    'Do you do massage plus plus?',
+    'Ada pijat plus plus?',
     // Taking out "same-sex" leaves the rest of the question checked.
     'Same-sex couple here: do you offer sex?',
   ])('catches %s', (question) => {
@@ -27,6 +29,8 @@ describe('mentionsSex', () => {
     'Do you have a special service for couples?',
     'Do you welcome same-sex couples?',
     'Can I choose the sex of the therapist?',
+    // Amended 2026-11-10: Bali's prices before tax and service.
+    'Is the price plus plus?',
   ])('leaves %s alone', (question) => {
     expect(mentionsSex(question)).toBe(false);
   });

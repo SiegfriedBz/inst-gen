@@ -16,12 +16,13 @@ export const SEX_WORDS: readonly string[] = [
   'blow job',
   'blowjob',
   'extra service',
+  // Not "plus plus" alone: Bali's prices before tax and service.
+  'massage plus plus',
   // Vietnamese: tình dục, kích dục
   'tinh duc',
   'kich duc',
   // Indonesian
   'pijat plus',
-  'plus plus',
   'esek esek',
   'esek-esek',
   // Russian

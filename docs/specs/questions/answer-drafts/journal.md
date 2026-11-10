@@ -46,6 +46,11 @@
     line at 0, a conversation from before the reset, the log's
     `sexual=words`. The replay test now checks that the recorded call to
     book ends each final answer, and that the others have none.
+- 2026-11-10: two of the review's points were the maintainer's, and they
+  chose, then approved them as an amendment to the spec: dates, time slots
+  and prices now stay in the question sent to the model (phone numbers still
+  become `[number]`), and code's word list holds "massage plus plus" instead
+  of "plus plus" alone, Bali's way of writing a price before tax and service.
 
 ## Evaluation
 
@@ -126,6 +131,13 @@ on an answer written after the reset:
       Tests  4 failed | 17 passed (21)
 ```
 
+The amendment's tests, on the removals and the word list:
+
+```
+ Test Files  2 failed (2)
+      Tests  9 failed | 27 passed (36)
+```
+
 ## GREEN
 
 Task 1: `Tests  15 passed (15)`. Task 2: `Tests  21 passed (21)`, with the
@@ -161,4 +173,12 @@ and the Questions and usage specs:
 
 ```
   6 passed (10.7s)
+```
+
+The amendment: `Tests  52 passed (52)`, with the client and the checks, and
+`pnpm check`:
+
+```
+ Test Files  123 passed (123)
+      Tests  1901 passed (1901)
 ```
