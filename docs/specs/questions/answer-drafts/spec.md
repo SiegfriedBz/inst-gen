@@ -1,8 +1,7 @@
 ---
 title: "Answers to guests' questions"
 description: "A fourth home tab, 'Questions': the owner pastes a guest's question and gets one answer in the guest's language, from the business's own details, with its translation in the owner's language, from one Flash-Lite call. A question that asks for or mentions sex always gets 'we offer only professional therapeutic massage', and an answer the owner marks as final ends with a call to book, asking only for the booking details the guest hasn't given yet in the conversation; code makes sure of both."
-status: approved
-approved: { by: siegfried.bozza@protonmail.com, at: 2026-11-10T09:15:54Z }
+status: draft
 date: "2026-11-10"
 ---
 
@@ -182,6 +181,20 @@ message isn't public the way a review is. So:
 - the hint under the box asks the owner to leave out the guest's name;
 - the route's log line never holds the question or the answer.
 
+Amended 2026-11-10, after the final review: the maintainer wants dates, time
+slots and prices to reach the model, so it can keep the guest's day and time,
+and the checks can read a price. A run of digits stays as written when each
+of its parts is one of these (developer's call on the exact shapes):
+
+- a date: 15.11.2026, 15-11-2026, 2026-11-15, or two of them as a range;
+- a time or a time slot: 18.00, 15.00-16.30;
+- a price in groups of three: 1.500.000, 250.000-350.000.
+
+Every other run of 7 digits or more is still a phone number: one with a
+leading + (+84 905 123 456), a leading 0 (0905.123.456), or spaces between its
+groups (905 123 456). Written with a colon, a slash or a comma (18:00,
+15/11/2026, 1,250,000), a time, a date or a price never counted as one.
+
 A name or a hotel room the guest wrote in the question still goes with it
 ("Known limits").
 
@@ -249,14 +262,20 @@ What the model is asked for, and what code makes sure of:
 #### Code's word list
 
 The list holds words and phrases that ask for or mention sex, in the guests'
-main languages: English ("sex", "happy ending", "extra service", and the
-posts' banned words), Vietnamese ("tình dục", "kích dục"), Indonesian
-("pijat plus", "plus plus"), Russian ("секс", "интим"), Korean ("섹스") and
-Chinese ("色情", "特殊服务"). Matching ignores case and accents; English
+main languages: English ("sex", "happy ending", "extra service", "massage
+plus plus", and the posts' banned words), Vietnamese ("tình dục", "kích
+dục"), Indonesian ("pijat plus"), Russian ("секс", "интим"), Korean ("섹스")
+and Chinese ("色情", "特殊服务"). Matching ignores case and accents; English
 words match whole. The developer writes the full list and may add to it. A
 match adds the line even when the model didn't flag the question. The log
 line says which check fired (`sexual=model`, `sexual=words` or
 `sexual=both`), never the word.
+
+Amended 2026-11-10, after the final review: "plus plus" alone is how Bali
+writes a price before tax and service ("Is the price plus plus?"), so the
+list holds "massage plus plus" in its place, and "pijat plus" still catches
+the Indonesian. "Same-sex" and "the sex of the therapist" don't count as
+asking for sex (developer's call); the rest of the question is still checked.
 
 #### Checks the owner sees
 
@@ -462,8 +481,11 @@ keys.
     kept by "Paste the next message"; cleared by "New conversation" and at
     the reset; a final answer's prompt naming only the missing ones;
   - the phone's removals: a number, an email and a link replaced; "room 405"
-    kept;
-  - the word list: each language's example caught, "massage" and "spa" not;
+    kept; a date, a time slot and a price kept, and a phone number written
+    with a leading 0 or with spaces still replaced;
+  - the word list: each language's example caught, "massage" and "spa" not,
+    nor "Is the price plus plus?", "same-sex couples" or "the sex of the
+    therapist";
   - the route: 401 without a session, 400 on a bad body, each error code, the
     log line without the question or the answer, the count taken and given
     back, replayed answers;
@@ -562,6 +584,10 @@ Scenario: The guest's number stays on the phone
   When the owner pastes "Call me on +84 905 123 456, room 405"
   Then the request holds "Call me on [number], room 405"
 
+Scenario: The guest's day, time and price reach the answer
+  When the owner pastes "Can we come on 15.11.2026, 15.00-16.30? Is it 1.500.000đ for two?"
+  Then the request holds the same words
+
 Scenario: A trip to the chat keeps the answer
   Given an answer and the guest's details are shown
   When the page reloads before the daily reset
@@ -582,7 +608,9 @@ Scenario: Four tabs fit
 - The owner copies the question from the chat and the answer back: two trips
   between apps.
 - A name, a hotel or a room number written in the question goes to the free
-  tier with it: only numbers, emails and links are removed.
+  tier with it: only numbers, emails and links are removed. So does a phone
+  number written like a price, in groups of three with dots and no leading 0
+  or + (905.123.456).
 - The model and the word list can miss a euphemism, or flag an innocent
   question. A false flag only adds the line. The owner reads the answer
   before sending it.
