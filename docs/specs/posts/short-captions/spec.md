@@ -1,8 +1,7 @@
 ---
 title: "Short captions"
 description: "Every caption the model writes is three short paragraphs in plain words: a question, what the massage does for the guest (or, with an offer, the offer line), and one fact from the business's highlights; never a description of the light, the room or the calm. Code holds a caption to three paragraphs and puts an offer post's line second, and records long sentences, setting words and hooks that aren't questions."
-status: approved
-approved: { by: siegfried.bozza@protonmail.com, at: 2026-11-10T11:11:40Z }
+status: draft
 date: "2026-11-10"
 ---
 
@@ -162,6 +161,32 @@ This applies to what the model writes, in the plan and in every caption
 update. The owner's own edits keep their paragraphs and their length, as
 today (2.4).
 
+### Two flowers in a caption, one in a story text
+
+Amended 2026-11-10, after the `posts-16` recordings: the maintainer wants 2
+emojis in each caption and 1 in each story text. For a spa (2.13), whose emoji
+are flowers only, it replaces 2.13's 1 to 3 flowers in a caption and 1 or 2 in
+a story text:
+
+- The prompt asks for exactly 2 flowers in the caption, one right after the
+  question and one at its very end, and exactly 1 in the story text, at its
+  end.
+- Code makes sure of it. A caption keeps its first two flowers, and the others
+  go, as 2.13 removes a flower past its limit. A caption with one flower gets
+  a second at its end, or after its question when it already ends on one; a
+  caption with none gets one after its question and one at its end. This runs
+  after the paragraph limit and the cut, so nothing removes them again; each
+  flower added is recorded, as 2.13's are (`post-1: caption added 🌸`).
+- A story text keeps its first flower, and gets one at its end when it has
+  none, as today. An offer post's story text stays its line and one flower
+  (2.13b).
+- A business that isn't a spa is asked for at most 2 emoji in the caption and
+  at most 1 in the story text; code adds none, as today.
+
+`posts-17` is `posts-16` with these emoji words only. Its recordings stay
+`posts-16`'s: replayed, code gives them their flowers (developer's call: no
+model call is needed to test a count that code makes sure of).
+
 ### Plain words, no setting
 
 A caption says what the massage does for the guest, plainly: the sore spot it
@@ -236,7 +261,7 @@ These stay as they are:
 - a real place in each caption;
 - the offer line's words (2.13b), and the offer's end by the WhatsApp line;
 - never a price (2.17b);
-- the emoji rules and the hashtags;
+- the hashtags, and the emoji rules apart from the counts above;
 - the story text's limits: 100 characters asked, 120 checked;
 - alt text, the images and their set-ups;
 - translations into the owner's language;
@@ -270,7 +295,8 @@ Unit tests (Vitest) for:
   keeping its question, its line and its last.
 
 The replay test checks Sen's and Svarga's `posts-16` plans, with and without
-an offer: no caption has more than three paragraphs, every hook ends with "?",
+an offer: no caption has more than three paragraphs, a spa's caption has
+exactly 2 flowers and its story text 1, every hook ends with "?",
 an offer post's second paragraph is its offer line, and no caption or story
 text holds a price (amended 2026-11-10). Older recordings (`posts-1`'s karsa-spa, orient-spa and
 serenity-bali), replayed through today's checks, lose their extra paragraphs,
