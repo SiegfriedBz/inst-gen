@@ -1,5 +1,5 @@
 import { type Dropped, POSTS_LIMITS } from './batch';
-import { sentences } from './story';
+import { wholeSentences } from './story';
 
 // A caption of at most three paragraphs, its hook counted
 // (docs/specs/posts/short-captions, "At most three short paragraphs"). A
@@ -52,7 +52,7 @@ export function keepParagraphs(
 const TRAILING_EMOJI = /(?:\s|\p{Extended_Pictographic}|\uFE0F)+$/u;
 function onlyQuestion(text: string): boolean {
   const bare = text.replace(TRAILING_EMOJI, '');
-  return bare.endsWith('?') && sentences(bare).length === 1;
+  return bare.endsWith('?') && wholeSentences(bare).length === 1;
 }
 
 // On an offer post of more than three paragraphs, a question alone right
@@ -80,7 +80,7 @@ const LEADING_EMOJI = /^(?:\s|\p{Extended_Pictographic}|\uFE0F)*/u;
 export function factOnItsLine(caption: string, lined: boolean): string {
   const all = groups(caption);
   if (all.length !== 2) return caption;
-  const parts = sentences(all[1].join(' '));
+  const parts = wholeSentences(all[1].join(' '));
   const counted = parts.filter((part) => WORDS.test(part)).length;
   if (counted < (lined ? 3 : 2)) return caption;
   const at = parts.findLastIndex((part) => WORDS.test(part));

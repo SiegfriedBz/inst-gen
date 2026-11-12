@@ -1422,6 +1422,31 @@ describe('short captions', () => {
     expect(checked?.caption).toBe(caption);
   });
 
+  // The final review (2026-11-12): "Jl." ends no sentence, so the lone
+  // question still joins its answer and nothing is dropped.
+  it("keeps an offer post's answer when its question names a street", () => {
+    const offer: Offer = {
+      kind: 'discount',
+      percent: 10,
+      treatments: ['Balinese massage'],
+      until: '2026-10-27',
+      lastDay: 'Tuesday 27 October',
+    };
+    const line = '10% off our 90-minute Balinese massage, until Tuesday 27 October.';
+    const { post: checked, dropped } = checkPost(
+      raw({
+        caption: `${line}\n\nSore legs after a surf near Jl. Nelayan?\n\nWe come to your villa tonight.\n\nNo deposit needed.`,
+      }),
+      notSpa(),
+      'post-1',
+      { offer, carries: true },
+    );
+    expect(checked?.caption).toBe(
+      `${line}\n\nSore legs after a surf near Jl. Nelayan? We come to your villa tonight.\n\nNo deposit needed.`,
+    );
+    expect(dropped.filter((d) => d.field === 'caption')).toEqual([]);
+  });
+
   it("gives a spa's split caption exactly two flowers", () => {
     const { post: checked } = checkPost(
       raw({

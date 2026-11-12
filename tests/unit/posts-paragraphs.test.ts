@@ -78,4 +78,22 @@ describe('factOnItsLine', () => {
     expect(factOnItsLine('Q?\n\nA.\n\nF. G.', false)).toBe('Q?\n\nA.\n\nF. G.');
     expect(factOnItsLine('Q?\n\nA 🌸', false)).toBe('Q?\n\nA 🌸');
   });
+
+  // The final review (2026-11-12): a stop after an abbreviation, or before a
+  // lower-case word, ends no sentence.
+  it('never splits at an abbreviation or a stop a lower-case word follows', () => {
+    expect(factOnItsLine('Sore feet?\n\nWe come to your villa until 10 p.m. tonight.', false)).toBe(
+      'Sore feet?\n\nWe come to your villa until 10 p.m. tonight.',
+    );
+    expect(
+      factOnItsLine('Sore feet? 🌸\n\nWe come to your villa near Jl. Nelayan. 🌺', false),
+    ).toBe('Sore feet? 🌸\n\nWe come to your villa near Jl. Nelayan. 🌺');
+    expect(
+      joinQuestion(
+        'L\n\nSore legs after a surf near Jl. Nelayan?\n\nWe come to your villa tonight.\n\nNo deposit needed.',
+      ),
+    ).toBe(
+      'L\n\nSore legs after a surf near Jl. Nelayan? We come to your villa tonight.\n\nNo deposit needed.',
+    );
+  });
 });
