@@ -255,6 +255,11 @@ code puts the line first where it put it second.
 - When it left it out, the line goes in the same way.
 - Each fix is recorded, as 2.13b's were: `offer line put first`, `offer line
   added`.
+- A paragraph that holds only the question, right after the line, joins the
+  paragraph after it, before the paragraph limit runs, so the question keeps
+  its answer (developer's call: the model puts a question alone on its line,
+  as on the other posts, and code puts the line in front of the model's
+  question; the limit would then drop the answer).
 - The paragraph limit keeps the first, the second and the last paragraphs, so
   the line always stays.
 
