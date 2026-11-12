@@ -160,11 +160,21 @@ function placeNames(profile: Profile): string[] {
   return [...names];
 }
 
-// Every hook is a question, an offer post's too.
+// Every hook is a question, an offer post's too: right after its line, its
+// first paragraph (amended 2026-11-12).
+function questionOf(post: Post): string | undefined {
+  return plainSentences(post.offer ? (paragraphsOf(post.caption)[1] ?? '') : post.caption)[0];
+}
+
 function hookRecords(posts: Post[]): Dropped[] {
   return posts
-    .filter((p) => !plainSentences(p.caption)[0]?.endsWith('?'))
-    .map((p) => ({ field: 'mix', reason: `${p.id}: hook is no question` }));
+    .filter((p) => !questionOf(p)?.endsWith('?'))
+    .map((p) => ({
+      field: 'mix',
+      reason: p.offer
+        ? `${p.id}: no question after the offer line`
+        : `${p.id}: hook is no question`,
+    }));
 }
 
 function stockWords(posts: Post[]): Dropped[] {
@@ -267,11 +277,11 @@ export function sentenceWords(text: string): number[] {
   return plainSentences(text).map((sentence) => sentence.match(WORD)?.length ?? 0);
 }
 
-// An offer post's second paragraph is its offer line, and its story text is
+// An offer post's first paragraph is its offer line, and its story text is
 // that line: code writes both.
 function longSentences(post: Post): Dropped[] {
   const caption = paragraphsOf(post.caption)
-    .filter((_, i) => !post.offer || i !== 1)
+    .filter((_, i) => !post.offer || i !== 0)
     .flatMap(plainSentences);
   const story = post.offer ? [] : plainSentences(post.storyText ?? '');
   return [...caption, ...story].flatMap((sentence) => {

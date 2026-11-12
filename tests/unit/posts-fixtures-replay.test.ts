@@ -136,9 +136,15 @@ describe('recorded story texts and flowers', () => {
     expect(repeatRecords(result.posts).filter((d) => d.reason.startsWith('last sentence'))).toEqual(
       [],
     );
-    // Every hook is a question, an offer post's too (docs/specs/posts/short-captions,
-    // amended 2026-11-10).
-    expect(result.dropped.filter((d) => d.reason.endsWith('hook is no question'))).toEqual([]);
+    // Every hook is a question, an offer post's too, right after its line
+    // (docs/specs/posts/short-captions, amended 2026-11-10 and 2026-11-12).
+    expect(
+      result.dropped.filter(
+        (d) =>
+          d.reason.endsWith('hook is no question') ||
+          d.reason.endsWith('no question after the offer line'),
+      ),
+    ).toEqual([]);
     for (const post of result.posts) {
       // A story text that only asked to book went whole, and code says so
       // (docs/specs/posts/story-text): Svarga's posts-15 plan has one
@@ -167,13 +173,13 @@ describe('recorded story texts and flowers', () => {
       if (hook.length > 125) expect(post.unchecked.map((f) => f.kind)).toContain('firstLine');
       expect(hook.match(/[.!?](?=\s|$)/g)?.length ?? 0).toBeLessThanOrEqual(1);
       expect(story).not.toMatch(STOP_BEFORE_EMOJI);
-      // An offer post's second paragraph is its line, after its question, and
-      // its story text is that line and a flower (docs/specs/posts/offer-line-first;
-      // second since docs/specs/posts/short-captions).
+      // An offer post's first paragraph is its line, and its story text is
+      // that line and a flower (docs/specs/posts/offer-line-first; first again
+      // since docs/specs/posts/short-captions was amended 2026-11-12).
       if (post.offer && result.offer) {
         const treatment = offerTreatment(result.offer, post.setup?.treatment, post.caption);
         const line = offerLine(result.offer, treatment ?? '').replace(/\.$/, '');
-        expect(paragraphsOf(post.caption)[1]?.startsWith(line)).toBe(true);
+        expect(paragraphsOf(post.caption)[0]?.startsWith(line)).toBe(true);
         expect(story.startsWith(line)).toBe(true);
         expect(flowers(story.slice(line.length))).toBe(1);
         expect(story.slice(line.length).trim()).toMatch(/^\p{Extended_Pictographic}$/u);

@@ -1,4 +1,5 @@
 import { type Dropped, POSTS_LIMITS } from './batch';
+import { sentences } from './story';
 
 // A caption of at most three paragraphs, its hook counted
 // (docs/specs/posts/short-captions, "At most three short paragraphs"). A
@@ -45,4 +46,26 @@ export function keepParagraphs(
       reason: `${id}: paragraph dropped "${lines.join(' ')}"`,
     })),
   };
+}
+
+// A question alone: one sentence ending in "?", an emoji after it allowed.
+const TRAILING_EMOJI = /(?:\s|\p{Extended_Pictographic}|\uFE0F)+$/u;
+function onlyQuestion(text: string): boolean {
+  const bare = text.replace(TRAILING_EMOJI, '');
+  return bare.endsWith('?') && sentences(bare).length === 1;
+}
+
+// On an offer post of more than three paragraphs, a question alone right
+// after the line joins the paragraph after it, so the limit keeps its answer
+// (docs/specs/posts/short-captions, amended 2026-11-12). Three or fewer come
+// back as they are.
+export function joinQuestion(caption: string): string {
+  const all = groups(caption);
+  if (all.length <= POSTS_LIMITS.paragraphs || !onlyQuestion(all[1].join(' '))) return caption;
+  const [line, question, answer, ...rest] = all;
+  return [
+    line.join('\n'),
+    `${question.join(' ')} ${answer.join(' ')}`,
+    ...rest.map((lines) => lines.join('\n')),
+  ].join('\n\n');
 }

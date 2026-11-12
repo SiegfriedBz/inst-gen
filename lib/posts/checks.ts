@@ -17,8 +17,8 @@ import { dropForeignTags } from './foreign-tags';
 import { hookOnItsLine } from './hook-line';
 import { ctaFor } from './input';
 import { mentionsDay, OFFER_LIMITS, type Offer, PERCENT } from './offer';
-import { offerLine, offerStory, offerTreatment, putOfferLineSecond } from './offer-line';
-import { keepParagraphs } from './paragraphs';
+import { offerLine, offerStory, offerTreatment, putOfferLineFirst } from './offer-line';
+import { joinQuestion, keepParagraphs } from './paragraphs';
 import type { Setup } from './setup';
 import { cleanStory, sentences } from './story';
 import { copyRecords, lightRecords, repeatRecords } from './variety';
@@ -202,13 +202,16 @@ function spaCaption(caption: string, id: string): { caption: string; dropped: Dr
 // At most three paragraphs, counted as the owner sees them once the hook is
 // alone on its line, then the cut (docs/specs/posts/short-captions). A spa's
 // caption then gets its two flowers, so neither step removes one (amended
-// 2026-11-10).
+// 2026-11-10). On a post with its offer line, a question alone after the line
+// keeps its answer (amended 2026-11-12).
 function shortCaption(
   caption: string,
   id: string,
   spa: boolean,
+  lined = false,
 ): { caption: string; dropped: Dropped[] } {
-  const kept = keepParagraphs(hookOnItsLine(caption), id);
+  const split = hookOnItsLine(caption);
+  const kept = keepParagraphs(lined ? joinQuestion(split) : split, id);
   const cut = cutCaption(kept.caption);
   if (!spa) return { caption: cut, dropped: kept.dropped };
   const added = twoFlowers(cut);
@@ -219,7 +222,7 @@ function shortCaption(
   return { caption: added.text, dropped: [...kept.dropped, ...back] };
 }
 
-const LINE_FIXES = { 'put second': 'offer line put second', added: 'offer line added' } as const;
+const LINE_FIXES = { 'put first': 'offer line put first', added: 'offer line added' } as const;
 const STORY_FIXES = {
   set: 'story text set to the offer line',
   'too long': 'offer line too long for the story text',
@@ -236,10 +239,11 @@ function withLineStop(text: string, line: string): string {
     : text;
 }
 
-// A post that carries the offer has its line, written by code, as its second
-// paragraph, after its question (docs/specs/posts/offer-line-first, second
-// since docs/specs/posts/short-captions): null when no treatment gives one.
-function lineSecond(
+// A post that carries the offer has its line, written by code, as its first
+// paragraph, its question after it (docs/specs/posts/offer-line-first; first
+// again since docs/specs/posts/short-captions was amended 2026-11-12): null
+// when no treatment gives one.
+function lineFirst(
   caption: string,
   id: string,
   { offer }: OfferContext,
@@ -254,7 +258,7 @@ function lineSecond(
     };
   }
   const line = offerLine(offer, treatment);
-  const fixed = putOfferLineSecond(caption, line, offer);
+  const fixed = putOfferLineFirst(caption, line, offer);
   return {
     line,
     caption: fixed.caption,
@@ -273,7 +277,7 @@ function checkedWords(
 ): { words: Words; dropped: Dropped[] } {
   const spa = isSpa(profile.category);
   const offered = context?.carries
-    ? lineSecond(raw.caption, id, context, setupTreatment)
+    ? lineFirst(raw.caption, id, context, setupTreatment)
     : { line: null, caption: raw.caption, dropped: [] };
   // Never a price: the offer line holds none, so every caption goes the same
   // way (docs/specs/posts/two-suggestions).
@@ -302,7 +306,7 @@ function checkedWords(
   // then the paragraphs and the cut; the stops before an emoji go last, once
   // every step that finds sentences by their stop is done. The flags quote the
   // text the owner sees.
-  const short = shortCaption(caption, id, spa);
+  const short = shortCaption(caption, id, spa, offered.line !== null);
   const shown = dropStopsBeforeEmoji(short.caption);
   if (storyText) storyText = dropStopsBeforeEmoji(storyText);
   const tags = dropForeignTags(cleanHashtags(raw.hashtags), profile);

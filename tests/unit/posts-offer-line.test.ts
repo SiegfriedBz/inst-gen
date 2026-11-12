@@ -4,13 +4,13 @@ import {
   offerLine,
   offerStory,
   offerTreatment,
-  putOfferLineSecond,
+  putOfferLineFirst,
   statesOffer,
 } from '@/lib/posts/offer-line';
 
-// An offer post's line, put by code (docs/specs/posts/offer-line-first), now
-// second, after the question (docs/specs/posts/short-captions, amended
-// 2026-11-10).
+// An offer post's line, put by code (docs/specs/posts/offer-line-first), first
+// again, its question after it (docs/specs/posts/short-captions, amended
+// 2026-11-12).
 
 const offer: Offer = {
   kind: 'discount',
@@ -54,51 +54,47 @@ describe('the offer line', () => {
   });
 });
 
-describe('putOfferLineSecond', () => {
+describe('putOfferLineFirst', () => {
   const hook = 'Tight hips after a day exploring Da Nang? 🌸';
 
-  it('keeps a line the model wrote second', () => {
-    const caption = `${hook}\n\n${LINE}\n\nWe come to your hotel.`;
-    expect(putOfferLineSecond(caption, LINE, offer)).toEqual({ caption, fix: null });
-    const flowered = `${hook}\n\n${LINE.replace(/\.$/, '')} 🌺\n\nWe come to your hotel.`;
-    expect(putOfferLineSecond(flowered, LINE, offer)).toEqual({ caption: flowered, fix: null });
+  it('keeps a line the model wrote first, its stop gone before a flower or not', () => {
+    const caption = `${LINE}\n\n${hook} We come to your hotel.\n\nFree travel.`;
+    expect(putOfferLineFirst(caption, LINE, offer)).toEqual({ caption, fix: null });
+    const flowered = `${LINE.replace(/\.$/, '')} 🌺\n\n${hook} We come to your hotel.`;
+    expect(putOfferLineFirst(flowered, LINE, offer)).toEqual({ caption: flowered, fix: null });
   });
 
-  it('puts a line the model wrote first after the question', () => {
-    expect(putOfferLineSecond(`${LINE} ${hook}\n\nWe come to your hotel.`, LINE, offer)).toEqual({
-      caption: `${hook}\n\n${LINE}\n\nWe come to your hotel.`,
-      fix: 'put second',
+  it('puts a line the model wrote second before the question', () => {
+    expect(putOfferLineFirst(`${hook}\n\n${LINE}\n\nWe come to your hotel.`, LINE, offer)).toEqual({
+      caption: `${LINE}\n\n${hook}\n\nWe come to your hotel.`,
+      fix: 'put first',
     });
   });
 
   it('puts the line in place of the model own words for the offer', () => {
     expect(
-      putOfferLineSecond(
-        `${hook}\n\n10% off Thai this week, until 1 Nov!\n\nWe come.`,
-        LINE,
-        offer,
-      ),
-    ).toEqual({ caption: `${hook}\n\n${LINE}\n\nWe come.`, fix: 'put second' });
+      putOfferLineFirst(`${hook}\n\n10% off Thai this week, until 1 Nov!\n\nWe come.`, LINE, offer),
+    ).toEqual({ caption: `${LINE}\n\n${hook}\n\nWe come.`, fix: 'put first' });
   });
 
   it("keeps the question's flower when the model's offer followed it", () => {
-    expect(putOfferLineSecond(`Long flight? 🌸 ${LINE} Feel light again.`, LINE, offer)).toEqual({
-      caption: `Long flight? 🌸\n\n${LINE}\n\nFeel light again.`,
-      fix: 'put second',
+    expect(putOfferLineFirst(`Long flight? 🌸 ${LINE} Feel light again.`, LINE, offer)).toEqual({
+      caption: `${LINE}\n\nLong flight? 🌸 Feel light again.`,
+      fix: 'put first',
     });
   });
 
-  it('adds a line the model left out, after its first sentence', () => {
-    expect(putOfferLineSecond(`${hook} We come to your hotel.`, LINE, offer)).toEqual({
-      caption: `${hook}\n\n${LINE}\n\nWe come to your hotel.`,
+  it('adds a line the model left out, first, and no flower', () => {
+    expect(putOfferLineFirst(`${hook} We come to your hotel.`, LINE, offer)).toEqual({
+      caption: `${LINE}\n\n${hook} We come to your hotel.`,
       fix: 'added',
     });
   });
 
   it('gives the line alone when the caption only stated the offer', () => {
-    expect(putOfferLineSecond('10% off, until 1 Nov!', LINE, offer)).toEqual({
+    expect(putOfferLineFirst('10% off, until 1 Nov!', LINE, offer)).toEqual({
       caption: LINE,
-      fix: 'put second',
+      fix: 'put first',
     });
   });
 });

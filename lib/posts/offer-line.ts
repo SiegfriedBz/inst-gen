@@ -1,14 +1,13 @@
 import { POSTS_LIMITS } from './batch';
 import { emojisIn, FLOWERS } from './emoji';
-import { hookOnItsLine } from './hook-line';
 import { mentionsDay, OFFER_LIMITS, type Offer } from './offer';
 import { paragraphsOf } from './paragraphs';
 import { sentences } from './story';
 
 // An offer post's line, written by code from the offer and the post's
-// treatment, put second in its caption, after the question, and used as its
-// story text (docs/specs/posts/offer-line-first; second since
-// docs/specs/posts/short-captions, amended 2026-11-10).
+// treatment, put first in its caption, its question after it, and used as its
+// story text (docs/specs/posts/offer-line-first; first again since
+// docs/specs/posts/short-captions was amended 2026-11-12).
 
 const FLOWER = '🌸';
 
@@ -53,18 +52,18 @@ function leadingFlower(text: string): string | null {
 const hasWords = (text: string) => /[\p{L}\p{N}]/u.test(text);
 const LEADING_EMOJI = /^(?:\s|\p{Extended_Pictographic}|\uFE0F)*/u;
 
-// The line as the caption's second paragraph, word for word. Paragraph by
-// paragraph, the sentences that state the offer go; the first paragraph left
-// gives the question (its first sentence and the emoji after it), then the
-// line, then the rest.
-export function putOfferLineSecond(
+// The line as the caption's first paragraph, word for word. Paragraph by
+// paragraph, the sentences that state the offer go; the line comes first,
+// then what is left, its question first. No flower is added here: a spa's
+// two come after the paragraph limit.
+export function putOfferLineFirst(
   caption: string,
   line: string,
   offer: Offer,
-): { caption: string; fix: 'put second' | 'added' | null } {
+): { caption: string; fix: 'put first' | 'added' | null } {
   const text = caption.trim();
   const bare = line.replace(/\.$/, '');
-  if (paragraphsOf(text)[1]?.startsWith(bare)) return { caption: text, fix: null };
+  if (paragraphsOf(text)[0]?.startsWith(bare)) return { caption: text, fix: null };
   let stated = false;
   const kept = paragraphsOf(text)
     .map((paragraph) =>
@@ -80,11 +79,8 @@ export function putOfferLineSecond(
         .trim(),
     )
     .filter(hasWords);
-  const fix = stated ? 'put second' : 'added';
-  if (kept.length === 0) return { caption: line, fix };
-  const [first, ...others] = kept;
-  const [hook, ...after] = paragraphsOf(hookOnItsLine(first));
-  return { caption: [hook, line, ...after, ...others].join('\n\n'), fix };
+  const fix = stated ? 'put first' : 'added';
+  return { caption: [line, ...kept].join('\n\n'), fix };
 }
 
 // The flower right after the line in the caption, if any.

@@ -129,11 +129,12 @@ describe('copyRecords', () => {
   };
   const at = (n: number, caption: string, more: Partial<Post> = {}) =>
     post({ id: `post-${n}`, caption, ...more });
-  // Each test reads its own record; the hook's has a test of its own
-  // (docs/specs/posts/short-captions, amended 2026-11-10).
+  // Each test reads its own record; the question's has a test of its own
+  // (docs/specs/posts/short-captions, amended 2026-11-10 and 2026-11-12).
+  const QUESTION_RECORDS = ['hook is no question', 'no question after the offer line'];
   const reasons = (posts: Post[], profile = svarga()) =>
     copyRecords(posts, profile)
-      .filter((d) => !d.reason.endsWith('hook is no question'))
+      .filter((d) => !QUESTION_RECORDS.some((r) => d.reason.endsWith(r)))
       .map((d) => `${d.field}: ${d.reason}`);
 
   it('records nothing on a clean batch', () => {
@@ -146,20 +147,25 @@ describe('copyRecords', () => {
     ).toEqual([]);
   });
 
-  // Amended 2026-11-10: every hook is a question, an offer post's too.
-  it('records a hook that is no question, on any post', () => {
+  // Amended 2026-11-10: every hook is a question, an offer post's too;
+  // amended 2026-11-12: an offer post's, right after its line.
+  it('records a hook that is no question, and an offer post with none after its line', () => {
     const records = copyRecords(
       [
-        at(1, 'Long flight to Bali? Ten percent off.', { offer: true }),
+        at(1, 'Ten percent off in Canggu.\n\nLong flight to Bali? We come to you.', {
+          offer: true,
+        }),
         at(2, 'Tired feet after a long walk through Seminyak.'),
-        at(3, 'Ten percent off in Canggu. Sore feet?', { offer: true }),
+        at(3, 'Ten percent off in Canggu.\n\nWe come to your villa.\n\nSore feet?', {
+          offer: true,
+        }),
         at(4, 'Sore feet in Canggu? 🌸 Warm oil helps.'),
       ],
       svarga(),
     ).map((d) => `${d.field}: ${d.reason}`);
-    expect(records.filter((r) => r.endsWith('hook is no question'))).toEqual([
+    expect(records.filter((r) => QUESTION_RECORDS.some((q) => r.endsWith(q)))).toEqual([
       'mix: post-2: hook is no question',
-      'mix: post-3: hook is no question',
+      'mix: post-3: no question after the offer line',
     ]);
     expect(records.some((r) => r.includes('question hooks in'))).toBe(false);
   });
@@ -272,7 +278,7 @@ describe('copyRecords', () => {
   it("never counts an offer post's offer line", () => {
     const second = 'Slow hands ease the stiff legs you carry home from a long busy day in Canggu.';
     expect(
-      reasons([at(1, `Sore legs in Canggu?\n\n${sixteen}\n\n${second}`, { offer: true })]),
+      reasons([at(1, `${sixteen}\n\nSore legs in Canggu?\n\n${second}`, { offer: true })]),
     ).toEqual(['words: post-1: 16 words in "Slow hands ease the…"']);
   });
 
