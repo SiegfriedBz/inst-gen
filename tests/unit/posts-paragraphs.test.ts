@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { joinQuestion, keepParagraphs, paragraphsOf } from '@/lib/posts/paragraphs';
+import { factOnItsLine, joinQuestion, keepParagraphs, paragraphsOf } from '@/lib/posts/paragraphs';
 
 // docs/specs/posts/short-captions, "At most three short paragraphs".
 describe('keepParagraphs', () => {
@@ -54,5 +54,28 @@ describe('joinQuestion', () => {
   it('never joins a second paragraph that holds more than its question', () => {
     expect(joinQuestion('L\n\nQ? A.\n\nB.\n\nF.')).toBe('L\n\nQ? A.\n\nB.\n\nF.');
     expect(joinQuestion('L\n\nNot one.\n\nA.\n\nF.')).toBe('L\n\nNot one.\n\nA.\n\nF.');
+  });
+});
+
+// The model joined its fact to the answer in 5 of posts-18's 8 captions
+// (docs/specs/posts/short-captions, amended 2026-11-12).
+describe('factOnItsLine', () => {
+  it("puts the second paragraph's last sentence on a line of its own", () => {
+    expect(factOnItsLine('Q?\n\nA. F 🌸', false)).toBe('Q?\n\nA.\n\nF 🌸');
+  });
+
+  it('keeps an emoji that opens the last sentence with the one before', () => {
+    expect(factOnItsLine('Q?\n\nA. 🌸 F.', false)).toBe('Q?\n\nA. 🌸\n\nF.');
+  });
+
+  it("splits an offer post's question, answer and fact, never its question and answer", () => {
+    expect(factOnItsLine('L\n\nQ? A. F.', true)).toBe('L\n\nQ? A.\n\nF.');
+    expect(factOnItsLine('L\n\nQ? A.', true)).toBe('L\n\nQ? A.');
+  });
+
+  it('keeps one paragraph, three, and a second of one sentence, byte for byte', () => {
+    expect(factOnItsLine('Q? A. F.', false)).toBe('Q? A. F.');
+    expect(factOnItsLine('Q?\n\nA.\n\nF. G.', false)).toBe('Q?\n\nA.\n\nF. G.');
+    expect(factOnItsLine('Q?\n\nA 🌸', false)).toBe('Q?\n\nA 🌸');
   });
 });

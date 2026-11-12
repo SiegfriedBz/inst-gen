@@ -586,7 +586,7 @@ describe('two kinds of question', () => {
 
   it.each(prompts)('the %s prompt describes both kinds and the answer', (_, prompt) => {
     for (const rule of [
-      "- sore: opens on the guest's sore spot, named as a part of the body in its own word (legs, feet, shoulders, neck, back, arms, hands, head), the one its",
+      '- sore: asks the guest about their own sore spot, with "your", and opens on it, named as a part of the body in its own word (legs, feet, shoulders, neck, back, arms, hands, head), the one its',
       'for "whole body" or "head", one its treatment\'s description names',
       "one of the essence's moments that fits it, never the same moment in both posts",
       'with a real place of the business when the moment holds none',

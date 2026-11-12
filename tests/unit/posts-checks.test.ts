@@ -379,7 +379,9 @@ describe('no stop before an emoji', () => {
       svargaProfile(),
       'p1',
     );
-    expect(checked?.caption).toBe('Sore feet? 🌺\n\nFeel light again. Wake up rested 🌸');
+    // Its last sentence on a line of its own (docs/specs/posts/short-captions,
+    // amended 2026-11-12).
+    expect(checked?.caption).toBe('Sore feet? 🌺\n\nFeel light again.\n\nWake up rested 🌸');
     expect(checked?.storyText).toBe('Sore feet? Rest well 🌸');
   });
 
@@ -409,7 +411,7 @@ describe('no stop before an emoji', () => {
     );
     const line = '10% off our 90-minute Balinese massage, until Tuesday 27 October';
     expect(checked?.caption).toBe(
-      `${line}.\n\nLong flight? 🌸 Our Balinese massage melts it away. Rest 🌺`,
+      `${line}.\n\nLong flight? 🌸 Our Balinese massage melts it away.\n\nRest 🌺`,
     );
     expect(checked?.storyText).toBe(`${line} 🌸`);
   });
@@ -1377,6 +1379,65 @@ describe('short captions', () => {
 
   it("keeps an owner's caption of five paragraphs", () => {
     const caption = 'A.\n\nB.\n\nC.\n\nD.\n\nE.';
+    const edited = applyEdit(
+      post(),
+      { caption, hashtags: 'spa', altText: 'Hands' },
+      svargaProfile(),
+    );
+    expect(edited.caption).toBe(caption);
+  });
+
+  // The fact on its own line (amended 2026-11-12, after posts-18's second run).
+  const notSpa = () => ({ ...svargaProfile(), category: 'cafe' });
+
+  it('the fact on its own line', () => {
+    const { post: checked } = checkPost(
+      raw({
+        type: 'moment',
+        caption:
+          'Sore feet after a day in Canggu?\n\nWe come to your villa tonight. No upfront deposit for villas and hotels.',
+      }),
+      notSpa(),
+      'post-2',
+    );
+    expect(checked?.caption).toBe(
+      'Sore feet after a day in Canggu?\n\nWe come to your villa tonight.\n\nNo upfront deposit for villas and hotels.',
+    );
+  });
+
+  it("an offer post's question keeps its answer", () => {
+    const offer: Offer = {
+      kind: 'discount',
+      percent: 10,
+      treatments: ['Balinese massage'],
+      until: '2026-10-27',
+      lastDay: 'Tuesday 27 October',
+    };
+    const line = '10% off our 90-minute Balinese massage, until Tuesday 27 October.';
+    const caption = `${line}\n\nCan a therapist come to my villa tonight? We come with oils and towels.`;
+    const { post: checked } = checkPost(raw({ caption }), notSpa(), 'post-1', {
+      offer,
+      carries: true,
+    });
+    expect(checked?.caption).toBe(caption);
+  });
+
+  it("gives a spa's split caption exactly two flowers", () => {
+    const { post: checked } = checkPost(
+      raw({
+        type: 'moment',
+        caption: 'Sore feet in Canggu? 🌸\n\nWe come to your villa tonight. Free travel in Canggu.',
+      }),
+      svargaProfile(),
+      'post-2',
+    );
+    expect(checked?.caption).toBe(
+      'Sore feet in Canggu? 🌸\n\nWe come to your villa tonight.\n\nFree travel in Canggu 🌸',
+    );
+  });
+
+  it("keeps an owner's two paragraphs", () => {
+    const caption = 'Sore feet?\n\nWe come tonight. Free travel.';
     const edited = applyEdit(
       post(),
       { caption, hashtags: 'spa', altText: 'Hands' },

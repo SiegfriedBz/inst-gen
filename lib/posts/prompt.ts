@@ -42,7 +42,7 @@ Only offer posts sell a treatment; the other types earn the guest's attention, n
 // 2026-11-12), each described with no example to copy. The plan reads the part
 // of the body from the set-up; a rewrite, from the image prompt it keeps.
 const questionWords = (partFrom: string): Record<Question, string> => ({
-  sore: `opens on the guest's sore spot, named as a part of the body in its own word (legs, feet, shoulders, neck, back, arms, hands, head), the one its ${partFrom} (for "whole body" or "head", one its treatment's description names); then the moment it comes from, one of the essence's moments that fits it, never the same moment in both posts; with a real place of the business when the moment holds none.`,
+  sore: `asks the guest about their own sore spot, with "your", and opens on it, named as a part of the body in its own word (legs, feet, shoulders, neck, back, arms, hands, head), the one its ${partFrom} (for "whole body" or "head", one its treatment's description names); then the moment it comes from, one of the essence's moments that fits it, never the same moment in both posts; with a real place of the business when the moment holds none.`,
   ask: 'the question a tourist would ask or type before booking, in the first person (I, my) and their own words, that this business answers from its profile: whether a therapist comes to their room, tonight, what they bring, a deposit, how long.',
 });
 

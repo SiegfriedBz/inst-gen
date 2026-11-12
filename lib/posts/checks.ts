@@ -18,7 +18,7 @@ import { hookOnItsLine } from './hook-line';
 import { ctaFor } from './input';
 import { mentionsDay, OFFER_LIMITS, type Offer, PERCENT } from './offer';
 import { offerLine, offerStory, offerTreatment, putOfferLineFirst } from './offer-line';
-import { joinQuestion, keepParagraphs } from './paragraphs';
+import { factOnItsLine, joinQuestion, keepParagraphs } from './paragraphs';
 import type { Setup } from './setup';
 import { cleanStory, sentences } from './story';
 import { copyRecords, lightRecords, repeatRecords } from './variety';
@@ -203,7 +203,8 @@ function spaCaption(caption: string, id: string): { caption: string; dropped: Dr
 // alone on its line, then the cut (docs/specs/posts/short-captions). A spa's
 // caption then gets its two flowers, so neither step removes one (amended
 // 2026-11-10). On a post with its offer line, a question alone after the line
-// keeps its answer (amended 2026-11-12).
+// keeps its answer, and a fact the model joined to the answer goes on its own
+// line (amended 2026-11-12).
 function shortCaption(
   caption: string,
   id: string,
@@ -212,7 +213,7 @@ function shortCaption(
 ): { caption: string; dropped: Dropped[] } {
   const split = hookOnItsLine(caption);
   const kept = keepParagraphs(lined ? joinQuestion(split) : split, id);
-  const cut = cutCaption(kept.caption);
+  const cut = cutCaption(factOnItsLine(kept.caption, lined));
   if (!spa) return { caption: cut, dropped: kept.dropped };
   const added = twoFlowers(cut);
   const back =

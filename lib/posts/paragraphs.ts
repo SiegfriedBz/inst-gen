@@ -69,3 +69,23 @@ export function joinQuestion(caption: string): string {
     ...rest.map((lines) => lines.join('\n')),
   ].join('\n\n');
 }
+
+// The fact on its own line (docs/specs/posts/short-captions, amended
+// 2026-11-12): on two paragraphs whose second holds more than its answer (an
+// offer post's, after its line: its question and its answer), the second's
+// last sentence and the emoji after it become a third. An emoji that opens
+// that sentence stays with the one before. Anything else comes back as it is.
+const LEADING_EMOJI = /^(?:\s|\p{Extended_Pictographic}|\uFE0F)*/u;
+
+export function factOnItsLine(caption: string, lined: boolean): string {
+  const all = groups(caption);
+  if (all.length !== 2) return caption;
+  const parts = sentences(all[1].join(' '));
+  const counted = parts.filter((part) => WORDS.test(part)).length;
+  if (counted < (lined ? 3 : 2)) return caption;
+  const at = parts.findLastIndex((part) => WORDS.test(part));
+  const last = parts.slice(at).join('');
+  const lead = last.match(LEADING_EMOJI)?.[0] ?? '';
+  const rest = `${parts.slice(0, at).join('')}${lead}`.trim();
+  return [all[0].join('\n'), rest, last.slice(lead.length).trim()].join('\n\n');
+}
