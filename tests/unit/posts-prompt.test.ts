@@ -90,7 +90,7 @@ describe('planPrompt', () => {
   });
 
   it('has a version', () => {
-    expect(POSTS_PROMPT_VERSION).toBe('posts-17');
+    expect(POSTS_PROMPT_VERSION).toBe('posts-18');
   });
 });
 
@@ -183,6 +183,7 @@ describe('the image set-ups', () => {
   it('no set-ups, no section', () => {
     expect(planUserText(postsModelInput(svargaProfile()), [])).not.toContain('Image set-ups');
     expect(planUserText(postsModelInput(svargaProfile()), [])).not.toContain('### Hooks');
+    expect(planUserText(postsModelInput(svargaProfile()), [])).not.toContain('### Questions');
   });
 });
 
@@ -249,15 +250,15 @@ describe('the special offer', () => {
     }
   });
 
-  // Amended 2026-11-10: the question first, the offer line second
+  // Amended 2026-11-12: the offer line first again, its question after it
   // (docs/specs/posts/short-captions).
-  it('says the order: the question, then the offer line', () => {
+  it('says the order: the offer line, then the question', () => {
     const prompt = planPrompt(true, true);
     expect(prompt).toContain(
-      'A post that carries the special offer opens on its question too; its offer line comes right after it.',
+      'A post that carries the special offer opens on its offer line instead, alone on its first line; its question opens the second paragraph.',
     );
     expect(prompt).toContain(
-      `Each offer post's caption opens on its question, then its offer line, given under "### Special offer", word for word, as its second paragraph.`,
+      `Each offer post's caption opens on its offer line, given under "### Special offer", word for word, alone on its first line; its question opens the second paragraph, and the answer follows it.`,
     );
     expect(prompt).not.toContain('<percentage>');
     // posts-9 dropped 2.11's "as given" sentence, and 4 of 6 offer posts then
@@ -299,7 +300,7 @@ describe('the special offer', () => {
     );
     expect(text).not.toContain("post-3's offer line");
     expect(rewritePrompt(true, true)).toContain(
-      'A post marked offer: true keeps the offer: its caption opens on its question, then its offer line, given under "### Special offer", word for word, as its second paragraph, and its story text is that line, followed by one flower; the other posts never mention it.',
+      'A post marked offer: true keeps the offer: its caption opens on its offer line, given under "### Special offer", word for word, alone on its first line, its question opening the second paragraph, and its story text is that line, followed by one flower; the other posts never mention it.',
     );
   });
 
@@ -322,7 +323,7 @@ describe('the story text and the captions that sell', () => {
       'Each post has a type, a topic, a scene, a caption, a story text, hashtags, alt text and an image prompt.',
     );
     expect(planPrompt()).toContain('Story text: its own line');
-    expect(planPrompt()).toContain('at most 100 characters, emoji included');
+    expect(planPrompt()).toContain('at most 10 words and 60 characters, emoji included');
     expect(planPrompt()).toContain('no call to action, and never the words');
     expect(planPrompt()).toContain('the sticker asks');
   });
@@ -341,7 +342,7 @@ describe('the story text and the captions that sell', () => {
 
   it("gives a spa flowers only, and another business today's rule", () => {
     expect(planPrompt(false, true)).toContain(
-      'Emoji: flowers only, from 🌸 🌺 🌼 🌷 🪷: exactly 2 in the caption, one right after the question and one at its very end, and exactly 1 in the story text, at its end. No other emoji.',
+      'Emoji: flowers only, from 🌸 🌺 🌼 🌷 🪷: exactly 2 in the caption, one right after its first line and one at its very end, and exactly 1 in the story text, at its end. No other emoji.',
     );
     expect(planPrompt(false, false)).toContain(
       'At most 2 emoji in the caption and at most 1 in the story text.',
@@ -494,7 +495,7 @@ describe('marketing copy', () => {
 
   it('names the offer line only with an offer', () => {
     expect(planPrompt(true)).toContain(
-      'A post that carries the special offer opens on its question too',
+      'A post that carries the special offer opens on its offer line instead',
     );
     expect(planPrompt()).not.toContain('special offer');
     expect(rewritePrompt()).not.toContain('special offer');
@@ -560,5 +561,98 @@ describe('short captions', () => {
     ]) {
       expect(prompt).not.toContain(gone);
     }
+  });
+});
+
+// docs/specs/posts/short-captions, amended 2026-11-12: two kinds of question,
+// answered plainly; the offer line first; story texts of ten words.
+describe('two kinds of question', () => {
+  const prompts = [
+    ['plan', planPrompt(false, true)],
+    ['plan with an offer', planPrompt(true, true)],
+    ['rewrite', rewritePrompt(false, true)],
+    ['rewrite with an offer', rewritePrompt(true, true)],
+  ] as const;
+  const offer: Offer = {
+    kind: 'discount',
+    percent: 10,
+    treatments: ['Balinese massage'],
+    until: '2026-10-27',
+    lastDay: 'Tuesday 27 October',
+  };
+
+  it.each(prompts)('the %s prompt describes both kinds and the answer', (_, prompt) => {
+    for (const rule of [
+      "- sore: names the guest's sore spot as a part of the body, the one its",
+      'for "whole body" or "head", one its treatment\'s description names',
+      "one of the essence's moments that fits it, never the same moment in both posts",
+      'with a real place of the business when the moment holds none',
+      '- ask: the question a tourist would ask or type before booking, in their own words, that this business answers',
+      'Never a question about how the guest feels, and never one that names only a mood',
+      'The second is the answer: it says what the massage does for the guest, plainly',
+      'nothing else in the caption is a question',
+      'a person does the acting: "we", the therapist or "you"; never the pressure, the strokes, the massage, the oil or the towels',
+      'The result is physical and soon',
+      'says where, in the question or the answer',
+      'Each sentence holds something a guest could check',
+      'Never "Imagine…"',
+      'unwind, indulge, pamper, oasis, escape, melt away, soothe',
+      'at most 10 words and 60 characters, emoji included',
+      "names the post's sore spot or moment in a few words and what the business does about it",
+    ]) {
+      expect(prompt).toContain(rule);
+    }
+  });
+
+  it.each(prompts)(
+    'the %s prompt drops the question-first order and its old story text',
+    (_, prompt) => {
+      for (const gone of [
+        'its offer line comes right after it',
+        'as its second paragraph',
+        'a reason to message now',
+        'Mount Batur',
+        'We come to you',
+      ]) {
+        expect(prompt).not.toContain(gone);
+      }
+    },
+  );
+
+  it('the plan reads the part of the body from the set-up, the rewrite from the image prompt', () => {
+    expect(planPrompt()).toContain('as a part of the body, the one its set-up gives');
+    expect(rewritePrompt()).toContain('as a part of the body, the one its image prompt shows');
+  });
+
+  it('the plan reads the kinds under "### Questions", the rewrite from each post', () => {
+    expect(planPrompt()).toContain(
+      'The questions: code gives each post its kind of question, in order, under "### Questions": post 1 takes question 1, and so on.',
+    );
+    expect(rewritePrompt()).toContain(
+      'The questions: each post\'s "question" names its kind; a post without one keeps the kind of question it has.',
+    );
+  });
+
+  it('lists the kinds after the set-ups, before the offer', () => {
+    const setups = dealSetups(svargaProfile(), offer, seededRandom('t'));
+    const text = planUserText(postsModelInput(svargaProfile()), [], offer, setups);
+    const kinds = setups.map((s, i) => `${i + 1}. ${s.question}`).join('\n');
+    expect(text).toContain(`### Questions\n${kinds}`);
+    expect(text.indexOf('### Questions')).toBeGreaterThan(text.indexOf('### Image set-ups'));
+    expect(text.indexOf('### Special offer')).toBeGreaterThan(text.indexOf('### Questions'));
+  });
+
+  it('gives a rewrite each post its kind, and none to a post without one', () => {
+    const [setup] = dealSetups(svargaProfile(), undefined, seededRandom('t'));
+    const { question: _, ...kindless } = setup;
+    const text = rewriteUserText(postsModelInput(svargaProfile()), [
+      post({ id: 'a', setup: { ...setup, question: 'ask' } }),
+      post({ id: 'b', setup: { ...kindless, hook: 'place' } }),
+      post({ id: 'c' }),
+    ]);
+    const posts = JSON.parse(text.split('### Posts\n')[1]);
+    expect(posts[0].question).toBe('ask');
+    expect('question' in posts[1]).toBe(false);
+    expect('question' in posts[2]).toBe(false);
   });
 });

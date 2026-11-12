@@ -4,7 +4,7 @@ import { FLOWERS } from './emoji';
 import type { PostsModelInput } from './input';
 import { OFFER_LIMITS, type Offer } from './offer';
 import { offerLine, offerTreatment } from './offer-line';
-import { type Setup, setupLine } from './setup';
+import { QUESTIONS, type Question, type Setup, setupLine } from './setup';
 
 // The post plan's prompts (docs/specs/posts/generate-copy, "What the model
 // writes"); the day or night light, the open room and the sign of the guest's
@@ -14,15 +14,17 @@ import { type Setup, setupLine } from './setup';
 // a job per type and story lines from docs/specs/posts/marketing-copy; two
 // posts an attempt and never a price from docs/specs/posts/two-suggestions;
 // three short paragraphs, a question first, the offer line second, a fact last,
-// two flowers and no setting from docs/specs/posts/short-captions. Bump the
-// version with every change, so eval verdicts trace back to it.
-export const POSTS_PROMPT_VERSION = 'posts-17';
+// two flowers and no setting from docs/specs/posts/short-captions; two kinds of
+// question, an answer with a person acting, the offer line first again and
+// story texts of ten words from its amendment of 2026-11-12. Bump the version
+// with every change, so eval verdicts trace back to it.
+export const POSTS_PROMPT_VERSION = 'posts-18';
 
 // Code decides the emoji rule: flowers only for a spa
 // (docs/specs/posts/story-text, "Emojis").
 function emojiRule(spa: boolean): string {
   return spa
-    ? `Emoji: flowers only, from ${FLOWERS.join(' ')}: exactly ${POSTS_LIMITS.captionFlowers} in the caption, one right after the question and one at its very end, and exactly ${POSTS_LIMITS.storyFlowers} in the story text, at its end. No other emoji.`
+    ? `Emoji: flowers only, from ${FLOWERS.join(' ')}: exactly ${POSTS_LIMITS.captionFlowers} in the caption, one right after its first line and one at its very end, and exactly ${POSTS_LIMITS.storyFlowers} in the story text, at its end. No other emoji.`
     : `At most ${POSTS_LIMITS.otherEmoji} emoji in the caption and at most ${POSTS_LIMITS.otherStoryEmoji} in the story text.`;
 }
 
@@ -36,25 +38,40 @@ const TYPE_JOBS = `- offer: makes the guest want one treatment or package now: t
 - proof: what the profile says about the business (years open, its promise, a highlight, a rating it quotes), stated plainly. Only when the highlights or the promise give something to say; never an invented review, rating or customer.
 Only offer posts sell a treatment; the other types earn the guest's attention, name a treatment once at most, and never in their first line.`;
 
-// Captions of three paragraphs: a question alone on the first line, what the
-// massage does or the offer line, one fact; no price and no example to copy
-// (docs/specs/posts/short-captions, amended 2026-11-10); the story text, a line
-// of its own (docs/specs/posts/marketing-copy). The copy follows the post's
-// light (docs/specs/posts/day-and-night-copy).
+// The kinds of question code deals (docs/specs/posts/short-captions, amended
+// 2026-11-12), each described with no example to copy. The plan reads the part
+// of the body from the set-up; a rewrite, from the image prompt it keeps.
+const questionWords = (partFrom: string): Record<Question, string> => ({
+  sore: `names the guest's sore spot as a part of the body, the one its ${partFrom} (for "whole body" or "head", one its treatment's description names), and the moment it comes from, one of the essence's moments that fits it, never the same moment in both posts; with a real place of the business when the moment holds none.`,
+  ask: 'the question a tourist would ask or type before booking, in their own words, that this business answers from its profile: whether a therapist comes to their room, tonight, what they bring, a deposit, how long.',
+});
+
+const questionKinds = (intro: string, partFrom: string) => {
+  const words = questionWords(partFrom);
+  return `${intro}\n${QUESTIONS.map((kind) => `- ${kind}: ${words[kind]}`).join('\n')}`;
+};
+
+// Captions of three paragraphs: a question alone on the first line, its
+// answer, one fact; with an offer, the offer line first, the question and its
+// answer after it; no price and no example to copy (docs/specs/posts/short-captions,
+// amended 2026-11-12); the story text, a line of its own of ten words at most.
+// The copy follows the post's light (docs/specs/posts/day-and-night-copy).
 const captionRules = (
   spa: boolean,
   withOffer = false,
   lightFrom = 'the last word of its set-up',
 ) => `Captions:
 - English, in the business's tone words, written as its owner would, to tourists and expats nearby.
-- The first line is the hook, alone on its line: a short question that ends with "?", at most 12 words and 125 characters, about the guest's sore spot and the moment it comes from, often with one of the business's places. It stops a tourist scrolling, since it is all Instagram shows before "more".${withOffer ? ' A post that carries the special offer opens on its question too; its offer line comes right after it.' : ''}
-- Then two more paragraphs, with a blank line between them: three in all, never more. The second says what the massage does for the guest, plainly, doing its type's job: one or two short sentences, one idea each, and a sentence holds at most ${POSTS_LIMITS.sentenceWords} words, the hook's too.${withOffer ? ' On a post that carries the special offer, the second paragraph is its offer line, word for word, and nothing else.' : ''} The third is one fact from the profile's highlights, stated plainly in one short sentence: never the same highlight in both captions.
+- The first line is the hook, alone on its line: a short question that ends with "?", at most 12 words and 125 characters, of its post's kind, in the words a tourist would use. It stops a tourist scrolling, since it is all Instagram shows before "more". Never a question about how the guest feels, and never one that names only a mood: a long day, a break, unwinding, stress.${withOffer ? ' A post that carries the special offer opens on its offer line instead, alone on its first line; its question opens the second paragraph.' : ''}
+- Then two more paragraphs, with a blank line between them: three in all, never more. The second is the answer: it says what the massage does for the guest, plainly, doing its type's job, in one or two short sentences, one idea each; a sentence holds at most ${POSTS_LIMITS.sentenceWords} words, the hook's too. It answers the question, and nothing else in the caption is a question.${withOffer ? ' On a post that carries the special offer, the second paragraph opens on its question, then answers it.' : ''} The third is one fact from the profile's highlights, stated plainly in one short sentence: never the same highlight in both captions.
+- In the answer, a person does the acting: "we", the therapist or "you"; never the pressure, the strokes, the massage, the oil or the towels. The result is physical and soon: the sore spot loosened, the rest of the guest's day or evening, tomorrow's hike or flight. A business that comes to its guests (its promise or service area says so) says where, in the question or the answer: the guest's own hotel room, apartment or villa, as its profile writes it; both captions may say it, each in its own words. Each sentence holds something a guest could check: who comes, where, how long, what they bring, which part of the body.
 - Never describe the setting: the light, the sky, the sunset, the garden, the room, the lamps, candles or linens, the oil's colour, or how quiet, calm or peaceful it is. Never describe what the photo shows: the image prompt's light, room and garden are for the image only. The story text follows the same rule.
 - Each caption names one of the business's real places, as its profile writes it, in its hook or the paragraph right after it: its town or area, a place it serves, or a landmark among its place symbols. A flower, a plant, an oil or an object is never a place; a caption may still use one as a detail, as it may a moment from its essence.
 - The caption ends on its fact, warm and plain, and never asks the guest to book or message. No two endings start with the same word.
 - A caption or story text that says when follows its post's light, ${lightFrom}: a day post speaks of the guest's afternoon, with the evening still ahead, never of sleep, bed or waking up; a night post of the guest's evening, the day done, never of the afternoon, the midday sun or the morning just past. It need not say when, and never describes the light.
 - The captions open differently and end differently: never the same first sentence, never the same last sentence, and never the same idea said twice in other words. Never reuse a phrase from these instructions or from the image set-ups: the set-ups describe the photos.
 - Plain, concrete words: never a word that only adds intensity, such as completely, deeply, truly, ultimate or pure.
+- Never "Imagine…", a "not this, it's that" contrast, an em dash (—), three adjectives in a row, or these words: unwind, indulge, pamper, oasis, escape, melt away, soothe.
 - ${POSTS_LIMITS.captionMin} to ${POSTS_LIMITS.captionAsked} characters in all, the hook included, before the app's WhatsApp line. No hashtags in the text.
 - ${emojiRule(spa)}
 - Never a price, in a caption or a story text.
@@ -66,16 +83,16 @@ Hashtags: 3 to 5, without "#", lower case, letters and digits only. One on the b
 
 Alt text: at most 125 characters, describing what the image will show, from its image prompt, for someone who can't see it. Never start with "image of".
 
-Story text: its own line for the post's Instagram story, which the owner pastes on the story image above a link sticker to WhatsApp: a reason to message now, a promise or a highlight from the profile. Never the treatment's name alone, never the caption's first sentence, never a price. English, at most ${POSTS_LIMITS.storyAsked} characters, emoji included; one or two short lines. No hashtags, no phone number, no link and no call to action, and never the words book, reserve, WhatsApp, message, DM or click: the sticker asks.`;
+Story text: its own line for the post's Instagram story, which the owner pastes on the story image above a link sticker to WhatsApp, read in two seconds: at most ${POSTS_LIMITS.storyWords} words and ${POSTS_LIMITS.storyAsked} characters, emoji included, one idea. It names the post's sore spot or moment in a few words and what the business does about it, often as a short question and its answer. Never the treatment's name alone, never the caption's first sentence, never a price. English. No hashtags, no phone number, no link and no call to action, and never the words book, reserve, WhatsApp, message, DM or click: the sticker asks. It follows the captions' rules on the setting, the clichés and the light.`;
 
 // The special offer's rules, only when the owner set one
 // (docs/specs/posts/special-offer, "What the model gets").
 const offerRules = (spa: boolean) => `
-A special offer is given. Posts 1 and 2 are the two offer posts. Both carry the special offer: each leads on one of the offer's treatments, two different ones when the offer has two or more. Each offer post's caption opens on its question, then its offer line, given under "### Special offer", word for word, as its second paragraph. Never a bigger discount, never other terms, never a price, never another session length, never "today only" or "this week", anywhere in an offer post. Each offer post's story text is its offer line, word for word${spa ? ', followed by one flower' : ''}.`;
+A special offer is given. Posts 1 and 2 are the two offer posts. Both carry the special offer: each leads on one of the offer's treatments, two different ones when the offer has two or more. Each offer post's caption opens on its offer line, given under "### Special offer", word for word, alone on its first line; its question opens the second paragraph, and the answer follows it. Never a bigger discount, never other terms, never a price, never another session length, never "today only" or "this week", anywhere in an offer post. Each offer post's story text is its offer line, word for word${spa ? ', followed by one flower' : ''}.`;
 
 const rewriteOfferRules = (spa: boolean) => `
 
-A special offer is given. A post marked offer: true keeps the offer: its caption opens on its question, then its offer line, given under "### Special offer", word for word, as its second paragraph, and its story text is that line${spa ? ', followed by one flower' : ''}; the other posts never mention it.`;
+A special offer is given. A post marked offer: true keeps the offer: its caption opens on its offer line, given under "### Special offer", word for word, alone on its first line, its question opening the second paragraph, and its story text is that line${spa ? ', followed by one flower' : ''}; the other posts never mention it.`;
 
 // Each post that carries the offer, by name, with its line in full.
 function offerText(offer: Offer, lines: [string, string][] = []): string {
@@ -107,6 +124,8 @@ ${TYPE_JOBS}
 ${withOffer ? 'Posts 1 and 2 are both offer posts.' : 'Post 1 is an offer post. Post 2 is one of the other types: moment, local, ritual, tip or proof.'} Never repeat the topic of a recent post.${withOffer ? offerRules(spa) : ''}
 
 The topic: one line, at most 12 words, saying what the post is about.
+
+${questionKinds('The questions: code gives each post its kind of question, in order, under "### Questions": post 1 takes question 1, and so on.', 'set-up gives')}
 
 ${captionRules(spa, withOffer)}
 
@@ -156,6 +175,10 @@ export function planUserText(
   if (setups.length) {
     const list = setups.map((s, i) => `${i + 1}. ${setupLine(s)}`).join('\n');
     text = `${text}\n\n### Image set-ups\n${list}`;
+    // Each post's kind of question (docs/specs/posts/short-captions, amended
+    // 2026-11-12).
+    const kinds = setups.flatMap((s, i) => (s.question ? [`${i + 1}. ${s.question}`] : []));
+    if (kinds.length) text = `${text}\n\n### Questions\n${kinds.join('\n')}`;
   }
   if (!offer) return text;
   // Posts 1 and 2 use set-ups 1 and 2, whose treatments are the offer's.
@@ -172,6 +195,8 @@ export function rewritePrompt(withOffer = false, spa = false): string {
 Each post keeps its type's job:
 ${TYPE_JOBS}
 
+${questionKinds('The questions: each post\'s "question" names its kind; a post without one keeps the kind of question it has.', 'image prompt shows')}
+
 ${captionRules(spa, withOffer, 'its "light"')}${withOffer ? rewriteOfferRules(spa) : ''}`;
 }
 
@@ -184,6 +209,9 @@ export function rewriteUserText(input: PostsModelInput, posts: Post[], offer?: O
       scene,
       // A post saved without a set-up, or a set-up without a light, is a day.
       light: setup?.light ?? 'day',
+      // Its kind of question, when code dealt one (docs/specs/posts/short-captions,
+      // amended 2026-11-12).
+      ...(setup?.question ? { question: setup.question } : {}),
       caption,
       imagePrompt,
       ...(offer && carries ? { offer: true } : {}),

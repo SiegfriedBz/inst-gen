@@ -41,9 +41,12 @@ describe('cleanStory', () => {
     );
   });
 
-  it('limits are 120 and 100', () => {
+  // Asked: 60 characters and 10 words since docs/specs/posts/short-captions
+  // was amended 2026-11-12; checked: 120.
+  it('limits are 120, 60 and 10 words', () => {
     expect(POSTS_LIMITS.storyChars).toBe(120);
-    expect(POSTS_LIMITS.storyAsked).toBe(100);
+    expect(POSTS_LIMITS.storyAsked).toBe(60);
+    expect(POSTS_LIMITS.storyWords).toBe(10);
   });
 
   it('gives a spa story text its flower within 120', () => {

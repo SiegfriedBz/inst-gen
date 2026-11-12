@@ -38,7 +38,7 @@ export const POSTS_LIMITS = {
   // The story text (docs/specs/posts/story-text): code's limit, counted with
   // `.length`, and what the model is asked for.
   storyChars: 120,
-  storyAsked: 100,
+  storyAsked: 60,
   // At most, a story text's words, an offer post's aside: more is recorded
   // (docs/specs/posts/short-captions, amended 2026-11-12).
   storyWords: 10,
