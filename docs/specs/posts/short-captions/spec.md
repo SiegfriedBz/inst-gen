@@ -1,8 +1,7 @@
 ---
 title: "Short captions"
 description: "Every caption the model writes is three short paragraphs in plain words: a question of the kind code deals (a sore spot and its moment, or what a guest asks before booking), what the guest gets with a person doing the acting, and one fact from the business's highlights; with an offer, the offer line first and the question after it; never a description of the light, the room or the calm; story texts of ten words at most. Code holds a caption to three paragraphs and puts an offer post's line first, and records long sentences, setting words, clichés, missing questions and sore spots with no part of the body."
-status: approved
-approved: { by: siegfried.bozza@protonmail.com, at: 2026-11-12T09:34:56Z }
+status: draft
 date: "2026-11-10"
 ---
 
@@ -160,7 +159,9 @@ aren't counted.
      captions of an attempt never use the same one (2.15). It replaces 2.15's
      endings by type.
 - A sentence holds at most 15 words, the hook too; the offer line is code's
-  (2.13b) and isn't held to it.
+  (2.13b) and isn't held to it. Amended 2026-11-12: the prompt asks the
+  answer's sentences for 12 words, and code still records past 15 ("The
+  tightened prompt", below).
 - 80 to 280 characters in all, before the WhatsApp line.
 
 The two captions of an attempt now share one shape, as the maintainer's
@@ -189,8 +190,8 @@ its set-up, as 2.15 dealt its hook styles, and the prompt gives it under
 
 | Kind | The question |
 |---|---|
-| `sore` | the guest's sore spot, named as a part of the body, and the moment it comes from, with a real place when the moment holds none; asked to the guest, with "your" (amended 2026-11-12, after `posts-18`'s second run) (IG `references/hook-formulas.md`: a specific moment, not a mood; CH `copywriting/SKILL.md`: name the reader's pain) |
-| `ask` | the question a tourist would ask or type before booking, in their own words, that this business answers: whether a therapist comes to their room, tonight, what they bring, a deposit (CH `ad-creative/references/hook-system.md`: the exact question the buyer types into search) |
+| `sore` | the guest's sore spot, named as a part of the body, and the moment it comes from, with a real place when the moment holds none; asked to the guest, with "your" (amended 2026-11-12, after `posts-18`'s second run), opening on the part of the body ("The tightened prompt") (IG `references/hook-formulas.md`: a specific moment, not a mood; CH `copywriting/SKILL.md`: name the reader's pain) |
+| `ask` | the question a tourist would ask or type before booking, in their own words and the first person ("The tightened prompt"), that this business answers: whether a therapist comes to their room, tonight, what they bring, a deposit (CH `ad-creative/references/hook-system.md`: the exact question the buyer types into search) |
 
 - The part of the body is the post's set-up's, which its image shows: the
   question and the photo match. For "whole body" or "head", it is a part its
@@ -217,7 +218,8 @@ question: never one that labels the writer's own claim ("The result?").
 ### The answer
 
 Amended 2026-11-12. The paragraph after the question says what the guest
-gets, in one or two short sentences:
+gets, in one or two short sentences (two since "The tightened prompt",
+below):
 
 - A person does the acting: "we", the therapist, or "you". Never the
   pressure, the strokes, the massage, the oil or the towels (CH
@@ -225,12 +227,14 @@ gets, in one or two short sentences:
   "Slow pressure loosens deep tension…").
 - The result is physical and soon: the sore spot loosened, tonight's sleep,
   tomorrow's hike or flight (CH `marketing-psychology/SKILL.md`: sell the result
-  the customer is after).
+  the customer is after). The prompt names the rest of the guest's day or
+  evening in place of sleep, which the light rule forbids on a day post.
 - A business that comes to its guests (its promise or service area says so)
   says where, in the question or this paragraph: the guest's own hotel room,
   apartment or villa, as its profile writes it. Both captions may say it, each
   in its own words: it is why a guest books this business rather than a spa
-  (developer's call).
+  (developer's call). Since "The tightened prompt", one sentence of the answer
+  says it, in both captions.
 - Each sentence holds something a guest could check: who comes, where, how
   long, what they bring, which part of the body (IG
   `ig-caption-writer/references/caption-checklist.md`: a real number tied to
@@ -239,6 +243,35 @@ gets, in one or two short sentences:
 
 On a post that carries the offer, the paragraph opens on its question, then
 answers it the same way, within the 15 words of each sentence.
+
+### The tightened prompt
+
+Amended 2026-11-12, after `posts-18`'s first run (the journal). Its answers ran
+to 19 words, two captions didn't say the therapist comes to the room, its
+offer captions joined their fact to the answer, and two questions read oddly.
+The maintainer chose to tighten the prompt and record again ("Tighten, 4
+calls"). The prompt, still `posts-18`, now asks:
+
+- a `sore` question that opens on its part of the body, in its own word:
+  legs, feet, shoulders, neck, back, arms, hands or head; asked to the guest,
+  with "your" (after the second run);
+- an `ask` question in the first person, as the tourist types it ("I",
+  "my");
+- the answer in two short sentences of at most 12 words each
+  (`POSTS_LIMITS.sentenceAsked`), one of them saying a therapist comes to the
+  guest's own room, for a business that comes to its guests, in both
+  captions; code still records a sentence past 15 words;
+- the fact alone in its paragraph, on every post: on an offer post, three
+  blocks, its line, its question with the answer, its fact. Code makes sure of
+  it ("The fact on its own line", below).
+
+Since the hook keeps its 12 words and the fact its "one short sentence", no
+number caps the fact: Svarga's post 1 copied its 17-word promise into it.
+
+The third run's recordings pass every check of this amendment, and miss two of
+2026-11-10's against `posts-16`: a sentence over 15 words in 3 captions of 8
+(`posts-16`: none), and no place in Svarga's post 2. Approving this amendment
+accepts them as they are (the journal).
 
 ### With an offer: the offer line, then the question
 

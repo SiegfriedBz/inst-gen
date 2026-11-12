@@ -97,6 +97,48 @@
 - 2026-11-12: shown the spec's example, a rewrite of Svarga's evening post,
   the maintainer: "Nothing, go on". Asked whether an offer post opens on its
   question or its offer line: "OFFER FIRST".
+- 2026-11-12, Tasks 7 to 12 (`plan.md`), the developer's calls:
+  - the kinds are drawn last, where 2.15's hook styles were, and pinned by a
+    test of the set-ups a seed deals before them; `hook` stays in the schema,
+    so set-ups saved with a style still load;
+  - the question record on an offer post, and the long-sentence record's skip
+    of its line, moved with the line first (Task 8), since both read where
+    the line sits;
+  - tests of the line second changed to the line first: checkPost puts the
+    offer line before the question; adds a missing line (paragraph 0); keeps
+    a post already right; the caption's treatment (paragraph 0); a price after
+    the line; a rewrite's line copied without its stop; a rewrite's line on
+    an old post; no stop before an emoji in an offer post; the five-paragraph
+    offer caption; the line written second; the line left out; the copyRecords
+    hook test; the offer line not counted as a long sentence. Two older tests
+    ("keeping a question mark", an offer post's stops) expect the fact on its
+    own line since Task 12;
+  - the clichés list gains its inflections (unwinding, indulgent, indulgence,
+    pampering, melts away, soothes, soothing): whole words would miss them;
+  - a rewrite's `sore` question reads its part of the body from the image
+    prompt it keeps, the plan's from its set-up: a rewrite gets no set-up;
+  - the answer's result names "the rest of the guest's day or evening", not
+    tonight's sleep, which the light rule forbids on a day post;
+  - `POSTS_LIMITS.storyWords` (10) and `sentenceAsked` (12) are new;
+    `storyAsked` is 60;
+  - an empty `.superpowers/guide/` sits in the worktree: AGENTS.md cites it,
+    and `check-repo.mjs` looks for it once `.superpowers/` exists;
+  - `.env.local` came from the `git-identity-46cdff` worktree, out of git.
+- 2026-11-12: the first run used 6 requests for 4 asked: a `model_busy` and
+  a `SyntaxError` were tried again once each; the developer then stopped and
+  told the maintainer. The second and third runs took 4 each: 14 in all.
+- 2026-11-12: the first run's tightening ("Tighten, 4 calls") was built before
+  it was written into the spec; the final review caught it, and the
+  amendment "The tightened prompt" now says it.
+- 2026-11-12: the final review (a fresh reviewer, on the whole branch from
+  `develop`): no critical issue; "with fixes". Fixed: the paragraph steps and
+  the hook's line ended sentences at "Jl.", "Min." and "p.m. tonight", and a
+  paragraph could then be dropped; the journal's `posts-16` baseline (8 of 8,
+  not 4 of 8) and its verdict; the spec's account of the tightened prompt;
+  this journal's missing calls and RED and GREEN lines. Its minors are under
+  "Deferred".
+- 2026-11-12: `pnpm test:e2e`: 69 passed, 1 skipped (the skip older than this
+  branch).
 
 ## Evaluation, `posts-18`, third run (amended 2026-11-12)
 
@@ -155,15 +197,22 @@ the first call (14 requests today in all). Each caption as the owner sees it:
 | The story text, offer posts aside, holds at most 10 words and names the sore spot or the moment | 0 of 4 | 3 of 4 | 4 of 4 | 4 of 4 |
 
 2026-11-10's checks, third run: three paragraphs, 8 of 8; at most 300
-characters, 8 of 8; no sentence over 15 words, 5 of 8 (`posts-16`: 4 of 8);
-a real place, 7 of 8.
+characters, 8 of 8; no sentence over 15 words, 5 of 8 (`posts-16`: 8 of 8);
+a real place, 7 of 8 (`posts-16`: 8 of 8).
 
-Verdict: a pass on every check the spec sets. Left for the maintainer to
-judge: Svarga's post 1 ends on its promise as the website writes it, "book on
-WhatsApp and relax", a call to action before the app's own line, which
-code's record of a caption that asks to book doesn't catch ("book on" isn't in
-its pattern); two answers end on a bare "Trained local therapists."; and Sen's
-post 2 asks about the shoulders and answers about the back.
+Verdict, corrected after the final review: not a full pass. Every check of the
+2026-11-12 amendment passes, but two of 2026-11-10's checks do worse than
+`posts-16`, against the spec's pass rule. Three captions hold a sentence over
+15 words: Sen's post 2 (16), Svarga's post 1, whose fact copies the website's
+promise (17), and Sen's offer post 1 (17); the tightened prompt asks the
+answer for 12 words and no longer caps the fact. Svarga's post 2 names no
+place. Also for the maintainer to judge: Svarga's post 1 ends on its promise
+as the website writes it, "book on WhatsApp and relax", a call to action
+before the app's own line, which code's record of a caption that asks to book
+doesn't catch ("book on" isn't in its pattern); two answers end on a bare
+"Trained local therapists."; and Sen's post 2 asks about the shoulders and
+answers about the back. The spec's amendment "The tightened prompt" says what
+the prompt asks, and approving it accepts these recordings.
 
 ## Evaluation, `posts-18`, second run (amended 2026-11-12)
 
@@ -302,7 +351,7 @@ The checks, on the 6 captions recorded (Sen's offer plan missing):
 
 2026-11-10's checks: at most three paragraphs, 6 of 6 (both offer captions
 have two); at most 300 characters, 5 of 6 (316); no sentence over 15 words, 2
-of 6 (`posts-16`: 4 of 8); a real place, 5 of 6.
+of 6 (`posts-16`: 8 of 8); a real place, 5 of 6.
 
 Verdict: not a full pass. Every question names a sore spot or a booking worry
 but Sen's post 2, every answer but one has a person acting, and three story
@@ -481,6 +530,48 @@ Task 5, the exact paragraphs, then the tighter post 2:
       Tests  5 failed | 56 passed (61)
 ```
 
+2026-11-12, Task 7, `pnpm exec vitest run tests/unit/posts-setup.test.ts`:
+
+```
+      Tests  5 failed | 68 passed (73)
+```
+
+Task 8, the offer line, paragraphs, checks, variety and replay tests:
+
+```
+      Tests  28 failed | 132 passed (160)
+```
+
+Task 9, `pnpm exec vitest run tests/unit/posts-variety.test.ts`:
+
+```
+      Tests  4 failed | 27 passed (31)
+```
+
+Task 10, the prompt and run tests:
+
+```
+      Tests  17 failed | 85 passed (102)
+```
+
+The tightening after the first run, the prompt tests:
+
+```
+      Tests  10 failed | 65 passed (75)
+```
+
+Task 12, the paragraphs, checks and prompt tests:
+
+```
+      Tests  10 failed | 184 passed (194)
+```
+
+The final review's fix, the hook-line and paragraphs tests:
+
+```
+      Tests  2 failed | 20 passed (22)
+```
+
 ## GREEN
 
 Task 1: `Tests  4 passed (4)`. Task 2: `Tests  98 passed (98)`. Task 3:
@@ -522,6 +613,44 @@ Task 7, two flowers:
       Tests  1823 passed (1823)
 ```
 
+2026-11-12, Task 7, the set-up tests:
+
+```
+      Tests  73 passed (73)
+```
+
+Task 8, the posts tests:
+
+```
+      Tests  887 passed (887)
+```
+
+Task 9, the posts tests:
+
+```
+      Tests  894 passed (894)
+```
+
+Task 10 and the tightening, `pnpm check`:
+
+```
+      Tests  1966 passed (1966)
+```
+
+Task 12, `pnpm check`, with the third run's recordings:
+
+```
+      Tests  1974 passed (1974)
+```
+
+The final review's fix, `pnpm check`, then `pnpm test:e2e`:
+
+```
+      Tests  1977 passed (1977)
+  1 skipped
+  69 passed (31.3s)
+```
+
 ## Deferred
 
 - 2.15's places record doesn't split the parentheses in Svarga's new service
@@ -539,3 +668,22 @@ Task 7, two flowers:
   last paragraph; `lib/posts/edit.ts` still says "no cut at 700 characters";
   the replay test's three-paragraph check can't fail (its hook and flower
   checks can).
+- From the 2026-11-12 final review, left for later:
+  - `plan.md`'s Review Focus says a caption of three paragraphs comes back
+    byte for byte; since 2026-11-10 its line breaks become blank lines;
+  - a three-paragraph offer caption "line / Q? / A. F." keeps its lone
+    question and its joined fact: the join runs past three paragraphs, the
+    split on two;
+  - a caption that leaves out its fact has its answer's second sentence moved
+    into the fact's place;
+  - stale comments: `offer-line.ts` (`dropPrices`, gone), `checks.ts` (up to
+    3 flowers), `paragraphs.ts` ("an offer post's line" second), `emoji.ts`
+    ("after its question"), `variety.ts` ("its first paragraph"), `edit.ts`
+    (700 characters);
+  - test gaps: "landscape" holds no cliché ("pampered" would test whole
+    words); the clean-batch test filters the question records out; the
+    replay test doesn't check the body record; no test pins a spa's flower
+    right after the offer line;
+  - the record of a caption that asks to book misses "book on WhatsApp";
+  - `story.ts`, `hook-line.ts` and `variety.ts` each split sentences their
+    own way.
