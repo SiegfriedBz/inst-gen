@@ -77,6 +77,7 @@ function print(result: PlanResult): void {
     console.log(`     alt: ${post.altText}`);
     if (post.setup) console.log(`     set-up: ${setupLine(post.setup)}`);
     if (post.setup?.hook) console.log(`     hook: ${post.setup.hook}`);
+    if (post.setup?.question) console.log(`     question: ${post.setup.question}`);
     console.log(`     image: ${post.imagePrompt}`);
     for (const flag of post.unchecked) console.log(`     ⚠ ${flag.kind}: ${flag.text}`);
     // The story text and its length as code counts it (docs/specs/posts/story-text).
