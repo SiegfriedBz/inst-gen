@@ -98,6 +98,79 @@
   the maintainer: "Nothing, go on". Asked whether an offer post opens on its
   question or its offer line: "OFFER FIRST".
 
+## Evaluation, `posts-18`, second run (amended 2026-11-12)
+
+After the first run, the maintainer chose to tighten the prompt and record
+again, 4 requests ("Tighten, 4 calls"): a `sore` question opens on its part of
+the body, in its own word; an `ask` question in the first person; the answer
+in two sentences of at most 12 words, one of them saying a therapist comes to
+the room; the fact alone in its paragraph. The prompt stays `posts-18`, the
+first run's recordings replaced, as `posts-15`'s were on 2026-11-10. All 4
+came back on the first call (10 requests today in all).
+
+**Sen, without an offer**
+
+1. `ask`: "Can my therapist bring oils to my Da Nang hotel tonight? 🌸" / "We
+   loosen tight back muscles with slow forearm and elbow pressure. Linens,
+   towels and oils included." / "Professional therapeutic massage only 🪷".
+   Story: "Need a massage in your room tonight? We bring everything 🌸".
+2. `sore`: "Shoulders sore after a surf at My Khe beach? 🌺" / "We ease tired
+   paddling muscles and tight hips with expert care. Free travel in our core
+   areas 🪷" (two paragraphs). Story: "Sore shoulders after My Khe? We ease
+   tight muscles 🌸".
+
+**Svarga, without an offer**
+
+1. `sore`: "Are your legs tired after walking around Canggu today? 🌸" / "We use
+   long strokes to loosen your muscles for the rest of your afternoon.
+   Experienced local therapists with 5+ years of spa and villa experience
+   bring fresh linens, towels, and natural oils right to your room 🪷" (two
+   paragraphs). Story: "Tired legs in Canggu? We loosen your muscles today 🌸".
+2. `ask`: "Can you bring a massage to my villa tonight? 🌸" / "We release
+   tension in your feet so you can rest easily through your evening. No
+   upfront deposit is needed for your hotel or villa booking 🪷" (two
+   paragraphs). Story: "Foot massage at your villa tonight? 🌸".
+
+**Sen, with the offer**
+
+1. `ask`: the offer line / "Can a therapist come to my hotel room tonight? We
+   bring fresh linens, towels and warm natural oil straight to your Da Nang
+   hotel room 🌺" / "Trained local therapists."
+2. `sore`: the offer line / "My shoulders feel very stiff after long flights in
+   Da Nang today. We use rhythmic palm and thumb pressure to ease your sore
+   muscles 🌺" / "Free travel in our core areas." The question is a statement
+   in the first person, the `ask` question's voice: recorded `no question after
+   the offer line`, and the replay test fails on it.
+
+**Svarga, with the offer**
+
+1. `sore`: the offer line / "Is your neck tight after laptop days in Canggu?
+   We work the tension out of your shoulders so your evening feels easy.
+   Experienced local therapists with 5+ years of spa and villa experience come
+   to your room 🌼" (two paragraphs).
+2. `ask`: the offer line / "Can two therapists come to my villa tonight? We
+   bring fresh linens, towels, and natural oils right to your Pererenan room.
+   Two therapists work in sync to ease your arms and hands 🪷" (two
+   paragraphs).
+
+| Check | posts-16 | first run | second run |
+|---|---|---|---|
+| The question names a part of the body (`sore`) or what a guest asks before booking (`ask`), with a moment or a real place | 0 of 8 | 5 of 6 | 7 of 8 |
+| No sentence in which a thing does the acting | 4 of 8 | 5 of 6 | 8 of 8 |
+| Says the therapist comes to the guest's room | 3 of 8 | 4 of 6 | 6 of 8 |
+| No cliché, em dash or question that labels the writer's claim | 5 of 8 | 6 of 6 | 8 of 8 ("expert care", a quality the profile doesn't claim, in one) |
+| An offer post opens on its offer line | 0 of 4 | 2 of 2 | 4 of 4 |
+| The story text, offer posts aside, holds at most 10 words and names the sore spot or the moment | 0 of 4 | 3 of 4 | 4 of 4 (both `ask` posts name "tonight") |
+
+2026-11-10's checks, second run: three paragraphs, 3 of 8 (5 join the fact to
+the answer); at most 300 characters, 8 of 8; no sentence over 15 words, 6 of
+8; a real place, 7 of 8.
+
+Verdict: the questions, the acting and the story texts pass; the room misses
+the bar (6 of 8), the fact sits alone in 3 captions of 8, and Sen's offer
+post 2 asks no question. The developer proposed the spec's amendment "The
+fact on its own line" and a `sore` question that speaks to the guest.
+
 ## Evaluation, `posts-18` (amended 2026-11-12)
 
 Recorded on 2026-11-12, with the maintainer's yes for 4 requests. It took 6:

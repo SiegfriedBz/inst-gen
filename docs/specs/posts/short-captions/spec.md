@@ -1,8 +1,7 @@
 ---
 title: "Short captions"
 description: "Every caption the model writes is three short paragraphs in plain words: a question of the kind code deals (a sore spot and its moment, or what a guest asks before booking), what the guest gets with a person doing the acting, and one fact from the business's highlights; with an offer, the offer line first and the question after it; never a description of the light, the room or the calm; story texts of ten words at most. Code holds a caption to three paragraphs and puts an offer post's line first, and records long sentences, setting words, clichés, missing questions and sore spots with no part of the body."
-status: approved
-approved: { by: siegfried.bozza@protonmail.com, at: 2026-11-12T09:04:08Z }
+status: draft
 date: "2026-11-10"
 ---
 
@@ -189,7 +188,7 @@ its set-up, as 2.15 dealt its hook styles, and the prompt gives it under
 
 | Kind | The question |
 |---|---|
-| `sore` | the guest's sore spot, named as a part of the body, and the moment it comes from, with a real place when the moment holds none (IG `references/hook-formulas.md`: a specific moment, not a mood; CH `copywriting/SKILL.md`: name the reader's pain) |
+| `sore` | the guest's sore spot, named as a part of the body, and the moment it comes from, with a real place when the moment holds none; asked to the guest, with "your" (amended 2026-11-12, after `posts-18`'s second run) (IG `references/hook-formulas.md`: a specific moment, not a mood; CH `copywriting/SKILL.md`: name the reader's pain) |
 | `ask` | the question a tourist would ask or type before booking, in their own words, that this business answers: whether a therapist comes to their room, tonight, what they bring, a deposit (CH `ad-creative/references/hook-system.md`: the exact question the buyer types into search) |
 
 - The part of the body is the post's set-up's, which its image shows: the
@@ -268,6 +267,31 @@ code puts the line first where it put it second.
 The rest of 2.13b stands: the line's words, the price removed from the rest of
 the caption, the story text that is the offer line, and the offer's end by the
 WhatsApp line (2.15).
+
+### The fact on its own line
+
+Amended 2026-11-12, after `posts-18`'s second run (the journal): the model
+joined its fact to the answer in 5 captions of 8, though the prompt asks for it
+alone. Code now makes sure of it, as it makes sure of three paragraphs at most.
+
+- On a caption of two paragraphs, the last sentence of the second, and any
+  emoji right after it, becomes a third paragraph of its own, when the second
+  holds more than the answer: two sentences or more, or, on a post that
+  carries the offer, whose second opens on its question, three or more.
+- A caption of one or three paragraphs keeps its paragraphs, and so does one
+  whose second holds only its answer (an offer post's: its question and its
+  answer).
+- It runs after the paragraph limit and before the cut and the flowers.
+  Nothing is recorded: it is how every caption is written, as the hook's own
+  line is (2.15).
+- It applies to what the model writes, in the plan and in every caption
+  update. The owner's own edits keep their lines (2.4).
+
+The prompt's `sore` question also speaks to the guest, with "your": Sen's
+offer post 2 opened its second paragraph on a statement in the first person,
+the `ask` question's voice ("My shoulders feel very stiff…"). Since the prompt
+changes, Sen's and Svarga's plans are recorded once more, 4 requests, with the
+maintainer's go-ahead.
 
 The model is asked for all of it. Code makes sure of the three paragraphs.
 When the model writes more, the caption keeps its hook, the paragraph after it
@@ -496,7 +520,11 @@ Unit tests (Vitest) for:
   first when it left it out, and kept when it wrote it first; an offer caption
   of five paragraphs keeping its line, its question and its last; a spa's
   first flower after the offer line; each new record, and none on a clean
-  batch.
+  batch; after `posts-18`'s second run, the fact on its own line: a second
+  paragraph of an answer and a fact split in two, an offer post's of its
+  question, answer and fact split, an offer post's of its question and answer
+  kept, a caption of three kept, a spa's two flowers kept, an owner's edit
+  kept; the `sore` question's "your".
 
 The replay test checks Sen's and Svarga's `posts-16` plans, with and without
 an offer: no caption has more than three paragraphs, a spa's caption has
@@ -635,6 +663,18 @@ Scenario: A long story text (amended 2026-11-12)
   When code checks the plan
   Then the batch's dropped list holds 'post-2: story text of 13 words'
 
+Scenario: The fact on its own line (amended 2026-11-12)
+  Given a business that isn't a spa
+  And the model writes post 2's caption "Sore feet after a day in Canggu?", then "We come to your villa tonight. No upfront deposit for villas and hotels.", each a paragraph
+  When code checks the plan
+  Then post 2's caption is "Sore feet after a day in Canggu?", "We come to your villa tonight." and "No upfront deposit for villas and hotels.", each a paragraph
+
+Scenario: An offer post's question keeps its answer (amended 2026-11-12)
+  Given a special offer, and a business that isn't a spa
+  And the model writes post 1's caption: the offer line, then "Can a therapist come to my villa tonight? We come with oils and towels.", each a paragraph
+  When code checks the plan
+  Then post 1's caption keeps its two paragraphs
+
 Scenario: A rewrite keeps the kinds (amended 2026-11-12)
   Given a batch whose post 2 was dealt the question "ask"
   When the owner edits the business and the captions are rewritten
@@ -679,7 +719,10 @@ Scenario: A recorded offer plan (amended 2026-11-12)
 - Dropping a paragraph between the second and the last can leave a gap in
   what the caption says. The owner reads each post before posting it.
 - The model may still write fewer than three paragraphs. Code makes sure of
-  three at most, not of each paragraph's job.
+  three at most, not of each paragraph's job. Amended 2026-11-12: code puts a
+  joined fact on its own line, so a caption of two paragraphs becomes three
+  when its second holds more than the answer; a caption of one stays one, and
+  code can't tell a fact from a third sentence of answer.
 - Code can't turn a statement into a question: a hook without "?" reaches the
   owner, and the record shows it (amended 2026-11-10).
 - Every hook names a sore spot and a moment, so hooks can look alike from one
