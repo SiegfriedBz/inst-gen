@@ -139,6 +139,8 @@
   "Deferred".
 - 2026-11-12: `pnpm test:e2e`: 69 passed, 1 skipped (the skip older than this
   branch).
+- 2026-11-12: the maintainer approved the amendment "The tightened prompt",
+  and with it accepted the third run's recordings as they are.
 
 ## Evaluation, `posts-18`, third run (amended 2026-11-12)
 

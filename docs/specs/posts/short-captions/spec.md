@@ -1,7 +1,8 @@
 ---
 title: "Short captions"
 description: "Every caption the model writes is three short paragraphs in plain words: a question of the kind code deals (a sore spot and its moment, or what a guest asks before booking), what the guest gets with a person doing the acting, and one fact from the business's highlights; with an offer, the offer line first and the question after it; never a description of the light, the room or the calm; story texts of ten words at most. Code holds a caption to three paragraphs and puts an offer post's line first, and records long sentences, setting words, clichés, missing questions and sore spots with no part of the body."
-status: draft
+status: approved
+approved: { by: siegfried.bozza@protonmail.com, at: 2026-11-12T10:06:41Z }
 date: "2026-11-10"
 ---
 
