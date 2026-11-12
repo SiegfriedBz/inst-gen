@@ -25,6 +25,9 @@ export const POSTS_LIMITS = {
   // asked for (docs/specs/posts/short-captions).
   paragraphs: 3,
   sentenceWords: 15,
+  // The answer's two sentences, asked shorter than the 15 code records: the
+  // first posts-18 run wrote up to 19 (amended 2026-11-12).
+  sentenceAsked: 12,
   captionMin: 80,
   captionAsked: 280,
   // Code's cut, at the last full sentence before it.

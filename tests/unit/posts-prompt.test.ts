@@ -255,6 +255,9 @@ describe('the special offer', () => {
   it('says the order: the offer line, then the question', () => {
     const prompt = planPrompt(true, true);
     expect(prompt).toContain(
+      'so its caption is three blocks: its offer line, its question with the answer, its fact.',
+    );
+    expect(prompt).toContain(
       'A post that carries the special offer opens on its offer line instead, alone on its first line; its question opens the second paragraph.',
     );
     expect(prompt).toContain(
@@ -531,7 +534,7 @@ describe('short captions', () => {
     for (const rule of [
       'a short question that ends with "?"',
       'three in all, never more',
-      'a sentence holds at most 15 words',
+      'two short sentences of at most 12 words each',
       'one idea each',
       '80 to 280 characters in all',
       'Never describe the setting',
@@ -583,17 +586,18 @@ describe('two kinds of question', () => {
 
   it.each(prompts)('the %s prompt describes both kinds and the answer', (_, prompt) => {
     for (const rule of [
-      "- sore: names the guest's sore spot as a part of the body, the one its",
+      "- sore: opens on the guest's sore spot, named as a part of the body in its own word (legs, feet, shoulders, neck, back, arms, hands, head), the one its",
       'for "whole body" or "head", one its treatment\'s description names',
       "one of the essence's moments that fits it, never the same moment in both posts",
       'with a real place of the business when the moment holds none',
-      '- ask: the question a tourist would ask or type before booking, in their own words, that this business answers',
+      '- ask: the question a tourist would ask or type before booking, in the first person (I, my) and their own words, that this business answers',
       'Never a question about how the guest feels, and never one that names only a mood',
       'The second is the answer: it says what the massage does for the guest, plainly',
       'nothing else in the caption is a question',
       'a person does the acting: "we", the therapist or "you"; never the pressure, the strokes, the massage, the oil or the towels',
       'The result is physical and soon',
-      'says where, in the question or the answer',
+      "one sentence of the answer says a therapist comes to the guest's own hotel room, apartment or villa",
+      'It stands alone in its paragraph, on every post.',
       'Each sentence holds something a guest could check',
       'Never "Imagine…"',
       'unwind, indulge, pamper, oasis, escape, melt away, soothe',
@@ -620,8 +624,8 @@ describe('two kinds of question', () => {
   );
 
   it('the plan reads the part of the body from the set-up, the rewrite from the image prompt', () => {
-    expect(planPrompt()).toContain('as a part of the body, the one its set-up gives');
-    expect(rewritePrompt()).toContain('as a part of the body, the one its image prompt shows');
+    expect(planPrompt()).toContain('head), the one its set-up gives');
+    expect(rewritePrompt()).toContain('head), the one its image prompt shows');
   });
 
   it('the plan reads the kinds under "### Questions", the rewrite from each post', () => {
