@@ -228,3 +228,108 @@ git commit -m "docs(docs): record posts-15 and mark roadmap 2.18 done"
 - [ ] **Step 3: Implement.** Paragraph by paragraph, the sentences that state the offer go; the first paragraph left gives the hook (`hookOnItsLine`), then the line, then the rest.
 - [ ] **Step 4: Run them, then `pnpm check`, and see them pass.** Tests of 2.13b's line first change to the line second, each named in the journal.
 - [ ] **Step 5: Commit**, then record Sen's and Svarga's plans again (4 requests, the maintainer's yes) and score them as Task 5 did.
+
+---
+
+## The spec amended 2026-11-12
+
+**Goal:** Every caption opens on a question of the kind code deals (`sore` or `ask`) and answers it with a person doing the acting; an offer post opens on its offer line again; story texts hold ten words at most; code records clichés, missing questions, sore spots with no part of the body and long story texts.
+
+**Architecture:** `lib/posts/setup.ts` deals `question` last, in place of 2.15's hook styles. `lib/posts/offer-line.ts` gets `putOfferLineFirst` back, paragraph by paragraph as `putOfferLineSecond` works, and `lib/posts/paragraphs.ts` a `joinQuestion` that `shortCaption` runs on an offer post before the limit. `lib/posts/variety.ts` reads an offer post's question after its line and gains three records. The prompt becomes `posts-18`. Then Sen's and Svarga's plans are recorded again, with the maintainer's go-ahead.
+
+**Spec:** `docs/specs/posts/short-captions/spec.md`, the parts marked "Amended 2026-11-12".
+
+### Global Constraints (amended 2026-11-12)
+
+- Kinds: `QUESTIONS = ['sore', 'ask'] as const`, one each per attempt, `shuffled(QUESTIONS, random)` with or without an offer, drawn last, where `HOOKS` were. `HOOKS` stays in the schema only, so a set-up saved with a style still loads; none is dealt.
+- Prompt version `posts-18`. Plan user text: `### Questions` right after `### Image set-ups`, one line per post, `1. sore`. Rewrite user text: `question` next to `light`, only when the set-up has one.
+- Offer post: paragraph 1 is its offer line, word for word; paragraph 2 opens on its question; paragraph 3 is its fact. Fix records `<id>: offer line put first`, `<id>: offer line added`.
+- On an offer post of more than three paragraphs (counted after `hookOnItsLine`), a second paragraph that is one sentence ending in "?" (emoji after it allowed) joins the third with a space. Three or fewer: unchanged.
+- Story text asked: at most 10 words (`POSTS_LIMITS.storyWords: 10`) and 60 characters (`storyAsked: 60`), flower included. Code's limit stays `storyChars: 120`.
+- Records, exact reasons: `{ field: 'mix', reason: '<id>: no question after the offer line' }`; `{ field: 'mix', reason: '<id>: question names no part of the body' }`; `{ field: 'words', reason: '<id>: "melt away", "—"' }` and `'<id>'s story text: "unwind"'`; `{ field: 'story', reason: '<id>: story text of <n> words' }`.
+- Body words: back, shoulder, shoulders, neck, leg, legs, calf, calves, thigh, thighs, knee, knees, foot, feet, ankle, ankles, arm, arms, hand, hands, wrist, wrists, hip, hips, head. Never "muscles" or "body".
+- Clichés: unwind, unwinding, indulge, indulgent, indulgence, pamper, pampering, oasis, escape, melt away, melts away, soothe, soothes, soothing, and the em dash "—"; whole words, case ignored, listed in the order they appear (the inflections are the developer's call, in the journal).
+- No example sentence, question or story text in the prompt (2.14b).
+- The recordings spend 4 Flash-Lite requests: only after the maintainer says yes, never on a pilot day.
+- Commits as above.
+
+### Review Focus (amended 2026-11-12)
+
+- A set-up saved with a 2.15 style (`hook: 'scene'`) and no `question` still loads, and its rewrite sends no `question`. Task 7 and Task 10 test it.
+- An offer caption written with single line breaks (`line\nquestion?\nanswer.\nfact.`) counts four paragraphs and keeps its answer. Task 8 tests it.
+- A caption that carries no offer and whose second paragraph is a question is never joined. Task 8 tests it.
+- The body record reads "Legs" and "shoulders," as body words, and never fires on an `ask` post or a post without a kind. Task 9 tests it.
+- "landscape" and "escaped" hold no cliché: whole words only. Task 9 tests it.
+
+### Task 7: The two kinds of question in the set-ups
+
+**Files:**
+- Modify: `lib/posts/setup.ts` (`QUESTIONS`, `Question`, `setupSchema`, `dealSetups`), `scripts/eval-posts.ts:79` (print `question: <kind>` when the set-up has one)
+- Test: `tests/unit/posts-setup.test.ts` (the `hook styles` block becomes `question kinds`)
+
+**Interfaces:**
+- Produces: `export const QUESTIONS = ['sore', 'ask'] as const`; `export type Question = (typeof QUESTIONS)[number]`; `setupSchema` gains `question: z.enum(QUESTIONS).optional()` and keeps `hook: z.enum(HOOKS).optional()`; `dealSetups` sets `question` on both set-ups and no `hook`.
+
+- [ ] **Step 1: Write the failing tests.** Before changing code, pin what `deal(withOfferings(EIGHT), offerOn(['Aroma Massage']))` and `deal(senProfile())` give today, without `hook`. Tests: `one of each kind, without an offer` (`deal(senProfile()).map((s) => s.question).sort()` is `['ask', 'sore']`); `one of each kind, with an offer`; `the same seed, the same kinds`; `no hook style any more` (every `hook` undefined); `the kinds come last: the set-ups are as before` (both pinned deals equal, `question` aside); `the schema takes a kind, a 2.15 style, none, and refuses another` (`question: 'sore'` and `hook: 'scene'` pass, `question: 'scene'` fails); `the image never sees the kind` (`setupLine` the same with and without `question`).
+- [ ] **Step 2: Run them and see them fail.** `pnpm exec vitest run tests/unit/posts-setup.test.ts`: the kind tests fail.
+- [ ] **Step 3: Implement.** `const questions = shuffled(QUESTIONS, random)` in place of `hooks`, `question: questions[i]` in each set-up.
+- [ ] **Step 4: Run them, and see them pass.**
+- [ ] **Step 5: Commit** `feat(posts): deal a sore or ask question into each set-up (roadmap 2.18)`.
+
+### Task 8: The offer line first, and the question keeps its answer
+
+**Files:**
+- Modify: `lib/posts/offer-line.ts` (`putOfferLineFirst` replaces `putOfferLineSecond`), `lib/posts/paragraphs.ts` (`joinQuestion`), `lib/posts/checks.ts` (`lineFirst` replaces `lineSecond`; `LINE_FIXES` `'put first': 'offer line put first'`; `shortCaption(caption, id, spa, carries)` runs `joinQuestion` after `hookOnItsLine` when `carries`)
+- Test: `tests/unit/posts-offer-line.test.ts`, `tests/unit/posts-paragraphs.test.ts`, `tests/unit/posts-checks.test.ts`
+
+**Interfaces:**
+- Produces: `putOfferLineFirst(caption: string, line: string, offer: Offer): { caption: string; fix: 'put first' | 'added' | null }`; `joinQuestion(caption: string): string`.
+
+- [ ] **Step 1: Write the failing tests.** `putOfferLineFirst`: keeps a caption whose first paragraph starts with the line (its stop may be gone before a flower); moves a line written second, or in the model's own words, to the first paragraph, `'put first'`; adds a missing one first, `'added'`; gives the line alone when the caption only stated the offer; adds no flower. `joinQuestion`: `"L\n\nQ?\n\nA.\n\nF."` gives `"L\n\nQ? A.\n\nF."`; `"L\nQ? 🌸\nA.\nF."` gives `"L\n\nQ? 🌸 A.\n\nF."`; three paragraphs come back byte for byte; a second paragraph holding a question and an answer is not joined. `checkPost`: the spec's scenarios "The offer line goes first" and "The offer line added first" (a business that isn't a spa); an offer caption of five paragraphs keeping its line, its question with its answer, and its last; a spa's offer caption ending with exactly 2 flowers; a caption without the offer whose second paragraph is a question, not joined.
+- [ ] **Step 2: Run them and see them fail.** `pnpm exec vitest run tests/unit/posts-offer-line.test.ts tests/unit/posts-paragraphs.test.ts tests/unit/posts-checks.test.ts`.
+- [ ] **Step 3: Implement.** `putOfferLineFirst`: the early return reads `paragraphsOf(text)[0]?.startsWith(bare)`; the sentences that state the offer go as in `putOfferLineSecond`; the result is `[line, ...kept].join('\n\n')`. `joinQuestion` uses `groups` and `sentences` (`lib/posts/story.ts`).
+- [ ] **Step 4: Run them, then the posts tests, and see them pass.** 2.18's tests of the line second change to the line first; the journal names each.
+- [ ] **Step 5: Commit** `feat(posts): the offer line first again, its question kept with its answer (roadmap 2.18)`.
+
+### Task 9: The records of the amendment
+
+**Files:**
+- Modify: `lib/posts/variety.ts` (`hookRecords` reads an offer post's first sentence after its line; new `bodyRecords`, `clicheRecords`, `storyLengthRecords`, all in `copyRecords`)
+- Test: `tests/unit/posts-variety.test.ts`
+
+**Interfaces:**
+- Consumes: `Setup['question']` (Task 7); `paragraphsOf` (`lib/posts/paragraphs.ts`).
+- Produces: the four record reasons in the Global Constraints.
+
+- [ ] **Step 1: Write the failing tests.** The spec's scenarios "No question after the offer line", "A sore question with no part of the body", "A cliché" and "A long story text"; an offer post opening on its line, then a question: no record; "Legs still shaking from the Mount Batur sunrise hike?" on a `sore` post: no record; "Tired after a long day in Canggu?" on an `ask` post or a post without a kind: no record; "melt away" and "—" in one caption: one record, `'post-1: "melt away", "—"'`; "unwind" in a story text: `"post-1's story text: \"unwind\""`; "landscape" and "escaped": none; a 10-word story text: none; an offer post's story text of 12 words: none; a clean batch: no new record.
+- [ ] **Step 2: Run them and see them fail.** `pnpm exec vitest run tests/unit/posts-variety.test.ts`.
+- [ ] **Step 3: Implement.** Words counted with `WORD` (`lib/posts/variety.ts`); an emoji is no word.
+- [ ] **Step 4: Run them, and see them pass.**
+- [ ] **Step 5: Commit** `feat(posts): record clichés, missing questions, sore spots and long story texts (roadmap 2.18)`.
+
+### Task 10: The prompt, posts-18
+
+**Files:**
+- Modify: `lib/posts/prompt.ts` (`POSTS_PROMPT_VERSION = 'posts-18'`, `captionRules`, `offerRules`, `rewriteOfferRules`, `planUserText`, `rewriteUserText`), `lib/posts/batch.ts` (`storyAsked: 60`, `storyWords: 10`)
+- Test: `tests/unit/posts-prompt.test.ts`, `tests/unit/posts-run.test.ts`
+
+**Interfaces:**
+- Consumes: `QUESTIONS`, `Setup['question']` (Task 7).
+
+- [ ] **Step 1: Write the failing tests.** `posts-18`; the plan and rewrite prompts describe `sore` (a part of the body, its set-up's, or for "whole body" or "head" one its treatment's description names; one of the essence's moments that fits it, never the same in both posts; a real place when the moment holds none) and `ask` (what a tourist asks or types before booking, that this business answers); never a question about how the guest feels or one that names only a mood; the line after the question answers it, and no other question, never one that labels the writer's own claim; a person does the acting, never the pressure, the strokes, the massage, the oil or the towels; the result physical and soon; a business that comes to its guests says where; each sentence holds something a guest could check; a spa's first flower "right after the first line"; the clichés and AI tells by name; the story text's 10 words and 60 characters; with an offer, the offer line alone on the first line and the question opening the second paragraph; none of "its offer line comes right after it", "as its second paragraph" or "a reason to message now" left; `### Questions` right after `### Image set-ups`, `1. sore`; a rewrite's user text with `"question": "ask"` for a post dealt it, and none for a post without one or with only a 2.15 `hook`; no example question or story text quoted.
+- [ ] **Step 2: Run them and see them fail.** `pnpm exec vitest run tests/unit/posts-prompt.test.ts tests/unit/posts-run.test.ts`.
+- [ ] **Step 3: Implement.** The kinds are described in the prompt's own words, with no example sentence.
+- [ ] **Step 4: Run them, then `pnpm check`, and see them pass.**
+- [ ] **Step 5: Commit** `feat(posts): questions of two kinds, answered plainly, the offer line first (posts-18, roadmap 2.18)`.
+
+### Task 11: New recordings, the replay test and the evaluation
+
+**Files:**
+- Modify: `tests/fixtures/sites/sen/posts.json`, `posts-offer.json`, `tests/fixtures/sites/svarga/posts.json`, `posts-offer.json` (recorded), `tests/unit/posts-fixtures-replay.test.ts`, `docs/specs/posts/short-captions/journal.md`, `docs/roadmap.md`
+- Test: `tests/unit/posts-fixtures-replay.test.ts`
+
+- [ ] **Step 1: Ask the maintainer** for 4 Flash-Lite requests, not on a pilot day. `.env.local` comes from the worktree the `posts-16` recordings used, and stays out of git.
+- [ ] **Step 2: Record.** `pnpm eval:posts sen svarga --record`, then `pnpm eval:posts sen svarga --offer --record`. A `model_busy` or `model_failed` run is tried again, each call counted in the journal.
+- [ ] **Step 3: Update the replay test** to `posts-18`: an offer post's first paragraph is its offer line and its second opens on a question; a post without the offer opens on a question; no caption over three paragraphs; a spa's caption has 2 flowers and its story text 1; no price. Run `pnpm exec vitest run tests/unit/posts-fixtures-replay.test.ts` and see it pass.
+- [ ] **Step 4: Score** the 8 captions and 4 story texts on the spec's amended checks, next to `posts-16`'s, in the journal. Show them to the maintainer; on a check that fails, they decide whether the prompt changes and the plans are recorded again.
+- [ ] **Step 5: Run `pnpm check` and `pnpm test:e2e`, set roadmap 2.18 to `done`, and commit** `feat(posts): record posts-18 for Sen and Svarga (roadmap 2.18)`.
