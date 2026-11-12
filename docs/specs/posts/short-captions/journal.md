@@ -98,6 +98,73 @@
   the maintainer: "Nothing, go on". Asked whether an offer post opens on its
   question or its offer line: "OFFER FIRST".
 
+## Evaluation, `posts-18`, third run (amended 2026-11-12)
+
+After the second run, the maintainer approved the spec's "The fact on its own
+line" and a `sore` question in "your", with 4 more requests. All 4 came back on
+the first call (14 requests today in all). Each caption as the owner sees it:
+
+**Sen, without an offer**
+
+1. `ask`: "Can a therapist come to my hotel room tonight? 🌸" / "We bring
+   professional care directly to your apartment in Da Nang for sixty minutes.
+   Trained local therapists." / "Linens, towels and oils included 🪷". Story:
+   "In-room massage tonight? We come to you 🌸".
+2. `sore`: "Are your shoulders tired after a surf at My Khe? 🌸" / "We ease tired
+   muscles on your back with sixty minutes of care in your hotel room. Trained
+   local therapists." / "Professional therapeutic massage only 🪷". Story:
+   "Sore back after surfing? We loosen tight muscles 🌸".
+
+**Svarga, without an offer**
+
+1. `sore`: "Are your legs heavy after walking all day in Canggu? 🌸" / "We use
+   warm coconut oil and long strokes to loosen tight muscles." / "Experienced
+   local therapists bring a Balinese massage to your villa or hotel: book on
+   WhatsApp and relax 🌼". Story: "Heavy legs? Our oil massage helps 🌸".
+2. `ask`: "Can someone come to my villa tonight for my tired feet? 🪷" / "We
+   press reflex points to help you rest well tonight." / "Fresh linens,
+   towels, and natural oils provided 🌺". Story: "Sore feet tonight? We bring
+   foot reflexology to your room 🌸".
+
+**Sen, with the offer**
+
+1. `ask`: the offer line / "Can a massage therapist come to my hotel room
+   tonight? Our trained local therapists bring fresh linens, towels and warm
+   oil directly to your Da Nang room 🪷" / "Trained local therapists".
+2. `sore`: the offer line / "Are your legs tired after exploring the Marble
+   Mountains today? We use rhythmic palm pressure and assisted stretches to
+   open stiff hips and legs 🪷" / "Linens, towels and oils included".
+
+**Svarga, with the offer**
+
+1. `sore`: the offer line / "Are your shoulders tight after a long flight? We
+   loosen your muscles right in your Canggu villa with warm coconut oil." /
+   "Experienced local therapists bring fresh linens and towels directly to your
+   room 🌺".
+2. `ask`: the offer line / "Can a therapist come to my hotel room tonight? Two
+   therapists work in sync on your arms and hands in your Pererenan room." /
+   "Fresh linens, towels, and natural oils are provided for your session 🌺".
+
+| Check | posts-16 | first run | second run | third run |
+|---|---|---|---|---|
+| The question names a part of the body (`sore`) or what a guest asks before booking (`ask`), with a moment or a real place | 0 of 8 | 5 of 6 | 7 of 8 | 8 of 8 |
+| No sentence in which a thing does the acting | 4 of 8 | 5 of 6 | 8 of 8 | 8 of 8 |
+| Says the therapist comes to the guest's room | 3 of 8 | 4 of 6 | 6 of 8 | 7 of 8 |
+| No cliché, em dash or question that labels the writer's claim | 5 of 8 | 6 of 6 | 8 of 8 | 8 of 8 |
+| An offer post opens on its offer line | 0 of 4 | 2 of 2 | 4 of 4 | 4 of 4 |
+| The story text, offer posts aside, holds at most 10 words and names the sore spot or the moment | 0 of 4 | 3 of 4 | 4 of 4 | 4 of 4 |
+
+2026-11-10's checks, third run: three paragraphs, 8 of 8; at most 300
+characters, 8 of 8; no sentence over 15 words, 5 of 8 (`posts-16`: 4 of 8);
+a real place, 7 of 8.
+
+Verdict: a pass on every check the spec sets. Left for the maintainer to
+judge: Svarga's post 1 ends on its promise as the website writes it, "book on
+WhatsApp and relax", a call to action before the app's own line, which
+code's record of a caption that asks to book doesn't catch ("book on" isn't in
+its pattern); two answers end on a bare "Trained local therapists."; and Sen's
+post 2 asks about the shoulders and answers about the back.
+
 ## Evaluation, `posts-18`, second run (amended 2026-11-12)
 
 After the first run, the maintainer chose to tighten the prompt and record

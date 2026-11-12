@@ -5,12 +5,16 @@
     "modelId": "gemini-3.5-flash-lite",
     "promptVersion": "posts-18",
     "partials": [
-      {},
+      {
+        "posts": [
+          {}
+        ]
+      },
       {
         "posts": [
           {
             "type": "offer",
-            "topic": "Traditional Balinese Massage for"
+            "topic": "Traditional Balinese massage for tired legs"
           }
         ]
       },
@@ -18,9 +22,9 @@
         "posts": [
           {
             "type": "offer",
-            "topic": "Traditional Balinese Massage for legs and tired muscles",
+            "topic": "Traditional Balinese massage for tired legs",
             "scene": "detail",
-            "caption": "Need relief for tired legs this"
+            "caption": "Are your legs heavy after walking all day in Canggu? "
           }
         ]
       },
@@ -28,9 +32,9 @@
         "posts": [
           {
             "type": "offer",
-            "topic": "Traditional Balinese Massage for legs and tired muscles",
+            "topic": "Traditional Balinese massage for tired legs",
             "scene": "detail",
-            "caption": "Need relief for tired legs this afternoon in Canggu? 🌸\n\nOur therapists use warm coconut oil and rhythmic strokes to loosen your legs"
+            "caption": "Are your legs heavy after walking all day in Canggu? 🌸 We use warm coconut oil and long strokes to loosen tight muscles. Experienced local therapists bring a Balinese massage to your villa or"
           }
         ]
       },
@@ -38,22 +42,11 @@
         "posts": [
           {
             "type": "offer",
-            "topic": "Traditional Balinese Massage for legs and tired muscles",
+            "topic": "Traditional Balinese massage for tired legs",
             "scene": "detail",
-            "caption": "Need relief for tired legs this afternoon in Canggu? 🌸\n\nOur therapists use warm coconut oil and rhythmic strokes to loosen your legs right here in your villa room.\n\nExperienced local therapists with 5+ years of spa and villa experience bring everything"
-          }
-        ]
-      },
-      {
-        "posts": [
-          {
-            "type": "offer",
-            "topic": "Traditional Balinese Massage for legs and tired muscles",
-            "scene": "detail",
-            "caption": "Need relief for tired legs this afternoon in Canggu? 🌸\n\nOur therapists use warm coconut oil and rhythmic strokes to loosen your legs right here in your villa room.\n\nExperienced local therapists with 5+ years of spa and villa experience bring everything to you 🌺",
+            "caption": "Are your legs heavy after walking all day in Canggu? 🌸 We use warm coconut oil and long strokes to loosen tight muscles. Experienced local therapists bring a Balinese massage to your villa or hotel: book on WhatsApp and relax. 🌼",
             "hashtags": [
-              "canggu",
-              "balines"
+              "canggu"
             ]
           }
         ]
@@ -62,14 +55,14 @@
         "posts": [
           {
             "type": "offer",
-            "topic": "Traditional Balinese Massage for legs and tired muscles",
+            "topic": "Traditional Balinese massage for tired legs",
             "scene": "detail",
-            "caption": "Need relief for tired legs this afternoon in Canggu? 🌸\n\nOur therapists use warm coconut oil and rhythmic strokes to loosen your legs right here in your villa room.\n\nExperienced local therapists with 5+ years of spa and villa experience bring everything to you 🌺",
+            "caption": "Are your legs heavy after walking all day in Canggu? 🌸 We use warm coconut oil and long strokes to loosen tight muscles. Experienced local therapists bring a Balinese massage to your villa or hotel: book on WhatsApp and relax. 🌼",
             "hashtags": [
               "canggu",
               "balinesemassage",
-              "massagewithatouch",
-              "spaday"
+              "massagecanggu",
+              "spas"
             ]
           }
         ]
@@ -78,16 +71,16 @@
         "posts": [
           {
             "type": "offer",
-            "topic": "Traditional Balinese Massage for legs and tired muscles",
+            "topic": "Traditional Balinese massage for tired legs",
             "scene": "detail",
-            "caption": "Need relief for tired legs this afternoon in Canggu? 🌸\n\nOur therapists use warm coconut oil and rhythmic strokes to loosen your legs right here in your villa room.\n\nExperienced local therapists with 5+ years of spa and villa experience bring everything to you 🌺",
+            "caption": "Are your legs heavy after walking all day in Canggu? 🌸 We use warm coconut oil and long strokes to loosen tight muscles. Experienced local therapists bring a Balinese massage to your villa or hotel: book on WhatsApp and relax. 🌼",
             "hashtags": [
               "canggu",
               "balinesemassage",
-              "massagewithatouch",
-              "spaday"
+              "massagecanggu",
+              "spas"
             ],
-            "altText": "Therapist hands working warm golden oil into a woman's legs on a massage bed in a sunny"
+            "altText": "Warm golden oil poured onto a woman's legs on a white massage"
           }
         ]
       },
@@ -95,17 +88,17 @@
         "posts": [
           {
             "type": "offer",
-            "topic": "Traditional Balinese Massage for legs and tired muscles",
+            "topic": "Traditional Balinese massage for tired legs",
             "scene": "detail",
-            "caption": "Need relief for tired legs this afternoon in Canggu? 🌸\n\nOur therapists use warm coconut oil and rhythmic strokes to loosen your legs right here in your villa room.\n\nExperienced local therapists with 5+ years of spa and villa experience bring everything to you 🌺",
+            "caption": "Are your legs heavy after walking all day in Canggu? 🌸 We use warm coconut oil and long strokes to loosen tight muscles. Experienced local therapists bring a Balinese massage to your villa or hotel: book on WhatsApp and relax. 🌼",
             "hashtags": [
               "canggu",
               "balinesemassage",
-              "massagewithatouch",
-              "spaday"
+              "massagecanggu",
+              "spas"
             ],
-            "altText": "Therapist hands working warm golden oil into a woman's legs on a massage bed in a sunny room.",
-            "imagePrompt": "A tall 9:16 photo of a Traditional Balinese Massage, showing"
+            "altText": "Warm golden oil poured onto a woman's legs on a white massage bed in a sunny room.",
+            "imagePrompt": "Vertical 9:16 photo. A woman lies"
           }
         ]
       },
@@ -113,17 +106,17 @@
         "posts": [
           {
             "type": "offer",
-            "topic": "Traditional Balinese Massage for legs and tired muscles",
+            "topic": "Traditional Balinese massage for tired legs",
             "scene": "detail",
-            "caption": "Need relief for tired legs this afternoon in Canggu? 🌸\n\nOur therapists use warm coconut oil and rhythmic strokes to loosen your legs right here in your villa room.\n\nExperienced local therapists with 5+ years of spa and villa experience bring everything to you 🌺",
+            "caption": "Are your legs heavy after walking all day in Canggu? 🌸 We use warm coconut oil and long strokes to loosen tight muscles. Experienced local therapists bring a Balinese massage to your villa or hotel: book on WhatsApp and relax. 🌼",
             "hashtags": [
               "canggu",
               "balinesemassage",
-              "massagewithatouch",
-              "spaday"
+              "massagecanggu",
+              "spas"
             ],
-            "altText": "Therapist hands working warm golden oil into a woman's legs on a massage bed in a sunny room.",
-            "imagePrompt": "A tall 9:16 photo of a Traditional Balinese Massage, showing one guest, a woman, on a massage bed, with warm golden oil; the therapist's hands working; the legs;"
+            "altText": "Warm golden oil poured onto a woman's legs on a white massage bed in a sunny room.",
+            "imagePrompt": "Vertical 9:16 photo. A woman lies relaxed on a massage bed. A female therapist pours warm golden oil onto her legs. Close view of the hands on the body"
           }
         ]
       },
@@ -131,17 +124,17 @@
         "posts": [
           {
             "type": "offer",
-            "topic": "Traditional Balinese Massage for legs and tired muscles",
+            "topic": "Traditional Balinese massage for tired legs",
             "scene": "detail",
-            "caption": "Need relief for tired legs this afternoon in Canggu? 🌸\n\nOur therapists use warm coconut oil and rhythmic strokes to loosen your legs right here in your villa room.\n\nExperienced local therapists with 5+ years of spa and villa experience bring everything to you 🌺",
+            "caption": "Are your legs heavy after walking all day in Canggu? 🌸 We use warm coconut oil and long strokes to loosen tight muscles. Experienced local therapists bring a Balinese massage to your villa or hotel: book on WhatsApp and relax. 🌼",
             "hashtags": [
               "canggu",
               "balinesemassage",
-              "massagewithatouch",
-              "spaday"
+              "massagecanggu",
+              "spas"
             ],
-            "altText": "Therapist hands working warm golden oil into a woman's legs on a massage bed in a sunny room.",
-            "imagePrompt": "A tall 9:16 photo of a Traditional Balinese Massage, showing one guest, a woman, on a massage bed, with warm golden oil; the therapist's hands working; the legs; scene detail, a close view of the hands on the body; day. Late afternoon, lamps lit inside, the garden"
+            "altText": "Warm golden oil poured onto a woman's legs on a white massage bed in a sunny room.",
+            "imagePrompt": "Vertical 9:16 photo. A woman lies relaxed on a massage bed. A female therapist pours warm golden oil onto her legs. Close view of the hands on the body. Late afternoon, the lamps lit inside the main light, the garden outside through wide windows in soft shade with no sunlight on"
           }
         ]
       },
@@ -149,18 +142,18 @@
         "posts": [
           {
             "type": "offer",
-            "topic": "Traditional Balinese Massage for legs and tired muscles",
+            "topic": "Traditional Balinese massage for tired legs",
             "scene": "detail",
-            "caption": "Need relief for tired legs this afternoon in Canggu? 🌸\n\nOur therapists use warm coconut oil and rhythmic strokes to loosen your legs right here in your villa room.\n\nExperienced local therapists with 5+ years of spa and villa experience bring everything to you 🌺",
+            "caption": "Are your legs heavy after walking all day in Canggu? 🌸 We use warm coconut oil and long strokes to loosen tight muscles. Experienced local therapists bring a Balinese massage to your villa or hotel: book on WhatsApp and relax. 🌼",
             "hashtags": [
               "canggu",
               "balinesemassage",
-              "massagewithatouch",
-              "spaday"
+              "massagecanggu",
+              "spas"
             ],
-            "altText": "Therapist hands working warm golden oil into a woman's legs on a massage bed in a sunny room.",
-            "imagePrompt": "A tall 9:16 photo of a Traditional Balinese Massage, showing one guest, a woman, on a massage bed, with warm golden oil; the therapist's hands working; the legs; scene detail, a close view of the hands on the body; day. Late afternoon, lamps lit inside, the garden outside through wide windows in soft shade. Warm and calm. No text or logos.",
-            "storyText": "Tired legs?"
+            "altText": "Warm golden oil poured onto a woman's legs on a white massage bed in a sunny room.",
+            "imagePrompt": "Vertical 9:16 photo. A woman lies relaxed on a massage bed. A female therapist pours warm golden oil onto her legs. Close view of the hands on the body. Late afternoon, the lamps lit inside the main light, the garden outside through wide windows in soft shade with no sunlight on it. Clean white linens, simple and warm. No text, no logos.",
+            "storyText": "Heavy"
           }
         ]
       },
@@ -168,21 +161,21 @@
         "posts": [
           {
             "type": "offer",
-            "topic": "Traditional Balinese Massage for legs and tired muscles",
+            "topic": "Traditional Balinese massage for tired legs",
             "scene": "detail",
-            "caption": "Need relief for tired legs this afternoon in Canggu? 🌸\n\nOur therapists use warm coconut oil and rhythmic strokes to loosen your legs right here in your villa room.\n\nExperienced local therapists with 5+ years of spa and villa experience bring everything to you 🌺",
+            "caption": "Are your legs heavy after walking all day in Canggu? 🌸 We use warm coconut oil and long strokes to loosen tight muscles. Experienced local therapists bring a Balinese massage to your villa or hotel: book on WhatsApp and relax. 🌼",
             "hashtags": [
               "canggu",
               "balinesemassage",
-              "massagewithatouch",
-              "spaday"
+              "massagecanggu",
+              "spas"
             ],
-            "altText": "Therapist hands working warm golden oil into a woman's legs on a massage bed in a sunny room.",
-            "imagePrompt": "A tall 9:16 photo of a Traditional Balinese Massage, showing one guest, a woman, on a massage bed, with warm golden oil; the therapist's hands working; the legs; scene detail, a close view of the hands on the body; day. Late afternoon, lamps lit inside, the garden outside through wide windows in soft shade. Warm and calm. No text or logos.",
-            "storyText": "Tired legs? Get a massage in your villa room."
+            "altText": "Warm golden oil poured onto a woman's legs on a white massage bed in a sunny room.",
+            "imagePrompt": "Vertical 9:16 photo. A woman lies relaxed on a massage bed. A female therapist pours warm golden oil onto her legs. Close view of the hands on the body. Late afternoon, the lamps lit inside the main light, the garden outside through wide windows in soft shade with no sunlight on it. Clean white linens, simple and warm. No text, no logos.",
+            "storyText": "Heavy legs? Our oil massage helps."
           },
           {
-            "type": "moment"
+            "type": "local"
           }
         ]
       },
@@ -190,24 +183,24 @@
         "posts": [
           {
             "type": "offer",
-            "topic": "Traditional Balinese Massage for legs and tired muscles",
+            "topic": "Traditional Balinese massage for tired legs",
             "scene": "detail",
-            "caption": "Need relief for tired legs this afternoon in Canggu? 🌸\n\nOur therapists use warm coconut oil and rhythmic strokes to loosen your legs right here in your villa room.\n\nExperienced local therapists with 5+ years of spa and villa experience bring everything to you 🌺",
+            "caption": "Are your legs heavy after walking all day in Canggu? 🌸 We use warm coconut oil and long strokes to loosen tight muscles. Experienced local therapists bring a Balinese massage to your villa or hotel: book on WhatsApp and relax. 🌼",
             "hashtags": [
               "canggu",
               "balinesemassage",
-              "massagewithatouch",
-              "spaday"
+              "massagecanggu",
+              "spas"
             ],
-            "altText": "Therapist hands working warm golden oil into a woman's legs on a massage bed in a sunny room.",
-            "imagePrompt": "A tall 9:16 photo of a Traditional Balinese Massage, showing one guest, a woman, on a massage bed, with warm golden oil; the therapist's hands working; the legs; scene detail, a close view of the hands on the body; day. Late afternoon, lamps lit inside, the garden outside through wide windows in soft shade. Warm and calm. No text or logos.",
-            "storyText": "Tired legs? Get a massage in your villa room."
+            "altText": "Warm golden oil poured onto a woman's legs on a white massage bed in a sunny room.",
+            "imagePrompt": "Vertical 9:16 photo. A woman lies relaxed on a massage bed. A female therapist pours warm golden oil onto her legs. Close view of the hands on the body. Late afternoon, the lamps lit inside the main light, the garden outside through wide windows in soft shade with no sunlight on it. Clean white linens, simple and warm. No text, no logos.",
+            "storyText": "Heavy legs? Our oil massage helps."
           },
           {
-            "type": "moment",
-            "topic": "Foot reflexology after a long day in Canggu",
+            "type": "local",
+            "topic": "Foot reflexology in Canggu tonight",
             "scene": "place",
-            "caption": ""
+            "caption": "Can someone"
           }
         ]
       },
@@ -215,24 +208,24 @@
         "posts": [
           {
             "type": "offer",
-            "topic": "Traditional Balinese Massage for legs and tired muscles",
+            "topic": "Traditional Balinese massage for tired legs",
             "scene": "detail",
-            "caption": "Need relief for tired legs this afternoon in Canggu? 🌸\n\nOur therapists use warm coconut oil and rhythmic strokes to loosen your legs right here in your villa room.\n\nExperienced local therapists with 5+ years of spa and villa experience bring everything to you 🌺",
+            "caption": "Are your legs heavy after walking all day in Canggu? 🌸 We use warm coconut oil and long strokes to loosen tight muscles. Experienced local therapists bring a Balinese massage to your villa or hotel: book on WhatsApp and relax. 🌼",
             "hashtags": [
               "canggu",
               "balinesemassage",
-              "massagewithatouch",
-              "spaday"
+              "massagecanggu",
+              "spas"
             ],
-            "altText": "Therapist hands working warm golden oil into a woman's legs on a massage bed in a sunny room.",
-            "imagePrompt": "A tall 9:16 photo of a Traditional Balinese Massage, showing one guest, a woman, on a massage bed, with warm golden oil; the therapist's hands working; the legs; scene detail, a close view of the hands on the body; day. Late afternoon, lamps lit inside, the garden outside through wide windows in soft shade. Warm and calm. No text or logos.",
-            "storyText": "Tired legs? Get a massage in your villa room."
+            "altText": "Warm golden oil poured onto a woman's legs on a white massage bed in a sunny room.",
+            "imagePrompt": "Vertical 9:16 photo. A woman lies relaxed on a massage bed. A female therapist pours warm golden oil onto her legs. Close view of the hands on the body. Late afternoon, the lamps lit inside the main light, the garden outside through wide windows in soft shade with no sunlight on it. Clean white linens, simple and warm. No text, no logos.",
+            "storyText": "Heavy legs? Our oil massage helps."
           },
           {
-            "type": "moment",
-            "topic": "Foot reflexology after a long day in Canggu",
+            "type": "local",
+            "topic": "Foot reflexology in Canggu tonight",
             "scene": "place",
-            "caption": "Where can you get expert foot care tonight in Seminyak? 🌸\n\nOur therapist works on your feet to release tension so"
+            "caption": "Can someone come to my villa tonight for my tired feet? 🪷 We press reflex points to help you rest well"
           }
         ]
       },
@@ -240,53 +233,26 @@
         "posts": [
           {
             "type": "offer",
-            "topic": "Traditional Balinese Massage for legs and tired muscles",
+            "topic": "Traditional Balinese massage for tired legs",
             "scene": "detail",
-            "caption": "Need relief for tired legs this afternoon in Canggu? 🌸\n\nOur therapists use warm coconut oil and rhythmic strokes to loosen your legs right here in your villa room.\n\nExperienced local therapists with 5+ years of spa and villa experience bring everything to you 🌺",
+            "caption": "Are your legs heavy after walking all day in Canggu? 🌸 We use warm coconut oil and long strokes to loosen tight muscles. Experienced local therapists bring a Balinese massage to your villa or hotel: book on WhatsApp and relax. 🌼",
             "hashtags": [
               "canggu",
               "balinesemassage",
-              "massagewithatouch",
-              "spaday"
+              "massagecanggu",
+              "spas"
             ],
-            "altText": "Therapist hands working warm golden oil into a woman's legs on a massage bed in a sunny room.",
-            "imagePrompt": "A tall 9:16 photo of a Traditional Balinese Massage, showing one guest, a woman, on a massage bed, with warm golden oil; the therapist's hands working; the legs; scene detail, a close view of the hands on the body; day. Late afternoon, lamps lit inside, the garden outside through wide windows in soft shade. Warm and calm. No text or logos.",
-            "storyText": "Tired legs? Get a massage in your villa room."
+            "altText": "Warm golden oil poured onto a woman's legs on a white massage bed in a sunny room.",
+            "imagePrompt": "Vertical 9:16 photo. A woman lies relaxed on a massage bed. A female therapist pours warm golden oil onto her legs. Close view of the hands on the body. Late afternoon, the lamps lit inside the main light, the garden outside through wide windows in soft shade with no sunlight on it. Clean white linens, simple and warm. No text, no logos.",
+            "storyText": "Heavy legs? Our oil massage helps."
           },
           {
-            "type": "moment",
-            "topic": "Foot reflexology after a long day in Canggu",
+            "type": "local",
+            "topic": "Foot reflexology in Canggu tonight",
             "scene": "place",
-            "caption": "Where can you get expert foot care tonight in Seminyak? 🌸\n\nOur therapist works on your feet to release tension so you can rest easily in your hotel room.\n\nFresh linens, towels, and natural oils are brought straight to your door"
-          }
-        ]
-      },
-      {
-        "posts": [
-          {
-            "type": "offer",
-            "topic": "Traditional Balinese Massage for legs and tired muscles",
-            "scene": "detail",
-            "caption": "Need relief for tired legs this afternoon in Canggu? 🌸\n\nOur therapists use warm coconut oil and rhythmic strokes to loosen your legs right here in your villa room.\n\nExperienced local therapists with 5+ years of spa and villa experience bring everything to you 🌺",
+            "caption": "Can someone come to my villa tonight for my tired feet? 🪷 We press reflex points to help you rest well tonight. Fresh linens, towels, and natural oils provided. 🌺",
             "hashtags": [
-              "canggu",
-              "balinesemassage",
-              "massagewithatouch",
-              "spaday"
-            ],
-            "altText": "Therapist hands working warm golden oil into a woman's legs on a massage bed in a sunny room.",
-            "imagePrompt": "A tall 9:16 photo of a Traditional Balinese Massage, showing one guest, a woman, on a massage bed, with warm golden oil; the therapist's hands working; the legs; scene detail, a close view of the hands on the body; day. Late afternoon, lamps lit inside, the garden outside through wide windows in soft shade. Warm and calm. No text or logos.",
-            "storyText": "Tired legs? Get a massage in your villa room."
-          },
-          {
-            "type": "moment",
-            "topic": "Foot reflexology after a long day in Canggu",
-            "scene": "place",
-            "caption": "Where can you get expert foot care tonight in Seminyak? 🌸\n\nOur therapist works on your feet to release tension so you can rest easily in your hotel room.\n\nFresh linens, towels, and natural oils are brought straight to your door 🌺",
-            "hashtags": [
-              "seminyak",
-              "reflexology",
-              "foot"
+              "canggu"
             ]
           }
         ]
@@ -295,31 +261,31 @@
         "posts": [
           {
             "type": "offer",
-            "topic": "Traditional Balinese Massage for legs and tired muscles",
+            "topic": "Traditional Balinese massage for tired legs",
             "scene": "detail",
-            "caption": "Need relief for tired legs this afternoon in Canggu? 🌸\n\nOur therapists use warm coconut oil and rhythmic strokes to loosen your legs right here in your villa room.\n\nExperienced local therapists with 5+ years of spa and villa experience bring everything to you 🌺",
+            "caption": "Are your legs heavy after walking all day in Canggu? 🌸 We use warm coconut oil and long strokes to loosen tight muscles. Experienced local therapists bring a Balinese massage to your villa or hotel: book on WhatsApp and relax. 🌼",
             "hashtags": [
               "canggu",
               "balinesemassage",
-              "massagewithatouch",
-              "spaday"
+              "massagecanggu",
+              "spas"
             ],
-            "altText": "Therapist hands working warm golden oil into a woman's legs on a massage bed in a sunny room.",
-            "imagePrompt": "A tall 9:16 photo of a Traditional Balinese Massage, showing one guest, a woman, on a massage bed, with warm golden oil; the therapist's hands working; the legs; scene detail, a close view of the hands on the body; day. Late afternoon, lamps lit inside, the garden outside through wide windows in soft shade. Warm and calm. No text or logos.",
-            "storyText": "Tired legs? Get a massage in your villa room."
+            "altText": "Warm golden oil poured onto a woman's legs on a white massage bed in a sunny room.",
+            "imagePrompt": "Vertical 9:16 photo. A woman lies relaxed on a massage bed. A female therapist pours warm golden oil onto her legs. Close view of the hands on the body. Late afternoon, the lamps lit inside the main light, the garden outside through wide windows in soft shade with no sunlight on it. Clean white linens, simple and warm. No text, no logos.",
+            "storyText": "Heavy legs? Our oil massage helps."
           },
           {
-            "type": "moment",
-            "topic": "Foot reflexology after a long day in Canggu",
+            "type": "local",
+            "topic": "Foot reflexology in Canggu tonight",
             "scene": "place",
-            "caption": "Where can you get expert foot care tonight in Seminyak? 🌸\n\nOur therapist works on your feet to release tension so you can rest easily in your hotel room.\n\nFresh linens, towels, and natural oils are brought straight to your door 🌺",
+            "caption": "Can someone come to my villa tonight for my tired feet? 🪷 We press reflex points to help you rest well tonight. Fresh linens, towels, and natural oils provided. 🌺",
             "hashtags": [
-              "seminyak",
+              "canggu",
+              "bali",
               "reflexology",
-              "footmassage",
-              "balitrip"
+              "massage"
             ],
-            "altText": "A man sitting back in a reclining"
+            "altText": "A man"
           }
         ]
       },
@@ -327,32 +293,32 @@
         "posts": [
           {
             "type": "offer",
-            "topic": "Traditional Balinese Massage for legs and tired muscles",
+            "topic": "Traditional Balinese massage for tired legs",
             "scene": "detail",
-            "caption": "Need relief for tired legs this afternoon in Canggu? 🌸\n\nOur therapists use warm coconut oil and rhythmic strokes to loosen your legs right here in your villa room.\n\nExperienced local therapists with 5+ years of spa and villa experience bring everything to you 🌺",
+            "caption": "Are your legs heavy after walking all day in Canggu? 🌸 We use warm coconut oil and long strokes to loosen tight muscles. Experienced local therapists bring a Balinese massage to your villa or hotel: book on WhatsApp and relax. 🌼",
             "hashtags": [
               "canggu",
               "balinesemassage",
-              "massagewithatouch",
-              "spaday"
+              "massagecanggu",
+              "spas"
             ],
-            "altText": "Therapist hands working warm golden oil into a woman's legs on a massage bed in a sunny room.",
-            "imagePrompt": "A tall 9:16 photo of a Traditional Balinese Massage, showing one guest, a woman, on a massage bed, with warm golden oil; the therapist's hands working; the legs; scene detail, a close view of the hands on the body; day. Late afternoon, lamps lit inside, the garden outside through wide windows in soft shade. Warm and calm. No text or logos.",
-            "storyText": "Tired legs? Get a massage in your villa room."
+            "altText": "Warm golden oil poured onto a woman's legs on a white massage bed in a sunny room.",
+            "imagePrompt": "Vertical 9:16 photo. A woman lies relaxed on a massage bed. A female therapist pours warm golden oil onto her legs. Close view of the hands on the body. Late afternoon, the lamps lit inside the main light, the garden outside through wide windows in soft shade with no sunlight on it. Clean white linens, simple and warm. No text, no logos.",
+            "storyText": "Heavy legs? Our oil massage helps."
           },
           {
-            "type": "moment",
-            "topic": "Foot reflexology after a long day in Canggu",
+            "type": "local",
+            "topic": "Foot reflexology in Canggu tonight",
             "scene": "place",
-            "caption": "Where can you get expert foot care tonight in Seminyak? 🌸\n\nOur therapist works on your feet to release tension so you can rest easily in your hotel room.\n\nFresh linens, towels, and natural oils are brought straight to your door 🌺",
+            "caption": "Can someone come to my villa tonight for my tired feet? 🪷 We press reflex points to help you rest well tonight. Fresh linens, towels, and natural oils provided. 🌺",
             "hashtags": [
-              "seminyak",
+              "canggu",
+              "bali",
               "reflexology",
-              "footmassage",
-              "balitrip"
+              "massage"
             ],
-            "altText": "A man sitting back in a reclining chair with feet on a towel while a therapist works at his feet at night.",
-            "imagePrompt": "A tall "
+            "altText": "A man sitting back in a reclining chair with feet on a towel while a therapist works on them at night.",
+            "imagePrompt": "Vertical "
           }
         ]
       },
@@ -360,32 +326,32 @@
         "posts": [
           {
             "type": "offer",
-            "topic": "Traditional Balinese Massage for legs and tired muscles",
+            "topic": "Traditional Balinese massage for tired legs",
             "scene": "detail",
-            "caption": "Need relief for tired legs this afternoon in Canggu? 🌸\n\nOur therapists use warm coconut oil and rhythmic strokes to loosen your legs right here in your villa room.\n\nExperienced local therapists with 5+ years of spa and villa experience bring everything to you 🌺",
+            "caption": "Are your legs heavy after walking all day in Canggu? 🌸 We use warm coconut oil and long strokes to loosen tight muscles. Experienced local therapists bring a Balinese massage to your villa or hotel: book on WhatsApp and relax. 🌼",
             "hashtags": [
               "canggu",
               "balinesemassage",
-              "massagewithatouch",
-              "spaday"
+              "massagecanggu",
+              "spas"
             ],
-            "altText": "Therapist hands working warm golden oil into a woman's legs on a massage bed in a sunny room.",
-            "imagePrompt": "A tall 9:16 photo of a Traditional Balinese Massage, showing one guest, a woman, on a massage bed, with warm golden oil; the therapist's hands working; the legs; scene detail, a close view of the hands on the body; day. Late afternoon, lamps lit inside, the garden outside through wide windows in soft shade. Warm and calm. No text or logos.",
-            "storyText": "Tired legs? Get a massage in your villa room."
+            "altText": "Warm golden oil poured onto a woman's legs on a white massage bed in a sunny room.",
+            "imagePrompt": "Vertical 9:16 photo. A woman lies relaxed on a massage bed. A female therapist pours warm golden oil onto her legs. Close view of the hands on the body. Late afternoon, the lamps lit inside the main light, the garden outside through wide windows in soft shade with no sunlight on it. Clean white linens, simple and warm. No text, no logos.",
+            "storyText": "Heavy legs? Our oil massage helps."
           },
           {
-            "type": "moment",
-            "topic": "Foot reflexology after a long day in Canggu",
+            "type": "local",
+            "topic": "Foot reflexology in Canggu tonight",
             "scene": "place",
-            "caption": "Where can you get expert foot care tonight in Seminyak? 🌸\n\nOur therapist works on your feet to release tension so you can rest easily in your hotel room.\n\nFresh linens, towels, and natural oils are brought straight to your door 🌺",
+            "caption": "Can someone come to my villa tonight for my tired feet? 🪷 We press reflex points to help you rest well tonight. Fresh linens, towels, and natural oils provided. 🌺",
             "hashtags": [
-              "seminyak",
+              "canggu",
+              "bali",
               "reflexology",
-              "footmassage",
-              "balitrip"
+              "massage"
             ],
-            "altText": "A man sitting back in a reclining chair with feet on a towel while a therapist works at his feet at night.",
-            "imagePrompt": "A tall 9:16 photo of Foot Reflexology: one guest, a man, sitting back in a reclining chair, feet on a towel; the"
+            "altText": "A man sitting back in a reclining chair with feet on a towel while a therapist works on them at night.",
+            "imagePrompt": "Vertical 9:16 photo. A man sits back in a reclining chair with his feet on a towel. A female therapist is"
           }
         ]
       },
@@ -393,32 +359,32 @@
         "posts": [
           {
             "type": "offer",
-            "topic": "Traditional Balinese Massage for legs and tired muscles",
+            "topic": "Traditional Balinese massage for tired legs",
             "scene": "detail",
-            "caption": "Need relief for tired legs this afternoon in Canggu? 🌸\n\nOur therapists use warm coconut oil and rhythmic strokes to loosen your legs right here in your villa room.\n\nExperienced local therapists with 5+ years of spa and villa experience bring everything to you 🌺",
+            "caption": "Are your legs heavy after walking all day in Canggu? 🌸 We use warm coconut oil and long strokes to loosen tight muscles. Experienced local therapists bring a Balinese massage to your villa or hotel: book on WhatsApp and relax. 🌼",
             "hashtags": [
               "canggu",
               "balinesemassage",
-              "massagewithatouch",
-              "spaday"
+              "massagecanggu",
+              "spas"
             ],
-            "altText": "Therapist hands working warm golden oil into a woman's legs on a massage bed in a sunny room.",
-            "imagePrompt": "A tall 9:16 photo of a Traditional Balinese Massage, showing one guest, a woman, on a massage bed, with warm golden oil; the therapist's hands working; the legs; scene detail, a close view of the hands on the body; day. Late afternoon, lamps lit inside, the garden outside through wide windows in soft shade. Warm and calm. No text or logos.",
-            "storyText": "Tired legs? Get a massage in your villa room."
+            "altText": "Warm golden oil poured onto a woman's legs on a white massage bed in a sunny room.",
+            "imagePrompt": "Vertical 9:16 photo. A woman lies relaxed on a massage bed. A female therapist pours warm golden oil onto her legs. Close view of the hands on the body. Late afternoon, the lamps lit inside the main light, the garden outside through wide windows in soft shade with no sunlight on it. Clean white linens, simple and warm. No text, no logos.",
+            "storyText": "Heavy legs? Our oil massage helps."
           },
           {
-            "type": "moment",
-            "topic": "Foot reflexology after a long day in Canggu",
+            "type": "local",
+            "topic": "Foot reflexology in Canggu tonight",
             "scene": "place",
-            "caption": "Where can you get expert foot care tonight in Seminyak? 🌸\n\nOur therapist works on your feet to release tension so you can rest easily in your hotel room.\n\nFresh linens, towels, and natural oils are brought straight to your door 🌺",
+            "caption": "Can someone come to my villa tonight for my tired feet? 🪷 We press reflex points to help you rest well tonight. Fresh linens, towels, and natural oils provided. 🌺",
             "hashtags": [
-              "seminyak",
+              "canggu",
+              "bali",
               "reflexology",
-              "footmassage",
-              "balitrip"
+              "massage"
             ],
-            "altText": "A man sitting back in a reclining chair with feet on a towel while a therapist works at his feet at night.",
-            "imagePrompt": "A tall 9:16 photo of Foot Reflexology: one guest, a man, sitting back in a reclining chair, feet on a towel; the therapist seated at the feet; the feet; scene place, the room with the treatment in it; night. Evening,"
+            "altText": "A man sitting back in a reclining chair with feet on a towel while a therapist works on them at night.",
+            "imagePrompt": "Vertical 9:16 photo. A man sits back in a reclining chair with his feet on a towel. A female therapist is seated at his feet working on them. Evening, lamps and candles giving the room a warm, golden glow, the garden outside"
           }
         ]
       },
@@ -426,32 +392,32 @@
         "posts": [
           {
             "type": "offer",
-            "topic": "Traditional Balinese Massage for legs and tired muscles",
+            "topic": "Traditional Balinese massage for tired legs",
             "scene": "detail",
-            "caption": "Need relief for tired legs this afternoon in Canggu? 🌸\n\nOur therapists use warm coconut oil and rhythmic strokes to loosen your legs right here in your villa room.\n\nExperienced local therapists with 5+ years of spa and villa experience bring everything to you 🌺",
+            "caption": "Are your legs heavy after walking all day in Canggu? 🌸 We use warm coconut oil and long strokes to loosen tight muscles. Experienced local therapists bring a Balinese massage to your villa or hotel: book on WhatsApp and relax. 🌼",
             "hashtags": [
               "canggu",
               "balinesemassage",
-              "massagewithatouch",
-              "spaday"
+              "massagecanggu",
+              "spas"
             ],
-            "altText": "Therapist hands working warm golden oil into a woman's legs on a massage bed in a sunny room.",
-            "imagePrompt": "A tall 9:16 photo of a Traditional Balinese Massage, showing one guest, a woman, on a massage bed, with warm golden oil; the therapist's hands working; the legs; scene detail, a close view of the hands on the body; day. Late afternoon, lamps lit inside, the garden outside through wide windows in soft shade. Warm and calm. No text or logos.",
-            "storyText": "Tired legs? Get a massage in your villa room."
+            "altText": "Warm golden oil poured onto a woman's legs on a white massage bed in a sunny room.",
+            "imagePrompt": "Vertical 9:16 photo. A woman lies relaxed on a massage bed. A female therapist pours warm golden oil onto her legs. Close view of the hands on the body. Late afternoon, the lamps lit inside the main light, the garden outside through wide windows in soft shade with no sunlight on it. Clean white linens, simple and warm. No text, no logos.",
+            "storyText": "Heavy legs? Our oil massage helps."
           },
           {
-            "type": "moment",
-            "topic": "Foot reflexology after a long day in Canggu",
+            "type": "local",
+            "topic": "Foot reflexology in Canggu tonight",
             "scene": "place",
-            "caption": "Where can you get expert foot care tonight in Seminyak? 🌸\n\nOur therapist works on your feet to release tension so you can rest easily in your hotel room.\n\nFresh linens, towels, and natural oils are brought straight to your door 🌺",
+            "caption": "Can someone come to my villa tonight for my tired feet? 🪷 We press reflex points to help you rest well tonight. Fresh linens, towels, and natural oils provided. 🌺",
             "hashtags": [
-              "seminyak",
+              "canggu",
+              "bali",
               "reflexology",
-              "footmassage",
-              "balitrip"
+              "massage"
             ],
-            "altText": "A man sitting back in a reclining chair with feet on a towel while a therapist works at his feet at night.",
-            "imagePrompt": "A tall 9:16 photo of Foot Reflexology: one guest, a man, sitting back in a reclining chair, feet on a towel; the therapist seated at the feet; the feet; scene place, the room with the treatment in it; night. Evening, lamps and candles giving a warm golden glow, the garden outside lit by lanterns under a deep blue sky. Warm and inviting. No text"
+            "altText": "A man sitting back in a reclining chair with feet on a towel while a therapist works on them at night.",
+            "imagePrompt": "Vertical 9:16 photo. A man sits back in a reclining chair with his feet on a towel. A female therapist is seated at his feet working on them. Evening, lamps and candles giving the room a warm, golden glow, the garden outside lit by lanterns under a deep blue sky. Clean white linens. No text, no logos."
           }
         ]
       },
@@ -459,33 +425,33 @@
         "posts": [
           {
             "type": "offer",
-            "topic": "Traditional Balinese Massage for legs and tired muscles",
+            "topic": "Traditional Balinese massage for tired legs",
             "scene": "detail",
-            "caption": "Need relief for tired legs this afternoon in Canggu? 🌸\n\nOur therapists use warm coconut oil and rhythmic strokes to loosen your legs right here in your villa room.\n\nExperienced local therapists with 5+ years of spa and villa experience bring everything to you 🌺",
+            "caption": "Are your legs heavy after walking all day in Canggu? 🌸 We use warm coconut oil and long strokes to loosen tight muscles. Experienced local therapists bring a Balinese massage to your villa or hotel: book on WhatsApp and relax. 🌼",
             "hashtags": [
               "canggu",
               "balinesemassage",
-              "massagewithatouch",
-              "spaday"
+              "massagecanggu",
+              "spas"
             ],
-            "altText": "Therapist hands working warm golden oil into a woman's legs on a massage bed in a sunny room.",
-            "imagePrompt": "A tall 9:16 photo of a Traditional Balinese Massage, showing one guest, a woman, on a massage bed, with warm golden oil; the therapist's hands working; the legs; scene detail, a close view of the hands on the body; day. Late afternoon, lamps lit inside, the garden outside through wide windows in soft shade. Warm and calm. No text or logos.",
-            "storyText": "Tired legs? Get a massage in your villa room."
+            "altText": "Warm golden oil poured onto a woman's legs on a white massage bed in a sunny room.",
+            "imagePrompt": "Vertical 9:16 photo. A woman lies relaxed on a massage bed. A female therapist pours warm golden oil onto her legs. Close view of the hands on the body. Late afternoon, the lamps lit inside the main light, the garden outside through wide windows in soft shade with no sunlight on it. Clean white linens, simple and warm. No text, no logos.",
+            "storyText": "Heavy legs? Our oil massage helps."
           },
           {
-            "type": "moment",
-            "topic": "Foot reflexology after a long day in Canggu",
+            "type": "local",
+            "topic": "Foot reflexology in Canggu tonight",
             "scene": "place",
-            "caption": "Where can you get expert foot care tonight in Seminyak? 🌸\n\nOur therapist works on your feet to release tension so you can rest easily in your hotel room.\n\nFresh linens, towels, and natural oils are brought straight to your door 🌺",
+            "caption": "Can someone come to my villa tonight for my tired feet? 🪷 We press reflex points to help you rest well tonight. Fresh linens, towels, and natural oils provided. 🌺",
             "hashtags": [
-              "seminyak",
+              "canggu",
+              "bali",
               "reflexology",
-              "footmassage",
-              "balitrip"
+              "massage"
             ],
-            "altText": "A man sitting back in a reclining chair with feet on a towel while a therapist works at his feet at night.",
-            "imagePrompt": "A tall 9:16 photo of Foot Reflexology: one guest, a man, sitting back in a reclining chair, feet on a towel; the therapist seated at the feet; the feet; scene place, the room with the treatment in it; night. Evening, lamps and candles giving a warm golden glow, the garden outside lit by lanterns under a deep blue sky. Warm and inviting. No text or logos.",
-            "storyText": "Sore feet tonight? Let us come to your room."
+            "altText": "A man sitting back in a reclining chair with feet on a towel while a therapist works on them at night.",
+            "imagePrompt": "Vertical 9:16 photo. A man sits back in a reclining chair with his feet on a towel. A female therapist is seated at his feet working on them. Evening, lamps and candles giving the room a warm, golden glow, the garden outside lit by lanterns under a deep blue sky. Clean white linens. No text, no logos.",
+            "storyText": "Sore feet tonight? We bring foot reflexology to your room."
           }
         ]
       }
@@ -494,33 +460,33 @@
       "posts": [
         {
           "type": "offer",
-          "topic": "Traditional Balinese Massage for legs and tired muscles",
+          "topic": "Traditional Balinese massage for tired legs",
           "scene": "detail",
-          "caption": "Need relief for tired legs this afternoon in Canggu? 🌸\n\nOur therapists use warm coconut oil and rhythmic strokes to loosen your legs right here in your villa room.\n\nExperienced local therapists with 5+ years of spa and villa experience bring everything to you 🌺",
+          "caption": "Are your legs heavy after walking all day in Canggu? 🌸 We use warm coconut oil and long strokes to loosen tight muscles. Experienced local therapists bring a Balinese massage to your villa or hotel: book on WhatsApp and relax. 🌼",
           "hashtags": [
             "canggu",
             "balinesemassage",
-            "massagewithatouch",
-            "spaday"
+            "massagecanggu",
+            "spas"
           ],
-          "altText": "Therapist hands working warm golden oil into a woman's legs on a massage bed in a sunny room.",
-          "imagePrompt": "A tall 9:16 photo of a Traditional Balinese Massage, showing one guest, a woman, on a massage bed, with warm golden oil; the therapist's hands working; the legs; scene detail, a close view of the hands on the body; day. Late afternoon, lamps lit inside, the garden outside through wide windows in soft shade. Warm and calm. No text or logos.",
-          "storyText": "Tired legs? Get a massage in your villa room."
+          "altText": "Warm golden oil poured onto a woman's legs on a white massage bed in a sunny room.",
+          "imagePrompt": "Vertical 9:16 photo. A woman lies relaxed on a massage bed. A female therapist pours warm golden oil onto her legs. Close view of the hands on the body. Late afternoon, the lamps lit inside the main light, the garden outside through wide windows in soft shade with no sunlight on it. Clean white linens, simple and warm. No text, no logos.",
+          "storyText": "Heavy legs? Our oil massage helps."
         },
         {
-          "type": "moment",
-          "topic": "Foot reflexology after a long day in Canggu",
+          "type": "local",
+          "topic": "Foot reflexology in Canggu tonight",
           "scene": "place",
-          "caption": "Where can you get expert foot care tonight in Seminyak? 🌸\n\nOur therapist works on your feet to release tension so you can rest easily in your hotel room.\n\nFresh linens, towels, and natural oils are brought straight to your door 🌺",
+          "caption": "Can someone come to my villa tonight for my tired feet? 🪷 We press reflex points to help you rest well tonight. Fresh linens, towels, and natural oils provided. 🌺",
           "hashtags": [
-            "seminyak",
+            "canggu",
+            "bali",
             "reflexology",
-            "footmassage",
-            "balitrip"
+            "massage"
           ],
-          "altText": "A man sitting back in a reclining chair with feet on a towel while a therapist works at his feet at night.",
-          "imagePrompt": "A tall 9:16 photo of Foot Reflexology: one guest, a man, sitting back in a reclining chair, feet on a towel; the therapist seated at the feet; the feet; scene place, the room with the treatment in it; night. Evening, lamps and candles giving a warm golden glow, the garden outside lit by lanterns under a deep blue sky. Warm and inviting. No text or logos.",
-          "storyText": "Sore feet tonight? Let us come to your room."
+          "altText": "A man sitting back in a reclining chair with feet on a towel while a therapist works on them at night.",
+          "imagePrompt": "Vertical 9:16 photo. A man sits back in a reclining chair with his feet on a towel. A female therapist is seated at his feet working on them. Evening, lamps and candles giving the room a warm, golden glow, the garden outside lit by lanterns under a deep blue sky. Clean white linens. No text, no logos.",
+          "storyText": "Sore feet tonight? We bring foot reflexology to your room."
         }
       ]
     }
