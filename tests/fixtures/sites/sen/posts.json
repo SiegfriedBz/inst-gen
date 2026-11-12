@@ -1,15 +1,16 @@
 {
   "modelId": "gemini-3.5-flash-lite",
-  "promptVersion": "posts-16",
+  "promptVersion": "posts-18",
   "recording": {
     "modelId": "gemini-3.5-flash-lite",
-    "promptVersion": "posts-16",
+    "promptVersion": "posts-18",
     "partials": [
+      {},
       {
         "posts": [
           {
             "type": "offer",
-            "topic": "Deep tissue tension release in Da Nang"
+            "topic": "Book a deep tissue massage for your room tonight"
           }
         ]
       },
@@ -17,9 +18,9 @@
         "posts": [
           {
             "type": "offer",
-            "topic": "Deep tissue tension release in Da Nang",
-            "scene": "guest, from above",
-            "caption": "Tired in Da Nang? 🌸\n\nSlow pressure"
+            "topic": "Book a deep tissue massage for your room tonight",
+            "scene": "guest",
+            "caption": "Can we bring our massage table to your hotel room"
           }
         ]
       },
@@ -27,9 +28,9 @@
         "posts": [
           {
             "type": "offer",
-            "topic": "Deep tissue tension release in Da Nang",
-            "scene": "guest, from above",
-            "caption": "Tired in Da Nang? 🌸\n\nSlow pressure loosens deep tension in your back and shoulders for 60 min.\n\nTrained local therapists bring all fresh"
+            "topic": "Book a deep tissue massage for your room tonight",
+            "scene": "guest",
+            "caption": "Can we bring our massage table to your hotel room tonight? 🌸\n\nOur trained therapist works slow forearm pressure into your sore shoulders to release deep tension before"
           }
         ]
       },
@@ -37,12 +38,23 @@
         "posts": [
           {
             "type": "offer",
-            "topic": "Deep tissue tension release in Da Nang",
-            "scene": "guest, from above",
-            "caption": "Tired in Da Nang? 🌸\n\nSlow pressure loosens deep tension in your back and shoulders for 60 min.\n\nTrained local therapists bring all fresh linens to your room.",
+            "topic": "Book a deep tissue massage for your room tonight",
+            "scene": "guest",
+            "caption": "Can we bring our massage table to your hotel room tonight? 🌸\n\nOur trained therapist works slow forearm pressure into your sore shoulders to release deep tension before bed.\n\nTrained local therapists come directly to you with fresh linens and warm oils. 🪷"
+          }
+        ]
+      },
+      {
+        "posts": [
+          {
+            "type": "offer",
+            "topic": "Book a deep tissue massage for your room tonight",
+            "scene": "guest",
+            "caption": "Can we bring our massage table to your hotel room tonight? 🌸\n\nOur trained therapist works slow forearm pressure into your sore shoulders to release deep tension before bed.\n\nTrained local therapists come directly to you with fresh linens and warm oils. 🪷",
             "hashtags": [
               "danang",
-              "deeptiss"
+              "deeptissuemassage",
+              "sp"
             ]
           }
         ]
@@ -51,16 +63,16 @@
         "posts": [
           {
             "type": "offer",
-            "topic": "Deep tissue tension release in Da Nang",
-            "scene": "guest, from above",
-            "caption": "Tired in Da Nang? 🌸\n\nSlow pressure loosens deep tension in your back and shoulders for 60 min.\n\nTrained local therapists bring all fresh linens to your room.",
+            "topic": "Book a deep tissue massage for your room tonight",
+            "scene": "guest",
+            "caption": "Can we bring our massage table to your hotel room tonight? 🌸\n\nOur trained therapist works slow forearm pressure into your sore shoulders to release deep tension before bed.\n\nTrained local therapists come directly to you with fresh linens and warm oils. 🪷",
             "hashtags": [
               "danang",
               "deeptissuemassage",
-              "massageindanang",
-              "spanearmyKhebeach"
+              "spadanang",
+              "massageindanang"
             ],
-            "altText": "A woman lying on a massage bed while a therapist works on her back in a warm room"
+            "altText": "A woman lying on"
           }
         ]
       },
@@ -68,17 +80,16 @@
         "posts": [
           {
             "type": "offer",
-            "topic": "Deep tissue tension release in Da Nang",
-            "scene": "guest, from above",
-            "caption": "Tired in Da Nang? 🌸\n\nSlow pressure loosens deep tension in your back and shoulders for 60 min.\n\nTrained local therapists bring all fresh linens to your room.",
+            "topic": "Book a deep tissue massage for your room tonight",
+            "scene": "guest",
+            "caption": "Can we bring our massage table to your hotel room tonight? 🌸\n\nOur trained therapist works slow forearm pressure into your sore shoulders to release deep tension before bed.\n\nTrained local therapists come directly to you with fresh linens and warm oils. 🪷",
             "hashtags": [
               "danang",
               "deeptissuemassage",
-              "massageindanang",
-              "spanearmyKhebeach"
+              "spadanang",
+              "massageindanang"
             ],
-            "altText": "A woman lying on a massage bed while a therapist works on her back in a warm room.",
-            "imagePrompt": "A tall 9:16 vertical photo. One female guest lies relaxed on a massage bed."
+            "altText": "A woman lying on a massage bed while a therapist works on her back with warm oil in a hotel room at night."
           }
         ]
       },
@@ -86,17 +97,17 @@
         "posts": [
           {
             "type": "offer",
-            "topic": "Deep tissue tension release in Da Nang",
-            "scene": "guest, from above",
-            "caption": "Tired in Da Nang? 🌸\n\nSlow pressure loosens deep tension in your back and shoulders for 60 min.\n\nTrained local therapists bring all fresh linens to your room.",
+            "topic": "Book a deep tissue massage for your room tonight",
+            "scene": "guest",
+            "caption": "Can we bring our massage table to your hotel room tonight? 🌸\n\nOur trained therapist works slow forearm pressure into your sore shoulders to release deep tension before bed.\n\nTrained local therapists come directly to you with fresh linens and warm oils. 🪷",
             "hashtags": [
               "danang",
               "deeptissuemassage",
-              "massageindanang",
-              "spanearmyKhebeach"
+              "spadanang",
+              "massageindanang"
             ],
-            "altText": "A woman lying on a massage bed while a therapist works on her back in a warm room.",
-            "imagePrompt": "A tall 9:16 vertical photo. One female guest lies relaxed on a massage bed. A female therapist works on her back with warm golden oil. The shot is from above, showing the guest and hands. Inside"
+            "altText": "A woman lying on a massage bed while a therapist works on her back with warm oil in a hotel room at night.",
+            "imagePrompt": "Vertical 9:16 photo of a woman relaxing on a massage bed in a hotel room at night, a female therapist using"
           }
         ]
       },
@@ -104,59 +115,42 @@
         "posts": [
           {
             "type": "offer",
-            "topic": "Deep tissue tension release in Da Nang",
-            "scene": "guest, from above",
-            "caption": "Tired in Da Nang? 🌸\n\nSlow pressure loosens deep tension in your back and shoulders for 60 min.\n\nTrained local therapists bring all fresh linens to your room.",
+            "topic": "Book a deep tissue massage for your room tonight",
+            "scene": "guest",
+            "caption": "Can we bring our massage table to your hotel room tonight? 🌸\n\nOur trained therapist works slow forearm pressure into your sore shoulders to release deep tension before bed.\n\nTrained local therapists come directly to you with fresh linens and warm oils. 🪷",
             "hashtags": [
               "danang",
               "deeptissuemassage",
-              "massageindanang",
-              "spanearmyKhebeach"
+              "spadanang",
+              "massageindanang"
             ],
-            "altText": "A woman lying on a massage bed while a therapist works on her back in a warm room.",
-            "imagePrompt": "A tall 9:16 vertical photo. One female guest lies relaxed on a massage bed. A female therapist works on her back with warm golden oil. The shot is from above, showing the guest and hands. Inside a warm hotel room at evening, lamps giving a golden glow, open balcony doors showing lanterns outside under a deep blue sky."
-          }
+            "altText": "A woman lying on a massage bed while a therapist works on her back with warm oil in a hotel room at night.",
+            "imagePrompt": "Vertical 9:16 photo of a woman relaxing on a massage bed in a hotel room at night, a female therapist using warm golden oil on her arms, lamps giving a warm golden glow, the window showing lanterns outside under a deep blue sky.",
+            "storyText": "Need a massage in your room tonight? We bring the table."
+          },
+          {}
         ]
       },
       {
         "posts": [
           {
             "type": "offer",
-            "topic": "Deep tissue tension release in Da Nang",
-            "scene": "guest, from above",
-            "caption": "Tired in Da Nang? 🌸\n\nSlow pressure loosens deep tension in your back and shoulders for 60 min.\n\nTrained local therapists bring all fresh linens to your room.",
+            "topic": "Book a deep tissue massage for your room tonight",
+            "scene": "guest",
+            "caption": "Can we bring our massage table to your hotel room tonight? 🌸\n\nOur trained therapist works slow forearm pressure into your sore shoulders to release deep tension before bed.\n\nTrained local therapists come directly to you with fresh linens and warm oils. 🪷",
             "hashtags": [
               "danang",
               "deeptissuemassage",
-              "massageindanang",
-              "spanearmyKhebeach"
+              "spadanang",
+              "massageindanang"
             ],
-            "altText": "A woman lying on a massage bed while a therapist works on her back in a warm room.",
-            "imagePrompt": "A tall 9:16 vertical photo. One female guest lies relaxed on a massage bed. A female therapist works on her back with warm golden oil. The shot is from above, showing the guest and hands. Inside a warm hotel room at evening, lamps giving a golden glow, open balcony doors showing lanterns outside under a deep blue sky. No text, no logos.",
-            "storyText": "60 min deep tissue relief in your room 🌸"
-          }
-        ]
-      },
-      {
-        "posts": [
-          {
-            "type": "offer",
-            "topic": "Deep tissue tension release in Da Nang",
-            "scene": "guest, from above",
-            "caption": "Tired in Da Nang? 🌸\n\nSlow pressure loosens deep tension in your back and shoulders for 60 min.\n\nTrained local therapists bring all fresh linens to your room.",
-            "hashtags": [
-              "danang",
-              "deeptissuemassage",
-              "massageindanang",
-              "spanearmyKhebeach"
-            ],
-            "altText": "A woman lying on a massage bed while a therapist works on her back in a warm room.",
-            "imagePrompt": "A tall 9:16 vertical photo. One female guest lies relaxed on a massage bed. A female therapist works on her back with warm golden oil. The shot is from above, showing the guest and hands. Inside a warm hotel room at evening, lamps giving a golden glow, open balcony doors showing lanterns outside under a deep blue sky. No text, no logos.",
-            "storyText": "60 min deep tissue relief in your room 🌸"
+            "altText": "A woman lying on a massage bed while a therapist works on her back with warm oil in a hotel room at night.",
+            "imagePrompt": "Vertical 9:16 photo of a woman relaxing on a massage bed in a hotel room at night, a female therapist using warm golden oil on her arms, lamps giving a warm golden glow, the window showing lanterns outside under a deep blue sky.",
+            "storyText": "Need a massage in your room tonight? We bring the table."
           },
           {
             "type": "moment",
-            "topic": "Recovery after surfing My Khe"
+            "topic": "Recovery massage after surfing at My Khe Beach"
           }
         ]
       },
@@ -164,24 +158,24 @@
         "posts": [
           {
             "type": "offer",
-            "topic": "Deep tissue tension release in Da Nang",
-            "scene": "guest, from above",
-            "caption": "Tired in Da Nang? 🌸\n\nSlow pressure loosens deep tension in your back and shoulders for 60 min.\n\nTrained local therapists bring all fresh linens to your room.",
+            "topic": "Book a deep tissue massage for your room tonight",
+            "scene": "guest",
+            "caption": "Can we bring our massage table to your hotel room tonight? 🌸\n\nOur trained therapist works slow forearm pressure into your sore shoulders to release deep tension before bed.\n\nTrained local therapists come directly to you with fresh linens and warm oils. 🪷",
             "hashtags": [
               "danang",
               "deeptissuemassage",
-              "massageindanang",
-              "spanearmyKhebeach"
+              "spadanang",
+              "massageindanang"
             ],
-            "altText": "A woman lying on a massage bed while a therapist works on her back in a warm room.",
-            "imagePrompt": "A tall 9:16 vertical photo. One female guest lies relaxed on a massage bed. A female therapist works on her back with warm golden oil. The shot is from above, showing the guest and hands. Inside a warm hotel room at evening, lamps giving a golden glow, open balcony doors showing lanterns outside under a deep blue sky. No text, no logos.",
-            "storyText": "60 min deep tissue relief in your room 🌸"
+            "altText": "A woman lying on a massage bed while a therapist works on her back with warm oil in a hotel room at night.",
+            "imagePrompt": "Vertical 9:16 photo of a woman relaxing on a massage bed in a hotel room at night, a female therapist using warm golden oil on her arms, lamps giving a warm golden glow, the window showing lanterns outside under a deep blue sky.",
+            "storyText": "Need a massage in your room tonight? We bring the table."
           },
           {
             "type": "moment",
-            "topic": "Recovery after surfing My Khe",
-            "scene": "detail, a close view of the hands on the body",
-            "caption": ""
+            "topic": "Recovery massage after surfing at My Khe Beach",
+            "scene": "detail",
+            "caption": "How do you recover after a surf at My Khe? 🌺\n\nTarget"
           }
         ]
       },
@@ -189,24 +183,24 @@
         "posts": [
           {
             "type": "offer",
-            "topic": "Deep tissue tension release in Da Nang",
-            "scene": "guest, from above",
-            "caption": "Tired in Da Nang? 🌸\n\nSlow pressure loosens deep tension in your back and shoulders for 60 min.\n\nTrained local therapists bring all fresh linens to your room.",
+            "topic": "Book a deep tissue massage for your room tonight",
+            "scene": "guest",
+            "caption": "Can we bring our massage table to your hotel room tonight? 🌸\n\nOur trained therapist works slow forearm pressure into your sore shoulders to release deep tension before bed.\n\nTrained local therapists come directly to you with fresh linens and warm oils. 🪷",
             "hashtags": [
               "danang",
               "deeptissuemassage",
-              "massageindanang",
-              "spanearmyKhebeach"
+              "spadanang",
+              "massageindanang"
             ],
-            "altText": "A woman lying on a massage bed while a therapist works on her back in a warm room.",
-            "imagePrompt": "A tall 9:16 vertical photo. One female guest lies relaxed on a massage bed. A female therapist works on her back with warm golden oil. The shot is from above, showing the guest and hands. Inside a warm hotel room at evening, lamps giving a golden glow, open balcony doors showing lanterns outside under a deep blue sky. No text, no logos.",
-            "storyText": "60 min deep tissue relief in your room 🌸"
+            "altText": "A woman lying on a massage bed while a therapist works on her back with warm oil in a hotel room at night.",
+            "imagePrompt": "Vertical 9:16 photo of a woman relaxing on a massage bed in a hotel room at night, a female therapist using warm golden oil on her arms, lamps giving a warm golden glow, the window showing lanterns outside under a deep blue sky.",
+            "storyText": "Need a massage in your room tonight? We bring the table."
           },
           {
             "type": "moment",
-            "topic": "Recovery after surfing My Khe",
-            "scene": "detail, a close view of the hands on the body",
-            "caption": "Sore after surfing My Khe? 🌺\n\nTargeted massage eases tired muscles and heavy legs.\n\nFree"
+            "topic": "Recovery massage after surfing at My Khe Beach",
+            "scene": "detail",
+            "caption": "How do you recover after a surf at My Khe? 🌺\n\nTargeted pressure eases your paddling shoulders and heavy legs so you feel ready for tomorrow.\n\nLinens, towels and oils"
           }
         ]
       },
@@ -214,27 +208,27 @@
         "posts": [
           {
             "type": "offer",
-            "topic": "Deep tissue tension release in Da Nang",
-            "scene": "guest, from above",
-            "caption": "Tired in Da Nang? 🌸\n\nSlow pressure loosens deep tension in your back and shoulders for 60 min.\n\nTrained local therapists bring all fresh linens to your room.",
+            "topic": "Book a deep tissue massage for your room tonight",
+            "scene": "guest",
+            "caption": "Can we bring our massage table to your hotel room tonight? 🌸\n\nOur trained therapist works slow forearm pressure into your sore shoulders to release deep tension before bed.\n\nTrained local therapists come directly to you with fresh linens and warm oils. 🪷",
             "hashtags": [
               "danang",
               "deeptissuemassage",
-              "massageindanang",
-              "spanearmyKhebeach"
+              "spadanang",
+              "massageindanang"
             ],
-            "altText": "A woman lying on a massage bed while a therapist works on her back in a warm room.",
-            "imagePrompt": "A tall 9:16 vertical photo. One female guest lies relaxed on a massage bed. A female therapist works on her back with warm golden oil. The shot is from above, showing the guest and hands. Inside a warm hotel room at evening, lamps giving a golden glow, open balcony doors showing lanterns outside under a deep blue sky. No text, no logos.",
-            "storyText": "60 min deep tissue relief in your room 🌸"
+            "altText": "A woman lying on a massage bed while a therapist works on her back with warm oil in a hotel room at night.",
+            "imagePrompt": "Vertical 9:16 photo of a woman relaxing on a massage bed in a hotel room at night, a female therapist using warm golden oil on her arms, lamps giving a warm golden glow, the window showing lanterns outside under a deep blue sky.",
+            "storyText": "Need a massage in your room tonight? We bring the table."
           },
           {
             "type": "moment",
-            "topic": "Recovery after surfing My Khe",
-            "scene": "detail, a close view of the hands on the body",
-            "caption": "Sore after surfing My Khe? 🌺\n\nTargeted massage eases tired muscles and heavy legs.\n\nFree travel in our core areas.",
+            "topic": "Recovery massage after surfing at My Khe Beach",
+            "scene": "detail",
+            "caption": "How do you recover after a surf at My Khe? 🌺\n\nTargeted pressure eases your paddling shoulders and heavy legs so you feel ready for tomorrow.\n\nLinens, towels and oils are included with every visit. 🪷",
             "hashtags": [
               "danang",
-              "mykhebeach"
+              ""
             ]
           }
         ]
@@ -243,24 +237,24 @@
         "posts": [
           {
             "type": "offer",
-            "topic": "Deep tissue tension release in Da Nang",
-            "scene": "guest, from above",
-            "caption": "Tired in Da Nang? 🌸\n\nSlow pressure loosens deep tension in your back and shoulders for 60 min.\n\nTrained local therapists bring all fresh linens to your room.",
+            "topic": "Book a deep tissue massage for your room tonight",
+            "scene": "guest",
+            "caption": "Can we bring our massage table to your hotel room tonight? 🌸\n\nOur trained therapist works slow forearm pressure into your sore shoulders to release deep tension before bed.\n\nTrained local therapists come directly to you with fresh linens and warm oils. 🪷",
             "hashtags": [
               "danang",
               "deeptissuemassage",
-              "massageindanang",
-              "spanearmyKhebeach"
+              "spadanang",
+              "massageindanang"
             ],
-            "altText": "A woman lying on a massage bed while a therapist works on her back in a warm room.",
-            "imagePrompt": "A tall 9:16 vertical photo. One female guest lies relaxed on a massage bed. A female therapist works on her back with warm golden oil. The shot is from above, showing the guest and hands. Inside a warm hotel room at evening, lamps giving a golden glow, open balcony doors showing lanterns outside under a deep blue sky. No text, no logos.",
-            "storyText": "60 min deep tissue relief in your room 🌸"
+            "altText": "A woman lying on a massage bed while a therapist works on her back with warm oil in a hotel room at night.",
+            "imagePrompt": "Vertical 9:16 photo of a woman relaxing on a massage bed in a hotel room at night, a female therapist using warm golden oil on her arms, lamps giving a warm golden glow, the window showing lanterns outside under a deep blue sky.",
+            "storyText": "Need a massage in your room tonight? We bring the table."
           },
           {
             "type": "moment",
-            "topic": "Recovery after surfing My Khe",
-            "scene": "detail, a close view of the hands on the body",
-            "caption": "Sore after surfing My Khe? 🌺\n\nTargeted massage eases tired muscles and heavy legs.\n\nFree travel in our core areas.",
+            "topic": "Recovery massage after surfing at My Khe Beach",
+            "scene": "detail",
+            "caption": "How do you recover after a surf at My Khe? 🌺\n\nTargeted pressure eases your paddling shoulders and heavy legs so you feel ready for tomorrow.\n\nLinens, towels and oils are included with every visit. 🪷",
             "hashtags": [
               "danang",
               "mykhebeach",
@@ -274,31 +268,31 @@
         "posts": [
           {
             "type": "offer",
-            "topic": "Deep tissue tension release in Da Nang",
-            "scene": "guest, from above",
-            "caption": "Tired in Da Nang? 🌸\n\nSlow pressure loosens deep tension in your back and shoulders for 60 min.\n\nTrained local therapists bring all fresh linens to your room.",
+            "topic": "Book a deep tissue massage for your room tonight",
+            "scene": "guest",
+            "caption": "Can we bring our massage table to your hotel room tonight? 🌸\n\nOur trained therapist works slow forearm pressure into your sore shoulders to release deep tension before bed.\n\nTrained local therapists come directly to you with fresh linens and warm oils. 🪷",
             "hashtags": [
               "danang",
               "deeptissuemassage",
-              "massageindanang",
-              "spanearmyKhebeach"
+              "spadanang",
+              "massageindanang"
             ],
-            "altText": "A woman lying on a massage bed while a therapist works on her back in a warm room.",
-            "imagePrompt": "A tall 9:16 vertical photo. One female guest lies relaxed on a massage bed. A female therapist works on her back with warm golden oil. The shot is from above, showing the guest and hands. Inside a warm hotel room at evening, lamps giving a golden glow, open balcony doors showing lanterns outside under a deep blue sky. No text, no logos.",
-            "storyText": "60 min deep tissue relief in your room 🌸"
+            "altText": "A woman lying on a massage bed while a therapist works on her back with warm oil in a hotel room at night.",
+            "imagePrompt": "Vertical 9:16 photo of a woman relaxing on a massage bed in a hotel room at night, a female therapist using warm golden oil on her arms, lamps giving a warm golden glow, the window showing lanterns outside under a deep blue sky.",
+            "storyText": "Need a massage in your room tonight? We bring the table."
           },
           {
             "type": "moment",
-            "topic": "Recovery after surfing My Khe",
-            "scene": "detail, a close view of the hands on the body",
-            "caption": "Sore after surfing My Khe? 🌺\n\nTargeted massage eases tired muscles and heavy legs.\n\nFree travel in our core areas.",
+            "topic": "Recovery massage after surfing at My Khe Beach",
+            "scene": "detail",
+            "caption": "How do you recover after a surf at My Khe? 🌺\n\nTargeted pressure eases your paddling shoulders and heavy legs so you feel ready for tomorrow.\n\nLinens, towels and oils are included with every visit. 🪷",
             "hashtags": [
               "danang",
               "mykhebeach",
               "surfrecovery",
               "massageindanang"
             ],
-            "altText": "Close view of a therapist's hands applying warm oil to a man's back on a massage bed."
+            "altText": "Close-up of a therapist's hands working on a man's back with warm oil during a recovery massage."
           }
         ]
       },
@@ -306,32 +300,32 @@
         "posts": [
           {
             "type": "offer",
-            "topic": "Deep tissue tension release in Da Nang",
-            "scene": "guest, from above",
-            "caption": "Tired in Da Nang? 🌸\n\nSlow pressure loosens deep tension in your back and shoulders for 60 min.\n\nTrained local therapists bring all fresh linens to your room.",
+            "topic": "Book a deep tissue massage for your room tonight",
+            "scene": "guest",
+            "caption": "Can we bring our massage table to your hotel room tonight? 🌸\n\nOur trained therapist works slow forearm pressure into your sore shoulders to release deep tension before bed.\n\nTrained local therapists come directly to you with fresh linens and warm oils. 🪷",
             "hashtags": [
               "danang",
               "deeptissuemassage",
-              "massageindanang",
-              "spanearmyKhebeach"
+              "spadanang",
+              "massageindanang"
             ],
-            "altText": "A woman lying on a massage bed while a therapist works on her back in a warm room.",
-            "imagePrompt": "A tall 9:16 vertical photo. One female guest lies relaxed on a massage bed. A female therapist works on her back with warm golden oil. The shot is from above, showing the guest and hands. Inside a warm hotel room at evening, lamps giving a golden glow, open balcony doors showing lanterns outside under a deep blue sky. No text, no logos.",
-            "storyText": "60 min deep tissue relief in your room 🌸"
+            "altText": "A woman lying on a massage bed while a therapist works on her back with warm oil in a hotel room at night.",
+            "imagePrompt": "Vertical 9:16 photo of a woman relaxing on a massage bed in a hotel room at night, a female therapist using warm golden oil on her arms, lamps giving a warm golden glow, the window showing lanterns outside under a deep blue sky.",
+            "storyText": "Need a massage in your room tonight? We bring the table."
           },
           {
             "type": "moment",
-            "topic": "Recovery after surfing My Khe",
-            "scene": "detail, a close view of the hands on the body",
-            "caption": "Sore after surfing My Khe? 🌺\n\nTargeted massage eases tired muscles and heavy legs.\n\nFree travel in our core areas.",
+            "topic": "Recovery massage after surfing at My Khe Beach",
+            "scene": "detail",
+            "caption": "How do you recover after a surf at My Khe? 🌺\n\nTargeted pressure eases your paddling shoulders and heavy legs so you feel ready for tomorrow.\n\nLinens, towels and oils are included with every visit. 🪷",
             "hashtags": [
               "danang",
               "mykhebeach",
               "surfrecovery",
               "massageindanang"
             ],
-            "altText": "Close view of a therapist's hands applying warm oil to a man's back on a massage bed.",
-            "imagePrompt": "A tall 9:16 vertical photo. A male guest lies on a massage bed. A female therapist'"
+            "altText": "Close-up of a therapist's hands working on a man's back with warm oil during a recovery massage.",
+            "imagePrompt": "Vertical 9:16 photo in late afternoon light, close view of a female"
           }
         ]
       },
@@ -339,32 +333,32 @@
         "posts": [
           {
             "type": "offer",
-            "topic": "Deep tissue tension release in Da Nang",
-            "scene": "guest, from above",
-            "caption": "Tired in Da Nang? 🌸\n\nSlow pressure loosens deep tension in your back and shoulders for 60 min.\n\nTrained local therapists bring all fresh linens to your room.",
+            "topic": "Book a deep tissue massage for your room tonight",
+            "scene": "guest",
+            "caption": "Can we bring our massage table to your hotel room tonight? 🌸\n\nOur trained therapist works slow forearm pressure into your sore shoulders to release deep tension before bed.\n\nTrained local therapists come directly to you with fresh linens and warm oils. 🪷",
             "hashtags": [
               "danang",
               "deeptissuemassage",
-              "massageindanang",
-              "spanearmyKhebeach"
+              "spadanang",
+              "massageindanang"
             ],
-            "altText": "A woman lying on a massage bed while a therapist works on her back in a warm room.",
-            "imagePrompt": "A tall 9:16 vertical photo. One female guest lies relaxed on a massage bed. A female therapist works on her back with warm golden oil. The shot is from above, showing the guest and hands. Inside a warm hotel room at evening, lamps giving a golden glow, open balcony doors showing lanterns outside under a deep blue sky. No text, no logos.",
-            "storyText": "60 min deep tissue relief in your room 🌸"
+            "altText": "A woman lying on a massage bed while a therapist works on her back with warm oil in a hotel room at night.",
+            "imagePrompt": "Vertical 9:16 photo of a woman relaxing on a massage bed in a hotel room at night, a female therapist using warm golden oil on her arms, lamps giving a warm golden glow, the window showing lanterns outside under a deep blue sky.",
+            "storyText": "Need a massage in your room tonight? We bring the table."
           },
           {
             "type": "moment",
-            "topic": "Recovery after surfing My Khe",
-            "scene": "detail, a close view of the hands on the body",
-            "caption": "Sore after surfing My Khe? 🌺\n\nTargeted massage eases tired muscles and heavy legs.\n\nFree travel in our core areas.",
+            "topic": "Recovery massage after surfing at My Khe Beach",
+            "scene": "detail",
+            "caption": "How do you recover after a surf at My Khe? 🌺\n\nTargeted pressure eases your paddling shoulders and heavy legs so you feel ready for tomorrow.\n\nLinens, towels and oils are included with every visit. 🪷",
             "hashtags": [
               "danang",
               "mykhebeach",
               "surfrecovery",
               "massageindanang"
             ],
-            "altText": "Close view of a therapist's hands applying warm oil to a man's back on a massage bed.",
-            "imagePrompt": "A tall 9:16 vertical photo. A male guest lies on a massage bed. A female therapist's hands apply warm golden oil to his back. Close view of the hands on the body. Inside a hotel room in the late"
+            "altText": "Close-up of a therapist's hands working on a man's back with warm oil during a recovery massage.",
+            "imagePrompt": "Vertical 9:16 photo in late afternoon light, close view of a female therapist's hands working with warm golden oil on a man's back, a surfboard leaning far in the background near"
           }
         ]
       },
@@ -372,67 +366,33 @@
         "posts": [
           {
             "type": "offer",
-            "topic": "Deep tissue tension release in Da Nang",
-            "scene": "guest, from above",
-            "caption": "Tired in Da Nang? 🌸\n\nSlow pressure loosens deep tension in your back and shoulders for 60 min.\n\nTrained local therapists bring all fresh linens to your room.",
+            "topic": "Book a deep tissue massage for your room tonight",
+            "scene": "guest",
+            "caption": "Can we bring our massage table to your hotel room tonight? 🌸\n\nOur trained therapist works slow forearm pressure into your sore shoulders to release deep tension before bed.\n\nTrained local therapists come directly to you with fresh linens and warm oils. 🪷",
             "hashtags": [
               "danang",
               "deeptissuemassage",
-              "massageindanang",
-              "spanearmyKhebeach"
+              "spadanang",
+              "massageindanang"
             ],
-            "altText": "A woman lying on a massage bed while a therapist works on her back in a warm room.",
-            "imagePrompt": "A tall 9:16 vertical photo. One female guest lies relaxed on a massage bed. A female therapist works on her back with warm golden oil. The shot is from above, showing the guest and hands. Inside a warm hotel room at evening, lamps giving a golden glow, open balcony doors showing lanterns outside under a deep blue sky. No text, no logos.",
-            "storyText": "60 min deep tissue relief in your room 🌸"
+            "altText": "A woman lying on a massage bed while a therapist works on her back with warm oil in a hotel room at night.",
+            "imagePrompt": "Vertical 9:16 photo of a woman relaxing on a massage bed in a hotel room at night, a female therapist using warm golden oil on her arms, lamps giving a warm golden glow, the window showing lanterns outside under a deep blue sky.",
+            "storyText": "Need a massage in your room tonight? We bring the table."
           },
           {
             "type": "moment",
-            "topic": "Recovery after surfing My Khe",
-            "scene": "detail, a close view of the hands on the body",
-            "caption": "Sore after surfing My Khe? 🌺\n\nTargeted massage eases tired muscles and heavy legs.\n\nFree travel in our core areas.",
+            "topic": "Recovery massage after surfing at My Khe Beach",
+            "scene": "detail",
+            "caption": "How do you recover after a surf at My Khe? 🌺\n\nTargeted pressure eases your paddling shoulders and heavy legs so you feel ready for tomorrow.\n\nLinens, towels and oils are included with every visit. 🪷",
             "hashtags": [
               "danang",
               "mykhebeach",
               "surfrecovery",
               "massageindanang"
             ],
-            "altText": "Close view of a therapist's hands applying warm oil to a man's back on a massage bed.",
-            "imagePrompt": "A tall 9:16 vertical photo. A male guest lies on a massage bed. A female therapist's hands apply warm golden oil to his back. Close view of the hands on the body. Inside a hotel room in the late afternoon, soft shade, lamps lit, open window to green plants outside. No text, no logos.",
-            "storyText": "Easy"
-          }
-        ]
-      },
-      {
-        "posts": [
-          {
-            "type": "offer",
-            "topic": "Deep tissue tension release in Da Nang",
-            "scene": "guest, from above",
-            "caption": "Tired in Da Nang? 🌸\n\nSlow pressure loosens deep tension in your back and shoulders for 60 min.\n\nTrained local therapists bring all fresh linens to your room.",
-            "hashtags": [
-              "danang",
-              "deeptissuemassage",
-              "massageindanang",
-              "spanearmyKhebeach"
-            ],
-            "altText": "A woman lying on a massage bed while a therapist works on her back in a warm room.",
-            "imagePrompt": "A tall 9:16 vertical photo. One female guest lies relaxed on a massage bed. A female therapist works on her back with warm golden oil. The shot is from above, showing the guest and hands. Inside a warm hotel room at evening, lamps giving a golden glow, open balcony doors showing lanterns outside under a deep blue sky. No text, no logos.",
-            "storyText": "60 min deep tissue relief in your room 🌸"
-          },
-          {
-            "type": "moment",
-            "topic": "Recovery after surfing My Khe",
-            "scene": "detail, a close view of the hands on the body",
-            "caption": "Sore after surfing My Khe? 🌺\n\nTargeted massage eases tired muscles and heavy legs.\n\nFree travel in our core areas.",
-            "hashtags": [
-              "danang",
-              "mykhebeach",
-              "surfrecovery",
-              "massageindanang"
-            ],
-            "altText": "Close view of a therapist's hands applying warm oil to a man's back on a massage bed.",
-            "imagePrompt": "A tall 9:16 vertical photo. A male guest lies on a massage bed. A female therapist's hands apply warm golden oil to his back. Close view of the hands on the body. Inside a hotel room in the late afternoon, soft shade, lamps lit, open window to green plants outside. No text, no logos.",
-            "storyText": "Easy recovery after the surf 🌺"
+            "altText": "Close-up of a therapist's hands working on a man's back with warm oil during a recovery massage.",
+            "imagePrompt": "Vertical 9:16 photo in late afternoon light, close view of a female therapist's hands working with warm golden oil on a man's back, a surfboard leaning far in the background near the balcony rail out of focus.",
+            "storyText": "Sore shoulders after surfing? We loosen tired muscles."
           }
         ]
       }
@@ -441,33 +401,33 @@
       "posts": [
         {
           "type": "offer",
-          "topic": "Deep tissue tension release in Da Nang",
-          "scene": "guest, from above",
-          "caption": "Tired in Da Nang? 🌸\n\nSlow pressure loosens deep tension in your back and shoulders for 60 min.\n\nTrained local therapists bring all fresh linens to your room.",
+          "topic": "Book a deep tissue massage for your room tonight",
+          "scene": "guest",
+          "caption": "Can we bring our massage table to your hotel room tonight? 🌸\n\nOur trained therapist works slow forearm pressure into your sore shoulders to release deep tension before bed.\n\nTrained local therapists come directly to you with fresh linens and warm oils. 🪷",
           "hashtags": [
             "danang",
             "deeptissuemassage",
-            "massageindanang",
-            "spanearmyKhebeach"
+            "spadanang",
+            "massageindanang"
           ],
-          "altText": "A woman lying on a massage bed while a therapist works on her back in a warm room.",
-          "imagePrompt": "A tall 9:16 vertical photo. One female guest lies relaxed on a massage bed. A female therapist works on her back with warm golden oil. The shot is from above, showing the guest and hands. Inside a warm hotel room at evening, lamps giving a golden glow, open balcony doors showing lanterns outside under a deep blue sky. No text, no logos.",
-          "storyText": "60 min deep tissue relief in your room 🌸"
+          "altText": "A woman lying on a massage bed while a therapist works on her back with warm oil in a hotel room at night.",
+          "imagePrompt": "Vertical 9:16 photo of a woman relaxing on a massage bed in a hotel room at night, a female therapist using warm golden oil on her arms, lamps giving a warm golden glow, the window showing lanterns outside under a deep blue sky.",
+          "storyText": "Need a massage in your room tonight? We bring the table."
         },
         {
           "type": "moment",
-          "topic": "Recovery after surfing My Khe",
-          "scene": "detail, a close view of the hands on the body",
-          "caption": "Sore after surfing My Khe? 🌺\n\nTargeted massage eases tired muscles and heavy legs.\n\nFree travel in our core areas.",
+          "topic": "Recovery massage after surfing at My Khe Beach",
+          "scene": "detail",
+          "caption": "How do you recover after a surf at My Khe? 🌺\n\nTargeted pressure eases your paddling shoulders and heavy legs so you feel ready for tomorrow.\n\nLinens, towels and oils are included with every visit. 🪷",
           "hashtags": [
             "danang",
             "mykhebeach",
             "surfrecovery",
             "massageindanang"
           ],
-          "altText": "Close view of a therapist's hands applying warm oil to a man's back on a massage bed.",
-          "imagePrompt": "A tall 9:16 vertical photo. A male guest lies on a massage bed. A female therapist's hands apply warm golden oil to his back. Close view of the hands on the body. Inside a hotel room in the late afternoon, soft shade, lamps lit, open window to green plants outside. No text, no logos.",
-          "storyText": "Easy recovery after the surf 🌺"
+          "altText": "Close-up of a therapist's hands working on a man's back with warm oil during a recovery massage.",
+          "imagePrompt": "Vertical 9:16 photo in late afternoon light, close view of a female therapist's hands working with warm golden oil on a man's back, a surfboard leaning far in the background near the balcony rail out of focus.",
+          "storyText": "Sore shoulders after surfing? We loosen tired muscles."
         }
       ]
     }

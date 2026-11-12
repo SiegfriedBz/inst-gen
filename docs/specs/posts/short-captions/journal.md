@@ -98,6 +98,79 @@
   the maintainer: "Nothing, go on". Asked whether an offer post opens on its
   question or its offer line: "OFFER FIRST".
 
+## Evaluation, `posts-18` (amended 2026-11-12)
+
+Recorded on 2026-11-12, with the maintainer's yes for 4 requests. It took 6:
+Sen's plan without an offer failed once with `model_busy` (Google's 503)
+before a retry recorded it, and Sen's offer plan failed twice with
+`model_failed` (a `SyntaxError`, "finish other", 285 and 426 tokens out), as
+it did 3 times in 9 on 2026-11-10. The developer stopped there: Sen's offer
+recording stays `posts-16`'s. Each caption as the owner sees it, its
+paragraphs split by " / ":
+
+**Svarga, without an offer**
+
+1. `sore`: "Need relief for tired legs this afternoon in Canggu? 🌸" / "Our
+   therapists use warm coconut oil and rhythmic strokes to loosen your legs
+   right here in your villa room." / "Experienced local therapists with 5+
+   years of spa and villa experience bring everything to you 🌺". Story:
+   "Tired legs? Get a massage in your villa room 🌸".
+2. `ask`: "Where can you get expert foot care tonight in Seminyak? 🌸" / "Our
+   therapist works on your feet to release tension so you can rest easily in
+   your hotel room." / "Fresh linens, towels, and natural oils are brought
+   straight to your door 🌺". Story: "Sore feet tonight? Let us come to your
+   room 🌸".
+
+**Sen, without an offer**
+
+1. `ask`: "Can we bring our massage table to your hotel room tonight? 🌸" /
+   "Our trained therapist works slow forearm pressure into your sore shoulders
+   to release deep tension before bed." / "Trained local therapists come
+   directly to you with fresh linens and warm oils 🪷". Story: "Need a massage
+   in your room tonight? We bring the table 🌸".
+2. `sore`: "How do you recover after a surf at My Khe? 🌺" / "Targeted pressure
+   eases your paddling shoulders and heavy legs so you feel ready for
+   tomorrow." / "Linens, towels and oils are included with every visit 🪷".
+   Story: "Sore shoulders after surfing? We loosen tired muscles 🌸".
+
+**Svarga, with the offer**
+
+1. `sore`: the offer line / "Where does the stiffness in your neck come from
+   after laptop days in Canggu? We use long, rhythmic strokes and warm coconut
+   oil to loosen your muscles completely. Experienced local therapists have
+   5+ years of spa and villa experience 🌺" (two paragraphs: the fact joined
+   the answer).
+2. `ask`: the offer line / "Do two therapists come to your Pererenan villa
+   tonight? Two therapists work in sync across your whole body at the same
+   time in your room. Fresh linens, towels, and natural oils provided 🌺" (two
+   paragraphs).
+
+Code's records: `post-2: question names no part of the body` (Sen), `post-1:
+story text of 11 words` (Sen), long sentences in 4 captions, and "linens" as a
+setting in 4, each time in a highlight the profile gives, not a description.
+
+The checks, on the 6 captions recorded (Sen's offer plan missing):
+
+| Check | posts-16 | posts-18 |
+|---|---|---|
+| The question names a part of the body (`sore`) or what a guest asks before booking (`ask`), with a moment or a real place | 0 of 8 | 5 of 6 |
+| No sentence in which a thing does the acting | 4 of 8 | 5 of 6 |
+| Says the therapist comes to the guest's room | 3 of 8 | 4 of 6 |
+| No cliché, em dash or question that labels the writer's claim | 5 of 8 | 6 of 6 ("completely", an intensifier, in one) |
+| An offer post opens on its offer line | 0 of 4 | 2 of 2 |
+| The story text, offer posts aside, holds at most 10 words and names the sore spot or the moment | 0 of 4 | 3 of 4 |
+
+2026-11-10's checks: at most three paragraphs, 6 of 6 (both offer captions
+have two); at most 300 characters, 5 of 6 (316); no sentence over 15 words, 2
+of 6 (`posts-16`: 4 of 8); a real place, 5 of 6.
+
+Verdict: not a full pass. Every question names a sore spot or a booking worry
+but Sen's post 2, every answer but one has a person acting, and three story
+texts in four are short hooks. The answers run long (up to 19 words), two
+captions don't say the therapist comes to the room, and the offer captions
+join their fact to the answer. The maintainer decides whether the prompt
+changes and the plans are recorded again.
+
 ## Evaluation, `posts-16` and `posts-17`
 
 The `posts-16` recordings, replayed through `posts-17`'s checks, each caption
