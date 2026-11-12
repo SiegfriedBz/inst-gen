@@ -39,6 +39,9 @@ export const POSTS_LIMITS = {
   // `.length`, and what the model is asked for.
   storyChars: 120,
   storyAsked: 100,
+  // At most, a story text's words, an offer post's aside: more is recorded
+  // (docs/specs/posts/short-captions, amended 2026-11-12).
+  storyWords: 10,
   // A spa's flowers, exactly; any other business's emoji, at most
   // (docs/specs/posts/short-captions, amended 2026-11-10).
   captionFlowers: 2,

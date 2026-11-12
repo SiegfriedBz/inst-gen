@@ -320,9 +320,101 @@ function settingRecords(post: Post): Dropped[] {
   return records;
 }
 
+// The records of docs/specs/posts/short-captions, amended 2026-11-12: a
+// sore question names a part of the body ("muscles" and "body" aren't one);
+// clichés and the em dash; story texts of ten words at most. The lists may
+// grow.
+const BODY_WORDS = [
+  'back',
+  'shoulder',
+  'shoulders',
+  'neck',
+  'leg',
+  'legs',
+  'calf',
+  'calves',
+  'thigh',
+  'thighs',
+  'knee',
+  'knees',
+  'foot',
+  'feet',
+  'ankle',
+  'ankles',
+  'arm',
+  'arms',
+  'hand',
+  'hands',
+  'wrist',
+  'wrists',
+  'hip',
+  'hips',
+  'head',
+];
+const CLICHES = [
+  'unwind',
+  'unwinding',
+  'indulge',
+  'indulgent',
+  'indulgence',
+  'pamper',
+  'pampering',
+  'oasis',
+  'escape',
+  'melt away',
+  'melts away',
+  'soothe',
+  'soothes',
+  'soothing',
+];
+const EM_DASH = '—';
+
+function bodyRecords(post: Post): Dropped[] {
+  if (post.setup?.question !== 'sore') return [];
+  const question = folded(questionOf(post) ?? '');
+  return BODY_WORDS.some((word) => holdsWords(question, word))
+    ? []
+    : [{ field: 'mix', reason: `${post.id}: question names no part of the body` }];
+}
+
+// The clichés a text holds, and its em dash, in the order they first appear.
+function clichesIn(text: string): string[] {
+  const plain = folded(text);
+  return [
+    ...CLICHES.map((words) => ({ shown: words, at: wordAt(plain, words) })),
+    { shown: EM_DASH, at: plain.indexOf(EM_DASH) },
+  ]
+    .filter(({ at }) => at >= 0)
+    .sort((a, b) => a.at - b.at)
+    .map(({ shown }) => `"${shown}"`);
+}
+
+function clicheRecords(post: Post): Dropped[] {
+  const records: Dropped[] = [];
+  const caption = clichesIn(post.caption);
+  if (caption.length > 0) {
+    records.push({ field: 'words', reason: `${post.id}: ${caption.join(', ')}` });
+  }
+  const story = clichesIn(post.storyText ?? '');
+  if (story.length > 0) {
+    records.push({ field: 'words', reason: `${post.id}'s story text: ${story.join(', ')}` });
+  }
+  return records;
+}
+
+// An offer post's story text is its offer line, by design.
+function storyLengthRecords(post: Post): Dropped[] {
+  if (post.offer || !post.storyText) return [];
+  const words = post.storyText.match(WORD)?.length ?? 0;
+  return words > POSTS_LIMITS.storyWords
+    ? [{ field: 'story', reason: `${post.id}: story text of ${words} words` }]
+    : [];
+}
+
 export function copyRecords(posts: Post[], profile: Profile): Dropped[] {
   return [
     ...hookRecords(posts),
+    ...posts.flatMap(bodyRecords),
     ...stockWords(posts),
     ...endings(posts),
     ...placeRecords(posts, profile),
@@ -330,5 +422,7 @@ export function copyRecords(posts: Post[], profile: Profile): Dropped[] {
     ...posts.flatMap(askRecords),
     ...posts.flatMap(longSentences),
     ...posts.flatMap(settingRecords),
+    ...posts.flatMap(clicheRecords),
+    ...posts.flatMap(storyLengthRecords),
   ];
 }

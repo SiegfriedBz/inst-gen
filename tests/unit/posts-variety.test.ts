@@ -131,7 +131,11 @@ describe('copyRecords', () => {
     post({ id: `post-${n}`, caption, ...more });
   // Each test reads its own record; the question's has a test of its own
   // (docs/specs/posts/short-captions, amended 2026-11-10 and 2026-11-12).
-  const QUESTION_RECORDS = ['hook is no question', 'no question after the offer line'];
+  const QUESTION_RECORDS = [
+    'hook is no question',
+    'no question after the offer line',
+    'question names no part of the body',
+  ];
   const reasons = (posts: Post[], profile = svarga()) =>
     copyRecords(posts, profile)
       .filter((d) => !QUESTION_RECORDS.some((r) => d.reason.endsWith(r)))
@@ -237,7 +241,7 @@ describe('copyRecords', () => {
           storyText: 'deep tissue tension release tonight 🌸',
         }),
         at(4, 'Long day on the scooter in Ubud.', {
-          storyText: 'Long day on the scooter in Ubud? We come to you 🌸',
+          storyText: 'Long day on the scooter in Ubud? Rest tonight 🌸',
         }),
         at(1, 'Long flight to Bali? Ten percent off.', {
           offer: true,
@@ -295,6 +299,95 @@ describe('copyRecords', () => {
 
   it('records no setting for a body that feels light', () => {
     expect(reasons([at(1, 'Your legs feel light again in Canggu.')])).toEqual([]);
+  });
+
+  // Amended 2026-11-12: a sore question names a part of the body; clichés;
+  // story texts of ten words at most.
+  const [dealt] = dealSetups(svargaProfile(), undefined, seededRandom('t'));
+  const sore = { ...dealt, question: 'sore' as const };
+  const ask = { ...dealt, question: 'ask' as const };
+  const { question: _, ...kindless } = dealt;
+  const all = (posts: Post[]) => copyRecords(posts, svarga()).map((d) => `${d.field}: ${d.reason}`);
+  const bodyless = (records: string[]) =>
+    records.filter((r) => r.endsWith('question names no part of the body'));
+
+  it('records a sore question that names no part of the body', () => {
+    expect(
+      all([at(2, 'Tired after a long day in Canggu? We come to you.', { setup: sore })]),
+    ).toContain('mix: post-2: question names no part of the body');
+  });
+
+  it("reads an offer post's question after its line", () => {
+    expect(
+      all([
+        at(1, 'Ten percent off in Canggu.\n\nTired in Canggu? We come to you.', {
+          offer: true,
+          setup: sore,
+        }),
+      ]),
+    ).toContain('mix: post-1: question names no part of the body');
+  });
+
+  it('reads a part of the body whatever its case or the stop after it', () => {
+    expect(
+      bodyless(
+        all([
+          at(1, 'Legs still shaking from the Mount Batur sunrise hike? We come to your villa.', {
+            setup: sore,
+          }),
+          at(2, 'Stiff shoulders, neck and back after the flight to Canggu? We come to you.', {
+            setup: sore,
+          }),
+        ]),
+      ),
+    ).toEqual([]);
+  });
+
+  it('never records the body of an ask question, or of a post without a kind', () => {
+    const tired = 'Tired after a long day in Canggu? We come to you.';
+    expect(
+      bodyless(
+        all([at(1, tired, { setup: ask }), at(2, tired, { setup: kindless }), at(3, tired)]),
+      ),
+    ).toEqual([]);
+  });
+
+  it('records the clichés of a caption and a story text, as they come', () => {
+    expect(reasons([at(1, 'Long strokes melt away your stress — rest in Canggu.')])).toContain(
+      'words: post-1: "melt away", "—"',
+    );
+    expect(
+      reasons([at(1, 'Warm hands in Canggu.', { storyText: 'Unwind in your villa tonight 🌺' })]),
+    ).toContain('words: post-1\'s story text: "unwind"');
+  });
+
+  it('records no cliché inside another word', () => {
+    expect(reasons([at(1, 'The landscape of Canggu. The heat escaped.')])).toEqual([]);
+  });
+
+  it("records a story text of more than 10 words, an offer post's aside", () => {
+    const long = (records: string[]) => records.filter((r) => r.includes('story text of'));
+    expect(
+      reasons([
+        at(2, 'Sore after surfing in Canggu?', {
+          storyText: 'Easy and quick recovery after your long morning surf at My Khe beach 🌺',
+        }),
+      ]),
+    ).toContain('story: post-2: story text of 13 words');
+    expect(
+      long(
+        reasons([
+          at(2, 'Sore after surfing in Canggu?', {
+            storyText: 'Mount Batur legs? We come to your villa in Canggu 🌺',
+          }),
+          at(1, 'Ten percent off in Canggu.\n\nSore feet? We come to you.', {
+            offer: true,
+            storyText:
+              'Free Foot Reflexology with a 90-minute Vietnamese Traditional Massage, until Sunday 1 November 🌸',
+          }),
+        ]),
+      ),
+    ).toEqual([]);
   });
 });
 
