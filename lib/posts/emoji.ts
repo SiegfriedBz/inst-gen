@@ -71,7 +71,7 @@ export function stripEmojis(text: string, maxFlowers: number): { text: string; f
     }
     flowers += 1;
     if (flowers <= maxFlowers) return g;
-    fixes.push(`removed ${g} over ${maxFlowers} flowers`);
+    fixes.push(`removed ${g} over ${maxFlowers} flower${maxFlowers === 1 ? '' : 's'}`);
     return ' ';
   });
   return fixes.length > 0 ? { text: tidy(kept.join('')), fixes } : { text, fixes };
@@ -80,4 +80,31 @@ export function stripEmojis(text: string, maxFlowers: number): { text: string; f
 export function addFlower(text: string): { text: string; fixes: string[] } {
   if (emojisIn(text).some(isFlower)) return { text, fixes: [] };
   return { text: `${text.trimEnd()} 🌸`, fixes: ['added 🌸'] };
+}
+
+const endsOnFlower = (text: string) => isFlower(graphemes(text.trimEnd()).at(-1) ?? '');
+
+// Exactly two flowers in a spa's caption, kept to two before: one after its
+// question, one at its end (docs/specs/posts/short-captions, amended
+// 2026-11-10). A single line gets one, at its end.
+export function twoFlowers(text: string): { text: string; fixes: string[] } {
+  let out = text.trimEnd();
+  const fixes: string[] = [];
+  const count = () => emojisIn(out).filter(isFlower).length;
+  const lineEnd = out.indexOf('\n');
+  const first = lineEnd === -1 ? out : out.slice(0, lineEnd);
+  if (
+    count() < 2 &&
+    lineEnd !== -1 &&
+    !endsOnFlower(first) &&
+    (count() === 0 || endsOnFlower(out))
+  ) {
+    out = `${first.trimEnd()} 🌸${out.slice(lineEnd)}`;
+    fixes.push('added 🌸');
+  }
+  if (count() < 2 && !endsOnFlower(out)) {
+    out = `${out} 🌸`;
+    fixes.push('added 🌸');
+  }
+  return fixes.length > 0 ? { text: out, fixes } : { text, fixes };
 }

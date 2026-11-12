@@ -5,9 +5,9 @@ import type { Offer } from '@/lib/posts/offer';
 import {
   castLine,
   dealSetups,
-  HOOKS,
   localsOf,
   lookOf,
+  QUESTIONS,
   type Setup,
   seededRandom,
   setupLine,
@@ -316,39 +316,92 @@ describe('day and night', () => {
   });
 });
 
-// Hook styles (docs/specs/posts/marketing-copy, "Hook styles, dealt by code").
-describe('hook styles', () => {
-  it('two different styles without an offer', () => {
-    const hooks = deal(senProfile()).map((s) => s.hook);
-    expect(new Set(hooks).size).toBe(2);
-    for (const hook of hooks) expect(HOOKS).toContain(hook);
+// The two kinds of question, dealt in place of 2.15's hook styles
+// (docs/specs/posts/short-captions, amended 2026-11-12).
+describe('question kinds', () => {
+  it('one of each kind, without an offer', () => {
+    const kinds = deal(senProfile()).map((s) => s.question);
+    expect([...kinds].sort()).toEqual(['ask', 'sore']);
+    for (const kind of kinds) expect(QUESTIONS).toContain(kind);
   });
 
-  it('none with an offer: both posts open on its line', () => {
-    const hooks = deal(withOfferings(EIGHT), offerOn(['Aroma Massage'])).map((s) => s.hook);
-    expect(hooks).toEqual([undefined, undefined]);
+  it('one of each kind, with an offer', () => {
+    const kinds = deal(withOfferings(EIGHT), offerOn(['Aroma Massage'])).map((s) => s.question);
+    expect([...kinds].sort()).toEqual(['ask', 'sore']);
   });
 
-  it('the same seed, the same hooks', () => {
-    expect(deal(senProfile(), undefined, 'x').map((s) => s.hook)).toEqual(
-      deal(senProfile(), undefined, 'x').map((s) => s.hook),
+  it('the same seed, the same kinds', () => {
+    expect(deal(senProfile(), undefined, 'x').map((s) => s.question)).toEqual(
+      deal(senProfile(), undefined, 'x').map((s) => s.question),
     );
   });
 
-  it('the hooks come last: the lights are as before', () => {
-    expect(deal(senProfile()).map((s) => s.light)).toEqual(['night', 'day']);
+  it('no hook style any more', () => {
+    for (const offer of [undefined, offerOn(['Aroma Massage'])]) {
+      expect(deal(withOfferings(EIGHT), offer).map((s) => s.hook)).toEqual([undefined, undefined]);
+    }
   });
 
-  it('the schema takes a hook, none, and refuses another', () => {
-    const { hook: _, ...setup } = deal(senProfile())[0];
+  it('the kinds come last: the set-ups are as before', () => {
+    const bare = ({ question: _, ...setup }: Setup) => setup;
+    expect(deal(withOfferings(EIGHT), offerOn(['Aroma Massage'])).map(bare)).toEqual([
+      {
+        treatment: 'Aroma Massage',
+        look: 'plain',
+        guests: 'woman',
+        therapists: 1,
+        bodyPart: 'shoulders and neck',
+        scene: 'place',
+        locals: 'Balinese',
+        light: 'night',
+      },
+      {
+        treatment: 'Aroma Massage',
+        look: 'plain',
+        guests: 'man',
+        therapists: 1,
+        bodyPart: 'back',
+        scene: 'treatment',
+        locals: 'Balinese',
+        light: 'day',
+      },
+    ]);
+    expect(deal(senProfile()).map(bare)).toEqual([
+      {
+        treatment: 'Vietnamese Traditional Massage',
+        look: 'plain',
+        guests: 'woman',
+        therapists: 1,
+        bodyPart: 'back',
+        scene: 'place',
+        locals: 'Vietnamese',
+        light: 'night',
+      },
+      {
+        treatment: 'Foot Reflexology',
+        look: 'foot',
+        guests: 'man',
+        therapists: 1,
+        bodyPart: 'feet',
+        scene: 'guest',
+        locals: 'Vietnamese',
+        light: 'day',
+      },
+    ]);
+  });
+
+  it('the schema takes a kind, a 2.15 style, none, and refuses another', () => {
+    const { question: _, ...setup } = deal(senProfile())[0];
+    expect(setupSchema.safeParse({ ...setup, question: 'sore' }).success).toBe(true);
     expect(setupSchema.safeParse({ ...setup, hook: 'scene' }).success).toBe(true);
     expect(setupSchema.safeParse(setup).success).toBe(true);
-    expect(setupSchema.safeParse({ ...setup, hook: 'teaser' }).success).toBe(false);
+    expect(setupSchema.safeParse({ ...setup, question: 'scene' }).success).toBe(false);
   });
 
-  it('the image never sees the hook', () => {
+  it('the image never sees the kind', () => {
     const [setup] = deal(senProfile());
-    const { hook: _, ...bare } = setup;
+    const { question: _, ...bare } = setup;
+    expect(setupLine({ ...bare, question: 'ask' })).toBe(setupLine(bare));
     expect(setupLine({ ...bare, hook: 'scene' })).toBe(setupLine(bare));
   });
 });
