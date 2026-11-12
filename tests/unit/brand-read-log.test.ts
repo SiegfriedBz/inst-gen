@@ -1,5 +1,7 @@
+import { NoObjectGeneratedError } from 'ai';
 import { describe, expect, test } from 'vitest';
-import { formatReadLog, type ReadLog } from '@/lib/brand/read-log';
+import { ModelError } from '@/lib/ai/text-model';
+import { describeModelError, formatReadLog, type ReadLog } from '@/lib/brand/read-log';
 
 const entry: ReadLog = {
   host: 'svargabalimassage.com',
@@ -32,5 +34,28 @@ describe('formatReadLog', () => {
     expect(line).toContain(' outcome=model_busy model_error="high demand \\"now\\" x');
     const message = line.slice(line.indexOf('model_error="') + 'model_error="'.length, -1);
     expect(message.replaceAll('\\"', '"')).toHaveLength(300);
+  });
+});
+
+// An answer that isn't the JSON asked for says why it stopped and how long it
+// ran, never what it said (docs/specs/posts/short-captions, journal).
+describe('describeModelError', () => {
+  test('names the stop and the length of an answer that is no JSON', () => {
+    const error = new ModelError('failed', 'No object generated', {
+      cause: new NoObjectGeneratedError({
+        cause: new SyntaxError('Unexpected end of JSON input'),
+        text: '{"posts":[',
+        response: { id: 'r', timestamp: new Date(0), modelId: 'm' },
+        usage: { inputTokens: 10, outputTokens: 8192, totalTokens: 8202 } as never,
+        finishReason: 'length',
+      }),
+    });
+    expect(describeModelError(error)).toBe('SyntaxError (finish length, 8192 tokens out)');
+  });
+
+  test('keeps the name alone for any other error', () => {
+    expect(describeModelError(new ModelError('failed', 'x', { cause: new TypeError('y') }))).toBe(
+      'TypeError',
+    );
   });
 });

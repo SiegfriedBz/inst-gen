@@ -1,8 +1,6 @@
 import { describe, expect, it } from 'vitest';
-import { PRICE_PATTERN } from '@/lib/posts/checks';
 import type { Offer } from '@/lib/posts/offer';
 import {
-  dropPrices,
   offerLine,
   offerStory,
   offerTreatment,
@@ -10,7 +8,9 @@ import {
   statesOffer,
 } from '@/lib/posts/offer-line';
 
-// An offer post's line, put first by code (docs/specs/posts/offer-line-first).
+// An offer post's line, put by code (docs/specs/posts/offer-line-first), first
+// again, its question after it (docs/specs/posts/short-captions, amended
+// 2026-11-12).
 
 const offer: Offer = {
   kind: 'discount',
@@ -55,52 +55,44 @@ describe('the offer line', () => {
 });
 
 describe('putOfferLineFirst', () => {
-  it('keeps a caption that opens on its line', () => {
-    const caption = `${LINE} 🌺 Long flight? Feel light again.`;
-    expect(putOfferLineFirst(caption, LINE, offer, true)).toEqual({ caption, fix: null });
+  const hook = 'Tight hips after a day exploring Da Nang? 🌸';
+
+  it('keeps a line the model wrote first, its stop gone before a flower or not', () => {
+    const caption = `${LINE}\n\n${hook} We come to your hotel.\n\nFree travel.`;
+    expect(putOfferLineFirst(caption, LINE, offer)).toEqual({ caption, fix: null });
+    const flowered = `${LINE.replace(/\.$/, '')} 🌺\n\n${hook} We come to your hotel.`;
+    expect(putOfferLineFirst(flowered, LINE, offer)).toEqual({ caption: flowered, fix: null });
   });
 
-  it('puts the line first when a hook comes before it', () => {
-    expect(
-      putOfferLineFirst(`Long flight? 🌸 ${LINE} Feel light again.`, LINE, offer, true),
-    ).toEqual({ caption: `${LINE} 🌸 Long flight? Feel light again.`, fix: 'put first' });
-  });
-
-  it('replaces the line in other words, and one with a flower before it', () => {
-    const other = '10% off the 90-minute thai massage until Sunday 1 November! Feel light.';
-    expect(putOfferLineFirst(other, LINE, offer, false)).toEqual({
-      caption: `${LINE} Feel light.`,
+  it('puts a line the model wrote second before the question', () => {
+    expect(putOfferLineFirst(`${hook}\n\n${LINE}\n\nWe come to your hotel.`, LINE, offer)).toEqual({
+      caption: `${LINE}\n\n${hook}\n\nWe come to your hotel.`,
       fix: 'put first',
     });
-    expect(putOfferLineFirst(`🌸 ${LINE} Feel light.`, LINE, offer, true).caption).toBe(
-      `${LINE} 🌸 Feel light.`,
-    );
   });
 
-  it('adds the line to a caption without the offer', () => {
-    expect(putOfferLineFirst('Long flight? 🌸 Feel light.', LINE, offer, true)).toEqual({
-      caption: `${LINE} 🌸 Long flight? 🌸 Feel light.`,
+  it('puts the line in place of the model own words for the offer', () => {
+    expect(
+      putOfferLineFirst(`${hook}\n\n10% off Thai this week, until 1 Nov!\n\nWe come.`, LINE, offer),
+    ).toEqual({ caption: `${LINE}\n\n${hook}\n\nWe come.`, fix: 'put first' });
+  });
+
+  it("keeps the question's flower when the model's offer followed it", () => {
+    expect(putOfferLineFirst(`Long flight? 🌸 ${LINE} Feel light again.`, LINE, offer)).toEqual({
+      caption: `${LINE}\n\nLong flight? 🌸 Feel light again.`,
+      fix: 'put first',
+    });
+  });
+
+  it('adds a line the model left out, first, and no flower', () => {
+    expect(putOfferLineFirst(`${hook} We come to your hotel.`, LINE, offer)).toEqual({
+      caption: `${LINE}\n\n${hook} We come to your hotel.`,
       fix: 'added',
     });
   });
 
-  it("keeps one flower after the line: the caption's own, never two in a row", () => {
-    const other =
-      '10% off our 90-minute thai massage, until Sunday 1 November. 🌺 Long flight? Feel light.';
-    const fixed = putOfferLineFirst(other, LINE, offer, true);
-    expect(fixed).toEqual({ caption: `${LINE} 🌺 Long flight? Feel light.`, fix: 'put first' });
-    expect(offerStory(LINE, fixed.caption, undefined, true).storyText).toBe(`${LINE} 🌺`);
-    expect(putOfferLineFirst(`🌸 ${LINE} 🌸 Feel light.`, LINE, offer, true).caption).toBe(
-      `${LINE} 🌸 Feel light.`,
-    );
-    expect(putOfferLineFirst('🌸 Long flight? Feel light.', LINE, offer, true)).toEqual({
-      caption: `${LINE} 🌸 Long flight? Feel light.`,
-      fix: 'added',
-    });
-  });
-
-  it('leaves the line alone when the caption was only the offer', () => {
-    expect(putOfferLineFirst('10% off, until 1 Nov!', LINE, offer, false)).toEqual({
+  it('gives the line alone when the caption only stated the offer', () => {
+    expect(putOfferLineFirst('10% off, until 1 Nov!', LINE, offer)).toEqual({
       caption: LINE,
       fix: 'put first',
     });
@@ -134,29 +126,5 @@ describe('offerStory', () => {
   it('gives no story text rather than one over 120', () => {
     const long = `Free Foot Reflexology with a 90-minute ${'Very '.repeat(12)}Long Massage, until Sunday 1 November.`;
     expect(offerStory(long, long, undefined, true)).toEqual({ fix: 'too long' });
-  });
-});
-
-// Amended 2026-10-29: never a price after the line.
-describe('dropPrices', () => {
-  it('drops each sentence with a price after the line, keeping its flower', () => {
-    const caption = `${LINE} 🌸 Let expert hands melt away your tension. Enjoy a 90-minute session for IDR 350k. Wake up light tomorrow. 🌺`;
-    expect(dropPrices(caption, LINE, PRICE_PATTERN)).toEqual({
-      caption: `${LINE} 🌸 Let expert hands melt away your tension. Wake up light tomorrow. 🌺`,
-      removed: ['Enjoy a 90-minute session for IDR 350k.'],
-    });
-    expect(
-      dropPrices(`${LINE} 🌸 Only VND 500k for 60 min. Feel light.`, LINE, PRICE_PATTERN).caption,
-    ).toBe(`${LINE} 🌸 Feel light.`);
-    expect(dropPrices(`${LINE} Feel light.`, LINE, PRICE_PATTERN)).toEqual({
-      caption: `${LINE} Feel light.`,
-      removed: [],
-    });
-  });
-
-  it('never takes the line itself for a price, and keeps paragraphs', () => {
-    expect(
-      dropPrices(`${LINE}\n\nFeel light. Just 250.000đ.\n\nWake up light.`, LINE, PRICE_PATTERN),
-    ).toEqual({ caption: `${LINE}\n\nFeel light.\n\nWake up light.`, removed: ['Just 250.000đ.'] });
   });
 });

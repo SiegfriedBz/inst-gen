@@ -48,6 +48,26 @@ export function sentences(text: string): string[] {
   return starts.map((start, i) => text.slice(start, ends[i])).filter((s) => s.trim());
 }
 
+// A stop that ends no sentence: after a short abbreviation of a street, a title
+// or a unit ("Jl. Nelayan", "Mt. Batur", "60 Min. Package"), or before a
+// lower-case word ("10 p.m. tonight"). The paragraph steps of
+// docs/specs/posts/short-captions read sentences so, since a false end there
+// can drop a paragraph (its final review, 2026-11-12). The list may grow.
+const ABBREVIATION = /(?:^|[^\p{L}])(?:Jl|Jln|Gg|Mt|St|Dr|Mr|Mrs|Ms|Rd|Ave|Min|Hr|Hrs)$/u;
+
+export function isAbbreviation(before: string): boolean {
+  return ABBREVIATION.test(before);
+}
+
+export function wholeSentences(text: string): string[] {
+  const ends = [...text.matchAll(/[.!?](?=\s|$)/g)]
+    .filter((m) => !(m[0] === '.' && isAbbreviation(text.slice(0, m.index))))
+    .filter((m) => !/^\s+\p{Ll}/u.test(text.slice(m.index + 1)))
+    .map((m) => m.index + 1);
+  const starts = [0, ...ends];
+  return starts.map((start, i) => text.slice(start, ends[i])).filter((s) => s.trim());
+}
+
 function hasFlower(text: string): boolean {
   return emojisIn(text).some((e) => (FLOWERS as readonly string[]).includes(e));
 }

@@ -1,4 +1,5 @@
 import { graphemes, isEmoji } from './emoji';
+import { isAbbreviation } from './story';
 
 // The hook alone on the caption's first line (docs/specs/posts/marketing-copy,
 // "The hook alone on the first line"): a blank line after the first sentence
@@ -29,7 +30,9 @@ function hookEnd(parts: string[]): number | null {
   for (let i = 0; i < parts.length; i++) {
     const part = parts[i];
     const ends = i === parts.length - 1 || (isSpace(parts[i + 1]) && !goesOn(parts, i + 1));
-    if (/^[.!?]$/.test(part) && ends) return i + 1;
+    // "Jl. Nelayan" goes on (docs/specs/posts/short-captions, final review).
+    const abbreviated = part === '.' && isAbbreviation(parts.slice(0, i).join(''));
+    if (/^[.!?]$/.test(part) && ends && !abbreviated) return i + 1;
     if (isEmoji(part) && letter && sentenceAfter(parts, i + 1)) return i;
     if (/\p{L}/u.test(part)) letter = true;
   }

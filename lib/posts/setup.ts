@@ -156,10 +156,16 @@ export type BodyPart = (typeof BODY_PARTS)[number];
 export const LIGHTS = ['day', 'night'] as const;
 export type Light = (typeof LIGHTS)[number];
 
-// How each caption opens (docs/specs/posts/marketing-copy, "Hook styles,
-// dealt by code"). A set-up dealt before them has none.
+// How each caption opened (docs/specs/posts/marketing-copy, "Hook styles,
+// dealt by code"): no longer dealt, kept so a set-up saved with one loads.
 export const HOOKS = ['question', 'scene', 'place', 'number', 'fact', 'promise'] as const;
 export type Hook = (typeof HOOKS)[number];
+
+// The kind of question each caption asks (docs/specs/posts/short-captions,
+// amended 2026-11-12): the guest's sore spot and its moment, or what a guest
+// asks before booking. A set-up dealt before them has none.
+export const QUESTIONS = ['sore', 'ask'] as const;
+export type Question = (typeof QUESTIONS)[number];
 
 export const setupSchema = z.object({
   treatment: z.string().min(1).optional(),
@@ -171,6 +177,7 @@ export const setupSchema = z.object({
   locals: z.enum(LOCALS),
   light: z.enum(LIGHTS).optional(),
   hook: z.enum(HOOKS).optional(),
+  question: z.enum(QUESTIONS).optional(),
 });
 export type Setup = z.infer<typeof setupSchema>;
 
@@ -291,10 +298,10 @@ export function dealSetups(
     random,
   );
 
-  // A different hook style for each post; with an offer, both posts open on
-  // its line instead. Drawn after the lights, so a seed still deals what it
-  // dealt before (docs/specs/posts/marketing-copy).
-  const hooks: (Hook | undefined)[] = offer ? [] : shuffled(HOOKS, random);
+  // One kind of question each, with or without an offer. Drawn last, where
+  // the hook styles were, so a seed still deals the set-ups it dealt before
+  // (docs/specs/posts/short-captions, amended 2026-11-12).
+  const questions = shuffled(QUESTIONS, random);
 
   return looks.map(({ treatment, look }, i) => ({
     ...(treatment ? { treatment } : {}),
@@ -305,7 +312,7 @@ export function dealSetups(
     scene: scenes[i],
     locals,
     light: lights[i] ?? 'day',
-    ...(hooks[i] ? { hook: hooks[i] } : {}),
+    question: questions[i],
   }));
 }
 

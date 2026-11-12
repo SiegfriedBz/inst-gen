@@ -50,4 +50,17 @@ describe('hookOnItsLine', () => {
       'Frangipani 🌸 petals on the tray.\n\nWarm oil.',
     );
   });
+
+  // A stop after a short abbreviation ends no sentence (the final review,
+  // docs/specs/posts/short-captions, 2026-11-12).
+  it('never ends the hook at a street or unit abbreviation', () => {
+    expect(
+      hookOnItsLine('Sore legs after a surf near Jl. Nelayan? 🌸 We come to your villa tonight.'),
+    ).toBe('Sore legs after a surf near Jl. Nelayan? 🌸\n\nWe come to your villa tonight.');
+    const line =
+      '10% off our 90-minute Traditional Massage 60 Min. Package, until Tuesday 27 October.';
+    expect(hookOnItsLine(`${line}\n\nSore legs? We come tonight.`)).toBe(
+      `${line}\n\nSore legs? We come tonight.`,
+    );
+  });
 });

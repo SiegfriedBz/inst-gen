@@ -41,9 +41,12 @@ describe('cleanStory', () => {
     );
   });
 
-  it('limits are 120 and 100', () => {
+  // Asked: 60 characters and 10 words since docs/specs/posts/short-captions
+  // was amended 2026-11-12; checked: 120.
+  it('limits are 120, 60 and 10 words', () => {
     expect(POSTS_LIMITS.storyChars).toBe(120);
-    expect(POSTS_LIMITS.storyAsked).toBe(100);
+    expect(POSTS_LIMITS.storyAsked).toBe(60);
+    expect(POSTS_LIMITS.storyWords).toBe(10);
   });
 
   it('gives a spa story text its flower within 120', () => {
@@ -162,6 +165,22 @@ describe('a call to action', () => {
         { field: 'story', reason: 'post-2: story text removed "Book now!"' },
         { field: 'story', reason: 'post-2: no story text' },
       ],
+    });
+  });
+});
+
+// One flower in a spa's story text (docs/specs/posts/short-captions, amended
+// 2026-11-10).
+describe('one flower in a story text', () => {
+  it('keeps the first flower only', () => {
+    const { storyText, dropped } = cleanStory('Rest tonight 🌸 in your room 🌺', {
+      id: 'post-1',
+      spa: true,
+    });
+    expect(storyText).toBe('Rest tonight 🌸 in your room');
+    expect(dropped).toContainEqual({
+      field: 'emoji',
+      reason: 'post-1: story text removed 🌺 over 1 flower',
     });
   });
 });
