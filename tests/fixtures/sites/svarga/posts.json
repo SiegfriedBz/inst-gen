@@ -1,9 +1,9 @@
 {
   "modelId": "gemini-3.5-flash-lite",
-  "promptVersion": "posts-14",
+  "promptVersion": "posts-16",
   "recording": {
     "modelId": "gemini-3.5-flash-lite",
-    "promptVersion": "posts-14",
+    "promptVersion": "posts-16",
     "partials": [
       {
         "posts": []
@@ -12,7 +12,7 @@
         "posts": [
           {
             "type": "offer",
-            "topic": "Traditional Balinese Massage in your Cang"
+            "topic": "Traditional Balinese Massage in Canggu"
           }
         ]
       },
@@ -20,9 +20,9 @@
         "posts": [
           {
             "type": "offer",
-            "topic": "Traditional Balinese Massage in your Canggu villa",
-            "scene": "a close view of the hands on the body",
-            "caption": "How does your"
+            "topic": "Traditional Balinese Massage in Canggu",
+            "scene": "detail",
+            "caption": "Tired after a long day in Canggu? 🌸\n"
           }
         ]
       },
@@ -30,9 +30,9 @@
         "posts": [
           {
             "type": "offer",
-            "topic": "Traditional Balinese Massage in your Canggu villa",
-            "scene": "a close view of the hands on the body",
-            "caption": "How does your body feel after a long day under the warm Bali sun? 🌸\n\nEnjoy a sixty minute Traditional Balinese Massage right"
+            "topic": "Traditional Balinese Massage in Canggu",
+            "scene": "detail",
+            "caption": "Tired after a long day in Canggu? 🌸\n\nLong strokes and palm pressure loosen tight muscles and melt away your stress.\n\nExperienced local therapists bring fresh linens"
           }
         ]
       },
@@ -40,21 +40,12 @@
         "posts": [
           {
             "type": "offer",
-            "topic": "Traditional Balinese Massage in your Canggu villa",
-            "scene": "a close view of the hands on the body",
-            "caption": "How does your body feel after a long day under the warm Bali sun? 🌸\n\nEnjoy a sixty minute Traditional Balinese Massage right in your villa with experienced local therapists bringing soothing relief to tired muscles.\n\nFamiliar hands work through tension with smooth strokes"
-          }
-        ]
-      },
-      {
-        "posts": [
-          {
-            "type": "offer",
-            "topic": "Traditional Balinese Massage in your Canggu villa",
-            "scene": "a close view of the hands on the body",
-            "caption": "How does your body feel after a long day under the warm Bali sun? 🌸\n\nEnjoy a sixty minute Traditional Balinese Massage right in your villa with experienced local therapists bringing soothing relief to tired muscles.\n\nFamiliar hands work through tension with smooth strokes while warm coconut oil softens the skin and eases every knot away.",
+            "topic": "Traditional Balinese Massage in Canggu",
+            "scene": "detail",
+            "caption": "Tired after a long day in Canggu? 🌸\n\nLong strokes and palm pressure loosen tight muscles and melt away your stress.\n\nExperienced local therapists bring fresh linens and natural oils right to your door.",
             "hashtags": [
-              "c"
+              "canggu",
+              ""
             ]
           }
         ]
@@ -63,13 +54,189 @@
         "posts": [
           {
             "type": "offer",
-            "topic": "Traditional Balinese Massage in your Canggu villa",
-            "scene": "a close view of the hands on the body",
-            "caption": "How does your body feel after a long day under the warm Bali sun? 🌸\n\nEnjoy a sixty minute Traditional Balinese Massage right in your villa with experienced local therapists bringing soothing relief to tired muscles.\n\nFamiliar hands work through tension with smooth strokes while warm coconut oil softens the skin and eases every knot away.",
+            "topic": "Traditional Balinese Massage in Canggu",
+            "scene": "detail",
+            "caption": "Tired after a long day in Canggu? 🌸\n\nLong strokes and palm pressure loosen tight muscles and melt away your stress.\n\nExperienced local therapists bring fresh linens and natural oils right to your door.",
             "hashtags": [
               "canggu",
               "balinesemassage",
-              "massagetcanggu"
+              "massagecanggu",
+              "spatanggu"
+            ],
+            "altText": "A therapist pouring warm golden oil onto a woman's back during a traditional massage in a"
+          }
+        ]
+      },
+      {
+        "posts": [
+          {
+            "type": "offer",
+            "topic": "Traditional Balinese Massage in Canggu",
+            "scene": "detail",
+            "caption": "Tired after a long day in Canggu? 🌸\n\nLong strokes and palm pressure loosen tight muscles and melt away your stress.\n\nExperienced local therapists bring fresh linens and natural oils right to your door.",
+            "hashtags": [
+              "canggu",
+              "balinesemassage",
+              "massagecanggu",
+              "spatanggu"
+            ],
+            "altText": "A therapist pouring warm golden oil onto a woman's back during a traditional massage in a bright villa room.",
+            "imagePrompt": "A tall 9:16 vertical photo of a woman lying"
+          }
+        ]
+      },
+      {
+        "posts": [
+          {
+            "type": "offer",
+            "topic": "Traditional Balinese Massage in Canggu",
+            "scene": "detail",
+            "caption": "Tired after a long day in Canggu? 🌸\n\nLong strokes and palm pressure loosen tight muscles and melt away your stress.\n\nExperienced local therapists bring fresh linens and natural oils right to your door.",
+            "hashtags": [
+              "canggu",
+              "balinesemassage",
+              "massagecanggu",
+              "spatanggu"
+            ],
+            "altText": "A therapist pouring warm golden oil onto a woman's back during a traditional massage in a bright villa room.",
+            "imagePrompt": "A tall 9:16 vertical photo of a woman lying on a massage bed in a bright villa room with open doors showing green plants outside. A female therapist's hands are working"
+          }
+        ]
+      },
+      {
+        "posts": [
+          {
+            "type": "offer",
+            "topic": "Traditional Balinese Massage in Canggu",
+            "scene": "detail",
+            "caption": "Tired after a long day in Canggu? 🌸\n\nLong strokes and palm pressure loosen tight muscles and melt away your stress.\n\nExperienced local therapists bring fresh linens and natural oils right to your door.",
+            "hashtags": [
+              "canggu",
+              "balinesemassage",
+              "massagecanggu",
+              "spatanggu"
+            ],
+            "altText": "A therapist pouring warm golden oil onto a woman's back during a traditional massage in a bright villa room.",
+            "imagePrompt": "A tall 9:16 vertical photo of a woman lying on a massage bed in a bright villa room with open doors showing green plants outside. A female therapist's hands are working on her leg using warm golden oil. Late afternoon light, lamps lit inside, soft shade outside, no direct sunlight. Clean"
+          }
+        ]
+      },
+      {
+        "posts": [
+          {
+            "type": "offer",
+            "topic": "Traditional Balinese Massage in Canggu",
+            "scene": "detail",
+            "caption": "Tired after a long day in Canggu? 🌸\n\nLong strokes and palm pressure loosen tight muscles and melt away your stress.\n\nExperienced local therapists bring fresh linens and natural oils right to your door.",
+            "hashtags": [
+              "canggu",
+              "balinesemassage",
+              "massagecanggu",
+              "spatanggu"
+            ],
+            "altText": "A therapist pouring warm golden oil onto a woman's back during a traditional massage in a bright villa room.",
+            "imagePrompt": "A tall 9:16 vertical photo of a woman lying on a massage bed in a bright villa room with open doors showing green plants outside. A female therapist's hands are working on her leg using warm golden oil. Late afternoon light, lamps lit inside, soft shade outside, no direct sunlight. Clean white linens, still air. No text.",
+            "storyText": "Unwind in your villa with a traditional massage today"
+          }
+        ]
+      },
+      {
+        "posts": [
+          {
+            "type": "offer",
+            "topic": "Traditional Balinese Massage in Canggu",
+            "scene": "detail",
+            "caption": "Tired after a long day in Canggu? 🌸\n\nLong strokes and palm pressure loosen tight muscles and melt away your stress.\n\nExperienced local therapists bring fresh linens and natural oils right to your door.",
+            "hashtags": [
+              "canggu",
+              "balinesemassage",
+              "massagecanggu",
+              "spatanggu"
+            ],
+            "altText": "A therapist pouring warm golden oil onto a woman's back during a traditional massage in a bright villa room.",
+            "imagePrompt": "A tall 9:16 vertical photo of a woman lying on a massage bed in a bright villa room with open doors showing green plants outside. A female therapist's hands are working on her leg using warm golden oil. Late afternoon light, lamps lit inside, soft shade outside, no direct sunlight. Clean white linens, still air. No text.",
+            "storyText": "Unwind in your villa with a traditional massage today 🌸"
+          },
+          {
+            "type": "moment",
+            "topic": "After"
+          }
+        ]
+      },
+      {
+        "posts": [
+          {
+            "type": "offer",
+            "topic": "Traditional Balinese Massage in Canggu",
+            "scene": "detail",
+            "caption": "Tired after a long day in Canggu? 🌸\n\nLong strokes and palm pressure loosen tight muscles and melt away your stress.\n\nExperienced local therapists bring fresh linens and natural oils right to your door.",
+            "hashtags": [
+              "canggu",
+              "balinesemassage",
+              "massagecanggu",
+              "spatanggu"
+            ],
+            "altText": "A therapist pouring warm golden oil onto a woman's back during a traditional massage in a bright villa room.",
+            "imagePrompt": "A tall 9:16 vertical photo of a woman lying on a massage bed in a bright villa room with open doors showing green plants outside. A female therapist's hands are working on her leg using warm golden oil. Late afternoon light, lamps lit inside, soft shade outside, no direct sunlight. Clean white linens, still air. No text.",
+            "storyText": "Unwind in your villa with a traditional massage today 🌸"
+          },
+          {
+            "type": "moment",
+            "topic": "After a long flight in Pererenan",
+            "scene": "place",
+            "caption": "Sore after"
+          }
+        ]
+      },
+      {
+        "posts": [
+          {
+            "type": "offer",
+            "topic": "Traditional Balinese Massage in Canggu",
+            "scene": "detail",
+            "caption": "Tired after a long day in Canggu? 🌸\n\nLong strokes and palm pressure loosen tight muscles and melt away your stress.\n\nExperienced local therapists bring fresh linens and natural oils right to your door.",
+            "hashtags": [
+              "canggu",
+              "balinesemassage",
+              "massagecanggu",
+              "spatanggu"
+            ],
+            "altText": "A therapist pouring warm golden oil onto a woman's back during a traditional massage in a bright villa room.",
+            "imagePrompt": "A tall 9:16 vertical photo of a woman lying on a massage bed in a bright villa room with open doors showing green plants outside. A female therapist's hands are working on her leg using warm golden oil. Late afternoon light, lamps lit inside, soft shade outside, no direct sunlight. Clean white linens, still air. No text.",
+            "storyText": "Unwind in your villa with a traditional massage today 🌸"
+          },
+          {
+            "type": "moment",
+            "topic": "After a long flight in Pererenan",
+            "scene": "place",
+            "caption": "Sore after a long flight to Pererenan? 🌺\n\nFirm pressure and gentle stretches release travel tension and soothe your tired body"
+          }
+        ]
+      },
+      {
+        "posts": [
+          {
+            "type": "offer",
+            "topic": "Traditional Balinese Massage in Canggu",
+            "scene": "detail",
+            "caption": "Tired after a long day in Canggu? 🌸\n\nLong strokes and palm pressure loosen tight muscles and melt away your stress.\n\nExperienced local therapists bring fresh linens and natural oils right to your door.",
+            "hashtags": [
+              "canggu",
+              "balinesemassage",
+              "massagecanggu",
+              "spatanggu"
+            ],
+            "altText": "A therapist pouring warm golden oil onto a woman's back during a traditional massage in a bright villa room.",
+            "imagePrompt": "A tall 9:16 vertical photo of a woman lying on a massage bed in a bright villa room with open doors showing green plants outside. A female therapist's hands are working on her leg using warm golden oil. Late afternoon light, lamps lit inside, soft shade outside, no direct sunlight. Clean white linens, still air. No text.",
+            "storyText": "Unwind in your villa with a traditional massage today 🌸"
+          },
+          {
+            "type": "moment",
+            "topic": "After a long flight in Pererenan",
+            "scene": "place",
+            "caption": "Sore after a long flight to Pererenan? 🌺\n\nFirm pressure and gentle stretches release travel tension and soothe your tired body.\n\nLocal therapists bring five plus years of spa experience straight to your hotel room.",
+            "hashtags": [
+              ""
             ]
           }
         ]
@@ -78,229 +245,29 @@
         "posts": [
           {
             "type": "offer",
-            "topic": "Traditional Balinese Massage in your Canggu villa",
-            "scene": "a close view of the hands on the body",
-            "caption": "How does your body feel after a long day under the warm Bali sun? 🌸\n\nEnjoy a sixty minute Traditional Balinese Massage right in your villa with experienced local therapists bringing soothing relief to tired muscles.\n\nFamiliar hands work through tension with smooth strokes while warm coconut oil softens the skin and eases every knot away.",
+            "topic": "Traditional Balinese Massage in Canggu",
+            "scene": "detail",
+            "caption": "Tired after a long day in Canggu? 🌸\n\nLong strokes and palm pressure loosen tight muscles and melt away your stress.\n\nExperienced local therapists bring fresh linens and natural oils right to your door.",
             "hashtags": [
               "canggu",
               "balinesemassage",
-              "massagetcanggu"
+              "massagecanggu",
+              "spatanggu"
             ],
-            "altText": "A therapist hands applying warm golden oil to a woman leg during a massage in Canggu"
-          }
-        ]
-      },
-      {
-        "posts": [
-          {
-            "type": "offer",
-            "topic": "Traditional Balinese Massage in your Canggu villa",
-            "scene": "a close view of the hands on the body",
-            "caption": "How does your body feel after a long day under the warm Bali sun? 🌸\n\nEnjoy a sixty minute Traditional Balinese Massage right in your villa with experienced local therapists bringing soothing relief to tired muscles.\n\nFamiliar hands work through tension with smooth strokes while warm coconut oil softens the skin and eases every knot away.",
-            "hashtags": [
-              "canggu",
-              "balinesemassage",
-              "massagetcanggu"
-            ],
-            "altText": "A therapist hands applying warm golden oil to a woman leg during a massage in Canggu.",
-            "imagePrompt": "A tall 9:16 photo of a Traditional Balinese Massage. One"
-          }
-        ]
-      },
-      {
-        "posts": [
-          {
-            "type": "offer",
-            "topic": "Traditional Balinese Massage in your Canggu villa",
-            "scene": "a close view of the hands on the body",
-            "caption": "How does your body feel after a long day under the warm Bali sun? 🌸\n\nEnjoy a sixty minute Traditional Balinese Massage right in your villa with experienced local therapists bringing soothing relief to tired muscles.\n\nFamiliar hands work through tension with smooth strokes while warm coconut oil softens the skin and eases every knot away.",
-            "hashtags": [
-              "canggu",
-              "balinesemassage",
-              "massagetcanggu"
-            ],
-            "altText": "A therapist hands applying warm golden oil to a woman leg during a massage in Canggu.",
-            "imagePrompt": "A tall 9:16 photo of a Traditional Balinese Massage. One woman guest lying on a massage bed in a warm villa room with light from late afternoon lamps and the green tropical garden outside through wide"
-          }
-        ]
-      },
-      {
-        "posts": [
-          {
-            "type": "offer",
-            "topic": "Traditional Balinese Massage in your Canggu villa",
-            "scene": "a close view of the hands on the body",
-            "caption": "How does your body feel after a long day under the warm Bali sun? 🌸\n\nEnjoy a sixty minute Traditional Balinese Massage right in your villa with experienced local therapists bringing soothing relief to tired muscles.\n\nFamiliar hands work through tension with smooth strokes while warm coconut oil softens the skin and eases every knot away.",
-            "hashtags": [
-              "canggu",
-              "balinesemassage",
-              "massagetcanggu"
-            ],
-            "altText": "A therapist hands applying warm golden oil to a woman leg during a massage in Canggu.",
-            "imagePrompt": "A tall 9:16 photo of a Traditional Balinese Massage. One woman guest lying on a massage bed in a warm villa room with light from late afternoon lamps and the green tropical garden outside through wide windows. A therapist's hands are working on the legs using warm golden oil. Clean linens, still air, no"
-          }
-        ]
-      },
-      {
-        "posts": [
-          {
-            "type": "offer",
-            "topic": "Traditional Balinese Massage in your Canggu villa",
-            "scene": "a close view of the hands on the body",
-            "caption": "How does your body feel after a long day under the warm Bali sun? 🌸\n\nEnjoy a sixty minute Traditional Balinese Massage right in your villa with experienced local therapists bringing soothing relief to tired muscles.\n\nFamiliar hands work through tension with smooth strokes while warm coconut oil softens the skin and eases every knot away.",
-            "hashtags": [
-              "canggu",
-              "balinesemassage",
-              "massagetcanggu"
-            ],
-            "altText": "A therapist hands applying warm golden oil to a woman leg during a massage in Canggu.",
-            "imagePrompt": "A tall 9:16 photo of a Traditional Balinese Massage. One woman guest lying on a massage bed in a warm villa room with light from late afternoon lamps and the green tropical garden outside through wide windows. A therapist's hands are working on the legs using warm golden oil. Clean linens, still air, no people from behind, no text.",
-            "storyText": "Sixty minutes of traditional relief right in your Canggu room"
-          }
-        ]
-      },
-      {
-        "posts": [
-          {
-            "type": "offer",
-            "topic": "Traditional Balinese Massage in your Canggu villa",
-            "scene": "a close view of the hands on the body",
-            "caption": "How does your body feel after a long day under the warm Bali sun? 🌸\n\nEnjoy a sixty minute Traditional Balinese Massage right in your villa with experienced local therapists bringing soothing relief to tired muscles.\n\nFamiliar hands work through tension with smooth strokes while warm coconut oil softens the skin and eases every knot away.",
-            "hashtags": [
-              "canggu",
-              "balinesemassage",
-              "massagetcanggu"
-            ],
-            "altText": "A therapist hands applying warm golden oil to a woman leg during a massage in Canggu.",
-            "imagePrompt": "A tall 9:16 photo of a Traditional Balinese Massage. One woman guest lying on a massage bed in a warm villa room with light from late afternoon lamps and the green tropical garden outside through wide windows. A therapist's hands are working on the legs using warm golden oil. Clean linens, still air, no people from behind, no text.",
-            "storyText": "Sixty minutes of traditional relief right in your Canggu room 🌸"
+            "altText": "A therapist pouring warm golden oil onto a woman's back during a traditional massage in a bright villa room.",
+            "imagePrompt": "A tall 9:16 vertical photo of a woman lying on a massage bed in a bright villa room with open doors showing green plants outside. A female therapist's hands are working on her leg using warm golden oil. Late afternoon light, lamps lit inside, soft shade outside, no direct sunlight. Clean white linens, still air. No text.",
+            "storyText": "Unwind in your villa with a traditional massage today 🌸"
           },
           {
             "type": "moment",
-            "topic": "Evening"
-          }
-        ]
-      },
-      {
-        "posts": [
-          {
-            "type": "offer",
-            "topic": "Traditional Balinese Massage in your Canggu villa",
-            "scene": "a close view of the hands on the body",
-            "caption": "How does your body feel after a long day under the warm Bali sun? 🌸\n\nEnjoy a sixty minute Traditional Balinese Massage right in your villa with experienced local therapists bringing soothing relief to tired muscles.\n\nFamiliar hands work through tension with smooth strokes while warm coconut oil softens the skin and eases every knot away.",
+            "topic": "After a long flight in Pererenan",
+            "scene": "place",
+            "caption": "Sore after a long flight to Pererenan? 🌺\n\nFirm pressure and gentle stretches release travel tension and soothe your tired body.\n\nLocal therapists bring five plus years of spa experience straight to your hotel room.",
             "hashtags": [
-              "canggu",
-              "balinesemassage",
-              "massagetcanggu"
-            ],
-            "altText": "A therapist hands applying warm golden oil to a woman leg during a massage in Canggu.",
-            "imagePrompt": "A tall 9:16 photo of a Traditional Balinese Massage. One woman guest lying on a massage bed in a warm villa room with light from late afternoon lamps and the green tropical garden outside through wide windows. A therapist's hands are working on the legs using warm golden oil. Clean linens, still air, no people from behind, no text.",
-            "storyText": "Sixty minutes of traditional relief right in your Canggu room 🌸"
-          },
-          {
-            "type": "moment",
-            "topic": "Evening recovery after a long day in Canggu",
-            "scene": "the room with the treatment in it"
-          }
-        ]
-      },
-      {
-        "posts": [
-          {
-            "type": "offer",
-            "topic": "Traditional Balinese Massage in your Canggu villa",
-            "scene": "a close view of the hands on the body",
-            "caption": "How does your body feel after a long day under the warm Bali sun? 🌸\n\nEnjoy a sixty minute Traditional Balinese Massage right in your villa with experienced local therapists bringing soothing relief to tired muscles.\n\nFamiliar hands work through tension with smooth strokes while warm coconut oil softens the skin and eases every knot away.",
-            "hashtags": [
-              "canggu",
-              "balinesemassage",
-              "massagetcanggu"
-            ],
-            "altText": "A therapist hands applying warm golden oil to a woman leg during a massage in Canggu.",
-            "imagePrompt": "A tall 9:16 photo of a Traditional Balinese Massage. One woman guest lying on a massage bed in a warm villa room with light from late afternoon lamps and the green tropical garden outside through wide windows. A therapist's hands are working on the legs using warm golden oil. Clean linens, still air, no people from behind, no text.",
-            "storyText": "Sixty minutes of traditional relief right in your Canggu room 🌸"
-          },
-          {
-            "type": "moment",
-            "topic": "Evening recovery after a long day in Canggu",
-            "scene": "the room with the treatment in it",
-            "caption": "Evening falls softly over the tropical garden while you lean back and let the quiet settle in after hours exploring the local streets."
-          }
-        ]
-      },
-      {
-        "posts": [
-          {
-            "type": "offer",
-            "topic": "Traditional Balinese Massage in your Canggu villa",
-            "scene": "a close view of the hands on the body",
-            "caption": "How does your body feel after a long day under the warm Bali sun? 🌸\n\nEnjoy a sixty minute Traditional Balinese Massage right in your villa with experienced local therapists bringing soothing relief to tired muscles.\n\nFamiliar hands work through tension with smooth strokes while warm coconut oil softens the skin and eases every knot away.",
-            "hashtags": [
-              "canggu",
-              "balinesemassage",
-              "massagetcanggu"
-            ],
-            "altText": "A therapist hands applying warm golden oil to a woman leg during a massage in Canggu.",
-            "imagePrompt": "A tall 9:16 photo of a Traditional Balinese Massage. One woman guest lying on a massage bed in a warm villa room with light from late afternoon lamps and the green tropical garden outside through wide windows. A therapist's hands are working on the legs using warm golden oil. Clean linens, still air, no people from behind, no text.",
-            "storyText": "Sixty minutes of traditional relief right in your Canggu room 🌸"
-          },
-          {
-            "type": "moment",
-            "topic": "Evening recovery after a long day in Canggu",
-            "scene": "the room with the treatment in it",
-            "caption": "Evening falls softly over the tropical garden while you lean back and let the quiet settle in after hours exploring the local streets. 🌺\n\nGentle pressure works away the lingering fatigue from walking through the busy lanes and warm towels bring"
-          }
-        ]
-      },
-      {
-        "posts": [
-          {
-            "type": "offer",
-            "topic": "Traditional Balinese Massage in your Canggu villa",
-            "scene": "a close view of the hands on the body",
-            "caption": "How does your body feel after a long day under the warm Bali sun? 🌸\n\nEnjoy a sixty minute Traditional Balinese Massage right in your villa with experienced local therapists bringing soothing relief to tired muscles.\n\nFamiliar hands work through tension with smooth strokes while warm coconut oil softens the skin and eases every knot away.",
-            "hashtags": [
-              "canggu",
-              "balinesemassage",
-              "massagetcanggu"
-            ],
-            "altText": "A therapist hands applying warm golden oil to a woman leg during a massage in Canggu.",
-            "imagePrompt": "A tall 9:16 photo of a Traditional Balinese Massage. One woman guest lying on a massage bed in a warm villa room with light from late afternoon lamps and the green tropical garden outside through wide windows. A therapist's hands are working on the legs using warm golden oil. Clean linens, still air, no people from behind, no text.",
-            "storyText": "Sixty minutes of traditional relief right in your Canggu room 🌸"
-          },
-          {
-            "type": "moment",
-            "topic": "Evening recovery after a long day in Canggu",
-            "scene": "the room with the treatment in it",
-            "caption": "Evening falls softly over the tropical garden while you lean back and let the quiet settle in after hours exploring the local streets. 🌺\n\nGentle pressure works away the lingering fatigue from walking through the busy lanes and warm towels bring a deep sense of ease to tired feet.\n\nRest easy knowing experienced local therapists travel directly to your space with"
-          }
-        ]
-      },
-      {
-        "posts": [
-          {
-            "type": "offer",
-            "topic": "Traditional Balinese Massage in your Canggu villa",
-            "scene": "a close view of the hands on the body",
-            "caption": "How does your body feel after a long day under the warm Bali sun? 🌸\n\nEnjoy a sixty minute Traditional Balinese Massage right in your villa with experienced local therapists bringing soothing relief to tired muscles.\n\nFamiliar hands work through tension with smooth strokes while warm coconut oil softens the skin and eases every knot away.",
-            "hashtags": [
-              "canggu",
-              "balinesemassage",
-              "massagetcanggu"
-            ],
-            "altText": "A therapist hands applying warm golden oil to a woman leg during a massage in Canggu.",
-            "imagePrompt": "A tall 9:16 photo of a Traditional Balinese Massage. One woman guest lying on a massage bed in a warm villa room with light from late afternoon lamps and the green tropical garden outside through wide windows. A therapist's hands are working on the legs using warm golden oil. Clean linens, still air, no people from behind, no text.",
-            "storyText": "Sixty minutes of traditional relief right in your Canggu room 🌸"
-          },
-          {
-            "type": "moment",
-            "topic": "Evening recovery after a long day in Canggu",
-            "scene": "the room with the treatment in it",
-            "caption": "Evening falls softly over the tropical garden while you lean back and let the quiet settle in after hours exploring the local streets. 🌺\n\nGentle pressure works away the lingering fatigue from walking through the busy lanes and warm towels bring a deep sense of ease to tired feet.\n\nRest easy knowing experienced local therapists travel directly to your space with free transport across Canggu, Pererenan, Seminyak and Kerobokan.",
-            "hashtags": [
-              "canggu",
-              "balitravel",
-              "spainbali"
+              "pererenan",
+              "balimassage",
+              "spabali",
+              "massagecanggu"
             ]
           }
         ]
@@ -309,29 +276,31 @@
         "posts": [
           {
             "type": "offer",
-            "topic": "Traditional Balinese Massage in your Canggu villa",
-            "scene": "a close view of the hands on the body",
-            "caption": "How does your body feel after a long day under the warm Bali sun? 🌸\n\nEnjoy a sixty minute Traditional Balinese Massage right in your villa with experienced local therapists bringing soothing relief to tired muscles.\n\nFamiliar hands work through tension with smooth strokes while warm coconut oil softens the skin and eases every knot away.",
+            "topic": "Traditional Balinese Massage in Canggu",
+            "scene": "detail",
+            "caption": "Tired after a long day in Canggu? 🌸\n\nLong strokes and palm pressure loosen tight muscles and melt away your stress.\n\nExperienced local therapists bring fresh linens and natural oils right to your door.",
             "hashtags": [
               "canggu",
               "balinesemassage",
-              "massagetcanggu"
+              "massagecanggu",
+              "spatanggu"
             ],
-            "altText": "A therapist hands applying warm golden oil to a woman leg during a massage in Canggu.",
-            "imagePrompt": "A tall 9:16 photo of a Traditional Balinese Massage. One woman guest lying on a massage bed in a warm villa room with light from late afternoon lamps and the green tropical garden outside through wide windows. A therapist's hands are working on the legs using warm golden oil. Clean linens, still air, no people from behind, no text.",
-            "storyText": "Sixty minutes of traditional relief right in your Canggu room 🌸"
+            "altText": "A therapist pouring warm golden oil onto a woman's back during a traditional massage in a bright villa room.",
+            "imagePrompt": "A tall 9:16 vertical photo of a woman lying on a massage bed in a bright villa room with open doors showing green plants outside. A female therapist's hands are working on her leg using warm golden oil. Late afternoon light, lamps lit inside, soft shade outside, no direct sunlight. Clean white linens, still air. No text.",
+            "storyText": "Unwind in your villa with a traditional massage today 🌸"
           },
           {
             "type": "moment",
-            "topic": "Evening recovery after a long day in Canggu",
-            "scene": "the room with the treatment in it",
-            "caption": "Evening falls softly over the tropical garden while you lean back and let the quiet settle in after hours exploring the local streets. 🌺\n\nGentle pressure works away the lingering fatigue from walking through the busy lanes and warm towels bring a deep sense of ease to tired feet.\n\nRest easy knowing experienced local therapists travel directly to your space with free transport across Canggu, Pererenan, Seminyak and Kerobokan.",
+            "topic": "After a long flight in Pererenan",
+            "scene": "place",
+            "caption": "Sore after a long flight to Pererenan? 🌺\n\nFirm pressure and gentle stretches release travel tension and soothe your tired body.\n\nLocal therapists bring five plus years of spa experience straight to your hotel room.",
             "hashtags": [
-              "canggu",
-              "balitravel",
-              "spainbali"
+              "pererenan",
+              "balimassage",
+              "spabali",
+              "massagecanggu"
             ],
-            "altText": "A man sitting back in a reclining chair having foot reflexology at night."
+            "altText": "A man sitting back in a reclining chair with feet on a towel while a therapist works"
           }
         ]
       },
@@ -339,30 +308,32 @@
         "posts": [
           {
             "type": "offer",
-            "topic": "Traditional Balinese Massage in your Canggu villa",
-            "scene": "a close view of the hands on the body",
-            "caption": "How does your body feel after a long day under the warm Bali sun? 🌸\n\nEnjoy a sixty minute Traditional Balinese Massage right in your villa with experienced local therapists bringing soothing relief to tired muscles.\n\nFamiliar hands work through tension with smooth strokes while warm coconut oil softens the skin and eases every knot away.",
+            "topic": "Traditional Balinese Massage in Canggu",
+            "scene": "detail",
+            "caption": "Tired after a long day in Canggu? 🌸\n\nLong strokes and palm pressure loosen tight muscles and melt away your stress.\n\nExperienced local therapists bring fresh linens and natural oils right to your door.",
             "hashtags": [
               "canggu",
               "balinesemassage",
-              "massagetcanggu"
+              "massagecanggu",
+              "spatanggu"
             ],
-            "altText": "A therapist hands applying warm golden oil to a woman leg during a massage in Canggu.",
-            "imagePrompt": "A tall 9:16 photo of a Traditional Balinese Massage. One woman guest lying on a massage bed in a warm villa room with light from late afternoon lamps and the green tropical garden outside through wide windows. A therapist's hands are working on the legs using warm golden oil. Clean linens, still air, no people from behind, no text.",
-            "storyText": "Sixty minutes of traditional relief right in your Canggu room 🌸"
+            "altText": "A therapist pouring warm golden oil onto a woman's back during a traditional massage in a bright villa room.",
+            "imagePrompt": "A tall 9:16 vertical photo of a woman lying on a massage bed in a bright villa room with open doors showing green plants outside. A female therapist's hands are working on her leg using warm golden oil. Late afternoon light, lamps lit inside, soft shade outside, no direct sunlight. Clean white linens, still air. No text.",
+            "storyText": "Unwind in your villa with a traditional massage today 🌸"
           },
           {
             "type": "moment",
-            "topic": "Evening recovery after a long day in Canggu",
-            "scene": "the room with the treatment in it",
-            "caption": "Evening falls softly over the tropical garden while you lean back and let the quiet settle in after hours exploring the local streets. 🌺\n\nGentle pressure works away the lingering fatigue from walking through the busy lanes and warm towels bring a deep sense of ease to tired feet.\n\nRest easy knowing experienced local therapists travel directly to your space with free transport across Canggu, Pererenan, Seminyak and Kerobokan.",
+            "topic": "After a long flight in Pererenan",
+            "scene": "place",
+            "caption": "Sore after a long flight to Pererenan? 🌺\n\nFirm pressure and gentle stretches release travel tension and soothe your tired body.\n\nLocal therapists bring five plus years of spa experience straight to your hotel room.",
             "hashtags": [
-              "canggu",
-              "balitravel",
-              "spainbali"
+              "pererenan",
+              "balimassage",
+              "spabali",
+              "massagecanggu"
             ],
-            "altText": "A man sitting back in a reclining chair having foot reflexology at night.",
-            "imagePrompt": "A tall 9:16 photo of Foot Reflexology. One man guest sitting back in a reclining"
+            "altText": "A man sitting back in a reclining chair with feet on a towel while a therapist works on his feet at night.",
+            "imagePrompt": "A tall 9:16 vertical photo of a man sitting"
           }
         ]
       },
@@ -370,30 +341,32 @@
         "posts": [
           {
             "type": "offer",
-            "topic": "Traditional Balinese Massage in your Canggu villa",
-            "scene": "a close view of the hands on the body",
-            "caption": "How does your body feel after a long day under the warm Bali sun? 🌸\n\nEnjoy a sixty minute Traditional Balinese Massage right in your villa with experienced local therapists bringing soothing relief to tired muscles.\n\nFamiliar hands work through tension with smooth strokes while warm coconut oil softens the skin and eases every knot away.",
+            "topic": "Traditional Balinese Massage in Canggu",
+            "scene": "detail",
+            "caption": "Tired after a long day in Canggu? 🌸\n\nLong strokes and palm pressure loosen tight muscles and melt away your stress.\n\nExperienced local therapists bring fresh linens and natural oils right to your door.",
             "hashtags": [
               "canggu",
               "balinesemassage",
-              "massagetcanggu"
+              "massagecanggu",
+              "spatanggu"
             ],
-            "altText": "A therapist hands applying warm golden oil to a woman leg during a massage in Canggu.",
-            "imagePrompt": "A tall 9:16 photo of a Traditional Balinese Massage. One woman guest lying on a massage bed in a warm villa room with light from late afternoon lamps and the green tropical garden outside through wide windows. A therapist's hands are working on the legs using warm golden oil. Clean linens, still air, no people from behind, no text.",
-            "storyText": "Sixty minutes of traditional relief right in your Canggu room 🌸"
+            "altText": "A therapist pouring warm golden oil onto a woman's back during a traditional massage in a bright villa room.",
+            "imagePrompt": "A tall 9:16 vertical photo of a woman lying on a massage bed in a bright villa room with open doors showing green plants outside. A female therapist's hands are working on her leg using warm golden oil. Late afternoon light, lamps lit inside, soft shade outside, no direct sunlight. Clean white linens, still air. No text.",
+            "storyText": "Unwind in your villa with a traditional massage today 🌸"
           },
           {
             "type": "moment",
-            "topic": "Evening recovery after a long day in Canggu",
-            "scene": "the room with the treatment in it",
-            "caption": "Evening falls softly over the tropical garden while you lean back and let the quiet settle in after hours exploring the local streets. 🌺\n\nGentle pressure works away the lingering fatigue from walking through the busy lanes and warm towels bring a deep sense of ease to tired feet.\n\nRest easy knowing experienced local therapists travel directly to your space with free transport across Canggu, Pererenan, Seminyak and Kerobokan.",
+            "topic": "After a long flight in Pererenan",
+            "scene": "place",
+            "caption": "Sore after a long flight to Pererenan? 🌺\n\nFirm pressure and gentle stretches release travel tension and soothe your tired body.\n\nLocal therapists bring five plus years of spa experience straight to your hotel room.",
             "hashtags": [
-              "canggu",
-              "balitravel",
-              "spainbali"
+              "pererenan",
+              "balimassage",
+              "spabali",
+              "massagecanggu"
             ],
-            "altText": "A man sitting back in a reclining chair having foot reflexology at night.",
-            "imagePrompt": "A tall 9:16 photo of Foot Reflexology. One man guest sitting back in a reclining chair with his feet resting on a clean white towel in a warm room lit by lanterns and candles, looking out at a"
+            "altText": "A man sitting back in a reclining chair with feet on a towel while a therapist works on his feet at night.",
+            "imagePrompt": "A tall 9:16 vertical photo of a man sitting back in a reclining chair in a hotel room at night, with feet on a towel. A female therapist is seated at his"
           }
         ]
       },
@@ -401,30 +374,32 @@
         "posts": [
           {
             "type": "offer",
-            "topic": "Traditional Balinese Massage in your Canggu villa",
-            "scene": "a close view of the hands on the body",
-            "caption": "How does your body feel after a long day under the warm Bali sun? 🌸\n\nEnjoy a sixty minute Traditional Balinese Massage right in your villa with experienced local therapists bringing soothing relief to tired muscles.\n\nFamiliar hands work through tension with smooth strokes while warm coconut oil softens the skin and eases every knot away.",
+            "topic": "Traditional Balinese Massage in Canggu",
+            "scene": "detail",
+            "caption": "Tired after a long day in Canggu? 🌸\n\nLong strokes and palm pressure loosen tight muscles and melt away your stress.\n\nExperienced local therapists bring fresh linens and natural oils right to your door.",
             "hashtags": [
               "canggu",
               "balinesemassage",
-              "massagetcanggu"
+              "massagecanggu",
+              "spatanggu"
             ],
-            "altText": "A therapist hands applying warm golden oil to a woman leg during a massage in Canggu.",
-            "imagePrompt": "A tall 9:16 photo of a Traditional Balinese Massage. One woman guest lying on a massage bed in a warm villa room with light from late afternoon lamps and the green tropical garden outside through wide windows. A therapist's hands are working on the legs using warm golden oil. Clean linens, still air, no people from behind, no text.",
-            "storyText": "Sixty minutes of traditional relief right in your Canggu room 🌸"
+            "altText": "A therapist pouring warm golden oil onto a woman's back during a traditional massage in a bright villa room.",
+            "imagePrompt": "A tall 9:16 vertical photo of a woman lying on a massage bed in a bright villa room with open doors showing green plants outside. A female therapist's hands are working on her leg using warm golden oil. Late afternoon light, lamps lit inside, soft shade outside, no direct sunlight. Clean white linens, still air. No text.",
+            "storyText": "Unwind in your villa with a traditional massage today 🌸"
           },
           {
             "type": "moment",
-            "topic": "Evening recovery after a long day in Canggu",
-            "scene": "the room with the treatment in it",
-            "caption": "Evening falls softly over the tropical garden while you lean back and let the quiet settle in after hours exploring the local streets. 🌺\n\nGentle pressure works away the lingering fatigue from walking through the busy lanes and warm towels bring a deep sense of ease to tired feet.\n\nRest easy knowing experienced local therapists travel directly to your space with free transport across Canggu, Pererenan, Seminyak and Kerobokan.",
+            "topic": "After a long flight in Pererenan",
+            "scene": "place",
+            "caption": "Sore after a long flight to Pererenan? 🌺\n\nFirm pressure and gentle stretches release travel tension and soothe your tired body.\n\nLocal therapists bring five plus years of spa experience straight to your hotel room.",
             "hashtags": [
-              "canggu",
-              "balitravel",
-              "spainbali"
+              "pererenan",
+              "balimassage",
+              "spabali",
+              "massagecanggu"
             ],
-            "altText": "A man sitting back in a reclining chair having foot reflexology at night.",
-            "imagePrompt": "A tall 9:16 photo of Foot Reflexology. One man guest sitting back in a reclining chair with his feet resting on a clean white towel in a warm room lit by lanterns and candles, looking out at a dark blue evening sky. The therapist is seated at his feet working. Clean linens, still air, no people from behind, no text"
+            "altText": "A man sitting back in a reclining chair with feet on a towel while a therapist works on his feet at night.",
+            "imagePrompt": "A tall 9:16 vertical photo of a man sitting back in a reclining chair in a hotel room at night, with feet on a towel. A female therapist is seated at his feet working on them. Lamps and candles give a warm golden glow, the garden outside is lit by lanterns under a deep blue sky. Clean"
           }
         ]
       },
@@ -432,31 +407,67 @@
         "posts": [
           {
             "type": "offer",
-            "topic": "Traditional Balinese Massage in your Canggu villa",
-            "scene": "a close view of the hands on the body",
-            "caption": "How does your body feel after a long day under the warm Bali sun? 🌸\n\nEnjoy a sixty minute Traditional Balinese Massage right in your villa with experienced local therapists bringing soothing relief to tired muscles.\n\nFamiliar hands work through tension with smooth strokes while warm coconut oil softens the skin and eases every knot away.",
+            "topic": "Traditional Balinese Massage in Canggu",
+            "scene": "detail",
+            "caption": "Tired after a long day in Canggu? 🌸\n\nLong strokes and palm pressure loosen tight muscles and melt away your stress.\n\nExperienced local therapists bring fresh linens and natural oils right to your door.",
             "hashtags": [
               "canggu",
               "balinesemassage",
-              "massagetcanggu"
+              "massagecanggu",
+              "spatanggu"
             ],
-            "altText": "A therapist hands applying warm golden oil to a woman leg during a massage in Canggu.",
-            "imagePrompt": "A tall 9:16 photo of a Traditional Balinese Massage. One woman guest lying on a massage bed in a warm villa room with light from late afternoon lamps and the green tropical garden outside through wide windows. A therapist's hands are working on the legs using warm golden oil. Clean linens, still air, no people from behind, no text.",
-            "storyText": "Sixty minutes of traditional relief right in your Canggu room 🌸"
+            "altText": "A therapist pouring warm golden oil onto a woman's back during a traditional massage in a bright villa room.",
+            "imagePrompt": "A tall 9:16 vertical photo of a woman lying on a massage bed in a bright villa room with open doors showing green plants outside. A female therapist's hands are working on her leg using warm golden oil. Late afternoon light, lamps lit inside, soft shade outside, no direct sunlight. Clean white linens, still air. No text.",
+            "storyText": "Unwind in your villa with a traditional massage today 🌸"
           },
           {
             "type": "moment",
-            "topic": "Evening recovery after a long day in Canggu",
-            "scene": "the room with the treatment in it",
-            "caption": "Evening falls softly over the tropical garden while you lean back and let the quiet settle in after hours exploring the local streets. 🌺\n\nGentle pressure works away the lingering fatigue from walking through the busy lanes and warm towels bring a deep sense of ease to tired feet.\n\nRest easy knowing experienced local therapists travel directly to your space with free transport across Canggu, Pererenan, Seminyak and Kerobokan.",
+            "topic": "After a long flight in Pererenan",
+            "scene": "place",
+            "caption": "Sore after a long flight to Pererenan? 🌺\n\nFirm pressure and gentle stretches release travel tension and soothe your tired body.\n\nLocal therapists bring five plus years of spa experience straight to your hotel room.",
+            "hashtags": [
+              "pererenan",
+              "balimassage",
+              "spabali",
+              "massagecanggu"
+            ],
+            "altText": "A man sitting back in a reclining chair with feet on a towel while a therapist works on his feet at night.",
+            "imagePrompt": "A tall 9:16 vertical photo of a man sitting back in a reclining chair in a hotel room at night, with feet on a towel. A female therapist is seated at his feet working on them. Lamps and candles give a warm golden glow, the garden outside is lit by lanterns under a deep blue sky. Clean and tidy room, still air. No text.",
+            "storyText": "Soothe your travel fatigue tonight"
+          }
+        ]
+      },
+      {
+        "posts": [
+          {
+            "type": "offer",
+            "topic": "Traditional Balinese Massage in Canggu",
+            "scene": "detail",
+            "caption": "Tired after a long day in Canggu? 🌸\n\nLong strokes and palm pressure loosen tight muscles and melt away your stress.\n\nExperienced local therapists bring fresh linens and natural oils right to your door.",
             "hashtags": [
               "canggu",
-              "balitravel",
-              "spainbali"
+              "balinesemassage",
+              "massagecanggu",
+              "spatanggu"
             ],
-            "altText": "A man sitting back in a reclining chair having foot reflexology at night.",
-            "imagePrompt": "A tall 9:16 photo of Foot Reflexology. One man guest sitting back in a reclining chair with his feet resting on a clean white towel in a warm room lit by lanterns and candles, looking out at a dark blue evening sky. The therapist is seated at his feet working. Clean linens, still air, no people from behind, no text.",
-            "storyText": "Quiet evening comfort waiting in your room 🌺"
+            "altText": "A therapist pouring warm golden oil onto a woman's back during a traditional massage in a bright villa room.",
+            "imagePrompt": "A tall 9:16 vertical photo of a woman lying on a massage bed in a bright villa room with open doors showing green plants outside. A female therapist's hands are working on her leg using warm golden oil. Late afternoon light, lamps lit inside, soft shade outside, no direct sunlight. Clean white linens, still air. No text.",
+            "storyText": "Unwind in your villa with a traditional massage today 🌸"
+          },
+          {
+            "type": "moment",
+            "topic": "After a long flight in Pererenan",
+            "scene": "place",
+            "caption": "Sore after a long flight to Pererenan? 🌺\n\nFirm pressure and gentle stretches release travel tension and soothe your tired body.\n\nLocal therapists bring five plus years of spa experience straight to your hotel room.",
+            "hashtags": [
+              "pererenan",
+              "balimassage",
+              "spabali",
+              "massagecanggu"
+            ],
+            "altText": "A man sitting back in a reclining chair with feet on a towel while a therapist works on his feet at night.",
+            "imagePrompt": "A tall 9:16 vertical photo of a man sitting back in a reclining chair in a hotel room at night, with feet on a towel. A female therapist is seated at his feet working on them. Lamps and candles give a warm golden glow, the garden outside is lit by lanterns under a deep blue sky. Clean and tidy room, still air. No text.",
+            "storyText": "Soothe your travel fatigue tonight 🌺"
           }
         ]
       }
@@ -465,31 +476,33 @@
       "posts": [
         {
           "type": "offer",
-          "topic": "Traditional Balinese Massage in your Canggu villa",
-          "scene": "a close view of the hands on the body",
-          "caption": "How does your body feel after a long day under the warm Bali sun? 🌸\n\nEnjoy a sixty minute Traditional Balinese Massage right in your villa with experienced local therapists bringing soothing relief to tired muscles.\n\nFamiliar hands work through tension with smooth strokes while warm coconut oil softens the skin and eases every knot away.",
+          "topic": "Traditional Balinese Massage in Canggu",
+          "scene": "detail",
+          "caption": "Tired after a long day in Canggu? 🌸\n\nLong strokes and palm pressure loosen tight muscles and melt away your stress.\n\nExperienced local therapists bring fresh linens and natural oils right to your door.",
           "hashtags": [
             "canggu",
             "balinesemassage",
-            "massagetcanggu"
+            "massagecanggu",
+            "spatanggu"
           ],
-          "altText": "A therapist hands applying warm golden oil to a woman leg during a massage in Canggu.",
-          "imagePrompt": "A tall 9:16 photo of a Traditional Balinese Massage. One woman guest lying on a massage bed in a warm villa room with light from late afternoon lamps and the green tropical garden outside through wide windows. A therapist's hands are working on the legs using warm golden oil. Clean linens, still air, no people from behind, no text.",
-          "storyText": "Sixty minutes of traditional relief right in your Canggu room 🌸"
+          "altText": "A therapist pouring warm golden oil onto a woman's back during a traditional massage in a bright villa room.",
+          "imagePrompt": "A tall 9:16 vertical photo of a woman lying on a massage bed in a bright villa room with open doors showing green plants outside. A female therapist's hands are working on her leg using warm golden oil. Late afternoon light, lamps lit inside, soft shade outside, no direct sunlight. Clean white linens, still air. No text.",
+          "storyText": "Unwind in your villa with a traditional massage today 🌸"
         },
         {
           "type": "moment",
-          "topic": "Evening recovery after a long day in Canggu",
-          "scene": "the room with the treatment in it",
-          "caption": "Evening falls softly over the tropical garden while you lean back and let the quiet settle in after hours exploring the local streets. 🌺\n\nGentle pressure works away the lingering fatigue from walking through the busy lanes and warm towels bring a deep sense of ease to tired feet.\n\nRest easy knowing experienced local therapists travel directly to your space with free transport across Canggu, Pererenan, Seminyak and Kerobokan.",
+          "topic": "After a long flight in Pererenan",
+          "scene": "place",
+          "caption": "Sore after a long flight to Pererenan? 🌺\n\nFirm pressure and gentle stretches release travel tension and soothe your tired body.\n\nLocal therapists bring five plus years of spa experience straight to your hotel room.",
           "hashtags": [
-            "canggu",
-            "balitravel",
-            "spainbali"
+            "pererenan",
+            "balimassage",
+            "spabali",
+            "massagecanggu"
           ],
-          "altText": "A man sitting back in a reclining chair having foot reflexology at night.",
-          "imagePrompt": "A tall 9:16 photo of Foot Reflexology. One man guest sitting back in a reclining chair with his feet resting on a clean white towel in a warm room lit by lanterns and candles, looking out at a dark blue evening sky. The therapist is seated at his feet working. Clean linens, still air, no people from behind, no text.",
-          "storyText": "Quiet evening comfort waiting in your room 🌺"
+          "altText": "A man sitting back in a reclining chair with feet on a towel while a therapist works on his feet at night.",
+          "imagePrompt": "A tall 9:16 vertical photo of a man sitting back in a reclining chair in a hotel room at night, with feet on a towel. A female therapist is seated at his feet working on them. Lamps and candles give a warm golden glow, the garden outside is lit by lanterns under a deep blue sky. Clean and tidy room, still air. No text.",
+          "storyText": "Soothe your travel fatigue tonight 🌺"
         }
       ]
     }

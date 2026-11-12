@@ -20,7 +20,7 @@ describe('planPrompt', () => {
     for (const word of [...POST_TYPES, ...SCENES, ...BANNED_WORDS]) expect(prompt).toContain(word);
     for (const rule of [
       '125',
-      '700',
+      '280',
       '80 words',
       'never from behind',
       'No text',
@@ -85,12 +85,12 @@ describe('planPrompt', () => {
       expect(prompt).not.toMatch(/its price|with its price|a price, a duration/);
     }
     expect(planPrompt()).toContain(
-      '- offer: makes the guest want one treatment or package now: the sore spot it answers, how it feels, what changes after; its duration when the profile gives it.',
+      '- offer: makes the guest want one treatment or package now: the sore spot it answers and what changes after; its duration when the profile gives it.',
     );
   });
 
   it('has a version', () => {
-    expect(POSTS_PROMPT_VERSION).toBe('posts-14');
+    expect(POSTS_PROMPT_VERSION).toBe('posts-17');
   });
 });
 
@@ -174,8 +174,10 @@ describe('the image set-ups', () => {
     const setups = dealSetups(svargaProfile(), undefined, seededRandom('t'));
     const text = planUserText(postsModelInput(svargaProfile()), [], undefined, setups);
     const lines = setups.map((s, i) => `${i + 1}. ${setupLine(s)}`).join('\n');
-    // Their hook styles follow them (docs/specs/posts/marketing-copy).
-    expect(text).toContain(`### Image set-ups\n${lines}\n\n### Hooks\n`);
+    // No hook styles follow them (docs/specs/posts/short-captions, amended
+    // 2026-11-10).
+    expect(text).toContain(`### Image set-ups\n${lines}`);
+    expect(text).not.toContain('### Hooks');
   });
 
   it('no set-ups, no section', () => {
@@ -247,13 +249,15 @@ describe('the special offer', () => {
     }
   });
 
-  it('says the order once, by the hook: the offer line comes first', () => {
+  // Amended 2026-11-10: the question first, the offer line second
+  // (docs/specs/posts/short-captions).
+  it('says the order: the question, then the offer line', () => {
     const prompt = planPrompt(true, true);
     expect(prompt).toContain(
-      'on a post that carries the special offer, the hook is its offer line, word for word, with nothing before it.',
+      'A post that carries the special offer opens on its question too; its offer line comes right after it.',
     );
     expect(prompt).toContain(
-      `Each offer post's caption starts with its offer line, given under "### Special offer", word for word.`,
+      `Each offer post's caption opens on its question, then its offer line, given under "### Special offer", word for word, as its second paragraph.`,
     );
     expect(prompt).not.toContain('<percentage>');
     // posts-9 dropped 2.11's "as given" sentence, and 4 of 6 offer posts then
@@ -295,7 +299,7 @@ describe('the special offer', () => {
     );
     expect(text).not.toContain("post-3's offer line");
     expect(rewritePrompt(true, true)).toContain(
-      'A post marked offer: true keeps the offer: its caption starts with its offer line, given under "### Special offer", word for word, and its story text is that line, followed by one flower; the other posts never mention it.',
+      'A post marked offer: true keeps the offer: its caption opens on its question, then its offer line, given under "### Special offer", word for word, as its second paragraph, and its story text is that line, followed by one flower; the other posts never mention it.',
     );
   });
 
@@ -328,9 +332,8 @@ describe('the story text and the captions that sell', () => {
     for (const part of [
       'The mix, each type with its own job:',
       'Only offer posts sell a treatment',
-      'what the guest will feel, rather than what the business does',
-      'How a caption ends follows its type.',
-      'Every ending stays warm',
+      'says what the massage does for the guest, plainly',
+      'The caption ends on its fact, warm and plain',
     ]) {
       expect(prompt).toContain(part);
     }
@@ -338,10 +341,10 @@ describe('the story text and the captions that sell', () => {
 
   it("gives a spa flowers only, and another business today's rule", () => {
     expect(planPrompt(false, true)).toContain(
-      'Emoji: flowers only, from 🌸 🌺 🌼 🌷 🪷: 1 to 3 in the caption and 1 or 2 in the story text. No other emoji.',
+      'Emoji: flowers only, from 🌸 🌺 🌼 🌷 🪷: exactly 2 in the caption, one right after the question and one at its very end, and exactly 1 in the story text, at its end. No other emoji.',
     );
     expect(planPrompt(false, false)).toContain(
-      'At most 2 emoji in the caption and at most 2 in the story text.',
+      'At most 2 emoji in the caption and at most 1 in the story text.',
     );
     expect(planPrompt(false, false)).not.toContain('🌸');
     expect(planPrompt(false, true)).not.toContain('at most 2 emoji');
@@ -388,13 +391,13 @@ describe('day and night copy', () => {
 
   it('the plan says the copy follows the set-up', () => {
     expect(planPrompt()).toContain(
-      "Each caption and story text follows its post's light, the last word of its set-up.",
+      "A caption or story text that says when follows its post's light, the last word of its set-up",
     );
   });
 
   it('the rewrite says the copy follows the post\'s "light"', () => {
     expect(rewritePrompt()).toContain(
-      'Each caption and story text follows its post\'s light, its "light".',
+      'A caption or story text that says when follows its post\'s light, its "light"',
     );
   });
 
@@ -423,7 +426,7 @@ describe('marketing copy', () => {
   ] as const;
   const styles = [
     "- question: asks about the guest's own day.",
-    '- scene: drops the guest into a moment they are living, in the present tense, with no question.',
+    '- scene: names a moment the guest is living, in a few plain words, in the present tense, with no question.',
     "- place: opens on one of the business's real places: its town or area, a place it serves, or a landmark.",
     "- number: opens on a number that isn't a price: a duration, a time of day, a count.",
     '- fact: opens on a plain fact from the profile: a highlight, or its promise.',
@@ -433,7 +436,7 @@ describe('marketing copy', () => {
     '- offer: makes the guest want one treatment or package now',
     '- moment: a reason people come (after a surf, a hike, a long flight)',
     "- local: the town or area and something it's known for",
-    '- ritual: how a treatment unfolds, through the senses',
+    '- ritual: the steps of one treatment, in plain words',
     '- tip: one piece of care advice a guest can use today, worth saving',
     '- proof: what the profile says about the business',
   ];
@@ -445,8 +448,10 @@ describe('marketing copy', () => {
     lastDay: 'Tuesday 27 October',
   };
 
-  it.each(prompts)('the %s prompt gives the hook styles, the jobs and the rules', (_, prompt) => {
-    for (const line of [...styles, ...jobs]) expect(prompt).toContain(line);
+  // Amended 2026-11-10: no hook styles, every hook a question.
+  it.each(prompts)('the %s prompt gives the jobs and the rules, no hook styles', (_, prompt) => {
+    for (const line of jobs) expect(prompt).toContain(line);
+    for (const line of styles) expect(prompt).not.toContain(line);
     for (const rule of [
       'Only offer posts sell a treatment',
       'alone on its line',
@@ -460,12 +465,16 @@ describe('marketing copy', () => {
     }
   });
 
-  // Amended 2026-11-08, after the posts-13 recordings.
-  it('gives the plan two shapes, and the rewrite none', () => {
-    const shape = "post 1's caption has two paragraphs after its hook and post 2's has three";
-    expect(planPrompt()).toContain(shape);
-    expect(planPrompt(true, true)).toContain(shape);
-    expect(rewritePrompt()).not.toContain('two paragraphs after its hook');
+  // Amended 2026-11-10: one shape for every caption, plan and rewrite
+  // (docs/specs/posts/short-captions).
+  it.each(prompts)('the %s prompt gives every caption three paragraphs', (_, prompt) => {
+    expect(prompt).toContain(
+      'Then two more paragraphs, with a blank line between them: three in all, never more.',
+    );
+    expect(prompt).toContain(
+      "The third is one fact from the profile's highlights, stated plainly in one short sentence: never the same highlight in both captions.",
+    );
+    expect(prompt).not.toContain('Shapes:');
   });
 
   it.each(prompts)('the %s prompt drops the words the model copied, and prices', (_, prompt) => {
@@ -483,38 +492,73 @@ describe('marketing copy', () => {
     }
   });
 
-  it('names the offer line as a hook only with an offer', () => {
+  it('names the offer line only with an offer', () => {
     expect(planPrompt(true)).toContain(
-      'A post that carries the special offer has none: its offer line is its hook.',
+      'A post that carries the special offer opens on its question too',
     );
     expect(planPrompt()).not.toContain('special offer');
     expect(rewritePrompt()).not.toContain('special offer');
   });
 
-  it('lists the hooks after the set-ups', () => {
-    const setups = dealSetups(svargaProfile(), undefined, seededRandom('t'));
-    const text = planUserText(postsModelInput(svargaProfile()), [], undefined, setups);
-    const hooks = setups.map((s, i) => `${i + 1}. ${s.hook}`).join('\n');
-    expect(text).toContain(`### Hooks\n${hooks}`);
-    expect(text.indexOf('### Hooks')).toBeGreaterThan(text.indexOf('### Image set-ups'));
-  });
-
-  it('gives the offer posts "offer line", the offer still last', () => {
+  it('gives the model no hook styles, the offer still last', () => {
     const setups = dealSetups(svargaProfile(), offer, seededRandom('t'));
     const text = planUserText(postsModelInput(svargaProfile()), [], offer, setups);
-    expect(text).toContain('### Hooks\n1. offer line\n2. offer line');
-    expect(text).not.toContain('3. offer line');
-    expect(text.indexOf('### Special offer')).toBeGreaterThan(text.indexOf('### Hooks'));
+    expect(text).not.toContain('### Hooks');
+    expect(text.indexOf('### Special offer')).toBeGreaterThan(text.indexOf('### Image set-ups'));
   });
 
-  it("gives a rewrite each post's hook, none without a set-up", () => {
+  it('gives a rewrite no hook style, even from a set-up that has one', () => {
     const [setup] = dealSetups(svargaProfile(), undefined, seededRandom('t'));
     const text = rewriteUserText(postsModelInput(svargaProfile()), [
       post({ id: 'a', setup: { ...setup, hook: 'place' } }),
-      post({ id: 'b' }),
     ]);
     const posts = JSON.parse(text.split('### Posts\n')[1]);
-    expect(posts[0].hook).toBe('place');
-    expect('hook' in posts[1]).toBe(false);
+    expect('hook' in posts[0]).toBe(false);
+  });
+});
+
+// docs/specs/posts/short-captions
+describe('short captions', () => {
+  const prompts = [
+    ['plan', planPrompt(false, true)],
+    ['plan with an offer', planPrompt(true, true)],
+    ['rewrite', rewritePrompt(false, true)],
+    ['rewrite with an offer', rewritePrompt(true, true)],
+  ] as const;
+
+  it.each(prompts)('the %s prompt asks for three short paragraphs, no setting', (_, prompt) => {
+    for (const rule of [
+      'a short question that ends with "?"',
+      'three in all, never more',
+      'a sentence holds at most 15 words',
+      'one idea each',
+      '80 to 280 characters in all',
+      'Never describe the setting',
+      'Never describe what the photo shows',
+      'No call to action and no contact details, ever: the app adds its own booking line with the number after the caption, so the caption never writes one. Its last paragraph is its fact.',
+      'Feelings and place symbols are yours to use, in a few words.',
+      'It need not say when, and never describes the light.',
+      'in its hook or the paragraph right after it',
+      'characters in all, the hook included',
+    ]) {
+      expect(prompt).toContain(rule);
+    }
+  });
+
+  it.each(prompts)('the %s prompt drops what made captions long', (_, prompt) => {
+    for (const gone of [
+      'what the guest will feel, rather than what the business does',
+      'through the senses',
+      'how it feels',
+      'puts the guest back',
+      'senses and place symbols are yours to use freely',
+      '250 to 700',
+      'as it may a sense',
+      "draw on the profile's senses",
+      'hook style',
+      'Book on WhatsApp',
+    ]) {
+      expect(prompt).not.toContain(gone);
+    }
   });
 });

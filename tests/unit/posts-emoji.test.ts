@@ -6,6 +6,7 @@ import {
   FLOWERS,
   isSpa,
   stripEmojis,
+  twoFlowers,
 } from '@/lib/posts/emoji';
 
 // Flower emojis for spas, fixed by code (docs/specs/posts/story-text, "Code's
@@ -121,4 +122,35 @@ describe('dropStopsBeforeEmoji', () => {
       expect(dropStopsBeforeEmoji(text)).toBe(text);
     },
   );
+});
+
+// Two flowers in a spa's caption: one after its question, one at its end
+// (docs/specs/posts/short-captions, amended 2026-11-10).
+describe('twoFlowers', () => {
+  it('keeps a caption that has two', () => {
+    const text = 'Sore? 🌸\n\nOne.\n\nTwo. 🌺';
+    expect(twoFlowers(text)).toEqual({ text, fixes: [] });
+  });
+
+  it('adds one at the end when the only one follows the question', () => {
+    expect(twoFlowers('Sore? 🌸\n\nOne.\n\nTwo.')).toEqual({
+      text: 'Sore? 🌸\n\nOne.\n\nTwo. 🌸',
+      fixes: ['added 🌸'],
+    });
+  });
+
+  it('adds one after the question when the caption ends on its only one', () => {
+    expect(twoFlowers('Sore?\n\nOne.\n\nTwo. 🌺')).toEqual({
+      text: 'Sore? 🌸\n\nOne.\n\nTwo. 🌺',
+      fixes: ['added 🌸'],
+    });
+  });
+
+  it('adds both to a caption with none, and one to a single line', () => {
+    expect(twoFlowers('Sore?\n\nOne.\n\nTwo.')).toEqual({
+      text: 'Sore? 🌸\n\nOne.\n\nTwo. 🌸',
+      fixes: ['added 🌸', 'added 🌸'],
+    });
+    expect(twoFlowers('Sore? Rest.')).toEqual({ text: 'Sore? Rest. 🌸', fixes: ['added 🌸'] });
+  });
 });

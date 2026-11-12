@@ -7,6 +7,7 @@ import type { PlanResult } from '@/lib/posts/batch';
 import { emojisIn, FLOWERS } from '@/lib/posts/emoji';
 import { dropForeignTags } from '@/lib/posts/foreign-tags';
 import { offerLine, offerTreatment } from '@/lib/posts/offer-line';
+import { paragraphsOf } from '@/lib/posts/paragraphs';
 import { streamPlan } from '@/lib/posts/run';
 import { seededRandom } from '@/lib/posts/setup';
 import { repeatRecords } from '@/lib/posts/variety';
@@ -135,19 +136,28 @@ describe('recorded story texts and flowers', () => {
     expect(repeatRecords(result.posts).filter((d) => d.reason.startsWith('last sentence'))).toEqual(
       [],
     );
-    // At most one hook is a question (docs/specs/posts/marketing-copy).
-    expect(result.dropped.filter((d) => d.reason.startsWith('question hooks'))).toEqual([]);
+    // Every hook is a question, an offer post's too (docs/specs/posts/short-captions,
+    // amended 2026-11-10).
+    expect(result.dropped.filter((d) => d.reason.endsWith('hook is no question'))).toEqual([]);
     for (const post of result.posts) {
-      expect(post.storyText).toBeTruthy();
+      // A story text that only asked to book went whole, and code says so
+      // (docs/specs/posts/story-text): Svarga's posts-15 plan has one
+      // (docs/specs/posts/short-captions, journal).
+      if (!post.storyText) {
+        expect(result.dropped).toContainEqual({
+          field: 'story',
+          reason: `${post.id}: no story text`,
+        });
+      }
       const story = post.storyText ?? '';
       expect(story.length).toBeLessThanOrEqual(120);
-      expect(flowers(story)).toBeGreaterThanOrEqual(1);
-      expect(flowers(story)).toBeLessThanOrEqual(2);
+      // Two flowers in a caption, one in a story text (docs/specs/posts/short-captions,
+      // amended 2026-11-10).
+      if (story) expect(flowers(story)).toBe(1);
       expect(others(story)).toEqual([]);
       // No call to action is left (amended 2026-10-27).
       expect(story).not.toMatch(/\b(book|whatsapp|dm|link in bio)\b/i);
-      expect(flowers(post.caption)).toBeGreaterThanOrEqual(1);
-      expect(flowers(post.caption)).toBeLessThanOrEqual(3);
+      expect(flowers(post.caption)).toBe(2);
       expect(others(post.caption)).toEqual([]);
       // No stop right before an emoji (docs/specs/posts/day-and-night-copy).
       expect(post.caption).not.toMatch(STOP_BEFORE_EMOJI);
@@ -157,12 +167,13 @@ describe('recorded story texts and flowers', () => {
       if (hook.length > 125) expect(post.unchecked.map((f) => f.kind)).toContain('firstLine');
       expect(hook.match(/[.!?](?=\s|$)/g)?.length ?? 0).toBeLessThanOrEqual(1);
       expect(story).not.toMatch(STOP_BEFORE_EMOJI);
-      // An offer post opens on its line, its stop gone before the flower, and
-      // its story text is that line and a flower (docs/specs/posts/offer-line-first).
+      // An offer post's second paragraph is its line, after its question, and
+      // its story text is that line and a flower (docs/specs/posts/offer-line-first;
+      // second since docs/specs/posts/short-captions).
       if (post.offer && result.offer) {
         const treatment = offerTreatment(result.offer, post.setup?.treatment, post.caption);
         const line = offerLine(result.offer, treatment ?? '').replace(/\.$/, '');
-        expect(post.caption.startsWith(line)).toBe(true);
+        expect(paragraphsOf(post.caption)[1]?.startsWith(line)).toBe(true);
         expect(story.startsWith(line)).toBe(true);
         expect(flowers(story.slice(line.length))).toBe(1);
         expect(story.slice(line.length).trim()).toMatch(/^\p{Extended_Pictographic}$/u);
@@ -171,6 +182,9 @@ describe('recorded story texts and flowers', () => {
           true,
         );
       }
+      // At most three paragraphs, the hook counted
+      // (docs/specs/posts/short-captions).
+      expect(paragraphsOf(post.caption).length).toBeLessThanOrEqual(3);
       // Never a price, in any caption or story text
       // (docs/specs/posts/two-suggestions).
       expect(post.caption).not.toMatch(PRICE);

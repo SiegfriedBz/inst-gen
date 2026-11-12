@@ -12,12 +12,13 @@ import {
   SCENES,
   type Scene,
 } from './batch';
-import { addFlower, dropStopsBeforeEmoji, isSpa, stripEmojis } from './emoji';
+import { dropStopsBeforeEmoji, isSpa, stripEmojis, twoFlowers } from './emoji';
 import { dropForeignTags } from './foreign-tags';
 import { hookOnItsLine } from './hook-line';
 import { ctaFor } from './input';
 import { mentionsDay, OFFER_LIMITS, type Offer, PERCENT } from './offer';
-import { dropPrices, offerLine, offerStory, offerTreatment, putOfferLineFirst } from './offer-line';
+import { offerLine, offerStory, offerTreatment, putOfferLineSecond } from './offer-line';
+import { keepParagraphs } from './paragraphs';
 import type { Setup } from './setup';
 import { cleanStory, sentences } from './story';
 import { copyRecords, lightRecords, repeatRecords } from './variety';
@@ -190,15 +191,35 @@ type Words = Pick<
 // one (docs/specs/posts/story-text, "Code's checks").
 function spaCaption(caption: string, id: string): { caption: string; dropped: Dropped[] } {
   const stripped = stripEmojis(caption, POSTS_LIMITS.captionFlowers);
-  const added = addFlower(stripped.text);
   // One record per fixed text, however many changes it took.
-  const fixes = [...stripped.fixes, ...added.fixes];
   const dropped =
-    fixes.length > 0 ? [{ field: 'emoji', reason: `${id}: caption ${fixes.join(', ')}` }] : [];
-  return { caption: added.text, dropped };
+    stripped.fixes.length > 0
+      ? [{ field: 'emoji', reason: `${id}: caption ${stripped.fixes.join(', ')}` }]
+      : [];
+  return { caption: stripped.text, dropped };
 }
 
-const LINE_FIXES = { 'put first': 'offer line put first', added: 'offer line added' } as const;
+// At most three paragraphs, counted as the owner sees them once the hook is
+// alone on its line, then the cut (docs/specs/posts/short-captions). A spa's
+// caption then gets its two flowers, so neither step removes one (amended
+// 2026-11-10).
+function shortCaption(
+  caption: string,
+  id: string,
+  spa: boolean,
+): { caption: string; dropped: Dropped[] } {
+  const kept = keepParagraphs(hookOnItsLine(caption), id);
+  const cut = cutCaption(kept.caption);
+  if (!spa) return { caption: cut, dropped: kept.dropped };
+  const added = twoFlowers(cut);
+  const back =
+    added.fixes.length > 0
+      ? [{ field: 'emoji', reason: `${id}: caption ${added.fixes.join(', ')}` }]
+      : [];
+  return { caption: added.text, dropped: [...kept.dropped, ...back] };
+}
+
+const LINE_FIXES = { 'put second': 'offer line put second', added: 'offer line added' } as const;
 const STORY_FIXES = {
   set: 'story text set to the offer line',
   'too long': 'offer line too long for the story text',
@@ -215,13 +236,13 @@ function withLineStop(text: string, line: string): string {
     : text;
 }
 
-// A post that carries the offer opens on its line, written by code
-// (docs/specs/posts/offer-line-first): null when no treatment gives one.
-function lineFirst(
+// A post that carries the offer has its line, written by code, as its second
+// paragraph, after its question (docs/specs/posts/offer-line-first, second
+// since docs/specs/posts/short-captions): null when no treatment gives one.
+function lineSecond(
   caption: string,
   id: string,
   { offer }: OfferContext,
-  spa: boolean,
   setupTreatment?: string,
 ): { line: string | null; caption: string; dropped: Dropped[] } {
   const treatment = offerTreatment(offer, setupTreatment, caption);
@@ -233,15 +254,11 @@ function lineFirst(
     };
   }
   const line = offerLine(offer, treatment);
-  const fixed = putOfferLineFirst(withLineStop(caption, line), line, offer, spa);
-  const priced = dropPrices(fixed.caption, line, PRICE_PATTERN);
+  const fixed = putOfferLineSecond(caption, line, offer);
   return {
     line,
-    caption: priced.caption,
-    dropped: [
-      ...(fixed.fix ? [{ field: 'offer', reason: `${id}: ${LINE_FIXES[fixed.fix]}` }] : []),
-      ...priced.removed.map((s) => ({ field: 'offer', reason: `${id}: price removed "${s}"` })),
-    ],
+    caption: fixed.caption,
+    dropped: fixed.fix ? [{ field: 'offer', reason: `${id}: ${LINE_FIXES[fixed.fix]}` }] : [],
   };
 }
 
@@ -256,14 +273,14 @@ function checkedWords(
 ): { words: Words; dropped: Dropped[] } {
   const spa = isSpa(profile.category);
   const offered = context?.carries
-    ? lineFirst(raw.caption, id, context, spa, setupTreatment)
+    ? lineSecond(raw.caption, id, context, setupTreatment)
     : { line: null, caption: raw.caption, dropped: [] };
-  // A post that carries the offer lost its prices after its line.
-  const priced = offered.line
-    ? { text: offered.caption, dropped: [] }
-    : withoutPrices(offered.caption, id);
-  const cut = cutCaption(priced.text);
-  const { caption, dropped } = spa ? spaCaption(cut, id) : { caption: cut, dropped: [] };
+  // Never a price: the offer line holds none, so every caption goes the same
+  // way (docs/specs/posts/two-suggestions).
+  const priced = withoutPrices(offered.caption, id);
+  const { caption, dropped } = spa
+    ? spaCaption(priced.text, id)
+    : { caption: priced.text, dropped: [] };
   const storyPriced = raw.storyText
     ? withoutPrices(raw.storyText, id)
     : { text: raw.storyText, dropped: [] };
@@ -281,10 +298,12 @@ function checkedWords(
     if (fixed.fix)
       storyDropped.push({ field: 'offer', reason: `${id}: ${STORY_FIXES[fixed.fix]}` });
   }
-  // The hook goes alone on its line, after the flowers and the offer steps;
-  // the stops before an emoji go last, once every step that finds sentences by
-  // their stop is done. The flags quote the text the owner sees.
-  const shown = dropStopsBeforeEmoji(hookOnItsLine(caption));
+  // The hook goes alone on its line, after the flowers and the offer steps,
+  // then the paragraphs and the cut; the stops before an emoji go last, once
+  // every step that finds sentences by their stop is done. The flags quote the
+  // text the owner sees.
+  const short = shortCaption(caption, id, spa);
+  const shown = dropStopsBeforeEmoji(short.caption);
   if (storyText) storyText = dropStopsBeforeEmoji(storyText);
   const tags = dropForeignTags(cleanHashtags(raw.hashtags), profile);
   const tagsDropped = tags.dropped.map(({ tag, place }) => ({
@@ -305,7 +324,14 @@ function checkedWords(
           }
         : {}),
     },
-    dropped: [...offered.dropped, ...priced.dropped, ...dropped, ...storyDropped, ...tagsDropped],
+    dropped: [
+      ...offered.dropped,
+      ...priced.dropped,
+      ...dropped,
+      ...short.dropped,
+      ...storyDropped,
+      ...tagsDropped,
+    ],
   };
 }
 

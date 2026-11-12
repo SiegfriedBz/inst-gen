@@ -1,6 +1,7 @@
 import type { Profile } from '@/lib/brand/profile';
-import type { Dropped, Post } from './batch';
+import { type Dropped, POSTS_LIMITS, type Post } from './batch';
 import { emojisIn } from './emoji';
+import { paragraphsOf } from './paragraphs';
 import { sentences } from './story';
 
 // Code's records on a batch's copy (docs/specs/posts/day-and-night-copy,
@@ -80,8 +81,10 @@ export function lightRecords(post: Post): Dropped[] {
 }
 
 // The copy records of docs/specs/posts/marketing-copy ("Code's records"), in
-// its order: question hooks, stock words, endings, places, story texts and
-// calls to action. Records only, on the captions as code leaves them.
+// its order: hooks (that aren't questions since
+// docs/specs/posts/short-captions, amended 2026-11-10), stock words, endings,
+// places, story texts and calls to action. Records only, on the captions as
+// code leaves them.
 
 // Words the captions lean on, recorded in 2 captions or more, both of a plan
 // (amended 2026-11-08); the list may grow.
@@ -116,6 +119,15 @@ function holdsWords(text: string, words: string): boolean {
   );
 }
 
+// Where whole words start in a text, or -1.
+function wordAt(text: string, words: string): number {
+  const match = new RegExp(
+    `(^|[^\\p{L}\\p{N}])${escapeRegex(words)}(?=$|[^\\p{L}\\p{N}])`,
+    'u',
+  ).exec(text);
+  return match ? match.index + match[1].length : -1;
+}
+
 // Lower case, accents gone ("đ" as "d"), one space between words.
 function folded(text: string): string {
   return text
@@ -148,11 +160,11 @@ function placeNames(profile: Profile): string[] {
   return [...names];
 }
 
-function questionHooks(posts: Post[]): Dropped[] {
-  const ids = posts
-    .filter((p) => !p.offer && plainSentences(p.caption)[0]?.endsWith('?'))
-    .map((p) => p.id);
-  return ids.length > 1 ? [{ field: 'mix', reason: `question hooks in ${ids.join(', ')}` }] : [];
+// Every hook is a question, an offer post's too.
+function hookRecords(posts: Post[]): Dropped[] {
+  return posts
+    .filter((p) => !plainSentences(p.caption)[0]?.endsWith('?'))
+    .map((p) => ({ field: 'mix', reason: `${p.id}: hook is no question` }));
 }
 
 function stockWords(posts: Post[]): Dropped[] {
@@ -218,13 +230,95 @@ function askRecords(post: Post): Dropped[] {
     .map((sentence) => ({ field: 'cta', reason: `${post.id}: "${sentence}"` }));
 }
 
+// The records of docs/specs/posts/short-captions ("Code's records"):
+// sentences longer than the prompt asks, and the words of a setting the photo
+// already shows. "light" alone isn't one: "feel light" is no setting. The list
+// may grow.
+const WORD = /[\p{L}\p{N}]+(?:['’-][\p{L}\p{N}]+)*/gu;
+const SETTING_WORDS = [
+  'glow',
+  'lamp',
+  'lamps',
+  'candle',
+  'candles',
+  'candlelight',
+  'lantern',
+  'lanterns',
+  'sunset',
+  'sunlight',
+  'sky',
+  'garden',
+  'linen',
+  'linens',
+  'breeze',
+  'quiet',
+  'calm',
+  'peaceful',
+  'serene',
+  'tranquil',
+  'afternoon light',
+  'evening light',
+  'soft light',
+  'golden light',
+];
+
+// The words in each sentence of a text, emoji aside.
+export function sentenceWords(text: string): number[] {
+  return plainSentences(text).map((sentence) => sentence.match(WORD)?.length ?? 0);
+}
+
+// An offer post's second paragraph is its offer line, and its story text is
+// that line: code writes both.
+function longSentences(post: Post): Dropped[] {
+  const caption = paragraphsOf(post.caption)
+    .filter((_, i) => !post.offer || i !== 1)
+    .flatMap(plainSentences);
+  const story = post.offer ? [] : plainSentences(post.storyText ?? '');
+  return [...caption, ...story].flatMap((sentence) => {
+    const words = sentence.match(WORD) ?? [];
+    if (words.length <= POSTS_LIMITS.sentenceWords) return [];
+    const opening = words.slice(0, 4).join(' ');
+    return [{ field: 'words', reason: `${post.id}: ${words.length} words in "${opening}…"` }];
+  });
+}
+
+// The setting's words a text holds, in the order they first appear.
+function settingWords(text: string): string[] {
+  const plain = folded(text);
+  return SETTING_WORDS.map((words) => ({ words, at: wordAt(plain, words) }))
+    .filter(({ at }) => at >= 0)
+    .sort((a, b) => a.at - b.at)
+    .map(({ words }) => `"${words}"`);
+}
+
+function settingRecords(post: Post): Dropped[] {
+  const records: Dropped[] = [];
+  const caption = settingWords(post.caption);
+  if (caption.length > 0) {
+    records.push({
+      field: 'words',
+      reason: `${post.id} describes the setting: ${caption.join(', ')}`,
+    });
+  }
+  const story = settingWords(post.storyText ?? '');
+  if (story.length > 0) {
+    records.push({
+      field: 'words',
+      reason: `${post.id}'s story text describes the setting: ${story.join(', ')}`,
+    });
+  }
+  return records;
+}
+
 export function copyRecords(posts: Post[], profile: Profile): Dropped[] {
   return [
-    ...questionHooks(posts),
+    ...hookRecords(posts),
     ...stockWords(posts),
     ...endings(posts),
     ...placeRecords(posts, profile),
     ...posts.flatMap(storyRecords),
     ...posts.flatMap(askRecords),
+    ...posts.flatMap(longSentences),
+    ...posts.flatMap(settingRecords),
   ];
 }
