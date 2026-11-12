@@ -1,8 +1,7 @@
 ---
 title: "Short captions"
-description: "Every caption the model writes is three short paragraphs in plain words: a question, what the massage does for the guest (or, with an offer, the offer line), and one fact from the business's highlights; never a description of the light, the room or the calm. Code holds a caption to three paragraphs and puts an offer post's line second, and records long sentences, setting words and hooks that aren't questions."
-status: approved
-approved: { by: siegfried.bozza@protonmail.com, at: 2026-11-10T11:29:15Z }
+description: "Every caption the model writes is three short paragraphs in plain words: a question of the kind code deals (a sore spot and its moment, or what a guest asks before booking), what the guest gets with a person doing the acting, and one fact from the business's highlights; with an offer, the offer line first and the question after it; never a description of the light, the room or the calm; story texts of ten words at most. Code holds a caption to three paragraphs and puts an offer post's line first, and records long sentences, setting words, clichés, missing questions and sore spots with no part of the body."
+status: draft
 date: "2026-11-10"
 ---
 
@@ -80,6 +79,65 @@ before the WhatsApp line, and none describes the light, the room, the garden
 or the calm. Each still names a real place. The maintainer would post at least
 one of each plan's two.
 
+Amended 2026-11-12. This spec's branch was never merged, so the app still
+writes `posts-14`'s captions. The maintainer found its last posts and stories
+"very bad (no question hook, long descriptions of an atmosphere with pseudo
+romantic author skills)", and asked for them to be improved dramatically with
+marketing skills, Instagram ones above all. At their word, the branch was
+merged into this work, and this amendment builds on it.
+
+`posts-16`, this spec's recordings, fixes the length and the setting, but not
+the rest:
+
+| Finding | posts-16 |
+|---|---|
+| Questions that name a part of the body | 0 of 8: "Tired in Da Nang?", "Need a break in Canggu today?", "Ready to unwind in Bali this afternoon?" |
+| Captions in which a thing does the acting | 4 of 8: "Slow pressure loosens deep tension…", "Long strokes and palm pressure loosen tight muscles…" |
+| Captions that say the therapist comes to the guest's room | 3 of 8 |
+| Story texts, offer posts aside, that name a sore spot or a moment and what the business does about it | 0 of 4: "Easy recovery after the surf 🌺", "Soothe your travel fatigue tonight 🌺" |
+| Spa clichés | 3 of 8: "melt away your stress", "soothe your tired body", "Ready to unwind" |
+
+The libraries were read again (decision 0009): IG at `550d3cf`, unchanged; CH
+at `1f83744`, whose files used here changed only in their descriptions since
+`96798cf`; and a third, **KW**: `anthropics/knowledge-work-plugins` at
+`877a617` (Apache 2.0), its marketing plugin's content-creation skill. Paths
+are under IG's and CH's `skills/` folders, IG's root `references/` folder, and
+KW's `marketing/skills/` folder.
+
+They undo one call of 2.15: no library limits question hooks. 2.15's "one
+hook formula twice a week at most" is a box on a creator's weekly checklist
+(IG `ig-content-planner/SKILL.md`), and none of IG's hook formulas is a
+question (IG `references/hook-formulas.md`). KW counts a question among the
+first lines that grab attention (KW `content-creation/SKILL.md`). CH bans a
+question that labels the writer's own claim ("The result?"), and keeps a
+question in the reader's voice about their own need, followed by what to do
+(CH `copywriting/references/ai-tells.md`).
+
+The maintainer chose (2026-11-12) this example as the direction, and the offer
+line first again when there is an offer, as 2.13b had it. The question then
+comes right after the line (developer's call, told to the maintainer).
+
+```
+Legs still shaking from the Mount Batur sunrise hike? 🌺
+
+Stay in. We bring a Balinese massage to your villa tonight.
+
+Free travel to Canggu, Pererenan, Seminyak and Kerobokan. We reply in about 5 minutes.
+```
+
+Its story text: "Mount Batur legs? We come to you tonight 🌺". Both are the
+developer's, from Svarga's profile, and aren't sent to the model (2.14b). The
+last paragraph keeps one fact (2026-11-10): the example's second, "We reply in
+about 5 minutes", would be the other caption's.
+
+Success, amended 2026-11-12: in the `posts-18` recordings, Sen's and Svarga's,
+with and without an offer, each question names a part of the body or what a
+guest asks before booking, and a moment or a real place; no sentence has a
+thing doing the acting; each caption says the therapist comes to the guest's
+room; each story text, offer posts aside, holds at most 10 words and names the
+sore spot or the moment; each offer post opens on its offer line; and the
+maintainer would post both posts of each plan.
+
 ## Behaviour
 
 ### At most three short paragraphs
@@ -90,11 +148,12 @@ app's WhatsApp line and the hashtags come after the caption, as today, and
 aren't counted.
 
 - Every caption is exactly three paragraphs (amended 2026-11-10, replacing
-  the two shapes of the first draft):
-  1. the hook, a short question (below);
-  2. what the massage does for the guest, doing its type's job, in one or two
-     short sentences; on a post that carries the offer, its offer line instead
-     (below);
+  the two shapes of the first draft; amended 2026-11-12):
+  1. the hook, a short question (below); on a post that carries the offer,
+     its offer line instead (below);
+  2. the answer: what the guest gets, doing its type's job, in one or two
+     short sentences (below); on a post that carries the offer, its question
+     first, then the answer;
   3. one fact from the business's highlights, stated plainly in one short
      sentence: free travel, no deposit, linens and oils included. The two
      captions of an attempt never use the same one (2.15). It replaces 2.15's
@@ -118,21 +177,83 @@ question hooks becomes its opposite: a hook that isn't a question is recorded
 (below).
 
 A post that carries the offer opens on its question too, then its offer line.
+Amended 2026-11-12: it opens on its offer line, and its question opens the
+second paragraph (below).
 
-### With an offer: the question, then the offer line
+#### Two kinds of question, dealt by code
 
-Amended 2026-11-10, after the maintainer's choice. On a post that carries the
-offer, the offer line is the caption's second paragraph, word for word, right
-after the question. It replaces 2.13b's "an offer post always opens on its
-offer line": code now puts the line second where it put it first.
+Amended 2026-11-12. Code deals each post one of two kinds of question, into
+its set-up, as 2.15 dealt its hook styles, and the prompt gives it under
+`### Questions`:
 
-- When the model wrote the line as its second paragraph, word for word, it
+| Kind | The question |
+|---|---|
+| `sore` | the guest's sore spot, named as a part of the body, and the moment it comes from, with a real place when the moment holds none (IG `references/hook-formulas.md`: a specific moment, not a mood; CH `copywriting/SKILL.md`: name the reader's pain) |
+| `ask` | the question a tourist would ask or type before booking, in their own words, that this business answers: whether a therapist comes to their room, tonight, what they bring, a deposit (CH `ad-creative/references/hook-system.md`: the exact question the buyer types into search) |
+
+- The part of the body is the post's set-up's, which its image shows: the
+  question and the photo match. For "whole body" or "head", it is a part its
+  treatment's description names ("stiff hips, back and legs" for Thai).
+- The moment is one of the essence's moments that fits that part of the body,
+  never the same one in both posts.
+- The two posts of an attempt get the two kinds, in a shuffled order, with or
+  without an offer. The deal uses the plan's random and comes last, where
+  2.15's hook styles were drawn, so a seed still deals the set-ups it dealt
+  before; 2.15's styles are no longer dealt.
+- A post keeps its kind in its set-up, and a caption update gives it back. A
+  post saved with one of 2.15's styles, or with none, keeps the kind of
+  question it has: no prompt reads a style.
+- A question never asks how the guest feels, and never names only a mood ("a
+  long day", "a break", "unwind", "stress"): a `sore` question's sore spot is
+  a part of the body (developer's call, after `posts-16`).
+- At most 12 words and 125 characters, as before.
+
+The line right after the question answers it, for the guest (CH
+`copywriting/references/ai-tells.md`: a question in the reader's voice about
+their own need, followed by what to do). Nothing else in the caption is a
+question: never one that labels the writer's own claim ("The result?").
+
+### The answer
+
+Amended 2026-11-12. The paragraph after the question says what the guest
+gets, in one or two short sentences:
+
+- A person does the acting: "we", the therapist, or "you". Never the
+  pressure, the strokes, the massage, the oil or the towels (CH
+  `copywriting/references/ai-tells.md`: the customer as the subject; `posts-16`:
+  "Slow pressure loosens deep tension…").
+- The result is physical and soon: the sore spot loosened, tonight's sleep,
+  tomorrow's hike or flight (CH `marketing-psychology/SKILL.md`: sell the result
+  the customer is after).
+- A business that comes to its guests (its promise or service area says so)
+  says where, in the question or this paragraph: the guest's own hotel room,
+  apartment or villa, as its profile writes it. Both captions may say it, each
+  in its own words: it is why a guest books this business rather than a spa
+  (developer's call).
+- Each sentence holds something a guest could check: who comes, where, how
+  long, what they bring, which part of the body (IG
+  `ig-caption-writer/references/caption-checklist.md`: a real number tied to
+  what it counts, or a proper name; CH `copywriting/SKILL.md`: a sentence a
+  competitor could write fails).
+
+On a post that carries the offer, the paragraph opens on its question, then
+answers it the same way, within the 15 words of each sentence.
+
+### With an offer: the offer line, then the question
+
+Amended 2026-11-12, at the maintainer's word: the offer line goes first again.
+On a post that carries the offer, the offer line is the caption's first
+paragraph, word for word and alone, as 2.13b had it before this spec. Its
+question opens the second paragraph, and the answer follows it; the third is
+its fact. The 2026-11-10 rule, the line second after the question, goes, and
+code puts the line first where it put it second.
+
+- When the model wrote the line as its first paragraph, word for word, it
   stays.
 - When it wrote it anywhere else, the sentences that state the offer go
-  (2.13b), and the line goes in as the second paragraph, after the caption's
-  first sentence and any emoji right after it.
+  (2.13b), and the line goes in as the first paragraph.
 - When it left it out, the line goes in the same way.
-- Each fix is recorded, as 2.13b's are: `offer line put second`, `offer line
+- Each fix is recorded, as 2.13b's were: `offer line put first`, `offer line
   added`.
 - The paragraph limit keeps the first, the second and the last paragraphs, so
   the line always stays.
@@ -183,6 +304,9 @@ a story text:
   (2.13b).
 - A business that isn't a spa is asked for at most 2 emoji in the caption and
   at most 1 in the story text; code adds none, as today.
+- Amended 2026-11-12: "after the question" becomes "after the first line":
+  on a post that carries the offer, the first flower follows its offer line,
+  as 2.13b's did, and none is asked after its question.
 
 `posts-17` is `posts-16` with these emoji words only. Its recordings stay
 `posts-16`'s: replayed, code gives them their flowers (developer's call: no
@@ -228,6 +352,46 @@ The prompt changes with it:
 - **The image prompt.** Its light, room and garden are for the image only.
   The caption rules add: "Never describe what the photo shows." 2.15's "never
   reuse a phrase from these instructions or from the image set-ups" stays.
+- **Clichés and AI tells.** Amended 2026-11-12. Never "Imagine…", a "not X,
+  it's Y" contrast, an em dash, three adjectives in a row, or a spa cliché:
+  unwind, indulge, pamper, oasis, escape, melt away, soothe (CH
+  `copywriting/references/ai-tells.md`; CH `copywriting/SKILL.md`: no em dashes
+  in social posts). The prompt names them; code records them (below).
+
+### Story text
+
+Amended 2026-11-12. A story text is read in two seconds over its photo, above
+the WhatsApp sticker: at most 10 words and 60 characters asked, its flower
+included, one idea (IG `ig-carousel-planner/references/slide-architecture.md`:
+few words on an image, one idea; CH
+`ad-creative/references/static-ad-templates.md`: 5 to 8 words over a
+lifestyle photo).
+
+- It names the post's sore spot or moment, in a few words, and what the
+  business does about it, often as a short question and its answer.
+- It never repeats the caption's first sentence, never names the treatment
+  alone, never gives a price, and never asks to book or message, as before:
+  the sticker asks.
+- It follows the setting rule, the clichés and the light, as captions do.
+- An offer post's story text stays its offer line and one flower (2.13b).
+
+Code's limit stays 120 characters, since an offer line and its flower run
+past 60. A story text over 10 words, an offer post's aside, is recorded
+(below).
+
+### What the model gets
+
+Amended 2026-11-12. `posts-18`, in the plan and in every caption update:
+
+- the caption rules above: the two kinds of question, the answer, the offer
+  line first, the clichés, the story text;
+- in the plan's user text, `### Questions` after `### Image set-ups`, one line
+  per post: `1. sore` or `1. ask`;
+- in a caption update's user text, each post's `question` from its set-up,
+  next to its `light`, and none for a post without one.
+
+No example sentence, question or story text is quoted (2.14b): each kind is
+described in the prompt's own words.
 
 ### Code's records
 
@@ -248,7 +412,23 @@ leaves them, in the plan and in every caption update:
    may add to the list.
 3. **Hooks that aren't questions.** Amended 2026-11-10: a caption whose first
    sentence doesn't end with "?": `{ field: 'mix', reason: 'post-2: hook is no
-   question' }`. It replaces 2.15's record of two question hooks.
+   question' }`. It replaces 2.15's record of two question hooks. Amended
+   2026-11-12: on a post that carries the offer, the first sentence after its
+   offer line: `{ field: 'mix', reason: 'post-1: no question after the offer
+   line' }`.
+4. **No part of the body.** Amended 2026-11-12: on a post dealt a `sore`
+   question, the sentence record 3 reads (its first, or the first after its
+   offer line) naming no part of the body, whole words, case ignored: `{
+   field: 'mix', reason: 'post-2: question names no part of the body' }`. The list starts with back, shoulder, shoulders, neck, leg,
+   legs, calf, calves, thigh, thighs, knee, knees, foot, feet, ankle, ankles,
+   arm, arms, hand, hands, wrist, wrists, hip, hips and head; "muscles" and
+   "body" aren't on it. The developer may add to it.
+5. **Clichés.** Amended 2026-11-12: a caption or story text holding a phrase
+   from the clichés list (above), or an em dash, whole words, case ignored:
+   `{ field: 'words', reason: 'post-1: "melt away"' }`.
+6. **Long story texts.** Amended 2026-11-12: a story text of more than 10
+   words, an offer post's aside: `{ field: 'story', reason: 'post-2: story
+   text of 12 words' }`.
 
 2.15's other records stay, its stock words with them.
 
@@ -257,13 +437,15 @@ leaves them, in the plan and in every caption update:
 These stay as they are:
 
 - how code deals the hook styles into the set-ups (2.15), though the prompt no
-  longer reads them (amended 2026-11-10);
+  longer reads them (amended 2026-11-10); amended 2026-11-12: code deals the
+  two kinds of question in their place (above);
 - the hook alone on its first line, and its 125-character flag;
 - a real place in each caption;
 - the offer line's words (2.13b), and the offer's end by the WhatsApp line;
 - never a price (2.17b);
 - the hashtags, and the emoji rules apart from the counts above;
-- the story text's limits: 100 characters asked, 120 checked;
+- the story text's limits: 100 characters asked, 120 checked; amended
+  2026-11-12: 10 words and 60 characters asked, 120 checked (above);
 - alt text, the images and their set-ups;
 - translations into the owner's language;
 - the owner's screens and strings, and the owner guide.
@@ -294,6 +476,20 @@ Unit tests (Vitest) for:
   the model wrote it first or elsewhere, added second when it left it out, and
   kept when the model wrote it second; an offer caption of five paragraphs
   keeping its question, its line and its last.
+- amended 2026-11-12: `posts-18`; the prompt's two kinds of question, its
+  answer with a person acting, the room said by a business that comes to its
+  guests, its clichés, its story text of 10 words and 60 characters, its offer
+  line first, and `### Questions` after the set-ups; none of "offer line
+  comes right after it" or "its offer line, word for word, as its second
+  paragraph" left; a caption update's user text giving each post its
+  `question`, and none for a post without one; the deal: two kinds, one each,
+  with and without an offer, the same seed dealing the same, and the set-ups
+  before it unchanged for a seed; a set-up saved with a 2.15 style still
+  loading; the offer line put first when the model wrote it elsewhere, added
+  first when it left it out, and kept when it wrote it first; an offer caption
+  of five paragraphs keeping its line, its question and its last; a spa's
+  first flower after the offer line; each new record, and none on a clean
+  batch.
 
 The replay test checks Sen's and Svarga's `posts-16` plans, with and without
 an offer: no caption has more than three paragraphs, a spa's caption has
@@ -301,7 +497,9 @@ exactly 2 flowers and its story text 1, every hook ends with "?",
 an offer post's second paragraph is its offer line, and no caption or story
 text holds a price (amended 2026-11-10). Older recordings (`posts-1`'s karsa-spa, orient-spa and
 serenity-bali), replayed through today's checks, lose their extra paragraphs,
-and their tests follow (developer's call).
+and their tests follow (developer's call). Amended 2026-11-12: it checks the
+`posts-18` plans, and an offer post's first paragraph is its offer line, its
+second opening on a question.
 
 `pnpm eval:posts sen svarga --record`, then `pnpm eval:posts sen svarga
 --offer --record`: 4 Flash-Lite requests from the app's daily pool. The
@@ -334,6 +532,28 @@ When a check fails, the journal says why. The maintainer decides whether the
 prompt changes and the plans are recorded again (4 more requests, with their
 go-ahead).
 
+Amended 2026-11-12. The journal shows each `posts-18` caption and story text
+next to `posts-16`'s, with its kind of question and code's records. The
+developer scores them on these checks, from the libraries' checklists (IG
+`ig-caption-writer/references/caption-checklist.md`; CH
+`copywriting/references/ai-tells.md` and `copywriting/SKILL.md`):
+
+| Check | posts-16 |
+|---|---|
+| The question names a part of the body (`sore`) or what a guest asks before booking (`ask`), with a moment or a real place | 0 of 8 |
+| No sentence in which a thing does the acting | 4 of 8 |
+| Says the therapist comes to the guest's room | 3 of 8 |
+| No cliché, em dash or question that labels the writer's claim | 5 of 8 |
+| An offer post opens on its offer line | 0 of 4 |
+| The story text, offer posts aside, holds at most 10 words and names the sore spot or the moment | 0 of 4 |
+
+Pass, on the 8 new captions:
+
+- the offer-line and story checks pass on all 4;
+- the other four pass on at least 7 of 8;
+- 2026-11-10's checks do no worse than `posts-16`;
+- and the maintainer would post both posts of each plan.
+
 ## Acceptance criteria
 
 ```gherkin
@@ -365,17 +585,53 @@ Scenario: The hook is no question
   When code checks the plan
   Then the batch's dropped list holds 'post-2: hook is no question'
 
-Scenario: The offer line goes second
-  Given a special offer, and the model writes post 1's caption "10% off our 90-minute Thai Massage, until Sunday 1 November. Tight hips after a day exploring Da Nang? 🌸", then "We come to your hotel."
+Scenario: The offer line goes first (amended 2026-11-12)
+  Given a special offer, and a business that isn't a spa
+  And the model writes post 1's caption "Tight hips after a day exploring Da Nang?", then the offer line, then "We come to your hotel.", each a paragraph
   When code checks the plan
-  Then post 1's caption is "Tight hips after a day exploring Da Nang? 🌸", the offer line, then "We come to your hotel.", each a paragraph
-  And the batch's dropped list holds 'post-1: offer line put second'
+  Then post 1's caption is the offer line, "Tight hips after a day exploring Da Nang?" and "We come to your hotel.", each a paragraph
+  And the batch's dropped list holds 'post-1: offer line put first'
 
-Scenario: The offer line added second
-  Given a special offer, and the model writes post 1's caption "Tight hips after a day exploring Da Nang? 🌸 We come to your hotel."
+Scenario: The offer line added first (amended 2026-11-12)
+  Given a special offer, and a business that isn't a spa
+  And the model writes post 1's caption "Tight hips after a day exploring Da Nang? We come to your hotel."
   When code checks the plan
-  Then post 1's caption is "Tight hips after a day exploring Da Nang? 🌸", the offer line, then "We come to your hotel.", each a paragraph
+  Then post 1's caption is the offer line, then "Tight hips after a day exploring Da Nang? We come to your hotel.", each a paragraph
   And the batch's dropped list holds 'post-1: offer line added'
+
+Scenario: No question after the offer line (amended 2026-11-12)
+  Given a special offer, and post 1's caption is its offer line, then "We come to your hotel.", then "Free travel in our core areas."
+  When code checks the plan
+  Then the batch's dropped list holds 'post-1: no question after the offer line'
+
+Scenario: Two kinds of question (amended 2026-11-12)
+  Given a plan, with or without a special offer
+  When code deals the set-ups
+  Then one post gets the question "sore" and the other "ask"
+  And the user text lists them under "### Questions", after "### Image set-ups"
+
+Scenario: A sore question with no part of the body (amended 2026-11-12)
+  Given post 2 is dealt the question "sore"
+  And the model writes post 2's caption opening "Tired after a long day in Canggu?"
+  When code checks the plan
+  Then the batch's dropped list holds 'post-2: question names no part of the body'
+  And post 2's caption stays as it is
+
+Scenario: A cliché (amended 2026-11-12)
+  Given post 1's caption holds "Long strokes melt away your stress."
+  When code checks the plan
+  Then the batch's dropped list holds 'post-1: "melt away"'
+  And post 1's caption keeps the sentence
+
+Scenario: A long story text (amended 2026-11-12)
+  Given post 2 doesn't carry the offer, and its story text is "Easy and quick recovery after your long morning surf at My Khe beach 🌺"
+  When code checks the plan
+  Then the batch's dropped list holds 'post-2: story text of 13 words'
+
+Scenario: A rewrite keeps the kinds (amended 2026-11-12)
+  Given a batch whose post 2 was dealt the question "ask"
+  When the owner edits the business and the captions are rewritten
+  Then the rewrite's user text gives post-2 "question": "ask"
 
 Scenario: The owner's own caption
   Given the owner edits post 1's caption into five paragraphs
@@ -398,6 +654,12 @@ Scenario: A recorded plan
   When the replay test runs it
   Then no caption has more than three paragraphs
   And no caption or story text holds a price
+
+Scenario: A recorded offer plan (amended 2026-11-12)
+  Given Svarga's plan recorded with posts-18, with the offer
+  When the replay test runs it
+  Then each post's first paragraph is its offer line
+  And its second paragraph opens on a question
 ```
 
 ## Known limits
@@ -414,11 +676,24 @@ Scenario: A recorded plan
 - Code can't turn a statement into a question: a hook without "?" reaches the
   owner, and the record shows it (amended 2026-11-10).
 - Every hook names a sore spot and a moment, so hooks can look alike from one
-  day to the next; nothing records repeats across days (2.15).
+  day to the next; nothing records repeats across days (2.15). Amended
+  2026-11-12: the two kinds of question, the set-ups' parts of the body and
+  the moments vary them, but an attempt can still repeat the one before it.
+- Amended 2026-11-12: code tells a part of the body by its words, so "sore
+  muscles" is recorded and "stiff lower back" isn't. Whether a question is
+  specific, whether an `ask` question is one, and whether a thing does the
+  acting are the journal's to judge: code reads no sentence's subject.
+- Code deals a kind but can't make the model follow it: a post dealt `ask`
+  may still ask about a sore spot, and nothing records it.
+- Both captions may say the therapist comes to the guest's room, so the line
+  comes back, in other words, from one attempt to the next.
+- A profile with no moments gives the model the place alone for its `sore`
+  question.
 
 ## Out of scope
 
 - A second model call to shorten a long caption.
-- Story texts' length: 2.13's limits stay.
+- Story texts' length: 2.13's limits stay. Amended 2026-11-12: what the model
+  is asked for changes (above); code's 120 characters stay.
 - The owner's own edits, which are never cut.
 - Review replies, and answers to guests' questions (2.19).

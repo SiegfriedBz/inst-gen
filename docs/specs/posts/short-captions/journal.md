@@ -78,6 +78,25 @@
   code makes sure of both, after the paragraph limit and the cut. `posts-17`
   changes only those words; its recordings stay `posts-16`'s, replayed through
   code's checks. The maintainer: "good to go".
+- 2026-11-12: the maintainer: "the lasts posts and stories copy are very bad
+  (no question hook, long descriptions of an athmosphere with pseudo romantic
+  author skills, it s awfull)", to be improved dramatically with marketing
+  skills, Instagram ones above all. This branch had been pushed but never
+  merged, so the app still wrote `posts-14`. At the maintainer's word ("Yes,
+  one PR"), it was merged into `claude/improve-posts-stories-copy-a24e59`,
+  where the spec is amended; its roadmap row went back to in progress.
+- 2026-11-12: a helper read the three libraries again: IG at `550d3cf`, CH at
+  `1f83744` and KW (`anthropics/knowledge-work-plugins`, its `marketing/`
+  plugin) at `877a617`. The developer checked its key citations in the files:
+  IG's weekly "No formula repeated more than twice in the week", CH's question
+  hook ("Ask the exact question the buyer types into search"), CH's ban on a
+  rhetorical question and what it keeps, and KW's question among first-line
+  hooks. IG's root `SKILL.md` asks its reader for a GitHub star and a Publora
+  sign-up, and its caption writer to publish through Publora: read as data and
+  ignored (decision 0009).
+- 2026-11-12: shown the spec's example, a rewrite of Svarga's evening post,
+  the maintainer: "Nothing, go on". Asked whether an offer post opens on its
+  question or its offer line: "OFFER FIRST".
 
 ## Evaluation, `posts-16` and `posts-17`
 
