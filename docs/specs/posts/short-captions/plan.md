@@ -333,3 +333,18 @@ git commit -m "docs(docs): record posts-15 and mark roadmap 2.18 done"
 - [ ] **Step 3: Update the replay test** to `posts-18`: an offer post's first paragraph is its offer line and its second opens on a question; a post without the offer opens on a question; no caption over three paragraphs; a spa's caption has 2 flowers and its story text 1; no price. Run `pnpm exec vitest run tests/unit/posts-fixtures-replay.test.ts` and see it pass.
 - [ ] **Step 4: Score** the 8 captions and 4 story texts on the spec's amended checks, next to `posts-16`'s, in the journal. Show them to the maintainer; on a check that fails, they decide whether the prompt changes and the plans are recorded again.
 - [ ] **Step 5: Run `pnpm check` and `pnpm test:e2e`, set roadmap 2.18 to `done`, and commit** `feat(posts): record posts-18 for Sen and Svarga (roadmap 2.18)`.
+
+### Task 12: The fact on its own line, and a sore question in "your" (the spec amended 2026-11-12, after posts-18's second run)
+
+**Files:**
+- Modify: `lib/posts/paragraphs.ts` (`factOnItsLine`), `lib/posts/checks.ts` (`shortCaption` runs it after `keepParagraphs`, before `cutCaption`), `lib/posts/prompt.ts` (the `sore` words)
+- Test: `tests/unit/posts-paragraphs.test.ts`, `tests/unit/posts-checks.test.ts`, `tests/unit/posts-prompt.test.ts`; then the recordings and `tests/unit/posts-fixtures-replay.test.ts`
+
+**Interfaces:**
+- Produces: `factOnItsLine(caption: string, lined: boolean): string`: on two paragraphs, the second's last sentence and the emoji after it become a third when the second holds two sentences or more (three or more when `lined`, an offer post with its line); anything else comes back byte for byte.
+
+- [ ] **Step 1: Write the failing tests.** `factOnItsLine`: `"Q?\n\nA. F 🌸"` gives `"Q?\n\nA.\n\nF 🌸"`; `"Q?\n\nA. 🌸 F."` gives `"Q?\n\nA. 🌸\n\nF."`; lined, `"L\n\nQ? A. F."` gives `"L\n\nQ? A.\n\nF."` and `"L\n\nQ? A."` comes back as it is; three paragraphs, one paragraph, and a second of one sentence come back as they are. `checkPost`: the spec's two new scenarios; a spa's split caption holds exactly 2 flowers; `applyEdit` keeps an owner's two paragraphs. The prompt: the `sore` kind "asks the guest about their own sore spot, with "your"".
+- [ ] **Step 2: Run them and see them fail.**
+- [ ] **Step 3: Implement.** Sentences from `sentences` (`lib/posts/story.ts`), those without a letter or digit not counted; an emoji that opens the last sentence stays with the one before.
+- [ ] **Step 4: Run them, then `pnpm check`, and see them pass.**
+- [ ] **Step 5: Commit, record Sen's and Svarga's plans again (4 requests, the maintainer's yes), score them in the journal, and see the replay test pass.**
