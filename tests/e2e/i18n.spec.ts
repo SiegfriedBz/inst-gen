@@ -2,6 +2,7 @@ import { type BrowserContext, expect, type Page, test } from '@playwright/test';
 import id from '@/messages/id.json' with { type: 'json' };
 import vi from '@/messages/vi.json' with { type: 'json' };
 import { senProfile } from '../unit/helpers/brand';
+import { holdRead } from './helpers/brand-stream';
 import { languageButton, languageNav, pickLanguage } from './helpers/language';
 
 // Test values from playwright.config.ts; not secrets.
@@ -22,6 +23,12 @@ const saveLocale = (context: BrowserContext, value: string) =>
 
 const localeCookie = async (context: BrowserContext) =>
   (await context.cookies()).find((c) => c.name === 'shopfront_locale');
+
+// Sen's and Svarga's sign-ins read the website by itself: held, never answered,
+// unless a test answers it.
+test.beforeEach(async ({ page }) => {
+  await holdRead(page);
+});
 
 test.describe('phone in Indonesian', () => {
   test.use({ locale: 'id-ID' });
@@ -147,8 +154,6 @@ test.describe('switching with JavaScript', () => {
   test.use({ locale: 'en-US' });
 
   test('keeps the open tab, and the choice after a reload', async ({ page, context }) => {
-    await signIn(page);
-    await page.getByLabel('Your website').fill('sendanangmassage.com');
     await page.route('**/api/brand/read', (route) =>
       route.fulfill({
         status: 200,
@@ -159,7 +164,8 @@ test.describe('switching with JavaScript', () => {
     await page.route('**/api/brand/search', (route) =>
       route.fulfill({ status: 503, json: { error: 'search_unavailable' } }),
     );
-    await page.getByRole('button', { name: 'Read my website' }).click();
+    // Sen's website is read by itself (docs/specs/platform/easier-to-use).
+    await signIn(page);
     await expect(page.getByRole('tab', { name: 'Your business' })).toHaveAttribute(
       'aria-selected',
       'true',

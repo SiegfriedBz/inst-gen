@@ -10,8 +10,8 @@ const SEN = 'test-lotus-river-sen';
 const answer = (attempts: number) => ({
   resetsAt: '2026-11-15T08:00:00.000Z',
   limited: true,
-  left: { reads: 2, attempts, newImages: 10, replies: 20, answers: 20 },
-  limits: { reads: 3, attempts: 3, newImages: 10, replies: 20, answers: 20 },
+  left: { reads: 2, attempts, newImages: 10, replies: 20, answers: 20, newTexts: 10 },
+  limits: { reads: 3, attempts: 3, newImages: 10, replies: 20, answers: 20, newTexts: 10 },
   poolEmpty: false,
   images: { on: true, monthFull: false, backAt: '2026-12-01T00:00:00.000Z' },
 });
@@ -23,8 +23,6 @@ async function signInAndRead(page: Page) {
   await page.locator('#passphrase').fill(SEN);
   await page.locator('button[type=submit]:not([name=locale])').click();
   await expect(page).toHaveURL('/');
-  await page.locator('#website').fill('sendanangmassage.com');
-  await page.locator('#website').press('Enter');
   await expect(page.getByRole('tablist')).toBeVisible();
 }
 
@@ -47,7 +45,9 @@ test('the bar on each tab, and the last attempt used up', async ({ page }) => {
   // The first line of the open tab (docs/specs/platform/friendlier-home).
   const bar = page.getByRole('tabpanel').getByTestId('usage-bar');
   await page.getByRole('tab', { name: 'Create Posts' }).click();
-  await expect(bar).toHaveText('Left today: 1 attempt, 10 new images · Resets at 15:00');
+  await expect(bar).toHaveText(
+    'Left today: 1 attempt, 10 new images, 10 new texts · Resets at 15:00',
+  );
   await page.getByRole('tab', { name: 'Reviews' }).click();
   await expect(bar).toHaveText('Left today: 20 replies · Resets at 15:00');
   // docs/specs/questions/answer-drafts, "The daily limit".
@@ -59,7 +59,9 @@ test('the bar on each tab, and the last attempt used up', async ({ page }) => {
   await page.getByRole('tab', { name: 'Create Posts' }).click();
   await page.getByRole('button', { name: /Make 2 suggestions/ }).click();
   await expect(page.getByText("You've made today's 3 attempts. More at 15:00.")).toBeVisible();
-  await expect(bar).toHaveText('Left today: 0 attempts, 10 new images · Resets at 15:00');
+  await expect(bar).toHaveText(
+    'Left today: 0 attempts, 10 new images, 10 new texts · Resets at 15:00',
+  );
   await expect(page.getByRole('button', { name: /Make 2 suggestions/ })).toBeDisabled();
 });
 
@@ -77,11 +79,9 @@ test('the bar fits a 320px phone in Vietnamese', async ({ page, context }) => {
   await page.locator('#passphrase').fill(SEN);
   await page.locator('button[type=submit]:not([name=locale])').click();
   await expect(page).toHaveURL('/');
-  await page.locator('#website').fill('sendanangmassage.com');
-  await page.locator('#website').press('Enter');
   await page.getByRole('tab', { name: 'Tạo bài đăng' }).click();
   await expect(page.getByRole('tabpanel').getByTestId('usage-bar')).toHaveText(
-    'Còn lại hôm nay: 3 lần thử, 10 hình mới · Làm mới lúc 15:00',
+    'Còn lại hôm nay: 3 lần thử, 10 hình mới, 10 lần viết chữ mới · Làm mới lúc 15:00',
   );
   expect(await page.evaluate(() => document.documentElement.scrollWidth)).toBeLessThanOrEqual(320);
 });

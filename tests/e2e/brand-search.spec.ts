@@ -23,8 +23,6 @@ async function signInAndRead(page: Page) {
   await page.getByLabel('Password').fill(SEN);
   await page.getByRole('button', { name: 'Enter' }).click();
   await expect(page).toHaveURL('/');
-  await page.getByLabel('Your website').fill('sendanangmassage.com');
-  await page.getByRole('button', { name: 'Read my website' }).click();
 }
 
 test('a read is followed by the search, whose additions show and stay', async ({ page }) => {

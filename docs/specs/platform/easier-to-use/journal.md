@@ -12,6 +12,8 @@
 - 2026-11-13, Task 11: a refusal at the limit shows under the link, and the card then leaves out its own limit line, so the line shows once. "Write new texts" waits on posts runs only (`editBusy`), not on an image being made: the spec keeps the images part usable.
 - 2026-11-13, Task 11: the whole suite caught a race in Task 2's Stop test (a Stop before the read's request left); the test now waits for the request. The app was right.
 
+- 2026-11-13, Task 12: the phone tests ran on port 3101 with a scratch config, as another project's dev server held 3000 on this machine. Tests that sign in as Sen or Svarga without a read of their own hold the read, so none reaches the real route or the spa's website.
+
 ## RED
 
 - Task 1, passwords: `Tests  7 failed | 10 passed (17)`
@@ -27,6 +29,7 @@
 - Task 9, the new-texts route: `Tests  3 failed | 28 passed (31)`, and two files could not import `@/app/api/posts/texts/route`
 - Task 10, new texts on the phone: `Tests  3 failed | 27 passed (30)`, and `tsc` refused `step: 'texts'` and the missing `startNewTexts`
 - Task 11, "Write new texts": `Tests  11 failed | 114 passed (125)`
+- Task 12, the phone tests, first run: `4 failed`, `1 skipped`, `68 passed (37.2s)`: the usage bar's stubbed answer had no `newTexts`, and the tabs came before a check that there were none
 
 ## GREEN
 
@@ -43,3 +46,4 @@
 - Task 9, the new-texts route: `Tests  194 passed (194)`
 - Task 10, new texts on the phone: `Tests  92 passed (92)`
 - Task 11, "Write new texts": `Tests  156 passed (156)`; the whole suite: `Tests  2031 passed (2031)`
+- Task 12, the phone tests: `1 skipped`, `72 passed (22.2s)` (the skip: no test owner has a 16-letter name, by design)

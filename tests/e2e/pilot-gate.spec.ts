@@ -1,7 +1,10 @@
 import { expect, type Page, test } from '@playwright/test';
+import { holdRead } from './helpers/brand-stream';
 
-// Test values from playwright.config.ts; not secrets.
+// Test values from playwright.config.ts; not secrets. Svarga's is a short
+// password, set as svarga=test-blue-wave (docs/specs/platform/easier-to-use).
 const SEN = 'test-lotus-river-sen';
+const SVARGA = 'test-blue-wave';
 const WRONG = 'test-lotus-river-svarga';
 const THIRTY_DAYS = 30 * 24 * 60 * 60;
 
@@ -10,6 +13,11 @@ async function signIn(page: Page, passphrase: string) {
   await page.getByLabel('Password').fill(passphrase);
   await page.getByRole('button', { name: 'Enter' }).click();
 }
+
+// Sen's and Svarga's sign-ins read the website by itself: held, never answered.
+test.beforeEach(async ({ page }) => {
+  await holdRead(page);
+});
 
 test('no session goes to /enter', async ({ page }) => {
   await page.goto('/');
@@ -31,6 +39,13 @@ test('Sen signs in', async ({ page, context }) => {
   expect(cookie?.secure).toBe(true);
   expect(cookie?.sameSite).toBe('Lax');
   expect(Math.abs((cookie?.expires ?? 0) - (Date.now() / 1000 + THIRTY_DAYS))).toBeLessThan(60);
+});
+
+test('a short password signs Svarga in', async ({ page }) => {
+  await signIn(page, SVARGA);
+  await expect(page).toHaveURL('/');
+  await expect(page.locator('header').getByText('Svarga', { exact: true })).toBeVisible();
+  await expect(page.getByText('Reading your website…')).toBeVisible();
 });
 
 test('wrong passphrase', async ({ page, context }) => {

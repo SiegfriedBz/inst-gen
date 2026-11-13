@@ -25,8 +25,6 @@ test('two images follow the captions, stay on the phone, and one is tried again'
   await page.getByLabel('Password').fill(SEN);
   await page.getByRole('button', { name: 'Enter' }).click();
   await expect(page).toHaveURL('/');
-  await page.getByLabel('Your website').fill('sendanangmassage.com');
-  await page.getByRole('button', { name: 'Read my website' }).click();
   await page.getByRole('tab', { name: 'Create Posts' }).click();
 
   // An attempt is two suggestions, each with its images

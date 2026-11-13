@@ -19,8 +19,6 @@ async function savedBrand(page: Page) {
   await page.locator('#passphrase').fill(SEN);
   await page.locator('button[type=submit]:not([name=locale])').click();
   await expect(page).toHaveURL('/');
-  await page.locator('#website').fill('sendanangmassage.com');
-  await page.locator('#website').press('Enter');
   await expect(page.getByRole('tablist')).toBeVisible();
   await page.getByRole('tab', { name: 'Create Posts' }).click();
 }
