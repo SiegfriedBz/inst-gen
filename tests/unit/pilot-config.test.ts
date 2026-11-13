@@ -111,6 +111,15 @@ describe('owner=password entries', () => {
     expect(result.problem).not.toContain('abcd');
   });
 
+  // A password written first, letters only, looks like an owner id.
+  test('never names an owner id as long as a password', () => {
+    const result = parse('abcdefghijklmn=sen');
+    expect(result.ok).toBe(false);
+    if (result.ok) return;
+    expect(result.problem).toContain('entry 1');
+    expect(result.problem).not.toContain('abcdefghijklmn');
+  });
+
   test("refuses an owner id that isn't lowercase letters", () => {
     for (const bad of ['Sen=abcd-efg-hijk', 'sen2=abcd-efg-hijk', '=abcd-efg-hijk']) {
       const result = parse(bad);

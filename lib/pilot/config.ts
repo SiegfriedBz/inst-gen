@@ -14,6 +14,11 @@ const MIN_SECRET_PART = 12;
 const MIN_SESSION_SECRET = 32;
 const OWNER_ID = /^[a-z]+$/;
 
+// An owner id as long as a password may be one, written first by mistake: a
+// problem names its entry instead.
+const named = (ownerId: string, entry: string) =>
+  ownerId.length < MIN_SECRET_PART ? ownerId : entry;
+
 const envSchema = z.object({
   PILOT_PASSPHRASES: z.string().optional(),
   SESSION_SECRET: z.string().optional(),
@@ -46,13 +51,17 @@ export function parsePilotConfig(env: {
     if (!entry.ok) return entry;
     const { ownerId, passphrase } = entry;
     if (entries.some((e) => e.ownerId === ownerId)) {
-      return { ok: false, problem: `PILOT_PASSPHRASES has a duplicate owner id: ${ownerId}` };
-    }
-    const sharing = entries.find((e) => e.passphrase === passphrase);
-    if (sharing) {
       return {
         ok: false,
-        problem: `PILOT_PASSPHRASES: ${sharing.ownerId} and ${ownerId} share a password`,
+        problem: `PILOT_PASSPHRASES has a duplicate owner id: ${named(ownerId, position)}`,
+      };
+    }
+    const sharing = entries.findIndex((e) => e.passphrase === passphrase);
+    if (sharing !== -1) {
+      const earlier = named(entries[sharing].ownerId, `entry ${sharing + 1}`);
+      return {
+        ok: false,
+        problem: `PILOT_PASSPHRASES: ${earlier} and ${named(ownerId, `entry ${index + 1}`)} share a password`,
       };
     }
     entries.push({ ownerId, passphrase });
@@ -74,7 +83,7 @@ function ownerFirst(item: string, position: string): EntryResult {
   if (passphrase.length < MIN_SECRET_PART) {
     return {
       ok: false,
-      problem: `${position} (${ownerId}): the password must be at least ${MIN_SECRET_PART} characters`,
+      problem: `${position}${ownerId.length < MIN_SECRET_PART ? ` (${ownerId})` : ''}: the password must be at least ${MIN_SECRET_PART} characters`,
     };
   }
   return { ok: true, ownerId, passphrase };
@@ -91,9 +100,10 @@ function ownerLast(passphrase: string, position: string): EntryResult {
     };
   }
   if (hyphen < MIN_SECRET_PART) {
+    const id = named(ownerId, 'the owner id');
     return {
       ok: false,
-      problem: `${position} (${ownerId}): the part before -${ownerId} must be at least ${MIN_SECRET_PART} characters`,
+      problem: `${position} (${id}): the part before -${id} must be at least ${MIN_SECRET_PART} characters`,
     };
   }
   return { ok: true, ownerId, passphrase };
