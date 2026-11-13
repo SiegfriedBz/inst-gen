@@ -22,8 +22,6 @@ async function signIn(page: Page) {
 async function sixWithStories(
   page: Page,
   words = {
-    website: 'Your website',
-    read: 'Read my website',
     tab: 'Create Posts',
     make: 'Make 2 suggestions',
   },
@@ -32,9 +30,8 @@ async function sixWithStories(
   await fulfilRead(page, [streamBody(profile)]);
   await fulfilPosts(page, 'plan', postsBody(profile, { stories: true }));
   await fulfilImages(page, {});
+  // Sen's website is read by itself (docs/specs/platform/easier-to-use).
   await signIn(page);
-  await page.getByLabel(words.website).fill('sendanangmassage.com');
-  await page.getByRole('button', { name: words.read }).click();
   await page.getByRole('tab', { name: words.tab }).click();
   await page.getByRole('button', { name: words.make }).click();
   await expect(tileImages(page)).toHaveCount(2);
@@ -87,8 +84,6 @@ test.describe('a Vietnamese screen', () => {
       });
     });
     await sixWithStories(page, {
-      website: vi.home.websiteLabel,
-      read: vi.brand.home.read,
       tab: vi.home.tabs.posts,
       make: vi.posts.make,
     });

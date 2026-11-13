@@ -7,6 +7,7 @@ import { ShopfrontMark } from '@/components/shopfront-mark';
 import { UsageProvider } from '@/components/usage/usage-provider';
 import { displayName } from '@/lib/pilot/config';
 import { getCurrentOwner } from '@/lib/pilot/current-owner';
+import { siteFor } from '@/lib/pilot/sites';
 import { imagesOn } from '@/lib/posts/image-access';
 
 export default async function HomePage() {
@@ -26,7 +27,12 @@ export default async function HomePage() {
         </div>
       </header>
       <UsageProvider>
-        <BrandHome ownerId={ownerId} name={name} imagesOn={imagesOn()} />
+        <BrandHome
+          ownerId={ownerId}
+          name={name}
+          imagesOn={imagesOn()}
+          site={siteFor(ownerId) ?? undefined}
+        />
       </UsageProvider>
       <SignedInNote />
     </main>

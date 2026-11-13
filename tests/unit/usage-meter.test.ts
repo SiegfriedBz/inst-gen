@@ -43,6 +43,13 @@ describe('per-owner limits', () => {
     expect(await store.read([poolKey(day, 'gemini-3.5-flash-lite')])).toEqual([10]);
   });
 
+  // docs/specs/platform/easier-to-use, "The limit".
+  test('the eleventh new text is refused, each one counted in the Flash-Lite pool', async () => {
+    for (let i = 0; i < 10; i++) expect((await take('sen', 'newTexts')).ok).toBe(true);
+    expect(await take('sen', 'newTexts')).toMatchObject({ ok: false, code: 'limit_reached' });
+    expect(await store.read([poolKey('2026-10-25', 'gemini-3.5-flash-lite')])).toEqual([10]);
+  });
+
   test('the eleventh new image is refused', async () => {
     for (let i = 0; i < 10; i++) await take('sen', 'newImages');
     expect(await take('sen', 'newImages')).toMatchObject({ ok: false, code: 'limit_reached' });

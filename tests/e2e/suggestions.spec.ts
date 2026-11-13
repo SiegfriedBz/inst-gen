@@ -18,8 +18,6 @@ async function signInAndRead(page: Page) {
   await page.locator('#passphrase').fill(SEN);
   await page.locator('button[type=submit]:not([name=locale])').click();
   await expect(page).toHaveURL('/');
-  await page.getByLabel('Your website').fill('sendanangmassage.com');
-  await page.getByRole('button', { name: 'Read my website' }).click();
   await page.getByRole('tab', { name: 'Create Posts' }).click();
 }
 

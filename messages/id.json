@@ -4,9 +4,9 @@
     "description": "Postingan dan balasan ulasan Anda, ditulis untuk Anda."
   },
   "enter": {
-    "label": "Frasa sandi",
+    "label": "Kata sandi",
     "submit": "Masuk",
-    "wrong": "Frasa sandi itu salah. Coba lagi.",
+    "wrong": "Kata sandi itu salah. Coba lagi.",
     "footer": "Uji coba khusus untuk spa yang diundang."
   },
   "home": {
@@ -200,7 +200,6 @@
   "posts": {
     "make": "Buat 2 saran",
     "makeMore": "Buat 2 saran baru",
-    "moreBelow": "Saran baru muncul di atas. Percobaan {n} tetap di bawah.",
     "empty": "Setiap saran berisi 2 gambar (1 untuk postingan, 1 untuk story), teks untuk postingan, dan teks singkat untuk story, siap untuk Instagram. Pilih yang Anda suka dan simpan di ponsel Anda.",
     "emptyTextOnly": "Setiap saran berisi teks untuk postingan dan teks singkat untuk story, siap untuk Instagram. Pilih yang Anda suka dan salin.",
     "attempt": "Percobaan {n}",
@@ -224,6 +223,8 @@
       "storyOwnPhoto": "Di Instagram, buat story dengan foto Anda sendiri, tambahkan teks, lalu tempel."
     },
     "editText": "Ubah teks",
+    "newTexts": "Tulis teks baru",
+    "writingTexts": "Menulis teks baru…",
     "keepOpen": "Biarkan halaman ini terbuka sekitar satu menit selama postingan Anda dibuat.",
     "flags": {
       "price": "Harga ini tidak ada di situs Anda: {text}. Periksa sebelum memposting.",
@@ -351,7 +352,7 @@
   "questions": {
     "intro": "Ada pertanyaan dari tamu? Salin dan tempel di sini. Kami menulis jawaban dalam bahasa tamu Anda, dari detail usaha Anda.",
     "label": "Pertanyaan tamu",
-    "hint": "Jangan sertakan nama dan nomor telepon tamu.",
+    "hint": "Hapus nama tamu jika ada di pesan.",
     "final": "Jadikan jawaban terakhir",
     "finalHint": "Jawaban diakhiri dengan ajakan kepada tamu untuk memesan.",
     "write": "Tulis jawaban",
@@ -394,6 +395,7 @@
     "newImages": "{count} gambar baru",
     "replies": "{count} balasan",
     "answers": "{count} jawaban",
+    "newTexts": "{count} teks baru",
     "developer": "Tanpa batas harian (pengembang)",
     "poolEmpty": "Shopfront sudah memakai jatah menulis gratis hari ini. Kembali pukul {time}.",
     "imagesMonth": "Tidak ada gambar baru sampai {date}.",
@@ -404,6 +406,7 @@
       "newImages": "Anda sudah membuat {limit} gambar baru hari ini. Bisa lagi pukul {time}.",
       "replies": "Anda sudah menulis {limit} balasan hari ini. Bisa lagi pukul {time}.",
       "answers": "Anda sudah menulis {limit} jawaban hari ini. Bisa lagi pukul {time}.",
+      "newTexts": "Anda sudah menulis {limit} teks baru hari ini. Bisa lagi pukul {time}.",
       "rewrites": "Teks sudah diperbarui {limit} kali hari ini. Bisa lagi pukul {time}.",
       "translations": "{limit} terjemahan hari ini sudah habis. Bisa lagi pukul {time}."
     }
@@ -417,20 +420,20 @@
     "print": "Cetak atau simpan sebagai PDF",
     "start": {
       "title": "Mulai",
-      "passphrase": "Buka tautan yang Anda terima, ketik frasa sandi Anda, lalu ketuk <b>{button}</b>. Anda tetap masuk di ponsel ini selama 30 hari.",
+      "passphrase": "Buka tautan yang Anda terima, ketik kata sandi Anda, lalu ketuk <b>{button}</b>. Anda tetap masuk di ponsel ini selama 30 hari.",
       "home": "Tambahkan Shopfront ke layar utama:",
       "iphone": "Di iPhone, di Safari: ketuk Bagikan, lalu \"Add to Home Screen\".",
       "android": "Di Android, di Chrome: ketuk ⋮, lalu \"Add to Home screen\" atau \"Install app\".",
       "why": "Usaha dan postingan Anda disimpan di ponsel ini. Di iPhone, Safari bisa menghapusnya jika Shopfront tidak dibuka sekitar seminggu, kecuali Shopfront ada di layar utama.",
-      "onePhone": "Semuanya tetap di ponsel ini: ponsel lain mulai dari kosong."
+      "onePhone": "Semuanya tetap di ponsel ini: di ponsel lain, Shopfront membaca situs web Anda lagi dan postingan Anda mulai dari kosong."
     },
     "business": {
       "title": "Usaha Anda",
-      "read": "Ketik situs web Anda dan ketuk <b>{button}</b>. Biarkan halaman tetap terbuka sekitar satu menit selama Shopfront membacanya; layar tetap menyala dengan sendirinya.",
+      "read": "Saat pertama kali Anda membuka Shopfront di sebuah ponsel, Shopfront membaca situs web Anda dengan sendirinya. Biarkan halaman tetap terbuka sekitar satu menit; layar tetap menyala dengan sendirinya.",
       "check": "Periksa apa yang ditemukan. Ketuk sebuah bagian untuk melihat semuanya, dan <b>{button}</b> untuk memperbaiki atau menambahkan sesuatu.",
       "missing": "Di bagian atas, Shopfront menampilkan apa yang tidak ditemukannya: ketuk salah satunya untuk menambahkannya. Anda bisa membuat postingan tanpanya, tetapi setiap yang Anda tambahkan membuat postingan Anda lebih tepat. Jika nomor WhatsApp atau kota Anda belum ada, sebuah baris merah memberi tahu Anda: ketuk untuk menambahkannya. Setiap postingan diakhiri dengan WhatsApp Anda, dan tagar memakai kota Anda.",
       "english": "Jika bisa, tulis perubahan Anda dalam bahasa Inggris: postingan ditulis dalam bahasa Inggris.",
-      "reread": "<b>{button}</b> mengganti perubahan Anda dengan isi situs web Anda saat ini; Shopfront bertanya dulu. Untuk memakai situs web lain, ketuk <b>{forget}</b> lalu mulai lagi."
+      "reread": "<b>{button}</b> mengganti perubahan Anda dengan isi situs web Anda saat ini; Shopfront bertanya dulu."
     },
     "posts": {
       "title": "Membuat postingan",
@@ -440,7 +443,7 @@
       "wait": "Biarkan halaman tetap terbuka sekitar satu menit selama saran dibuat.",
       "leave": "Jika Anda pergi, Shopfront melanjutkan dari tempat berhenti saat Anda kembali, tetapi bagian yang sedang dibuat akan dibuat ulang dan memakai sebagian jatah hari ini. Jadi mulailah saat Anda punya waktu satu menit, bukan tepat sebelum menelepon.",
       "more": "Ingin ide lain? Ketuk <b>{button}</b>: yang baru muncul di atas, yang sebelumnya tetap di bawah.",
-      "edit": "Ketuk <b>{button}</b> untuk mengubah kata-kata sebuah saran, dan <b>{image}</b> untuk gambar lain; Anda bisa menambahkan petunjuk singkat. Teks story tidak bisa diubah di sini: ubah di Instagram setelah ditempel, jika mau.",
+      "edit": "Ketuk <b>{button}</b> untuk mengubah sendiri kata-kata sebuah saran, atau <b>{newTexts}</b> untuk kata-kata baru dengan gambar yang sama. Ketuk <b>{image}</b> untuk gambar lain; Anda bisa menambahkan petunjuk singkat. Teks story tidak bisa diketik di sini: ubah di Instagram setelah ditempel, jika mau.",
       "update": "Jika Anda mengubah data usaha, teks postingan dan teks story diperbarui agar sesuai. Teks yang Anda ubah sendiri tidak disentuh.",
       "offer": "Untuk memasukkan promo hari ini ke postingan Anda, ketuk <b>{button}</b> sebelum membuatnya:",
       "offerKind": "Pilih diskon (10%, 15%, 20% atau angka Anda sendiri) atau bonus gratis: perawatan yang Anda berikan dengan sesi 90 menit.",
@@ -478,7 +481,7 @@
     "allowance": {
       "title": "Jatah harian Anda",
       "free": "Shopfront gratis, jadi setiap hari ada batasnya.",
-      "limits": "Setiap hari Anda punya {reads}, {attempts} (masing-masing 2 saran), {newImages}, {replies}, dan {answers}, ditambah pembaruan teks dan terjemahan.",
+      "limits": "Setiap hari Anda punya {reads}, {attempts} (masing-masing 2 saran), {newImages}, {newTexts}, {replies}, dan {answers}, ditambah pembaruan teks dan terjemahan.",
       "bar": "Baris di bagian atas setiap tab menunjukkan sisa hari ini dan jam semuanya kembali.",
       "reset": "Pada jam itu, batas kembali penuh dan saran, balasan ulasan, serta jawaban hari itu hilang dari layar. Simpan yang ingin Anda pakai sebelum itu. Promo spesial Anda tetap ada: berlaku sampai hari terakhirnya sendiri berakhir.",
       "time": "Jam di bilah memakai waktu ponsel Anda: percayai jam itu, bukan jam yang tetap.",

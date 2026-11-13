@@ -4,14 +4,15 @@ import type { PostBatch } from '@/lib/posts/batch';
 // A run as decision 0005 keeps it in the browser: each step's status and,
 // once done, its output. The brand panel (docs/specs/brand/brand-panel)
 // has one step, the brand read; a posts run (docs/specs/posts/generate-copy)
-// has one too, the plan or its rewrite; an images run has one step per post
+// has one too, the plan, its rewrite or one post's new texts
+// (docs/specs/platform/easier-to-use); an images run has one step per post
 // (docs/specs/posts/generate-images).
 
 export type StepStatus = 'pending' | 'running' | 'done' | 'failed';
 
 export type RunStep =
   | { name: 'brand'; status: StepStatus; output?: Profile }
-  | { name: 'plan' | 'rewrite'; status: StepStatus; output?: PostBatch }
+  | { name: 'plan' | 'rewrite' | 'texts'; status: StepStatus; output?: PostBatch }
   // The image itself lives in the images store, not in the run.
   | { name: 'image'; postId: string; status: StepStatus };
 
@@ -27,10 +28,11 @@ export type RunRecord = {
   steps: RunStep[];
   // How many times the step was asked for again after it was lost.
   resumes?: number;
-  // The batch a rewrite replaces, or whose images an images run makes.
+  // The batch a rewrite or new texts change, or whose images an images run makes.
   batchId?: string;
   // The posts a rewrite sends: those the owner didn't edit, or the one they
   // asked for (docs/specs/posts/editor-download). All of them when absent.
+  // New texts send one.
   postIds?: string[];
   // The owner's hint for a new image, asked for again on a resume.
   hint?: string;
@@ -53,7 +55,12 @@ export function newBrandRun(
 }
 
 export function newPostsRun(
-  input: { ownerId: string; step: 'plan' | 'rewrite'; batchId?: string; postIds?: string[] },
+  input: {
+    ownerId: string;
+    step: 'plan' | 'rewrite' | 'texts';
+    batchId?: string;
+    postIds?: string[];
+  },
   now: Date,
   id: string,
 ): RunRecord {

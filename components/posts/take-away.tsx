@@ -59,16 +59,19 @@ export function SaveImages({
   );
 }
 
+// `disabled` while new texts are written for it (docs/specs/platform/easier-to-use).
 export function CopyPost({
   post,
   cta,
   imagesOn,
   onTaken,
+  disabled = false,
 }: {
   post: Post;
   cta: string;
   imagesOn: boolean;
   onTaken?: (step: TakenStep) => void;
+  disabled?: boolean;
 }) {
   const t = useTranslations('posts');
   return (
@@ -77,17 +80,26 @@ export function CopyPost({
         text={postText(post, cta)}
         onCopied={() => onTaken?.('copied')}
         label={t('copyText')}
+        disabled={disabled}
       />
       <Hint>{imagesOn ? t('hints.post') : t('hints.postOwnPhoto')}</Hint>
     </div>
   );
 }
 
-export function CopyStory({ storyText, imagesOn }: { storyText: string; imagesOn: boolean }) {
+export function CopyStory({
+  storyText,
+  imagesOn,
+  disabled = false,
+}: {
+  storyText: string;
+  imagesOn: boolean;
+  disabled?: boolean;
+}) {
   const t = useTranslations('posts');
   return (
     <div className="mt-3">
-      <CopyText text={storyText} label={t('copyStory')} />
+      <CopyText text={storyText} label={t('copyStory')} disabled={disabled} />
       <Hint>{imagesOn ? t('hints.story') : t('hints.storyOwnPhoto')}</Hint>
     </div>
   );

@@ -59,6 +59,8 @@ export type Fixture = {
   posts: PostsFixture | null;
   // A plan made with `fixtureOffer` (docs/specs/posts/special-offer).
   postsOffer: PostsFixture | null;
+  // New texts for the plan's first post (docs/specs/platform/easier-to-use).
+  newTexts: PostsFixture | null;
 };
 
 const readJson = (path: string) => JSON.parse(readFileSync(path, 'utf8'));
@@ -68,6 +70,7 @@ export function loadFixture(dir: string): Fixture {
   const searchPath = join(dir, 'search.json');
   const postsPath = join(dir, 'posts.json');
   const postsOfferPath = join(dir, 'posts-offer.json');
+  const newTextsPath = join(dir, 'new-texts.json');
   return {
     manifest: manifestSchema.parse(readJson(join(dir, 'manifest.json'))),
     expected: expectedSchema.parse(readJson(join(dir, 'expected.json'))),
@@ -75,6 +78,7 @@ export function loadFixture(dir: string): Fixture {
     search: existsSync(searchPath) ? (readJson(searchPath) as SearchFixture) : null,
     posts: existsSync(postsPath) ? (readJson(postsPath) as PostsFixture) : null,
     postsOffer: existsSync(postsOfferPath) ? (readJson(postsOfferPath) as PostsFixture) : null,
+    newTexts: existsSync(newTextsPath) ? (readJson(newTextsPath) as PostsFixture) : null,
   };
 }
 

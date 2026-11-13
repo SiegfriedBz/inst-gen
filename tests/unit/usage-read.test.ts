@@ -46,8 +46,8 @@ describe('what is left', () => {
     expect(answer).toEqual({
       resetsAt: nextReset(now).toISOString(),
       limited: true,
-      left: { reads: 1, attempts: 2, newImages: 10, replies: 20, answers: 20 },
-      limits: { reads: 3, attempts: 3, newImages: 10, replies: 20, answers: 20 },
+      left: { reads: 1, attempts: 2, newImages: 10, replies: 20, answers: 20, newTexts: 10 },
+      limits: { reads: 3, attempts: 3, newImages: 10, replies: 20, answers: 20, newTexts: 10 },
       poolEmpty: false,
       images: { on: true, monthFull: false, backAt: '2026-11-01T00:00:00.000Z' },
     });

@@ -260,6 +260,52 @@ describe('what clears saved and copied', () => {
     expect(merged.posts[1]).toMatchObject({ savedAt: NOW, copiedAt: NOW });
   });
 
+  // A rewrite's answer is the post as it was sent, with new words
+  // (checkRewrite), so it carries the sent marks (docs/specs/platform/easier-to-use).
+  const answer = (over: Partial<Post>) =>
+    post({ id: 'p1', caption: 'Rewritten.', storyText: 'New story.', ...over });
+  const result = (p: Post): PlanResult => ({
+    posts: [p],
+    dropped: [],
+    promptVersion: 'posts-1',
+    model: 'm',
+    profileHash: profileHash(changed),
+  });
+
+  test('a rewrite takes the copied mark off, even when its answer carries it', () => {
+    const b = batch([post({ id: 'p1', savedAt: NOW, copiedAt: NOW })]);
+    const merged = mergeRewrite(b, result(answer({ savedAt: NOW, copiedAt: NOW })), ['p1']);
+    expect(merged.posts[0]).toMatchObject({ caption: 'Rewritten.', savedAt: NOW });
+    expect(merged.posts[0].copiedAt).toBeUndefined();
+  });
+
+  test('a rewrite keeps the stored savedAt, not the sent one', () => {
+    const cleared = markNewImage(batch([post({ id: 'p1', savedAt: NOW })]), 'p1');
+    const merged = mergeRewrite(cleared, result(answer({ savedAt: NOW })), ['p1']);
+    expect(merged.posts[0].savedAt).toBeUndefined();
+  });
+
+  test('a rewrite replaces only the words', () => {
+    const stored = post({
+      id: 'p1',
+      altToCheck: true,
+      storyText: 'Old story.',
+      storyUnchecked: [],
+    });
+    const merged = mergeRewrite(batch([stored]), result(answer({ altToCheck: false })), ['p1']);
+    expect(merged.posts[0]).toMatchObject({
+      caption: 'Rewritten.',
+      storyText: 'New story.',
+      altToCheck: true,
+      edited: false,
+    });
+    const storyless = answer({});
+    delete storyless.storyText;
+    const without = mergeRewrite(batch([stored]), result(storyless), ['p1']);
+    expect(without.posts[0].storyText).toBeUndefined();
+    expect(without.posts[0].storyUnchecked).toBeUndefined();
+  });
+
   test('a new image clears saved, keeps copied', () => {
     const marked = markNewImage(batch([post({ id: 'p1', savedAt: NOW, copiedAt: NOW })]), 'p1');
     expect(marked.posts[0].savedAt).toBeUndefined();

@@ -166,6 +166,13 @@ function questionOf(post: Post): string | undefined {
   return plainSentences(post.offer ? (paragraphsOf(post.caption)[1] ?? '') : post.caption)[0];
 }
 
+// New texts that open on the question their post had
+// (docs/specs/platform/easier-to-use): not new.
+export function repeatsQuestion(fresh: Post, old: Post): boolean {
+  const asked = questionOf(fresh);
+  return !!asked && keyOf(folded(asked)) === keyOf(folded(questionOf(old) ?? ''));
+}
+
 function hookRecords(posts: Post[]): Dropped[] {
   return posts
     .filter((p) => !questionOf(p)?.endsWith('?'))

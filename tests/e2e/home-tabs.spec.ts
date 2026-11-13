@@ -17,12 +17,10 @@ test.beforeEach(async ({ page }) => {
 
 async function signInAndRead(page: Page) {
   await page.goto('/enter');
-  await page.getByLabel('Passphrase').fill(SEN);
+  await page.getByLabel('Password').fill(SEN);
   await page.getByRole('button', { name: 'Enter' }).click();
   await expect(page).toHaveURL('/');
-  await expect(page.getByRole('tablist')).toHaveCount(0);
-  await page.getByLabel('Your website').fill('sendanangmassage.com');
-  await page.getByRole('button', { name: 'Read my website' }).click();
+  // Sen's website is read by itself (docs/specs/platform/easier-to-use).
 }
 
 test('a first read lands on Your business, and the next open on Create your posts', async ({

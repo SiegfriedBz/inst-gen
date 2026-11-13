@@ -35,8 +35,6 @@ test("the look read from the site dresses every new image, and the owner's chang
   await page.locator('#passphrase').fill(SEN);
   await page.locator('button[type=submit]:not([name=locale])').click();
   await expect(page).toHaveURL('/');
-  await page.getByLabel('Your website').fill('sendanangmassage.com');
-  await page.getByRole('button', { name: 'Read my website' }).click();
 
   await openSection(page, 'Your look');
   const row = page.locator('[data-field]', { hasText: "Your therapists' look" });

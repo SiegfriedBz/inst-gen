@@ -4,7 +4,7 @@ import { senProfile } from '../unit/helpers/brand';
 import { fulfilRead, streamBody } from './helpers/brand-stream';
 import { openSection } from './helpers/business-tab';
 import { fulfilImages } from './helpers/images';
-import { fulfilPosts, postsBody } from './helpers/posts-stream';
+import { fulfilPosts, newTextsBody, postsBody } from './helpers/posts-stream';
 import { closeSuggestion, openSuggestion, tile, tileImages, tiles } from './helpers/suggestions';
 
 // The editor and saving to the phone (docs/specs/posts/editor-download), at
@@ -22,15 +22,8 @@ async function signIn(page: Page) {
   await expect(page).toHaveURL('/');
 }
 
-async function readAndMake(
-  page: Page,
-  website: string,
-  read: string,
-  make: string,
-  postsTab = 'Create Posts',
-) {
-  await page.getByLabel(website).fill('sendanangmassage.com');
-  await page.getByRole('button', { name: read }).click();
+// Sen's website is read by itself (docs/specs/platform/easier-to-use).
+async function readAndMake(page: Page, make: string, postsTab = 'Create Posts') {
   await page.getByRole('tab', { name: postsTab }).click();
   await page.getByRole('button', { name: make }).click();
 }
@@ -41,7 +34,7 @@ async function sixPosts(page: Page) {
   await fulfilPosts(page, 'plan', postsBody(profile));
   const images = await fulfilImages(page, {});
   await signIn(page);
-  await readAndMake(page, 'Your website', 'Read my website', 'Make 2 suggestions');
+  await readAndMake(page, 'Make 2 suggestions');
   await expect(tileImages(page)).toHaveCount(2);
   return { profile, images };
 }
@@ -122,7 +115,7 @@ test('two attempts stack, newest on top, and keep their own images after a reloa
   const failures: Record<string, { status: number; error: string }> = {};
   await fulfilImages(page, failures);
   await signIn(page);
-  await readAndMake(page, 'Your website', 'Read my website', 'Make 2 suggestions');
+  await readAndMake(page, 'Make 2 suggestions');
   await expect(tileImages(page)).toHaveCount(2);
   failures['post-1'] = { status: 502, error: 'image_blocked' };
   await page.getByRole('button', { name: 'Make 2 new suggestions' }).click();
@@ -132,12 +125,32 @@ test('two attempts stack, newest on top, and keep their own images after a reloa
     'Attempt 2',
     'Attempt 1',
   ]);
-  await expect(page.getByText('They go on top. Attempt 2 stays below.')).toBeVisible();
+  await expect(page.getByText(/They go on top|stays below/)).toHaveCount(0);
 
   await page.reload();
   await expect(tileImages(page)).toHaveCount(3);
   await expect(tile(page, 1).locator('img')).toHaveCount(0);
   await expect(tile(page, 1, 1).locator('img')).toHaveCount(1);
+});
+
+// docs/specs/platform/easier-to-use, "New texts for a suggestion".
+test('Write new texts gives new words for the same images, kept after a reload', async ({
+  page,
+}) => {
+  const { profile } = await sixPosts(page);
+  const texts = await fulfilPosts(page, 'texts', newTextsBody(profile, 'post-1', 'New words 1.'));
+  const sheet = await openSuggestion(page, 1);
+  await expect(sheet.getByRole('img')).not.toHaveCount(0);
+  const images = await sheet.getByRole('img').count();
+  await sheet.getByRole('button', { name: 'Write new texts' }).click();
+  await expect(sheet.getByText('New words 1.')).toBeVisible();
+  await expect(sheet.getByRole('img')).toHaveCount(images);
+  expect(texts.count()).toBe(1);
+  await closeSuggestion(page);
+
+  await page.reload();
+  await expect(tile(page, 1)).toContainText('New words 1.');
+  await expect(tileImages(page)).toHaveCount(2);
 });
 
 test.describe('a Vietnamese screen', () => {
@@ -161,13 +174,7 @@ test.describe('a Vietnamese screen', () => {
       });
     });
     await signIn(page);
-    await readAndMake(
-      page,
-      vi.home.websiteLabel,
-      vi.brand.home.read,
-      vi.posts.make,
-      vi.home.tabs.posts,
-    );
+    await readAndMake(page, vi.posts.make, vi.home.tabs.posts);
     const show = vi.posts.translate.show.replace('{language}', 'Tiếng Việt');
     let sheet = await openSuggestion(page, 1);
     await sheet.getByRole('button', { name: show }).click();

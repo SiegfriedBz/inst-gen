@@ -4,7 +4,7 @@ import id from '@/messages/id.json' with { type: 'json' };
 import vi from '@/messages/vi.json' with { type: 'json' };
 import { testEnv } from '../../playwright.config';
 import { senProfile } from '../unit/helpers/brand';
-import { fulfilRead, streamBody } from './helpers/brand-stream';
+import { fulfilRead, holdRead, streamBody } from './helpers/brand-stream';
 import { fulfilImages } from './helpers/images';
 import { languageButton, languageNav } from './helpers/language';
 import { fulfilPosts, postsBody } from './helpers/posts-stream';
@@ -31,6 +31,12 @@ const replies = {
 
 test.use({ locale: 'en-US' });
 
+// Sen's sign-in reads the website by itself: held, never answered, unless a
+// test answers it.
+test.beforeEach(async ({ page }) => {
+  await holdRead(page);
+});
+
 async function signIn(page: Page, passphrase = SEN) {
   await page.goto('/enter');
   await page.locator('#passphrase').fill(passphrase);
@@ -43,8 +49,6 @@ async function savedBrand(page: Page, passphrase = SEN) {
   const profile = senProfile();
   await fulfilRead(page, [streamBody(profile)]);
   await signIn(page, passphrase);
-  await page.locator('#website').fill('sendanangmassage.com');
-  await page.locator('#website').press('Enter');
   await expect(page.getByRole('tablist')).toBeVisible();
   await page.reload();
   await expect(page.getByRole('tablist')).toBeVisible();
@@ -64,6 +68,13 @@ test('a saved business opens on Create Posts, the tabs in a bar at the bottom', 
   const bar = page.locator('[data-tab-bar]');
   await expect(bar.getByRole('tablist', { name: 'Home' })).toBeVisible();
   await expect(bar).toBeInViewport({ ratio: 1 });
+  // Questions before Reviews (docs/specs/platform/easier-to-use).
+  await expect(bar.getByRole('tab')).toHaveText([
+    'Your business',
+    'Create Posts',
+    'Questions',
+    'Reviews',
+  ]);
   const box = await bar.boundingBox();
   const viewport = page.viewportSize();
   expect(Math.abs((box?.y ?? 0) + (box?.height ?? 0) - (viewport?.height ?? 0))).toBeLessThan(1);
@@ -258,23 +269,27 @@ test.describe('small phone', () => {
     });
   }
 
-  // The longest owner name among the test passphrases (lib/pilot/config.ts:
-  // the owner id ends each passphrase, its first letter capitalised).
-  const owners = testEnv.PILOT_PASSPHRASES.split(',').map((p) => p.trim());
-  const longest = owners.reduce((a, b) =>
-    b.slice(b.lastIndexOf('-') + 1).length > a.slice(a.lastIndexOf('-') + 1).length ? b : a,
-  );
+  // The longest owner name among the test passwords (lib/pilot/config.ts: an
+  // owner=password entry, or the first form with the owner id at its end).
+  const owners = testEnv.PILOT_PASSPHRASES.split(',').map((item) => {
+    const entry = item.trim();
+    const equals = entry.indexOf('=');
+    return equals === -1
+      ? { name: entry.slice(entry.lastIndexOf('-') + 1), password: entry }
+      : { name: entry.slice(0, equals).trim(), password: entry.slice(equals + 1).trim() };
+  });
+  const longest = owners.reduce((a, b) => (b.name.length > a.name.length ? b : a));
   const LONG_NAME = 16;
 
   test('a long spa name leaves the Guide link and the language button in view', async ({
     page,
   }) => {
-    const name = longest.slice(longest.lastIndexOf('-') + 1);
+    const { name } = longest;
     test.skip(
       name.length < LONG_NAME,
       `No test owner has a name of ${LONG_NAME} letters or more (the longest is "${name}").`,
     );
-    await signIn(page, longest);
+    await signIn(page, longest.password);
     await expect(page.locator('header').getByRole('link', { name: 'Guide' })).toBeInViewport({
       ratio: 1,
     });

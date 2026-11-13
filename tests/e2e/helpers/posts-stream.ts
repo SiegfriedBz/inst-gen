@@ -42,10 +42,25 @@ export function postsBody(
   return lines.map(encodePostsLine).join('');
 }
 
+// New texts' NDJSON answer: the post with new words
+// (docs/specs/platform/easier-to-use).
+export function newTextsBody(profile: Profile, id: string, caption: string): string {
+  return encodePostsLine({
+    type: 'final',
+    result: {
+      posts: [post({ id, caption })],
+      dropped: [],
+      promptVersion: 'posts-1',
+      model: 'm',
+      profileHash: profileHash(profile),
+    },
+  });
+}
+
 // Answers POSTs to /api/posts/<path> with `body`, and counts them.
 export async function fulfilPosts(
   page: Page,
-  path: 'plan' | 'rewrite',
+  path: 'plan' | 'rewrite' | 'texts',
   body: string,
 ): Promise<{ count(): number }> {
   let requests = 0;

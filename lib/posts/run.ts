@@ -3,6 +3,7 @@ import { describeModelError } from '@/lib/brand/read-log';
 import {
   type Dropped,
   type ModelPost,
+  type NewTextsBody,
   type PlanBody,
   type PlanResult,
   POSTS_LIMITS,
@@ -10,12 +11,22 @@ import {
   type PostsErrorCode,
   type RewriteBody,
 } from './batch';
-import { carries, checkPlan, checkPost, checkRewrite, MORE_POSTS, setupFlags } from './checks';
+import {
+  carries,
+  checkNewTexts,
+  checkPlan,
+  checkPost,
+  checkRewrite,
+  MORE_POSTS,
+  setupFlags,
+} from './checks';
 import { isSpa } from './emoji';
 import { postsModelInput, profileHash } from './input';
 import type { PostsLog } from './log';
 import type { Offer } from './offer';
 import {
+  newTextsPrompt,
+  newTextsUserText,
   POSTS_PROMPT_VERSION,
   planPrompt,
   planUserText,
@@ -230,6 +241,36 @@ export function streamRewrite(
       // A rewrite's posts are only shown once all are checked.
       complete: () => null,
       finish: (final) => checkRewrite(final, body.posts, body.profile, body.offer),
+    },
+    deps,
+    signal,
+    body.offer,
+  );
+}
+
+// New words for one post, its images kept (docs/specs/platform/easier-to-use):
+// one call on the rewrite's model method, with a prompt of its own. An answer
+// with no usable caption ends in model_failed, so the count comes back.
+export function streamNewTexts(
+  body: NewTextsBody,
+  deps: PostsDeps,
+  signal: AbortSignal,
+): AsyncGenerator<PostsLine> {
+  const input = postsModelInput(body.profile);
+  return run(
+    body.profile,
+    {
+      kind: 'texts',
+      open: (s) =>
+        deps.model.streamPostRewrite(
+          {
+            system: newTextsPrompt(!!body.offer, isSpa(body.profile.category)),
+            text: newTextsUserText(input, body.post, body.other, body.offer),
+          },
+          s,
+        ),
+      complete: () => null,
+      finish: (final) => checkNewTexts(final, body.post, body.other, body.profile, body.offer),
     },
     deps,
     signal,

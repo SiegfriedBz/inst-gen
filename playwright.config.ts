@@ -4,7 +4,7 @@ import { defineConfig, devices } from '@playwright/test';
 export const testEnv = {
   PILOT_PASSPHRASES:
     process.env.PILOT_PASSPHRASES ??
-    'test-lotus-river-sen,test-blue-wave-svarga,test-quiet-stone-dev',
+    'test-lotus-river-sen,svarga=test-blue-wave,test-quiet-stone-dev',
   SESSION_SECRET: process.env.SESSION_SECRET ?? 'test-session-secret-not-for-production-0001',
   GOOGLE_IMAGE_API_KEY: 'test-image-key-not-real',
 };
