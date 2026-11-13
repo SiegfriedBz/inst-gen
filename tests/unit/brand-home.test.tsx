@@ -335,7 +335,10 @@ describe('a spa with a website', () => {
   test("after Stop: the button and the website's name, no field, and nothing starts", async () => {
     deferredFetch();
     renderHome({ site: SITE });
-    fireEvent.click(await screen.findByRole('button', { name: 'Stop' }));
+    const stop = await screen.findByRole('button', { name: 'Stop' });
+    // The run is saved before its request leaves: stop once it has.
+    await waitFor(() => expect(reads()).toHaveLength(1));
+    fireEvent.click(stop);
     const button = await screen.findByRole('button', { name: 'Read my website' });
     expect(screen.getByText('svargabalimassage.com')).toBeTruthy();
     expect(screen.queryByLabelText('Your website')).toBeNull();
