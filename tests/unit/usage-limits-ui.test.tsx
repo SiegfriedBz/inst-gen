@@ -10,6 +10,7 @@ import { CaptionTranslation } from '@/components/posts/caption-translation';
 import { PostsSection } from '@/components/posts/posts-section';
 import { QuestionsSection } from '@/components/questions/questions-section';
 import { ReviewsSection } from '@/components/reviews/reviews-section';
+import { UsageMessage } from '@/components/usage/usage-message';
 import { UsageProvider } from '@/components/usage/usage-provider';
 import { resetStoreForTests, saveBrand } from '@/lib/brand/store';
 import type { Post, PostBatch } from '@/lib/posts/batch';
@@ -36,12 +37,12 @@ afterAll(() => {
   else process.env.TZ = zone;
 });
 
-const allLeft = { reads: 3, attempts: 3, newImages: 10, replies: 20, answers: 20 };
+const allLeft = { reads: 3, attempts: 3, newImages: 10, replies: 20, answers: 20, newTexts: 10 };
 const full: UsageAnswer = {
   resetsAt: '2026-10-26T07:00:00.000Z',
   limited: true,
   left: allLeft,
-  limits: { reads: 3, attempts: 3, newImages: 10, replies: 20, answers: 20 },
+  limits: { reads: 3, attempts: 3, newImages: 10, replies: 20, answers: 20, newTexts: 10 },
   poolEmpty: false,
   images: { on: true, monthFull: false, backAt: '2026-11-01T00:00:00.000Z' },
 };
@@ -133,6 +134,14 @@ const makeButton = async () =>
   (await screen.findByRole('button', { name: /Make 2 (new )?suggestions/ })) as HTMLButtonElement;
 
 describe('Create Posts', () => {
+  // docs/specs/platform/easier-to-use, "The limit".
+  test('the line at the new-texts limit', async () => {
+    shown(<UsageMessage code="limit_reached" action="newTexts" />);
+    expect(
+      await screen.findByText("You've written today's 10 new texts. More at 14:00."),
+    ).toBeTruthy();
+  });
+
   test('no attempt left: the button is off and says when', async () => {
     usage = left({ attempts: 0 });
     await posts();

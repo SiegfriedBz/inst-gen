@@ -21,6 +21,8 @@ describe('per-owner limits', () => {
       newImages: 10,
       replies: 20,
       answers: 20,
+      // docs/specs/platform/easier-to-use, "The limit".
+      newTexts: 10,
     });
   });
 

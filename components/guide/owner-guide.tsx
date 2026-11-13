@@ -53,7 +53,10 @@ const BLOCKS: Record<SectionId, Block[]> = {
   trouble: ['limit', 'pool', 'paused', 'gone', 'contact'],
 };
 
-type Limits = Record<'reads' | 'attempts' | 'newImages' | 'replies' | 'answers', number>;
+type Limits = Record<
+  'reads' | 'attempts' | 'newImages' | 'newTexts' | 'replies' | 'answers',
+  number
+>;
 
 export function OwnerGuide({
   contact,
@@ -96,6 +99,7 @@ export function OwnerGuide({
       reads: t('usage.reads', { count: limits.reads }),
       attempts: t('usage.attempts', { count: limits.attempts }),
       newImages: t('usage.newImages', { count: limits.newImages }),
+      newTexts: t('usage.newTexts', { count: limits.newTexts }),
       replies: t('usage.replies', { count: limits.replies }),
       answers: t('usage.answers', { count: limits.answers }),
     },

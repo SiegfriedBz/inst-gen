@@ -393,6 +393,7 @@
     "newImages": "{count} hình mới",
     "replies": "{count} câu trả lời",
     "answers": "{count} lượt trả lời câu hỏi",
+    "newTexts": "{count} lần viết chữ mới",
     "developer": "Không giới hạn hằng ngày (nhà phát triển)",
     "poolEmpty": "Shopfront đã dùng hết lượt viết miễn phí hôm nay. Quay lại lúc {time}.",
     "imagesMonth": "Không có hình mới cho đến {date}.",
@@ -403,6 +404,7 @@
       "newImages": "Bạn đã tạo {limit} hình mới hôm nay. Có thêm lúc {time}.",
       "replies": "Bạn đã viết {limit} câu trả lời hôm nay. Có thêm lúc {time}.",
       "answers": "Bạn đã viết {limit} câu trả lời cho câu hỏi hôm nay. Có thêm lúc {time}.",
+      "newTexts": "Bạn đã viết chữ mới {limit} lần hôm nay. Có thêm lúc {time}.",
       "rewrites": "Chú thích đã được cập nhật {limit} lần hôm nay. Cập nhật lại được lúc {time}.",
       "translations": "Đã dùng hết {limit} bản dịch hôm nay. Có thêm lúc {time}."
     }
@@ -477,7 +479,7 @@
     "allowance": {
       "title": "Lượt dùng mỗi ngày",
       "free": "Shopfront miễn phí, nên mỗi ngày có giới hạn.",
-      "limits": "Mỗi ngày bạn có {reads}, {attempts} (mỗi lần 2 gợi ý), {newImages}, {replies} và {answers}, cùng với các lần cập nhật chú thích và bản dịch.",
+      "limits": "Mỗi ngày bạn có {reads}, {attempts} (mỗi lần 2 gợi ý), {newImages}, {newTexts}, {replies} và {answers}, cùng với các lần cập nhật chú thích và bản dịch.",
       "bar": "Dòng ở đầu mỗi tab cho biết hôm nay còn lại bao nhiêu và giờ mọi thứ được làm mới.",
       "reset": "Vào giờ đó, giới hạn được làm mới, còn các gợi ý, câu trả lời đánh giá và câu trả lời cho câu hỏi trong ngày rời khỏi màn hình. Hãy lưu những gì bạn muốn giữ trước giờ đó. Ưu đãi đặc biệt của bạn vẫn giữ nguyên: nó kéo dài đến hết ngày cuối cùng của nó.",
       "time": "Giờ trên thanh theo giờ điện thoại của bạn: hãy tin giờ đó thay vì một giờ cố định.",

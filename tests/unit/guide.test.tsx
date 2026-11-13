@@ -130,7 +130,7 @@ describe('the owner guide', () => {
 
   test('the numbers come from the limits', () => {
     const changed = show('en', {
-      limits: { reads: 3, attempts: 4, newImages: 10, replies: 20, answers: 20 },
+      limits: { reads: 3, attempts: 4, newImages: 10, replies: 20, answers: 20, newTexts: 10 },
     }).textContent;
     expect(changed).toContain('4 attempts');
     cleanup();
@@ -138,6 +138,7 @@ describe('the owner guide', () => {
     expect(text).toContain('3 attempts');
     expect(text).toContain('20 replies');
     expect(text).toContain('20 answers');
+    expect(text).toContain('10 new texts');
   });
 
   test('no contact, no contact line', () => {

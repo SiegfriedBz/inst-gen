@@ -393,6 +393,7 @@
     "newImages": "{count} gambar baru",
     "replies": "{count} balasan",
     "answers": "{count} jawaban",
+    "newTexts": "{count} teks baru",
     "developer": "Tanpa batas harian (pengembang)",
     "poolEmpty": "Shopfront sudah memakai jatah menulis gratis hari ini. Kembali pukul {time}.",
     "imagesMonth": "Tidak ada gambar baru sampai {date}.",
@@ -403,6 +404,7 @@
       "newImages": "Anda sudah membuat {limit} gambar baru hari ini. Bisa lagi pukul {time}.",
       "replies": "Anda sudah menulis {limit} balasan hari ini. Bisa lagi pukul {time}.",
       "answers": "Anda sudah menulis {limit} jawaban hari ini. Bisa lagi pukul {time}.",
+      "newTexts": "Anda sudah menulis {limit} teks baru hari ini. Bisa lagi pukul {time}.",
       "rewrites": "Teks sudah diperbarui {limit} kali hari ini. Bisa lagi pukul {time}.",
       "translations": "{limit} terjemahan hari ini sudah habis. Bisa lagi pukul {time}."
     }
@@ -477,7 +479,7 @@
     "allowance": {
       "title": "Jatah harian Anda",
       "free": "Shopfront gratis, jadi setiap hari ada batasnya.",
-      "limits": "Setiap hari Anda punya {reads}, {attempts} (masing-masing 2 saran), {newImages}, {replies}, dan {answers}, ditambah pembaruan teks dan terjemahan.",
+      "limits": "Setiap hari Anda punya {reads}, {attempts} (masing-masing 2 saran), {newImages}, {newTexts}, {replies}, dan {answers}, ditambah pembaruan teks dan terjemahan.",
       "bar": "Baris di bagian atas setiap tab menunjukkan sisa hari ini dan jam semuanya kembali.",
       "reset": "Pada jam itu, batas kembali penuh dan saran, balasan ulasan, serta jawaban hari itu hilang dari layar. Simpan yang ingin Anda pakai sebelum itu. Promo spesial Anda tetap ada: berlaku sampai hari terakhirnya sendiri berakhir.",
       "time": "Jam di bilah memakai waktu ponsel Anda: percayai jam itu, bukan jam yang tetap.",

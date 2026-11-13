@@ -53,6 +53,7 @@ const ACTION_MODEL: Partial<Record<MeteredAction, string>> = {
   searches: TEXT_MODELS.light,
   attempts: TEXT_MODELS.posts,
   rewrites: TEXT_MODELS.posts,
+  newTexts: TEXT_MODELS.posts,
   translations: TEXT_MODELS.light,
   replies: TEXT_MODELS.light,
   answers: TEXT_MODELS.light,

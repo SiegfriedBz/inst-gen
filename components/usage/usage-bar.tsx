@@ -40,8 +40,8 @@ export function UsageBar({ tab }: { tab: Tab }) {
             : tab === 'questions'
               ? ['answers']
               : imagesShown
-                ? ['attempts', 'newImages']
-                : ['attempts'];
+                ? ['attempts', 'newImages', 'newTexts']
+                : ['attempts', 'newTexts'];
       const items = actions.map((action, i) => (
         <Fragment key={action}>
           {i > 0 && ', '}

@@ -9,6 +9,7 @@ const counts = z.object({
   newImages: z.number().int().min(0),
   replies: z.number().int().min(0),
   answers: z.number().int().min(0),
+  newTexts: z.number().int().min(0),
 });
 export type BarCounts = z.infer<typeof counts>;
 export type BarAction = keyof BarCounts;
@@ -18,6 +19,7 @@ export const BAR_ACTIONS: readonly BarAction[] = [
   'newImages',
   'replies',
   'answers',
+  'newTexts',
 ];
 
 export const usageAnswerSchema = z.object({
