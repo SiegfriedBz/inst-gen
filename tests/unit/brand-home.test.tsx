@@ -6,6 +6,7 @@ import { NextIntlClientProvider } from 'next-intl';
 import { StrictMode } from 'react';
 import { afterEach, beforeEach, describe, expect, test, vi } from 'vitest';
 import { BrandHome } from '@/components/brand/brand-home';
+import { resetAutoReadForTests } from '@/lib/brand/auto-read';
 import type { Profile } from '@/lib/brand/profile';
 import { loadBrand, openStore, resetStoreForTests, saveBrand } from '@/lib/brand/store';
 import { encodeLine, type StreamLine } from '@/lib/brand/stream';
@@ -19,6 +20,20 @@ import messages from '@/messages/en.json';
 import { svargaProfile } from './helpers/brand';
 import { post } from './helpers/posts';
 
+// A phone's storage can be slow to say whether a read waits to resume: the
+// real lookup, delayed by `slowResume.ms` (0 but in one test).
+const slowResume = vi.hoisted(() => ({ ms: 0 }));
+vi.mock('@/lib/brand/read-client', async (importOriginal) => {
+  const actual = await importOriginal<typeof import('@/lib/brand/read-client')>();
+  return {
+    ...actual,
+    resumeRead: async (...args: Parameters<typeof actual.resumeRead>) => {
+      if (slowResume.ms) await new Promise((resolve) => setTimeout(resolve, slowResume.ms));
+      return actual.resumeRead(...args);
+    },
+  };
+});
+
 // Already searched, so the read tests see no search request.
 const profile: Profile = { ...svargaProfile(), searchedAt: '2026-10-24T09:30:00.000Z' };
 const unsearched = svargaProfile();
@@ -27,6 +42,8 @@ const INTRO = /What we know about Svarga/;
 let fetchMock: ReturnType<typeof vi.fn>;
 
 beforeEach(() => {
+  // Each test is a new page load (docs/specs/platform/easier-to-use).
+  resetAutoReadForTests();
   globalThis.indexedDB = new IDBFactory();
   resetStoreForTests();
   fetchMock = vi.fn();
@@ -36,6 +53,7 @@ beforeEach(() => {
 afterEach(() => {
   cleanup();
   vi.unstubAllGlobals();
+  slowResume.ms = 0;
 });
 
 function ndjson(lines: StreamLine[]): Response {
@@ -380,6 +398,33 @@ describe('a spa with a website', () => {
     fireEvent.click(await screen.findByRole('button', { name: 'Read it again' }));
     await waitFor(() => expect(reads()).toHaveLength(1));
     expect(bodyOf(0)).toBe(JSON.stringify({ url: SITE }));
+  });
+
+  test('a remount in the same page load starts no second read', async () => {
+    deferredFetch();
+    renderHome({ site: SITE });
+    await waitFor(() => expect(reads()).toHaveLength(1));
+    cleanup();
+    // The guide and back: a client-side navigation mounts the home screen again.
+    renderHome({ site: SITE });
+    expect(await screen.findByRole('button', { name: 'Read my website' })).toBeTruthy();
+    await new Promise((resolve) => setTimeout(resolve, 50));
+    expect(reads()).toHaveLength(1);
+    expect(screen.queryByText('Reading your website…')).toBeNull();
+  });
+
+  // A button shown before the read starts would let a tap start a second one.
+  test('no button shows before the read starts', async () => {
+    deferredFetch();
+    slowResume.ms = 30;
+    let sawButton = false;
+    renderHome({ site: SITE });
+    await waitFor(() => {
+      if (screen.queryByRole('button', { name: 'Read my website' })) sawButton = true;
+      expect(screen.queryByText('Reading your website…')).not.toBeNull();
+    });
+    expect(sawButton).toBe(false);
+    await waitFor(() => expect(reads()).toHaveLength(1));
   });
 
   test('without a website, the field stays and nothing starts', async () => {

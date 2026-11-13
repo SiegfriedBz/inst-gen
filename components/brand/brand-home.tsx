@@ -27,6 +27,7 @@ import { Tabs, TabsContent } from '@/components/ui/tabs';
 import { UsageBar } from '@/components/usage/usage-bar';
 import { UsageMessage } from '@/components/usage/usage-message';
 import { useAtLimit } from '@/components/usage/usage-provider';
+import { takeAutoRead } from '@/lib/brand/auto-read';
 import { lastReadLabel } from '@/lib/brand/display';
 import { changedUnsourced, countOwnerEdits, type SectionId } from '@/lib/brand/edit';
 import { type FieldKey, missingFields } from '@/lib/brand/missing';
@@ -111,8 +112,6 @@ export function BrandHome({
   const [confirm, setConfirm] = useState<'reread' | 'forget' | null>(null);
   const [announce, setAnnounce] = useState('');
   const field = useRef<HTMLInputElement>(null);
-  // The read that starts by itself starts once per page load.
-  const autoStarted = useRef(false);
   const running = useRef<RunningRead | null>(null);
   const lock = useRef<{ release(): void } | null>(null);
   const savedRef = useRef<Profile | null>(null);
@@ -276,12 +275,16 @@ export function BrandHome({
         startSearch(result.record.profile);
       } else {
         setNotice(result.kind === 'invalid' ? 'invalidSaved' : null);
-        setView({ kind: 'empty' });
+        // A known website: no button until the read has started by itself or
+        // won't, so no tap can start a second one beside it.
+        if (!site) setView({ kind: 'empty' });
       }
       const resumed = await tryResume();
-      if (active && site && result.kind !== 'saved' && !resumed && !autoStarted.current) {
-        autoStarted.current = true;
+      if (!active || !site || result.kind === 'saved' || resumed) return;
+      if (takeAutoRead(ownerId)) {
         begin(startRead({ ownerId, url: site, reread: false }, onEvent), site);
+      } else {
+        setView((v) => (v.kind === 'loading' ? { kind: 'empty' } : v));
       }
     })();
     const onVisible = () => {
@@ -308,7 +311,9 @@ export function BrandHome({
   }
 
   function readSite() {
-    if (site) begin(startRead({ ownerId, url: site, reread: false }, onEvent), site);
+    if (!site || running.current) return;
+    takeAutoRead(ownerId);
+    begin(startRead({ ownerId, url: site, reread: false }, onEvent), site);
   }
 
   // A spa's website comes from the table, the one place it is set.

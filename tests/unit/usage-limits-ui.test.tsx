@@ -13,6 +13,7 @@ import { QuestionsSection } from '@/components/questions/questions-section';
 import { ReviewsSection } from '@/components/reviews/reviews-section';
 import { UsageMessage } from '@/components/usage/usage-message';
 import { UsageProvider } from '@/components/usage/usage-provider';
+import { resetAutoReadForTests } from '@/lib/brand/auto-read';
 import { resetStoreForTests, saveBrand } from '@/lib/brand/store';
 import type { Post, PostBatch } from '@/lib/posts/batch';
 import { startImages } from '@/lib/posts/image-client';
@@ -55,6 +56,8 @@ const usageReads = () => fetchMock.mock.calls.filter((c) => c[0] === '/api/usage
 const sent = (path: string) => fetchMock.mock.calls.filter((c) => c[0] === path);
 
 beforeEach(() => {
+  // Each test is a new page load (docs/specs/platform/easier-to-use).
+  resetAutoReadForTests();
   vi.useFakeTimers({ toFake: ['Date'] });
   vi.setSystemTime(new Date('2026-10-25T12:00:00.000Z'));
   globalThis.indexedDB = new IDBFactory();
