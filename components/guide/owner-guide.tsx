@@ -47,7 +47,7 @@ const BLOCKS: Record<SectionId, Block[]> = {
   ],
   instagram: [['save', 'copy', 'post', 'story'], 'link', 'alt', 'noImages', 'never'],
   reviews: ['paste', 'pick', 'other'],
-  questions: ['paste', 'send', 'final', 'remember', 'details', 'sex'],
+  questions: ['paste', 'send', 'again', 'final', 'remember', 'details', 'sex'],
   allowance: ['free', 'limits', 'bar', 'reset', 'time', 'month'],
   languages: ['switch', 'captions'],
   trouble: ['limit', 'pool', 'paused', 'gone', 'contact'],
@@ -90,6 +90,7 @@ export function OwnerGuide({
       newTexts: t('posts.newTexts'),
       image: t('posts.images.newImage'),
     },
+    'posts.update': { button: t('posts.rewriteOne') },
     'instagram.save': { button: t('posts.saveImages') },
     'instagram.copy': { button: t('posts.copyText') },
     'instagram.story': { button: t('posts.copyStory') },
@@ -97,6 +98,7 @@ export function OwnerGuide({
     'reviews.pick': { short: t('reviews.short'), warm: t('reviews.warm') },
     'reviews.other': { button: t('reviews.again') },
     'questions.paste': { tab: t('home.tabs.questions'), button: t('questions.write') },
+    'questions.again': { button: t('questions.again') },
     'questions.final': { final: t('questions.final') },
     'questions.remember': { next: t('questions.next'), new: t('questions.newConversation') },
     'allowance.limits': {
@@ -107,6 +109,7 @@ export function OwnerGuide({
       replies: t('usage.replies', { count: limits.replies }),
       answers: t('usage.answers', { count: limits.answers }),
     },
+    'trouble.gone': { button: t('brand.home.read') },
     'trouble.contact': {
       contact: contact && (
         <a href={`https://wa.me/${contact.replace(/\D/g, '')}`} className="font-medium text-accent">

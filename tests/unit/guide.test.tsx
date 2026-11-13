@@ -53,9 +53,28 @@ describe('the owner guide', () => {
       m.questions.next,
       m.questions.newConversation,
       m.home.tabs.questions,
+      m.questions.again,
+      m.posts.rewriteOne,
+      m.brand.home.read,
     ]) {
       expect(text).toContain(name);
     }
+  });
+
+  // The reading screen says about 20 seconds; the guide said a minute
+  // (docs/specs/guide/owner-guide, changed 2026-11-13).
+  test.each(LOCALES)("gives the website read the reading screen's time, in %s", (locale) => {
+    const read = show(locale).querySelector('#business li')?.textContent ?? '';
+    const seconds = messagesFor(locale).brand.home.keepOpen.match(/\d+/)?.[0];
+    expect(seconds).toBeTruthy();
+    expect(read).toContain(seconds);
+  });
+
+  // The tab's own hint (docs/specs/platform/easier-to-use, "The Questions hint").
+  test.each(LOCALES)("asks to take out the guest's name, as the tab does, in %s", (locale) => {
+    const hint = messagesFor(locale).questions.hint.replace(/\.$/, '').toLowerCase();
+    const questions = show(locale).querySelector('#questions')?.textContent ?? '';
+    expect(questions.toLowerCase()).toContain(hint);
   });
 
   // docs/specs/questions/answer-drafts, "The owner guide"; before the reviews,

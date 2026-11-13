@@ -429,7 +429,7 @@
     },
     "business": {
       "title": "Your business",
-      "read": "The first time you open Shopfront on a phone, it reads your website by itself. Keep the page open for about a minute; the screen stays on by itself.",
+      "read": "The first time you open Shopfront on a phone, it reads your website by itself. Keep the page open for about 20 seconds; the screen stays on by itself.",
       "check": "Check what it found. Tap a section to see all of it, and <b>{button}</b> to fix or add anything.",
       "missing": "At the top, Shopfront lists what it couldn't find: tap one to add it. You can make posts without them, but each one you add makes your posts more exact. If your WhatsApp number or your town is missing, a red line says so: tap it to add it. Every post ends with your WhatsApp, and the hashtags use your town.",
       "english": "Write your changes in English if you can: the posts are written in English.",
@@ -444,7 +444,7 @@
       "leave": "If you leave, Shopfront carries on where it stopped when you come back, but the part it was making is made again and uses some of today's allowance. So start when you have a minute to wait, not just before a call.",
       "more": "Want other ideas? Tap <b>{button}</b>: the new ones go on top, the earlier ones stay below.",
       "edit": "Tap <b>{button}</b> to change a suggestion's words yourself, or <b>{newTexts}</b> for new words with the same pictures. Tap <b>{image}</b> for a different picture; you can add a short hint. You can't type in the story text here: change it in Instagram after pasting, if you like.",
-      "update": "If you change your business, the captions and story texts are updated to match. Text you edited yourself is left alone.",
+      "update": "If you change your business, the captions and story texts of your newest suggestions are updated to match. Text you edited yourself is left alone: open the suggestion and tap <b>{button}</b> if you want it updated.",
       "offer": "To put today's offer in your posts, tap <b>{button}</b> before you make them:",
       "offerKind": "Pick a discount (10%, 15%, 20% or your own) or a free extra: a treatment you give with a 90-minute session.",
       "offerTreatments": "Tick the treatments it's on. An offer is always on sessions of 90 minutes or longer.",
@@ -471,8 +471,9 @@
     },
     "questions": {
       "title": "Answering guests' questions",
-      "paste": "When a guest asks you something on WhatsApp or Instagram (your treatments, prices, hours, where you go), copy their message. In <b>{tab}</b>, paste it and tap <b>{button}</b>.",
+      "paste": "When a guest asks you something on WhatsApp or Instagram (your treatments, prices, hours, where you go), copy their message. In <b>{tab}</b>, paste it, take out the guest's name if it's in the message, and tap <b>{button}</b>.",
       "send": "Read the answer, change it if you want, then copy it and paste it in your chat with the guest.",
+      "again": "The answer doesn't fit? Tap <b>{button}</b>.",
       "final": "When the guest has asked what they wanted to know, tick <b>{final}</b>: the answer then ends by asking them to book.",
       "remember": "Shopfront remembers where the guest is staying, and the day and the time they gave, so the final answer asks only for what's missing. For the same guest's next message, tap <b>{next}</b>. Before another guest's message, tap <b>{new}</b>.",
       "details": "Answers use only your business details. When something isn't in them, the answer says you'll check, and Shopfront tells you: answer that part yourself.",
@@ -497,7 +498,7 @@
       "limit": "\"You've made today's … attempts\" or a similar line: wait for the time on the bar.",
       "pool": "\"Shopfront has used today's free writing\": the whole app has used its free allowance for today. It's back at the time shown.",
       "paused": "\"Images are paused for a moment\": try again in a few minutes.",
-      "gone": "Your business is gone: Safari cleared it, or this is another phone. Read your website again, and add Shopfront to your home screen.",
+      "gone": "Your business is gone: Safari cleared it, or this is another phone. Shopfront reads your website again by itself; if it doesn't, tap <b>{button}</b>. Add Shopfront to your home screen so it stays.",
       "contact": "Still stuck? Write to {contact} on WhatsApp."
     }
   }

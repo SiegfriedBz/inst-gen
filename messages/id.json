@@ -429,7 +429,7 @@
     },
     "business": {
       "title": "Usaha Anda",
-      "read": "Saat pertama kali Anda membuka Shopfront di sebuah ponsel, Shopfront membaca situs web Anda dengan sendirinya. Biarkan halaman tetap terbuka sekitar satu menit; layar tetap menyala dengan sendirinya.",
+      "read": "Saat pertama kali Anda membuka Shopfront di sebuah ponsel, Shopfront membaca situs web Anda dengan sendirinya. Biarkan halaman tetap terbuka sekitar 20 detik; layar tetap menyala dengan sendirinya.",
       "check": "Periksa apa yang ditemukan. Ketuk sebuah bagian untuk melihat semuanya, dan <b>{button}</b> untuk memperbaiki atau menambahkan sesuatu.",
       "missing": "Di bagian atas, Shopfront menampilkan apa yang tidak ditemukannya: ketuk salah satunya untuk menambahkannya. Anda bisa membuat postingan tanpanya, tetapi setiap yang Anda tambahkan membuat postingan Anda lebih tepat. Jika nomor WhatsApp atau kota Anda belum ada, sebuah baris merah memberi tahu Anda: ketuk untuk menambahkannya. Setiap postingan diakhiri dengan WhatsApp Anda, dan tagar memakai kota Anda.",
       "english": "Jika bisa, tulis perubahan Anda dalam bahasa Inggris: postingan ditulis dalam bahasa Inggris.",
@@ -444,7 +444,7 @@
       "leave": "Jika Anda pergi, Shopfront melanjutkan dari tempat berhenti saat Anda kembali, tetapi bagian yang sedang dibuat akan dibuat ulang dan memakai sebagian jatah hari ini. Jadi mulailah saat Anda punya waktu satu menit, bukan tepat sebelum menelepon.",
       "more": "Ingin ide lain? Ketuk <b>{button}</b>: yang baru muncul di atas, yang sebelumnya tetap di bawah.",
       "edit": "Ketuk <b>{button}</b> untuk mengubah sendiri kata-kata sebuah saran, atau <b>{newTexts}</b> untuk kata-kata baru dengan gambar yang sama. Ketuk <b>{image}</b> untuk gambar lain; Anda bisa menambahkan petunjuk singkat. Teks story tidak bisa diketik di sini: ubah di Instagram setelah ditempel, jika mau.",
-      "update": "Jika Anda mengubah data usaha, teks postingan dan teks story diperbarui agar sesuai. Teks yang Anda ubah sendiri tidak disentuh.",
+      "update": "Jika Anda mengubah data usaha, teks postingan dan teks story dari saran terbaru Anda diperbarui agar sesuai. Teks yang Anda ubah sendiri tidak disentuh: jika ingin diperbarui, buka saran itu lalu ketuk <b>{button}</b>.",
       "offer": "Untuk memasukkan promo hari ini ke postingan Anda, ketuk <b>{button}</b> sebelum membuatnya:",
       "offerKind": "Pilih diskon (10%, 15%, 20% atau angka Anda sendiri) atau bonus gratis: perawatan yang Anda berikan dengan sesi 90 menit.",
       "offerTreatments": "Centang perawatan yang mendapat promo. Promo selalu untuk sesi 90 menit atau lebih.",
@@ -471,8 +471,9 @@
     },
     "questions": {
       "title": "Menjawab pertanyaan tamu",
-      "paste": "Saat tamu bertanya lewat WhatsApp atau Instagram (perawatan, harga, jam buka, area layanan Anda), salin pesannya. Di <b>{tab}</b>, tempel lalu ketuk <b>{button}</b>.",
+      "paste": "Saat tamu bertanya lewat WhatsApp atau Instagram (perawatan, harga, jam buka, area layanan Anda), salin pesannya. Di <b>{tab}</b>, tempel, hapus nama tamu jika ada di pesan, lalu ketuk <b>{button}</b>.",
       "send": "Baca jawabannya, ubah jika perlu, lalu salin dan tempel di obrolan Anda dengan tamu.",
+      "again": "Jawabannya kurang pas? Ketuk <b>{button}</b>.",
       "final": "Jika tamu sudah menanyakan semua yang ingin mereka tahu, centang <b>{final}</b>: jawabannya akan diakhiri dengan ajakan untuk memesan.",
       "remember": "Shopfront mengingat tempat tamu menginap, serta hari dan jam yang mereka sebutkan, jadi jawaban terakhir hanya menanyakan yang belum ada. Untuk pesan berikutnya dari tamu yang sama, ketuk <b>{next}</b>. Sebelum pesan dari tamu lain, ketuk <b>{new}</b>.",
       "details": "Jawaban hanya memakai detail usaha Anda. Jika sesuatu tidak ada di sana, jawaban menyebut Anda akan memeriksanya, dan Shopfront memberi tahu Anda: jawab bagian itu sendiri.",
@@ -497,7 +498,7 @@
       "limit": "\"Anda sudah membuat … percobaan hari ini\" atau pesan serupa: tunggu sampai jam di bilah.",
       "pool": "\"Shopfront sudah memakai jatah menulis gratis hari ini\": seluruh aplikasi sudah memakai jatah gratisnya hari ini. Kembali pada jam yang ditampilkan.",
       "paused": "\"Gambar dijeda sebentar\": coba lagi beberapa menit lagi.",
-      "gone": "Usaha Anda hilang: Safari menghapusnya, atau ini ponsel lain. Baca situs web Anda lagi, dan tambahkan Shopfront ke layar utama.",
+      "gone": "Usaha Anda hilang: Safari menghapusnya, atau ini ponsel lain. Shopfront membaca situs web Anda lagi dengan sendirinya; jika tidak, ketuk <b>{button}</b>. Tambahkan Shopfront ke layar utama agar tetap tersimpan.",
       "contact": "Masih bingung? Kirim pesan ke {contact} di WhatsApp."
     }
   }
