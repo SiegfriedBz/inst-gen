@@ -429,7 +429,7 @@
     },
     "business": {
       "title": "Doanh nghiệp của bạn",
-      "read": "Lần đầu bạn mở Shopfront trên một điện thoại, Shopfront tự đọc trang web của bạn. Giữ trang mở khoảng một phút; màn hình tự sáng.",
+      "read": "Lần đầu bạn mở Shopfront trên một điện thoại, Shopfront tự đọc trang web của bạn. Giữ trang mở khoảng 20 giây; màn hình tự sáng.",
       "check": "Xem lại những gì tìm được. Chạm vào một phần để xem đầy đủ, và chạm <b>{button}</b> để sửa hoặc thêm.",
       "missing": "Ở trên cùng, Shopfront liệt kê những gì chưa tìm thấy: chạm vào một mục để thêm. Bạn vẫn tạo được bài đăng khi thiếu chúng, nhưng mỗi mục bạn thêm giúp bài đăng chính xác hơn. Nếu thiếu số WhatsApp hoặc thành phố của bạn, một dòng màu đỏ sẽ báo: chạm vào đó để thêm. Mỗi bài đăng kết thúc bằng WhatsApp của bạn, và hashtag dùng tên thành phố.",
       "english": "Nếu được, hãy viết thay đổi bằng tiếng Anh: bài đăng được viết bằng tiếng Anh.",
@@ -444,7 +444,7 @@
       "leave": "Nếu bạn rời đi, Shopfront sẽ tiếp tục từ chỗ dừng khi bạn quay lại, nhưng phần đang làm dở sẽ được làm lại và tốn một phần lượt của hôm nay. Vì vậy hãy bắt đầu khi bạn có một phút để chờ, đừng bắt đầu ngay trước một cuộc gọi.",
       "more": "Muốn ý khác? Chạm <b>{button}</b>: gợi ý mới nằm trên, gợi ý cũ vẫn ở bên dưới.",
       "edit": "Chạm <b>{button}</b> để tự sửa lời của một gợi ý, hoặc <b>{newTexts}</b> để có lời mới với cùng hình. Chạm <b>{image}</b> để có hình khác; bạn có thể thêm mô tả ngắn. Không gõ được chữ story ở đây: nếu muốn, hãy sửa trên Instagram sau khi dán.",
-      "update": "Nếu bạn thay đổi thông tin doanh nghiệp, chú thích và chữ story sẽ được cập nhật theo. Chữ bạn đã tự sửa thì được giữ nguyên.",
+      "update": "Nếu bạn thay đổi thông tin doanh nghiệp, chú thích và chữ story của các gợi ý mới nhất sẽ được cập nhật theo. Chữ bạn đã tự sửa thì được giữ nguyên: muốn cập nhật cả chữ đó, hãy mở gợi ý và chạm <b>{button}</b>.",
       "offer": "Để đưa ưu đãi hôm nay vào bài đăng, chạm <b>{button}</b> trước khi tạo:",
       "offerKind": "Chọn giảm giá (10%, 15%, 20% hoặc mức của bạn) hoặc tặng thêm: một liệu trình bạn tặng kèm buổi 90 phút.",
       "offerTreatments": "Đánh dấu các liệu trình được áp dụng. Ưu đãi luôn dành cho buổi từ 90 phút trở lên.",
@@ -471,8 +471,9 @@
     },
     "questions": {
       "title": "Trả lời câu hỏi của khách",
-      "paste": "Khi khách hỏi qua WhatsApp hoặc Instagram (dịch vụ, giá, giờ mở cửa, nơi bạn phục vụ), hãy sao chép tin nhắn của họ. Trong <b>{tab}</b>, dán vào và chạm <b>{button}</b>.",
+      "paste": "Khi khách hỏi qua WhatsApp hoặc Instagram (dịch vụ, giá, giờ mở cửa, nơi bạn phục vụ), hãy sao chép tin nhắn của họ. Trong <b>{tab}</b>, dán vào, xóa tên khách nếu có trong tin nhắn, rồi chạm <b>{button}</b>.",
       "send": "Đọc câu trả lời, sửa nếu muốn, rồi sao chép và dán vào cuộc trò chuyện với khách.",
+      "again": "Câu trả lời chưa hợp? Chạm <b>{button}</b>.",
       "final": "Khi khách đã hỏi hết những gì họ muốn biết, hãy đánh dấu <b>{final}</b>: câu trả lời sẽ kết thúc bằng lời mời khách đặt lịch.",
       "remember": "Shopfront nhớ nơi khách đang ở, cùng ngày và giờ họ đã nói, nên câu trả lời cuối chỉ hỏi những gì còn thiếu. Với tin nhắn tiếp theo của cùng khách, chạm <b>{next}</b>. Trước tin nhắn của khách khác, chạm <b>{new}</b>.",
       "details": "Câu trả lời chỉ dùng thông tin doanh nghiệp của bạn. Khi thiếu thông tin, câu trả lời sẽ nói bạn sẽ kiểm tra lại, và Shopfront báo cho bạn: hãy tự trả lời phần đó.",
@@ -497,7 +498,7 @@
       "limit": "\"Bạn đã dùng … lần thử hôm nay\" hoặc dòng tương tự: chờ đến giờ trên thanh.",
       "pool": "\"Shopfront đã dùng hết lượt viết miễn phí hôm nay\": cả ứng dụng đã dùng hết lượt miễn phí của hôm nay. Có lại vào giờ được hiển thị.",
       "paused": "\"Tạo hình đang tạm dừng\": hãy thử lại sau vài phút.",
-      "gone": "Doanh nghiệp của bạn biến mất: Safari đã xóa, hoặc đây là điện thoại khác. Hãy đọc lại trang web, và thêm Shopfront vào màn hình chính.",
+      "gone": "Doanh nghiệp của bạn biến mất: Safari đã xóa, hoặc đây là điện thoại khác. Shopfront tự đọc lại trang web của bạn; nếu không, hãy chạm <b>{button}</b>. Thêm Shopfront vào màn hình chính để giữ lại.",
       "contact": "Vẫn chưa được? Nhắn {contact} trên WhatsApp."
     }
   }
