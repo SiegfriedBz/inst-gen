@@ -199,6 +199,17 @@ maintainer's "Looks right", 2026-11-13).
   (`posts/short-captions`, `posts/offer-line-first`, `posts/two-suggestions`,
   `posts/day-and-night-copy`, `posts/marketing-copy`). Code's checks run on
   the answer as on a plan's posts, with the same fixes and flags.
+
+> Amended 2026-11-13, after the first real calls, at the maintainer's yes
+> ("Yes, fix it"): Sen's answer was its post word for word, and Svarga's
+> moved the sore spot from the legs its image shows to the shoulders. The
+> request now names the old words `captionNow` and `storyTextNow`, and asks
+> for the hashtags and alt text empty, since code keeps the post's own. The
+> prompt keeps a `sore` question on the part of the body the image prompt
+> shows, asked from another angle (another moment of the guest's day, other
+> words for the ache), and reuses no sentence of the old caption or story
+> text. Code refuses an answer whose caption, or whose question, is the old
+> one: the run ends in `model_failed`, and the owner's count comes back.
 - **How it runs.** Like "Rewrite this one too" on one post: a posts run of
   its own kind on decision 0005's run record, with its resume (builder's
   call on the shape: a kind of the rewrite route or a route of its own; a
@@ -341,8 +352,10 @@ The PR that ships this item:
   they need daily limits (builder's call).
 - One real new-texts call each for `sen` and `svarga`, on their recorded
   posts, recorded and read back in the journal, only with the maintainer's
-  yes (2 Flash-Lite requests from the day's free pool, never on a pilot day);
-  builder's call how, such as a flag on `pnpm eval:posts`.
+  yes (2 Flash-Lite requests from the day's free pool, never on a pilot day):
+  `pnpm eval:posts sen svarga --new-texts --record`. Their replay checks new
+  words, the same image, set-up and hashtags, and, for a `sore` question,
+  the image's part of the body.
 - `pnpm guide:pdf`: the three PDFs, with the section order and the changed
   lines read back.
 
@@ -437,9 +450,9 @@ Scenario: The Questions hint
   must copy them first.
 - With a special offer, "Write new texts" changes the post text only: the
   story text is the offer line.
-- The new texts can come out close to the old ones: the other kind of
-  question and the "other words" rule make that unlikely, but code doesn't
-  compare them.
+- New texts can still say much the same in other words: Svarga's second
+  real answer kept its legs and its walk through Canggu, as the image asks.
+  Code refuses only the same caption or the same question.
 - A spa added to `PILOT_PASSPHRASES` without a line in the table gets
   today's website field: the start-up check doesn't ask for one.
 
