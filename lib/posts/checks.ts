@@ -506,3 +506,45 @@ export function checkRewrite(
   );
   return { posts, dropped };
 }
+
+// New words for one post (docs/specs/platform/easier-to-use, "New texts for a
+// suggestion"): its caption and story text, checked as a plan's are; its
+// hashtags and alt text stay, as its image does. The only answer counts, whatever
+// its id. With no usable caption there is nothing to show: the run fails.
+export function checkNewTexts(
+  raw: ModelRewrite,
+  post: Post,
+  other: Post | undefined,
+  profile: Profile,
+  offer?: Offer,
+): { posts: Post[]; dropped: Dropped[] } {
+  const answer =
+    raw.posts.find((p) => p.id === post.id) ?? (raw.posts.length === 1 ? raw.posts[0] : undefined);
+  if (!answer?.caption.trim()) throw new Error('no new texts');
+  const context = offer ? { offer, carries: post.offer === true } : undefined;
+  const checked = checkedWords(
+    {
+      caption: answer.caption,
+      storyText: answer.storyText,
+      hashtags: post.hashtags,
+      altText: post.altText,
+    },
+    profile,
+    post.id,
+    context,
+    post.setup?.treatment,
+  );
+  if (!hasWords(checked.words.caption)) throw new Error('no new texts');
+  const { storyText: _story, storyUnchecked: _flags, ...rest } = post;
+  const fresh: Post = { ...rest, ...checked.words };
+  const pair = other ? [fresh, other] : [fresh];
+  return {
+    posts: [fresh],
+    dropped: [
+      ...checked.dropped,
+      ...repeatRecords(pair),
+      ...pair.flatMap(lightRecords),
+      ...copyRecords(pair, profile),
+    ],
+  };
+}

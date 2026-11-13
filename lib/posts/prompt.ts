@@ -225,3 +225,50 @@ export function rewriteUserText(input: PostsModelInput, posts: Post[], offer?: O
   });
   return `${text}\n\n${offerText(offer, offerLines)}`;
 }
+
+// New words for one post, for the same image (docs/specs/platform/easier-to-use,
+// "New texts for a suggestion"): the rewrite's rules, something different from
+// its caption now, and nothing of the attempt's other post.
+export function newTextsPrompt(withOffer = false, spa = false): string {
+  return `The owner of a small business wants new words for one of their Instagram posts, for the same image. You write a new caption and a new story text for the post under "### Post", as its owner would, to guests nearby. Keep its type, topic, scene, light and image prompt: they don't change. Answer that post, with its id, and give its hashtags and alt text as they are.
+
+Something different: open on a different question of the kind its "question" names, in other words than its caption now, and with another fact from the highlights when the profile has one. Never the fact, the opening or the ending of the post under "### Other post": it goes out beside this one.
+
+The post keeps its type's job:
+${TYPE_JOBS}
+
+${questionKinds('The questions: the post\'s "question" names its kind; a post without one keeps the kind of question it has.', 'image prompt shows')}
+
+${captionRules(spa, withOffer, 'its "light"')}${withOffer ? rewriteOfferRules(spa) : ''}`;
+}
+
+export function newTextsUserText(
+  input: PostsModelInput,
+  post: Post,
+  other: Post | undefined,
+  offer?: Offer,
+): string {
+  const { id, type, topic, scene, setup, caption, storyText, imagePrompt } = post;
+  const carries = offer !== undefined && post.offer === true;
+  const sent = {
+    id,
+    type,
+    topic,
+    scene,
+    // A post saved without a set-up, or a set-up without a light, is a day.
+    light: setup?.light ?? 'day',
+    ...(setup?.question ? { question: setup.question } : {}),
+    caption,
+    ...(storyText ? { storyText } : {}),
+    imagePrompt,
+    ...(carries ? { offer: true } : {}),
+  };
+  let text = `${profileText(input)}\n\n### Post\n${JSON.stringify(sent, null, 2)}`;
+  if (other) {
+    const story = other.storyText ? `\nStory text: ${other.storyText}` : '';
+    text = `${text}\n\n### Other post\nCaption: ${other.caption}${story}`;
+  }
+  if (!offer) return text;
+  const line = carries ? lineOf(offer, setup?.treatment, caption) : null;
+  return `${text}\n\n${offerText(offer, line ? [[id, line]] : [])}`;
+}

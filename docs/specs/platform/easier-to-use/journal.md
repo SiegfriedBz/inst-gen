@@ -18,6 +18,7 @@
 - Task 5, the Questions hint: `Tests  1 failed | 20 passed (21)`
 - Task 6, caption updates land as stored: `Tests  3 failed | 27 passed (30)`
 - Task 7, ten new texts a day: `Tests  7 failed | 77 passed (84)`
+- Task 8, the new-texts prompt and checks: `Tests  8 failed | 183 passed (191)`
 
 ## GREEN
 
@@ -30,3 +31,4 @@
 - Task 5, the Questions hint: `Tests  28 passed (28)`
 - Task 6, caption updates land as stored: `Tests  108 passed (108)`
 - Task 7, ten new texts a day: `Tests  124 passed (124)`
+- Task 8, the new-texts prompt and checks: `Tests  191 passed (191)`
