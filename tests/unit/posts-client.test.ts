@@ -4,7 +4,14 @@ import { beforeEach, describe, expect, test, vi } from 'vitest';
 import type { ReadDeps } from '@/lib/brand/read-client';
 import { resetStoreForTests, saveBrand } from '@/lib/brand/store';
 import type { PlanResult, PostBatch } from '@/lib/posts/batch';
-import { type PostsEvent, resumePosts, startPlan, startRewrite } from '@/lib/posts/client';
+import {
+  type PostsEvent,
+  resumePosts,
+  startNewTexts,
+  startPlan,
+  startRewrite,
+} from '@/lib/posts/client';
+import { markNewImage } from '@/lib/posts/edit';
 import { profileHash } from '@/lib/posts/input';
 import { DEFAULT_ANSWERS, type Offer } from '@/lib/posts/offer';
 import { saveOffer } from '@/lib/posts/offer-store';
@@ -274,6 +281,81 @@ describe('a rewrite and an edit saved while it runs', () => {
     const [saved] = await loadBatches('svarga');
     expect(saved.posts[2]).toMatchObject({ caption: 'Saved while it ran.', edited: true });
     expect(saved.posts[0].caption).toBe('New post-1.');
+  });
+});
+
+// docs/specs/platform/easier-to-use, "New texts for a suggestion".
+describe('new texts from the browser', () => {
+  const NOW = '2026-10-25T09:00:00.000Z';
+  const two: PostBatch = {
+    ...result,
+    id: 'b1',
+    ownerId: 'svarga',
+    createdAt: '2026-10-25T08:00:00.000Z',
+    profileReadAt: profile.readAt,
+    posts: [
+      { ...posts[0], copiedAt: NOW, savedAt: NOW, storyText: 'Old story.' },
+      { ...posts[1], caption: 'The other caption.' },
+    ],
+  };
+  // The route's answer: the post as it was sent, with new words.
+  const answer = () =>
+    ndjson([
+      {
+        type: 'final',
+        result: {
+          ...result,
+          posts: [{ ...two.posts[0], caption: 'New words.', storyText: 'New story.' }],
+        },
+      },
+    ]);
+  const start = () =>
+    startNewTexts({ ownerId: 'svarga', profile, batch: two, postId: 'post-1' }, () => {}, deps);
+
+  test('they send the post and the other post to /api/posts/texts', async () => {
+    await saveBatch(two);
+    fetchMock.mockResolvedValue(answer());
+    await start().done;
+    expect(fetchMock.mock.calls[0][0]).toBe('/api/posts/texts');
+    const body = JSON.parse((fetchMock.mock.calls[0][1] as RequestInit).body as string);
+    expect([body.post.id, body.other.id, body.posts]).toEqual(['post-1', 'post-2', undefined]);
+  });
+
+  test('their answer lands on the stored post: new words, copied off, a new image kept', async () => {
+    await saveBatch(two);
+    let reply: (r: Response) => void = () => {};
+    fetchMock.mockReturnValue(new Promise<Response>((resolve) => (reply = resolve)));
+    const run = start();
+    await vi.waitFor(() => expect(fetchMock).toHaveBeenCalled());
+    // A new image made meanwhile takes the saved mark off.
+    await saveBatch(markNewImage(two, 'post-1'));
+    reply(answer());
+    await run.done;
+    const [saved] = await loadBatches('svarga');
+    expect(saved.posts[0]).toMatchObject({
+      caption: 'New words.',
+      storyText: 'New story.',
+      altToCheck: true,
+      edited: false,
+    });
+    expect([saved.posts[0].copiedAt, saved.posts[0].savedAt]).toEqual([undefined, undefined]);
+    expect(saved.posts[1].caption).toBe('The other caption.');
+  });
+
+  test('a lost new-texts run is asked for again', async () => {
+    await saveBatch(two);
+    fetchMock.mockRejectedValueOnce(new TypeError('offline'));
+    await start().done;
+    expect((await loadOpenRun('svarga', 'posts'))?.steps).toEqual([
+      { name: 'texts', status: 'running' },
+    ]);
+    fetchMock.mockResolvedValue(answer());
+    const resumed = await resumePosts('svarga', profile, () => {}, deps);
+    expect(resumed?.step).toBe('texts');
+    await resumed?.done;
+    expect(fetchMock.mock.calls[1][0]).toBe('/api/posts/texts');
+    const [saved] = await loadBatches('svarga');
+    expect(saved.posts[0].caption).toBe('New words.');
   });
 });
 

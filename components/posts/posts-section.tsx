@@ -51,7 +51,13 @@ import { CopyPost, CopyStory, SaveImages } from './take-away';
 // While its tab shows, the newest batch's captions follow the business
 // details by themselves (docs/specs/platform/home-tabs).
 
-type Running = { step: 'plan' | 'rewrite'; batchId?: string; posts: Post[] };
+// New texts name their post (docs/specs/platform/easier-to-use).
+type Running = {
+  step: 'plan' | 'rewrite' | 'texts';
+  batchId?: string;
+  postId?: string;
+  posts: Post[];
+};
 
 type ImageFailure = Extract<ImageState, { kind: 'failed' }>['code'];
 

@@ -22,6 +22,7 @@
 - Task 7, ten new texts a day: `Tests  7 failed | 77 passed (84)`
 - Task 8, the new-texts prompt and checks: `Tests  8 failed | 183 passed (191)`
 - Task 9, the new-texts route: `Tests  3 failed | 28 passed (31)`, and two files could not import `@/app/api/posts/texts/route`
+- Task 10, new texts on the phone: `Tests  3 failed | 27 passed (30)`, and `tsc` refused `step: 'texts'` and the missing `startNewTexts`
 
 ## GREEN
 
@@ -36,3 +37,4 @@
 - Task 7, ten new texts a day: `Tests  124 passed (124)`
 - Task 8, the new-texts prompt and checks: `Tests  191 passed (191)`
 - Task 9, the new-texts route: `Tests  194 passed (194)`
+- Task 10, new texts on the phone: `Tests  92 passed (92)`

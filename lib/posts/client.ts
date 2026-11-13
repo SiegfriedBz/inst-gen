@@ -20,10 +20,10 @@ import { loadOffer } from './offer-store';
 import { applyCta, loadBatches, recentPosts, saveBatch } from './store';
 import { readPostsLines } from './stream';
 
-// A post plan or rewrite driven from the browser (decision 0005), like the
-// brand read (lib/brand/read-client.ts): the run is kept on the phone while
-// its request is alive, so a step the page lost is asked for again, at most
-// twice, when the owner comes back.
+// A post plan, rewrite or one post's new texts driven from the browser
+// (decision 0005), like the brand read (lib/brand/read-client.ts): the run is
+// kept on the phone while its request is alive, so a step the page lost is
+// asked for again, at most twice, when the owner comes back.
 
 export type PostsEvent =
   | { type: 'post'; index: number; post: Post }
@@ -34,7 +34,8 @@ export type PostsEvent =
 
 type Input =
   | { step: 'plan'; recent: RecentPost[]; offer?: Offer }
-  | { step: 'rewrite'; batch: PostBatch; postIds: string[] };
+  | { step: 'rewrite'; batch: PostBatch; postIds: string[] }
+  | { step: 'texts'; batch: PostBatch; postId: string };
 
 const live = new Set<string>();
 const MAX_RESUMES = 2;
@@ -71,6 +72,39 @@ async function rewritten(
   return mergeRewrite(current, result, unchanged);
 }
 
+// New texts land on the batch as stored now: a new image made meanwhile is
+// kept, and "Edit the text" waits while they run
+// (docs/specs/platform/easier-to-use).
+async function withNewTexts(
+  input: Extract<Input, { step: 'texts' }>,
+  result: PlanResult,
+): Promise<PostBatch> {
+  const stored = await loadBatches(input.batch.ownerId);
+  const current = stored.find((b) => b.id === input.batch.id) ?? input.batch;
+  return mergeRewrite(current, result, [input.postId]);
+}
+
+// The request's body: the attempt's other post goes with new texts, so their
+// words don't repeat it.
+function bodyOf(input: Input, profile: Profile): object {
+  if (input.step === 'plan') {
+    return { profile, recent: input.recent, ...(input.offer ? { offer: input.offer } : {}) };
+  }
+  // A treatment renamed or removed since leaves the batch's offer too.
+  const batchOffer = input.batch.offer ? pruneOffer(input.batch.offer, profile) : null;
+  const offer = batchOffer ? { offer: batchOffer } : {};
+  if (input.step === 'rewrite') {
+    return {
+      profile,
+      posts: input.batch.posts.filter((p) => input.postIds.includes(p.id)),
+      ...offer,
+    };
+  }
+  const post = input.batch.posts.find((p) => p.id === input.postId);
+  const other = input.batch.posts.find((p) => p.id !== input.postId);
+  return { profile, post, ...(other ? { other } : {}), ...offer };
+}
+
 async function toBatch(
   run: RunRecord,
   input: Input,
@@ -79,6 +113,7 @@ async function toBatch(
   now: Date,
 ): Promise<PostBatch> {
   if (input.step === 'rewrite') return rewritten(input, result);
+  if (input.step === 'texts') return withNewTexts(input, result);
   return {
     ...result,
     id: run.id,
@@ -122,23 +157,10 @@ function request(
             },
       );
       if (controller.signal.aborted) return;
-      // A treatment renamed or removed since leaves the batch's offer too.
-      const batchOffer =
-        input.step === 'rewrite' && input.batch.offer
-          ? pruneOffer(input.batch.offer, profile)
-          : null;
-      const body =
-        input.step === 'plan'
-          ? { profile, recent: input.recent, ...(input.offer ? { offer: input.offer } : {}) }
-          : {
-              profile,
-              posts: input.batch.posts.filter((p) => input.postIds.includes(p.id)),
-              ...(batchOffer ? { offer: batchOffer } : {}),
-            };
       const response = await deps.fetch(`/api/posts/${input.step}`, {
         method: 'POST',
         headers: { 'content-type': 'application/json' },
-        body: JSON.stringify(body),
+        body: JSON.stringify(bodyOf(input, profile)),
         signal: controller.signal,
       });
       if (response.status === 401) {
@@ -225,23 +247,44 @@ export function startRewrite(
   return request(run, true, input.profile, step, onEvent, deps);
 }
 
-// Asks again for this owner's unfinished plan or rewrite, or returns null when
-// there is none, its request is still alive, or its batch is gone.
+// One post's new words, its images kept (docs/specs/platform/easier-to-use).
+export function startNewTexts(
+  input: { ownerId: string; profile: Profile; batch: PostBatch; postId: string },
+  onEvent: (e: PostsEvent) => void,
+  deps: ReadDeps = defaultReadDeps(),
+): RunningRead {
+  const run = newPostsRun(
+    { ownerId: input.ownerId, step: 'texts', batchId: input.batch.id, postIds: [input.postId] },
+    deps.now(),
+    deps.newId(),
+  );
+  live.add(run.id);
+  const step: Input = { step: 'texts', batch: input.batch, postId: input.postId };
+  return request(run, true, input.profile, step, onEvent, deps);
+}
+
+type PostsStep = 'plan' | 'rewrite' | 'texts';
+const isPostsStep = (name: string): name is PostsStep =>
+  name === 'plan' || name === 'rewrite' || name === 'texts';
+
+// Asks again for this owner's unfinished plan, rewrite or new texts, or
+// returns null when there is none, its request is still alive, or its batch is
+// gone.
 export async function resumePosts(
   ownerId: string,
   profile: Profile,
   onEvent: (e: PostsEvent) => void,
   deps: ReadDeps = defaultReadDeps(),
-): Promise<(RunningRead & { step: 'plan' | 'rewrite' }) | null> {
+): Promise<(RunningRead & { step: PostsStep }) | null> {
   const open = await loadOpenRun(ownerId, 'posts');
   if (!open) return null;
   const run = resumeRun(open, (id) => live.has(id));
-  const step = stepsToRequest(run).find((name) => name === 'plan' || name === 'rewrite');
+  const step = stepsToRequest(run).find(isPostsStep);
   if (!step || live.has(run.id)) return null;
   live.add(run.id);
   const batches = await loadBatches(ownerId);
   const batch = batches.find((b) => b.id === run.batchId);
-  if ((run.resumes ?? 0) >= MAX_RESUMES || (step === 'rewrite' && !batch)) {
+  if ((run.resumes ?? 0) >= MAX_RESUMES || (step !== 'plan' && !batch)) {
     await deleteRun(run.id);
     live.delete(run.id);
     if (step === 'plan' || batch) onEvent({ type: 'error', code: 'model_failed' });
@@ -250,10 +293,12 @@ export async function resumePosts(
   const input: Input =
     step === 'rewrite' && batch
       ? { step, batch, postIds: run.postIds ?? batch.posts.map((p) => p.id) }
-      : {
-          step: 'plan',
-          recent: recentPosts(batches),
-          offer: (await loadOffer(ownerId, profile, deps.now()))?.offer,
-        };
+      : step === 'texts' && batch
+        ? { step, batch, postId: run.postIds?.[0] ?? batch.posts[0].id }
+        : {
+            step: 'plan',
+            recent: recentPosts(batches),
+            offer: (await loadOffer(ownerId, profile, deps.now()))?.offer,
+          };
   return { ...request(run, false, profile, input, onEvent, deps), step };
 }
