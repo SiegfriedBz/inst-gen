@@ -275,7 +275,7 @@ export async function resumePosts(
   profile: Profile,
   onEvent: (e: PostsEvent) => void,
   deps: ReadDeps = defaultReadDeps(),
-): Promise<(RunningRead & { step: PostsStep; postId?: string }) | null> {
+): Promise<(RunningRead & { step: PostsStep; batchId?: string; postId?: string }) | null> {
   const open = await loadOpenRun(ownerId, 'posts');
   if (!open) return null;
   const run = resumeRun(open, (id) => live.has(id));
@@ -301,5 +301,6 @@ export async function resumePosts(
             offer: (await loadOffer(ownerId, profile, deps.now()))?.offer,
           };
   const postId = input.step === 'texts' ? { postId: input.postId } : {};
-  return { ...request(run, false, profile, input, onEvent, deps), step, ...postId };
+  const batchId = run.batchId ? { batchId: run.batchId } : {};
+  return { ...request(run, false, profile, input, onEvent, deps), step, ...batchId, ...postId };
 }

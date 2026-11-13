@@ -9,17 +9,20 @@ import { copyToClipboard } from '@/lib/posts/take-away';
 // "Copy the text" (docs/specs/posts/editor-download): "Copied" for 2 s, or,
 // when the phone refuses the clipboard, a sheet with the text selected to copy
 // by hand. Shared by a suggestion and a review reply. `onCopied` hears of
-// both: the text the owner copies by hand counts as copied.
+// both: the text the owner copies by hand counts as copied. `disabled` while
+// the text is being replaced.
 export function CopyText({
   text,
   label,
   className,
   onCopied,
+  disabled = false,
 }: {
   text: string;
   label: React.ReactNode;
   className?: string;
   onCopied?: () => void;
+  disabled?: boolean;
 }) {
   const t = useTranslations('posts');
   const [copied, setCopied] = useState(false);
@@ -40,7 +43,7 @@ export function CopyText({
 
   return (
     <>
-      <Button type="button" className={className} onClick={copy}>
+      <Button type="button" className={className} onClick={copy} disabled={disabled}>
         {copied ? t('takeAway.copied') : label}
       </Button>
       <Sheet open={byHand} onOpenChange={setByHand}>

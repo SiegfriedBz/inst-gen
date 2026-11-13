@@ -95,9 +95,10 @@ export function PostsSection({
   const [error, setError] = useState<PostsErrorCode | UsageCode | 'offline' | null>(null);
   // Which step the error line is about: a plan's limit and a rewrite's differ.
   const [errorStep, setErrorStep] = useState<Running['step']>('plan');
-  // New texts' errors show in their suggestion's sheet
+  // New texts' errors show in their suggestion's sheet, found by its batch
+  // and post, since post ids repeat across attempts
   // (docs/specs/platform/easier-to-use).
-  const [errorPost, setErrorPost] = useState<string | null>(null);
+  const [errorTarget, setErrorTarget] = useState<string | null>(null);
   const attemptLimit = useAtLimit('attempts');
   // The image month is full: no image is asked for until it comes back.
   const monthFull = useAtLimit('newImages') === 'images_month';
@@ -117,7 +118,7 @@ export function PostsSection({
   const profileRef = useRef(profile);
   profileRef.current = profile;
   const stepRef = useRef<Running['step'] | null>(null);
-  const postRef = useRef<string | null>(null);
+  const targetRef = useRef<string | null>(null);
   const batchesRef = useRef<PostBatch[]>([]);
   batchesRef.current = batches;
   const [images, setImages] = useState<Map<string, SavedImage>>(new Map());
@@ -266,7 +267,7 @@ export function PostsSection({
         }
       } else if (event.type === 'error') {
         setErrorStep(stepRef.current ?? 'plan');
-        setErrorPost(postRef.current);
+        setErrorTarget(targetRef.current);
         end();
         setError(event.code);
       } else if (event.type === 'offline') {
@@ -281,7 +282,7 @@ export function PostsSection({
           void lost?.done.then(() => resumeRef.current());
         } else {
           setErrorStep(stepRef.current ?? 'plan');
-          setErrorPost(postRef.current);
+          setErrorTarget(targetRef.current);
           setError('offline');
         }
       } else {
@@ -294,7 +295,8 @@ export function PostsSection({
   const begin = useCallback((run: RunningRead, state: Running) => {
     request.current = run;
     stepRef.current = state.step;
-    postRef.current = state.postId ?? null;
+    targetRef.current =
+      state.batchId && state.postId ? imageKey(state.batchId, state.postId) : null;
     lock.current ??= holdWakeLock();
     setError(null);
     setRunning(state);
@@ -307,7 +309,7 @@ export function PostsSection({
       if (!run) return;
       // The section closed (a Forget, a re-read) while the run was looked up.
       if (!mounted.current) run.stop();
-      else begin(run, { step: run.step, postId: run.postId, posts: [] });
+      else begin(run, { step: run.step, batchId: run.batchId, postId: run.postId, posts: [] });
     } finally {
       if (mounted.current) setResuming(false);
     }
@@ -542,6 +544,12 @@ export function PostsSection({
   // The opened suggestion left the screen: the sheet closes with it.
   const openBatch = open ? shown.find((b) => b.id === open.batchId) : undefined;
   const openPost = open ? openBatch?.posts.find((p) => p.id === open.postId) : undefined;
+  // New texts being written for the open suggestion: its link spins, and its
+  // text buttons wait (docs/specs/platform/easier-to-use).
+  const writingOpen =
+    running?.step === 'texts' &&
+    running.batchId === openBatch?.id &&
+    running.postId === openPost?.id;
   useEffect(() => {
     if (open && !openPost) closeSuggestion();
   }, [open, openPost, closeSuggestion]);
@@ -807,6 +815,7 @@ export function PostsSection({
             }
             copyPost={
               <CopyPost
+                disabled={writingOpen}
                 post={openPost}
                 cta={postCta(profile, openPost, openBatch.offer) ?? openPost.cta}
                 imagesOn={pictured(openPost, openBatch)}
@@ -816,6 +825,7 @@ export function PostsSection({
             copyStory={
               openPost.storyText && (
                 <CopyStory
+                  disabled={writingOpen}
                   storyText={openPost.storyText}
                   imagesOn={pictured(openPost, openBatch)}
                 />
@@ -827,9 +837,11 @@ export function PostsSection({
                 : undefined
             }
             onNewTexts={() => writeTexts(openBatch, openPost.id)}
-            writingTexts={running?.step === 'texts' && running.postId === openPost.id}
+            writingTexts={writingOpen}
             textsError={
-              error && errorStep === 'texts' && errorPost === openPost.id ? (
+              error &&
+              errorStep === 'texts' &&
+              errorTarget === imageKey(openBatch.id, openPost.id) ? (
                 isUsageCode(error) ? (
                   <UsageMessage code={error} action="newTexts" />
                 ) : (
