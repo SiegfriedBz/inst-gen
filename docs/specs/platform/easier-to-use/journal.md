@@ -9,6 +9,9 @@
 
 - 2026-11-13, Task 9: `checkNewTexts` takes the answer with the post's id, or else the first: one post was asked for, and a model that drops or changes the id would otherwise waste the call.
 
+- 2026-11-13, Task 11: a refusal at the limit shows under the link, and the card then leaves out its own limit line, so the line shows once. "Write new texts" waits on posts runs only (`editBusy`), not on an image being made: the spec keeps the images part usable.
+- 2026-11-13, Task 11: the whole suite caught a race in Task 2's Stop test (a Stop before the read's request left); the test now waits for the request. The app was right.
+
 ## RED
 
 - Task 1, passwords: `Tests  7 failed | 10 passed (17)`
@@ -23,6 +26,7 @@
 - Task 8, the new-texts prompt and checks: `Tests  8 failed | 183 passed (191)`
 - Task 9, the new-texts route: `Tests  3 failed | 28 passed (31)`, and two files could not import `@/app/api/posts/texts/route`
 - Task 10, new texts on the phone: `Tests  3 failed | 27 passed (30)`, and `tsc` refused `step: 'texts'` and the missing `startNewTexts`
+- Task 11, "Write new texts": `Tests  11 failed | 114 passed (125)`
 
 ## GREEN
 
@@ -38,3 +42,4 @@
 - Task 8, the new-texts prompt and checks: `Tests  191 passed (191)`
 - Task 9, the new-texts route: `Tests  194 passed (194)`
 - Task 10, new texts on the phone: `Tests  92 passed (92)`
+- Task 11, "Write new texts": `Tests  156 passed (156)`; the whole suite: `Tests  2031 passed (2031)`

@@ -1,5 +1,6 @@
 'use client';
 
+import { CircleNotch } from '@phosphor-icons/react';
 import { useTranslations } from 'next-intl';
 import { type ReactNode, useState } from 'react';
 import { Button } from '@/components/ui/button';
@@ -17,7 +18,8 @@ import { SheetPart } from './sheet-part';
 // the owner sees"): three boxed parts, each with its button under what it
 // takes away. Images: the post and story images side by side, "Create new
 // image" and the save button. Post text: the text as it will be pasted,
-// plain-word warnings, "Edit the text", then its translation, then the copy
+// plain-word warnings, "Edit the text" and "Write new texts"
+// (docs/specs/platform/easier-to-use), then its translation, then the copy
 // button. Story text, when the post has one: its words, warnings and
 // translation, then its copy button. No type label, number or image
 // description.
@@ -25,6 +27,10 @@ import { SheetPart } from './sheet-part';
 // What's worth a word to the owner: a price, a duration, a word Instagram
 // may refuse, or a caption off the special offer. The first-line check isn't shown.
 export const SHOWN_FLAGS: Flag['kind'][] = ['price', 'duration', 'banned', 'offer'];
+
+// "Edit the text" and "Write new texts": links under the post text.
+const TEXT_LINK =
+  'inline-flex min-h-11 items-center text-[15px] font-medium text-accent underline underline-offset-4 outline-none focus-visible:ring-2 focus-visible:ring-accent disabled:opacity-60';
 
 function Warnings({ flags }: { flags: Flag[] }) {
   const t = useTranslations('posts');
@@ -50,6 +56,9 @@ export function PostCard({
   storyFlags = post.storyUnchecked ?? [],
   onSave,
   onRewrite,
+  onNewTexts,
+  writingTexts = false,
+  textsError,
   busy = false,
   editBusy = busy,
   translation,
@@ -71,6 +80,11 @@ export function PostCard({
   onSave?: (edit: PostEdit) => void;
   // "Rewrite this one too", on an edited suggestion that is out of date.
   onRewrite?: () => void;
+  // "Write new texts": new words for the same images; while they are written,
+  // and what went wrong (docs/specs/platform/easier-to-use).
+  onNewTexts?: () => void;
+  writingTexts?: boolean;
+  textsError?: ReactNode;
   busy?: boolean;
   // Only a step that replaces the words holds "Edit the text"; images don't.
   editBusy?: boolean;
@@ -92,6 +106,7 @@ export function PostCard({
     (state?.kind === 'failed' && state.code !== 'offline' && state.code !== 'images_off');
   const remaking = state?.kind === 'making' || (state?.kind === 'ready' && !!state.making);
   const newImageLimit = useAtLimit('newImages');
+  const newTextsLimit = useAtLimit('newTexts');
   const textPart = imagesOn ? 2 : 1;
   return (
     <article className="flex flex-col gap-3.5">
@@ -165,14 +180,39 @@ export function PostCard({
         )}
         <Warnings flags={flags} />
         {!editing && onSave && (
-          <button
-            type="button"
-            className="mt-1 inline-flex min-h-11 items-center text-[15px] font-medium text-accent underline underline-offset-4 outline-none focus-visible:ring-2 focus-visible:ring-accent disabled:opacity-60"
-            onClick={() => setEditing(true)}
-            disabled={editBusy}
-          >
-            {t('editText')}
-          </button>
+          <div className="mt-1 flex flex-wrap gap-x-6">
+            <button
+              type="button"
+              className={TEXT_LINK}
+              onClick={() => setEditing(true)}
+              disabled={editBusy || writingTexts}
+            >
+              {t('editText')}
+            </button>
+            {onNewTexts && (
+              <button
+                type="button"
+                className={`${TEXT_LINK} gap-1.5`}
+                onClick={onNewTexts}
+                disabled={editBusy || writingTexts || newTextsLimit !== null}
+                aria-busy={writingTexts || undefined}
+              >
+                {writingTexts && <CircleNotch aria-hidden className="animate-spin" size={16} />}
+                {writingTexts ? t('writingTexts') : t('newTexts')}
+              </button>
+            )}
+          </div>
+        )}
+        {/* A refusal already says it: the limit line doesn't repeat it. */}
+        {!editing && onSave && onNewTexts && newTextsLimit && !textsError && (
+          <p className="text-[13px] text-error">
+            <UsageMessage code={newTextsLimit} action="newTexts" />
+          </p>
+        )}
+        {!editing && textsError && (
+          <p role="alert" className="mt-1 text-[13px] text-error">
+            {textsError}
+          </p>
         )}
         {!editing && translation}
         {onRewrite && (

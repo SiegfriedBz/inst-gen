@@ -41,6 +41,9 @@ function show(
     busy?: boolean;
     withImage?: boolean;
     flags?: Flag[];
+    onNewTexts?: () => void;
+    writingTexts?: boolean;
+    textsError?: string;
   } = {},
 ) {
   return render(
@@ -54,6 +57,9 @@ function show(
         flags={opts.flags}
         onSave={opts.onSave ?? (() => {})}
         busy={opts.busy}
+        onNewTexts={opts.onNewTexts}
+        writingTexts={opts.writingTexts}
+        textsError={opts.textsError}
       />
     </NextIntlClientProvider>,
   );
@@ -159,5 +165,44 @@ describe('editing a post', () => {
     expect(
       (screen.getByRole('button', { name: 'Edit the text' }) as HTMLButtonElement).disabled,
     ).toBe(true);
+  });
+});
+
+// docs/specs/platform/easier-to-use, "New texts for a suggestion".
+describe('new texts', () => {
+  test('Write new texts sits next to Edit the text and calls back', () => {
+    const onNewTexts = vi.fn();
+    show(post(), { onNewTexts });
+    const edit = screen.getByRole('button', { name: 'Edit the text' });
+    const link = screen.getByRole('button', { name: 'Write new texts' });
+    expect(link.parentElement).toBe(edit.parentElement);
+    fireEvent.click(link);
+    expect(onNewTexts).toHaveBeenCalledTimes(1);
+  });
+
+  test('no link where none is asked for', () => {
+    show(post());
+    expect(screen.queryByRole('button', { name: 'Write new texts' })).toBeNull();
+  });
+
+  test('while writing it reads Writing new texts…, and the text waits', () => {
+    show(post(), { onNewTexts: () => {}, writingTexts: true });
+    const link = screen.getByRole('button', { name: 'Writing new texts…' }) as HTMLButtonElement;
+    expect(link.disabled).toBe(true);
+    expect(
+      (screen.getByRole('button', { name: 'Edit the text' }) as HTMLButtonElement).disabled,
+    ).toBe(true);
+  });
+
+  test('it waits while a run is busy', () => {
+    show(post(), { onNewTexts: () => {}, busy: true });
+    expect(
+      (screen.getByRole('button', { name: 'Write new texts' }) as HTMLButtonElement).disabled,
+    ).toBe(true);
+  });
+
+  test('a failure shows under the link', () => {
+    show(post(), { onNewTexts: () => {}, textsError: 'Something went wrong.' });
+    expect(screen.getByRole('alert').textContent).toBe('Something went wrong.');
   });
 });

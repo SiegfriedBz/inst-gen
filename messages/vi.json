@@ -223,6 +223,8 @@
       "storyOwnPhoto": "Trên Instagram, tạo story với ảnh của bạn, thêm chữ rồi dán."
     },
     "editText": "Sửa chữ",
+    "newTexts": "Viết chữ mới",
+    "writingTexts": "Đang viết chữ mới…",
     "keepOpen": "Hãy giữ trang này mở khoảng một phút trong khi bài đăng của bạn được tạo.",
     "flags": {
       "price": "Giá này không có trên trang web của bạn: {text}. Hãy kiểm tra trước khi đăng.",
@@ -441,7 +443,7 @@
       "wait": "Giữ trang mở khoảng một phút trong lúc gợi ý được tạo.",
       "leave": "Nếu bạn rời đi, Shopfront sẽ tiếp tục từ chỗ dừng khi bạn quay lại, nhưng phần đang làm dở sẽ được làm lại và tốn một phần lượt của hôm nay. Vì vậy hãy bắt đầu khi bạn có một phút để chờ, đừng bắt đầu ngay trước một cuộc gọi.",
       "more": "Muốn ý khác? Chạm <b>{button}</b>: gợi ý mới nằm trên, gợi ý cũ vẫn ở bên dưới.",
-      "edit": "Chạm <b>{button}</b> để đổi lời của một gợi ý, và <b>{image}</b> để có hình khác; bạn có thể thêm mô tả ngắn. Chữ story không sửa được ở đây: nếu muốn, hãy sửa trên Instagram sau khi dán.",
+      "edit": "Chạm <b>{button}</b> để tự sửa lời của một gợi ý, hoặc <b>{newTexts}</b> để có lời mới với cùng hình. Chạm <b>{image}</b> để có hình khác; bạn có thể thêm mô tả ngắn. Không gõ được chữ story ở đây: nếu muốn, hãy sửa trên Instagram sau khi dán.",
       "update": "Nếu bạn thay đổi thông tin doanh nghiệp, chú thích và chữ story sẽ được cập nhật theo. Chữ bạn đã tự sửa thì được giữ nguyên.",
       "offer": "Để đưa ưu đãi hôm nay vào bài đăng, chạm <b>{button}</b> trước khi tạo:",
       "offerKind": "Chọn giảm giá (10%, 15%, 20% hoặc mức của bạn) hoặc tặng thêm: một liệu trình bạn tặng kèm buổi 90 phút.",

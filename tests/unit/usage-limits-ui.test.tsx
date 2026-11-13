@@ -7,6 +7,7 @@ import type { ReactNode } from 'react';
 import { afterAll, afterEach, beforeEach, describe, expect, test, vi } from 'vitest';
 import { BrandHome } from '@/components/brand/brand-home';
 import { CaptionTranslation } from '@/components/posts/caption-translation';
+import { PostCard } from '@/components/posts/post-card';
 import { PostsSection } from '@/components/posts/posts-section';
 import { QuestionsSection } from '@/components/questions/questions-section';
 import { ReviewsSection } from '@/components/reviews/reviews-section';
@@ -135,6 +136,16 @@ const makeButton = async () =>
 
 describe('Create Posts', () => {
   // docs/specs/platform/easier-to-use, "The limit".
+  test('no new text left: "Write new texts" is off and says when', async () => {
+    usage = left({ newTexts: 0 });
+    shown(<PostCard post={post()} cta="x" onSave={() => {}} onNewTexts={() => {}} />);
+    const link = (await screen.findByRole('button', {
+      name: 'Write new texts',
+    })) as HTMLButtonElement;
+    await waitFor(() => expect(link.disabled).toBe(true));
+    expect(screen.getByText("You've written today's 10 new texts. More at 14:00.")).toBeTruthy();
+  });
+
   test('the line at the new-texts limit', async () => {
     shown(<UsageMessage code="limit_reached" action="newTexts" />);
     expect(

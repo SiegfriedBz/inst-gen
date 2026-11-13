@@ -85,7 +85,11 @@ export function OwnerGuide({
     'languages.switch': { lang: locale.toUpperCase() },
     'posts.open': { saved: t('posts.saved') },
     'posts.more': { button: t('posts.makeMore') },
-    'posts.edit': { button: t('posts.editText'), image: t('posts.images.newImage') },
+    'posts.edit': {
+      button: t('posts.editText'),
+      newTexts: t('posts.newTexts'),
+      image: t('posts.images.newImage'),
+    },
     'instagram.save': { button: t('posts.saveImages') },
     'instagram.copy': { button: t('posts.copyText') },
     'instagram.story': { button: t('posts.copyStory') },

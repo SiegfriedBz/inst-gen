@@ -46,6 +46,7 @@ describe('the owner guide', () => {
       m.posts.saveImages,
       m.posts.copyText,
       m.posts.make,
+      m.posts.newTexts,
       m.reviews.write,
       m.questions.write,
       m.questions.final,

@@ -10,7 +10,13 @@ import type { Profile } from '@/lib/brand/profile';
 import { defaultReadDeps, type RunningRead } from '@/lib/brand/read-client';
 import { holdWakeLock } from '@/lib/brand/wake-lock';
 import type { Post, PostBatch, PostsErrorCode } from '@/lib/posts/batch';
-import { type PostsEvent, resumePosts, startPlan, startRewrite } from '@/lib/posts/client';
+import {
+  type PostsEvent,
+  resumePosts,
+  startNewTexts,
+  startPlan,
+  startRewrite,
+} from '@/lib/posts/client';
 import { attemptNumbers, dayStart } from '@/lib/posts/day';
 import {
   applyEdit,
@@ -89,6 +95,9 @@ export function PostsSection({
   const [error, setError] = useState<PostsErrorCode | UsageCode | 'offline' | null>(null);
   // Which step the error line is about: a plan's limit and a rewrite's differ.
   const [errorStep, setErrorStep] = useState<Running['step']>('plan');
+  // New texts' errors show in their suggestion's sheet
+  // (docs/specs/platform/easier-to-use).
+  const [errorPost, setErrorPost] = useState<string | null>(null);
   const attemptLimit = useAtLimit('attempts');
   // The image month is full: no image is asked for until it comes back.
   const monthFull = useAtLimit('newImages') === 'images_month';
@@ -108,6 +117,7 @@ export function PostsSection({
   const profileRef = useRef(profile);
   profileRef.current = profile;
   const stepRef = useRef<Running['step'] | null>(null);
+  const postRef = useRef<string | null>(null);
   const batchesRef = useRef<PostBatch[]>([]);
   batchesRef.current = batches;
   const [images, setImages] = useState<Map<string, SavedImage>>(new Map());
@@ -256,6 +266,7 @@ export function PostsSection({
         }
       } else if (event.type === 'error') {
         setErrorStep(stepRef.current ?? 'plan');
+        setErrorPost(postRef.current);
         end();
         setError(event.code);
       } else if (event.type === 'offline') {
@@ -266,8 +277,13 @@ export function PostsSection({
         lock.current = null;
         request.current = null;
         setRunning(null);
-        if (navigator.onLine) void lost?.done.then(() => resumeRef.current());
-        else setError('offline');
+        if (navigator.onLine) {
+          void lost?.done.then(() => resumeRef.current());
+        } else {
+          setErrorStep(stepRef.current ?? 'plan');
+          setErrorPost(postRef.current);
+          setError('offline');
+        }
       } else {
         window.location.assign('/enter');
       }
@@ -278,6 +294,7 @@ export function PostsSection({
   const begin = useCallback((run: RunningRead, state: Running) => {
     request.current = run;
     stepRef.current = state.step;
+    postRef.current = state.postId ?? null;
     lock.current ??= holdWakeLock();
     setError(null);
     setRunning(state);
@@ -290,7 +307,7 @@ export function PostsSection({
       if (!run) return;
       // The section closed (a Forget, a re-read) while the run was looked up.
       if (!mounted.current) run.stop();
-      else begin(run, { step: run.step, posts: [] });
+      else begin(run, { step: run.step, postId: run.postId, posts: [] });
     } finally {
       if (mounted.current) setResuming(false);
     }
@@ -412,6 +429,16 @@ export function PostsSection({
     (batch: PostBatch, postIds: string[]) => {
       const run = startRewrite({ ownerId, profile, batch, postIds }, onEvent);
       begin(run, { step: 'rewrite', batchId: batch.id, posts: [] });
+    },
+    [ownerId, profile, onEvent, begin],
+  );
+
+  // New words for one suggestion, its images kept
+  // (docs/specs/platform/easier-to-use).
+  const writeTexts = useCallback(
+    (batch: PostBatch, postId: string) => {
+      const run = startNewTexts({ ownerId, profile, batch, postId }, onEvent);
+      begin(run, { step: 'texts', batchId: batch.id, postId, posts: [] });
     },
     [ownerId, profile, onEvent, begin],
   );
@@ -624,7 +651,7 @@ export function PostsSection({
       </Button>
       {!cta && <p className="text-[13px] text-error">{brand('panel.warnWhatsapp')}</p>}
       {(busy || updating) && <p className="text-[13px] text-ink-secondary">{t('keepOpen')}</p>}
-      {error && (
+      {error && errorStep !== 'texts' && (
         <p
           role="alert"
           className="rounded-control border border-error px-4 py-3 text-[15px] text-error"
@@ -798,6 +825,17 @@ export function PostsSection({
               openBatch === newest && openPost.edited && isPostStale(openPost, openBatch, profile)
                 ? () => update(openBatch, [openPost.id])
                 : undefined
+            }
+            onNewTexts={() => writeTexts(openBatch, openPost.id)}
+            writingTexts={running?.step === 'texts' && running.postId === openPost.id}
+            textsError={
+              error && errorStep === 'texts' && errorPost === openPost.id ? (
+                isUsageCode(error) ? (
+                  <UsageMessage code={error} action="newTexts" />
+                ) : (
+                  t(`errors.${error}`)
+                )
+              ) : undefined
             }
             busy={held}
             editBusy={running !== null || resuming || waiting}

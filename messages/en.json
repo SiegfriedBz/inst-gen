@@ -223,6 +223,8 @@
       "storyOwnPhoto": "In Instagram, make a story with your own photo, add text and paste."
     },
     "editText": "Edit the text",
+    "newTexts": "Write new texts",
+    "writingTexts": "Writing new texts…",
     "keepOpen": "Keep this page open for about a minute while your posts are made.",
     "flags": {
       "price": "This price isn't on your website: {text}. Check it before posting.",
@@ -441,7 +443,7 @@
       "wait": "Keep the page open for about a minute while they are made.",
       "leave": "If you leave, Shopfront carries on where it stopped when you come back, but the part it was making is made again and uses some of today's allowance. So start when you have a minute to wait, not just before a call.",
       "more": "Want other ideas? Tap <b>{button}</b>: the new ones go on top, the earlier ones stay below.",
-      "edit": "Tap <b>{button}</b> to change a suggestion's words, and <b>{image}</b> for a different picture; you can add a short hint. The story text can't be changed here: change it in Instagram after pasting, if you like.",
+      "edit": "Tap <b>{button}</b> to change a suggestion's words yourself, or <b>{newTexts}</b> for new words with the same pictures. Tap <b>{image}</b> for a different picture; you can add a short hint. You can't type in the story text here: change it in Instagram after pasting, if you like.",
       "update": "If you change your business, the captions and story texts are updated to match. Text you edited yourself is left alone.",
       "offer": "To put today's offer in your posts, tap <b>{button}</b> before you make them:",
       "offerKind": "Pick a discount (10%, 15%, 20% or your own) or a free extra: a treatment you give with a 90-minute session.",
