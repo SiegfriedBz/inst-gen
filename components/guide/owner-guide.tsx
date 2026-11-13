@@ -67,9 +67,8 @@ export function OwnerGuide({
   // What each line names: the app's own button and tab names, and the limits.
   const values: Record<string, Record<string, ReactNode>> = {
     'start.passphrase': { button: t('enter.submit') },
-    'business.read': { button: t('brand.home.read') },
     'business.check': { button: t('brand.panel.edit') },
-    'business.reread': { button: t('brand.home.reread'), forget: t('brand.home.forget') },
+    'business.reread': { button: t('brand.home.reread') },
     'posts.make': { tab: t('home.tabs.posts'), button: t('posts.make') },
     'posts.check': { check: t('posts.checkText') },
     'posts.offer': { button: t('posts.offer.add') },

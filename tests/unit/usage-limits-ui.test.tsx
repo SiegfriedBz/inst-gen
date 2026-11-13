@@ -321,4 +321,27 @@ describe('Your business', () => {
       screen.getByText("You've read your website 3 times today. Again at 14:00.", { exact: true }),
     ).toBeTruthy();
   });
+
+  // docs/specs/platform/easier-to-use: the read that starts by itself.
+  test('no read left on a new phone: one refused read, its line, the button off', async () => {
+    usage = left({ reads: 0 });
+    other = async (url) =>
+      url === '/api/brand/read' ? refused('limit_reached') : new Promise<Response>(() => {});
+    shown(
+      <BrandHome
+        ownerId="svarga"
+        name="Svarga"
+        imagesOn={false}
+        site="https://svargabalimassage.com/"
+      />,
+    );
+    expect(
+      await screen.findByText("You've read your website 3 times today. Again at 14:00.", {
+        exact: true,
+      }),
+    ).toBeTruthy();
+    const button = screen.getByRole('button', { name: 'Read my website' }) as HTMLButtonElement;
+    await waitFor(() => expect(button.disabled).toBe(true));
+    expect(sent('/api/brand/read')).toHaveLength(1);
+  });
 });

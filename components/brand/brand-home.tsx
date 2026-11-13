@@ -57,7 +57,9 @@ import { SectionSheet } from './section-sheet';
 // the panel come four tabs, "Your business", "Create Posts"
 // (docs/specs/platform/home-tabs), "Reviews" (docs/specs/reviews/reply-drafts)
 // and "Questions" (docs/specs/questions/answer-drafts): the app opens on the
-// posts, and a read of any kind comes back to the business.
+// posts, and a read of any kind comes back to the business. A spa whose
+// website is known reads it by itself on a phone with no business yet, and
+// never types it (docs/specs/platform/easier-to-use).
 
 type View =
   | { kind: 'loading' }
@@ -71,10 +73,13 @@ export function BrandHome({
   ownerId,
   name,
   imagesOn,
+  site,
 }: {
   ownerId: string;
   name: string;
   imagesOn: boolean;
+  // The spa's website (lib/pilot/sites.ts); without one, the owner types it.
+  site?: string;
 }) {
   const t = useTranslations('brand');
   // Read by the load callbacks, so a language change doesn't run the load
@@ -105,6 +110,8 @@ export function BrandHome({
   const [confirm, setConfirm] = useState<'reread' | 'forget' | null>(null);
   const [announce, setAnnounce] = useState('');
   const field = useRef<HTMLInputElement>(null);
+  // The read that starts by itself starts once per page load.
+  const autoStarted = useRef(false);
   const running = useRef<RunningRead | null>(null);
   const lock = useRef<{ release(): void } | null>(null);
   const savedRef = useRef<Profile | null>(null);
@@ -249,9 +256,11 @@ export function BrandHome({
     setAnnounce(tRef.current('home.announceReading'));
   }, []);
 
+  // Whether a read was resumed.
   const tryResume = useCallback(async () => {
     const read = await resumeRead(ownerId, onEvent);
     if (read) begin(read, read.url);
+    return read !== null;
   }, [ownerId, onEvent, begin]);
 
   useEffect(() => {
@@ -268,7 +277,11 @@ export function BrandHome({
         setNotice(result.kind === 'invalid' ? 'invalidSaved' : null);
         setView({ kind: 'empty' });
       }
-      await tryResume();
+      const resumed = await tryResume();
+      if (active && site && result.kind !== 'saved' && !resumed && !autoStarted.current) {
+        autoStarted.current = true;
+        begin(startRead({ ownerId, url: site, reread: false }, onEvent), site);
+      }
     })();
     const onVisible = () => {
       if (document.visibilityState === 'visible') void tryResume();
@@ -281,7 +294,7 @@ export function BrandHome({
       document.removeEventListener('visibilitychange', onVisible);
       window.removeEventListener('online', onOnline);
     };
-  }, [ownerId, tryResume, startSearch]);
+  }, [ownerId, tryResume, startSearch, site, begin, onEvent]);
 
   function read(event: React.FormEvent) {
     event.preventDefault();
@@ -293,11 +306,17 @@ export function BrandHome({
     begin(startRead({ ownerId, url: typed, reread: false }, onEvent), typed);
   }
 
+  function readSite() {
+    if (site) begin(startRead({ ownerId, url: site, reread: false }, onEvent), site);
+  }
+
+  // A spa's website comes from the table, the one place it is set.
   function reread() {
     if (!saved) return;
     setConfirm(null);
     stopSearch();
-    begin(startRead({ ownerId, url: saved.siteUrl, reread: true }, onEvent), saved.siteUrl);
+    const from = site ?? saved.siteUrl;
+    begin(startRead({ ownerId, url: from, reread: true }, onEvent), from);
   }
 
   function stop() {
@@ -363,10 +382,13 @@ export function BrandHome({
     </button>
   );
 
+  // Only before a business is saved, its first read included: then the
+  // header's name says it.
+  const welcome = view.kind === 'empty' || (view.kind === 'reading' && !saved);
+
   return (
-    <div className={view.kind === 'empty' ? 'flex flex-col' : 'mt-6 flex flex-col'}>
-      {/* Only before a business is saved: then the header's name says it. */}
-      {view.kind === 'empty' && (
+    <div className={welcome ? 'flex flex-col' : 'mt-6 flex flex-col'}>
+      {welcome && (
         <div className="mb-6">
           <Welcome name={name} />
         </div>
@@ -381,7 +403,19 @@ export function BrandHome({
         )}
       {notice && message(t(`home.${notice}`), 'note')}
 
-      {view.kind === 'empty' && (
+      {/* A known website: nothing to type. */}
+      {view.kind === 'empty' && site && (
+        <div className="flex flex-col">
+          <Button type="button" onClick={readSite} disabled={readLimit !== null}>
+            {t('home.read')}
+          </Button>
+          <p className="mt-2 text-xs text-ink-secondary">{siteLabel(site)}</p>
+          {readLimitLine}
+          <p className="mt-2 text-xs text-ink-secondary">{t('home.readHint')}</p>
+        </div>
+      )}
+
+      {view.kind === 'empty' && !site && (
         <form onSubmit={read} noValidate className="flex flex-col">
           <Label htmlFor="website" className="mb-1.5">
             {home('websiteLabel')}

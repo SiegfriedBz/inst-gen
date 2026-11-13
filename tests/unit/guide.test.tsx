@@ -46,7 +46,6 @@ describe('the owner guide', () => {
       m.posts.saveImages,
       m.posts.copyText,
       m.posts.make,
-      m.brand.home.read,
       m.reviews.write,
       m.questions.write,
       m.questions.final,
@@ -106,7 +105,8 @@ describe('the owner guide', () => {
   test.each(LOCALES)('your business is three numbered steps, in %s', (locale) => {
     const steps = show(locale).querySelectorAll('#business ol li');
     expect(steps).toHaveLength(3);
-    expect(steps[0].textContent).toContain(messagesFor(locale).brand.home.read);
+    // The read starts by itself (docs/specs/platform/easier-to-use).
+    expect(steps[0].textContent).toBe(messagesFor(locale).guide.business.read);
   });
 
   test.each([
