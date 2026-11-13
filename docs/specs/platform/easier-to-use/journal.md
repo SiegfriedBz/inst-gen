@@ -18,6 +18,8 @@
 
 - 2026-11-13, final review: four fixes. The read starts once per page load and owner (`lib/brand/auto-read.ts`), with no button before it starts; new texts' spinner and error follow their batch and post; the copy buttons wait while new texts are written; a long owner id is never named in a start-up problem, as it may be a password written first. Three small points are left for the maintainer.
 
+- 2026-11-13, Task 13, with the maintainer's yes: two real new-texts calls, `pnpm eval:posts sen svarga --new-texts --record`. Both first failed with `model_failed` (a `SyntaxError`, "finish other", 105 and 32 tokens out), as plan calls have before (`posts/short-captions` journal). A retry, once the request also held the post's hashtags and alt text, came back for both in 6.6 and 7.5 s. Sen's answer was its post word for word: the same caption and story text. Svarga's had new words, but its question moved the sore spot to the shoulders while the image shows legs. Neither is good enough to ship as new texts: the prompt must keep the image's sore spot and forbid the old sentences, and code could refuse an answer that repeats the old caption. The recordings stay out of the repo until that's fixed. 4 Flash-Lite requests spent.
+
 ## RED
 
 - Task 1, passwords: `Tests  7 failed | 10 passed (17)`
