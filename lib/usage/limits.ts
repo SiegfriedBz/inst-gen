@@ -13,6 +13,8 @@ export const OWNER_LIMITS = {
   replies: 20,
   // Answers to guests' questions (docs/specs/questions/answer-drafts).
   answers: 20,
+  // New words for a suggestion's images (docs/specs/platform/easier-to-use).
+  newTexts: 10,
 } as const;
 export type LimitedAction = keyof typeof OWNER_LIMITS;
 

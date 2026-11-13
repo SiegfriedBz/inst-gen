@@ -3,22 +3,20 @@ import { senProfile } from '../unit/helpers/brand';
 import { fulfilRead, streamBody } from './helpers/brand-stream';
 import { openSection } from './helpers/business-tab';
 
-// Test values from playwright.config.ts; not secrets.
+// Test values from playwright.config.ts; not secrets. Sen's website is read
+// by itself; the developer, with no website, types one
+// (docs/specs/platform/easier-to-use).
 const SEN = 'test-lotus-river-sen';
+const DEV = 'test-quiet-stone-dev';
 const TITLE = 'What we know about Sen';
 
 test.use({ locale: 'en-US' });
 
-async function signIn(page: Page) {
+async function signIn(page: Page, password = SEN) {
   await page.goto('/enter');
-  await page.getByLabel('Passphrase').fill(SEN);
+  await page.getByLabel('Password').fill(password);
   await page.getByRole('button', { name: 'Enter' }).click();
   await expect(page).toHaveURL('/');
-}
-
-async function readSite(page: Page) {
-  await page.getByLabel('Your website').fill('sendanangmassage.com');
-  await page.getByRole('button', { name: 'Read my website' }).click();
 }
 
 async function editHours(page: Page, hours: string) {
@@ -29,12 +27,18 @@ async function editHours(page: Page, hours: string) {
   await expect(page.getByText(hours)).toBeVisible();
 }
 
-test('first read, edit, and reload keeps it', async ({ page }) => {
+test('Sen on a new phone: the password alone, then Your business, kept through a reload', async ({
+  page,
+}) => {
   const reads = await fulfilRead(page, [streamBody(senProfile())]);
   await signIn(page);
-  await readSite(page);
 
   await expect(page.getByRole('heading', { name: TITLE })).toBeVisible();
+  await expect(page.getByLabel('Your website')).toHaveCount(0);
+  await expect(page.getByRole('tab', { name: 'Your business' })).toHaveAttribute(
+    'aria-selected',
+    'true',
+  );
   await openSection(page, 'Where and when');
   await expect(page.locator('[data-field]', { hasText: 'Town' })).toContainText('Da Nang');
   await openSection(page, 'How people reach you');
@@ -61,7 +65,6 @@ test('first read, edit, and reload keeps it', async ({ page }) => {
 test('re-read with an edit asks first', async ({ page }) => {
   const reads = await fulfilRead(page, [streamBody(senProfile())]);
   await signIn(page);
-  await readSite(page);
   await expect(page.getByRole('heading', { name: TITLE })).toBeVisible();
   await editHours(page, 'Noon to midnight');
 
@@ -75,20 +78,24 @@ test('re-read with an edit asks first', async ({ page }) => {
   expect(reads.count()).toBe(1);
 });
 
-test('forget empties the phone', async ({ page }) => {
-  await fulfilRead(page, [streamBody(senProfile())]);
+test('forget empties the phone, and the website is read again on the next open', async ({
+  page,
+}) => {
+  const reads = await fulfilRead(page, [streamBody(senProfile())]);
   await signIn(page);
-  await readSite(page);
   await expect(page.getByRole('heading', { name: TITLE })).toBeVisible();
 
   await page.getByRole('button', { name: 'Forget this business' }).click();
   await expect(page.getByText('Forget Sen?')).toBeVisible();
   await page.getByRole('button', { name: 'Forget', exact: true }).click();
-  await expect(page.getByLabel('Your website')).toHaveValue('');
+  await expect(page.getByRole('button', { name: 'Read my website' })).toBeVisible();
+  await expect(page.getByText('sendanangmassage.com', { exact: true })).toBeVisible();
+  await expect(page.getByLabel('Your website')).toHaveCount(0);
+  expect(reads.count()).toBe(1);
 
   await page.reload();
-  await expect(page.getByLabel('Your website')).toBeVisible();
-  await expect(page.getByRole('heading', { name: TITLE })).toBeHidden();
+  await expect(page.getByRole('heading', { name: TITLE })).toBeVisible();
+  expect(reads.count()).toBe(2);
 });
 
 test('a reload mid-read resumes once', async ({ page }) => {
@@ -97,7 +104,6 @@ test('a reload mid-read resumes once', async ({ page }) => {
     streamBody(senProfile()),
   ]);
   await signIn(page);
-  await readSite(page);
   await expect(page.getByText("You're offline. We'll carry on when you're back.")).toBeVisible();
 
   await page.reload();
@@ -108,9 +114,16 @@ test('a reload mid-read resumes once', async ({ page }) => {
 test('a busy model shows its message', async ({ page }) => {
   await fulfilRead(page, [streamBody(senProfile(), { end: { error: 'model_busy' } })]);
   await signIn(page);
-  await readSite(page);
   await expect(
     page.getByText("Shopfront has used today's free reading. Try again tomorrow."),
   ).toBeVisible();
-  await expect(page.getByLabel('Your website')).toHaveValue('sendanangmassage.com');
+  await expect(page.getByRole('button', { name: 'Read my website' })).toBeVisible();
+});
+
+test('the developer, with no website, types one', async ({ page }) => {
+  await fulfilRead(page, [streamBody(senProfile())]);
+  await signIn(page, DEV);
+  await page.getByLabel('Your website').fill('sendanangmassage.com');
+  await page.getByRole('button', { name: 'Read my website' }).click();
+  await expect(page.getByRole('heading', { name: TITLE })).toBeVisible();
 });

@@ -18,14 +18,14 @@ function renderForm(state: { error: boolean; attempt: number }) {
 describe('SignInFormView', () => {
   test('shows no error at first', () => {
     renderForm({ error: false, attempt: 0 });
-    expect(screen.queryByText("That passphrase isn't right. Try again.")).toBeNull();
-    expect(screen.getByLabelText('Passphrase').getAttribute('aria-invalid')).toBeNull();
+    expect(screen.queryByText("That password isn't right. Try again.")).toBeNull();
+    expect(screen.getByLabelText('Password').getAttribute('aria-invalid')).toBeNull();
   });
 
   test('shows the error linked to the field', () => {
     renderForm({ error: true, attempt: 1 });
-    const message = screen.getByText("That passphrase isn't right. Try again.");
-    const field = screen.getByLabelText('Passphrase') as HTMLInputElement;
+    const message = screen.getByText("That password isn't right. Try again.");
+    const field = screen.getByLabelText('Password') as HTMLInputElement;
     expect(field.getAttribute('aria-invalid')).toBe('true');
     expect(field.getAttribute('aria-describedby')).toBe(message.id);
     expect(field.value).toBe('');
@@ -34,7 +34,7 @@ describe('SignInFormView', () => {
 
   test('field is safe for phone keyboards', () => {
     renderForm({ error: false, attempt: 0 });
-    const field = screen.getByLabelText('Passphrase');
+    const field = screen.getByLabelText('Password');
     expect(field.getAttribute('autocomplete')).toBe('current-password');
     expect(field.getAttribute('autocapitalize')).toBe('none');
     expect(field.getAttribute('autocorrect')).toBe('off');
@@ -44,7 +44,7 @@ describe('SignInFormView', () => {
 
   test('the passphrase is always visible: a text field, never dots', () => {
     renderForm({ error: false, attempt: 0 });
-    const field = screen.getByLabelText('Passphrase') as HTMLInputElement;
+    const field = screen.getByLabelText('Password') as HTMLInputElement;
     expect(field.type).toBe('text');
     fireEvent.change(field, { target: { value: 'lotus-river-moon-sen' } });
     expect(field.value).toBe('lotus-river-moon-sen');

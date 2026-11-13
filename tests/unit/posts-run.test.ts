@@ -4,7 +4,7 @@ import { type TextModel, toModelStream } from '@/lib/ai/text-model';
 import { profileHash } from '@/lib/posts/input';
 import type { PostsLog } from '@/lib/posts/log';
 import type { Offer } from '@/lib/posts/offer';
-import { streamPlan, streamRewrite } from '@/lib/posts/run';
+import { streamNewTexts, streamPlan, streamRewrite } from '@/lib/posts/run';
 import { dealSetups, seededRandom, setupLine } from '@/lib/posts/setup';
 import type { PostsLine } from '@/lib/posts/stream';
 import { svargaProfile } from './helpers/brand';
@@ -304,6 +304,56 @@ describe('streamRewrite', () => {
       ['Deck at dusk', 'New caption a 🌸'],
       ['A glass', 'New caption b 🌸'],
     ]);
+  });
+});
+
+// docs/specs/platform/easier-to-use, "New texts for a suggestion".
+describe('streamNewTexts', () => {
+  const texts = (posts: unknown[]) => {
+    const answer = { posts };
+    const recording = { modelId: 'm', promptVersion: 'posts-1', partials: [answer], final: answer };
+    return replayTextModel(brand, { posts: recording });
+  };
+  const newBody = () => ({
+    profile: svargaProfile(),
+    post: post({ id: 'a', imagePrompt: 'Deck at dusk' }),
+    other: post({ id: 'b', caption: 'The other caption.' }),
+  });
+
+  test('ends on one post with new words', async () => {
+    const model = texts([
+      { id: 'a', caption: 'New caption.', hashtags: ['x'], altText: 'x', storyText: 'New story.' },
+    ]);
+    const lines = await drain(streamNewTexts(newBody(), deps(model), new AbortController().signal));
+    const final = lines.at(-1);
+    if (final?.type !== 'final') throw new Error('no final');
+    expect(final.result.posts).toHaveLength(1);
+    expect(final.result.posts[0]).toMatchObject({
+      id: 'a',
+      imagePrompt: 'Deck at dusk',
+      caption: 'New caption 🌸',
+      storyText: 'New story 🌸',
+    });
+  });
+
+  test('an answer with no caption ends in model_failed', async () => {
+    const lines = await drain(
+      streamNewTexts(newBody(), deps(texts([])), new AbortController().signal),
+    );
+    expect(lines).toEqual([{ type: 'error', code: 'model_failed' }]);
+  });
+
+  test('its log line says kind=texts', async () => {
+    const entries: PostsLog[] = [];
+    const model = texts([{ id: 'a', caption: 'New.', hashtags: [], altText: 'x' }]);
+    await drain(
+      streamNewTexts(
+        newBody(),
+        deps(model, { log: (e) => entries.push(e) }),
+        new AbortController().signal,
+      ),
+    );
+    expect(entries.map((e) => [e.kind, e.outcome])).toEqual([['texts', 'final']]);
   });
 });
 

@@ -25,6 +25,8 @@ Why now: every later spec needs a running app, a gate and green CI to land in.
 
 ## Behaviour
 
+> Changed by `platform/easier-to-use` (2026-11-13): an entry of `PILOT_PASSPHRASES` may be `<owner id>=<password>`, the owner typing only the password; the start-up check also refuses two entries with one password; an entry without `=` is read as below. Sen's and Svarga's websites sit in `lib/pilot/sites.ts`, next to their owner ids.
+
 ### Name and copy
 
 The app is called **Shopfront**. Its description is "Your posts and review

@@ -19,8 +19,8 @@ afterAll(() => {
 const base: UsageAnswer = {
   resetsAt: '2026-11-15T08:00:00.000Z',
   limited: true,
-  left: { reads: 2, attempts: 2, newImages: 10, replies: 20, answers: 20 },
-  limits: { reads: 3, attempts: 3, newImages: 10, replies: 20, answers: 20 },
+  left: { reads: 2, attempts: 2, newImages: 10, replies: 20, answers: 20, newTexts: 10 },
+  limits: { reads: 3, attempts: 3, newImages: 10, replies: 20, answers: 20, newTexts: 10 },
   poolEmpty: false,
   images: { on: true, monthFull: false, backAt: '2026-12-01T00:00:00.000Z' },
 };
@@ -56,7 +56,9 @@ describe('the usage bar', () => {
     answer();
     show('posts');
     await waitFor(() =>
-      expect(line().textContent).toBe('Left today: 2 attempts, 10 new images · Resets at 15:00'),
+      expect(line().textContent).toBe(
+        'Left today: 2 attempts, 10 new images, 10 new texts · Resets at 15:00',
+      ),
     );
     expect(fetchMock.mock.calls[0]?.[0]).toBe('/api/usage');
   });
@@ -84,7 +86,9 @@ describe('the usage bar', () => {
   });
 
   test('a count at 0 in the error colour', async () => {
-    answer({ left: { reads: 2, attempts: 0, newImages: 10, replies: 20, answers: 20 } });
+    answer({
+      left: { reads: 2, attempts: 0, newImages: 10, replies: 20, answers: 20, newTexts: 10 },
+    });
     show('posts');
     await waitFor(() => expect(screen.getByText('0 attempts').className).toContain('text-error'));
   });
@@ -93,14 +97,14 @@ describe('the usage bar', () => {
     answer({ images: { on: false, monthFull: false, backAt: base.images.backAt } });
     show('posts');
     await waitFor(() =>
-      expect(line().textContent).toBe('Left today: 2 attempts · Resets at 15:00'),
+      expect(line().textContent).toBe('Left today: 2 attempts, 10 new texts · Resets at 15:00'),
     );
     cleanup();
     answer({ images: { on: true, monthFull: true, backAt: base.images.backAt } });
     show('posts');
     await waitFor(() =>
       expect(line().textContent).toBe(
-        'Left today: 2 attempts · Resets at 15:00 No new images until December 1.',
+        'Left today: 2 attempts, 10 new texts · Resets at 15:00 No new images until December 1.',
       ),
     );
   });
@@ -149,7 +153,7 @@ describe('the usage bar', () => {
     show('posts', 'vi');
     await waitFor(() =>
       expect(line().textContent).toBe(
-        'Còn lại hôm nay: 2 lần thử, 10 hình mới · Làm mới lúc 15:00',
+        'Còn lại hôm nay: 2 lần thử, 10 hình mới, 10 lần viết chữ mới · Làm mới lúc 15:00',
       ),
     );
   });

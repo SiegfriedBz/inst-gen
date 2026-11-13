@@ -29,6 +29,8 @@ fast.
 
 ## Behaviour
 
+> Changed by `platform/easier-to-use` (2026-11-13): the line "They go on top. Attempt {n} stays below." is gone; the attempt headings stay.
+
 > Changed by `posts/two-suggestions` (2026-11-08): an attempt is two suggestions, not six; the buttons read "Make 2 suggestions" and "Make 2 new suggestions", and the grid shows two tiles to a row.
 
 ### Words

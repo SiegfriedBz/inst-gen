@@ -32,6 +32,8 @@ a limit reached says in plain words when it comes back.
 
 ## Behaviour
 
+> Changed by `platform/easier-to-use` (2026-11-13): a new daily limit, `newTexts: 10`, on the Flash-Lite pool, shown on "Create Posts"'s bar.
+
 ### The owner's day: midnight Pacific
 
 Every daily count resets at **00:00 in `America/Los_Angeles`**, the moment

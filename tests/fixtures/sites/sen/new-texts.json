@@ -1,0 +1,84 @@
+{
+  "modelId": "gemini-3.5-flash-lite",
+  "promptVersion": "posts-18",
+  "recording": {
+    "modelId": "gemini-3.5-flash-lite",
+    "promptVersion": "posts-18",
+    "partials": [
+      {
+        "posts": []
+      },
+      {
+        "posts": [
+          {
+            "id": "post-1",
+            "caption": "Can I get a massage"
+          }
+        ]
+      },
+      {
+        "posts": [
+          {
+            "id": "post-1",
+            "caption": "Can I get a massage in my room tonight? 🌸\n\nOur trained therapists come to your Da Nang hotel for sixty minutes of tension"
+          }
+        ]
+      },
+      {
+        "posts": [
+          {
+            "id": "post-1",
+            "caption": "Can I get a massage in my room tonight? 🌸\n\nOur trained therapists come to your Da Nang hotel for sixty minutes of tension release. Linens, towels and oils included.\n\nFree travel in our core areas 🪷"
+          }
+        ]
+      },
+      {
+        "posts": [
+          {
+            "id": "post-1",
+            "caption": "Can I get a massage in my room tonight? 🌸\n\nOur trained therapists come to your Da Nang hotel for sixty minutes of tension release. Linens, towels and oils included.\n\nFree travel in our core areas 🪷",
+            "hashtags": [
+              "danang",
+              "deeptissue",
+              "massage",
+              "spa"
+            ],
+            "altText": "A woman relaxing on a massage bed in a hotel room at night while a therapist works on her shoulders"
+          }
+        ]
+      },
+      {
+        "posts": [
+          {
+            "id": "post-1",
+            "caption": "Can I get a massage in my room tonight? 🌸\n\nOur trained therapists come to your Da Nang hotel for sixty minutes of tension release. Linens, towels and oils included.\n\nFree travel in our core areas 🪷",
+            "hashtags": [
+              "danang",
+              "deeptissue",
+              "massage",
+              "spa"
+            ],
+            "altText": "A woman relaxing on a massage bed in a hotel room at night while a therapist works on her shoulders.",
+            "storyText": "Need an in-room massage tonight? We come to you 🪷"
+          }
+        ]
+      }
+    ],
+    "final": {
+      "posts": [
+        {
+          "id": "post-1",
+          "caption": "Can I get a massage in my room tonight? 🌸\n\nOur trained therapists come to your Da Nang hotel for sixty minutes of tension release. Linens, towels and oils included.\n\nFree travel in our core areas 🪷",
+          "hashtags": [
+            "danang",
+            "deeptissue",
+            "massage",
+            "spa"
+          ],
+          "altText": "A woman relaxing on a massage bed in a hotel room at night while a therapist works on her shoulders.",
+          "storyText": "Need an in-room massage tonight? We come to you 🪷"
+        }
+      ]
+    }
+  }
+}

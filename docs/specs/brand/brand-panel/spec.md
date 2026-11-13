@@ -32,6 +32,8 @@ record and resume from decision 0005, which phase 2 extends with more steps.
 
 ## Behaviour
 
+> Changed by `platform/easier-to-use` (2026-11-13): a spa whose website is in `lib/pilot/sites.ts` never types it. With no business on the phone, its read starts by itself once per page load; the screen with no business shows "Read my website" and the website's name, with no field; "Read it again" reads that website.
+
 ### What this spec ships, and what it doesn't
 
 - The home screen's three states: no business yet, reading, and the panel.

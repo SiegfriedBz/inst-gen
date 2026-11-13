@@ -3,8 +3,10 @@ import 'fake-indexeddb/auto';
 import { act, cleanup, fireEvent, render, screen, waitFor, within } from '@testing-library/react';
 import { IDBFactory } from 'fake-indexeddb';
 import { NextIntlClientProvider } from 'next-intl';
+import { StrictMode } from 'react';
 import { afterEach, beforeEach, describe, expect, test, vi } from 'vitest';
 import { BrandHome } from '@/components/brand/brand-home';
+import { resetAutoReadForTests } from '@/lib/brand/auto-read';
 import type { Profile } from '@/lib/brand/profile';
 import { loadBrand, openStore, resetStoreForTests, saveBrand } from '@/lib/brand/store';
 import { encodeLine, type StreamLine } from '@/lib/brand/stream';
@@ -18,6 +20,20 @@ import messages from '@/messages/en.json';
 import { svargaProfile } from './helpers/brand';
 import { post } from './helpers/posts';
 
+// A phone's storage can be slow to say whether a read waits to resume: the
+// real lookup, delayed by `slowResume.ms` (0 but in one test).
+const slowResume = vi.hoisted(() => ({ ms: 0 }));
+vi.mock('@/lib/brand/read-client', async (importOriginal) => {
+  const actual = await importOriginal<typeof import('@/lib/brand/read-client')>();
+  return {
+    ...actual,
+    resumeRead: async (...args: Parameters<typeof actual.resumeRead>) => {
+      if (slowResume.ms) await new Promise((resolve) => setTimeout(resolve, slowResume.ms));
+      return actual.resumeRead(...args);
+    },
+  };
+});
+
 // Already searched, so the read tests see no search request.
 const profile: Profile = { ...svargaProfile(), searchedAt: '2026-10-24T09:30:00.000Z' };
 const unsearched = svargaProfile();
@@ -26,6 +42,8 @@ const INTRO = /What we know about Svarga/;
 let fetchMock: ReturnType<typeof vi.fn>;
 
 beforeEach(() => {
+  // Each test is a new page load (docs/specs/platform/easier-to-use).
+  resetAutoReadForTests();
   globalThis.indexedDB = new IDBFactory();
   resetStoreForTests();
   fetchMock = vi.fn();
@@ -35,6 +53,7 @@ beforeEach(() => {
 afterEach(() => {
   cleanup();
   vi.unstubAllGlobals();
+  slowResume.ms = 0;
 });
 
 function ndjson(lines: StreamLine[]): Response {
@@ -58,12 +77,15 @@ function deferredFetch() {
   return (r: Response) => release(r);
 }
 
-function renderHome() {
-  render(
+// `site`: the spa's website from lib/pilot/sites.ts; `strict` runs the effects
+// twice, as React does in development.
+function renderHome({ site, strict = false }: { site?: string; strict?: boolean } = {}) {
+  const home = (
     <NextIntlClientProvider locale="en" messages={messages} timeZone="UTC">
-      <BrandHome ownerId="sen" name="Sen" imagesOn={false} />
-    </NextIntlClientProvider>,
+      <BrandHome ownerId="sen" name="Sen" imagesOn={false} site={site} />
+    </NextIntlClientProvider>
   );
+  render(strict ? <StrictMode>{home}</StrictMode> : home);
 }
 
 const withEdits = (): Profile => ({
@@ -290,6 +312,128 @@ describe('BrandHome', () => {
   });
 });
 
+// docs/specs/platform/easier-to-use, "The password opens the business".
+describe('a spa with a website', () => {
+  const SITE = 'https://svargabalimassage.com/';
+  const reads = () => fetchMock.mock.calls.filter((call) => call[0] === '/api/brand/read');
+  const bodyOf = (n: number) => reads()[n]?.[1]?.body;
+
+  test('with no business, the read starts by itself', async () => {
+    deferredFetch();
+    renderHome({ site: SITE });
+    expect(await screen.findByText('Reading your website…')).toBeTruthy();
+    expect(screen.getByRole('heading', { name: 'Welcome, Sen' })).toBeTruthy();
+    expect(screen.queryByLabelText('Your website')).toBeNull();
+    await waitFor(() => expect(reads()).toHaveLength(1));
+    expect(bodyOf(0)).toBe(JSON.stringify({ url: SITE }));
+  });
+
+  test('it starts once under StrictMode', async () => {
+    fetchMock.mockResolvedValue(ndjson([{ type: 'final', profile }]));
+    renderHome({ site: SITE, strict: true });
+    expect(await screen.findByText(INTRO)).toBeTruthy();
+    expect(reads()).toHaveLength(1);
+  });
+
+  test('a saved business: nothing starts', async () => {
+    await saveBrand('sen', profile);
+    renderHome({ site: SITE });
+    expect(await screen.findByRole('tablist')).toBeTruthy();
+    expect(fetchMock).not.toHaveBeenCalled();
+  });
+
+  test('a read to resume is resumed, not started again', async () => {
+    await saveRun(newBrandRun({ ownerId: 'sen', url: SITE, reread: false }, new Date(), 'r1'));
+    fetchMock.mockResolvedValue(ndjson([{ type: 'final', profile }]));
+    renderHome({ site: SITE });
+    expect(await screen.findByText(INTRO)).toBeTruthy();
+    expect(reads()).toHaveLength(1);
+  });
+
+  test("after Stop: the button and the website's name, no field, and nothing starts", async () => {
+    deferredFetch();
+    renderHome({ site: SITE });
+    const stop = await screen.findByRole('button', { name: 'Stop' });
+    // The run is saved before its request leaves: stop once it has.
+    await waitFor(() => expect(reads()).toHaveLength(1));
+    fireEvent.click(stop);
+    const button = await screen.findByRole('button', { name: 'Read my website' });
+    expect(screen.getByText('svargabalimassage.com')).toBeTruthy();
+    expect(screen.queryByLabelText('Your website')).toBeNull();
+    expect(reads()).toHaveLength(1);
+    fireEvent.click(button);
+    expect(await screen.findByText('Reading your website…')).toBeTruthy();
+    await waitFor(() => expect(reads()).toHaveLength(2));
+    expect(bodyOf(1)).toBe(JSON.stringify({ url: SITE }));
+  });
+
+  test('a failed read leaves the button, and nothing starts again', async () => {
+    fetchMock.mockResolvedValue(Response.json({ error: 'unreachable' }, { status: 502 }));
+    renderHome({ site: SITE });
+    expect(
+      await screen.findByText(
+        "We couldn't open your website. Check the address, or try again in a few minutes.",
+      ),
+    ).toBeTruthy();
+    expect(screen.getByRole('button', { name: 'Read my website' })).toBeTruthy();
+    expect(reads()).toHaveLength(1);
+  });
+
+  test('forget goes back to the button, and nothing starts', async () => {
+    await saveBrand('sen', profile);
+    renderHome({ site: SITE });
+    await openTab('Your business');
+    fireEvent.click(await screen.findByRole('button', { name: 'Forget this business' }));
+    fireEvent.click(await screen.findByRole('button', { name: 'Forget' }));
+    expect(await screen.findByRole('button', { name: 'Read my website' })).toBeTruthy();
+    expect(screen.queryByLabelText('Your website')).toBeNull();
+    expect(fetchMock).not.toHaveBeenCalled();
+  });
+
+  test("Read it again reads the table's website", async () => {
+    await saveBrand('sen', { ...profile, siteUrl: 'https://old.example/' });
+    fetchMock.mockResolvedValue(ndjson([{ type: 'final', profile }]));
+    renderHome({ site: SITE });
+    await openTab('Your business');
+    fireEvent.click(await screen.findByRole('button', { name: 'Read it again' }));
+    await waitFor(() => expect(reads()).toHaveLength(1));
+    expect(bodyOf(0)).toBe(JSON.stringify({ url: SITE }));
+  });
+
+  test('a remount in the same page load starts no second read', async () => {
+    deferredFetch();
+    renderHome({ site: SITE });
+    await waitFor(() => expect(reads()).toHaveLength(1));
+    cleanup();
+    // The guide and back: a client-side navigation mounts the home screen again.
+    renderHome({ site: SITE });
+    expect(await screen.findByRole('button', { name: 'Read my website' })).toBeTruthy();
+    await new Promise((resolve) => setTimeout(resolve, 50));
+    expect(reads()).toHaveLength(1);
+    expect(screen.queryByText('Reading your website…')).toBeNull();
+  });
+
+  // A button shown before the read starts would let a tap start a second one.
+  test('no button shows before the read starts', async () => {
+    deferredFetch();
+    slowResume.ms = 30;
+    let sawButton = false;
+    renderHome({ site: SITE });
+    await waitFor(() => {
+      if (screen.queryByRole('button', { name: 'Read my website' })) sawButton = true;
+      expect(screen.queryByText('Reading your website…')).not.toBeNull();
+    });
+    expect(sawButton).toBe(false);
+    await waitFor(() => expect(reads()).toHaveLength(1));
+  });
+
+  test('without a website, the field stays and nothing starts', async () => {
+    renderHome();
+    expect(await screen.findByLabelText('Your website')).toBeTruthy();
+    expect(fetchMock).not.toHaveBeenCalled();
+  });
+});
+
 const tab = (name: string) => screen.getByRole('tab', { name });
 const selected = (name: string) => tab(name).getAttribute('aria-selected');
 // A section of the panel, closed on the home screen until tapped.
@@ -480,22 +624,23 @@ describe('the home tabs', () => {
     expect(screen.getByText(INTRO)).toBeTruthy();
   });
 
-  test('the third tab, Reviews, holds the review form', async () => {
+  // Questions before Reviews (docs/specs/platform/easier-to-use).
+  test('the fourth tab, Reviews, holds the review form', async () => {
     await saveBrand('sen', profile);
     renderHome();
     await screen.findByRole('tablist', { name: 'Home' });
     expect(screen.getAllByRole('tab').map((tab) => tab.textContent)).toEqual([
       'Your business',
       'Create Posts',
-      'Reviews',
       'Questions',
+      'Reviews',
     ]);
     await openTab('Reviews');
     expect(await screen.findByRole('button', { name: 'Write 2 replies' })).toBeTruthy();
   });
 
   // docs/specs/questions/answer-drafts, "The tabs".
-  test('the fourth tab, Questions, holds the question form', async () => {
+  test('the third tab, Questions, holds the question form', async () => {
     await saveBrand('sen', profile);
     renderHome();
     await screen.findByRole('tablist', { name: 'Home' });

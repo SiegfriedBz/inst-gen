@@ -2,6 +2,7 @@ import { describe, expect, it } from 'vitest';
 import type { Flag, ModelPost } from '@/lib/posts/batch';
 import {
   carries,
+  checkNewTexts,
   checkPlan,
   checkPost,
   checkRewrite,
@@ -641,6 +642,84 @@ describe('checkRewrite', () => {
   });
 });
 
+// docs/specs/platform/easier-to-use, "New texts for a suggestion".
+describe('checkNewTexts', () => {
+  const original = post({
+    id: 'a',
+    caption: 'Old words.',
+    storyText: 'Old story.',
+    hashtags: ['canggu', 'balimassage'],
+    altText: 'Hands on a deck',
+  });
+  const answer = (caption: string, storyText = 'New story.') => ({
+    posts: [{ id: 'a', caption, hashtags: ['other'], altText: 'Other alt', storyText }],
+  });
+
+  it('replaces the caption and the story text, and keeps hashtags and alt text', () => {
+    const { posts } = checkNewTexts(answer('New words.'), original, undefined, svargaProfile());
+    expect(posts).toHaveLength(1);
+    expect(posts[0]).toMatchObject({
+      id: 'a',
+      caption: 'New words 🌸',
+      storyText: 'New story 🌸',
+      hashtags: ['canggu', 'balimassage'],
+      altText: 'Hands on a deck',
+    });
+  });
+
+  it('removes a price', () => {
+    const { posts } = checkNewTexts(
+      answer('Sore legs? Only 350k for 60 minutes. We come to you.'),
+      original,
+      undefined,
+      svargaProfile(),
+    );
+    expect(posts[0].caption).not.toContain('350k');
+  });
+
+  it('records a first sentence shared with the other post', () => {
+    const other = post({ id: 'b', caption: 'Sore legs after the hike? We come to you.' });
+    const { posts, dropped } = checkNewTexts(
+      answer('Sore legs after the hike? Warm hands.'),
+      original,
+      other,
+      svargaProfile(),
+    );
+    expect(posts.map((p) => p.id)).toEqual(['a']);
+    expect(dropped).toContainEqual(
+      expect.objectContaining({
+        field: 'mix',
+        reason: expect.stringMatching(/^first sentence ".+" in a, b$/),
+      }),
+    );
+  });
+
+  // Sen's first real answer was its post word for word (2026-11-13).
+  it('refuses an answer that repeats the question, or the whole caption', () => {
+    const asked = post({ ...original, caption: 'Sore legs after the hike? We come to you.' });
+    expect(() =>
+      checkNewTexts(
+        answer('Sore legs after the hike? Warm hands at your villa.'),
+        asked,
+        undefined,
+        svargaProfile(),
+      ),
+    ).toThrow('no new texts');
+    expect(() => checkNewTexts(answer(asked.caption), asked, undefined, svargaProfile())).toThrow(
+      'no new texts',
+    );
+  });
+
+  it('throws when the answer has no caption', () => {
+    expect(() => checkNewTexts({ posts: [] }, original, undefined, svargaProfile())).toThrow(
+      'no new texts',
+    );
+    expect(() => checkNewTexts(answer('  '), original, undefined, svargaProfile())).toThrow(
+      'no new texts',
+    );
+  });
+});
+
 describe('the special offer', () => {
   const offer: Offer = {
     kind: 'discount',
@@ -903,6 +982,26 @@ describe('the special offer', () => {
     expect(posts[0].caption).toBe(shown);
     expect(posts[0].storyText).toBe(`${SHOWN} 🌸`);
     expect(offerRecords(dropped)).toEqual([]);
+  });
+
+  // docs/specs/platform/easier-to-use: an offer post keeps its story text.
+  it('checkNewTexts opens an offer post on its line, and its story text is that line', () => {
+    const original = post({ id: 'post-1', offer: true, setup: thaiSetup, caption: LINE });
+    const answer = {
+      posts: [
+        {
+          id: 'post-1',
+          caption: `Sore back after the flight? ${LINE} We work your back.`,
+          hashtags: ['x'],
+          altText: 'x',
+          storyText: 'Something else.',
+        },
+      ],
+    };
+    const { posts } = checkNewTexts(answer, original, undefined, profile(), offer);
+    expect(paragraphsOf(posts[0].caption)[0]?.startsWith(SHOWN)).toBe(true);
+    expect(posts[0].storyText).toBe(`${SHOWN} 🌸`);
+    expect(posts[0].offer).toBe(true);
   });
 
   it('checkRewrite puts the line first on an old post without a set-up', () => {

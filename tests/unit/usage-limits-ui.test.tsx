@@ -7,10 +7,13 @@ import type { ReactNode } from 'react';
 import { afterAll, afterEach, beforeEach, describe, expect, test, vi } from 'vitest';
 import { BrandHome } from '@/components/brand/brand-home';
 import { CaptionTranslation } from '@/components/posts/caption-translation';
+import { PostCard } from '@/components/posts/post-card';
 import { PostsSection } from '@/components/posts/posts-section';
 import { QuestionsSection } from '@/components/questions/questions-section';
 import { ReviewsSection } from '@/components/reviews/reviews-section';
+import { UsageMessage } from '@/components/usage/usage-message';
 import { UsageProvider } from '@/components/usage/usage-provider';
+import { resetAutoReadForTests } from '@/lib/brand/auto-read';
 import { resetStoreForTests, saveBrand } from '@/lib/brand/store';
 import type { Post, PostBatch } from '@/lib/posts/batch';
 import { startImages } from '@/lib/posts/image-client';
@@ -36,12 +39,12 @@ afterAll(() => {
   else process.env.TZ = zone;
 });
 
-const allLeft = { reads: 3, attempts: 3, newImages: 10, replies: 20, answers: 20 };
+const allLeft = { reads: 3, attempts: 3, newImages: 10, replies: 20, answers: 20, newTexts: 10 };
 const full: UsageAnswer = {
   resetsAt: '2026-10-26T07:00:00.000Z',
   limited: true,
   left: allLeft,
-  limits: { reads: 3, attempts: 3, newImages: 10, replies: 20, answers: 20 },
+  limits: { reads: 3, attempts: 3, newImages: 10, replies: 20, answers: 20, newTexts: 10 },
   poolEmpty: false,
   images: { on: true, monthFull: false, backAt: '2026-11-01T00:00:00.000Z' },
 };
@@ -53,6 +56,8 @@ const usageReads = () => fetchMock.mock.calls.filter((c) => c[0] === '/api/usage
 const sent = (path: string) => fetchMock.mock.calls.filter((c) => c[0] === path);
 
 beforeEach(() => {
+  // Each test is a new page load (docs/specs/platform/easier-to-use).
+  resetAutoReadForTests();
   vi.useFakeTimers({ toFake: ['Date'] });
   vi.setSystemTime(new Date('2026-10-25T12:00:00.000Z'));
   globalThis.indexedDB = new IDBFactory();
@@ -133,6 +138,24 @@ const makeButton = async () =>
   (await screen.findByRole('button', { name: /Make 2 (new )?suggestions/ })) as HTMLButtonElement;
 
 describe('Create Posts', () => {
+  // docs/specs/platform/easier-to-use, "The limit".
+  test('no new text left: "Write new texts" is off and says when', async () => {
+    usage = left({ newTexts: 0 });
+    shown(<PostCard post={post()} cta="x" onSave={() => {}} onNewTexts={() => {}} />);
+    const link = (await screen.findByRole('button', {
+      name: 'Write new texts',
+    })) as HTMLButtonElement;
+    await waitFor(() => expect(link.disabled).toBe(true));
+    expect(screen.getByText("You've written today's 10 new texts. More at 14:00.")).toBeTruthy();
+  });
+
+  test('the line at the new-texts limit', async () => {
+    shown(<UsageMessage code="limit_reached" action="newTexts" />);
+    expect(
+      await screen.findByText("You've written today's 10 new texts. More at 14:00."),
+    ).toBeTruthy();
+  });
+
   test('no attempt left: the button is off and says when', async () => {
     usage = left({ attempts: 0 });
     await posts();
@@ -320,5 +343,28 @@ describe('Your business', () => {
     expect(
       screen.getByText("You've read your website 3 times today. Again at 14:00.", { exact: true }),
     ).toBeTruthy();
+  });
+
+  // docs/specs/platform/easier-to-use: the read that starts by itself.
+  test('no read left on a new phone: one refused read, its line, the button off', async () => {
+    usage = left({ reads: 0 });
+    other = async (url) =>
+      url === '/api/brand/read' ? refused('limit_reached') : new Promise<Response>(() => {});
+    shown(
+      <BrandHome
+        ownerId="svarga"
+        name="Svarga"
+        imagesOn={false}
+        site="https://svargabalimassage.com/"
+      />,
+    );
+    expect(
+      await screen.findByText("You've read your website 3 times today. Again at 14:00.", {
+        exact: true,
+      }),
+    ).toBeTruthy();
+    const button = screen.getByRole('button', { name: 'Read my website' }) as HTMLButtonElement;
+    await waitFor(() => expect(button.disabled).toBe(true));
+    expect(sent('/api/brand/read')).toHaveLength(1);
   });
 });

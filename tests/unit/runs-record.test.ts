@@ -90,6 +90,24 @@ describe('a posts run', () => {
   });
 });
 
+// docs/specs/platform/easier-to-use, "New texts for a suggestion".
+describe('a new-texts run', () => {
+  test('starts with its texts step running, and a lost one is requested again', () => {
+    const texts = newPostsRun(
+      { ownerId: 'sen', step: 'texts', batchId: 'b1', postIds: ['post-1'] },
+      new Date('2026-10-25T10:00:00Z'),
+      'r4',
+    );
+    expect(texts).toMatchObject({
+      kind: 'posts',
+      batchId: 'b1',
+      postIds: ['post-1'],
+      steps: [{ name: 'texts', status: 'running' }],
+    });
+    expect(stepsToRequest(resumeRun(texts, () => false))).toEqual(['texts']);
+  });
+});
+
 describe('an images run', () => {
   const images = newImagesRun(
     { ownerId: 'sen', batchId: 'b1', postIds: ['post-1', 'post-2'] },

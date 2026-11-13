@@ -2,6 +2,7 @@ import { type BrowserContext, expect, type Page, test } from '@playwright/test';
 import en from '@/messages/en.json' with { type: 'json' };
 import id from '@/messages/id.json' with { type: 'json' };
 import vi from '@/messages/vi.json' with { type: 'json' };
+import { holdRead } from './helpers/brand-stream';
 import { pickLanguage } from './helpers/language';
 
 // The owner guide (docs/specs/guide/owner-guide), at the phone viewport.
@@ -22,6 +23,11 @@ const saveLocale = (context: BrowserContext, value: string) =>
   context.addCookies([{ name: 'shopfront_locale', value, url: BASE }]);
 
 test.use({ locale: 'en-US' });
+
+// Sen's sign-in reads the website by itself: held, never answered.
+test.beforeEach(async ({ page }) => {
+  await holdRead(page);
+});
 
 test('opens from the home screen', async ({ page }) => {
   await signIn(page);

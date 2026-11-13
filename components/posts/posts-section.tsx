@@ -10,7 +10,13 @@ import type { Profile } from '@/lib/brand/profile';
 import { defaultReadDeps, type RunningRead } from '@/lib/brand/read-client';
 import { holdWakeLock } from '@/lib/brand/wake-lock';
 import type { Post, PostBatch, PostsErrorCode } from '@/lib/posts/batch';
-import { type PostsEvent, resumePosts, startPlan, startRewrite } from '@/lib/posts/client';
+import {
+  type PostsEvent,
+  resumePosts,
+  startNewTexts,
+  startPlan,
+  startRewrite,
+} from '@/lib/posts/client';
 import { attemptNumbers, dayStart } from '@/lib/posts/day';
 import {
   applyEdit,
@@ -51,7 +57,13 @@ import { CopyPost, CopyStory, SaveImages } from './take-away';
 // While its tab shows, the newest batch's captions follow the business
 // details by themselves (docs/specs/platform/home-tabs).
 
-type Running = { step: 'plan' | 'rewrite'; batchId?: string; posts: Post[] };
+// New texts name their post (docs/specs/platform/easier-to-use).
+type Running = {
+  step: 'plan' | 'rewrite' | 'texts';
+  batchId?: string;
+  postId?: string;
+  posts: Post[];
+};
 
 type ImageFailure = Extract<ImageState, { kind: 'failed' }>['code'];
 
@@ -83,6 +95,10 @@ export function PostsSection({
   const [error, setError] = useState<PostsErrorCode | UsageCode | 'offline' | null>(null);
   // Which step the error line is about: a plan's limit and a rewrite's differ.
   const [errorStep, setErrorStep] = useState<Running['step']>('plan');
+  // New texts' errors show in their suggestion's sheet, found by its batch
+  // and post, since post ids repeat across attempts
+  // (docs/specs/platform/easier-to-use).
+  const [errorTarget, setErrorTarget] = useState<string | null>(null);
   const attemptLimit = useAtLimit('attempts');
   // The image month is full: no image is asked for until it comes back.
   const monthFull = useAtLimit('newImages') === 'images_month';
@@ -102,6 +118,7 @@ export function PostsSection({
   const profileRef = useRef(profile);
   profileRef.current = profile;
   const stepRef = useRef<Running['step'] | null>(null);
+  const targetRef = useRef<string | null>(null);
   const batchesRef = useRef<PostBatch[]>([]);
   batchesRef.current = batches;
   const [images, setImages] = useState<Map<string, SavedImage>>(new Map());
@@ -250,6 +267,7 @@ export function PostsSection({
         }
       } else if (event.type === 'error') {
         setErrorStep(stepRef.current ?? 'plan');
+        setErrorTarget(targetRef.current);
         end();
         setError(event.code);
       } else if (event.type === 'offline') {
@@ -260,8 +278,13 @@ export function PostsSection({
         lock.current = null;
         request.current = null;
         setRunning(null);
-        if (navigator.onLine) void lost?.done.then(() => resumeRef.current());
-        else setError('offline');
+        if (navigator.onLine) {
+          void lost?.done.then(() => resumeRef.current());
+        } else {
+          setErrorStep(stepRef.current ?? 'plan');
+          setErrorTarget(targetRef.current);
+          setError('offline');
+        }
       } else {
         window.location.assign('/enter');
       }
@@ -272,6 +295,8 @@ export function PostsSection({
   const begin = useCallback((run: RunningRead, state: Running) => {
     request.current = run;
     stepRef.current = state.step;
+    targetRef.current =
+      state.batchId && state.postId ? imageKey(state.batchId, state.postId) : null;
     lock.current ??= holdWakeLock();
     setError(null);
     setRunning(state);
@@ -284,7 +309,7 @@ export function PostsSection({
       if (!run) return;
       // The section closed (a Forget, a re-read) while the run was looked up.
       if (!mounted.current) run.stop();
-      else begin(run, { step: run.step, posts: [] });
+      else begin(run, { step: run.step, batchId: run.batchId, postId: run.postId, posts: [] });
     } finally {
       if (mounted.current) setResuming(false);
     }
@@ -410,6 +435,16 @@ export function PostsSection({
     [ownerId, profile, onEvent, begin],
   );
 
+  // New words for one suggestion, its images kept
+  // (docs/specs/platform/easier-to-use).
+  const writeTexts = useCallback(
+    (batch: PostBatch, postId: string) => {
+      const run = startNewTexts({ ownerId, profile, batch, postId }, onEvent);
+      begin(run, { step: 'texts', batchId: batch.id, postId, posts: [] });
+    },
+    [ownerId, profile, onEvent, begin],
+  );
+
   // The owner's words, kept on the phone only (docs/specs/posts/editor-download).
   function saveEdit(batchId: string, postId: string, edit: PostEdit) {
     const current = batchesRef.current.find((b) => b.id === batchId);
@@ -509,6 +544,12 @@ export function PostsSection({
   // The opened suggestion left the screen: the sheet closes with it.
   const openBatch = open ? shown.find((b) => b.id === open.batchId) : undefined;
   const openPost = open ? openBatch?.posts.find((p) => p.id === open.postId) : undefined;
+  // New texts being written for the open suggestion: its link spins, and its
+  // text buttons wait (docs/specs/platform/easier-to-use).
+  const writingOpen =
+    running?.step === 'texts' &&
+    running.batchId === openBatch?.id &&
+    running.postId === openPost?.id;
   useEffect(() => {
     if (open && !openPost) closeSuggestion();
   }, [open, openPost, closeSuggestion]);
@@ -616,14 +657,9 @@ export function PostsSection({
         {planning && <CircleNotch aria-hidden className="animate-spin" size={18} />}
         {shown.length > 0 ? t('makeMore') : t('make')}
       </Button>
-      {shown.length > 0 && (
-        <p className="text-[13px] text-ink-secondary">
-          {t('moreBelow', { n: numbers.get(shown[0].id) ?? shown.length })}
-        </p>
-      )}
       {!cta && <p className="text-[13px] text-error">{brand('panel.warnWhatsapp')}</p>}
       {(busy || updating) && <p className="text-[13px] text-ink-secondary">{t('keepOpen')}</p>}
-      {error && (
+      {error && errorStep !== 'texts' && (
         <p
           role="alert"
           className="rounded-control border border-error px-4 py-3 text-[15px] text-error"
@@ -779,6 +815,7 @@ export function PostsSection({
             }
             copyPost={
               <CopyPost
+                disabled={writingOpen}
                 post={openPost}
                 cta={postCta(profile, openPost, openBatch.offer) ?? openPost.cta}
                 imagesOn={pictured(openPost, openBatch)}
@@ -788,6 +825,7 @@ export function PostsSection({
             copyStory={
               openPost.storyText && (
                 <CopyStory
+                  disabled={writingOpen}
                   storyText={openPost.storyText}
                   imagesOn={pictured(openPost, openBatch)}
                 />
@@ -797,6 +835,19 @@ export function PostsSection({
               openBatch === newest && openPost.edited && isPostStale(openPost, openBatch, profile)
                 ? () => update(openBatch, [openPost.id])
                 : undefined
+            }
+            onNewTexts={() => writeTexts(openBatch, openPost.id)}
+            writingTexts={writingOpen}
+            textsError={
+              error &&
+              errorStep === 'texts' &&
+              errorTarget === imageKey(openBatch.id, openPost.id) ? (
+                isUsageCode(error) ? (
+                  <UsageMessage code={error} action="newTexts" />
+                ) : (
+                  t(`errors.${error}`)
+                )
+              ) : undefined
             }
             busy={held}
             editBusy={running !== null || resuming || waiting}

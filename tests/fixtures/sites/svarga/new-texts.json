@@ -1,0 +1,87 @@
+{
+  "modelId": "gemini-3.5-flash-lite",
+  "promptVersion": "posts-18",
+  "recording": {
+    "modelId": "gemini-3.5-flash-lite",
+    "promptVersion": "posts-18",
+    "partials": [
+      {
+        "posts": []
+      },
+      {
+        "posts": [
+          {
+            "id": "post-1",
+            "caption": "Are your legs tight after walking through Canggu today"
+          }
+        ]
+      },
+      {
+        "posts": [
+          {
+            "id": "post-1",
+            "caption": "Are your legs tight after walking through Canggu today? 🌸\n\nWe use long strokes and warm oil to loosen tired muscles for your afternoon. Experienced local therapists with"
+          }
+        ]
+      },
+      {
+        "posts": [
+          {
+            "id": "post-1",
+            "caption": "Are your legs tight after walking through Canggu today? 🌸\n\nWe use long strokes and warm oil to loosen tired muscles for your afternoon. Experienced local therapists with 5+ years of spa and villa experience come directly to your room 🌺",
+            "hashtags": [
+              "cang"
+            ]
+          }
+        ]
+      },
+      {
+        "posts": [
+          {
+            "id": "post-1",
+            "caption": "Are your legs tight after walking through Canggu today? 🌸\n\nWe use long strokes and warm oil to loosen tired muscles for your afternoon. Experienced local therapists with 5+ years of spa and villa experience come directly to your room 🌺",
+            "hashtags": [
+              "canggu",
+              "balinesemassage",
+              "massagecanggu",
+              "spa"
+            ],
+            "altText": "Close view of a therapist pouring warm oil on a woman's legs on a massage bed in daylight"
+          }
+        ]
+      },
+      {
+        "posts": [
+          {
+            "id": "post-1",
+            "caption": "Are your legs tight after walking through Canggu today? 🌸\n\nWe use long strokes and warm oil to loosen tired muscles for your afternoon. Experienced local therapists with 5+ years of spa and villa experience come directly to your room 🌺",
+            "hashtags": [
+              "canggu",
+              "balinesemassage",
+              "massagecanggu",
+              "spa"
+            ],
+            "altText": "Close view of a therapist pouring warm oil on a woman's legs on a massage bed in daylight.",
+            "storyText": "Tired legs? We bring our massage to your room 🌸"
+          }
+        ]
+      }
+    ],
+    "final": {
+      "posts": [
+        {
+          "id": "post-1",
+          "caption": "Are your legs tight after walking through Canggu today? 🌸\n\nWe use long strokes and warm oil to loosen tired muscles for your afternoon. Experienced local therapists with 5+ years of spa and villa experience come directly to your room 🌺",
+          "hashtags": [
+            "canggu",
+            "balinesemassage",
+            "massagecanggu",
+            "spa"
+          ],
+          "altText": "Close view of a therapist pouring warm oil on a woman's legs on a massage bed in daylight.",
+          "storyText": "Tired legs? We bring our massage to your room 🌸"
+        }
+      ]
+    }
+  }
+}

@@ -46,6 +46,8 @@ the owners ask.
 
 ## Behaviour
 
+> Changed by `platform/easier-to-use` (2026-11-13): "Write new texts", next to "Edit the text", gives a suggestion new words for its post text and story text, its images kept, 10 a day. A caption update's answer now lands only its words on the post as stored, so a copied post loses its copied mark.
+
 ### Where things are
 
 The "Your posts" section (2.2) stays one list, newest batch first, with no

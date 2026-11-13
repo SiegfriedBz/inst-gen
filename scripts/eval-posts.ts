@@ -18,7 +18,13 @@
 // with no request (docs/specs/posts/marketing-copy); --record with it is an
 // error.
 //
-// Usage: pnpm eval:posts [slug…] [--record | --replay] [--offer] [--model=<id>]
+// With --new-texts, the plan recorded for each fixture (posts.json) is
+// replayed to its two checked posts, and the first gets new texts from the
+// real Gemini, the second as the other post: 1 Flash-Lite request per fixture
+// (docs/specs/platform/easier-to-use). --record saves the call as
+// new-texts.json; --replay prints it through today's checks, with no request.
+//
+// Usage: pnpm eval:posts [slug…] [--record | --replay] [--offer | --new-texts] [--model=<id>]
 import { existsSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { type Recording, recordingTextModel, replayTextModel } from '@/lib/ai/replay';
@@ -33,7 +39,7 @@ import {
 import type { PlanResult } from '@/lib/posts/batch';
 import { paragraphsOf } from '@/lib/posts/paragraphs';
 import { POSTS_PROMPT_VERSION } from '@/lib/posts/prompt';
-import { streamPlan } from '@/lib/posts/run';
+import { streamNewTexts, streamPlan } from '@/lib/posts/run';
 import { seededRandom, setupLine } from '@/lib/posts/setup';
 import { sentenceWords } from '@/lib/posts/variety';
 
@@ -44,8 +50,13 @@ const args = process.argv.slice(2);
 const record = args.includes('--record');
 const withOffer = args.includes('--offer');
 const replay = args.includes('--replay');
+const newTexts = args.includes('--new-texts');
 if (replay && record) {
   console.error('--replay makes no request: there is nothing to record.');
+  process.exit(1);
+}
+if (newTexts && withOffer) {
+  console.error('--new-texts starts from posts.json, a plan without the offer.');
   process.exit(1);
 }
 // A replay never reads a site: the brand read's recording is empty.
@@ -90,11 +101,90 @@ function print(result: PlanResult): void {
   for (const d of result.dropped) console.log(`  dropped ${d.field}: ${d.reason}`);
 }
 
+// The recorded plan's posts, as an attempt keeps them, with no request.
+async function replayedPlan(
+  dir: string,
+  slug: string,
+  profile: Awaited<ReturnType<typeof fixtureProfile>>,
+): Promise<PlanResult> {
+  const recorded = loadFixture(dir).posts;
+  if (!recorded) throw new Error('no posts.json to start from');
+  let result: PlanResult | null = null;
+  for await (const line of streamPlan(
+    { profile, recent: [] },
+    {
+      model: replayTextModel(NO_BRAND_READ, { posts: recorded.recording }),
+      modelId: recorded.modelId,
+      random: seededRandom(slug),
+    },
+    new AbortController().signal,
+  )) {
+    if (line.type === 'final') result = line.result;
+  }
+  if (!result || result.posts.length < 2)
+    throw new Error('posts.json replays to fewer than 2 posts');
+  return result;
+}
+
+// New texts for the recorded plan's first post, the second as the other.
+async function writeNewTexts(slug: string, dir: string): Promise<void> {
+  const started = Date.now();
+  const profile = await fixtureProfile(dir);
+  const plan = await replayedPlan(dir, slug, profile);
+  const [post, other] = plan.posts;
+  const replayed = replay ? loadFixture(dir).newTexts : null;
+  if (replay && !replayed) throw new Error('no new-texts.json to replay');
+  let recording: Recording | null = null;
+  const model = replayed
+    ? replayTextModel(NO_BRAND_READ, { posts: replayed.recording })
+    : recordingTextModel(
+        geminiTextModel({ postsModelId: modelId }),
+        { modelId, promptVersion: POSTS_PROMPT_VERSION },
+        () => {},
+        () => {},
+        (r) => {
+          recording = r;
+        },
+      );
+  let result: PlanResult | null = null;
+  let failed = '';
+  let cause = '';
+  for await (const line of streamNewTexts(
+    { profile, post, other },
+    {
+      model,
+      modelId: replayed?.modelId ?? modelId,
+      log: (entry) => {
+        cause = entry.error ?? '';
+      },
+    },
+    new AbortController().signal,
+  )) {
+    if (line.type === 'error') failed = line.code;
+    if (line.type === 'final') result = line.result;
+  }
+  if (failed) throw new Error(cause ? `${failed}: ${cause}` : failed);
+  if (!result) throw new Error('no final line');
+  console.log(`\n${slug} · new texts · before`);
+  print({ ...plan, posts: [post], dropped: [] });
+  console.log(`\n${slug} · new texts · after, ${Date.now() - started} ms`);
+  print(result);
+  if (record && recording) {
+    const saved: PostsFixture = { modelId, promptVersion: POSTS_PROMPT_VERSION, recording };
+    writeFileSync(join(dir, 'new-texts.json'), `${JSON.stringify(saved, null, 2)}\n`);
+  }
+}
+
 let made = 0;
 for (const slug of slugs) {
   const dir = join(FIXTURES_DIR, slug);
   const started = Date.now();
   try {
+    if (newTexts) {
+      await writeNewTexts(slug, dir);
+      made++;
+      continue;
+    }
     const profile = await fixtureProfile(dir);
     const fixture = replay ? loadFixture(dir) : null;
     const replayed = withOffer ? fixture?.postsOffer : fixture?.posts;

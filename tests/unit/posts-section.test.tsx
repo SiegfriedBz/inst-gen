@@ -573,7 +573,9 @@ describe("today's attempts", () => {
     await saveBatch(batch(sixPosts));
     await renderSection();
     expect(await screen.findByRole('button', { name: 'Make 2 new suggestions' })).toBeTruthy();
-    expect(await screen.findByText('They go on top. Attempt 1 stays below.')).toBeTruthy();
+    // No "They go on top" line (docs/specs/platform/easier-to-use).
+    expect(await screen.findByRole('heading', { name: 'Attempt 1' })).toBeTruthy();
+    expect(screen.queryByText(/They go on top|stays below/)).toBeNull();
     expect(screen.queryByText(/Each suggestion is/)).toBeNull();
   });
 
@@ -1062,5 +1064,136 @@ describe('the story text', () => {
     ).not.toMatch(/Check the text/);
     const sheet = await openTile(1);
     expect(within(sheet).queryByRole('region', { name: 'Story text (optional)' })).toBeNull();
+  });
+});
+
+// docs/specs/platform/easier-to-use, "New texts for a suggestion".
+describe('new texts for a suggestion', () => {
+  const COPIED = '2026-10-25T10:00:00.000Z';
+  const two = [
+    post({ id: 'post-1', caption: 'Caption 1.', storyText: 'Old story.', copiedAt: COPIED }),
+    post({ id: 'post-2', caption: 'Caption 2.' }),
+  ];
+  const newWords = () =>
+    ndjson([
+      {
+        type: 'final',
+        result: {
+          posts: [{ ...two[0], caption: 'New words.', storyText: 'New story.' }],
+          dropped: [],
+          promptVersion: 'posts-1',
+          model: 'm',
+          profileHash: profileHash(svargaProfile()),
+        },
+      },
+    ]);
+  const texts = () => fetchMock.mock.calls.filter((call) => call[0] === '/api/posts/texts');
+  const answerTexts = (answer: () => Promise<Response>) =>
+    fetchMock.mockImplementation((url: string) =>
+      url === '/api/posts/texts' ? answer() : Promise.resolve(new Response(null, { status: 404 })),
+    );
+
+  test('Write new texts replaces both texts in the open sheet, and takes the tick off', async () => {
+    await saveBatch(batch(two));
+    answerTexts(async () => newWords());
+    await renderSection();
+    await screen.findByRole('button', { name: 'Suggestion 1 of 2, Caption 1., Copied' });
+    const sheet = await openTile(1, 2);
+    fireEvent.click(within(sheet).getByRole('button', { name: 'Write new texts' }));
+    expect(await within(sheet).findByText('New words.')).toBeTruthy();
+    expect(within(sheet).getByText('New story.')).toBeTruthy();
+    expect(texts()).toHaveLength(1);
+    expect(screen.queryAllByRole('button', { name: /Copied$/, hidden: true })).toHaveLength(0);
+    const [saved] = await loadBatches('svarga');
+    expect(saved.posts[0].copiedAt).toBeUndefined();
+  });
+
+  test('a failure shows under the link, not under the button', async () => {
+    await saveBatch(batch(two));
+    answerTexts(async () => Response.json({ error: 'model_busy' }, { status: 503 }));
+    await renderSection();
+    const sheet = await openTile(1, 2);
+    fireEvent.click(within(sheet).getByRole('button', { name: 'Write new texts' }));
+    const message = "Shopfront has used today's free writing. Try again tomorrow.";
+    expect(await within(sheet).findByText(message)).toBeTruthy();
+    expect(screen.getAllByText(message)).toHaveLength(1);
+    expect(within(sheet).getByText('Caption 1.')).toBeTruthy();
+  });
+
+  // Post ids repeat across attempts (lib/posts/image-store.ts).
+  const second = {
+    ...batch([
+      post({ id: 'post-1', caption: 'Second 1.' }),
+      post({ id: 'post-2', caption: 'Second 2.' }),
+    ]),
+    id: 'b2',
+    createdAt: '2026-10-25T10:00:00.000Z',
+  };
+  async function openNamed(name: RegExp): Promise<HTMLElement> {
+    fireEvent.click(await screen.findByRole('button', { name }));
+    return screen.findByRole('dialog');
+  }
+  async function closeSheet(sheet: HTMLElement) {
+    fireEvent.click(within(sheet).getByRole('button', { name: 'Close' }));
+    await waitFor(() => expect(screen.queryByRole('dialog')).toBeNull());
+  }
+
+  test("new texts show in their own attempt's sheet, and the copy buttons wait", async () => {
+    await saveBatch(batch(two));
+    await saveBatch(second);
+    let reply: (r: Response) => void = () => {};
+    answerTexts(() => new Promise<Response>((resolve) => (reply = resolve)));
+    await renderSection();
+    let sheet = await openNamed(/^Suggestion 1 of 2, Second 1\./);
+    fireEvent.click(within(sheet).getByRole('button', { name: 'Write new texts' }));
+    await waitFor(() => expect(texts()).toHaveLength(1));
+    expect(within(sheet).getByRole('button', { name: 'Writing new texts…' })).toBeTruthy();
+    const copy = within(sheet).getByRole('button', { name: 'Copy post text' }) as HTMLButtonElement;
+    expect(copy.disabled).toBe(true);
+    await closeSheet(sheet);
+    sheet = await openNamed(/^Suggestion 1 of 2, Caption 1\./);
+    expect(within(sheet).queryByRole('button', { name: 'Writing new texts…' })).toBeNull();
+    await closeSheet(sheet);
+    reply(newWords());
+    sheet = await openNamed(/^Suggestion 1 of 2, New words\./);
+    await waitFor(() =>
+      expect(
+        (within(sheet).getByRole('button', { name: 'Copy post text' }) as HTMLButtonElement)
+          .disabled,
+      ).toBe(false),
+    );
+  });
+
+  test("a failure shows in its own attempt's sheet, also when opened again", async () => {
+    await saveBatch(batch(two));
+    await saveBatch(second);
+    answerTexts(async () => Response.json({ error: 'model_busy' }, { status: 503 }));
+    await renderSection();
+    const message = "Shopfront has used today's free writing. Try again tomorrow.";
+    let sheet = await openNamed(/^Suggestion 1 of 2, Second 1\./);
+    fireEvent.click(within(sheet).getByRole('button', { name: 'Write new texts' }));
+    expect(await within(sheet).findByText(message)).toBeTruthy();
+    await closeSheet(sheet);
+    sheet = await openNamed(/^Suggestion 1 of 2, Caption 1\./);
+    expect(within(sheet).queryByText(message)).toBeNull();
+    await closeSheet(sheet);
+    sheet = await openNamed(/^Suggestion 1 of 2, Second 1\./);
+    expect(within(sheet).getByText(message)).toBeTruthy();
+  });
+
+  test('closed before the answer, the new words land on the tile', async () => {
+    await saveBatch(batch(two));
+    let reply: (r: Response) => void = () => {};
+    answerTexts(() => new Promise<Response>((resolve) => (reply = resolve)));
+    await renderSection();
+    const sheet = await openTile(1, 2);
+    fireEvent.click(within(sheet).getByRole('button', { name: 'Write new texts' }));
+    await waitFor(() => expect(texts()).toHaveLength(1));
+    fireEvent.click(within(sheet).getByRole('button', { name: 'Close' }));
+    await waitFor(() => expect(screen.queryByRole('dialog')).toBeNull());
+    reply(newWords());
+    expect(
+      await screen.findByRole('button', { name: /^Suggestion 1 of 2, New words\./ }),
+    ).toBeTruthy();
   });
 });

@@ -27,6 +27,7 @@ import { Tabs, TabsContent } from '@/components/ui/tabs';
 import { UsageBar } from '@/components/usage/usage-bar';
 import { UsageMessage } from '@/components/usage/usage-message';
 import { useAtLimit } from '@/components/usage/usage-provider';
+import { takeAutoRead } from '@/lib/brand/auto-read';
 import { lastReadLabel } from '@/lib/brand/display';
 import { changedUnsourced, countOwnerEdits, type SectionId } from '@/lib/brand/edit';
 import { type FieldKey, missingFields } from '@/lib/brand/missing';
@@ -55,9 +56,12 @@ import { SectionSheet } from './section-sheet';
 // The home screen (docs/specs/brand/brand-panel, "The home screen"): no
 // business yet, reading, or the panel. Everything is kept on the phone. With
 // the panel come four tabs, "Your business", "Create Posts"
-// (docs/specs/platform/home-tabs), "Reviews" (docs/specs/reviews/reply-drafts)
-// and "Questions" (docs/specs/questions/answer-drafts): the app opens on the
-// posts, and a read of any kind comes back to the business.
+// (docs/specs/platform/home-tabs), "Questions"
+// (docs/specs/questions/answer-drafts) and "Reviews"
+// (docs/specs/reviews/reply-drafts): the app opens on the
+// posts, and a read of any kind comes back to the business. A spa whose
+// website is known reads it by itself on a phone with no business yet, and
+// never types it (docs/specs/platform/easier-to-use).
 
 type View =
   | { kind: 'loading' }
@@ -71,10 +75,13 @@ export function BrandHome({
   ownerId,
   name,
   imagesOn,
+  site,
 }: {
   ownerId: string;
   name: string;
   imagesOn: boolean;
+  // The spa's website (lib/pilot/sites.ts); without one, the owner types it.
+  site?: string;
 }) {
   const t = useTranslations('brand');
   // Read by the load callbacks, so a language change doesn't run the load
@@ -249,9 +256,11 @@ export function BrandHome({
     setAnnounce(tRef.current('home.announceReading'));
   }, []);
 
+  // Whether a read was resumed.
   const tryResume = useCallback(async () => {
     const read = await resumeRead(ownerId, onEvent);
     if (read) begin(read, read.url);
+    return read !== null;
   }, [ownerId, onEvent, begin]);
 
   useEffect(() => {
@@ -266,9 +275,17 @@ export function BrandHome({
         startSearch(result.record.profile);
       } else {
         setNotice(result.kind === 'invalid' ? 'invalidSaved' : null);
-        setView({ kind: 'empty' });
+        // A known website: no button until the read has started by itself or
+        // won't, so no tap can start a second one beside it.
+        if (!site) setView({ kind: 'empty' });
       }
-      await tryResume();
+      const resumed = await tryResume();
+      if (!active || !site || result.kind === 'saved' || resumed) return;
+      if (takeAutoRead(ownerId)) {
+        begin(startRead({ ownerId, url: site, reread: false }, onEvent), site);
+      } else {
+        setView((v) => (v.kind === 'loading' ? { kind: 'empty' } : v));
+      }
     })();
     const onVisible = () => {
       if (document.visibilityState === 'visible') void tryResume();
@@ -281,7 +298,7 @@ export function BrandHome({
       document.removeEventListener('visibilitychange', onVisible);
       window.removeEventListener('online', onOnline);
     };
-  }, [ownerId, tryResume, startSearch]);
+  }, [ownerId, tryResume, startSearch, site, begin, onEvent]);
 
   function read(event: React.FormEvent) {
     event.preventDefault();
@@ -293,11 +310,19 @@ export function BrandHome({
     begin(startRead({ ownerId, url: typed, reread: false }, onEvent), typed);
   }
 
+  function readSite() {
+    if (!site || running.current) return;
+    takeAutoRead(ownerId);
+    begin(startRead({ ownerId, url: site, reread: false }, onEvent), site);
+  }
+
+  // A spa's website comes from the table, the one place it is set.
   function reread() {
     if (!saved) return;
     setConfirm(null);
     stopSearch();
-    begin(startRead({ ownerId, url: saved.siteUrl, reread: true }, onEvent), saved.siteUrl);
+    const from = site ?? saved.siteUrl;
+    begin(startRead({ ownerId, url: from, reread: true }, onEvent), from);
   }
 
   function stop() {
@@ -363,10 +388,13 @@ export function BrandHome({
     </button>
   );
 
+  // Only before a business is saved, its first read included: then the
+  // header's name says it.
+  const welcome = view.kind === 'empty' || (view.kind === 'reading' && !saved);
+
   return (
-    <div className={view.kind === 'empty' ? 'flex flex-col' : 'mt-6 flex flex-col'}>
-      {/* Only before a business is saved: then the header's name says it. */}
-      {view.kind === 'empty' && (
+    <div className={welcome ? 'flex flex-col' : 'mt-6 flex flex-col'}>
+      {welcome && (
         <div className="mb-6">
           <Welcome name={name} />
         </div>
@@ -381,7 +409,19 @@ export function BrandHome({
         )}
       {notice && message(t(`home.${notice}`), 'note')}
 
-      {view.kind === 'empty' && (
+      {/* A known website: nothing to type. */}
+      {view.kind === 'empty' && site && (
+        <div className="flex flex-col">
+          <Button type="button" onClick={readSite} disabled={readLimit !== null}>
+            {t('home.read')}
+          </Button>
+          <p className="mt-2 text-xs text-ink-secondary">{siteLabel(site)}</p>
+          {readLimitLine}
+          <p className="mt-2 text-xs text-ink-secondary">{t('home.readHint')}</p>
+        </div>
+      )}
+
+      {view.kind === 'empty' && !site && (
         <form onSubmit={read} noValidate className="flex flex-col">
           <Label htmlFor="website" className="mb-1.5">
             {home('websiteLabel')}
@@ -420,8 +460,8 @@ export function BrandHome({
             tabs={[
               { value: 'business', label: home('tabs.business'), icon: Storefront },
               { value: 'posts', label: home('tabs.posts'), icon: ImageSquare },
-              { value: 'reviews', label: home('tabs.reviews'), icon: ChatText },
               { value: 'questions', label: home('tabs.questions'), icon: ChatsCircle },
+              { value: 'reviews', label: home('tabs.reviews'), icon: ChatText },
             ]}
           />
           <TabsContent value="business" hidden={tab !== 'business'}>
@@ -535,13 +575,13 @@ export function BrandHome({
               }}
             />
           </TabsContent>
-          <TabsContent value="reviews" hidden={tab !== 'reviews'}>
-            <UsageBar tab="reviews" />
-            <ReviewsSection ownerId={ownerId} profile={saved} active={tab === 'reviews'} />
-          </TabsContent>
           <TabsContent value="questions" hidden={tab !== 'questions'}>
             <UsageBar tab="questions" />
             <QuestionsSection ownerId={ownerId} profile={saved} active={tab === 'questions'} />
+          </TabsContent>
+          <TabsContent value="reviews" hidden={tab !== 'reviews'}>
+            <UsageBar tab="reviews" />
+            <ReviewsSection ownerId={ownerId} profile={saved} active={tab === 'reviews'} />
           </TabsContent>
         </Tabs>
       )}

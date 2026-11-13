@@ -118,15 +118,28 @@ export function autoRewrite(
 }
 
 // A rewrite's answer for the posts sent; the others keep their words and the
-// profile they were written against.
+// profile they were written against. An answer is the post as it was sent,
+// with new words: only the words land, on the post as stored now, which a new
+// image may have changed meanwhile (docs/specs/platform/easier-to-use).
 export function mergeRewrite(batch: PostBatch, result: PlanResult, sentIds: string[]): PostBatch {
   const answers = new Map(result.posts.map((post) => [post.id, post]));
   const posts = batch.posts.map((post) => {
     const answer = sentIds.includes(post.id) ? answers.get(post.id) : undefined;
     if (!answer) return { ...post, profileHash: postHash(post, batch) };
     // New words, same image: what was copied goes, what was saved stays.
-    const saved = post.savedAt ? { savedAt: post.savedAt } : {};
-    return { ...answer, ...saved, edited: false, profileHash: result.profileHash };
+    const { copiedAt: _copied, storyText: _story, storyUnchecked: _flags, ...stored } = post;
+    const { caption, cta, hashtags, altText, unchecked, storyText, storyUnchecked } = answer;
+    return {
+      ...stored,
+      caption,
+      cta,
+      hashtags,
+      altText,
+      unchecked,
+      ...(storyText ? { storyText, ...(storyUnchecked ? { storyUnchecked } : {}) } : {}),
+      edited: false,
+      profileHash: result.profileHash,
+    };
   });
   return {
     ...batch,

@@ -46,7 +46,7 @@ describe('the owner guide', () => {
       m.posts.saveImages,
       m.posts.copyText,
       m.posts.make,
-      m.brand.home.read,
+      m.posts.newTexts,
       m.reviews.write,
       m.questions.write,
       m.questions.final,
@@ -58,11 +58,12 @@ describe('the owner guide', () => {
     }
   });
 
-  // docs/specs/questions/answer-drafts, "The owner guide".
-  test.each(LOCALES)('explains the Questions tab after the reviews, in %s', (locale) => {
+  // docs/specs/questions/answer-drafts, "The owner guide"; before the reviews,
+  // as in the bar (docs/specs/platform/easier-to-use).
+  test.each(LOCALES)('explains the Questions tab before the reviews, in %s', (locale) => {
     show(locale);
     const order = [...document.querySelectorAll('section[id]')].map((section) => section.id);
-    expect(order.indexOf('questions')).toBe(order.indexOf('reviews') + 1);
+    expect(order.indexOf('reviews')).toBe(order.indexOf('questions') + 1);
     const questions = document.getElementById('questions')?.textContent ?? '';
     const m = messagesFor(locale).guide.questions;
     expect(questions).toContain(m.sex);
@@ -106,7 +107,8 @@ describe('the owner guide', () => {
   test.each(LOCALES)('your business is three numbered steps, in %s', (locale) => {
     const steps = show(locale).querySelectorAll('#business ol li');
     expect(steps).toHaveLength(3);
-    expect(steps[0].textContent).toContain(messagesFor(locale).brand.home.read);
+    // The read starts by itself (docs/specs/platform/easier-to-use).
+    expect(steps[0].textContent).toBe(messagesFor(locale).guide.business.read);
   });
 
   test.each([
@@ -129,7 +131,7 @@ describe('the owner guide', () => {
 
   test('the numbers come from the limits', () => {
     const changed = show('en', {
-      limits: { reads: 3, attempts: 4, newImages: 10, replies: 20, answers: 20 },
+      limits: { reads: 3, attempts: 4, newImages: 10, replies: 20, answers: 20, newTexts: 10 },
     }).textContent;
     expect(changed).toContain('4 attempts');
     cleanup();
@@ -137,6 +139,7 @@ describe('the owner guide', () => {
     expect(text).toContain('3 attempts');
     expect(text).toContain('20 replies');
     expect(text).toContain('20 answers');
+    expect(text).toContain('10 new texts');
   });
 
   test('no contact, no contact line', () => {

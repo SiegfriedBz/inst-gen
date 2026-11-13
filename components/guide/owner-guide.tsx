@@ -14,9 +14,10 @@ export const GUIDE_SECTIONS = [
   'business',
   'posts',
   'instagram',
-  'reviews',
-  // docs/specs/questions/answer-drafts, "The owner guide".
+  // docs/specs/questions/answer-drafts, "The owner guide"; before the reviews,
+  // as in the bar (docs/specs/platform/easier-to-use).
   'questions',
+  'reviews',
   'allowance',
   'languages',
   'trouble',
@@ -52,7 +53,10 @@ const BLOCKS: Record<SectionId, Block[]> = {
   trouble: ['limit', 'pool', 'paused', 'gone', 'contact'],
 };
 
-type Limits = Record<'reads' | 'attempts' | 'newImages' | 'replies' | 'answers', number>;
+type Limits = Record<
+  'reads' | 'attempts' | 'newImages' | 'newTexts' | 'replies' | 'answers',
+  number
+>;
 
 export function OwnerGuide({
   contact,
@@ -67,9 +71,8 @@ export function OwnerGuide({
   // What each line names: the app's own button and tab names, and the limits.
   const values: Record<string, Record<string, ReactNode>> = {
     'start.passphrase': { button: t('enter.submit') },
-    'business.read': { button: t('brand.home.read') },
     'business.check': { button: t('brand.panel.edit') },
-    'business.reread': { button: t('brand.home.reread'), forget: t('brand.home.forget') },
+    'business.reread': { button: t('brand.home.reread') },
     'posts.make': { tab: t('home.tabs.posts'), button: t('posts.make') },
     'posts.check': { check: t('posts.checkText') },
     'posts.offer': { button: t('posts.offer.add') },
@@ -82,7 +85,11 @@ export function OwnerGuide({
     'languages.switch': { lang: locale.toUpperCase() },
     'posts.open': { saved: t('posts.saved') },
     'posts.more': { button: t('posts.makeMore') },
-    'posts.edit': { button: t('posts.editText'), image: t('posts.images.newImage') },
+    'posts.edit': {
+      button: t('posts.editText'),
+      newTexts: t('posts.newTexts'),
+      image: t('posts.images.newImage'),
+    },
     'instagram.save': { button: t('posts.saveImages') },
     'instagram.copy': { button: t('posts.copyText') },
     'instagram.story': { button: t('posts.copyStory') },
@@ -96,6 +103,7 @@ export function OwnerGuide({
       reads: t('usage.reads', { count: limits.reads }),
       attempts: t('usage.attempts', { count: limits.attempts }),
       newImages: t('usage.newImages', { count: limits.newImages }),
+      newTexts: t('usage.newTexts', { count: limits.newTexts }),
       replies: t('usage.replies', { count: limits.replies }),
       answers: t('usage.answers', { count: limits.answers }),
     },

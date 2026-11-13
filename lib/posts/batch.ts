@@ -187,6 +187,18 @@ export const rewriteBodySchema = z
   .refine(offerFitsProfile, OFFER_UNKNOWN);
 export type RewriteBody = z.infer<typeof rewriteBodySchema>;
 
+// One post and the attempt's other, whose words the new ones mustn't repeat
+// (docs/specs/platform/easier-to-use, "New texts for a suggestion").
+export const newTextsBodySchema = z
+  .object({
+    profile: profileSchema,
+    post: postSchema,
+    other: postSchema.optional(),
+    offer: offerSchema.optional(),
+  })
+  .refine(offerFitsProfile, OFFER_UNKNOWN);
+export type NewTextsBody = z.infer<typeof newTextsBodySchema>;
+
 export const POSTS_ERROR_CODES = [
   'invalid_profile',
   'model_busy',

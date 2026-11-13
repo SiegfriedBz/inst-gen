@@ -24,6 +24,14 @@ export function streamBody(
   return lines.map(encodeLine).join('');
 }
 
+// A Sen or Svarga sign-in reads its website by itself
+// (docs/specs/platform/easier-to-use): a test that doesn't look at the read
+// holds it, never answered, so no test reaches the real route. fulfilRead,
+// called after it, takes over.
+export async function holdRead(page: Page): Promise<void> {
+  await page.route('**/api/brand/read', () => {});
+}
+
 // Answers each POST to /api/brand/read with the next body (the last one
 // repeats), and counts the requests.
 export async function fulfilRead(page: Page, bodies: string[]): Promise<{ count(): number }> {

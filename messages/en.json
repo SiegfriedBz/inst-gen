@@ -4,9 +4,9 @@
     "description": "Your posts and review replies, written for you."
   },
   "enter": {
-    "label": "Passphrase",
+    "label": "Password",
     "submit": "Enter",
-    "wrong": "That passphrase isn't right. Try again.",
+    "wrong": "That password isn't right. Try again.",
     "footer": "Private pilot for invited spas."
   },
   "home": {
@@ -200,7 +200,6 @@
   "posts": {
     "make": "Make 2 suggestions",
     "makeMore": "Make 2 new suggestions",
-    "moreBelow": "They go on top. Attempt {n} stays below.",
     "empty": "Each suggestion is 2 images (1 for the post, 1 for the story), the text for the post and a short text for the story, ready for Instagram. Pick the ones you like and save them to your phone.",
     "emptyTextOnly": "Each suggestion is the text for a post and a short text for a story, ready for Instagram. Pick the ones you like and copy them.",
     "attempt": "Attempt {n}",
@@ -224,6 +223,8 @@
       "storyOwnPhoto": "In Instagram, make a story with your own photo, add text and paste."
     },
     "editText": "Edit the text",
+    "newTexts": "Write new texts",
+    "writingTexts": "Writing new texts…",
     "keepOpen": "Keep this page open for about a minute while your posts are made.",
     "flags": {
       "price": "This price isn't on your website: {text}. Check it before posting.",
@@ -351,7 +352,7 @@
   "questions": {
     "intro": "Got a question from a guest? Copy it and paste it here. We write an answer in your guest's language, from your business details.",
     "label": "The guest's question",
-    "hint": "Leave out the guest's name and phone number.",
+    "hint": "Take out the guest's name if it's in the message.",
     "final": "Make it the final answer",
     "finalHint": "It ends by asking the guest to book.",
     "write": "Write an answer",
@@ -394,6 +395,7 @@
     "newImages": "{count, plural, one {# new image} other {# new images}}",
     "replies": "{count, plural, one {# reply} other {# replies}}",
     "answers": "{count, plural, one {# answer} other {# answers}}",
+    "newTexts": "{count, plural, one {# new text} other {# new texts}}",
     "developer": "No daily limits (developer)",
     "poolEmpty": "Shopfront has used today's free writing. Back at {time}.",
     "imagesMonth": "No new images until {date}.",
@@ -404,6 +406,7 @@
       "newImages": "You've made today's {limit} new images. More at {time}.",
       "replies": "You've written today's {limit} replies. More at {time}.",
       "answers": "You've written today's {limit} answers. More at {time}.",
+      "newTexts": "You've written today's {limit} new texts. More at {time}.",
       "rewrites": "Captions were updated {limit} times today. Again at {time}.",
       "translations": "Today's {limit} translations are used up. More at {time}."
     }
@@ -417,20 +420,20 @@
     "print": "Print or save as PDF",
     "start": {
       "title": "Getting started",
-      "passphrase": "Open the link you were given, type your passphrase and tap <b>{button}</b>. You stay signed in on this phone for 30 days.",
+      "passphrase": "Open the link you were given, type your password and tap <b>{button}</b>. You stay signed in on this phone for 30 days.",
       "home": "Add Shopfront to your home screen:",
       "iphone": "On an iPhone, in Safari: tap Share, then \"Add to Home Screen\".",
       "android": "On Android, in Chrome: tap ⋮, then \"Add to Home screen\" or \"Install app\".",
       "why": "Your business and your posts are kept on this phone. On an iPhone, Safari may clear them after about a week without a visit, unless Shopfront is on your home screen.",
-      "onePhone": "Everything stays on this phone: another phone starts empty."
+      "onePhone": "Everything stays on this phone: on another phone, Shopfront reads your website again and your posts start empty."
     },
     "business": {
       "title": "Your business",
-      "read": "Type your website and tap <b>{button}</b>. Keep the page open for about a minute while Shopfront reads it; the screen stays on by itself.",
+      "read": "The first time you open Shopfront on a phone, it reads your website by itself. Keep the page open for about a minute; the screen stays on by itself.",
       "check": "Check what it found. Tap a section to see all of it, and <b>{button}</b> to fix or add anything.",
       "missing": "At the top, Shopfront lists what it couldn't find: tap one to add it. You can make posts without them, but each one you add makes your posts more exact. If your WhatsApp number or your town is missing, a red line says so: tap it to add it. Every post ends with your WhatsApp, and the hashtags use your town.",
       "english": "Write your changes in English if you can: the posts are written in English.",
-      "reread": "<b>{button}</b> replaces your changes with what your website says now; Shopfront asks first. To use another website, tap <b>{forget}</b> and start again."
+      "reread": "<b>{button}</b> replaces your changes with what your website says now; Shopfront asks first."
     },
     "posts": {
       "title": "Making your posts",
@@ -440,7 +443,7 @@
       "wait": "Keep the page open for about a minute while they are made.",
       "leave": "If you leave, Shopfront carries on where it stopped when you come back, but the part it was making is made again and uses some of today's allowance. So start when you have a minute to wait, not just before a call.",
       "more": "Want other ideas? Tap <b>{button}</b>: the new ones go on top, the earlier ones stay below.",
-      "edit": "Tap <b>{button}</b> to change a suggestion's words, and <b>{image}</b> for a different picture; you can add a short hint. The story text can't be changed here: change it in Instagram after pasting, if you like.",
+      "edit": "Tap <b>{button}</b> to change a suggestion's words yourself, or <b>{newTexts}</b> for new words with the same pictures. Tap <b>{image}</b> for a different picture; you can add a short hint. You can't type in the story text here: change it in Instagram after pasting, if you like.",
       "update": "If you change your business, the captions and story texts are updated to match. Text you edited yourself is left alone.",
       "offer": "To put today's offer in your posts, tap <b>{button}</b> before you make them:",
       "offerKind": "Pick a discount (10%, 15%, 20% or your own) or a free extra: a treatment you give with a 90-minute session.",
@@ -478,7 +481,7 @@
     "allowance": {
       "title": "Your daily allowance",
       "free": "Shopfront is free, so each day has a limit.",
-      "limits": "Each day you have {reads}, {attempts} of 2 suggestions, {newImages}, {replies} and {answers}, plus caption updates and translations.",
+      "limits": "Each day you have {reads}, {attempts} of 2 suggestions, {newImages}, {newTexts}, {replies} and {answers}, plus caption updates and translations.",
       "bar": "The line at the top of each tab shows what's left today and the time it all comes back.",
       "reset": "At that time, the limits come back and the day's suggestions, review replies and answers leave the screen. Save what you want to keep before then. Your special offer stays: it lasts until its own last day ends.",
       "time": "The time on the bar is in your phone's own time: trust it rather than a fixed hour.",
