@@ -6,7 +6,7 @@ import { languageButton, languageNav, pickLanguage } from './helpers/language';
 
 // Test values from playwright.config.ts; not secrets.
 const SEN = 'test-lotus-river-sen';
-const SVARGA = 'test-blue-wave-svarga';
+const SVARGA = 'test-blue-wave';
 const ONE_YEAR = 365 * 24 * 60 * 60;
 const BASE = 'http://localhost:3000';
 
@@ -46,7 +46,7 @@ test.describe('phone in French', () => {
   test('sees English', async ({ page }) => {
     await page.goto('/enter');
     await expect(page.locator('html')).toHaveAttribute('lang', 'en');
-    await expect(page.getByLabel('Passphrase')).toBeVisible();
+    await expect(page.getByLabel('Password')).toBeVisible();
   });
 });
 
@@ -56,7 +56,7 @@ test.describe('phone in Vietnamese', () => {
   test('the saved choice beats the phone', async ({ page, context }) => {
     await saveLocale(context, 'en');
     await page.goto('/enter');
-    await expect(page.getByLabel('Passphrase')).toBeVisible();
+    await expect(page.getByLabel('Password')).toBeVisible();
   });
 });
 

@@ -4,9 +4,9 @@
     "description": "Postingan dan balasan ulasan Anda, ditulis untuk Anda."
   },
   "enter": {
-    "label": "Frasa sandi",
+    "label": "Kata sandi",
     "submit": "Masuk",
-    "wrong": "Frasa sandi itu salah. Coba lagi.",
+    "wrong": "Kata sandi itu salah. Coba lagi.",
     "footer": "Uji coba khusus untuk spa yang diundang."
   },
   "home": {
@@ -417,7 +417,7 @@
     "print": "Cetak atau simpan sebagai PDF",
     "start": {
       "title": "Mulai",
-      "passphrase": "Buka tautan yang Anda terima, ketik frasa sandi Anda, lalu ketuk <b>{button}</b>. Anda tetap masuk di ponsel ini selama 30 hari.",
+      "passphrase": "Buka tautan yang Anda terima, ketik kata sandi Anda, lalu ketuk <b>{button}</b>. Anda tetap masuk di ponsel ini selama 30 hari.",
       "home": "Tambahkan Shopfront ke layar utama:",
       "iphone": "Di iPhone, di Safari: ketuk Bagikan, lalu \"Add to Home Screen\".",
       "android": "Di Android, di Chrome: ketuk ⋮, lalu \"Add to Home screen\" atau \"Install app\".",

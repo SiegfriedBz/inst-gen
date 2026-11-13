@@ -7,7 +7,7 @@ on:
 
 # Test values, not secrets: the same ones playwright.config.ts falls back to.
 env:
-  PILOT_PASSPHRASES: test-lotus-river-sen,test-blue-wave-svarga,test-quiet-stone-dev
+  PILOT_PASSPHRASES: test-lotus-river-sen,svarga=test-blue-wave,test-quiet-stone-dev
   SESSION_SECRET: test-session-secret-not-for-production-0001
 
 jobs:

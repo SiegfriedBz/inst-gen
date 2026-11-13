@@ -7,7 +7,7 @@ const THIRTY_DAYS = 30 * 24 * 60 * 60;
 
 async function signIn(page: Page, passphrase: string) {
   await page.goto('/enter');
-  await page.getByLabel('Passphrase').fill(passphrase);
+  await page.getByLabel('Password').fill(passphrase);
   await page.getByRole('button', { name: 'Enter' }).click();
 }
 
@@ -16,7 +16,7 @@ test('no session goes to /enter', async ({ page }) => {
   await expect(page).toHaveURL('/enter');
   await expect(page.getByRole('heading', { name: 'Shopfront' })).toBeVisible();
   await expect(page.getByText('Your posts and review replies, written for you.')).toBeVisible();
-  await expect(page.getByLabel('Passphrase')).toBeVisible();
+  await expect(page.getByLabel('Password')).toBeVisible();
 });
 
 test('Sen signs in', async ({ page, context }) => {
@@ -35,13 +35,13 @@ test('Sen signs in', async ({ page, context }) => {
 
 test('wrong passphrase', async ({ page, context }) => {
   await page.goto('/enter');
-  await page.getByLabel('Passphrase').fill(WRONG);
+  await page.getByLabel('Password').fill(WRONG);
   const started = Date.now();
   await page.getByRole('button', { name: 'Enter' }).click();
-  await expect(page.getByText("That passphrase isn't right. Try again.")).toBeVisible();
+  await expect(page.getByText("That password isn't right. Try again.")).toBeVisible();
   expect(Date.now() - started).toBeGreaterThanOrEqual(900);
-  await expect(page.getByLabel('Passphrase')).toHaveValue('');
-  await expect(page.getByLabel('Passphrase')).toBeFocused();
+  await expect(page.getByLabel('Password')).toHaveValue('');
+  await expect(page.getByLabel('Password')).toBeFocused();
   expect((await context.cookies()).some((c) => c.name === 'shopfront_session')).toBe(false);
 });
 

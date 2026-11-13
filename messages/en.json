@@ -4,9 +4,9 @@
     "description": "Your posts and review replies, written for you."
   },
   "enter": {
-    "label": "Passphrase",
+    "label": "Password",
     "submit": "Enter",
-    "wrong": "That passphrase isn't right. Try again.",
+    "wrong": "That password isn't right. Try again.",
     "footer": "Private pilot for invited spas."
   },
   "home": {
@@ -417,7 +417,7 @@
     "print": "Print or save as PDF",
     "start": {
       "title": "Getting started",
-      "passphrase": "Open the link you were given, type your passphrase and tap <b>{button}</b>. You stay signed in on this phone for 30 days.",
+      "passphrase": "Open the link you were given, type your password and tap <b>{button}</b>. You stay signed in on this phone for 30 days.",
       "home": "Add Shopfront to your home screen:",
       "iphone": "On an iPhone, in Safari: tap Share, then \"Add to Home Screen\".",
       "android": "On Android, in Chrome: tap ⋮, then \"Add to Home screen\" or \"Install app\".",

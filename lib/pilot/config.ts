@@ -1,5 +1,8 @@
 // The pilot gate's configuration: one passphrase per owner, all in
-// PILOT_PASSPHRASES, and the secret that signs sessions. A problem message
+// PILOT_PASSPHRASES, and the secret that signs sessions. An entry is
+// `<owner id>=<password>`, and the owner types the password
+// (docs/specs/platform/easier-to-use, "Short passwords"); an entry without
+// `=` is the first form, `<secret>-<owner id>`, typed whole. A problem message
 // never includes a passphrase, so it can go to the server log.
 import { z } from 'zod';
 
@@ -37,29 +40,63 @@ export function parsePilotConfig(env: {
   }
 
   const entries: PilotEntry[] = [];
-  for (const [index, passphrase] of items.entries()) {
+  for (const [index, item] of items.entries()) {
     const position = `PILOT_PASSPHRASES entry ${index + 1}`;
-    const hyphen = passphrase.lastIndexOf('-');
-    const ownerId = hyphen === -1 ? '' : passphrase.slice(hyphen + 1);
-    if (!OWNER_ID.test(ownerId)) {
-      return {
-        ok: false,
-        problem: `${position} must end with a hyphen and an owner id of lowercase letters`,
-      };
-    }
-    if (hyphen < MIN_SECRET_PART) {
-      return {
-        ok: false,
-        problem: `${position} (${ownerId}): the part before -${ownerId} must be at least ${MIN_SECRET_PART} characters`,
-      };
-    }
-    if (entries.some((entry) => entry.ownerId === ownerId)) {
+    const entry = item.includes('=') ? ownerFirst(item, position) : ownerLast(item, position);
+    if (!entry.ok) return entry;
+    const { ownerId, passphrase } = entry;
+    if (entries.some((e) => e.ownerId === ownerId)) {
       return { ok: false, problem: `PILOT_PASSPHRASES has a duplicate owner id: ${ownerId}` };
+    }
+    const sharing = entries.find((e) => e.passphrase === passphrase);
+    if (sharing) {
+      return {
+        ok: false,
+        problem: `PILOT_PASSPHRASES: ${sharing.ownerId} and ${ownerId} share a password`,
+      };
     }
     entries.push({ ownerId, passphrase });
   }
 
   return { ok: true, config: { entries, sessionSecret: SESSION_SECRET } };
+}
+
+type EntryResult = ({ ok: true } & PilotEntry) | { ok: false; problem: string };
+
+// `sen=abcd-efg-hijk`: the owner types only the password.
+function ownerFirst(item: string, position: string): EntryResult {
+  const equals = item.indexOf('=');
+  const ownerId = item.slice(0, equals).trim();
+  const passphrase = item.slice(equals + 1).trim();
+  if (!OWNER_ID.test(ownerId)) {
+    return { ok: false, problem: `${position} must start with an owner id of lowercase letters` };
+  }
+  if (passphrase.length < MIN_SECRET_PART) {
+    return {
+      ok: false,
+      problem: `${position} (${ownerId}): the password must be at least ${MIN_SECRET_PART} characters`,
+    };
+  }
+  return { ok: true, ownerId, passphrase };
+}
+
+// `lotus-river-moon-sen`: the first form, typed whole.
+function ownerLast(passphrase: string, position: string): EntryResult {
+  const hyphen = passphrase.lastIndexOf('-');
+  const ownerId = hyphen === -1 ? '' : passphrase.slice(hyphen + 1);
+  if (!OWNER_ID.test(ownerId)) {
+    return {
+      ok: false,
+      problem: `${position} must end with a hyphen and an owner id of lowercase letters`,
+    };
+  }
+  if (hyphen < MIN_SECRET_PART) {
+    return {
+      ok: false,
+      problem: `${position} (${ownerId}): the part before -${ownerId} must be at least ${MIN_SECRET_PART} characters`,
+    };
+  }
+  return { ok: true, ownerId, passphrase };
 }
 
 // Compares every entry, without stopping at the first match, so the time

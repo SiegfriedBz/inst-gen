@@ -20,7 +20,7 @@ const answer = {
 
 async function signInAndRead(page: Page) {
   await page.goto('/enter');
-  await page.getByLabel('Passphrase').fill(SEN);
+  await page.getByLabel('Password').fill(SEN);
   await page.getByRole('button', { name: 'Enter' }).click();
   await expect(page).toHaveURL('/');
   await page.getByLabel('Your website').fill('sendanangmassage.com');

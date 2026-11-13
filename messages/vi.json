@@ -4,9 +4,9 @@
     "description": "Bài đăng và phản hồi đánh giá của bạn, được viết sẵn cho bạn."
   },
   "enter": {
-    "label": "Cụm mật khẩu",
+    "label": "Mật khẩu",
     "submit": "Vào",
-    "wrong": "Cụm mật khẩu không đúng. Hãy thử lại.",
+    "wrong": "Mật khẩu không đúng. Hãy thử lại.",
     "footer": "Chương trình thử nghiệm riêng cho các spa được mời."
   },
   "home": {
@@ -417,7 +417,7 @@
     "print": "In hoặc lưu thành PDF",
     "start": {
       "title": "Bắt đầu",
-      "passphrase": "Mở đường link bạn được gửi, nhập cụm mật khẩu và chạm <b>{button}</b>. Bạn vẫn đăng nhập trên điện thoại này trong 30 ngày.",
+      "passphrase": "Mở đường link bạn được gửi, nhập mật khẩu và chạm <b>{button}</b>. Bạn vẫn đăng nhập trên điện thoại này trong 30 ngày.",
       "home": "Thêm Shopfront vào màn hình chính:",
       "iphone": "Trên iPhone, trong Safari: chạm Chia sẻ, rồi \"Add to Home Screen\".",
       "android": "Trên Android, trong Chrome: chạm ⋮, rồi \"Add to Home screen\" hoặc \"Install app\".",
