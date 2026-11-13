@@ -79,7 +79,8 @@ describe('the Questions tab, empty', () => {
     render(tab());
     await box();
     expect(screen.getByText(messages.questions.intro)).toBeTruthy();
-    expect(screen.getByText(messages.questions.hint)).toBeTruthy();
+    // Only the name is the owner's to take out (docs/specs/platform/easier-to-use).
+    expect(screen.getByText("Take out the guest's name if it's in the message.")).toBeTruthy();
     const final = screen.getByRole('checkbox', {
       name: 'Make it the final answer',
     }) as HTMLInputElement;

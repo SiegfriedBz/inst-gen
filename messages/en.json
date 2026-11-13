@@ -350,7 +350,7 @@
   "questions": {
     "intro": "Got a question from a guest? Copy it and paste it here. We write an answer in your guest's language, from your business details.",
     "label": "The guest's question",
-    "hint": "Leave out the guest's name and phone number.",
+    "hint": "Take out the guest's name if it's in the message.",
     "final": "Make it the final answer",
     "finalHint": "It ends by asking the guest to book.",
     "write": "Write an answer",

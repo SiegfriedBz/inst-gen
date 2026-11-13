@@ -15,6 +15,7 @@
 - Task 2, no read left on a new phone (the start switched off to watch it fail): `Tests  1 failed | 15 skipped (16)`
 - Task 3, Questions before Reviews: `Tests  4 failed | 81 passed (85)`
 - Task 4, no "They go on top" line: `Tests  1 failed | 61 skipped (62)`
+- Task 5, the Questions hint: `Tests  1 failed | 20 passed (21)`
 
 ## GREEN
 
@@ -24,3 +25,4 @@
 - Task 2, with the limit and the guide: `Tests  110 passed (110)`
 - Task 3, Questions before Reviews: `Tests  85 passed (85)`
 - Task 4, no "They go on top" line: `Tests  69 passed (69)`
+- Task 5, the Questions hint: `Tests  28 passed (28)`
