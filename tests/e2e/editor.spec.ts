@@ -132,7 +132,7 @@ test('two attempts stack, newest on top, and keep their own images after a reloa
     'Attempt 2',
     'Attempt 1',
   ]);
-  await expect(page.getByText('They go on top. Attempt 2 stays below.')).toBeVisible();
+  await expect(page.getByText(/They go on top|stays below/)).toHaveCount(0);
 
   await page.reload();
   await expect(tileImages(page)).toHaveCount(3);

@@ -573,7 +573,9 @@ describe("today's attempts", () => {
     await saveBatch(batch(sixPosts));
     await renderSection();
     expect(await screen.findByRole('button', { name: 'Make 2 new suggestions' })).toBeTruthy();
-    expect(await screen.findByText('They go on top. Attempt 1 stays below.')).toBeTruthy();
+    // No "They go on top" line (docs/specs/platform/easier-to-use).
+    expect(await screen.findByRole('heading', { name: 'Attempt 1' })).toBeTruthy();
+    expect(screen.queryByText(/They go on top|stays below/)).toBeNull();
     expect(screen.queryByText(/Each suggestion is/)).toBeNull();
   });
 

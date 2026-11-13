@@ -616,11 +616,6 @@ export function PostsSection({
         {planning && <CircleNotch aria-hidden className="animate-spin" size={18} />}
         {shown.length > 0 ? t('makeMore') : t('make')}
       </Button>
-      {shown.length > 0 && (
-        <p className="text-[13px] text-ink-secondary">
-          {t('moreBelow', { n: numbers.get(shown[0].id) ?? shown.length })}
-        </p>
-      )}
       {!cta && <p className="text-[13px] text-error">{brand('panel.warnWhatsapp')}</p>}
       {(busy || updating) && <p className="text-[13px] text-ink-secondary">{t('keepOpen')}</p>}
       {error && (
