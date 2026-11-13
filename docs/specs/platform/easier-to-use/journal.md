@@ -16,6 +16,8 @@
 
 - 2026-11-13, Task 13: the two real new-texts calls wait for the maintainer's yes; this worktree has no `.env.local` with a Gemini key. `pnpm guide:pdf` waits too: it needs port 3000, held by another project's dev server on this machine.
 
+- 2026-11-13, final review: four fixes. The read starts once per page load and owner (`lib/brand/auto-read.ts`), with no button before it starts; new texts' spinner and error follow their batch and post; the copy buttons wait while new texts are written; a long owner id is never named in a start-up problem, as it may be a password written first. Three small points are left for the maintainer.
+
 ## RED
 
 - Task 1, passwords: `Tests  7 failed | 10 passed (17)`
@@ -32,6 +34,7 @@
 - Task 10, new texts on the phone: `Tests  3 failed | 27 passed (30)`, and `tsc` refused `step: 'texts'` and the missing `startNewTexts`
 - Task 11, "Write new texts": `Tests  11 failed | 114 passed (125)`
 - Task 12, the phone tests, first run: `4 failed`, `1 skipped`, `68 passed (37.2s)`: the usage bar's stubbed answer had no `newTexts`, and the tabs came before a check that there were none
+- Final review fixes: `Tests  4 failed | 139 passed (143)`, then, with the remount test made to wait and the early-button test given a slow resume lookup, both failing every run
 
 ## GREEN
 
@@ -50,3 +53,5 @@
 - Task 11, "Write new texts": `Tests  156 passed (156)`; the whole suite: `Tests  2031 passed (2031)`
 - Task 12, the phone tests: `1 skipped`, `72 passed (22.2s)` (the skip: no test owner has a 16-letter name, by design)
 - Task 14, `pnpm check` (docs, repo, Biome, types, Vitest): `Tests  2031 passed (2031)`
+- Final review fixes, `pnpm check`: `Tests  2036 passed (2036)`
+- After the fixes, the phone tests: `1 failed`, `1 skipped`, `71 passed (2.0m)`; the failure was a sign-in still pending after 5 s with the machine's load at 48. Its files again: `1 skipped`, `20 passed (26.2s)`
