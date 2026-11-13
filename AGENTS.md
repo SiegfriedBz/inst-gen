@@ -68,7 +68,7 @@ index of the code).
 | `components/reviews/` | The Reviews tab: the pasted review and its two reply cards |
 | `components/questions/` | The Questions tab: the pasted question, its answer card and what the guest has told |
 | `components/usage/` | The usage bar and the lines shown at a limit |
-| `lib/pilot/` | The pilot gate: passphrases, signed session, gate decision |
+| `lib/pilot/` | The pilot gate: passphrases, signed session, gate decision, each spa's website |
 | `lib/brand/` | The brand read: safe fetching, extraction, checks, the profile schema, fixtures and eval scoring; in the browser, the phone's store (IndexedDB), the read client and the owner's edits |
 | `lib/reviews/` | Review replies: the request and answer, the prompt and code's checks, the route's run; in the browser, the name filled in, the current review kept on the phone and the request client |
 | `lib/questions/` | Answers to guests' questions: the request and answer, the phone's removal of numbers and links, code's word list, the prompt and code's building of the answer, the route's run; in the browser, the request client and the conversation kept on the phone |

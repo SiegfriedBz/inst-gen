@@ -44,6 +44,8 @@ as written.
 
 ## Behaviour
 
+> Changed by `platform/easier-to-use` (2026-11-13): the hint under the box reads "Take out the guest's name if it's in the message.", and the Questions tab comes before Reviews.
+
 ### The tabs
 
 The bottom bar (2.10) gets a fourth tab, after the others: **Your business ·

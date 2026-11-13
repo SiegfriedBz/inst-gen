@@ -27,6 +27,8 @@ that is where the owner already is.
 
 ## Behaviour
 
+> Changed by `platform/easier-to-use` (2026-11-13): "Answering guests' questions" comes before "Replying to reviews"; "Your business" says the website is read by itself; "Making your posts" names "Write new texts"; the allowance counts new texts; the first step says "password".
+
 ### Where it lives
 
 

@@ -14,6 +14,8 @@
 
 - 2026-11-13, Task 12: the phone tests ran on port 3101 with a scratch config, as another project's dev server held 3000 on this machine. Tests that sign in as Sen or Svarga without a read of their own hold the read, so none reaches the real route or the spa's website.
 
+- 2026-11-13, Task 13: the two real new-texts calls wait for the maintainer's yes; this worktree has no `.env.local` with a Gemini key. `pnpm guide:pdf` waits too: it needs port 3000, held by another project's dev server on this machine.
+
 ## RED
 
 - Task 1, passwords: `Tests  7 failed | 10 passed (17)`
@@ -47,3 +49,4 @@
 - Task 10, new texts on the phone: `Tests  92 passed (92)`
 - Task 11, "Write new texts": `Tests  156 passed (156)`; the whole suite: `Tests  2031 passed (2031)`
 - Task 12, the phone tests: `1 skipped`, `72 passed (22.2s)` (the skip: no test owner has a 16-letter name, by design)
+- Task 14, `pnpm check` (docs, repo, Biome, types, Vitest): `Tests  2031 passed (2031)`

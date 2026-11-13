@@ -44,6 +44,8 @@ order".
 
 ## Behaviour
 
+> Changed by `platform/easier-to-use` (2026-11-13): the bar reads "Your business", "Create Posts", "Questions", "Reviews", and the sign-in field's label is "Password".
+
 ### The header
 
 On the home screen, in every state (no business, reading, tabs):
