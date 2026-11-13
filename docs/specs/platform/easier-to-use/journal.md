@@ -16,6 +16,7 @@
 - Task 3, Questions before Reviews: `Tests  4 failed | 81 passed (85)`
 - Task 4, no "They go on top" line: `Tests  1 failed | 61 skipped (62)`
 - Task 5, the Questions hint: `Tests  1 failed | 20 passed (21)`
+- Task 6, caption updates land as stored: `Tests  3 failed | 27 passed (30)`
 
 ## GREEN
 
@@ -26,3 +27,4 @@
 - Task 3, Questions before Reviews: `Tests  85 passed (85)`
 - Task 4, no "They go on top" line: `Tests  69 passed (69)`
 - Task 5, the Questions hint: `Tests  28 passed (28)`
+- Task 6, caption updates land as stored: `Tests  108 passed (108)`
