@@ -29,6 +29,15 @@ that is where the owner already is.
 
 > Changed by `platform/easier-to-use` (2026-11-13): "Answering guests' questions" comes before "Replying to reviews"; "Your business" says the website is read by itself; "Making your posts" names "Write new texts"; the allowance counts new texts; the first step says "password".
 
+> Changed 2026-11-13, at the maintainer's request ("update the guidelines
+> and pdf to the current state of the app"): the website read takes about 20
+> seconds, as the reading screen says; a business change updates the newest
+> suggestions, and "Rewrite this one too" an edited one; the Questions steps
+> say to take out the guest's name, as the tab's hint does, and name "Write
+> another answer"; "Your business is gone" says Shopfront reads the website
+> again by itself, or after "Read my website". The three PDFs are printed
+> again.
+
 ### Where it lives
 
 
