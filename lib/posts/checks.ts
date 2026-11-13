@@ -21,7 +21,7 @@ import { offerLine, offerStory, offerTreatment, putOfferLineFirst } from './offe
 import { factOnItsLine, joinQuestion, keepParagraphs } from './paragraphs';
 import type { Setup } from './setup';
 import { cleanStory, sentences } from './story';
-import { copyRecords, lightRecords, repeatRecords } from './variety';
+import { copyRecords, lightRecords, repeatRecords, repeatsQuestion } from './variety';
 
 // Code's checks on the model's posts (docs/specs/posts/generate-copy, "What
 // code checks"): trim, drop or flag, record each change, and never refuse a
@@ -510,8 +510,8 @@ export function checkRewrite(
 // New words for one post (docs/specs/platform/easier-to-use, "New texts for a
 // suggestion"): its caption and story text, checked as a plan's are; its
 // hashtags and alt text stay, as its image does. One post was asked for: the
-// answer with its id, or else the first. With no usable caption there is
-// nothing to show: the run fails.
+// answer with its id, or else the first. With no usable caption, or one that
+// repeats the post's question, there is nothing to show: the run fails.
 export function checkNewTexts(
   raw: ModelRewrite,
   post: Post,
@@ -537,6 +537,12 @@ export function checkNewTexts(
   if (!hasWords(checked.words.caption)) throw new Error('no new texts');
   const { storyText: _story, storyUnchecked: _flags, ...rest } = post;
   const fresh: Post = { ...rest, ...checked.words };
+  // The same question, or the same caption, isn't new: the run fails and the
+  // owner's count comes back (amended 2026-11-13, after Sen's first real
+  // answer repeated its post word for word).
+  if (fresh.caption === post.caption || repeatsQuestion(fresh, post)) {
+    throw new Error('no new texts');
+  }
   const pair = other ? [fresh, other] : [fresh];
   return {
     posts: [fresh],

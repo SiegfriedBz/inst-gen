@@ -228,11 +228,13 @@ export function rewriteUserText(input: PostsModelInput, posts: Post[], offer?: O
 
 // New words for one post, for the same image (docs/specs/platform/easier-to-use,
 // "New texts for a suggestion"): the rewrite's rules, something different from
-// its caption now, and nothing of the attempt's other post.
+// its caption now, and nothing of the attempt's other post. Amended after the
+// first real calls (2026-11-13): Sen's answer was its post word for word, and
+// Svarga's moved the sore spot off the image.
 export function newTextsPrompt(withOffer = false, spa = false): string {
-  return `The owner of a small business wants new words for one of their Instagram posts, for the same image. You write a new caption and a new story text for the post under "### Post", as its owner would, to guests nearby. Keep its type, topic, scene, light and image prompt: they don't change. Answer that post, with its id, and give its hashtags and alt text as they are.
+  return `The owner of a small business wants new words for one of their Instagram posts, for the same image. You write a new caption and a new story text for the post under "### Post", as its owner would, to guests nearby. Keep its type, topic, scene, light and image prompt: they don't change. Answer that post, with its id. Give "hashtags" as [] and "altText" as "": the post keeps its own.
 
-Something different: open on a different question of the kind its "question" names, in other words than its caption now, and with another fact from the highlights when the profile has one. Never the fact, the opening or the ending of the post under "### Other post": it goes out beside this one.
+Something different: "captionNow" and "storyTextNow" are its words now, which the owner wants replaced. Open on a different question of the kind its "question" names, and reuse no sentence of its caption now, nor of its story text now. An answer that repeats its question is refused. For a "sore" question, the sore spot stays the part of the body its image prompt shows: ask about it from another angle, another moment of the guest's day or other words for the ache. Use another fact from the highlights when the profile has one. Never the fact, the opening or the ending of the post under "### Other post": it goes out beside this one.
 
 The post keeps its type's job:
 ${TYPE_JOBS}
@@ -258,8 +260,9 @@ export function newTextsUserText(
     // A post saved without a set-up, or a set-up without a light, is a day.
     light: setup?.light ?? 'day',
     ...(setup?.question ? { question: setup.question } : {}),
-    caption,
-    ...(storyText ? { storyText } : {}),
+    // The words now, named so the model doesn't take them for its answer.
+    captionNow: caption,
+    ...(storyText ? { storyTextNow: storyText } : {}),
     imagePrompt,
     ...(carries ? { offer: true } : {}),
   };

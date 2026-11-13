@@ -8,8 +8,8 @@ import { emojisIn, FLOWERS } from '@/lib/posts/emoji';
 import { dropForeignTags } from '@/lib/posts/foreign-tags';
 import { offerLine, offerTreatment } from '@/lib/posts/offer-line';
 import { paragraphsOf } from '@/lib/posts/paragraphs';
-import { streamPlan } from '@/lib/posts/run';
-import { seededRandom } from '@/lib/posts/setup';
+import { streamNewTexts, streamPlan } from '@/lib/posts/run';
+import { type BodyPart, seededRandom } from '@/lib/posts/setup';
 import { repeatRecords } from '@/lib/posts/variety';
 
 // The post plans recorded by `pnpm eval:posts --record`, replayed through the
@@ -197,4 +197,81 @@ describe('recorded story texts and flowers', () => {
       expect(story).not.toMatch(PRICE);
     }
   });
+});
+
+// The words for each part of the body an image shows (lib/posts/setup.ts);
+// "whole body" names none in particular.
+const PART_WORDS: Partial<Record<BodyPart, string[]>> = {
+  back: ['back'],
+  'shoulders and neck': ['shoulder', 'neck'],
+  legs: ['leg', 'calf', 'calves', 'thigh', 'knee'],
+  feet: ['foot', 'feet', 'ankle', 'sole', 'heel'],
+  'arms and hands': ['arm', 'hand', 'wrist'],
+  head: ['head', 'temple', 'scalp'],
+};
+
+// The new texts recorded by `pnpm eval:posts sen svarga --new-texts --record`
+// (docs/specs/platform/easier-to-use, "Tests"): the plan replayed to its two
+// posts, then the first one's new words, through today's checks.
+describe('recorded new texts', () => {
+  test.each(['sen', 'svarga'])(
+    '%s gets new words for the same post',
+    { timeout: 20_000 },
+    async (slug) => {
+      const dir = join(FIXTURES_DIR, slug);
+      const fixture = loadFixture(dir);
+      if (!fixture.posts) throw new Error(`no posts.json for ${slug}`);
+      if (!fixture.newTexts) throw new Error(`no new-texts.json for ${slug}`);
+      const profile = await fixtureProfile(dir);
+      const signal = new AbortController().signal;
+      let plan: PlanResult | null = null;
+      for await (const line of streamPlan(
+        { profile, recent: [] },
+        {
+          model: replayTextModel(noBrandRead, { posts: fixture.posts.recording }),
+          random: seededRandom(slug),
+        },
+        signal,
+      )) {
+        if (line.type === 'final') plan = line.result;
+      }
+      if (!plan) throw new Error('no plan');
+      const [post, other] = plan.posts;
+      let result: PlanResult | null = null;
+      for await (const line of streamNewTexts(
+        { profile, post, other },
+        { model: replayTextModel(noBrandRead, { posts: fixture.newTexts.recording }) },
+        signal,
+      )) {
+        if (line.type === 'error') throw new Error(line.code);
+        if (line.type === 'final') result = line.result;
+      }
+      if (!result) throw new Error('no final line');
+      const fresh = result.posts[0];
+      expect(fresh.id).toBe(post.id);
+      expect(fresh.caption).not.toBe(post.caption);
+      expect(fresh.storyText).toBeTruthy();
+      expect(fresh.storyText).not.toBe(post.storyText);
+      // The image, its set-up and the hashtags stay.
+      expect(fresh.imagePrompt).toBe(post.imagePrompt);
+      expect(fresh.setup).toEqual(post.setup);
+      expect(fresh.hashtags).toEqual(post.hashtags);
+      expect(paragraphsOf(fresh.caption).length).toBeLessThanOrEqual(3);
+      expect(fresh.caption).not.toMatch(PRICE);
+      // A sore question names the part of the body the image shows
+      // (Svarga's first real answer moved it to the shoulders, 2026-11-13).
+      const part = fresh.setup?.bodyPart;
+      if (fresh.setup?.question === 'sore' && part && PART_WORDS[part]) {
+        const question = (fresh.offer ? paragraphsOf(fresh.caption)[1] : fresh.caption)
+          ?.split('?')[0]
+          .toLowerCase();
+        expect(PART_WORDS[part].some((word) => question?.includes(word))).toBe(true);
+      }
+      // Not the other post's opening.
+      const opening = repeatRecords([fresh, other]).filter((d) =>
+        d.reason.startsWith('first sentence'),
+      );
+      expect(opening).toEqual([]);
+    },
+  );
 });

@@ -245,10 +245,15 @@ describe('newTextsPrompt', () => {
   it('asks for a different question of the same kind and other words', () => {
     const prompt = newTextsPrompt();
     expect(prompt).toContain('a different question of the kind its "question" names');
-    expect(prompt).toContain('other words than its caption now');
+    expect(prompt).toContain('reuse no sentence of its caption now');
+    // The first real calls (2026-11-13): Sen's answer was its post word for
+    // word, and Svarga's moved the sore spot off the image.
+    expect(prompt).toContain('An answer that repeats its question is refused.');
+    expect(prompt).toContain('the sore spot stays the part of the body its image prompt shows');
     expect(prompt).toContain('Keep its type, topic, scene, light and image prompt');
     expect(prompt).toContain('### Other post');
-    expect(prompt).toContain('its hashtags and alt text as they are');
+    expect(prompt).toContain('Give "hashtags" as [] and "altText" as ""');
+    expect(prompt).not.toContain('as they are');
     expect(prompt).toContain('- sore: ');
     expect(prompt).toContain('- ask: ');
     expect(prompt).toContain('- offer: makes the guest want one treatment');
@@ -267,8 +272,11 @@ describe('newTextsPrompt', () => {
     expect(text).toContain('"id": "post-1"');
     expect(text).toContain('"question": "sore"');
     expect(text).toContain('"light": "night"');
-    expect(text).toContain('"caption": "Sore legs? We come to you."');
-    expect(text).toContain('"storyText": "Old story."');
+    // The words now, named so they aren't taken for the answer.
+    expect(text).toContain('"captionNow": "Sore legs? We come to you."');
+    expect(text).toContain('"storyTextNow": "Old story."');
+    expect(text).not.toContain('"caption":');
+    expect(text).not.toContain('"hashtags"');
     expect(text).toContain('### Other post\nCaption: Other caption.\nStory text: Other story.');
     expect(text).not.toContain('Book on WhatsApp');
     expect(newTextsUserText(input, post({ id: 'post-1' }), undefined)).not.toContain('Other post');

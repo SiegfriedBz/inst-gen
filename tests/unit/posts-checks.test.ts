@@ -694,6 +694,22 @@ describe('checkNewTexts', () => {
     );
   });
 
+  // Sen's first real answer was its post word for word (2026-11-13).
+  it('refuses an answer that repeats the question, or the whole caption', () => {
+    const asked = post({ ...original, caption: 'Sore legs after the hike? We come to you.' });
+    expect(() =>
+      checkNewTexts(
+        answer('Sore legs after the hike? Warm hands at your villa.'),
+        asked,
+        undefined,
+        svargaProfile(),
+      ),
+    ).toThrow('no new texts');
+    expect(() => checkNewTexts(answer(asked.caption), asked, undefined, svargaProfile())).toThrow(
+      'no new texts',
+    );
+  });
+
   it('throws when the answer has no caption', () => {
     expect(() => checkNewTexts({ posts: [] }, original, undefined, svargaProfile())).toThrow(
       'no new texts',
