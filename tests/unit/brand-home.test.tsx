@@ -576,22 +576,23 @@ describe('the home tabs', () => {
     expect(screen.getByText(INTRO)).toBeTruthy();
   });
 
-  test('the third tab, Reviews, holds the review form', async () => {
+  // Questions before Reviews (docs/specs/platform/easier-to-use).
+  test('the fourth tab, Reviews, holds the review form', async () => {
     await saveBrand('sen', profile);
     renderHome();
     await screen.findByRole('tablist', { name: 'Home' });
     expect(screen.getAllByRole('tab').map((tab) => tab.textContent)).toEqual([
       'Your business',
       'Create Posts',
-      'Reviews',
       'Questions',
+      'Reviews',
     ]);
     await openTab('Reviews');
     expect(await screen.findByRole('button', { name: 'Write 2 replies' })).toBeTruthy();
   });
 
   // docs/specs/questions/answer-drafts, "The tabs".
-  test('the fourth tab, Questions, holds the question form', async () => {
+  test('the third tab, Questions, holds the question form', async () => {
     await saveBrand('sen', profile);
     renderHome();
     await screen.findByRole('tablist', { name: 'Home' });

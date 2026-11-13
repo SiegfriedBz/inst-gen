@@ -14,9 +14,10 @@ export const GUIDE_SECTIONS = [
   'business',
   'posts',
   'instagram',
-  'reviews',
-  // docs/specs/questions/answer-drafts, "The owner guide".
+  // docs/specs/questions/answer-drafts, "The owner guide"; before the reviews,
+  // as in the bar (docs/specs/platform/easier-to-use).
   'questions',
+  'reviews',
   'allowance',
   'languages',
   'trouble',

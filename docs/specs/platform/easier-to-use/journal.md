@@ -13,6 +13,7 @@
 - Task 1, sign-in words: `Tests  4 failed | 1 passed (5)`
 - Task 2, the read by itself: `Tests  6 failed | 50 passed (56)`, and `pilot-sites.test.ts` could not import `@/lib/pilot/sites`
 - Task 2, no read left on a new phone (the start switched off to watch it fail): `Tests  1 failed | 15 skipped (16)`
+- Task 3, Questions before Reviews: `Tests  4 failed | 81 passed (85)`
 
 ## GREEN
 
@@ -20,3 +21,4 @@
 - Task 1, sign-in words: `Tests  41 passed (41)`
 - Task 2, the read by itself: `Tests  58 passed (58)`
 - Task 2, with the limit and the guide: `Tests  110 passed (110)`
+- Task 3, Questions before Reviews: `Tests  85 passed (85)`

@@ -55,8 +55,9 @@ import { SectionSheet } from './section-sheet';
 // The home screen (docs/specs/brand/brand-panel, "The home screen"): no
 // business yet, reading, or the panel. Everything is kept on the phone. With
 // the panel come four tabs, "Your business", "Create Posts"
-// (docs/specs/platform/home-tabs), "Reviews" (docs/specs/reviews/reply-drafts)
-// and "Questions" (docs/specs/questions/answer-drafts): the app opens on the
+// (docs/specs/platform/home-tabs), "Questions"
+// (docs/specs/questions/answer-drafts) and "Reviews"
+// (docs/specs/reviews/reply-drafts): the app opens on the
 // posts, and a read of any kind comes back to the business. A spa whose
 // website is known reads it by itself on a phone with no business yet, and
 // never types it (docs/specs/platform/easier-to-use).
@@ -454,8 +455,8 @@ export function BrandHome({
             tabs={[
               { value: 'business', label: home('tabs.business'), icon: Storefront },
               { value: 'posts', label: home('tabs.posts'), icon: ImageSquare },
-              { value: 'reviews', label: home('tabs.reviews'), icon: ChatText },
               { value: 'questions', label: home('tabs.questions'), icon: ChatsCircle },
+              { value: 'reviews', label: home('tabs.reviews'), icon: ChatText },
             ]}
           />
           <TabsContent value="business" hidden={tab !== 'business'}>
@@ -569,13 +570,13 @@ export function BrandHome({
               }}
             />
           </TabsContent>
-          <TabsContent value="reviews" hidden={tab !== 'reviews'}>
-            <UsageBar tab="reviews" />
-            <ReviewsSection ownerId={ownerId} profile={saved} active={tab === 'reviews'} />
-          </TabsContent>
           <TabsContent value="questions" hidden={tab !== 'questions'}>
             <UsageBar tab="questions" />
             <QuestionsSection ownerId={ownerId} profile={saved} active={tab === 'questions'} />
+          </TabsContent>
+          <TabsContent value="reviews" hidden={tab !== 'reviews'}>
+            <UsageBar tab="reviews" />
+            <ReviewsSection ownerId={ownerId} profile={saved} active={tab === 'reviews'} />
           </TabsContent>
         </Tabs>
       )}

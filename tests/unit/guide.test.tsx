@@ -57,11 +57,12 @@ describe('the owner guide', () => {
     }
   });
 
-  // docs/specs/questions/answer-drafts, "The owner guide".
-  test.each(LOCALES)('explains the Questions tab after the reviews, in %s', (locale) => {
+  // docs/specs/questions/answer-drafts, "The owner guide"; before the reviews,
+  // as in the bar (docs/specs/platform/easier-to-use).
+  test.each(LOCALES)('explains the Questions tab before the reviews, in %s', (locale) => {
     show(locale);
     const order = [...document.querySelectorAll('section[id]')].map((section) => section.id);
-    expect(order.indexOf('questions')).toBe(order.indexOf('reviews') + 1);
+    expect(order.indexOf('reviews')).toBe(order.indexOf('questions') + 1);
     const questions = document.getElementById('questions')?.textContent ?? '';
     const m = messagesFor(locale).guide.questions;
     expect(questions).toContain(m.sex);
