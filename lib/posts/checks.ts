@@ -509,8 +509,9 @@ export function checkRewrite(
 
 // New words for one post (docs/specs/platform/easier-to-use, "New texts for a
 // suggestion"): its caption and story text, checked as a plan's are; its
-// hashtags and alt text stay, as its image does. The only answer counts, whatever
-// its id. With no usable caption there is nothing to show: the run fails.
+// hashtags and alt text stay, as its image does. One post was asked for: the
+// answer with its id, or else the first. With no usable caption there is
+// nothing to show: the run fails.
 export function checkNewTexts(
   raw: ModelRewrite,
   post: Post,
@@ -518,8 +519,7 @@ export function checkNewTexts(
   profile: Profile,
   offer?: Offer,
 ): { posts: Post[]; dropped: Dropped[] } {
-  const answer =
-    raw.posts.find((p) => p.id === post.id) ?? (raw.posts.length === 1 ? raw.posts[0] : undefined);
+  const answer = raw.posts.find((p) => p.id === post.id) ?? raw.posts[0];
   if (!answer?.caption.trim()) throw new Error('no new texts');
   const context = offer ? { offer, carries: post.offer === true } : undefined;
   const checked = checkedWords(

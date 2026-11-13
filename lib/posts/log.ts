@@ -1,12 +1,12 @@
 import type { PostsErrorCode } from './batch';
 
-// One line in the server log per post plan or rewrite, like the brand read's
+// One line in the server log per post plan, rewrite or new texts, like the brand read's
 // (lib/brand/read-log.ts). It never holds a caption or anything the owner
 // typed (docs/specs/posts/generate-copy, "Failures").
 
 export type PostsLog = {
   host: string;
-  kind: 'plan' | 'rewrite';
+  kind: 'plan' | 'rewrite' | 'texts';
   model: string;
   promptVersion: string;
   // Posts in the final line, and flags across them.

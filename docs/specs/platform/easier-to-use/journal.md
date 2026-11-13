@@ -7,6 +7,8 @@
 - 2026-11-13: the builder check's three points settled in the spec before approval: an offer post keeps its story text (its offer line); new texts keep the post's kind of question and see the attempt's other post; caption updates land only their words on the post as stored (an existing bug: the copied mark stayed).
 - 2026-11-13: short passwords added after the first hand-over, at the maintainer's request; their example password is not copied anywhere in the repo.
 
+- 2026-11-13, Task 9: `checkNewTexts` takes the answer with the post's id, or else the first: one post was asked for, and a model that drops or changes the id would otherwise waste the call.
+
 ## RED
 
 - Task 1, passwords: `Tests  7 failed | 10 passed (17)`
@@ -19,6 +21,7 @@
 - Task 6, caption updates land as stored: `Tests  3 failed | 27 passed (30)`
 - Task 7, ten new texts a day: `Tests  7 failed | 77 passed (84)`
 - Task 8, the new-texts prompt and checks: `Tests  8 failed | 183 passed (191)`
+- Task 9, the new-texts route: `Tests  3 failed | 28 passed (31)`, and two files could not import `@/app/api/posts/texts/route`
 
 ## GREEN
 
@@ -32,3 +35,4 @@
 - Task 6, caption updates land as stored: `Tests  108 passed (108)`
 - Task 7, ten new texts a day: `Tests  124 passed (124)`
 - Task 8, the new-texts prompt and checks: `Tests  191 passed (191)`
+- Task 9, the new-texts route: `Tests  194 passed (194)`

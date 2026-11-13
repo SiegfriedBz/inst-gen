@@ -17,6 +17,7 @@ vi.mock('@/lib/brand/deps', () => ({
 
 const plan = await import('@/app/api/posts/plan/route');
 const rewrite = await import('@/app/api/posts/rewrite/route');
+const texts = await import('@/app/api/posts/texts/route');
 
 const request = (path: string, body: string) =>
   new Request(`http://localhost/api/posts/${path}`, { method: 'POST', body });
@@ -83,5 +84,28 @@ describe('POST /api/posts/rewrite', () => {
     );
     expect(response.status).toBe(200);
     expect(rewrite.maxDuration).toBe(300);
+  });
+});
+
+// docs/specs/platform/easier-to-use, "New texts for a suggestion".
+describe('POST /api/posts/texts', () => {
+  test('an invalid body answers 400 invalid_profile', async () => {
+    const response = await texts.POST(
+      request('texts', JSON.stringify({ profile: svargaProfile(), posts: [post()] })),
+    );
+    expect(response.status).toBe(400);
+    expect(await response.json()).toEqual({ error: 'invalid_profile' });
+  });
+
+  test('a valid body streams NDJSON lines, and ends on the post', async () => {
+    const response = await texts.POST(
+      request('texts', JSON.stringify({ profile: svargaProfile(), post: post({ id: 'a' }) })),
+    );
+    expect(response.status).toBe(200);
+    expect(texts.maxDuration).toBe(300);
+    const lines = [];
+    if (response.body) for await (const line of readPostsLines(response.body)) lines.push(line);
+    const final = lines.at(-1);
+    expect(final?.type === 'final' && final.result.posts.map((p) => p.id)).toEqual(['a']);
   });
 });

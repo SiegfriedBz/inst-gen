@@ -135,6 +135,7 @@ const read = await import('@/app/api/brand/read/route');
 const search = await import('@/app/api/brand/search/route');
 const plan = await import('@/app/api/posts/plan/route');
 const rewrite = await import('@/app/api/posts/rewrite/route');
+const texts = await import('@/app/api/posts/texts/route');
 const translate = await import('@/app/api/posts/translate/route');
 const reply = await import('@/app/api/reviews/reply/route');
 const image = await import('@/app/api/posts/image/route');
@@ -252,6 +253,11 @@ const cases: Case[] = [
           avoid: null,
         }),
       ),
+  },
+  {
+    name: 'posts new texts',
+    action: 'newTexts',
+    call: () => texts.POST(req('/api/posts/texts', { profile: svargaProfile(), post: post() })),
   },
 ];
 
