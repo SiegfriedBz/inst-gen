@@ -1,7 +1,8 @@
 ---
 title: "Easier to use"
 description: "Owners type a short password, set in Vercel as owner=password, and it alone opens Sen's or Svarga's business: the app knows its website and reads it by itself on a phone with no business yet; 'Questions' comes before 'Reviews' in the bottom bar and the guide; the 'They go on top' line goes; 'Write new texts' gives a suggestion a new post text and story text for the same images, 10 a day; the Questions hint asks only to take out the guest's name."
-status: draft
+status: approved
+approved: { by: siegfried.bozza@protonmail.com, at: 2026-11-13T14:04:59Z }
 date: "2026-11-13"
 ---
 
