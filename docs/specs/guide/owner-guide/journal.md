@@ -48,6 +48,28 @@
   karsa-spa takes about 3 s alone, on `develop` too, and passed 5 s under the
   full suite once this branch added a test file. Not a change in speed: the
   same 2.9 to 3.0 s on both branches.
+- 2026-11-13: Brought up to date with the app, at the maintainer's request
+  ("update the guidelines and pdf to the current state of the app"). The
+  website read gives about 20 seconds, as the reading screen does: 2.20's new
+  first step had brought back the spec's minute, against the 2026-10-26 call
+  above. A test now ties the guide's number to `brand.home.keepOpen`.
+- 2026-11-13: "Making your posts" says a business change updates the newest
+  suggestions only (`autoRewrite`, `lib/posts/edit.ts`) and names "Rewrite
+  this one too" for an edited one. "Answering guests' questions" takes out
+  the guest's name in the tab's own words (`questions.hint`) and names "Write
+  another answer". "Your business is gone" says the read starts by itself
+  (2.20), with "Read my website" if it doesn't. "Your look" (2.16) stays out:
+  its spec keeps the guide unchanged.
+- 2026-11-13: The messages quoted by hand ("If something goes wrong", "Save
+  2 Images") still match `usage.*` and `posts.hints.images` in the three
+  languages.
+- 2026-11-13: `pnpm guide:pdf` and the phone tests need port 3000, held by
+  another project's dev server on this machine: both ran from scratch copies
+  on port 3101 (`.superpowers/`, outside git); the repo's script and config
+  are unchanged. The PDFs had not been printed since 2026-11-08, before the
+  Questions section: they now have 5 pages each, the sections whole and in
+  the bar's order, the changed lines read back in the three languages. No
+  contact line: no `.env.local` sets `GUIDE_CONTACT`.
 
 ## RED
 
@@ -76,6 +98,13 @@ Task 3, `CI=1 pnpm test:e2e tests/e2e/guide.spec.ts -g "prints plain"`:
 
 ("the guide is private" passes before the page exists: the gate already
 sends every path without a session to `/enter`.)
+
+2026-11-13, the guide brought up to date, `pnpm vitest run tests/unit/guide.test.tsx`:
+
+```
+ Test Files  1 failed (1)
+      Tests  9 failed | 26 passed (35)
+```
 
 ## GREEN
 
@@ -107,4 +136,19 @@ Task 4, `pnpm check` and `CI=1 pnpm test:e2e`:
  Test Files  97 passed (97)
       Tests  1113 passed (1113)
   51 passed (23.5s)
+```
+
+2026-11-13, the guide brought up to date: `pnpm vitest run
+tests/unit/guide.test.tsx tests/unit/i18n-messages.test.ts`, `pnpm check`,
+then the guide's phone tests and the PDFs on port 3101:
+
+```
+ Test Files  2 passed (2)
+      Tests  42 passed (42)
+ Test Files  125 passed (125)
+      Tests  2045 passed (2045)
+  7 passed (6.1s)
+.superpowers/guide/shopfront-guide-en.pdf: 5 pages
+.superpowers/guide/shopfront-guide-id.pdf: 5 pages
+.superpowers/guide/shopfront-guide-vi.pdf: 5 pages
 ```
