@@ -95,11 +95,10 @@ export function mergeGuest(known: Guest, given: ModelAnswer['guest']): Guest {
 }
 
 // The end of a first answer's hello line and of its closing: 😊 and the
-// business's flower in place of a stop; "!", "?" and "..." stay
-// (docs/specs/questions/first-answer, "Code's build").
+// business's flower in place of a stop, or of a final ",", ";" or ":";
+// "!", "?" and "..." stay (docs/specs/questions/first-answer, "Code's build").
 export function endOnPair(text: string, flower: string): string {
-  const trimmed = text.trimEnd();
-  const bare = /(?<!\.)\.$/u.test(trimmed) ? trimmed.slice(0, -1) : trimmed;
+  const bare = text.trimEnd().replace(/\s*(?:[,;:]|(?<!\.)\.)$/u, '');
   return `${bare} 😊${flower}`;
 }
 
