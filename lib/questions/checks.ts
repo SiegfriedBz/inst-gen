@@ -1,6 +1,7 @@
 import { isSpa } from '@/lib/posts/emoji';
 import { sameLanguage, withoutBanned, withoutSentences } from '@/lib/reviews/checks';
 import { type EmojiRule, endSentence, keepEmoji } from '@/lib/reviews/emoji';
+import { guestScript, holdsScript } from '@/lib/reviews/script';
 import { answerFlags } from './flags';
 import {
   type AnswerResponse,
@@ -126,6 +127,10 @@ export function buildAnswer(
       rule,
     );
   const text = join({ greeting, professional, answer, cta });
+  // An answer in other letters than the guest's never reaches the owner
+  // ("The guest's letters"): the route answers model_failed.
+  const script = guestScript(body.question);
+  if (script && !holdsScript(text, script)) return null;
   const same = sameLanguage(model.questionLanguage, body.locale);
   const translated = {
     greeting: clean(model.greeting.translation),

@@ -168,6 +168,17 @@ describe('checkReplies', () => {
     expect(checked?.short.text).toBe('Hello {name}. Please contact us directly.');
   });
 
+  test("refuses replies with none of the guest's letters", () => {
+    const ru = { locale: 'id' as const, flower: '🌼', script: 'Cyrillic' as const };
+    expect(checkReplies(answer({ reviewLanguage: 'ru' }), ru)).toBeNull();
+    const inRussian = answer({
+      reviewLanguage: 'ru',
+      short: { text: 'Спасибо, {name}! 🙏 Будем рады приехать к вам снова', translation: null },
+      warm: { text: 'Большое спасибо, {name}! 🙏 Приедем к вам снова', translation: null },
+    });
+    expect(checkReplies(inRussian, ru)?.short.text).toContain('Спасибо');
+  });
+
   test("drops the translations when the review is in the screen's language", () => {
     const checked = checkReplies(answer({ reviewLanguage: 'vi' }), { locale: 'vi', flower: '🪷' });
     expect(checked?.reviewTranslation).toBeNull();

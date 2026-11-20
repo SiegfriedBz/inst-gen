@@ -88,8 +88,11 @@ describe('recorded answers', () => {
       expect(answer.unanswered).toBe(true);
       const offer = answer.answer.text.split('\n\n').at(-1) ?? '';
       expect(offer, offer).not.toMatch(/uluwatu/i);
-      // Not even as "where you are staying" (answer-4 did).
-      expect(offer, offer).not.toMatch(/\bcom(?:e|es|ing)\b[^.!?]*\byou\b/i);
+      // Not even as "where you are staying" (answer-4 did): an offer to come
+      // to the guest names the areas Svarga covers.
+      if (/\bcom(?:e|es|ing)\b[^.!?]*\byou\b/i.test(offer)) {
+        expect(offer, offer).toMatch(/Canggu|Pererenan|Seminyak|Kerobokan/);
+      }
       for (const sentence of answer.answer.text.split(/(?<=[.!?])\s+|\n+/)) {
         if (/uluwatu/i.test(sentence)) expect(sentence, sentence).toMatch(/check|outside/i);
       }

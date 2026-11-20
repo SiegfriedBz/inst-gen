@@ -1,5 +1,6 @@
 import { goesToGuests, TONE_RULE, WORD_RULES } from '@/lib/reviews/copy-rules';
 import type { ScreenLocale } from '@/lib/reviews/reply';
+import { guestScript, SCRIPT_NAMES } from '@/lib/reviews/script';
 import type { QuestionBody } from './question';
 
 // What Flash-Lite reads to answer one guest's message
@@ -9,7 +10,7 @@ import type { QuestionBody } from './question';
 // sentence to copy (docs/specs/posts/day-and-night-copy). Bump the version
 // with every change.
 
-export const ANSWER_PROMPT_VERSION = 'answer-5';
+export const ANSWER_PROMPT_VERSION = 'answer-6';
 
 const LANGUAGES: Record<ScreenLocale, string> = {
   en: 'English',
@@ -82,6 +83,7 @@ export function answerPrompt(
   ].join('\n');
 
   const b = body.business;
+  const script = guestScript(body.question);
   const treatments = b.offerings.map((o) => {
     const facts = [o.name, o.duration, o.price].filter(Boolean).join(', ');
     return `- ${facts}${o.description ? `: ${o.description}` : ''}`;
@@ -113,6 +115,12 @@ export function answerPrompt(
     `- Time: ${told(body.known.time)}`,
     '',
     `Final answer: ${body.final ? 'yes' : 'no'}`,
+    // The guest's letters, when they aren't Latin ("The guest's letters").
+    ...(script
+      ? [
+          `The message is written in ${SCRIPT_NAMES[script]} letters: write every part of the answer in them.`,
+        ]
+      : []),
     '',
     'Message:',
     body.question,

@@ -42,7 +42,7 @@ const withBusiness = (over: Partial<QuestionBody['business']>, rest: Partial<Que
 
 describe('answerPrompt', () => {
   it('has a version', () => {
-    expect(ANSWER_PROMPT_VERSION).toBe('answer-5');
+    expect(ANSWER_PROMPT_VERSION).toBe('answer-6');
   });
 
   it('gives the rules of the spec', () => {
@@ -83,6 +83,14 @@ describe('answerPrompt', () => {
     expect(answerPrompt(withBusiness({ serviceArea: null }), '🪷', true).system).not.toContain(
       'Say a therapist comes to a place only',
     );
+  });
+
+  it("names the guest's letters when they aren't Latin (answer-5 answered Korean in English)", () => {
+    const korean = answerPrompt(body({ question: '커플 마사지는 얼마예요?' }), '🪷', true);
+    expect(korean.text).toContain(
+      'The message is written in Korean letters: write every part of the answer in them.',
+    );
+    expect(answerPrompt(body(), '🪷', true).text).not.toContain('letters: write every part');
   });
 
   it('names treatments only as the details do, and never invites the guest to a business that goes to them', () => {

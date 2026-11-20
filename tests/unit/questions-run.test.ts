@@ -88,7 +88,7 @@ describe('runAnswer', () => {
     const logs: AnswerLog[] = [];
     await run(replayTextModel(rec(answer), { answers: rec(answer) }), logs);
     const line = formatAnswerLog(logs[0]);
-    expect(line).toMatch(/^answer owner=sen model=gemini-3\.5-flash-lite prompt=answer-5 /);
+    expect(line).toMatch(/^answer owner=sen model=gemini-3\.5-flash-lite prompt=answer-6 /);
     expect(line).toContain(' final=yes ');
     expect(line).toContain(' sexual=no ');
     expect(line).toContain(' known=place,day,time ');

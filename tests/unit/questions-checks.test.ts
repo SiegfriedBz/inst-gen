@@ -126,6 +126,17 @@ describe('buildAnswer', () => {
     );
   });
 
+  it("refuses an answer with none of the guest's letters", () => {
+    const korean = body({ question: '커플 마사지는 얼마예요? 호텔로 와 주시나요?' });
+    expect(buildAnswer(model(), ctx(korean))).toBeNull();
+    const inKorean = model({
+      greeting: part('안녕하세요!'),
+      answer: part('커플 마사지는 60분에 VND 800k입니다.'),
+      callToAction: part('호텔로 찾아뵙겠습니다.'),
+    });
+    expect(buildAnswer(inKorean, ctx(korean))?.answer.text).toContain('안녕하세요');
+  });
+
   it('puts the website in place of {website}, in the answer and its translation, with no flag', () => {
     const svarga = body();
     svarga.business.website = 'https://svargabalimassage.com/';

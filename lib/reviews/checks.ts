@@ -1,6 +1,7 @@
 import { BANNED_WORDS } from '@/lib/posts/banned';
 import { type EmojiRule, endSentence, keepEmoji } from './emoji';
 import type { ModelReplies, ReplyBody, ScreenLocale } from './reply';
+import { holdsScript, type Script } from './script';
 
 // What code makes sure of in the model's replies
 // (docs/specs/reviews/reply-drafts, "The replies"): the business's own
@@ -50,7 +51,7 @@ export function sameLanguage(code: string, locale: ScreenLocale): boolean {
 
 export function checkReplies(
   answer: ModelReplies,
-  ctx: { locale: ScreenLocale; flower: string },
+  ctx: { locale: ScreenLocale; flower: string; script?: Script | null },
 ): ModelReplies | null {
   const same = sameLanguage(answer.reviewLanguage, ctx.locale);
   const rule: EmojiRule = answer.abusive
@@ -69,6 +70,11 @@ export function checkReplies(
   const short = draft(answer.short);
   const warm = draft(answer.warm);
   if (!short.text || !warm.text) return null;
+  // Replies in other letters than the guest's never reach the owner ("The
+  // guest's letters").
+  if (ctx.script && !(holdsScript(short.text, ctx.script) && holdsScript(warm.text, ctx.script))) {
+    return null;
+  }
   const review = same ? null : (answer.reviewTranslation?.trim() ?? null);
   return { ...answer, reviewTranslation: review || null, short, warm };
 }

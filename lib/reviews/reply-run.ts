@@ -3,6 +3,7 @@ import { describeModelError } from '@/lib/brand/read-log';
 import { checkReplies, flowerFor } from './checks';
 import type { ReplyBody, ReplyErrorCode, ReplyResponse } from './reply';
 import { REPLY_PROMPT_VERSION, replyPrompt } from './reply-prompt';
+import { guestScript } from './script';
 
 // Two replies to one review (docs/specs/reviews/reply-drafts, "The model
 // call"): one Flash-Lite call, no retry inside it, code's checks on the
@@ -96,7 +97,11 @@ export async function runReply(
     entry.language = answer.reviewLanguage;
     entry.abusive = answer.abusive;
     entry.complaint = answer.complaint;
-    const checked = checkReplies(answer, { locale: body.locale, flower });
+    const checked = checkReplies(answer, {
+      locale: body.locale,
+      flower,
+      script: guestScript(body.review),
+    });
     // A blocked or cut-off answer leaves a reply empty; it is never shown.
     if (!checked) throw new ModelError('failed', 'empty reply');
     entry.charsOut = checked.short.text.length + checked.warm.text.length;

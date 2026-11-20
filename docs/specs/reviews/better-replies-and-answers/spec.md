@@ -192,6 +192,28 @@ When it stood in place of a stop (a word right before it and another
 sentence after it), a "." takes its place: "Sorry the therapist came late 😊
 We hope…" becomes "Sorry the therapist came late. We hope…".
 
+#### The guest's letters
+
+Amended 2026-11-20, after the fourth recordings. A Korean question got its
+answer in English in the second and the fourth recordings, and in Korean in
+the third; a Russian review got its replies in Indonesian in the first. The
+prompt alone doesn't hold it.
+Approved by the maintainer, 2026-11-20T10:29:45Z.
+
+- Code sees the letters a guest writes with. When most of the letters of a
+  review or a question belong to one script other than the Latin alphabet
+  (Korean, Cyrillic, Chinese, Japanese, Thai, Arabic, Hebrew, Greek,
+  Devanagari), that script is the guest's.
+- The answer request tells the model so: every part of the answer is written
+  in those letters. The reply prompt stays as it is: its recordings already
+  hold the right letters, and code's refusal below covers it.
+- Code refuses a reply or an answer that holds none of those letters, as it
+  refuses an empty one: the route answers `model_failed`, and the tab shows
+  "Something went wrong while writing your answer. Try again." (or "your
+  replies"). One more tap writes it again. The translations, in the owner's
+  language, aren't checked.
+- The replay tests keep their check on the Korean and the Russian fixtures.
+
 ### The Reviews tab
 
 #### The replies
