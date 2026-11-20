@@ -2,5 +2,24 @@
   "business": "svarga",
   "locale": "en",
   "name": "",
-  "review": "Amazing massage, thanks a lot!"
+  "review": "Amazing massage, thanks a lot!",
+  "recording": {
+    "modelId": "gemini-3.5-flash-lite",
+    "promptVersion": "reply-5",
+    "partials": [],
+    "final": {
+      "reviewLanguage": "en",
+      "abusive": false,
+      "complaint": false,
+      "reviewTranslation": null,
+      "short": {
+        "text": "Thank you for your review 🙏. I am glad you enjoyed your massage 😊. We would be glad to come to you again whenever you would like another massage 🌼.",
+        "translation": null
+      },
+      "warm": {
+        "text": "Thank you very much for your kind words 🙏. I am so glad that you enjoyed your massage 😊. We would be very glad to come to you again on your next stay 🌼.",
+        "translation": null
+      }
+    }
+  }
 }

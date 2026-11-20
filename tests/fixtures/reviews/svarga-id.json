@@ -5,18 +5,19 @@
   "review": "Pijatnya enak sekali, terapisnya datang tepat waktu ke vila kami. Sayang minyaknya agak terlalu wangi. Overall puas!",
   "recording": {
     "modelId": "gemini-3.5-flash-lite",
-    "promptVersion": "reply-2",
+    "promptVersion": "reply-5",
     "partials": [],
     "final": {
       "reviewLanguage": "id",
       "abusive": false,
+      "complaint": true,
       "reviewTranslation": null,
       "short": {
-        "text": "Terima kasih! 🙏 Mohon maaf mengenai parkir motor yang sempit. Kami senang Anda menikmati pijat dan kebersihannya, semoga bisa kembali lagi ke Svarga Bali Massage. 🌼",
+        "text": "Terima kasih banyak 🙏 Kami senang Anda menikmati pijatnya 😊 Maaf soal minyak yang terlalu wangi. Kami akan senang datang ke tempat Anda lagi pada kesempatan berikutnya 🌼",
         "translation": null
       },
       "warm": {
-        "text": "Terima kasih banyak atas ulasan Anda! 🙏 Kami turut minta maaf atas kendala parkir motor yang agak sempit. Senang sekali rasanya mengetahui Anda puas dengan pijat dan tempat kami yang bersih, dan kami sangat menantikan kunjungan Anda berikutnya ke Svarga Bali Massage. 🌼",
+        "text": "Terima kasih atas ulasan Anda 🙏 Kami senang Anda menikmati pijat dan terapis kami datang tepat waktu 😊 Mohon maaf mengenai minyak yang terlalu wangi. Kami akan sangat senang datang kembali untuk Anda pada kunjungan berikutnya 🌼",
         "translation": null
       }
     }

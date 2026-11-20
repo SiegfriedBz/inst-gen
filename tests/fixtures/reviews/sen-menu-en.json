@@ -2,5 +2,24 @@
   "business": "sen",
   "locale": "vi",
   "name": "Lukas M.",
-  "review": "The four hands massage was out of this world. Two therapists came to our hotel right on time, a perfect end to our trip."
+  "review": "The four hands massage was out of this world. Two therapists came to our hotel right on time, a perfect end to our trip.",
+  "recording": {
+    "modelId": "gemini-3.5-flash-lite",
+    "promptVersion": "reply-5",
+    "partials": [],
+    "final": {
+      "reviewLanguage": "en",
+      "abusive": false,
+      "complaint": false,
+      "reviewTranslation": "Massage bốn tay thật tuyệt vời. Hai trị liệu viên đã đến khách sạn của chúng tôi đúng giờ, một kết thúc hoàn hảo cho chuyến đi của chúng tôi.",
+      "short": {
+        "text": "Thank you, {name} 🙏. We are glad you enjoyed your Four-Hands Massage 😊. We would be glad to come to you again on your next stay🪷",
+        "translation": "Cảm ơn bạn, {name} 🙏. Chúng tôi rất vui vì bạn đã thích dịch vụ Massage bốn tay 😊. Chúng tôi rất vui được đến gặp bạn lần nữa trong kỳ nghỉ tới🪷"
+      },
+      "warm": {
+        "text": "Thank you for your kind words, {name} 🙏. We are so glad you enjoyed your Four-Hands Massage and that our therapists arrived right on time for you 😊. We would be glad to come to you again whenever you would like another massage🪷",
+        "translation": "Cảm ơn những lời tốt đẹp của bạn, {name} 🙏. Chúng tôi rất vui vì bạn đã thích dịch vụ Massage bốn tay và các trị liệu viên của chúng tôi đã đến đúng giờ cho bạn 😊. Chúng tôi rất vui được đến gặp bạn lần nữa bất cứ khi nào bạn muốn có một buổi massage khác🪷"
+      }
+    }
+  }
 }
