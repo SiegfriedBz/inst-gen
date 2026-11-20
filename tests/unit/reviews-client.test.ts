@@ -1,5 +1,6 @@
 import { describe, expect, test, vi } from 'vitest';
-import { requestReplies } from '@/lib/reviews/client';
+import { replyBodyFor, requestReplies } from '@/lib/reviews/client';
+import { goesToGuests } from '@/lib/reviews/copy-rules';
 import { senProfile, svargaProfile } from './helpers/brand';
 
 // The reply request from the phone (docs/specs/reviews/reply-drafts, "The
@@ -45,6 +46,8 @@ describe('requestReplies', () => {
       business: {
         name: senProfile().name.value,
         summary: senProfile().summary?.value ?? null,
+        offerings: ['Vietnamese Traditional Massage', 'Foot Reflexology'],
+        goesToGuests: false,
       },
       country: 'VN',
       avoid: null,
@@ -75,6 +78,28 @@ describe('requestReplies', () => {
     expect(body.avoid).toEqual(['Thank you, {name}!', 'Dear {name}.']);
   });
 
+  test("sends Svarga's treatment names, and that a business with a service area goes to its guests", () => {
+    const body = replyBodyFor({ ...input, profile: svargaProfile() });
+    expect(body.business.offerings).toEqual(['Balinese massage']);
+    expect(body.business.goesToGuests).toBe(true);
+  });
+
+  test('a blank service area goes nowhere; the first 20 treatments go, each cut at 200 characters', () => {
+    const sen = senProfile();
+    const profile = {
+      ...sen,
+      location: { ...sen.location, serviceArea: { value: '  ', source: sen.name.source } },
+      offerings: Array.from({ length: 25 }, (_, i) => ({
+        name: `${'x'.repeat(250)}${i}`,
+        source: sen.name.source,
+      })),
+    };
+    const body = replyBodyFor({ ...input, profile });
+    expect(body.business.goesToGuests).toBe(false);
+    expect(body.business.offerings).toHaveLength(20);
+    expect(body.business.offerings[0]).toBe('x'.repeat(200));
+  });
+
   test('fails as signed out, offline, busy or failed', async () => {
     expect(await requestReplies(input, { fetch: fetchAnswering(401, {}) })).toEqual({
       ok: false,
@@ -94,5 +119,14 @@ describe('requestReplies', () => {
       ok: false,
       code: 'model_failed',
     });
+  });
+});
+
+describe('goesToGuests', () => {
+  test('a service area means the business goes to its guests', () => {
+    expect(goesToGuests('My Khe')).toBe(true);
+    expect(goesToGuests('  ')).toBe(false);
+    expect(goesToGuests(null)).toBe(false);
+    expect(goesToGuests(undefined)).toBe(false);
   });
 });

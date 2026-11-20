@@ -203,6 +203,8 @@ A name or a hotel room the guest wrote in the question still goes with it
 
 ### The answer
 
+> Changed by `reviews/better-replies-and-answers` (2026-11-20): an answer that isn't final ends on a gentle offer, unless the question mentions sex; code says whether the business goes to its guests, and the answer never invites them to it; treatments by their own names; the posts' rules on words; 😊 and the flower, the flower last, no stop before an emoji; the website only when the guest asks for photos or more details; a therapist comes only to the areas the website lists; the answer is in the guest's letters, or code refuses it.
+
 What the model is asked for, and what code makes sure of:
 
 - **Language.** The answer is in the language of the question, or its main

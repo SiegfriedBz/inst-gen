@@ -59,7 +59,8 @@ describe('ctaFor', () => {
   it('ends every post with the WhatsApp number', () => {
     const profile = svargaProfile();
     profile.contact.whatsapp = { value: '+84 905 123 456', source: profile.siteUrl };
-    expect(ctaFor(profile)).toBe('Book on WhatsApp: +84 905 123 456');
+    // Amended 2026-11-20: the maintainer's own line.
+    expect(ctaFor(profile)).toBe('👉 Book Your Wellness on WhatsApp today: +84 905 123 456');
   });
 
   it('is null without WhatsApp', () => {
@@ -70,11 +71,11 @@ describe('ctaFor', () => {
   });
 
   // docs/specs/posts/marketing-copy, "The offer's end, by the WhatsApp line".
-  it("puts the offer's end before the line", () => {
+  it("puts the offer's end on the line above, with no stop before the 👉", () => {
     const profile = svargaProfile();
     profile.contact.whatsapp = { value: '+84 905 123 456', source: profile.siteUrl };
     expect(ctaFor(profile, OFFER)).toBe(
-      'Offer ends Tuesday 27 October. Book on WhatsApp: +84 905 123 456',
+      'Offer ends Tuesday 27 October\n👉 Book Your Wellness on WhatsApp today: +84 905 123 456',
     );
   });
 });
@@ -83,10 +84,14 @@ describe('postCta', () => {
   it("gives the offer's end only to a post that carries the offer", () => {
     const profile = svargaProfile();
     expect(postCta(profile, { offer: true }, OFFER)).toBe(
-      'Offer ends Tuesday 27 October. Book on WhatsApp: +6281234567890',
+      'Offer ends Tuesday 27 October\n👉 Book Your Wellness on WhatsApp today: +6281234567890',
     );
-    expect(postCta(profile, {}, OFFER)).toBe('Book on WhatsApp: +6281234567890');
-    expect(postCta(profile, { offer: true })).toBe('Book on WhatsApp: +6281234567890');
+    expect(postCta(profile, {}, OFFER)).toBe(
+      '👉 Book Your Wellness on WhatsApp today: +6281234567890',
+    );
+    expect(postCta(profile, { offer: true })).toBe(
+      '👉 Book Your Wellness on WhatsApp today: +6281234567890',
+    );
   });
 });
 

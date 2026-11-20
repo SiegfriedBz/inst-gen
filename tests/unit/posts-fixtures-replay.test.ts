@@ -53,7 +53,8 @@ describe('recorded post plans', () => {
     // Recorded as six (posts-11); an attempt keeps two (docs/specs/posts/two-suggestions).
     expect(final.posts.length).toBeLessThanOrEqual(2);
     for (const post of final.posts) {
-      if (profile.contact.whatsapp) expect(post.cta).toMatch(/^Book on WhatsApp: /);
+      if (profile.contact.whatsapp)
+        expect(post.cta).toMatch(/^👉 Book Your Wellness on WhatsApp today: /);
       expect(post.hashtags.length).toBeGreaterThanOrEqual(1);
       expect(post.hashtags.length).toBeLessThanOrEqual(5);
       for (const tag of post.hashtags) expect(tag).toMatch(/^[a-z0-9]+$/);
@@ -184,9 +185,11 @@ describe('recorded story texts and flowers', () => {
         expect(flowers(story.slice(line.length))).toBe(1);
         expect(story.slice(line.length).trim()).toMatch(/^\p{Extended_Pictographic}$/u);
         // The offer's end before WhatsApp (docs/specs/posts/marketing-copy).
-        expect(post.cta.startsWith(`Offer ends ${result.offer.lastDay}. Book on WhatsApp: `)).toBe(
-          true,
-        );
+        expect(
+          post.cta.startsWith(
+            `Offer ends ${result.offer.lastDay}\n👉 Book Your Wellness on WhatsApp today: `,
+          ),
+        ).toBe(true);
       }
       // At most three paragraphs, the hook counted
       // (docs/specs/posts/short-captions).

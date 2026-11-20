@@ -170,7 +170,9 @@ export function PostCard({
             <p className="whitespace-pre-line text-[15px] leading-normal text-ink">
               {post.caption}
             </p>
-            {cta && <p className="mt-3 text-[15px] leading-normal text-ink">{cta}</p>}
+            {cta && (
+              <p className="mt-3 whitespace-pre-line text-[15px] leading-normal text-ink">{cta}</p>
+            )}
             {post.hashtags.length > 0 && (
               <p className="mt-3 text-[15px] text-accent">
                 {post.hashtags.map((tag) => `#${tag}`).join(' ')}

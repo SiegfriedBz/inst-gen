@@ -2,21 +2,22 @@
   "business": "sen",
   "locale": "en",
   "name": "Mike",
-  "review": "SCAM!!! Never been there but my friend says they are thieves. Avoid!!!",
+  "review": "SCAM!!! Never booked them but my friend says they are thieves. Avoid!!!",
   "recording": {
     "modelId": "gemini-3.5-flash-lite",
-    "promptVersion": "reply-2",
+    "promptVersion": "reply-5",
     "partials": [],
     "final": {
       "reviewLanguage": "en",
       "abusive": true,
+      "complaint": true,
       "reviewTranslation": null,
       "short": {
-        "text": "Hello {name}. We have no record of you or your friend visiting our service. Please contact us directly so we can look into this matter.",
+        "text": "Thank you {name} for your feedback. We have no record of this visit. Please contact us directly.",
         "translation": null
       },
       "warm": {
-        "text": "Hello {name}. We take all feedback seriously, but we have no record of any such experience in our system. Please reach out to us directly to discuss this further.",
+        "text": "Thank you {name} for sharing your thoughts. We cannot find any record of this visit in our system. Please reach out to us directly so we can look into this.",
         "translation": null
       }
     }

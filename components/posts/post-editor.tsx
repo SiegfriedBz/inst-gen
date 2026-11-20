@@ -48,7 +48,7 @@ export function PostEditor({
       />
       {empty && <p className="text-[13px] text-error">{t('edit.empty')}</p>}
       {over > 0 && <p className="text-[13px] text-error">{t('edit.tooLong', { count: over })}</p>}
-      {cta && <p className="text-[15px] text-ink-secondary">{cta}</p>}
+      {cta && <p className="whitespace-pre-line text-[15px] text-ink-secondary">{cta}</p>}
       <Label htmlFor={`${id}-hashtags`}>{t('edit.hashtags')}</Label>
       <Input
         id={`${id}-hashtags`}

@@ -1,0 +1,44 @@
+{
+  "business": "sen",
+  "locale": "vi",
+  "language": "en",
+  "final": false,
+  "known": {
+    "place": null,
+    "day": null,
+    "time": null
+  },
+  "question": "How much for a relaxing massage at my hotel tonight?",
+  "recording": {
+    "modelId": "gemini-3.5-flash-lite",
+    "promptVersion": "answer-7",
+    "partials": [],
+    "final": {
+      "questionLanguage": "en",
+      "sexual": false,
+      "unanswered": true,
+      "questionTranslation": "Giá cho một buổi mát-xa thư giãn tại khách sạn của tôi tối nay là bao nhiêu?",
+      "greeting": {
+        "text": "Hello.",
+        "translation": "Xin chào."
+      },
+      "answer": {
+        "text": "We offer several treatments for relaxation, including Aroma Massage, 60 min, $19 VND 500k, and Vietnamese Traditional Massage, 60 min, $19 VND 500k 😊 The team will check availability for tonight and reply shortly.",
+        "translation": "Chúng tôi cung cấp một số liệu pháp thư giãn, bao gồm Mát-xa Thơm, 60 phút, $19 VND 500k, và Mát-xa Truyền thống Việt Nam, 60 phút, $19 VND 500k 😊 Nhóm sẽ kiểm tra thời gian trống cho tối nay và phản hồi sớm."
+      },
+      "professionalOnly": {
+        "text": "Our business offers only professional therapeutic massage.",
+        "translation": "Doanh nghiệp của chúng tôi chỉ cung cấp dịch vụ mát-xa trị liệu chuyên nghiệp."
+      },
+      "callToAction": {
+        "text": "A therapist can come to you in our core areas in Da Nang 🪷",
+        "translation": "Kỹ thuật viên có thể đến với bạn tại các khu vực trung tâm của chúng tôi ở Đà Nẵng 🪷"
+      },
+      "guest": {
+        "place": null,
+        "day": "tonight",
+        "time": null
+      }
+    }
+  }
+}

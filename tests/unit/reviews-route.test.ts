@@ -6,9 +6,11 @@ const behaviour = { mode: 'ok' as 'ok' | 'busy' };
 const answer = {
   reviewLanguage: 'en',
   abusive: false,
+  complaint: false,
   reviewTranslation: 'Massage tuyệt vời.',
   short: { text: 'Thank you, {name}! 🪷', translation: 'Cảm ơn {name}! 🪷' },
-  warm: { text: 'Dear {name}, thank you so much. 🙏', translation: 'Thân mến {name}.' },
+  // As code leaves it: no stop before an emoji, the flower last.
+  warm: { text: 'Dear {name}, thank you so much 🙏 🪷', translation: 'Thân mến {name} 🪷' },
 };
 const rec = { modelId: 'm', promptVersion: 'p', partials: [], final: answer };
 
@@ -53,7 +55,7 @@ describe('POST /api/reviews/reply', () => {
     expect(await res.json()).toEqual({
       ...answer,
       model: 'gemini-3.5-flash-lite',
-      promptVersion: 'reply-2',
+      promptVersion: 'reply-5',
     });
   });
 

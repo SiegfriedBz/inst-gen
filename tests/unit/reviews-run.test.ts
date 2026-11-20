@@ -13,13 +13,19 @@ const body: ReplyBody = {
   review,
   hasName: true,
   locale: 'vi',
-  business: { name: 'Svarga', summary: 'A Balinese spa in Ubud.' },
+  business: {
+    name: 'Svarga',
+    summary: 'A Balinese spa in Ubud.',
+    offerings: ['Balinese massage'],
+    goesToGuests: true,
+  },
   country: 'ID',
   avoid: null,
 };
 const answer: ModelReplies = {
   reviewLanguage: 'en',
   abusive: false,
+  complaint: true,
   reviewTranslation: 'Massage đá nóng tuyệt vời, phòng lạnh.',
   short: { text: 'Thank you, {name}! 🪷', translation: 'Cảm ơn {name}! 🪷' },
   warm: { text: 'Dear {name}, sorry about the cold room. 🙏', translation: 'Thân mến {name}.' },
@@ -52,8 +58,12 @@ describe('runReply', () => {
       response: {
         ...answer,
         short: { text: 'Thank you, {name}! 🌼', translation: 'Cảm ơn {name}! 🌼' },
+        warm: {
+          text: 'Dear {name}, sorry about the cold room 🙏 🌼',
+          translation: 'Thân mến {name} 🌼',
+        },
         model: 'gemini-3.5-flash-lite',
-        promptVersion: 'reply-2',
+        promptVersion: 'reply-5',
       },
     });
     expect(calls).toEqual([replyPrompt(body, '🌼')]);
@@ -110,6 +120,7 @@ describe('runReply', () => {
     expect(line).toContain('owner=svarga');
     expect(line).toContain('lang=en');
     expect(line).toContain('abusive=false');
+    expect(line).toContain('complaint=true');
     expect(line).toContain('outcome=ok');
     expect(line).toContain(`chars_in=${review.length}`);
     for (const text of [review, 'Thank you', 'Cảm ơn', 'Massage']) {

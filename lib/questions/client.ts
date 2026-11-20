@@ -71,6 +71,7 @@ export function questionBodyFor(input: AnswerInput): QuestionBody {
         instagram: value(p.contact.instagram),
         bookingUrl: value(p.contact.bookingUrl),
       },
+      website: p.siteUrl,
     },
     country: countryOf(p),
     known: input.known,

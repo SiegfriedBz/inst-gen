@@ -11,7 +11,7 @@
   "question": "Bên em có massage đặc biệt cho nam không?",
   "recording": {
     "modelId": "gemini-3.5-flash-lite",
-    "promptVersion": "answer-1",
+    "promptVersion": "answer-7",
     "partials": [],
     "final": {
       "questionLanguage": "vi",
@@ -23,7 +23,7 @@
         "translation": null
       },
       "answer": {
-        "text": "Chúng tôi cung cấp các liệu pháp massage trị liệu chuyên nghiệp như massage truyền thống Việt Nam, massage Thái, massage bấm huyệt chân và các gói phục hồi cơ thể.",
+        "text": "Chúng tôi cung cấp các liệu pháp massage trị liệu chuyên nghiệp.",
         "translation": null
       },
       "professionalOnly": {

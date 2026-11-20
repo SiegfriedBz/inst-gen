@@ -48,6 +48,7 @@ describe('requestAnswer', () => {
     expect(body.avoid).toBe('Hello! Old answer.');
     expect(body.business.name).toBe(senProfile().name.value);
     expect(body.business.offerings.length).toBe(senProfile().offerings.length);
+    expect(body.business.website).toBe(senProfile().siteUrl);
     expect(body.country).toBe('VN');
   });
 

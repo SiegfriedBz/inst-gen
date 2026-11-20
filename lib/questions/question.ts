@@ -49,6 +49,10 @@ export const questionBodySchema = z.object({
       instagram: fact,
       bookingUrl: fact,
     }),
+    // The address the details were read from, for an answer that sends the
+    // guest to it (docs/specs/reviews/better-replies-and-answers, "The
+    // website, only when asked"); a page loaded before it sends none.
+    website: text(500).nullable().default(null),
   }),
   country: z.enum(['VN', 'ID']).nullable(),
   known: guestSchema,
