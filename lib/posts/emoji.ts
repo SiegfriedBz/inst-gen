@@ -49,7 +49,7 @@ export function dropStopsBeforeEmoji(text: string): string {
 
 // What a removed emoji leaves: two spaces, a space before a stop, a space at
 // either end of a line, a line left empty.
-function tidy(text: string): string {
+export function tidy(text: string): string {
   return text
     .replace(/[ \t]{2,}/g, ' ')
     .replace(/ +([.,!?])/g, '$1')

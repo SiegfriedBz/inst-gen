@@ -120,7 +120,7 @@ function holdsWords(text: string, words: string): boolean {
 }
 
 // Where whole words start in a text, or -1.
-function wordAt(text: string, words: string): number {
+export function wordAt(text: string, words: string): number {
   const match = new RegExp(
     `(^|[^\\p{L}\\p{N}])${escapeRegex(words)}(?=$|[^\\p{L}\\p{N}])`,
     'u',
@@ -129,7 +129,7 @@ function wordAt(text: string, words: string): number {
 }
 
 // Lower case, accents gone ("đ" as "d"), one space between words.
-function folded(text: string): string {
+export function folded(text: string): string {
   return text
     .normalize('NFD')
     .replace(/\p{M}/gu, '')
@@ -385,7 +385,7 @@ function bodyRecords(post: Post): Dropped[] {
 }
 
 // The clichés a text holds, and its em dash, in the order they first appear.
-function clichesIn(text: string): string[] {
+export function clichesIn(text: string): string[] {
   const plain = folded(text);
   return [
     ...CLICHES.map((words) => ({ shown: words, at: wordAt(plain, words) })),

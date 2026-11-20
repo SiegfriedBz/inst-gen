@@ -1,3 +1,5 @@
+import { BANNED_WORDS } from '@/lib/posts/banned';
+import { FLOWER_EMOJI } from './emoji';
 import type { ModelReplies, ReplyBody, ScreenLocale } from './reply';
 
 // What code makes sure of in the model's replies
@@ -6,8 +8,35 @@ import type { ModelReplies, ReplyBody, ScreenLocale } from './reply';
 // language the review is already in.
 
 // Shared with the answers to guests' questions (lib/questions/checks.ts).
-export const FLOWER_EMOJI = /🌸|🌺|🌷|🌹|💮|🪷|🌼|🏵️?/gu;
+export { FLOWER_EMOJI };
+
 const EMOJI = /\p{Extended_Pictographic}️?|‍|️/gu;
+
+// A sentence ends on its stop, or on an emoji in a stop's place, with the
+// spaces after it (docs/specs/reviews/better-replies-and-answers, "The posts'
+// rules on words").
+const SENTENCE_END = /(?<=(?:[.!?]|\p{Extended_Pictographic}|\p{Emoji_Modifier}|️)\s+)(?=\S)/u;
+
+export function withoutSentences(text: string, drop: (sentence: string) => boolean): string {
+  return text
+    .split(SENTENCE_END)
+    .filter((sentence) => !drop(sentence))
+    .join('')
+    .trim();
+}
+
+function escapeRegex(text: string): string {
+  return text.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+}
+
+const BANNED = BANNED_WORDS.map(
+  (word) => new RegExp(`(?:^|[^\\p{L}\\p{N}])${escapeRegex(word)}(?:$|[^\\p{L}\\p{N}])`, 'iu'),
+);
+
+// A sentence that holds a banned word goes whole (docs/specs/questions/answer-drafts).
+export function withoutBanned(text: string): string {
+  return withoutSentences(text, (sentence) => BANNED.some((word) => word.test(sentence)));
+}
 
 export function flowerFor(country: ReplyBody['country']): '🪷' | '🌼' | '🌸' {
   if (country === 'VN') return '🪷';

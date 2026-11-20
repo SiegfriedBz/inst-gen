@@ -1,5 +1,11 @@
 import { describe, expect, test } from 'vitest';
-import { checkReplies, flowerFor, sameLanguage } from '@/lib/reviews/checks';
+import {
+  checkReplies,
+  flowerFor,
+  sameLanguage,
+  withoutBanned,
+  withoutSentences,
+} from '@/lib/reviews/checks';
 import type { ModelReplies } from '@/lib/reviews/reply';
 
 // Code's checks on the model's answer (docs/specs/reviews/reply-drafts, "The
@@ -30,6 +36,34 @@ describe('sameLanguage', () => {
     expect(sameLanguage('EN', 'en')).toBe(true);
     expect(sameLanguage('vi', 'vi')).toBe(true);
     expect(sameLanguage('ru', 'en')).toBe(false);
+  });
+});
+
+describe('withoutSentences', () => {
+  test('drops whole sentences, a stop or an emoji ending each', () => {
+    expect(withoutSentences('One. Two! Three 🌸 Four?', (s) => s.includes('Two'))).toBe(
+      'One. Three 🌸 Four?',
+    );
+    expect(withoutSentences('One. Two! Three 🌸 Four?', (s) => s.includes('Three'))).toBe(
+      'One. Two! Four?',
+    );
+  });
+});
+
+describe('withoutBanned', () => {
+  test('removes a sentence that holds a banned word, an emoji ending a sentence', () => {
+    expect(
+      withoutBanned(
+        'Thank you! 🙏 Glad you enjoyed it 😊 It was very sensual. We would love to come to you again 🌸',
+      ),
+    ).toBe('Thank you! 🙏 Glad you enjoyed it 😊 We would love to come to you again 🌸');
+  });
+
+  test('keeps paragraphs, and a text with no banned word as it is', () => {
+    expect(withoutBanned('Hello!\n\nWe never do nuru massage. Our Thai Massage is 60 min.')).toBe(
+      'Hello!\n\nOur Thai Massage is 60 min.',
+    );
+    expect(withoutBanned('Our Thai Massage is 60 min.')).toBe('Our Thai Massage is 60 min.');
   });
 });
 

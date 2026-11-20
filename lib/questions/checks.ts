@@ -1,7 +1,5 @@
-import { BANNED_WORDS } from '@/lib/posts/banned';
 import { isSpa } from '@/lib/posts/emoji';
-import { sentences } from '@/lib/posts/story';
-import { FLOWER_EMOJI, noEmoji, sameLanguage } from '@/lib/reviews/checks';
+import { FLOWER_EMOJI, noEmoji, sameLanguage, withoutBanned } from '@/lib/reviews/checks';
 import { answerFlags } from './flags';
 import {
   type AnswerResponse,
@@ -24,22 +22,6 @@ export type SexualBy = 'model' | 'words' | 'both' | null;
 export type BuiltAnswer = Omit<AnswerResponse, 'model' | 'promptVersion'> & {
   sexualBy: SexualBy;
 };
-
-function escapeRegex(text: string): string {
-  return text.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-}
-
-const BANNED = BANNED_WORDS.map(
-  (word) => new RegExp(`(?:^|[^\\p{L}\\p{N}])${escapeRegex(word)}(?:$|[^\\p{L}\\p{N}])`, 'iu'),
-);
-
-// A sentence that holds a banned word goes whole.
-function withoutBanned(text: string): string {
-  return sentences(text)
-    .filter((sentence) => !BANNED.some((word) => word.test(sentence)))
-    .join('')
-    .trim();
-}
 
 const detail = (value: string | null): string | null => {
   const trimmed = value?.trim();
