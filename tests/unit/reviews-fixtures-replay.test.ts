@@ -92,6 +92,8 @@ describe('recorded replies', () => {
       // Sen and Svarga go to their guests: no reply invites a guest to them.
       expect(body.business.goesToGuests).toBe(true);
       expect(invitesIn(reply), `${slug}: ${reply}`).toEqual([]);
+      // A friendly reply has its 😊 (the spec's "Success").
+      if (!answer.abusive && !complaint) expect(reply, slug).toContain('😊');
     }
     if (fixture.business === 'svarga') {
       expect(JSON.stringify(answer)).not.toContain('🪷');

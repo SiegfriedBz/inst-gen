@@ -84,6 +84,27 @@ describe('keepEmoji', () => {
     expect(keepEmoji('Wait 🙏... we come', R)).toBe('Wait 🙏... we come 🌼');
   });
 
+  it('keeps the line break before an emoji it removes at the start of a line (final review)', () => {
+    const rule: EmojiRule = { keep: ['😊'], flower: '🪷' };
+    expect(
+      keepEmoji(
+        'Here are our massages:\n💆 Thai Massage, 60 min, VND 500k\n🌸 Foot Reflexology, 60 min, VND 450k',
+        rule,
+      ),
+    ).toBe(
+      'Here are our massages:\nThai Massage, 60 min, VND 500k\nFoot Reflexology, 60 min, VND 450k 🪷',
+    );
+    expect(keepEmoji('- Foot, 60 min, VND 450k\n\n✨ A therapist can come to you.', rule)).toBe(
+      '- Foot, 60 min, VND 450k\n\nA therapist can come to you 🪷',
+    );
+  });
+
+  it('drops a stop after an emoji even with a space between them (final review)', () => {
+    expect(keepEmoji('Thank you 🙏 . Glad you liked it', R)).toBe(
+      'Thank you 🙏 Glad you liked it 🌼',
+    );
+  });
+
   it('leaves an empty text empty, with no flower', () => {
     expect(keepEmoji('  ', R)).toBe('');
     expect(keepEmoji('🙏 🌸', R)).toBe('');
@@ -103,5 +124,8 @@ describe('endSentence', () => {
       'Prices:\n- Thai Massage, 60 min: VND 500k',
     );
     expect(endSentence('')).toBe('');
+    expect(endSentence('Prices:\n💆 Thai Massage, 60 min')).toBe(
+      'Prices:\n💆 Thai Massage, 60 min',
+    );
   });
 });

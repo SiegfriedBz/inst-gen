@@ -507,8 +507,9 @@ Scenario: Treatments by their own names
 - The "." put back for a removed emoji is a Latin stop, also in a Chinese or
   Japanese reply.
 - Whether a guest asked for photos or details is the model's call. A link
-  the model writes itself, instead of `{website}`, isn't checked: the owner
-  reads the answer before sending it.
+  the model writes on the business's own site becomes its address (the
+  booking link stays); a link to another site isn't checked: the owner reads
+  the answer before sending it.
 - Flash-Lite stays (decision 0003). Flash, the stronger model, has about 20
   free requests a day for the whole app against Flash-Lite's 500. If prompt
   changes can't get the recordings through the checks, the developer comes

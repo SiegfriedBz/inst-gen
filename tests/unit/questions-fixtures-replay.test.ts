@@ -118,6 +118,8 @@ describe('recorded answers', () => {
       expect(new Set(emojis).size, `${fixture.slug}: ${text}`).toBe(emojis.length);
       expect(text.trimEnd().endsWith(flower), `${fixture.slug}: ${text}`).toBe(true);
     }
+    // A friendly answer has its 😊 (the spec's "Success").
+    if (!sex) expect(answer.answer.text, fixture.slug).toContain('😊');
     // Sen and Svarga go to their guests: no answer invites a guest to them.
     expect(invitesIn(answer.answer.text), answer.answer.text).toEqual([]);
 

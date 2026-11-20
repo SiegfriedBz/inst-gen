@@ -33,8 +33,10 @@ const detail = (value: string | null): string | null => {
   return trimmed ? trimmed.slice(0, QUESTION_LIMITS.detail) : null;
 };
 
-const WEBSITE = /\{\s*website\s*\}/i;
-const WEBSITES = /\{\s*website\s*\}/gi;
+const WEBSITE = /\{+\s*website\s*\}+/i;
+const WEBSITES = /\{+\s*website\s*\}+/gi;
+// A placeholder code didn't fill never reaches the guest: its sentence goes.
+const LEFTOVER = /\{[^{}\n]*\}/;
 
 function escapeRegex(text: string): string {
   return text.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
@@ -103,10 +105,13 @@ export function buildAnswer(
   // Each part ends on its punctuation (the model may leave a stop out).
   const clean = (text: string | null): string =>
     endSentence(
-      fillWebsite(
-        withoutBanned(text ?? ''),
-        body.business.website,
-        body.business.contact.bookingUrl,
+      withoutSentences(
+        fillWebsite(
+          withoutBanned(text ?? ''),
+          body.business.website,
+          body.business.contact.bookingUrl,
+        ),
+        (sentence) => LEFTOVER.test(sentence),
       ),
     );
   const greeting = clean(model.greeting.text);

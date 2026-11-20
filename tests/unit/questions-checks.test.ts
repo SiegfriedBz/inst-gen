@@ -137,6 +137,34 @@ describe('buildAnswer', () => {
     expect(buildAnswer(inKorean, ctx(korean))?.answer.text).toContain('안녕하세요');
   });
 
+  it('keeps a list with emoji bullets a list (final review)', () => {
+    const built = buildAnswer(
+      model({
+        answer: part(
+          'Here are our massages:\n💆 Thai Massage, 60 min, VND 500k\n💆 Foot Reflexology, 60 min, VND 450k\n💆 Aroma Massage, 60 min, VND 500k',
+        ),
+      }),
+      ctx(),
+    );
+    expect(built?.answer.text).toContain(
+      'Here are our massages:\nThai Massage, 60 min, VND 500k\nFoot Reflexology, 60 min, VND 450k\nAroma Massage, 60 min, VND 500k\n\n',
+    );
+  });
+
+  it('never lets a placeholder reach the guest (final review)', () => {
+    const svarga = body();
+    svarga.business.website = 'https://svargabalimassage.com/';
+    const built = buildAnswer(
+      model({
+        answer: part('See photos at {{website}}. Our page {웹사이트} has more. We come to you.'),
+      }),
+      ctx(svarga),
+    );
+    expect(built?.answer.text).toContain('See photos at https://svargabalimassage.com.');
+    expect(built?.answer.text).not.toMatch(/[{}]/);
+    expect(built?.answer.text).toContain('We come to you.');
+  });
+
   it('puts the website in place of {website}, in the answer and its translation, with no flag', () => {
     const svarga = body();
     svarga.business.website = 'https://svargabalimassage.com/';

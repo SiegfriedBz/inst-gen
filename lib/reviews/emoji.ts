@@ -27,8 +27,9 @@ const SPACE = /^\s+$/u;
 const WORD = /[\p{L}\p{N}]/u;
 // A stop the model writes right after an emoji: the emoji already ends the
 // sentence ("🙏." is "🙏"). "..." stays.
-const STOP_AFTER_EMOJI = /(?<=\p{Extended_Pictographic}|\p{Emoji_Modifier}|\uFE0F)\.(?!\.)/gu;
-const LIST_LINE = /^\s*[-•]/u;
+const STOP_AFTER_EMOJI = /(?<=\p{Extended_Pictographic}|\p{Emoji_Modifier}|\uFE0F)\s*\.(?!\.)/gu;
+// A list line opens on a dash, a bullet or an emoji used as one.
+const LIST_LINE = /^\s*(?:[-•*]|\p{Extended_Pictographic})/u;
 
 // A text that ends on a word gets its stop; one that ends on punctuation, an
 // emoji or a list line stays as it is.
@@ -55,10 +56,12 @@ export function keepEmoji(text: string, rule: EmojiRule): string {
     }
     // A removed emoji that stood in place of a stop, before another sentence or
     // at the very end, leaves one; a flower goes to the end.
+    // One that opens a line, as a bullet, leaves the line break before it.
     const next = parts.slice(i + 1).find((p) => !SPACE.test(p) && !isEmoji(p));
     const before = out.trimEnd();
+    const opensLine = before === '' || out.slice(before.length).includes('\n');
     out =
-      ENDS_ON_WORD.test(before) && (next === undefined || STARTS_SENTENCE.test(next))
+      !opensLine && ENDS_ON_WORD.test(before) && (next === undefined || STARTS_SENTENCE.test(next))
         ? `${before}. `
         : `${out} `;
   });
