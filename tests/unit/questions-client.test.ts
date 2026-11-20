@@ -25,6 +25,7 @@ function fetchAnswering(status: number, json: unknown) {
 const input = {
   question: '  How much? Call me on +84 905 123 456, room 405\n',
   final: true,
+  first: true,
   locale: 'vi' as const,
   profile: senProfile(),
   known: { place: 'Hyatt', day: null, time: null },
@@ -44,6 +45,7 @@ describe('requestAnswer', () => {
     expect(body.question).toBe('How much? Call me on [number], room 405');
     expect(JSON.stringify(body)).not.toContain('905 123 456');
     expect(body.final).toBe(true);
+    expect(body.first).toBe(true);
     expect(body.known).toEqual({ place: 'Hyatt', day: null, time: null });
     expect(body.avoid).toBe('Hello! Old answer.');
     expect(body.business.name).toBe(senProfile().name.value);

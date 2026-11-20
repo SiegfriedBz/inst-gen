@@ -44,6 +44,9 @@ const offering = z
 export const questionBodySchema = z.object({
   question: z.string().trim().min(1).max(QUESTION_LIMITS.question),
   final: z.boolean(),
+  // The first-message box (docs/specs/questions/first-answer): a page loaded
+  // before it asks for a later answer.
+  first: z.boolean().default(false),
   locale: z.enum(SCREEN_LOCALES),
   business: z.object({
     name: z.string().trim().min(1).max(200),

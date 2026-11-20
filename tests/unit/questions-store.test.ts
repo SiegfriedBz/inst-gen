@@ -33,6 +33,7 @@ function record(over: Partial<ConversationRecord> = {}): ConversationRecord {
     current: {
       question: 'How much is a Thai massage?',
       final: false,
+      first: false,
       locale: 'vi',
       answer: {
         questionLanguage: 'en',
@@ -75,6 +76,17 @@ describe('the conversation', () => {
     await saveConversation(record());
     await forgetBrand('sen');
     expect(await loadConversation('sen', local(10, 11))).toBeNull();
+  });
+
+  // The first-message box (docs/specs/questions/first-answer).
+  test('remembers the first-message box, and reads a record saved without it as unticked', async () => {
+    const saved = record();
+    const current = saved.current as NonNullable<ConversationRecord['current']>;
+    await saveConversation({ ...saved, current: { ...current, first: true } });
+    expect((await loadConversation('sen', local(10, 11)))?.current?.first).toBe(true);
+    const { first: _first, ...before } = current;
+    await saveConversation({ ...saved, current: before } as unknown as ConversationRecord);
+    expect((await loadConversation('sen', local(10, 11)))?.current?.first).toBe(false);
   });
 
   test("goes at Google's reset, 15:00 in Da Nang in November", async () => {

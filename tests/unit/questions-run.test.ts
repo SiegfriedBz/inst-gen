@@ -11,6 +11,7 @@ const question = 'Do you come to the Hyatt tomorrow at 7 pm?';
 const body: QuestionBody = {
   question,
   final: true,
+  first: false,
   locale: 'vi',
   business: {
     name: 'Sen',

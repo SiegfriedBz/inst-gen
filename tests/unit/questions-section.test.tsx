@@ -67,6 +67,8 @@ function tab(locale = 'vi') {
 }
 
 const box = () => screen.findByLabelText("The guest's question");
+const firstBox = () =>
+  screen.getByRole('checkbox', { name: 'First message from this guest' }) as HTMLInputElement;
 const write = () => screen.getByRole('button', { name: 'Write an answer' });
 
 async function ask(question = 'How much is a Thai massage? Call +84 905 123 456') {
@@ -85,7 +87,87 @@ describe('the Questions tab, empty', () => {
       name: 'Make it the final answer',
     }) as HTMLInputElement;
     expect(final.checked).toBe(false);
+    // The first-message box (docs/specs/questions/first-answer).
+    expect(firstBox().checked).toBe(true);
+    expect(screen.getByText(messages.questions.firstHint)).toBeTruthy();
     expect((write() as HTMLButtonElement).disabled).toBe(true);
+  });
+});
+
+// docs/specs/questions/first-answer, "The box: First message from this guest".
+describe('the first-message box', () => {
+  test('ticked for a new conversation, unticked after "Paste the next message", ticked after "New conversation"', async () => {
+    fetchMock.mockResolvedValueOnce(
+      ok(answer({ guest: { place: 'Hyatt', day: null, time: null } })),
+    );
+    render(tab());
+    await ask();
+    await screen.findByText(messages.questions.howTo);
+    expect(sent(0).first).toBe(true);
+    fireEvent.click(screen.getByRole('button', { name: 'Paste the next message' }));
+    await box();
+    expect(firstBox().checked).toBe(false);
+    fireEvent.click(screen.getByRole('button', { name: 'New conversation' }));
+    await waitFor(() => expect(firstBox().checked).toBe(true));
+  });
+
+  test('"Write another answer" sends the box as ticked now', async () => {
+    fetchMock.mockResolvedValueOnce(ok(answer()));
+    fetchMock.mockResolvedValueOnce(
+      ok(answer({ answer: { text: 'Hi again!\n\nAnother answer.', translation: null } })),
+    );
+    render(tab());
+    await ask();
+    await screen.findByText(messages.questions.howTo);
+    fireEvent.click(firstBox());
+    fireEvent.click(screen.getByRole('button', { name: 'Write another answer' }));
+    expect(await screen.findByText(/Another answer\./)).toBeTruthy();
+    expect(sent(1).first).toBe(false);
+  });
+
+  test('ticked by the owner after "Paste the next message", it is sent and kept through a reload', async () => {
+    fetchMock.mockResolvedValueOnce(ok(answer()));
+    fetchMock.mockResolvedValueOnce(ok(answer()));
+    const view = render(tab());
+    await ask();
+    fireEvent.click(await screen.findByRole('button', { name: 'Paste the next message' }));
+    await box();
+    fireEvent.click(firstBox());
+    await ask('Hello, do you come to Son Tra?');
+    await screen.findByText(messages.questions.howTo);
+    expect(sent(1).first).toBe(true);
+    view.unmount();
+    render(tab());
+    await screen.findByText(messages.questions.howTo);
+    expect(firstBox().checked).toBe(true);
+  });
+
+  test('unticked by the owner, a reload shows it unticked', async () => {
+    fetchMock.mockResolvedValueOnce(ok(answer()));
+    const view = render(tab());
+    await box();
+    fireEvent.click(firstBox());
+    await ask();
+    await screen.findByText(messages.questions.howTo);
+    expect(sent(0).first).toBe(false);
+    view.unmount();
+    render(tab());
+    await screen.findByText(messages.questions.howTo);
+    expect(firstBox().checked).toBe(false);
+  });
+
+  test('the daily reset ticks it', async () => {
+    fetchMock.mockResolvedValueOnce(ok(answer()));
+    render(tab());
+    await box();
+    fireEvent.click(firstBox());
+    await ask();
+    await screen.findByText(messages.questions.howTo);
+    // 16:00 in Da Nang: past Google's reset.
+    vi.setSystemTime(new Date('2026-11-10T09:00:00.000Z'));
+    fireEvent.click(screen.getByRole('button', { name: 'Paste the next message' }));
+    await box();
+    expect(firstBox().checked).toBe(true);
   });
 });
 

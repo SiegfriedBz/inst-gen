@@ -10,6 +10,7 @@ function body(overrides: Partial<QuestionBody> = {}): QuestionBody {
   return {
     question: 'Which massages do you have?',
     final: false,
+    first: false,
     locale: 'vi',
     business: {
       name: 'Sen',

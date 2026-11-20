@@ -60,6 +60,12 @@ describe('questionBodySchema', () => {
     ).toBe(false);
   });
 
+  // The first-message box (docs/specs/questions/first-answer).
+  it('reads a body without first as a later answer', () => {
+    expect(questionBodySchema.parse(body()).first).toBe(false);
+    expect(questionBodySchema.parse(body({ first: true })).first).toBe(true);
+  });
+
   it('reads a body from a page loaded before 2.21 as no website', () => {
     expect(questionBodySchema.parse(body()).business.website).toBeNull();
     const withSite = body();

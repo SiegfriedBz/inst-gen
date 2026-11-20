@@ -33,6 +33,8 @@ function isErrorCode(value: unknown): value is QuestionErrorCode {
 export type AnswerInput = {
   question: string;
   final: boolean;
+  // The first-message box (docs/specs/questions/first-answer).
+  first: boolean;
   locale: ScreenLocale;
   profile: Profile;
   known: Guest;
@@ -48,6 +50,7 @@ export function questionBodyFor(input: AnswerInput): QuestionBody {
   return {
     question: scrubQuestion(input.question.trim()),
     final: input.final,
+    first: input.first,
     locale: input.locale,
     business: {
       name: p.name.value.trim().slice(0, 200),

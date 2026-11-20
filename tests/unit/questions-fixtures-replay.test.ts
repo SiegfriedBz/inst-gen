@@ -23,6 +23,8 @@ type Fixture = {
   locale: ScreenLocale;
   language: string;
   final: boolean;
+  // The first-message box (docs/specs/questions/first-answer).
+  first?: boolean;
   known: Guest;
   question: string;
   recording?: Recording;
@@ -66,7 +68,8 @@ describe('recorded answers', () => {
 
   test.each(fixtures)('$slug replays to a checked answer', async (fixture) => {
     const profile = await fixtureProfile(join(FIXTURES_DIR, fixture.business));
-    const body = questionBodyFor({ ...fixture, profile, avoid: null });
+    const first = fixture.first ?? false;
+    const body = questionBodyFor({ ...fixture, first, profile, avoid: null });
     const out = await runAnswer(
       body,
       'replay',
