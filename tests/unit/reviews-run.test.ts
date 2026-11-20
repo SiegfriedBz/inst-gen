@@ -58,8 +58,12 @@ describe('runReply', () => {
       response: {
         ...answer,
         short: { text: 'Thank you, {name}! 🌼', translation: 'Cảm ơn {name}! 🌼' },
+        warm: {
+          text: 'Dear {name}, sorry about the cold room 🙏 🌼',
+          translation: 'Thân mến {name} 🌼',
+        },
         model: 'gemini-3.5-flash-lite',
-        promptVersion: 'reply-2',
+        promptVersion: 'reply-3',
       },
     });
     expect(calls).toEqual([replyPrompt(body, '🌼')]);

@@ -1,11 +1,13 @@
 import { BANNED_WORDS } from '@/lib/posts/banned';
-import { FLOWER_EMOJI } from './emoji';
+import { type EmojiRule, FLOWER_EMOJI, keepEmoji } from './emoji';
 import type { ModelReplies, ReplyBody, ScreenLocale } from './reply';
 
 // What code makes sure of in the model's replies
 // (docs/specs/reviews/reply-drafts, "The replies"): the business's own
 // flower, no emoji on an abusive review, and no translation into the
-// language the review is already in.
+// language the review is already in; no sentence with a banned word, and
+// only 🙏, 😊 and the flower, with no 😊 after a complaint
+// (docs/specs/reviews/better-replies-and-answers, "Emojis").
 
 // Shared with the answers to guests' questions (lib/questions/checks.ts).
 export { FLOWER_EMOJI };
@@ -61,10 +63,10 @@ export function checkReplies(
   ctx: { locale: ScreenLocale; flower: string },
 ): ModelReplies | null {
   const same = sameLanguage(answer.reviewLanguage, ctx.locale);
-  const clean = (text: string) => {
-    const flowered = text.replace(FLOWER_EMOJI, ctx.flower);
-    return (answer.abusive ? noEmoji(flowered) : flowered).trim();
-  };
+  const rule: EmojiRule = answer.abusive
+    ? { keep: [], flower: null }
+    : { keep: answer.complaint ? ['🙏'] : ['🙏', '😊'], flower: ctx.flower };
+  const clean = (text: string) => keepEmoji(withoutBanned(text), rule);
   const translation = (text: string | null) => {
     if (same || text === null) return null;
     const out = clean(text);

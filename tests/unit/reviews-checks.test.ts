@@ -91,6 +91,72 @@ describe('checkReplies', () => {
     expect(checked?.warm.translation).toBe('Xin chào');
   });
 
+  test('drops the stop before an emoji, in a reply and its translation', () => {
+    const checked = checkReplies(
+      answer({
+        short: {
+          text: 'Thank you, {name}! 🙏 So glad you enjoyed your massage. 😊 We would love to come to you again. 🌸',
+          translation:
+            'Cảm ơn {name}! 🙏 Rất vui vì bạn thích buổi massage. 😊 Chúng tôi rất mong được đến với bạn lần nữa. 🌺',
+        },
+      }),
+      { locale: 'vi', flower: '🪷' },
+    );
+    expect(checked?.short.text).toBe(
+      'Thank you, {name}! 🙏 So glad you enjoyed your massage 😊 We would love to come to you again 🪷',
+    );
+    expect(checked?.short.translation).toBe(
+      'Cảm ơn {name}! 🙏 Rất vui vì bạn thích buổi massage 😊 Chúng tôi rất mong được đến với bạn lần nữa 🪷',
+    );
+  });
+
+  test('takes 😊 out of the replies to a complaint, a stop back in its place', () => {
+    const checked = checkReplies(
+      answer({
+        complaint: true,
+        warm: {
+          text: 'Thank you! 🙏 Sorry the therapist came late 😊 We hope to come to you again 🌸',
+          translation: 'Cảm ơn! 🙏 Xin lỗi vì kỹ thuật viên đến muộn 😊 Hẹn gặp lại 🌸',
+        },
+      }),
+      { locale: 'vi', flower: '🪷' },
+    );
+    expect(checked?.warm.text).toBe(
+      'Thank you! 🙏 Sorry the therapist came late. We hope to come to you again 🪷',
+    );
+    expect(checked?.warm.translation).toBe(
+      'Cảm ơn! 🙏 Xin lỗi vì kỹ thuật viên đến muộn. Hẹn gặp lại 🪷',
+    );
+  });
+
+  test('keeps one of each, removes another emoji and ends on the flower', () => {
+    const checked = checkReplies(
+      answer({
+        short: {
+          text: 'Thank you! 🙏🙏 Glad you enjoyed it ✨ 😊 We would love to come again',
+          translation: null,
+        },
+      }),
+      { locale: 'vi', flower: '🪷' },
+    );
+    expect(checked?.short.text).toBe(
+      'Thank you! 🙏 Glad you enjoyed it 😊 We would love to come again 🪷',
+    );
+  });
+
+  test('removes a sentence that holds a banned word', () => {
+    const checked = checkReplies(
+      answer({
+        short: {
+          text: 'Thank you! 🙏 It was a sensual massage. We would love to come to you again 🌸',
+          translation: null,
+        },
+      }),
+      { locale: 'vi', flower: '🪷' },
+    );
+    expect(checked?.short.text).toBe('Thank you! 🙏 We would love to come to you again 🪷');
+  });
+
   test("drops the translations when the review is in the screen's language", () => {
     const checked = checkReplies(answer({ reviewLanguage: 'vi' }), { locale: 'vi', flower: '🪷' });
     expect(checked?.reviewTranslation).toBeNull();
