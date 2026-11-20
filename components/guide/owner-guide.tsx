@@ -47,7 +47,7 @@ const BLOCKS: Record<SectionId, Block[]> = {
   ],
   instagram: [['save', 'copy', 'post', 'story'], 'link', 'alt', 'noImages', 'never'],
   reviews: ['paste', 'pick', 'other'],
-  questions: ['paste', 'send', 'again', 'final', 'remember', 'details', 'sex'],
+  questions: ['paste', 'send', 'again', 'final', 'first', 'remember', 'details', 'sex'],
   allowance: ['free', 'limits', 'bar', 'reset', 'time', 'month'],
   languages: ['switch', 'captions'],
   trouble: ['limit', 'pool', 'paused', 'gone', 'contact'],
@@ -100,6 +100,7 @@ export function OwnerGuide({
     'questions.paste': { tab: t('home.tabs.questions'), button: t('questions.write') },
     'questions.again': { button: t('questions.again') },
     'questions.final': { final: t('questions.final') },
+    'questions.first': { first: t('questions.first') },
     'questions.remember': { next: t('questions.next'), new: t('questions.newConversation') },
     'allowance.limits': {
       reads: t('usage.reads', { count: limits.reads }),

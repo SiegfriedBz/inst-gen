@@ -33,6 +33,7 @@
   `questions-client`): `Tests  10 failed | 31 passed (41)`
 - Task 5 (`questions-checks`, `questions-prompt`, `questions-run`):
   `Tests  12 failed | 44 passed (56)`
+- Task 6 (`guide`): `Tests  3 failed | 32 passed (35)`
 
 ## GREEN
 
@@ -46,3 +47,4 @@
   `Tests  2139 passed (2139)`
 - Task 5 (the same three): `Tests  56 passed (56)`; the whole suite:
   `Tests  2152 passed (2152)`
+- Task 6 (`guide`, with the messages' tests): `Tests  69 passed (69)`
