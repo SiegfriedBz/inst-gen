@@ -56,6 +56,8 @@ languages, with no horizontal scroll; a label may take two lines.
 
 ### The Questions tab, empty
 
+> Changed by `questions/first-answer` (2026-11-20): a second checkbox, "First message from this guest", sits under "Make it the final answer", ticked when a conversation starts and unticked after "Paste the next message".
+
 Top to bottom:
 
 1. One line: "Got a question from a guest? Copy it and paste it here. We write
@@ -202,6 +204,8 @@ A name or a hotel room the guest wrote in the question still goes with it
 ("Known limits").
 
 ### The answer
+
+> Changed by `questions/first-answer` (2026-11-20): with the first-message box ticked, the answer is a first answer: a hello line with a thank-you and a therapist coming to the guest, then which massage with the website or the massage named at every length, then the closing, the hello line and the closing each ending on 😊 and the flower; never the whole list. Every answer gets each treatment's lengths with their prices.
 
 > Changed by `reviews/better-replies-and-answers` (2026-11-20): an answer that isn't final ends on a gentle offer, unless the question mentions sex; code says whether the business goes to its guests, and the answer never invites them to it; treatments by their own names; the posts' rules on words; 😊 and the flower, the flower last, no stop before an emoji; the website only when the guest asks for photos or more details; a therapist comes only to the areas the website lists; the answer is in the guest's letters, or code refuses it.
 

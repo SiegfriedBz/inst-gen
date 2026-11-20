@@ -35,6 +35,9 @@ export type QuestionFixture = {
   // The question's language, for the replay test.
   language: string;
   final: boolean;
+  // The first-message box (docs/specs/questions/first-answer); missing reads
+  // as unticked.
+  first?: boolean;
   known: Guest;
   question: string;
   recording?: Recording;
@@ -59,7 +62,12 @@ for (const slug of slugs) {
         recording = r;
       },
     );
-    const body = questionBodyFor({ ...fixture, profile, avoid: null });
+    const body = questionBodyFor({
+      ...fixture,
+      first: fixture.first ?? false,
+      profile,
+      avoid: null,
+    });
     const out = await runAnswer(
       body,
       'eval',

@@ -21,7 +21,9 @@ import { post } from './helpers/posts';
 
 function profileWithPrice(price: string, duration = '90 minutes') {
   const profile = svargaProfile();
-  profile.offerings = [{ name: 'Balinese massage', price, duration, source: profile.siteUrl }];
+  profile.offerings = [
+    { name: 'Balinese massage', lengths: [{ duration, price }], source: profile.siteUrl },
+  ];
   return profile;
 }
 
@@ -240,6 +242,23 @@ describe('findFlags: durations', () => {
     expect(findFlags('A full 1.5 hours of calm', profile)).toEqual([]);
     expect(findFlags('90 min of calm', profile)).toEqual([]);
     expect(findFlags('60 min of calm', profile)).toEqual([{ kind: 'duration', text: '60 min' }]);
+  });
+
+  // Every length of a treatment (docs/specs/questions/first-answer).
+  it("a 90-minute length isn't flagged, another duration is", () => {
+    const profile = svargaProfile();
+    profile.offerings = [
+      {
+        name: 'Balinese massage',
+        lengths: [
+          { duration: '60 min', price: 'IDR 250k' },
+          { duration: '90 min', price: 'IDR 350k' },
+        ],
+        source: profile.siteUrl,
+      },
+    ];
+    expect(findFlags('90 min of calm', profile)).toEqual([]);
+    expect(findFlags('45 min of calm', profile)).toEqual([{ kind: 'duration', text: '45 min' }]);
   });
 
   // A duration a highlight or the promise gives is the profile's too

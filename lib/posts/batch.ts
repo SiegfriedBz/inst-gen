@@ -1,5 +1,5 @@
 import { z } from 'zod';
-import { type Profile, profileSchema } from '@/lib/brand/profile';
+import { type Profile, profileSchema, upgradeProfile } from '@/lib/brand/profile';
 import { type Offer, offerFits, offerSchema } from './offer';
 import { SCENES } from './scene';
 import { setupSchema } from './setup';
@@ -163,6 +163,10 @@ export type ModelRewrite = z.infer<typeof modelRewriteSchema>;
 const recentSchema = z.object({ type: z.enum(POST_TYPES), topic: text });
 export type RecentPost = z.infer<typeof recentSchema>;
 
+// The profile a page sends: one loaded before a schema change sends an older
+// version, read as today's (docs/specs/questions/first-answer, final review).
+const sentProfile = z.preprocess(upgradeProfile, profileSchema);
+
 // An offer names only the profile's treatments (docs/specs/posts/special-offer).
 const offerFitsProfile = (body: { profile: Profile; offer?: Offer }) =>
   !body.offer || offerFits(body.offer, body.profile);
@@ -170,7 +174,7 @@ const OFFER_UNKNOWN = { message: 'the offer names an unknown treatment', path: [
 
 export const planBodySchema = z
   .object({
-    profile: profileSchema,
+    profile: sentProfile,
     recent: z.array(recentSchema).max(POSTS_LIMITS.recent),
     offer: offerSchema.optional(),
   })
@@ -180,7 +184,7 @@ export type PlanBody = z.infer<typeof planBodySchema>;
 // Whole posts, so a post the model leaves out keeps what it had.
 export const rewriteBodySchema = z
   .object({
-    profile: profileSchema,
+    profile: sentProfile,
     posts: z.array(postSchema).min(1).max(POSTS_LIMITS.savedPosts),
     offer: offerSchema.optional(),
   })
@@ -191,7 +195,7 @@ export type RewriteBody = z.infer<typeof rewriteBodySchema>;
 // (docs/specs/platform/easier-to-use, "New texts for a suggestion").
 export const newTextsBodySchema = z
   .object({
-    profile: profileSchema,
+    profile: sentProfile,
     post: postSchema,
     other: postSchema.optional(),
     offer: offerSchema.optional(),

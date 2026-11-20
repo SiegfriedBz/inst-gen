@@ -1,0 +1,49 @@
+{
+  "business": "sen",
+  "locale": "vi",
+  "language": "en",
+  "final": true,
+  "first": true,
+  "known": {
+    "place": null,
+    "day": null,
+    "time": null
+  },
+  "question": "Can I book a thai massage tomorrow at 3pm? We're at a hotel on My Khe beach.",
+  "recording": {
+    "modelId": "gemini-3.5-flash-lite",
+    "promptVersion": "answer-9",
+    "partials": [],
+    "final": {
+      "questionLanguage": "en",
+      "sexual": false,
+      "unanswered": false,
+      "questionTranslation": "Tôi có thể đặt lịch mát-xa kiểu Thái vào ngày mai lúc 3 giờ chiều không? Chúng tôi ở một khách sạn trên bãi biển Mỹ Khê.",
+      "greeting": {
+        "text": "Hello, thank you for your message, and our therapists come to you where you are staying.",
+        "translation": "Xin chào, cảm ơn tin nhắn của bạn, và các kỹ thuật viên của chúng tôi sẽ đến nơi bạn đang lưu trú."
+      },
+      "answer": {
+        "text": "- Thai Massage (60 min, $19 VND 500k; 90 min, $27 VND 700k; 120 min, $35 VND 900k)",
+        "translation": "- Mát-xa Thái (60 phút, $19 VND 500k; 90 phút, $27 VND 700k; 120 phút, $35 VND 900k)"
+      },
+      "professionalOnly": {
+        "text": "We offer only professional therapeutic massage.",
+        "translation": "Chúng tôi chỉ cung cấp dịch vụ mát-xa trị liệu chuyên nghiệp."
+      },
+      "callToAction": {
+        "text": "Please let us know the name of your hotel to complete your booking.",
+        "translation": "Vui lòng cho chúng tôi biết tên khách sạn của bạn để hoàn tất việc đặt lịch."
+      },
+      "closing": {
+        "text": "I am here to answer all your questions and to make your booking easy.",
+        "translation": "Tôi ở đây để trả lời mọi thắc mắc của bạn và giúp việc đặt lịch trở nên dễ dàng."
+      },
+      "guest": {
+        "place": "a hotel on My Khe beach",
+        "day": "tomorrow",
+        "time": "3pm"
+      }
+    }
+  }
+}

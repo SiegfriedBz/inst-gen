@@ -113,9 +113,11 @@ button; the card shows the values, the edit opens a form for that section
 only. Labels are in the owner's language; the profile's content is in
 English (1.1 writes it in English, and captions are in English).
 
+> Changed by `questions/first-answer` (2026-11-20): each treatment shows every length with its price, one per line, and its form edits them: a row each, with "Add a duration" and "Remove this duration".
+
 | Section | Fields shown |
 |---|---|
-| Your business | `name`, `summary`, `category`, `offerings` (name, price, duration, description), `highlights` |
+| Your business | `name`, `summary`, `category`, `offerings` (name, each length with its duration and price, description), `highlights` |
 | Where and when | `location.town`, `area`, `address`, `serviceArea`, `hours` |
 | How people reach you | `contact.whatsapp`, `phone`, `email`, `instagram`, `bookingUrl` |
 | Your look | `logoUrl`, `colours` (swatches with their role), `visualStyle` (summary, then palette, light, textures, mood), `photoUrls` (thumbnails) |

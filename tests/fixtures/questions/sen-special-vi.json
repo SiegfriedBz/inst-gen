@@ -11,7 +11,7 @@
   "question": "Bên em có massage đặc biệt cho nam không?",
   "recording": {
     "modelId": "gemini-3.5-flash-lite",
-    "promptVersion": "answer-7",
+    "promptVersion": "answer-9",
     "partials": [],
     "final": {
       "questionLanguage": "vi",
@@ -19,18 +19,22 @@
       "unanswered": false,
       "questionTranslation": null,
       "greeting": {
-        "text": "Chào bạn,",
+        "text": "Chào bạn.",
         "translation": null
       },
       "answer": {
-        "text": "Chúng tôi cung cấp các liệu pháp massage trị liệu chuyên nghiệp.",
+        "text": "Bên mình chỉ cung cấp các bài massage trị liệu chuyên nghiệp.",
         "translation": null
       },
       "professionalOnly": {
-        "text": "Chúng tôi chỉ cung cấp dịch vụ massage trị liệu chuyên nghiệp.",
+        "text": "Bên mình chỉ cung cấp dịch vụ massage trị liệu chuyên nghiệp.",
         "translation": null
       },
       "callToAction": {
+        "text": "",
+        "translation": null
+      },
+      "closing": {
         "text": "",
         "translation": null
       },

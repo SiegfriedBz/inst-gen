@@ -205,26 +205,42 @@ test('the language button switches the open tab to Vietnamese', async ({ page })
   await expect(page).toHaveURL('/');
 });
 
-test('the tab bar hides while typing with the keyboard up', async ({ page }) => {
-  await savedBrand(page);
-  await page.getByRole('tab', { name: 'Reviews' }).click();
-  const bar = page.locator('[data-tab-bar]');
-  const field = page.getByLabel('The review');
-  await expect(bar).toBeVisible();
+// Changed 2026-11-20 (the spec's "It never covers what the owner is typing"):
+// the bar stays while the owner types, above the keyboard on Android, and
+// the field stays clear of it.
+for (const [tab, label] of [
+  ['Reviews', 'The review'],
+  ['Questions', "The guest's question"],
+] as const) {
+  test(`the tab bar stays while typing in ${tab}, the field above it`, async ({ page }) => {
+    await savedBrand(page);
+    // Android Chrome then shrinks the page with the keyboard, so the bar
+    // sits right above it.
+    await expect(page.locator('meta[name="viewport"]')).toHaveAttribute(
+      'content',
+      /interactive-widget=resizes-content/,
+    );
+    await page.getByRole('tab', { name: tab }).click();
+    const bar = page.locator('[data-tab-bar]');
+    const field = page.getByLabel(label);
+    await expect(bar).toBeVisible();
 
-  // Focus brings the on-screen keyboard up, here half the screen; the bar
-  // hides on focus, since Android Chrome shrinks the window with it and
-  // sizes can't tell.
-  const viewport = page.viewportSize() ?? { width: 412, height: 839 };
-  await field.focus();
-  await page.setViewportSize({ width: viewport.width, height: Math.round(viewport.height / 2) });
-  await field.pressSequentially('Lovely');
-  await expect(bar).toBeHidden();
+    // Focus brings the on-screen keyboard up, here half the screen.
+    const viewport = page.viewportSize() ?? { width: 412, height: 839 };
+    await field.focus();
+    await page.setViewportSize({ width: viewport.width, height: Math.round(viewport.height / 2) });
+    await field.pressSequentially('Lovely');
+    await expect(bar).toBeVisible();
+    await expect(bar).toBeInViewport({ ratio: 1 });
+    const fieldBox = await field.boundingBox();
+    const barBox = await bar.boundingBox();
+    expect(fieldBox && barBox && fieldBox.y + fieldBox.height <= barBox.y).toBe(true);
 
-  await page.setViewportSize(viewport);
-  await field.blur();
-  await expect(bar).toBeVisible();
-});
+    await page.setViewportSize(viewport);
+    await field.blur();
+    await expect(bar).toBeVisible();
+  });
+}
 
 test.describe('small phone', () => {
   test.use({ viewport: { width: 320, height: 640 } });

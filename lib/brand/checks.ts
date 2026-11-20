@@ -59,6 +59,17 @@ function priceOnPage(price: string, page: string | undefined): boolean {
   return longest !== undefined && digitsOnPage([longest], page);
 }
 
+// A read recorded before brand-10 gives each offering one price and one
+// duration: the replay hands code the recorded JSON as it is.
+type ModelOffering = NonNullable<DeepPartial<ModelProfile>['offerings']>[number];
+type RecordedLength = { duration?: string; price?: string } | undefined;
+
+function modelLengths(offering: ModelOffering): RecordedLength[] {
+  if (offering?.lengths) return offering.lengths;
+  const { price, duration } = offering as { price?: string; duration?: string };
+  return price || duration ? [{ duration, price }] : [];
+}
+
 function cutName(value: string | undefined): string | undefined {
   const cut = value?.split(/\s+[|–-]\s+|\s*\|\s*/)[0]?.trim();
   return cut || undefined;
@@ -276,12 +287,29 @@ export function mergeAndCheck(
       dropped.push({ field: `offerings[${i}]`, reason: 'not_on_page' });
       return [];
     }
-    const kept = { ...offering, source };
-    if (offering.price && !priceOnPage(offering.price, ctx.pages.get(source))) {
-      dropped.push({ field: `offerings[${i}].price`, reason: 'not_on_page' });
-      delete kept.price;
-    }
-    return [kept];
+    // Every length with its price, each price on the treatment's page
+    // (docs/specs/questions/first-answer, "Every length and its price").
+    const lengths = modelLengths(offering)
+      .flatMap((length, j) => {
+        const duration = length?.duration?.trim() || undefined;
+        let price = length?.price?.trim() || undefined;
+        if (price && !priceOnPage(price, ctx.pages.get(source))) {
+          dropped.push({ field: `offerings[${i}].lengths[${j}].price`, reason: 'not_on_page' });
+          price = undefined;
+        }
+        return duration || price
+          ? [{ ...(duration && { duration }), ...(price && { price }) }]
+          : [];
+      })
+      .slice(0, LIMITS.lengths);
+    return [
+      {
+        name: offering.name,
+        ...(offering.description && { description: offering.description }),
+        lengths,
+        source,
+      },
+    ];
   });
 
   const highlights = (model.highlights ?? []).flatMap((h, i) => {
@@ -375,7 +403,7 @@ export function finalise(
   const contact = profile.contact ?? {};
   return profileSchema.parse({
     ...profile,
-    schemaVersion: 3,
+    schemaVersion: 4,
     readAt: meta.readAt,
     promptVersion: meta.promptVersion,
     thin: meta.thin,

@@ -58,3 +58,13 @@ export function lastReadLabel(readAt: string, now: Date, locale: string): string
   if (ago < DAY) return format.format(-Math.round(ago / HOUR), 'hour');
   return format.format(-Math.round(ago / DAY), 'day');
 }
+
+// A treatment's length as "Your business" and the evals show it, "60 min ·
+// $19 VND 500k", or either part alone; a partial one while reading
+// (docs/specs/questions/first-answer, "Every length and its price").
+export function lengthText(length: { duration?: string; price?: string } | undefined): string {
+  return [length?.duration, length?.price]
+    .map((part) => part?.trim())
+    .filter(Boolean)
+    .join(' · ');
+}

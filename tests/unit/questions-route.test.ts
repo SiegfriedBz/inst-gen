@@ -40,7 +40,7 @@ const body = {
     name: 'Sen',
     summary: null,
     category: 'mobile massage spa',
-    offerings: [{ name: 'Thai Massage', duration: '60 min', price: 'VND 500k' }],
+    offerings: [{ name: 'Thai Massage', lengths: [{ duration: '60 min', price: 'VND 500k' }] }],
     highlights: [],
     hours: null,
     town: 'Da Nang',
@@ -72,7 +72,7 @@ describe('POST /api/questions/answer', () => {
     // No stop before the flower (docs/specs/reviews/better-replies-and-answers).
     expect(json.answer.text).toBe('Hello!\n\nThai Massage, 60 min: VND 500k 🪷');
     expect(json.model).toBe('gemini-3.5-flash-lite');
-    expect(json.promptVersion).toBe('answer-7');
+    expect(json.promptVersion).toBe('answer-9');
     expect(json).not.toHaveProperty('sexualBy');
   });
 

@@ -21,6 +21,8 @@ export type AnswerLog = {
   language: string | null;
   sexual: SexualBy;
   final: boolean;
+  // The first-message box (docs/specs/questions/first-answer).
+  first: boolean;
   unanswered: boolean | null;
   // Which booking details are known, never their words.
   known: string[];
@@ -53,6 +55,7 @@ export function formatAnswerLog(log: AnswerLog): string {
     `lang=${log.language ?? '-'}`,
     `sexual=${log.sexual ?? 'no'}`,
     `final=${log.final ? 'yes' : 'no'}`,
+    `first=${log.first ? 'yes' : 'no'}`,
     `unanswered=${log.unanswered ?? '-'}`,
     `known=${log.known.length > 0 ? log.known.join(',') : '-'}`,
     `total_ms=${log.totalMs}`,
@@ -84,6 +87,7 @@ export async function runAnswer(
     language: null,
     sexual: null,
     final: body.final,
+    first: body.first,
     unanswered: null,
     known: [],
     totalMs: 0,

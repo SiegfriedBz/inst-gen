@@ -57,6 +57,8 @@ that is where the owner already is.
 
 ### What it says
 
+> Changed by `questions/first-answer` (2026-11-20): "Answering guests' questions" says that "First message from this guest" is ticked for a guest's first message, what the answer then says, and to untick it when the guest has already had an answer.
+
 One scrolling page. At the top, the title "How to use Shopfront", one line
 ("Everything you need, in about five minutes of reading."), and a short list
 of the sections as links to their headings. Then the sections, in this

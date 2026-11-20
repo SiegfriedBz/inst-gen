@@ -3,8 +3,8 @@ import type { CodeFacts } from '@/lib/brand/extract/structured';
 import { BRAND_PROMPT_VERSION, brandPrompt, brandUserText } from '@/lib/brand/prompt';
 
 describe('brand prompt', () => {
-  test('is at brand-9', () => {
-    expect(BRAND_PROMPT_VERSION).toBe('brand-9');
+  test('is at brand-10', () => {
+    expect(BRAND_PROMPT_VERSION).toBe('brand-10');
   });
 
   // docs/specs/posts/therapists-look, "What the brand read writes down".

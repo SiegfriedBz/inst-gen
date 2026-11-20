@@ -17,6 +17,9 @@ export const conversationRecordSchema = z.object({
     .object({
       question: z.string().min(1).max(QUESTION_LIMITS.question),
       final: z.boolean(),
+      // How the first-message box was ticked (docs/specs/questions/first-answer);
+      // a record saved before it reads as unticked.
+      first: z.boolean().default(false),
       // The screen's language the translations were made in.
       locale: z.enum(SCREEN_LOCALES),
       answer: answerResponseSchema,

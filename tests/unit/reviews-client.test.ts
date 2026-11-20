@@ -91,6 +91,7 @@ describe('requestReplies', () => {
       location: { ...sen.location, serviceArea: { value: '  ', source: sen.name.source } },
       offerings: Array.from({ length: 25 }, (_, i) => ({
         name: `${'x'.repeat(250)}${i}`,
+        lengths: [],
         source: sen.name.source,
       })),
     };

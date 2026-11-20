@@ -1,0 +1,49 @@
+{
+  "business": "svarga",
+  "locale": "id",
+  "language": "en",
+  "final": false,
+  "first": true,
+  "known": {
+    "place": null,
+    "day": null,
+    "time": null
+  },
+  "question": "Hi! What massages do you have and how much?",
+  "recording": {
+    "modelId": "gemini-3.5-flash-lite",
+    "promptVersion": "answer-9",
+    "partials": [],
+    "final": {
+      "questionLanguage": "en",
+      "sexual": false,
+      "unanswered": false,
+      "questionTranslation": null,
+      "greeting": {
+        "text": "Hello, and thank you for your message. Our therapists come directly to you where you are staying.",
+        "translation": "Halo, dan terima kasih atas pesan Anda. Terapis kami datang langsung ke tempat Anda menginap."
+      },
+      "answer": {
+        "text": "Which massage would you like? You can see all our treatments and details on {website}.",
+        "translation": "Pijat mana yang Anda inginkan? Anda dapat melihat semua perawatan dan detail kami di {website}."
+      },
+      "professionalOnly": {
+        "text": "",
+        "translation": null
+      },
+      "callToAction": {
+        "text": "",
+        "translation": null
+      },
+      "closing": {
+        "text": "I am here to answer all your questions and to make your booking easy.",
+        "translation": "Saya di sini untuk menjawab semua pertanyaan Anda dan membuat pemesanan Anda menjadi mudah."
+      },
+      "guest": {
+        "place": null,
+        "day": null,
+        "time": null
+      }
+    }
+  }
+}

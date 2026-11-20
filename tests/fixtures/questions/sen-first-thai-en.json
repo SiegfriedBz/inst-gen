@@ -1,0 +1,49 @@
+{
+  "business": "sen",
+  "locale": "vi",
+  "language": "en",
+  "final": false,
+  "first": true,
+  "known": {
+    "place": null,
+    "day": null,
+    "time": null
+  },
+  "question": "How much is a thai massage at my hotel tonight?",
+  "recording": {
+    "modelId": "gemini-3.5-flash-lite",
+    "promptVersion": "answer-9",
+    "partials": [],
+    "final": {
+      "questionLanguage": "en",
+      "sexual": false,
+      "unanswered": true,
+      "questionTranslation": "Thai massage tại khách sạn của tôi tối nay giá bao nhiêu vậy?",
+      "greeting": {
+        "text": "Hello, thank you for your message, and a therapist comes to you where you are staying.",
+        "translation": "Xin chào, cảm ơn tin nhắn của bạn, và kỹ thuật viên sẽ đến nơi bạn đang lưu trú."
+      },
+      "answer": {
+        "text": "Thai Massage\n- 60 min, $19 VND 500k\n- 90 min, $27 VND 700k\n- 120 min, $35 VND 900k\nWe will check our team's availability for tonight and reply shortly.",
+        "translation": "Thai Massage\n- 60 phút, $19 VND 500k\n- 90 phút, $27 VND 700k\n- 120 phút, $35 VND 900k\nChúng tôi sẽ kiểm tra lịch trống của đội ngũ cho tối nay và phản hồi sớm."
+      },
+      "professionalOnly": {
+        "text": "",
+        "translation": null
+      },
+      "callToAction": {
+        "text": "",
+        "translation": null
+      },
+      "closing": {
+        "text": "I am here to answer all your questions and to make your booking easy.",
+        "translation": "Tôi ở đây để trả lời mọi câu hỏi của bạn và giúp việc đặt lịch trở nên dễ dàng."
+      },
+      "guest": {
+        "place": null,
+        "day": "tonight",
+        "time": null
+      }
+    }
+  }
+}

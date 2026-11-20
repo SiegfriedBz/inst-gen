@@ -55,6 +55,9 @@ test('paste a question, get an answer, copy it, keep it through a reload', async
   await signInAndRead(page);
 
   await page.getByRole('tab', { name: 'Questions' }).click();
+  // The first-message box (docs/specs/questions/first-answer).
+  const first = page.getByRole('checkbox', { name: 'First message from this guest' });
+  await expect(first).toBeChecked();
   await page
     .getByLabel("The guest's question")
     .fill('How much is a Thai massage? We are at the Hyatt. Call +84 905 123 456');
@@ -75,6 +78,10 @@ test('paste a question, get an answer, copy it, keep it through a reload', async
   await page.getByRole('tab', { name: 'Questions' }).click();
   await expect(page.getByText('Thai Massage, 60 min, $19 VND 500k 🪷')).toBeVisible();
   expect(sent).toHaveLength(1);
+  expect(JSON.parse(sent[0] ?? '{}').first).toBe(true);
+
+  await page.getByRole('button', { name: 'Paste the next message' }).click();
+  await expect(first).not.toBeChecked();
 });
 
 test.describe('small phone', () => {

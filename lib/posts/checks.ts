@@ -64,7 +64,9 @@ function minutes(value: string, unit: string): number {
 }
 
 function profilePrices(profile: Profile): Set<number> {
-  const prices = profile.offerings.flatMap((o) => (o.price ? (o.price.match(NUMBER) ?? []) : []));
+  const prices = profile.offerings.flatMap((o) =>
+    o.lengths.flatMap((length) => length.price?.match(NUMBER) ?? []),
+  );
   return new Set(prices.map(amount));
 }
 
@@ -73,7 +75,7 @@ function profilePrices(profile: Profile): Set<number> {
 // 2026-11-08).
 function profileDurations(profile: Profile): Set<number> {
   const texts = [
-    ...profile.offerings.map((o) => o.duration ?? ''),
+    ...profile.offerings.flatMap((o) => o.lengths.map((length) => length.duration ?? '')),
     ...profile.highlights.map((h) => h.value),
     profile.essence.promise?.value ?? '',
   ];
