@@ -52,6 +52,13 @@ html {
   color-scheme: light dark;
 }
 
+/* While the home's bottom bar shows, a field scrolled into view stays above
+   it: the bar's 65px (64px and its top border), a little room, and the safe
+   area (docs/specs/platform/friendlier-home, changed 2026-11-20). */
+html:has([data-tab-bar]) {
+  scroll-padding-bottom: calc(4.5rem + env(safe-area-inset-bottom));
+}
+
 body {
   background: var(--page);
   color: var(--ink);
