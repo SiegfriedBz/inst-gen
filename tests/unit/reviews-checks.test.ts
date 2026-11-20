@@ -13,6 +13,7 @@ import type { ModelReplies } from '@/lib/reviews/reply';
 const answer = (over: Partial<ModelReplies> = {}): ModelReplies => ({
   reviewLanguage: 'en',
   abusive: false,
+  complaint: false,
   reviewTranslation: 'Massage đá nóng tuyệt vời!',
   short: {
     text: 'Thank you, {name}! 🙏 Hope to see you again 🌸',

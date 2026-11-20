@@ -38,6 +38,31 @@ describe('replyBodySchema', () => {
     }
   });
 
+  test('a body from a page loaded before 2.21 reads as no treatments, not going to its guests', () => {
+    expect(replyBodySchema.parse(sen).business).toEqual({
+      name: 'Sen Spa',
+      summary: 'A calm massage spa in Da Nang.',
+      offerings: [],
+      goesToGuests: false,
+    });
+  });
+
+  test('takes the treatment names and whether the business goes to its guests', () => {
+    const parsed = replyBodySchema.parse({
+      ...sen,
+      business: { ...sen.business, offerings: [' Thai Massage '], goesToGuests: true },
+    });
+    expect(parsed.business.offerings).toEqual(['Thai Massage']);
+    expect(parsed.business.goesToGuests).toBe(true);
+  });
+
+  test('refuses 21 treatments or a name of 201 characters', () => {
+    for (const offerings of [Array(21).fill('Thai Massage'), ['a'.repeat(201)]]) {
+      const body = { ...sen, business: { ...sen.business, offerings } };
+      expect(replyBodySchema.safeParse(body).success).toBe(false);
+    }
+  });
+
   test('carries no name field', () => {
     const parsed = replyBodySchema.parse({ ...sen, name: 'Anna K.' });
     expect(JSON.stringify(parsed)).not.toContain('Anna');

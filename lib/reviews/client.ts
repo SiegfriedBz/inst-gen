@@ -2,6 +2,7 @@ import { countryOf } from '@/lib/brand/country';
 import type { Profile } from '@/lib/brand/profile';
 import { noteUsage } from '@/lib/usage/client';
 import { isUsageCode, type UsageCode } from '@/lib/usage/codes';
+import { goesToGuests } from './copy-rules';
 import {
   REPLY_ERROR_CODES,
   type ReplyBody,
@@ -13,7 +14,9 @@ import {
 
 // Two replies to a review from the browser (docs/specs/reviews/reply-drafts,
 // "The model call"): the review, whether there is a name, and the business's
-// name, summary and country. The guest's name never goes.
+// name, summary and country; its treatments' names and whether it goes to its
+// guests (docs/specs/reviews/better-replies-and-answers). The guest's name
+// never goes.
 
 export type RepliesResult =
   | { ok: true; answer: ReplyResponse }
@@ -44,6 +47,8 @@ export function replyBodyFor(input: RepliesInput): ReplyBody {
     business: {
       name: input.profile.name.value,
       summary: input.profile.summary?.value ?? null,
+      offerings: input.profile.offerings.slice(0, 20).map((o) => o.name.trim().slice(0, 200)),
+      goesToGuests: goesToGuests(input.profile.location.serviceArea?.value),
     },
     country: countryOf(input.profile),
     avoid: input.avoid,

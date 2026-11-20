@@ -18,6 +18,11 @@ export const replyBodySchema = z.object({
   business: z.object({
     name: z.string().trim().min(1).max(200),
     summary: z.string().max(400).nullable(),
+    // The treatments' names, and whether the business goes to its guests
+    // (docs/specs/reviews/better-replies-and-answers, "What the request
+    // carries"); a page loaded before them sends neither.
+    offerings: z.array(z.string().trim().min(1).max(200)).max(20).default([]),
+    goesToGuests: z.boolean().default(false),
   }),
   country: z.enum(['VN', 'ID']).nullable(),
   avoid: z.tuple([reply, reply]).nullable(),
@@ -26,9 +31,12 @@ export type ReplyBody = z.infer<typeof replyBodySchema>;
 
 const draft = z.object({ text: z.string(), translation: z.string().nullable() });
 
+// `complaint` stays on the server: code takes 😊 out of the replies to a
+// review that complains (docs/specs/reviews/better-replies-and-answers, "Emojis").
 export const modelRepliesSchema = z.object({
   reviewLanguage: z.string().min(2).max(20),
   abusive: z.boolean(),
+  complaint: z.boolean(),
   reviewTranslation: z.string().nullable(),
   short: draft,
   warm: draft,

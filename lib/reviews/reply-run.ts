@@ -17,6 +17,7 @@ export type ReplyLog = {
   charsOut: number | null;
   language: string | null;
   abusive: boolean | null;
+  complaint: boolean | null;
   totalMs: number;
   outcome: 'ok' | 'aborted' | ReplyErrorCode;
   error?: string;
@@ -45,6 +46,7 @@ export function formatReplyLog(log: ReplyLog): string {
     `chars_out=${log.charsOut ?? '-'}`,
     `lang=${log.language ?? '-'}`,
     `abusive=${log.abusive ?? '-'}`,
+    `complaint=${log.complaint ?? '-'}`,
     `total_ms=${log.totalMs}`,
     `outcome=${log.outcome}`,
   ];
@@ -73,6 +75,7 @@ export async function runReply(
     charsOut: null,
     language: null,
     abusive: null,
+    complaint: null,
     totalMs: 0,
     outcome: 'aborted',
   };
@@ -92,6 +95,7 @@ export async function runReply(
     ]);
     entry.language = answer.reviewLanguage;
     entry.abusive = answer.abusive;
+    entry.complaint = answer.complaint;
     const checked = checkReplies(answer, { locale: body.locale, flower });
     // A blocked or cut-off answer leaves a reply empty; it is never shown.
     if (!checked) throw new ModelError('failed', 'empty reply');

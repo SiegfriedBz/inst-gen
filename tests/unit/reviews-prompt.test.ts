@@ -8,7 +8,12 @@ const body: ReplyBody = {
   review: 'Lovely hot stone massage! The room was a bit cold and we waited 20 minutes.',
   hasName: true,
   locale: 'vi',
-  business: { name: 'Sen Spa', summary: 'A calm massage spa in Da Nang.' },
+  business: {
+    name: 'Sen Spa',
+    summary: 'A calm massage spa in Da Nang.',
+    offerings: [],
+    goesToGuests: false,
+  },
   country: 'VN',
   avoid: null,
 };
