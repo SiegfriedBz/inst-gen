@@ -70,7 +70,7 @@ index of the code).
 | `components/usage/` | The usage bar and the lines shown at a limit |
 | `lib/pilot/` | The pilot gate: passphrases, signed session, gate decision, each spa's website |
 | `lib/brand/` | The brand read: safe fetching, extraction, checks, the profile schema, fixtures and eval scoring; in the browser, the phone's store (IndexedDB), the read client and the owner's edits |
-| `lib/reviews/` | Review replies: the request and answer, the prompt and code's checks, the route's run; in the browser, the name filled in, the current review kept on the phone and the request client |
+| `lib/reviews/` | Review replies: the request and answer, the prompt and code's checks, the route's run; the emoji rule and the prompt rules the answers share; in the browser, the name filled in, the current review kept on the phone and the request client |
 | `lib/questions/` | Answers to guests' questions: the request and answer, the phone's removal of numbers and links, code's word list, the prompt and code's building of the answer, the route's run; in the browser, the request client and the conversation kept on the phone |
 | `lib/runs/` | Decision 0005's run record, kept on the phone, and its resume rule |
 | `lib/usage/` | Usage counters: the Pacific day, the limits, the store (Upstash Redis or memory), the meter the routes call; in the browser, the usage answer and its bar |
