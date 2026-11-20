@@ -12,6 +12,7 @@ import { geminiTextModel, TEXT_MODELS } from '@/lib/ai/text-model';
 import { FIXTURES_DIR, fixtureProfile } from '@/lib/brand/fixtures';
 import { replyBodyFor } from '@/lib/reviews/client';
 import { fillName } from '@/lib/reviews/name';
+import { copyNotes } from '@/lib/reviews/notes';
 import type { ScreenLocale } from '@/lib/reviews/reply';
 import { REPLY_PROMPT_VERSION } from '@/lib/reviews/reply-prompt';
 import { formatReplyLog, runReply } from '@/lib/reviews/reply-run';
@@ -55,8 +56,9 @@ for (const slug of slugs) {
         recording = r;
       },
     );
+    const body = replyBodyFor({ ...fixture, profile, avoid: null });
     const out = await runReply(
-      replyBodyFor({ ...fixture, profile, avoid: null }),
+      body,
       'eval',
       { model, log: (entry) => console.log(`    ${formatReplyLog(entry)}`) },
       new AbortController().signal,
@@ -75,6 +77,15 @@ for (const slug of slugs) {
     console.log(`           ${show(a.short.translation)}`);
     console.log(`  warm:    ${show(a.warm.text)}`);
     console.log(`           ${show(a.warm.translation)}`);
+    // Code's records, for reading back (docs/specs/reviews/better-replies-and-answers).
+    for (const [which, text] of [
+      ['short', a.short.text],
+      ['warm', a.warm.text],
+    ] as const) {
+      for (const note of copyNotes(text, body.business.goesToGuests)) {
+        console.log(`  ⚠ ${which}: ${note}`);
+      }
+    }
     if (record && recording) {
       writeFileSync(file, `${JSON.stringify({ ...fixture, recording }, null, 2)}\n`);
     }

@@ -12,6 +12,8 @@ import { ANSWER_PROMPT_VERSION } from '@/lib/questions/answer-prompt';
 import { formatAnswerLog, runAnswer } from '@/lib/questions/answer-run';
 import { questionBodyFor } from '@/lib/questions/client';
 import type { Guest } from '@/lib/questions/question';
+import { goesToGuests } from '@/lib/reviews/copy-rules';
+import { copyNotes } from '@/lib/reviews/notes';
 import type { ScreenLocale } from '@/lib/reviews/reply';
 
 if (existsSync('.env.local')) process.loadEnvFile('.env.local');
@@ -57,8 +59,9 @@ for (const slug of slugs) {
         recording = r;
       },
     );
+    const body = questionBodyFor({ ...fixture, profile, avoid: null });
     const out = await runAnswer(
-      questionBodyFor({ ...fixture, profile, avoid: null }),
+      body,
       'eval',
       { model, log: (entry) => console.log(`    ${formatAnswerLog(entry)}`) },
       new AbortController().signal,
@@ -83,6 +86,10 @@ for (const slug of slugs) {
     if (a.answer.translation) console.log(a.answer.translation.replace(/^/gm, '  > '));
     console.log(`  told:     ${JSON.stringify(a.guest)}`);
     for (const flag of a.flags) console.log(`  ⚠ ${flag.kind}: ${flag.text}`);
+    // Code's records, for reading back (docs/specs/reviews/better-replies-and-answers).
+    for (const note of copyNotes(a.answer.text, goesToGuests(body.business.serviceArea))) {
+      console.log(`  ⚠ ${note}`);
+    }
     if (record && recording) {
       writeFileSync(file, `${JSON.stringify({ ...fixture, recording }, null, 2)}\n`);
     }

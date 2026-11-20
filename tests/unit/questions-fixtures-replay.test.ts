@@ -3,14 +3,18 @@ import { join } from 'node:path';
 import { describe, expect, test } from 'vitest';
 import { type Recording, replayTextModel } from '@/lib/ai/replay';
 import { FIXTURES_DIR, fixtureProfile } from '@/lib/brand/fixtures';
+import { emojisIn } from '@/lib/posts/emoji';
 import { runAnswer } from '@/lib/questions/answer-run';
 import { questionBodyFor } from '@/lib/questions/client';
 import type { Guest } from '@/lib/questions/question';
+import { flowerFor } from '@/lib/reviews/checks';
+import { invitesIn } from '@/lib/reviews/notes';
 import type { ScreenLocale } from '@/lib/reviews/reply';
 
 // The made-up guests' questions recorded by `pnpm eval:answers --record`,
 // replayed through code's building and checks: no network, no quota
-// (docs/specs/questions/answer-drafts, "Prompt and eval").
+// (docs/specs/questions/answer-drafts, "Prompt and eval", and
+// docs/specs/reviews/better-replies-and-answers, "Prompt and eval").
 
 type Fixture = {
   slug: string;
@@ -32,13 +36,18 @@ const fixtures: Fixture[] = readdirSync(DIR)
   }));
 // The three that ask for sex; the Vietnamese one holds no word from code's list.
 const SEX = ['sen-happy-ending-en', 'sen-special-vi', 'svarga-intim-ru'];
+const SVARGA_SITE = 'https://svargabalimassage.com';
 const noBrandRead = { modelId: 'm', promptVersion: 'p', partials: [], final: {} };
-// Code replaces flowers, and takes every emoji out of an answer about sex.
+const STOP_BEFORE_EMOJI = /(?<!\.)\.\s*\p{Extended_Pictographic}/u;
+// An emoji without its skin tone or variation selector.
+const plainEmoji = (emoji: string) => emoji.replace(/[\u{1F3FB}-\u{1F3FF}️]/gu, '');
+// Code moves the flower and drops the stop before an emoji: compare words only.
 const plain = (text: string) =>
   text
-    .replace(/\p{Extended_Pictographic}|\uFE0F/gu, '')
+    .replace(/\p{Extended_Pictographic}|️/gu, '')
     .replace(/\s+/g, ' ')
-    .trim();
+    .trim()
+    .replace(/\.$/, '');
 const recordedCall = (fixture: Fixture) => {
   const final = fixture.recording?.final as { callToAction: { text: string } } | undefined;
   return plain(final?.callToAction.text ?? '');
@@ -46,31 +55,65 @@ const recordedCall = (fixture: Fixture) => {
 
 describe('recorded answers', () => {
   test('every made-up question has its recording', () => {
-    expect(fixtures).toHaveLength(8);
+    expect(fixtures).toHaveLength(10);
     expect(fixtures.filter((f) => !f.recording).map((f) => f.slug)).toEqual([]);
   });
 
   test.each(fixtures)('$slug replays to a checked answer', async (fixture) => {
     const profile = await fixtureProfile(join(FIXTURES_DIR, fixture.business));
+    const body = questionBodyFor({ ...fixture, profile, avoid: null });
     const out = await runAnswer(
-      questionBodyFor({ ...fixture, profile, avoid: null }),
+      body,
       'replay',
       { model: replayTextModel(noBrandRead, { answers: fixture.recording }) },
       new AbortController().signal,
     );
     if (!out.ok) throw new Error(out.code);
     const answer = out.response;
+    const sex = SEX.includes(fixture.slug);
     expect(answer.questionLanguage.split('-')[0]).toBe(fixture.language);
     // The line on every question that mentions sex, and on none of the others.
-    expect(answer.sexual).toBe(SEX.includes(fixture.slug));
+    expect(answer.sexual).toBe(sex);
     if (fixture.slug === 'svarga-card-en') expect(answer.unanswered).toBe(true);
     // No price, duration or number the details don't hold.
     expect(answer.flags).toEqual([]);
     if (fixture.language === fixture.locale) expect(answer.answer.translation).toBeNull();
-    // The recorded call to book ends each final answer; the others have none.
-    if (fixture.final) {
-      expect(recordedCall(fixture)).not.toBe('');
-      expect(plain(answer.answer.text.split('\n\n').at(-1) ?? '')).toBe(recordedCall(fixture));
-    } else expect(recordedCall(fixture)).toBe('');
+
+    // 😊 and the flower, the flower last, no stop before an emoji; none on sex.
+    const flower = flowerFor(body.country);
+    const texts = [answer.answer.text, answer.answer.translation].filter(
+      (text): text is string => text !== null,
+    );
+    for (const text of texts) {
+      expect(text, fixture.slug).not.toMatch(STOP_BEFORE_EMOJI);
+      const emojis = emojisIn(text).map(plainEmoji);
+      if (sex) {
+        expect(emojis, fixture.slug).toEqual([]);
+        continue;
+      }
+      for (const emoji of emojis)
+        expect(['😊', flower], `${fixture.slug}: ${text}`).toContain(emoji);
+      expect(new Set(emojis).size, `${fixture.slug}: ${text}`).toBe(emojis.length);
+      expect(text.trimEnd().endsWith(flower), `${fixture.slug}: ${text}`).toBe(true);
+    }
+    // Sen and Svarga go to their guests: no answer invites a guest to them.
+    expect(invitesIn(answer.answer.text), answer.answer.text).toEqual([]);
+
+    // The call to book ends a final answer, the gentle offer every other one,
+    // unless the question mentions sex.
+    const last = plain(answer.answer.text.split('\n\n').at(-1) ?? '');
+    if (fixture.final || !sex) {
+      expect(recordedCall(fixture), fixture.slug).not.toBe('');
+      expect(last).toBe(recordedCall(fixture));
+    } else if (recordedCall(fixture) !== '') {
+      expect(plain(answer.answer.text)).not.toContain(recordedCall(fixture));
+    }
+
+    // The website only for the guest who asked for photos.
+    if (fixture.slug === 'svarga-photos-en') {
+      for (const text of texts) expect(text).toContain(SVARGA_SITE);
+    } else {
+      expect(answer.answer.text).not.toContain('http');
+    }
   });
 });
