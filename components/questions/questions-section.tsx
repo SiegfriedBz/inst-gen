@@ -176,7 +176,10 @@ export function QuestionsSection({
       first,
       locale,
       profile,
-      known: live?.known ?? NO_GUEST,
+      // A first message starts from nothing the guest told before: it may be
+      // a new guest's, pasted without "New conversation"
+      // (docs/specs/questions/first-answer, "The box", amended 2026-11-20).
+      known: first ? NO_GUEST : (live?.known ?? NO_GUEST),
       // The answer as the model wrote it, never the owner's edit.
       avoid: input.again && live?.current ? live.current.answer.answer.text : null,
     });
@@ -292,7 +295,10 @@ export function QuestionsSection({
     return (
       <section className="mt-5 flex flex-col gap-4">
         <p className="text-[15px] leading-normal text-ink-secondary">{t('intro')}</p>
-        <KnownBox known={known} disabled={busy} onReset={() => void newConversation()} />
+        {/* Not sent while the first-message box is ticked, so not shown. */}
+        {!first && (
+          <KnownBox known={known} disabled={busy} onReset={() => void newConversation()} />
+        )}
         <div className="flex flex-col gap-1.5">
           <Label htmlFor={`${id}-question`}>{t('label')}</Label>
           <Textarea

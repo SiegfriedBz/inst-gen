@@ -104,6 +104,14 @@
     they were. The old tests passed against that break. They replace
     "versions 1 and 2 read as version 4", which only built a version 2, from
     a profile that already held lengths.
+  - The previous guest's details, ticked after "Paste the next message": the
+    maintainer chose to hide them too ("Yes, hide it"), then approved the
+    spec's amendment. With an answer on screen, its details stay shown,
+    ticked or not (developer's call, in the amendment): on a first answer
+    the box is ticked by itself, and they come from that same message. So
+    "Write another answer" on a first answer has the model read them again
+    from the message, rather than sending them. `answer-drafts` gets a
+    "Changed by" line.
 
 ## The five first answers, as the owner sees them (`answer-9`)
 
@@ -180,7 +188,8 @@ massage listed, with its price.
   `Tests  3 failed | 64 passed (67)`
 - The leftovers: the comma (`questions-checks`),
   `Tests  1 failed | 34 passed (35)`; the upgrade tests against the temporary
-  break (`brand-profile`), `Tests  2 failed | 27 passed (29)`
+  break (`brand-profile`), `Tests  2 failed | 27 passed (29)`; the previous
+  guest's details (`questions-section`), `Tests  3 failed | 26 passed (29)`
 
 ## GREEN
 
@@ -203,4 +212,7 @@ massage listed, with its price.
   `pnpm check`: `Tests  2162 passed (2162)`
 - The leftovers: the comma (`questions-checks`, with `questions-run` and the
   answers' replay), `Tests  56 passed (56)`; the upgrade tests
-  (`brand-profile`), `Tests  29 passed (29)`, on the code as it was
+  (`brand-profile`), `Tests  29 passed (29)`, on the code as it was; the
+  previous guest's details (`questions-section`, with `questions-store` and
+  `questions-client`), `Tests  38 passed (38)`; `pnpm check`:
+  `Tests  2169 passed (2169)`
