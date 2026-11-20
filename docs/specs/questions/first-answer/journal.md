@@ -16,6 +16,10 @@
 - 2026-11-20: `scripts/eval-answers.ts` and the answers' replay test pass a
   fixture's `first` (missing reads as false) already in Task 4, not Task 7:
   `tsc`, run by the commit hook, needs every request to say it.
+- 2026-11-20: the answer prompt for a later answer keeps its rules, gathered
+  in one place with the empty closing; its emoji rule now comes before the
+  rules on words. The first answer's rules replace the greeting, answer, call
+  to action, website and emoji rules, and say nothing of a gentle offer.
 
 ## RED
 
@@ -27,6 +31,8 @@
   `questions-flags`, `questions-prompt`): `Tests  11 failed | 128 passed (139)`
 - Task 4 (`questions-section`, `questions-store`, `questions-question`,
   `questions-client`): `Tests  10 failed | 31 passed (41)`
+- Task 5 (`questions-checks`, `questions-prompt`, `questions-run`):
+  `Tests  12 failed | 44 passed (56)`
 
 ## GREEN
 
@@ -38,3 +44,5 @@
   Tasks 1 to 3: `Tests  2132 passed (2132)`
 - Task 4 (the same four): `Tests  41 passed (41)`; the whole suite:
   `Tests  2139 passed (2139)`
+- Task 5 (the same three): `Tests  56 passed (56)`; the whole suite:
+  `Tests  2152 passed (2152)`

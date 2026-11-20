@@ -200,3 +200,61 @@ describe('answerPrompt', () => {
     expect(answerPrompt(body({ final: true }), '🪷', true).text).toContain('Final answer: yes');
   });
 });
+
+// docs/specs/questions/first-answer, "The first answer".
+describe('answerPrompt for a first answer', () => {
+  const site = 'https://sendanangmassage.com/';
+
+  it('asks for the hello line, the middle and the closing, with no emoji and no gentle offer', () => {
+    const { system, text } = answerPrompt(
+      withBusiness({ website: site }, { first: true }),
+      '🪷',
+      true,
+    );
+    for (const rule of [
+      '"greeting": the hello line',
+      'a thank-you for their message',
+      'a therapist comes to them',
+      'which massage they would like',
+      'each of its lengths with its price',
+      '"closing": one sentence in the first person',
+      'answer all their questions',
+      'make their booking easy',
+      'No emoji in any part',
+    ]) {
+      expect(system).toContain(rule);
+    }
+    expect(system).not.toContain('the gentle offer that ends the answer');
+    expect(text).toContain('First message from this guest: yes');
+  });
+
+  it('sends a guest who names no massage to {website} only when the website is known', () => {
+    const known = answerPrompt(withBusiness({ website: site }, { first: true }), '🪷', true);
+    expect(known.system).toContain('{website}');
+    const unknown = answerPrompt(withBusiness({ website: null }, { first: true }), '🪷', true);
+    expect(unknown.system).not.toContain('{website}');
+    expect(unknown.system).toContain('which massage they would like');
+  });
+
+  it('asks for the call to book before the closing on a final first answer', () => {
+    const { system } = answerPrompt(body({ first: true, final: true }), '🪷', true);
+    expect(system).toContain('asks the guest to book now');
+    expect(system).toContain('"closing": one sentence in the first person');
+  });
+
+  it('says only hello and thanks for a business that does not go to its guests', () => {
+    const { system } = answerPrompt(
+      withBusiness({ serviceArea: null }, { first: true }),
+      '🌸',
+      true,
+    );
+    expect(system).not.toContain('a therapist comes to them');
+  });
+
+  it('leaves the closing empty on a later answer', () => {
+    const { system, text } = answerPrompt(body(), '🪷', true);
+    expect(system).toContain('"closing": leave its text empty and its translation null');
+    expect(system).not.toContain('"greeting": the hello line');
+    expect(text).toContain('First message from this guest: no');
+  });
+});

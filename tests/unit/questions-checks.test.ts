@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { buildAnswer, fillWebsite, mergeGuest } from '@/lib/questions/checks';
+import { buildAnswer, endOnPair, fillWebsite, mergeGuest } from '@/lib/questions/checks';
 import type { ModelAnswer, QuestionBody } from '@/lib/questions/question';
 
 // docs/specs/questions/answer-drafts, "The answer" and "The model call".
@@ -47,6 +47,7 @@ function model(overrides: Partial<ModelAnswer> = {}): ModelAnswer {
     answer: part('Our Thai Massage is 60 min: VND 500k. 🌸'),
     professionalOnly: part('We offer only professional therapeutic massage.'),
     callToAction: part('A therapist can come to your hotel whenever suits you.'),
+    closing: part('', null),
     guest: { place: null, day: null, time: null },
     ...overrides,
   };
@@ -273,6 +274,88 @@ describe('buildAnswer', () => {
       ctx(body({ known: { place: 'Hyatt', day: null, time: '7 pm' } })),
     );
     expect(built?.guest).toEqual({ place: 'Hyatt', day: 'tomorrow', time: '8 pm' });
+  });
+});
+
+// docs/specs/questions/first-answer, "The first answer" and "Code's build".
+describe('the first answer', () => {
+  const sen = (over: Partial<QuestionBody> = {}) =>
+    body({
+      first: true,
+      business: { ...body().business, website: 'https://sendanangmassage.com/' },
+      ...over,
+    });
+  const firstModel = (over: Partial<ModelAnswer> = {}) =>
+    model({
+      greeting: part('Hello, thank you for your message! A therapist comes to your hotel. 🌸✨'),
+      answer: part('Which massage would you like? 😊 You can see them all on {website}.'),
+      callToAction: part('', null),
+      closing: part('I am here to answer all your questions and make your booking easy.'),
+      ...over,
+    });
+
+  it('builds the hello line, the middle and the closing, the first and the last ending on 😊 and the flower', () => {
+    const built = buildAnswer(firstModel(), ctx(sen()));
+    expect(built?.answer.text).toBe(
+      'Hello, thank you for your message! A therapist comes to your hotel 😊🪷\n\nWhich massage would you like? You can see them all on https://sendanangmassage.com.\n\nI am here to answer all your questions and make your booking easy 😊🪷',
+    );
+    expect(built?.answer.translation).toBe(
+      'vi: Hello, thank you for your message! A therapist comes to your hotel 😊🪷\n\nvi: Which massage would you like? You can see them all on https://sendanangmassage.com.\n\nvi: I am here to answer all your questions and make your booking easy 😊🪷',
+    );
+  });
+
+  it('keeps "!" and "?" before the pair', () => {
+    const built = buildAnswer(
+      firstModel({
+        greeting: part('Hello, a therapist comes to you!'),
+        closing: part('Shall I help you book? 🌺'),
+      }),
+      ctx(sen()),
+    );
+    const paragraphs = built?.answer.text.split('\n\n') ?? [];
+    expect(paragraphs[0]).toBe('Hello, a therapist comes to you! 😊🪷');
+    expect(paragraphs.at(-1)).toBe('Shall I help you book? 😊🪷');
+  });
+
+  it('puts the call to book before the closing on a final first answer, with no emoji', () => {
+    const built = buildAnswer(
+      firstModel({ callToAction: part('Which day and time suit you? 🌸') }),
+      ctx(sen({ final: true })),
+    );
+    const paragraphs = built?.answer.text.split('\n\n') ?? [];
+    expect(paragraphs).toHaveLength(4);
+    expect(paragraphs[2]).toBe('Which day and time suit you?');
+    expect(paragraphs[3]).toBe(
+      'I am here to answer all your questions and make your booking easy 😊🪷',
+    );
+  });
+
+  it('fails without its closing', () => {
+    expect(buildAnswer(firstModel({ closing: part('', null) }), ctx(sen()))).toBeNull();
+  });
+
+  it('builds a first answer to a question that mentions sex as today', () => {
+    const built = buildAnswer(
+      firstModel({ sexual: true, greeting: part('Hello.'), answer: part('We offer massage.') }),
+      ctx(sen({ question: 'Do you do happy ending?' })),
+    );
+    expect(built?.answer.text).toBe(
+      'Hello. We offer only professional therapeutic massage.\n\nWe offer massage.',
+    );
+  });
+
+  it('leaves the closing out of a later answer', () => {
+    const built = buildAnswer(model({ closing: part('I am here to help.') }), ctx());
+    expect(built?.answer.text).not.toContain('I am here');
+  });
+});
+
+describe('endOnPair', () => {
+  it('puts 😊 and the flower in place of a final stop, after "!" or "?", and after "..."', () => {
+    expect(endOnPair('Hello.', '🪷')).toBe('Hello 😊🪷');
+    expect(endOnPair('Hello!', '🪷')).toBe('Hello! 😊🪷');
+    expect(endOnPair('Shall we?', '🌼')).toBe('Shall we? 😊🌼');
+    expect(endOnPair('See you...', '🪷')).toBe('See you... 😊🪷');
   });
 });
 

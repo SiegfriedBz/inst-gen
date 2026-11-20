@@ -46,6 +46,7 @@ const answer: ModelAnswer = {
   answer: part('Yes, the Hyatt is in our free travel area. 🌸'),
   professionalOnly: part('We offer only professional therapeutic massage.'),
   callToAction: part('Shall we book you tomorrow at 7 pm?'),
+  closing: part('I am here to answer all your questions.'),
   guest: { place: 'Hyatt', day: 'tomorrow', time: '7 pm' },
 };
 const rec = (final: ModelAnswer): Recording => ({
@@ -91,11 +92,24 @@ describe('runAnswer', () => {
     const line = formatAnswerLog(logs[0]);
     expect(line).toMatch(/^answer owner=sen model=gemini-3\.5-flash-lite prompt=answer-7 /);
     expect(line).toContain(' final=yes ');
+    // The first-message box (docs/specs/questions/first-answer).
+    expect(line).toContain(' first=no ');
     expect(line).toContain(' sexual=no ');
     expect(line).toContain(' known=place,day,time ');
     expect(line).toContain(' outcome=ok');
     for (const word of ['Hyatt', 'tomorrow', 'free travel', 'Hello'])
       expect(line).not.toContain(word);
+  });
+
+  test('logs first=yes for a first answer', async () => {
+    const logs: AnswerLog[] = [];
+    await runAnswer(
+      { ...body, first: true },
+      'sen',
+      { model: replayTextModel(rec(answer), { answers: rec(answer) }), log: (e) => logs.push(e) },
+      signal(),
+    );
+    expect(formatAnswerLog(logs[0])).toContain(' first=yes ');
   });
 
   test("says the word list fired when the model didn't", async () => {

@@ -40,6 +40,44 @@ const AREAS_RULE =
 const WEBSITE_RULE =
   'Never send the guest to the website, except when they ask to see photos, or want more about a treatment than its description says. Then one short sentence of "answer" says they will find it on the website: write {website}, exactly so, where the address goes, and never a web address of your own, not even one of the business\'s: code puts the address there.';
 
+// The first answer (docs/specs/questions/first-answer, "The first answer"):
+// the hello line, the middle and the closing. Code ends the hello line and the
+// closing on 😊 and the flower, so the model writes no emoji.
+function firstRules(body: QuestionBody): string[] {
+  const website = Boolean(body.business.website);
+  const hello = goesToGuests(body.business.serviceArea)
+    ? '"greeting": the hello line: hi or hello, a thank-you for their message, and straight away that a therapist comes to them where they are staying (their hotel or villa, or the place they named, as they put it), in one or two short sentences, with no name. When they stay in a place "Where it goes" does not name, say instead that the therapists come to guests in the areas the business covers, never to their place.'
+    : '"greeting": the hello line: hi or hello and a thank-you for their message, in one or two short sentences, with no name.';
+  const noneNamed = website
+    ? 'When the message names none of the business\'s treatments (no massage at all, or one in the guest\'s own words that is not clearly one of "Treatments"), ask in one short question which massage they would like, and say in one short sentence that they can see all the massages on the website: write {website}, exactly so, where the address goes, and never a web address of your own: code puts the address there. Never list the treatments, never name one, never give a price.'
+    : 'When the message names none of the business\'s treatments (no massage at all, or one in the guest\'s own words that is not clearly one of "Treatments"), ask in one short question which massage they would like. Never list the treatments, never name one, never give a price.';
+  const named = `When the message names one or more of the business's treatments, even in other words or another language as long as it is clearly that one, give each by its name as "Treatments" writes it, then each of its lengths with its price on its own line starting with "- ", as the details write them. No other treatment${website ? ', and no website unless they ask to see photos or want more about it than its description: then write {website}' : ''}.`;
+  return [
+    "This answer replies to the guest's first message: the hello line, the middle, then the closing.",
+    hello,
+    `"answer": the middle. ${noneNamed} ${named} Then answer anything else the message asks in one short sentence, from the details.`,
+    body.final
+      ? `${callToAction(true)} It comes before the closing.`
+      : '"callToAction": leave its text empty and its translation null: the closing ends this answer.',
+    '"closing": one sentence in the first person, as the owner writing: that you are here to answer all their questions and to make their booking easy, in your own words.',
+    'No emoji in any part: code adds them.',
+    'When "sexual" is true, forget the hello line and the closing: a short greeting, the "professionalOnly" line and a short answer, and leave the closing\'s text empty and its translation null.',
+  ];
+}
+
+// Any other answer: today's greeting, answer, call to action and emoji.
+function laterRules(body: QuestionBody, flower: string): string[] {
+  return [
+    'When you list treatments, give each with its lengths and their prices, as the details write them: each treatment on its own line when there are more than two, its name, then each length with its price.',
+    '"greeting": a short greeting, with no name, ending on its punctuation.',
+    `"answer": the answer to each thing the guest asked, in 1 to 4 short sentences, plain and warm, in the business's tone, with the list of treatments when you give one.`,
+    callToAction(body.final),
+    ...(body.business.website ? [WEBSITE_RULE] : []),
+    '"closing": leave its text empty and its translation null.',
+    `Emoji: only 😊 and ${flower}, one of each: 😊 at the end of a sentence, in place of its full stop (the greeting, or a sentence of the answer), and ${flower} at the very end of your last part. No emoji when "sexual" is true.`,
+  ];
+}
+
 function sexRule(spa: boolean): string {
   return spa
     ? '"sexual": true when the message asks for sex, a sexual service or anything more than a professional massage, or mentions sex at all, in any language and with any euphemism. "professionalOnly": always one sentence, in the language of the message, saying the business offers only professional therapeutic massage. When "sexual" is true, the answer is calm, short and polite, with no emoji; it never repeats the guest\'s words, never jokes, and speaks only of the real treatments.'
@@ -67,15 +105,10 @@ export function answerPrompt(
     'For a business that goes to its guests ("Goes to its guests: yes"), never invite the guest to come, come back or visit, and never speak of a place of the business as where they would be: a therapist comes to where the guest is staying, as its details say.',
     ...(goesToGuests(body.business.serviceArea) ? [AREAS_RULE] : []),
     'When the details do not answer part of the message (a card payment, a free slot tonight, parking), say the team will check and reply, and set "unanswered" to true.',
-    'When you list treatments, give each with its lengths and their prices, as the details write them: each treatment on its own line when there are more than two, its name, then each length with its price.',
-    '"greeting": a short greeting, with no name, ending on its punctuation.',
-    `"answer": the answer to each thing the guest asked, in 1 to 4 short sentences, plain and warm, in the business's tone, with the list of treatments when you give one.`,
-    callToAction(body.final),
-    ...(body.business.website ? [WEBSITE_RULE] : []),
+    ...(body.first ? firstRules(body) : laterRules(body, flower)),
     `"guest": what the guest has told so far about their booking, from "What the guest has told" and this message: where they are staying, the day and the time, each as they put it, written in ${owner}, or null.`,
     sexRule(spa),
     WORD_RULES,
-    `Emoji: only 😊 and ${flower}, one of each: 😊 at the end of a sentence, in place of its full stop (the greeting, or a sentence of the answer), and ${flower} at the very end of your last part. No emoji when "sexual" is true.`,
     "Every sentence ends on its full stop, question mark or exclamation mark, except where an emoji takes the full stop's place: then no full stop before or after the emoji.",
     'Never reuse a phrase from these instructions: write as the owner would.',
     'Promise nothing the owner has not decided: no discount, no free extra, no arrival time.',
@@ -119,6 +152,7 @@ export function answerPrompt(
     `- Time: ${told(body.known.time)}`,
     '',
     `Final answer: ${body.final ? 'yes' : 'no'}`,
+    `First message from this guest: ${body.first ? 'yes' : 'no'}`,
     // The guest's letters, when they aren't Latin ("The guest's letters").
     ...(script
       ? [

@@ -89,6 +89,9 @@ export const modelAnswerSchema = z.object({
   answer: part,
   professionalOnly: part,
   callToAction: part,
+  // The closing of a first answer (docs/specs/questions/first-answer); empty on
+  // any other.
+  closing: part,
   guest: z.object({
     place: z.string().nullable(),
     day: z.string().nullable(),
