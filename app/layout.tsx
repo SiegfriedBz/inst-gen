@@ -26,6 +26,10 @@ export const viewport: Viewport = {
   // The bottom tab bar reaches the phone's edge and pads itself above the
   // home indicator (docs/specs/platform/friendlier-home).
   viewportFit: 'cover',
+  // An Android keyboard shrinks the page, not only what shows of it, so the
+  // bar stays above the keyboard while the owner types (the spec, changed
+  // 2026-11-20). Safari on an iPhone ignores it.
+  interactiveWidget: 'resizes-content',
   themeColor: [
     { media: '(prefers-color-scheme: light)', color: '#f6f7f5' },
     { media: '(prefers-color-scheme: dark)', color: '#121614' },

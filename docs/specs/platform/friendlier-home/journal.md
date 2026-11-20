@@ -66,6 +66,25 @@
   stands, but its reason was too strong: Playwright's resize shrinks both
   viewports by construction, so the run showed the rule couldn't be tested
   that way, not how phones behave; focus stays the safer signal.
+- 2026-11-20: The bar no longer hides while a field has focus, at the
+  maintainer's request ("this bar should always be there"); the spec's
+  change was approved at 13:48:57Z. `components/brand/use-typing.ts` goes.
+  For the bar to sit above the keyboard on Android, the viewport asks for
+  `interactive-widget=resizes-content`: since Chrome 108 the keyboard
+  otherwise shrinks only the visual viewport, and a bar fixed to the bottom
+  of the page would sit behind it. While the bar shows, the page's
+  `scroll-padding-bottom` (64px and the safe area) keeps a field the browser
+  scrolls to above it. Safari on an iPhone keeps fixed bars behind the
+  keyboard whatever the page says: a known limit in the spec.
+- 2026-11-20: The padding alone wasn't enough: in the first full e2e run, the
+  Questions field stayed under the bar once the page shrank, since nothing
+  scrolled it. `components/brand/field-above-bar.ts` scrolls the focused text
+  field into view ("nearest", which keeps the padding) when it takes focus
+  and when the page resizes, as it does when an Android keyboard opens. The
+  e2e test now focuses first and shrinks the page after, the keyboard's
+  order. Measured in a throwaway e2e test, the field then ended exactly 64px
+  above the bottom, on the bar's 1px top border (the bar is 65px tall): the
+  padding is 72px (4.5rem), so the field sits 7px above the bar.
 
 ## RED
 
@@ -154,6 +173,30 @@ Final review fixes (`posts-store`, `posts-section`, `posts-section-images`):
 
 ```
       Tests  4 failed | 66 passed (70)
+```
+
+Changed 2026-11-20, the bar stays while typing (`brand-home`, then the two
+new e2e tests in `friendlier-home.spec.ts`):
+
+```
+      Tests  2 failed | 57 skipped (59)
+```
+
+```
+  2 failed
+```
+
+The first full e2e run left the Questions field under the bar; then the field
+scrolling clear of it (`brand-home`):
+
+```
+  1 failed
+  1 skipped
+  72 passed (40.9s)
+```
+
+```
+      Tests  1 failed | 59 skipped (60)
 ```
 
 ## GREEN
@@ -271,4 +314,27 @@ Then `pnpm check` and every e2e test on port 3100:
       Tests  1180 passed (1180)
   1 skipped
   60 passed (21.8s)
+```
+
+Changed 2026-11-20, the bar stays while typing (`brand-home`), then the field
+scrolling clear of it:
+
+```
+      Tests  59 passed (59)
+```
+
+```
+      Tests  60 passed (60)
+```
+
+Then every e2e test (`pnpm test:e2e`, port 3000 free) and `pnpm check`:
+
+```
+  1 skipped
+  73 passed (59.1s)
+```
+
+```
+ Test Files  129 passed (129)
+      Tests  2118 passed (2118)
 ```

@@ -676,26 +676,57 @@ describe('the home tabs', () => {
     }
   });
 
-  test('the bar hides while a text field has focus, whatever the viewport says', async () => {
-    // Android Chrome shrinks innerHeight and the visual viewport together when
-    // the keyboard opens, so their sizes can't tell; focus can.
+  // Changed 2026-11-20 (docs/specs/platform/friendlier-home, "It never covers
+  // what the owner is typing"): the bar never hides, even while typing.
+  test.each([
+    ['Reviews', 'The review'],
+    ['Questions', "The guest's question"],
+  ])('the bar stays while a text field of %s has focus', async (tab, label) => {
     await saveBrand('sen', profile);
     renderHome();
     await screen.findByRole('tablist', { name: 'Home' });
-    await openTab('Reviews');
+    await openTab(tab);
     const bar = document.querySelector('[data-tab-bar]') as HTMLElement;
     expect(bar.hidden).toBe(false);
-    const field = await screen.findByLabelText('The review');
+    const field = await screen.findByLabelText(label);
     act(() => field.focus());
-    await waitFor(() => expect(bar.hidden).toBe(true));
-    act(() => field.blur());
-    // Not at once: the tap that took focus away must land before the bar
-    // comes back under the finger.
-    await new Promise((resolve) => setTimeout(resolve, 100));
-    expect(bar.hidden).toBe(true);
-    await waitFor(() => expect(bar.hidden).toBe(false));
-    act(() => screen.getByRole('tab', { name: 'Reviews' }).focus());
+    // Longer than the 300 ms the bar once waited before coming back.
+    await new Promise((resolve) => setTimeout(resolve, 400));
     expect(bar.hidden).toBe(false);
+    act(() => field.blur());
+    expect(bar.hidden).toBe(false);
+  });
+
+  test('a focused text field scrolls clear of the bar, and again when the keyboard opens', async () => {
+    // jsdom has no scrollIntoView: the page's scroll-padding-bottom keeps the
+    // field above the bar, which a phone test checks.
+    const scrolled: Element[] = [];
+    const scrollIntoView = vi.fn(function (this: Element) {
+      scrolled.push(this);
+    });
+    Element.prototype.scrollIntoView = scrollIntoView;
+    try {
+      await saveBrand('sen', profile);
+      renderHome();
+      await screen.findByRole('tablist', { name: 'Home' });
+      await openTab('Questions');
+      const field = await screen.findByLabelText("The guest's question");
+      act(() => field.focus());
+      expect(scrollIntoView).toHaveBeenLastCalledWith({ block: 'nearest' });
+      expect(scrolled.at(-1)).toBe(field);
+      scrollIntoView.mockClear();
+      // The keyboard opening shrinks the page.
+      act(() => {
+        window.dispatchEvent(new Event('resize'));
+      });
+      expect(scrollIntoView).toHaveBeenCalledWith({ block: 'nearest' });
+      expect(scrolled.at(-1)).toBe(field);
+      scrollIntoView.mockClear();
+      act(() => screen.getByRole('checkbox', { name: 'Make it the final answer' }).focus());
+      expect(scrollIntoView).not.toHaveBeenCalled();
+    } finally {
+      Reflect.deleteProperty(Element.prototype, 'scrollIntoView');
+    }
   });
 
   test('a re-read lands on Your business and the update waits for the tab', async () => {
