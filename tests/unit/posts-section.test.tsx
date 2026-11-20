@@ -380,7 +380,9 @@ describe('the posts section', () => {
     await renderSection();
     const sheet = await openTile(1, 1);
     expect(within(sheet).getByText('Warm oil, slow hands.')).toBeTruthy();
-    expect(within(sheet).getByText('Book on WhatsApp: +6281234567890')).toBeTruthy();
+    expect(
+      within(sheet).getByText('👉 Book Your Wellness on WhatsApp today: +6281234567890'),
+    ).toBeTruthy();
     expect(within(sheet).getByText('#canggu #balimassage #aftersurf')).toBeTruthy();
     expect(screen.queryByText('Image description')).toBeNull();
     expect(screen.queryByText(/SECRET PROMPT/)).toBeNull();
@@ -984,7 +986,8 @@ describe('the offer badge', () => {
   // docs/specs/posts/marketing-copy, "The offer's end, by the WhatsApp line".
   test("an offer post keeps its copied tick and shows the offer's end before WhatsApp", async () => {
     const NOW = '2026-10-25T10:00:00.000Z';
-    const line = 'Offer ends Tuesday 27 October. Book on WhatsApp: +6281234567890';
+    const line =
+      'Offer ends Tuesday 27 October\n👉 Book Your Wellness on WhatsApp today: +6281234567890';
     const offered = withOffer(discount);
     await saveBatch({
       ...offered,
@@ -992,7 +995,10 @@ describe('the offer badge', () => {
     });
     await renderSection();
     const sheet = await openTile(1);
-    expect(within(sheet).getByText(line)).toBeTruthy();
+    // Two lines on the card: the offer's end, then the WhatsApp line.
+    expect(
+      within(sheet).getByText((_, el) => el?.tagName === 'P' && el.textContent === line),
+    ).toBeTruthy();
     fireEvent.click(within(sheet).getByRole('button', { name: 'Close' }));
     await waitFor(() => expect(screen.queryByRole('dialog')).toBeNull());
     expect(screen.getAllByRole('button', { name: /Copied$/ })).toHaveLength(6);

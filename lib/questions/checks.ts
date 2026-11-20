@@ -1,7 +1,7 @@
-import { BANNED_WORDS } from '@/lib/posts/banned';
 import { isSpa } from '@/lib/posts/emoji';
-import { sentences } from '@/lib/posts/story';
-import { FLOWER_EMOJI, noEmoji, sameLanguage } from '@/lib/reviews/checks';
+import { sameLanguage, withoutBanned, withoutSentences } from '@/lib/reviews/checks';
+import { type EmojiRule, endSentence, keepEmoji } from '@/lib/reviews/emoji';
+import { guestScript, holdsScript } from '@/lib/reviews/script';
 import { answerFlags } from './flags';
 import {
   type AnswerResponse,
@@ -17,7 +17,10 @@ import { mentionsSex } from './words';
 // greeting, with the line on professional massage after it when the question
 // mentions sex, the answer, and the call to action last on a final answer, the
 // translation the same way. Null when a part it needs is empty: the route
-// answers model_failed.
+// answers model_failed. An answer that isn't final ends on its gentle offer,
+// unless the question mentions sex; 😊 and the flower, the flower last; the
+// website's address in place of {website}
+// (docs/specs/reviews/better-replies-and-answers).
 
 // Which check said the question mentions sex, for the log line.
 export type SexualBy = 'model' | 'words' | 'both' | null;
@@ -25,26 +28,61 @@ export type BuiltAnswer = Omit<AnswerResponse, 'model' | 'promptVersion'> & {
   sexualBy: SexualBy;
 };
 
-function escapeRegex(text: string): string {
-  return text.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-}
-
-const BANNED = BANNED_WORDS.map(
-  (word) => new RegExp(`(?:^|[^\\p{L}\\p{N}])${escapeRegex(word)}(?:$|[^\\p{L}\\p{N}])`, 'iu'),
-);
-
-// A sentence that holds a banned word goes whole.
-function withoutBanned(text: string): string {
-  return sentences(text)
-    .filter((sentence) => !BANNED.some((word) => word.test(sentence)))
-    .join('')
-    .trim();
-}
-
 const detail = (value: string | null): string | null => {
   const trimmed = value?.trim();
   return trimmed ? trimmed.slice(0, QUESTION_LIMITS.detail) : null;
 };
+
+const WEBSITE = /\{+\s*website\s*\}+/i;
+const WEBSITES = /\{+\s*website\s*\}+/gi;
+// A placeholder code didn't fill never reaches the guest: its sentence goes.
+const LEFTOVER = /\{[^{}\n]*\}/;
+
+function escapeRegex(text: string): string {
+  return text.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+}
+
+const sameLink = (a: string, b: string) =>
+  a.replace(/\/+$/, '').toLowerCase() === b.replace(/\/+$/, '').toLowerCase();
+
+// A link the model writes on the business's own site, with or without "www"
+// or a page, becomes its address: never a page that doesn't exist. The
+// booking link stays; an email address is no link.
+function ownLinks(text: string, address: string, bookingUrl: string | null): string {
+  let host: string;
+  try {
+    host = new URL(address).hostname.replace(/^www\./, '');
+  } catch {
+    return text;
+  }
+  const link = new RegExp(
+    `(?<![@\\w./-])(?:https?:\\/\\/)?(?:www\\.)?${escapeRegex(host)}(?:\\/[^\\s]*)?`,
+    'giu',
+  );
+  return text.replace(link, (match) => {
+    const trailing = match.match(/[.,!?;:)]+$/u)?.[0] ?? '';
+    const url = match.slice(0, match.length - trailing.length);
+    if (bookingUrl && sameLink(url, bookingUrl)) return match;
+    return address + trailing;
+  });
+}
+
+// The model writes {website}; code puts the address there, never a page of
+// the model's own. With no website, the sentence that holds it goes.
+export function fillWebsite(
+  text: string,
+  website: string | null,
+  bookingUrl: string | null = null,
+): string {
+  if (!website) return withoutSentences(text, (sentence) => WEBSITE.test(sentence));
+  const address = website.trim().replace(/\/+$/, '');
+  // A function, so a "$" in the address stays as written.
+  return ownLinks(
+    text.replace(WEBSITES, () => address),
+    address,
+    bookingUrl,
+  );
+}
 
 // A detail the model gives replaces the one kept; one it leaves out stays.
 export function mergeGuest(known: Guest, given: ModelAnswer['guest']): Guest {
@@ -64,22 +102,40 @@ export function buildAnswer(
     model.sexual && words ? 'both' : model.sexual ? 'model' : words ? 'words' : null;
   // The line names massage: a business that isn't a spa gets none, nor the note.
   const line = sexualBy !== null && isSpa(body.business.category);
-  const clean = (text: string | null): string => {
-    const flowered = withoutBanned(text ?? '').replace(FLOWER_EMOJI, flower);
-    return (sexualBy !== null ? noEmoji(flowered) : flowered).trim();
-  };
+  // Each part ends on its punctuation (the model may leave a stop out).
+  const clean = (text: string | null): string =>
+    endSentence(
+      withoutSentences(
+        fillWebsite(
+          withoutBanned(text ?? ''),
+          body.business.website,
+          body.business.contact.bookingUrl,
+        ),
+        (sentence) => LEFTOVER.test(sentence),
+      ),
+    );
   const greeting = clean(model.greeting.text);
   const answer = clean(model.answer.text);
   const professional = line ? clean(model.professionalOnly.text) : '';
-  const cta = body.final ? clean(model.callToAction.text) : '';
+  // The call to book on a final answer; else the gentle offer, unless the
+  // question mentions sex.
+  const cta = body.final || sexualBy === null ? clean(model.callToAction.text) : '';
   if (!greeting || (body.final && !cta) || (line && !professional) || (!answer && !line)) {
     return null;
   }
+  const rule: EmojiRule = sexualBy !== null ? { keep: [], flower: null } : { keep: ['😊'], flower };
   const join = (parts: { greeting: string; professional: string; answer: string; cta: string }) =>
-    [[parts.greeting, parts.professional].filter(Boolean).join(' '), parts.answer, parts.cta]
-      .filter(Boolean)
-      .join('\n\n');
+    keepEmoji(
+      [[parts.greeting, parts.professional].filter(Boolean).join(' '), parts.answer, parts.cta]
+        .filter(Boolean)
+        .join('\n\n'),
+      rule,
+    );
   const text = join({ greeting, professional, answer, cta });
+  // An answer in other letters than the guest's never reaches the owner
+  // ("The guest's letters"): the route answers model_failed.
+  const script = guestScript(body.question);
+  if (script && !holdsScript(text, script)) return null;
   const same = sameLanguage(model.questionLanguage, body.locale);
   const translated = {
     greeting: clean(model.greeting.translation),

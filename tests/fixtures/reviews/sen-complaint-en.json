@@ -2,22 +2,23 @@
   "business": "sen",
   "locale": "vi",
   "name": "Tom R.",
-  "review": "Lovely hot stone massage, my back feels new! Only thing: the room was a bit cold and we waited about 20 minutes past our booking.",
+  "review": "Lovely Thai massage in our hotel room, my back feels new! Only thing: the therapist came about 20 minutes after our booking time and the oil smelled a bit too strong.",
   "recording": {
     "modelId": "gemini-3.5-flash-lite",
-    "promptVersion": "reply-2",
+    "promptVersion": "reply-5",
     "partials": [],
     "final": {
       "reviewLanguage": "en",
       "abusive": false,
-      "reviewTranslation": "Mát-xa đá nóng tuyệt vời, lưng của tôi như được hồi sinh! Chỉ có điều: phòng hơi lạnh và chúng tôi phải đợi khoảng 20 phút so với giờ đặt lịch.",
+      "complaint": true,
+      "reviewTranslation": "Mát-xa Thái tuyệt vời trong phòng khách sạn của chúng tôi, lưng tôi cảm thấy nhẹ nhõm hẳn! Điểm duy nhất là kỹ thuật viên đến muộn khoảng 20 phút so với giờ đặt và dầu thơm có mùi hơi nồng.",
       "short": {
-        "text": "Thank you, {name}! 🙏 Glad you enjoyed the hot stone massage. Sorry about the cold room and the wait. We hope to welcome you back to Sen Da Nang Massage soon. 🪷",
-        "translation": "Cảm ơn bạn, {name}! 🙏 Rất vui vì bạn thích dịch vụ mát-xa đá nóng. Xin lỗi vì phòng lạnh và thời gian phải chờ đợi. Chúng tôi hy vọng được chào đón bạn quay lại Sen Da Nang Massage sớm. 🪷"
+        "text": "Thank you for your review, {name} 🙏. I am glad you enjoyed your Thai Massage 😊. I am sorry about the delay and the oil scent. We would be glad to come to you again on your next stay 🪷.",
+        "translation": "Cảm ơn đánh giá của bạn, {name} 🙏. Tôi rất vui vì bạn thích bài Mát-xa Thái 😊. Tôi xin lỗi về việc đến muộn và mùi dầu thơm. Chúng tôi rất sẵn lòng đến với bạn một lần nữa vào kỳ nghỉ tới 🪷."
       },
       "warm": {
-        "text": "Thank you so much, {name}! 🙏 We are thrilled your back feels great after the lovely hot stone massage. Sorry about the cold room and the wait. We would love to pamper you again at Sen Da Nang Massage on your next visit. 🪷",
-        "translation": "Cảm ơn bạn rất nhiều, {name}! 🙏 Chúng tôi rất vui vì lưng của bạn cảm thấy tuyệt vời sau buổi mát-xa đá nóng. Xin lỗi vì phòng lạnh và thời gian phải chờ đợi. Chúng tôi rất mong được chăm sóc cho bạn lần nữa tại Sen Da Nang Massage trong chuyến thăm tới. 🪷"
+        "text": "Thank you so much for your feedback, {name} 🙏. We are very glad that you enjoyed your Thai Massage in your room 😊. I am sorry that the therapist was late and that the oil smelled too strong. We would be glad to come to you again whenever you would like another massage 🪷.",
+        "translation": "Cảm ơn bạn rất nhiều vì phản hồi của bạn, {name} 🙏. Chúng tôi rất vui vì bạn đã thích bài Mát-xa Thái tại phòng của mình 😊. Tôi xin lỗi vì kỹ thuật viên đến muộn và dầu thơm có mùi hơi nồng. Chúng tôi rất sẵn lòng đến với bạn bất cứ khi nào bạn muốn có một buổi mát-xa khác 🪷."
       }
     }
   }

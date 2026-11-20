@@ -106,7 +106,9 @@ describe('streamPlan', () => {
     });
     if (final?.type !== 'final') throw new Error('no final');
     expect(final.result.posts).toHaveLength(2);
-    expect(final.result.posts[0].cta).toBe('Book on WhatsApp: +6281234567890');
+    expect(final.result.posts[0].cta).toBe(
+      '👉 Book Your Wellness on WhatsApp today: +6281234567890',
+    );
     expect(final.result.posts[0].hashtags).toEqual(['canggu', 'balimassage', 'aftersurf']);
   });
 

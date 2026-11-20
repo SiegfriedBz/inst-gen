@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { buildAnswer, mergeGuest } from '@/lib/questions/checks';
+import { buildAnswer, fillWebsite, mergeGuest } from '@/lib/questions/checks';
 import type { ModelAnswer, QuestionBody } from '@/lib/questions/question';
 
 // docs/specs/questions/answer-drafts, "The answer" and "The model call".
@@ -25,6 +25,7 @@ function body(overrides: Partial<QuestionBody> = {}): QuestionBody {
         instagram: null,
         bookingUrl: null,
       },
+      website: null,
     },
     country: 'VN',
     known: { place: null, day: null, time: null },
@@ -44,7 +45,7 @@ function model(overrides: Partial<ModelAnswer> = {}): ModelAnswer {
     greeting: part('Hello!'),
     answer: part('Our Thai Massage is 60 min: VND 500k. 🌸'),
     professionalOnly: part('We offer only professional therapeutic massage.'),
-    callToAction: part('Which day and time suit you, and where are you staying?'),
+    callToAction: part('A therapist can come to your hotel whenever suits you.'),
     guest: { place: null, day: null, time: null },
     ...overrides,
   };
@@ -52,20 +53,134 @@ function model(overrides: Partial<ModelAnswer> = {}): ModelAnswer {
 
 const ctx = (b: QuestionBody = body()) => ({ body: b, flower: '🪷' });
 
+const callToBook = part('Which day and time suit you, and where are you staying?');
+
 describe('buildAnswer', () => {
-  it('joins the greeting and the answer, with no call to action when not final', () => {
+  it('ends an answer that is not final on its gentle offer, the flower at the very end', () => {
     const built = buildAnswer(model(), ctx());
-    expect(built?.answer.text).toBe('Hello!\n\nOur Thai Massage is 60 min: VND 500k. 🪷');
+    expect(built?.answer.text).toBe(
+      'Hello!\n\nOur Thai Massage is 60 min: VND 500k.\n\nA therapist can come to your hotel whenever suits you 🪷',
+    );
     expect(built?.answer.translation).toBe(
-      'vi: Hello!\n\nvi: Our Thai Massage is 60 min: VND 500k. 🪷',
+      'vi: Hello!\n\nvi: Our Thai Massage is 60 min: VND 500k.\n\nvi: A therapist can come to your hotel whenever suits you 🪷',
     );
   });
 
-  it('puts the call to action last on a final answer', () => {
-    const built = buildAnswer(model(), ctx(body({ final: true })));
+  it('an empty gentle offer fails nothing', () => {
+    const built = buildAnswer(model({ callToAction: part('', null) }), ctx());
+    expect(built?.answer.text).toBe('Hello!\n\nOur Thai Massage is 60 min: VND 500k 🪷');
+  });
+
+  it('puts the call to book last on a final answer', () => {
+    const built = buildAnswer(model({ callToAction: callToBook }), ctx(body({ final: true })));
     expect(
-      built?.answer.text.endsWith('\n\nWhich day and time suit you, and where are you staying?'),
+      built?.answer.text.endsWith('\n\nWhich day and time suit you, and where are you staying? 🪷'),
     ).toBe(true);
+  });
+
+  it('ends each part on its punctuation, also when its emoji goes', () => {
+    const built = buildAnswer(
+      model({
+        sexual: true,
+        greeting: part('Hello', 'vi: Xin chào'),
+        professionalOnly: part('We offer only professional therapeutic massage'),
+        callToAction: part('Which day suits you 🪷'),
+      }),
+      ctx(body({ question: 'happy ending?', final: true })),
+    );
+    expect(built?.answer.text).toBe(
+      'Hello. We offer only professional therapeutic massage.\n\nOur Thai Massage is 60 min: VND 500k.\n\nWhich day suits you.',
+    );
+    expect(built?.answer.translation?.startsWith('vi: Xin chào. ')).toBe(true);
+  });
+
+  it('a question that mentions sex gets no gentle offer and no emoji; a final one its call to book', () => {
+    const notFinal = buildAnswer(
+      model({ sexual: true }),
+      ctx(body({ question: 'Anything extra?' })),
+    );
+    expect(notFinal?.answer.text).not.toContain('A therapist can come');
+    expect(notFinal?.answer.text).not.toMatch(/\p{Extended_Pictographic}/u);
+    const final = buildAnswer(
+      model({ sexual: true, callToAction: callToBook }),
+      ctx(body({ question: 'Anything extra?', final: true })),
+    );
+    expect(
+      final?.answer.text.endsWith('\n\nWhich day and time suit you, and where are you staying?'),
+    ).toBe(true);
+  });
+
+  it('keeps one 😊, removes another emoji and drops the stop before an emoji, in the answer and its translation', () => {
+    const built = buildAnswer(
+      model({
+        greeting: part('Hello! 😊', 'vi: Xin chào! 😊'),
+        answer: part('Yes, we come to your villa. 😊 ✨', 'vi: Có, chúng tôi đến tận villa. 😊 ✨'),
+      }),
+      ctx(),
+    );
+    expect(built?.answer.text).toBe(
+      'Hello! 😊\n\nYes, we come to your villa.\n\nA therapist can come to your hotel whenever suits you 🪷',
+    );
+    expect(built?.answer.translation).toBe(
+      'vi: Xin chào! 😊\n\nvi: Có, chúng tôi đến tận villa.\n\nvi: A therapist can come to your hotel whenever suits you 🪷',
+    );
+  });
+
+  it("refuses an answer with none of the guest's letters", () => {
+    const korean = body({ question: '커플 마사지는 얼마예요? 호텔로 와 주시나요?' });
+    expect(buildAnswer(model(), ctx(korean))).toBeNull();
+    const inKorean = model({
+      greeting: part('안녕하세요!'),
+      answer: part('커플 마사지는 60분에 VND 800k입니다.'),
+      callToAction: part('호텔로 찾아뵙겠습니다.'),
+    });
+    expect(buildAnswer(inKorean, ctx(korean))?.answer.text).toContain('안녕하세요');
+  });
+
+  it('keeps a list with emoji bullets a list (final review)', () => {
+    const built = buildAnswer(
+      model({
+        answer: part(
+          'Here are our massages:\n💆 Thai Massage, 60 min, VND 500k\n💆 Foot Reflexology, 60 min, VND 450k\n💆 Aroma Massage, 60 min, VND 500k',
+        ),
+      }),
+      ctx(),
+    );
+    expect(built?.answer.text).toContain(
+      'Here are our massages:\nThai Massage, 60 min, VND 500k\nFoot Reflexology, 60 min, VND 450k\nAroma Massage, 60 min, VND 500k\n\n',
+    );
+  });
+
+  it('never lets a placeholder reach the guest (final review)', () => {
+    const svarga = body();
+    svarga.business.website = 'https://svargabalimassage.com/';
+    const built = buildAnswer(
+      model({
+        answer: part('See photos at {{website}}. Our page {웹사이트} has more. We come to you.'),
+      }),
+      ctx(svarga),
+    );
+    expect(built?.answer.text).toContain('See photos at https://svargabalimassage.com.');
+    expect(built?.answer.text).not.toMatch(/[{}]/);
+    expect(built?.answer.text).toContain('We come to you.');
+  });
+
+  it('puts the website in place of {website}, in the answer and its translation, with no flag', () => {
+    const svarga = body();
+    svarga.business.website = 'https://svargabalimassage.com/';
+    const built = buildAnswer(
+      model({
+        answer: part(
+          'You will find photos on our website, {website}.',
+          'vi: Ảnh có trên trang web, { Website }.',
+        ),
+      }),
+      ctx(svarga),
+    );
+    expect(built?.answer.text).toContain('our website, https://svargabalimassage.com.');
+    expect(built?.answer.translation).toContain('trang web, https://svargabalimassage.com.');
+    expect(`${built?.answer.text}${built?.answer.translation}`).not.toMatch(/\{\s*website\s*\}/i);
+    expect(built?.flags).toEqual([]);
   });
 
   it('puts the line on professional massage after the greeting when the model flags sex', () => {
@@ -106,7 +221,9 @@ describe('buildAnswer', () => {
       model({ answer: part('We never do nuru massage. Our Thai Massage is 60 min.') }),
       ctx(),
     );
-    expect(built?.answer.text).toBe('Hello!\n\nOur Thai Massage is 60 min.');
+    expect(built?.answer.text).toBe(
+      'Hello!\n\nOur Thai Massage is 60 min.\n\nA therapist can come to your hotel whenever suits you 🪷',
+    );
   });
 
   it("drops the translations when the question is in the screen's language", () => {
@@ -173,5 +290,43 @@ describe('mergeGuest', () => {
       day: null,
       time: null,
     });
+  });
+});
+
+describe('fillWebsite on links the model writes', () => {
+  const site = 'https://svargabalimassage.com/';
+  it("turns a link on the business's own site into its address", () => {
+    expect(fillWebsite('On our website https://www.svargabalimassage.com.', site)).toBe(
+      'On our website https://svargabalimassage.com.',
+    );
+    expect(fillWebsite('See www.svargabalimassage.com/gallery for photos', site)).toBe(
+      'See https://svargabalimassage.com for photos',
+    );
+    expect(fillWebsite('At svargabalimassage.com', site)).toBe('At https://svargabalimassage.com');
+  });
+
+  it('keeps the booking link and links on other sites', () => {
+    const book = 'https://svargabalimassage.com/book';
+    expect(fillWebsite(`Book at ${book}.`, site, book)).toBe(`Book at ${book}.`);
+    expect(fillWebsite('Follow https://instagram.com/svargabalimassage', site)).toBe(
+      'Follow https://instagram.com/svargabalimassage',
+    );
+  });
+});
+
+describe('fillWebsite', () => {
+  it('puts the address, without its trailing slash, in place of {website}, any case or spacing', () => {
+    expect(fillWebsite('See photos at {website}.', 'https://svargabalimassage.com/')).toBe(
+      'See photos at https://svargabalimassage.com.',
+    );
+    expect(fillWebsite('At {Website} and { website }', 'https://sendanangmassage.com/')).toBe(
+      'At https://sendanangmassage.com and https://sendanangmassage.com',
+    );
+  });
+
+  it('with no website, the sentence that holds {website} goes', () => {
+    expect(fillWebsite('Yes. See photos at {website}. We come to you.', null)).toBe(
+      'Yes. We come to you.',
+    );
   });
 });

@@ -1,0 +1,44 @@
+{
+  "business": "svarga",
+  "locale": "id",
+  "language": "en",
+  "final": false,
+  "known": {
+    "place": null,
+    "day": null,
+    "time": null
+  },
+  "question": "Do you have photos of the four hands massage? I'd like to see it before booking.",
+  "recording": {
+    "modelId": "gemini-3.5-flash-lite",
+    "promptVersion": "answer-7",
+    "partials": [],
+    "final": {
+      "questionLanguage": "en",
+      "sexual": false,
+      "unanswered": false,
+      "questionTranslation": null,
+      "greeting": {
+        "text": "Hello 😊",
+        "translation": "Halo 😊"
+      },
+      "answer": {
+        "text": "You will find photos of our treatments on the website {website}.",
+        "translation": "Anda akan menemukan foto perawatan kami di situs web {website}."
+      },
+      "professionalOnly": {
+        "text": "We offer only professional therapeutic massage.",
+        "translation": "Kami hanya menawarkan pijat terapi profesional."
+      },
+      "callToAction": {
+        "text": "A therapist can come to you in Canggu, Pererenan, Seminyak, and Kerobokan 🌼",
+        "translation": "Terapis dapat datang ke tempat Anda di Canggu, Pererenan, Seminyak, dan Kerobokan 🌼"
+      },
+      "guest": {
+        "place": null,
+        "day": null,
+        "time": null
+      }
+    }
+  }
+}

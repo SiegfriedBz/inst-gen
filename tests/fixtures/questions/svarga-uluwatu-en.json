@@ -11,28 +11,28 @@
   "question": "Are you open at 10pm tonight? I'm staying in Uluwatu.",
   "recording": {
     "modelId": "gemini-3.5-flash-lite",
-    "promptVersion": "answer-1",
+    "promptVersion": "answer-7",
     "partials": [],
     "final": {
       "questionLanguage": "en",
       "sexual": false,
       "unanswered": true,
-      "questionTranslation": "Apakah kalian buka jam 10 malam ini? Saya menginap di Uluwatu.",
+      "questionTranslation": "Apakah buka jam 10 malam ini? Saya menginap di Uluwatu.",
       "greeting": {
-        "text": "Hello!",
-        "translation": "Halo!"
+        "text": "Hello 😊",
+        "translation": "Halo 😊"
       },
       "answer": {
-        "text": "Our hours are Monday to Sunday 08:30-23:00, and our team will check and reply regarding your location and slot tonight. 🌼",
-        "translation": "Jam operasional kami Senin sampai Minggu 08:30-23:00, dan tim kami akan mengecek serta membalas terkait lokasi dan slot malam ini. 🌼"
+        "text": "Our hours are 08:30 to 23:00 every day, so 10pm falls within our working hours. Our team will check whether we can come to Uluwatu and reply to you shortly.",
+        "translation": "Jam operasional kami adalah 08:30 hingga 23:00 setiap hari, jadi jam 10 malam masih termasuk jam kerja kami. Tim kami akan mengecek apakah kami bisa datang ke Uluwatu dan segera membalas Anda."
       },
       "professionalOnly": {
         "text": "We offer professional therapeutic massage.",
         "translation": "Kami menawarkan pijat terapi profesional."
       },
       "callToAction": {
-        "text": "",
-        "translation": null
+        "text": "We bring professional treatments to villas and hotels in Canggu, Pererenan, Seminyak, and Kerobokan 🌼",
+        "translation": "Kami membawa perawatan profesional ke vila dan hotel di Canggu, Pererenan, Seminyak, dan Kerobokan 🌼"
       },
       "guest": {
         "place": "Uluwatu",

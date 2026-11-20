@@ -1,13 +1,43 @@
+import { BANNED_WORDS } from '@/lib/posts/banned';
+import { type EmojiRule, endSentence, keepEmoji } from './emoji';
 import type { ModelReplies, ReplyBody, ScreenLocale } from './reply';
+import { holdsScript, type Script } from './script';
 
 // What code makes sure of in the model's replies
 // (docs/specs/reviews/reply-drafts, "The replies"): the business's own
 // flower, no emoji on an abusive review, and no translation into the
-// language the review is already in.
+// language the review is already in; no sentence with a banned word, and
+// only 🙏, 😊 and the flower, with no 😊 after a complaint
+// (docs/specs/reviews/better-replies-and-answers, "Emojis").
 
-// Shared with the answers to guests' questions (lib/questions/checks.ts).
-export const FLOWER_EMOJI = /🌸|🌺|🌷|🌹|💮|🪷|🌼|🏵️?/gu;
-const EMOJI = /\p{Extended_Pictographic}️?|‍|️/gu;
+// Shared with the answers to guests' questions (lib/questions/checks.ts):
+// the sentences, the banned words and the language.
+
+// A sentence ends on its stop, or on an emoji in a stop's place, with the
+// spaces after it (docs/specs/reviews/better-replies-and-answers, "The posts'
+// rules on words").
+const SENTENCE_END = /(?<=(?:[.!?]|\p{Extended_Pictographic}|\p{Emoji_Modifier}|️)\s+)(?=\S)/u;
+
+export function withoutSentences(text: string, drop: (sentence: string) => boolean): string {
+  return text
+    .split(SENTENCE_END)
+    .filter((sentence) => !drop(sentence))
+    .join('')
+    .trim();
+}
+
+function escapeRegex(text: string): string {
+  return text.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+}
+
+const BANNED = BANNED_WORDS.map(
+  (word) => new RegExp(`(?:^|[^\\p{L}\\p{N}])${escapeRegex(word)}(?:$|[^\\p{L}\\p{N}])`, 'iu'),
+);
+
+// A sentence that holds a banned word goes whole (docs/specs/questions/answer-drafts).
+export function withoutBanned(text: string): string {
+  return withoutSentences(text, (sentence) => BANNED.some((word) => word.test(sentence)));
+}
 
 export function flowerFor(country: ReplyBody['country']): '🪷' | '🌼' | '🌸' {
   if (country === 'VN') return '🪷';
@@ -19,23 +49,15 @@ export function sameLanguage(code: string, locale: ScreenLocale): boolean {
   return code.split('-')[0].toLowerCase() === locale;
 }
 
-export function noEmoji(text: string): string {
-  return text
-    .replace(EMOJI, '')
-    .replace(/ +([,.!?])/g, '$1')
-    .replace(/ {2,}/g, ' ')
-    .trim();
-}
-
 export function checkReplies(
   answer: ModelReplies,
-  ctx: { locale: ScreenLocale; flower: string },
+  ctx: { locale: ScreenLocale; flower: string; script?: Script | null },
 ): ModelReplies | null {
   const same = sameLanguage(answer.reviewLanguage, ctx.locale);
-  const clean = (text: string) => {
-    const flowered = text.replace(FLOWER_EMOJI, ctx.flower);
-    return (answer.abusive ? noEmoji(flowered) : flowered).trim();
-  };
+  const rule: EmojiRule = answer.abusive
+    ? { keep: [], flower: null }
+    : { keep: answer.complaint ? ['🙏'] : ['🙏', '😊'], flower: ctx.flower };
+  const clean = (text: string) => keepEmoji(endSentence(withoutBanned(text)), rule);
   const translation = (text: string | null) => {
     if (same || text === null) return null;
     const out = clean(text);
@@ -48,6 +70,11 @@ export function checkReplies(
   const short = draft(answer.short);
   const warm = draft(answer.warm);
   if (!short.text || !warm.text) return null;
+  // Replies in other letters than the guest's never reach the owner ("The
+  // guest's letters").
+  if (ctx.script && !(holdsScript(short.text, ctx.script) && holdsScript(warm.text, ctx.script))) {
+    return null;
+  }
   const review = same ? null : (answer.reviewTranslation?.trim() ?? null);
   return { ...answer, reviewTranslation: review || null, short, warm };
 }
