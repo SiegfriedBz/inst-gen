@@ -118,6 +118,15 @@ tab opens doesn't change either (2.5's table): "Create Posts" on every open,
 - **It never covers what the owner is typing**: while a text field on the
   home screen has focus and the on-screen keyboard is up, the bar hides
   (builder's call on how; the edit sheets already cover it).
+
+  > Changed 2026-11-20, at the maintainer's request ("When we click on
+  > Questions or Reviews tabs input field, the menu bar at the bottom
+  > disappear. this bar should always be there."): the bar never hides. It
+  > stays on screen while the owner types, on every tab, with the keyboard up
+  > or not. On an Android phone it sits right above the keyboard. The field
+  > the owner types in still scrolls clear of it, above the bar (builder's
+  > call on how).
+  > Approved by the maintainer, 2026-11-20T13:48:57Z.
 - It stays a real tab list: 2.5's roles, names, `aria-selected`,
   `aria-controls`, arrow keys; both other panels stay mounted and hidden, so
   switching tabs never stops anything.
@@ -555,6 +564,9 @@ Scenario: The passphrase shows as it is typed
 - A fixed bottom bar takes 64px of a small screen on every tab.
 - Hiding the bar while the keyboard is up relies on the browser reporting the
   keyboard; on a browser that doesn't, the builder's chosen fallback applies.
+  Changed 2026-11-20: the bar no longer hides. With the keyboard up, it takes
+  64px of what is left of the screen; on an iPhone, Safari may keep it behind
+  the keyboard while the owner types.
 - The changes have no owner feedback behind them; the pilot will say whether
   they help.
 - New strings in Indonesian and Vietnamese are the developer's; the owners
