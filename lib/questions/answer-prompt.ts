@@ -28,6 +28,12 @@ function callToAction(final: boolean): string {
       '"callToAction": the gentle offer that ends the answer: one short sentence, in your own words, that makes booking feel easy and welcome, from the details; for a business that goes to its guests, that a therapist can come to the guest where they are staying, naming that place as the guest put it when they gave it. One next step, easy to take. It never presses: no "book now", no deadline, no urgency or scarcity, no discount. It asks for no day, time or place, and names no day or time: the details do not say what is free. A statement, or a short question the guest can answer yes to; never a question with no next step. When "sexual" is true, leave the callToAction\'s text empty and its translation null. No phone number and no link.';
 }
 
+// Only the areas the website lists (docs/specs/reviews/better-replies-and-answers,
+// "Only the areas the website lists"): the model can't tell where "further
+// out" stops, so any other place is the owner's to check.
+const AREAS_RULE =
+  'Say a therapist comes to a place only when "Where it goes" names it, or one of the neighbourhoods it lists. For any other place (one it does not name, or a hotel named without its area), no part says a therapist comes there, promises the travel terms, or names that place in the gentle offer: say the team will check whether they can come there and reply, and set "unanswered" to true. The gentle offer may name the areas the business covers instead.';
+
 // Only when the website is known ("The website, only when asked"): code puts
 // the address in place of {website}, so it is never a page that doesn't exist.
 const WEBSITE_RULE =
@@ -58,6 +64,7 @@ export function answerPrompt(
     'Use only the facts under "Business": its treatments with their durations and prices as written, its hours, its town, its area and where it goes with its travel terms, its highlights, and its contact details only when the guest asks how to reach it. Never invent a treatment, a price, a discount, a free time, a payment method or any other fact.',
     "Name a treatment only as the details write it: never take the guest's words for a treatment's name.",
     'For a business that goes to its guests ("Goes to its guests: yes"), never invite the guest to come, come back or visit, and never speak of a place of the business as where they would be: a therapist comes to where the guest is staying, as its details say.',
+    ...(goesToGuests(body.business.serviceArea) ? [AREAS_RULE] : []),
     'When the details do not answer part of the message (a card payment, a free slot tonight, parking), say the team will check and reply, and set "unanswered" to true.',
     'When you list treatments, give each with its duration and its price, as the details write them: one per line when there are more than two, its name, its duration, then its price.',
     '"greeting": a short greeting, with no name, ending on its punctuation.',

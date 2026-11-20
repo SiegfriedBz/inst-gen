@@ -72,6 +72,17 @@ describe('answerPrompt', () => {
     );
   });
 
+  it('says a therapist comes only to a place the service area names; elsewhere the team checks', () => {
+    const { system } = answerPrompt(body(), '🪷', true);
+    expect(system).toContain(
+      'Say a therapist comes to a place only when "Where it goes" names it, or one of the neighbourhoods it lists',
+    );
+    expect(system).toContain('say the team will check whether they can come there and reply');
+    expect(answerPrompt(withBusiness({ serviceArea: null }), '🪷', true).system).not.toContain(
+      'Say a therapist comes to a place only',
+    );
+  });
+
   it('names treatments only as the details do, and never invites the guest to a business that goes to them', () => {
     const { system } = answerPrompt(body(), '🪷', true);
     expect(system).toContain("never take the guest's words for a treatment's name");

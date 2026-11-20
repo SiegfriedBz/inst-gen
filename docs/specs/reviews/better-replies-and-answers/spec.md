@@ -297,6 +297,30 @@ Changed from `questions/answer-drafts` ("The answer"):
 - **Treatments**, words and emojis: as both tabs above. The answer's two
   emoji at most are now 😊 and the flower.
 
+#### Only the areas the website lists
+
+Amended 2026-11-20, after the second recordings. An answer told a guest
+staying in Uluwatu "A therapist can come to you in Uluwatu when you are
+ready 🌼". The maintainer: "No, it should match the deserved areas. And this
+maybe can not be inferred by the AI ?" It can't: the model knows only the
+areas the website lists, and Svarga's "for villas further out we confirm any
+small travel fee on WhatsApp" doesn't say where "further out" stops.
+Approved by the maintainer, 2026-11-20T10:21:00Z.
+
+- An answer says a therapist comes to a place only when the service area
+  names it, or one of the neighbourhoods it lists: for Svarga, Canggu,
+  Pererenan, Seminyak, Kerobokan and theirs; for Sen, My Khe, Son Tra, Hai
+  Chau, Non Nuoc and theirs.
+- For any other place, such as Uluwatu or a hotel named without its area, no
+  part of the answer says a therapist comes there, promises the travel
+  terms, or names it in the gentle offer. The answer says the team will check
+  whether they can come there and reply, and the model sets "unanswered", so
+  the tab shows its note: "Your business details don't answer all of this
+  question. Check the answer before you send it." The gentle offer may name
+  the areas the business covers instead.
+- The replay test checks `svarga-uluwatu-en`: "unanswered", and no sentence
+  that comes or travels to Uluwatu.
+
 ### Prompt versions
 
 `reply-3` and `answer-2`.
