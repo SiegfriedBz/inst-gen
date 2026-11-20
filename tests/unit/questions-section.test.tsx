@@ -234,6 +234,58 @@ describe('what this guest has told you', () => {
     expect(sent(1).known).toEqual({ place: 'Hyatt', day: null, time: null });
   });
 
+  // docs/specs/questions/first-answer, "The box", amended 2026-11-20: a new
+  // guest's message pasted without "New conversation".
+  test('the first-message box ticked after "Paste the next message" hides them; unticked, they show', async () => {
+    fetchMock.mockResolvedValueOnce(
+      ok(answer({ guest: { place: 'Hyatt', day: 'tomorrow', time: null } })),
+    );
+    render(tab());
+    await ask();
+    fireEvent.click(await screen.findByRole('button', { name: 'Paste the next message' }));
+    await box();
+    fireEvent.click(firstBox());
+    expect(screen.queryByText('Staying at: Hyatt')).toBeNull();
+    expect(screen.queryByText('Day: tomorrow')).toBeNull();
+    expect(screen.queryByRole('button', { name: 'New conversation' })).toBeNull();
+    expect(screen.queryByText(messages.questions.known.hint)).toBeNull();
+    fireEvent.click(firstBox());
+    expect(screen.getByText('Staying at: Hyatt')).toBeTruthy();
+    expect(screen.getByRole('button', { name: 'New conversation' })).toBeTruthy();
+  });
+
+  test('the first-message box ticked after "Paste the next message" sends none of them', async () => {
+    fetchMock.mockResolvedValueOnce(
+      ok(answer({ guest: { place: 'Hyatt', day: 'tomorrow', time: '7 pm' } })),
+    );
+    fetchMock.mockResolvedValueOnce(
+      ok(answer({ guest: { place: 'Novotel', day: null, time: null } })),
+    );
+    render(tab());
+    await ask();
+    fireEvent.click(await screen.findByRole('button', { name: 'Paste the next message' }));
+    await box();
+    fireEvent.click(firstBox());
+    await ask('Hello, can a therapist come to the Novotel?');
+    expect(await screen.findByText('Staying at: Novotel')).toBeTruthy();
+    expect(sent(1).first).toBe(true);
+    expect(sent(1).known).toEqual({ place: null, day: null, time: null });
+  });
+
+  test('"Write another answer" with the first-message box ticked sends none of them', async () => {
+    fetchMock.mockResolvedValueOnce(
+      ok(answer({ guest: { place: 'Hyatt', day: null, time: null } })),
+    );
+    fetchMock.mockResolvedValueOnce(ok(answer()));
+    render(tab());
+    await ask();
+    await screen.findByText('Staying at: Hyatt');
+    expect(firstBox().checked).toBe(true);
+    fireEvent.click(screen.getByRole('button', { name: 'Write another answer' }));
+    await waitFor(() => expect(fetchMock).toHaveBeenCalledTimes(2));
+    expect(sent(1).known).toEqual({ place: null, day: null, time: null });
+  });
+
   test('a new conversation clears them', async () => {
     fetchMock.mockResolvedValueOnce(
       ok(answer({ guest: { place: 'Hyatt', day: null, time: null } })),

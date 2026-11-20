@@ -144,6 +144,18 @@ describe('profile version 4', () => {
     };
   }
 
+  // Version 2 had no look; version 1 had no essence search either.
+  function v2(offering: Record<string, string>) {
+    const { staffLook: _l, ...rest } = v3(offering);
+    return { ...rest, schemaVersion: 2 };
+  }
+
+  function v1(offering: Record<string, string>) {
+    const { searchedAt: _a, searchPromptVersion: _b, ...rest } = v2(offering);
+    const { searchTerms: _c, ...essence } = rest.essence;
+    return { ...rest, schemaVersion: 1, essence };
+  }
+
   test('a version-3 profile reads as version 4, its price and duration as one length', () => {
     const up = upgradeProfile(v3({ price: 'IDR 450,000', duration: '90 minutes' }));
     const parsed = profileSchema.safeParse(up);
@@ -163,11 +175,25 @@ describe('profile version 4', () => {
     expect(none.offerings[0].lengths).toEqual([]);
   });
 
-  test('versions 1 and 2 read as version 4', () => {
-    const { staffLook: _a, ...rest } = senProfile();
-    const v2 = { ...rest, schemaVersion: 2 };
-    expect(profileSchema.parse(upgradeProfile(v2)).schemaVersion).toBe(4);
-  });
+  test.each([
+    [1, v1],
+    [2, v2],
+  ])(
+    'a version-%i profile reads as version 4, its price and duration as one length',
+    (_, saved) => {
+      const up = profileSchema.parse(
+        upgradeProfile(saved({ price: 'IDR 450,000', duration: '90 minutes' })),
+      );
+      expect(up.schemaVersion).toBe(4);
+      expect(up.offerings).toEqual([
+        {
+          name: 'Balinese massage',
+          source: SITE,
+          lengths: [{ duration: '90 minutes', price: 'IDR 450,000' }],
+        },
+      ]);
+    },
+  );
 
   test('a treatment holds at most 6 lengths, each with a duration or a price', () => {
     const p = svargaProfile();
