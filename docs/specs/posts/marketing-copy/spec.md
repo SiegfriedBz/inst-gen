@@ -290,6 +290,22 @@ The line stays code's: a WhatsApp edit reaches both kinds with no model call
 
 The prompt names both lines the app adds; the model writes neither.
 
+Amended 2026-11-20, at the maintainer's request: "for the whatsApp text in
+the copy of posts I would like it to always be 👉 Book Your Wellness on
+WhatsApp today: <phone number>".
+Approved by the maintainer, 2026-11-20T11:25:22Z.
+
+- Every post's line is `👉 Book Your Wellness on WhatsApp today: +84 90 123
+  4567`, with the business's WhatsApp number as today.
+- On a post that carries the offer, the offer's end comes on the line above
+  it, with no stop before the 👉 (`posts/day-and-night-copy`, "No stop before
+  an emoji"): `Offer ends Tuesday 27 October`, then the WhatsApp line. The
+  card shows the two lines, and the copied text holds them.
+- The prompt doesn't quote the line: no new prompt version, no new
+  recording. Posts already on the phone show and copy the new line too: the
+  app writes each post's line from the business's details every time it
+  shows or copies one.
+
 ### What the model gets
 
 `posts-14`, with or without an offer (amended 2026-11-08: `posts-12` is

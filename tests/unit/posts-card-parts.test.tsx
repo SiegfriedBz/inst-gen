@@ -13,7 +13,7 @@ import { post } from './helpers/posts';
 
 afterEach(cleanup);
 
-const CTA = 'Book on WhatsApp: +6281234567890';
+const CTA = '👉 Book Your Wellness on WhatsApp today: +6281234567890';
 const image: SavedImage = {
   postId: 'p1',
   batchId: 'b1',

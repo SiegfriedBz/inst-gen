@@ -104,14 +104,20 @@ describe('the posts store', () => {
   test("applyCta changes every post's cta and nothing else", async () => {
     await saveBatch(batch('a', '2026-10-25T09:00:00.000Z'));
     const [updated] = await applyCta('svarga', withWhatsApp('+6289999999999'));
-    expect(updated.posts.every((p) => p.cta === 'Book on WhatsApp: +6289999999999')).toBe(true);
+    expect(
+      updated.posts.every(
+        (p) => p.cta === '👉 Book Your Wellness on WhatsApp today: +6289999999999',
+      ),
+    ).toBe(true);
     expect(updated.posts[0].caption).toBe('Warm oil, slow hands.');
-    expect((await loadBatches('svarga'))[0].posts[0].cta).toBe('Book on WhatsApp: +6289999999999');
+    expect((await loadBatches('svarga'))[0].posts[0].cta).toBe(
+      '👉 Book Your Wellness on WhatsApp today: +6289999999999',
+    );
   });
 
   test('the same WhatsApp number keeps copied (a new attempt, a business edit)', async () => {
     const NOW = '2026-10-27T10:00:00.000Z';
-    const cta = 'Book on WhatsApp: +6281234567890';
+    const cta = '👉 Book Your Wellness on WhatsApp today: +6281234567890';
     await saveBatch(
       batch('a', '2026-10-25T09:00:00.000Z', { posts: [post({ id: 'a-0', cta, copiedAt: NOW })] }),
     );
@@ -145,14 +151,15 @@ describe('the posts store', () => {
     );
     const [updated] = await applyCta('svarga', svargaProfile());
     expect(updated.posts.map((p) => p.cta)).toEqual([
-      'Offer ends Tuesday 27 October. Book on WhatsApp: +6281234567890',
-      'Book on WhatsApp: +6281234567890',
+      'Offer ends Tuesday 27 October\n👉 Book Your Wellness on WhatsApp today: +6281234567890',
+      '👉 Book Your Wellness on WhatsApp today: +6281234567890',
     ]);
   });
 
   test('a post whose own line is unchanged keeps copied', async () => {
     const NOW = '2026-10-27T10:00:00.000Z';
-    const line = 'Offer ends Tuesday 27 October. Book on WhatsApp: +6281234567890';
+    const line =
+      'Offer ends Tuesday 27 October\n👉 Book Your Wellness on WhatsApp today: +6281234567890';
     await saveBatch(
       batch('a', '2026-10-25T09:00:00.000Z', {
         offer: OFFER,

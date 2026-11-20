@@ -26,7 +26,7 @@ const changed = {
   ...profile,
   summary: { value: 'Massage at your villa in Da Nang', source: profile.siteUrl },
 };
-const CTA = 'Book on WhatsApp: +84898661224';
+const CTA = '👉 Book Your Wellness on WhatsApp today: +84898661224';
 
 function batch(posts: Post[], hash = profileHash(profile)): PostBatch {
   return {

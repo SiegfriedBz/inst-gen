@@ -364,7 +364,7 @@ describe('checkPost', () => {
 
   it('sets the call to action from the profile', () => {
     const { post: checked } = checkPost(raw(), svargaProfile(), 'p1');
-    expect(checked?.cta).toBe('Book on WhatsApp: +6281234567890');
+    expect(checked?.cta).toBe('👉 Book Your Wellness on WhatsApp today: +6281234567890');
     expect(checked?.id).toBe('p1');
   });
 });
@@ -737,12 +737,14 @@ describe('the special offer', () => {
       offer,
       carries: true,
     });
-    expect(carrying?.cta).toBe('Offer ends Tuesday 27 October. Book on WhatsApp: +6281234567890');
+    expect(carrying?.cta).toBe(
+      'Offer ends Tuesday 27 October\n👉 Book Your Wellness on WhatsApp today: +6281234567890',
+    );
     const { post: other } = checkPost(raw({ type: 'moment' }), profile(), 'post-3', {
       offer,
       carries: false,
     });
-    expect(other?.cta).toBe('Book on WhatsApp: +6281234567890');
+    expect(other?.cta).toBe('👉 Book Your Wellness on WhatsApp today: +6281234567890');
   });
 
   it('without an offer, percentages are not looked at', () => {

@@ -66,14 +66,15 @@ export function profileHash(profile: Profile): string {
   return hashText(sortedJson(postsModelInput(profile)));
 }
 
-// The line after a caption: the WhatsApp number, with the offer's end before
-// it when an offer is given (docs/specs/posts/marketing-copy, "The offer's end,
-// by the WhatsApp line").
+// The line after a caption: the maintainer's own WhatsApp line, with the
+// offer's end on the line above it when an offer is given, and no stop before
+// the 👉 (docs/specs/posts/marketing-copy, "The offer's end, by the WhatsApp
+// line", amended 2026-11-20).
 export function ctaFor(profile: Profile, offer?: Offer): string | null {
   const whatsapp = profile.contact.whatsapp?.value;
   if (!whatsapp) return null;
-  const book = `Book on WhatsApp: ${whatsapp}`;
-  return offer ? `Offer ends ${offer.lastDay}. ${book}` : book;
+  const book = `👉 Book Your Wellness on WhatsApp today: ${whatsapp}`;
+  return offer ? `Offer ends ${offer.lastDay}\n${book}` : book;
 }
 
 // A post's own line: the offer's end only on a post that carries the offer.

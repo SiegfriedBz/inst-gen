@@ -116,6 +116,8 @@ which Svarga's plan fails. Against the spec's success list, Sen's plan
 without an offer names no place, and one hook is over 125 characters. Not a
 full pass: the maintainer accepted the recordings (2026-11-08).
 
+- 2026-11-20, amended at the maintainer's request (approved 2026-11-20T11:25:22Z), on the `reviews/better-replies-and-answers` branch: every post's line is "👉 Book Your Wellness on WhatsApp today: <number>"; an offer post's end goes on the line above, with no stop before the 👉. RED `Tests  3 failed | 5 passed (8)` (posts-input), GREEN `Tests  2116 passed (2116)` (the whole suite, with 22 tests' sample lines updated to the new wording).
+
 ## RED
 
 Tasks 1 to 8: their RED lines weren't copied at the time.

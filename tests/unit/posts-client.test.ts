@@ -146,7 +146,9 @@ describe('a post plan from the browser', () => {
     fetchMock.mockResolvedValue(ndjson([{ type: 'final', result }]));
     await plan();
     const [saved] = await loadBatches('svarga');
-    expect(saved.posts.every((p) => p.cta === 'Book on WhatsApp: +6280000000000')).toBe(true);
+    expect(
+      saved.posts.every((p) => p.cta === '👉 Book Your Wellness on WhatsApp today: +6280000000000'),
+    ).toBe(true);
   });
 });
 
