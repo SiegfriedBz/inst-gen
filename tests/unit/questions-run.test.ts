@@ -90,7 +90,7 @@ describe('runAnswer', () => {
     const logs: AnswerLog[] = [];
     await run(replayTextModel(rec(answer), { answers: rec(answer) }), logs);
     const line = formatAnswerLog(logs[0]);
-    expect(line).toMatch(/^answer owner=sen model=gemini-3\.5-flash-lite prompt=answer-7 /);
+    expect(line).toMatch(/^answer owner=sen model=gemini-3\.5-flash-lite prompt=answer-9 /);
     expect(line).toContain(' final=yes ');
     // The first-message box (docs/specs/questions/first-answer).
     expect(line).toContain(' first=no ');

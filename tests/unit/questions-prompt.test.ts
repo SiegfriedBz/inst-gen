@@ -51,7 +51,15 @@ const withBusiness = (over: Partial<QuestionBody['business']>, rest: Partial<Que
 
 describe('answerPrompt', () => {
   it('has a version', () => {
-    expect(ANSWER_PROMPT_VERSION).toBe('answer-7');
+    expect(ANSWER_PROMPT_VERSION).toBe('answer-9');
+  });
+
+  // answer-8 translated a first answer into Vietnamese without its accents.
+  it('asks for Vietnamese with all its accents, on a Vietnamese screen only', () => {
+    expect(answerPrompt(body(), '🪷', true).system).toContain(
+      'Write Vietnamese with all its accents.',
+    );
+    expect(answerPrompt(body({ locale: 'id' }), '🌼', true).system).not.toContain('accents');
   });
 
   it('gives the rules of the spec', () => {
@@ -249,6 +257,21 @@ describe('answerPrompt for a first answer', () => {
       true,
     );
     expect(system).not.toContain('a therapist comes to them');
+  });
+
+  // answer-8 listed Svarga's whole menu for "What massages do you have and
+  // how much?", wrote a question with a stop, left the therapist out of a
+  // Russian hello line and glued a sentence to the last length.
+  it('never lists the menu, even when the guest asks for it, and asks with a question mark', () => {
+    const { system } = answerPrompt(withBusiness({ website: site }, { first: true }), '🪷', true);
+    for (const rule of [
+      'even when it asks which massages there are, for the menu or for the prices',
+      'ending on its question mark',
+      'always that a therapist comes to them',
+      'after a line break',
+    ]) {
+      expect(system).toContain(rule);
+    }
   });
 
   it('leaves the closing empty on a later answer', () => {

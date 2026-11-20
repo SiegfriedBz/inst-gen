@@ -10,7 +10,7 @@ import type { QuestionBody } from './question';
 // sentence to copy (docs/specs/posts/day-and-night-copy). Bump the version
 // with every change.
 
-export const ANSWER_PROMPT_VERSION = 'answer-7';
+export const ANSWER_PROMPT_VERSION = 'answer-9';
 
 const LANGUAGES: Record<ScreenLocale, string> = {
   en: 'English',
@@ -46,16 +46,22 @@ const WEBSITE_RULE =
 function firstRules(body: QuestionBody): string[] {
   const website = Boolean(body.business.website);
   const hello = goesToGuests(body.business.serviceArea)
-    ? '"greeting": the hello line: hi or hello, a thank-you for their message, and straight away that a therapist comes to them where they are staying (their hotel or villa, or the place they named, as they put it), in one or two short sentences, with no name. When they stay in a place "Where it goes" does not name, say instead that the therapists come to guests in the areas the business covers, never to their place.'
+    ? '"greeting": the hello line, in one or two short sentences, with no name: hi or hello, a thank-you for their message, and always that a therapist comes to them where they are staying (their hotel or villa, or the place they named, as they put it), whatever the language. When they stay in a place "Where it goes" does not name, say instead that the therapists come to guests in the areas the business covers, never to their place.'
     : '"greeting": the hello line: hi or hello and a thank-you for their message, in one or two short sentences, with no name.';
+  // answer-8 listed Svarga's whole menu for "What massages do you have and how
+  // much?" and wrote the question with a stop.
+  const none =
+    'When the message names none of the business\'s treatments (no massage at all, or one in the guest\'s own words that is not clearly one of "Treatments"), even when it asks which massages there are, for the menu or for the prices,';
+  const ask = 'a short question, ending on its question mark, asking which massage they would like';
+  const never = 'Never list the treatments, never name one, never give a price or a length.';
   const noneNamed = website
-    ? 'When the message names none of the business\'s treatments (no massage at all, or one in the guest\'s own words that is not clearly one of "Treatments"), ask in one short question which massage they would like, and say in one short sentence that they can see all the massages on the website: write {website}, exactly so, where the address goes, and never a web address of your own: code puts the address there. Never list the treatments, never name one, never give a price.'
-    : 'When the message names none of the business\'s treatments (no massage at all, or one in the guest\'s own words that is not clearly one of "Treatments"), ask in one short question which massage they would like. Never list the treatments, never name one, never give a price.';
+    ? `${none} the middle is two short sentences: ${ask}, then that they can see all the massages on the website: write {website}, exactly so, where the address goes, and never a web address of your own: code puts the address there. ${never}`
+    : `${none} the middle is ${ask}. ${never}`;
   const named = `When the message names one or more of the business's treatments, even in other words or another language as long as it is clearly that one, give each by its name as "Treatments" writes it, then each of its lengths with its price on its own line starting with "- ", as the details write them. No other treatment${website ? ', and no website unless they ask to see photos or want more about it than its description: then write {website}' : ''}.`;
   return [
     "This answer replies to the guest's first message: the hello line, the middle, then the closing.",
     hello,
-    `"answer": the middle. ${noneNamed} ${named} Then answer anything else the message asks in one short sentence, from the details.`,
+    `"answer": the middle. ${noneNamed} ${named} Then, after a line break, answer anything else the message asks that is not about which massages there are or what they cost (a day, a time, a payment), in one short sentence, from the details.`,
     body.final
       ? `${callToAction(true)} It comes before the closing.`
       : '"callToAction": leave its text empty and its translation null: the closing ends this answer.',
@@ -113,6 +119,8 @@ export function answerPrompt(
     'Never reuse a phrase from these instructions: write as the owner would.',
     'Promise nothing the owner has not decided: no discount, no free extra, no arrival time.',
     `Translate the message and each part into ${owner} for the owner to read, faithfully and plainly, keeping names, numbers and emoji ("questionTranslation" and each "translation"). If the message is already in ${owner}, set them all to null.`,
+    // answer-8 translated a first answer into Vietnamese without its accents.
+    ...(body.locale === 'vi' ? ['Write Vietnamese with all its accents.'] : []),
   ].join('\n');
 
   const b = body.business;

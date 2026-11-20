@@ -7,7 +7,7 @@ import { emojisIn } from '@/lib/posts/emoji';
 import { ANSWER_PROMPT_VERSION } from '@/lib/questions/answer-prompt';
 import { runAnswer } from '@/lib/questions/answer-run';
 import { questionBodyFor } from '@/lib/questions/client';
-import type { Guest } from '@/lib/questions/question';
+import type { Guest, QuestionBody } from '@/lib/questions/question';
 import { flowerFor } from '@/lib/reviews/checks';
 import { invitesIn } from '@/lib/reviews/notes';
 import type { ScreenLocale } from '@/lib/reviews/reply';
@@ -58,9 +58,77 @@ const recordedCall = (fixture: Fixture) => {
   return plain(final?.callToAction.text ?? '');
 };
 
+// The first answers (docs/specs/questions/first-answer, "Prompt and eval"):
+// the messages that name one of the business's treatments, and which.
+const NAMED: Record<string, string> = {
+  'sen-first-thai-en': 'Thai Massage',
+  'sen-first-final-en': 'Thai Massage',
+  'svarga-first-balinese-ru': 'Traditional Balinese Massage',
+};
+// A price's longest run of digits, separators inside numbers removed, as the
+// website read checks a price on its page ("$46 VND 1,200k" gives "1200").
+const joined = (text: string) => text.replace(/(\d)[\s.,\-()/]+(?=\d)/g, '$1');
+const longestDigits = (price: string) =>
+  (joined(price).match(/\d+/g) ?? []).sort((a, b) => b.length - a.length)[0];
+
+function checkFirst(
+  fixture: Fixture,
+  text: string,
+  texts: string[],
+  { flower, site, body }: { flower: string; site: string; body: QuestionBody },
+) {
+  // The hello line and the closing end on 😊 and the flower; two of each,
+  // and no other emoji, in the answer and its translation.
+  const pair = `😊${flower}`;
+  for (const each of texts) {
+    const paragraphs = each.split('\n\n');
+    expect(paragraphs[0]?.endsWith(pair), `${fixture.slug}: ${each}`).toBe(true);
+    expect(paragraphs.at(-1)?.endsWith(pair), `${fixture.slug}: ${each}`).toBe(true);
+    expect(emojisIn(each).map(plainEmoji).sort(), `${fixture.slug}: ${each}`).toEqual(
+      ['😊', '😊', flower, flower].sort(),
+    );
+  }
+  const paragraphs = text.split('\n\n');
+  if (fixture.language === 'en') {
+    expect(paragraphs[0], paragraphs[0]).toMatch(/thank/i);
+    expect(paragraphs[0], paragraphs[0]).toMatch(/\bcom(?:e|es|ing)\b/i);
+    expect(paragraphs.at(-1), paragraphs.at(-1)).toMatch(/\bI\b|I'm|I am/);
+  }
+  const names = body.business.offerings.map((o) => o.name);
+  const lower = text.toLowerCase();
+  const named = NAMED[fixture.slug];
+  if (named) {
+    // Every length of the treatment named, and no other treatment.
+    const treatment = body.business.offerings.find((o) => o.name === named);
+    expect(treatment, named).toBeDefined();
+    expect(text, text).toContain(named);
+    for (const length of treatment?.lengths ?? []) {
+      const minutes = length.duration?.match(/\d+/)?.[0];
+      if (minutes) expect(text, text).toContain(minutes);
+      const digits = length.price ? longestDigits(length.price) : undefined;
+      if (digits) expect(joined(text), text).toContain(digits);
+    }
+    for (const other of names.filter((name) => name !== named)) {
+      expect(lower, other).not.toContain(other.toLowerCase());
+    }
+    expect(text).not.toContain('http');
+  } else {
+    // Which massage, and the website: no treatment's name and no number.
+    for (const each of texts) expect(each, each).toContain(site);
+    if (fixture.language === 'en') {
+      const middle = paragraphs.slice(1, -1).join('\n\n');
+      expect(middle, middle).toContain('?');
+    }
+    for (const name of names) expect(lower, name).not.toContain(name.toLowerCase());
+    expect(text.replace(site, ''), text).not.toMatch(/\d/);
+  }
+  // On a final first answer, the call to book comes right before the closing.
+  if (fixture.final) expect(plain(paragraphs.at(-2) ?? '')).toBe(recordedCall(fixture));
+}
+
 describe('recorded answers', () => {
   test('every made-up question is recorded with the current prompt', () => {
-    expect(fixtures).toHaveLength(10);
+    expect(fixtures).toHaveLength(15);
     for (const fixture of fixtures) {
       expect(fixture.recording?.promptVersion, fixture.slug).toBe(ANSWER_PROMPT_VERSION);
     }
@@ -106,13 +174,23 @@ describe('recorded answers', () => {
     expect(answer.flags).toEqual([]);
     if (fixture.language === fixture.locale) expect(answer.answer.translation).toBeNull();
 
-    // 😊 and the flower, the flower last, no stop before an emoji; none on sex.
     const flower = flowerFor(body.country);
     const texts = [answer.answer.text, answer.answer.translation].filter(
       (text): text is string => text !== null,
     );
+    for (const text of texts) expect(text, fixture.slug).not.toMatch(STOP_BEFORE_EMOJI);
+    // Sen and Svarga go to their guests: no answer invites a guest to them.
+    expect(invitesIn(answer.answer.text), answer.answer.text).toEqual([]);
+    // The address the profile was read from, without its trailing "/".
+    const site = body.business.website?.replace(/\/+$/, '') ?? 'no website';
+
+    if (first && !sex) {
+      checkFirst(fixture, answer.answer.text, texts, { flower, site, body });
+      return;
+    }
+
+    // 😊 and the flower, the flower last; none on sex.
     for (const text of texts) {
-      expect(text, fixture.slug).not.toMatch(STOP_BEFORE_EMOJI);
       const emojis = emojisIn(text).map(plainEmoji);
       if (sex) {
         expect(emojis, fixture.slug).toEqual([]);
@@ -125,8 +203,6 @@ describe('recorded answers', () => {
     }
     // A friendly answer has its 😊 (the spec's "Success").
     if (!sex) expect(answer.answer.text, fixture.slug).toContain('😊');
-    // Sen and Svarga go to their guests: no answer invites a guest to them.
-    expect(invitesIn(answer.answer.text), answer.answer.text).toEqual([]);
 
     // The call to book ends a final answer, the gentle offer every other one,
     // unless the question mentions sex.
@@ -148,8 +224,6 @@ describe('recorded answers', () => {
 
     // The website only for the guest who asked for photos.
     if (fixture.slug === 'svarga-photos-en') {
-      // The address the profile was read from, without its trailing "/".
-      const site = body.business.website?.replace(/\/+$/, '') ?? 'no website';
       for (const text of texts) expect(text).toContain(site);
     } else {
       expect(answer.answer.text).not.toContain('http');
