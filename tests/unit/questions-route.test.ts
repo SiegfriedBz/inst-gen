@@ -72,7 +72,7 @@ describe('POST /api/questions/answer', () => {
     // No stop before the flower (docs/specs/reviews/better-replies-and-answers).
     expect(json.answer.text).toBe('Hello!\n\nThai Massage, 60 min: VND 500k 🪷');
     expect(json.model).toBe('gemini-3.5-flash-lite');
-    expect(json.promptVersion).toBe('answer-2');
+    expect(json.promptVersion).toBe('answer-3');
     expect(json).not.toHaveProperty('sexualBy');
   });
 

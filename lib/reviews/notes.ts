@@ -18,15 +18,34 @@ export const INVITE_PHRASES: readonly string[] = [
   'back with us',
 ];
 
-// The invitations a text holds, whole words, any case, in the order they appear.
-export function invitesIn(text: string): string[] {
+// The posts' words that only add intensity (docs/specs/posts/short-captions).
+export const INTENSITY_WORDS: readonly string[] = [
+  'completely',
+  'deeply',
+  'truly',
+  'ultimate',
+  'pure',
+];
+
+// The phrases of a list a text holds, whole words, any case, in the order
+// they appear.
+function phrasesIn(text: string, phrases: readonly string[]): string[] {
   const plain = folded(text);
-  return INVITE_PHRASES.map((phrase) => ({ phrase, at: wordAt(plain, phrase) }))
+  return phrases
+    .map((phrase) => ({ phrase, at: wordAt(plain, phrase) }))
     .filter(({ at }) => at >= 0)
     .sort((a, b) => a.at - b.at)
     .map(({ phrase }) => `"${phrase}"`);
 }
 
+export function invitesIn(text: string): string[] {
+  return phrasesIn(text, INVITE_PHRASES);
+}
+
 export function copyNotes(text: string, goesToGuests: boolean): string[] {
-  return [...clichesIn(text), ...(goesToGuests ? invitesIn(text) : [])];
+  return [
+    ...clichesIn(text),
+    ...phrasesIn(text, INTENSITY_WORDS),
+    ...(goesToGuests ? invitesIn(text) : []),
+  ];
 }

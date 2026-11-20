@@ -1,6 +1,6 @@
 import { isSpa } from '@/lib/posts/emoji';
 import { sameLanguage, withoutBanned, withoutSentences } from '@/lib/reviews/checks';
-import { type EmojiRule, keepEmoji } from '@/lib/reviews/emoji';
+import { type EmojiRule, endSentence, keepEmoji } from '@/lib/reviews/emoji';
 import { answerFlags } from './flags';
 import {
   type AnswerResponse,
@@ -35,13 +35,50 @@ const detail = (value: string | null): string | null => {
 const WEBSITE = /\{\s*website\s*\}/i;
 const WEBSITES = /\{\s*website\s*\}/gi;
 
+function escapeRegex(text: string): string {
+  return text.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+}
+
+const sameLink = (a: string, b: string) =>
+  a.replace(/\/+$/, '').toLowerCase() === b.replace(/\/+$/, '').toLowerCase();
+
+// A link the model writes on the business's own site, with or without "www"
+// or a page, becomes its address: never a page that doesn't exist. The
+// booking link stays; an email address is no link.
+function ownLinks(text: string, address: string, bookingUrl: string | null): string {
+  let host: string;
+  try {
+    host = new URL(address).hostname.replace(/^www\./, '');
+  } catch {
+    return text;
+  }
+  const link = new RegExp(
+    `(?<![@\\w./-])(?:https?:\\/\\/)?(?:www\\.)?${escapeRegex(host)}(?:\\/[^\\s]*)?`,
+    'giu',
+  );
+  return text.replace(link, (match) => {
+    const trailing = match.match(/[.,!?;:)]+$/u)?.[0] ?? '';
+    const url = match.slice(0, match.length - trailing.length);
+    if (bookingUrl && sameLink(url, bookingUrl)) return match;
+    return address + trailing;
+  });
+}
+
 // The model writes {website}; code puts the address there, never a page of
 // the model's own. With no website, the sentence that holds it goes.
-export function fillWebsite(text: string, website: string | null): string {
+export function fillWebsite(
+  text: string,
+  website: string | null,
+  bookingUrl: string | null = null,
+): string {
   if (!website) return withoutSentences(text, (sentence) => WEBSITE.test(sentence));
   const address = website.trim().replace(/\/+$/, '');
   // A function, so a "$" in the address stays as written.
-  return text.replace(WEBSITES, () => address);
+  return ownLinks(
+    text.replace(WEBSITES, () => address),
+    address,
+    bookingUrl,
+  );
 }
 
 // A detail the model gives replaces the one kept; one it leaves out stays.
@@ -62,8 +99,15 @@ export function buildAnswer(
     model.sexual && words ? 'both' : model.sexual ? 'model' : words ? 'words' : null;
   // The line names massage: a business that isn't a spa gets none, nor the note.
   const line = sexualBy !== null && isSpa(body.business.category);
+  // Each part ends on its punctuation (the model may leave a stop out).
   const clean = (text: string | null): string =>
-    fillWebsite(withoutBanned(text ?? ''), body.business.website).trim();
+    endSentence(
+      fillWebsite(
+        withoutBanned(text ?? ''),
+        body.business.website,
+        body.business.contact.bookingUrl,
+      ),
+    );
   const greeting = clean(model.greeting.text);
   const answer = clean(model.answer.text);
   const professional = line ? clean(model.professionalOnly.text) : '';

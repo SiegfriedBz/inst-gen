@@ -88,7 +88,7 @@ describe('checkReplies', () => {
     );
     expect(checked?.short.text).toBe('Hello {name}, we have no record of your visit.');
     expect(checked?.warm.text).toBe('Hello {name}, please contact us.');
-    expect(checked?.warm.translation).toBe('Xin chào');
+    expect(checked?.warm.translation).toBe('Xin chào.');
   });
 
   test('drops the stop before an emoji, in a reply and its translation', () => {
@@ -155,6 +155,17 @@ describe('checkReplies', () => {
       { locale: 'vi', flower: '🪷' },
     );
     expect(checked?.short.text).toBe('Thank you! 🙏 We would love to come to you again 🪷');
+  });
+
+  test('a reply that ends on a word gets its stop', () => {
+    const checked = checkReplies(
+      answer({
+        abusive: true,
+        short: { text: 'Hello {name}. Please contact us directly', translation: null },
+      }),
+      { locale: 'vi', flower: '🪷' },
+    );
+    expect(checked?.short.text).toBe('Hello {name}. Please contact us directly.');
   });
 
   test("drops the translations when the review is in the screen's language", () => {

@@ -23,7 +23,7 @@ const visited: ReplyBody = { ...body, business: { ...body.business, goesToGuests
 
 describe('replyPrompt', () => {
   test('is versioned', () => {
-    expect(REPLY_PROMPT_VERSION).toBe('reply-3');
+    expect(REPLY_PROMPT_VERSION).toBe('reply-4');
   });
 
   test("asks for replies in the review's language, short and warmer, 3 or 4 short sentences", () => {
@@ -97,7 +97,20 @@ describe('replyPrompt', () => {
     expect(system).toContain('only 🙏, 😊 and 🌼, one of each');
     expect(system).not.toContain('🪷');
     expect(system).toContain('only when the review holds no complaint');
-    expect(system).toContain('never a full stop right before an emoji');
+    expect(system).toContain('Every sentence ends on its full stop');
+    expect(system).toContain('no full stop before or after the emoji');
+  });
+
+  test("writes the replies in the review's language, never the owner's (reply-3 once answered a Russian review in Indonesian)", () => {
+    expect(replyPrompt(body, '🪷').system).toContain(
+      "Both replies are in the review's language, never in Vietnamese unless the review is",
+    );
+  });
+
+  test('never repeats the guest\'s praise words (reply-3 wrote "your amazing massage")', () => {
+    expect(replyPrompt(body, '🪷').system).toContain(
+      "Never repeat the guest's own words of praise",
+    );
   });
 
   test('gives no sentence to copy', () => {

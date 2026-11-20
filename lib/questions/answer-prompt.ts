@@ -9,7 +9,7 @@ import type { QuestionBody } from './question';
 // sentence to copy (docs/specs/posts/day-and-night-copy). Bump the version
 // with every change.
 
-export const ANSWER_PROMPT_VERSION = 'answer-2';
+export const ANSWER_PROMPT_VERSION = 'answer-3';
 
 const LANGUAGES: Record<ScreenLocale, string> = {
   en: 'English',
@@ -25,13 +25,13 @@ function callToAction(final: boolean): string {
       // references/voice-rules.md at 550d3cf); make the first step easy, and
       // urgency only when it is real (CH marketing-psychology/SKILL.md at
       // 96798cf).
-      '"callToAction": the gentle offer that ends the answer: one short sentence that makes booking feel easy and welcome, from the details; for a business that goes to its guests, that a therapist can come to their hotel, villa or home. One next step, easy to take. It never presses: no "book now", no deadline, no urgency or scarcity, no discount. It asks for no day, time or place, and names no day or time: the details do not say what is free. A statement, or a short question the guest can answer yes to; never a question with no next step. When "sexual" is true, leave its text empty and its translation null. No phone number and no link.';
+      '"callToAction": the gentle offer that ends the answer: one short sentence, in your own words, that makes booking feel easy and welcome, from the details; for a business that goes to its guests, that a therapist can come to the guest where they are staying, naming that place as the guest put it when they gave it. One next step, easy to take. It never presses: no "book now", no deadline, no urgency or scarcity, no discount. It asks for no day, time or place, and names no day or time: the details do not say what is free. A statement, or a short question the guest can answer yes to; never a question with no next step. When "sexual" is true, leave the callToAction\'s text empty and its translation null. No phone number and no link.';
 }
 
 // Only when the website is known ("The website, only when asked"): code puts
 // the address in place of {website}, so it is never a page that doesn't exist.
 const WEBSITE_RULE =
-  'Never send the guest to the website, except when they ask to see photos, or want more about a treatment than its description says. Then one short sentence of "answer" says they will find it on the website: write {website}, exactly so, where the address goes, never an address of your own. Code puts the address there.';
+  'Never send the guest to the website, except when they ask to see photos, or want more about a treatment than its description says. Then one short sentence of "answer" says they will find it on the website: write {website}, exactly so, where the address goes, and never a web address of your own, not even one of the business\'s: code puts the address there.';
 
 function sexRule(spa: boolean): string {
   return spa
@@ -56,17 +56,19 @@ export function answerPrompt(
     'Write in the language of the message (its main language if it mixes several). Give "questionLanguage" as a BCP 47 code ("en", "ru", "vi").',
     'Use only the facts under "Business": its treatments with their durations and prices as written, its hours, its town, its area and where it goes with its travel terms, its highlights, and its contact details only when the guest asks how to reach it. Never invent a treatment, a price, a discount, a free time, a payment method or any other fact.',
     "Name a treatment only as the details write it: never take the guest's words for a treatment's name.",
-    'For a business that goes to its guests ("Goes to its guests: yes"), never invite the guest to come, come back or visit, and never speak of a place of the business as where they would be: a therapist comes to their hotel, villa or home, as its details write it.',
+    'For a business that goes to its guests ("Goes to its guests: yes"), never invite the guest to come, come back or visit, and never speak of a place of the business as where they would be: a therapist comes to where the guest is staying, as its details say.',
     'When the details do not answer part of the message (a card payment, a free slot tonight, parking), say the team will check and reply, and set "unanswered" to true.',
     'When you list treatments, give each with its duration and its price, as the details write them: one per line when there are more than two, its name, its duration, then its price.',
-    '"greeting": a short greeting, with no name.',
+    '"greeting": a short greeting, with no name, ending on its punctuation.',
     `"answer": the answer to each thing the guest asked, in 1 to 4 short sentences, plain and warm, in the business's tone, with the list of treatments when you give one.`,
     callToAction(body.final),
     ...(body.business.website ? [WEBSITE_RULE] : []),
     `"guest": what the guest has told so far about their booking, from "What the guest has told" and this message: where they are staying, the day and the time, each as they put it, written in ${owner}, or null.`,
     sexRule(spa),
     WORD_RULES,
-    `Emoji: only 😊 and ${flower}, one of each: 😊 at the end of a sentence, in place of its full stop (the greeting, or a sentence of the answer), and ${flower} at the very end of your last part, and never a full stop right before an emoji. No emoji when "sexual" is true.`,
+    `Emoji: only 😊 and ${flower}, one of each: 😊 at the end of a sentence, in place of its full stop (the greeting, or a sentence of the answer), and ${flower} at the very end of your last part. No emoji when "sexual" is true.`,
+    "Every sentence ends on its full stop, question mark or exclamation mark, except where an emoji takes the full stop's place: then no full stop before or after the emoji.",
+    'Never reuse a phrase from these instructions: write as the owner would.',
     'Promise nothing the owner has not decided: no discount, no free extra, no arrival time.',
     `Translate the message and each part into ${owner} for the owner to read, faithfully and plainly, keeping names, numbers and emoji ("questionTranslation" and each "translation"). If the message is already in ${owner}, set them all to null.`,
   ].join('\n');

@@ -30,6 +30,13 @@ describe('invitesIn', () => {
 });
 
 describe('copyNotes', () => {
+  it('lists a word that only adds intensity', () => {
+    expect(copyNotes('We are truly glad, and deeply thankful', false)).toEqual([
+      '"truly"',
+      '"deeply"',
+    ]);
+  });
+
   it('lists the clichés and the em dash, then the invitations for a business that goes to its guests', () => {
     expect(copyNotes('We would love to pamper you — come back soon!', true)).toEqual([
       '"pamper"',

@@ -1,5 +1,5 @@
 import { BANNED_WORDS } from '@/lib/posts/banned';
-import { type EmojiRule, keepEmoji } from './emoji';
+import { type EmojiRule, endSentence, keepEmoji } from './emoji';
 import type { ModelReplies, ReplyBody, ScreenLocale } from './reply';
 
 // What code makes sure of in the model's replies
@@ -56,7 +56,7 @@ export function checkReplies(
   const rule: EmojiRule = answer.abusive
     ? { keep: [], flower: null }
     : { keep: answer.complaint ? ['🙏'] : ['🙏', '😊'], flower: ctx.flower };
-  const clean = (text: string) => keepEmoji(withoutBanned(text), rule);
+  const clean = (text: string) => keepEmoji(endSentence(withoutBanned(text)), rule);
   const translation = (text: string | null) => {
     if (same || text === null) return null;
     const out = clean(text);

@@ -25,6 +25,18 @@ const ENDS_ON_WORD = /[\p{L}\p{N}]$/u;
 const STARTS_SENTENCE = /^[\p{Lu}\p{Lt}\p{Lo}]/u;
 const SPACE = /^\s+$/u;
 const WORD = /[\p{L}\p{N}]/u;
+// A stop the model writes right after an emoji: the emoji already ends the
+// sentence ("🙏." is "🙏"). "..." stays.
+const STOP_AFTER_EMOJI = /(?<=\p{Extended_Pictographic}|\p{Emoji_Modifier}|\uFE0F)\.(?!\.)/gu;
+const LIST_LINE = /^\s*[-•]/u;
+
+// A text that ends on a word gets its stop; one that ends on punctuation, an
+// emoji or a list line stays as it is.
+export function endSentence(text: string): string {
+  const trimmed = text.trimEnd();
+  const lastLine = trimmed.slice(trimmed.lastIndexOf('\n') + 1);
+  return ENDS_ON_WORD.test(trimmed) && !LIST_LINE.test(lastLine) ? `${trimmed}.` : trimmed;
+}
 
 export function keepEmoji(text: string, rule: EmojiRule): string {
   const parts = graphemes(text);
@@ -41,16 +53,16 @@ export function keepEmoji(text: string, rule: EmojiRule): string {
       out += part;
       return;
     }
-    // A removed emoji that stood in place of a stop leaves one; a flower goes
-    // to the end.
+    // A removed emoji that stood in place of a stop, before another sentence or
+    // at the very end, leaves one; a flower goes to the end.
     const next = parts.slice(i + 1).find((p) => !SPACE.test(p) && !isEmoji(p));
     const before = out.trimEnd();
     out =
-      ENDS_ON_WORD.test(before) && next !== undefined && STARTS_SENTENCE.test(next)
+      ENDS_ON_WORD.test(before) && (next === undefined || STARTS_SENTENCE.test(next))
         ? `${before}. `
         : `${out} `;
   });
-  const tidied = tidy(out);
+  const tidied = tidy(out.replace(STOP_AFTER_EMOJI, ''));
   // An empty part stays empty, so the checks can still refuse it.
   if (!WORD.test(tidied)) return '';
   return dropStopsBeforeEmoji(rule.flower ? `${tidied} ${rule.flower}` : tidied);

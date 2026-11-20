@@ -4,6 +4,7 @@ import { describe, expect, test } from 'vitest';
 import { type Recording, replayTextModel } from '@/lib/ai/replay';
 import { FIXTURES_DIR, fixtureProfile } from '@/lib/brand/fixtures';
 import { emojisIn } from '@/lib/posts/emoji';
+import { ANSWER_PROMPT_VERSION } from '@/lib/questions/answer-prompt';
 import { runAnswer } from '@/lib/questions/answer-run';
 import { questionBodyFor } from '@/lib/questions/client';
 import type { Guest } from '@/lib/questions/question';
@@ -36,7 +37,6 @@ const fixtures: Fixture[] = readdirSync(DIR)
   }));
 // The three that ask for sex; the Vietnamese one holds no word from code's list.
 const SEX = ['sen-happy-ending-en', 'sen-special-vi', 'svarga-intim-ru'];
-const SVARGA_SITE = 'https://svargabalimassage.com';
 const noBrandRead = { modelId: 'm', promptVersion: 'p', partials: [], final: {} };
 const STOP_BEFORE_EMOJI = /(?<!\.)\.\s*\p{Extended_Pictographic}/u;
 // An emoji without its skin tone or variation selector.
@@ -54,9 +54,11 @@ const recordedCall = (fixture: Fixture) => {
 };
 
 describe('recorded answers', () => {
-  test('every made-up question has its recording', () => {
+  test('every made-up question is recorded with the current prompt', () => {
     expect(fixtures).toHaveLength(10);
-    expect(fixtures.filter((f) => !f.recording).map((f) => f.slug)).toEqual([]);
+    for (const fixture of fixtures) {
+      expect(fixture.recording?.promptVersion, fixture.slug).toBe(ANSWER_PROMPT_VERSION);
+    }
   });
 
   test.each(fixtures)('$slug replays to a checked answer', async (fixture) => {
@@ -111,7 +113,9 @@ describe('recorded answers', () => {
 
     // The website only for the guest who asked for photos.
     if (fixture.slug === 'svarga-photos-en') {
-      for (const text of texts) expect(text).toContain(SVARGA_SITE);
+      // The address the profile was read from, without its trailing "/".
+      const site = body.business.website?.replace(/\/+$/, '') ?? 'no website';
+      for (const text of texts) expect(text).toContain(site);
     } else {
       expect(answer.answer.text).not.toContain('http');
     }

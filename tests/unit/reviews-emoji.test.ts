@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { type EmojiRule, keepEmoji } from '@/lib/reviews/emoji';
+import { type EmojiRule, endSentence, keepEmoji } from '@/lib/reviews/emoji';
 
 // The emoji a reply or an answer keeps (docs/specs/reviews/better-replies-and-answers,
 // "Emojis" and "The posts' rules on words").
@@ -70,11 +70,38 @@ describe('keepEmoji', () => {
     expect(keepEmoji('Hello, ❤️ please contact us. 😊', { keep: [], flower: null })).toBe(
       'Hello, please contact us.',
     );
-    expect(keepEmoji('Xin chào 🙏', { keep: [], flower: null })).toBe('Xin chào');
+    // The removed emoji ended the text: a stop takes its place.
+    expect(keepEmoji('Xin chào 🙏', { keep: [], flower: null })).toBe('Xin chào.');
+    expect(keepEmoji('Hello 😊\n\nWe come to you', { keep: [], flower: null })).toBe(
+      'Hello.\n\nWe come to you',
+    );
+  });
+
+  it('drops a stop right after an emoji too', () => {
+    expect(keepEmoji('Thank you for your review 🙏. We are glad you enjoyed it 😊.', R)).toBe(
+      'Thank you for your review 🙏 We are glad you enjoyed it 😊 🌼',
+    );
+    expect(keepEmoji('Wait 🙏... we come', R)).toBe('Wait 🙏... we come 🌼');
   });
 
   it('leaves an empty text empty, with no flower', () => {
     expect(keepEmoji('  ', R)).toBe('');
     expect(keepEmoji('🙏 🌸', R)).toBe('');
+  });
+});
+
+describe('endSentence', () => {
+  it('ends a text that ends on a word with a stop', () => {
+    expect(endSentence('Hello')).toBe('Hello.');
+    expect(endSentence('Kami datang ke vila Anda ')).toBe('Kami datang ke vila Anda.');
+  });
+
+  it('leaves a text that ends on its punctuation, an emoji or a list line as it is', () => {
+    expect(endSentence('Hello!')).toBe('Hello!');
+    expect(endSentence('Hello 😊')).toBe('Hello 😊');
+    expect(endSentence('Prices:\n- Thai Massage, 60 min: VND 500k')).toBe(
+      'Prices:\n- Thai Massage, 60 min: VND 500k',
+    );
+    expect(endSentence('')).toBe('');
   });
 });

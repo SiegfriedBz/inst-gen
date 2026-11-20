@@ -11,7 +11,7 @@ import { FIXTURES_DIR, fixtureProfile } from '@/lib/brand/fixtures';
 import { ANSWER_PROMPT_VERSION } from '@/lib/questions/answer-prompt';
 import { formatAnswerLog, runAnswer } from '@/lib/questions/answer-run';
 import { questionBodyFor } from '@/lib/questions/client';
-import type { Guest } from '@/lib/questions/question';
+import type { Guest, ModelAnswer } from '@/lib/questions/question';
 import { goesToGuests } from '@/lib/reviews/copy-rules';
 import { copyNotes } from '@/lib/reviews/notes';
 import type { ScreenLocale } from '@/lib/reviews/reply';
@@ -68,6 +68,14 @@ for (const slug of slugs) {
     );
     if (!out.ok) {
       console.log(`${slug.padEnd(22)}${out.code}`);
+      // Which part came back empty, for an answer code refused.
+      const parts = (recording as Recording | null)?.final as ModelAnswer | undefined;
+      if (parts) {
+        const sizes = (['greeting', 'answer', 'professionalOnly', 'callToAction'] as const).map(
+          (key) => `${key}=${parts[key].text.trim().length}`,
+        );
+        console.log(`  parts: ${sizes.join(' ')} sexual=${parts.sexual}`);
+      }
       continue;
     }
     written++;

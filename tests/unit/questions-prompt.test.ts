@@ -42,7 +42,7 @@ const withBusiness = (over: Partial<QuestionBody['business']>, rest: Partial<Que
 
 describe('answerPrompt', () => {
   it('has a version', () => {
-    expect(ANSWER_PROMPT_VERSION).toBe('answer-2');
+    expect(ANSWER_PROMPT_VERSION).toBe('answer-3');
   });
 
   it('gives the rules of the spec', () => {
@@ -75,7 +75,8 @@ describe('answerPrompt', () => {
   it('keeps 😊 and the flower, one of each, and no emoji when the question mentions sex', () => {
     const { system } = answerPrompt(body(), '🪷', true);
     expect(system).toContain('only 😊 and 🪷, one of each');
-    expect(system).toContain('never a full stop right before an emoji');
+    expect(system).toContain('Every sentence ends on its full stop');
+    expect(system).toContain('no full stop before or after the emoji');
     expect(system).toContain('No emoji when "sexual" is true');
   });
 
@@ -95,11 +96,15 @@ describe('answerPrompt', () => {
       '"callToAction": the gentle offer',
       'names no day or time',
       'never a question with no next step',
-      'When "sexual" is true, leave its text empty and its translation null',
+      'When "sexual" is true, leave the callToAction\'s text empty and its translation null',
+      'naming that place as the guest put it',
+      'Never reuse a phrase from these instructions',
     ]) {
       expect(system).toContain(rule);
     }
     expect(system).not.toContain('asks the guest to book now');
+    // answer-2 copied "hotel, villa or home" into three answers.
+    expect(system).not.toContain('hotel, villa or home');
   });
 
   it('asks for a call to book on a final answer, for what is missing', () => {
@@ -118,6 +123,7 @@ describe('answerPrompt', () => {
       true,
     );
     expect(known.system).toContain('write {website}, exactly so');
+    expect(known.system).toContain('never a web address of your own');
     expect(`${known.system}\n${known.text}`).not.toContain('sendanangmassage.com');
     const none = answerPrompt(body(), '🪷', true);
     expect(`${none.system}\n${none.text}`).not.toContain('{website}');

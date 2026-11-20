@@ -78,6 +78,22 @@ describe('buildAnswer', () => {
     ).toBe(true);
   });
 
+  it('ends each part on its punctuation, also when its emoji goes', () => {
+    const built = buildAnswer(
+      model({
+        sexual: true,
+        greeting: part('Hello', 'vi: Xin chào'),
+        professionalOnly: part('We offer only professional therapeutic massage'),
+        callToAction: part('Which day suits you 🪷'),
+      }),
+      ctx(body({ question: 'happy ending?', final: true })),
+    );
+    expect(built?.answer.text).toBe(
+      'Hello. We offer only professional therapeutic massage.\n\nOur Thai Massage is 60 min: VND 500k.\n\nWhich day suits you.',
+    );
+    expect(built?.answer.translation?.startsWith('vi: Xin chào. ')).toBe(true);
+  });
+
   it('a question that mentions sex gets no gentle offer and no emoji; a final one its call to book', () => {
     const notFinal = buildAnswer(
       model({ sexual: true }),
@@ -235,6 +251,27 @@ describe('mergeGuest', () => {
       day: null,
       time: null,
     });
+  });
+});
+
+describe('fillWebsite on links the model writes', () => {
+  const site = 'https://svargabalimassage.com/';
+  it("turns a link on the business's own site into its address", () => {
+    expect(fillWebsite('On our website https://www.svargabalimassage.com.', site)).toBe(
+      'On our website https://svargabalimassage.com.',
+    );
+    expect(fillWebsite('See www.svargabalimassage.com/gallery for photos', site)).toBe(
+      'See https://svargabalimassage.com for photos',
+    );
+    expect(fillWebsite('At svargabalimassage.com', site)).toBe('At https://svargabalimassage.com');
+  });
+
+  it('keeps the booking link and links on other sites', () => {
+    const book = 'https://svargabalimassage.com/book';
+    expect(fillWebsite(`Book at ${book}.`, site, book)).toBe(`Book at ${book}.`);
+    expect(fillWebsite('Follow https://instagram.com/svargabalimassage', site)).toBe(
+      'Follow https://instagram.com/svargabalimassage',
+    );
   });
 });
 

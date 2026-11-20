@@ -55,7 +55,7 @@ describe('POST /api/reviews/reply', () => {
     expect(await res.json()).toEqual({
       ...answer,
       model: 'gemini-3.5-flash-lite',
-      promptVersion: 'reply-3',
+      promptVersion: 'reply-4',
     });
   });
 
