@@ -41,6 +41,16 @@ describe('questionBodySchema', () => {
     ).toBe('Hyatt');
   });
 
+  it('reads a body from a page loaded before 2.21 as no website', () => {
+    expect(questionBodySchema.parse(body()).business.website).toBeNull();
+    const withSite = body();
+    const parsed = questionBodySchema.parse({
+      ...withSite,
+      business: { ...withSite.business, website: 'https://svargabalimassage.com/' },
+    });
+    expect(parsed.business.website).toBe('https://svargabalimassage.com/');
+  });
+
   it('refuses a question over 2,000 characters, or an empty one', () => {
     expect(QUESTION_LIMITS.question).toBe(2000);
     expect(questionBodySchema.safeParse(body({ question: 'a'.repeat(2001) })).success).toBe(false);

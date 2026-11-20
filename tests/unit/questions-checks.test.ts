@@ -25,6 +25,7 @@ function body(overrides: Partial<QuestionBody> = {}): QuestionBody {
         instagram: null,
         bookingUrl: null,
       },
+      website: null,
     },
     country: 'VN',
     known: { place: null, day: null, time: null },

@@ -29,6 +29,7 @@ const body: QuestionBody = {
       instagram: null,
       bookingUrl: null,
     },
+    website: null,
   },
   country: 'VN',
   known: { place: null, day: null, time: null },
@@ -86,7 +87,7 @@ describe('runAnswer', () => {
     const logs: AnswerLog[] = [];
     await run(replayTextModel(rec(answer), { answers: rec(answer) }), logs);
     const line = formatAnswerLog(logs[0]);
-    expect(line).toMatch(/^answer owner=sen model=gemini-3\.5-flash-lite prompt=answer-1 /);
+    expect(line).toMatch(/^answer owner=sen model=gemini-3\.5-flash-lite prompt=answer-2 /);
     expect(line).toContain(' final=yes ');
     expect(line).toContain(' sexual=no ');
     expect(line).toContain(' known=place,day,time ');

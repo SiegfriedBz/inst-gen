@@ -2,8 +2,10 @@ import { describe, expect, it } from 'vitest';
 import { BANNED_WORDS } from '@/lib/posts/banned';
 import { ANSWER_PROMPT_VERSION, answerPrompt } from '@/lib/questions/answer-prompt';
 import type { QuestionBody } from '@/lib/questions/question';
+import { TONE_RULE, WORD_RULES } from '@/lib/reviews/copy-rules';
 
-// docs/specs/questions/answer-drafts, "The answer".
+// docs/specs/questions/answer-drafts, "The answer", changed by
+// docs/specs/reviews/better-replies-and-answers.
 function body(overrides: Partial<QuestionBody> = {}): QuestionBody {
   return {
     question: 'Which massages do you have?',
@@ -26,6 +28,7 @@ function body(overrides: Partial<QuestionBody> = {}): QuestionBody {
         instagram: null,
         bookingUrl: null,
       },
+      website: null,
     },
     country: 'VN',
     known: { place: 'Hyatt', day: null, time: null },
@@ -34,9 +37,12 @@ function body(overrides: Partial<QuestionBody> = {}): QuestionBody {
   };
 }
 
+const withBusiness = (over: Partial<QuestionBody['business']>, rest: Partial<QuestionBody> = {}) =>
+  body({ ...rest, business: { ...body().business, ...over } });
+
 describe('answerPrompt', () => {
   it('has a version', () => {
-    expect(ANSWER_PROMPT_VERSION).toBe('answer-1');
+    expect(ANSWER_PROMPT_VERSION).toBe('answer-2');
   });
 
   it('gives the rules of the spec', () => {
@@ -52,22 +58,69 @@ describe('answerPrompt', () => {
       'written in Vietnamese',
       'Promise nothing the owner has not decided',
       'Translate the message and each part into Vietnamese',
-      '🪷',
+      TONE_RULE,
+      WORD_RULES,
       ...BANNED_WORDS,
     ]) {
       expect(system).toContain(rule);
     }
   });
 
-  it('asks for a call to action on a final answer only, for what is missing', () => {
+  it('names treatments only as the details do, and never invites the guest to a business that goes to them', () => {
+    const { system } = answerPrompt(body(), '🪷', true);
+    expect(system).toContain("never take the guest's words for a treatment's name");
+    expect(system).toContain('never invite the guest to come, come back or visit');
+  });
+
+  it('keeps 😊 and the flower, one of each, and no emoji when the question mentions sex', () => {
+    const { system } = answerPrompt(body(), '🪷', true);
+    expect(system).toContain('only 😊 and 🪷, one of each');
+    expect(system).toContain('never a full stop right before an emoji');
+    expect(system).toContain('No emoji when "sexual" is true');
+  });
+
+  it('says whether the business goes to its guests, from its service area', () => {
+    expect(answerPrompt(body(), '🪷', true).text).toContain('Goes to its guests: yes');
+    expect(answerPrompt(withBusiness({ serviceArea: null }), '🪷', true).text).toContain(
+      'Goes to its guests: no',
+    );
+    expect(answerPrompt(withBusiness({ serviceArea: '  ' }), '🪷', true).text).toContain(
+      'Goes to its guests: no',
+    );
+  });
+
+  it('ends an answer that is not final on a gentle offer', () => {
+    const { system } = answerPrompt(body(), '🪷', true);
+    for (const rule of [
+      '"callToAction": the gentle offer',
+      'names no day or time',
+      'never a question with no next step',
+      'When "sexual" is true, leave its text empty and its translation null',
+    ]) {
+      expect(system).toContain(rule);
+    }
+    expect(system).not.toContain('asks the guest to book now');
+  });
+
+  it('asks for a call to book on a final answer, for what is missing', () => {
     const final = answerPrompt(body({ final: true }), '🪷', true).system;
     expect(final).toContain(
       'asks the guest to book now, asking only for what the guest has not told yet',
     );
     expect(final).toContain('where they are staying, for a business that goes to its guests');
-    const not = answerPrompt(body(), '🪷', true).system;
-    expect(not).toContain('this answer is not the final one');
-    expect(not).not.toContain('asks the guest to book now');
+    expect(final).not.toContain('"callToAction": the gentle offer');
+  });
+
+  it('asks for {website} only when the website is known, never giving the address', () => {
+    const known = answerPrompt(
+      withBusiness({ website: 'https://sendanangmassage.com/' }),
+      '🪷',
+      true,
+    );
+    expect(known.system).toContain('write {website}, exactly so');
+    expect(`${known.system}\n${known.text}`).not.toContain('sendanangmassage.com');
+    const none = answerPrompt(body(), '🪷', true);
+    expect(`${none.system}\n${none.text}`).not.toContain('{website}');
   });
 
   it('asks a spa for the line on professional massage on every call, and another business for none', () => {

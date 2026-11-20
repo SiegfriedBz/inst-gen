@@ -71,7 +71,7 @@ describe('POST /api/questions/answer', () => {
     const json = await res.json();
     expect(json.answer.text).toBe('Hello!\n\nThai Massage, 60 min: VND 500k. 🪷');
     expect(json.model).toBe('gemini-3.5-flash-lite');
-    expect(json.promptVersion).toBe('answer-1');
+    expect(json.promptVersion).toBe('answer-2');
     expect(json).not.toHaveProperty('sexualBy');
   });
 
