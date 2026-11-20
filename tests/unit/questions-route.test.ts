@@ -69,7 +69,8 @@ describe('POST /api/questions/answer', () => {
     expect(res.status).toBe(200);
     expect(res.headers.get('cache-control')).toBe('no-store');
     const json = await res.json();
-    expect(json.answer.text).toBe('Hello!\n\nThai Massage, 60 min: VND 500k. 🪷');
+    // No stop before the flower (docs/specs/reviews/better-replies-and-answers).
+    expect(json.answer.text).toBe('Hello!\n\nThai Massage, 60 min: VND 500k 🪷');
     expect(json.model).toBe('gemini-3.5-flash-lite');
     expect(json.promptVersion).toBe('answer-2');
     expect(json).not.toHaveProperty('sexualBy');

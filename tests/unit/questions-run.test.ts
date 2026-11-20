@@ -64,7 +64,8 @@ describe('runAnswer', () => {
     const out = await run(replayTextModel(rec(answer), { answers: rec(answer) }));
     if (!out.ok) throw new Error(out.code);
     expect(out.response.answer.text).toBe(
-      'Hello!\n\nYes, the Hyatt is in our free travel area. 🪷\n\nShall we book you tomorrow at 7 pm?',
+      // The flower moves to the very end (docs/specs/reviews/better-replies-and-answers).
+      'Hello!\n\nYes, the Hyatt is in our free travel area.\n\nShall we book you tomorrow at 7 pm? 🪷',
     );
     expect(out.response.guest).toEqual({ place: 'Hyatt', day: 'tomorrow', time: '7 pm' });
     expect(out.response.model).toBe('gemini-3.5-flash-lite');

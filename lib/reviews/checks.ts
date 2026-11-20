@@ -1,5 +1,5 @@
 import { BANNED_WORDS } from '@/lib/posts/banned';
-import { type EmojiRule, FLOWER_EMOJI, keepEmoji } from './emoji';
+import { type EmojiRule, keepEmoji } from './emoji';
 import type { ModelReplies, ReplyBody, ScreenLocale } from './reply';
 
 // What code makes sure of in the model's replies
@@ -9,10 +9,8 @@ import type { ModelReplies, ReplyBody, ScreenLocale } from './reply';
 // only 🙏, 😊 and the flower, with no 😊 after a complaint
 // (docs/specs/reviews/better-replies-and-answers, "Emojis").
 
-// Shared with the answers to guests' questions (lib/questions/checks.ts).
-export { FLOWER_EMOJI };
-
-const EMOJI = /\p{Extended_Pictographic}️?|‍|️/gu;
+// Shared with the answers to guests' questions (lib/questions/checks.ts):
+// the sentences, the banned words and the language.
 
 // A sentence ends on its stop, or on an emoji in a stop's place, with the
 // spaces after it (docs/specs/reviews/better-replies-and-answers, "The posts'
@@ -48,14 +46,6 @@ export function flowerFor(country: ReplyBody['country']): '🪷' | '🌼' | '�
 
 export function sameLanguage(code: string, locale: ScreenLocale): boolean {
   return code.split('-')[0].toLowerCase() === locale;
-}
-
-export function noEmoji(text: string): string {
-  return text
-    .replace(EMOJI, '')
-    .replace(/ +([,.!?])/g, '$1')
-    .replace(/ {2,}/g, ' ')
-    .trim();
 }
 
 export function checkReplies(
