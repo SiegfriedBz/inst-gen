@@ -42,7 +42,7 @@ const withBusiness = (over: Partial<QuestionBody['business']>, rest: Partial<Que
 
 describe('answerPrompt', () => {
   it('has a version', () => {
-    expect(ANSWER_PROMPT_VERSION).toBe('answer-4');
+    expect(ANSWER_PROMPT_VERSION).toBe('answer-5');
   });
 
   it('gives the rules of the spec', () => {
@@ -78,6 +78,8 @@ describe('answerPrompt', () => {
       'Say a therapist comes to a place only when "Where it goes" names it, or one of the neighbourhoods it lists',
     );
     expect(system).toContain('say the team will check whether they can come there and reply');
+    // answer-4's offer still said "A therapist can come to you where you are staying".
+    expect(system).toContain('the offer never says a therapist comes to them');
     expect(answerPrompt(withBusiness({ serviceArea: null }), '🪷', true).system).not.toContain(
       'Say a therapist comes to a place only',
     );

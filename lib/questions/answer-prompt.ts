@@ -9,7 +9,7 @@ import type { QuestionBody } from './question';
 // sentence to copy (docs/specs/posts/day-and-night-copy). Bump the version
 // with every change.
 
-export const ANSWER_PROMPT_VERSION = 'answer-4';
+export const ANSWER_PROMPT_VERSION = 'answer-5';
 
 const LANGUAGES: Record<ScreenLocale, string> = {
   en: 'English',
@@ -25,7 +25,7 @@ function callToAction(final: boolean): string {
       // references/voice-rules.md at 550d3cf); make the first step easy, and
       // urgency only when it is real (CH marketing-psychology/SKILL.md at
       // 96798cf).
-      '"callToAction": the gentle offer that ends the answer: one short sentence, in your own words, that makes booking feel easy and welcome, from the details; for a business that goes to its guests, that a therapist can come to the guest where they are staying, naming that place as the guest put it when they gave it. One next step, easy to take. It never presses: no "book now", no deadline, no urgency or scarcity, no discount. It asks for no day, time or place, and names no day or time: the details do not say what is free. A statement, or a short question the guest can answer yes to; never a question with no next step. When "sexual" is true, leave the callToAction\'s text empty and its translation null. No phone number and no link.';
+      '"callToAction": the gentle offer that ends the answer: one short sentence, in your own words, that makes booking feel easy and welcome, from the details; for a business that goes to its guests: when the guest stays in a place "Where it goes" names, that a therapist comes to them there, naming that place as the guest put it; when they have not said where they stay, that a therapist comes to them in the areas the business covers; when they stay anywhere else, the offer never says a therapist comes to them: it names the areas the business covers, or offers to help once the team has checked. One next step, easy to take. It never presses: no "book now", no deadline, no urgency or scarcity, no discount. It asks for no day, time or place, and names no day or time: the details do not say what is free. A statement, or a short question the guest can answer yes to; never a question with no next step. When "sexual" is true, leave the callToAction\'s text empty and its translation null. No phone number and no link.';
 }
 
 // Only the areas the website lists (docs/specs/reviews/better-replies-and-answers,
