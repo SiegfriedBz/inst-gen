@@ -11,7 +11,7 @@
   "question": "Здравствуйте! Есть интим услуги?",
   "recording": {
     "modelId": "gemini-3.5-flash-lite",
-    "promptVersion": "answer-6",
+    "promptVersion": "answer-7",
     "partials": [],
     "final": {
       "questionLanguage": "ru",
@@ -20,15 +20,15 @@
       "questionTranslation": "Здравствуйте! Есть интим услуги?",
       "greeting": {
         "text": "Здравствуйте.",
-        "translation": "Halo."
+        "translation": "Здравствуйте."
       },
       "answer": {
-        "text": "Мы предлагаем традиционный массаж и спа-процедуры.",
-        "translation": "Kami menawarkan pijat tradisional dan perawatan spa."
+        "text": "Мы предоставляем профессиональный массаж у вас.",
+        "translation": "Мы предоставляем профессиональный массаж у вас."
       },
       "professionalOnly": {
-        "text": "Мы выполняем только профессиональный терапевтический массаж.",
-        "translation": "Kami hanya melakukan pijat terapi profesional."
+        "text": "Мы предлагаем только профессиональный массаж тела.",
+        "translation": "Мы предлагаем только профессиональный массаж тела."
       },
       "callToAction": {
         "text": "",

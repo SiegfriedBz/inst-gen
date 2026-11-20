@@ -11,7 +11,7 @@
   "question": "Can I pay by card?",
   "recording": {
     "modelId": "gemini-3.5-flash-lite",
-    "promptVersion": "answer-6",
+    "promptVersion": "answer-7",
     "partials": [],
     "final": {
       "questionLanguage": "en",
@@ -23,16 +23,16 @@
         "translation": "Halo 😊"
       },
       "answer": {
-        "text": "We will check if card payment is possible and reply to you shortly.",
-        "translation": "Kami akan memeriksa apakah pembayaran dengan kartu dapat dilakukan dan segera membalas Anda."
+        "text": "We will check whether we can take card payment and reply. We provide Traditional Balinese Massage, 60 min, IDR 250k, Four-Hands Massage, 60 min, IDR 480k, Couple Massage, 60 min, IDR 480k, Deep Tissue Tension Release, 60 min, IDR 300k, Surf & Sport Recovery Massage, 60 min, IDR 280k, Balinese Lulur Scrub & Massage, 90 min, IDR 400k, and Foot Reflexology, 60 min, IDR 220k.",
+        "translation": "Kami akan memeriksa apakah kami dapat menerima pembayaran kartu dan membalas. Kami menyediakan Traditional Balinese Massage, 60 min, IDR 250k, Four-Hands Massage, 60 min, IDR 480k, Couple Massage, 60 min, IDR 480k, Deep Tissue Tension Release, 60 min, IDR 300k, Surf & Sport Recovery Massage, 60 min, IDR 280k, Balinese Lulur Scrub & Massage, 90 min, IDR 400k, dan Foot Reflexology, 60 min, IDR 220k."
       },
       "professionalOnly": {
-        "text": "Our team provides professional therapeutic massage.",
-        "translation": "Tim kami menyediakan pijat terapeutik profesional."
+        "text": "We offer professional therapeutic massage only.",
+        "translation": "Kami hanya menawarkan pijat terapi profesional."
       },
       "callToAction": {
-        "text": "Please let us know what time you would like us to come tomorrow 🌼",
-        "translation": "Mohon beri tahu kami jam berapa Anda ingin kami datang besok 🌼"
+        "text": "Please tell us what time you would like tomorrow 🌼",
+        "translation": "Tolong beri tahu kami jam berapa Anda ingin besok 🌼"
       },
       "guest": {
         "place": "a villa in Pererenan",

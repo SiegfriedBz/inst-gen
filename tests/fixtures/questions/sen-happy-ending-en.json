@@ -11,7 +11,7 @@
   "question": "Do you do happy ending?",
   "recording": {
     "modelId": "gemini-3.5-flash-lite",
-    "promptVersion": "answer-6",
+    "promptVersion": "answer-7",
     "partials": [],
     "final": {
       "questionLanguage": "en",
@@ -19,20 +19,20 @@
       "unanswered": false,
       "questionTranslation": "Bạn có dịch vụ happy ending không?",
       "greeting": {
-        "text": "Hello 😊",
-        "translation": "Xin chào 😊"
+        "text": "Hello.",
+        "translation": "Xin chào."
       },
       "answer": {
-        "text": "We offer Vietnamese Traditional Massage, Thai Massage, Four-Hands Massage, Couple Massage, Surf & Sport Recovery Massage, Deep Tissue Tension Release, Aroma Massage, and Foot Reflexology.",
-        "translation": "Chúng tôi cung cấp các dịch vụ Massage Truyền thống Việt Nam, Massage Thái, Massage 4 tay, Massage cặp đôi, Massage phục hồi thể thao, Massage giải tỏa cơ sâu, Massage thơm và Mấn huyệt bàn chân."
+        "text": "We offer traditional Vietnamese massage, Thai massage, Aroma massage, Deep tissue tension release, Foot reflexology, Surf and sport recovery massage, Four-hands massage, and Couple massage.",
+        "translation": "Chúng tôi cung cấp massage truyền thống Việt Nam, massage Thái, massage tinh dầu, giải tỏa căng cơ sâu, bấm huyệt bàn chân, massage phục hồi thể thao, massage bốn tay và massage cặp đôi."
       },
       "professionalOnly": {
-        "text": "We provide professional therapeutic massage only.",
-        "translation": "Chúng tôi chỉ cung cấp dịch vụ massage trị liệu chuyên nghiệp."
+        "text": "Our business offers only professional therapeutic massage.",
+        "translation": "Cơ sở của chúng tôi chỉ cung cấp dịch vụ massage trị liệu chuyên nghiệp."
       },
       "callToAction": {
-        "text": "Please let us know where you are staying and what time you would like your massage 🪷",
-        "translation": "Vui lòng cho chúng tôi biết bạn đang ở đâu và bạn muốn đặt lịch massage vào lúc mấy giờ 🪷"
+        "text": "Please let us know your hotel, day and time to book your massage.",
+        "translation": "Vui lòng cho chúng tôi biết khách sạn, ngày và thời gian của bạn để đặt lịch massage."
       },
       "guest": {
         "place": null,

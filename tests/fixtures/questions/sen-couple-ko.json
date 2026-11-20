@@ -11,28 +11,28 @@
   "question": "커플 마사지는 얼마예요? 호텔로 와 주시나요?",
   "recording": {
     "modelId": "gemini-3.5-flash-lite",
-    "promptVersion": "answer-6",
+    "promptVersion": "answer-7",
     "partials": [],
     "final": {
       "questionLanguage": "ko",
       "sexual": false,
       "unanswered": false,
-      "questionTranslation": "Cặp đôi massage giá bao nhiêu vậy? Có đến khách sạn không?",
+      "questionTranslation": "커플 마사지는 얼마예요? 호텔로 와 주시나요?",
       "greeting": {
         "text": "안녕하세요😊",
-        "translation": "Xin chào😊"
+        "translation": "안녕하세요😊"
       },
       "answer": {
-        "text": "커플 마사지는 60분에 31달러 VND 800k이며 다낭 내 호텔이나 빌라로 방문해 드립니다🪷",
-        "translation": "Massage cặp đôi giá 31 USD VND 800k cho 60 phút và chúng tôi sẽ đến khách sạn hoặc biệt thự của bạn tại Đà Nẵng🪷"
+        "text": "커플 마사지는 60분 31달러, 또는 80만 동입니다🪷",
+        "translation": "커플 마사지는 60분 31달러, 또는 80만 동입니다🪷"
       },
       "professionalOnly": {
-        "text": "당사는 전문적인 테라피 마사지만 제공합니다.",
-        "translation": "Chúng tôi chỉ cung cấp dịch vụ massage trị liệu chuyên nghiệp."
+        "text": "저희는 전문적인 치료 마사지만 제공합니다.",
+        "translation": "저희는 전문적인 치료 마사지만 제공합니다."
       },
       "callToAction": {
-        "text": "다낭의 숙소에서 편안하게 테라피스트의 방문을 받으실 수 있습니다.",
-        "translation": "Bạn có thể tận hưởng dịch vụ trị liệu thoải mái tại nơi lưu trú ở Đà Nẵng."
+        "text": "다낭 내 호텔이나 빌라로 직접 방문해 드립니다.",
+        "translation": "다낭 내 호텔이나 빌라로 직접 방문해 드립니다."
       },
       "guest": {
         "place": null,
