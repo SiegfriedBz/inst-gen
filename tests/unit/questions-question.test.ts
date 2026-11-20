@@ -11,7 +11,7 @@ function body(overrides: Record<string, unknown> = {}) {
       name: 'Sen',
       summary: null,
       category: 'mobile massage spa',
-      offerings: [{ name: 'Thai Massage', duration: '60 min', price: 'VND 500k' }],
+      offerings: [{ name: 'Thai Massage', lengths: [{ duration: '60 min', price: 'VND 500k' }] }],
       highlights: ['Free travel in our core areas'],
       hours: '08:30-23:00 daily',
       town: 'Da Nang',
@@ -39,6 +39,25 @@ describe('questionBodySchema', () => {
       questionBodySchema.parse(body({ known: { place: 'Hyatt', day: 'tomorrow', time: null } }))
         .known.place,
     ).toBe('Hyatt');
+  });
+
+  // docs/specs/questions/first-answer, "Every length and its price".
+  it('reads a treatment sent with one duration and price as one length', () => {
+    const offerings = [{ name: 'Thai Massage', duration: '60 min', price: 'VND 500k' }];
+    const old = body();
+    const parsed = questionBodySchema.parse({ ...old, business: { ...old.business, offerings } });
+    expect(parsed.business.offerings).toEqual([
+      { name: 'Thai Massage', lengths: [{ duration: '60 min', price: 'VND 500k' }] },
+    ]);
+  });
+
+  it('takes at most 6 lengths a treatment', () => {
+    const lengths = Array.from({ length: 7 }, (_, i) => ({ duration: `${i + 1}0 min` }));
+    const old = body();
+    const offerings = [{ name: 'Thai Massage', lengths }];
+    expect(
+      questionBodySchema.safeParse({ ...old, business: { ...old.business, offerings } }).success,
+    ).toBe(false);
   });
 
   it('reads a body from a page loaded before 2.21 as no website', () => {

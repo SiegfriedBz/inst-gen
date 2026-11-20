@@ -133,7 +133,10 @@ describe('brand read', () => {
       'https://sen.vn/stones.jpg',
     ]);
     expect(last.profile.location.town?.value).toBe('Da Nang');
-    expect(last.profile.offerings[0].price).toBe('450,000 VND');
+    // The model answers in the old shape: one price, one duration (brand-9).
+    expect(last.profile.offerings[0].lengths).toEqual([
+      { duration: '90 minutes', price: '450,000 VND' },
+    ]);
     expect(last.profile.thin).toBe(false);
     expect(last.profile.promptVersion).toBe(BRAND_PROMPT_VERSION);
     expect(lines.filter((l) => l.type === 'final')).toHaveLength(1);

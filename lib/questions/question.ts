@@ -1,4 +1,5 @@
 import { z } from 'zod';
+import { LIMITS } from '@/lib/brand/profile';
 import { SCREEN_LOCALES } from '@/lib/reviews/reply';
 
 // One answer to a guest's question (docs/specs/questions/answer-drafts, "The
@@ -19,6 +20,27 @@ export const NO_GUEST: Guest = { place: null, day: null, time: null };
 const text = (max: number) => z.string().trim().max(max);
 const fact = text(300).nullable();
 
+// A treatment with every length and its price (docs/specs/questions/first-answer,
+// "Every length and its price"). A page loaded before it sends one duration and
+// one price: they read as one length.
+const offering = z
+  .object({
+    name: z.string().trim().min(1).max(200),
+    description: text(400).optional(),
+    lengths: z
+      .array(z.object({ duration: text(100).optional(), price: text(100).optional() }))
+      .max(LIMITS.lengths)
+      .optional(),
+    duration: text(100).optional(),
+    price: text(100).optional(),
+  })
+  .transform(({ duration, price, lengths, ...rest }) => ({
+    ...rest,
+    lengths:
+      lengths ??
+      (duration || price ? [{ ...(duration && { duration }), ...(price && { price }) }] : []),
+  }));
+
 export const questionBodySchema = z.object({
   question: z.string().trim().min(1).max(QUESTION_LIMITS.question),
   final: z.boolean(),
@@ -27,16 +49,7 @@ export const questionBodySchema = z.object({
     name: z.string().trim().min(1).max(200),
     summary: text(400).nullable(),
     category: text(200),
-    offerings: z
-      .array(
-        z.object({
-          name: z.string().trim().min(1).max(200),
-          description: text(400).optional(),
-          duration: text(100).optional(),
-          price: text(100).optional(),
-        }),
-      )
-      .max(20),
+    offerings: z.array(offering).max(20),
     highlights: z.array(text(300)).max(8),
     hours: fact,
     town: fact,

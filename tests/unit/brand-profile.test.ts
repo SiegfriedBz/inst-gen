@@ -79,7 +79,7 @@ describe('profile version 2', () => {
     const { searchTerms: _c, ...essence } = rest.essence;
     const v1 = { ...rest, schemaVersion: 1, essence };
     const up = profileSchema.parse(upgradeProfile(v1));
-    expect(up.schemaVersion).toBe(3);
+    expect(up.schemaVersion).toBe(4);
     expect(up.essence.searchTerms).toEqual([]);
     expect(up.searchedAt).toBeNull();
     expect(up.searchPromptVersion).toBeNull();
@@ -101,13 +101,13 @@ describe('profile version 2', () => {
 
 // The therapists' look (docs/specs/posts/therapists-look).
 describe('profile version 3', () => {
-  test('upgrades a v2 profile to v3 with no look, the rest as it was', () => {
+  test('upgrades a v2 profile with no look, the rest as it was', () => {
     const { staffLook: _a, ...rest } = senProfile();
     const v2 = { ...rest, schemaVersion: 2 };
     expect(profileSchema.parse(upgradeProfile(v2))).toEqual(senProfile());
   });
 
-  test('leaves a v3 profile as it is', () => {
+  test('leaves a v4 profile as it is', () => {
     expect(upgradeProfile(senProfile())).toEqual(senProfile());
   });
 
@@ -128,5 +128,54 @@ describe('profile version 3', () => {
     p.staffLook = { value: Array(25).fill('abcdefghijkl').join(' '), source: 'model' };
     expect(p.staffLook.value.length).toBe(324);
     expect(profileSchema.safeParse(p).success).toBe(false);
+  });
+});
+
+// Every length of a treatment (docs/specs/questions/first-answer, "Every
+// length and its price").
+describe('profile version 4', () => {
+  // A profile saved before the change: one price and one duration a treatment.
+  function v3(offering: Record<string, string>) {
+    const { offerings: _o, ...rest } = svargaProfile();
+    return {
+      ...rest,
+      schemaVersion: 3,
+      offerings: [{ name: 'Balinese massage', source: SITE, ...offering }],
+    };
+  }
+
+  test('a version-3 profile reads as version 4, its price and duration as one length', () => {
+    const up = upgradeProfile(v3({ price: 'IDR 450,000', duration: '90 minutes' }));
+    const parsed = profileSchema.safeParse(up);
+    expect(parsed.success).toBe(true);
+    expect(parsed.data?.schemaVersion).toBe(4);
+    expect(parsed.data?.offerings[0]).toEqual({
+      name: 'Balinese massage',
+      source: SITE,
+      lengths: [{ duration: '90 minutes', price: 'IDR 450,000' }],
+    });
+  });
+
+  test('a version-3 treatment with a price alone keeps it; one with neither has no length', () => {
+    const alone = profileSchema.parse(upgradeProfile(v3({ price: 'IDR 450,000' })));
+    expect(alone.offerings[0].lengths).toEqual([{ price: 'IDR 450,000' }]);
+    const none = profileSchema.parse(upgradeProfile(v3({})));
+    expect(none.offerings[0].lengths).toEqual([]);
+  });
+
+  test('versions 1 and 2 read as version 4', () => {
+    const { staffLook: _a, ...rest } = senProfile();
+    const v2 = { ...rest, schemaVersion: 2 };
+    expect(profileSchema.parse(upgradeProfile(v2)).schemaVersion).toBe(4);
+  });
+
+  test('a treatment holds at most 6 lengths, each with a duration or a price', () => {
+    const p = svargaProfile();
+    p.offerings[0].lengths = Array.from({ length: 7 }, (_, i) => ({ duration: `${i + 1}0 min` }));
+    expect(profileSchema.safeParse(p).success).toBe(false);
+    p.offerings[0].lengths = [{}];
+    expect(profileSchema.safeParse(p).success).toBe(false);
+    p.offerings[0].lengths = [{ duration: '60 min' }, { price: 'IDR 250k' }];
+    expect(profileSchema.safeParse(p).success).toBe(true);
   });
 });

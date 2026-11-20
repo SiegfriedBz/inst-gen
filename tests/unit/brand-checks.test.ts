@@ -162,20 +162,55 @@ describe('mergeAndCheck', () => {
     expect(profile.contact?.email?.value).toBe('Book@Sen.vn');
   });
 
-  test('a price not on its page is dropped', () => {
+  // docs/specs/questions/first-answer, "Every length and its price".
+  test('every length is kept, and a price not on its page is dropped', () => {
     const { profile, dropped } = run({
       offerings: [
-        { name: 'Aroma massage', price: '450,000 VND', source: PRICES },
-        { name: 'Hot stone', price: 'VND 600.000', source: PRICES },
-        { name: 'Hot stone', price: '900,000 VND', source: PRICES },
+        {
+          name: 'Aroma massage',
+          lengths: [
+            { duration: '60 min', price: '450,000 VND' },
+            { duration: '90 min', price: 'VND 600.000' },
+            { duration: '120 min', price: '900,000 VND' },
+          ],
+          source: PRICES,
+        },
       ],
     });
-    expect(profile.offerings?.map((o) => o?.price)).toEqual([
-      '450,000 VND',
-      'VND 600.000',
-      undefined,
+    expect(profile.offerings?.[0]?.lengths).toEqual([
+      { duration: '60 min', price: '450,000 VND' },
+      { duration: '90 min', price: 'VND 600.000' },
+      { duration: '120 min' },
     ]);
-    expect(dropped).toContainEqual({ field: 'offerings[2].price', reason: 'not_on_page' });
+    expect(dropped).toContainEqual({
+      field: 'offerings[0].lengths[2].price',
+      reason: 'not_on_page',
+    });
+  });
+
+  test('a read recorded before brand-10 gives one length', () => {
+    // The replay hands code the recorded JSON as it is: one price, one duration.
+    const recorded = {
+      offerings: [
+        { name: 'Aroma massage', price: '450,000 VND', duration: '90 minutes', source: PRICES },
+      ],
+    } as unknown as DeepPartial<ModelProfile>;
+    expect(run(recorded).profile.offerings?.[0]?.lengths).toEqual([
+      { duration: '90 minutes', price: '450,000 VND' },
+    ]);
+  });
+
+  test('empty lengths go, and a treatment keeps at most 6', () => {
+    const lengths = [{}, ...Array.from({ length: 7 }, (_, i) => ({ duration: `${i + 1}0 min` }))];
+    const { profile } = run({ offerings: [{ name: 'Aroma massage', lengths, source: PRICES }] });
+    expect(profile.offerings?.[0]?.lengths?.map((l) => l?.duration)).toEqual([
+      '10 min',
+      '20 min',
+      '30 min',
+      '40 min',
+      '50 min',
+      '60 min',
+    ]);
   });
 
   test('an offering whose name is not on its page is dropped', () => {
@@ -259,7 +294,10 @@ describe('mergeAndCheck', () => {
   test('a half-streamed model object does not throw and keeps what is checked', () => {
     const { profile } = run({
       summary: { value: 'Mobile massage in Da' },
-      offerings: [{ name: 'Aroma massage', price: '450,000 VND', source: PRICES }, { name: 'Hot' }],
+      offerings: [
+        { name: 'Aroma massage', lengths: [{ price: '450,000 VND' }], source: PRICES },
+        { name: 'Hot' },
+      ],
       tone: ['calm'],
     });
     expect(profile.summary ?? null).toBeNull();
@@ -421,7 +459,7 @@ describe('finalise', () => {
     const { profile } = run({ category: 'massage spa', tone: ['calm', 'warm', 'caring'] });
     const final = finalise(profile, meta);
     expect(final).toMatchObject({
-      schemaVersion: 3,
+      schemaVersion: 4,
       staffLook: null,
       promptVersion: 'brand-1',
       searchedAt: null,

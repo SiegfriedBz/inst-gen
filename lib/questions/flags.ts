@@ -38,12 +38,15 @@ function minutes(value: string, unit: string): number {
 export function answerFlags(answer: string, business: QuestionBody['business']): AnswerFlag[] {
   const text = answer.replace(GLUED, '$1 ');
   const prices = new Set(
-    business.offerings.flatMap((o) => o.price?.match(NUMBER) ?? []).map((p) => amount(p)),
+    business.offerings
+      .flatMap((o) => o.lengths.flatMap((length) => length.price?.match(NUMBER) ?? []))
+      .map((p) => amount(p)),
   );
   const durations = new Set(
-    [...business.offerings.map((o) => o.duration ?? ''), ...business.highlights].flatMap((t) =>
-      [...t.matchAll(DURATION)].map((m) => minutes(m[1], m[2])),
-    ),
+    [
+      ...business.offerings.flatMap((o) => o.lengths.map((length) => length.duration ?? '')),
+      ...business.highlights,
+    ].flatMap((t) => [...t.matchAll(DURATION)].map((m) => minutes(m[1], m[2]))),
   );
   const own = [business.contact.whatsapp, business.contact.phone].flatMap((p) =>
     p ? [p.replace(/\D/g, '')] : [],

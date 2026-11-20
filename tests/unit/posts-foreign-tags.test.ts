@@ -24,7 +24,7 @@ describe('dropForeignTags', () => {
     const profile = senProfile();
     profile.offerings = [
       ...profile.offerings,
-      { name: 'Balinese Massage', source: profile.siteUrl },
+      { name: 'Balinese Massage', lengths: [], source: profile.siteUrl },
     ];
     expect(dropForeignTags(['balinesemassage'], profile)).toEqual({
       tags: ['balinesemassage'],

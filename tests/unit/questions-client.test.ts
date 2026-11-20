@@ -52,6 +52,27 @@ describe('requestAnswer', () => {
     expect(body.country).toBe('VN');
   });
 
+  // docs/specs/questions/first-answer, "Every length and its price".
+  test('sends every length, each part cut at 100 characters', async () => {
+    const profile = senProfile();
+    profile.offerings = [
+      {
+        name: 'Thai Massage',
+        lengths: [
+          { duration: '60 min', price: '$19 VND 500k' },
+          { duration: '90 min', price: `$27 ${'x'.repeat(120)}` },
+        ],
+        source: profile.siteUrl,
+      },
+    ];
+    const fetch = fetchAnswering(200, response);
+    await requestAnswer({ ...input, profile }, { fetch });
+    const [thai] = sent(fetch).business.offerings;
+    expect(thai.lengths).toHaveLength(2);
+    expect(thai.lengths[0]).toEqual({ duration: '60 min', price: '$19 VND 500k' });
+    expect(thai.lengths[1].price).toHaveLength(100);
+  });
+
   test('an error code, a session gone, a broken answer and no network', async () => {
     expect(
       await requestAnswer(input, { fetch: fetchAnswering(504, { error: 'model_timeout' }) }),

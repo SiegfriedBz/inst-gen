@@ -1,5 +1,5 @@
 import { countryOf } from '@/lib/brand/country';
-import type { Profile } from '@/lib/brand/profile';
+import { LIMITS, type Profile } from '@/lib/brand/profile';
 import type { ScreenLocale } from '@/lib/reviews/reply';
 import { noteUsage } from '@/lib/usage/client';
 import { isUsageCode, type UsageCode } from '@/lib/usage/codes';
@@ -56,8 +56,10 @@ export function questionBodyFor(input: AnswerInput): QuestionBody {
       offerings: p.offerings.slice(0, 20).map((o) => ({
         name: o.name.trim().slice(0, 200),
         ...(o.description ? { description: o.description.trim().slice(0, 400) } : {}),
-        ...(o.duration ? { duration: o.duration.trim().slice(0, 100) } : {}),
-        ...(o.price ? { price: o.price.trim().slice(0, 100) } : {}),
+        lengths: o.lengths.slice(0, LIMITS.lengths).map((length) => ({
+          ...(length.duration ? { duration: length.duration.trim().slice(0, 100) } : {}),
+          ...(length.price ? { price: length.price.trim().slice(0, 100) } : {}),
+        })),
       })),
       highlights: p.highlights.slice(0, 8).map((h) => h.value.trim().slice(0, 300)),
       hours: value(p.hours),

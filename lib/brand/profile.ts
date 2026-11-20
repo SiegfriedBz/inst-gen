@@ -27,14 +27,6 @@ export const COLOUR_ROLES = ['primary', 'accent', 'background', 'text'] as const
 
 const colour = z.object({ hex, role: z.enum(COLOUR_ROLES), source: text });
 
-const offering = z.object({
-  name: text,
-  description: text.optional(),
-  price: text.optional(),
-  duration: text.optional(),
-  source: text,
-});
-
 const location = z.object({
   town: sourced(text).nullable(),
   area: sourced(text).nullable(),
@@ -80,7 +72,26 @@ export const LIMITS = {
   // match what the image route takes.
   staffLookWords: 30,
   staffLookChars: 300,
+  // Every length of a treatment (docs/specs/questions/first-answer).
+  lengths: 6,
 } as const;
+
+// One length of a treatment with its price, each as its page writes them: a
+// duration, a price, or both (docs/specs/questions/first-answer, "Every length
+// and its price").
+export const lengthSchema = z
+  .object({ duration: text.optional(), price: text.optional() })
+  .refine((length) => length.duration !== undefined || length.price !== undefined, {
+    message: 'a duration or a price',
+  });
+export type Length = z.infer<typeof lengthSchema>;
+
+const offering = z.object({
+  name: text,
+  description: text.optional(),
+  lengths: z.array(lengthSchema).max(LIMITS.lengths),
+  source: text,
+});
 
 // What the model fills in. It has no limits: a model answer a word or an item
 // over a limit is trimmed by code (lib/brand/checks.ts), not refused.
@@ -95,8 +106,9 @@ export const modelProfileSchema = z.object({
     z.object({
       name: loose,
       description: loose.optional(),
-      price: loose.optional(),
-      duration: loose.optional(),
+      lengths: z
+        .array(z.object({ duration: loose.optional(), price: loose.optional() }))
+        .optional(),
       source: loose,
     }),
   ),
@@ -135,7 +147,7 @@ export const modelProfileSchema = z.object({
 export type ModelProfile = z.infer<typeof modelProfileSchema>;
 
 export const profileSchema = z.object({
-  schemaVersion: z.literal(3),
+  schemaVersion: z.literal(4),
   siteUrl: z.url(),
   readAt: z.iso.datetime(),
   pagesRead: z.array(z.url()).min(1).max(8),
@@ -178,14 +190,10 @@ export const profileSchema = z.object({
 
 export type Profile = z.infer<typeof profileSchema>;
 
-// A profile saved as version 1 (before the essence search) or 2 (before the
-// therapists' look) read as version 3; anything else comes back unchanged,
-// for the schema to judge.
-export function upgradeProfile(raw: unknown): unknown {
-  if (!raw || typeof raw !== 'object') return raw;
-  const profile = raw as { schemaVersion?: unknown; essence?: unknown };
-  if (profile.schemaVersion === 2) return { ...profile, schemaVersion: 3, staffLook: null };
-  if (profile.schemaVersion !== 1) return raw;
+type Saved = Record<string, unknown>;
+
+// Version 1, before the essence search: no search terms, no look.
+function fromV1(profile: Saved): Saved {
   const essence = profile.essence && typeof profile.essence === 'object' ? profile.essence : {};
   return {
     ...profile,
@@ -195,6 +203,38 @@ export function upgradeProfile(raw: unknown): unknown {
     searchPromptVersion: null,
     staffLook: null,
   };
+}
+
+// Version 3 gave a treatment one price and one duration: they become its one
+// length.
+function oneLength(saved: unknown): unknown {
+  if (!saved || typeof saved !== 'object') return saved;
+  const { price, duration, ...rest } = saved as Saved;
+  if (Array.isArray(rest.lengths)) return rest;
+  const parts = {
+    ...(typeof duration === 'string' && duration && { duration }),
+    ...(typeof price === 'string' && price && { price }),
+  };
+  return { ...rest, lengths: Object.keys(parts).length > 0 ? [parts] : [] };
+}
+
+// A profile saved as version 1 (before the essence search), 2 (before the
+// therapists' look) or 3 (before every length of a treatment) reads as version
+// 4; anything else comes back unchanged, for the schema to judge.
+export function upgradeProfile(raw: unknown): unknown {
+  if (!raw || typeof raw !== 'object') return raw;
+  let profile = raw as Saved;
+  if (profile.schemaVersion === 1) profile = fromV1(profile);
+  if (profile.schemaVersion === 2) profile = { ...profile, schemaVersion: 3, staffLook: null };
+  if (profile.schemaVersion === 3) {
+    const { offerings } = profile;
+    profile = {
+      ...profile,
+      schemaVersion: 4,
+      offerings: Array.isArray(offerings) ? offerings.map(oneLength) : offerings,
+    };
+  }
+  return profile;
 }
 
 export type DeepPartial<T> = T extends (infer U)[]

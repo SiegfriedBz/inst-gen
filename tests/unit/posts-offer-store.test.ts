@@ -21,7 +21,7 @@ const local = (d: number, h: number) => new Date(2026, 9, d, h);
 
 function profile(names = ['Thai Massage', 'Foot Reflexology']) {
   const p = svargaProfile();
-  p.offerings = names.map((name) => ({ name, source: p.siteUrl }));
+  p.offerings = names.map((name) => ({ name, lengths: [], source: p.siteUrl }));
   return p;
 }
 

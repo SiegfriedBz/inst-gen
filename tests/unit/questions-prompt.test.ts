@@ -15,7 +15,15 @@ function body(overrides: Partial<QuestionBody> = {}): QuestionBody {
       name: 'Sen',
       summary: 'Mobile massage in Da Nang',
       category: 'mobile massage spa',
-      offerings: [{ name: 'Thai Massage', duration: '60 min', price: 'VND 500k' }],
+      offerings: [
+        {
+          name: 'Thai Massage',
+          lengths: [
+            { duration: '60 min', price: '$19 VND 500k' },
+            { duration: '90 min', price: '$27 VND 700k' },
+          ],
+        },
+      ],
       highlights: ['Free travel in our core areas'],
       hours: '08:30-23:00 daily',
       town: 'Da Nang',
@@ -52,8 +60,8 @@ describe('answerPrompt', () => {
       'Use only the facts under "Business"',
       'Never invent a treatment, a price, a discount, a free time, a payment method or any other fact.',
       'say the team will check and reply, and set "unanswered" to true',
-      'give each with its duration and its price',
-      'one per line when there are more than two',
+      'give each with its lengths and their prices',
+      'each treatment on its own line when there are more than two',
       '1 to 4 short sentences',
       'written in Vietnamese',
       'Promise nothing the owner has not decided',
@@ -177,7 +185,8 @@ describe('answerPrompt', () => {
     const { text } = answerPrompt(body({ avoid: 'Hello! Old answer.' }), '🪷', true);
     for (const part of [
       'Business: Sen',
-      '- Thai Massage, 60 min, VND 500k',
+      // Every length with its price (docs/specs/questions/first-answer).
+      '- Thai Massage (60 min, $19 VND 500k; 90 min, $27 VND 700k)',
       'Highlights: Free travel in our core areas',
       'Where it goes: My Khe',
       'What the guest has told:\n- Staying at: Hyatt\n- Day: not yet\n- Time: not yet',

@@ -12,7 +12,7 @@ function body(overrides: Partial<QuestionBody> = {}): QuestionBody {
       name: 'Sen',
       summary: null,
       category: 'mobile massage spa',
-      offerings: [{ name: 'Thai Massage', duration: '60 min', price: 'VND 500k' }],
+      offerings: [{ name: 'Thai Massage', lengths: [{ duration: '60 min', price: 'VND 500k' }] }],
       highlights: ['Free travel in our core areas'],
       hours: '08:30-23:00 daily',
       town: 'Da Nang',

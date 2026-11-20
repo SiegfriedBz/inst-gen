@@ -1,7 +1,7 @@
 import type { CodeFacts } from './extract/structured';
 
 // Bump with every change to the prompt, so eval scores trace back to it.
-export const BRAND_PROMPT_VERSION = 'brand-9';
+export const BRAND_PROMPT_VERSION = 'brand-10';
 
 export function brandPrompt(): string {
   return `You read a small business's website and describe its brand, for an app that writes its Instagram posts and review replies.
@@ -21,6 +21,7 @@ Field notes:
 - summary: what they sell and to whom, in at most 25 words.
 - category: one or two words, like "massage spa" or "coffee shop".
 - offerings: the individual services, products, classes, tours or dishes customers book or buy, up to 20. Copy each name word for word as a page writes it; an offering whose name isn't on its page is thrown away. List items, not categories or menu headings (for example "Aroma Massage", not "Body Massage"; "Amazing Vietnam", not "Classic Itineraries"). Start with the core ones (for a spa, its massages; for a café, its coffee and dishes), not only signature or seasonal items.
+- offerings.lengths: every length a page gives the offering, each with its own price copied as written, in the page's order, up to 6 (for example a 60-minute, a 90-minute and a 120-minute session, each with its price). A price with no length, or a length with no price, as the page gives it.
 - highlights: short claims the site makes, at most 8.
 - location.town: the town or city, never a district, ward or regency (for example Canggu, not Kuta Utara; Ho Chi Minh City, not District 1).
 - location.serviceArea: for businesses that come to the client. List each area the site names, with the neighbourhoods it lists for that area in brackets, then the travel rule if the site gives one, for example "Canggu (Batu Bolong, Echo Beach, Berawa, Nelayan); Pererenan; Seminyak (Petitenget, Oberoi, Kayu Aya, Double Six, Drupadi). Free travel within these areas; further out, a small fee agreed on WhatsApp." Copy names as the site writes them, without the region or country.

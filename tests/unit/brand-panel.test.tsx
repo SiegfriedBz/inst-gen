@@ -3,7 +3,12 @@ import { cleanup, fireEvent, render, screen, within } from '@testing-library/rea
 import { NextIntlClientProvider } from 'next-intl';
 import { afterEach, describe, expect, test, vi } from 'vitest';
 import { BrandPanel, type SearchState } from '@/components/brand/panel';
-import type { PartialProfile, Profile } from '@/lib/brand/profile';
+import {
+  type PartialProfile,
+  type Profile,
+  profileSchema,
+  upgradeProfile,
+} from '@/lib/brand/profile';
 import messages from '@/messages/en.json';
 import { svargaProfile } from './helpers/brand';
 
@@ -123,12 +128,48 @@ describe('BrandPanel', () => {
     ).toBeTruthy();
   });
 
+  // docs/specs/questions/first-answer, "Every length and its price".
+  test('shows each length on its own line', () => {
+    const p = svargaProfile();
+    p.offerings = [
+      {
+        name: 'Thai Massage',
+        lengths: [
+          { duration: '60 min', price: '$19 VND 500k' },
+          { duration: '90 min', price: '$27 VND 700k' },
+        ],
+        source: p.siteUrl,
+      },
+    ];
+    renderPanel(p);
+    expect(screen.getByText('60 min · $19 VND 500k')).toBeTruthy();
+    expect(screen.getByText('90 min · $27 VND 700k')).toBeTruthy();
+  });
+
+  test('shows the one length of a profile saved before', () => {
+    const { offerings: _o, ...rest } = svargaProfile();
+    const v3 = {
+      ...rest,
+      schemaVersion: 3,
+      offerings: [
+        {
+          name: 'Balinese massage',
+          price: 'IDR 450,000',
+          duration: '90 minutes',
+          source: rest.siteUrl,
+        },
+      ],
+    };
+    renderPanel(profileSchema.parse(upgradeProfile(v3)));
+    expect(screen.getByText('90 minutes · IDR 450,000')).toBeTruthy();
+  });
+
   test('renders a half-filled partial without crashing', () => {
     renderPanel(
       {
         name: { value: 'Se' },
         location: { town: { value: 'Da' } },
-        offerings: [{ price: '300k' }],
+        offerings: [{ lengths: [{ price: '300k' }] }],
       },
       false,
     );

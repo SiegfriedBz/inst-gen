@@ -67,7 +67,7 @@ export function answerPrompt(
     'For a business that goes to its guests ("Goes to its guests: yes"), never invite the guest to come, come back or visit, and never speak of a place of the business as where they would be: a therapist comes to where the guest is staying, as its details say.',
     ...(goesToGuests(body.business.serviceArea) ? [AREAS_RULE] : []),
     'When the details do not answer part of the message (a card payment, a free slot tonight, parking), say the team will check and reply, and set "unanswered" to true.',
-    'When you list treatments, give each with its duration and its price, as the details write them: one per line when there are more than two, its name, its duration, then its price.',
+    'When you list treatments, give each with its lengths and their prices, as the details write them: each treatment on its own line when there are more than two, its name, then each length with its price.',
     '"greeting": a short greeting, with no name, ending on its punctuation.',
     `"answer": the answer to each thing the guest asked, in 1 to 4 short sentences, plain and warm, in the business's tone, with the list of treatments when you give one.`,
     callToAction(body.final),
@@ -84,9 +84,13 @@ export function answerPrompt(
 
   const b = body.business;
   const script = guestScript(body.question);
+  // Every length with its price (docs/specs/questions/first-answer).
   const treatments = b.offerings.map((o) => {
-    const facts = [o.name, o.duration, o.price].filter(Boolean).join(', ');
-    return `- ${facts}${o.description ? `: ${o.description}` : ''}`;
+    const lengths = o.lengths
+      .map((length) => [length.duration, length.price].filter(Boolean).join(', '))
+      .filter(Boolean)
+      .join('; ');
+    return `- ${o.name}${lengths ? ` (${lengths})` : ''}${o.description ? `: ${o.description}` : ''}`;
   });
   const contact = [
     b.contact.whatsapp && `WhatsApp ${b.contact.whatsapp}`,

@@ -76,12 +76,15 @@ describe('scoreFixture', () => {
 
   test('fails on an offering whose name is not on its page', () => {
     expect(
-      score((p) => p.offerings.push({ name: 'Four hands massage', source: SITE })).failures,
+      score((p) => p.offerings.push({ name: 'Four hands massage', lengths: [], source: SITE }))
+        .failures,
     ).toEqual(['offerings_invented']);
   });
 
   test('fails on a price the site does not show', () => {
-    expect(score((p) => (p.offerings[0].price = 'IDR 999,000')).failures).toEqual(['prices']);
+    expect(score((p) => (p.offerings[0].lengths[0].price = 'IDR 999,000')).failures).toEqual([
+      'prices',
+    ]);
   });
 
   test('#1f6f5c against #22705e passes, against #ff0000 fails', () => {

@@ -1,7 +1,7 @@
 import { parsePhoneNumberFromString } from 'libphonenumber-js';
 import { z } from 'zod';
 import { toE164 } from './phone';
-import { COLOUR_ROLES, OWNER_SOURCE, type Profile, profileSchema } from './profile';
+import { COLOUR_ROLES, type Length, OWNER_SOURCE, type Profile, profileSchema } from './profile';
 import { namesAMan } from './staff-look';
 
 // The owner's edits to one section of the brand panel
@@ -12,11 +12,13 @@ import { namesAMan } from './staff-look';
 export type SectionId = 'business' | 'place' | 'contact' | 'look' | 'feeling';
 
 type Item = { value: string; source?: string };
+// One length of a treatment as typed: a duration, a price, or both
+// (docs/specs/questions/first-answer, "Every length and its price").
+export type LengthValues = { duration: string; price: string };
 type OfferingValues = {
   name: string;
   description: string;
-  price: string;
-  duration: string;
+  lengths: LengthValues[];
   source?: string;
 };
 type ColourValues = { hex: string; role: string; source?: string };
@@ -106,8 +108,7 @@ export function sectionValues<S extends SectionId>(profile: Profile, section: S)
       offerings: profile.offerings.map((o) => ({
         name: o.name,
         description: o.description ?? '',
-        price: o.price ?? '',
-        duration: o.duration ?? '',
+        lengths: o.lengths.map((l) => ({ duration: l.duration ?? '', price: l.price ?? '' })),
         source: o.source,
       })),
       highlights: profile.highlights.map((h) => ({ ...h })),
@@ -223,24 +224,35 @@ function bookingLink(typed: string): string | FieldError {
     : 'invalidUrl';
 }
 
+// The lengths as typed, trimmed, without the blank rows.
+function typedLengths(o: OfferingValues): Length[] {
+  return o.lengths.flatMap((l) => {
+    const duration = l.duration.trim();
+    const price = l.price.trim();
+    return duration || price ? [{ ...(duration && { duration }), ...(price && { price }) }] : [];
+  });
+}
+
+const sameLengths = (a: Length[], b: Length[]) =>
+  a.length === b.length &&
+  a.every((l, i) => l.duration === b[i]?.duration && l.price === b[i]?.price);
+
 const sameOffering = (a: OfferingValues, b: Profile['offerings'][number]) =>
   a.name.trim() === b.name &&
   a.description.trim() === (b.description ?? '') &&
-  a.price.trim() === (b.price ?? '') &&
-  a.duration.trim() === (b.duration ?? '');
+  sameLengths(typedLengths(a), b.lengths);
 
 function offerings(old: Profile['offerings'], typed: OfferingValues[]): Profile['offerings'] {
   return typed
-    .filter((o) => [o.name, o.description, o.price, o.duration].some((v) => v.trim()))
+    .filter((o) => o.name.trim() || o.description.trim() || typedLengths(o).length > 0)
     .map((o) => {
       const same = old.find((b) => sameOffering(o, b));
       if (same) return same;
-      const optional = (v: string) => (v.trim() ? v.trim() : undefined);
+      const description = o.description.trim();
       return {
         name: o.name.trim(),
-        ...(optional(o.description) && { description: optional(o.description) }),
-        ...(optional(o.price) && { price: optional(o.price) }),
-        ...(optional(o.duration) && { duration: optional(o.duration) }),
+        ...(description && { description }),
+        lengths: typedLengths(o),
         source: OWNER_SOURCE,
       };
     });
