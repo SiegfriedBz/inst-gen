@@ -1,5 +1,6 @@
 'use client';
 
+import { Plus, Trash } from '@phosphor-icons/react';
 import { useTranslations } from 'next-intl';
 import { type ReactNode, useId, useState } from 'react';
 import {
@@ -20,6 +21,7 @@ import {
   type ContactValues,
   type FeelingValues,
   type FieldError,
+  type LengthValues,
   type LookValues,
   type PlaceValues,
   type SectionId,
@@ -29,7 +31,7 @@ import {
 import type { FieldKey } from '@/lib/brand/missing';
 import { COLOUR_ROLES, LIMITS, type Profile } from '@/lib/brand/profile';
 import { ChipsField } from './chips-field';
-import { ListField } from './list-field';
+import { addButton, iconButton, ListField } from './list-field';
 
 // The form for one section of the brand panel, in a bottom sheet
 // (docs/specs/brand/brand-panel, "Editing").
@@ -114,6 +116,58 @@ function useLabels() {
   };
 }
 
+// Each length of a treatment on its own row, its duration then its price,
+// with a button to remove it and one to add another
+// (docs/specs/questions/first-answer, "Every length and its price").
+function LengthRows({
+  lengths,
+  onChange,
+}: {
+  lengths: LengthValues[];
+  onChange: (lengths: LengthValues[]) => void;
+}) {
+  const l = useLabels();
+  const set = (index: number, change: Partial<LengthValues>) =>
+    onChange(lengths.map((length, i) => (i === index ? { ...length, ...change } : length)));
+  return (
+    <div className="flex flex-col gap-2">
+      {lengths.map((length, index) => (
+        // biome-ignore lint/suspicious/noArrayIndexKey: lengths have no id and may repeat
+        <div key={index} className="grid grid-cols-[1fr_1fr_auto] items-end gap-2">
+          <TextField
+            label={l.item('duration')}
+            value={length.duration}
+            onChange={(duration) => set(index, { duration })}
+          />
+          <TextField
+            label={l.item('price')}
+            value={length.price}
+            onChange={(price) => set(index, { price })}
+          />
+          <button
+            type="button"
+            aria-label={l.item('removeLength')}
+            onClick={() => onChange(lengths.filter((_, i) => i !== index))}
+            className={iconButton}
+          >
+            <Trash aria-hidden size={18} />
+          </button>
+        </div>
+      ))}
+      {/* Seven would not save (docs/specs/questions/first-answer, final review). */}
+      <button
+        type="button"
+        disabled={lengths.length >= LIMITS.lengths}
+        onClick={() => onChange([...lengths, { duration: '', price: '' }])}
+        className={`${addButton} disabled:opacity-40`}
+      >
+        <Plus aria-hidden size={16} />
+        {l.item('addLength')}
+      </button>
+    </div>
+  );
+}
+
 function BusinessForm({ values, set, error }: FormProps<'business'>) {
   const l = useLabels();
   const v = values as BusinessValues;
@@ -146,7 +200,7 @@ function BusinessForm({ values, set, error }: FormProps<'business'>) {
         items={v.offerings}
         onChange={(offerings) => set({ ...v, offerings })}
         addLabel={l.list('addOffering')}
-        newItem={() => ({ name: '', description: '', price: '', duration: '' })}
+        newItem={() => ({ name: '', description: '', lengths: [{ duration: '', price: '' }] })}
         renderItem={(o, i, update) => (
           <div className="flex flex-col gap-2">
             <TextField
@@ -155,18 +209,7 @@ function BusinessForm({ values, set, error }: FormProps<'business'>) {
               onChange={(name) => update({ ...o, name })}
               error={error(`offerings.${i}.name`)}
             />
-            <div className="grid grid-cols-2 gap-2">
-              <TextField
-                label={l.item('price')}
-                value={o.price}
-                onChange={(price) => update({ ...o, price })}
-              />
-              <TextField
-                label={l.item('duration')}
-                value={o.duration}
-                onChange={(duration) => update({ ...o, duration })}
-              />
-            </div>
+            <LengthRows lengths={o.lengths} onChange={(lengths) => update({ ...o, lengths })} />
             <TextField
               label={l.item('description')}
               value={o.description}

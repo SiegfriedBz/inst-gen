@@ -7,6 +7,7 @@ import { existsSync, readdirSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { recordingTextModel } from '@/lib/ai/replay';
 import { geminiTextModel, TEXT_MODELS } from '@/lib/ai/text-model';
+import { lengthText } from '@/lib/brand/display';
 import { scoreFixture } from '@/lib/brand/eval/score';
 import { undiciTransport } from '@/lib/brand/fetch-safe';
 import { CACHE_DIR, FIXTURES_DIR, fixtureTransport, loadFixture } from '@/lib/brand/fixtures';
@@ -79,7 +80,9 @@ while (queue.length > 0) {
           console.log(
             `    name=${p.name.value} town=${p.location.town?.value} wa=${p.contact.whatsapp?.value} colours=${p.colours.map((c) => `${c.hex}:${c.source}`).join(' ')}`,
           );
-          console.log(`    offerings=${p.offerings.map((o) => o.name).join(' | ')}`);
+          const lengths = (o: (typeof p.offerings)[number]) =>
+            o.lengths.length > 0 ? ` (${o.lengths.map(lengthText).join('; ')})` : '';
+          console.log(`    offerings=${p.offerings.map((o) => o.name + lengths(o)).join(' | ')}`);
           console.log(`    dropped=${p.dropped.map((d) => `${d.field}:${d.reason}`).join(' ')}`);
         }
       }

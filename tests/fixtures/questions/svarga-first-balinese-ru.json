@@ -1,0 +1,49 @@
+{
+  "business": "svarga",
+  "locale": "id",
+  "language": "ru",
+  "final": false,
+  "first": true,
+  "known": {
+    "place": null,
+    "day": null,
+    "time": null
+  },
+  "question": "Здравствуйте! Сколько стоит балийский массаж у нас на вилле в Семиньяке?",
+  "recording": {
+    "modelId": "gemini-3.5-flash-lite",
+    "promptVersion": "answer-9",
+    "partials": [],
+    "final": {
+      "questionLanguage": "ru",
+      "sexual": false,
+      "unanswered": false,
+      "questionTranslation": "Здравствуйте! Сколько стоит балийский массаж у нас на вилле в Семиньяке?",
+      "greeting": {
+        "text": "Здравствуйте, благодарим за ваше сообщение. Наши мастера приезжают к вам туда, где вы остановитесь.",
+        "translation": "Halo, terima kasih atas pesan Anda. Terapis kami datang ke tempat Anda menginap."
+      },
+      "answer": {
+        "text": "Traditional Balinese Massage\n- 60 min, IDR 250k\n- 90 min, IDR 350k\n- 120 min, IDR 450k",
+        "translation": "Traditional Balinese Massage\n- 60 min, IDR 250k\n- 90 min, IDR 350k\n- 120 min, IDR 450k"
+      },
+      "professionalOnly": {
+        "text": "",
+        "translation": null
+      },
+      "callToAction": {
+        "text": "",
+        "translation": null
+      },
+      "closing": {
+        "text": "Я здесь, чтобы ответить на все ваши вопросы и сделать вашу запись простой.",
+        "translation": "Saya di sini untuk menjawab semua pertanyaan Anda dan membuat pemesanan Anda menjadi mudah."
+      },
+      "guest": {
+        "place": "Семиньяк",
+        "day": null,
+        "time": null
+      }
+    }
+  }
+}

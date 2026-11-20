@@ -3,7 +3,7 @@
 import { CaretDown, CircleNotch, WarningCircle } from '@phosphor-icons/react';
 import { useTranslations } from 'next-intl';
 import { createContext, type ReactNode, useContext, useId, useState } from 'react';
-import type { SourceKind } from '@/lib/brand/display';
+import { lengthText, type SourceKind } from '@/lib/brand/display';
 import type { SectionId } from '@/lib/brand/edit';
 import type { SearchState } from '@/lib/brand/missing';
 import { missingFields, missingIn, sectionSummary } from '@/lib/brand/missing';
@@ -250,7 +250,9 @@ export function BrandPanel({
   const madeBy = (field: string) => (ownerEdited.includes(field) ? 'owner' : 'model');
 
   const name = text(profile.name?.value);
-  const offerings = (profile.offerings ?? []).filter((o) => text(o?.name) || text(o?.price));
+  const offerings = (profile.offerings ?? []).filter(
+    (o) => text(o?.name) || (o?.lengths ?? []).some((length) => lengthText(length)),
+  );
   const highlights = (profile.highlights ?? []).filter((h) => text(h?.value));
   const colours = (profile.colours ?? []).filter((c) => text(c?.hex));
   const moments = (profile.essence?.moments ?? []).filter((m) => text(m?.value));
@@ -293,11 +295,14 @@ export function BrandPanel({
                 // biome-ignore lint/suspicious/noArrayIndexKey: offerings have no id and may repeat a name
                 <li key={i}>
                   <span>{o?.name}</span>
-                  {[o?.price, o?.duration].filter(text).length > 0 && (
-                    <span className="text-ink-secondary">
-                      {' '}
-                      · {[o?.price, o?.duration].filter(text).join(' · ')}
-                    </span>
+                  {(o?.lengths ?? []).map(
+                    (length, j) =>
+                      lengthText(length) && (
+                        // biome-ignore lint/suspicious/noArrayIndexKey: lengths have no id and may repeat
+                        <span key={j} className="block text-ink-secondary">
+                          {lengthText(length)}
+                        </span>
+                      ),
                   )}
                   {text(o?.description) && (
                     <span className="block text-[13px] text-ink-secondary">{o?.description}</span>

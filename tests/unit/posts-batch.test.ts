@@ -1,5 +1,11 @@
 import { describe, expect, it } from 'vitest';
-import { batchSchema, type Post, rewriteBodySchema } from '@/lib/posts/batch';
+import {
+  batchSchema,
+  newTextsBodySchema,
+  type Post,
+  planBodySchema,
+  rewriteBodySchema,
+} from '@/lib/posts/batch';
 import { svargaProfile } from './helpers/brand';
 import { post } from './helpers/posts';
 
@@ -58,5 +64,36 @@ describe('batchSchema', () => {
   it('a batch with a Vietnamese hashtag loads', () => {
     expect(batchSchema.safeParse(batch([post({ hashtags: ['đànẵng'] })])).success).toBe(true);
     expect(batchSchema.safeParse(batch([post({ hashtags: ['da-nang'] })])).success).toBe(false);
+  });
+});
+
+// A page loaded before the change sends a version-3 profile: one price and one
+// duration a treatment (docs/specs/questions/first-answer, final review).
+describe('a profile from a page loaded before every length', () => {
+  function v3() {
+    const { offerings: _o, ...rest } = svargaProfile();
+    return {
+      ...rest,
+      schemaVersion: 3,
+      offerings: [
+        {
+          name: 'Balinese massage',
+          price: 'IDR 450,000',
+          duration: '90 minutes',
+          source: rest.siteUrl,
+        },
+      ],
+    };
+  }
+
+  it('is read as version 4 by the plan, the rewrite and the new texts', () => {
+    const plan = planBodySchema.safeParse({ profile: v3(), recent: [] });
+    expect(plan.success).toBe(true);
+    expect(plan.data?.profile.offerings[0]?.lengths).toEqual([
+      { duration: '90 minutes', price: 'IDR 450,000' },
+    ]);
+    const posts = [post()];
+    expect(rewriteBodySchema.safeParse({ profile: v3(), posts }).success).toBe(true);
+    expect(newTextsBodySchema.safeParse({ profile: v3(), post: post() }).success).toBe(true);
   });
 });

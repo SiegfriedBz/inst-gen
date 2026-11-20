@@ -107,7 +107,10 @@ describe('seededRandom', () => {
 
 function withOfferings(names: string[]): Profile {
   const profile = svargaProfile();
-  return { ...profile, offerings: names.map((name) => ({ name, source: profile.siteUrl })) };
+  return {
+    ...profile,
+    offerings: names.map((name) => ({ name, lengths: [], source: profile.siteUrl })),
+  };
 }
 
 const EIGHT = [

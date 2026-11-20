@@ -1,0 +1,49 @@
+{
+  "business": "sen",
+  "locale": "vi",
+  "language": "en",
+  "final": false,
+  "first": true,
+  "known": {
+    "place": null,
+    "day": null,
+    "time": null
+  },
+  "question": "can i get a massage",
+  "recording": {
+    "modelId": "gemini-3.5-flash-lite",
+    "promptVersion": "answer-9",
+    "partials": [],
+    "final": {
+      "questionLanguage": "en",
+      "sexual": false,
+      "unanswered": false,
+      "questionTranslation": "toi co the dat mot bai mat xa duoc khong",
+      "greeting": {
+        "text": "Hello, thank you for your message, and our therapists come right to you where you are staying.",
+        "translation": "Xin chao, cam on tin nhan cua ban, va cac ky thuat vien cua chung toi se den tan noi ban dang o."
+      },
+      "answer": {
+        "text": "Which massage would you like, and you can see all of them on the website {website}?",
+        "translation": "Ban muon chon bai mat xa nao, va ban co the xem tat ca tren trang web {website}?"
+      },
+      "professionalOnly": {
+        "text": "",
+        "translation": null
+      },
+      "callToAction": {
+        "text": "",
+        "translation": null
+      },
+      "closing": {
+        "text": "I am here to answer all your questions and to make your booking easy.",
+        "translation": "Toi o day de tra loi moi thac mac va giup ban dat lich de dang."
+      },
+      "guest": {
+        "place": null,
+        "day": null,
+        "time": null
+      }
+    }
+  }
+}

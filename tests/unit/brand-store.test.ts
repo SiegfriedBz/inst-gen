@@ -67,7 +67,7 @@ describe('the brand store', () => {
     expect(await loadBrand('sen')).toMatchObject({ record: { ownerEdited: [] } });
   });
 
-  test('loads a saved v1 profile as v3 and keeps its owner edits', async () => {
+  test('loads a saved v1 profile as v4 and keeps its owner edits', async () => {
     const { searchedAt: _a, searchPromptVersion: _b, staffLook: _d, ...rest } = svargaProfile();
     const { searchTerms: _c, ...essence } = rest.essence;
     const v1 = {
@@ -85,7 +85,7 @@ describe('the brand store', () => {
     });
     const result = await loadBrand('sen');
     if (result.kind !== 'saved') throw new Error(`expected saved, got ${result.kind}`);
-    expect(result.record.profile.schemaVersion).toBe(3);
+    expect(result.record.profile.schemaVersion).toBe(4);
     expect(result.record.profile.staffLook).toBeNull();
     expect(result.record.profile.essence.searchTerms).toEqual([]);
     expect(result.record.profile.searchedAt).toBeNull();

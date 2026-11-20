@@ -11,7 +11,7 @@
   "question": "Berapa harga pijat Bali 60 menit? Bisa datang ke villa saya di Seminyak?",
   "recording": {
     "modelId": "gemini-3.5-flash-lite",
-    "promptVersion": "answer-7",
+    "promptVersion": "answer-9",
     "partials": [],
     "final": {
       "questionLanguage": "id",
@@ -23,15 +23,19 @@
         "translation": null
       },
       "answer": {
-        "text": "Traditional Balinese Massage, 60 min, IDR 250k. Kami bisa datang ke villa Anda di Seminyak 🌼",
+        "text": "Traditional Balinese Massage 60 min, IDR 250k. Tentu, terapis kami bisa datang ke villa Anda di Seminyak.",
         "translation": null
       },
       "professionalOnly": {
-        "text": "Kami hanya menyediakan layanan pijat terapeutik profesional.",
+        "text": "Kami menyediakan layanan pijat profesional.",
         "translation": null
       },
       "callToAction": {
-        "text": "Mohon beritahu hari dan waktu apa Anda ingin kami datang.",
+        "text": "Boleh tolong infokan hari dan jam berapa Anda ingin kami datang 🌼",
+        "translation": null
+      },
+      "closing": {
+        "text": "",
         "translation": null
       },
       "guest": {

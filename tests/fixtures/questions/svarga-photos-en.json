@@ -11,7 +11,7 @@
   "question": "Do you have photos of the four hands massage? I'd like to see it before booking.",
   "recording": {
     "modelId": "gemini-3.5-flash-lite",
-    "promptVersion": "answer-7",
+    "promptVersion": "answer-9",
     "partials": [],
     "final": {
       "questionLanguage": "en",
@@ -23,16 +23,20 @@
         "translation": "Halo 😊"
       },
       "answer": {
-        "text": "You will find photos of our treatments on the website {website}.",
-        "translation": "Anda akan menemukan foto perawatan kami di situs web {website}."
+        "text": "You will find photos of the four-hands massage on our website {website}.",
+        "translation": "Anda akan menemukan foto pijat empat tangan di situs web kami {website}."
       },
       "professionalOnly": {
-        "text": "We offer only professional therapeutic massage.",
-        "translation": "Kami hanya menawarkan pijat terapi profesional."
+        "text": "We offer professional therapeutic massage.",
+        "translation": "Kami menawarkan pijat terapi profesional."
       },
       "callToAction": {
-        "text": "A therapist can come to you in Canggu, Pererenan, Seminyak, and Kerobokan 🌼",
-        "translation": "Terapis dapat datang ke tempat Anda di Canggu, Pererenan, Seminyak, dan Kerobokan 🌼"
+        "text": "Please let us know whenever you are ready.",
+        "translation": "Silakan beri tahu kami kapan pun Anda siap."
+      },
+      "closing": {
+        "text": "",
+        "translation": null
       },
       "guest": {
         "place": null,

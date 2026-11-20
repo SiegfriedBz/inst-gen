@@ -50,6 +50,8 @@ describe('the owner guide', () => {
       m.reviews.write,
       m.questions.write,
       m.questions.final,
+      // The first-message box (docs/specs/questions/first-answer).
+      m.questions.first,
       m.questions.next,
       m.questions.newConversation,
       m.home.tabs.questions,

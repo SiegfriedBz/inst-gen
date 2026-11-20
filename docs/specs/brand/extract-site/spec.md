@@ -272,7 +272,7 @@ images. An empty field is `null`, never an empty string or a placeholder.
 | `name` | sourced string | The business's own name, not the page title's tagline |
 | `summary` | sourced string, ≤ 25 words | What they sell and to whom ("Mobile massage at your villa or hotel in Da Nang") |
 | `category` | string | One word or two, for hashtags later ("massage spa") |
-| `offerings` | list, ≤ 20 | Each `{ name, description?, price?, duration?, source }`; `price` as written, with currency |
+| `offerings` | list, ≤ 20 | Each `{ name, description?, lengths, source }`; each length `{ duration?, price? }`, at most 6, `price` as written, with currency (changed by `questions/first-answer`, 2026-11-20: profile version 4, `brand-10`) |
 | `highlights` | list of sourced strings, ≤ 8 | Short claims the site makes ("Therapists come to you", "Open until midnight") |
 | `location` | `{ town, area?, address?, serviceArea? }`, each sourced | `serviceArea` for mobile businesses |
 | `contact` | `{ whatsapp?, phone?, email?, instagram?, bookingUrl? }`, each sourced | `instagram` is the handle without `@` |

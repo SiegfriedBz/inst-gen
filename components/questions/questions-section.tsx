@@ -119,6 +119,9 @@ export function QuestionsSection({
   const id = useId();
   const [question, setQuestion] = useState('');
   const [final, setFinal] = useState(false);
+  // The first-message box (docs/specs/questions/first-answer): ticked when a
+  // conversation starts, unticked for the same guest's next message.
+  const [first, setFirst] = useState(true);
   const [record, setRecord] = useState<ConversationRecord | null>(null);
   const [loaded, setLoaded] = useState(false);
   const [busy, setBusy] = useState(false);
@@ -135,6 +138,7 @@ export function QuestionsSection({
         if (!live) return;
         setRecord(saved);
         setFinal(saved?.current?.final ?? false);
+        setFirst(saved ? (saved.current?.first ?? false) : true);
         setLoaded(true);
       });
     return () => {
@@ -147,6 +151,7 @@ export function QuestionsSection({
     setRecord(null);
     setQuestion('');
     setFinal(false);
+    setFirst(true);
     setError(null);
     void keep(clearConversation(ownerId));
   }, [active, record, ownerId]);
@@ -168,6 +173,7 @@ export function QuestionsSection({
     const out = await requestAnswer({
       question: input.question,
       final,
+      first,
       locale,
       profile,
       known: live?.known ?? NO_GUEST,
@@ -188,6 +194,7 @@ export function QuestionsSection({
       current: {
         question: input.question.trim(),
         final,
+        first,
         locale,
         answer: out.answer,
         edit: null,
@@ -214,6 +221,7 @@ export function QuestionsSection({
     setRecord(next);
     setQuestion('');
     setFinal(false);
+    setFirst(false);
     setError(null);
     await keep(saveConversation(next));
   }
@@ -223,6 +231,7 @@ export function QuestionsSection({
     setRecord(null);
     setQuestion('');
     setFinal(false);
+    setFirst(true);
     setError(null);
     await keep(clearConversation(ownerId));
   }
@@ -258,6 +267,22 @@ export function QuestionsSection({
       </div>
     </div>
   );
+  const firstBox = (
+    <div className="flex items-start gap-3">
+      <input
+        id={`${id}-first`}
+        type="checkbox"
+        className="mt-0.5 size-5 shrink-0 accent-accent"
+        checked={first}
+        disabled={busy}
+        onChange={(e) => setFirst(e.target.checked)}
+      />
+      <div className="flex flex-col gap-0.5">
+        <Label htmlFor={`${id}-first`}>{t('first')}</Label>
+        <p className="text-[13px] text-ink-secondary">{t('firstHint')}</p>
+      </div>
+    </div>
+  );
 
   if (!loaded) return null;
   const known = record?.known ?? NO_GUEST;
@@ -281,6 +306,7 @@ export function QuestionsSection({
           <p className="text-[13px] text-ink-secondary">{t('hint')}</p>
         </div>
         {finalBox}
+        {firstBox}
         <Button
           type="button"
           disabled={busy || question.trim() === '' || limit !== null}
@@ -331,6 +357,7 @@ export function QuestionsSection({
       ))}
       <p className="text-[13px] text-ink-secondary">{t('howTo')}</p>
       {finalBox}
+      {firstBox}
       {errorLine}
       <div className="flex flex-wrap justify-center gap-x-6">
         <button

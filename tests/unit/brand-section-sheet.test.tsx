@@ -89,7 +89,7 @@ describe('SectionSheet', () => {
     const p = svargaProfile();
     const { onSave } = renderSheet('business', {
       ...p,
-      offerings: [...p.offerings, { name: 'Foot reflexology', source: ABOUT }],
+      offerings: [...p.offerings, { name: 'Foot reflexology', lengths: [], source: ABOUT }],
     });
     const list = screen.getByRole('group', { name: 'Services and prices' });
     fireEvent.click(within(list).getAllByRole('button', { name: 'Move up' })[1] as HTMLElement);
@@ -103,6 +103,35 @@ describe('SectionSheet', () => {
       ['Foot reflexology', ABOUT],
       ['Hot stone massage', 'owner'],
     ]);
+  });
+
+  // docs/specs/questions/first-answer, "Every length and its price".
+  test('a length can be added, changed and removed', async () => {
+    const { onSave } = renderSheet('business', svargaProfile());
+    const list = screen.getByRole('group', { name: 'Services and prices' });
+    fireEvent.click(within(list).getByRole('button', { name: 'Add a duration' }));
+    const durations = within(list).getAllByLabelText('Duration');
+    const prices = within(list).getAllByLabelText('Price');
+    expect(durations).toHaveLength(2);
+    fireEvent.change(durations[1] as HTMLElement, { target: { value: '120 minutes' } });
+    fireEvent.change(prices[1] as HTMLElement, { target: { value: 'IDR 600,000' } });
+    const remove = within(list).getAllByRole('button', { name: 'Remove this duration' });
+    fireEvent.click(remove[0] as HTMLElement);
+    fireEvent.click(screen.getByRole('button', { name: 'Save' }));
+    await waitFor(() => expect(onSave).toHaveBeenCalledTimes(1));
+    expect(saved(onSave).offerings[0]?.lengths).toEqual([
+      { duration: '120 minutes', price: 'IDR 600,000' },
+    ]);
+  });
+
+  // Seven lengths would not save, and no field said why (final review).
+  test('stops adding lengths at six', () => {
+    renderSheet('business', svargaProfile());
+    const list = screen.getByRole('group', { name: 'Services and prices' });
+    const add = within(list).getByRole('button', { name: 'Add a duration' }) as HTMLButtonElement;
+    for (let i = 0; i < 5; i++) fireEvent.click(add);
+    expect(within(list).getAllByLabelText('Duration')).toHaveLength(6);
+    expect(add.disabled).toBe(true);
   });
 
   test('a tone word can be added as a chip and removed', async () => {

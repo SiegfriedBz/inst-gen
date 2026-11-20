@@ -5,7 +5,7 @@ export const ABOUT = 'https://svargabalimassage.com/about';
 
 export function svargaProfile(): Profile {
   return {
-    schemaVersion: 3,
+    schemaVersion: 4,
     siteUrl: SITE,
     readAt: '2026-10-24T09:00:00.000Z',
     pagesRead: [SITE, ABOUT],
@@ -17,8 +17,7 @@ export function svargaProfile(): Profile {
       {
         name: 'Balinese massage',
         description: 'Traditional full-body massage',
-        price: 'IDR 450,000',
-        duration: '90 minutes',
+        lengths: [{ duration: '90 minutes', price: 'IDR 450,000' }],
         source: SITE,
       },
     ],
@@ -83,8 +82,8 @@ export function senProfile(): Profile {
     name: { value: 'Sen', source: SEN_SITE },
     summary: { value: 'Massage at your hotel, apartment or villa in Da Nang', source: SEN_SITE },
     offerings: [
-      { name: 'Vietnamese Traditional Massage', source: SEN_SITE },
-      { name: 'Foot Reflexology', source: SEN_SITE },
+      { name: 'Vietnamese Traditional Massage', lengths: [], source: SEN_SITE },
+      { name: 'Foot Reflexology', lengths: [], source: SEN_SITE },
     ],
     highlights: [{ value: 'Therapists come to you', source: SEN_SITE }],
     location: {

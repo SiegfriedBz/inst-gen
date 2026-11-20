@@ -11,28 +11,32 @@
   "question": "Do you do happy ending?",
   "recording": {
     "modelId": "gemini-3.5-flash-lite",
-    "promptVersion": "answer-7",
+    "promptVersion": "answer-9",
     "partials": [],
     "final": {
       "questionLanguage": "en",
       "sexual": true,
       "unanswered": false,
-      "questionTranslation": "Bạn có dịch vụ happy ending không?",
+      "questionTranslation": "Bạn có làm dịch vụ happy ending không?",
       "greeting": {
         "text": "Hello.",
         "translation": "Xin chào."
       },
       "answer": {
-        "text": "We offer traditional Vietnamese massage, Thai massage, Aroma massage, Deep tissue tension release, Foot reflexology, Surf and sport recovery massage, Four-hands massage, and Couple massage.",
-        "translation": "Chúng tôi cung cấp massage truyền thống Việt Nam, massage Thái, massage tinh dầu, giải tỏa căng cơ sâu, bấm huyệt bàn chân, massage phục hồi thể thao, massage bốn tay và massage cặp đôi."
+        "text": "We offer only professional therapeutic massage.",
+        "translation": "Chúng tôi chỉ cung cấp dịch vụ massage trị liệu chuyên nghiệp."
       },
       "professionalOnly": {
-        "text": "Our business offers only professional therapeutic massage.",
-        "translation": "Cơ sở của chúng tôi chỉ cung cấp dịch vụ massage trị liệu chuyên nghiệp."
+        "text": "We offer only professional therapeutic massage.",
+        "translation": "Chúng tôi chỉ cung cấp dịch vụ massage trị liệu chuyên nghiệp."
       },
       "callToAction": {
-        "text": "Please let us know your hotel, day and time to book your massage.",
-        "translation": "Vui lòng cho chúng tôi biết khách sạn, ngày và thời gian của bạn để đặt lịch massage."
+        "text": "Please let us know your preferred treatment, day, time, and where you are staying in Da Nang.",
+        "translation": "Vui lòng cho chúng tôi biết liệu pháp bạn chọn, ngày, thời gian và nơi bạn đang ở tại Đà Nẵng."
+      },
+      "closing": {
+        "text": "",
+        "translation": null
       },
       "guest": {
         "place": null,

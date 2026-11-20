@@ -30,11 +30,23 @@ async function editHours(page: Page, hours: string) {
 test('Sen on a new phone: the password alone, then Your business, kept through a reload', async ({
   page,
 }) => {
-  const reads = await fulfilRead(page, [streamBody(senProfile())]);
+  // Every length of a treatment (docs/specs/questions/first-answer).
+  const sen = senProfile();
+  sen.offerings[0] = {
+    name: 'Thai Massage',
+    lengths: [
+      { duration: '60 min', price: '$19 VND 500k' },
+      { duration: '90 min', price: '$27 VND 700k' },
+    ],
+    source: sen.siteUrl,
+  };
+  const reads = await fulfilRead(page, [streamBody(sen)]);
   await signIn(page);
 
   await expect(page.getByRole('heading', { name: TITLE })).toBeVisible();
   await expect(page.getByLabel('Your website')).toHaveCount(0);
+  await openSection(page, 'Your business');
+  await expect(page.getByText('90 min · $27 VND 700k')).toBeVisible();
   await expect(page.getByRole('tab', { name: 'Your business' })).toHaveAttribute(
     'aria-selected',
     'true',

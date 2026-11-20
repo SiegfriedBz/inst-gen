@@ -7,8 +7,10 @@ import type { ReactNode } from 'react';
 // A list the owner can add to, reorder and trim, with buttons rather than
 // drag: reliable with a thumb and with a screen reader.
 
-const iconButton =
+export const iconButton =
   'inline-flex size-11 items-center justify-center rounded-control text-ink-secondary outline-none focus-visible:ring-2 focus-visible:ring-accent disabled:opacity-30';
+export const addButton =
+  'inline-flex min-h-11 items-center gap-1.5 self-start text-[15px] font-medium text-accent outline-none focus-visible:ring-2 focus-visible:ring-accent';
 
 export function ListField<T>({
   label,
@@ -79,11 +81,7 @@ export function ListField<T>({
         ))}
       </ol>
       {error && <p className="text-xs text-error">{error}</p>}
-      <button
-        type="button"
-        onClick={() => onChange([...items, newItem()])}
-        className="inline-flex min-h-11 items-center gap-1.5 self-start text-[15px] font-medium text-accent outline-none focus-visible:ring-2 focus-visible:ring-accent"
-      >
+      <button type="button" onClick={() => onChange([...items, newItem()])} className={addButton}>
         <Plus aria-hidden size={16} />
         {addLabel}
       </button>

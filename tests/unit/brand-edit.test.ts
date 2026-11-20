@@ -19,8 +19,8 @@ function withTwoOfferings(): Profile {
     ...p,
     offerings: [
       ...p.offerings,
-      { name: 'Foot reflexology', price: 'IDR 250,000', source: ABOUT },
-      { name: 'Four-hands massage', source: ABOUT },
+      { name: 'Foot reflexology', lengths: [{ price: 'IDR 250,000' }], source: ABOUT },
+      { name: 'Four-hands massage', lengths: [], source: ABOUT },
     ],
   };
 }
@@ -85,8 +85,35 @@ describe('applying a section edit', () => {
     const values = sectionValues(p, 'business') as BusinessValues;
     const first = values.offerings[0];
     if (!first) throw new Error('no offering');
-    const saved = ok(business(p, { offerings: [{ ...first, price: 'IDR 500,000' }] }));
-    expect(saved.offerings[0]).toMatchObject({ price: 'IDR 500,000', source: 'owner' });
+    const lengths = [{ duration: '90 minutes', price: 'IDR 500,000' }];
+    const saved = ok(business(p, { offerings: [{ ...first, lengths }] }));
+    expect(saved.offerings[0]).toMatchObject({ lengths, source: 'owner' });
+  });
+
+  // docs/specs/questions/first-answer, "Every length and its price".
+  test("a treatment's lengths are saved as typed, blank rows dropped", () => {
+    const values = sectionValues(p, 'business') as BusinessValues;
+    const first = values.offerings[0];
+    if (!first) throw new Error('no offering');
+    expect(first.lengths).toEqual([{ duration: '90 minutes', price: 'IDR 450,000' }]);
+    const lengths = [
+      { duration: ' 60 min ', price: 'IDR 250k' },
+      { duration: '', price: ' ' },
+      { duration: '90 min', price: '' },
+    ];
+    const saved = ok(business(p, { offerings: [{ ...first, lengths }] }));
+    expect(saved.offerings[0]).toMatchObject({
+      lengths: [{ duration: '60 min', price: 'IDR 250k' }, { duration: '90 min' }],
+      source: 'owner',
+    });
+  });
+
+  test('every length removed saves a treatment with none', () => {
+    const values = sectionValues(p, 'business') as BusinessValues;
+    const first = values.offerings[0];
+    if (!first) throw new Error('no offering');
+    const saved = ok(business(p, { offerings: [{ ...first, lengths: [] }] }));
+    expect(saved.offerings[0]).toMatchObject({ name: 'Balinese massage', lengths: [] });
   });
 
   test('an emptied field becomes null', () => {

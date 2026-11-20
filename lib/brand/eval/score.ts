@@ -95,7 +95,11 @@ export function scoreFixture(
     const [longest] = (joinNumbers(price).match(/\d+/g) ?? []).sort((a, b) => b.length - a.length);
     return longest !== undefined && joinNumbers(page(source)).includes(longest);
   };
-  if (profile.offerings.some((o) => o.price && !priceShown(o.price, o.source))) {
+  if (
+    profile.offerings.some((o) =>
+      o.lengths.some((length) => length.price && !priceShown(length.price, o.source)),
+    )
+  ) {
     failures.push('prices');
   }
 

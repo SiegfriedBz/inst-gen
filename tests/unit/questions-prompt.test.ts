@@ -10,12 +10,21 @@ function body(overrides: Partial<QuestionBody> = {}): QuestionBody {
   return {
     question: 'Which massages do you have?',
     final: false,
+    first: false,
     locale: 'vi',
     business: {
       name: 'Sen',
       summary: 'Mobile massage in Da Nang',
       category: 'mobile massage spa',
-      offerings: [{ name: 'Thai Massage', duration: '60 min', price: 'VND 500k' }],
+      offerings: [
+        {
+          name: 'Thai Massage',
+          lengths: [
+            { duration: '60 min', price: '$19 VND 500k' },
+            { duration: '90 min', price: '$27 VND 700k' },
+          ],
+        },
+      ],
       highlights: ['Free travel in our core areas'],
       hours: '08:30-23:00 daily',
       town: 'Da Nang',
@@ -42,7 +51,15 @@ const withBusiness = (over: Partial<QuestionBody['business']>, rest: Partial<Que
 
 describe('answerPrompt', () => {
   it('has a version', () => {
-    expect(ANSWER_PROMPT_VERSION).toBe('answer-7');
+    expect(ANSWER_PROMPT_VERSION).toBe('answer-9');
+  });
+
+  // answer-8 translated a first answer into Vietnamese without its accents.
+  it('asks for Vietnamese with all its accents, on a Vietnamese screen only', () => {
+    expect(answerPrompt(body(), '🪷', true).system).toContain(
+      'Write Vietnamese with all its accents.',
+    );
+    expect(answerPrompt(body({ locale: 'id' }), '🌼', true).system).not.toContain('accents');
   });
 
   it('gives the rules of the spec', () => {
@@ -52,8 +69,8 @@ describe('answerPrompt', () => {
       'Use only the facts under "Business"',
       'Never invent a treatment, a price, a discount, a free time, a payment method or any other fact.',
       'say the team will check and reply, and set "unanswered" to true',
-      'give each with its duration and its price',
-      'one per line when there are more than two',
+      'give each with its lengths and their prices',
+      'each treatment on its own line when there are more than two',
       '1 to 4 short sentences',
       'written in Vietnamese',
       'Promise nothing the owner has not decided',
@@ -177,7 +194,8 @@ describe('answerPrompt', () => {
     const { text } = answerPrompt(body({ avoid: 'Hello! Old answer.' }), '🪷', true);
     for (const part of [
       'Business: Sen',
-      '- Thai Massage, 60 min, VND 500k',
+      // Every length with its price (docs/specs/questions/first-answer).
+      '- Thai Massage (60 min, $19 VND 500k; 90 min, $27 VND 700k)',
       'Highlights: Free travel in our core areas',
       'Where it goes: My Khe',
       'What the guest has told:\n- Staying at: Hyatt\n- Day: not yet\n- Time: not yet',
@@ -188,5 +206,78 @@ describe('answerPrompt', () => {
       expect(text).toContain(part);
     }
     expect(answerPrompt(body({ final: true }), '🪷', true).text).toContain('Final answer: yes');
+  });
+});
+
+// docs/specs/questions/first-answer, "The first answer".
+describe('answerPrompt for a first answer', () => {
+  const site = 'https://sendanangmassage.com/';
+
+  it('asks for the hello line, the middle and the closing, with no emoji and no gentle offer', () => {
+    const { system, text } = answerPrompt(
+      withBusiness({ website: site }, { first: true }),
+      '🪷',
+      true,
+    );
+    for (const rule of [
+      '"greeting": the hello line',
+      'a thank-you for their message',
+      'a therapist comes to them',
+      'which massage they would like',
+      'each of its lengths with its price',
+      '"closing": one sentence in the first person',
+      'answer all their questions',
+      'make their booking easy',
+      'No emoji in any part',
+    ]) {
+      expect(system).toContain(rule);
+    }
+    expect(system).not.toContain('the gentle offer that ends the answer');
+    expect(text).toContain('First message from this guest: yes');
+  });
+
+  it('sends a guest who names no massage to {website} only when the website is known', () => {
+    const known = answerPrompt(withBusiness({ website: site }, { first: true }), '🪷', true);
+    expect(known.system).toContain('{website}');
+    const unknown = answerPrompt(withBusiness({ website: null }, { first: true }), '🪷', true);
+    expect(unknown.system).not.toContain('{website}');
+    expect(unknown.system).toContain('which massage they would like');
+  });
+
+  it('asks for the call to book before the closing on a final first answer', () => {
+    const { system } = answerPrompt(body({ first: true, final: true }), '🪷', true);
+    expect(system).toContain('asks the guest to book now');
+    expect(system).toContain('"closing": one sentence in the first person');
+  });
+
+  it('says only hello and thanks for a business that does not go to its guests', () => {
+    const { system } = answerPrompt(
+      withBusiness({ serviceArea: null }, { first: true }),
+      '🌸',
+      true,
+    );
+    expect(system).not.toContain('a therapist comes to them');
+  });
+
+  // answer-8 listed Svarga's whole menu for "What massages do you have and
+  // how much?", wrote a question with a stop, left the therapist out of a
+  // Russian hello line and glued a sentence to the last length.
+  it('never lists the menu, even when the guest asks for it, and asks with a question mark', () => {
+    const { system } = answerPrompt(withBusiness({ website: site }, { first: true }), '🪷', true);
+    for (const rule of [
+      'even when it asks which massages there are, for the menu or for the prices',
+      'ending on its question mark',
+      'always that a therapist comes to them',
+      'after a line break',
+    ]) {
+      expect(system).toContain(rule);
+    }
+  });
+
+  it('leaves the closing empty on a later answer', () => {
+    const { system, text } = answerPrompt(body(), '🪷', true);
+    expect(system).toContain('"closing": leave its text empty and its translation null');
+    expect(system).not.toContain('"greeting": the hello line');
+    expect(text).toContain('First message from this guest: no');
   });
 });

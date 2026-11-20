@@ -99,8 +99,10 @@ describe('the _sample fixture', () => {
 // the recorded read saw in them (the visual style, the therapists' look) is
 // kept (docs/specs/posts/therapists-look, journal). Tests read it without.
 describe('a fixture profile with its cached photos', () => {
-  test("keeps Sen's recorded look, which is dropped without them", async () => {
-    const dir = join(FIXTURES_DIR, 'sen');
+  // Svarga's: Sen's brand-10 read cites its home page for the look, which a
+  // page keeps without photos (docs/specs/questions/first-answer, journal).
+  test("keeps Svarga's recorded look, which is dropped without them", async () => {
+    const dir = join(FIXTURES_DIR, 'svarga');
     const cache = mkdtempSync(join(tmpdir(), 'fixture-cache-'));
     const jpeg = await sharp({
       create: { width: 8, height: 8, channels: 3, background: '#ffffff' },
@@ -112,7 +114,7 @@ describe('a fixture profile with its cached photos', () => {
     }
     const withPhotos = await fixtureProfile(dir, { imageCache: cache });
     expect(withPhotos.staffLook?.source).toBe('model');
-    expect(withPhotos.staffLook?.value).toMatch(/white/);
+    expect(withPhotos.staffLook?.value).toMatch(/brown/);
     expect((await fixtureProfile(dir)).staffLook).toBeNull();
   });
 });
