@@ -20,6 +20,23 @@
   in one place with the empty closing; its emoji rule now comes before the
   rules on words. The first answer's rules replace the greeting, answer, call
   to action, website and emoji rules, and say nothing of a gentle offer.
+- 2026-11-20, recording the reads (maintainer's yes): the first
+  `pnpm eval:brand sen svarga --record` failed on both, "No object generated:
+  could not parse the response". One read of Sen without `--record`, with a
+  temporary log (never committed), hit Google's "high demand" once and then
+  passed with the new treatment shape; the second recording passed on both.
+  Six reads spent in all. Google's busy spell, not the shape, is the likely
+  cause: nothing in the first two answers was kept to prove it.
+- 2026-11-20: the recorded reads keep every length, as the sites give them:
+  Sen's Thai Massage at 60 min · $19 VND 500k, 90 min · $27 VND 700k and
+  120 min · $35 VND 900k (Foot Reflexology at 60 and 90); Svarga's
+  Traditional Balinese Massage at 60 min · IDR 250k, 90 min · IDR 350k and
+  120 min · IDR 450k (the Lulur scrub at 90 and 120, Foot Reflexology at 60
+  and 90).
+- 2026-11-20: Sen's new read gives the same look as before but cites its home
+  page for it (the page only says "a clean uniform"), so a page keeps it with
+  no photos. The test that a look from the photos goes without them now reads
+  Svarga's, still from its photos. Sen's posts and replies replay as before.
 
 ## RED
 
@@ -34,6 +51,8 @@
 - Task 5 (`questions-checks`, `questions-prompt`, `questions-run`):
   `Tests  12 failed | 44 passed (56)`
 - Task 6 (`guide`): `Tests  3 failed | 32 passed (35)`
+- Task 7, before any recording (`questions-fixtures-replay`, five new first
+  messages and `answer-8`): `Tests  6 failed | 10 passed (16)`
 
 ## GREEN
 
