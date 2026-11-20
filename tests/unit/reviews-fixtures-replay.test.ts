@@ -49,6 +49,9 @@ async function replay(slug: string) {
 }
 
 const EMOJI = /\p{Extended_Pictographic}/u;
+// A review in these languages gets replies in their script (reply-3 answered
+// a Russian review in Indonesian).
+const SCRIPTS: Record<string, RegExp> = { ko: /\p{Script=Hangul}/u, ru: /\p{Script=Cyrillic}/u };
 const STOP_BEFORE_EMOJI = /(?<!\.)\.\s*\p{Extended_Pictographic}/u;
 // An emoji without its skin tone or variation selector.
 const plain = (emoji: string) => emoji.replace(/[\u{1F3FB}-\u{1F3FF}️]/gu, '');
@@ -81,7 +84,9 @@ describe('recorded replies', () => {
       expect(new Set(emojis).size, `${slug}: ${text}`).toBe(emojis.length);
       if (!answer.abusive) expect(text.trimEnd().endsWith(flower), `${slug}: ${text}`).toBe(true);
     }
+    const script = SCRIPTS[answer.reviewLanguage.split('-')[0]];
     for (const reply of [answer.short.text, answer.warm.text]) {
+      if (script) expect(script.test(reply), `${slug}: ${reply}`).toBe(true);
       if (fixture.name) expect(reply, slug).toContain('{name}');
       else expect(reply, slug).not.toContain('{name}');
       // Sen and Svarga go to their guests: no reply invites a guest to them.

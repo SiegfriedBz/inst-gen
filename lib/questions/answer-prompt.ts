@@ -9,7 +9,7 @@ import type { QuestionBody } from './question';
 // sentence to copy (docs/specs/posts/day-and-night-copy). Bump the version
 // with every change.
 
-export const ANSWER_PROMPT_VERSION = 'answer-3';
+export const ANSWER_PROMPT_VERSION = 'answer-4';
 
 const LANGUAGES: Record<ScreenLocale, string> = {
   en: 'English',
@@ -54,6 +54,7 @@ export function answerPrompt(
       : []),
     TONE_RULE,
     'Write in the language of the message (its main language if it mixes several). Give "questionLanguage" as a BCP 47 code ("en", "ru", "vi").',
+    `Every part is in the message's language, never in English or ${owner} unless the message is: only the translations are in ${owner}.`,
     'Use only the facts under "Business": its treatments with their durations and prices as written, its hours, its town, its area and where it goes with its travel terms, its highlights, and its contact details only when the guest asks how to reach it. Never invent a treatment, a price, a discount, a free time, a payment method or any other fact.',
     "Name a treatment only as the details write it: never take the guest's words for a treatment's name.",
     'For a business that goes to its guests ("Goes to its guests: yes"), never invite the guest to come, come back or visit, and never speak of a place of the business as where they would be: a therapist comes to where the guest is staying, as its details say.',

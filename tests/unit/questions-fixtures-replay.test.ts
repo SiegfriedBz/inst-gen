@@ -38,6 +38,9 @@ const fixtures: Fixture[] = readdirSync(DIR)
 // The three that ask for sex; the Vietnamese one holds no word from code's list.
 const SEX = ['sen-happy-ending-en', 'sen-special-vi', 'svarga-intim-ru'];
 const noBrandRead = { modelId: 'm', promptVersion: 'p', partials: [], final: {} };
+// A message in these languages gets an answer in their script (answer-3
+// answered Korean and Russian in English).
+const SCRIPTS: Record<string, RegExp> = { ko: /\p{Script=Hangul}/u, ru: /\p{Script=Cyrillic}/u };
 const STOP_BEFORE_EMOJI = /(?<!\.)\.\s*\p{Extended_Pictographic}/u;
 // An emoji without its skin tone or variation selector.
 const plainEmoji = (emoji: string) => emoji.replace(/[\u{1F3FB}-\u{1F3FF}️]/gu, '');
@@ -74,6 +77,8 @@ describe('recorded answers', () => {
     const answer = out.response;
     const sex = SEX.includes(fixture.slug);
     expect(answer.questionLanguage.split('-')[0]).toBe(fixture.language);
+    const script = SCRIPTS[fixture.language];
+    if (script) expect(script.test(answer.answer.text), answer.answer.text).toBe(true);
     // The line on every question that mentions sex, and on none of the others.
     expect(answer.sexual).toBe(sex);
     if (fixture.slug === 'svarga-card-en') expect(answer.unanswered).toBe(true);

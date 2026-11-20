@@ -23,7 +23,7 @@ const visited: ReplyBody = { ...body, business: { ...body.business, goesToGuests
 
 describe('replyPrompt', () => {
   test('is versioned', () => {
-    expect(REPLY_PROMPT_VERSION).toBe('reply-4');
+    expect(REPLY_PROMPT_VERSION).toBe('reply-5');
   });
 
   test("asks for replies in the review's language, short and warmer, 3 or 4 short sentences", () => {
@@ -145,6 +145,8 @@ describe('replyPrompt', () => {
     const { system } = replyPrompt(body, '🪷');
     expect(system).toContain('{name}');
     expect(system).toContain('chị {name}');
+    // reply-4 left the name out of one short reply.
+    expect(system).toContain('in the first sentence of each reply and each translation');
     const none = replyPrompt({ ...body, hasName: false }, '🪷').system;
     expect(none).toContain('Do not write {name}');
   });

@@ -9,7 +9,7 @@ import type { ReplyBody, ScreenLocale } from './reply';
 // (docs/specs/posts/day-and-night-copy), but where {name} goes. Bump the
 // version with every change.
 
-export const REPLY_PROMPT_VERSION = 'reply-4';
+export const REPLY_PROMPT_VERSION = 'reply-5';
 
 const LANGUAGES: Record<ScreenLocale, string> = {
   en: 'English',
@@ -27,7 +27,7 @@ function invitation(body: ReplyBody): string {
 export function replyPrompt(body: ReplyBody, flower: string): { system: string; text: string } {
   const owner = LANGUAGES[body.locale];
   const name = body.hasName
-    ? 'Greet the guest with the placeholder {name}, written exactly so, once in each reply and each translation; code puts the name there. Put the honorific the language uses around it when one fits ("chị {name}", "{name}님").'
+    ? 'Greet the guest with the placeholder {name}, written exactly so, once, in the first sentence of each reply and each translation; code puts the name there. Put the honorific the language uses around it when one fits ("chị {name}", "{name}님").'
     : 'The guest gave no name. Do not write {name} or any name; greet them without one.';
   const system = [
     'You write replies from a small massage and wellness business to a Google Maps review, for the owner to paste under it. Each reply thanks the guest for their massage.',

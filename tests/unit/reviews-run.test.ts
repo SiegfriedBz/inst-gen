@@ -63,7 +63,7 @@ describe('runReply', () => {
           translation: 'Thân mến {name} 🌼',
         },
         model: 'gemini-3.5-flash-lite',
-        promptVersion: 'reply-4',
+        promptVersion: 'reply-5',
       },
     });
     expect(calls).toEqual([replyPrompt(body, '🌼')]);

@@ -42,7 +42,7 @@ const withBusiness = (over: Partial<QuestionBody['business']>, rest: Partial<Que
 
 describe('answerPrompt', () => {
   it('has a version', () => {
-    expect(ANSWER_PROMPT_VERSION).toBe('answer-3');
+    expect(ANSWER_PROMPT_VERSION).toBe('answer-4');
   });
 
   it('gives the rules of the spec', () => {
@@ -64,6 +64,12 @@ describe('answerPrompt', () => {
     ]) {
       expect(system).toContain(rule);
     }
+  });
+
+  it("writes every part in the message's language, never English unless the message is (answer-3 answered Korean and Russian in English)", () => {
+    expect(answerPrompt(body(), '🪷', true).system).toContain(
+      "Every part is in the message's language, never in English or Vietnamese unless the message is",
+    );
   });
 
   it('names treatments only as the details do, and never invites the guest to a business that goes to them', () => {
