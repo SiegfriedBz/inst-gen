@@ -10,7 +10,7 @@ import type { QuestionBody } from './question';
 // sentence to copy (docs/specs/posts/day-and-night-copy). Bump the version
 // with every change.
 
-export const ANSWER_PROMPT_VERSION = 'answer-6';
+export const ANSWER_PROMPT_VERSION = 'answer-7';
 
 const LANGUAGES: Record<ScreenLocale, string> = {
   en: 'English',
@@ -20,20 +20,20 @@ const LANGUAGES: Record<ScreenLocale, string> = {
 
 function callToAction(final: boolean): string {
   return final
-    ? '"callToAction": one sentence that asks the guest to book now, asking only for what the guest has not told yet under "What the guest has told": the day, the time, and where they are staying, for a business that goes to its guests ("Goes to its guests: yes"). When nothing is missing, ask them to confirm the booking with those details. No phone number and no link: the owner pastes the answer in the chat where the guest asked.'
+    ? '"callToAction": one sentence that asks the guest to book now, asking only for what the guest has not told yet under "What the guest has told": the day, the time, and where they are staying, for a business that goes to its guests ("Goes to its guests: yes"), naming each detail still missing, the day too. When nothing is missing, ask them to confirm the booking with those details. No phone number and no link: the owner pastes the answer in the chat where the guest asked.'
     : // The gentle offer ("The gentle offer"), as decision 0009 reads the
       // libraries: one next step, easy to take, and no hard sell (IG
       // references/voice-rules.md at 550d3cf); make the first step easy, and
       // urgency only when it is real (CH marketing-psychology/SKILL.md at
       // 96798cf).
-      '"callToAction": the gentle offer that ends the answer: one short sentence, in your own words, that makes booking feel easy and welcome, from the details; for a business that goes to its guests: when the guest stays in a place "Where it goes" names, that a therapist comes to them there, naming that place as the guest put it; when they have not said where they stay, that a therapist comes to them in the areas the business covers; when they stay anywhere else, the offer never says a therapist comes to them: it names the areas the business covers, or offers to help once the team has checked. One next step, easy to take. It never presses: no "book now", no deadline, no urgency or scarcity, no discount. It asks for no day, time or place, and names no day or time: the details do not say what is free. A statement, or a short question the guest can answer yes to; never a question with no next step. When "sexual" is true, leave the callToAction\'s text empty and its translation null. No phone number and no link.';
+      '"callToAction": the gentle offer that ends the answer: one short sentence, in your own words, that makes booking feel easy and welcome, from the details; for a business that goes to its guests: when the guest stays in a place "Where it goes" names, that a therapist comes to them there, naming that place as the guest put it; when they have not said where they stay, that a therapist comes to them in the areas the business covers; when they stay anywhere else, the offer never says a therapist comes to them: it names the areas the business covers, or offers to help once the team has checked. One next step, easy to take. It never presses: no "book now", no deadline, no urgency or scarcity, no discount. It never asks where they stay or which area, nor the day or the time (the final answer does that), and names no day or time: the details do not say what is free. A statement, or a short question the guest can answer yes to; never a question with no next step. When "sexual" is true, leave the callToAction\'s text empty and its translation null. No phone number and no link.';
 }
 
 // Only the areas the website lists (docs/specs/reviews/better-replies-and-answers,
 // "Only the areas the website lists"): the model can't tell where "further
 // out" stops, so any other place is the owner's to check.
 const AREAS_RULE =
-  'Say a therapist comes to a place only when "Where it goes" names it, or one of the neighbourhoods it lists. For any other place (one it does not name, or a hotel named without its area), no part says a therapist comes there, promises the travel terms, or names that place in the gentle offer: say the team will check whether they can come there and reply, and set "unanswered" to true. The gentle offer may name the areas the business covers instead.';
+  'Say a therapist comes to a place only when "Where it goes" names it, or one of the neighbourhoods it lists, or the business\'s own town ("Town"). For any other place (one it does not name, or a hotel named without its area), no part says a therapist comes there, promises the travel terms, or names that place in the gentle offer: say the team will check whether they can come there and reply, and set "unanswered" to true; still answer the rest of the message from the details, such as whether a time falls within "Hours". The gentle offer may name the areas the business covers instead.';
 
 // Only when the website is known ("The website, only when asked"): code puts
 // the address in place of {website}, so it is never a page that doesn't exist.

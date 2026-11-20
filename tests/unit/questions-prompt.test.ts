@@ -42,7 +42,7 @@ const withBusiness = (over: Partial<QuestionBody['business']>, rest: Partial<Que
 
 describe('answerPrompt', () => {
   it('has a version', () => {
-    expect(ANSWER_PROMPT_VERSION).toBe('answer-6');
+    expect(ANSWER_PROMPT_VERSION).toBe('answer-7');
   });
 
   it('gives the rules of the spec', () => {
@@ -78,6 +78,10 @@ describe('answerPrompt', () => {
       'Say a therapist comes to a place only when "Where it goes" names it, or one of the neighbourhoods it lists',
     );
     expect(system).toContain('say the team will check whether they can come there and reply');
+    // After the final review: the business's own town counts ("anywhere in Da Nang is fine"),
+    // and answer-6 left a guest's question about the hours unanswered.
+    expect(system).toContain("or the business's own town");
+    expect(system).toContain('still answer the rest of the message');
     // answer-4's offer still said "A therapist can come to you where you are staying".
     expect(system).toContain('the offer never says a therapist comes to them');
     expect(answerPrompt(withBusiness({ serviceArea: null }), '🪷', true).system).not.toContain(
@@ -123,6 +127,8 @@ describe('answerPrompt', () => {
       '"callToAction": the gentle offer',
       'names no day or time',
       'never a question with no next step',
+      // answer-6's offer asked which area the hotel is in.
+      'never asks where they stay or which area',
       'When "sexual" is true, leave the callToAction\'s text empty and its translation null',
       'naming that place as the guest put it',
       'Never reuse a phrase from these instructions',
@@ -140,6 +146,8 @@ describe('answerPrompt', () => {
       'asks the guest to book now, asking only for what the guest has not told yet',
     );
     expect(final).toContain('where they are staying, for a business that goes to its guests');
+    // answer-6's call to book left the day out.
+    expect(final).toContain('naming each detail still missing');
     expect(final).not.toContain('"callToAction": the gentle offer');
   });
 

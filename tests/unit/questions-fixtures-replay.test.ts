@@ -93,6 +93,8 @@ describe('recorded answers', () => {
       if (/\bcom(?:e|es|ing)\b[^.!?]*\byou\b/i.test(offer)) {
         expect(offer, offer).toMatch(/Canggu|Pererenan|Seminyak|Kerobokan/);
       }
+      // The hours answer the guest's "open at 10pm?" (answer-6 left it out).
+      expect(answer.answer.text, answer.answer.text).toMatch(/23[:.]00|11 ?p\.?m/i);
       for (const sentence of answer.answer.text.split(/(?<=[.!?])\s+|\n+/)) {
         if (/uluwatu/i.test(sentence)) expect(sentence, sentence).toMatch(/check|outside/i);
       }
@@ -131,6 +133,14 @@ describe('recorded answers', () => {
       expect(last).toBe(recordedCall(fixture));
     } else if (recordedCall(fixture) !== '') {
       expect(plain(answer.answer.text)).not.toContain(recordedCall(fixture));
+    }
+
+    // A gentle offer asks nothing about where the guest stays (answer-6's did);
+    // a final answer in English names the day when the guest hasn't said it.
+    const offer = answer.answer.text.split('\n\n').at(-1) ?? '';
+    if (!fixture.final) expect(offer, offer).not.toMatch(/\b(?:which area|where)\b/i);
+    if (fixture.final && fixture.language === 'en' && !fixture.known.day) {
+      expect(offer, offer).toMatch(/\bday\b/i);
     }
 
     // The website only for the guest who asked for photos.

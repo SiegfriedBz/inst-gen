@@ -332,7 +332,12 @@ Approved by the maintainer, 2026-11-20T10:21:00Z.
 - An answer says a therapist comes to a place only when the service area
   names it, or one of the neighbourhoods it lists: for Svarga, Canggu,
   Pererenan, Seminyak, Kerobokan and theirs; for Sen, My Khe, Son Tra, Hai
-  Chau, Non Nuoc and theirs.
+  Chau, Non Nuoc and theirs. The business's own town counts too, after the
+  final review (the maintainer: "anywhere in Da Nang is fine"): Sen's answers
+  may say a therapist comes anywhere in Da Nang; Svarga's town, Canggu, is
+  already among its areas.
+- The team checks only that place: the answer still answers the rest of the
+  message from the details, such as whether a time falls within the hours.
 - For any other place, such as Uluwatu or a hotel named without its area, no
   part of the answer says a therapist comes there, promises the travel
   terms, or names it in the gentle offer. The answer says the team will check
