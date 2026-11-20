@@ -345,7 +345,8 @@ Approved by the maintainer, 2026-11-20T10:21:00Z.
 
 ### Prompt versions
 
-`reply-3` and `answer-2`.
+`reply-3` and `answer-2`; after five rounds of recordings, `reply-5` and
+`answer-6` (the journal says what each round changed).
 
 ### Prompt and eval
 

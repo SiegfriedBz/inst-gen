@@ -11,6 +11,11 @@ const NUMBER = /\d[\d.,]*\s?[kK]?\b/g;
 const DURATION = /(\d+(?:[.,]\d+)?)\s?(minutes?|mins?|hours?|hrs?|h)\b/gi;
 const PHONE = /\+?\d[\d\s().-]*\d/g;
 const PHONE_DIGITS = 8;
+// A language written without spaces glues its endings to a number ("800k이며"):
+// a space keeps the price whole (docs/specs/reviews/better-replies-and-answers,
+// round 5 of the recordings).
+const GLUED =
+  /(\d[kK]?)(?=[\p{Script=Hangul}\p{Script=Han}\p{Script=Hiragana}\p{Script=Katakana}\p{Script=Thai}\p{Script=Cyrillic}])/gu;
 
 // 250k → 250000, 350.000đ → 350000, as the posts' price check reads them.
 function amount(text: string): number {
@@ -30,7 +35,8 @@ function minutes(value: string, unit: string): number {
   return unit.toLowerCase().startsWith('h') ? n * 60 : n;
 }
 
-export function answerFlags(text: string, business: QuestionBody['business']): AnswerFlag[] {
+export function answerFlags(answer: string, business: QuestionBody['business']): AnswerFlag[] {
+  const text = answer.replace(GLUED, '$1 ');
   const prices = new Set(
     business.offerings.flatMap((o) => o.price?.match(NUMBER) ?? []).map((p) => amount(p)),
   );

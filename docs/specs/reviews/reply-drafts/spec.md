@@ -148,7 +148,7 @@ owner's edits, the screen language they were made in, and when.
 
 ### The replies
 
-> Changed by `reviews/better-replies-and-answers` (2026-11-20): a business that goes to its guests offers to come to them again and never invites them back; the model gets the treatment names and never takes the guest's words for one; 3 or 4 short sentences; the posts' rules on words; only 🙏, 😊 (none after a complaint) and the flower, the flower last, no stop before an emoji.
+> Changed by `reviews/better-replies-and-answers` (2026-11-20): a business that goes to its guests offers to come to them again and never invites them back; the model gets the treatment names and never takes the guest's words for one; 3 or 4 short sentences; the posts' rules on words; only 🙏, 😊 (none after a complaint) and the flower, the flower last, no stop before an emoji; replies in the guest's letters, or code refuses them.
 
 What the model is asked for, and what code makes sure of:
 
