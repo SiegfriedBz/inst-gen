@@ -84,6 +84,16 @@ function laterRules(body: QuestionBody, flower: string): string[] {
   ];
 }
 
+type Offering = QuestionBody['business']['offerings'][number];
+
+// One length as the details write it, "60 min, $19 VND 500k".
+export const lengthLine = (length: Offering['lengths'][number]) =>
+  [length.duration, length.price].filter(Boolean).join(', ');
+
+// A treatment's lengths on its line of the details, "60 min, $19 VND 500k; 90
+// min, $27 VND 700k" (docs/specs/questions/first-answer).
+export const lengthsOf = (o: Offering) => o.lengths.map(lengthLine).filter(Boolean).join('; ');
+
 function sexRule(spa: boolean): string {
   return spa
     ? '"sexual": true when the message asks for sex, a sexual service or anything more than a professional massage, or mentions sex at all, in any language and with any euphemism. "professionalOnly": always one sentence, in the language of the message, saying the business offers only professional therapeutic massage. When "sexual" is true, the answer is calm, short and polite, with no emoji; it never repeats the guest\'s words, never jokes, and speaks only of the real treatments.'
@@ -127,10 +137,7 @@ export function answerPrompt(
   const script = guestScript(body.question);
   // Every length with its price (docs/specs/questions/first-answer).
   const treatments = b.offerings.map((o) => {
-    const lengths = o.lengths
-      .map((length) => [length.duration, length.price].filter(Boolean).join(', '))
-      .filter(Boolean)
-      .join('; ');
+    const lengths = lengthsOf(o);
     return `- ${o.name}${lengths ? ` (${lengths})` : ''}${o.description ? `: ${o.description}` : ''}`;
   });
   const contact = [

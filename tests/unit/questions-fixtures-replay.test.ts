@@ -108,6 +108,13 @@ function checkFirst(
       const digits = length.price ? longestDigits(length.price) : undefined;
       if (digits) expect(joined(text), text).toContain(digits);
     }
+    // One length a line (answer-9 copied the details' line: final review).
+    const lines = text.split('\n');
+    const rows = (treatment?.lengths ?? []).map((length) => {
+      const minutes = length.duration?.match(/\d+/)?.[0] ?? '';
+      return lines.findIndex((line) => new RegExp(`\\b${minutes}\\b`).test(line));
+    });
+    expect(new Set(rows).size, text).toBe(rows.length);
     for (const other of names.filter((name) => name !== named)) {
       expect(lower, other).not.toContain(other.toLowerCase());
     }

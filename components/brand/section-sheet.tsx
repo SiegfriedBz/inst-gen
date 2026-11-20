@@ -154,10 +154,12 @@ function LengthRows({
           </button>
         </div>
       ))}
+      {/* Seven would not save (docs/specs/questions/first-answer, final review). */}
       <button
         type="button"
+        disabled={lengths.length >= LIMITS.lengths}
         onClick={() => onChange([...lengths, { duration: '', price: '' }])}
-        className={addButton}
+        className={`${addButton} disabled:opacity-40`}
       >
         <Plus aria-hidden size={16} />
         {l.item('addLength')}

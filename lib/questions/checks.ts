@@ -2,6 +2,7 @@ import { isSpa } from '@/lib/posts/emoji';
 import { sameLanguage, withoutBanned, withoutSentences } from '@/lib/reviews/checks';
 import { type EmojiRule, endSentence, keepEmoji } from '@/lib/reviews/emoji';
 import { guestScript, holdsScript } from '@/lib/reviews/script';
+import { lengthLine, lengthsOf } from './answer-prompt';
 import { answerFlags } from './flags';
 import {
   type AnswerResponse,
@@ -102,6 +103,22 @@ export function endOnPair(text: string, flower: string): string {
   return `${bare} 😊${flower}`;
 }
 
+// A named treatment's lengths one a line: the model may copy the details' line
+// for it, "- Thai Massage (60 min, …; 90 min, …)" (docs/specs/questions/first-answer,
+// final review). Code writes its name, then each length on its own line.
+function lengthsOnTheirLines(text: string, body: QuestionBody): string {
+  return text
+    .split('\n')
+    .flatMap((line) => {
+      const named = body.business.offerings.find(
+        (o) => o.lengths.length > 1 && line.trim().startsWith(`- ${o.name} (${lengthsOf(o)})`),
+      );
+      if (!named) return [line];
+      return [named.name, ...named.lengths.map((length) => `- ${lengthLine(length)}`)];
+    })
+    .join('\n');
+}
+
 type Texts = { text: string; translation: string | null };
 type Clean = (text: string | null) => string;
 
@@ -121,7 +138,7 @@ function firstTexts(
   const bare = (text: string | null) => keepEmoji(clean(text), { keep: [], flower: null });
   const parts = (pick: (part: ModelAnswer['greeting']) => string | null) => ({
     greeting: bare(pick(model.greeting)),
-    answer: bare(pick(model.answer)),
+    answer: lengthsOnTheirLines(bare(pick(model.answer)), body),
     cta: body.final ? bare(pick(model.callToAction)) : '',
     closing: bare(pick(model.closing)),
   });

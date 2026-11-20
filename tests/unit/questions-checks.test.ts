@@ -330,6 +330,27 @@ describe('the first answer', () => {
     );
   });
 
+  // answer-9 copied the details' line for the named massage (final review).
+  it("puts each length of a named treatment on its own line when the model copies the details' line", () => {
+    const thai = {
+      name: 'Thai Massage',
+      lengths: [
+        { duration: '60 min', price: '$19 VND 500k' },
+        { duration: '90 min', price: '$27 VND 700k' },
+      ],
+    };
+    const b = sen({
+      business: { ...body().business, website: 'https://sendanangmassage.com/', offerings: [thai] },
+    });
+    const built = buildAnswer(
+      firstModel({ answer: part('- Thai Massage (60 min, $19 VND 500k; 90 min, $27 VND 700k)') }),
+      ctx(b),
+    );
+    expect(built?.answer.text.split('\n\n')[1]).toBe(
+      'Thai Massage\n- 60 min, $19 VND 500k\n- 90 min, $27 VND 700k',
+    );
+  });
+
   it('fails without its closing', () => {
     expect(buildAnswer(firstModel({ closing: part('', null) }), ctx(sen()))).toBeNull();
   });

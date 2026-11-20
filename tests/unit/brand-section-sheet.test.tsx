@@ -124,6 +124,16 @@ describe('SectionSheet', () => {
     ]);
   });
 
+  // Seven lengths would not save, and no field said why (final review).
+  test('stops adding lengths at six', () => {
+    renderSheet('business', svargaProfile());
+    const list = screen.getByRole('group', { name: 'Services and prices' });
+    const add = within(list).getByRole('button', { name: 'Add a duration' }) as HTMLButtonElement;
+    for (let i = 0; i < 5; i++) fireEvent.click(add);
+    expect(within(list).getAllByLabelText('Duration')).toHaveLength(6);
+    expect(add.disabled).toBe(true);
+  });
+
   test('a tone word can be added as a chip and removed', async () => {
     const { onSave } = renderSheet('feeling');
     const tone = screen.getByRole('group', { name: 'Your tone' });
