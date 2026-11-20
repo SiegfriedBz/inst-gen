@@ -99,6 +99,25 @@ price, the website read and "Your business" change too.
 - Both boxes may be ticked: a final first answer ("With 'Make it the final
   answer'").
 
+Amended 2026-11-20, after the final review: an owner who ticked the box for a
+new guest after "Paste the next message", without "New conversation", still
+sent the previous guest's place, day and time with the message, so the hello
+line or a final answer's call to book could name the wrong hotel, day or time.
+Asked whether the screen should hide those details too, the maintainer
+answered "Yes, hide it".
+Approved by the maintainer, 2026-11-20T15:35:57Z.
+
+- When the box is ticked, "Write an answer" and "Write another answer" send
+  none of the details kept for the conversation: the answer starts from what
+  this message tells, and its details replace the kept ones.
+- After "Paste the next message", while the box is ticked, "What this guest
+  has told you" doesn't show, nor its "New conversation" button and hint.
+  Unticking the box shows them again. With an answer on screen, its details
+  stay shown, ticked or not; the next answer's details replace them.
+- Vitest: ticked after "Paste the next message", the box hides the kept
+  details and the request holds none; unticked, they show and are sent;
+  "Write another answer" with the box ticked sends none.
+
 ### The first answer
 
 In the guest's language, as every answer is, in three paragraphs:

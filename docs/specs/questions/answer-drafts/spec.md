@@ -113,6 +113,8 @@ A language switch keeps the answer and the language of its translation.
 
 ### What this guest has told you
 
+> Changed by `questions/first-answer` (amended 2026-11-20): while "First message from this guest" is ticked, the request holds none of the kept details, and the answer's details replace them; after "Paste the next message", ticking it hides "What this guest has told you".
+
 The final answer asks for the day, the time and where the guest is staying.
 A guest often gives them along the way, in an earlier message. So the tab
 keeps them for the conversation, and the final answer asks only for those

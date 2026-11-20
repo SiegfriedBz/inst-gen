@@ -378,6 +378,16 @@ describe('endOnPair', () => {
     expect(endOnPair('Shall we?', '🌼')).toBe('Shall we? 😊🌼');
     expect(endOnPair('See you...', '🪷')).toBe('See you... 😊🪷');
   });
+
+  it('drops a final ",", ";" or ":" as it drops a stop', () => {
+    expect(endOnPair('A therapist comes to you,', '🪷')).toBe('A therapist comes to you 😊🪷');
+    expect(endOnPair('A therapist comes to you;', '🌼')).toBe('A therapist comes to you 😊🌼');
+    expect(endOnPair('Thank you for your message:', '🌸')).toBe('Thank you for your message 😊🌸');
+    // French puts a space before ";" and ":".
+    expect(endOnPair('Une thérapeute vient chez vous :', '🪷')).toBe(
+      'Une thérapeute vient chez vous 😊🪷',
+    );
+  });
 });
 
 describe('mergeGuest', () => {
