@@ -156,6 +156,8 @@ the full list). Records change nothing. Other languages are read back.
 
 #### Emojis
 
+> Changed by `questions/first-answer` (2026-11-20): a first answer holds two 😊 and two flowers, a pair ending its hello line and its closing, placed by code.
+
 Three emoji only: 🙏 (replies), 😊, and the business's flower, chosen by
 code from its country as today (Vietnam 🪷, Indonesia 🌼, anywhere else 🌸).
 
@@ -293,6 +295,8 @@ replies or review replies. CH `sms/references/whatsapp.md` adds only what
 the app already does: short messages, one or two emoji.
 
 #### The website, only when asked
+
+> Changed by `questions/first-answer` (2026-11-20): a first answer that names no massage gives the website, even when the guest asks which massages there are; it never lists them.
 
 - The answer request adds **`website`**: the address the business's details
   were read from (the profile's site address).
