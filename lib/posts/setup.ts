@@ -410,6 +410,15 @@ const CAMERAS: Record<Setup['scene'], string> = {
   guest: 'from above',
 };
 
+// Who is in a post's image, beside its reason to book: the caption names as
+// many therapists as the image shows (docs/specs/posts/reasons-to-book,
+// amended 2026-11-23).
+export function peopleOf(setup: Setup): string {
+  const guests = setup.guests === 'couple' ? 'two guests' : 'one guest';
+  const therapists = setup.therapists === 2 ? 'two therapists' : 'one therapist';
+  return `${guests}, ${therapists}`;
+}
+
 export function setupLine(setup: Setup): string {
   const what = setup.treatment ?? 'A massage';
   return `${what}: ${GUESTS[setup.guests]} ${lookWords(setup)}; the ${setup.bodyPart}; scene ${setup.scene}, ${CAMERAS[setup.scene]}; ${setup.light ?? 'day'}.`;

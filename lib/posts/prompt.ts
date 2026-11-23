@@ -4,7 +4,7 @@ import { FLOWERS } from './emoji';
 import type { PostsModelInput } from './input';
 import { OFFER_LIMITS, type Offer } from './offer';
 import { offerLine, offerTreatment } from './offer-line';
-import { QUESTIONS, type Question, type Setup, setupLine } from './setup';
+import { peopleOf, QUESTIONS, type Question, type Setup, setupLine } from './setup';
 
 // The post plan's prompts (docs/specs/posts/generate-copy, "What the model
 // writes"); the day or night light, the open room and the sign of the guest's
@@ -190,7 +190,10 @@ export function planUserText(
     if (kinds.length) text = `${text}\n\n### Questions\n${kinds.join('\n')}`;
     // Each post's reason to book, then its fact, for a business that comes to
     // its guests (docs/specs/posts/reasons-to-book).
-    const reasons = setups.flatMap((s, i) => (s.reason ? [`${i + 1}. ${s.reason}`] : []));
+    // Each with who is in its image (amended 2026-11-23).
+    const reasons = setups.flatMap((s, i) =>
+      s.reason ? [`${i + 1}. ${s.reason}: ${peopleOf(s)}`] : [],
+    );
     if (reasons.length) text = `${text}\n\n### Reasons\n${reasons.join('\n')}`;
     const facts = setups.flatMap((s, i) => (s.fact ? [`${i + 1}. ${s.fact}`] : []));
     if (facts.length) text = `${text}\n\n### Facts\n${facts.join('\n')}`;
@@ -231,6 +234,9 @@ export function rewriteUserText(input: PostsModelInput, posts: Post[], offer?: O
       ...(setup?.question ? { question: setup.question } : {}),
       // Its reason and fact (docs/specs/posts/reasons-to-book).
       ...(setup?.reason ? { reason: setup.reason } : {}),
+      // How many therapists its image shows, beside its reason (amended
+      // 2026-11-23, after the second recordings).
+      ...(setup?.reason ? { therapists: setup.therapists } : {}),
       ...(setup?.fact ? { fact: setup.fact } : {}),
       caption,
       imagePrompt,
@@ -280,6 +286,8 @@ export function newTextsUserText(
     light: setup?.light ?? 'day',
     ...(setup?.question ? { question: setup.question } : {}),
     ...(setup?.reason ? { reason: setup.reason } : {}),
+    // How many therapists its image shows (amended 2026-11-23).
+    ...(setup?.reason ? { therapists: setup.therapists } : {}),
     ...(setup?.fact ? { fact: setup.fact } : {}),
     // The words now, named so the model doesn't take them for its answer.
     captionNow: caption,

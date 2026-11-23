@@ -16,6 +16,7 @@ import {
   reasonsRewritePrompt,
 } from '@/lib/posts/reasons-prompt';
 import { SAMPLES, samplesText } from '@/lib/posts/samples';
+import { peopleOf } from '@/lib/posts/setup';
 import { svargaProfile } from './helpers/brand';
 import { post, setupAt } from './helpers/posts';
 
@@ -108,11 +109,44 @@ describe('the user texts', () => {
 
   it('the plan lists each reason, then each fact, after the image set-ups', () => {
     const text = planUserText(input, [], undefined, [laptop, stayIn]);
-    expect(text).toContain('### Reasons\n1. laptop\n2. stayIn');
+    expect(text).toContain(
+      '### Reasons\n1. laptop: one guest, one therapist\n2. stayIn: one guest, one therapist',
+    );
     expect(text.endsWith(`### Facts\n1. ${fact}`)).toBe(true);
     expect(text.indexOf('### Image set-ups')).toBeLessThan(text.indexOf('### Reasons'));
     expect(text.indexOf('### Reasons')).toBeLessThan(text.indexOf('### Facts'));
     expect(text).not.toContain('### Questions');
+  });
+
+  // Amended 2026-11-23, after the second recordings: who is in each image.
+  const fourHands = setupAt('night', {
+    reason: 'firstNight',
+    look: 'fourHands',
+    guests: 'woman',
+    therapists: 2,
+  });
+  const couple = setupAt('day', {
+    reason: 'twoOfYou',
+    look: 'couple',
+    guests: 'couple',
+    therapists: 2,
+  });
+
+  it('each reason line says its guests and therapists', () => {
+    expect(peopleOf(laptop)).toBe('one guest, one therapist');
+    expect(peopleOf(fourHands)).toBe('one guest, two therapists');
+    expect(peopleOf(couple)).toBe('two guests, two therapists');
+    const text = planUserText(input, [], undefined, [fourHands, couple]);
+    expect(text).toContain(
+      '### Reasons\n1. firstNight: one guest, two therapists\n2. twoOfYou: two guests, two therapists',
+    );
+  });
+
+  it('a plan without reasons says nothing of its guests and therapists', () => {
+    const { reason: _, ...plain } = laptop;
+    const text = planUserText(input, [], undefined, [plain]);
+    expect(text).not.toContain('### Reasons');
+    expect(text).not.toContain('one therapist');
   });
 
   const sent = (text: string, heading: string) => {
@@ -129,6 +163,26 @@ describe('the user texts', () => {
     expect('fact' in b).toBe(false);
     const [bare] = sent(rewriteUserText(input, [post({ id: 'c' })]), '### Posts');
     expect('reason' in bare).toBe(false);
+  });
+
+  it('a caption update and new texts give each post with a reason its therapists', () => {
+    const { reason: _, ...reasonless } = laptop;
+    const posts = [
+      post({ id: 'a', setup: laptop }),
+      post({ id: 'b', setup: fourHands }),
+      post({ id: 'c', setup: reasonless }),
+      post({ id: 'd' }),
+    ];
+    const [a, b, c, d] = sent(rewriteUserText(input, posts), '### Posts');
+    expect(a.therapists).toBe(1);
+    expect(b.therapists).toBe(2);
+    expect('therapists' in c).toBe(false);
+    expect('therapists' in d).toBe(false);
+    const one = sent(
+      newTextsUserText(input, post({ id: 'b', setup: fourHands }), undefined),
+      '### Post',
+    );
+    expect(one.therapists).toBe(2);
   });
 
   it('new texts give the post its reason and fact', () => {
