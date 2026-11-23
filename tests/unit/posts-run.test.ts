@@ -4,11 +4,15 @@ import { type TextModel, toModelStream } from '@/lib/ai/text-model';
 import { profileHash } from '@/lib/posts/input';
 import type { PostsLog } from '@/lib/posts/log';
 import type { Offer } from '@/lib/posts/offer';
+import { planPrompt } from '@/lib/posts/prompt';
+import { LOOK_REASONS } from '@/lib/posts/reasons';
+import { reasonsPlanPrompt } from '@/lib/posts/reasons-prompt';
 import { streamNewTexts, streamPlan, streamRewrite } from '@/lib/posts/run';
+import { SAMPLES } from '@/lib/posts/samples';
 import { dealSetups, seededRandom, setupLine } from '@/lib/posts/setup';
 import type { PostsLine } from '@/lib/posts/stream';
-import { svargaProfile } from './helpers/brand';
-import { modelPost, planRecording, post } from './helpers/posts';
+import { SITE, svargaProfile } from './helpers/brand';
+import { modelPost, planRecording, post, setupAt } from './helpers/posts';
 
 const brand = { modelId: 'm', promptVersion: 'p', partials: [], final: {} };
 
@@ -23,6 +27,14 @@ function deps(model: TextModel, extra: { timeoutMs?: number; log?: (e: PostsLog)
 }
 
 const body = () => ({ profile: svargaProfile(), recent: [] });
+
+// A spa guests go to: no service area, so posts-18 and its set-ups
+// (docs/specs/posts/reasons-to-book, "Who it's for").
+const atTheSpa = () => ({
+  ...svargaProfile(),
+  location: { ...svargaProfile().location, serviceArea: null },
+});
+const spaBody = () => ({ profile: atTheSpa(), recent: [] });
 
 describe('streamPlan', () => {
   // Two suggestions an attempt (docs/specs/posts/two-suggestions).
@@ -94,14 +106,16 @@ describe('streamPlan', () => {
 
   test('final carries the prompt version, the model and the profile hash', async () => {
     const model = replayTextModel(brand, { posts: planRecording() });
-    const lines = await drain(streamPlan(body(), deps(model), new AbortController().signal));
+    // A spa guests go to keeps the other businesses' prompt, posts-19 since
+    // docs/specs/posts/normal-bodies (docs/specs/posts/reasons-to-book).
+    const lines = await drain(streamPlan(spaBody(), deps(model), new AbortController().signal));
     const final = lines.at(-1);
     expect(final).toMatchObject({
       type: 'final',
       result: {
-        promptVersion: 'posts-18',
+        promptVersion: 'posts-19',
         model: 'gemini-3.5-flash-lite',
-        profileHash: profileHash(svargaProfile()),
+        profileHash: profileHash(atTheSpa()),
       },
     });
     if (final?.type !== 'final') throw new Error('no final');
@@ -476,7 +490,7 @@ describe('the special offer', () => {
 });
 
 describe('the image set-ups', () => {
-  const dealt = () => dealSetups(svargaProfile(), undefined, seededRandom('t'));
+  const dealt = () => dealSetups(atTheSpa(), undefined, seededRandom('t'));
 
   function recordingOf(posts: ReturnType<typeof modelPost>[]) {
     return {
@@ -489,7 +503,7 @@ describe('the image set-ups', () => {
 
   async function finalOf(recording: ReturnType<typeof planRecording>) {
     const model = replayTextModel(brand, { posts: recording });
-    const lines = await drain(streamPlan(body(), deps(model), new AbortController().signal));
+    const lines = await drain(streamPlan(spaBody(), deps(model), new AbortController().signal));
     const final = lines.at(-1);
     if (final?.type !== 'final') throw new Error('no final');
     return { lines, result: final.result };
@@ -536,7 +550,7 @@ describe('the image set-ups', () => {
         return inner.streamPostPlan(input, signal);
       },
     };
-    await drain(streamPlan(body(), deps(model), new AbortController().signal));
+    await drain(streamPlan(spaBody(), deps(model), new AbortController().signal));
     expect(text).toContain('### Image set-ups');
     expect(text).toContain(`1. ${setupLine(dealt()[0])}`);
   });
@@ -544,5 +558,300 @@ describe('the image set-ups', () => {
   test('the image prompts are checked against their set-ups', async () => {
     const { result } = await finalOf(planRecording());
     expect(result.dropped.some((d) => d.field === 'image')).toBe(true);
+  });
+});
+
+// docs/specs/posts/reasons-to-book: a spa that comes to its guests.
+describe('reasons to book in the runs', () => {
+  const signal = () => new AbortController().signal;
+  const answerOf = (posts: unknown[]) => {
+    const answer = { posts };
+    return { modelId: 'm', promptVersion: 'posts-20', partials: [answer], final: answer };
+  };
+  const planOf = (posts: ReturnType<typeof modelPost>[]) => ({
+    modelId: 'm',
+    promptVersion: 'posts-20',
+    partials: posts.map((_, i) => ({ posts: posts.slice(0, i + 1) })),
+    final: { posts },
+  });
+  function spying(recording: object) {
+    const seen: { system: string; text: string }[] = [];
+    const inner = replayTextModel(brand, { posts: recording as ReturnType<typeof planRecording> });
+    const model: TextModel = {
+      ...inner,
+      streamPostPlan(input, s) {
+        seen.push(input);
+        return inner.streamPostPlan(input, s);
+      },
+      streamPostRewrite(input, s) {
+        seen.push(input);
+        return inner.streamPostRewrite(input, s);
+      },
+    };
+    return { model, seen };
+  }
+  async function finalOf(lines: AsyncIterable<PostsLine>) {
+    const all = await drain(lines);
+    const final = all.at(-1);
+    if (final?.type !== 'final') throw new Error('no final');
+    return final.result;
+  }
+  const tipped = () => [modelPost(0), { ...modelPost(1), type: 'tip' }];
+  const OFFER: Offer = {
+    kind: 'discount',
+    percent: 10,
+    treatments: ['Balinese massage'],
+    until: '2026-12-01',
+    lastDay: 'Tuesday 1 December',
+  };
+  const withHighlights = (values: string[], hours = svargaProfile().hours) => ({
+    ...svargaProfile(),
+    highlights: values.map((value) => ({ value, source: SITE })),
+    hours,
+  });
+
+  test('a plan with posts-20, its reasons and facts, and the types code gives', async () => {
+    const { model, seen } = spying(planOf(tipped()));
+    const entries: PostsLog[] = [];
+    const result = await finalOf(
+      streamPlan(body(), deps(model, { log: (e) => entries.push(e) }), signal()),
+    );
+    // Without the samples of its two reasons (amended 2026-11-23).
+    const reasons = result.posts.flatMap((p) => (p.setup?.reason ? [p.setup.reason] : []));
+    expect(seen[0].system).toBe(reasonsPlanPrompt(false, true, reasons));
+    expect(seen[0].text).toContain('### Reasons');
+    expect(seen[0].text).toContain('### Facts');
+    expect(result.promptVersion).toBe('posts-20');
+    expect(entries[0].promptVersion).toBe('posts-20');
+    expect(result.posts.map((p) => p.type)).toEqual(['offer', 'moment']);
+    for (const p of result.posts) expect(p.setup?.reason).toBeDefined();
+  });
+
+  test('with an offer, both are offer posts', async () => {
+    const { model } = spying(planOf(tipped()));
+    const result = await finalOf(streamPlan({ ...body(), offer: OFFER }, deps(model), signal()));
+    expect(result.posts.map((p) => p.type)).toEqual(['offer', 'offer']);
+  });
+
+  test('a spa guests go to keeps the prompt of other businesses', async () => {
+    const { model, seen } = spying(planRecording(2));
+    const result = await finalOf(streamPlan(spaBody(), deps(model), signal()));
+    expect(seen[0].system).toBe(planPrompt(false, true));
+    expect(seen[0].text).toContain('### Questions');
+    expect(result.promptVersion).toBe('posts-19');
+  });
+
+  test("the recent posts' reasons stay out of the next attempt", async () => {
+    const { model } = spying(planRecording(2));
+    const recent = [
+      { type: 'offer' as const, topic: 'a', reason: 'dayOut' as const },
+      { type: 'moment' as const, topic: 'b', reason: 'stayIn' as const },
+    ];
+    const result = await finalOf(
+      streamPlan({ profile: svargaProfile(), recent }, deps(model), signal()),
+    );
+    const reasons = result.posts.map((p) => p.setup?.reason);
+    for (const reason of reasons) expect(reason).toBeDefined();
+    expect(reasons).not.toContain('dayOut');
+    expect(reasons).not.toContain('stayIn');
+  });
+
+  test('the model never sees a highlight that turns a request away', async () => {
+    const { model, seen } = spying(planRecording(2));
+    const profile = withHighlights([
+      'Professional therapeutic massage only',
+      'No upfront deposit required',
+    ]);
+    await drain(streamPlan({ profile, recent: [] }, deps(model), signal()));
+    expect(seen[0].text).not.toContain('Professional therapeutic massage only');
+  });
+
+  test('no highlight and no hours: a checked batch, and no facts', async () => {
+    const { model, seen } = spying(planRecording(2));
+    const result = await finalOf(
+      streamPlan({ profile: withHighlights([], null), recent: [] }, deps(model), signal()),
+    );
+    expect(result.posts.length).toBeGreaterThan(0);
+    expect(seen[0].text).toContain('### Reasons');
+    expect(seen[0].text).not.toContain('### Facts');
+    for (const p of result.posts) expect(p.setup?.fact).toBeUndefined();
+  });
+
+  test('a caption update gives a post saved with a kind of question a reason its look takes', async () => {
+    const [asked, second] = dealSetups(atTheSpa(), undefined, seededRandom('t'));
+    const other = { ...second, reason: 'laptop' as const, fact: 'Therapists come to you' };
+    delete other.question;
+    const posts = [post({ id: 'a', setup: asked }), post({ id: 'b', setup: other })];
+    const { model, seen } = spying(
+      answerOf([
+        { id: 'a', caption: 'New a.', hashtags: [], altText: 'x' },
+        { id: 'b', caption: 'New b.', hashtags: [], altText: 'x' },
+      ]),
+    );
+    const result = await finalOf(
+      streamRewrite({ profile: svargaProfile(), posts }, deps(model), signal()),
+    );
+    const reason = result.posts[0].setup?.reason;
+    expect(reason).toBeDefined();
+    expect(LOOK_REASONS[asked.look]).toContain(reason);
+    expect(reason).not.toBe('laptop');
+    expect(seen[0].text).toContain(`"reason": "${reason}"`);
+    expect(result.posts[1].setup?.fact).toBe('Therapists come to you');
+  });
+
+  test('a fact whose highlight is gone is replaced, never sent again', async () => {
+    const gone = 'Free travel in our core areas';
+    const posts = [post({ id: 'a', setup: setupAt('day', { fact: gone }) })];
+    const { model, seen } = spying(
+      answerOf([{ id: 'a', caption: 'New a.', hashtags: [], altText: 'x' }]),
+    );
+    const result = await finalOf(
+      streamRewrite({ profile: svargaProfile(), posts }, deps(model), signal()),
+    );
+    expect(seen[0].text).not.toContain(gone);
+    expect(result.posts[0].setup?.fact).toBe('Therapists come to you');
+  });
+
+  test('a post with no set-up goes as it is', async () => {
+    const { model, seen } = spying(
+      answerOf([{ id: 'a', caption: 'New a.', hashtags: [], altText: 'x' }]),
+    );
+    const result = await finalOf(
+      streamRewrite(
+        { profile: svargaProfile(), posts: [post({ id: 'a' })] },
+        deps(model),
+        signal(),
+      ),
+    );
+    expect(seen[0].system.startsWith('The owner changed')).toBe(true);
+    expect(seen[0].system).toContain('Who reads these posts');
+    expect(seen[0].text).not.toContain('"reason"');
+    expect(result.posts[0].setup).toBeUndefined();
+  });
+
+  // The review of 2026-11-23: a post saved before reasons reaches posts-20
+  // without posts-18's type, topic or kind of question.
+  const sentPosts = (text: string, heading: string) => {
+    const start = text.indexOf(`${heading}\n`) + heading.length + 1;
+    const end = text.indexOf('\n\n###', start);
+    return JSON.parse(text.slice(start, end === -1 ? undefined : end));
+  };
+
+  test('an old tip post goes to a caption update with its reason, not its type, topic or kind', async () => {
+    const [asked] = dealSetups(atTheSpa(), undefined, seededRandom('t'));
+    const old = post({
+      id: 'a',
+      type: 'tip',
+      topic: 'Drink water after your massage',
+      setup: { ...asked, question: 'sore' },
+    });
+    const { model, seen } = spying(
+      answerOf([{ id: 'a', caption: 'New a.', hashtags: [], altText: 'x' }]),
+    );
+    const result = await finalOf(
+      streamRewrite({ profile: svargaProfile(), posts: [old] }, deps(model), signal()),
+    );
+    const [sent] = sentPosts(seen[0].text, '### Posts');
+    expect(sent.reason).toBeDefined();
+    for (const key of ['type', 'topic', 'question']) expect(key in sent).toBe(false);
+    expect(seen[0].text).not.toContain('Drink water');
+    expect(result.posts[0].setup?.question).toBeUndefined();
+  });
+
+  test("new texts for a post saved with a kind of question: a reason its look takes, never the other's", async () => {
+    const [asked, second] = dealSetups(atTheSpa(), undefined, seededRandom('t'));
+    const mine = post({ id: 'a', type: 'local', topic: 'Old topic', setup: asked });
+    const other = post({
+      id: 'b',
+      caption: 'The other caption.',
+      setup: { ...second, question: undefined, reason: 'laptop' },
+    });
+    const { model, seen } = spying(
+      answerOf([
+        { id: 'a', caption: 'New caption.', hashtags: [], altText: '', storyText: 'New story.' },
+      ]),
+    );
+    const result = await finalOf(
+      streamNewTexts({ profile: svargaProfile(), post: mine, other }, deps(model), signal()),
+    );
+    const sent = sentPosts(seen[0].text, '### Post');
+    expect(LOOK_REASONS[asked.look]).toContain(sent.reason);
+    expect(sent.reason).not.toBe('laptop');
+    for (const key of ['type', 'topic', 'question']) expect(key in sent).toBe(false);
+    expect(result.posts[0].setup?.reason).toBe(sent.reason);
+    expect(result.posts[0].setup?.question).toBeUndefined();
+  });
+
+  // The amendment of 2026-11-23: never a post's own reason's sample.
+  const sampleOf = (reason: string) => SAMPLES.find((s) => s.reason === reason)?.caption ?? '';
+
+  test("a plan's prompt lacks the samples of both its reasons", async () => {
+    const { model, seen } = spying(planOf(tipped()));
+    const result = await finalOf(streamPlan(body(), deps(model), signal()));
+    const reasons = result.posts.map((p) => p.setup?.reason ?? '');
+    expect(reasons).toHaveLength(2);
+    for (const reason of reasons) expect(seen[0].system).not.toContain(sampleOf(reason));
+    const others = SAMPLES.filter((s) => !reasons.includes(s.reason));
+    for (const other of others) expect(seen[0].system).toContain(other.caption);
+  });
+
+  test("a caption update lacks the sent posts' reasons' samples; new texts only the post's own", async () => {
+    const mine = post({ id: 'a', setup: setupAt('day', { reason: 'laptop' }) });
+    const other = post({
+      id: 'b',
+      caption: 'The other.',
+      setup: setupAt('night', { reason: 'stayIn' }),
+    });
+    const rewrite = spying(
+      answerOf([
+        { id: 'a', caption: 'New a.', hashtags: [], altText: 'x' },
+        { id: 'b', caption: 'New b.', hashtags: [], altText: 'x' },
+      ]),
+    );
+    await finalOf(
+      streamRewrite(
+        { profile: svargaProfile(), posts: [mine, other] },
+        deps(rewrite.model),
+        signal(),
+      ),
+    );
+    expect(rewrite.seen[0].system).not.toContain(sampleOf('laptop'));
+    expect(rewrite.seen[0].system).not.toContain(sampleOf('stayIn'));
+    const texts = spying(answerOf([{ id: 'a', caption: 'New.', hashtags: [], altText: '' }]));
+    await finalOf(
+      streamNewTexts({ profile: svargaProfile(), post: mine, other }, deps(texts.model), signal()),
+    );
+    expect(texts.seen[0].system).not.toContain(sampleOf('laptop'));
+    expect(texts.seen[0].system).toContain(sampleOf('stayIn'));
+  });
+
+  test("new texts keep the reason, and take a fact neither theirs nor the other post's", async () => {
+    const profile = withHighlights([
+      'Free travel in Canggu',
+      'No upfront deposit for villas and hotels',
+      'WhatsApp replies in ~5 mins',
+    ]);
+    const mine = post({
+      id: 'a',
+      setup: setupAt('day', { reason: 'laptop', fact: 'Free travel in Canggu' }),
+    });
+    const other = post({
+      id: 'b',
+      caption: 'The other caption.',
+      setup: setupAt('night', {
+        reason: 'stayIn',
+        fact: 'No upfront deposit for villas and hotels',
+      }),
+    });
+    const { model } = spying(
+      answerOf([
+        { id: 'a', caption: 'New caption.', hashtags: [], altText: '', storyText: 'New story.' },
+      ]),
+    );
+    const result = await finalOf(
+      streamNewTexts({ profile, post: mine, other }, deps(model), signal()),
+    );
+    expect(result.posts[0].setup?.reason).toBe('laptop');
+    expect(result.posts[0].setup?.fact).toBe('WhatsApp replies in ~5 mins');
   });
 });

@@ -113,7 +113,7 @@ function escapeRegex(text: string): string {
 }
 
 // Whole words: "feeling" doesn't hold "feel".
-function holdsWords(text: string, words: string): boolean {
+export function holdsWords(text: string, words: string): boolean {
   return new RegExp(`(?:^|[^\\p{L}\\p{N}])${escapeRegex(words)}(?:$|[^\\p{L}\\p{N}])`, 'u').test(
     text,
   );
@@ -162,7 +162,7 @@ function placeNames(profile: Profile): string[] {
 
 // Every hook is a question, an offer post's too: right after its line, its
 // first paragraph (amended 2026-11-12).
-function questionOf(post: Post): string | undefined {
+export function questionOf(post: Post): string | undefined {
   return plainSentences(post.offer ? (paragraphsOf(post.caption)[1] ?? '') : post.caption)[0];
 }
 
@@ -331,7 +331,7 @@ function settingRecords(post: Post): Dropped[] {
 // sore question names a part of the body ("muscles" and "body" aren't one);
 // clichés and the em dash; story texts of ten words at most. The lists may
 // grow.
-const BODY_WORDS = [
+export const BODY_WORDS = [
   'back',
   'shoulder',
   'shoulders',
@@ -377,7 +377,9 @@ const CLICHES = [
 const EM_DASH = '—';
 
 function bodyRecords(post: Post): Dropped[] {
-  if (post.setup?.question !== 'sore') return [];
+  // A post with a reason gets reason-records' day-out line instead
+  // (docs/specs/posts/reasons-to-book, "Code's records").
+  if (post.setup?.question !== 'sore' || post.setup.reason) return [];
   const question = folded(questionOf(post) ?? '');
   return BODY_WORDS.some((word) => holdsWords(question, word))
     ? []

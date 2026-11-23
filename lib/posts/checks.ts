@@ -19,6 +19,7 @@ import { ctaFor } from './input';
 import { mentionsDay, OFFER_LIMITS, type Offer, PERCENT } from './offer';
 import { offerLine, offerStory, offerTreatment, putOfferLineFirst } from './offer-line';
 import { factOnItsLine, joinQuestion, keepParagraphs } from './paragraphs';
+import { reasonRecords } from './reason-records';
 import type { Setup } from './setup';
 import { cleanStory, sentences } from './story';
 import { copyRecords, lightRecords, repeatRecords, repeatsQuestion } from './variety';
@@ -468,7 +469,12 @@ export function checkPlan(
   if (offer && kept.slice(0, 2).some((p) => p.type !== 'offer')) {
     out.push({ field: 'mix', reason: 'offer posts are not posts 1 and 2' });
   }
-  out.push(...repeatRecords(kept), ...kept.flatMap(lightRecords), ...copyRecords(kept, profile));
+  out.push(
+    ...repeatRecords(kept),
+    ...kept.flatMap(lightRecords),
+    ...copyRecords(kept, profile),
+    ...reasonRecords(kept, profile),
+  );
   return { posts: kept, dropped: out };
 }
 
@@ -505,6 +511,7 @@ export function checkRewrite(
     ...repeatRecords(posts),
     ...posts.flatMap(lightRecords),
     ...copyRecords(posts, profile),
+    ...reasonRecords(posts, profile),
   );
   return { posts, dropped };
 }
@@ -553,6 +560,7 @@ export function checkNewTexts(
       ...repeatRecords(pair),
       ...pair.flatMap(lightRecords),
       ...copyRecords(pair, profile),
+      ...reasonRecords(pair, profile),
     ],
   };
 }

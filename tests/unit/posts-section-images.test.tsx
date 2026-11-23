@@ -230,13 +230,16 @@ describe('a suggestion with its images', () => {
     expect(within(sheet).getByText('Making the image…')).toBeTruthy();
   });
 
-  test('images for a cleared attempt are not saved', async () => {
+  // Two days of suggestions (docs/specs/posts/two-days): yesterday's lost
+  // images are picked up again; the day before yesterday's are not.
+  test("lost images are picked up for today's and yesterday's attempts, not older ones", async () => {
+    await saveBatch({ ...batch(six), id: 'o1', createdAt: '2026-10-24T05:00:00.000Z' });
     await saveBatch({ ...batch(six), id: 'y1', createdAt: '2026-10-24T09:00:00.000Z' });
     await saveBatch(batch(six));
     await renderSection();
     await waitFor(() => expect(vi.mocked(resumeImages)).toHaveBeenCalled());
     const passed = vi.mocked(resumeImages).mock.calls.at(-1)?.[1] as PostBatch[];
-    expect(passed.map((b) => b.id)).toEqual(['b1']);
+    expect(passed.map((b) => b.id)).toEqual(['b1', 'y1']);
   });
 });
 

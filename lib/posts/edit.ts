@@ -121,6 +121,16 @@ export function autoRewrite(
 // profile they were written against. An answer is the post as it was sent,
 // with new words: only the words land, on the post as stored now, which a new
 // image may have changed meanwhile (docs/specs/platform/easier-to-use).
+// The reason and fact code gave a post land on its stored set-up, the rest
+// of which stays (docs/specs/posts/reasons-to-book). An answer without a
+// reason leaves the set-up as it is.
+function mergedSetup(stored: Post['setup'], answer: Post['setup']): Post['setup'] {
+  if (!stored || !answer?.reason) return stored;
+  // The reason takes the kind of question's place (the review of 2026-11-23).
+  const { fact: _old, question: _kind, hook: _style, ...rest } = stored;
+  return { ...rest, reason: answer.reason, ...(answer.fact ? { fact: answer.fact } : {}) };
+}
+
 export function mergeRewrite(batch: PostBatch, result: PlanResult, sentIds: string[]): PostBatch {
   const answers = new Map(result.posts.map((post) => [post.id, post]));
   const posts = batch.posts.map((post) => {
@@ -129,8 +139,10 @@ export function mergeRewrite(batch: PostBatch, result: PlanResult, sentIds: stri
     // New words, same image: what was copied goes, what was saved stays.
     const { copiedAt: _copied, storyText: _story, storyUnchecked: _flags, ...stored } = post;
     const { caption, cta, hashtags, altText, unchecked, storyText, storyUnchecked } = answer;
+    const setup = mergedSetup(stored.setup, answer.setup);
     return {
       ...stored,
+      ...(setup ? { setup } : {}),
       caption,
       cta,
       hashtags,

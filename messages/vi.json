@@ -206,6 +206,8 @@
     "emptyTextOnly": "Mỗi gợi ý là phần chữ cho một bài đăng và một dòng chữ ngắn cho story, sẵn sàng cho Instagram. Chọn những gợi ý bạn thích và sao chép.",
     "attempt": "Lần thử {n}",
     "attemptCount": "{count} gợi ý",
+    "today": "Hôm nay",
+    "yesterday": "Hôm qua",
     "saveImages": "Lưu hình bài đăng & story",
     "copyText": "Sao chép chữ bài đăng",
     "copyStory": "Sao chép chữ story (không bắt buộc)",
@@ -323,7 +325,9 @@
       "freeShort": "Tặng {gift}",
       "remove": "Bỏ ưu đãi",
       "badgeDiscount": "Giảm {percent}%",
-      "badgeFree": "Tặng thêm"
+      "badgeFree": "Tặng thêm",
+      "badgeEnded": "Ưu đãi đã kết thúc",
+      "lastDayDate": "ngày cuối {date}"
     }
   },
   "reviews": {
@@ -489,7 +493,7 @@
       "free": "Shopfront miễn phí, nên mỗi ngày có giới hạn.",
       "limits": "Mỗi ngày bạn có {reads}, {attempts} (mỗi lần 2 gợi ý), {newImages}, {newTexts}, {replies} và {answers}, cùng với các lần cập nhật chú thích và bản dịch.",
       "bar": "Dòng ở đầu mỗi tab cho biết hôm nay còn lại bao nhiêu và giờ mọi thứ được làm mới.",
-      "reset": "Vào giờ đó, giới hạn được làm mới, còn các gợi ý, câu trả lời đánh giá và câu trả lời cho câu hỏi trong ngày rời khỏi màn hình. Hãy lưu những gì bạn muốn giữ trước giờ đó. Ưu đãi đặc biệt của bạn vẫn giữ nguyên: nó kéo dài đến hết ngày cuối cùng của nó.",
+      "reset": "Vào giờ đó, giới hạn được làm mới, còn các câu trả lời đánh giá và câu trả lời cho câu hỏi trong ngày rời khỏi màn hình. Các gợi ý được giữ thêm một ngày, trong mục <b>{yesterday}</b>: hãy lưu những gì bạn muốn giữ trước lần làm mới tiếp theo. Ưu đãi đặc biệt của bạn vẫn giữ nguyên: nó kéo dài đến hết ngày cuối cùng của nó.",
       "time": "Giờ trên thanh theo giờ điện thoại của bạn: hãy tin giờ đó thay vì một giờ cố định.",
       "month": "Hình mới còn có ngân sách hằng tháng cho cả ứng dụng. Nếu hết, Shopfront sẽ cho biết khi nào có hình trở lại."
     },

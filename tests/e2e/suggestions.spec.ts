@@ -5,8 +5,9 @@ import { fulfilImages } from './helpers/images';
 import { fulfilPosts, postsBody } from './helpers/posts-stream';
 import { tileImages, tiles } from './helpers/suggestions';
 
-// Suggestions last until Google's reset, 14:00 in Da Nang in US summer time
-// (docs/specs/posts/suggestions, docs/specs/platform/one-daily-reset), at the
+// A day's suggestions last until the reset after next: Google's reset is
+// 14:00 in Da Nang in US summer time (docs/specs/posts/suggestions,
+// docs/specs/platform/one-daily-reset, docs/specs/posts/two-days), at the
 // phone viewport, with every route
 // mocked. Test values from playwright.config.ts; not secrets.
 const SEN = 'test-lotus-river-sen';
@@ -21,9 +22,9 @@ async function signInAndRead(page: Page) {
   await page.getByRole('tab', { name: 'Create Posts' }).click();
 }
 
-test("today's suggestions stay through a reload, and Google's reset clears them", async ({
-  page,
-}) => {
+// Since docs/specs/posts/two-days, a day's suggestions stay one more day,
+// under "Yesterday", and go at the reset after that.
+test('suggestions stay through a reload, a day under Yesterday, then go', async ({ page }) => {
   await page.clock.install({ time: new Date('2026-10-26T10:00:00+07:00') });
   const profile = senProfile();
   await fulfilRead(page, [streamBody(profile)]);
@@ -42,10 +43,27 @@ test("today's suggestions stay through a reload, and Google's reset clears them"
   await expect(page.getByRole('heading', { name: 'Attempt 1' })).toBeVisible();
   await expect(tileImages(page)).toHaveCount(2);
 
-  // 14:05 the same afternoon, past the reset: a new day starts empty.
+  // 14:05 the same afternoon, past the reset: they stay, under Yesterday.
   await page.clock.setSystemTime(new Date('2026-10-26T14:05:00+07:00'));
   await page.reload();
-  await expect(page.getByText(/Each suggestion is 2 images/)).toBeVisible();
-  await expect(tiles(page)).toHaveCount(0);
-  await expect(page.getByRole('button', { name: 'Make 2 suggestions' })).toBeVisible();
+  await expect(page.getByRole('heading', { name: 'Yesterday' })).toBeVisible();
+  await expect(page.getByRole('heading', { name: 'Attempt 1' })).toHaveCount(1);
+  await expect(tileImages(page)).toHaveCount(2);
+  await expect(page.getByText(/Each suggestion is 2 images/)).toHaveCount(0);
+
+  // A new attempt is the new day's Attempt 1, on top under Today.
+  await page.getByRole('button', { name: 'Make 2 new suggestions' }).click();
+  await expect(page.getByRole('heading', { name: 'Today' })).toBeVisible();
+  await expect(page.getByRole('heading', { name: 'Attempt 1' })).toHaveCount(2);
+  // The new attempt is kept with its two images before the clock moves on: a
+  // reload while it's still being made would make it again in the new day.
+  await expect(tileImages(page)).toHaveCount(4);
+
+  // Past the next reset: the first attempt is gone, the second is yesterday's.
+  await page.clock.setSystemTime(new Date('2026-10-27T14:05:00+07:00'));
+  await page.reload();
+  await expect(page.getByRole('heading', { name: 'Yesterday' })).toBeVisible();
+  await expect(page.getByRole('heading', { name: 'Attempt 1' })).toHaveCount(1);
+  await expect(page.getByRole('heading', { name: 'Today' })).toHaveCount(0);
+  await expect(tiles(page)).toHaveCount(2);
 });

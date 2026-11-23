@@ -2,7 +2,7 @@ import { z } from 'zod';
 import { type Profile, profileSchema, upgradeProfile } from '@/lib/brand/profile';
 import { type Offer, offerFits, offerSchema } from './offer';
 import { SCENES } from './scene';
-import { setupSchema } from './setup';
+import { REASONS, setupSchema } from './setup';
 
 // A batch of posts made from the brand profile
 // (docs/specs/posts/generate-copy/spec.md). One set of schemas serves the
@@ -160,7 +160,13 @@ export const modelRewriteSchema = z.object({
 });
 export type ModelRewrite = z.infer<typeof modelRewriteSchema>;
 
-const recentSchema = z.object({ type: z.enum(POST_TYPES), topic: text });
+// A recent post's reason to book, when it had one, so the next attempts move
+// on to others (docs/specs/posts/reasons-to-book).
+const recentSchema = z.object({
+  type: z.enum(POST_TYPES),
+  topic: text,
+  reason: z.enum(REASONS).optional(),
+});
 export type RecentPost = z.infer<typeof recentSchema>;
 
 // The profile a page sends: one loaded before a schema change sends an older

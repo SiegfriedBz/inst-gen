@@ -25,3 +25,27 @@ export function attemptNumbers(batches: { id: string; createdAt: string }[]): Ma
   const oldestFirst = [...batches].sort((a, b) => a.createdAt.localeCompare(b.createdAt));
   return new Map(oldestFirst.map((batch, i) => [batch.id, i + 1]));
 }
+
+// The day before the current one (docs/specs/posts/two-days): it started at
+// the reset before today's, and its suggestions stay on the screen.
+export function yesterdayStart(now: Date): Date {
+  return lastReset(new Date(dayStart(now).getTime() - 1));
+}
+
+// The current day's and the day before's, each newest first; anything older
+// is in neither.
+export function splitDays<T extends { createdAt: string }>(
+  batches: readonly T[],
+  now: Date,
+): { today: T[]; yesterday: T[] } {
+  const today = dayStart(now);
+  const before = yesterdayStart(now);
+  const newestFirst = [...batches].sort((a, b) => b.createdAt.localeCompare(a.createdAt));
+  return {
+    today: newestFirst.filter((b) => new Date(b.createdAt) >= today),
+    yesterday: newestFirst.filter((b) => {
+      const at = new Date(b.createdAt);
+      return at >= before && at < today;
+    }),
+  };
+}
