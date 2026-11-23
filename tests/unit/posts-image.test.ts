@@ -7,9 +7,14 @@ import {
   IMAGE_PROMPT_VERSION,
   imagePrompt,
   imageStyle,
+  NORMAL_BODIES,
+  PROFESSIONAL,
 } from '@/lib/posts/image-prompt';
-import type { Setup } from '@/lib/posts/setup';
-import images9 from '../fixtures/image-prompt/images-9.json';
+import { poseLine, type Setup } from '@/lib/posts/setup';
+import images10 from '../fixtures/image-prompt/images-10.json';
+
+// The two sentences after every pose (docs/specs/posts/normal-bodies).
+const TWO = () => `${NORMAL_BODIES} ${PROFESSIONAL}`;
 
 describe('the image request', () => {
   test('a prompt of 80 words is taken', () => {
@@ -86,17 +91,26 @@ describe('the image prompt', () => {
       'Keep the subject in the middle of the frame, with calm space above and below it.',
     );
     expect(p).toMatch(/no text, letters, labels, logos or watermarks/i);
-    expect(IMAGE_PROMPT_VERSION).toBe('images-10');
+    expect(IMAGE_PROMPT_VERSION).toBe('images-11');
+  });
+
+  test('the two sentences, word for word', () => {
+    expect(NORMAL_BODIES).toBe(
+      'Every person has a normal human body in a natural, comfortable position: one head, two arms and two legs, each joined to their own body; each arm and leg can be followed from the body to its hand or foot; knees and elbows bend only the natural way. No body lies across, over or under another: the therapists work with their hands, the only contact.',
+    );
+    expect(PROFESSIONAL).toBe(
+      'It is clearly a professional massage: each therapist works with a trained technique and calm focus.',
+    );
   });
 });
 
 describe("the owner's hint", () => {
   test('a hint goes before the style line', () => {
     expect(imagePrompt('A room in the late afternoon.', 'more green')).toBe(
-      `A room in the late afternoon. The owner asks: more green. ${imageStyle()}`,
+      `A room in the late afternoon. The owner asks: more green. ${TWO()} ${imageStyle()}`,
     );
     expect(imagePrompt('A room in the late afternoon.')).toBe(
-      `A room in the late afternoon. ${imageStyle()}`,
+      `A room in the late afternoon. ${TWO()} ${imageStyle()}`,
     );
   });
 
@@ -362,7 +376,7 @@ describe('day, night and the place', () => {
 
   test('no set-up: Southeast Asian row and therapists', () => {
     const p = imagePrompt('A room.');
-    expect(p).toBe(`A room. ${imageStyle()}`);
+    expect(p).toBe(`A room. ${TWO()} ${imageStyle()}`);
     expect(p).toContain('tropical greenery: palms, banana leaves and ferns');
     expect(p).toContain('orchids in a small vase');
     expect(p).toContain('Every therapist is a young Southeast Asian woman');
@@ -370,7 +384,7 @@ describe('day, night and the place', () => {
 
   test('a set-up passes its locals to the style line', () => {
     expect(imagePrompt('A room.', undefined, setup)).toBe(
-      `One guest, a woman. One therapist, a young Vietnamese woman. A room. ${imageStyle('Vietnamese')}`,
+      `One guest, a woman. One therapist, a young Vietnamese woman. ${poseLine(setup)} ${TWO()} A room. ${imageStyle('Vietnamese')}`,
     );
   });
 
@@ -395,15 +409,22 @@ describe('the set-up and the therapists', () => {
   };
   const body = { postId: 'p', imagePrompt: 'A room', scene: 'detail' };
 
-  test('cast line first, then the prompt, the hint, the style', () => {
+  test('cast line, pose line, the two sentences, then the prompt, the hint, the style', () => {
     expect(imagePrompt('Oil on a back in the late afternoon.', 'more green', fourHandsMan)).toBe(
-      `One guest, a man. Two therapists, both young Balinese women. Oil on a back in the late afternoon. The owner asks: more green. ${imageStyle('Balinese')}`,
+      `One guest, a man. Two therapists, both young Balinese women. ${poseLine(fourHandsMan)} ${TWO()} Oil on a back in the late afternoon. The owner asks: more green. ${imageStyle('Balinese')}`,
     );
+  });
+
+  test('the hint comes after the pose', () => {
+    const p = imagePrompt('Oil on a back.', 'show her arm', fourHandsMan);
+    const pose = p.indexOf(poseLine(fourHandsMan));
+    expect(pose).toBeGreaterThan(-1);
+    expect(p.indexOf('The owner asks: show her arm.')).toBeGreaterThan(pose);
   });
 
   test('without a set-up: no cast line, therapists read as Southeast Asian', () => {
     const p = imagePrompt('A room in the late afternoon.');
-    expect(p).toBe(`A room in the late afternoon. ${imageStyle()}`);
+    expect(p).toBe(`A room in the late afternoon. ${TWO()} ${imageStyle()}`);
     expect(p).toContain('Every therapist is a young Southeast Asian woman');
   });
 
@@ -446,8 +467,20 @@ describe("the therapists' look", () => {
   };
   const last = `Every therapist's look, whatever the scene says: ${look}.`;
 
-  test.each(images9.cases)('without a look, images-9 word for word: $name', (c) => {
-    expect(imagePrompt(c.postPrompt, c.hint, c.setup as Setup | undefined)).toBe(c.imagePrompt);
+  // images-10's prompts, pinned before docs/specs/posts/normal-bodies: with
+  // the pose and the two sentences taken out, nothing else changed.
+  test.each(images10.cases)('images-10 with the new lines taken out, word for word: $name', (c) => {
+    const setup = c.setup as Setup | undefined;
+    const added = setup ? `${poseLine(setup)} ${TWO()} ` : `${TWO()} `;
+    const p = imagePrompt(c.postPrompt, c.hint, setup, c.staffLook);
+    expect(p).toContain(added);
+    expect(p.replace(added, '')).toBe(c.imagePrompt);
+  });
+
+  test('without a set-up, the two sentences open the style line, before the look', () => {
+    const p = imagePrompt('Oil on a back.', undefined, undefined, look);
+    expect(p.startsWith(`Oil on a back. ${TWO()} `)).toBe(true);
+    expect(p.indexOf(last)).toBeGreaterThan(p.indexOf(PROFESSIONAL));
   });
 
   test('the cast line gives the look first, and the last rules again', () => {

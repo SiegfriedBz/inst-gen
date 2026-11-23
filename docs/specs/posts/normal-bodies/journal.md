@@ -83,7 +83,10 @@
 ## RED
 
 - Task 1 (`posts-setup`, `posts-prompt`, `posts-run`): `Tests  22 failed | 179 passed (201)`
+- Task 2 (`posts-image`, `posts-image-run`): `Tests  16 failed | 119 passed (135)`
 
 ## GREEN
 
 - Task 1 (with `posts-fixtures-replay`): `Tests  216 passed (216)`
+- Task 2 (`posts-image`, `posts-image-run`): `Tests  135 passed (135)`
+- Task 2, `pnpm test`: `Tests  2194 passed (2194)`
