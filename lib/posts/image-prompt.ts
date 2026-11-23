@@ -11,13 +11,22 @@ import { castLine, type Light, type Locals, poseLine, type Setup } from './setup
 // the cast (docs/specs/posts/normal-bodies). Bump the version with every
 // change.
 
-export const IMAGE_PROMPT_VERSION = 'images-11';
+export const IMAGE_PROMPT_VERSION = 'images-12';
 
-// The wording of the 2026-11-23 test (docs/specs/posts/normal-bodies).
-export const NORMAL_BODIES =
-  'Every person has a normal human body in a natural, comfortable position: one head, two arms and two legs, each joined to their own body; each arm and leg can be followed from the body to its hand or foot; knees and elbows bend only the natural way. No body lies across, over or under another: the therapists work with their hands, the only contact.';
-export const PROFESSIONAL =
-  'It is clearly a professional massage: each therapist works with a trained technique and calm focus.';
+// The wording of the 2026-11-23 test (docs/specs/posts/normal-bodies), the
+// therapists counted as the cast counts them (amended 2026-11-23): one, or a
+// post with no set-up, is "the therapist".
+export function normalBodies(therapists: 1 | 2 = 1): string {
+  const hands =
+    therapists === 2
+      ? 'the therapists work with their hands'
+      : 'the therapist works with her hands';
+  return `Every person has a normal human body in a natural, comfortable position: one head, two arms and two legs, each joined to their own body; each arm and leg can be followed from the body to its hand or foot; knees and elbows bend only the natural way. No body lies across, over or under another: ${hands}, the only contact.`;
+}
+
+export function professional(therapists: 1 | 2 = 1): string {
+  return `It is clearly a professional massage: ${therapists === 2 ? 'each therapist works' : 'the therapist works'} with a trained technique and calm focus.`;
+}
 
 // The room a tourist pictures for their stay, the green plants of the place
 // seen through its doors, and the place's flower, by the therapists' origin.
@@ -195,7 +204,8 @@ export function imagePrompt(
   const light = setup?.light ?? 'day';
   const style = imageStyle(setup?.locals, light, staffLook);
   const post = cleanLight(postPrompt.trim(), light);
-  const bodies = `${NORMAL_BODIES} ${PROFESSIONAL}`;
+  const therapists = setup?.therapists ?? 1;
+  const bodies = `${normalBodies(therapists)} ${professional(therapists)}`;
   if (!setup) return `${post}${asks} ${bodies} ${style}`;
   return `${castLine(setup, staffLook)} ${poseLine(setup)} ${bodies} ${post}${asks} ${style}`;
 }

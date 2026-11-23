@@ -102,6 +102,8 @@ wording of the test:
 - "It is clearly a professional massage: each therapist works with a trained
   technique and calm focus."
 
+> Amended 2026-11-23, at the maintainer's request after the check: the two sentences count the therapists as the cast does. Two therapists get them as above. One therapist, or a post with no set-up, gets "… No body lies across, over or under another: the therapist works with her hands, the only contact." and "It is clearly a professional massage: the therapist works with a trained technique and calm focus." (`images-12`).
+
 A post saved before set-ups (2.12) has no cast line and no pose line: the two
 sentences open its style line instead.
 
@@ -160,8 +162,8 @@ of it, as 2.16 wants. The rest of the plan prompt is unchanged.
 
 ### Versions and cost
 
-`IMAGE_PROMPT_VERSION` becomes `images-11` and `POSTS_PROMPT_VERSION`
-`posts-19`. Each image is still one request at decision 0004's price; the
+`IMAGE_PROMPT_VERSION` becomes `images-11` (`images-12` with the amendment) and
+`POSTS_PROMPT_VERSION` `posts-19`. Each image is still one request at decision 0004's price; the
 image prompt gets about 150 words longer, which changes the price by a
 fraction of a cent. No new request of any kind.
 

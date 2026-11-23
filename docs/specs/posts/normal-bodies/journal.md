@@ -103,14 +103,23 @@
   couple, Svarga foot); the leg stretch shows the nose and mouth under the
   towel.
 - 2026-11-23: the maintainer's verdict on the 11 images: "Yes, they pass".
+- 2026-11-23, after the push: the maintainer asked why the two deferred
+  points weren't fixed ("AND WHY DIDN'T YOU FIX THIS"). Both fixed: the two
+  sentences count the therapists as the cast does (one, or no set-up: "the
+  therapist works with her hands", "the therapist works with a trained
+  technique"; two: as before), `images-12`, the spec amended at the
+  maintainer's request; the check script's dry run tidies the look as the
+  paid run does (a look ending on a full stop printed two).
 
 ## RED
 
 - Task 1 (`posts-setup`, `posts-prompt`, `posts-run`): `Tests  22 failed | 179 passed (201)`
 - Task 2 (`posts-image`, `posts-image-run`): `Tests  16 failed | 119 passed (135)`
+- One therapist's sentences (`posts-image`, `posts-image-run`): `Tests  18 failed | 120 passed (138)`
 
 ## GREEN
 
 - Task 1 (with `posts-fixtures-replay`): `Tests  216 passed (216)`
 - Task 2 (`posts-image`, `posts-image-run`): `Tests  135 passed (135)`
 - Task 2, `pnpm test`: `Tests  2194 passed (2194)`
+- One therapist's sentences (`posts-image`, `posts-image-run`): `Tests  138 passed (138)`

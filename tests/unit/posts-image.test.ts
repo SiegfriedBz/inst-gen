@@ -7,14 +7,15 @@ import {
   IMAGE_PROMPT_VERSION,
   imagePrompt,
   imageStyle,
-  NORMAL_BODIES,
-  PROFESSIONAL,
+  normalBodies,
+  professional,
 } from '@/lib/posts/image-prompt';
 import { poseLine, type Setup } from '@/lib/posts/setup';
 import images10 from '../fixtures/image-prompt/images-10.json';
 
-// The two sentences after every pose (docs/specs/posts/normal-bodies).
-const TWO = () => `${NORMAL_BODIES} ${PROFESSIONAL}`;
+// The two sentences after every pose (docs/specs/posts/normal-bodies), for
+// one therapist (or no set-up) or two.
+const TWO = (therapists: 1 | 2 = 1) => `${normalBodies(therapists)} ${professional(therapists)}`;
 
 describe('the image request', () => {
   test('a prompt of 80 words is taken', () => {
@@ -91,16 +92,58 @@ describe('the image prompt', () => {
       'Keep the subject in the middle of the frame, with calm space above and below it.',
     );
     expect(p).toMatch(/no text, letters, labels, logos or watermarks/i);
-    expect(IMAGE_PROMPT_VERSION).toBe('images-11');
+    expect(IMAGE_PROMPT_VERSION).toBe('images-12');
   });
 
-  test('the two sentences, word for word', () => {
-    expect(NORMAL_BODIES).toBe(
+  test('the two sentences, word for word, for two therapists', () => {
+    expect(normalBodies(2)).toBe(
       'Every person has a normal human body in a natural, comfortable position: one head, two arms and two legs, each joined to their own body; each arm and leg can be followed from the body to its hand or foot; knees and elbows bend only the natural way. No body lies across, over or under another: the therapists work with their hands, the only contact.',
     );
-    expect(PROFESSIONAL).toBe(
+    expect(professional(2)).toBe(
       'It is clearly a professional massage: each therapist works with a trained technique and calm focus.',
     );
+  });
+
+  // Amended 2026-11-23, at the maintainer's request: one therapist is never
+  // "the therapists".
+  test('the two sentences, word for word, for one therapist', () => {
+    expect(normalBodies(1)).toBe(
+      'Every person has a normal human body in a natural, comfortable position: one head, two arms and two legs, each joined to their own body; each arm and leg can be followed from the body to its hand or foot; knees and elbows bend only the natural way. No body lies across, over or under another: the therapist works with her hands, the only contact.',
+    );
+    expect(professional(1)).toBe(
+      'It is clearly a professional massage: the therapist works with a trained technique and calm focus.',
+    );
+  });
+
+  test('a one-therapist image never says "the therapists" or "each therapist"', () => {
+    const one: Setup = {
+      treatment: 'Aroma Massage',
+      look: 'plain',
+      guests: 'woman',
+      therapists: 1,
+      bodyPart: 'back',
+      scene: 'treatment',
+      locals: 'Vietnamese',
+    };
+    for (const p of [imagePrompt('Oil on a back.', undefined, one), imagePrompt('A room.')]) {
+      expect(p).toContain('the therapist works with her hands, the only contact.');
+      expect(p).not.toMatch(/the therapists work|each therapist works/);
+    }
+  });
+
+  test('a two-therapist image says "the therapists"', () => {
+    const four: Setup = {
+      treatment: 'Four-Hands Massage',
+      look: 'fourHands',
+      guests: 'man',
+      therapists: 2,
+      bodyPart: 'back',
+      scene: 'guest',
+      locals: 'Balinese',
+    };
+    const p = imagePrompt('Oil on a back.', undefined, four);
+    expect(p).toContain('the therapists work with their hands, the only contact.');
+    expect(p).toContain('each therapist works with a trained technique');
   });
 });
 
@@ -411,7 +454,7 @@ describe('the set-up and the therapists', () => {
 
   test('cast line, pose line, the two sentences, then the prompt, the hint, the style', () => {
     expect(imagePrompt('Oil on a back in the late afternoon.', 'more green', fourHandsMan)).toBe(
-      `One guest, a man. Two therapists, both young Balinese women. ${poseLine(fourHandsMan)} ${TWO()} Oil on a back in the late afternoon. The owner asks: more green. ${imageStyle('Balinese')}`,
+      `One guest, a man. Two therapists, both young Balinese women. ${poseLine(fourHandsMan)} ${TWO(2)} Oil on a back in the late afternoon. The owner asks: more green. ${imageStyle('Balinese')}`,
     );
   });
 
@@ -471,7 +514,7 @@ describe("the therapists' look", () => {
   // the pose and the two sentences taken out, nothing else changed.
   test.each(images10.cases)('images-10 with the new lines taken out, word for word: $name', (c) => {
     const setup = c.setup as Setup | undefined;
-    const added = setup ? `${poseLine(setup)} ${TWO()} ` : `${TWO()} `;
+    const added = setup ? `${poseLine(setup)} ${TWO(setup.therapists)} ` : `${TWO()} `;
     const p = imagePrompt(c.postPrompt, c.hint, setup, c.staffLook);
     expect(p).toContain(added);
     expect(p.replace(added, '')).toBe(c.imagePrompt);
@@ -480,7 +523,7 @@ describe("the therapists' look", () => {
   test('without a set-up, the two sentences open the style line, before the look', () => {
     const p = imagePrompt('Oil on a back.', undefined, undefined, look);
     expect(p.startsWith(`Oil on a back. ${TWO()} `)).toBe(true);
-    expect(p.indexOf(last)).toBeGreaterThan(p.indexOf(PROFESSIONAL));
+    expect(p.indexOf(last)).toBeGreaterThan(p.indexOf(professional(1)));
   });
 
   test('the cast line gives the look first, and the last rules again', () => {

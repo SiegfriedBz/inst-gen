@@ -16,7 +16,7 @@ import { join } from 'node:path';
 import { geminiImageModel, IMAGE_MODEL, IMAGE_USD } from '@/lib/ai/image-model';
 import { CACHE_DIR, FIXTURES_DIR, fixtureProfile } from '@/lib/brand/fixtures';
 import type { ImageLog } from '@/lib/posts/image-log';
-import { IMAGE_PROMPT_VERSION, imagePrompt } from '@/lib/posts/image-prompt';
+import { cleanHint, IMAGE_PROMPT_VERSION, imagePrompt } from '@/lib/posts/image-prompt';
 import { makePostImage } from '@/lib/posts/image-run';
 import type { Scene } from '@/lib/posts/scene';
 import {
@@ -134,7 +134,9 @@ for (const slug of slugs) {
           const prompt = postPrompt(setup);
           const head = `  ${name} · ${setup.scene} · ${setup.light} · ${setup.guests}`;
           if (dry || !model) {
-            console.log(`${head}\n    ${imagePrompt(prompt, undefined, setup, staffLook)}`);
+            console.log(
+              `${head}\n    ${imagePrompt(prompt, undefined, setup, cleanHint(staffLook))}`,
+            );
             return;
           }
           const logs: ImageLog[] = [];
