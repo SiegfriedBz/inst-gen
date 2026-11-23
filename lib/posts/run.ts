@@ -66,7 +66,7 @@ function reasonsOf(setups: readonly Setup[]): Reason[] {
   return setups.flatMap((setup) => (setup.reason ? [setup.reason] : []));
 }
 
-// posts-19 for a business that comes to its guests, posts-18 for any other
+// posts-20 for a business that comes to its guests, posts-19 for any other
 // (docs/specs/posts/reasons-to-book, "What the model gets").
 export function promptVersionFor(profile: PlanBody['profile']): string {
   return comesToGuests(profile) ? REASONS_PROMPT_VERSION : POSTS_PROMPT_VERSION;
@@ -216,7 +216,7 @@ export function streamPlan(
   const random = deps.random ?? Math.random;
   const spa = isSpa(body.profile.category);
   // A business that comes to its guests gets reasons to book, facts and the
-  // posts-19 prompt (docs/specs/posts/reasons-to-book); any other, posts-18.
+  // posts-20 prompt (docs/specs/posts/reasons-to-book); any other, posts-19.
   const guests = comesToGuests(body.profile);
   const input = guests ? postsPromptInput(body.profile) : postsModelInput(body.profile);
   const setups = guests

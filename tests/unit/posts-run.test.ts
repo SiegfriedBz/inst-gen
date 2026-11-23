@@ -106,13 +106,14 @@ describe('streamPlan', () => {
 
   test('final carries the prompt version, the model and the profile hash', async () => {
     const model = replayTextModel(brand, { posts: planRecording() });
-    // A spa guests go to keeps posts-18 (docs/specs/posts/reasons-to-book).
+    // A spa guests go to keeps the other businesses' prompt, posts-19 since
+    // docs/specs/posts/normal-bodies (docs/specs/posts/reasons-to-book).
     const lines = await drain(streamPlan(spaBody(), deps(model), new AbortController().signal));
     const final = lines.at(-1);
     expect(final).toMatchObject({
       type: 'final',
       result: {
-        promptVersion: 'posts-18',
+        promptVersion: 'posts-19',
         model: 'gemini-3.5-flash-lite',
         profileHash: profileHash(atTheSpa()),
       },
@@ -565,11 +566,11 @@ describe('reasons to book in the runs', () => {
   const signal = () => new AbortController().signal;
   const answerOf = (posts: unknown[]) => {
     const answer = { posts };
-    return { modelId: 'm', promptVersion: 'posts-19', partials: [answer], final: answer };
+    return { modelId: 'm', promptVersion: 'posts-20', partials: [answer], final: answer };
   };
   const planOf = (posts: ReturnType<typeof modelPost>[]) => ({
     modelId: 'm',
-    promptVersion: 'posts-19',
+    promptVersion: 'posts-20',
     partials: posts.map((_, i) => ({ posts: posts.slice(0, i + 1) })),
     final: { posts },
   });
@@ -609,7 +610,7 @@ describe('reasons to book in the runs', () => {
     hours,
   });
 
-  test('a plan with posts-19, its reasons and facts, and the types code gives', async () => {
+  test('a plan with posts-20, its reasons and facts, and the types code gives', async () => {
     const { model, seen } = spying(planOf(tipped()));
     const entries: PostsLog[] = [];
     const result = await finalOf(
@@ -620,8 +621,8 @@ describe('reasons to book in the runs', () => {
     expect(seen[0].system).toBe(reasonsPlanPrompt(false, true, reasons));
     expect(seen[0].text).toContain('### Reasons');
     expect(seen[0].text).toContain('### Facts');
-    expect(result.promptVersion).toBe('posts-19');
-    expect(entries[0].promptVersion).toBe('posts-19');
+    expect(result.promptVersion).toBe('posts-20');
+    expect(entries[0].promptVersion).toBe('posts-20');
     expect(result.posts.map((p) => p.type)).toEqual(['offer', 'moment']);
     for (const p of result.posts) expect(p.setup?.reason).toBeDefined();
   });
@@ -632,12 +633,12 @@ describe('reasons to book in the runs', () => {
     expect(result.posts.map((p) => p.type)).toEqual(['offer', 'offer']);
   });
 
-  test('a spa guests go to keeps posts-18', async () => {
+  test('a spa guests go to keeps the prompt of other businesses', async () => {
     const { model, seen } = spying(planRecording(2));
     const result = await finalOf(streamPlan(spaBody(), deps(model), signal()));
     expect(seen[0].system).toBe(planPrompt(false, true));
     expect(seen[0].text).toContain('### Questions');
-    expect(result.promptVersion).toBe('posts-18');
+    expect(result.promptVersion).toBe('posts-19');
   });
 
   test("the recent posts' reasons stay out of the next attempt", async () => {
@@ -728,7 +729,7 @@ describe('reasons to book in the runs', () => {
     expect(result.posts[0].setup).toBeUndefined();
   });
 
-  // The review of 2026-11-23: a post saved before reasons reaches posts-19
+  // The review of 2026-11-23: a post saved before reasons reaches posts-20
   // without posts-18's type, topic or kind of question.
   const sentPosts = (text: string, heading: string) => {
     const start = text.indexOf(`${heading}\n`) + heading.length + 1;

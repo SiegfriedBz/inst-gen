@@ -83,6 +83,8 @@ dropped post takes its set-up with it.
 **Looks.** Code holds a small table that turns a treatment's name into how it
 looks, matched on words in the name, case and accents ignored:
 
+> Changed by `posts/normal-bodies` (2026-11-23): each look's words now place the guest and the therapists: face down for the plain look, hot stone, scrub, four hands and couples; for four hands, one therapist standing on each side of the bed; for a couple, one therapist at the outer side of each bed, one for each guest. Thai's part is the legs (a leg stretch: the guest on the back, the therapist kneeling beside, a hand on the knee and one on the foot) or the back (a palm press: the guest face down, the therapist kneeling beside the hip), dealt like any part, instead of the whole body (`posts-19`). Clothes are unchanged.
+
 | Words in the name | Look |
 |---|---|
 | four hands, four-hand, 4 hands | One guest on a massage bed, **two therapists** working in step, one on each side |
@@ -156,6 +158,8 @@ them changes.
 ### What the image model gets
 
 > Changed by `posts/therapists-look` (2026-11-08): with the therapists' look, the cast line names it ("Her look: …", or "dressed alike. Their look: …" for two), and the style line's therapist rules end on "Every therapist's look, whatever the scene says: …" (`images-10`); without one, the prompt is as below.
+
+> Changed by `posts/normal-bodies` (2026-11-23): right after the cast line, code adds a pose line from the set-up's look and body part (where the guest lies, where each therapist is, what her hands do), then two sentences asking for normal human bodies in a clearly professional massage; a post with no set-up gets the two sentences at the start of its style line (`images-11`). Nothing about clothes changes.
 
 The image request (2.3) gains an optional `setup` and an optional `locals`,
 both checked with zod. `locals` is the therapists' origin, worked out by code

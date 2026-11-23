@@ -3,10 +3,13 @@ import type { Profile } from '@/lib/brand/profile';
 import { SCENES } from '@/lib/posts/batch';
 import type { Offer } from '@/lib/posts/offer';
 import {
+  BODY_PARTS,
   castLine,
   dealSetups,
+  LOOKS,
   localsOf,
   lookOf,
+  poseLine,
   QUESTIONS,
   REASONS,
   type Setup,
@@ -14,6 +17,7 @@ import {
   setupLine,
   setupSchema,
 } from '@/lib/posts/setup';
+import pinned from '../fixtures/setups/sen-deals.json';
 import { senProfile, svargaProfile } from './helpers/brand';
 
 // The image set-ups (docs/specs/posts/varied-images).
@@ -231,11 +235,11 @@ describe('dealSetups', () => {
     }
   });
 
-  it('feet for reflexology, whole body for thai, back for stone, head for a facial', () => {
+  it('feet for reflexology, the legs or the back for thai, back for stone, head for a facial', () => {
     const part = (names: string[], look: Setup['look']) =>
       deal(withOfferings(names)).find((s) => s.look === look)?.bodyPart;
     expect(part(['Foot Reflexology', 'Thai Massage'], 'foot')).toBe('feet');
-    expect(part(['Foot Reflexology', 'Thai Massage'], 'thai')).toBe('whole body');
+    expect(['legs', 'back']).toContain(part(['Foot Reflexology', 'Thai Massage'], 'thai'));
     expect(part(['Hot Stone', 'Balinese Facial'], 'stone')).toBe('back');
     expect(part(['Hot Stone', 'Balinese Facial'], 'head')).toBe('head');
   });
@@ -438,8 +442,36 @@ describe('the set-up in words', () => {
 
   it('setupLine for four hands', () => {
     expect(setupLine(fourHandsMan)).toBe(
-      'Four-Hands Massage: one guest, a man, on a massage bed; two therapists working in step, one on each side; the back; scene guest, from above; day.',
+      'Four-Hands Massage: one guest, a man, face down on a massage bed; two therapists working in step, one standing on each side of the bed; the back; scene guest, from above; day.',
     );
+  });
+
+  // docs/specs/posts/normal-bodies, "What the post plan reads".
+  it('setupLine for thai: a leg stretch with the legs, a palm press with the back', () => {
+    const thai: Setup = { ...fourHandsMan, look: 'thai', therapists: 1, bodyPart: 'legs' };
+    expect(setupLine(thai)).toContain(
+      'on a floor mattress, in loose cotton clothes, lying on the back, a towel over the eyes; the therapist kneeling beside, stretching one bent leg, a hand on the knee and one on the foot;',
+    );
+    expect(setupLine({ ...thai, bodyPart: 'back' })).toContain(
+      'on a floor mattress, in loose cotton clothes, lying face down; the therapist kneeling beside the hip, pressing both palms on the back;',
+    );
+    expect(setupLine({ ...thai, bodyPart: 'whole body' })).toBe(
+      setupLine(thai).replace('; the legs;', '; the whole body;'),
+    );
+  });
+
+  it('setupLine for a couple: one therapist at the outer side of each bed', () => {
+    expect(setupLine({ ...fourHandsMan, look: 'couple', guests: 'couple' })).toContain(
+      'two guests, a man and a woman, face down on two massage beds side by side, a little apart; one therapist at the outer side of each bed, one for each guest;',
+    );
+  });
+
+  it('setupLine says face down for plain, stone and scrub', () => {
+    for (const look of ['plain', 'stone', 'scrub'] as const) {
+      expect(setupLine({ ...fourHandsMan, look, therapists: 1 })).toContain(
+        'a man, face down on a massage bed,',
+      );
+    }
   });
 
   it('setupLine ends with the light, day when missing', () => {
@@ -565,5 +597,96 @@ describe("castLine with the therapists' look", () => {
 
   it('no look: as before', () => {
     expect(castLine(fourHandsMan, undefined)).toBe(castLine(fourHandsMan));
+  });
+});
+
+// docs/specs/posts/normal-bodies: code writes each image's pose.
+describe('the pose', () => {
+  const pose = (look: Setup['look'], bodyPart: Setup['bodyPart'], extra: Partial<Setup> = {}) =>
+    poseLine({
+      look,
+      bodyPart,
+      guests: look === 'couple' ? 'couple' : 'woman',
+      therapists: look === 'fourHands' || look === 'couple' ? 2 : 1,
+      scene: 'treatment',
+      locals: 'Vietnamese',
+      ...extra,
+    });
+
+  it('thai takes the legs or the back, about half each', () => {
+    const parts: string[] = [];
+    for (let i = 0; i < 400; i += 1) {
+      for (const s of deal(withOfferings(['Thai Massage', 'Aroma Massage']), undefined, `p${i}`)) {
+        if (s.look === 'thai') parts.push(s.bodyPart);
+      }
+    }
+    expect(parts).toHaveLength(400);
+    expect(parts.every((p) => p === 'legs' || p === 'back')).toBe(true);
+    const legs = count(parts, 'legs') / parts.length;
+    expect(legs).toBeGreaterThan(0.35);
+    expect(legs).toBeLessThan(0.65);
+  });
+
+  // The deals of posts-18, pinned before Thai's part changed.
+  it('a seed keeps its treatments, looks, guests, scenes, lights and questions', () => {
+    const profile = withOfferings(pinned.treatments);
+    for (const [key, expected] of Object.entries(pinned.deals)) {
+      const [kind, seed] = key.split(':');
+      const got = deal(profile, kind === 'offer' ? offerOn(pinned.offer) : undefined, seed).map(
+        (s) => [s.treatment, s.look, s.guests, s.scene, s.light, s.question],
+      );
+      expect(got, key).toEqual(expected);
+    }
+  });
+
+  it.each([
+    ['plain', 'back', ['face down', 'stands at the side of the bed', 'massages the back']],
+    ['stone', 'back', ['face down', 'smooth dark stones', 'one stone in her hand']],
+    ['scrub', 'arms and hands', ['face down', 'scrub on the skin of the arms and hands']],
+    [
+      'thai',
+      'legs',
+      ['on their back', 'bent at the knee', 'one hand holds the knee', "clear of the guest's legs"],
+    ],
+    ['thai', 'back', ['face down on a low mattress', 'both palms flat on the back']],
+    ['fourHands', 'back', ['face down', 'one on each side and apart', 'in step']],
+    [
+      'couple',
+      'back',
+      [
+        'two massage beds side by side',
+        "at the outer side of her guest's bed",
+        'one for each guest',
+      ],
+    ],
+    ['foot', 'feet', ['reclining chair', 'massages one foot']],
+    ['head', 'head', ['face up', 'a folded towel over the eyes']],
+    ['pregnancy', 'back', ['on her side', 'one between her knees']],
+  ] as const)('poseLine for %s with the %s', (look, part, phrases) => {
+    const line = pose(look, part);
+    for (const phrase of phrases) expect(line).toContain(phrase);
+  });
+
+  it('poseLine names no clothes or colours', () => {
+    const clothes =
+      /\b(white|cream|beige|ivory|indigo|sage|green|blue|brown|black|navy|grey|gray|cotton|linen|blanket|sheets?|tunic|trousers|clothes)\b/i;
+    for (const look of LOOKS) {
+      for (const part of BODY_PARTS) expect(pose(look, part)).not.toMatch(clothes);
+    }
+  });
+
+  it('a Thai set-up saved with the whole body gets the leg stretch', () => {
+    expect(pose('thai', 'whole body')).toBe(pose('thai', 'legs'));
+  });
+
+  it("a part that doesn't fit its look still gets its look's pose", () => {
+    expect(pose('stone', 'legs')).toContain('smooth dark stones');
+    expect(pose('plain', 'whole body')).toContain('massages the whole body');
+  });
+
+  it('a couple gets two beds whatever the scene', () => {
+    for (const scene of SCENES) {
+      expect(pose('couple', 'back', { scene })).toContain('two massage beds side by side');
+    }
   });
 });

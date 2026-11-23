@@ -423,7 +423,11 @@ updates and in new texts:
 - The image prompt's rules, unchanged.
 
 A batch records `posts-19` for a business that comes to its guests, and
-`posts-18` for any other, whose prompt doesn't change.
+`posts-18` for any other, whose prompt doesn't change. (At the merge with
+develop, 2026-11-23: `posts/normal-bodies`, roadmap 2.23, had named its new
+set-ups `posts-19` first, so this spec's prompt ships as `posts-20`, and
+any other business's, `posts-18`'s words with those set-ups, as `posts-19`.
+This spec becomes roadmap 2.24.)
 
 In the plan's user text, after `### Image set-ups`: `### Reasons`, one line
 per post with its guests and therapists (`1. laptop: one guest, one

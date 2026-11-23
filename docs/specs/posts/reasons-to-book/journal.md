@@ -41,6 +41,14 @@
   second recordings (below). The spec is amended ("Amended after the second
   recordings") and back to draft, for approval; `posts-19` keeps its name,
   as with the first amendment, since it never shipped.
+- 2026-11-23, the merge with develop, after the approval: develop's roadmap
+  2.23 is `posts/normal-bodies` (#65), so reasons to book becomes 2.24 and
+  two days 2.25. Normal bodies named its set-ups' change `posts-19`, so this
+  spec's prompt ships as `posts-20` (the version names only: no word of
+  either prompt changed at the merge). The second recordings stay
+  `posts-19` until recorded again. Thai now fixes two parts, the legs and
+  the back, where it fixed the whole body: Task 14 makes them follow the
+  reason.
 
 ## RED
 

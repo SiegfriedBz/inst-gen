@@ -19,7 +19,7 @@ import { SAMPLES, samplesText } from '@/lib/posts/samples';
 import { svargaProfile } from './helpers/brand';
 import { post, setupAt } from './helpers/posts';
 
-// The posts-19 prompt for a business that comes to its guests
+// The posts-20 prompt for a business that comes to its guests
 // (docs/specs/posts/reasons-to-book, "What the model gets").
 
 const REASON_LINES = ['- dayOut:', '- stayIn:', '- twoOfYou:', '- firstNight:', '- laptop:'];
@@ -27,8 +27,9 @@ const REASON_LINES = ['- dayOut:', '- stayIn:', '- twoOfYou:', '- firstNight:', 
 describe('reasonsPlanPrompt', () => {
   const prompt = reasonsPlanPrompt(false, true);
 
-  it('is posts-19', () => {
-    expect(REASONS_PROMPT_VERSION).toBe('posts-19');
+  // posts-20: docs/specs/posts/normal-bodies took posts-19 first.
+  it('is posts-20', () => {
+    expect(REASONS_PROMPT_VERSION).toBe('posts-20');
   });
 
   it('opens on what a post is for, before any rule', () => {

@@ -39,7 +39,8 @@
 - 2026-11-23, after the branch was pushed: the maintainer chose "Do this
   task here: Flag posts whose special offer has ended", the review's minor
   about an ended offer. The spec is amended ("A suggestion whose offer has
-  ended") and back to draft, for approval.
+  ended") and back to draft, for approval. Approved; at the merge with
+  develop, this spec becomes roadmap 2.25 (2.23 is `posts/normal-bodies`).
 
 ## RED
 

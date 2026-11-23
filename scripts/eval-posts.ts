@@ -186,7 +186,7 @@ async function writeNewTexts(slug: string, dir: string): Promise<void> {
 }
 
 let made = 0;
-// posts-19 for a business that comes to its guests, posts-18 for any other.
+// posts-20 for a business that comes to its guests, posts-19 for any other.
 const versions = new Set<string>();
 for (const slug of slugs) {
   const dir = join(FIXTURES_DIR, slug);

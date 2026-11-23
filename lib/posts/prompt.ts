@@ -16,9 +16,10 @@ import { QUESTIONS, type Question, type Setup, setupLine } from './setup';
 // three short paragraphs, a question first, the offer line second, a fact last,
 // two flowers and no setting from docs/specs/posts/short-captions; two kinds of
 // question, an answer with a person acting, the offer line first again and
-// story texts of ten words from its amendment of 2026-11-12. Bump the version
+// story texts of ten words from its amendment of 2026-11-12; the set-ups in
+// the poses of docs/specs/posts/normal-bodies. Bump the version
 // with every change, so eval verdicts trace back to it.
-export const POSTS_PROMPT_VERSION = 'posts-18';
+export const POSTS_PROMPT_VERSION = 'posts-19';
 
 // Code decides the emoji rule: flowers only for a spa
 // (docs/specs/posts/story-text, "Emojis").

@@ -15,9 +15,11 @@ import type { Reason } from './setup';
 // (docs/specs/posts/reasons-to-book, "What the model gets"): what a post is
 // for before any rule, the five reasons to book code deals, the caption, fact
 // and story rules, five sample posts of a made-up business, and the image
-// rules unchanged. Every other business keeps lib/posts/prompt.ts's posts-18.
-// Bump the version with every change, so eval verdicts trace back to it.
-export const REASONS_PROMPT_VERSION = 'posts-19';
+// rules unchanged. Every other business keeps lib/posts/prompt.ts's prompt,
+// posts-19 since docs/specs/posts/normal-bodies. Bump the version with every
+// change, so eval verdicts trace back to it: posts-20, since normal-bodies
+// took posts-19 first (the merge of 2026-11-23).
+export const REASONS_PROMPT_VERSION = 'posts-20';
 
 const GOAL = `Who reads these posts: a tourist or expat near the business, on their phone, often in their hotel room, apartment or villa. What a post is for: it makes them want a massage today from this business, which comes to them, so they message it. Its edge over any spa: the guest never leaves their room, with no taxi there and back and nothing to get dressed for afterwards.`;
 
