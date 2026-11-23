@@ -121,3 +121,72 @@ Not a pass: the copy check fails. The model lifts the sample of its own
 reason, its question above all. The developer proposed (the spec's
 amendment of 2026-11-23) to show only the samples of the other reasons, and
 to record again.
+
+### Second `posts-19` recordings (2026-11-23), after the amendment
+
+The samples amendment changed `posts-19`'s prompt after the first run, which
+never shipped: the shipped `posts-19` is this one. Recorded with the
+amendment's go-ahead, the same three commands; Sen's offer plan hit a 503 and
+Svarga's new texts a cut answer (finish "other"), each run again once: 8
+Flash-Lite requests in all.
+
+**Sen, without an offer**: `twoOfYou`, "Both ready to rest together after
+exploring My Khe beach? 🌸" / "We send two therapists to your hotel room for
+a Couple Massage. You lie side by side, and your shoulders and neck are
+worked loose." / "Trained local Vietnamese therapists"; story "Ready to rest
+together? A Couple Massage in your room". `firstNight`, "A stiff back and
+legs after your long flight? 🌷" / "Tonight a therapist comes to your Da
+Nang villa for a Thai Massage. You wear comfortable clothes while she
+stretches your body." / "Hours: Mo-Su 08:30-23:00" (the line copied, not
+said in words); story "Flight in your back and legs? We come to you
+tonight" (11 words).
+
+**Svarga, without an offer**: `dayOut`, "Sore legs after your surf session
+at Echo Beach? 🌺" / "Our therapist comes to your Canggu villa with a Surf and
+Sport Recovery Massage. You rest on your bed while we work out the tightness
+so your afternoon stays easy." / "No upfront deposit for villas and hotels";
+story "Sore legs from surfing? Recovery massage in your room". `laptop`,
+"Stiff arms and hands after days of work on your laptop in Seminyak? 🌸" /
+"Our therapist brings a Balinese Lulur Scrub and Massage directly to your
+room. You stay right where you are while the warm scrub and oils loosen the
+screen tension." / "Fresh linens, towels, and natural oils brought to you";
+story "Laptop days? Lulur scrub and massage in your room".
+
+**Sen, with the offer**: `laptop`, the line / "Stiff neck and shoulders from
+laptop days in your An Thuong apartment? Two therapists come to your room
+for a traditional massage, and you relax while the tension fades away." (two
+therapists, though its set-up has one) / "Free travel in our core areas".
+`dayOut`, the line / "Aching legs after climbing the Marble Mountains today?
+A therapist brings comfortable mats to your My Khe hotel room, and you
+stretch out with the afternoon still ahead." / "Linens, towels and oils
+included".
+
+**Svarga, with the offer**: `stayIn`, the line / "It is pouring outside and
+you'd rather stay in your Canggu villa tonight? A therapist comes right to
+your door and works your sore muscles while you rest." / "No upfront deposit
+for villas and hotels". `firstNight`, the line / "Stiff legs and a tired back
+from your long flight to Bali? Two therapists come to your Seminyak hotel
+tonight to work your whole body at once." (four hands) / "WhatsApp replies in
+~5 mins".
+
+**New texts**: Sen's two-of-you post, "Both tired of resting alone when you
+could share this afternoon? 🌸" (awkward) with "No upfront deposit
+required"; Svarga's day out, "Tired feet from walking the rice terraces in
+Pererenan today? 🌸" (its image works on the legs) with Foot Reflexology
+named in place of its set-up's treatment.
+
+| Check | posts-18 | first run | second run |
+|---|---|---|---|
+| The question speaks to the guest about its reason, never in the first person | 4 of 8 | 8 of 8 | 8 of 8 |
+| The answer says what the guest gets and how easy it is | to judge | 8 of 8 | 8 of 8 |
+| The fact removes a doubt; none turns a request away | 7 of 8 | 8 of 8 | 8 of 8 |
+| No advice, no tip | 8 of 8 | 8 of 8 | 8 of 8 |
+| No sample copied (code's record) | none to copy | 4 of 8 copy | 1 of 8 copies ("you lie side by side", from the staying-in sample, on a couple massage) |
+| The story text names the moment and says the business comes, offer posts aside | to judge | 4 of 4 | 4 of 4 (one of 11 words) |
+
+The copy check still fails on one phrase, so the replay test leaves the copy
+assertion out, for the maintainer to decide. Seen besides: one post names two
+therapists where its image has one, the hours fact is the raw line, four
+answers have a sentence of 16 to 20 words, and one new-texts hook reads
+awkwardly. The maintainer's verdict follows.
+

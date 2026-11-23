@@ -5,12 +5,14 @@
     "modelId": "gemini-3.5-flash-lite",
     "promptVersion": "posts-19",
     "partials": [
-      {},
+      {
+        "posts": []
+      },
       {
         "posts": [
           {
             "type": "offer",
-            "topic": "Surf and sport recovery massage for sore"
+            "topic": "Surf and sport recovery massage for tired legs"
           }
         ]
       },
@@ -18,9 +20,9 @@
         "posts": [
           {
             "type": "offer",
-            "topic": "Surf and sport recovery massage for sore legs in Canggu",
-            "scene": "guest",
-            "caption": "Legs heavy from the long"
+            "topic": "Surf and sport recovery massage for tired legs in Canggu",
+            "scene": "guest, from above",
+            "caption": "Sore legs after your"
           }
         ]
       },
@@ -28,9 +30,9 @@
         "posts": [
           {
             "type": "offer",
-            "topic": "Surf and sport recovery massage for sore legs in Canggu",
-            "scene": "guest",
-            "caption": "Legs heavy from the long surf session at Echo Beach? 🌸\n\nA therapist comes to your Canggu villa to work your calves and feet"
+            "topic": "Surf and sport recovery massage for tired legs in Canggu",
+            "scene": "guest, from above",
+            "caption": "Sore legs after your surf session at Echo Beach? 🌺\n\nOur therapist comes to your Canggu villa with a Surf and"
           }
         ]
       },
@@ -38,9 +40,9 @@
         "posts": [
           {
             "type": "offer",
-            "topic": "Surf and sport recovery massage for sore legs in Canggu",
-            "scene": "guest",
-            "caption": "Legs heavy from the long surf session at Echo Beach? 🌸\n\nA therapist comes to your Canggu villa to work your calves and feet. You stay right where you are for the rest of the afternoon.\n\nNo upfront deposit for villas and hotels 🌺"
+            "topic": "Surf and sport recovery massage for tired legs in Canggu",
+            "scene": "guest, from above",
+            "caption": "Sore legs after your surf session at Echo Beach? 🌺\n\nOur therapist comes to your Canggu villa with a Surf and Sport Recovery Massage. You rest on your bed while we work out the tightness so your afternoon stays easy.\n\nNo"
           }
         ]
       },
@@ -48,12 +50,11 @@
         "posts": [
           {
             "type": "offer",
-            "topic": "Surf and sport recovery massage for sore legs in Canggu",
-            "scene": "guest",
-            "caption": "Legs heavy from the long surf session at Echo Beach? 🌸\n\nA therapist comes to your Canggu villa to work your calves and feet. You stay right where you are for the rest of the afternoon.\n\nNo upfront deposit for villas and hotels 🌺",
+            "topic": "Surf and sport recovery massage for tired legs in Canggu",
+            "scene": "guest, from above",
+            "caption": "Sore legs after your surf session at Echo Beach? 🌺\n\nOur therapist comes to your Canggu villa with a Surf and Sport Recovery Massage. You rest on your bed while we work out the tightness so your afternoon stays easy.\n\nNo upfront deposit for villas and hotels 🪷",
             "hashtags": [
               "canggu",
-              "massagemancanggu",
               ""
             ]
           }
@@ -63,240 +64,15 @@
         "posts": [
           {
             "type": "offer",
-            "topic": "Surf and sport recovery massage for sore legs in Canggu",
-            "scene": "guest",
-            "caption": "Legs heavy from the long surf session at Echo Beach? 🌸\n\nA therapist comes to your Canggu villa to work your calves and feet. You stay right where you are for the rest of the afternoon.\n\nNo upfront deposit for villas and hotels 🌺",
+            "topic": "Surf and sport recovery massage for tired legs in Canggu",
+            "scene": "guest, from above",
+            "caption": "Sore legs after your surf session at Echo Beach? 🌺\n\nOur therapist comes to your Canggu villa with a Surf and Sport Recovery Massage. You rest on your bed while we work out the tightness so your afternoon stays easy.\n\nNo upfront deposit for villas and hotels 🪷",
             "hashtags": [
               "canggu",
-              "massagemancanggu",
-              "surfrecovery",
-              "balimassage"
-            ],
-            "altText": "A woman lying on a"
-          }
-        ]
-      },
-      {
-        "posts": [
-          {
-            "type": "offer",
-            "topic": "Surf and sport recovery massage for sore legs in Canggu",
-            "scene": "guest",
-            "caption": "Legs heavy from the long surf session at Echo Beach? 🌸\n\nA therapist comes to your Canggu villa to work your calves and feet. You stay right where you are for the rest of the afternoon.\n\nNo upfront deposit for villas and hotels 🌺",
-            "hashtags": [
-              "canggu",
-              "massagemancanggu",
-              "surfrecovery",
-              "balimassage"
-            ],
-            "altText": "A woman lying on a massage bed from above as a therapist works on her back in soft afternoon light.",
-            "imagePrompt": "A tall "
-          }
-        ]
-      },
-      {
-        "posts": [
-          {
-            "type": "offer",
-            "topic": "Surf and sport recovery massage for sore legs in Canggu",
-            "scene": "guest",
-            "caption": "Legs heavy from the long surf session at Echo Beach? 🌸\n\nA therapist comes to your Canggu villa to work your calves and feet. You stay right where you are for the rest of the afternoon.\n\nNo upfront deposit for villas and hotels 🌺",
-            "hashtags": [
-              "canggu",
-              "massagemancanggu",
-              "surfrecovery",
-              "balimassage"
-            ],
-            "altText": "A woman lying on a massage bed from above as a therapist works on her back in soft afternoon light.",
-            "imagePrompt": "A tall 9:16 photo. A woman lying relaxed on a massage bed, seen from above. A female therapist's hands are working golden"
-          }
-        ]
-      },
-      {
-        "posts": [
-          {
-            "type": "offer",
-            "topic": "Surf and sport recovery massage for sore legs in Canggu",
-            "scene": "guest",
-            "caption": "Legs heavy from the long surf session at Echo Beach? 🌸\n\nA therapist comes to your Canggu villa to work your calves and feet. You stay right where you are for the rest of the afternoon.\n\nNo upfront deposit for villas and hotels 🌺",
-            "hashtags": [
-              "canggu",
-              "massagemancanggu",
-              "surfrecovery",
-              "balimassage"
-            ],
-            "altText": "A woman lying on a massage bed from above as a therapist works on her back in soft afternoon light.",
-            "imagePrompt": "A tall 9:16 photo. A woman lying relaxed on a massage bed, seen from above. A female therapist's hands are working golden oil into her back. The room opens onto tropical palms outside in soft shade. Late afternoon warm light, lamps lit inside."
-          }
-        ]
-      },
-      {
-        "posts": [
-          {
-            "type": "offer",
-            "topic": "Surf and sport recovery massage for sore legs in Canggu",
-            "scene": "guest",
-            "caption": "Legs heavy from the long surf session at Echo Beach? 🌸\n\nA therapist comes to your Canggu villa to work your calves and feet. You stay right where you are for the rest of the afternoon.\n\nNo upfront deposit for villas and hotels 🌺",
-            "hashtags": [
-              "canggu",
-              "massagemancanggu",
-              "surfrecovery",
-              "balimassage"
-            ],
-            "altText": "A woman lying on a massage bed from above as a therapist works on her back in soft afternoon light.",
-            "imagePrompt": "A tall 9:16 photo. A woman lying relaxed on a massage bed, seen from above. A female therapist's hands are working golden oil into her back. The room opens onto tropical palms outside in soft shade. Late afternoon warm light, lamps lit inside. A surfboard leans against the far balcony rail out of focus.",
-            "storyText": "Echo Beach surf in your legs? We"
-          }
-        ]
-      },
-      {
-        "posts": [
-          {
-            "type": "offer",
-            "topic": "Surf and sport recovery massage for sore legs in Canggu",
-            "scene": "guest",
-            "caption": "Legs heavy from the long surf session at Echo Beach? 🌸\n\nA therapist comes to your Canggu villa to work your calves and feet. You stay right where you are for the rest of the afternoon.\n\nNo upfront deposit for villas and hotels 🌺",
-            "hashtags": [
-              "canggu",
-              "massagemancanggu",
-              "surfrecovery",
-              "balimassage"
-            ],
-            "altText": "A woman lying on a massage bed from above as a therapist works on her back in soft afternoon light.",
-            "imagePrompt": "A tall 9:16 photo. A woman lying relaxed on a massage bed, seen from above. A female therapist's hands are working golden oil into her back. The room opens onto tropical palms outside in soft shade. Late afternoon warm light, lamps lit inside. A surfboard leans against the far balcony rail out of focus.",
-            "storyText": "Echo Beach surf in your legs? We come to you today 🌸"
-          },
-          {
-            "type": "moment"
-          }
-        ]
-      },
-      {
-        "posts": [
-          {
-            "type": "offer",
-            "topic": "Surf and sport recovery massage for sore legs in Canggu",
-            "scene": "guest",
-            "caption": "Legs heavy from the long surf session at Echo Beach? 🌸\n\nA therapist comes to your Canggu villa to work your calves and feet. You stay right where you are for the rest of the afternoon.\n\nNo upfront deposit for villas and hotels 🌺",
-            "hashtags": [
-              "canggu",
-              "massagemancanggu",
-              "surfrecovery",
-              "balimassage"
-            ],
-            "altText": "A woman lying on a massage bed from above as a therapist works on her back in soft afternoon light.",
-            "imagePrompt": "A tall 9:16 photo. A woman lying relaxed on a massage bed, seen from above. A female therapist's hands are working golden oil into her back. The room opens onto tropical palms outside in soft shade. Late afternoon warm light, lamps lit inside. A surfboard leans against the far balcony rail out of focus.",
-            "storyText": "Echo Beach surf in your legs? We come to you today 🌸"
-          },
-          {
-            "type": "moment",
-            "topic": "Balinese lulur scrub and massage for laptop tension in Seminyak",
-            "scene": "detail"
-          }
-        ]
-      },
-      {
-        "posts": [
-          {
-            "type": "offer",
-            "topic": "Surf and sport recovery massage for sore legs in Canggu",
-            "scene": "guest",
-            "caption": "Legs heavy from the long surf session at Echo Beach? 🌸\n\nA therapist comes to your Canggu villa to work your calves and feet. You stay right where you are for the rest of the afternoon.\n\nNo upfront deposit for villas and hotels 🌺",
-            "hashtags": [
-              "canggu",
-              "massagemancanggu",
-              "surfrecovery",
-              "balimassage"
-            ],
-            "altText": "A woman lying on a massage bed from above as a therapist works on her back in soft afternoon light.",
-            "imagePrompt": "A tall 9:16 photo. A woman lying relaxed on a massage bed, seen from above. A female therapist's hands are working golden oil into her back. The room opens onto tropical palms outside in soft shade. Late afternoon warm light, lamps lit inside. A surfboard leans against the far balcony rail out of focus.",
-            "storyText": "Echo Beach surf in your legs? We come to you today 🌸"
-          },
-          {
-            "type": "moment",
-            "topic": "Balinese lulur scrub and massage for laptop tension in Seminyak",
-            "scene": "detail",
-            "caption": "A week of laptop work, and now your neck won't turn? 🌺\n"
-          }
-        ]
-      },
-      {
-        "posts": [
-          {
-            "type": "offer",
-            "topic": "Surf and sport recovery massage for sore legs in Canggu",
-            "scene": "guest",
-            "caption": "Legs heavy from the long surf session at Echo Beach? 🌸\n\nA therapist comes to your Canggu villa to work your calves and feet. You stay right where you are for the rest of the afternoon.\n\nNo upfront deposit for villas and hotels 🌺",
-            "hashtags": [
-              "canggu",
-              "massagemancanggu",
-              "surfrecovery",
-              "balimassage"
-            ],
-            "altText": "A woman lying on a massage bed from above as a therapist works on her back in soft afternoon light.",
-            "imagePrompt": "A tall 9:16 photo. A woman lying relaxed on a massage bed, seen from above. A female therapist's hands are working golden oil into her back. The room opens onto tropical palms outside in soft shade. Late afternoon warm light, lamps lit inside. A surfboard leans against the far balcony rail out of focus.",
-            "storyText": "Echo Beach surf in your legs? We come to you today 🌸"
-          },
-          {
-            "type": "moment",
-            "topic": "Balinese lulur scrub and massage for laptop tension in Seminyak",
-            "scene": "detail",
-            "caption": "A week of laptop work, and now your neck won't turn? 🌺\n\nA therapist brings a full scrub and massage to your Seminyak apartment tonight. You rest your arms while the turmeric and rice"
-          }
-        ]
-      },
-      {
-        "posts": [
-          {
-            "type": "offer",
-            "topic": "Surf and sport recovery massage for sore legs in Canggu",
-            "scene": "guest",
-            "caption": "Legs heavy from the long surf session at Echo Beach? 🌸\n\nA therapist comes to your Canggu villa to work your calves and feet. You stay right where you are for the rest of the afternoon.\n\nNo upfront deposit for villas and hotels 🌺",
-            "hashtags": [
-              "canggu",
-              "massagemancanggu",
-              "surfrecovery",
-              "balimassage"
-            ],
-            "altText": "A woman lying on a massage bed from above as a therapist works on her back in soft afternoon light.",
-            "imagePrompt": "A tall 9:16 photo. A woman lying relaxed on a massage bed, seen from above. A female therapist's hands are working golden oil into her back. The room opens onto tropical palms outside in soft shade. Late afternoon warm light, lamps lit inside. A surfboard leans against the far balcony rail out of focus.",
-            "storyText": "Echo Beach surf in your legs? We come to you today 🌸"
-          },
-          {
-            "type": "moment",
-            "topic": "Balinese lulur scrub and massage for laptop tension in Seminyak",
-            "scene": "detail",
-            "caption": "A week of laptop work, and now your neck won't turn? 🌺\n\nA therapist brings a full scrub and massage to your Seminyak apartment tonight. You rest your arms while the turmeric and rice powder work.\n\nFresh linens, towels, and natural oils brought to you 🪷"
-          }
-        ]
-      },
-      {
-        "posts": [
-          {
-            "type": "offer",
-            "topic": "Surf and sport recovery massage for sore legs in Canggu",
-            "scene": "guest",
-            "caption": "Legs heavy from the long surf session at Echo Beach? 🌸\n\nA therapist comes to your Canggu villa to work your calves and feet. You stay right where you are for the rest of the afternoon.\n\nNo upfront deposit for villas and hotels 🌺",
-            "hashtags": [
-              "canggu",
-              "massagemancanggu",
-              "surfrecovery",
-              "balimassage"
-            ],
-            "altText": "A woman lying on a massage bed from above as a therapist works on her back in soft afternoon light.",
-            "imagePrompt": "A tall 9:16 photo. A woman lying relaxed on a massage bed, seen from above. A female therapist's hands are working golden oil into her back. The room opens onto tropical palms outside in soft shade. Late afternoon warm light, lamps lit inside. A surfboard leans against the far balcony rail out of focus.",
-            "storyText": "Echo Beach surf in your legs? We come to you today 🌸"
-          },
-          {
-            "type": "moment",
-            "topic": "Balinese lulur scrub and massage for laptop tension in Seminyak",
-            "scene": "detail",
-            "caption": "A week of laptop work, and now your neck won't turn? 🌺\n\nA therapist brings a full scrub and massage to your Seminyak apartment tonight. You rest your arms while the turmeric and rice powder work.\n\nFresh linens, towels, and natural oils brought to you 🪷",
-            "hashtags": [
-              "seminyak",
-              "balinesemassage",
-              "spaseminyak",
-              ""
+              "massagerest",
+              "sportrecovery",
+              "balimassage",
+              "canggus"
             ]
           }
         ]
@@ -305,31 +81,17 @@
         "posts": [
           {
             "type": "offer",
-            "topic": "Surf and sport recovery massage for sore legs in Canggu",
-            "scene": "guest",
-            "caption": "Legs heavy from the long surf session at Echo Beach? 🌸\n\nA therapist comes to your Canggu villa to work your calves and feet. You stay right where you are for the rest of the afternoon.\n\nNo upfront deposit for villas and hotels 🌺",
+            "topic": "Surf and sport recovery massage for tired legs in Canggu",
+            "scene": "guest, from above",
+            "caption": "Sore legs after your surf session at Echo Beach? 🌺\n\nOur therapist comes to your Canggu villa with a Surf and Sport Recovery Massage. You rest on your bed while we work out the tightness so your afternoon stays easy.\n\nNo upfront deposit for villas and hotels 🪷",
             "hashtags": [
               "canggu",
-              "massagemancanggu",
-              "surfrecovery",
-              "balimassage"
+              "massagerest",
+              "sportrecovery",
+              "balimassage",
+              "cangguspa"
             ],
-            "altText": "A woman lying on a massage bed from above as a therapist works on her back in soft afternoon light.",
-            "imagePrompt": "A tall 9:16 photo. A woman lying relaxed on a massage bed, seen from above. A female therapist's hands are working golden oil into her back. The room opens onto tropical palms outside in soft shade. Late afternoon warm light, lamps lit inside. A surfboard leans against the far balcony rail out of focus.",
-            "storyText": "Echo Beach surf in your legs? We come to you today 🌸"
-          },
-          {
-            "type": "moment",
-            "topic": "Balinese lulur scrub and massage for laptop tension in Seminyak",
-            "scene": "detail",
-            "caption": "A week of laptop work, and now your neck won't turn? 🌺\n\nA therapist brings a full scrub and massage to your Seminyak apartment tonight. You rest your arms while the turmeric and rice powder work.\n\nFresh linens, towels, and natural oils brought to you 🪷",
-            "hashtags": [
-              "seminyak",
-              "balinesemassage",
-              "spaseminyak",
-              "bodyscrub"
-            ],
-            "altText": "Close view of a therapist's hands applying scrub"
+            "altText": "A woman lying on a massage bed while a therapist works on her back"
           }
         ]
       },
@@ -337,32 +99,18 @@
         "posts": [
           {
             "type": "offer",
-            "topic": "Surf and sport recovery massage for sore legs in Canggu",
-            "scene": "guest",
-            "caption": "Legs heavy from the long surf session at Echo Beach? 🌸\n\nA therapist comes to your Canggu villa to work your calves and feet. You stay right where you are for the rest of the afternoon.\n\nNo upfront deposit for villas and hotels 🌺",
+            "topic": "Surf and sport recovery massage for tired legs in Canggu",
+            "scene": "guest, from above",
+            "caption": "Sore legs after your surf session at Echo Beach? 🌺\n\nOur therapist comes to your Canggu villa with a Surf and Sport Recovery Massage. You rest on your bed while we work out the tightness so your afternoon stays easy.\n\nNo upfront deposit for villas and hotels 🪷",
             "hashtags": [
               "canggu",
-              "massagemancanggu",
-              "surfrecovery",
-              "balimassage"
+              "massagerest",
+              "sportrecovery",
+              "balimassage",
+              "cangguspa"
             ],
-            "altText": "A woman lying on a massage bed from above as a therapist works on her back in soft afternoon light.",
-            "imagePrompt": "A tall 9:16 photo. A woman lying relaxed on a massage bed, seen from above. A female therapist's hands are working golden oil into her back. The room opens onto tropical palms outside in soft shade. Late afternoon warm light, lamps lit inside. A surfboard leans against the far balcony rail out of focus.",
-            "storyText": "Echo Beach surf in your legs? We come to you today 🌸"
-          },
-          {
-            "type": "moment",
-            "topic": "Balinese lulur scrub and massage for laptop tension in Seminyak",
-            "scene": "detail",
-            "caption": "A week of laptop work, and now your neck won't turn? 🌺\n\nA therapist brings a full scrub and massage to your Seminyak apartment tonight. You rest your arms while the turmeric and rice powder work.\n\nFresh linens, towels, and natural oils brought to you 🪷",
-            "hashtags": [
-              "seminyak",
-              "balinesemassage",
-              "spaseminyak",
-              "bodyscrub"
-            ],
-            "altText": "Close view of a therapist's hands applying scrub to a man's arm on a massage bed at night.",
-            "imagePrompt": "A tall 9:16 photo."
+            "altText": "A woman lying on a massage bed while a therapist works on her back with golden oil.",
+            "imagePrompt": "A tall 9:16 vertical photo of a woman lying face down on a"
           }
         ]
       },
@@ -370,32 +118,18 @@
         "posts": [
           {
             "type": "offer",
-            "topic": "Surf and sport recovery massage for sore legs in Canggu",
-            "scene": "guest",
-            "caption": "Legs heavy from the long surf session at Echo Beach? 🌸\n\nA therapist comes to your Canggu villa to work your calves and feet. You stay right where you are for the rest of the afternoon.\n\nNo upfront deposit for villas and hotels 🌺",
+            "topic": "Surf and sport recovery massage for tired legs in Canggu",
+            "scene": "guest, from above",
+            "caption": "Sore legs after your surf session at Echo Beach? 🌺\n\nOur therapist comes to your Canggu villa with a Surf and Sport Recovery Massage. You rest on your bed while we work out the tightness so your afternoon stays easy.\n\nNo upfront deposit for villas and hotels 🪷",
             "hashtags": [
               "canggu",
-              "massagemancanggu",
-              "surfrecovery",
-              "balimassage"
+              "massagerest",
+              "sportrecovery",
+              "balimassage",
+              "cangguspa"
             ],
-            "altText": "A woman lying on a massage bed from above as a therapist works on her back in soft afternoon light.",
-            "imagePrompt": "A tall 9:16 photo. A woman lying relaxed on a massage bed, seen from above. A female therapist's hands are working golden oil into her back. The room opens onto tropical palms outside in soft shade. Late afternoon warm light, lamps lit inside. A surfboard leans against the far balcony rail out of focus.",
-            "storyText": "Echo Beach surf in your legs? We come to you today 🌸"
-          },
-          {
-            "type": "moment",
-            "topic": "Balinese lulur scrub and massage for laptop tension in Seminyak",
-            "scene": "detail",
-            "caption": "A week of laptop work, and now your neck won't turn? 🌺\n\nA therapist brings a full scrub and massage to your Seminyak apartment tonight. You rest your arms while the turmeric and rice powder work.\n\nFresh linens, towels, and natural oils brought to you 🪷",
-            "hashtags": [
-              "seminyak",
-              "balinesemassage",
-              "spaseminyak",
-              "bodyscrub"
-            ],
-            "altText": "Close view of a therapist's hands applying scrub to a man's arm on a massage bed at night.",
-            "imagePrompt": "A tall 9:16 photo. A close view of a female therapist's hands spreading a lulur scrub onto a man's arm on a massage bed."
+            "altText": "A woman lying on a massage bed while a therapist works on her back with golden oil.",
+            "imagePrompt": "A tall 9:16 vertical photo of a woman lying face down on a massage table in a bright Bali villa bedroom, a female therapist's hands working on her back with warm golden oil, late"
           }
         ]
       },
@@ -403,32 +137,18 @@
         "posts": [
           {
             "type": "offer",
-            "topic": "Surf and sport recovery massage for sore legs in Canggu",
-            "scene": "guest",
-            "caption": "Legs heavy from the long surf session at Echo Beach? 🌸\n\nA therapist comes to your Canggu villa to work your calves and feet. You stay right where you are for the rest of the afternoon.\n\nNo upfront deposit for villas and hotels 🌺",
+            "topic": "Surf and sport recovery massage for tired legs in Canggu",
+            "scene": "guest, from above",
+            "caption": "Sore legs after your surf session at Echo Beach? 🌺\n\nOur therapist comes to your Canggu villa with a Surf and Sport Recovery Massage. You rest on your bed while we work out the tightness so your afternoon stays easy.\n\nNo upfront deposit for villas and hotels 🪷",
             "hashtags": [
               "canggu",
-              "massagemancanggu",
-              "surfrecovery",
-              "balimassage"
+              "massagerest",
+              "sportrecovery",
+              "balimassage",
+              "cangguspa"
             ],
-            "altText": "A woman lying on a massage bed from above as a therapist works on her back in soft afternoon light.",
-            "imagePrompt": "A tall 9:16 photo. A woman lying relaxed on a massage bed, seen from above. A female therapist's hands are working golden oil into her back. The room opens onto tropical palms outside in soft shade. Late afternoon warm light, lamps lit inside. A surfboard leans against the far balcony rail out of focus.",
-            "storyText": "Echo Beach surf in your legs? We come to you today 🌸"
-          },
-          {
-            "type": "moment",
-            "topic": "Balinese lulur scrub and massage for laptop tension in Seminyak",
-            "scene": "detail",
-            "caption": "A week of laptop work, and now your neck won't turn? 🌺\n\nA therapist brings a full scrub and massage to your Seminyak apartment tonight. You rest your arms while the turmeric and rice powder work.\n\nFresh linens, towels, and natural oils brought to you 🪷",
-            "hashtags": [
-              "seminyak",
-              "balinesemassage",
-              "spaseminyak",
-              "bodyscrub"
-            ],
-            "altText": "Close view of a therapist's hands applying scrub to a man's arm on a massage bed at night.",
-            "imagePrompt": "A tall 9:16 photo. A close view of a female therapist's hands spreading a lulur scrub onto a man's arm on a massage bed. A small wooden bowl of turmeric scrub sits nearby. Evening, lamps and candles giving the room a warm golden glow, the"
+            "altText": "A woman lying on a massage bed while a therapist works on her back with golden oil.",
+            "imagePrompt": "A tall 9:16 vertical photo of a woman lying face down on a massage table in a bright Bali villa bedroom, a female therapist's hands working on her back with warm golden oil, late afternoon soft shade through a wide window, tropical plants outside, clean white linens, simple and tidy, no text."
           }
         ]
       },
@@ -436,32 +156,44 @@
         "posts": [
           {
             "type": "offer",
-            "topic": "Surf and sport recovery massage for sore legs in Canggu",
-            "scene": "guest",
-            "caption": "Legs heavy from the long surf session at Echo Beach? 🌸\n\nA therapist comes to your Canggu villa to work your calves and feet. You stay right where you are for the rest of the afternoon.\n\nNo upfront deposit for villas and hotels 🌺",
+            "topic": "Surf and sport recovery massage for tired legs in Canggu",
+            "scene": "guest, from above",
+            "caption": "Sore legs after your surf session at Echo Beach? 🌺\n\nOur therapist comes to your Canggu villa with a Surf and Sport Recovery Massage. You rest on your bed while we work out the tightness so your afternoon stays easy.\n\nNo upfront deposit for villas and hotels 🪷",
             "hashtags": [
               "canggu",
-              "massagemancanggu",
-              "surfrecovery",
-              "balimassage"
+              "massagerest",
+              "sportrecovery",
+              "balimassage",
+              "cangguspa"
             ],
-            "altText": "A woman lying on a massage bed from above as a therapist works on her back in soft afternoon light.",
-            "imagePrompt": "A tall 9:16 photo. A woman lying relaxed on a massage bed, seen from above. A female therapist's hands are working golden oil into her back. The room opens onto tropical palms outside in soft shade. Late afternoon warm light, lamps lit inside. A surfboard leans against the far balcony rail out of focus.",
-            "storyText": "Echo Beach surf in your legs? We come to you today 🌸"
+            "altText": "A woman lying on a massage bed while a therapist works on her back with golden oil.",
+            "imagePrompt": "A tall 9:16 vertical photo of a woman lying face down on a massage table in a bright Bali villa bedroom, a female therapist's hands working on her back with warm golden oil, late afternoon soft shade through a wide window, tropical plants outside, clean white linens, simple and tidy, no text.",
+            "storyText": "Sore legs from surfing? Recovery massage in your room 🌺"
+          },
+          {}
+        ]
+      },
+      {
+        "posts": [
+          {
+            "type": "offer",
+            "topic": "Surf and sport recovery massage for tired legs in Canggu",
+            "scene": "guest, from above",
+            "caption": "Sore legs after your surf session at Echo Beach? 🌺\n\nOur therapist comes to your Canggu villa with a Surf and Sport Recovery Massage. You rest on your bed while we work out the tightness so your afternoon stays easy.\n\nNo upfront deposit for villas and hotels 🪷",
+            "hashtags": [
+              "canggu",
+              "massagerest",
+              "sportrecovery",
+              "balimassage",
+              "cangguspa"
+            ],
+            "altText": "A woman lying on a massage bed while a therapist works on her back with golden oil.",
+            "imagePrompt": "A tall 9:16 vertical photo of a woman lying face down on a massage table in a bright Bali villa bedroom, a female therapist's hands working on her back with warm golden oil, late afternoon soft shade through a wide window, tropical plants outside, clean white linens, simple and tidy, no text.",
+            "storyText": "Sore legs from surfing? Recovery massage in your room 🌺"
           },
           {
             "type": "moment",
-            "topic": "Balinese lulur scrub and massage for laptop tension in Seminyak",
-            "scene": "detail",
-            "caption": "A week of laptop work, and now your neck won't turn? 🌺\n\nA therapist brings a full scrub and massage to your Seminyak apartment tonight. You rest your arms while the turmeric and rice powder work.\n\nFresh linens, towels, and natural oils brought to you 🪷",
-            "hashtags": [
-              "seminyak",
-              "balinesemassage",
-              "spaseminyak",
-              "bodyscrub"
-            ],
-            "altText": "Close view of a therapist's hands applying scrub to a man's arm on a massage bed at night.",
-            "imagePrompt": "A tall 9:16 photo. A close view of a female therapist's hands spreading a lulur scrub onto a man's arm on a massage bed. A small wooden bowl of turmeric scrub sits nearby. Evening, lamps and candles giving the room a warm golden glow, the garden outside lit by lanterns under a deep blue sky. A closed laptop rests far in the background on a desk."
+            "topic": "Balinese Lulur scrub and massage after laptop days in Seminyak"
           }
         ]
       },
@@ -469,33 +201,315 @@
         "posts": [
           {
             "type": "offer",
-            "topic": "Surf and sport recovery massage for sore legs in Canggu",
-            "scene": "guest",
-            "caption": "Legs heavy from the long surf session at Echo Beach? 🌸\n\nA therapist comes to your Canggu villa to work your calves and feet. You stay right where you are for the rest of the afternoon.\n\nNo upfront deposit for villas and hotels 🌺",
+            "topic": "Surf and sport recovery massage for tired legs in Canggu",
+            "scene": "guest, from above",
+            "caption": "Sore legs after your surf session at Echo Beach? 🌺\n\nOur therapist comes to your Canggu villa with a Surf and Sport Recovery Massage. You rest on your bed while we work out the tightness so your afternoon stays easy.\n\nNo upfront deposit for villas and hotels 🪷",
             "hashtags": [
               "canggu",
-              "massagemancanggu",
-              "surfrecovery",
-              "balimassage"
+              "massagerest",
+              "sportrecovery",
+              "balimassage",
+              "cangguspa"
             ],
-            "altText": "A woman lying on a massage bed from above as a therapist works on her back in soft afternoon light.",
-            "imagePrompt": "A tall 9:16 photo. A woman lying relaxed on a massage bed, seen from above. A female therapist's hands are working golden oil into her back. The room opens onto tropical palms outside in soft shade. Late afternoon warm light, lamps lit inside. A surfboard leans against the far balcony rail out of focus.",
-            "storyText": "Echo Beach surf in your legs? We come to you today 🌸"
+            "altText": "A woman lying on a massage bed while a therapist works on her back with golden oil.",
+            "imagePrompt": "A tall 9:16 vertical photo of a woman lying face down on a massage table in a bright Bali villa bedroom, a female therapist's hands working on her back with warm golden oil, late afternoon soft shade through a wide window, tropical plants outside, clean white linens, simple and tidy, no text.",
+            "storyText": "Sore legs from surfing? Recovery massage in your room 🌺"
           },
           {
             "type": "moment",
-            "topic": "Balinese lulur scrub and massage for laptop tension in Seminyak",
-            "scene": "detail",
-            "caption": "A week of laptop work, and now your neck won't turn? 🌺\n\nA therapist brings a full scrub and massage to your Seminyak apartment tonight. You rest your arms while the turmeric and rice powder work.\n\nFresh linens, towels, and natural oils brought to you 🪷",
+            "topic": "Balinese Lulur scrub and massage after laptop days in Seminyak",
+            "scene": "detail, a close view of the hands on the body",
+            "caption": ""
+          }
+        ]
+      },
+      {
+        "posts": [
+          {
+            "type": "offer",
+            "topic": "Surf and sport recovery massage for tired legs in Canggu",
+            "scene": "guest, from above",
+            "caption": "Sore legs after your surf session at Echo Beach? 🌺\n\nOur therapist comes to your Canggu villa with a Surf and Sport Recovery Massage. You rest on your bed while we work out the tightness so your afternoon stays easy.\n\nNo upfront deposit for villas and hotels 🪷",
+            "hashtags": [
+              "canggu",
+              "massagerest",
+              "sportrecovery",
+              "balimassage",
+              "cangguspa"
+            ],
+            "altText": "A woman lying on a massage bed while a therapist works on her back with golden oil.",
+            "imagePrompt": "A tall 9:16 vertical photo of a woman lying face down on a massage table in a bright Bali villa bedroom, a female therapist's hands working on her back with warm golden oil, late afternoon soft shade through a wide window, tropical plants outside, clean white linens, simple and tidy, no text.",
+            "storyText": "Sore legs from surfing? Recovery massage in your room 🌺"
+          },
+          {
+            "type": "moment",
+            "topic": "Balinese Lulur scrub and massage after laptop days in Seminyak",
+            "scene": "detail, a close view of the hands on the body",
+            "caption": "Stiff arms and hands after days of work on your laptop in Seminyak? 🌸\n\nOur therapist"
+          }
+        ]
+      },
+      {
+        "posts": [
+          {
+            "type": "offer",
+            "topic": "Surf and sport recovery massage for tired legs in Canggu",
+            "scene": "guest, from above",
+            "caption": "Sore legs after your surf session at Echo Beach? 🌺\n\nOur therapist comes to your Canggu villa with a Surf and Sport Recovery Massage. You rest on your bed while we work out the tightness so your afternoon stays easy.\n\nNo upfront deposit for villas and hotels 🪷",
+            "hashtags": [
+              "canggu",
+              "massagerest",
+              "sportrecovery",
+              "balimassage",
+              "cangguspa"
+            ],
+            "altText": "A woman lying on a massage bed while a therapist works on her back with golden oil.",
+            "imagePrompt": "A tall 9:16 vertical photo of a woman lying face down on a massage table in a bright Bali villa bedroom, a female therapist's hands working on her back with warm golden oil, late afternoon soft shade through a wide window, tropical plants outside, clean white linens, simple and tidy, no text.",
+            "storyText": "Sore legs from surfing? Recovery massage in your room 🌺"
+          },
+          {
+            "type": "moment",
+            "topic": "Balinese Lulur scrub and massage after laptop days in Seminyak",
+            "scene": "detail, a close view of the hands on the body",
+            "caption": "Stiff arms and hands after days of work on your laptop in Seminyak? 🌸\n\nOur therapist brings a Balinese Lulur Scrub and Massage directly to your room. You stay right where you are while the warm"
+          }
+        ]
+      },
+      {
+        "posts": [
+          {
+            "type": "offer",
+            "topic": "Surf and sport recovery massage for tired legs in Canggu",
+            "scene": "guest, from above",
+            "caption": "Sore legs after your surf session at Echo Beach? 🌺\n\nOur therapist comes to your Canggu villa with a Surf and Sport Recovery Massage. You rest on your bed while we work out the tightness so your afternoon stays easy.\n\nNo upfront deposit for villas and hotels 🪷",
+            "hashtags": [
+              "canggu",
+              "massagerest",
+              "sportrecovery",
+              "balimassage",
+              "cangguspa"
+            ],
+            "altText": "A woman lying on a massage bed while a therapist works on her back with golden oil.",
+            "imagePrompt": "A tall 9:16 vertical photo of a woman lying face down on a massage table in a bright Bali villa bedroom, a female therapist's hands working on her back with warm golden oil, late afternoon soft shade through a wide window, tropical plants outside, clean white linens, simple and tidy, no text.",
+            "storyText": "Sore legs from surfing? Recovery massage in your room 🌺"
+          },
+          {
+            "type": "moment",
+            "topic": "Balinese Lulur scrub and massage after laptop days in Seminyak",
+            "scene": "detail, a close view of the hands on the body",
+            "caption": "Stiff arms and hands after days of work on your laptop in Seminyak? 🌸\n\nOur therapist brings a Balinese Lulur Scrub and Massage directly to your room. You stay right where you are while the warm scrub and oils loosen the screen tension.\n\nFresh linens, towels, and natural oils brought to you 🪷",
             "hashtags": [
               "seminyak",
-              "balinesemassage",
-              "spaseminyak",
-              "bodyscrub"
+              "lulurscrub"
+            ]
+          }
+        ]
+      },
+      {
+        "posts": [
+          {
+            "type": "offer",
+            "topic": "Surf and sport recovery massage for tired legs in Canggu",
+            "scene": "guest, from above",
+            "caption": "Sore legs after your surf session at Echo Beach? 🌺\n\nOur therapist comes to your Canggu villa with a Surf and Sport Recovery Massage. You rest on your bed while we work out the tightness so your afternoon stays easy.\n\nNo upfront deposit for villas and hotels 🪷",
+            "hashtags": [
+              "canggu",
+              "massagerest",
+              "sportrecovery",
+              "balimassage",
+              "cangguspa"
             ],
-            "altText": "Close view of a therapist's hands applying scrub to a man's arm on a massage bed at night.",
-            "imagePrompt": "A tall 9:16 photo. A close view of a female therapist's hands spreading a lulur scrub onto a man's arm on a massage bed. A small wooden bowl of turmeric scrub sits nearby. Evening, lamps and candles giving the room a warm golden glow, the garden outside lit by lanterns under a deep blue sky. A closed laptop rests far in the background on a desk.",
-            "storyText": "Laptop neck? A scrub and massage in your room tonight 🪷"
+            "altText": "A woman lying on a massage bed while a therapist works on her back with golden oil.",
+            "imagePrompt": "A tall 9:16 vertical photo of a woman lying face down on a massage table in a bright Bali villa bedroom, a female therapist's hands working on her back with warm golden oil, late afternoon soft shade through a wide window, tropical plants outside, clean white linens, simple and tidy, no text.",
+            "storyText": "Sore legs from surfing? Recovery massage in your room 🌺"
+          },
+          {
+            "type": "moment",
+            "topic": "Balinese Lulur scrub and massage after laptop days in Seminyak",
+            "scene": "detail, a close view of the hands on the body",
+            "caption": "Stiff arms and hands after days of work on your laptop in Seminyak? 🌸\n\nOur therapist brings a Balinese Lulur Scrub and Massage directly to your room. You stay right where you are while the warm scrub and oils loosen the screen tension.\n\nFresh linens, towels, and natural oils brought to you 🪷",
+            "hashtags": [
+              "seminyak",
+              "lulurscrub",
+              "laptopneck",
+              "balispa",
+              "massagecanggu"
+            ]
+          }
+        ]
+      },
+      {
+        "posts": [
+          {
+            "type": "offer",
+            "topic": "Surf and sport recovery massage for tired legs in Canggu",
+            "scene": "guest, from above",
+            "caption": "Sore legs after your surf session at Echo Beach? 🌺\n\nOur therapist comes to your Canggu villa with a Surf and Sport Recovery Massage. You rest on your bed while we work out the tightness so your afternoon stays easy.\n\nNo upfront deposit for villas and hotels 🪷",
+            "hashtags": [
+              "canggu",
+              "massagerest",
+              "sportrecovery",
+              "balimassage",
+              "cangguspa"
+            ],
+            "altText": "A woman lying on a massage bed while a therapist works on her back with golden oil.",
+            "imagePrompt": "A tall 9:16 vertical photo of a woman lying face down on a massage table in a bright Bali villa bedroom, a female therapist's hands working on her back with warm golden oil, late afternoon soft shade through a wide window, tropical plants outside, clean white linens, simple and tidy, no text.",
+            "storyText": "Sore legs from surfing? Recovery massage in your room 🌺"
+          },
+          {
+            "type": "moment",
+            "topic": "Balinese Lulur scrub and massage after laptop days in Seminyak",
+            "scene": "detail, a close view of the hands on the body",
+            "caption": "Stiff arms and hands after days of work on your laptop in Seminyak? 🌸\n\nOur therapist brings a Balinese Lulur Scrub and Massage directly to your room. You stay right where you are while the warm scrub and oils loosen the screen tension.\n\nFresh linens, towels, and natural oils brought to you 🪷",
+            "hashtags": [
+              "seminyak",
+              "lulurscrub",
+              "laptopneck",
+              "balispa",
+              "massagecanggu"
+            ],
+            "altText": "Close view of a therapist's hands spreading Lulur scrub on a man's arm on a massage table."
+          }
+        ]
+      },
+      {
+        "posts": [
+          {
+            "type": "offer",
+            "topic": "Surf and sport recovery massage for tired legs in Canggu",
+            "scene": "guest, from above",
+            "caption": "Sore legs after your surf session at Echo Beach? 🌺\n\nOur therapist comes to your Canggu villa with a Surf and Sport Recovery Massage. You rest on your bed while we work out the tightness so your afternoon stays easy.\n\nNo upfront deposit for villas and hotels 🪷",
+            "hashtags": [
+              "canggu",
+              "massagerest",
+              "sportrecovery",
+              "balimassage",
+              "cangguspa"
+            ],
+            "altText": "A woman lying on a massage bed while a therapist works on her back with golden oil.",
+            "imagePrompt": "A tall 9:16 vertical photo of a woman lying face down on a massage table in a bright Bali villa bedroom, a female therapist's hands working on her back with warm golden oil, late afternoon soft shade through a wide window, tropical plants outside, clean white linens, simple and tidy, no text.",
+            "storyText": "Sore legs from surfing? Recovery massage in your room 🌺"
+          },
+          {
+            "type": "moment",
+            "topic": "Balinese Lulur scrub and massage after laptop days in Seminyak",
+            "scene": "detail, a close view of the hands on the body",
+            "caption": "Stiff arms and hands after days of work on your laptop in Seminyak? 🌸\n\nOur therapist brings a Balinese Lulur Scrub and Massage directly to your room. You stay right where you are while the warm scrub and oils loosen the screen tension.\n\nFresh linens, towels, and natural oils brought to you 🪷",
+            "hashtags": [
+              "seminyak",
+              "lulurscrub",
+              "laptopneck",
+              "balispa",
+              "massagecanggu"
+            ],
+            "altText": "Close view of a therapist's hands spreading Lulur scrub on a man's arm on a massage table.",
+            "imagePrompt": "A tall 9:16 vertical photo, close view of a female therapist's hands spreading"
+          }
+        ]
+      },
+      {
+        "posts": [
+          {
+            "type": "offer",
+            "topic": "Surf and sport recovery massage for tired legs in Canggu",
+            "scene": "guest, from above",
+            "caption": "Sore legs after your surf session at Echo Beach? 🌺\n\nOur therapist comes to your Canggu villa with a Surf and Sport Recovery Massage. You rest on your bed while we work out the tightness so your afternoon stays easy.\n\nNo upfront deposit for villas and hotels 🪷",
+            "hashtags": [
+              "canggu",
+              "massagerest",
+              "sportrecovery",
+              "balimassage",
+              "cangguspa"
+            ],
+            "altText": "A woman lying on a massage bed while a therapist works on her back with golden oil.",
+            "imagePrompt": "A tall 9:16 vertical photo of a woman lying face down on a massage table in a bright Bali villa bedroom, a female therapist's hands working on her back with warm golden oil, late afternoon soft shade through a wide window, tropical plants outside, clean white linens, simple and tidy, no text.",
+            "storyText": "Sore legs from surfing? Recovery massage in your room 🌺"
+          },
+          {
+            "type": "moment",
+            "topic": "Balinese Lulur scrub and massage after laptop days in Seminyak",
+            "scene": "detail, a close view of the hands on the body",
+            "caption": "Stiff arms and hands after days of work on your laptop in Seminyak? 🌸\n\nOur therapist brings a Balinese Lulur Scrub and Massage directly to your room. You stay right where you are while the warm scrub and oils loosen the screen tension.\n\nFresh linens, towels, and natural oils brought to you 🪷",
+            "hashtags": [
+              "seminyak",
+              "lulurscrub",
+              "laptopneck",
+              "balispa",
+              "massagecanggu"
+            ],
+            "altText": "Close view of a therapist's hands spreading Lulur scrub on a man's arm on a massage table.",
+            "imagePrompt": "A tall 9:16 vertical photo, close view of a female therapist's hands spreading a traditional turmeric Lulur scrub on a man's arm on a massage table, a small ceramic bowl of scrub"
+          }
+        ]
+      },
+      {
+        "posts": [
+          {
+            "type": "offer",
+            "topic": "Surf and sport recovery massage for tired legs in Canggu",
+            "scene": "guest, from above",
+            "caption": "Sore legs after your surf session at Echo Beach? 🌺\n\nOur therapist comes to your Canggu villa with a Surf and Sport Recovery Massage. You rest on your bed while we work out the tightness so your afternoon stays easy.\n\nNo upfront deposit for villas and hotels 🪷",
+            "hashtags": [
+              "canggu",
+              "massagerest",
+              "sportrecovery",
+              "balimassage",
+              "cangguspa"
+            ],
+            "altText": "A woman lying on a massage bed while a therapist works on her back with golden oil.",
+            "imagePrompt": "A tall 9:16 vertical photo of a woman lying face down on a massage table in a bright Bali villa bedroom, a female therapist's hands working on her back with warm golden oil, late afternoon soft shade through a wide window, tropical plants outside, clean white linens, simple and tidy, no text.",
+            "storyText": "Sore legs from surfing? Recovery massage in your room 🌺"
+          },
+          {
+            "type": "moment",
+            "topic": "Balinese Lulur scrub and massage after laptop days in Seminyak",
+            "scene": "detail, a close view of the hands on the body",
+            "caption": "Stiff arms and hands after days of work on your laptop in Seminyak? 🌸\n\nOur therapist brings a Balinese Lulur Scrub and Massage directly to your room. You stay right where you are while the warm scrub and oils loosen the screen tension.\n\nFresh linens, towels, and natural oils brought to you 🪷",
+            "hashtags": [
+              "seminyak",
+              "lulurscrub",
+              "laptopneck",
+              "balispa",
+              "massagecanggu"
+            ],
+            "altText": "Close view of a therapist's hands spreading Lulur scrub on a man's arm on a massage table.",
+            "imagePrompt": "A tall 9:16 vertical photo, close view of a female therapist's hands spreading a traditional turmeric Lulur scrub on a man's arm on a massage table, a small ceramic bowl of scrub nearby, evening warm golden glow from lamps inside, deep blue sky through an open balcony door, clean and tidy, no text."
+          }
+        ]
+      },
+      {
+        "posts": [
+          {
+            "type": "offer",
+            "topic": "Surf and sport recovery massage for tired legs in Canggu",
+            "scene": "guest, from above",
+            "caption": "Sore legs after your surf session at Echo Beach? 🌺\n\nOur therapist comes to your Canggu villa with a Surf and Sport Recovery Massage. You rest on your bed while we work out the tightness so your afternoon stays easy.\n\nNo upfront deposit for villas and hotels 🪷",
+            "hashtags": [
+              "canggu",
+              "massagerest",
+              "sportrecovery",
+              "balimassage",
+              "cangguspa"
+            ],
+            "altText": "A woman lying on a massage bed while a therapist works on her back with golden oil.",
+            "imagePrompt": "A tall 9:16 vertical photo of a woman lying face down on a massage table in a bright Bali villa bedroom, a female therapist's hands working on her back with warm golden oil, late afternoon soft shade through a wide window, tropical plants outside, clean white linens, simple and tidy, no text.",
+            "storyText": "Sore legs from surfing? Recovery massage in your room 🌺"
+          },
+          {
+            "type": "moment",
+            "topic": "Balinese Lulur scrub and massage after laptop days in Seminyak",
+            "scene": "detail, a close view of the hands on the body",
+            "caption": "Stiff arms and hands after days of work on your laptop in Seminyak? 🌸\n\nOur therapist brings a Balinese Lulur Scrub and Massage directly to your room. You stay right where you are while the warm scrub and oils loosen the screen tension.\n\nFresh linens, towels, and natural oils brought to you 🪷",
+            "hashtags": [
+              "seminyak",
+              "lulurscrub",
+              "laptopneck",
+              "balispa",
+              "massagecanggu"
+            ],
+            "altText": "Close view of a therapist's hands spreading Lulur scrub on a man's arm on a massage table.",
+            "imagePrompt": "A tall 9:16 vertical photo, close view of a female therapist's hands spreading a traditional turmeric Lulur scrub on a man's arm on a massage table, a small ceramic bowl of scrub nearby, evening warm golden glow from lamps inside, deep blue sky through an open balcony door, clean and tidy, no text.",
+            "storyText": "Laptop days? Lulur scrub and massage in your room 🌸"
           }
         ]
       }
@@ -504,33 +518,35 @@
       "posts": [
         {
           "type": "offer",
-          "topic": "Surf and sport recovery massage for sore legs in Canggu",
-          "scene": "guest",
-          "caption": "Legs heavy from the long surf session at Echo Beach? 🌸\n\nA therapist comes to your Canggu villa to work your calves and feet. You stay right where you are for the rest of the afternoon.\n\nNo upfront deposit for villas and hotels 🌺",
+          "topic": "Surf and sport recovery massage for tired legs in Canggu",
+          "scene": "guest, from above",
+          "caption": "Sore legs after your surf session at Echo Beach? 🌺\n\nOur therapist comes to your Canggu villa with a Surf and Sport Recovery Massage. You rest on your bed while we work out the tightness so your afternoon stays easy.\n\nNo upfront deposit for villas and hotels 🪷",
           "hashtags": [
             "canggu",
-            "massagemancanggu",
-            "surfrecovery",
-            "balimassage"
+            "massagerest",
+            "sportrecovery",
+            "balimassage",
+            "cangguspa"
           ],
-          "altText": "A woman lying on a massage bed from above as a therapist works on her back in soft afternoon light.",
-          "imagePrompt": "A tall 9:16 photo. A woman lying relaxed on a massage bed, seen from above. A female therapist's hands are working golden oil into her back. The room opens onto tropical palms outside in soft shade. Late afternoon warm light, lamps lit inside. A surfboard leans against the far balcony rail out of focus.",
-          "storyText": "Echo Beach surf in your legs? We come to you today 🌸"
+          "altText": "A woman lying on a massage bed while a therapist works on her back with golden oil.",
+          "imagePrompt": "A tall 9:16 vertical photo of a woman lying face down on a massage table in a bright Bali villa bedroom, a female therapist's hands working on her back with warm golden oil, late afternoon soft shade through a wide window, tropical plants outside, clean white linens, simple and tidy, no text.",
+          "storyText": "Sore legs from surfing? Recovery massage in your room 🌺"
         },
         {
           "type": "moment",
-          "topic": "Balinese lulur scrub and massage for laptop tension in Seminyak",
-          "scene": "detail",
-          "caption": "A week of laptop work, and now your neck won't turn? 🌺\n\nA therapist brings a full scrub and massage to your Seminyak apartment tonight. You rest your arms while the turmeric and rice powder work.\n\nFresh linens, towels, and natural oils brought to you 🪷",
+          "topic": "Balinese Lulur scrub and massage after laptop days in Seminyak",
+          "scene": "detail, a close view of the hands on the body",
+          "caption": "Stiff arms and hands after days of work on your laptop in Seminyak? 🌸\n\nOur therapist brings a Balinese Lulur Scrub and Massage directly to your room. You stay right where you are while the warm scrub and oils loosen the screen tension.\n\nFresh linens, towels, and natural oils brought to you 🪷",
           "hashtags": [
             "seminyak",
-            "balinesemassage",
-            "spaseminyak",
-            "bodyscrub"
+            "lulurscrub",
+            "laptopneck",
+            "balispa",
+            "massagecanggu"
           ],
-          "altText": "Close view of a therapist's hands applying scrub to a man's arm on a massage bed at night.",
-          "imagePrompt": "A tall 9:16 photo. A close view of a female therapist's hands spreading a lulur scrub onto a man's arm on a massage bed. A small wooden bowl of turmeric scrub sits nearby. Evening, lamps and candles giving the room a warm golden glow, the garden outside lit by lanterns under a deep blue sky. A closed laptop rests far in the background on a desk.",
-          "storyText": "Laptop neck? A scrub and massage in your room tonight 🪷"
+          "altText": "Close view of a therapist's hands spreading Lulur scrub on a man's arm on a massage table.",
+          "imagePrompt": "A tall 9:16 vertical photo, close view of a female therapist's hands spreading a traditional turmeric Lulur scrub on a man's arm on a massage table, a small ceramic bowl of scrub nearby, evening warm golden glow from lamps inside, deep blue sky through an open balcony door, clean and tidy, no text.",
+          "storyText": "Laptop days? Lulur scrub and massage in your room 🌸"
         }
       ]
     }

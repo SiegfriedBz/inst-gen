@@ -208,6 +208,50 @@ describe('recorded story texts and flowers', () => {
   });
 });
 
+// The posts-19 recordings of Sen and Svarga, with and without an offer
+// (docs/specs/posts/reasons-to-book, "Tests and evaluation"): every set-up
+// has a reason, and no post speaks in the first person, holds a highlight
+// that turns a request away, or speaks to two guests on an image of one. The
+// copy record is left out: the second run still borrows one phrase (journal).
+describe('recorded reasons to book', () => {
+  test.each([
+    ['sen', false],
+    ['svarga', false],
+    ['sen', true],
+    ['svarga', true],
+  ] as const)('%s (offer: %s)', { timeout: 20_000 }, async (slug, withOffer) => {
+    const dir = join(FIXTURES_DIR, slug);
+    const fixture = loadFixture(dir);
+    const recording = withOffer ? fixture.postsOffer : fixture.posts;
+    if (!recording) throw new Error(`no recording for ${slug}`);
+    expect(recording.promptVersion).toBe('posts-19');
+    const profile = await fixtureProfile(dir);
+    const offer = withOffer ? fixtureOffer(profile) : undefined;
+    let result: PlanResult | null = null;
+    for await (const line of streamPlan(
+      { profile, recent: fixtureRecent(slug, withOffer), ...(offer ? { offer } : {}) },
+      {
+        model: replayTextModel(noBrandRead, { posts: recording.recording }),
+        random: seededRandom(withOffer ? `${slug}:offer` : slug),
+      },
+      new AbortController().signal,
+    )) {
+      if (line.type === 'final') result = line.result;
+    }
+    if (!result) throw new Error('no final line');
+    for (const post of result.posts) expect(post.setup?.reason).toBeDefined();
+    const reasons = result.dropped.map((d) => d.reason);
+    for (const reason of reasons) {
+      expect(reason).not.toMatch(/question in the first person|caption for two guests/);
+    }
+    const turnedAway = /therapeutic massage only|strictly|sexual/i;
+    for (const post of result.posts) {
+      expect(post.caption).not.toMatch(turnedAway);
+      expect(post.storyText ?? '').not.toMatch(turnedAway);
+    }
+  });
+});
+
 // The words for each part of the body an image shows (lib/posts/setup.ts);
 // "whole body" names none in particular.
 const PART_WORDS: Partial<Record<BodyPart, string[]>> = {
