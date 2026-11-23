@@ -66,3 +66,29 @@ describe('the samples', () => {
     for (const fact of SAMPLE_FACTS) expect(text).toContain(fact);
   });
 });
+
+// The amendment of 2026-11-23: two samples open on what the guest feels,
+// then "after"; a post sees only the other reasons' samples.
+describe('the samples, amended', () => {
+  it('two samples open on what the guest feels, then "after"', () => {
+    expect(SAMPLES[0].caption.startsWith('Sore calves after all the stairs at Sintra? 🌸')).toBe(
+      true,
+    );
+    expect(
+      SAMPLES[3].caption.startsWith('Stiff back after the long-haul flight into Lisbon? 🪷'),
+    ).toBe(true);
+    expect(SAMPLE_PHRASES).toContain('all the stairs at');
+    expect(SAMPLE_PHRASES).not.toContain('calves still burning');
+  });
+
+  it("the text shows only the other reasons' samples", () => {
+    const text = samplesText(['laptop', 'stayIn']);
+    for (const sample of SAMPLES) {
+      const shown = !['laptop', 'stayIn'].includes(sample.reason);
+      expect(text.includes(sample.caption)).toBe(shown);
+      expect(text.includes(sample.story)).toBe(shown);
+    }
+    expect(text).toContain('one for each of the other reasons');
+    for (const sample of SAMPLES) expect(samplesText()).toContain(sample.caption);
+  });
+});

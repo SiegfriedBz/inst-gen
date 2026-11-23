@@ -20,7 +20,7 @@ export const SAMPLES: readonly Sample[] = [
     light: 'night',
     guests: 'one',
     caption:
-      "Calves still burning from the stairs at Sintra? 🌸\n\nTonight a therapist comes to your room and works your legs. Then a shower, and you're in bed by ten.\n\nNo payment until after your massage 🌺",
+      "Sore calves after all the stairs at Sintra? 🌸\n\nTonight a therapist comes to your room and works your legs. Then a shower, and you're in bed by ten.\n\nNo payment until after your massage 🌺",
     story: 'Sintra stairs in your calves? We come to you tonight 🌸',
   },
   {
@@ -44,7 +44,7 @@ export const SAMPLES: readonly Sample[] = [
     light: 'night',
     guests: 'one',
     caption:
-      'Back stiff from the long-haul flight into Lisbon? 🪷\n\nWe come to your hotel tonight. Your therapist works the flight out of your back before you sleep.\n\nA therapist at your door within the hour 🌺',
+      'Stiff back after the long-haul flight into Lisbon? 🪷\n\nWe come to your hotel tonight. Your therapist works the flight out of your back before you sleep.\n\nA therapist at your door within the hour 🌺',
     story: 'Just landed? We bring the massage to your hotel 🪷',
   },
   {
@@ -72,7 +72,7 @@ export const SAMPLE_PLACES = ['Maré', 'Lisbon', 'Sintra', 'Alfama', 'Belém', '
 // The samples' own phrases, which code records when a post holds one. The
 // last three are Maré's made-up facts. The list may grow.
 export const SAMPLE_PHRASES: readonly string[] = [
-  'calves still burning',
+  'all the stairs at',
   'in bed by ten',
   'neither of you can go out',
   'you lie side by side',
@@ -94,13 +94,18 @@ export const SAMPLE_PHRASES: readonly string[] = [
 
 const GUESTS = { one: 'one guest', two: 'two guests on a couple massage' } as const;
 
-// The samples as the prompt shows them.
-export function samplesText(): string {
-  const posts = SAMPLES.map(
+// The samples as the prompt shows them: never those of the reasons the
+// call's posts have, so a post can't copy its own reason's sample
+// (docs/specs/posts/reasons-to-book, amended 2026-11-23).
+export function samplesText(without: readonly Reason[] = []): string {
+  const shown = SAMPLES.filter((s) => !without.includes(s.reason));
+  const each =
+    shown.length < SAMPLES.length ? 'one for each of the other reasons' : 'one for each reason';
+  const posts = shown.map(
     (s) =>
       `${s.reason}, a ${s.light} post, ${GUESTS[s.guests]}:\n${s.caption}\nStory text: ${s.story}`,
   );
-  return `Samples: five posts of Maré, a made-up business that sends therapists to hotels and flats in Lisbon, one for each reason. They show the voice, the length and the three paragraphs. Write new posts for this business in the same spirit, and never a sample's words, places or facts: Maré, its places and its facts are not this business's.
+  return `Samples: ${shown.length} posts of Maré, a made-up business that sends therapists to hotels and flats in Lisbon, ${each}. They show the voice, the length and the three paragraphs. Write new posts for this business in the same spirit, and never a sample's words, places or facts: Maré, its places and its facts are not this business's.
 
 Maré's facts: ${SAMPLE_FACTS.join('; ')}.
 

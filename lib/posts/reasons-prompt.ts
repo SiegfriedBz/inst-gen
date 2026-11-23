@@ -9,6 +9,7 @@ import {
   rewriteOfferRules,
 } from './prompt';
 import { samplesText } from './samples';
+import type { Reason } from './setup';
 
 // The posts' prompts for a business that comes to its guests
 // (docs/specs/posts/reasons-to-book, "What the model gets"): what a post is
@@ -66,7 +67,12 @@ Story text: its own line for the post's Instagram story, which the owner pastes 
 const REWRITE_REASONS =
   'The reasons: each post\'s "reason" names it. A post without a "reason" takes stayIn.';
 
-export function reasonsPlanPrompt(withOffer = false, spa = false): string {
+export function reasonsPlanPrompt(
+  withOffer = false,
+  spa = false,
+  // The reasons the call's posts have: their samples aren't shown.
+  reasons: readonly Reason[] = [],
+): string {
   return `${GOAL}
 
 You plan two Instagram posts for this business, and write them as its owner would. You get its brand profile, read from its website and checked by the owner, and the topics of its recent posts.
@@ -81,12 +87,17 @@ ${reasonRules('The reasons: code gives each post its reason to book today, under
 
 ${captionRules(spa, withOffer, 'the last word of its set-up', 'given under "### Facts"')}
 
-${samplesText()}
+${samplesText(reasons)}
 
 ${IMAGE_RULES}`;
 }
 
-export function reasonsRewritePrompt(withOffer = false, spa = false): string {
+export function reasonsRewritePrompt(
+  withOffer = false,
+  spa = false,
+  // The reasons the call's posts have: their samples aren't shown.
+  reasons: readonly Reason[] = [],
+): string {
   return `The owner changed their business's brand profile. You rewrite the captions, story texts, hashtags and alt text of their Instagram posts so they fit the new profile. Keep each post's scene and image prompt: they don't change. Answer every post, with its id.
 
 ${GOAL}
@@ -95,10 +106,15 @@ ${reasonRules(REWRITE_REASONS, 'image prompt shows')}
 
 ${captionRules(spa, withOffer, 'its "light"', 'given as its "fact"')}
 
-${samplesText()}${withOffer ? rewriteOfferRules(spa) : ''}`;
+${samplesText(reasons)}${withOffer ? rewriteOfferRules(spa) : ''}`;
 }
 
-export function reasonsNewTextsPrompt(withOffer = false, spa = false): string {
+export function reasonsNewTextsPrompt(
+  withOffer = false,
+  spa = false,
+  // The reasons the call's posts have: their samples aren't shown.
+  reasons: readonly Reason[] = [],
+): string {
   return `The owner of a small business wants new words for one of their Instagram posts, for the same image. You write a new caption and a new story text for the post under "### Post", as its owner would, to guests nearby. Keep its scene, light and image prompt: they don't change. Answer that post, with its id. Give "hashtags" as [] and "altText" as "": the post keeps its own.
 
 Something different: "captionNow" and "storyTextNow" are its words now, which the owner wants replaced. Open on a different question for its reason, and reuse no sentence of its caption now, nor of its story text now. An answer that repeats its question is refused. For dayOut, the part of the body stays the one its image prompt shows: ask after another day out, or in other words. Its "fact" is new: use it. Never the fact, the opening or the ending of the post under "### Other post": it goes out beside this one.
@@ -109,5 +125,5 @@ ${reasonRules(REWRITE_REASONS, 'image prompt shows')}
 
 ${captionRules(spa, withOffer, 'its "light"', 'given as its "fact"')}
 
-${samplesText()}${withOffer ? rewriteOfferRules(spa) : ''}`;
+${samplesText(reasons)}${withOffer ? rewriteOfferRules(spa) : ''}`;
 }

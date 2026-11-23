@@ -41,7 +41,7 @@ import {
   reasonsPlanPrompt,
   reasonsRewritePrompt,
 } from './reasons-prompt';
-import { dealSetups, type Setup } from './setup';
+import { dealSetups, type Reason, type Setup } from './setup';
 import type { PostsLine } from './stream';
 
 // The post plan and its rewrite, end to end: one streamed model call, each
@@ -59,6 +59,12 @@ export type PostsDeps = {
 };
 
 export const POSTS_TIMEOUT_MS = 60_000;
+
+// The reasons some set-ups have: the prompt shows none of their samples
+// (docs/specs/posts/reasons-to-book, amended 2026-11-23).
+function reasonsOf(setups: readonly Setup[]): Reason[] {
+  return setups.flatMap((setup) => (setup.reason ? [setup.reason] : []));
+}
 
 // posts-19 for a business that comes to its guests, posts-18 for any other
 // (docs/specs/posts/reasons-to-book, "What the model gets").
@@ -229,7 +235,9 @@ export function streamPlan(
       open: (s) =>
         deps.model.streamPostPlan(
           {
-            system: guests ? reasonsPlanPrompt(!!body.offer, spa) : planPrompt(!!body.offer, spa),
+            system: guests
+              ? reasonsPlanPrompt(!!body.offer, spa, reasonsOf(setups))
+              : planPrompt(!!body.offer, spa),
             text: planUserText(input, body.recent, body.offer, setups),
           },
           s,
@@ -268,7 +276,11 @@ export function streamRewrite(
         deps.model.streamPostRewrite(
           {
             system: guests
-              ? reasonsRewritePrompt(!!body.offer, spa)
+              ? reasonsRewritePrompt(
+                  !!body.offer,
+                  spa,
+                  reasonsOf(posts.flatMap((p) => (p.setup ? [p.setup] : []))),
+                )
               : rewritePrompt(!!body.offer, spa),
             text: rewriteUserText(input, posts, body.offer),
           },
@@ -308,7 +320,7 @@ export function streamNewTexts(
         deps.model.streamPostRewrite(
           {
             system: guests
-              ? reasonsNewTextsPrompt(!!body.offer, spa)
+              ? reasonsNewTextsPrompt(!!body.offer, spa, reasonsOf(post.setup ? [post.setup] : []))
               : newTextsPrompt(!!body.offer, spa),
             text: newTextsUserText(input, post, body.other, body.offer),
           },

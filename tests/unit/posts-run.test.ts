@@ -8,6 +8,7 @@ import { planPrompt } from '@/lib/posts/prompt';
 import { LOOK_REASONS } from '@/lib/posts/reasons';
 import { reasonsPlanPrompt } from '@/lib/posts/reasons-prompt';
 import { streamNewTexts, streamPlan, streamRewrite } from '@/lib/posts/run';
+import { SAMPLES } from '@/lib/posts/samples';
 import { dealSetups, seededRandom, setupLine } from '@/lib/posts/setup';
 import type { PostsLine } from '@/lib/posts/stream';
 import { SITE, svargaProfile } from './helpers/brand';
@@ -614,7 +615,9 @@ describe('reasons to book in the runs', () => {
     const result = await finalOf(
       streamPlan(body(), deps(model, { log: (e) => entries.push(e) }), signal()),
     );
-    expect(seen[0].system).toBe(reasonsPlanPrompt(false, true));
+    // Without the samples of its two reasons (amended 2026-11-23).
+    const reasons = result.posts.flatMap((p) => (p.setup?.reason ? [p.setup.reason] : []));
+    expect(seen[0].system).toBe(reasonsPlanPrompt(false, true, reasons));
     expect(seen[0].text).toContain('### Reasons');
     expect(seen[0].text).toContain('### Facts');
     expect(result.promptVersion).toBe('posts-19');
@@ -776,6 +779,49 @@ describe('reasons to book in the runs', () => {
     for (const key of ['type', 'topic', 'question']) expect(key in sent).toBe(false);
     expect(result.posts[0].setup?.reason).toBe(sent.reason);
     expect(result.posts[0].setup?.question).toBeUndefined();
+  });
+
+  // The amendment of 2026-11-23: never a post's own reason's sample.
+  const sampleOf = (reason: string) => SAMPLES.find((s) => s.reason === reason)?.caption ?? '';
+
+  test("a plan's prompt lacks the samples of both its reasons", async () => {
+    const { model, seen } = spying(planOf(tipped()));
+    const result = await finalOf(streamPlan(body(), deps(model), signal()));
+    const reasons = result.posts.map((p) => p.setup?.reason ?? '');
+    expect(reasons).toHaveLength(2);
+    for (const reason of reasons) expect(seen[0].system).not.toContain(sampleOf(reason));
+    const others = SAMPLES.filter((s) => !reasons.includes(s.reason));
+    for (const other of others) expect(seen[0].system).toContain(other.caption);
+  });
+
+  test("a caption update lacks the sent posts' reasons' samples; new texts only the post's own", async () => {
+    const mine = post({ id: 'a', setup: setupAt('day', { reason: 'laptop' }) });
+    const other = post({
+      id: 'b',
+      caption: 'The other.',
+      setup: setupAt('night', { reason: 'stayIn' }),
+    });
+    const rewrite = spying(
+      answerOf([
+        { id: 'a', caption: 'New a.', hashtags: [], altText: 'x' },
+        { id: 'b', caption: 'New b.', hashtags: [], altText: 'x' },
+      ]),
+    );
+    await finalOf(
+      streamRewrite(
+        { profile: svargaProfile(), posts: [mine, other] },
+        deps(rewrite.model),
+        signal(),
+      ),
+    );
+    expect(rewrite.seen[0].system).not.toContain(sampleOf('laptop'));
+    expect(rewrite.seen[0].system).not.toContain(sampleOf('stayIn'));
+    const texts = spying(answerOf([{ id: 'a', caption: 'New.', hashtags: [], altText: '' }]));
+    await finalOf(
+      streamNewTexts({ profile: svargaProfile(), post: mine, other }, deps(texts.model), signal()),
+    );
+    expect(texts.seen[0].system).not.toContain(sampleOf('laptop'));
+    expect(texts.seen[0].system).toContain(sampleOf('stayIn'));
   });
 
   test("new texts keep the reason, and take a fact neither theirs nor the other post's", async () => {

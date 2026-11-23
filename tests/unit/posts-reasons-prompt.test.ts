@@ -15,7 +15,7 @@ import {
   reasonsPlanPrompt,
   reasonsRewritePrompt,
 } from '@/lib/posts/reasons-prompt';
-import { samplesText } from '@/lib/posts/samples';
+import { SAMPLES, samplesText } from '@/lib/posts/samples';
 import { svargaProfile } from './helpers/brand';
 import { post, setupAt } from './helpers/posts';
 
@@ -136,5 +136,20 @@ describe('the user texts', () => {
       '### Post',
     );
     expect(one).toMatchObject({ light: 'night', reason: 'laptop', fact });
+  });
+});
+
+describe("the prompts show only the other reasons' samples", () => {
+  const laptop = SAMPLES.find((s) => s.reason === 'laptop');
+  it('a plan, a caption update and new texts leave out the reasons given', () => {
+    for (const prompt of [
+      reasonsPlanPrompt(false, true, ['laptop']),
+      reasonsRewritePrompt(false, true, ['laptop']),
+      reasonsNewTextsPrompt(false, true, ['laptop']),
+    ]) {
+      expect(prompt).not.toContain(laptop?.caption);
+      expect(prompt).not.toContain(laptop?.story);
+      expect(prompt).toContain(samplesText(['laptop']));
+    }
   });
 });
