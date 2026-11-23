@@ -161,6 +161,39 @@ describe('a caption for two on an image of one', () => {
   });
 });
 
+// Record 6 (amended 2026-11-23, after the second recordings).
+describe('two therapists on an image of one', () => {
+  const record = 'post-1: caption for two therapists, image of one';
+  const laptop =
+    'Stiff neck from laptop days in An Thuong? 🌸\n\nTwo therapists come to your room for a traditional massage.';
+
+  it('is recorded in the caption, or in the story text', () => {
+    expect(reasonRecords([reasonPost('laptop', laptop)], sen)).toContainEqual({
+      field: 'mix',
+      reason: record,
+    });
+    const story = (text: string) =>
+      reasonPost('laptop', 'Laptop days? 🌸\n\nA therapist comes to your room.', text);
+    expect(reasons([story('Both therapists come to you tonight 🌸')])).toContain(record);
+    expect(reasons([story('Four hands on your back tonight 🌸')])).toContain(record);
+    expect(reasons([story('A four-hands massage in your room 🌸')])).toContain(record);
+  });
+
+  it('two therapists on four hands or a couple massage, and a plural fact, are not', () => {
+    const fourHands = reasonPost('laptop', laptop, undefined, { look: 'fourHands', therapists: 2 });
+    const couple = reasonPost('twoOfYou', laptop, undefined, {
+      look: 'couple',
+      guests: 'couple',
+      therapists: 2,
+    });
+    const fact = reasonPost(
+      'laptop',
+      'Laptop days? 🌸\n\nA therapist comes to your room.\n\nTrained local Vietnamese therapists',
+    );
+    expect(reasons([fourHands, couple, fact])).not.toContain(record);
+  });
+});
+
 describe('the records run only on posts with a reason', () => {
   it('a post dealt a kind of question gets none of them', () => {
     const asked = post({

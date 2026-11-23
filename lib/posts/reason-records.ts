@@ -47,7 +47,7 @@ const REASON_WORDS: Record<Reason, readonly string[]> = {
 };
 
 // Words for two guests. Not "two therapists": a four-hands massage has them,
-// for one guest.
+// for one guest; TWO_THERAPISTS checks them against the set-up.
 const TWO_GUESTS = [
   'both of you',
   'the two of you',
@@ -56,6 +56,10 @@ const TWO_GUESTS = [
   'side by side',
   'couple',
 ];
+
+// Words for two therapists, on an image of one (record 6, amended 2026-11-23
+// after the second recordings): a couple or four-hands massage has two.
+const TWO_THERAPISTS = ['two therapists', 'both therapists', 'four hands', 'four-hands'];
 
 // Lower case, accents gone, one kind of apostrophe.
 const plain = (text: string) => folded(text).replace(/[’‘]/g, "'");
@@ -86,6 +90,9 @@ function recordsOf(post: Post, reason: Reason, turnedAway: string[]): Dropped[] 
   if (copied) records.push({ field: 'words', reason: `${post.id} copies a sample: "${copied}"` });
   if (post.setup?.guests !== 'couple' && TWO_GUESTS.some((words) => holdsWords(text, words))) {
     records.push({ field: 'mix', reason: `${post.id}: caption for two guests, image of one` });
+  }
+  if (post.setup?.therapists !== 2 && TWO_THERAPISTS.some((words) => holdsWords(text, words))) {
+    records.push({ field: 'mix', reason: `${post.id}: caption for two therapists, image of one` });
   }
   return records;
 }
