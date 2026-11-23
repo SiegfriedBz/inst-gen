@@ -168,7 +168,7 @@ describe('the user texts', () => {
   it('a caption update and new texts give each post with a reason its therapists', () => {
     const { reason: _, ...reasonless } = laptop;
     const posts = [
-      post({ id: 'a', setup: laptop }),
+      post({ id: 'a', setup: { ...laptop, treatment: 'Balinese Massage' } }),
       post({ id: 'b', setup: fourHands }),
       post({ id: 'c', setup: reasonless }),
       post({ id: 'd' }),
@@ -183,6 +183,12 @@ describe('the user texts', () => {
       '### Post',
     );
     expect(one.therapists).toBe(2);
+    // The set-up's treatment and part, for "names only what its image shows"
+    // (the third recordings, 2026-11-23).
+    expect(a).toMatchObject({ treatment: 'Balinese Massage', bodyPart: laptop.bodyPart });
+    expect(one).toMatchObject({ bodyPart: fourHands.bodyPart });
+    expect('bodyPart' in c).toBe(false);
+    expect('treatment' in d).toBe(false);
   });
 
   it('new texts give the post its reason and fact', () => {
@@ -212,31 +218,42 @@ describe("the prompts show only the other reasons' samples", () => {
 // Amended 2026-11-23, after the second recordings: the caption names only
 // what its image shows, the hours come in words, and twoOfYou names a moment.
 describe("the second amendment's rules", () => {
-  const TWO_OF_YOU =
-    "- twoOfYou: two guests, a couple or friends, both massaged at the same time, side by side, each with their own therapist. Its question asks the two of them about a moment they share today: a day out together, one of the essence's moments or one of the business's real places, or an evening in.";
-  const onlyWhatItShows = (people: string) =>
-    `- The caption names only what its image shows: the treatment its set-up or image prompt names, never another of the business's; as many therapists as ${people} says, "two therapists" only when it says two, otherwise "a therapist", "your therapist" or "she"; and for dayOut and laptop, its part of the body.`;
+  // The third recordings (2026-11-23): a question built like dayOut's, for
+  // both of them; no abstract words for the model to copy ("another moment
+  // the two of you share…").
+  const twoOfYou = (part: string) =>
+    `- twoOfYou: two guests, a couple or friends, both massaged at the same time, side by side, each with their own therapist. Its question speaks to both of them, as "both of you" or "the two of you", and names the part of the body its ${part} and the day out they had together: one of the essence's moments about a day out, or one of the business's real places, never the other post's; or, on a night post, their evening in.`;
+  const onlyWhatItShows = (treatment: string, people: string, part: string) =>
+    `- The caption names only what its image shows: ${treatment}, never another of the business's treatments; as many therapists as ${people} says, "two therapists" only when it says two, otherwise "a therapist", "your therapist" or "she"; and for dayOut, twoOfYou and laptop, ${part}.`;
+  const plan = onlyWhatItShows(
+    "its set-up's treatment",
+    'its line under "### Reasons"',
+    "its set-up's part of the body",
+  );
+  const update = onlyWhatItShows('its "treatment"', 'its "therapists"', 'its "bodyPart"');
   const prompts = [
-    ['plan', reasonsPlanPrompt(false, true), 'its line under "### Reasons"'],
-    ['rewrite', reasonsRewritePrompt(false, true), 'its "therapists"'],
-    ['new texts', reasonsNewTextsPrompt(false, true), 'its "therapists"'],
+    ['plan', reasonsPlanPrompt(false, true), 'set-up gives', plan],
+    ['rewrite', reasonsRewritePrompt(false, true), 'image prompt shows', update],
+    ['new texts', reasonsNewTextsPrompt(false, true), 'image prompt shows', update],
   ] as const;
-  for (const [name, prompt, people] of prompts) {
-    it(`the ${name} prompt: twoOfYou's moment, only what the image shows, the fact as given`, () => {
-      expect(prompt).toContain(TWO_OF_YOU);
-      expect(prompt).toContain(onlyWhatItShows(people));
+  for (const [name, prompt, part, shows] of prompts) {
+    it(`the ${name} prompt: twoOfYou's question, only what the image shows, the fact as given`, () => {
+      expect(prompt).toContain(twoOfYou(part));
+      expect(prompt).toContain(shows);
       expect(prompt).toContain('in one short sentence, as given.');
       expect(prompt).toContain(
         "- Facts only from the profile and the post's fact: a duration, a number of years, a place name, a quality (signature, expert, best) or a claim appears only if one of them holds it, written as it is written there.",
       );
       expect(prompt).not.toContain('Hours: …');
       expect(prompt).not.toContain('until when the business comes');
+      expect(prompt).not.toContain('moment they share');
+      expect(prompt).not.toContain('another moment');
     });
   }
 
-  it('new texts ask after another moment for twoOfYou', () => {
+  it('new texts keep the part of the body for dayOut and twoOfYou', () => {
     expect(reasonsNewTextsPrompt(false, true)).toContain(
-      'For twoOfYou, ask after another moment the two share.',
+      'For dayOut and twoOfYou, the part of the body stays its "bodyPart": ask after another day out, or in other words.',
     );
   });
 });

@@ -237,6 +237,10 @@ export function rewriteUserText(input: PostsModelInput, posts: Post[], offer?: O
       // How many therapists its image shows, beside its reason (amended
       // 2026-11-23, after the second recordings).
       ...(setup?.reason ? { therapists: setup.therapists } : {}),
+      // Its treatment and part of the body, so the new words name only what
+      // its image shows (the third recordings, 2026-11-23).
+      ...(setup?.reason && setup.treatment ? { treatment: setup.treatment } : {}),
+      ...(setup?.reason ? { bodyPart: setup.bodyPart } : {}),
       ...(setup?.fact ? { fact: setup.fact } : {}),
       caption,
       imagePrompt,
@@ -288,6 +292,9 @@ export function newTextsUserText(
     ...(setup?.reason ? { reason: setup.reason } : {}),
     // How many therapists its image shows (amended 2026-11-23).
     ...(setup?.reason ? { therapists: setup.therapists } : {}),
+    // Its treatment and part of the body (the third recordings, 2026-11-23).
+    ...(setup?.reason && setup.treatment ? { treatment: setup.treatment } : {}),
+    ...(setup?.reason ? { bodyPart: setup.bodyPart } : {}),
     ...(setup?.fact ? { fact: setup.fact } : {}),
     // The words now, named so the model doesn't take them for its answer.
     captionNow: caption,

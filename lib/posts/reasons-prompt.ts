@@ -29,19 +29,34 @@ const reasonRules = (
 ) => `${intro} Each post sells its reason, to the guests its set-up shows:
 - dayOut: the guest's body after a day out: a walk, a climb, a hike, a surf. Its question names the part of the body its ${partFrom}, in its own word (legs, feet, shoulders, neck, back, arms, hands, head; for "whole body", one its treatment's description names), and the day out it comes from: one of the essence's moments about a day out, or one of the business's real places, never the same moment in both posts.
 - stayIn: the guest would rather not go out: it's late, it's raining, or the kids are asleep. Its question names that moment; the answer says they don't have to go anywhere.
-- twoOfYou: two guests, a couple or friends, both massaged at the same time, side by side, each with their own therapist. Its question asks the two of them about a moment they share today: a day out together, one of the essence's moments or one of the business's real places, or an evening in.
+- twoOfYou: two guests, a couple or friends, both massaged at the same time, side by side, each with their own therapist. Its question speaks to both of them, as "both of you" or "the two of you", and names the part of the body its ${partFrom} and the day out they had together: one of the essence's moments about a day out, or one of the business's real places, never the other post's; or, on a night post, their evening in.
 - firstNight: the guest has just landed after a long flight. Its question names the flight in their body: a stiff back, neck or legs.
 - laptop: days of work on a laptop. Its question names the screen days in their neck, shoulders or back.
 A moment of the essence about a flight is firstNight's, one about a laptop or work is laptop's, the others are dayOut's.`;
+
+type Shows = { treatment: string; people: string; part: string };
+
+// The plan reads them in its set-up and "### Reasons"; a caption update and
+// new texts, in each post's own fields.
+const PLAN_SHOWS: Shows = {
+  treatment: "its set-up's treatment",
+  people: 'its line under "### Reasons"',
+  part: "its set-up's part of the body",
+};
+const UPDATE_SHOWS: Shows = {
+  treatment: 'its "treatment"',
+  people: 'its "therapists"',
+  part: 'its "bodyPart"',
+};
 
 const captionRules = (
   spa: boolean,
   withOffer: boolean,
   lightFrom: string,
   factFrom: string,
-  // Where the post says how many therapists its image shows (amended
-  // 2026-11-23, after the second recordings).
-  peopleFrom: string,
+  // Where the post finds what its image shows: its treatment, therapists and
+  // part of the body (amended 2026-11-23, after the second recordings).
+  shows: Shows,
 ) => `Captions:
 - English, in the business's tone words, written as its owner would, to tourists and expats nearby.
 - Three paragraphs, with a blank line between them: never more.
@@ -49,7 +64,7 @@ const captionRules = (
 - The second paragraph answers it: what the guest gets and how easy it is, in two short sentences of at most ${POSTS_LIMITS.sentenceAsked} words each. It says a therapist comes to the guest's own hotel room, apartment or villa, as the profile writes it, and what changes for the rest of their day or evening, the guest's body and plans named in a few words. It may name the post's treatment. A person does the acting: "we", the therapist or "you"; never the pressure, the strokes, the massage, the oil or the towels. Nothing else in the caption is a question.${withOffer ? ' On a post that carries the special offer, the second paragraph opens on its question, then answers it.' : ''}
 - The third paragraph is the post's fact, ${factFrom}, in one short sentence, as given. A post with no fact ends on its second paragraph.
 - The caption speaks to the guests its set-up shows: two guests on a couple massage are both massaged at once, side by side, each with a therapist; one guest is massaged alone.
-- The caption names only what its image shows: the treatment its set-up or image prompt names, never another of the business's; as many therapists as ${peopleFrom} says, "two therapists" only when it says two, otherwise "a therapist", "your therapist" or "she"; and for dayOut and laptop, its part of the body.
+- The caption names only what its image shows: ${shows.treatment}, never another of the business's treatments; as many therapists as ${shows.people} says, "two therapists" only when it says two, otherwise "a therapist", "your therapist" or "she"; and for dayOut, twoOfYou and laptop, ${shows.part}.
 - Never describe the setting: the light, the sky, the sunset, the garden, the room, the lamps, candles or linens, the oil's colour, or how quiet, calm or peaceful it is. Never describe what the photo shows: the image prompt's light, room and garden are for the image only. The story text follows the same rule.
 - Each caption names one of the business's real places, as its profile writes it, in its question or the paragraph right after it: its town or area, a place it serves, or a landmark among its place symbols. A flower, a plant, an oil or an object is never a place.
 - A caption or story text that says when follows its post's light, ${lightFrom}: a day post speaks of the guest's afternoon, with the evening still ahead, never of sleep, bed or waking up; a night post of the guest's evening, the day done, never of the afternoon, the midday sun or the morning just past.
@@ -91,7 +106,7 @@ The topic: one line, at most 12 words, saying what the post is about.
 
 ${reasonRules('The reasons: code gives each post its reason to book today, under "### Reasons": post 1 takes reason 1, and so on.', 'set-up gives')}
 
-${captionRules(spa, withOffer, 'the last word of its set-up', 'given under "### Facts"', 'its line under "### Reasons"')}
+${captionRules(spa, withOffer, 'the last word of its set-up', 'given under "### Facts"', PLAN_SHOWS)}
 
 ${samplesText(reasons)}
 
@@ -110,7 +125,7 @@ ${GOAL}
 
 ${reasonRules(REWRITE_REASONS, 'image prompt shows')}
 
-${captionRules(spa, withOffer, 'its "light"', 'given as its "fact"', 'its "therapists"')}
+${captionRules(spa, withOffer, 'its "light"', 'given as its "fact"', UPDATE_SHOWS)}
 
 ${samplesText(reasons)}${withOffer ? rewriteOfferRules(spa) : ''}`;
 }
@@ -123,13 +138,13 @@ export function reasonsNewTextsPrompt(
 ): string {
   return `The owner of a small business wants new words for one of their Instagram posts, for the same image. You write a new caption and a new story text for the post under "### Post", as its owner would, to guests nearby. Keep its scene, light and image prompt: they don't change. Answer that post, with its id. Give "hashtags" as [] and "altText" as "": the post keeps its own.
 
-Something different: "captionNow" and "storyTextNow" are its words now, which the owner wants replaced. Open on a different question for its reason, and reuse no sentence of its caption now, nor of its story text now. An answer that repeats its question is refused. For dayOut, the part of the body stays the one its image prompt shows: ask after another day out, or in other words. For twoOfYou, ask after another moment the two share. Its "fact" is new: use it. Never the fact, the opening or the ending of the post under "### Other post": it goes out beside this one.
+Something different: "captionNow" and "storyTextNow" are its words now, which the owner wants replaced. Open on a different question for its reason, and reuse no sentence of its caption now, nor of its story text now. An answer that repeats its question is refused. For dayOut and twoOfYou, the part of the body stays its "bodyPart": ask after another day out, or in other words. Its "fact" is new: use it. Never the fact, the opening or the ending of the post under "### Other post": it goes out beside this one.
 
 ${GOAL}
 
 ${reasonRules(REWRITE_REASONS, 'image prompt shows')}
 
-${captionRules(spa, withOffer, 'its "light"', 'given as its "fact"', 'its "therapists"')}
+${captionRules(spa, withOffer, 'its "light"', 'given as its "fact"', UPDATE_SHOWS)}
 
 ${samplesText(reasons)}${withOffer ? rewriteOfferRules(spa) : ''}`;
 }
