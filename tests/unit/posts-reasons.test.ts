@@ -1,11 +1,11 @@
 import { join } from 'node:path';
 import { describe, expect, it } from 'vitest';
-import { FIXTURES_DIR, fixtureProfile } from '@/lib/brand/fixtures';
+import { FIXTURES_DIR, fixtureOffer, fixtureProfile, fixtureRecent } from '@/lib/brand/fixtures';
 import type { Profile } from '@/lib/brand/profile';
 import type { RecentPost } from '@/lib/posts/batch';
 import type { Offer } from '@/lib/posts/offer';
 import { comesToGuests, dealReasonSetups, REASON_PARTS, reasonFor } from '@/lib/posts/reasons';
-import { type Reason, seededRandom } from '@/lib/posts/setup';
+import { REASONS, type Reason, seededRandom } from '@/lib/posts/setup';
 import { senProfile, svargaProfile } from './helpers/brand';
 
 // Reasons to book (docs/specs/posts/reasons-to-book).
@@ -197,5 +197,36 @@ describe('the facts of a reasons deal', () => {
         expect(setup.fact).not.toBe('Professional therapeutic massage only');
       }
     }
+  });
+});
+
+// The eval and the replay deal these, so the maintainer judges every reason
+// (docs/specs/posts/reasons-to-book, "Tests and evaluation").
+describe('the recordings, steered', () => {
+  it('the four recordings deal every reason, and the hours at night', async () => {
+    const reasons = new Set<string>();
+    let hours = false;
+    for (const slug of ['sen', 'svarga']) {
+      const profile = await fixtureProfile(join(FIXTURES_DIR, slug));
+      for (const withOffer of [false, true]) {
+        const offer = withOffer ? fixtureOffer(profile) : undefined;
+        const random = seededRandom(withOffer ? `${slug}:offer` : slug);
+        for (const setup of dealReasonSetups(
+          profile,
+          offer,
+          random,
+          fixtureRecent(slug, withOffer),
+        )) {
+          if (setup.reason) reasons.add(setup.reason);
+          if (setup.light === 'night' && setup.fact?.startsWith('Hours: ')) hours = true;
+        }
+      }
+    }
+    expect([...reasons].sort()).toEqual([...REASONS].sort());
+    expect(hours).toBe(true);
+  });
+
+  it('other slugs get no made-up recent posts', () => {
+    expect(fixtureRecent('karsa-spa', false)).toEqual([]);
   });
 });

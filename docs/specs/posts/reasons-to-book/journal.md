@@ -13,6 +13,18 @@
   them every day, on this branch too. It needs its own spec before any code
   (AGENTS.md, hard rule 1), written once this plan's code is in.
 
+- 2026-11-23: the eval and the replay steer the deal with made-up recent
+  posts (`fixtureRecent`): Sen's plan after a laptop post (two of you, the
+  first night with the hours), Svarga's plan unsteered (a day out, laptop
+  days), Sen's offer plan after a staying-in post (laptop days, a day out),
+  Svarga's after a laptop post (staying in, the first night). New texts take
+  a seeded fact, the same on a replay.
+- 2026-11-23: replayed through `posts-19`'s deal and checks, the `posts-18`
+  recordings get the new records the maintainer's complaint describes:
+  "question in the first person" on Sen's "Can a therapist come to my hotel
+  room tonight?" and Svarga's "Can someone come to my villa tonight…",
+  and `"professional therapeutic massage only"` on Sen's post 2.
+
 ## RED
 
 Task 1: `Tests  4 failed | 95 passed (99)` (`Test Files  4 failed (4)`: no

@@ -2,7 +2,13 @@ import { existsSync } from 'node:fs';
 import { join } from 'node:path';
 import { describe, expect, test } from 'vitest';
 import { replayTextModel } from '@/lib/ai/replay';
-import { FIXTURES_DIR, fixtureOffer, fixtureProfile, loadFixture } from '@/lib/brand/fixtures';
+import {
+  FIXTURES_DIR,
+  fixtureOffer,
+  fixtureProfile,
+  fixtureRecent,
+  loadFixture,
+} from '@/lib/brand/fixtures';
 import type { PlanResult } from '@/lib/posts/batch';
 import { emojisIn, FLOWERS } from '@/lib/posts/emoji';
 import { dropForeignTags } from '@/lib/posts/foreign-tags';
@@ -41,7 +47,7 @@ describe('recorded post plans', () => {
     const model = replayTextModel(noBrandRead, { posts: fixture.posts.recording });
     let final = null;
     for await (const line of streamPlan(
-      { profile, recent: [] },
+      { profile, recent: fixtureRecent(slug, false) },
       { model, random: seededRandom(slug) },
       new AbortController().signal,
     )) {
@@ -79,7 +85,7 @@ describe('recorded offer plans', () => {
     const model = replayTextModel(noBrandRead, { posts: fixture.postsOffer.recording });
     let final = null;
     for await (const line of streamPlan(
-      { profile, recent: [], offer },
+      { profile, recent: fixtureRecent(slug, true), offer },
       { model, random: seededRandom(`${slug}:offer`) },
       new AbortController().signal,
     )) {
@@ -117,7 +123,7 @@ describe('recorded story texts and flowers', () => {
     const offer = withOffer ? fixtureOffer(profile) : undefined;
     const model = replayTextModel(noBrandRead, { posts: recording.recording });
     for await (const line of streamPlan(
-      { profile, recent: [], ...(offer ? { offer } : {}) },
+      { profile, recent: fixtureRecent(slug, withOffer), ...(offer ? { offer } : {}) },
       { model, random: seededRandom(withOffer ? `${slug}:offer` : slug) },
       new AbortController().signal,
     )) {
@@ -229,7 +235,7 @@ describe('recorded new texts', () => {
       const signal = new AbortController().signal;
       let plan: PlanResult | null = null;
       for await (const line of streamPlan(
-        { profile, recent: [] },
+        { profile, recent: fixtureRecent(slug, false) },
         {
           model: replayTextModel(noBrandRead, { posts: fixture.posts.recording }),
           random: seededRandom(slug),
@@ -243,7 +249,10 @@ describe('recorded new texts', () => {
       let result: PlanResult | null = null;
       for await (const line of streamNewTexts(
         { profile, post, other },
-        { model: replayTextModel(noBrandRead, { posts: fixture.newTexts.recording }) },
+        {
+          model: replayTextModel(noBrandRead, { posts: fixture.newTexts.recording }),
+          random: seededRandom(`${slug}:texts`),
+        },
         signal,
       )) {
         if (line.type === 'error') throw new Error(line.code);
