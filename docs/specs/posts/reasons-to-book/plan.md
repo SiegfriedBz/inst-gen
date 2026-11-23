@@ -569,3 +569,124 @@ two.
   Expected: PASS.
 - [ ] **Step 4: Show the maintainer** the posts, and record their words in the journal.
 - [ ] **Step 5: Commit**: `test(posts): second posts-19 recordings (roadmap 2.23)`.
+
+---
+
+## Addendum: the second amendment, after the merge with develop
+
+Approved with the spec's second amendment (2026-11-23T18:36:15Z). Develop's
+normal bodies (#65) is merged in: this spec is now roadmap 2.24, its prompt
+ships as `posts-20`, and every other business's as `posts-19` (`posts-18`'s
+words, still pinned). Task 13 is complete: the maintainer's verdict is in the
+journal.
+
+Constraints for Tasks 14 to 19, besides those above:
+
+- Hours in words: "Open every day until 11 pm"; with minutes, "until 10:30
+  pm"; after midnight, "until 1 am"; 00:00, 23:59 or 24:00, "until midnight";
+  12:00, "until noon" (developer's call: the spec names no noon); from
+  midnight to midnight, "Open 24 hours, every day". Every day means one
+  range of days, "daily" or "every day", or several ranges that cover Monday
+  to Sunday, all with one closing time. Anything else gives `null`.
+- `### Reasons` lines: `1. laptop: one guest, one therapist`; a four-hands
+  massage, `one guest, two therapists`; a couple massage, `two guests, two
+  therapists`.
+- Record 6's words: two therapists, both therapists, four hands, four-hands;
+  its text `post-1: caption for two therapists, image of one`.
+- Another business's prompts and user texts don't change by a byte.
+- Commits: scope `posts`, `(roadmap 2.24)` at the end of the subject.
+- Model calls only in Task 19: the three eval commands, with the approval's
+  go-ahead.
+
+Review focus for these tasks:
+
+- Hours the read wrote as free text ("Daily 9am - 11pm", "Every day, 9:00
+  AM – 10:30 PM"): read right, or `null`; never a wrong closing time. Task 15.
+- A post saved with the old fact "Hours: Mo-Su 08:30-23:00": its caption
+  update deals another fact, never the raw line. Task 15.
+- A four-hands post for one guest says "two therapists": no record. Task 18.
+- "Trained local Vietnamese therapists" as a one-therapist post's fact: no
+  record. Task 18.
+- A Thai offer post that sells laptop days: its part is the back, never the
+  legs. Task 14.
+
+### Task 14: Thai's two parts follow the reason
+
+Normal bodies made Thai fix two parts, the legs (a leg stretch) and the back
+(a palm press), where it fixed the whole body; the deal takes any of them,
+so a laptop post could get the legs. Ruling, ledgered: a look's fixed parts
+that fit the reason come first; with none fitting, its fixed parts as before.
+
+**Files:** Modify `lib/posts/reasons.ts`; Test `tests/unit/posts-reasons.test.ts`
+
+**Interfaces:** `dealReasonSetups` unchanged.
+
+- [ ] **Step 1: Write the failing test** `a Thai set-up takes the part its reason fits`: over seeds `0` to `59`, with `guestsProfile(['Thai Massage'])`, every set-up whose reason is `laptop` has the part `back`; every `dayOut` or `firstNight` one, `legs` or `back`; at least one `laptop` set-up is dealt.
+- [ ] **Step 2: Run it**: `pnpm exec vitest run tests/unit/posts-reasons.test.ts`. Expected: FAIL, a laptop set-up with `legs`.
+- [ ] **Step 3: Implement** in the part step of `dealReasonSetups`: the fixed parts filtered by `REASON_PARTS[reason]` when any is left, else the fixed parts.
+- [ ] **Step 4: Run all unit tests**: `pnpm test`. Expected: PASS; another business's deals unchanged.
+- [ ] **Step 5: Commit**: `fix(posts): thai's leg stretch or palm press follows the reason (roadmap 2.24)`.
+
+### Task 15: The hours in words
+
+**Files:** Create `lib/posts/hours.ts`; Modify `lib/posts/facts.ts`; Test `tests/unit/posts-hours.test.ts` (new), `tests/unit/posts-facts.test.ts`
+
+**Interfaces:** Produces `hoursInWords(hours: string): string | null`. `hoursFact(profile)` returns `hoursInWords(profile.hours.value)`, or `null`.
+
+- [ ] **Step 1: Write the failing tests**
+  1. `hoursInWords`, a table: `Mo-Su 08:30-23:00` → `Open every day until 11 pm`; `Mo-Su 09:00-22:30` → `…until 10:30 pm`; `Mo-Su 10:00-01:00` → `…until 1 am`; `Mo-Su 10:00-00:00`, `Mo-Su 10:00-24:00`, `Mo-Su 10:00-23:59` → `…until midnight`; `Mon-Sun 08:00-12:00` → `…until noon`; `Mo-Su 00:00-24:00` and `Mo-Su 00:00-23:59` → `Open 24 hours, every day`; `Mo-Fr 09:00-22:00; Sa-Su 10:00-22:00` and `Mo,Tu,We,Th,Fr,Sa,Su 09:00-21:00` → `…until 10 pm` and `…until 9 pm`; `Daily 9am - 11pm` → `…until 11 pm`; `Every day, 9:00 AM – 10:30 PM` → `…until 10:30 pm`; `Monday to Sunday: 08:00 - 22:00` → `…until 10 pm`.
+  2. `null` for: `Mo-Fr 09:00-18:00; Sa 10:00-14:00`, `Mo-Sa 09:00-22:00`, `Mo-Fr 09:00-22:00; Sa-Su 10:00-23:00`, `By appointment`, `Mo-Su`, `08:30-23:00`, `Mo-Su 25:00-26:00`, an empty string.
+  3. In `posts-facts.test.ts`: `hoursFact` on hours `Mo-Su 08:30-23:00` gives `Open every day until 11 pm`, on `By appointment` `null`; a night post never draws a fact that starts `Hours:`; `keptFact` drops a saved `Hours: Mo-Su 08:30-23:00`.
+- [ ] **Step 2: Run them**: `pnpm exec vitest run tests/unit/posts-hours.test.ts tests/unit/posts-facts.test.ts`. Expected: FAIL (no `hours.ts`; the fact starts `Hours:`).
+- [ ] **Step 3: Implement.** Find every time range (`HH:MM` or `h[:mm] am|pm`, joined by `-`, `–` or `to`); the words before each range are its days (with one range, the rest of the line). Days: short, three-letter or full names, ranges wrapping or not, lists by commas, or "daily", "every day", "everyday", "7 days". Read only when the days cover all seven and every range shares one closing time.
+- [ ] **Step 4: Run all unit tests**: `pnpm test`. Expected: PASS, with any test that expected the old `Hours:` line rewritten to the words.
+- [ ] **Step 5: Commit**: `feat(posts): code writes the opening hours in words (roadmap 2.24)`.
+
+### Task 16: Each post's guests and therapists
+
+**Files:** Modify `lib/posts/setup.ts`, `lib/posts/prompt.ts`; Test `tests/unit/posts-prompt.test.ts`
+
+**Interfaces:** Produces `peopleOf(setup: Setup): string` in `setup.ts`. `planUserText` and `rewriteUserText` unchanged in signature; new texts' user text, as it builds on `rewriteUserText`'s posts.
+
+- [ ] **Step 1: Write the failing tests**
+  1. `peopleOf`: a `plain` set-up for a woman → `one guest, one therapist`; `fourHands` → `one guest, two therapists`; `couple` → `two guests, two therapists`.
+  2. `planUserText` with reasons `laptop` and `twoOfYou` on a plain and a couple set-up: `### Reasons\n1. laptop: one guest, one therapist\n2. twoOfYou: two guests, two therapists`.
+  3. `rewriteUserText`: a post with a reason has `"therapists": 1` (2 on four hands); a post without one has no `therapists`. A plan without reasons has no `: one guest` line.
+- [ ] **Step 2: Run them**: `pnpm exec vitest run tests/unit/posts-prompt.test.ts`. Expected: FAIL on the new tests.
+- [ ] **Step 3: Implement.** The reason line gains `: ${peopleOf(s)}`; the rewrite's kept post gains `therapists: setup.therapists` only beside a `reason`.
+- [ ] **Step 4: Run all unit tests**: `pnpm test`. Expected: PASS; the posts-18 words still pinned.
+- [ ] **Step 5: Commit**: `feat(posts): each post's guests and therapists for the model (roadmap 2.24)`.
+
+### Task 17: The prompt's new rules
+
+**Files:** Modify `lib/posts/reasons-prompt.ts`; Test `tests/unit/posts-reasons-prompt.test.ts`
+
+**Interfaces:** `captionRules` gains a `peopleFrom` argument: in the plan `its line under "### Reasons"`, in caption updates and new texts `its "therapists"`. The three prompt functions keep their signatures.
+
+- [ ] **Step 1: Write the failing tests**: the three prompts hold `twoOfYou: two guests, a couple or friends, both massaged at the same time, side by side, each with their own therapist. Its question asks the two of them about a moment they share today: a day out together, one of the essence's moments or one of the business's real places, or an evening in.`; the rule `The caption names only what its image shows`, with `"two therapists" only when`; the fact paragraph `in one short sentence, as given`; none holds `Hours: …` nor `until when the business comes`. The plan prompt names `its line under "### Reasons"`, the others `its "therapists"`. New texts hold `For twoOfYou, ask after another moment the two share.`
+- [ ] **Step 2: Run them**: `pnpm exec vitest run tests/unit/posts-reasons-prompt.test.ts`. Expected: FAIL on the new tests.
+- [ ] **Step 3: Implement**: the `twoOfYou` line; the new caption bullet after the one on guests: `- The caption names only what its image shows: the treatment its set-up or image prompt names, never another of the business's; as many therapists as ${peopleFrom} says, "two therapists" only when it says two, otherwise "a therapist", "your therapist" or "she"; and for dayOut and laptop, its part of the body.`; the fact paragraph; the new-texts line.
+- [ ] **Step 4: Run all unit tests**: `pnpm test`. Expected: PASS.
+- [ ] **Step 5: Commit**: `feat(posts): captions name only what their image shows (roadmap 2.24)`.
+
+### Task 18: Two therapists on an image of one
+
+**Files:** Modify `lib/posts/reason-records.ts`; Test `tests/unit/posts-reason-records.test.ts`
+
+**Interfaces:** `reasonRecords(posts, profile)` unchanged.
+
+- [ ] **Step 1: Write the failing tests**: on a one-therapist set-up, "Two therapists come to your room" in the caption, and "both therapists" or "four hands" in the story text, each give `post-1: caption for two therapists, image of one`; "Two therapists" on a four-hands or couple set-up, and "Trained local Vietnamese therapists" on a one-therapist set-up, give none.
+- [ ] **Step 2: Run them**: `pnpm exec vitest run tests/unit/posts-reason-records.test.ts`. Expected: FAIL on the three that should record.
+- [ ] **Step 3: Implement**: a `TWO_THERAPISTS` list beside `TWO_GUESTS`, checked when `setup.therapists !== 2`.
+- [ ] **Step 4: Run all unit tests**: `pnpm test`. Expected: PASS.
+- [ ] **Step 5: Commit**: `feat(posts): record two therapists on an image of one (roadmap 2.24)`.
+
+### Task 19: Record again, and the maintainer's verdict
+
+**Files:** the six recordings under `tests/fixtures/sites/{sen,svarga}/`, `tests/unit/posts-fixtures-replay.test.ts`, `lib/brand/fixtures.ts` (the steering, only if a reason goes missing), `docs/roadmap.md`, `journal.md`
+
+- [ ] **Step 1: Record**: `pnpm eval:posts sen svarga --record`, `pnpm eval:posts sen svarga --offer --record`, `pnpm eval:posts sen svarga --new-texts --record`. Expected: `prompt posts-20` each time; a slug that fails reruns once. The five reasons show at least once, and the hours fact in words at least once; if not, steer `fixtureRecent` and rerecord that run only.
+- [ ] **Step 2: Replay**: the recordings' version `posts-20`; no record `caption for two therapists, image of one`; no caption or fact that starts `Hours:`; the earlier assertions kept. Run: `pnpm exec vitest run tests/unit/posts-fixtures-replay.test.ts`. Expected: PASS.
+- [ ] **Step 3: Journal** the third run beside the second, with the spec's table, and the roadmap row 2.24 gains the amendment's words.
+- [ ] **Step 4: Commit**: `test(posts): posts-20 recordings for Sen and Svarga (roadmap 2.24)`.
+- [ ] **Step 5: Show the maintainer** the posts, and record their words in the journal.

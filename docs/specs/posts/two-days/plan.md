@@ -80,3 +80,34 @@
   Run: `pnpm test`, then the phone tests (port 3101 when 3000 is taken).
   Expected: PASS.
 - [ ] **Step 5: Commit**: `feat(web): yesterday's suggestions stay, under Today and Yesterday (roadmap 2.24)`, then set 2.24 to `done` in `docs/roadmap.md` with the PR.
+
+---
+
+## Addendum: an offer that has ended
+
+Approved with the spec's amendment (2026-11-23T18:36:15Z). This spec is now
+roadmap 2.25, after the merge with develop. Tasks 1 and 2 are done.
+
+Constraints: the strings `posts.offer.badgeEnded` ("Offer ended", "Promo
+berakhir", "Ưu đãi đã kết thúc") and `posts.offer.lastDayDate` ("last day
+{date}", "hari terakhir {date}", "ngày cuối {date}"); an offer is over as
+`isOver(offer, now)` says, on the phone's clock; commits end with
+`(roadmap 2.25)`.
+
+Review focus: an offer on its last day still shows its badge (test below);
+an app left open across midnight is a known limit, untested.
+
+### Task 3: "Offer ended" on the tile and in the sheet
+
+**Files:** Modify `components/posts/offer-badge.tsx`, `components/posts/suggestion-tile.tsx`, `messages/en.json`, `messages/id.json`, `messages/vi.json`, `docs/roadmap.md`; Test `tests/unit/posts-section.test.tsx`
+
+**Interfaces:** Produces `offerBadgeText(t, offer, now?: Date)`, the ended label when the offer is over; `OfferBadge({ offer, until?, now? })`. `now` defaults to the current time.
+
+- [ ] **Step 1: Write the failing tests**, in "the offer badge", the clock at 2026-10-25T12:00Z:
+  1. An offer whose last day was 2026-10-24: its two tiles show "Offer ended" and no "10% off"; the first tile's name starts `Suggestion 1 of 6, Offer ended,`.
+  2. Its opened sheet shows "Offer ended" and "last day Sat 24 Oct", and no "until".
+  3. An offer whose last day is 2026-10-25 shows "10% off" on its two tiles.
+- [ ] **Step 2: Run them**: `pnpm exec vitest run tests/unit/posts-section.test.tsx`. Expected: FAIL on 1 and 2.
+- [ ] **Step 3: Implement.** The ended badge: `rounded-control bg-field-muted px-2 py-0.5 text-[12px] font-medium text-ink-secondary`; in the sheet, `lastDayDate` in place of `untilDate`. The strings in the three files. The roadmap row 2.25 gains "a suggestion whose offer has ended says so".
+- [ ] **Step 4: Run all unit tests**: `pnpm test`. Expected: PASS, the strings test included.
+- [ ] **Step 5: Commit**: `feat(web): a suggestion whose offer has ended says so (roadmap 2.25)`.
