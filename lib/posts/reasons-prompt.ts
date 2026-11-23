@@ -59,7 +59,7 @@ const captionRules = (
 - ${POSTS_LIMITS.captionMin} to ${POSTS_LIMITS.captionAsked} characters in all, before the app's WhatsApp line. No hashtags in the text.
 - ${emojiRule(spa)}
 - Never a price, in a caption or a story text.
-- Facts only from the profile: a duration, a number of years, a place name, a quality (signature, expert, best) or a claim appears only if the profile holds it, written as the profile writes it.
+- Facts only from the profile and the post's fact: a duration, a number of years, a place name, a quality (signature, expert, best) or a claim appears only if one of them holds it, written as it is written there.
 - No call to action and no contact details, ever: the app adds its own booking line with the number after the caption.${withOffer ? " On a post that carries the special offer, the app's line also gives the offer's end." : ''}
 - Never these words, nor anything that suggests more than a professional treatment: ${BANNED_WORDS.join(', ')}.
 

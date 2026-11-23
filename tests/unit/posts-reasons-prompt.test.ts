@@ -226,6 +226,9 @@ describe("the second amendment's rules", () => {
       expect(prompt).toContain(TWO_OF_YOU);
       expect(prompt).toContain(onlyWhatItShows(people));
       expect(prompt).toContain('in one short sentence, as given.');
+      expect(prompt).toContain(
+        "- Facts only from the profile and the post's fact: a duration, a number of years, a place name, a quality (signature, expert, best) or a claim appears only if one of them holds it, written as it is written there.",
+      );
       expect(prompt).not.toContain('Hours: …');
       expect(prompt).not.toContain('until when the business comes');
     });
