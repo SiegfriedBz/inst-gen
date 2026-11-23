@@ -167,6 +167,12 @@ export type Hook = (typeof HOOKS)[number];
 export const QUESTIONS = ['sore', 'ask'] as const;
 export type Question = (typeof QUESTIONS)[number];
 
+// The reason to book each post sells, for a business that comes to its guests
+// (docs/specs/posts/reasons-to-book): dealt by code in place of a kind of
+// question, with the fact that ends its caption.
+export const REASONS = ['dayOut', 'stayIn', 'twoOfYou', 'firstNight', 'laptop'] as const;
+export type Reason = (typeof REASONS)[number];
+
 export const setupSchema = z.object({
   treatment: z.string().min(1).optional(),
   look: z.enum(LOOKS),
@@ -178,6 +184,8 @@ export const setupSchema = z.object({
   light: z.enum(LIGHTS).optional(),
   hook: z.enum(HOOKS).optional(),
   question: z.enum(QUESTIONS).optional(),
+  reason: z.enum(REASONS).optional(),
+  fact: z.string().min(1).optional(),
 });
 export type Setup = z.infer<typeof setupSchema>;
 

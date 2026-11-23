@@ -23,10 +23,16 @@ export async function loadBatches(ownerId: string): Promise<PostBatch[]> {
   return batches.sort((a, b) => b.createdAt.localeCompare(a.createdAt));
 }
 
-// What a new batch must not repeat: the newest posts, newest batch first.
+// What a new batch must not repeat: the newest posts, newest batch first,
+// each with its reason to book when it has one
+// (docs/specs/posts/reasons-to-book).
 export function recentPosts(batches: PostBatch[]): RecentPost[] {
   return batches
-    .flatMap((batch) => batch.posts.map(({ type, topic }) => ({ type, topic })))
+    .flatMap((batch) =>
+      batch.posts.map(({ type, topic, setup }) =>
+        setup?.reason ? { type, topic, reason: setup.reason } : { type, topic },
+      ),
+    )
     .slice(0, POSTS_LIMITS.recent);
 }
 
