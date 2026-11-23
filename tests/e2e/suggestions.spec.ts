@@ -5,8 +5,9 @@ import { fulfilImages } from './helpers/images';
 import { fulfilPosts, postsBody } from './helpers/posts-stream';
 import { tileImages, tiles } from './helpers/suggestions';
 
-// Suggestions last until Google's reset, 14:00 in Da Nang in US summer time
-// (docs/specs/posts/suggestions, docs/specs/platform/one-daily-reset), at the
+// A day's suggestions last until the reset after next: Google's reset is
+// 14:00 in Da Nang in US summer time (docs/specs/posts/suggestions,
+// docs/specs/platform/one-daily-reset, docs/specs/posts/two-days), at the
 // phone viewport, with every route
 // mocked. Test values from playwright.config.ts; not secrets.
 const SEN = 'test-lotus-river-sen';
@@ -54,6 +55,9 @@ test('suggestions stay through a reload, a day under Yesterday, then go', async 
   await page.getByRole('button', { name: 'Make 2 new suggestions' }).click();
   await expect(page.getByRole('heading', { name: 'Today' })).toBeVisible();
   await expect(page.getByRole('heading', { name: 'Attempt 1' })).toHaveCount(2);
+  // The new attempt is kept with its two images before the clock moves on: a
+  // reload while it's still being made would make it again in the new day.
+  await expect(tileImages(page)).toHaveCount(4);
 
   // Past the next reset: the first attempt is gone, the second is yesterday's.
   await page.clock.setSystemTime(new Date('2026-10-27T14:05:00+07:00'));

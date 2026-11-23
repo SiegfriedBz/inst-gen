@@ -22,6 +22,20 @@
   owner looks for.
 - 2026-11-23: the phone tests ran on port 3117 with a scratch config: other
   projects' servers held 3000 and 3101.
+- 2026-11-23: with only the day before's attempts on the screen, the button
+  reads "Make 2 new suggestions", its label whenever attempts show; the
+  spec's phone test said "Make 2 suggestions", and the test checks the label
+  the screen has.
+- 2026-11-23: the review of the branch (fresh reviewer): ready with fixes,
+  none critical. Fixed: the phone test could reload while the new attempt
+  was still being made; it now waits for the attempt's two images. Fixed:
+  comments that still said only today's attempts show. Deferred, in the PR:
+  on the day this ships, an owner who already opened the app since the last
+  reset sees the day before's attempts come back without their images (the
+  old code deleted them), until the next reset; an ended special offer's
+  posts now stay on the screen about a day longer, with no flag; an app left
+  open across the reset keeps the old labels until the next attempt; the day
+  and attempt headings are both level 2; a few boundary tests.
 
 ## RED
 
@@ -34,3 +48,5 @@ Task 2: `Tests  6 failed | 87 passed (93)`
 Task 1: `Tests  8 passed (8)`
 
 Task 2: `Tests  102 passed (102)` (the screen's tests); `pnpm check`: `Test Files  134 passed (134)`, `Tests  2268 passed (2268)`; `pnpm test:e2e` on port 3117: `73 passed (52.3s)`, `1 skipped`
+
+After the review's fixes: `pnpm check`: `Tests  2268 passed (2268)`; `pnpm test:e2e` on port 3117, twice: `73 passed (37.1s)`, `1 skipped`, then `73 passed (37.8s)`, `1 skipped`

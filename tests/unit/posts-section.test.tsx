@@ -523,7 +523,7 @@ describe('the posts section', () => {
   });
 });
 
-describe("today's attempts", () => {
+describe("today's and yesterday's attempts", () => {
   const yesterday = (posts: Post[], hash?: string): PostBatch => ({
     ...batch(posts, hash),
     id: 'y1',

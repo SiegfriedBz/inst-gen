@@ -49,9 +49,10 @@ import { CopyPost, CopyStory, SaveImages } from './take-away';
 
 // "Create your posts" (docs/specs/posts/suggestions): the button that makes
 // an attempt of two suggestions (docs/specs/posts/two-suggestions), the
-// suggestions as they stream in, and the attempts made since Google's reset
-// (docs/specs/platform/one-daily-reset), newest on top; anything older is
-// cleared when the section loads. Once a plan is saved, its images are asked
+// suggestions as they stream in, and the attempts of the current day and of
+// the day before, each day from Google's reset (docs/specs/platform/one-daily-reset,
+// docs/specs/posts/two-days), newest on top under "Today" and "Yesterday";
+// anything older is cleared when the section loads. Once a plan is saved, its images are asked
 // for (docs/specs/posts/generate-images; an attempt saved with six asks for
 // two, docs/specs/posts/two-images) when images are on for this owner.
 // While its tab shows, the newest batch's captions follow the business
@@ -105,7 +106,8 @@ export function PostsSection({
   const monthFullRef = useRef(monthFull);
   monthFullRef.current = monthFull;
   // The start of the owner's day, once the section has cleared what came
-  // before it: only attempts made since then are shown.
+  // before the day before: today's attempts are those made since then, and
+  // yesterday's those of the day before (docs/specs/posts/two-days).
   const [start, setStart] = useState<Date | null>(null);
   const startRef = useRef<Date | null>(null);
   // True until the first look for a lost run ends, and while one resumes, so
