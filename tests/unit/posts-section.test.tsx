@@ -1049,6 +1049,36 @@ describe('the offer badge', () => {
     expect(until).toBeTruthy();
   });
 
+  // docs/specs/posts/two-days, "A suggestion whose offer has ended"
+  // (amended 2026-11-23); the clock is at 2026-10-25.
+  const ended: Offer = { ...discount, until: '2026-10-24', lastDay: 'Saturday 24 October' };
+
+  test('an ended offer shows "Offer ended" on its two tiles', async () => {
+    await saveBatch(withOffer(ended));
+    await renderSection();
+    await screen.findAllByRole('button', { name: /^Suggestion \d of 6/ });
+    expect(screen.getAllByText('Offer ended')).toHaveLength(2);
+    expect(screen.queryByText('10% off')).toBeNull();
+    expect(screen.getByRole('button', { name: /^Suggestion 1 of 6, Offer ended,/ })).toBeTruthy();
+  });
+
+  test('its opened post shows "Offer ended" and its last day', async () => {
+    await saveBatch(withOffer(ended));
+    await renderSection();
+    const sheet = await openTile(1);
+    expect(within(sheet).getByText('Offer ended')).toBeTruthy();
+    expect(within(sheet).getByText('last day Sat 24 Oct')).toBeTruthy();
+    expect(within(sheet).queryByText(/^until /)).toBeNull();
+  });
+
+  test('on its last day, the offer still shows its badge', async () => {
+    await saveBatch(withOffer({ ...discount, until: '2026-10-25', lastDay: 'Sunday 25 October' }));
+    await renderSection();
+    await screen.findAllByRole('button', { name: /^Suggestion \d of 6/ });
+    expect(screen.getAllByText('10% off')).toHaveLength(2);
+    expect(screen.queryByText('Offer ended')).toBeNull();
+  });
+
   test('a free extra reads "Free extra"', async () => {
     const free: Offer = {
       kind: 'freeExtra',
