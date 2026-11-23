@@ -407,7 +407,7 @@ with them.
 
 ### What the model gets
 
-`posts-19`, for a business that comes to its guests, in the plan, in caption
+`posts-20`, for a business that comes to its guests, in the plan, in caption
 updates and in new texts:
 
 - It opens on what a post is for, before any rule: a tourist or expat nearby
@@ -422,12 +422,11 @@ updates and in new texts:
   2026-11-23, above).
 - The image prompt's rules, unchanged.
 
-A batch records `posts-19` for a business that comes to its guests, and
-`posts-18` for any other, whose prompt doesn't change. (At the merge with
-develop, 2026-11-23: `posts/normal-bodies`, roadmap 2.23, had named its new
-set-ups `posts-19` first, so this spec's prompt ships as `posts-20`, and
-any other business's, `posts-18`'s words with those set-ups, as `posts-19`.
-This spec becomes roadmap 2.24.)
+A batch records `posts-20` for a business that comes to its guests, and
+`posts-19` for any other: `posts-18`'s words, whose prompt doesn't change,
+with the set-ups of `posts/normal-bodies` (roadmap 2.23), which took
+`posts-19` first (the merge with develop, 2026-11-23). This spec is roadmap
+2.24; its recordings before the merge are `posts-19`.
 
 In the plan's user text, after `### Image set-ups`: `### Reasons`, one line
 per post with its guests and therapists (`1. laptop: one guest, one
@@ -517,8 +516,8 @@ The maintainer read three of their faults and asked "Did you fix this?":
   named no moment. Its question now names a moment the two share, as
   `dayOut`'s names a day out.
 
-`posts-19` never shipped, so it stays `posts-19`, as with the first
-amendment. Sen's and Svarga's plans, with and without an offer, and their
+The prompt ships as `posts-20` (the merge with develop, under "What the
+model gets"). Sen's and Svarga's plans, with and without an offer, and their
 new texts are recorded again: 6 Flash-Lite requests, with the maintainer's
 go-ahead.
 
@@ -555,7 +554,7 @@ Unit tests (Vitest) for:
   request away, nor a short one that names the guest's place; the hours only
   on a night post; none when none is left; the model's profile without the
   turned-away highlight, and the profile's hash unchanged;
-- the prompt: `posts-19`; the goal before the rules; the five reasons; the
+- the prompt: `posts-20`; the goal before the rules; the five reasons; the
   samples of the reasons no post of the call has, never a post's own
   (amended 2026-11-23); no type jobs, no kinds of question; `### Reasons` and
   `### Facts` after the set-ups; a caption update's and new texts' `reason`
@@ -576,7 +575,7 @@ Unit tests (Vitest) for:
   `therapists`; the rule on what the image shows; `twoOfYou`'s moment; no
   "Hours: …" rule; record 6, never on a couple or four-hands massage.
 
-The replay test checks the new `posts-19` recordings, Sen's and Svarga's,
+The replay test checks the new `posts-20` recordings, Sen's and Svarga's,
 with and without an offer: every question ends in "?" and holds no first
 person; no caption or story text holds a highlight that turns a request
 away, a copied sample or a price, or speaks to two guests or names two
@@ -659,7 +658,7 @@ Scenario: A fact that turns a request away
 Scenario: The hours, at night
   Given Sen's hours "08:30-23:00 daily"
   When code deals the facts
-  Then only the night post may get "Hours: 08:30-23:00 daily"
+  Then only the night post may get "Open every day until 11 pm"
 
 Scenario: A question in the first person
   Given the model writes post 1's caption opening "Can a therapist bring oils to my hotel tonight?"
@@ -703,7 +702,7 @@ Scenario: Another business
   And its prompt is posts-18's, word for word
 
 Scenario: A recorded plan
-  Given Sen's plan recorded with posts-19, without an offer
+  Given Sen's plan recorded with posts-20, without an offer
   When the replay test runs it
   Then every question ends with "?" and holds no first person
   And no caption or story text holds "therapeutic massage only", a copied sample or a price
