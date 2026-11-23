@@ -526,3 +526,46 @@ Expected: PASS.
 - [ ] **Step 1:** Set 2.23's status to `done` in `docs/roadmap.md`; run `pnpm check`; copy its line into GREEN.
 - [ ] **Step 2: Commit**: `docs(posts): reasons to book done (roadmap 2.23)`.
 - [ ] **Step 3:** Push the branch over SSH, `git push -u origin HEAD`, and give the maintainer the PR to `develop`: a title and a full description, ready to paste, ending with the attribution line. Say plainly that nothing is live until they open and merge it.
+
+---
+
+## Addendum: the samples amendment of 2026-11-23
+
+Approved with the spec's amendment (2026-11-23T11:23:48Z). Tasks 1 to 9 are
+done; Task 10's first recordings are in the journal. Task 11 waits for these
+two.
+
+### Task 12: Only the other reasons' samples
+
+**Files:**
+- Modify: `lib/posts/samples.ts`, `lib/posts/reasons-prompt.ts`, `lib/posts/run.ts`
+- Test: `tests/unit/posts-samples.test.ts`, `tests/unit/posts-reasons-prompt.test.ts`, `tests/unit/posts-run.test.ts`
+
+**Interfaces:**
+- Produces: `samplesText(without?: readonly Reason[]): string` (the samples whose reason isn't in `without`; with any left out, the intro says `one for each of the other reasons`); `reasonsPlanPrompt`, `reasonsRewritePrompt` and `reasonsNewTextsPrompt` each take a third parameter `reasons: readonly Reason[] = []`, passed on to `samplesText`.
+
+- [ ] **Step 1: Write the failing tests**
+  1. `SAMPLES[0].caption` starts `Sore calves after all the stairs at Sintra? 🌸`; `SAMPLES[3].caption` starts `Stiff back after the long-haul flight into Lisbon? 🪷`; `SAMPLE_PHRASES` holds `all the stairs at` and not `calves still burning`.
+  2. `samplesText(['laptop', 'stayIn'])` holds the captions of `dayOut`, `twoOfYou` and `firstNight`, neither of `laptop` nor `stayIn`, and `one for each of the other reasons`; `samplesText()` holds all five.
+  3. `reasonsPlanPrompt(false, true, ['laptop'])` lacks the laptop sample's caption and story text.
+  4. In `posts-run.test.ts`: a plan's system prompt lacks the samples of both dealt reasons; a caption update's, those of the sent posts' reasons; new texts', only the post's own (the other post's reason sample stays).
+- [ ] **Step 2: Run them to see them fail**
+  Run: `pnpm exec vitest run tests/unit/posts-samples.test.ts tests/unit/posts-reasons-prompt.test.ts tests/unit/posts-run.test.ts`
+  Expected: FAIL on the new tests.
+- [ ] **Step 3: Implement.** The two captions and the phrase as the spec's amendment writes them. `run.ts` passes the plan's dealt reasons, the rewrite's prepared posts' reasons, and the new texts post's own reason.
+- [ ] **Step 4: Run all unit tests**
+  Run: `pnpm test`
+  Expected: PASS.
+- [ ] **Step 5: Commit**: `feat(posts): show only the other reasons' samples (roadmap 2.23)`.
+
+### Task 13: Record again and judge
+
+**Files:** the six recordings under `tests/fixtures/sites/{sen,svarga}/`, `tests/unit/posts-fixtures-replay.test.ts`, `journal.md`
+
+- [ ] **Step 1: Record** (the go-ahead came with the amendment): `pnpm eval:posts sen svarga --record`, `--offer --record`, `--new-texts --record`. Expected: `posts eval: 2/2 made · prompt posts-19` each time; rerun a slug on 503 or 429.
+- [ ] **Step 2: Journal** the second run next to the first, with the spec's table, and the verdict.
+- [ ] **Step 3: Replay assertions** for Sen's and Svarga's `posts-19` recordings, with and without an offer: no record `question in the first person`, `copies a sample` or `caption for two guests, image of one`, no turned-away highlight's words, a reason on every set-up. When the second run still copies, say so in the journal and leave the copy assertion out, for the maintainer to decide.
+  Run: `pnpm exec vitest run tests/unit/posts-fixtures-replay.test.ts`
+  Expected: PASS.
+- [ ] **Step 4: Show the maintainer** the posts, and record their words in the journal.
+- [ ] **Step 5: Commit**: `test(posts): second posts-19 recordings (roadmap 2.23)`.
