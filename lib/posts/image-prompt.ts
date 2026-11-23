@@ -1,4 +1,4 @@
-import { castLine, type Light, type Locals, type Setup } from './setup';
+import { castLine, type Light, type Locals, poseLine, type Setup } from './setup';
 
 // What the image model reads: code's cast line from the post's set-up
 // (docs/specs/posts/varied-images), the post's image prompt, then a style
@@ -6,10 +6,27 @@ import { castLine, type Light, type Locals, type Setup } from './setup';
 // keeps the subject (docs/specs/posts/generate-images, "The model step"); the
 // style line follows the set-up's day or night and the place's own room
 // (docs/specs/posts/day-and-night-images); the therapists' look goes with the
-// cast and again in the last rules (docs/specs/posts/therapists-look). Bump
-// the version with every change.
+// cast and again in the last rules (docs/specs/posts/therapists-look); code's
+// pose and two sentences on normal bodies and a professional massage follow
+// the cast (docs/specs/posts/normal-bodies). Bump the version with every
+// change.
 
-export const IMAGE_PROMPT_VERSION = 'images-10';
+export const IMAGE_PROMPT_VERSION = 'images-12';
+
+// The wording of the 2026-11-23 test (docs/specs/posts/normal-bodies), the
+// therapists counted as the cast counts them (amended 2026-11-23): one, or a
+// post with no set-up, is "the therapist".
+export function normalBodies(therapists: 1 | 2 = 1): string {
+  const hands =
+    therapists === 2
+      ? 'the therapists work with their hands'
+      : 'the therapist works with her hands';
+  return `Every person has a normal human body in a natural, comfortable position: one head, two arms and two legs, each joined to their own body; each arm and leg can be followed from the body to its hand or foot; knees and elbows bend only the natural way. No body lies across, over or under another: ${hands}, the only contact.`;
+}
+
+export function professional(therapists: 1 | 2 = 1): string {
+  return `It is clearly a professional massage: ${therapists === 2 ? 'each therapist works' : 'the therapist works'} with a trained technique and calm focus.`;
+}
 
 // The room a tourist pictures for their stay, the green plants of the place
 // seen through its doors, and the place's flower, by the therapists' origin.
@@ -171,19 +188,24 @@ export function cleanHint(raw: string | undefined): string | undefined {
   return hint || undefined;
 }
 
-// The cast line comes first, so the image model reads the facts before the
-// model's prose; the hint comes before the style line, so the style's rules,
-// the therapists' look among them, still come last and win.
+// The cast line and code's pose come first, so the image model reads the
+// facts before the model's prose; the hint comes before the style line, so
+// the style's rules, the therapists' look among them, still come last and
+// win. A post saved before set-ups has no cast and no pose: the two sentences
+// open its style line.
 export function imagePrompt(
   postPrompt: string,
   hint?: string,
   setup?: Setup,
   staffLook?: string,
 ): string {
-  const cast = setup ? `${castLine(setup, staffLook)} ` : '';
   const asks = hint ? ` The owner asks: ${hint}.` : '';
   // A set-up saved before lights were dealt, or none, is a day.
   const light = setup?.light ?? 'day';
   const style = imageStyle(setup?.locals, light, staffLook);
-  return `${cast}${cleanLight(postPrompt.trim(), light)}${asks} ${style}`;
+  const post = cleanLight(postPrompt.trim(), light);
+  const therapists = setup?.therapists ?? 1;
+  const bodies = `${normalBodies(therapists)} ${professional(therapists)}`;
+  if (!setup) return `${post}${asks} ${bodies} ${style}`;
+  return `${castLine(setup, staffLook)} ${poseLine(setup)} ${bodies} ${post}${asks} ${style}`;
 }

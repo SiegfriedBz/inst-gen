@@ -92,7 +92,7 @@ describe('planPrompt', () => {
   });
 
   it('has a version', () => {
-    expect(POSTS_PROMPT_VERSION).toBe('posts-18');
+    expect(POSTS_PROMPT_VERSION).toBe('posts-19');
   });
 });
 

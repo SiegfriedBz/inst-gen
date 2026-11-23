@@ -21,6 +21,7 @@
     "eval:search": "tsx scripts/eval-search.ts",
     "eval:posts": "tsx scripts/eval-posts.ts",
     "eval:images": "tsx scripts/eval-images.ts",
+    "eval:poses": "tsx scripts/eval-poses.ts",
     "eval:translate": "tsx scripts/eval-translate.ts",
     "eval:replies": "tsx scripts/eval-replies.ts",
     "eval:answers": "tsx scripts/eval-answers.ts",
