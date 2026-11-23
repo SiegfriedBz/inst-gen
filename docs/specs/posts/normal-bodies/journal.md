@@ -79,6 +79,30 @@
   of posts-18 are pinned with Sen's eight site treatments on the tests'
   `withOfferings` (the tests' `senProfile()` holds two, without Thai); the
   pose line opens on "Pose:", as in the 2026-11-23 test.
+- 2026-11-23: a fresh reviewer read the whole branch (4930c07..16d5093): no
+  critical finding; it recomputed the pinned images-10 prompts from the old
+  code (6 of 6) and ran 8,000 deals of Sen's treatments (nothing changed but
+  body parts; Thai legs 50.2%). One important finding, fixed: the check
+  script wrote "Clean white linens" into all 11 prompts, Thai included,
+  whose recorded prompt has none; its prompts now add no word about linens
+  or colours. Deferred: the fixed sentence says "the therapists" in
+  one-therapist prompts too (watch the check images); the dry run prints the
+  look uncleaned. The points it set aside are the spec's own choices.
+- 2026-11-23: with the maintainer's yes ("Yes, make them"), the check:
+  `pnpm eval:poses sen svarga`, 11 images, $0.55, `images-11`, 17 to 37 s
+  each, all made. The developer's look, zoomed in on every body: 11 of 11
+  normal bodies. Sen: plain, Thai leg stretch (knee and foot held, the
+  therapist's knees clear of the guest's legs), Thai palm press (the
+  therapist kneeling behind the hips), four hands (one on each side), couple
+  (one therapist per guest, at the outer side), foot. Svarga: plain, four
+  hands, couple, scrub, foot. Every image a professional massage, each
+  spa's look kept, two therapists only in four hands and couples; no second
+  therapist in the 7 one-therapist images. Weakest: Svarga's foot massage,
+  one foot hidden behind the other, which reads naturally. As before this
+  item, three guests show a face in profile, eyes closed (Sen plain and
+  couple, Svarga foot); the leg stretch shows the nose and mouth under the
+  towel.
+- 2026-11-23: the maintainer's verdict on the 11 images: "Yes, they pass".
 
 ## RED
 
