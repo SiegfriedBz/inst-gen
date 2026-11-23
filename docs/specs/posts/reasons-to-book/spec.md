@@ -252,7 +252,7 @@ therapist at your door within the hour", "Free travel in central Lisbon".
 `dayOut`, a night post:
 
 ```
-Calves still burning from the stairs at Sintra? 🌸
+Sore calves after all the stairs at Sintra? 🌸
 
 Tonight a therapist comes to your room and works your legs. Then a shower, and you're in bed by ten.
 
@@ -293,7 +293,7 @@ Story text: "Two of you, two therapists, one room 🌼"
 `firstNight`, a night post:
 
 ```
-Back stiff from the long-haul flight into Lisbon? 🪷
+Stiff back after the long-haul flight into Lisbon? 🪷
 
 We come to your hotel tonight. Your therapist works the flight out of your back before you sleep.
 
@@ -319,7 +319,7 @@ sentences at most 12, a real place, a person acting, the light of its post,
 no setting, no cliché, two flowers, a story text of 10 words at most.
 
 The samples' own phrases, which code records when a post holds one (record 4
-below): "calves still burning", "in bed by ten", "neither of you can go
+below): "all the stairs at", "in bed by ten", "neither of you can go
 out", "you lie side by side", "babysitter", "side by side, in your own
 room", "both done at the same time", "works the flight out", "laptop calls",
 "neck won't turn", "take an hour off", "neck and shoulders loose",
@@ -349,6 +349,15 @@ posts of 8. The developer's proposal, for the maintainer to approve:
   its answer or its story text; the other samples still show the voice, the
   length and the three paragraphs. The copy record stays, for a phrase taken
   from another reason's sample.
+- Two samples opened on the noun ("Calves still burning from the stairs at
+  Sintra?", "Back stiff from the long-haul flight into Lisbon?"), and the
+  model took the shape ("Legs heavy from the long surf session at Echo
+  Beach?", "Back stiff from the long flight into Bali?"). The maintainer
+  asked (2026-11-23): "Is this proper english ??? or rather be Heavy legs
+  from the long surf session at Echo Beach?". Both samples now open on what
+  the guest feels, then "after": "Sore calves after all the stairs at
+  Sintra?" and "Stiff back after the long-haul flight into Lisbon?"; the
+  first sample's listed phrase becomes "all the stairs at".
 - Sen's and Svarga's plans are recorded again, with and without an offer,
   and their new texts: 6 Flash-Lite requests, with the maintainer's
   go-ahead.
