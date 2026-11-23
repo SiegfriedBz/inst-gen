@@ -75,6 +75,15 @@
   (Thai's "in loose cotton clothes" in the set-up line, the therapists' look
   from 2.16), and nothing differs by spa.
 
+- 2026-11-23: the maintainer approved the spec. Building rulings: the deals
+  of posts-18 are pinned with Sen's eight site treatments on the tests'
+  `withOfferings` (the tests' `senProfile()` holds two, without Thai); the
+  pose line opens on "Pose:", as in the 2026-11-23 test.
+
 ## RED
 
+- Task 1 (`posts-setup`, `posts-prompt`, `posts-run`): `Tests  22 failed | 179 passed (201)`
+
 ## GREEN
+
+- Task 1 (with `posts-fixtures-replay`): `Tests  216 passed (216)`
