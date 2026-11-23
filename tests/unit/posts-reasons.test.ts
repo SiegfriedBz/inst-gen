@@ -3,6 +3,7 @@ import { describe, expect, it } from 'vitest';
 import { FIXTURES_DIR, fixtureOffer, fixtureProfile, fixtureRecent } from '@/lib/brand/fixtures';
 import type { Profile } from '@/lib/brand/profile';
 import type { RecentPost } from '@/lib/posts/batch';
+import { hoursFact } from '@/lib/posts/facts';
 import type { Offer } from '@/lib/posts/offer';
 import { comesToGuests, dealReasonSetups, REASON_PARTS, reasonFor } from '@/lib/posts/reasons';
 import { REASONS, type Reason, seededRandom } from '@/lib/posts/setup';
@@ -218,7 +219,7 @@ describe('the recordings, steered', () => {
           fixtureRecent(slug, withOffer),
         )) {
           if (setup.reason) reasons.add(setup.reason);
-          if (setup.light === 'night' && setup.fact?.startsWith('Hours: ')) hours = true;
+          if (setup.light === 'night' && setup.fact === hoursFact(profile)) hours = true;
         }
       }
     }

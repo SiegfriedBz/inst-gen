@@ -1,4 +1,5 @@
 import type { Profile } from '@/lib/brand/profile';
+import { hoursInWords } from './hours';
 import { type PostsModelInput, postsModelInput } from './input';
 import { type Light, pick, type Setup } from './setup';
 import { folded, holdsWords } from './variety';
@@ -49,10 +50,12 @@ export function factsOf(profile: Profile): string[] {
   return facts;
 }
 
-// The opening hours, a night post's fact: the business comes late.
+// The opening hours, a night post's fact: the business comes late. In words
+// code writes, never the raw line (amended 2026-11-23, after the second
+// recordings), or none.
 export function hoursFact(profile: Profile): string | null {
   const hours = profile.hours?.value.trim();
-  return hours ? `Hours: ${hours}` : null;
+  return hours ? hoursInWords(hours) : null;
 }
 
 function factsFor(profile: Profile, light: Light): string[] {

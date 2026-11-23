@@ -3,6 +3,7 @@ import type { Profile } from '@/lib/brand/profile';
 import {
   dealFacts,
   factsOf,
+  hoursFact,
   keptFact,
   newFact,
   onlySaysWhere,
@@ -26,6 +27,8 @@ const SEN = [
 ];
 const TURNED_AWAY = 'Professional therapeutic massage only';
 const HOURS = '08:30-23:00 daily';
+// The hours as code writes them (amended 2026-11-23, after the second recordings).
+const HOURS_WORDS = 'Open every day until 11 pm';
 const SEEDS = Array.from({ length: 100 }, (_, i) => `f${i}`);
 
 function withHighlights(values: string[], hours: string | null = null): Profile {
@@ -67,9 +70,10 @@ describe('dealFacts', () => {
       );
       expect(day.fact).toBeDefined();
       expect(day.fact).not.toBe(night.fact);
-      expect(day.fact).not.toMatch(/^Hours: /);
+      expect(day.fact).not.toBe(HOURS_WORDS);
+      expect([day.fact, night.fact].join(' ')).not.toMatch(/Hours: /);
       expect([day.fact, night.fact]).not.toContain(TURNED_AWAY);
-      if (night.fact === `Hours: ${HOURS}`) hoursAtNight = true;
+      if (night.fact === HOURS_WORDS) hoursAtNight = true;
     }
     expect(hoursAtNight).toBe(true);
   });
@@ -131,12 +135,24 @@ describe('a fact for new words, or kept', () => {
     expect(
       keptFact(withHighlights(SEN.filter((h) => h !== fact)), setupAt('day', { fact })),
     ).toBeUndefined();
-    const hours = `Hours: ${HOURS}`;
+    const hours = HOURS_WORDS;
     expect(keptFact(withHighlights(SEN, HOURS), setupAt('night', { fact: hours }))).toBe(hours);
     expect(keptFact(withHighlights(SEN, HOURS), setupAt('day', { fact: hours }))).toBeUndefined();
     expect(
       keptFact(withHighlights(SEN, '09:00-22:00 daily'), setupAt('night', { fact: hours })),
     ).toBeUndefined();
+    // A post saved with the raw line gets another fact.
+    expect(
+      keptFact(withHighlights(SEN, HOURS), setupAt('night', { fact: `Hours: ${HOURS}` })),
+    ).toBeUndefined();
+  });
+});
+
+describe('hoursFact', () => {
+  it('the hours in words, or none', () => {
+    expect(hoursFact(withHighlights(SEN, 'Mo-Su 08:30-23:00'))).toBe(HOURS_WORDS);
+    expect(hoursFact(withHighlights(SEN, 'By appointment'))).toBeNull();
+    expect(hoursFact(withHighlights(SEN))).toBeNull();
   });
 });
 
