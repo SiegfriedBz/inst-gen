@@ -12,7 +12,6 @@
   images, posts and stories on the phone for two days instead of clearing
   them every day, on this branch too. It needs its own spec before any code
   (AGENTS.md, hard rule 1), written once this plan's code is in.
-
 - 2026-11-23: the eval and the replay steer the deal with made-up recent
   posts (`fixtureRecent`): Sen's plan after a laptop post (two of you, the
   first night with the hours), Svarga's plan unsteered (a day out, laptop
@@ -31,3 +30,9 @@ Task 1: `Tests  4 failed | 95 passed (99)` (`Test Files  4 failed (4)`: no
 `lib/posts/reasons.ts`, no reason in the set-up or the recent posts)
 
 ## GREEN
+
+Task 9, `pnpm check`: `Test Files  134 passed (134)`, `Tests  2247 passed (2247)`
+
+Task 9, `pnpm test:e2e` (on port 3101 with a scratch config: another
+project held 3000; the first build stopped on Next.js's security notice and
+the second ran): `73 passed (21.7s)`, `1 skipped`
