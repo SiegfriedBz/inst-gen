@@ -208,11 +208,12 @@ describe('recorded story texts and flowers', () => {
   });
 });
 
-// The posts-19 recordings of Sen and Svarga, with and without an offer
+// The posts-20 recordings of Sen and Svarga, with and without an offer
 // (docs/specs/posts/reasons-to-book, "Tests and evaluation"): every set-up
 // has a reason, and no post speaks in the first person, holds a highlight
-// that turns a request away, or speaks to two guests on an image of one. The
-// copy record is left out: the second run still borrows one phrase (journal).
+// that turns a request away, speaks to two guests or names two therapists on
+// an image of one, or holds the raw hours line (amended 2026-11-23). The copy
+// record is left out: the couple massage still says "you lie side by side".
 describe('recorded reasons to book', () => {
   test.each([
     ['sen', false],
@@ -224,7 +225,7 @@ describe('recorded reasons to book', () => {
     const fixture = loadFixture(dir);
     const recording = withOffer ? fixture.postsOffer : fixture.posts;
     if (!recording) throw new Error(`no recording for ${slug}`);
-    expect(recording.promptVersion).toBe('posts-19');
+    expect(recording.promptVersion).toBe('posts-20');
     const profile = await fixtureProfile(dir);
     const offer = withOffer ? fixtureOffer(profile) : undefined;
     let result: PlanResult | null = null;
@@ -242,12 +243,16 @@ describe('recorded reasons to book', () => {
     for (const post of result.posts) expect(post.setup?.reason).toBeDefined();
     const reasons = result.dropped.map((d) => d.reason);
     for (const reason of reasons) {
-      expect(reason).not.toMatch(/question in the first person|caption for two guests/);
+      expect(reason).not.toMatch(
+        /question in the first person|caption for two guests|caption for two therapists/,
+      );
     }
     const turnedAway = /therapeutic massage only|strictly|sexual/i;
     for (const post of result.posts) {
       expect(post.caption).not.toMatch(turnedAway);
       expect(post.storyText ?? '').not.toMatch(turnedAway);
+      expect(post.caption).not.toMatch(/Hours:/);
+      expect(post.setup?.fact ?? '').not.toMatch(/^Hours:/);
     }
   });
 });

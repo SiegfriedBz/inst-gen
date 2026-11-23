@@ -1,16 +1,19 @@
 {
   "modelId": "gemini-3.5-flash-lite",
-  "promptVersion": "posts-19",
+  "promptVersion": "posts-20",
   "recording": {
     "modelId": "gemini-3.5-flash-lite",
-    "promptVersion": "posts-19",
+    "promptVersion": "posts-20",
     "partials": [
-      {},
+      {
+        "posts": []
+      },
       {
         "posts": [
           {
             "type": "offer",
-            "topic": "Couple Massage in Da Nang"
+            "topic": "Couple Massage in Da Nang",
+            "scene": ""
           }
         ]
       },
@@ -20,7 +23,7 @@
             "type": "offer",
             "topic": "Couple Massage in Da Nang",
             "scene": "guest",
-            "caption": "Both ready to rest together after exploring My Khe beach? 🌸\n\n"
+            "caption": "Both of you tired after walking the Marble Mountains today? 🌸\n\nTwo therapists"
           }
         ]
       },
@@ -30,7 +33,7 @@
             "type": "offer",
             "topic": "Couple Massage in Da Nang",
             "scene": "guest",
-            "caption": "Both ready to rest together after exploring My Khe beach? 🌸\n\nWe send two therapists to your hotel room for a Couple Massage. You lie side by side, and your shoulders and neck"
+            "caption": "Both of you tired after walking the Marble Mountains today? 🌸\n\nTwo therapists come to your An Thuong hotel room for a Couple Massage. You lie side by side, and your shoulders and backs relax together"
           }
         ]
       },
@@ -40,8 +43,240 @@
             "type": "offer",
             "topic": "Couple Massage in Da Nang",
             "scene": "guest",
-            "caption": "Both ready to rest together after exploring My Khe beach? 🌸\n\nWe send two therapists to your hotel room for a Couple Massage. You lie side by side, and your shoulders and neck are worked loose.\n\nTrained local Vietnamese therapists 🌺",
+            "caption": "Both of you tired after walking the Marble Mountains today? 🌸\n\nTwo therapists come to your An Thuong hotel room for a Couple Massage. You lie side by side, and your shoulders and backs relax together.\n\nTrained local Vietnamese therapists 🌺",
             "hashtags": [
+              "danang",
+              "couplemassage"
+            ]
+          }
+        ]
+      },
+      {
+        "posts": [
+          {
+            "type": "offer",
+            "topic": "Couple Massage in Da Nang",
+            "scene": "guest",
+            "caption": "Both of you tired after walking the Marble Mountains today? 🌸\n\nTwo therapists come to your An Thuong hotel room for a Couple Massage. You lie side by side, and your shoulders and backs relax together.\n\nTrained local Vietnamese therapists 🌺",
+            "hashtags": [
+              "danang",
+              "couplemassage",
+              "massageindanang",
+              "spalnmykhe"
+            ]
+          }
+        ]
+      },
+      {
+        "posts": [
+          {
+            "type": "offer",
+            "topic": "Couple Massage in Da Nang",
+            "scene": "guest",
+            "caption": "Both of you tired after walking the Marble Mountains today? 🌸\n\nTwo therapists come to your An Thuong hotel room for a Couple Massage. You lie side by side, and your shoulders and backs relax together.\n\nTrained local Vietnamese therapists 🌺",
+            "hashtags": [
+              "danang",
+              "couplemassage",
+              "massageindanang",
+              "spalnmykhe"
+            ],
+            "altText": "A man and a woman lying on two massage beds side by side while two therapists work on their shoulders from above in"
+          }
+        ]
+      },
+      {
+        "posts": [
+          {
+            "type": "offer",
+            "topic": "Couple Massage in Da Nang",
+            "scene": "guest",
+            "caption": "Both of you tired after walking the Marble Mountains today? 🌸\n\nTwo therapists come to your An Thuong hotel room for a Couple Massage. You lie side by side, and your shoulders and backs relax together.\n\nTrained local Vietnamese therapists 🌺",
+            "hashtags": [
+              "danang",
+              "couplemassage",
+              "massageindanang",
+              "spalnmykhe"
+            ],
+            "altText": "A man and a woman lying on two massage beds side by side while two therapists work on their shoulders from above in a hotel room.",
+            "imagePrompt": "A tall 9:16 vertical photo from above showing a man and a woman"
+          }
+        ]
+      },
+      {
+        "posts": [
+          {
+            "type": "offer",
+            "topic": "Couple Massage in Da Nang",
+            "scene": "guest",
+            "caption": "Both of you tired after walking the Marble Mountains today? 🌸\n\nTwo therapists come to your An Thuong hotel room for a Couple Massage. You lie side by side, and your shoulders and backs relax together.\n\nTrained local Vietnamese therapists 🌺",
+            "hashtags": [
+              "danang",
+              "couplemassage",
+              "massageindanang",
+              "spalnmykhe"
+            ],
+            "altText": "A man and a woman lying on two massage beds side by side while two therapists work on their shoulders from above in a hotel room.",
+            "imagePrompt": "A tall 9:16 vertical photo from above showing a man and a woman lying face down on two massage beds side by side in a bright, clean hotel room with open glass doors looking out onto"
+          }
+        ]
+      },
+      {
+        "posts": [
+          {
+            "type": "offer",
+            "topic": "Couple Massage in Da Nang",
+            "scene": "guest",
+            "caption": "Both of you tired after walking the Marble Mountains today? 🌸\n\nTwo therapists come to your An Thuong hotel room for a Couple Massage. You lie side by side, and your shoulders and backs relax together.\n\nTrained local Vietnamese therapists 🌺",
+            "hashtags": [
+              "danang",
+              "couplemassage",
+              "massageindanang",
+              "spalnmykhe"
+            ],
+            "altText": "A man and a woman lying on two massage beds side by side while two therapists work on their shoulders from above in a hotel room.",
+            "imagePrompt": "A tall 9:16 vertical photo from above showing a man and a woman lying face down on two massage beds side by side in a bright, clean hotel room with open glass doors looking out onto green tropical plants in soft late afternoon shade. Two female therapists stand at the outer sides of the beds, their hands working on the guests"
+          }
+        ]
+      },
+      {
+        "posts": [
+          {
+            "type": "offer",
+            "topic": "Couple Massage in Da Nang",
+            "scene": "guest",
+            "caption": "Both of you tired after walking the Marble Mountains today? 🌸\n\nTwo therapists come to your An Thuong hotel room for a Couple Massage. You lie side by side, and your shoulders and backs relax together.\n\nTrained local Vietnamese therapists 🌺",
+            "hashtags": [
+              "danang",
+              "couplemassage",
+              "massageindanang",
+              "spalnmykhe"
+            ],
+            "altText": "A man and a woman lying on two massage beds side by side while two therapists work on their shoulders from above in a hotel room.",
+            "imagePrompt": "A tall 9:16 vertical photo from above showing a man and a woman lying face down on two massage beds side by side in a bright, clean hotel room with open glass doors looking out onto green tropical plants in soft late afternoon shade. Two female therapists stand at the outer sides of the beds, their hands working on the guests' shoulders. Warm natural lighting, no harsh sun, simple tidy room, no text or logos.",
+            "storyText": "Marble Mountains"
+          }
+        ]
+      },
+      {
+        "posts": [
+          {
+            "type": "offer",
+            "topic": "Couple Massage in Da Nang",
+            "scene": "guest",
+            "caption": "Both of you tired after walking the Marble Mountains today? 🌸\n\nTwo therapists come to your An Thuong hotel room for a Couple Massage. You lie side by side, and your shoulders and backs relax together.\n\nTrained local Vietnamese therapists 🌺",
+            "hashtags": [
+              "danang",
+              "couplemassage",
+              "massageindanang",
+              "spalnmykhe"
+            ],
+            "altText": "A man and a woman lying on two massage beds side by side while two therapists work on their shoulders from above in a hotel room.",
+            "imagePrompt": "A tall 9:16 vertical photo from above showing a man and a woman lying face down on two massage beds side by side in a bright, clean hotel room with open glass doors looking out onto green tropical plants in soft late afternoon shade. Two female therapists stand at the outer sides of the beds, their hands working on the guests' shoulders. Warm natural lighting, no harsh sun, simple tidy room, no text or logos.",
+            "storyText": "Marble Mountains in your legs? A Couple Massage for both of you today 🌸"
+          },
+          {}
+        ]
+      },
+      {
+        "posts": [
+          {
+            "type": "offer",
+            "topic": "Couple Massage in Da Nang",
+            "scene": "guest",
+            "caption": "Both of you tired after walking the Marble Mountains today? 🌸\n\nTwo therapists come to your An Thuong hotel room for a Couple Massage. You lie side by side, and your shoulders and backs relax together.\n\nTrained local Vietnamese therapists 🌺",
+            "hashtags": [
+              "danang",
+              "couplemassage",
+              "massageindanang",
+              "spalnmykhe"
+            ],
+            "altText": "A man and a woman lying on two massage beds side by side while two therapists work on their shoulders from above in a hotel room.",
+            "imagePrompt": "A tall 9:16 vertical photo from above showing a man and a woman lying face down on two massage beds side by side in a bright, clean hotel room with open glass doors looking out onto green tropical plants in soft late afternoon shade. Two female therapists stand at the outer sides of the beds, their hands working on the guests' shoulders. Warm natural lighting, no harsh sun, simple tidy room, no text or logos.",
+            "storyText": "Marble Mountains in your legs? A Couple Massage for both of you today 🌸"
+          },
+          {
+            "type": "moment",
+            "topic": "Thai Massage after a long flight",
+            "scene": ""
+          }
+        ]
+      },
+      {
+        "posts": [
+          {
+            "type": "offer",
+            "topic": "Couple Massage in Da Nang",
+            "scene": "guest",
+            "caption": "Both of you tired after walking the Marble Mountains today? 🌸\n\nTwo therapists come to your An Thuong hotel room for a Couple Massage. You lie side by side, and your shoulders and backs relax together.\n\nTrained local Vietnamese therapists 🌺",
+            "hashtags": [
+              "danang",
+              "couplemassage",
+              "massageindanang",
+              "spalnmykhe"
+            ],
+            "altText": "A man and a woman lying on two massage beds side by side while two therapists work on their shoulders from above in a hotel room.",
+            "imagePrompt": "A tall 9:16 vertical photo from above showing a man and a woman lying face down on two massage beds side by side in a bright, clean hotel room with open glass doors looking out onto green tropical plants in soft late afternoon shade. Two female therapists stand at the outer sides of the beds, their hands working on the guests' shoulders. Warm natural lighting, no harsh sun, simple tidy room, no text or logos.",
+            "storyText": "Marble Mountains in your legs? A Couple Massage for both of you today 🌸"
+          },
+          {
+            "type": "moment",
+            "topic": "Thai Massage after a long flight",
+            "scene": "detail",
+            "caption": "A stiff back from your long flight into Da Nang? 🌸\n\nA"
+          }
+        ]
+      },
+      {
+        "posts": [
+          {
+            "type": "offer",
+            "topic": "Couple Massage in Da Nang",
+            "scene": "guest",
+            "caption": "Both of you tired after walking the Marble Mountains today? 🌸\n\nTwo therapists come to your An Thuong hotel room for a Couple Massage. You lie side by side, and your shoulders and backs relax together.\n\nTrained local Vietnamese therapists 🌺",
+            "hashtags": [
+              "danang",
+              "couplemassage",
+              "massageindanang",
+              "spalnmykhe"
+            ],
+            "altText": "A man and a woman lying on two massage beds side by side while two therapists work on their shoulders from above in a hotel room.",
+            "imagePrompt": "A tall 9:16 vertical photo from above showing a man and a woman lying face down on two massage beds side by side in a bright, clean hotel room with open glass doors looking out onto green tropical plants in soft late afternoon shade. Two female therapists stand at the outer sides of the beds, their hands working on the guests' shoulders. Warm natural lighting, no harsh sun, simple tidy room, no text or logos.",
+            "storyText": "Marble Mountains in your legs? A Couple Massage for both of you today 🌸"
+          },
+          {
+            "type": "moment",
+            "topic": "Thai Massage after a long flight",
+            "scene": "detail",
+            "caption": "A stiff back from your long flight into Da Nang? 🌸\n\nA therapist comes to your hotel room tonight for a traditional Thai massage. You lie on a mattress in loose clothes, and she"
+          }
+        ]
+      },
+      {
+        "posts": [
+          {
+            "type": "offer",
+            "topic": "Couple Massage in Da Nang",
+            "scene": "guest",
+            "caption": "Both of you tired after walking the Marble Mountains today? 🌸\n\nTwo therapists come to your An Thuong hotel room for a Couple Massage. You lie side by side, and your shoulders and backs relax together.\n\nTrained local Vietnamese therapists 🌺",
+            "hashtags": [
+              "danang",
+              "couplemassage",
+              "massageindanang",
+              "spalnmykhe"
+            ],
+            "altText": "A man and a woman lying on two massage beds side by side while two therapists work on their shoulders from above in a hotel room.",
+            "imagePrompt": "A tall 9:16 vertical photo from above showing a man and a woman lying face down on two massage beds side by side in a bright, clean hotel room with open glass doors looking out onto green tropical plants in soft late afternoon shade. Two female therapists stand at the outer sides of the beds, their hands working on the guests' shoulders. Warm natural lighting, no harsh sun, simple tidy room, no text or logos.",
+            "storyText": "Marble Mountains in your legs? A Couple Massage for both of you today 🌸"
+          },
+          {
+            "type": "moment",
+            "topic": "Thai Massage after a long flight",
+            "scene": "detail",
+            "caption": "A stiff back from your long flight into Da Nang? 🌸\n\nA therapist comes to your hotel room tonight for a traditional Thai massage. You lie on a mattress in loose clothes, and she stretches your stiff back.\n\nOpen every day until 11 pm 🌺",
+            "hashtags": [
+              "danang",
+              "thaimassage",
+              "bestdanangspas",
               "dan"
             ]
           }
@@ -53,278 +288,29 @@
             "type": "offer",
             "topic": "Couple Massage in Da Nang",
             "scene": "guest",
-            "caption": "Both ready to rest together after exploring My Khe beach? 🌸\n\nWe send two therapists to your hotel room for a Couple Massage. You lie side by side, and your shoulders and neck are worked loose.\n\nTrained local Vietnamese therapists 🌺",
+            "caption": "Both of you tired after walking the Marble Mountains today? 🌸\n\nTwo therapists come to your An Thuong hotel room for a Couple Massage. You lie side by side, and your shoulders and backs relax together.\n\nTrained local Vietnamese therapists 🌺",
             "hashtags": [
               "danang",
-              "massageindanang",
               "couplemassage",
-              "mykhebeach"
-            ]
-          }
-        ]
-      },
-      {
-        "posts": [
-          {
-            "type": "offer",
-            "topic": "Couple Massage in Da Nang",
-            "scene": "guest",
-            "caption": "Both ready to rest together after exploring My Khe beach? 🌸\n\nWe send two therapists to your hotel room for a Couple Massage. You lie side by side, and your shoulders and neck are worked loose.\n\nTrained local Vietnamese therapists 🌺",
-            "hashtags": [
-              "danang",
               "massageindanang",
-              "couplemassage",
-              "mykhebeach"
+              "spalnmykhe"
             ],
-            "altText": "A man and a woman relaxing on two massage beds side by side in a hotel room with two therapists working"
-          }
-        ]
-      },
-      {
-        "posts": [
-          {
-            "type": "offer",
-            "topic": "Couple Massage in Da Nang",
-            "scene": "guest",
-            "caption": "Both ready to rest together after exploring My Khe beach? 🌸\n\nWe send two therapists to your hotel room for a Couple Massage. You lie side by side, and your shoulders and neck are worked loose.\n\nTrained local Vietnamese therapists 🌺",
-            "hashtags": [
-              "danang",
-              "massageindanang",
-              "couplemassage",
-              "mykhebeach"
-            ],
-            "altText": "A man and a woman relaxing on two massage beds side by side in a hotel room with two therapists working on them.",
-            "imagePrompt": "Vertical 9:16 photo. A couple massage in a warm"
-          }
-        ]
-      },
-      {
-        "posts": [
-          {
-            "type": "offer",
-            "topic": "Couple Massage in Da Nang",
-            "scene": "guest",
-            "caption": "Both ready to rest together after exploring My Khe beach? 🌸\n\nWe send two therapists to your hotel room for a Couple Massage. You lie side by side, and your shoulders and neck are worked loose.\n\nTrained local Vietnamese therapists 🌺",
-            "hashtags": [
-              "danang",
-              "massageindanang",
-              "couplemassage",
-              "mykhebeach"
-            ],
-            "altText": "A man and a woman relaxing on two massage beds side by side in a hotel room with two therapists working on them.",
-            "imagePrompt": "Vertical 9:16 photo. A couple massage in a warm hotel room in Da Nang. A man and a woman lying on two massage beds side by side, relaxing. Two female"
-          }
-        ]
-      },
-      {
-        "posts": [
-          {
-            "type": "offer",
-            "topic": "Couple Massage in Da Nang",
-            "scene": "guest",
-            "caption": "Both ready to rest together after exploring My Khe beach? 🌸\n\nWe send two therapists to your hotel room for a Couple Massage. You lie side by side, and your shoulders and neck are worked loose.\n\nTrained local Vietnamese therapists 🌺",
-            "hashtags": [
-              "danang",
-              "massageindanang",
-              "couplemassage",
-              "mykhebeach"
-            ],
-            "altText": "A man and a woman relaxing on two massage beds side by side in a hotel room with two therapists working on them.",
-            "imagePrompt": "Vertical 9:16 photo. A couple massage in a warm hotel room in Da Nang. A man and a woman lying on two massage beds side by side, relaxing. Two female therapists, one at each bed, working on their shoulders and neck. Shot from above, looking down at the massage beds"
-          }
-        ]
-      },
-      {
-        "posts": [
-          {
-            "type": "offer",
-            "topic": "Couple Massage in Da Nang",
-            "scene": "guest",
-            "caption": "Both ready to rest together after exploring My Khe beach? 🌸\n\nWe send two therapists to your hotel room for a Couple Massage. You lie side by side, and your shoulders and neck are worked loose.\n\nTrained local Vietnamese therapists 🌺",
-            "hashtags": [
-              "danang",
-              "massageindanang",
-              "couplemassage",
-              "mykhebeach"
-            ],
-            "altText": "A man and a woman relaxing on two massage beds side by side in a hotel room with two therapists working on them.",
-            "imagePrompt": "Vertical 9:16 photo. A couple massage in a warm hotel room in Da Nang. A man and a woman lying on two massage beds side by side, relaxing. Two female therapists, one at each bed, working on their shoulders and neck. Shot from above, looking down at the massage beds. Late afternoon, lamps lit inside, soft shade through a wide window showing green plants outside. Clean white linens, a clear"
-          }
-        ]
-      },
-      {
-        "posts": [
-          {
-            "type": "offer",
-            "topic": "Couple Massage in Da Nang",
-            "scene": "guest",
-            "caption": "Both ready to rest together after exploring My Khe beach? 🌸\n\nWe send two therapists to your hotel room for a Couple Massage. You lie side by side, and your shoulders and neck are worked loose.\n\nTrained local Vietnamese therapists 🌺",
-            "hashtags": [
-              "danang",
-              "massageindanang",
-              "couplemassage",
-              "mykhebeach"
-            ],
-            "altText": "A man and a woman relaxing on two massage beds side by side in a hotel room with two therapists working on them.",
-            "imagePrompt": "Vertical 9:16 photo. A couple massage in a warm hotel room in Da Nang. A man and a woman lying on two massage beds side by side, relaxing. Two female therapists, one at each bed, working on their shoulders and neck. Shot from above, looking down at the massage beds. Late afternoon, lamps lit inside, soft shade through a wide window showing green plants outside. Clean white linens, a clear glass bottle of golden oil on a small table. No text, no logos.",
-            "storyText": "Ready to rest together"
-          }
-        ]
-      },
-      {
-        "posts": [
-          {
-            "type": "offer",
-            "topic": "Couple Massage in Da Nang",
-            "scene": "guest",
-            "caption": "Both ready to rest together after exploring My Khe beach? 🌸\n\nWe send two therapists to your hotel room for a Couple Massage. You lie side by side, and your shoulders and neck are worked loose.\n\nTrained local Vietnamese therapists 🌺",
-            "hashtags": [
-              "danang",
-              "massageindanang",
-              "couplemassage",
-              "mykhebeach"
-            ],
-            "altText": "A man and a woman relaxing on two massage beds side by side in a hotel room with two therapists working on them.",
-            "imagePrompt": "Vertical 9:16 photo. A couple massage in a warm hotel room in Da Nang. A man and a woman lying on two massage beds side by side, relaxing. Two female therapists, one at each bed, working on their shoulders and neck. Shot from above, looking down at the massage beds. Late afternoon, lamps lit inside, soft shade through a wide window showing green plants outside. Clean white linens, a clear glass bottle of golden oil on a small table. No text, no logos.",
-            "storyText": "Ready to rest together? A Couple Massage in your room 🌸"
-          },
-          {
-            "type": "moment"
-          }
-        ]
-      },
-      {
-        "posts": [
-          {
-            "type": "offer",
-            "topic": "Couple Massage in Da Nang",
-            "scene": "guest",
-            "caption": "Both ready to rest together after exploring My Khe beach? 🌸\n\nWe send two therapists to your hotel room for a Couple Massage. You lie side by side, and your shoulders and neck are worked loose.\n\nTrained local Vietnamese therapists 🌺",
-            "hashtags": [
-              "danang",
-              "massageindanang",
-              "couplemassage",
-              "mykhebeach"
-            ],
-            "altText": "A man and a woman relaxing on two massage beds side by side in a hotel room with two therapists working on them.",
-            "imagePrompt": "Vertical 9:16 photo. A couple massage in a warm hotel room in Da Nang. A man and a woman lying on two massage beds side by side, relaxing. Two female therapists, one at each bed, working on their shoulders and neck. Shot from above, looking down at the massage beds. Late afternoon, lamps lit inside, soft shade through a wide window showing green plants outside. Clean white linens, a clear glass bottle of golden oil on a small table. No text, no logos.",
-            "storyText": "Ready to rest together? A Couple Massage in your room 🌸"
+            "altText": "A man and a woman lying on two massage beds side by side while two therapists work on their shoulders from above in a hotel room.",
+            "imagePrompt": "A tall 9:16 vertical photo from above showing a man and a woman lying face down on two massage beds side by side in a bright, clean hotel room with open glass doors looking out onto green tropical plants in soft late afternoon shade. Two female therapists stand at the outer sides of the beds, their hands working on the guests' shoulders. Warm natural lighting, no harsh sun, simple tidy room, no text or logos.",
+            "storyText": "Marble Mountains in your legs? A Couple Massage for both of you today 🌸"
           },
           {
             "type": "moment",
             "topic": "Thai Massage after a long flight",
             "scene": "detail",
-            "caption": "A stiff back and"
-          }
-        ]
-      },
-      {
-        "posts": [
-          {
-            "type": "offer",
-            "topic": "Couple Massage in Da Nang",
-            "scene": "guest",
-            "caption": "Both ready to rest together after exploring My Khe beach? 🌸\n\nWe send two therapists to your hotel room for a Couple Massage. You lie side by side, and your shoulders and neck are worked loose.\n\nTrained local Vietnamese therapists 🌺",
-            "hashtags": [
-              "danang",
-              "massageindanang",
-              "couplemassage",
-              "mykhebeach"
-            ],
-            "altText": "A man and a woman relaxing on two massage beds side by side in a hotel room with two therapists working on them.",
-            "imagePrompt": "Vertical 9:16 photo. A couple massage in a warm hotel room in Da Nang. A man and a woman lying on two massage beds side by side, relaxing. Two female therapists, one at each bed, working on their shoulders and neck. Shot from above, looking down at the massage beds. Late afternoon, lamps lit inside, soft shade through a wide window showing green plants outside. Clean white linens, a clear glass bottle of golden oil on a small table. No text, no logos.",
-            "storyText": "Ready to rest together? A Couple Massage in your room 🌸"
-          },
-          {
-            "type": "moment",
-            "topic": "Thai Massage after a long flight",
-            "scene": "detail",
-            "caption": "A stiff back and legs after your long flight? 🌷\n\nTonight a therapist comes to your Da Nang villa for a Thai"
-          }
-        ]
-      },
-      {
-        "posts": [
-          {
-            "type": "offer",
-            "topic": "Couple Massage in Da Nang",
-            "scene": "guest",
-            "caption": "Both ready to rest together after exploring My Khe beach? 🌸\n\nWe send two therapists to your hotel room for a Couple Massage. You lie side by side, and your shoulders and neck are worked loose.\n\nTrained local Vietnamese therapists 🌺",
-            "hashtags": [
-              "danang",
-              "massageindanang",
-              "couplemassage",
-              "mykhebeach"
-            ],
-            "altText": "A man and a woman relaxing on two massage beds side by side in a hotel room with two therapists working on them.",
-            "imagePrompt": "Vertical 9:16 photo. A couple massage in a warm hotel room in Da Nang. A man and a woman lying on two massage beds side by side, relaxing. Two female therapists, one at each bed, working on their shoulders and neck. Shot from above, looking down at the massage beds. Late afternoon, lamps lit inside, soft shade through a wide window showing green plants outside. Clean white linens, a clear glass bottle of golden oil on a small table. No text, no logos.",
-            "storyText": "Ready to rest together? A Couple Massage in your room 🌸"
-          },
-          {
-            "type": "moment",
-            "topic": "Thai Massage after a long flight",
-            "scene": "detail",
-            "caption": "A stiff back and legs after your long flight? 🌷\n\nTonight a therapist comes to your Da Nang villa for a Thai Massage. You wear comfortable clothes while she stretches your body.\n\nHours: Mo-Su 08:"
-          }
-        ]
-      },
-      {
-        "posts": [
-          {
-            "type": "offer",
-            "topic": "Couple Massage in Da Nang",
-            "scene": "guest",
-            "caption": "Both ready to rest together after exploring My Khe beach? 🌸\n\nWe send two therapists to your hotel room for a Couple Massage. You lie side by side, and your shoulders and neck are worked loose.\n\nTrained local Vietnamese therapists 🌺",
-            "hashtags": [
-              "danang",
-              "massageindanang",
-              "couplemassage",
-              "mykhebeach"
-            ],
-            "altText": "A man and a woman relaxing on two massage beds side by side in a hotel room with two therapists working on them.",
-            "imagePrompt": "Vertical 9:16 photo. A couple massage in a warm hotel room in Da Nang. A man and a woman lying on two massage beds side by side, relaxing. Two female therapists, one at each bed, working on their shoulders and neck. Shot from above, looking down at the massage beds. Late afternoon, lamps lit inside, soft shade through a wide window showing green plants outside. Clean white linens, a clear glass bottle of golden oil on a small table. No text, no logos.",
-            "storyText": "Ready to rest together? A Couple Massage in your room 🌸"
-          },
-          {
-            "type": "moment",
-            "topic": "Thai Massage after a long flight",
-            "scene": "detail",
-            "caption": "A stiff back and legs after your long flight? 🌷\n\nTonight a therapist comes to your Da Nang villa for a Thai Massage. You wear comfortable clothes while she stretches your body.\n\nHours: Mo-Su 08:30-23:00 🌸",
-            "hashtags": [
-              "danang"
-            ]
-          }
-        ]
-      },
-      {
-        "posts": [
-          {
-            "type": "offer",
-            "topic": "Couple Massage in Da Nang",
-            "scene": "guest",
-            "caption": "Both ready to rest together after exploring My Khe beach? 🌸\n\nWe send two therapists to your hotel room for a Couple Massage. You lie side by side, and your shoulders and neck are worked loose.\n\nTrained local Vietnamese therapists 🌺",
-            "hashtags": [
-              "danang",
-              "massageindanang",
-              "couplemassage",
-              "mykhebeach"
-            ],
-            "altText": "A man and a woman relaxing on two massage beds side by side in a hotel room with two therapists working on them.",
-            "imagePrompt": "Vertical 9:16 photo. A couple massage in a warm hotel room in Da Nang. A man and a woman lying on two massage beds side by side, relaxing. Two female therapists, one at each bed, working on their shoulders and neck. Shot from above, looking down at the massage beds. Late afternoon, lamps lit inside, soft shade through a wide window showing green plants outside. Clean white linens, a clear glass bottle of golden oil on a small table. No text, no logos.",
-            "storyText": "Ready to rest together? A Couple Massage in your room 🌸"
-          },
-          {
-            "type": "moment",
-            "topic": "Thai Massage after a long flight",
-            "scene": "detail",
-            "caption": "A stiff back and legs after your long flight? 🌷\n\nTonight a therapist comes to your Da Nang villa for a Thai Massage. You wear comfortable clothes while she stretches your body.\n\nHours: Mo-Su 08:30-23:00 🌸",
+            "caption": "A stiff back from your long flight into Da Nang? 🌸\n\nA therapist comes to your hotel room tonight for a traditional Thai massage. You lie on a mattress in loose clothes, and she stretches your stiff back.\n\nOpen every day until 11 pm 🌺",
             "hashtags": [
               "danang",
               "thaimassage",
-              "danangmassage",
-              "bestdanangspas"
+              "bestdanangspas",
+              "danangwellness"
             ],
-            "altText": "A close view of a female therapist's hands stretching a man's leg on a floor"
+            "altText": "A close view of a female therapist's hands pressing on the"
           }
         ]
       },
@@ -334,30 +320,30 @@
             "type": "offer",
             "topic": "Couple Massage in Da Nang",
             "scene": "guest",
-            "caption": "Both ready to rest together after exploring My Khe beach? 🌸\n\nWe send two therapists to your hotel room for a Couple Massage. You lie side by side, and your shoulders and neck are worked loose.\n\nTrained local Vietnamese therapists 🌺",
+            "caption": "Both of you tired after walking the Marble Mountains today? 🌸\n\nTwo therapists come to your An Thuong hotel room for a Couple Massage. You lie side by side, and your shoulders and backs relax together.\n\nTrained local Vietnamese therapists 🌺",
             "hashtags": [
               "danang",
-              "massageindanang",
               "couplemassage",
-              "mykhebeach"
+              "massageindanang",
+              "spalnmykhe"
             ],
-            "altText": "A man and a woman relaxing on two massage beds side by side in a hotel room with two therapists working on them.",
-            "imagePrompt": "Vertical 9:16 photo. A couple massage in a warm hotel room in Da Nang. A man and a woman lying on two massage beds side by side, relaxing. Two female therapists, one at each bed, working on their shoulders and neck. Shot from above, looking down at the massage beds. Late afternoon, lamps lit inside, soft shade through a wide window showing green plants outside. Clean white linens, a clear glass bottle of golden oil on a small table. No text, no logos.",
-            "storyText": "Ready to rest together? A Couple Massage in your room 🌸"
+            "altText": "A man and a woman lying on two massage beds side by side while two therapists work on their shoulders from above in a hotel room.",
+            "imagePrompt": "A tall 9:16 vertical photo from above showing a man and a woman lying face down on two massage beds side by side in a bright, clean hotel room with open glass doors looking out onto green tropical plants in soft late afternoon shade. Two female therapists stand at the outer sides of the beds, their hands working on the guests' shoulders. Warm natural lighting, no harsh sun, simple tidy room, no text or logos.",
+            "storyText": "Marble Mountains in your legs? A Couple Massage for both of you today 🌸"
           },
           {
             "type": "moment",
             "topic": "Thai Massage after a long flight",
             "scene": "detail",
-            "caption": "A stiff back and legs after your long flight? 🌷\n\nTonight a therapist comes to your Da Nang villa for a Thai Massage. You wear comfortable clothes while she stretches your body.\n\nHours: Mo-Su 08:30-23:00 🌸",
+            "caption": "A stiff back from your long flight into Da Nang? 🌸\n\nA therapist comes to your hotel room tonight for a traditional Thai massage. You lie on a mattress in loose clothes, and she stretches your stiff back.\n\nOpen every day until 11 pm 🌺",
             "hashtags": [
               "danang",
               "thaimassage",
-              "danangmassage",
-              "bestdanangspas"
+              "bestdanangspas",
+              "danangwellness"
             ],
-            "altText": "A close view of a female therapist's hands stretching a man's leg on a floor mattress.",
-            "imagePrompt": "Vertical 9:16 photo. A Thai massage in a warm villa room"
+            "altText": "A close view of a female therapist's hands pressing on the back of a man lying face down on a floor mattress.",
+            "imagePrompt": "A tall 9:"
           }
         ]
       },
@@ -367,30 +353,30 @@
             "type": "offer",
             "topic": "Couple Massage in Da Nang",
             "scene": "guest",
-            "caption": "Both ready to rest together after exploring My Khe beach? 🌸\n\nWe send two therapists to your hotel room for a Couple Massage. You lie side by side, and your shoulders and neck are worked loose.\n\nTrained local Vietnamese therapists 🌺",
+            "caption": "Both of you tired after walking the Marble Mountains today? 🌸\n\nTwo therapists come to your An Thuong hotel room for a Couple Massage. You lie side by side, and your shoulders and backs relax together.\n\nTrained local Vietnamese therapists 🌺",
             "hashtags": [
               "danang",
-              "massageindanang",
               "couplemassage",
-              "mykhebeach"
+              "massageindanang",
+              "spalnmykhe"
             ],
-            "altText": "A man and a woman relaxing on two massage beds side by side in a hotel room with two therapists working on them.",
-            "imagePrompt": "Vertical 9:16 photo. A couple massage in a warm hotel room in Da Nang. A man and a woman lying on two massage beds side by side, relaxing. Two female therapists, one at each bed, working on their shoulders and neck. Shot from above, looking down at the massage beds. Late afternoon, lamps lit inside, soft shade through a wide window showing green plants outside. Clean white linens, a clear glass bottle of golden oil on a small table. No text, no logos.",
-            "storyText": "Ready to rest together? A Couple Massage in your room 🌸"
+            "altText": "A man and a woman lying on two massage beds side by side while two therapists work on their shoulders from above in a hotel room.",
+            "imagePrompt": "A tall 9:16 vertical photo from above showing a man and a woman lying face down on two massage beds side by side in a bright, clean hotel room with open glass doors looking out onto green tropical plants in soft late afternoon shade. Two female therapists stand at the outer sides of the beds, their hands working on the guests' shoulders. Warm natural lighting, no harsh sun, simple tidy room, no text or logos.",
+            "storyText": "Marble Mountains in your legs? A Couple Massage for both of you today 🌸"
           },
           {
             "type": "moment",
             "topic": "Thai Massage after a long flight",
             "scene": "detail",
-            "caption": "A stiff back and legs after your long flight? 🌷\n\nTonight a therapist comes to your Da Nang villa for a Thai Massage. You wear comfortable clothes while she stretches your body.\n\nHours: Mo-Su 08:30-23:00 🌸",
+            "caption": "A stiff back from your long flight into Da Nang? 🌸\n\nA therapist comes to your hotel room tonight for a traditional Thai massage. You lie on a mattress in loose clothes, and she stretches your stiff back.\n\nOpen every day until 11 pm 🌺",
             "hashtags": [
               "danang",
               "thaimassage",
-              "danangmassage",
-              "bestdanangspas"
+              "bestdanangspas",
+              "danangwellness"
             ],
-            "altText": "A close view of a female therapist's hands stretching a man's leg on a floor mattress.",
-            "imagePrompt": "Vertical 9:16 photo. A Thai massage in a warm villa room in Da Nang at night. A close view of a female therapist's hands pressing and stretching a leg of a man lying"
+            "altText": "A close view of a female therapist's hands pressing on the back of a man lying face down on a floor mattress.",
+            "imagePrompt": "A tall 9:16 vertical photo, close view of a female therapist's hands pressing palms on the back of a man lying face down on a floor"
           }
         ]
       },
@@ -400,30 +386,30 @@
             "type": "offer",
             "topic": "Couple Massage in Da Nang",
             "scene": "guest",
-            "caption": "Both ready to rest together after exploring My Khe beach? 🌸\n\nWe send two therapists to your hotel room for a Couple Massage. You lie side by side, and your shoulders and neck are worked loose.\n\nTrained local Vietnamese therapists 🌺",
+            "caption": "Both of you tired after walking the Marble Mountains today? 🌸\n\nTwo therapists come to your An Thuong hotel room for a Couple Massage. You lie side by side, and your shoulders and backs relax together.\n\nTrained local Vietnamese therapists 🌺",
             "hashtags": [
               "danang",
-              "massageindanang",
               "couplemassage",
-              "mykhebeach"
+              "massageindanang",
+              "spalnmykhe"
             ],
-            "altText": "A man and a woman relaxing on two massage beds side by side in a hotel room with two therapists working on them.",
-            "imagePrompt": "Vertical 9:16 photo. A couple massage in a warm hotel room in Da Nang. A man and a woman lying on two massage beds side by side, relaxing. Two female therapists, one at each bed, working on their shoulders and neck. Shot from above, looking down at the massage beds. Late afternoon, lamps lit inside, soft shade through a wide window showing green plants outside. Clean white linens, a clear glass bottle of golden oil on a small table. No text, no logos.",
-            "storyText": "Ready to rest together? A Couple Massage in your room 🌸"
+            "altText": "A man and a woman lying on two massage beds side by side while two therapists work on their shoulders from above in a hotel room.",
+            "imagePrompt": "A tall 9:16 vertical photo from above showing a man and a woman lying face down on two massage beds side by side in a bright, clean hotel room with open glass doors looking out onto green tropical plants in soft late afternoon shade. Two female therapists stand at the outer sides of the beds, their hands working on the guests' shoulders. Warm natural lighting, no harsh sun, simple tidy room, no text or logos.",
+            "storyText": "Marble Mountains in your legs? A Couple Massage for both of you today 🌸"
           },
           {
             "type": "moment",
             "topic": "Thai Massage after a long flight",
             "scene": "detail",
-            "caption": "A stiff back and legs after your long flight? 🌷\n\nTonight a therapist comes to your Da Nang villa for a Thai Massage. You wear comfortable clothes while she stretches your body.\n\nHours: Mo-Su 08:30-23:00 🌸",
+            "caption": "A stiff back from your long flight into Da Nang? 🌸\n\nA therapist comes to your hotel room tonight for a traditional Thai massage. You lie on a mattress in loose clothes, and she stretches your stiff back.\n\nOpen every day until 11 pm 🌺",
             "hashtags": [
               "danang",
               "thaimassage",
-              "danangmassage",
-              "bestdanangspas"
+              "bestdanangspas",
+              "danangwellness"
             ],
-            "altText": "A close view of a female therapist's hands stretching a man's leg on a floor mattress.",
-            "imagePrompt": "Vertical 9:16 photo. A Thai massage in a warm villa room in Da Nang at night. A close view of a female therapist's hands pressing and stretching a leg of a man lying on a floor mattress in loose cotton clothes. Lamps and candles giving the room a warm golden glow, lanterns outside under a deep blue sky. Clean"
+            "altText": "A close view of a female therapist's hands pressing on the back of a man lying face down on a floor mattress.",
+            "imagePrompt": "A tall 9:16 vertical photo, close view of a female therapist's hands pressing palms on the back of a man lying face down on a floor mattress in loose cotton clothes. The room is warmly lit by lamps with a golden glow, evening outside with lanterns visible through"
           }
         ]
       },
@@ -433,31 +419,31 @@
             "type": "offer",
             "topic": "Couple Massage in Da Nang",
             "scene": "guest",
-            "caption": "Both ready to rest together after exploring My Khe beach? 🌸\n\nWe send two therapists to your hotel room for a Couple Massage. You lie side by side, and your shoulders and neck are worked loose.\n\nTrained local Vietnamese therapists 🌺",
+            "caption": "Both of you tired after walking the Marble Mountains today? 🌸\n\nTwo therapists come to your An Thuong hotel room for a Couple Massage. You lie side by side, and your shoulders and backs relax together.\n\nTrained local Vietnamese therapists 🌺",
             "hashtags": [
               "danang",
-              "massageindanang",
               "couplemassage",
-              "mykhebeach"
+              "massageindanang",
+              "spalnmykhe"
             ],
-            "altText": "A man and a woman relaxing on two massage beds side by side in a hotel room with two therapists working on them.",
-            "imagePrompt": "Vertical 9:16 photo. A couple massage in a warm hotel room in Da Nang. A man and a woman lying on two massage beds side by side, relaxing. Two female therapists, one at each bed, working on their shoulders and neck. Shot from above, looking down at the massage beds. Late afternoon, lamps lit inside, soft shade through a wide window showing green plants outside. Clean white linens, a clear glass bottle of golden oil on a small table. No text, no logos.",
-            "storyText": "Ready to rest together? A Couple Massage in your room 🌸"
+            "altText": "A man and a woman lying on two massage beds side by side while two therapists work on their shoulders from above in a hotel room.",
+            "imagePrompt": "A tall 9:16 vertical photo from above showing a man and a woman lying face down on two massage beds side by side in a bright, clean hotel room with open glass doors looking out onto green tropical plants in soft late afternoon shade. Two female therapists stand at the outer sides of the beds, their hands working on the guests' shoulders. Warm natural lighting, no harsh sun, simple tidy room, no text or logos.",
+            "storyText": "Marble Mountains in your legs? A Couple Massage for both of you today 🌸"
           },
           {
             "type": "moment",
             "topic": "Thai Massage after a long flight",
             "scene": "detail",
-            "caption": "A stiff back and legs after your long flight? 🌷\n\nTonight a therapist comes to your Da Nang villa for a Thai Massage. You wear comfortable clothes while she stretches your body.\n\nHours: Mo-Su 08:30-23:00 🌸",
+            "caption": "A stiff back from your long flight into Da Nang? 🌸\n\nA therapist comes to your hotel room tonight for a traditional Thai massage. You lie on a mattress in loose clothes, and she stretches your stiff back.\n\nOpen every day until 11 pm 🌺",
             "hashtags": [
               "danang",
               "thaimassage",
-              "danangmassage",
-              "bestdanangspas"
+              "bestdanangspas",
+              "danangwellness"
             ],
-            "altText": "A close view of a female therapist's hands stretching a man's leg on a floor mattress.",
-            "imagePrompt": "Vertical 9:16 photo. A Thai massage in a warm villa room in Da Nang at night. A close view of a female therapist's hands pressing and stretching a leg of a man lying on a floor mattress in loose cotton clothes. Lamps and candles giving the room a warm golden glow, lanterns outside under a deep blue sky. Clean linens, a suitcase far in the background out of focus. No text, no logos.",
-            "storyText": "Flight in"
+            "altText": "A close view of a female therapist's hands pressing on the back of a man lying face down on a floor mattress.",
+            "imagePrompt": "A tall 9:16 vertical photo, close view of a female therapist's hands pressing palms on the back of a man lying face down on a floor mattress in loose cotton clothes. The room is warmly lit by lamps with a golden glow, evening outside with lanterns visible through a wide window. Calm and tidy, no text or logos.",
+            "storyText": "Flight stiffness in your"
           }
         ]
       },
@@ -467,31 +453,31 @@
             "type": "offer",
             "topic": "Couple Massage in Da Nang",
             "scene": "guest",
-            "caption": "Both ready to rest together after exploring My Khe beach? 🌸\n\nWe send two therapists to your hotel room for a Couple Massage. You lie side by side, and your shoulders and neck are worked loose.\n\nTrained local Vietnamese therapists 🌺",
+            "caption": "Both of you tired after walking the Marble Mountains today? 🌸\n\nTwo therapists come to your An Thuong hotel room for a Couple Massage. You lie side by side, and your shoulders and backs relax together.\n\nTrained local Vietnamese therapists 🌺",
             "hashtags": [
               "danang",
-              "massageindanang",
               "couplemassage",
-              "mykhebeach"
+              "massageindanang",
+              "spalnmykhe"
             ],
-            "altText": "A man and a woman relaxing on two massage beds side by side in a hotel room with two therapists working on them.",
-            "imagePrompt": "Vertical 9:16 photo. A couple massage in a warm hotel room in Da Nang. A man and a woman lying on two massage beds side by side, relaxing. Two female therapists, one at each bed, working on their shoulders and neck. Shot from above, looking down at the massage beds. Late afternoon, lamps lit inside, soft shade through a wide window showing green plants outside. Clean white linens, a clear glass bottle of golden oil on a small table. No text, no logos.",
-            "storyText": "Ready to rest together? A Couple Massage in your room 🌸"
+            "altText": "A man and a woman lying on two massage beds side by side while two therapists work on their shoulders from above in a hotel room.",
+            "imagePrompt": "A tall 9:16 vertical photo from above showing a man and a woman lying face down on two massage beds side by side in a bright, clean hotel room with open glass doors looking out onto green tropical plants in soft late afternoon shade. Two female therapists stand at the outer sides of the beds, their hands working on the guests' shoulders. Warm natural lighting, no harsh sun, simple tidy room, no text or logos.",
+            "storyText": "Marble Mountains in your legs? A Couple Massage for both of you today 🌸"
           },
           {
             "type": "moment",
             "topic": "Thai Massage after a long flight",
             "scene": "detail",
-            "caption": "A stiff back and legs after your long flight? 🌷\n\nTonight a therapist comes to your Da Nang villa for a Thai Massage. You wear comfortable clothes while she stretches your body.\n\nHours: Mo-Su 08:30-23:00 🌸",
+            "caption": "A stiff back from your long flight into Da Nang? 🌸\n\nA therapist comes to your hotel room tonight for a traditional Thai massage. You lie on a mattress in loose clothes, and she stretches your stiff back.\n\nOpen every day until 11 pm 🌺",
             "hashtags": [
               "danang",
               "thaimassage",
-              "danangmassage",
-              "bestdanangspas"
+              "bestdanangspas",
+              "danangwellness"
             ],
-            "altText": "A close view of a female therapist's hands stretching a man's leg on a floor mattress.",
-            "imagePrompt": "Vertical 9:16 photo. A Thai massage in a warm villa room in Da Nang at night. A close view of a female therapist's hands pressing and stretching a leg of a man lying on a floor mattress in loose cotton clothes. Lamps and candles giving the room a warm golden glow, lanterns outside under a deep blue sky. Clean linens, a suitcase far in the background out of focus. No text, no logos.",
-            "storyText": "Flight in your back and legs? We come to you tonight 🌷"
+            "altText": "A close view of a female therapist's hands pressing on the back of a man lying face down on a floor mattress.",
+            "imagePrompt": "A tall 9:16 vertical photo, close view of a female therapist's hands pressing palms on the back of a man lying face down on a floor mattress in loose cotton clothes. The room is warmly lit by lamps with a golden glow, evening outside with lanterns visible through a wide window. Calm and tidy, no text or logos.",
+            "storyText": "Flight stiffness in your back? A therapist comes to you tonight 🌸"
           }
         ]
       }
@@ -502,31 +488,31 @@
           "type": "offer",
           "topic": "Couple Massage in Da Nang",
           "scene": "guest",
-          "caption": "Both ready to rest together after exploring My Khe beach? 🌸\n\nWe send two therapists to your hotel room for a Couple Massage. You lie side by side, and your shoulders and neck are worked loose.\n\nTrained local Vietnamese therapists 🌺",
+          "caption": "Both of you tired after walking the Marble Mountains today? 🌸\n\nTwo therapists come to your An Thuong hotel room for a Couple Massage. You lie side by side, and your shoulders and backs relax together.\n\nTrained local Vietnamese therapists 🌺",
           "hashtags": [
             "danang",
-            "massageindanang",
             "couplemassage",
-            "mykhebeach"
+            "massageindanang",
+            "spalnmykhe"
           ],
-          "altText": "A man and a woman relaxing on two massage beds side by side in a hotel room with two therapists working on them.",
-          "imagePrompt": "Vertical 9:16 photo. A couple massage in a warm hotel room in Da Nang. A man and a woman lying on two massage beds side by side, relaxing. Two female therapists, one at each bed, working on their shoulders and neck. Shot from above, looking down at the massage beds. Late afternoon, lamps lit inside, soft shade through a wide window showing green plants outside. Clean white linens, a clear glass bottle of golden oil on a small table. No text, no logos.",
-          "storyText": "Ready to rest together? A Couple Massage in your room 🌸"
+          "altText": "A man and a woman lying on two massage beds side by side while two therapists work on their shoulders from above in a hotel room.",
+          "imagePrompt": "A tall 9:16 vertical photo from above showing a man and a woman lying face down on two massage beds side by side in a bright, clean hotel room with open glass doors looking out onto green tropical plants in soft late afternoon shade. Two female therapists stand at the outer sides of the beds, their hands working on the guests' shoulders. Warm natural lighting, no harsh sun, simple tidy room, no text or logos.",
+          "storyText": "Marble Mountains in your legs? A Couple Massage for both of you today 🌸"
         },
         {
           "type": "moment",
           "topic": "Thai Massage after a long flight",
           "scene": "detail",
-          "caption": "A stiff back and legs after your long flight? 🌷\n\nTonight a therapist comes to your Da Nang villa for a Thai Massage. You wear comfortable clothes while she stretches your body.\n\nHours: Mo-Su 08:30-23:00 🌸",
+          "caption": "A stiff back from your long flight into Da Nang? 🌸\n\nA therapist comes to your hotel room tonight for a traditional Thai massage. You lie on a mattress in loose clothes, and she stretches your stiff back.\n\nOpen every day until 11 pm 🌺",
           "hashtags": [
             "danang",
             "thaimassage",
-            "danangmassage",
-            "bestdanangspas"
+            "bestdanangspas",
+            "danangwellness"
           ],
-          "altText": "A close view of a female therapist's hands stretching a man's leg on a floor mattress.",
-          "imagePrompt": "Vertical 9:16 photo. A Thai massage in a warm villa room in Da Nang at night. A close view of a female therapist's hands pressing and stretching a leg of a man lying on a floor mattress in loose cotton clothes. Lamps and candles giving the room a warm golden glow, lanterns outside under a deep blue sky. Clean linens, a suitcase far in the background out of focus. No text, no logos.",
-          "storyText": "Flight in your back and legs? We come to you tonight 🌷"
+          "altText": "A close view of a female therapist's hands pressing on the back of a man lying face down on a floor mattress.",
+          "imagePrompt": "A tall 9:16 vertical photo, close view of a female therapist's hands pressing palms on the back of a man lying face down on a floor mattress in loose cotton clothes. The room is warmly lit by lamps with a golden glow, evening outside with lanterns visible through a wide window. Calm and tidy, no text or logos.",
+          "storyText": "Flight stiffness in your back? A therapist comes to you tonight 🌸"
         }
       ]
     }

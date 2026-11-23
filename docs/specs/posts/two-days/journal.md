@@ -48,6 +48,8 @@ Task 1: `TypeError: yesterdayStart is not a function`, `TypeError: splitDays is 
 
 Task 2: `Tests  6 failed | 87 passed (93)`
 
+Task 3 (an offer that has ended): `Tests  2 failed | 73 passed (75)`
+
 ## GREEN
 
 Task 1: `Tests  8 passed (8)`
@@ -55,3 +57,5 @@ Task 1: `Tests  8 passed (8)`
 Task 2: `Tests  102 passed (102)` (the screen's tests); `pnpm check`: `Test Files  134 passed (134)`, `Tests  2268 passed (2268)`; `pnpm test:e2e` on port 3117: `73 passed (52.3s)`, `1 skipped`
 
 After the review's fixes: `pnpm check`: `Tests  2268 passed (2268)`; `pnpm test:e2e` on port 3117, twice: `73 passed (37.1s)`, `1 skipped`, then `73 passed (37.8s)`, `1 skipped`
+
+Task 3: `Tests  75 passed (75)` (the screen's tests); the suite `Tests  2335 passed (2335)`; `pnpm test:e2e` on port 3117: `73 passed (26.2s)`, `1 skipped`

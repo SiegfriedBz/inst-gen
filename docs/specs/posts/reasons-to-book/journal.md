@@ -55,6 +55,25 @@
 Task 1: `Tests  4 failed | 95 passed (99)` (`Test Files  4 failed (4)`: no
 `lib/posts/reasons.ts`, no reason in the set-up or the recent posts)
 
+Task 14 (Thai's two parts): `Tests  1 failed | 21 passed (22)` (a laptop
+set-up with `legs`)
+
+Task 15 (the hours in words): `posts-hours.test.ts` failed to load (no
+`lib/posts/hours.ts`); `posts-facts.test.ts`, 3 failed (the fact still
+`Hours: …`)
+
+Task 16 (guests and therapists): `Tests  3 failed | 13 passed (16)`
+
+Task 17 (the new rules): `Tests  4 failed | 16 passed (20)`
+
+Task 18 (record 6): `Tests  1 failed | 15 passed (16)`
+
+The review's fixes (hours that skip a day, times with seconds, the
+facts-only rule): `Tests  13 failed | 44 passed (57)`
+
+After the first `posts-20` runs (twoOfYou's question, the set-up's treatment
+and part): `Tests  5 failed | 15 passed (20)`
+
 ## GREEN
 
 Task 9, `pnpm check`: `Test Files  134 passed (134)`, `Tests  2247 passed (2247)`
@@ -62,6 +81,19 @@ Task 9, `pnpm check`: `Test Files  134 passed (134)`, `Tests  2247 passed (2247)
 Task 9, `pnpm test:e2e` (on port 3101 with a scratch config: another
 project held 3000; the first build stopped on Next.js's security notice and
 the second ran): `73 passed (21.7s)`, `1 skipped`
+
+Tasks 14 to 18: `Tests  22 passed (22)`, `Tests  57 passed (57)`, then the
+whole suite after each: `Tests  2323 passed (2323)`, `2326`, `2330`,
+`2332`
+
+The review's fixes: `Tests  57 passed (57)`; the suite `Tests  2347 passed
+(2347)`
+
+After the first `posts-20` runs: `Tests  99 passed (99)`; the suite `Test
+Files  135 passed (135)`, `Tests  2347 passed (2347)`
+
+`pnpm test:e2e` on port 3117, after the merge, the fixes and the flag:
+`73 passed (26.2s)`, `1 skipped`
 
 ## Evaluation
 
@@ -208,3 +240,86 @@ awkward new-texts hook): "Did you fix this ?". Not as they are: the
 second amendment answers them, and the plans and new texts are recorded
 again.
 
+
+### Third recordings, `posts-20` (2026-11-23), after the second amendment
+
+Google's Flash-Lite was overloaded all evening: most calls came back with a
+503 ("high demand") or a stream cut before its end, which the app reads as
+finish "other" (6 to 520 tokens out). A diagnostic call with Google's raw
+chunks showed the cut streams carry no finish reason and no token count, and
+a café's plan (`phin-coffee`, `posts-19`) was cut the same way in 2 of 3
+calls: Google's side, not the prompt. The recordings retried in a loop, at
+most 5 tries each, 2½ minutes apart: about 60 Flash-Lite requests in all, a
+few cents on the prepaid key.
+
+**The first `posts-20` runs** (3 of 6 made, not kept): Sen's two-of-you new
+texts opened on "Another moment the two of you share after exploring Dragon
+Bridge together? 🌸", the prompt's own words ("ask after another moment the
+two share"); the plan's on "Both sharing a day at My Khe Beach, and now you
+want to rest together? 🌸" (15 words); Svarga's new texts named Deep Tissue
+Tension Release and tight shoulders on its Surf & Sport Recovery image of the
+back. Fixed (08e3309): twoOfYou's question is built like dayOut's, for both
+of them; no "another moment"; caption updates and new texts get the set-up's
+treatment and part of the body. Recorded again.
+
+**Sen, without an offer**: `twoOfYou`, "Both of you tired after walking the
+Marble Mountains today? 🌸" / "Two therapists come to your An Thuong hotel
+room for a Couple Massage. You lie side by side, and your shoulders and backs
+relax together." / "Trained local Vietnamese therapists"; story "Marble
+Mountains in your legs? A Couple Massage for both of you today" (13 words).
+`firstNight`, "A stiff back from your long flight into Da Nang? 🌸" / "A
+therapist comes to your hotel room tonight for a traditional Thai massage.
+You lie on a mattress in loose clothes, and she stretches your stiff back." /
+"Open every day until 11 pm"; story "Flight stiffness in your back? A
+therapist comes to you tonight" (11 words).
+
+**Svarga, without an offer**: `dayOut`, "Tired legs after surfing the waves at
+Echo Beach? 🌺" / "A therapist comes to your Canggu villa for a Surf & Sport
+Recovery Massage. Your muscles loosen while you relax in your own room with
+the afternoon ahead." / "No upfront deposit for villas and hotels" (the
+legs, where its image works on the back); story "Tired legs after surfing?
+Massage in your room". `laptop`, "Stiff arms and hands from days of work on
+your laptop in Seminyak? 🪷" / "A therapist brings a Balinese Lulur Scrub &
+Massage straight to your hotel room tonight. You rest easy as the scrub
+smooths your skin." / "Fresh linens, towels, and natural oils brought to
+you"; story "Laptop days? A scrub and massage in your room".
+
+**Svarga, with the offer**: `stayIn`, the line / "Rain outside your Seminyak
+villa and you prefer to stay in? A therapist comes to your room and works your
+arms and hands." / "No upfront deposit for villas and hotels". `firstNight`,
+on the Four-Hands Massage, the line / "Is a long flight still sitting stiff
+in your legs? Two therapists come to your Canggu room and work your legs in
+sync." / "WhatsApp replies in ~5 mins".
+
+**Sen, with the offer**: `laptop`, the line / "Stiff neck after days of work
+on your laptop in your An Thuong apartment? A therapist comes to your room,
+and the tension in your shoulders eases for the rest of your evening." /
+"Free travel in our core areas": one therapist now, where the second run said
+"Two therapists", but the neck and shoulders where its image works on the
+arms and hands. `dayOut`, on the Thai Massage's leg stretch, the line /
+"Tired legs after climbing the Marble Mountains today? A therapist comes to
+your Non Nuoc villa, and your legs feel light for the rest of your
+afternoon." / "Linens, towels and oils included".
+
+**New texts**: Sen's two-of-you post, "Both of you stiff after climbing the
+Marble Mountains today? 🌸" / "Two therapists arrive at your An Thuong hotel
+room for a Couple Massage. You lie side by side while they work your
+shoulders and neck loose." / "No upfront deposit required". Svarga's day out,
+"Sore back after catching waves at Echo Beach this afternoon? 🌺", now the
+part its image shows, with its own Surf & Sport Recovery Massage; its second
+sentence is the plan's, one word changed.
+
+| Check | second run | third run |
+|---|---|---|
+| The question speaks to the guest about its reason, never in the first person | 8 of 8 | 8 of 8 |
+| "Two therapists" only on an image of two (record 6) | 7 of 8 | 8 of 8 |
+| The hours fact in words, never the raw line | 0 of 1 | 1 of 1 |
+| The two-of-you question names both of them and their day out, in plain words | 0 of 2 (plan and new texts) | 2 of 2 |
+| The caption names its image's treatment and part of the body | 7 of 8, new texts 1 of 2 | 6 of 8 (the surf day's legs on a back, the laptop offer's neck on arms and hands), new texts 2 of 2 |
+| No sample copied (code's record) | 1 of 8 | 1 of 8 ("you lie side by side", on the couple massage; the new texts too) |
+| Story texts of 10 words at most, offer posts aside | 3 of 4 | 2 of 4 (13 and 11 words) |
+
+The maintainer's three faults are gone from these recordings. Seen besides:
+two posts name another part of the body than their image, four answers
+still have a sentence of 19 or 20 words, and two story texts run past 10
+words. The maintainer's verdict follows.
