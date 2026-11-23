@@ -17,7 +17,7 @@ import type { Offer } from '@/lib/posts/offer';
 import { paragraphsOf } from '@/lib/posts/paragraphs';
 import type { Setup } from '@/lib/posts/setup';
 import { svargaProfile } from './helpers/brand';
-import { post } from './helpers/posts';
+import { post, setupAt } from './helpers/posts';
 
 function profileWithPrice(price: string, duration = '90 minutes') {
   const profile = svargaProfile();
@@ -1589,5 +1589,20 @@ describe('short captions', () => {
       svargaProfile(),
     );
     expect(edited.caption).toBe(caption);
+  });
+});
+
+// The records of docs/specs/posts/reasons-to-book run with a plan's checks.
+describe('the reasons records in a plan', () => {
+  it('a question in the first person is recorded', () => {
+    const asked = post({
+      id: 'post-1',
+      caption: 'Can I get a massage in my room tonight? 🌸\n\nWe come to you.\n\nNo deposit 🌸',
+      setup: setupAt('night'),
+    });
+    expect(checkPlan([asked], [], svargaProfile()).dropped).toContainEqual({
+      field: 'mix',
+      reason: 'post-1: question in the first person',
+    });
   });
 });
