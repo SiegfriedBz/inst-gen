@@ -9,7 +9,7 @@ import type { Profile } from '@/lib/brand/profile';
 import { resetStoreForTests, saveBrand } from '@/lib/brand/store';
 import { messagesFor } from '@/lib/i18n/messages';
 import type { Post, PostBatch } from '@/lib/posts/batch';
-import { loadImages, type SavedImage, saveImage } from '@/lib/posts/image-store';
+import { imageKey, loadImages, type SavedImage, saveImage } from '@/lib/posts/image-store';
 import { profileHash } from '@/lib/posts/input';
 import type { Offer } from '@/lib/posts/offer';
 import { loadBatches, saveBatch } from '@/lib/posts/store';
@@ -535,17 +535,82 @@ describe("today's attempts", () => {
     topic: `yesterday topic ${i + 1}`,
   }));
 
-  test("yesterday's attempts are not shown and their images are gone", async () => {
+  // Two days of suggestions (docs/specs/posts/two-days): the clock is
+  // 2026-10-25T12:00Z, so today began at 07:00Z and yesterday at 07:00Z on
+  // the 24th.
+  const older = (posts: Post[]): PostBatch => ({
+    ...batch(posts),
+    id: 'o1',
+    createdAt: '2026-10-24T05:00:00.000Z',
+  });
+  const headings = () => screen.getAllByRole('heading').map((h) => h.textContent);
+
+  test("today's and yesterday's attempts, each day with its heading and its own numbers", async () => {
     await saveBatch(yesterday(yesterdayPosts));
-    await saveImage(image('y1', 'post-1'));
     await saveBatch(batch(sixPosts));
     await renderSection();
-    expect(await screen.findByText('Caption 1.')).toBeTruthy();
-    expect(screen.queryByText('Yesterday 1.')).toBeNull();
-    expect(screen.getAllByRole('heading', { name: /^Attempt/ }).map((h) => h.textContent)).toEqual([
-      'Attempt 1',
-    ]);
-    await waitFor(async () => expect((await loadImages('svarga')).size).toBe(0));
+    await screen.findByText('Yesterday 1.');
+    expect(headings()).toEqual(['Today', 'Attempt 1', 'Yesterday', 'Attempt 1']);
+    const text = document.body.textContent ?? '';
+    expect(text.indexOf('Caption 1.')).toBeLessThan(text.indexOf('Yesterday 1.'));
+  });
+
+  test("only yesterday's: Yesterday alone, no empty line, and the button says new", async () => {
+    await saveBatch(yesterday(yesterdayPosts));
+    await renderSection();
+    await screen.findByText('Yesterday 1.');
+    expect(headings()).toEqual(['Yesterday', 'Attempt 1']);
+    expect(screen.queryByText(/Each suggestion is/)).toBeNull();
+    expect(await screen.findByRole('button', { name: 'Make 2 new suggestions' })).toBeTruthy();
+  });
+
+  test("yesterday's keep their images; the day before yesterday's go", async () => {
+    await saveBatch(older(sixPosts.map((p) => ({ ...p, caption: `Older ${p.id}.` }))));
+    await saveImage(image('o1', 'post-1'));
+    await saveBatch(yesterday(yesterdayPosts));
+    await saveImage(image('y1', 'post-1'));
+    await renderSection();
+    expect(await screen.findByText('Yesterday 1.')).toBeTruthy();
+    expect(screen.queryByText('Older post-1.')).toBeNull();
+    await waitFor(async () =>
+      expect([...(await loadImages('svarga')).keys()]).toEqual([imageKey('y1', 'post-1')]),
+    );
+  });
+
+  test("the attempt being made after yesterday's is today's Attempt 1", async () => {
+    await saveBatch(yesterday(yesterdayPosts));
+    const streamed = post({ id: 'post-1', caption: 'Streaming in.' });
+    fetchMock.mockResolvedValue(
+      new Response(
+        new ReadableStream({
+          start(controller) {
+            controller.enqueue(
+              new TextEncoder().encode(encodePostsLine({ type: 'post', index: 0, post: streamed })),
+            );
+          },
+        }),
+        { headers: { 'content-type': 'application/x-ndjson' } },
+      ),
+    );
+    await renderSection();
+    fireEvent.click(await readyButton());
+    await screen.findByText('Streaming in.');
+    expect(headings()).toEqual(['Today', 'Attempt 1', 'Yesterday', 'Attempt 1']);
+  });
+
+  test("left open across the reset: today's move under Yesterday, yesterday's go", async () => {
+    await saveBatch(yesterday(yesterdayPosts));
+    await saveBatch(batch(sixPosts));
+    await renderSection();
+    await screen.findByText('Yesterday 1.');
+    vi.setSystemTime(new Date('2026-10-26T08:00:00.000Z'));
+    fetchMock.mockResolvedValue(errorAnswer());
+    fireEvent.click(await readyButton());
+    await screen.findByRole('alert');
+    await waitFor(() => expect(screen.queryByText('Yesterday 1.')).toBeNull());
+    expect(screen.getByText('Caption 1.')).toBeTruthy();
+    // The error line from the mocked plan, then yesterday's alone.
+    expect(headings()).toEqual(['Yesterday', 'Attempt 1']);
   });
 
   test('attempts are numbered from the oldest of the day, newest on top', async () => {
@@ -628,10 +693,15 @@ describe("today's attempts", () => {
     vi.setSystemTime(new Date('2026-10-26T08:00:00.000Z'));
     fireEvent.click(button);
     await screen.findByText('After the reset.');
-    expect(screen.getAllByRole('heading', { name: /^Attempt/ }).map((h) => h.textContent)).toEqual([
+    // The day before's attempt stays, below, under Yesterday
+    // (docs/specs/posts/two-days).
+    expect(screen.getAllByRole('heading').map((h) => h.textContent)).toEqual([
+      'Today',
+      'Attempt 1',
+      'Yesterday',
       'Attempt 1',
     ]);
-    expect(screen.queryByText('Caption 1.')).toBeNull();
+    expect(screen.getByText('Caption 1.')).toBeTruthy();
   });
 
   test("recent topics include yesterday's", async () => {
@@ -644,11 +714,21 @@ describe("today's attempts", () => {
     expect(body.recent.map((r: { topic: string }) => r.topic)).toContain('yesterday topic 1');
   });
 
-  test("the automatic update leaves yesterday's attempt alone", async () => {
+  // The newest attempt on the screen follows the business: with none today,
+  // yesterday's newest (docs/specs/posts/two-days).
+  test("with no attempt today, the automatic update follows yesterday's newest", async () => {
     await saveBatch(yesterday(yesterdayPosts, 'stale000'));
+    fetchMock.mockResolvedValue(rewriteAnswer(sixPosts.map((p) => p.id)));
+    await renderSection();
+    await waitFor(() => expect(rewriteCalls()).toHaveLength(1));
+  });
+
+  test("with an attempt today, yesterday's is left alone", async () => {
+    await saveBatch(yesterday(yesterdayPosts, 'stale000'));
+    await saveBatch(batch(sixPosts));
     await renderSection();
     await readyButton();
-    expect(fetchMock).not.toHaveBeenCalled();
+    expect(rewriteCalls()).toHaveLength(0);
   });
 });
 

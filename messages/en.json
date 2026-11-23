@@ -206,6 +206,8 @@
     "emptyTextOnly": "Each suggestion is the text for a post and a short text for a story, ready for Instagram. Pick the ones you like and copy them.",
     "attempt": "Attempt {n}",
     "attemptCount": "{count, plural, one {# suggestion} other {# suggestions}}",
+    "today": "Today",
+    "yesterday": "Yesterday",
     "saveImages": "Save post & story images",
     "copyText": "Copy post text",
     "copyStory": "Copy optional story text",
@@ -489,7 +491,7 @@
       "free": "Shopfront is free, so each day has a limit.",
       "limits": "Each day you have {reads}, {attempts} of 2 suggestions, {newImages}, {newTexts}, {replies} and {answers}, plus caption updates and translations.",
       "bar": "The line at the top of each tab shows what's left today and the time it all comes back.",
-      "reset": "At that time, the limits come back and the day's suggestions, review replies and answers leave the screen. Save what you want to keep before then. Your special offer stays: it lasts until its own last day ends.",
+      "reset": "At that time, the limits come back, and the day's review replies and answers leave the screen. Suggestions stay one more day, under <b>{yesterday}</b>: save what you want to keep before the next reset. Your special offer stays: it lasts until its own last day ends.",
       "time": "The time on the bar is in your phone's own time: trust it rather than a fixed hour.",
       "month": "New images also have a monthly budget for the whole app. If it runs out, Shopfront says when images are back."
     },

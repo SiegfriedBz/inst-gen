@@ -102,6 +102,8 @@ export function OwnerGuide({
     'questions.final': { final: t('questions.final') },
     'questions.first': { first: t('questions.first') },
     'questions.remember': { next: t('questions.next'), new: t('questions.newConversation') },
+    // Suggestions stay one more day, under Yesterday (docs/specs/posts/two-days).
+    'allowance.reset': { yesterday: t('posts.yesterday') },
     'allowance.limits': {
       reads: t('usage.reads', { count: limits.reads }),
       attempts: t('usage.attempts', { count: limits.attempts }),
