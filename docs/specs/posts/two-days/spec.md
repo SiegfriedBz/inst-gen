@@ -1,7 +1,8 @@
 ---
 title: "Two days of suggestions"
 description: "The suggestions of the current day and of the day before stay on the phone and on the screen, with their post and story images, captions, story texts and translations: the current day's on top under 'Today', the day before's under 'Yesterday', each day numbering its own attempts; at the reset only the day before yesterday's go; review replies and answers still go at the reset; the owner guide says so in three languages; a suggestion whose special offer has ended says so, on its tile and in its sheet."
-status: draft
+status: approved
+approved: { by: siegfried.bozza@protonmail.com, at: 2026-11-23T18:36:15Z }
 date: "2026-11-23"
 ---
 

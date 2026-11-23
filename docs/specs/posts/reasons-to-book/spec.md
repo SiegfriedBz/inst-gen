@@ -1,7 +1,8 @@
 ---
 title: "Reasons to book"
 description: "For a spa that comes to its guests, every post sells one of five reasons to book today, dealt by code so the two posts of an attempt never share one and the next attempts move on to others: a day out in the guest's body, staying in, two of you, the first night after a long flight, laptop days; each caption asks about that moment, said to the guest, says what the guest gets and how easy it is, and ends on a fact code deals that removes a doubt, never one that turns a request away; each story text names the moment and says the business comes to the guest; the prompt shows five sample posts of a made-up business in Lisbon; code records a question in the first person, a question that misses its reason, a copied sample, a caption for two guests on an image of one and one that names two therapists on an image of one; each caption names only what its image shows, and code writes the opening hours in words; other businesses keep today's posts."
-status: draft
+status: approved
+approved: { by: siegfried.bozza@protonmail.com, at: 2026-11-23T18:36:15Z }
 date: "2026-11-23"
 ---
 
