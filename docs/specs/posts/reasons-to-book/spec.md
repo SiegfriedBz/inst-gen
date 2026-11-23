@@ -1,8 +1,7 @@
 ---
 title: "Reasons to book"
 description: "For a spa that comes to its guests, every post sells one of five reasons to book today, dealt by code so the two posts of an attempt never share one and the next attempts move on to others: a day out in the guest's body, staying in, two of you, the first night after a long flight, laptop days; each caption asks about that moment, said to the guest, says what the guest gets and how easy it is, and ends on a fact code deals that removes a doubt, never one that turns a request away; each story text names the moment and says the business comes to the guest; the prompt shows five sample posts of a made-up business in Lisbon; code records a question in the first person, a question that misses its reason, a copied sample and a caption for two guests on an image of one; other businesses keep today's posts."
-status: approved
-approved: { by: siegfried.bozza@protonmail.com, at: 2026-11-23T10:01:39Z }
+status: draft
 date: "2026-11-23"
 ---
 
@@ -332,6 +331,28 @@ fact their profile doesn't hold. The list may grow.
 2.14b's rule stands for Sen's and Svarga's own words: the prompt quotes none
 of their sentences.
 
+Amended 2026-11-23, after the first `posts-19` recordings (the journal). The
+model copied the sample of its own reason: Sen's laptop post opened on
+"A week of laptop calls, and now your neck won't turn?", word for word;
+Svarga's on "A week of laptop work, and now your neck won't turn?"; two
+story texts were the samples' own ("Two of you, two therapists, one room",
+"Just landed? We bring the massage to your hotel"); and Svarga's first night
+opened on the sample's shape with Bali for Lisbon. Code recorded a copy in 4
+posts of 8. The developer's proposal, for the maintainer to approve:
+
+- The prompt shows only the samples of the reasons no post of the call has:
+  three in a plan whose two posts have two reasons, four when both have
+  `stayIn`; in a caption update, those of the reasons none of the sent posts
+  has; in new texts, the four of the other reasons. The samples text says
+  how many it shows: "one for each of the other reasons".
+- A post never sees its own reason's sample, so it can't copy its question,
+  its answer or its story text; the other samples still show the voice, the
+  length and the three paragraphs. The copy record stays, for a phrase taken
+  from another reason's sample.
+- Sen's and Svarga's plans are recorded again, with and without an offer,
+  and their new texts: 6 Flash-Lite requests, with the maintainer's
+  go-ahead.
+
 ### Post types
 
 For a business that comes to its guests, the model no longer picks a type.
@@ -367,7 +388,8 @@ updates and in new texts:
 - The five reasons, described as above.
 - The caption, the fact and the story text, as above, with the rules that
   stay.
-- The five sample posts.
+- The sample posts of the reasons no post of the call has (amended
+  2026-11-23, above).
 - The image prompt's rules, unchanged.
 
 A batch records `posts-19` for a business that comes to its guests, and
@@ -463,7 +485,8 @@ Unit tests (Vitest) for:
   on a night post; none when none is left; the model's profile without the
   turned-away highlight, and the profile's hash unchanged;
 - the prompt: `posts-19`; the goal before the rules; the five reasons; the
-  five samples; no type jobs, no kinds of question; `### Reasons` and
+  samples of the reasons no post of the call has, never a post's own
+  (amended 2026-11-23); no type jobs, no kinds of question; `### Reasons` and
   `### Facts` after the set-ups; a caption update's and new texts' `reason`
   and `fact`; another business's prompt word for word `posts-18`'s;
 - new texts and caption updates keeping a post's reason; a post saved with a

@@ -50,3 +50,74 @@ Task 9, `pnpm check`: `Test Files  134 passed (134)`, `Tests  2247 passed (2247)
 Task 9, `pnpm test:e2e` (on port 3101 with a scratch config: another
 project held 3000; the first build stopped on Next.js's security notice and
 the second ran): `73 passed (21.7s)`, `1 skipped`
+
+## Evaluation
+
+### First `posts-19` recordings (2026-11-23)
+
+Recorded with the maintainer's go-ahead: `pnpm eval:posts sen svarga
+--record`, `--offer --record` and `--new-texts --record`, 6 Flash-Lite
+requests, each `posts eval: 2/2 made · prompt posts-19 · model
+gemini-3.5-flash-lite`. Paragraphs split by " / ":
+
+**Sen, without an offer**
+
+1. `twoOfYou`, day, Couple Massage: "Massage for two, side by side, in your
+   My Khe hotel room? 🌸" / "Two therapists come to you, one for each of
+   you. You are both done at the same time, with the afternoon still
+   ahead." / "Trained local Vietnamese therapists 🌺". Story: "Two of you,
+   two therapists, one room 🌸" (the sample's).
+2. `firstNight`, night, Thai Massage: "Legs heavy from the long flight into
+   Da Nang? 🪷" / "Your therapist comes to your room tonight and stretches
+   your tight muscles. Then a shower, and you are in bed." / "Hours: Mo-Su
+   08:30-23:00 🌺" (the model copied the line, it didn't say it in words).
+   Story: "Just landed? We bring the massage to your hotel 🪷" (the
+   sample's).
+
+**Svarga, without an offer**
+
+1. `dayOut`, day, Surf & Sport Recovery: "Legs heavy from the long surf
+   session at Echo Beach? 🌸" / "A therapist comes to your Canggu villa to
+   work your calves and feet. You stay right where you are for the rest of
+   the afternoon." / "No upfront deposit for villas and hotels 🌺". Story:
+   "Echo Beach surf in your legs? We come to you today 🌸" (11 words).
+2. `laptop`, night, Balinese Lulur Scrub: "A week of laptop work, and now your
+   neck won't turn? 🌺" (the sample's, one word changed) / "A therapist
+   brings a full scrub and massage to your Seminyak apartment tonight. You
+   rest your arms while the turmeric and rice powder work." / "Fresh linens,
+   towels, and natural oils brought to you 🪷".
+
+**Sen, with the offer**: the offer line / "A week of laptop calls, and now
+your neck won't turn? Your therapist comes to your An Thuong hotel room to
+work your neck and shoulders loose." (the sample's question, word for word)
+/ "Free travel in our core areas"; the offer line / "Legs heavy from
+climbing the Marble Mountains today? A therapist comes to your Da Nang villa
+with assisted stretches to open your stiff legs." / "Linens, towels and oils
+included".
+
+**Svarga, with the offer**: the offer line / "Rain outside your Canggu
+villa and neither of you wants to go out? A therapist comes straight to your
+room with warm coconut oil and fresh linens." / "No upfront deposit for
+villas and hotels"; the offer line / "Back stiff from the long flight into
+Bali? Two therapists come to your Seminyak hotel tonight to work in step
+across your legs before you sleep." (the sample's shape) / "WhatsApp replies
+in ~5 mins".
+
+**New texts**: Sen's two-of-you post became "Side by side with your friend
+in your An Thuong villa this afternoon? 🌸" with "No upfront deposit
+required"; Svarga's day out, "Calves tired from the hike up the Pererenan
+rice fields? 🌸" with its experience as the fact.
+
+| Check | posts-18 | posts-19, first run |
+|---|---|---|
+| The question speaks to the guest about its reason, never in the first person | 4 of 8 | 8 of 8 |
+| The answer says what the guest gets and how easy it is | to judge | 8 of 8 |
+| The fact removes a doubt; none turns a request away | 7 of 8 | 8 of 8 |
+| No advice, no tip | 8 of 8 | 8 of 8 |
+| No sample copied | none to copy | 4 of 8 (code's record); 7 of 8 by eye |
+| The story text names the moment and says the business comes, offer posts aside | to judge | 4 of 4 (2 copied, 1 of 11 words) |
+
+Not a pass: the copy check fails. The model lifts the sample of its own
+reason, its question above all. The developer proposed (the spec's
+amendment of 2026-11-23) to show only the samples of the other reasons, and
+to record again.

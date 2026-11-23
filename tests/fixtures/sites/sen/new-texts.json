@@ -1,9 +1,9 @@
 {
   "modelId": "gemini-3.5-flash-lite",
-  "promptVersion": "posts-18",
+  "promptVersion": "posts-19",
   "recording": {
     "modelId": "gemini-3.5-flash-lite",
-    "promptVersion": "posts-18",
+    "promptVersion": "posts-19",
     "partials": [
       {
         "posts": []
@@ -12,7 +12,7 @@
         "posts": [
           {
             "id": "post-1",
-            "caption": "Can I get a massage"
+            "caption": "Side by side with your friend"
           }
         ]
       },
@@ -20,7 +20,7 @@
         "posts": [
           {
             "id": "post-1",
-            "caption": "Can I get a massage in my room tonight? 🌸\n\nOur trained therapists come to your Da Nang hotel for sixty minutes of tension"
+            "caption": "Side by side with your friend in your An Thuong villa this afternoon? 🌸\n\nTwo therapists bring tables and oils right to your room. You share"
           }
         ]
       },
@@ -28,7 +28,7 @@
         "posts": [
           {
             "id": "post-1",
-            "caption": "Can I get a massage in my room tonight? 🌸\n\nOur trained therapists come to your Da Nang hotel for sixty minutes of tension release. Linens, towels and oils included.\n\nFree travel in our core areas 🪷"
+            "caption": "Side by side with your friend in your An Thuong villa this afternoon? 🌸\n\nTwo therapists bring tables and oils right to your room. You share a couple massage while the daylight lasts outside.\n\nNo upfront deposit required 🌺"
           }
         ]
       },
@@ -36,14 +36,13 @@
         "posts": [
           {
             "id": "post-1",
-            "caption": "Can I get a massage in my room tonight? 🌸\n\nOur trained therapists come to your Da Nang hotel for sixty minutes of tension release. Linens, towels and oils included.\n\nFree travel in our core areas 🪷",
+            "caption": "Side by side with your friend in your An Thuong villa this afternoon? 🌸\n\nTwo therapists bring tables and oils right to your room. You share a couple massage while the daylight lasts outside.\n\nNo upfront deposit required 🌺",
             "hashtags": [
               "danang",
-              "deeptissue",
-              "massage",
-              "spa"
-            ],
-            "altText": "A woman relaxing on a massage bed in a hotel room at night while a therapist works on her shoulders"
+              "couplemassage",
+              "anthuong",
+              "sp"
+            ]
           }
         ]
       },
@@ -51,15 +50,30 @@
         "posts": [
           {
             "id": "post-1",
-            "caption": "Can I get a massage in my room tonight? 🌸\n\nOur trained therapists come to your Da Nang hotel for sixty minutes of tension release. Linens, towels and oils included.\n\nFree travel in our core areas 🪷",
+            "caption": "Side by side with your friend in your An Thuong villa this afternoon? 🌸\n\nTwo therapists bring tables and oils right to your room. You share a couple massage while the daylight lasts outside.\n\nNo upfront deposit required 🌺",
             "hashtags": [
               "danang",
-              "deeptissue",
-              "massage",
-              "spa"
+              "couplemassage",
+              "anthuong",
+              "spas"
             ],
-            "altText": "A woman relaxing on a massage bed in a hotel room at night while a therapist works on her shoulders.",
-            "storyText": "Need an in-room massage tonight? We come to you 🪷"
+            "altText": "A man and a woman receiving side by side massages from two therapists in a bright room"
+          }
+        ]
+      },
+      {
+        "posts": [
+          {
+            "id": "post-1",
+            "caption": "Side by side with your friend in your An Thuong villa this afternoon? 🌸\n\nTwo therapists bring tables and oils right to your room. You share a couple massage while the daylight lasts outside.\n\nNo upfront deposit required 🌺",
+            "hashtags": [
+              "danang",
+              "couplemassage",
+              "anthuong",
+              "spas"
+            ],
+            "altText": "A man and a woman receiving side by side massages from two therapists in a bright room.",
+            "storyText": "Side by side massage in your room this afternoon 🌸"
           }
         ]
       }
@@ -68,15 +82,15 @@
       "posts": [
         {
           "id": "post-1",
-          "caption": "Can I get a massage in my room tonight? 🌸\n\nOur trained therapists come to your Da Nang hotel for sixty minutes of tension release. Linens, towels and oils included.\n\nFree travel in our core areas 🪷",
+          "caption": "Side by side with your friend in your An Thuong villa this afternoon? 🌸\n\nTwo therapists bring tables and oils right to your room. You share a couple massage while the daylight lasts outside.\n\nNo upfront deposit required 🌺",
           "hashtags": [
             "danang",
-            "deeptissue",
-            "massage",
-            "spa"
+            "couplemassage",
+            "anthuong",
+            "spas"
           ],
-          "altText": "A woman relaxing on a massage bed in a hotel room at night while a therapist works on her shoulders.",
-          "storyText": "Need an in-room massage tonight? We come to you 🪷"
+          "altText": "A man and a woman receiving side by side massages from two therapists in a bright room.",
+          "storyText": "Side by side massage in your room this afternoon 🌸"
         }
       ]
     }

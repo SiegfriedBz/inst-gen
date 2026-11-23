@@ -1,20 +1,16 @@
 {
   "modelId": "gemini-3.5-flash-lite",
-  "promptVersion": "posts-18",
+  "promptVersion": "posts-19",
   "recording": {
     "modelId": "gemini-3.5-flash-lite",
-    "promptVersion": "posts-18",
+    "promptVersion": "posts-19",
     "partials": [
-      {
-        "posts": [
-          {}
-        ]
-      },
+      {},
       {
         "posts": [
           {
             "type": "offer",
-            "topic": "Traditional Balinese massage for tired legs"
+            "topic": "Surf and sport recovery massage for sore"
           }
         ]
       },
@@ -22,9 +18,9 @@
         "posts": [
           {
             "type": "offer",
-            "topic": "Traditional Balinese massage for tired legs",
-            "scene": "detail",
-            "caption": "Are your legs heavy after walking all day in Canggu? "
+            "topic": "Surf and sport recovery massage for sore legs in Canggu",
+            "scene": "guest",
+            "caption": "Legs heavy from the long"
           }
         ]
       },
@@ -32,9 +28,9 @@
         "posts": [
           {
             "type": "offer",
-            "topic": "Traditional Balinese massage for tired legs",
-            "scene": "detail",
-            "caption": "Are your legs heavy after walking all day in Canggu? 🌸 We use warm coconut oil and long strokes to loosen tight muscles. Experienced local therapists bring a Balinese massage to your villa or"
+            "topic": "Surf and sport recovery massage for sore legs in Canggu",
+            "scene": "guest",
+            "caption": "Legs heavy from the long surf session at Echo Beach? 🌸\n\nA therapist comes to your Canggu villa to work your calves and feet"
           }
         ]
       },
@@ -42,11 +38,23 @@
         "posts": [
           {
             "type": "offer",
-            "topic": "Traditional Balinese massage for tired legs",
-            "scene": "detail",
-            "caption": "Are your legs heavy after walking all day in Canggu? 🌸 We use warm coconut oil and long strokes to loosen tight muscles. Experienced local therapists bring a Balinese massage to your villa or hotel: book on WhatsApp and relax. 🌼",
+            "topic": "Surf and sport recovery massage for sore legs in Canggu",
+            "scene": "guest",
+            "caption": "Legs heavy from the long surf session at Echo Beach? 🌸\n\nA therapist comes to your Canggu villa to work your calves and feet. You stay right where you are for the rest of the afternoon.\n\nNo upfront deposit for villas and hotels 🌺"
+          }
+        ]
+      },
+      {
+        "posts": [
+          {
+            "type": "offer",
+            "topic": "Surf and sport recovery massage for sore legs in Canggu",
+            "scene": "guest",
+            "caption": "Legs heavy from the long surf session at Echo Beach? 🌸\n\nA therapist comes to your Canggu villa to work your calves and feet. You stay right where you are for the rest of the afternoon.\n\nNo upfront deposit for villas and hotels 🌺",
             "hashtags": [
-              "canggu"
+              "canggu",
+              "massagemancanggu",
+              ""
             ]
           }
         ]
@@ -55,14 +63,240 @@
         "posts": [
           {
             "type": "offer",
-            "topic": "Traditional Balinese massage for tired legs",
-            "scene": "detail",
-            "caption": "Are your legs heavy after walking all day in Canggu? 🌸 We use warm coconut oil and long strokes to loosen tight muscles. Experienced local therapists bring a Balinese massage to your villa or hotel: book on WhatsApp and relax. 🌼",
+            "topic": "Surf and sport recovery massage for sore legs in Canggu",
+            "scene": "guest",
+            "caption": "Legs heavy from the long surf session at Echo Beach? 🌸\n\nA therapist comes to your Canggu villa to work your calves and feet. You stay right where you are for the rest of the afternoon.\n\nNo upfront deposit for villas and hotels 🌺",
             "hashtags": [
               "canggu",
+              "massagemancanggu",
+              "surfrecovery",
+              "balimassage"
+            ],
+            "altText": "A woman lying on a"
+          }
+        ]
+      },
+      {
+        "posts": [
+          {
+            "type": "offer",
+            "topic": "Surf and sport recovery massage for sore legs in Canggu",
+            "scene": "guest",
+            "caption": "Legs heavy from the long surf session at Echo Beach? 🌸\n\nA therapist comes to your Canggu villa to work your calves and feet. You stay right where you are for the rest of the afternoon.\n\nNo upfront deposit for villas and hotels 🌺",
+            "hashtags": [
+              "canggu",
+              "massagemancanggu",
+              "surfrecovery",
+              "balimassage"
+            ],
+            "altText": "A woman lying on a massage bed from above as a therapist works on her back in soft afternoon light.",
+            "imagePrompt": "A tall "
+          }
+        ]
+      },
+      {
+        "posts": [
+          {
+            "type": "offer",
+            "topic": "Surf and sport recovery massage for sore legs in Canggu",
+            "scene": "guest",
+            "caption": "Legs heavy from the long surf session at Echo Beach? 🌸\n\nA therapist comes to your Canggu villa to work your calves and feet. You stay right where you are for the rest of the afternoon.\n\nNo upfront deposit for villas and hotels 🌺",
+            "hashtags": [
+              "canggu",
+              "massagemancanggu",
+              "surfrecovery",
+              "balimassage"
+            ],
+            "altText": "A woman lying on a massage bed from above as a therapist works on her back in soft afternoon light.",
+            "imagePrompt": "A tall 9:16 photo. A woman lying relaxed on a massage bed, seen from above. A female therapist's hands are working golden"
+          }
+        ]
+      },
+      {
+        "posts": [
+          {
+            "type": "offer",
+            "topic": "Surf and sport recovery massage for sore legs in Canggu",
+            "scene": "guest",
+            "caption": "Legs heavy from the long surf session at Echo Beach? 🌸\n\nA therapist comes to your Canggu villa to work your calves and feet. You stay right where you are for the rest of the afternoon.\n\nNo upfront deposit for villas and hotels 🌺",
+            "hashtags": [
+              "canggu",
+              "massagemancanggu",
+              "surfrecovery",
+              "balimassage"
+            ],
+            "altText": "A woman lying on a massage bed from above as a therapist works on her back in soft afternoon light.",
+            "imagePrompt": "A tall 9:16 photo. A woman lying relaxed on a massage bed, seen from above. A female therapist's hands are working golden oil into her back. The room opens onto tropical palms outside in soft shade. Late afternoon warm light, lamps lit inside."
+          }
+        ]
+      },
+      {
+        "posts": [
+          {
+            "type": "offer",
+            "topic": "Surf and sport recovery massage for sore legs in Canggu",
+            "scene": "guest",
+            "caption": "Legs heavy from the long surf session at Echo Beach? 🌸\n\nA therapist comes to your Canggu villa to work your calves and feet. You stay right where you are for the rest of the afternoon.\n\nNo upfront deposit for villas and hotels 🌺",
+            "hashtags": [
+              "canggu",
+              "massagemancanggu",
+              "surfrecovery",
+              "balimassage"
+            ],
+            "altText": "A woman lying on a massage bed from above as a therapist works on her back in soft afternoon light.",
+            "imagePrompt": "A tall 9:16 photo. A woman lying relaxed on a massage bed, seen from above. A female therapist's hands are working golden oil into her back. The room opens onto tropical palms outside in soft shade. Late afternoon warm light, lamps lit inside. A surfboard leans against the far balcony rail out of focus.",
+            "storyText": "Echo Beach surf in your legs? We"
+          }
+        ]
+      },
+      {
+        "posts": [
+          {
+            "type": "offer",
+            "topic": "Surf and sport recovery massage for sore legs in Canggu",
+            "scene": "guest",
+            "caption": "Legs heavy from the long surf session at Echo Beach? 🌸\n\nA therapist comes to your Canggu villa to work your calves and feet. You stay right where you are for the rest of the afternoon.\n\nNo upfront deposit for villas and hotels 🌺",
+            "hashtags": [
+              "canggu",
+              "massagemancanggu",
+              "surfrecovery",
+              "balimassage"
+            ],
+            "altText": "A woman lying on a massage bed from above as a therapist works on her back in soft afternoon light.",
+            "imagePrompt": "A tall 9:16 photo. A woman lying relaxed on a massage bed, seen from above. A female therapist's hands are working golden oil into her back. The room opens onto tropical palms outside in soft shade. Late afternoon warm light, lamps lit inside. A surfboard leans against the far balcony rail out of focus.",
+            "storyText": "Echo Beach surf in your legs? We come to you today 🌸"
+          },
+          {
+            "type": "moment"
+          }
+        ]
+      },
+      {
+        "posts": [
+          {
+            "type": "offer",
+            "topic": "Surf and sport recovery massage for sore legs in Canggu",
+            "scene": "guest",
+            "caption": "Legs heavy from the long surf session at Echo Beach? 🌸\n\nA therapist comes to your Canggu villa to work your calves and feet. You stay right where you are for the rest of the afternoon.\n\nNo upfront deposit for villas and hotels 🌺",
+            "hashtags": [
+              "canggu",
+              "massagemancanggu",
+              "surfrecovery",
+              "balimassage"
+            ],
+            "altText": "A woman lying on a massage bed from above as a therapist works on her back in soft afternoon light.",
+            "imagePrompt": "A tall 9:16 photo. A woman lying relaxed on a massage bed, seen from above. A female therapist's hands are working golden oil into her back. The room opens onto tropical palms outside in soft shade. Late afternoon warm light, lamps lit inside. A surfboard leans against the far balcony rail out of focus.",
+            "storyText": "Echo Beach surf in your legs? We come to you today 🌸"
+          },
+          {
+            "type": "moment",
+            "topic": "Balinese lulur scrub and massage for laptop tension in Seminyak",
+            "scene": "detail"
+          }
+        ]
+      },
+      {
+        "posts": [
+          {
+            "type": "offer",
+            "topic": "Surf and sport recovery massage for sore legs in Canggu",
+            "scene": "guest",
+            "caption": "Legs heavy from the long surf session at Echo Beach? 🌸\n\nA therapist comes to your Canggu villa to work your calves and feet. You stay right where you are for the rest of the afternoon.\n\nNo upfront deposit for villas and hotels 🌺",
+            "hashtags": [
+              "canggu",
+              "massagemancanggu",
+              "surfrecovery",
+              "balimassage"
+            ],
+            "altText": "A woman lying on a massage bed from above as a therapist works on her back in soft afternoon light.",
+            "imagePrompt": "A tall 9:16 photo. A woman lying relaxed on a massage bed, seen from above. A female therapist's hands are working golden oil into her back. The room opens onto tropical palms outside in soft shade. Late afternoon warm light, lamps lit inside. A surfboard leans against the far balcony rail out of focus.",
+            "storyText": "Echo Beach surf in your legs? We come to you today 🌸"
+          },
+          {
+            "type": "moment",
+            "topic": "Balinese lulur scrub and massage for laptop tension in Seminyak",
+            "scene": "detail",
+            "caption": "A week of laptop work, and now your neck won't turn? 🌺\n"
+          }
+        ]
+      },
+      {
+        "posts": [
+          {
+            "type": "offer",
+            "topic": "Surf and sport recovery massage for sore legs in Canggu",
+            "scene": "guest",
+            "caption": "Legs heavy from the long surf session at Echo Beach? 🌸\n\nA therapist comes to your Canggu villa to work your calves and feet. You stay right where you are for the rest of the afternoon.\n\nNo upfront deposit for villas and hotels 🌺",
+            "hashtags": [
+              "canggu",
+              "massagemancanggu",
+              "surfrecovery",
+              "balimassage"
+            ],
+            "altText": "A woman lying on a massage bed from above as a therapist works on her back in soft afternoon light.",
+            "imagePrompt": "A tall 9:16 photo. A woman lying relaxed on a massage bed, seen from above. A female therapist's hands are working golden oil into her back. The room opens onto tropical palms outside in soft shade. Late afternoon warm light, lamps lit inside. A surfboard leans against the far balcony rail out of focus.",
+            "storyText": "Echo Beach surf in your legs? We come to you today 🌸"
+          },
+          {
+            "type": "moment",
+            "topic": "Balinese lulur scrub and massage for laptop tension in Seminyak",
+            "scene": "detail",
+            "caption": "A week of laptop work, and now your neck won't turn? 🌺\n\nA therapist brings a full scrub and massage to your Seminyak apartment tonight. You rest your arms while the turmeric and rice"
+          }
+        ]
+      },
+      {
+        "posts": [
+          {
+            "type": "offer",
+            "topic": "Surf and sport recovery massage for sore legs in Canggu",
+            "scene": "guest",
+            "caption": "Legs heavy from the long surf session at Echo Beach? 🌸\n\nA therapist comes to your Canggu villa to work your calves and feet. You stay right where you are for the rest of the afternoon.\n\nNo upfront deposit for villas and hotels 🌺",
+            "hashtags": [
+              "canggu",
+              "massagemancanggu",
+              "surfrecovery",
+              "balimassage"
+            ],
+            "altText": "A woman lying on a massage bed from above as a therapist works on her back in soft afternoon light.",
+            "imagePrompt": "A tall 9:16 photo. A woman lying relaxed on a massage bed, seen from above. A female therapist's hands are working golden oil into her back. The room opens onto tropical palms outside in soft shade. Late afternoon warm light, lamps lit inside. A surfboard leans against the far balcony rail out of focus.",
+            "storyText": "Echo Beach surf in your legs? We come to you today 🌸"
+          },
+          {
+            "type": "moment",
+            "topic": "Balinese lulur scrub and massage for laptop tension in Seminyak",
+            "scene": "detail",
+            "caption": "A week of laptop work, and now your neck won't turn? 🌺\n\nA therapist brings a full scrub and massage to your Seminyak apartment tonight. You rest your arms while the turmeric and rice powder work.\n\nFresh linens, towels, and natural oils brought to you 🪷"
+          }
+        ]
+      },
+      {
+        "posts": [
+          {
+            "type": "offer",
+            "topic": "Surf and sport recovery massage for sore legs in Canggu",
+            "scene": "guest",
+            "caption": "Legs heavy from the long surf session at Echo Beach? 🌸\n\nA therapist comes to your Canggu villa to work your calves and feet. You stay right where you are for the rest of the afternoon.\n\nNo upfront deposit for villas and hotels 🌺",
+            "hashtags": [
+              "canggu",
+              "massagemancanggu",
+              "surfrecovery",
+              "balimassage"
+            ],
+            "altText": "A woman lying on a massage bed from above as a therapist works on her back in soft afternoon light.",
+            "imagePrompt": "A tall 9:16 photo. A woman lying relaxed on a massage bed, seen from above. A female therapist's hands are working golden oil into her back. The room opens onto tropical palms outside in soft shade. Late afternoon warm light, lamps lit inside. A surfboard leans against the far balcony rail out of focus.",
+            "storyText": "Echo Beach surf in your legs? We come to you today 🌸"
+          },
+          {
+            "type": "moment",
+            "topic": "Balinese lulur scrub and massage for laptop tension in Seminyak",
+            "scene": "detail",
+            "caption": "A week of laptop work, and now your neck won't turn? 🌺\n\nA therapist brings a full scrub and massage to your Seminyak apartment tonight. You rest your arms while the turmeric and rice powder work.\n\nFresh linens, towels, and natural oils brought to you 🪷",
+            "hashtags": [
+              "seminyak",
               "balinesemassage",
-              "massagecanggu",
-              "spas"
+              "spaseminyak",
+              ""
             ]
           }
         ]
@@ -71,111 +305,31 @@
         "posts": [
           {
             "type": "offer",
-            "topic": "Traditional Balinese massage for tired legs",
-            "scene": "detail",
-            "caption": "Are your legs heavy after walking all day in Canggu? 🌸 We use warm coconut oil and long strokes to loosen tight muscles. Experienced local therapists bring a Balinese massage to your villa or hotel: book on WhatsApp and relax. 🌼",
+            "topic": "Surf and sport recovery massage for sore legs in Canggu",
+            "scene": "guest",
+            "caption": "Legs heavy from the long surf session at Echo Beach? 🌸\n\nA therapist comes to your Canggu villa to work your calves and feet. You stay right where you are for the rest of the afternoon.\n\nNo upfront deposit for villas and hotels 🌺",
             "hashtags": [
               "canggu",
-              "balinesemassage",
-              "massagecanggu",
-              "spas"
+              "massagemancanggu",
+              "surfrecovery",
+              "balimassage"
             ],
-            "altText": "Warm golden oil poured onto a woman's legs on a white massage"
-          }
-        ]
-      },
-      {
-        "posts": [
-          {
-            "type": "offer",
-            "topic": "Traditional Balinese massage for tired legs",
-            "scene": "detail",
-            "caption": "Are your legs heavy after walking all day in Canggu? 🌸 We use warm coconut oil and long strokes to loosen tight muscles. Experienced local therapists bring a Balinese massage to your villa or hotel: book on WhatsApp and relax. 🌼",
-            "hashtags": [
-              "canggu",
-              "balinesemassage",
-              "massagecanggu",
-              "spas"
-            ],
-            "altText": "Warm golden oil poured onto a woman's legs on a white massage bed in a sunny room.",
-            "imagePrompt": "Vertical 9:16 photo. A woman lies"
-          }
-        ]
-      },
-      {
-        "posts": [
-          {
-            "type": "offer",
-            "topic": "Traditional Balinese massage for tired legs",
-            "scene": "detail",
-            "caption": "Are your legs heavy after walking all day in Canggu? 🌸 We use warm coconut oil and long strokes to loosen tight muscles. Experienced local therapists bring a Balinese massage to your villa or hotel: book on WhatsApp and relax. 🌼",
-            "hashtags": [
-              "canggu",
-              "balinesemassage",
-              "massagecanggu",
-              "spas"
-            ],
-            "altText": "Warm golden oil poured onto a woman's legs on a white massage bed in a sunny room.",
-            "imagePrompt": "Vertical 9:16 photo. A woman lies relaxed on a massage bed. A female therapist pours warm golden oil onto her legs. Close view of the hands on the body"
-          }
-        ]
-      },
-      {
-        "posts": [
-          {
-            "type": "offer",
-            "topic": "Traditional Balinese massage for tired legs",
-            "scene": "detail",
-            "caption": "Are your legs heavy after walking all day in Canggu? 🌸 We use warm coconut oil and long strokes to loosen tight muscles. Experienced local therapists bring a Balinese massage to your villa or hotel: book on WhatsApp and relax. 🌼",
-            "hashtags": [
-              "canggu",
-              "balinesemassage",
-              "massagecanggu",
-              "spas"
-            ],
-            "altText": "Warm golden oil poured onto a woman's legs on a white massage bed in a sunny room.",
-            "imagePrompt": "Vertical 9:16 photo. A woman lies relaxed on a massage bed. A female therapist pours warm golden oil onto her legs. Close view of the hands on the body. Late afternoon, the lamps lit inside the main light, the garden outside through wide windows in soft shade with no sunlight on"
-          }
-        ]
-      },
-      {
-        "posts": [
-          {
-            "type": "offer",
-            "topic": "Traditional Balinese massage for tired legs",
-            "scene": "detail",
-            "caption": "Are your legs heavy after walking all day in Canggu? 🌸 We use warm coconut oil and long strokes to loosen tight muscles. Experienced local therapists bring a Balinese massage to your villa or hotel: book on WhatsApp and relax. 🌼",
-            "hashtags": [
-              "canggu",
-              "balinesemassage",
-              "massagecanggu",
-              "spas"
-            ],
-            "altText": "Warm golden oil poured onto a woman's legs on a white massage bed in a sunny room.",
-            "imagePrompt": "Vertical 9:16 photo. A woman lies relaxed on a massage bed. A female therapist pours warm golden oil onto her legs. Close view of the hands on the body. Late afternoon, the lamps lit inside the main light, the garden outside through wide windows in soft shade with no sunlight on it. Clean white linens, simple and warm. No text, no logos.",
-            "storyText": "Heavy"
-          }
-        ]
-      },
-      {
-        "posts": [
-          {
-            "type": "offer",
-            "topic": "Traditional Balinese massage for tired legs",
-            "scene": "detail",
-            "caption": "Are your legs heavy after walking all day in Canggu? 🌸 We use warm coconut oil and long strokes to loosen tight muscles. Experienced local therapists bring a Balinese massage to your villa or hotel: book on WhatsApp and relax. 🌼",
-            "hashtags": [
-              "canggu",
-              "balinesemassage",
-              "massagecanggu",
-              "spas"
-            ],
-            "altText": "Warm golden oil poured onto a woman's legs on a white massage bed in a sunny room.",
-            "imagePrompt": "Vertical 9:16 photo. A woman lies relaxed on a massage bed. A female therapist pours warm golden oil onto her legs. Close view of the hands on the body. Late afternoon, the lamps lit inside the main light, the garden outside through wide windows in soft shade with no sunlight on it. Clean white linens, simple and warm. No text, no logos.",
-            "storyText": "Heavy legs? Our oil massage helps."
+            "altText": "A woman lying on a massage bed from above as a therapist works on her back in soft afternoon light.",
+            "imagePrompt": "A tall 9:16 photo. A woman lying relaxed on a massage bed, seen from above. A female therapist's hands are working golden oil into her back. The room opens onto tropical palms outside in soft shade. Late afternoon warm light, lamps lit inside. A surfboard leans against the far balcony rail out of focus.",
+            "storyText": "Echo Beach surf in your legs? We come to you today 🌸"
           },
           {
-            "type": "local"
+            "type": "moment",
+            "topic": "Balinese lulur scrub and massage for laptop tension in Seminyak",
+            "scene": "detail",
+            "caption": "A week of laptop work, and now your neck won't turn? 🌺\n\nA therapist brings a full scrub and massage to your Seminyak apartment tonight. You rest your arms while the turmeric and rice powder work.\n\nFresh linens, towels, and natural oils brought to you 🪷",
+            "hashtags": [
+              "seminyak",
+              "balinesemassage",
+              "spaseminyak",
+              "bodyscrub"
+            ],
+            "altText": "Close view of a therapist's hands applying scrub"
           }
         ]
       },
@@ -183,24 +337,32 @@
         "posts": [
           {
             "type": "offer",
-            "topic": "Traditional Balinese massage for tired legs",
-            "scene": "detail",
-            "caption": "Are your legs heavy after walking all day in Canggu? 🌸 We use warm coconut oil and long strokes to loosen tight muscles. Experienced local therapists bring a Balinese massage to your villa or hotel: book on WhatsApp and relax. 🌼",
+            "topic": "Surf and sport recovery massage for sore legs in Canggu",
+            "scene": "guest",
+            "caption": "Legs heavy from the long surf session at Echo Beach? 🌸\n\nA therapist comes to your Canggu villa to work your calves and feet. You stay right where you are for the rest of the afternoon.\n\nNo upfront deposit for villas and hotels 🌺",
             "hashtags": [
               "canggu",
-              "balinesemassage",
-              "massagecanggu",
-              "spas"
+              "massagemancanggu",
+              "surfrecovery",
+              "balimassage"
             ],
-            "altText": "Warm golden oil poured onto a woman's legs on a white massage bed in a sunny room.",
-            "imagePrompt": "Vertical 9:16 photo. A woman lies relaxed on a massage bed. A female therapist pours warm golden oil onto her legs. Close view of the hands on the body. Late afternoon, the lamps lit inside the main light, the garden outside through wide windows in soft shade with no sunlight on it. Clean white linens, simple and warm. No text, no logos.",
-            "storyText": "Heavy legs? Our oil massage helps."
+            "altText": "A woman lying on a massage bed from above as a therapist works on her back in soft afternoon light.",
+            "imagePrompt": "A tall 9:16 photo. A woman lying relaxed on a massage bed, seen from above. A female therapist's hands are working golden oil into her back. The room opens onto tropical palms outside in soft shade. Late afternoon warm light, lamps lit inside. A surfboard leans against the far balcony rail out of focus.",
+            "storyText": "Echo Beach surf in your legs? We come to you today 🌸"
           },
           {
-            "type": "local",
-            "topic": "Foot reflexology in Canggu tonight",
-            "scene": "place",
-            "caption": "Can someone"
+            "type": "moment",
+            "topic": "Balinese lulur scrub and massage for laptop tension in Seminyak",
+            "scene": "detail",
+            "caption": "A week of laptop work, and now your neck won't turn? 🌺\n\nA therapist brings a full scrub and massage to your Seminyak apartment tonight. You rest your arms while the turmeric and rice powder work.\n\nFresh linens, towels, and natural oils brought to you 🪷",
+            "hashtags": [
+              "seminyak",
+              "balinesemassage",
+              "spaseminyak",
+              "bodyscrub"
+            ],
+            "altText": "Close view of a therapist's hands applying scrub to a man's arm on a massage bed at night.",
+            "imagePrompt": "A tall 9:16 photo."
           }
         ]
       },
@@ -208,24 +370,32 @@
         "posts": [
           {
             "type": "offer",
-            "topic": "Traditional Balinese massage for tired legs",
-            "scene": "detail",
-            "caption": "Are your legs heavy after walking all day in Canggu? 🌸 We use warm coconut oil and long strokes to loosen tight muscles. Experienced local therapists bring a Balinese massage to your villa or hotel: book on WhatsApp and relax. 🌼",
+            "topic": "Surf and sport recovery massage for sore legs in Canggu",
+            "scene": "guest",
+            "caption": "Legs heavy from the long surf session at Echo Beach? 🌸\n\nA therapist comes to your Canggu villa to work your calves and feet. You stay right where you are for the rest of the afternoon.\n\nNo upfront deposit for villas and hotels 🌺",
             "hashtags": [
               "canggu",
-              "balinesemassage",
-              "massagecanggu",
-              "spas"
+              "massagemancanggu",
+              "surfrecovery",
+              "balimassage"
             ],
-            "altText": "Warm golden oil poured onto a woman's legs on a white massage bed in a sunny room.",
-            "imagePrompt": "Vertical 9:16 photo. A woman lies relaxed on a massage bed. A female therapist pours warm golden oil onto her legs. Close view of the hands on the body. Late afternoon, the lamps lit inside the main light, the garden outside through wide windows in soft shade with no sunlight on it. Clean white linens, simple and warm. No text, no logos.",
-            "storyText": "Heavy legs? Our oil massage helps."
+            "altText": "A woman lying on a massage bed from above as a therapist works on her back in soft afternoon light.",
+            "imagePrompt": "A tall 9:16 photo. A woman lying relaxed on a massage bed, seen from above. A female therapist's hands are working golden oil into her back. The room opens onto tropical palms outside in soft shade. Late afternoon warm light, lamps lit inside. A surfboard leans against the far balcony rail out of focus.",
+            "storyText": "Echo Beach surf in your legs? We come to you today 🌸"
           },
           {
-            "type": "local",
-            "topic": "Foot reflexology in Canggu tonight",
-            "scene": "place",
-            "caption": "Can someone come to my villa tonight for my tired feet? 🪷 We press reflex points to help you rest well"
+            "type": "moment",
+            "topic": "Balinese lulur scrub and massage for laptop tension in Seminyak",
+            "scene": "detail",
+            "caption": "A week of laptop work, and now your neck won't turn? 🌺\n\nA therapist brings a full scrub and massage to your Seminyak apartment tonight. You rest your arms while the turmeric and rice powder work.\n\nFresh linens, towels, and natural oils brought to you 🪷",
+            "hashtags": [
+              "seminyak",
+              "balinesemassage",
+              "spaseminyak",
+              "bodyscrub"
+            ],
+            "altText": "Close view of a therapist's hands applying scrub to a man's arm on a massage bed at night.",
+            "imagePrompt": "A tall 9:16 photo. A close view of a female therapist's hands spreading a lulur scrub onto a man's arm on a massage bed."
           }
         ]
       },
@@ -233,27 +403,32 @@
         "posts": [
           {
             "type": "offer",
-            "topic": "Traditional Balinese massage for tired legs",
-            "scene": "detail",
-            "caption": "Are your legs heavy after walking all day in Canggu? 🌸 We use warm coconut oil and long strokes to loosen tight muscles. Experienced local therapists bring a Balinese massage to your villa or hotel: book on WhatsApp and relax. 🌼",
+            "topic": "Surf and sport recovery massage for sore legs in Canggu",
+            "scene": "guest",
+            "caption": "Legs heavy from the long surf session at Echo Beach? 🌸\n\nA therapist comes to your Canggu villa to work your calves and feet. You stay right where you are for the rest of the afternoon.\n\nNo upfront deposit for villas and hotels 🌺",
             "hashtags": [
               "canggu",
-              "balinesemassage",
-              "massagecanggu",
-              "spas"
+              "massagemancanggu",
+              "surfrecovery",
+              "balimassage"
             ],
-            "altText": "Warm golden oil poured onto a woman's legs on a white massage bed in a sunny room.",
-            "imagePrompt": "Vertical 9:16 photo. A woman lies relaxed on a massage bed. A female therapist pours warm golden oil onto her legs. Close view of the hands on the body. Late afternoon, the lamps lit inside the main light, the garden outside through wide windows in soft shade with no sunlight on it. Clean white linens, simple and warm. No text, no logos.",
-            "storyText": "Heavy legs? Our oil massage helps."
+            "altText": "A woman lying on a massage bed from above as a therapist works on her back in soft afternoon light.",
+            "imagePrompt": "A tall 9:16 photo. A woman lying relaxed on a massage bed, seen from above. A female therapist's hands are working golden oil into her back. The room opens onto tropical palms outside in soft shade. Late afternoon warm light, lamps lit inside. A surfboard leans against the far balcony rail out of focus.",
+            "storyText": "Echo Beach surf in your legs? We come to you today 🌸"
           },
           {
-            "type": "local",
-            "topic": "Foot reflexology in Canggu tonight",
-            "scene": "place",
-            "caption": "Can someone come to my villa tonight for my tired feet? 🪷 We press reflex points to help you rest well tonight. Fresh linens, towels, and natural oils provided. 🌺",
+            "type": "moment",
+            "topic": "Balinese lulur scrub and massage for laptop tension in Seminyak",
+            "scene": "detail",
+            "caption": "A week of laptop work, and now your neck won't turn? 🌺\n\nA therapist brings a full scrub and massage to your Seminyak apartment tonight. You rest your arms while the turmeric and rice powder work.\n\nFresh linens, towels, and natural oils brought to you 🪷",
             "hashtags": [
-              "canggu"
-            ]
+              "seminyak",
+              "balinesemassage",
+              "spaseminyak",
+              "bodyscrub"
+            ],
+            "altText": "Close view of a therapist's hands applying scrub to a man's arm on a massage bed at night.",
+            "imagePrompt": "A tall 9:16 photo. A close view of a female therapist's hands spreading a lulur scrub onto a man's arm on a massage bed. A small wooden bowl of turmeric scrub sits nearby. Evening, lamps and candles giving the room a warm golden glow, the"
           }
         ]
       },
@@ -261,31 +436,32 @@
         "posts": [
           {
             "type": "offer",
-            "topic": "Traditional Balinese massage for tired legs",
-            "scene": "detail",
-            "caption": "Are your legs heavy after walking all day in Canggu? 🌸 We use warm coconut oil and long strokes to loosen tight muscles. Experienced local therapists bring a Balinese massage to your villa or hotel: book on WhatsApp and relax. 🌼",
+            "topic": "Surf and sport recovery massage for sore legs in Canggu",
+            "scene": "guest",
+            "caption": "Legs heavy from the long surf session at Echo Beach? 🌸\n\nA therapist comes to your Canggu villa to work your calves and feet. You stay right where you are for the rest of the afternoon.\n\nNo upfront deposit for villas and hotels 🌺",
             "hashtags": [
               "canggu",
-              "balinesemassage",
-              "massagecanggu",
-              "spas"
+              "massagemancanggu",
+              "surfrecovery",
+              "balimassage"
             ],
-            "altText": "Warm golden oil poured onto a woman's legs on a white massage bed in a sunny room.",
-            "imagePrompt": "Vertical 9:16 photo. A woman lies relaxed on a massage bed. A female therapist pours warm golden oil onto her legs. Close view of the hands on the body. Late afternoon, the lamps lit inside the main light, the garden outside through wide windows in soft shade with no sunlight on it. Clean white linens, simple and warm. No text, no logos.",
-            "storyText": "Heavy legs? Our oil massage helps."
+            "altText": "A woman lying on a massage bed from above as a therapist works on her back in soft afternoon light.",
+            "imagePrompt": "A tall 9:16 photo. A woman lying relaxed on a massage bed, seen from above. A female therapist's hands are working golden oil into her back. The room opens onto tropical palms outside in soft shade. Late afternoon warm light, lamps lit inside. A surfboard leans against the far balcony rail out of focus.",
+            "storyText": "Echo Beach surf in your legs? We come to you today 🌸"
           },
           {
-            "type": "local",
-            "topic": "Foot reflexology in Canggu tonight",
-            "scene": "place",
-            "caption": "Can someone come to my villa tonight for my tired feet? 🪷 We press reflex points to help you rest well tonight. Fresh linens, towels, and natural oils provided. 🌺",
+            "type": "moment",
+            "topic": "Balinese lulur scrub and massage for laptop tension in Seminyak",
+            "scene": "detail",
+            "caption": "A week of laptop work, and now your neck won't turn? 🌺\n\nA therapist brings a full scrub and massage to your Seminyak apartment tonight. You rest your arms while the turmeric and rice powder work.\n\nFresh linens, towels, and natural oils brought to you 🪷",
             "hashtags": [
-              "canggu",
-              "bali",
-              "reflexology",
-              "massage"
+              "seminyak",
+              "balinesemassage",
+              "spaseminyak",
+              "bodyscrub"
             ],
-            "altText": "A man"
+            "altText": "Close view of a therapist's hands applying scrub to a man's arm on a massage bed at night.",
+            "imagePrompt": "A tall 9:16 photo. A close view of a female therapist's hands spreading a lulur scrub onto a man's arm on a massage bed. A small wooden bowl of turmeric scrub sits nearby. Evening, lamps and candles giving the room a warm golden glow, the garden outside lit by lanterns under a deep blue sky. A closed laptop rests far in the background on a desk."
           }
         ]
       },
@@ -293,165 +469,33 @@
         "posts": [
           {
             "type": "offer",
-            "topic": "Traditional Balinese massage for tired legs",
-            "scene": "detail",
-            "caption": "Are your legs heavy after walking all day in Canggu? 🌸 We use warm coconut oil and long strokes to loosen tight muscles. Experienced local therapists bring a Balinese massage to your villa or hotel: book on WhatsApp and relax. 🌼",
+            "topic": "Surf and sport recovery massage for sore legs in Canggu",
+            "scene": "guest",
+            "caption": "Legs heavy from the long surf session at Echo Beach? 🌸\n\nA therapist comes to your Canggu villa to work your calves and feet. You stay right where you are for the rest of the afternoon.\n\nNo upfront deposit for villas and hotels 🌺",
             "hashtags": [
               "canggu",
-              "balinesemassage",
-              "massagecanggu",
-              "spas"
+              "massagemancanggu",
+              "surfrecovery",
+              "balimassage"
             ],
-            "altText": "Warm golden oil poured onto a woman's legs on a white massage bed in a sunny room.",
-            "imagePrompt": "Vertical 9:16 photo. A woman lies relaxed on a massage bed. A female therapist pours warm golden oil onto her legs. Close view of the hands on the body. Late afternoon, the lamps lit inside the main light, the garden outside through wide windows in soft shade with no sunlight on it. Clean white linens, simple and warm. No text, no logos.",
-            "storyText": "Heavy legs? Our oil massage helps."
+            "altText": "A woman lying on a massage bed from above as a therapist works on her back in soft afternoon light.",
+            "imagePrompt": "A tall 9:16 photo. A woman lying relaxed on a massage bed, seen from above. A female therapist's hands are working golden oil into her back. The room opens onto tropical palms outside in soft shade. Late afternoon warm light, lamps lit inside. A surfboard leans against the far balcony rail out of focus.",
+            "storyText": "Echo Beach surf in your legs? We come to you today 🌸"
           },
           {
-            "type": "local",
-            "topic": "Foot reflexology in Canggu tonight",
-            "scene": "place",
-            "caption": "Can someone come to my villa tonight for my tired feet? 🪷 We press reflex points to help you rest well tonight. Fresh linens, towels, and natural oils provided. 🌺",
-            "hashtags": [
-              "canggu",
-              "bali",
-              "reflexology",
-              "massage"
-            ],
-            "altText": "A man sitting back in a reclining chair with feet on a towel while a therapist works on them at night.",
-            "imagePrompt": "Vertical "
-          }
-        ]
-      },
-      {
-        "posts": [
-          {
-            "type": "offer",
-            "topic": "Traditional Balinese massage for tired legs",
+            "type": "moment",
+            "topic": "Balinese lulur scrub and massage for laptop tension in Seminyak",
             "scene": "detail",
-            "caption": "Are your legs heavy after walking all day in Canggu? 🌸 We use warm coconut oil and long strokes to loosen tight muscles. Experienced local therapists bring a Balinese massage to your villa or hotel: book on WhatsApp and relax. 🌼",
+            "caption": "A week of laptop work, and now your neck won't turn? 🌺\n\nA therapist brings a full scrub and massage to your Seminyak apartment tonight. You rest your arms while the turmeric and rice powder work.\n\nFresh linens, towels, and natural oils brought to you 🪷",
             "hashtags": [
-              "canggu",
+              "seminyak",
               "balinesemassage",
-              "massagecanggu",
-              "spas"
+              "spaseminyak",
+              "bodyscrub"
             ],
-            "altText": "Warm golden oil poured onto a woman's legs on a white massage bed in a sunny room.",
-            "imagePrompt": "Vertical 9:16 photo. A woman lies relaxed on a massage bed. A female therapist pours warm golden oil onto her legs. Close view of the hands on the body. Late afternoon, the lamps lit inside the main light, the garden outside through wide windows in soft shade with no sunlight on it. Clean white linens, simple and warm. No text, no logos.",
-            "storyText": "Heavy legs? Our oil massage helps."
-          },
-          {
-            "type": "local",
-            "topic": "Foot reflexology in Canggu tonight",
-            "scene": "place",
-            "caption": "Can someone come to my villa tonight for my tired feet? 🪷 We press reflex points to help you rest well tonight. Fresh linens, towels, and natural oils provided. 🌺",
-            "hashtags": [
-              "canggu",
-              "bali",
-              "reflexology",
-              "massage"
-            ],
-            "altText": "A man sitting back in a reclining chair with feet on a towel while a therapist works on them at night.",
-            "imagePrompt": "Vertical 9:16 photo. A man sits back in a reclining chair with his feet on a towel. A female therapist is"
-          }
-        ]
-      },
-      {
-        "posts": [
-          {
-            "type": "offer",
-            "topic": "Traditional Balinese massage for tired legs",
-            "scene": "detail",
-            "caption": "Are your legs heavy after walking all day in Canggu? 🌸 We use warm coconut oil and long strokes to loosen tight muscles. Experienced local therapists bring a Balinese massage to your villa or hotel: book on WhatsApp and relax. 🌼",
-            "hashtags": [
-              "canggu",
-              "balinesemassage",
-              "massagecanggu",
-              "spas"
-            ],
-            "altText": "Warm golden oil poured onto a woman's legs on a white massage bed in a sunny room.",
-            "imagePrompt": "Vertical 9:16 photo. A woman lies relaxed on a massage bed. A female therapist pours warm golden oil onto her legs. Close view of the hands on the body. Late afternoon, the lamps lit inside the main light, the garden outside through wide windows in soft shade with no sunlight on it. Clean white linens, simple and warm. No text, no logos.",
-            "storyText": "Heavy legs? Our oil massage helps."
-          },
-          {
-            "type": "local",
-            "topic": "Foot reflexology in Canggu tonight",
-            "scene": "place",
-            "caption": "Can someone come to my villa tonight for my tired feet? 🪷 We press reflex points to help you rest well tonight. Fresh linens, towels, and natural oils provided. 🌺",
-            "hashtags": [
-              "canggu",
-              "bali",
-              "reflexology",
-              "massage"
-            ],
-            "altText": "A man sitting back in a reclining chair with feet on a towel while a therapist works on them at night.",
-            "imagePrompt": "Vertical 9:16 photo. A man sits back in a reclining chair with his feet on a towel. A female therapist is seated at his feet working on them. Evening, lamps and candles giving the room a warm, golden glow, the garden outside"
-          }
-        ]
-      },
-      {
-        "posts": [
-          {
-            "type": "offer",
-            "topic": "Traditional Balinese massage for tired legs",
-            "scene": "detail",
-            "caption": "Are your legs heavy after walking all day in Canggu? 🌸 We use warm coconut oil and long strokes to loosen tight muscles. Experienced local therapists bring a Balinese massage to your villa or hotel: book on WhatsApp and relax. 🌼",
-            "hashtags": [
-              "canggu",
-              "balinesemassage",
-              "massagecanggu",
-              "spas"
-            ],
-            "altText": "Warm golden oil poured onto a woman's legs on a white massage bed in a sunny room.",
-            "imagePrompt": "Vertical 9:16 photo. A woman lies relaxed on a massage bed. A female therapist pours warm golden oil onto her legs. Close view of the hands on the body. Late afternoon, the lamps lit inside the main light, the garden outside through wide windows in soft shade with no sunlight on it. Clean white linens, simple and warm. No text, no logos.",
-            "storyText": "Heavy legs? Our oil massage helps."
-          },
-          {
-            "type": "local",
-            "topic": "Foot reflexology in Canggu tonight",
-            "scene": "place",
-            "caption": "Can someone come to my villa tonight for my tired feet? 🪷 We press reflex points to help you rest well tonight. Fresh linens, towels, and natural oils provided. 🌺",
-            "hashtags": [
-              "canggu",
-              "bali",
-              "reflexology",
-              "massage"
-            ],
-            "altText": "A man sitting back in a reclining chair with feet on a towel while a therapist works on them at night.",
-            "imagePrompt": "Vertical 9:16 photo. A man sits back in a reclining chair with his feet on a towel. A female therapist is seated at his feet working on them. Evening, lamps and candles giving the room a warm, golden glow, the garden outside lit by lanterns under a deep blue sky. Clean white linens. No text, no logos."
-          }
-        ]
-      },
-      {
-        "posts": [
-          {
-            "type": "offer",
-            "topic": "Traditional Balinese massage for tired legs",
-            "scene": "detail",
-            "caption": "Are your legs heavy after walking all day in Canggu? 🌸 We use warm coconut oil and long strokes to loosen tight muscles. Experienced local therapists bring a Balinese massage to your villa or hotel: book on WhatsApp and relax. 🌼",
-            "hashtags": [
-              "canggu",
-              "balinesemassage",
-              "massagecanggu",
-              "spas"
-            ],
-            "altText": "Warm golden oil poured onto a woman's legs on a white massage bed in a sunny room.",
-            "imagePrompt": "Vertical 9:16 photo. A woman lies relaxed on a massage bed. A female therapist pours warm golden oil onto her legs. Close view of the hands on the body. Late afternoon, the lamps lit inside the main light, the garden outside through wide windows in soft shade with no sunlight on it. Clean white linens, simple and warm. No text, no logos.",
-            "storyText": "Heavy legs? Our oil massage helps."
-          },
-          {
-            "type": "local",
-            "topic": "Foot reflexology in Canggu tonight",
-            "scene": "place",
-            "caption": "Can someone come to my villa tonight for my tired feet? 🪷 We press reflex points to help you rest well tonight. Fresh linens, towels, and natural oils provided. 🌺",
-            "hashtags": [
-              "canggu",
-              "bali",
-              "reflexology",
-              "massage"
-            ],
-            "altText": "A man sitting back in a reclining chair with feet on a towel while a therapist works on them at night.",
-            "imagePrompt": "Vertical 9:16 photo. A man sits back in a reclining chair with his feet on a towel. A female therapist is seated at his feet working on them. Evening, lamps and candles giving the room a warm, golden glow, the garden outside lit by lanterns under a deep blue sky. Clean white linens. No text, no logos.",
-            "storyText": "Sore feet tonight? We bring foot reflexology to your room."
+            "altText": "Close view of a therapist's hands applying scrub to a man's arm on a massage bed at night.",
+            "imagePrompt": "A tall 9:16 photo. A close view of a female therapist's hands spreading a lulur scrub onto a man's arm on a massage bed. A small wooden bowl of turmeric scrub sits nearby. Evening, lamps and candles giving the room a warm golden glow, the garden outside lit by lanterns under a deep blue sky. A closed laptop rests far in the background on a desk.",
+            "storyText": "Laptop neck? A scrub and massage in your room tonight 🪷"
           }
         ]
       }
@@ -460,33 +504,33 @@
       "posts": [
         {
           "type": "offer",
-          "topic": "Traditional Balinese massage for tired legs",
-          "scene": "detail",
-          "caption": "Are your legs heavy after walking all day in Canggu? 🌸 We use warm coconut oil and long strokes to loosen tight muscles. Experienced local therapists bring a Balinese massage to your villa or hotel: book on WhatsApp and relax. 🌼",
+          "topic": "Surf and sport recovery massage for sore legs in Canggu",
+          "scene": "guest",
+          "caption": "Legs heavy from the long surf session at Echo Beach? 🌸\n\nA therapist comes to your Canggu villa to work your calves and feet. You stay right where you are for the rest of the afternoon.\n\nNo upfront deposit for villas and hotels 🌺",
           "hashtags": [
             "canggu",
-            "balinesemassage",
-            "massagecanggu",
-            "spas"
+            "massagemancanggu",
+            "surfrecovery",
+            "balimassage"
           ],
-          "altText": "Warm golden oil poured onto a woman's legs on a white massage bed in a sunny room.",
-          "imagePrompt": "Vertical 9:16 photo. A woman lies relaxed on a massage bed. A female therapist pours warm golden oil onto her legs. Close view of the hands on the body. Late afternoon, the lamps lit inside the main light, the garden outside through wide windows in soft shade with no sunlight on it. Clean white linens, simple and warm. No text, no logos.",
-          "storyText": "Heavy legs? Our oil massage helps."
+          "altText": "A woman lying on a massage bed from above as a therapist works on her back in soft afternoon light.",
+          "imagePrompt": "A tall 9:16 photo. A woman lying relaxed on a massage bed, seen from above. A female therapist's hands are working golden oil into her back. The room opens onto tropical palms outside in soft shade. Late afternoon warm light, lamps lit inside. A surfboard leans against the far balcony rail out of focus.",
+          "storyText": "Echo Beach surf in your legs? We come to you today 🌸"
         },
         {
-          "type": "local",
-          "topic": "Foot reflexology in Canggu tonight",
-          "scene": "place",
-          "caption": "Can someone come to my villa tonight for my tired feet? 🪷 We press reflex points to help you rest well tonight. Fresh linens, towels, and natural oils provided. 🌺",
+          "type": "moment",
+          "topic": "Balinese lulur scrub and massage for laptop tension in Seminyak",
+          "scene": "detail",
+          "caption": "A week of laptop work, and now your neck won't turn? 🌺\n\nA therapist brings a full scrub and massage to your Seminyak apartment tonight. You rest your arms while the turmeric and rice powder work.\n\nFresh linens, towels, and natural oils brought to you 🪷",
           "hashtags": [
-            "canggu",
-            "bali",
-            "reflexology",
-            "massage"
+            "seminyak",
+            "balinesemassage",
+            "spaseminyak",
+            "bodyscrub"
           ],
-          "altText": "A man sitting back in a reclining chair with feet on a towel while a therapist works on them at night.",
-          "imagePrompt": "Vertical 9:16 photo. A man sits back in a reclining chair with his feet on a towel. A female therapist is seated at his feet working on them. Evening, lamps and candles giving the room a warm, golden glow, the garden outside lit by lanterns under a deep blue sky. Clean white linens. No text, no logos.",
-          "storyText": "Sore feet tonight? We bring foot reflexology to your room."
+          "altText": "Close view of a therapist's hands applying scrub to a man's arm on a massage bed at night.",
+          "imagePrompt": "A tall 9:16 photo. A close view of a female therapist's hands spreading a lulur scrub onto a man's arm on a massage bed. A small wooden bowl of turmeric scrub sits nearby. Evening, lamps and candles giving the room a warm golden glow, the garden outside lit by lanterns under a deep blue sky. A closed laptop rests far in the background on a desk.",
+          "storyText": "Laptop neck? A scrub and massage in your room tonight 🪷"
         }
       ]
     }
