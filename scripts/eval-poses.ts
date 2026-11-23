@@ -3,9 +3,9 @@
 // normal bodies, a professional massage, clothes as today, the spa's look,
 // two therapists only for four hands and couples. Thai gets two: a leg
 // stretch and a palm press. Each image prompt is written as the post plan
-// writes one from its set-up line, with "clean white linens" and no colour;
-// no text call is made. Story JPEGs go under .superpowers/eval-poses/<slug>/,
-// outside git.
+// writes one from its set-up line, adding no word about linens or colours
+// (Sen's recorded Thai prompt has none); no text call is made. Story JPEGs go
+// under .superpowers/eval-poses/<slug>/, outside git.
 // ⚠️ It spends about $0.05 of the prepaid image balance per image (11 for
 // Sen and Svarga). A slug is required, so it never spends by accident;
 // --dry prints the prompts and spends nothing.
@@ -103,7 +103,7 @@ function postPrompt(setup: Setup): string {
     setup.light === 'night'
       ? 'Evening: lamps and candles give the room a warm glow, the garden outside lit by lanterns'
       : 'Late afternoon: the lamps lit inside, the garden outside in soft shade';
-  return `A tall 9:16 photo, ${CAMERAS[setup.scene]}, of ${body}. ${light}. Clean white linens, no text or logos.`;
+  return `A tall 9:16 photo, ${CAMERAS[setup.scene]}, of ${body}. ${light}. No text or logos.`;
 }
 
 const model = apiKey ? geminiImageModel(apiKey) : null;
