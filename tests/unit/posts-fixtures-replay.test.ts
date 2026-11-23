@@ -255,9 +255,11 @@ describe('recorded new texts', () => {
       expect(fresh.caption).not.toBe(post.caption);
       expect(fresh.storyText).toBeTruthy();
       expect(fresh.storyText).not.toBe(post.storyText);
-      // The image, its set-up and the hashtags stay.
+      // The image, its set-up and the hashtags stay; new texts take a new
+      // fact, and keep their reason (docs/specs/posts/reasons-to-book).
       expect(fresh.imagePrompt).toBe(post.imagePrompt);
-      expect(fresh.setup).toEqual(post.setup);
+      expect({ ...fresh.setup, fact: undefined }).toEqual({ ...post.setup, fact: undefined });
+      expect(fresh.setup?.reason).toBe(post.setup?.reason);
       expect(fresh.hashtags).toEqual(post.hashtags);
       expect(paragraphsOf(fresh.caption).length).toBeLessThanOrEqual(3);
       expect(fresh.caption).not.toMatch(PRICE);

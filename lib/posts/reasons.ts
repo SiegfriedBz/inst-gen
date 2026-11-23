@@ -1,7 +1,7 @@
 import type { Profile } from '@/lib/brand/profile';
-import type { RecentPost } from './batch';
+import type { Post, RecentPost } from './batch';
 import { isSpa } from './emoji';
-import { dealFacts } from './facts';
+import { dealFacts, keptFact, newFact, pickFact } from './facts';
 import type { Offer } from './offer';
 import {
   type BodyPart,
@@ -156,4 +156,53 @@ export function dealReasonSetups(
   // The facts come last (docs/specs/posts/reasons-to-book, "The fact, dealt
   // by code").
   return dealFacts(profile, setups, random);
+}
+
+// A post's set-up with its reason and its fact, the old fact gone.
+function withSetup(post: Post, reason: Reason, fact: string | undefined): Post {
+  if (!post.setup) return post;
+  const { fact: _old, ...setup } = post.setup;
+  return { ...post, setup: { ...setup, reason, ...(fact ? { fact } : {}) } };
+}
+
+// The posts a caption update sends (docs/specs/posts/reasons-to-book, "Write
+// new texts, and caption updates"): each keeps its reason, or a post saved
+// before reasons gets one its look takes that no other post has; each keeps
+// its fact while the profile holds it, or gets one no other post has. A post
+// saved without a set-up goes as it is.
+export function withReasons(posts: Post[], profile: Profile, random: () => number): Post[] {
+  const out: Post[] = [];
+  for (const [i, post] of posts.entries()) {
+    if (!post.setup) {
+      out.push(post);
+      continue;
+    }
+    const others = [...out, ...posts.slice(i + 1)];
+    const taken = others.flatMap((p) => (p.setup?.reason ? [p.setup.reason] : []));
+    const reason = post.setup.reason ?? reasonFor(post.setup.look, taken, random);
+    const fact =
+      keptFact(profile, post.setup) ??
+      pickFact(
+        profile,
+        post.setup.light ?? 'day',
+        others.map((p) => p.setup?.fact),
+        random,
+      );
+    out.push(withSetup(post, reason, fact));
+  }
+  return out;
+}
+
+// The post new texts are written for: its reason, or one its look takes that
+// the other post doesn't have, and a new fact.
+export function newTextsPost(
+  post: Post,
+  other: Post | undefined,
+  profile: Profile,
+  random: () => number,
+): Post {
+  if (!post.setup) return post;
+  const taken = other?.setup?.reason ? [other.setup.reason] : [];
+  const reason = post.setup.reason ?? reasonFor(post.setup.look, taken, random);
+  return withSetup(post, reason, newFact(profile, post.setup, other?.setup, random));
 }
