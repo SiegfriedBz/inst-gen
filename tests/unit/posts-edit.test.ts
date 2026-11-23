@@ -19,7 +19,7 @@ import {
 import { profileHash } from '@/lib/posts/input';
 import type { Offer } from '@/lib/posts/offer';
 import { senProfile } from './helpers/brand';
-import { post } from './helpers/posts';
+import { post, setupAt } from './helpers/posts';
 
 const profile = senProfile();
 const changed = {
@@ -304,6 +304,28 @@ describe('what clears saved and copied', () => {
     const without = mergeRewrite(batch([stored]), result(storyless), ['p1']);
     expect(without.posts[0].storyText).toBeUndefined();
     expect(without.posts[0].storyUnchecked).toBeUndefined();
+  });
+
+  // The reason and the fact code gave a post land with its words
+  // (docs/specs/posts/reasons-to-book).
+  test("a rewrite stores the answer's reason and fact in place of the kind of question", () => {
+    const asked = { ...setupAt('day', { fact: 'Old fact' }), question: 'ask' as const };
+    delete asked.reason;
+    const stored = post({ id: 'p1', setup: asked });
+    const fresh = setupAt('day', { reason: 'laptop', fact: 'No upfront deposit required' });
+    const merged = mergeRewrite(batch([stored]), result(answer({ setup: fresh })), ['p1']);
+    // A reason takes the kind of question's place (the review of 2026-11-23).
+    const { question: _kind, ...rest } = asked;
+    expect(merged.posts[0].setup).toEqual({
+      ...rest,
+      reason: 'laptop',
+      fact: 'No upfront deposit required',
+    });
+    const factless = setupAt('day', { reason: 'laptop' });
+    const none = mergeRewrite(batch([stored]), result(answer({ setup: factless })), ['p1']);
+    expect(none.posts[0].setup?.fact).toBeUndefined();
+    const plain = mergeRewrite(batch([stored]), result(answer({})), ['p1']);
+    expect(plain.posts[0].setup).toEqual(asked);
   });
 
   test('a new image clears saved, keeps copied', () => {

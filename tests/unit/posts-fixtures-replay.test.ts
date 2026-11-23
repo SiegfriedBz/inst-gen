@@ -2,7 +2,13 @@ import { existsSync } from 'node:fs';
 import { join } from 'node:path';
 import { describe, expect, test } from 'vitest';
 import { replayTextModel } from '@/lib/ai/replay';
-import { FIXTURES_DIR, fixtureOffer, fixtureProfile, loadFixture } from '@/lib/brand/fixtures';
+import {
+  FIXTURES_DIR,
+  fixtureOffer,
+  fixtureProfile,
+  fixtureRecent,
+  loadFixture,
+} from '@/lib/brand/fixtures';
 import type { PlanResult } from '@/lib/posts/batch';
 import { emojisIn, FLOWERS } from '@/lib/posts/emoji';
 import { dropForeignTags } from '@/lib/posts/foreign-tags';
@@ -41,7 +47,7 @@ describe('recorded post plans', () => {
     const model = replayTextModel(noBrandRead, { posts: fixture.posts.recording });
     let final = null;
     for await (const line of streamPlan(
-      { profile, recent: [] },
+      { profile, recent: fixtureRecent(slug, false) },
       { model, random: seededRandom(slug) },
       new AbortController().signal,
     )) {
@@ -79,7 +85,7 @@ describe('recorded offer plans', () => {
     const model = replayTextModel(noBrandRead, { posts: fixture.postsOffer.recording });
     let final = null;
     for await (const line of streamPlan(
-      { profile, recent: [], offer },
+      { profile, recent: fixtureRecent(slug, true), offer },
       { model, random: seededRandom(`${slug}:offer`) },
       new AbortController().signal,
     )) {
@@ -117,7 +123,7 @@ describe('recorded story texts and flowers', () => {
     const offer = withOffer ? fixtureOffer(profile) : undefined;
     const model = replayTextModel(noBrandRead, { posts: recording.recording });
     for await (const line of streamPlan(
-      { profile, recent: [], ...(offer ? { offer } : {}) },
+      { profile, recent: fixtureRecent(slug, withOffer), ...(offer ? { offer } : {}) },
       { model, random: seededRandom(withOffer ? `${slug}:offer` : slug) },
       new AbortController().signal,
     )) {
@@ -202,6 +208,55 @@ describe('recorded story texts and flowers', () => {
   });
 });
 
+// The posts-20 recordings of Sen and Svarga, with and without an offer
+// (docs/specs/posts/reasons-to-book, "Tests and evaluation"): every set-up
+// has a reason, and no post speaks in the first person, holds a highlight
+// that turns a request away, speaks to two guests or names two therapists on
+// an image of one, or holds the raw hours line (amended 2026-11-23). The copy
+// record is left out: the couple massage still says "you lie side by side".
+describe('recorded reasons to book', () => {
+  test.each([
+    ['sen', false],
+    ['svarga', false],
+    ['sen', true],
+    ['svarga', true],
+  ] as const)('%s (offer: %s)', { timeout: 20_000 }, async (slug, withOffer) => {
+    const dir = join(FIXTURES_DIR, slug);
+    const fixture = loadFixture(dir);
+    const recording = withOffer ? fixture.postsOffer : fixture.posts;
+    if (!recording) throw new Error(`no recording for ${slug}`);
+    expect(recording.promptVersion).toBe('posts-20');
+    const profile = await fixtureProfile(dir);
+    const offer = withOffer ? fixtureOffer(profile) : undefined;
+    let result: PlanResult | null = null;
+    for await (const line of streamPlan(
+      { profile, recent: fixtureRecent(slug, withOffer), ...(offer ? { offer } : {}) },
+      {
+        model: replayTextModel(noBrandRead, { posts: recording.recording }),
+        random: seededRandom(withOffer ? `${slug}:offer` : slug),
+      },
+      new AbortController().signal,
+    )) {
+      if (line.type === 'final') result = line.result;
+    }
+    if (!result) throw new Error('no final line');
+    for (const post of result.posts) expect(post.setup?.reason).toBeDefined();
+    const reasons = result.dropped.map((d) => d.reason);
+    for (const reason of reasons) {
+      expect(reason).not.toMatch(
+        /question in the first person|caption for two guests|caption for two therapists/,
+      );
+    }
+    const turnedAway = /therapeutic massage only|strictly|sexual/i;
+    for (const post of result.posts) {
+      expect(post.caption).not.toMatch(turnedAway);
+      expect(post.storyText ?? '').not.toMatch(turnedAway);
+      expect(post.caption).not.toMatch(/Hours:/);
+      expect(post.setup?.fact ?? '').not.toMatch(/^Hours:/);
+    }
+  });
+});
+
 // The words for each part of the body an image shows (lib/posts/setup.ts);
 // "whole body" names none in particular.
 const PART_WORDS: Partial<Record<BodyPart, string[]>> = {
@@ -229,7 +284,7 @@ describe('recorded new texts', () => {
       const signal = new AbortController().signal;
       let plan: PlanResult | null = null;
       for await (const line of streamPlan(
-        { profile, recent: [] },
+        { profile, recent: fixtureRecent(slug, false) },
         {
           model: replayTextModel(noBrandRead, { posts: fixture.posts.recording }),
           random: seededRandom(slug),
@@ -243,7 +298,10 @@ describe('recorded new texts', () => {
       let result: PlanResult | null = null;
       for await (const line of streamNewTexts(
         { profile, post, other },
-        { model: replayTextModel(noBrandRead, { posts: fixture.newTexts.recording }) },
+        {
+          model: replayTextModel(noBrandRead, { posts: fixture.newTexts.recording }),
+          random: seededRandom(`${slug}:texts`),
+        },
         signal,
       )) {
         if (line.type === 'error') throw new Error(line.code);
@@ -255,9 +313,11 @@ describe('recorded new texts', () => {
       expect(fresh.caption).not.toBe(post.caption);
       expect(fresh.storyText).toBeTruthy();
       expect(fresh.storyText).not.toBe(post.storyText);
-      // The image, its set-up and the hashtags stay.
+      // The image, its set-up and the hashtags stay; new texts take a new
+      // fact, and keep their reason (docs/specs/posts/reasons-to-book).
       expect(fresh.imagePrompt).toBe(post.imagePrompt);
-      expect(fresh.setup).toEqual(post.setup);
+      expect({ ...fresh.setup, fact: undefined }).toEqual({ ...post.setup, fact: undefined });
+      expect(fresh.setup?.reason).toBe(post.setup?.reason);
       expect(fresh.hashtags).toEqual(post.hashtags);
       expect(paragraphsOf(fresh.caption).length).toBeLessThanOrEqual(3);
       expect(fresh.caption).not.toMatch(PRICE);

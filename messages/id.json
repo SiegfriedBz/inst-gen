@@ -206,6 +206,8 @@
     "emptyTextOnly": "Setiap saran berisi teks untuk postingan dan teks singkat untuk story, siap untuk Instagram. Pilih yang Anda suka dan salin.",
     "attempt": "Percobaan {n}",
     "attemptCount": "{count} saran",
+    "today": "Hari ini",
+    "yesterday": "Kemarin",
     "saveImages": "Simpan gambar postingan & story",
     "copyText": "Salin teks postingan",
     "copyStory": "Salin teks story (opsional)",
@@ -323,7 +325,9 @@
       "freeShort": "Gratis {gift}",
       "remove": "Hapus promo",
       "badgeDiscount": "Diskon {percent}%",
-      "badgeFree": "Bonus gratis"
+      "badgeFree": "Bonus gratis",
+      "badgeEnded": "Promo berakhir",
+      "lastDayDate": "hari terakhir {date}"
     }
   },
   "reviews": {
@@ -489,7 +493,7 @@
       "free": "Shopfront gratis, jadi setiap hari ada batasnya.",
       "limits": "Setiap hari Anda punya {reads}, {attempts} (masing-masing 2 saran), {newImages}, {newTexts}, {replies}, dan {answers}, ditambah pembaruan teks dan terjemahan.",
       "bar": "Baris di bagian atas setiap tab menunjukkan sisa hari ini dan jam semuanya kembali.",
-      "reset": "Pada jam itu, batas kembali penuh dan saran, balasan ulasan, serta jawaban hari itu hilang dari layar. Simpan yang ingin Anda pakai sebelum itu. Promo spesial Anda tetap ada: berlaku sampai hari terakhirnya sendiri berakhir.",
+      "reset": "Pada jam itu, batas kembali penuh, dan balasan ulasan serta jawaban hari itu hilang dari layar. Saran tetap ada satu hari lagi, di bawah <b>{yesterday}</b>: simpan yang ingin Anda pakai sebelum reset berikutnya. Promo spesial Anda tetap ada: berlaku sampai hari terakhirnya sendiri berakhir.",
       "time": "Jam di bilah memakai waktu ponsel Anda: percayai jam itu, bukan jam yang tetap.",
       "month": "Gambar baru juga punya anggaran bulanan untuk seluruh aplikasi. Jika habis, Shopfront memberi tahu kapan gambar tersedia lagi."
     },

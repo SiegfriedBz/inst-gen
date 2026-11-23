@@ -86,6 +86,19 @@ describe('a profile from a page loaded before every length', () => {
     };
   }
 
+  // A phone that hasn't reloaded sends recent posts without a reason
+  // (docs/specs/posts/reasons-to-book).
+  it('a plan takes recent posts with or without a reason, and refuses an unknown one', () => {
+    const profile = svargaProfile();
+    const recent = [
+      { type: 'offer', topic: 'a', reason: 'laptop' },
+      { type: 'moment', topic: 'b' },
+    ];
+    expect(planBodySchema.safeParse({ profile, recent }).success).toBe(true);
+    const unknown = [{ type: 'offer', topic: 'a', reason: 'tip' }];
+    expect(planBodySchema.safeParse({ profile, recent: unknown }).success).toBe(false);
+  });
+
   it('is read as version 4 by the plan, the rewrite and the new texts', () => {
     const plan = planBodySchema.safeParse({ profile: v3(), recent: [] });
     expect(plan.success).toBe(true);

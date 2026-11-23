@@ -5,7 +5,9 @@ import * as cheerio from 'cheerio';
 import { z } from 'zod';
 import { type Recording, replayTextModel } from '@/lib/ai/replay';
 import type { TextModel } from '@/lib/ai/text-model';
+import type { RecentPost } from '@/lib/posts/batch';
 import { englishDay, type Offer } from '@/lib/posts/offer';
+import type { Reason } from '@/lib/posts/setup';
 import { replaySearchTool, type SearchRecording } from '@/lib/search/replay';
 import { type Expected, expectedSchema } from './eval/score';
 import { type Fetched, type Transport, undiciTransport } from './fetch-safe';
@@ -92,6 +94,22 @@ export function fixtureOffer(profile: Profile): Offer {
     until: '2026-11-01',
     lastDay: englishDay('2026-11-01'),
   };
+}
+
+// Made-up recent posts that steer the eval's and the replay's deal, so the
+// recordings show every reason to book and the hours at least once
+// (docs/specs/posts/reasons-to-book, "Tests and evaluation"): Sen's plan
+// deals two of you and the first night, with the hours; Svarga's, a day out
+// and laptop days; Sen's offer plan, laptop days and a day out; Svarga's,
+// staying in and the first night.
+const STEERED: Record<string, { plan?: Reason[]; offer?: Reason[] }> = {
+  sen: { plan: ['laptop'], offer: ['stayIn'] },
+  svarga: { offer: ['laptop'] },
+};
+
+export function fixtureRecent(slug: string, withOffer: boolean): RecentPost[] {
+  const reasons = STEERED[slug]?.[withOffer ? 'offer' : 'plan'] ?? [];
+  return reasons.map((reason, i) => ({ type: 'offer', topic: `An earlier post ${i + 1}`, reason }));
 }
 
 // The fixture's profile from its recorded brand read: no model call. Without

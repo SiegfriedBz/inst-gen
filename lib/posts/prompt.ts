@@ -4,7 +4,7 @@ import { FLOWERS } from './emoji';
 import type { PostsModelInput } from './input';
 import { OFFER_LIMITS, type Offer } from './offer';
 import { offerLine, offerTreatment } from './offer-line';
-import { QUESTIONS, type Question, type Setup, setupLine } from './setup';
+import { peopleOf, QUESTIONS, type Question, type Setup, setupLine } from './setup';
 
 // The post plan's prompts (docs/specs/posts/generate-copy, "What the model
 // writes"); the day or night light, the open room and the sign of the guest's
@@ -23,7 +23,7 @@ export const POSTS_PROMPT_VERSION = 'posts-19';
 
 // Code decides the emoji rule: flowers only for a spa
 // (docs/specs/posts/story-text, "Emojis").
-function emojiRule(spa: boolean): string {
+export function emojiRule(spa: boolean): string {
   return spa
     ? `Emoji: flowers only, from ${FLOWERS.join(' ')}: exactly ${POSTS_LIMITS.captionFlowers} in the caption, one right after its first line and one at its very end, and exactly ${POSTS_LIMITS.storyFlowers} in the story text, at its end. No other emoji.`
     : `At most ${POSTS_LIMITS.otherEmoji} emoji in the caption and at most ${POSTS_LIMITS.otherStoryEmoji} in the story text.`;
@@ -51,6 +51,32 @@ const questionKinds = (intro: string, partFrom: string) => {
   const words = questionWords(partFrom);
   return `${intro}\n${QUESTIONS.map((kind) => `- ${kind}: ${words[kind]}`).join('\n')}`;
 };
+
+// The hashtag and alt-text rules, and the image prompt's rules, shared with
+// the reasons prompt (docs/specs/posts/reasons-to-book): the same words.
+export const HASHTAG_RULES = `Hashtags: 3 to 5, without "#", lower case, letters and digits only. One on the business's town or area, as its profile names it; the others on the post's treatment, moment or place, drawing on the essence's search terms. Never a town or area the profile doesn't name.`;
+
+export const ALT_RULES = `Alt text: at most 125 characters, describing what the image will show, from its image prompt, for someone who can't see it. Never start with "image of".`;
+
+export const IMAGE_RULES = `The image prompt: English, at most 80 words, for an image model making a tall 9:16 photo.
+- The massage is in every image: a therapist's hands working on a guest, or oil or towels being used for a treatment. Only what the business offers: a tool or treatment appears only if the offerings hold it. Never a guest alone, never an empty room, never a drink or a prop on its own.
+- A guest looks relaxed and alive, with the therapist there: never lying still as if asleep.
+- Light follows the set-up's last word. Day: late afternoon, the lamps lit inside the main light, the garden outside, through open doors or a wide window, in soft shade with no sunlight on it; warm and calm, never sunbeams across the room, a sunlit garden or harsh sun. Night: evening, lamps and candles giving the room a warm, golden glow, the garden outside lit by lanterns under a deep blue sky; warm and inviting, never dark or gloomy. Never a grey sky, mist, rain or damp. Never call a room or its light bright.
+- Places look clean, tidy and cared for: beds and linens neatly made, nothing rumpled or messy; no mould, stains, wet stone or worn surfaces.
+- Rooms are warm and homely, like a boutique hotel or villa; never clinical or hospital-like.
+- The room opens onto the outside: open doors, a wide window or a balcony onto green plants that grow in that place, and the sea or a pool where the place has one.
+- Still air: curtains open and hanging still, no wind.
+- Oil looks like massage oil: golden oil in a clear glass bottle, or poured into a palm; never a small dark bottle that could pass for medicine.
+- For a business that goes to its guests (its service area says so), the scene is the guest's hotel room, balcony or villa, never a spa building.
+- A guest is shown never from behind. No recognisable face.
+- No text, logos or labels anywhere in the image; bottles are plain.
+- Use the visual style's palette and textures, and the essence's senses and place symbols.
+- Only in a moment post's image, one small, plain object from that moment may show (a surfboard against the balcony rail, hiking boots by the door, a suitcase, a closed laptop): far in the background, half hidden and out of focus, never near the guest and never the subject, with no logo or text. Most images have none.
+- Never the business's own premises, products or staff as if real.
+
+The image set-ups: code gives one set-up per post, in order, under "### Image set-ups". Post 1 uses set-up 1, post 2 uses set-up 2, and so on. Each image prompt shows its set-up's treatment, guests, number of therapists, part of the body, scene, camera and light; it never changes them, and never adds a guest or a therapist. It names each guest as "a man" or "a woman", and says "two therapists" when there are two. The therapists are women. The image prompt describes the photo itself: it never writes "scene" or "set-up" in it, nor a scene's name as a label. An offer post leads on its set-up's treatment.
+
+The scene: copy the set-up's scene; every scene shows the massage: treatment (the therapist's hands at work on the guest, from the side), detail (a close view of the hands on the guest's body, such as oil poured onto a back or warm towels laid on a leg; the guest's body is always in the frame), place (the guest's room, balcony or villa with the massage under way in it), or guest (the guest relaxed during the treatment, from above, the therapist's hands in the frame).`;
 
 // Captions of three paragraphs: a question alone on the first line, its
 // answer, one fact; with an offer, the offer line first, the question and its
@@ -80,18 +106,18 @@ const captionRules = (
 - No call to action and no contact details, ever: the app adds its own booking line with the number after the caption, so the caption never writes one. Its last paragraph is its fact.${withOffer ? " On a post that carries the special offer, the app's line also gives the offer's end." : ''}
 - Never these words, nor anything that suggests more than a professional treatment: ${BANNED_WORDS.join(', ')}.
 
-Hashtags: 3 to 5, without "#", lower case, letters and digits only. One on the business's town or area, as its profile names it; the others on the post's treatment, moment or place, drawing on the essence's search terms. Never a town or area the profile doesn't name.
+${HASHTAG_RULES}
 
-Alt text: at most 125 characters, describing what the image will show, from its image prompt, for someone who can't see it. Never start with "image of".
+${ALT_RULES}
 
 Story text: its own line for the post's Instagram story, which the owner pastes on the story image above a link sticker to WhatsApp, read in two seconds: at most ${POSTS_LIMITS.storyWords} words and ${POSTS_LIMITS.storyAsked} characters, emoji included, one idea. It names the post's sore spot or moment in a few words and what the business does about it, often as a short question and its answer. Never the treatment's name alone, never the caption's first sentence, never a price. English. No hashtags, no phone number, no link and no call to action, and never the words book, reserve, WhatsApp, message, DM or click: the sticker asks. It follows the captions' rules on the setting, the clichés and the light.`;
 
 // The special offer's rules, only when the owner set one
 // (docs/specs/posts/special-offer, "What the model gets").
-const offerRules = (spa: boolean) => `
+export const offerRules = (spa: boolean) => `
 A special offer is given. Posts 1 and 2 are the two offer posts. Both carry the special offer: each leads on one of the offer's treatments, two different ones when the offer has two or more. Each offer post's caption opens on its offer line, given under "### Special offer", word for word, alone on its first line; its question opens the second paragraph, and the answer follows it. Never a bigger discount, never other terms, never a price, never another session length, never "today only" or "this week", anywhere in an offer post. Each offer post's story text is its offer line, word for word${spa ? ', followed by one flower' : ''}.`;
 
-const rewriteOfferRules = (spa: boolean) => `
+export const rewriteOfferRules = (spa: boolean) => `
 
 A special offer is given. A post marked offer: true keeps the offer: its caption opens on its offer line, given under "### Special offer", word for word, alone on its first line, its question opening the second paragraph, and its story text is that line${spa ? ', followed by one flower' : ''}; the other posts never mention it.`;
 
@@ -130,25 +156,7 @@ ${questionKinds('The questions: code gives each post its kind of question, in or
 
 ${captionRules(spa, withOffer)}
 
-The image prompt: English, at most 80 words, for an image model making a tall 9:16 photo.
-- The massage is in every image: a therapist's hands working on a guest, or oil or towels being used for a treatment. Only what the business offers: a tool or treatment appears only if the offerings hold it. Never a guest alone, never an empty room, never a drink or a prop on its own.
-- A guest looks relaxed and alive, with the therapist there: never lying still as if asleep.
-- Light follows the set-up's last word. Day: late afternoon, the lamps lit inside the main light, the garden outside, through open doors or a wide window, in soft shade with no sunlight on it; warm and calm, never sunbeams across the room, a sunlit garden or harsh sun. Night: evening, lamps and candles giving the room a warm, golden glow, the garden outside lit by lanterns under a deep blue sky; warm and inviting, never dark or gloomy. Never a grey sky, mist, rain or damp. Never call a room or its light bright.
-- Places look clean, tidy and cared for: beds and linens neatly made, nothing rumpled or messy; no mould, stains, wet stone or worn surfaces.
-- Rooms are warm and homely, like a boutique hotel or villa; never clinical or hospital-like.
-- The room opens onto the outside: open doors, a wide window or a balcony onto green plants that grow in that place, and the sea or a pool where the place has one.
-- Still air: curtains open and hanging still, no wind.
-- Oil looks like massage oil: golden oil in a clear glass bottle, or poured into a palm; never a small dark bottle that could pass for medicine.
-- For a business that goes to its guests (its service area says so), the scene is the guest's hotel room, balcony or villa, never a spa building.
-- A guest is shown never from behind. No recognisable face.
-- No text, logos or labels anywhere in the image; bottles are plain.
-- Use the visual style's palette and textures, and the essence's senses and place symbols.
-- Only in a moment post's image, one small, plain object from that moment may show (a surfboard against the balcony rail, hiking boots by the door, a suitcase, a closed laptop): far in the background, half hidden and out of focus, never near the guest and never the subject, with no logo or text. Most images have none.
-- Never the business's own premises, products or staff as if real.
-
-The image set-ups: code gives one set-up per post, in order, under "### Image set-ups". Post 1 uses set-up 1, post 2 uses set-up 2, and so on. Each image prompt shows its set-up's treatment, guests, number of therapists, part of the body, scene, camera and light; it never changes them, and never adds a guest or a therapist. It names each guest as "a man" or "a woman", and says "two therapists" when there are two. The therapists are women. The image prompt describes the photo itself: it never writes "scene" or "set-up" in it, nor a scene's name as a label. An offer post leads on its set-up's treatment.
-
-The scene: copy the set-up's scene; every scene shows the massage: treatment (the therapist's hands at work on the guest, from the side), detail (a close view of the hands on the guest's body, such as oil poured onto a back or warm towels laid on a leg; the guest's body is always in the frame), place (the guest's room, balcony or villa with the massage under way in it), or guest (the guest relaxed during the treatment, from above, the therapist's hands in the frame).`;
+${IMAGE_RULES}`;
 }
 
 function profileText(input: PostsModelInput): string {
@@ -180,6 +188,15 @@ export function planUserText(
     // 2026-11-12).
     const kinds = setups.flatMap((s, i) => (s.question ? [`${i + 1}. ${s.question}`] : []));
     if (kinds.length) text = `${text}\n\n### Questions\n${kinds.join('\n')}`;
+    // Each post's reason to book, then its fact, for a business that comes to
+    // its guests (docs/specs/posts/reasons-to-book).
+    // Each with who is in its image (amended 2026-11-23).
+    const reasons = setups.flatMap((s, i) =>
+      s.reason ? [`${i + 1}. ${s.reason}: ${peopleOf(s)}`] : [],
+    );
+    if (reasons.length) text = `${text}\n\n### Reasons\n${reasons.join('\n')}`;
+    const facts = setups.flatMap((s, i) => (s.fact ? [`${i + 1}. ${s.fact}`] : []));
+    if (facts.length) text = `${text}\n\n### Facts\n${facts.join('\n')}`;
   }
   if (!offer) return text;
   // Posts 1 and 2 use set-ups 1 and 2, whose treatments are the offer's.
@@ -205,14 +222,26 @@ export function rewriteUserText(input: PostsModelInput, posts: Post[], offer?: O
   const kept = posts.map(
     ({ id, type, topic, scene, setup, caption, imagePrompt, offer: carries }) => ({
       id,
-      type,
-      topic,
+      // A post with a reason sells it: its posts-18 type and topic would steer
+      // the model back to them (docs/specs/posts/reasons-to-book, the review
+      // of 2026-11-23).
+      ...(setup?.reason ? {} : { type, topic }),
       scene,
       // A post saved without a set-up, or a set-up without a light, is a day.
       light: setup?.light ?? 'day',
       // Its kind of question, when code dealt one (docs/specs/posts/short-captions,
       // amended 2026-11-12).
       ...(setup?.question ? { question: setup.question } : {}),
+      // Its reason and fact (docs/specs/posts/reasons-to-book).
+      ...(setup?.reason ? { reason: setup.reason } : {}),
+      // How many therapists its image shows, beside its reason (amended
+      // 2026-11-23, after the second recordings).
+      ...(setup?.reason ? { therapists: setup.therapists } : {}),
+      // Its treatment and part of the body, so the new words name only what
+      // its image shows (the third recordings, 2026-11-23).
+      ...(setup?.reason && setup.treatment ? { treatment: setup.treatment } : {}),
+      ...(setup?.reason ? { bodyPart: setup.bodyPart } : {}),
+      ...(setup?.fact ? { fact: setup.fact } : {}),
       caption,
       imagePrompt,
       ...(offer && carries ? { offer: true } : {}),
@@ -255,12 +284,18 @@ export function newTextsUserText(
   const carries = offer !== undefined && post.offer === true;
   const sent = {
     id,
-    type,
-    topic,
+    ...(setup?.reason ? {} : { type, topic }),
     scene,
     // A post saved without a set-up, or a set-up without a light, is a day.
     light: setup?.light ?? 'day',
     ...(setup?.question ? { question: setup.question } : {}),
+    ...(setup?.reason ? { reason: setup.reason } : {}),
+    // How many therapists its image shows (amended 2026-11-23).
+    ...(setup?.reason ? { therapists: setup.therapists } : {}),
+    // Its treatment and part of the body (the third recordings, 2026-11-23).
+    ...(setup?.reason && setup.treatment ? { treatment: setup.treatment } : {}),
+    ...(setup?.reason ? { bodyPart: setup.bodyPart } : {}),
+    ...(setup?.fact ? { fact: setup.fact } : {}),
     // The words now, named so the model doesn't take them for its answer.
     captionNow: caption,
     ...(storyText ? { storyTextNow: storyText } : {}),

@@ -33,13 +33,13 @@ import {
   FIXTURES_DIR,
   fixtureOffer,
   fixtureProfile,
+  fixtureRecent,
   loadFixture,
   type PostsFixture,
 } from '@/lib/brand/fixtures';
 import type { PlanResult } from '@/lib/posts/batch';
 import { paragraphsOf } from '@/lib/posts/paragraphs';
-import { POSTS_PROMPT_VERSION } from '@/lib/posts/prompt';
-import { streamNewTexts, streamPlan } from '@/lib/posts/run';
+import { promptVersionFor, streamNewTexts, streamPlan } from '@/lib/posts/run';
 import { seededRandom, setupLine } from '@/lib/posts/setup';
 import { sentenceWords } from '@/lib/posts/variety';
 
@@ -89,6 +89,9 @@ function print(result: PlanResult): void {
     if (post.setup) console.log(`     set-up: ${setupLine(post.setup)}`);
     if (post.setup?.hook) console.log(`     hook: ${post.setup.hook}`);
     if (post.setup?.question) console.log(`     question: ${post.setup.question}`);
+    // Its reason to book and its fact (docs/specs/posts/reasons-to-book).
+    if (post.setup?.reason) console.log(`     reason: ${post.setup.reason}`);
+    if (post.setup?.fact) console.log(`     fact: ${post.setup.fact}`);
     console.log(`     image: ${post.imagePrompt}`);
     for (const flag of post.unchecked) console.log(`     ⚠ ${flag.kind}: ${flag.text}`);
     // The story text and its length as code counts it (docs/specs/posts/story-text).
@@ -111,7 +114,7 @@ async function replayedPlan(
   if (!recorded) throw new Error('no posts.json to start from');
   let result: PlanResult | null = null;
   for await (const line of streamPlan(
-    { profile, recent: [] },
+    { profile, recent: fixtureRecent(slug, false) },
     {
       model: replayTextModel(NO_BRAND_READ, { posts: recorded.recording }),
       modelId: recorded.modelId,
@@ -130,6 +133,7 @@ async function replayedPlan(
 async function writeNewTexts(slug: string, dir: string): Promise<void> {
   const started = Date.now();
   const profile = await fixtureProfile(dir);
+  versions.add(promptVersionFor(profile));
   const plan = await replayedPlan(dir, slug, profile);
   const [post, other] = plan.posts;
   const replayed = replay ? loadFixture(dir).newTexts : null;
@@ -139,7 +143,7 @@ async function writeNewTexts(slug: string, dir: string): Promise<void> {
     ? replayTextModel(NO_BRAND_READ, { posts: replayed.recording })
     : recordingTextModel(
         geminiTextModel({ postsModelId: modelId }),
-        { modelId, promptVersion: POSTS_PROMPT_VERSION },
+        { modelId, promptVersion: promptVersionFor(profile) },
         () => {},
         () => {},
         (r) => {
@@ -154,6 +158,8 @@ async function writeNewTexts(slug: string, dir: string): Promise<void> {
     {
       model,
       modelId: replayed?.modelId ?? modelId,
+      // The new fact, the same on a replay.
+      random: seededRandom(`${slug}:texts`),
       log: (entry) => {
         cause = entry.error ?? '';
       },
@@ -170,12 +176,18 @@ async function writeNewTexts(slug: string, dir: string): Promise<void> {
   console.log(`\n${slug} · new texts · after, ${Date.now() - started} ms`);
   print(result);
   if (record && recording) {
-    const saved: PostsFixture = { modelId, promptVersion: POSTS_PROMPT_VERSION, recording };
+    const saved: PostsFixture = {
+      modelId,
+      promptVersion: promptVersionFor(profile),
+      recording,
+    };
     writeFileSync(join(dir, 'new-texts.json'), `${JSON.stringify(saved, null, 2)}\n`);
   }
 }
 
 let made = 0;
+// posts-20 for a business that comes to its guests, posts-19 for any other.
+const versions = new Set<string>();
 for (const slug of slugs) {
   const dir = join(FIXTURES_DIR, slug);
   const started = Date.now();
@@ -186,6 +198,7 @@ for (const slug of slugs) {
       continue;
     }
     const profile = await fixtureProfile(dir);
+    versions.add(promptVersionFor(profile));
     const fixture = replay ? loadFixture(dir) : null;
     const replayed = withOffer ? fixture?.postsOffer : fixture?.posts;
     if (replay && !replayed) {
@@ -196,7 +209,7 @@ for (const slug of slugs) {
       ? replayTextModel(NO_BRAND_READ, { posts: replayed.recording })
       : recordingTextModel(
           geminiTextModel({ postsModelId: modelId }),
-          { modelId, promptVersion: POSTS_PROMPT_VERSION },
+          { modelId, promptVersion: promptVersionFor(profile) },
           () => {},
           () => {},
           (r) => {
@@ -209,7 +222,7 @@ for (const slug of slugs) {
     const offer = withOffer ? fixtureOffer(profile) : undefined;
     if (offer) console.log(`\n${slug} · offer: ${JSON.stringify(offer)}`);
     for await (const line of streamPlan(
-      { profile, recent: [], offer },
+      { profile, recent: fixtureRecent(slug, withOffer), offer },
       {
         model,
         modelId: replayed?.modelId ?? modelId,
@@ -231,7 +244,11 @@ for (const slug of slugs) {
     console.log(`\n${slug} · ${Date.now() - started} ms · ${result.posts.length} posts`);
     print(result);
     if (record && recording) {
-      const saved: PostsFixture = { modelId, promptVersion: POSTS_PROMPT_VERSION, recording };
+      const saved: PostsFixture = {
+        modelId,
+        promptVersion: promptVersionFor(profile),
+        recording,
+      };
       const file = withOffer ? 'posts-offer.json' : 'posts.json';
       writeFileSync(join(dir, file), `${JSON.stringify(saved, null, 2)}\n`);
     }
@@ -243,5 +260,5 @@ for (const slug of slugs) {
 }
 
 console.log(
-  `\nposts eval: ${made}/${slugs.length} made · prompt ${POSTS_PROMPT_VERSION} · model ${modelId}${replay ? ' · replayed, no request' : ''}`,
+  `\nposts eval: ${made}/${slugs.length} made · prompt ${[...versions].join(', ')} · model ${modelId}${replay ? ' · replayed, no request' : ''}`,
 );

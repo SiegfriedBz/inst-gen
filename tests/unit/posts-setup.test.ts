@@ -11,6 +11,7 @@ import {
   lookOf,
   poseLine,
   QUESTIONS,
+  REASONS,
   type Setup,
   seededRandom,
   setupLine,
@@ -410,6 +411,21 @@ describe('question kinds', () => {
     const { question: _, ...bare } = setup;
     expect(setupLine({ ...bare, question: 'ask' })).toBe(setupLine(bare));
     expect(setupLine({ ...bare, hook: 'scene' })).toBe(setupLine(bare));
+  });
+});
+
+// A reason to book and a fact (docs/specs/posts/reasons-to-book).
+describe('reasons in the set-up', () => {
+  it('the schema takes a reason and a fact, and refuses another reason or an empty fact', () => {
+    const setup = deal(senProfile())[0];
+    const fact = 'No upfront deposit required';
+    expect(setupSchema.safeParse({ ...setup, reason: 'laptop', fact }).success).toBe(true);
+    expect(setupSchema.safeParse({ ...setup, reason: 'tip' }).success).toBe(false);
+    expect(setupSchema.safeParse({ ...setup, fact: '' }).success).toBe(false);
+  });
+
+  it('the five reasons, in order', () => {
+    expect([...REASONS]).toEqual(['dayOut', 'stayIn', 'twoOfYou', 'firstNight', 'laptop']);
   });
 });
 

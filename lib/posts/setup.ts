@@ -167,6 +167,12 @@ export type Hook = (typeof HOOKS)[number];
 export const QUESTIONS = ['sore', 'ask'] as const;
 export type Question = (typeof QUESTIONS)[number];
 
+// The reason to book each post sells, for a business that comes to its guests
+// (docs/specs/posts/reasons-to-book): dealt by code in place of a kind of
+// question, with the fact that ends its caption.
+export const REASONS = ['dayOut', 'stayIn', 'twoOfYou', 'firstNight', 'laptop'] as const;
+export type Reason = (typeof REASONS)[number];
+
 export const setupSchema = z.object({
   treatment: z.string().min(1).optional(),
   look: z.enum(LOOKS),
@@ -178,16 +184,18 @@ export const setupSchema = z.object({
   light: z.enum(LIGHTS).optional(),
   hook: z.enum(HOOKS).optional(),
   question: z.enum(QUESTIONS).optional(),
+  reason: z.enum(REASONS).optional(),
+  fact: z.string().min(1).optional(),
 });
 export type Setup = z.infer<typeof setupSchema>;
 
 // Two suggestions an attempt (docs/specs/posts/two-suggestions); the same
 // number as POSTS_LIMITS.posts, which can't be imported here.
-const SETUPS = 2;
+export const SETUPS = 2;
 
 // Where the hands work for a look; the others take the free parts. Thai's
 // legs are a leg stretch, its back a palm press (docs/specs/posts/normal-bodies).
-const FIXED_PARTS: Partial<Record<LookKey, readonly BodyPart[]>> = {
+export const FIXED_PARTS: Partial<Record<LookKey, readonly BodyPart[]>> = {
   foot: ['feet'],
   thai: ['legs', 'back'],
   stone: ['back'],
@@ -195,9 +203,14 @@ const FIXED_PARTS: Partial<Record<LookKey, readonly BodyPart[]>> = {
   pregnancy: ['back'],
   scrub: ['back', 'arms and hands'],
 };
-const FREE_PARTS: readonly BodyPart[] = ['back', 'shoulders and neck', 'legs', 'arms and hands'];
+export const FREE_PARTS: readonly BodyPart[] = [
+  'back',
+  'shoulders and neck',
+  'legs',
+  'arms and hands',
+];
 
-function shuffled<T>(items: readonly T[], random: () => number): T[] {
+export function shuffled<T>(items: readonly T[], random: () => number): T[] {
   const out = [...items];
   for (let i = out.length - 1; i > 0; i -= 1) {
     const j = Math.floor(random() * (i + 1));
@@ -206,8 +219,27 @@ function shuffled<T>(items: readonly T[], random: () => number): T[] {
   return out;
 }
 
-function pick<T>(items: readonly T[], random: () => number): T {
+export function pick<T>(items: readonly T[], random: () => number): T {
   return items[Math.floor(random() * items.length)];
+}
+
+// The offerings the images can show: one name, one treatment, however many
+// durations the profile lists.
+export function eligibleNames(profile: Profile): string[] {
+  return [...new Set(profile.offerings.map((o) => o.name).filter((n) => lookOf(n) !== 'excluded'))];
+}
+
+// A treatment's look, or plain for none and for a name the images never show.
+export function lookOfTreatment(treatment: string | undefined): LookKey {
+  const look = treatment ? lookOf(treatment) : 'plain';
+  return look === 'excluded' ? 'plain' : look;
+}
+
+// The offer's treatments for posts 1 and 2: two different ones when it has
+// two or more.
+export function dealOfferTreatments(offer: Offer, random: () => number): string[] {
+  const offered = shuffled(offer.treatments, random);
+  return [offered[0], offered[1] ?? offered[0]];
 }
 
 // The treatments: the offer's first, then the least-used eligible
@@ -218,15 +250,8 @@ function dealTreatments(
   offer: Offer | undefined,
   random: () => number,
 ): (string | undefined)[] {
-  const out: (string | undefined)[] = [];
-  if (offer) {
-    const offered = shuffled(offer.treatments, random);
-    out.push(offered[0], offered[1] ?? offered[0]);
-  }
-  // One name, one treatment, however many durations the profile lists.
-  const eligible = [
-    ...new Set(profile.offerings.map((o) => o.name).filter((n) => lookOf(n) !== 'excluded')),
-  ];
+  const out: (string | undefined)[] = offer ? dealOfferTreatments(offer, random) : [];
+  const eligible = eligibleNames(profile);
   if (!eligible.length) return [...out, ...Array(SETUPS - out.length).fill(undefined)];
   while (out.length < SETUPS) {
     const uses = eligible.map((name) => out.filter((t) => t === name).length);
@@ -241,56 +266,78 @@ function dealTreatments(
   return out;
 }
 
-export function dealSetups(
-  profile: Profile,
-  offer: Offer | undefined,
+// The least used of some choices, at random among equals.
+export function leastUsed<T>(
+  choices: readonly T[],
+  uses: (choice: T) => number,
   random: () => number,
-): Setup[] {
-  const locals = localsOf(profile);
-  const looks = dealTreatments(profile, offer, random).map((treatment) => {
-    const look = treatment ? lookOf(treatment) : 'plain';
-    return { treatment, look: look === 'excluded' ? ('plain' as const) : look };
-  });
+): T {
+  const least = Math.min(...choices.map(uses));
+  return pick(
+    choices.filter((c) => uses(c) === least),
+    random,
+  );
+}
 
-  const used = new Map<BodyPart, number>();
-  const bodyParts = looks.map(({ look }) => {
-    const choices = FIXED_PARTS[look] ?? FREE_PARTS;
-    const least = Math.min(...choices.map((part) => used.get(part) ?? 0));
-    const part = pick(
-      choices.filter((c) => (used.get(c) ?? 0) === least),
-      random,
-    );
-    used.set(part, (used.get(part) ?? 0) + 1);
-    return part;
-  });
-
-  // Couples aren't counted; the rest half and half, the odd one a man.
-  const counted = looks.filter(({ look }) => look !== 'couple').length;
-  const pregnancies = looks.filter(({ look }) => look === 'pregnancy').length;
+// Couples aren't counted; the rest half and half, the odd one a man.
+export function dealGuests(looks: readonly LookKey[], random: () => number): Setup['guests'][] {
+  const counted = looks.filter((look) => look !== 'couple').length;
+  const pregnancies = looks.filter((look) => look === 'pregnancy').length;
   const open = counted - pregnancies;
   const women = Math.max(0, Math.floor(counted / 2) - pregnancies);
   const free = shuffled(
     [...Array(open - women).fill('man'), ...Array(women).fill('woman')] as ('man' | 'woman')[],
     random,
   );
-  const guests = looks.map(({ look }) =>
+  return looks.map((look) =>
     look === 'couple' ? 'couple' : look === 'pregnancy' ? 'woman' : (free.shift() ?? 'man'),
   );
+}
 
-  // Each scene once to draw from, so the two differ; a couple never takes the
-  // close-up, which can't show both guests on their beds.
+// Each scene once to draw from, so the two differ; a couple never takes the
+// close-up, which can't show both guests on their beds.
+export function dealScenes(looks: readonly LookKey[], random: () => number): Scene[] {
   const pool = shuffled(SCENES, random);
   const take = (fits: (scene: Scene) => boolean) => {
     const i = pool.findIndex(fits);
     return pool.splice(i === -1 ? 0 : i, 1)[0];
   };
-  const scenes: Scene[] = Array(SETUPS);
-  for (const [i, { look }] of looks.entries()) {
+  const scenes: Scene[] = Array(looks.length);
+  for (const [i, look] of looks.entries()) {
     if (look === 'couple') scenes[i] = take((scene) => scene !== 'detail');
   }
-  for (const [i, { look }] of looks.entries()) {
+  for (const [i, look] of looks.entries()) {
     if (look !== 'couple') scenes[i] = take(() => true);
   }
+  return scenes;
+}
+
+export function dealSetups(
+  profile: Profile,
+  offer: Offer | undefined,
+  random: () => number,
+): Setup[] {
+  const locals = localsOf(profile);
+  const looks = dealTreatments(profile, offer, random).map((treatment) => ({
+    treatment,
+    look: lookOfTreatment(treatment),
+  }));
+
+  const used = new Map<BodyPart, number>();
+  const bodyParts = looks.map(({ look }) => {
+    const part = leastUsed(FIXED_PARTS[look] ?? FREE_PARTS, (p) => used.get(p) ?? 0, random);
+    used.set(part, (used.get(part) ?? 0) + 1);
+    return part;
+  });
+
+  const guests = dealGuests(
+    looks.map(({ look }) => look),
+    random,
+  );
+  const scenes = dealScenes(
+    looks.map(({ look }) => look),
+    random,
+  );
 
   // Half days and half nights, drawn last.
   const half = SETUPS / 2;
@@ -362,6 +409,15 @@ const CAMERAS: Record<Setup['scene'], string> = {
   place: 'the room with the treatment in it',
   guest: 'from above',
 };
+
+// Who is in a post's image, beside its reason to book: the caption names as
+// many therapists as the image shows (docs/specs/posts/reasons-to-book,
+// amended 2026-11-23).
+export function peopleOf(setup: Setup): string {
+  const guests = setup.guests === 'couple' ? 'two guests' : 'one guest';
+  const therapists = setup.therapists === 2 ? 'two therapists' : 'one therapist';
+  return `${guests}, ${therapists}`;
+}
 
 export function setupLine(setup: Setup): string {
   const what = setup.treatment ?? 'A massage';

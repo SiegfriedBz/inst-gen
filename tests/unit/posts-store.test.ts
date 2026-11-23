@@ -101,6 +101,27 @@ describe('the posts store', () => {
     expect(recent.at(-1)).toEqual({ type: 'offer', topic: 'a topic 5' });
   });
 
+  // Each recent post carries its reason to book, when it has one
+  // (docs/specs/posts/reasons-to-book).
+  test('recentPosts carries a post’s reason, and no key for a post without one', () => {
+    const setup = {
+      look: 'plain' as const,
+      guests: 'man' as const,
+      therapists: 1 as const,
+      bodyPart: 'back' as const,
+      scene: 'treatment' as const,
+      locals: 'Balinese' as const,
+      light: 'night' as const,
+      reason: 'laptop' as const,
+    };
+    const [first, ...rest] = batch('a', '2026-10-25T09:00:00.000Z').posts;
+    const recent = recentPosts([
+      batch('a', '2026-10-25T09:00:00.000Z', { posts: [{ ...first, setup }, ...rest] }),
+    ]);
+    expect(recent[0]).toEqual({ type: 'offer', topic: 'a topic 0', reason: 'laptop' });
+    expect(recent[1]).toEqual({ type: 'offer', topic: 'a topic 1' });
+  });
+
   test("applyCta changes every post's cta and nothing else", async () => {
     await saveBatch(batch('a', '2026-10-25T09:00:00.000Z'));
     const [updated] = await applyCta('svarga', withWhatsApp('+6289999999999'));

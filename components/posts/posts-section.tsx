@@ -2,7 +2,7 @@
 
 import { CircleNotch } from '@phosphor-icons/react';
 import { useTranslations } from 'next-intl';
-import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import { Fragment, useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { UsageMessage } from '@/components/usage/usage-message';
 import { useAtLimit } from '@/components/usage/usage-provider';
@@ -17,7 +17,7 @@ import {
   startPlan,
   startRewrite,
 } from '@/lib/posts/client';
-import { attemptNumbers, dayStart } from '@/lib/posts/day';
+import { attemptNumbers, dayStart, splitDays, yesterdayStart } from '@/lib/posts/day';
 import {
   applyEdit,
   autoRewrite,
@@ -49,9 +49,10 @@ import { CopyPost, CopyStory, SaveImages } from './take-away';
 
 // "Create your posts" (docs/specs/posts/suggestions): the button that makes
 // an attempt of two suggestions (docs/specs/posts/two-suggestions), the
-// suggestions as they stream in, and the attempts made since Google's reset
-// (docs/specs/platform/one-daily-reset), newest on top; anything older is
-// cleared when the section loads. Once a plan is saved, its images are asked
+// suggestions as they stream in, and the attempts of the current day and of
+// the day before, each day from Google's reset (docs/specs/platform/one-daily-reset,
+// docs/specs/posts/two-days), newest on top under "Today" and "Yesterday";
+// anything older is cleared when the section loads. Once a plan is saved, its images are asked
 // for (docs/specs/posts/generate-images; an attempt saved with six asks for
 // two, docs/specs/posts/two-images) when images are on for this owner.
 // While its tab shows, the newest batch's captions follow the business
@@ -105,7 +106,8 @@ export function PostsSection({
   const monthFullRef = useRef(monthFull);
   monthFullRef.current = monthFull;
   // The start of the owner's day, once the section has cleared what came
-  // before it: only attempts made since then are shown.
+  // before the day before: today's attempts are those made since then, and
+  // yesterday's those of the day before (docs/specs/posts/two-days).
   const [start, setStart] = useState<Date | null>(null);
   const startRef = useRef<Date | null>(null);
   // True until the first look for a lost run ends, and while one resumes, so
@@ -228,10 +230,11 @@ export function PostsSection({
     setImagesResuming(true);
     try {
       const from = startRef.current;
-      const today = from ? batchesRef.current.filter((b) => new Date(b.createdAt) >= from) : [];
+      // Today's and yesterday's attempts (docs/specs/posts/two-days).
+      const days = from ? splitDays(batchesRef.current, from) : { today: [], yesterday: [] };
       const run = await resumeImages(
         ownerId,
-        today,
+        [...days.today, ...days.yesterday],
         onImageEvent,
         defaultReadDeps(),
         profileRef.current.staffLook?.value,
@@ -320,8 +323,10 @@ export function PostsSection({
     mounted.current = true;
     let active = true;
     void (async () => {
-      const from = dayStart(new Date());
-      await clearBefore(ownerId, from);
+      const now = new Date();
+      const from = dayStart(now);
+      // The day before stays; only older ones go (docs/specs/posts/two-days).
+      await clearBefore(ownerId, yesterdayStart(now));
       const saved = await loadBatches(ownerId);
       const savedImages = await loadImages(ownerId);
       if (!active) return;
@@ -406,11 +411,12 @@ export function PostsSection({
   function make() {
     // An app left open across the reset starts the new day here, so the new
     // attempt is numbered like the bar counts (docs/specs/platform/one-daily-reset).
-    const from = dayStart(new Date());
+    const now = new Date();
+    const from = dayStart(now);
     if (startRef.current && from > startRef.current) {
       startRef.current = from;
       setStart(from);
-      void clearBefore(ownerId, from);
+      void clearBefore(ownerId, yesterdayStart(now));
     }
     // The reset leaves the offer; only the end of its last day removes it.
     let live = offer;
@@ -519,17 +525,15 @@ export function PostsSection({
 
   const busy = running !== null || resuming || imagesResuming || making.size > 0;
   const currentHash = profileHash(profile);
-  // Today's attempts, newest on top; older kept records only feed `recent`.
-  const shown = useMemo(
-    () =>
-      start
-        ? batches
-            .filter((batch) => new Date(batch.createdAt) >= start)
-            .sort((a, b) => b.createdAt.localeCompare(a.createdAt))
-        : [],
+  // Today's attempts, then yesterday's, each newest on top
+  // (docs/specs/posts/two-days); older kept records only feed `recent`.
+  const days = useMemo(
+    () => (start ? splitDays(batches, start) : { today: [], yesterday: [] }),
     [batches, start],
   );
-  const numbers = attemptNumbers(shown);
+  const shown = useMemo(() => [...days.today, ...days.yesterday], [days]);
+  // Each day numbers its own attempts, as the bar counts today's.
+  const numbers = new Map([...attemptNumbers(days.today), ...attemptNumbers(days.yesterday)]);
   const newest = newestBatch(shown);
   const behind = newest ? staleUnedited(newest, profile) : [];
   // The newest batch's update is on its way: waiting for the search, the
@@ -681,9 +685,12 @@ export function PostsSection({
           {imagesOn ? t('empty') : t('emptyTextOnly')}
         </p>
       )}
+      {days.yesterday.length > 0 && (days.today.length > 0 || running?.step === 'plan') && (
+        <DayHeading label={t('today')} />
+      )}
       {running?.step === 'plan' && (
         <>
-          <AttemptHeading n={shown.length + 1} count={running.posts.length} />
+          <AttemptHeading n={days.today.length + 1} count={running.posts.length} />
           {/* Still streaming in: shown, not opened until the attempt is kept. */}
           <div className={GRID}>
             {running.posts.map((post, index) => (
@@ -703,78 +710,81 @@ export function PostsSection({
           </div>
         </>
       )}
-      {shown.map((batch) => {
+      {shown.map((batch, i) => {
         const needsImages = needsImagesFor(batch);
         const isNewest = batch === newest;
         const stale = isNewest && !updating ? behind : [];
         return (
-          <div key={batch.id} className="flex flex-col gap-3">
-            <AttemptHeading n={numbers.get(batch.id) ?? 1} count={batch.posts.length} />
-            {needsImages && (
-              <Button
-                type="button"
-                onClick={() => makeImages(batch, imagePosts(batch))}
-                disabled={held}
-              >
-                {t('images.make')}
-              </Button>
-            )}
-            {isNewest && updating && (
-              <p
-                role="status"
-                className="rounded-control bg-accent-tint px-4 py-3 text-[15px] text-accent-tint-ink"
-              >
-                {t('updating')}
-              </p>
-            )}
-            {stale.length > 0 && (
-              <div className="rounded-control bg-accent-tint px-4 py-3 text-[15px] text-accent-tint-ink">
-                <p>{t('stale')}</p>
-                {batch.posts.some((p) => p.edited) && <p>{t('staleEdited')}</p>}
+          <Fragment key={batch.id}>
+            {i === days.today.length && <DayHeading label={t('yesterday')} />}
+            <div className="flex flex-col gap-3">
+              <AttemptHeading n={numbers.get(batch.id) ?? 1} count={batch.posts.length} />
+              {needsImages && (
                 <Button
                   type="button"
-                  className="mt-2"
-                  onClick={() =>
-                    update(
-                      batch,
-                      stale.map((p) => p.id),
-                    )
-                  }
+                  onClick={() => makeImages(batch, imagePosts(batch))}
                   disabled={held}
                 >
-                  {t('update')}
+                  {t('images.make')}
                 </Button>
+              )}
+              {isNewest && updating && (
+                <p
+                  role="status"
+                  className="rounded-control bg-accent-tint px-4 py-3 text-[15px] text-accent-tint-ink"
+                >
+                  {t('updating')}
+                </p>
+              )}
+              {stale.length > 0 && (
+                <div className="rounded-control bg-accent-tint px-4 py-3 text-[15px] text-accent-tint-ink">
+                  <p>{t('stale')}</p>
+                  {batch.posts.some((p) => p.edited) && <p>{t('staleEdited')}</p>}
+                  <Button
+                    type="button"
+                    className="mt-2"
+                    onClick={() =>
+                      update(
+                        batch,
+                        stale.map((p) => p.id),
+                      )
+                    }
+                    disabled={held}
+                  >
+                    {t('update')}
+                  </Button>
+                </div>
+              )}
+              <div data-testid="attempt-grid" className={GRID}>
+                {batch.posts.map((post, index) => (
+                  <SuggestionTile
+                    key={post.id}
+                    ref={(el) => {
+                      // Post ids repeat across attempts: key by both.
+                      const key = imageKey(batch.id, post.id);
+                      if (el) tiles.current.set(key, el);
+                      else tiles.current.delete(key);
+                    }}
+                    post={post}
+                    n={index + 1}
+                    count={batch.posts.length}
+                    image={imageOf(post, batch, needsImages).state}
+                    textOnly={
+                      noImage(imageOf(post, batch, needsImages).state) &&
+                      imageOf(post, batch, needsImages).state.kind !== 'month'
+                    }
+                    taken={takenLabel(post, !noImage(imageOf(post, batch, needsImages).state))}
+                    check={[
+                      ...flagsFor(post, batch, profile, isNewest),
+                      ...storyFlagsFor(post, batch, profile, isNewest),
+                    ].some((flag) => SHOWN_FLAGS.includes(flag.kind))}
+                    offer={post.offer ? batch.offer : undefined}
+                    onOpen={() => openSuggestion(batch.id, post.id)}
+                  />
+                ))}
               </div>
-            )}
-            <div data-testid="attempt-grid" className={GRID}>
-              {batch.posts.map((post, index) => (
-                <SuggestionTile
-                  key={post.id}
-                  ref={(el) => {
-                    // Post ids repeat across attempts: key by both.
-                    const key = imageKey(batch.id, post.id);
-                    if (el) tiles.current.set(key, el);
-                    else tiles.current.delete(key);
-                  }}
-                  post={post}
-                  n={index + 1}
-                  count={batch.posts.length}
-                  image={imageOf(post, batch, needsImages).state}
-                  textOnly={
-                    noImage(imageOf(post, batch, needsImages).state) &&
-                    imageOf(post, batch, needsImages).state.kind !== 'month'
-                  }
-                  taken={takenLabel(post, !noImage(imageOf(post, batch, needsImages).state))}
-                  check={[
-                    ...flagsFor(post, batch, profile, isNewest),
-                    ...storyFlagsFor(post, batch, profile, isNewest),
-                  ].some((flag) => SHOWN_FLAGS.includes(flag.kind))}
-                  offer={post.offer ? batch.offer : undefined}
-                  onOpen={() => openSuggestion(batch.id, post.id)}
-                />
-              ))}
             </div>
-          </div>
+          </Fragment>
         );
       })}
       {openBatch && openPost && (
@@ -884,6 +894,15 @@ export function PostsSection({
 // Two tiles to a row: an attempt is two suggestions
 // (docs/specs/posts/two-suggestions).
 const GRID = 'grid grid-cols-2 gap-x-2 gap-y-3';
+
+// Today and yesterday, above their attempts (docs/specs/posts/two-days).
+function DayHeading({ label }: { label: string }) {
+  return (
+    <h2 className="mt-5 text-[13px] font-medium uppercase tracking-[0.06em] text-ink-secondary">
+      {label}
+    </h2>
+  );
+}
 
 function AttemptHeading({ n, count }: { n: number; count: number }) {
   const t = useTranslations('posts');

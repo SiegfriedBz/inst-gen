@@ -21,6 +21,7 @@ import {
   setupFlags,
 } from './checks';
 import { isSpa } from './emoji';
+import { postsPromptInput } from './facts';
 import { postsModelInput, profileHash } from './input';
 import type { PostsLog } from './log';
 import type { Offer } from './offer';
@@ -33,7 +34,14 @@ import {
   rewritePrompt,
   rewriteUserText,
 } from './prompt';
-import { dealSetups, type Setup } from './setup';
+import { comesToGuests, dealReasonSetups, newTextsPost, withReasons } from './reasons';
+import {
+  REASONS_PROMPT_VERSION,
+  reasonsNewTextsPrompt,
+  reasonsPlanPrompt,
+  reasonsRewritePrompt,
+} from './reasons-prompt';
+import { dealSetups, type Reason, type Setup } from './setup';
 import type { PostsLine } from './stream';
 
 // The post plan and its rewrite, end to end: one streamed model call, each
@@ -51,6 +59,18 @@ export type PostsDeps = {
 };
 
 export const POSTS_TIMEOUT_MS = 60_000;
+
+// The reasons some set-ups have: the prompt shows none of their samples
+// (docs/specs/posts/reasons-to-book, amended 2026-11-23).
+function reasonsOf(setups: readonly Setup[]): Reason[] {
+  return setups.flatMap((setup) => (setup.reason ? [setup.reason] : []));
+}
+
+// posts-20 for a business that comes to its guests, posts-19 for any other
+// (docs/specs/posts/reasons-to-book, "What the model gets").
+export function promptVersionFor(profile: PlanBody['profile']): string {
+  return comesToGuests(profile) ? REASONS_PROMPT_VERSION : POSTS_PROMPT_VERSION;
+}
 
 function errorCode(error: unknown): PostsErrorCode {
   return error instanceof ModelError && error.kind === 'busy' ? 'model_busy' : 'model_failed';
@@ -88,7 +108,7 @@ async function* run<T>(
     host: hostOf(profile.siteUrl),
     kind: step.kind,
     model,
-    promptVersion: POSTS_PROMPT_VERSION,
+    promptVersion: promptVersionFor(profile),
     kept: 0,
     flags: 0,
     storyCuts: 0,
@@ -151,7 +171,7 @@ async function* run<T>(
     const result: PlanResult = {
       posts: checked.posts,
       dropped: checked.dropped,
-      promptVersion: POSTS_PROMPT_VERSION,
+      promptVersion: promptVersionFor(profile),
       model,
       profileHash: profileHash(profile),
       ...(offer ? { offer } : {}),
@@ -193,8 +213,21 @@ export function streamPlan(
   deps: PostsDeps,
   signal: AbortSignal,
 ): AsyncGenerator<PostsLine> {
-  const input = postsModelInput(body.profile);
-  const setups = dealSetups(body.profile, body.offer, deps.random ?? Math.random);
+  const random = deps.random ?? Math.random;
+  const spa = isSpa(body.profile.category);
+  // A business that comes to its guests gets reasons to book, facts and the
+  // posts-20 prompt (docs/specs/posts/reasons-to-book); any other, posts-19.
+  const guests = comesToGuests(body.profile);
+  const input = guests ? postsPromptInput(body.profile) : postsModelInput(body.profile);
+  const setups = guests
+    ? dealReasonSetups(body.profile, body.offer, random, body.recent)
+    : dealSetups(body.profile, body.offer, random);
+  // Its types are code's: post 1 an offer post, post 2 a moment post, both
+  // offer posts with an offer.
+  const typed = (posts: ModelPost[]) =>
+    guests
+      ? posts.map((post, i) => ({ ...post, type: i === 0 || body.offer ? 'offer' : 'moment' }))
+      : posts;
   return run(
     body.profile,
     {
@@ -202,13 +235,15 @@ export function streamPlan(
       open: (s) =>
         deps.model.streamPostPlan(
           {
-            system: planPrompt(!!body.offer, isSpa(body.profile.category)),
+            system: guests
+              ? reasonsPlanPrompt(!!body.offer, spa, reasonsOf(setups))
+              : planPrompt(!!body.offer, spa),
             text: planUserText(input, body.recent, body.offer, setups),
           },
           s,
         ),
       complete: (partial, done) => {
-        const posts = (partial.posts ?? []) as ModelPost[];
+        const posts = typed((partial.posts ?? []) as ModelPost[]);
         return done ? posts : posts.slice(0, -1);
       },
       finish: (_final, streamed, dropped) => checkPlan(streamed, dropped, body.profile, body.offer),
@@ -225,7 +260,14 @@ export function streamRewrite(
   deps: PostsDeps,
   signal: AbortSignal,
 ): AsyncGenerator<PostsLine> {
-  const input = postsModelInput(body.profile);
+  const spa = isSpa(body.profile.category);
+  const guests = comesToGuests(body.profile);
+  const input = guests ? postsPromptInput(body.profile) : postsModelInput(body.profile);
+  // Each post keeps its reason and fact, or gets them
+  // (docs/specs/posts/reasons-to-book, "Write new texts, and caption updates").
+  const posts = guests
+    ? withReasons(body.posts, body.profile, deps.random ?? Math.random)
+    : body.posts;
   return run(
     body.profile,
     {
@@ -233,14 +275,20 @@ export function streamRewrite(
       open: (s) =>
         deps.model.streamPostRewrite(
           {
-            system: rewritePrompt(!!body.offer, isSpa(body.profile.category)),
-            text: rewriteUserText(input, body.posts, body.offer),
+            system: guests
+              ? reasonsRewritePrompt(
+                  !!body.offer,
+                  spa,
+                  reasonsOf(posts.flatMap((p) => (p.setup ? [p.setup] : []))),
+                )
+              : rewritePrompt(!!body.offer, spa),
+            text: rewriteUserText(input, posts, body.offer),
           },
           s,
         ),
       // A rewrite's posts are only shown once all are checked.
       complete: () => null,
-      finish: (final) => checkRewrite(final, body.posts, body.profile, body.offer),
+      finish: (final) => checkRewrite(final, posts, body.profile, body.offer),
     },
     deps,
     signal,
@@ -256,7 +304,14 @@ export function streamNewTexts(
   deps: PostsDeps,
   signal: AbortSignal,
 ): AsyncGenerator<PostsLine> {
-  const input = postsModelInput(body.profile);
+  const spa = isSpa(body.profile.category);
+  const guests = comesToGuests(body.profile);
+  const input = guests ? postsPromptInput(body.profile) : postsModelInput(body.profile);
+  // The post keeps its reason, or gets one, and takes a new fact
+  // (docs/specs/posts/reasons-to-book).
+  const post = guests
+    ? newTextsPost(body.post, body.other, body.profile, deps.random ?? Math.random)
+    : body.post;
   return run(
     body.profile,
     {
@@ -264,13 +319,15 @@ export function streamNewTexts(
       open: (s) =>
         deps.model.streamPostRewrite(
           {
-            system: newTextsPrompt(!!body.offer, isSpa(body.profile.category)),
-            text: newTextsUserText(input, body.post, body.other, body.offer),
+            system: guests
+              ? reasonsNewTextsPrompt(!!body.offer, spa, reasonsOf(post.setup ? [post.setup] : []))
+              : newTextsPrompt(!!body.offer, spa),
+            text: newTextsUserText(input, post, body.other, body.offer),
           },
           s,
         ),
       complete: () => null,
-      finish: (final) => checkNewTexts(final, body.post, body.other, body.profile, body.offer),
+      finish: (final) => checkNewTexts(final, post, body.other, body.profile, body.offer),
     },
     deps,
     signal,

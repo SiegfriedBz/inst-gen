@@ -1,5 +1,5 @@
 import { afterAll, describe, expect, test } from 'vitest';
-import { dayOf, dayStart, isToday } from '@/lib/posts/day';
+import { dayOf, dayStart, isToday, splitDays, yesterdayStart } from '@/lib/posts/day';
 
 // The phone in Da Nang (UTC+7): local times below are the phone's clock.
 const zone = process.env.TZ;
@@ -52,5 +52,29 @@ describe("the day starts at Google's reset", () => {
     } finally {
       process.env.TZ = zone;
     }
+  });
+});
+
+// Two days of suggestions (docs/specs/posts/two-days): the current day and
+// the day before.
+describe('the day before', () => {
+  test('yesterdayStart is the reset before the day started', () => {
+    expect(dayStart(local(26, 10))).toEqual(local(25, 14));
+    expect(yesterdayStart(local(26, 10))).toEqual(local(24, 14));
+    // A batch made exactly at the reset belongs to the new day.
+    expect(yesterdayStart(local(26, 14))).toEqual(local(25, 14));
+  });
+
+  test('splitDays: today and yesterday, each newest first; older in neither', () => {
+    const at = (d: number, h: number) => ({
+      id: `${d}-${h}`,
+      createdAt: local(d, h).toISOString(),
+    });
+    const { today, yesterday } = splitDays(
+      [at(24, 10), at(25, 10), at(25, 14), at(25, 20), at(25, 13)],
+      local(26, 10),
+    );
+    expect(today.map((b) => b.id)).toEqual(['25-20', '25-14']);
+    expect(yesterday.map((b) => b.id)).toEqual(['25-13', '25-10']);
   });
 });

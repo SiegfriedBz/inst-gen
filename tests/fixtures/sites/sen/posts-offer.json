@@ -1,18 +1,15 @@
 {
   "modelId": "gemini-3.5-flash-lite",
-  "promptVersion": "posts-18",
+  "promptVersion": "posts-20",
   "recording": {
     "modelId": "gemini-3.5-flash-lite",
-    "promptVersion": "posts-18",
+    "promptVersion": "posts-20",
     "partials": [
       {
-        "posts": []
-      },
-      {
         "posts": [
           {
             "type": "offer",
-            "topic": "Vietnamese Traditional Massage offer"
+            "topic": "Laptop days and neck tension"
           }
         ]
       },
@@ -20,9 +17,9 @@
         "posts": [
           {
             "type": "offer",
-            "topic": "Vietnamese Traditional Massage offer",
-            "scene": "the room with the treatment in it",
-            "caption": "10% off our 9"
+            "topic": "Laptop days and neck tension",
+            "scene": "detail",
+            "caption": "10% off our 90-minute Vietnamese Traditional Massage,"
           }
         ]
       },
@@ -30,9 +27,9 @@
         "posts": [
           {
             "type": "offer",
-            "topic": "Vietnamese Traditional Massage offer",
-            "scene": "the room with the treatment in it",
-            "caption": "10% off our 90-minute Vietnamese Traditional Massage, until Sunday 1 November. 🌸\n\nCan a massage therapist come to my hotel room tonight"
+            "topic": "Laptop days and neck tension",
+            "scene": "detail",
+            "caption": "10% off our 90-minute Vietnamese Traditional Massage, until Sunday 1 November. 🌸\n\nStiff neck after days of work on your laptop in your"
           }
         ]
       },
@@ -40,12 +37,21 @@
         "posts": [
           {
             "type": "offer",
-            "topic": "Vietnamese Traditional Massage offer",
-            "scene": "the room with the treatment in it",
-            "caption": "10% off our 90-minute Vietnamese Traditional Massage, until Sunday 1 November. 🌸\n\nCan a massage therapist come to my hotel room tonight? Our trained local therapists bring fresh linens, towels and warm oil directly to your Da Nang room. 🪷\n\nTrained local therapists",
+            "topic": "Laptop days and neck tension",
+            "scene": "detail",
+            "caption": "10% off our 90-minute Vietnamese Traditional Massage, until Sunday 1 November. 🌸\n\nStiff neck after days of work on your laptop in your An Thuong apartment? A therapist comes to your room, and the tension in your shoulders eases for the rest of your evening.\n"
+          }
+        ]
+      },
+      {
+        "posts": [
+          {
+            "type": "offer",
+            "topic": "Laptop days and neck tension",
+            "scene": "detail",
+            "caption": "10% off our 90-minute Vietnamese Traditional Massage, until Sunday 1 November. 🌸\n\nStiff neck after days of work on your laptop in your An Thuong apartment? A therapist comes to your room, and the tension in your shoulders eases for the rest of your evening.\n\nFree travel in our core areas. 🪷",
             "hashtags": [
-              "danang",
-              "vietnames"
+              "danang"
             ]
           }
         ]
@@ -54,14 +60,234 @@
         "posts": [
           {
             "type": "offer",
-            "topic": "Vietnamese Traditional Massage offer",
-            "scene": "the room with the treatment in it",
-            "caption": "10% off our 90-minute Vietnamese Traditional Massage, until Sunday 1 November. 🌸\n\nCan a massage therapist come to my hotel room tonight? Our trained local therapists bring fresh linens, towels and warm oil directly to your Da Nang room. 🪷\n\nTrained local therapists",
+            "topic": "Laptop days and neck tension",
+            "scene": "detail",
+            "caption": "10% off our 90-minute Vietnamese Traditional Massage, until Sunday 1 November. 🌸\n\nStiff neck after days of work on your laptop in your An Thuong apartment? A therapist comes to your room, and the tension in your shoulders eases for the rest of your evening.\n\nFree travel in our core areas. 🪷",
             "hashtags": [
               "danang",
-              "vietnamesetraditionalmassage",
-              "massageindanang",
-              "mykhebeach"
+              "vietnamesemassage",
+              "spadanang",
+              "massageindanang"
+            ],
+            "altText": "A close view"
+          }
+        ]
+      },
+      {
+        "posts": [
+          {
+            "type": "offer",
+            "topic": "Laptop days and neck tension",
+            "scene": "detail",
+            "caption": "10% off our 90-minute Vietnamese Traditional Massage, until Sunday 1 November. 🌸\n\nStiff neck after days of work on your laptop in your An Thuong apartment? A therapist comes to your room, and the tension in your shoulders eases for the rest of your evening.\n\nFree travel in our core areas. 🪷",
+            "hashtags": [
+              "danang",
+              "vietnamesemassage",
+              "spadanang",
+              "massageindanang"
+            ],
+            "altText": "A close view of a therapist's hands working with warm golden oil on a man's back on a massage bed at night."
+          }
+        ]
+      },
+      {
+        "posts": [
+          {
+            "type": "offer",
+            "topic": "Laptop days and neck tension",
+            "scene": "detail",
+            "caption": "10% off our 90-minute Vietnamese Traditional Massage, until Sunday 1 November. 🌸\n\nStiff neck after days of work on your laptop in your An Thuong apartment? A therapist comes to your room, and the tension in your shoulders eases for the rest of your evening.\n\nFree travel in our core areas. 🪷",
+            "hashtags": [
+              "danang",
+              "vietnamesemassage",
+              "spadanang",
+              "massageindanang"
+            ],
+            "altText": "A close view of a therapist's hands working with warm golden oil on a man's back on a massage bed at night.",
+            "imagePrompt": "A tall 9:16 photo in a boutique hotel room at night, warm"
+          }
+        ]
+      },
+      {
+        "posts": [
+          {
+            "type": "offer",
+            "topic": "Laptop days and neck tension",
+            "scene": "detail",
+            "caption": "10% off our 90-minute Vietnamese Traditional Massage, until Sunday 1 November. 🌸\n\nStiff neck after days of work on your laptop in your An Thuong apartment? A therapist comes to your room, and the tension in your shoulders eases for the rest of your evening.\n\nFree travel in our core areas. 🪷",
+            "hashtags": [
+              "danang",
+              "vietnamesemassage",
+              "spadanang",
+              "massageindanang"
+            ],
+            "altText": "A close view of a therapist's hands working with warm golden oil on a man's back on a massage bed at night.",
+            "imagePrompt": "A tall 9:16 photo in a boutique hotel room at night, warm lamps giving a golden glow. A man is face down on a massage bed. A female therapist's hands work with warm golden oil on his"
+          }
+        ]
+      },
+      {
+        "posts": [
+          {
+            "type": "offer",
+            "topic": "Laptop days and neck tension",
+            "scene": "detail",
+            "caption": "10% off our 90-minute Vietnamese Traditional Massage, until Sunday 1 November. 🌸\n\nStiff neck after days of work on your laptop in your An Thuong apartment? A therapist comes to your room, and the tension in your shoulders eases for the rest of your evening.\n\nFree travel in our core areas. 🪷",
+            "hashtags": [
+              "danang",
+              "vietnamesemassage",
+              "spadanang",
+              "massageindanang"
+            ],
+            "altText": "A close view of a therapist's hands working with warm golden oil on a man's back on a massage bed at night.",
+            "imagePrompt": "A tall 9:16 photo in a boutique hotel room at night, warm lamps giving a golden glow. A man is face down on a massage bed. A female therapist's hands work with warm golden oil on his upper back and shoulders. A closed laptop sits far in the background on a wooden desk, out of focus. No text, logos or"
+          }
+        ]
+      },
+      {
+        "posts": [
+          {
+            "type": "offer",
+            "topic": "Laptop days and neck tension",
+            "scene": "detail",
+            "caption": "10% off our 90-minute Vietnamese Traditional Massage, until Sunday 1 November. 🌸\n\nStiff neck after days of work on your laptop in your An Thuong apartment? A therapist comes to your room, and the tension in your shoulders eases for the rest of your evening.\n\nFree travel in our core areas. 🪷",
+            "hashtags": [
+              "danang",
+              "vietnamesemassage",
+              "spadanang",
+              "massageindanang"
+            ],
+            "altText": "A close view of a therapist's hands working with warm golden oil on a man's back on a massage bed at night.",
+            "imagePrompt": "A tall 9:16 photo in a boutique hotel room at night, warm lamps giving a golden glow. A man is face down on a massage bed. A female therapist's hands work with warm golden oil on his upper back and shoulders. A closed laptop sits far in the background on a wooden desk, out of focus. No text, logos or labels.",
+            "storyText": "10% off Vietnamese Traditional Massage 🌸"
+          }
+        ]
+      },
+      {
+        "posts": [
+          {
+            "type": "offer",
+            "topic": "Laptop days and neck tension",
+            "scene": "detail",
+            "caption": "10% off our 90-minute Vietnamese Traditional Massage, until Sunday 1 November. 🌸\n\nStiff neck after days of work on your laptop in your An Thuong apartment? A therapist comes to your room, and the tension in your shoulders eases for the rest of your evening.\n\nFree travel in our core areas. 🪷",
+            "hashtags": [
+              "danang",
+              "vietnamesemassage",
+              "spadanang",
+              "massageindanang"
+            ],
+            "altText": "A close view of a therapist's hands working with warm golden oil on a man's back on a massage bed at night.",
+            "imagePrompt": "A tall 9:16 photo in a boutique hotel room at night, warm lamps giving a golden glow. A man is face down on a massage bed. A female therapist's hands work with warm golden oil on his upper back and shoulders. A closed laptop sits far in the background on a wooden desk, out of focus. No text, logos or labels.",
+            "storyText": "10% off Vietnamese Traditional Massage 🌸"
+          },
+          {
+            "type": "offer",
+            "topic": "Legs after climbing Marble Mountains"
+          }
+        ]
+      },
+      {
+        "posts": [
+          {
+            "type": "offer",
+            "topic": "Laptop days and neck tension",
+            "scene": "detail",
+            "caption": "10% off our 90-minute Vietnamese Traditional Massage, until Sunday 1 November. 🌸\n\nStiff neck after days of work on your laptop in your An Thuong apartment? A therapist comes to your room, and the tension in your shoulders eases for the rest of your evening.\n\nFree travel in our core areas. 🪷",
+            "hashtags": [
+              "danang",
+              "vietnamesemassage",
+              "spadanang",
+              "massageindanang"
+            ],
+            "altText": "A close view of a therapist's hands working with warm golden oil on a man's back on a massage bed at night.",
+            "imagePrompt": "A tall 9:16 photo in a boutique hotel room at night, warm lamps giving a golden glow. A man is face down on a massage bed. A female therapist's hands work with warm golden oil on his upper back and shoulders. A closed laptop sits far in the background on a wooden desk, out of focus. No text, logos or labels.",
+            "storyText": "10% off Vietnamese Traditional Massage 🌸"
+          },
+          {
+            "type": "offer",
+            "topic": "Legs after climbing Marble Mountains",
+            "scene": "place",
+            "caption": "10% off our 90-minute Thai Massage, until Sunday 1 November"
+          }
+        ]
+      },
+      {
+        "posts": [
+          {
+            "type": "offer",
+            "topic": "Laptop days and neck tension",
+            "scene": "detail",
+            "caption": "10% off our 90-minute Vietnamese Traditional Massage, until Sunday 1 November. 🌸\n\nStiff neck after days of work on your laptop in your An Thuong apartment? A therapist comes to your room, and the tension in your shoulders eases for the rest of your evening.\n\nFree travel in our core areas. 🪷",
+            "hashtags": [
+              "danang",
+              "vietnamesemassage",
+              "spadanang",
+              "massageindanang"
+            ],
+            "altText": "A close view of a therapist's hands working with warm golden oil on a man's back on a massage bed at night.",
+            "imagePrompt": "A tall 9:16 photo in a boutique hotel room at night, warm lamps giving a golden glow. A man is face down on a massage bed. A female therapist's hands work with warm golden oil on his upper back and shoulders. A closed laptop sits far in the background on a wooden desk, out of focus. No text, logos or labels.",
+            "storyText": "10% off Vietnamese Traditional Massage 🌸"
+          },
+          {
+            "type": "offer",
+            "topic": "Legs after climbing Marble Mountains",
+            "scene": "place",
+            "caption": "10% off our 90-minute Thai Massage, until Sunday 1 November. 🌺\n\nTired legs after climbing the Marble Mountains today? A therapist comes to your Non Nuoc villa"
+          }
+        ]
+      },
+      {
+        "posts": [
+          {
+            "type": "offer",
+            "topic": "Laptop days and neck tension",
+            "scene": "detail",
+            "caption": "10% off our 90-minute Vietnamese Traditional Massage, until Sunday 1 November. 🌸\n\nStiff neck after days of work on your laptop in your An Thuong apartment? A therapist comes to your room, and the tension in your shoulders eases for the rest of your evening.\n\nFree travel in our core areas. 🪷",
+            "hashtags": [
+              "danang",
+              "vietnamesemassage",
+              "spadanang",
+              "massageindanang"
+            ],
+            "altText": "A close view of a therapist's hands working with warm golden oil on a man's back on a massage bed at night.",
+            "imagePrompt": "A tall 9:16 photo in a boutique hotel room at night, warm lamps giving a golden glow. A man is face down on a massage bed. A female therapist's hands work with warm golden oil on his upper back and shoulders. A closed laptop sits far in the background on a wooden desk, out of focus. No text, logos or labels.",
+            "storyText": "10% off Vietnamese Traditional Massage 🌸"
+          },
+          {
+            "type": "offer",
+            "topic": "Legs after climbing Marble Mountains",
+            "scene": "place",
+            "caption": "10% off our 90-minute Thai Massage, until Sunday 1 November. 🌺\n\nTired legs after climbing the Marble Mountains today? A therapist comes to your Non Nuoc villa, and your legs feel light for the rest of your afternoon.\n\nLinens, towels and oils included. 🌼"
+          }
+        ]
+      },
+      {
+        "posts": [
+          {
+            "type": "offer",
+            "topic": "Laptop days and neck tension",
+            "scene": "detail",
+            "caption": "10% off our 90-minute Vietnamese Traditional Massage, until Sunday 1 November. 🌸\n\nStiff neck after days of work on your laptop in your An Thuong apartment? A therapist comes to your room, and the tension in your shoulders eases for the rest of your evening.\n\nFree travel in our core areas. 🪷",
+            "hashtags": [
+              "danang",
+              "vietnamesemassage",
+              "spadanang",
+              "massageindanang"
+            ],
+            "altText": "A close view of a therapist's hands working with warm golden oil on a man's back on a massage bed at night.",
+            "imagePrompt": "A tall 9:16 photo in a boutique hotel room at night, warm lamps giving a golden glow. A man is face down on a massage bed. A female therapist's hands work with warm golden oil on his upper back and shoulders. A closed laptop sits far in the background on a wooden desk, out of focus. No text, logos or labels.",
+            "storyText": "10% off Vietnamese Traditional Massage 🌸"
+          },
+          {
+            "type": "offer",
+            "topic": "Legs after climbing Marble Mountains",
+            "scene": "place",
+            "caption": "10% off our 90-minute Thai Massage, until Sunday 1 November. 🌺\n\nTired legs after climbing the Marble Mountains today? A therapist comes to your Non Nuoc villa, and your legs feel light for the rest of your afternoon.\n\nLinens, towels and oils included. 🌼",
+            "hashtags": [
+              "danang",
+              "thaimassage",
+              "marblemountains",
+              "spadanang"
             ]
           }
         ]
@@ -70,220 +296,31 @@
         "posts": [
           {
             "type": "offer",
-            "topic": "Vietnamese Traditional Massage offer",
-            "scene": "the room with the treatment in it",
-            "caption": "10% off our 90-minute Vietnamese Traditional Massage, until Sunday 1 November. 🌸\n\nCan a massage therapist come to my hotel room tonight? Our trained local therapists bring fresh linens, towels and warm oil directly to your Da Nang room. 🪷\n\nTrained local therapists",
+            "topic": "Laptop days and neck tension",
+            "scene": "detail",
+            "caption": "10% off our 90-minute Vietnamese Traditional Massage, until Sunday 1 November. 🌸\n\nStiff neck after days of work on your laptop in your An Thuong apartment? A therapist comes to your room, and the tension in your shoulders eases for the rest of your evening.\n\nFree travel in our core areas. 🪷",
             "hashtags": [
               "danang",
-              "vietnamesetraditionalmassage",
-              "massageindanang",
-              "mykhebeach"
+              "vietnamesemassage",
+              "spadanang",
+              "massageindanang"
             ],
-            "altText": "A therapist's hands working with warm golden oil on a man's back on a massage"
-          }
-        ]
-      },
-      {
-        "posts": [
-          {
-            "type": "offer",
-            "topic": "Vietnamese Traditional Massage offer",
-            "scene": "the room with the treatment in it",
-            "caption": "10% off our 90-minute Vietnamese Traditional Massage, until Sunday 1 November. 🌸\n\nCan a massage therapist come to my hotel room tonight? Our trained local therapists bring fresh linens, towels and warm oil directly to your Da Nang room. 🪷\n\nTrained local therapists",
-            "hashtags": [
-              "danang",
-              "vietnamesetraditionalmassage",
-              "massageindanang",
-              "mykhebeach"
-            ],
-            "altText": "A therapist's hands working with warm golden oil on a man's back on a massage bed at night.",
-            "imagePrompt": "Vertical 9:16 photo of a man lying on a"
-          }
-        ]
-      },
-      {
-        "posts": [
-          {
-            "type": "offer",
-            "topic": "Vietnamese Traditional Massage offer",
-            "scene": "the room with the treatment in it",
-            "caption": "10% off our 90-minute Vietnamese Traditional Massage, until Sunday 1 November. 🌸\n\nCan a massage therapist come to my hotel room tonight? Our trained local therapists bring fresh linens, towels and warm oil directly to your Da Nang room. 🪷\n\nTrained local therapists",
-            "hashtags": [
-              "danang",
-              "vietnamesetraditionalmassage",
-              "massageindanang",
-              "mykhebeach"
-            ],
-            "altText": "A therapist's hands working with warm golden oil on a man's back on a massage bed at night.",
-            "imagePrompt": "Vertical 9:16 photo of a man lying on a massage bed in a warm hotel room at night, with a therapist's hands working on his back using golden massage oil from a clear glass bottle"
-          }
-        ]
-      },
-      {
-        "posts": [
-          {
-            "type": "offer",
-            "topic": "Vietnamese Traditional Massage offer",
-            "scene": "the room with the treatment in it",
-            "caption": "10% off our 90-minute Vietnamese Traditional Massage, until Sunday 1 November. 🌸\n\nCan a massage therapist come to my hotel room tonight? Our trained local therapists bring fresh linens, towels and warm oil directly to your Da Nang room. 🪷\n\nTrained local therapists",
-            "hashtags": [
-              "danang",
-              "vietnamesetraditionalmassage",
-              "massageindanang",
-              "mykhebeach"
-            ],
-            "altText": "A therapist's hands working with warm golden oil on a man's back on a massage bed at night.",
-            "imagePrompt": "Vertical 9:16 photo of a man lying on a massage bed in a warm hotel room at night, with a therapist's hands working on his back using golden massage oil from a clear glass bottle. Soft indoor lamps glow, looking out onto a dark balcony under a deep blue sky. Clean white linens, no text"
-          }
-        ]
-      },
-      {
-        "posts": [
-          {
-            "type": "offer",
-            "topic": "Vietnamese Traditional Massage offer",
-            "scene": "the room with the treatment in it",
-            "caption": "10% off our 90-minute Vietnamese Traditional Massage, until Sunday 1 November. 🌸\n\nCan a massage therapist come to my hotel room tonight? Our trained local therapists bring fresh linens, towels and warm oil directly to your Da Nang room. 🪷\n\nTrained local therapists",
-            "hashtags": [
-              "danang",
-              "vietnamesetraditionalmassage",
-              "massageindanang",
-              "mykhebeach"
-            ],
-            "altText": "A therapist's hands working with warm golden oil on a man's back on a massage bed at night.",
-            "imagePrompt": "Vertical 9:16 photo of a man lying on a massage bed in a warm hotel room at night, with a therapist's hands working on his back using golden massage oil from a clear glass bottle. Soft indoor lamps glow, looking out onto a dark balcony under a deep blue sky. Clean white linens, no text or logos, no visible faces.",
-            "storyText": "10% off our 90-minute Vietnamese Traditional Massage, until"
-          }
-        ]
-      },
-      {
-        "posts": [
-          {
-            "type": "offer",
-            "topic": "Vietnamese Traditional Massage offer",
-            "scene": "the room with the treatment in it",
-            "caption": "10% off our 90-minute Vietnamese Traditional Massage, until Sunday 1 November. 🌸\n\nCan a massage therapist come to my hotel room tonight? Our trained local therapists bring fresh linens, towels and warm oil directly to your Da Nang room. 🪷\n\nTrained local therapists",
-            "hashtags": [
-              "danang",
-              "vietnamesetraditionalmassage",
-              "massageindanang",
-              "mykhebeach"
-            ],
-            "altText": "A therapist's hands working with warm golden oil on a man's back on a massage bed at night.",
-            "imagePrompt": "Vertical 9:16 photo of a man lying on a massage bed in a warm hotel room at night, with a therapist's hands working on his back using golden massage oil from a clear glass bottle. Soft indoor lamps glow, looking out onto a dark balcony under a deep blue sky. Clean white linens, no text or logos, no visible faces.",
-            "storyText": "10% off our 90-minute Vietnamese Traditional Massage, until Sunday 1 November. 🌸"
-          },
-          {
-            "type": "offer"
-          }
-        ]
-      },
-      {
-        "posts": [
-          {
-            "type": "offer",
-            "topic": "Vietnamese Traditional Massage offer",
-            "scene": "the room with the treatment in it",
-            "caption": "10% off our 90-minute Vietnamese Traditional Massage, until Sunday 1 November. 🌸\n\nCan a massage therapist come to my hotel room tonight? Our trained local therapists bring fresh linens, towels and warm oil directly to your Da Nang room. 🪷\n\nTrained local therapists",
-            "hashtags": [
-              "danang",
-              "vietnamesetraditionalmassage",
-              "massageindanang",
-              "mykhebeach"
-            ],
-            "altText": "A therapist's hands working with warm golden oil on a man's back on a massage bed at night.",
-            "imagePrompt": "Vertical 9:16 photo of a man lying on a massage bed in a warm hotel room at night, with a therapist's hands working on his back using golden massage oil from a clear glass bottle. Soft indoor lamps glow, looking out onto a dark balcony under a deep blue sky. Clean white linens, no text or logos, no visible faces.",
-            "storyText": "10% off our 90-minute Vietnamese Traditional Massage, until Sunday 1 November. 🌸"
+            "altText": "A close view of a therapist's hands working with warm golden oil on a man's back on a massage bed at night.",
+            "imagePrompt": "A tall 9:16 photo in a boutique hotel room at night, warm lamps giving a golden glow. A man is face down on a massage bed. A female therapist's hands work with warm golden oil on his upper back and shoulders. A closed laptop sits far in the background on a wooden desk, out of focus. No text, logos or labels.",
+            "storyText": "10% off Vietnamese Traditional Massage 🌸"
           },
           {
             "type": "offer",
-            "topic": "Thai Massage offer",
-            "scene": "treatment, from the side",
-            "caption": "10"
-          }
-        ]
-      },
-      {
-        "posts": [
-          {
-            "type": "offer",
-            "topic": "Vietnamese Traditional Massage offer",
-            "scene": "the room with the treatment in it",
-            "caption": "10% off our 90-minute Vietnamese Traditional Massage, until Sunday 1 November. 🌸\n\nCan a massage therapist come to my hotel room tonight? Our trained local therapists bring fresh linens, towels and warm oil directly to your Da Nang room. 🪷\n\nTrained local therapists",
-            "hashtags": [
-              "danang",
-              "vietnamesetraditionalmassage",
-              "massageindanang",
-              "mykhebeach"
-            ],
-            "altText": "A therapist's hands working with warm golden oil on a man's back on a massage bed at night.",
-            "imagePrompt": "Vertical 9:16 photo of a man lying on a massage bed in a warm hotel room at night, with a therapist's hands working on his back using golden massage oil from a clear glass bottle. Soft indoor lamps glow, looking out onto a dark balcony under a deep blue sky. Clean white linens, no text or logos, no visible faces.",
-            "storyText": "10% off our 90-minute Vietnamese Traditional Massage, until Sunday 1 November. 🌸"
-          },
-          {
-            "type": "offer",
-            "topic": "Thai Massage offer",
-            "scene": "treatment, from the side",
-            "caption": "10% off our 90-minute Thai Massage, until Sunday 1 November. 🌸\n\nAre"
-          }
-        ]
-      },
-      {
-        "posts": [
-          {
-            "type": "offer",
-            "topic": "Vietnamese Traditional Massage offer",
-            "scene": "the room with the treatment in it",
-            "caption": "10% off our 90-minute Vietnamese Traditional Massage, until Sunday 1 November. 🌸\n\nCan a massage therapist come to my hotel room tonight? Our trained local therapists bring fresh linens, towels and warm oil directly to your Da Nang room. 🪷\n\nTrained local therapists",
-            "hashtags": [
-              "danang",
-              "vietnamesetraditionalmassage",
-              "massageindanang",
-              "mykhebeach"
-            ],
-            "altText": "A therapist's hands working with warm golden oil on a man's back on a massage bed at night.",
-            "imagePrompt": "Vertical 9:16 photo of a man lying on a massage bed in a warm hotel room at night, with a therapist's hands working on his back using golden massage oil from a clear glass bottle. Soft indoor lamps glow, looking out onto a dark balcony under a deep blue sky. Clean white linens, no text or logos, no visible faces.",
-            "storyText": "10% off our 90-minute Vietnamese Traditional Massage, until Sunday 1 November. 🌸"
-          },
-          {
-            "type": "offer",
-            "topic": "Thai Massage offer",
-            "scene": "treatment, from the side",
-            "caption": "10% off our 90-minute Thai Massage, until Sunday 1 November. 🌸\n\nAre your legs tired after exploring the Marble Mountains today? We use rhythmic palm pressure and assisted stretches to open stiff hips and legs. 🪷\n\nLinens, towels and oils included",
-            "hashtags": [
-              "dan"
-            ]
-          }
-        ]
-      },
-      {
-        "posts": [
-          {
-            "type": "offer",
-            "topic": "Vietnamese Traditional Massage offer",
-            "scene": "the room with the treatment in it",
-            "caption": "10% off our 90-minute Vietnamese Traditional Massage, until Sunday 1 November. 🌸\n\nCan a massage therapist come to my hotel room tonight? Our trained local therapists bring fresh linens, towels and warm oil directly to your Da Nang room. 🪷\n\nTrained local therapists",
-            "hashtags": [
-              "danang",
-              "vietnamesetraditionalmassage",
-              "massageindanang",
-              "mykhebeach"
-            ],
-            "altText": "A therapist's hands working with warm golden oil on a man's back on a massage bed at night.",
-            "imagePrompt": "Vertical 9:16 photo of a man lying on a massage bed in a warm hotel room at night, with a therapist's hands working on his back using golden massage oil from a clear glass bottle. Soft indoor lamps glow, looking out onto a dark balcony under a deep blue sky. Clean white linens, no text or logos, no visible faces.",
-            "storyText": "10% off our 90-minute Vietnamese Traditional Massage, until Sunday 1 November. 🌸"
-          },
-          {
-            "type": "offer",
-            "topic": "Thai Massage offer",
-            "scene": "treatment, from the side",
-            "caption": "10% off our 90-minute Thai Massage, until Sunday 1 November. 🌸\n\nAre your legs tired after exploring the Marble Mountains today? We use rhythmic palm pressure and assisted stretches to open stiff hips and legs. 🪷\n\nLinens, towels and oils included",
+            "topic": "Legs after climbing Marble Mountains",
+            "scene": "place",
+            "caption": "10% off our 90-minute Thai Massage, until Sunday 1 November. 🌺\n\nTired legs after climbing the Marble Mountains today? A therapist comes to your Non Nuoc villa, and your legs feel light for the rest of your afternoon.\n\nLinens, towels and oils included. 🌼",
             "hashtags": [
               "danang",
               "thaimassage",
-              "massageindanang",
-              "marblemountains"
-            ]
+              "marblemountains",
+              "spadanang"
+            ],
+            "altText": "A woman lying on a floor mattress in a bright room, with a therapist stretching her leg during the day."
           }
         ]
       },
@@ -291,31 +328,32 @@
         "posts": [
           {
             "type": "offer",
-            "topic": "Vietnamese Traditional Massage offer",
-            "scene": "the room with the treatment in it",
-            "caption": "10% off our 90-minute Vietnamese Traditional Massage, until Sunday 1 November. 🌸\n\nCan a massage therapist come to my hotel room tonight? Our trained local therapists bring fresh linens, towels and warm oil directly to your Da Nang room. 🪷\n\nTrained local therapists",
+            "topic": "Laptop days and neck tension",
+            "scene": "detail",
+            "caption": "10% off our 90-minute Vietnamese Traditional Massage, until Sunday 1 November. 🌸\n\nStiff neck after days of work on your laptop in your An Thuong apartment? A therapist comes to your room, and the tension in your shoulders eases for the rest of your evening.\n\nFree travel in our core areas. 🪷",
             "hashtags": [
               "danang",
-              "vietnamesetraditionalmassage",
-              "massageindanang",
-              "mykhebeach"
+              "vietnamesemassage",
+              "spadanang",
+              "massageindanang"
             ],
-            "altText": "A therapist's hands working with warm golden oil on a man's back on a massage bed at night.",
-            "imagePrompt": "Vertical 9:16 photo of a man lying on a massage bed in a warm hotel room at night, with a therapist's hands working on his back using golden massage oil from a clear glass bottle. Soft indoor lamps glow, looking out onto a dark balcony under a deep blue sky. Clean white linens, no text or logos, no visible faces.",
-            "storyText": "10% off our 90-minute Vietnamese Traditional Massage, until Sunday 1 November. 🌸"
+            "altText": "A close view of a therapist's hands working with warm golden oil on a man's back on a massage bed at night.",
+            "imagePrompt": "A tall 9:16 photo in a boutique hotel room at night, warm lamps giving a golden glow. A man is face down on a massage bed. A female therapist's hands work with warm golden oil on his upper back and shoulders. A closed laptop sits far in the background on a wooden desk, out of focus. No text, logos or labels.",
+            "storyText": "10% off Vietnamese Traditional Massage 🌸"
           },
           {
             "type": "offer",
-            "topic": "Thai Massage offer",
-            "scene": "treatment, from the side",
-            "caption": "10% off our 90-minute Thai Massage, until Sunday 1 November. 🌸\n\nAre your legs tired after exploring the Marble Mountains today? We use rhythmic palm pressure and assisted stretches to open stiff hips and legs. 🪷\n\nLinens, towels and oils included",
+            "topic": "Legs after climbing Marble Mountains",
+            "scene": "place",
+            "caption": "10% off our 90-minute Thai Massage, until Sunday 1 November. 🌺\n\nTired legs after climbing the Marble Mountains today? A therapist comes to your Non Nuoc villa, and your legs feel light for the rest of your afternoon.\n\nLinens, towels and oils included. 🌼",
             "hashtags": [
               "danang",
               "thaimassage",
-              "massageindanang",
-              "marblemountains"
+              "marblemountains",
+              "spadanang"
             ],
-            "altText": "A therapist stretching a woman's leg on a floor mattress in loose cotton clothes during the day."
+            "altText": "A woman lying on a floor mattress in a bright room, with a therapist stretching her leg during the day.",
+            "imagePrompt": "A tall 9:16 photo in a bright villa room in the late afternoon, soft shade with"
           }
         ]
       },
@@ -323,32 +361,32 @@
         "posts": [
           {
             "type": "offer",
-            "topic": "Vietnamese Traditional Massage offer",
-            "scene": "the room with the treatment in it",
-            "caption": "10% off our 90-minute Vietnamese Traditional Massage, until Sunday 1 November. 🌸\n\nCan a massage therapist come to my hotel room tonight? Our trained local therapists bring fresh linens, towels and warm oil directly to your Da Nang room. 🪷\n\nTrained local therapists",
+            "topic": "Laptop days and neck tension",
+            "scene": "detail",
+            "caption": "10% off our 90-minute Vietnamese Traditional Massage, until Sunday 1 November. 🌸\n\nStiff neck after days of work on your laptop in your An Thuong apartment? A therapist comes to your room, and the tension in your shoulders eases for the rest of your evening.\n\nFree travel in our core areas. 🪷",
             "hashtags": [
               "danang",
-              "vietnamesetraditionalmassage",
-              "massageindanang",
-              "mykhebeach"
+              "vietnamesemassage",
+              "spadanang",
+              "massageindanang"
             ],
-            "altText": "A therapist's hands working with warm golden oil on a man's back on a massage bed at night.",
-            "imagePrompt": "Vertical 9:16 photo of a man lying on a massage bed in a warm hotel room at night, with a therapist's hands working on his back using golden massage oil from a clear glass bottle. Soft indoor lamps glow, looking out onto a dark balcony under a deep blue sky. Clean white linens, no text or logos, no visible faces.",
-            "storyText": "10% off our 90-minute Vietnamese Traditional Massage, until Sunday 1 November. 🌸"
+            "altText": "A close view of a therapist's hands working with warm golden oil on a man's back on a massage bed at night.",
+            "imagePrompt": "A tall 9:16 photo in a boutique hotel room at night, warm lamps giving a golden glow. A man is face down on a massage bed. A female therapist's hands work with warm golden oil on his upper back and shoulders. A closed laptop sits far in the background on a wooden desk, out of focus. No text, logos or labels.",
+            "storyText": "10% off Vietnamese Traditional Massage 🌸"
           },
           {
             "type": "offer",
-            "topic": "Thai Massage offer",
-            "scene": "treatment, from the side",
-            "caption": "10% off our 90-minute Thai Massage, until Sunday 1 November. 🌸\n\nAre your legs tired after exploring the Marble Mountains today? We use rhythmic palm pressure and assisted stretches to open stiff hips and legs. 🪷\n\nLinens, towels and oils included",
+            "topic": "Legs after climbing Marble Mountains",
+            "scene": "place",
+            "caption": "10% off our 90-minute Thai Massage, until Sunday 1 November. 🌺\n\nTired legs after climbing the Marble Mountains today? A therapist comes to your Non Nuoc villa, and your legs feel light for the rest of your afternoon.\n\nLinens, towels and oils included. 🌼",
             "hashtags": [
               "danang",
               "thaimassage",
-              "massageindanang",
-              "marblemountains"
+              "marblemountains",
+              "spadanang"
             ],
-            "altText": "A therapist stretching a woman's leg on a floor mattress in loose cotton clothes during the day.",
-            "imagePrompt": "Vertical 9:16 photo of a woman in loose cotton clothes lying on a floor mattress in a bright hotel"
+            "altText": "A woman lying on a floor mattress in a bright room, with a therapist stretching her leg during the day.",
+            "imagePrompt": "A tall 9:16 photo in a bright villa room in the late afternoon, soft shade with no direct sunlight. A woman lies on her back on a floor mattress in loose cotton clothes, a towel over her eyes. A female therapist kne"
           }
         ]
       },
@@ -356,32 +394,32 @@
         "posts": [
           {
             "type": "offer",
-            "topic": "Vietnamese Traditional Massage offer",
-            "scene": "the room with the treatment in it",
-            "caption": "10% off our 90-minute Vietnamese Traditional Massage, until Sunday 1 November. 🌸\n\nCan a massage therapist come to my hotel room tonight? Our trained local therapists bring fresh linens, towels and warm oil directly to your Da Nang room. 🪷\n\nTrained local therapists",
+            "topic": "Laptop days and neck tension",
+            "scene": "detail",
+            "caption": "10% off our 90-minute Vietnamese Traditional Massage, until Sunday 1 November. 🌸\n\nStiff neck after days of work on your laptop in your An Thuong apartment? A therapist comes to your room, and the tension in your shoulders eases for the rest of your evening.\n\nFree travel in our core areas. 🪷",
             "hashtags": [
               "danang",
-              "vietnamesetraditionalmassage",
-              "massageindanang",
-              "mykhebeach"
+              "vietnamesemassage",
+              "spadanang",
+              "massageindanang"
             ],
-            "altText": "A therapist's hands working with warm golden oil on a man's back on a massage bed at night.",
-            "imagePrompt": "Vertical 9:16 photo of a man lying on a massage bed in a warm hotel room at night, with a therapist's hands working on his back using golden massage oil from a clear glass bottle. Soft indoor lamps glow, looking out onto a dark balcony under a deep blue sky. Clean white linens, no text or logos, no visible faces.",
-            "storyText": "10% off our 90-minute Vietnamese Traditional Massage, until Sunday 1 November. 🌸"
+            "altText": "A close view of a therapist's hands working with warm golden oil on a man's back on a massage bed at night.",
+            "imagePrompt": "A tall 9:16 photo in a boutique hotel room at night, warm lamps giving a golden glow. A man is face down on a massage bed. A female therapist's hands work with warm golden oil on his upper back and shoulders. A closed laptop sits far in the background on a wooden desk, out of focus. No text, logos or labels.",
+            "storyText": "10% off Vietnamese Traditional Massage 🌸"
           },
           {
             "type": "offer",
-            "topic": "Thai Massage offer",
-            "scene": "treatment, from the side",
-            "caption": "10% off our 90-minute Thai Massage, until Sunday 1 November. 🌸\n\nAre your legs tired after exploring the Marble Mountains today? We use rhythmic palm pressure and assisted stretches to open stiff hips and legs. 🪷\n\nLinens, towels and oils included",
+            "topic": "Legs after climbing Marble Mountains",
+            "scene": "place",
+            "caption": "10% off our 90-minute Thai Massage, until Sunday 1 November. 🌺\n\nTired legs after climbing the Marble Mountains today? A therapist comes to your Non Nuoc villa, and your legs feel light for the rest of your afternoon.\n\nLinens, towels and oils included. 🌼",
             "hashtags": [
               "danang",
               "thaimassage",
-              "massageindanang",
-              "marblemountains"
+              "marblemountains",
+              "spadanang"
             ],
-            "altText": "A therapist stretching a woman's leg on a floor mattress in loose cotton clothes during the day.",
-            "imagePrompt": "Vertical 9:16 photo of a woman in loose cotton clothes lying on a floor mattress in a bright hotel room during late afternoon, with a female therapist's hands gently stretching her leg. Open doors show green plants outside in soft shade. Clean"
+            "altText": "A woman lying on a floor mattress in a bright room, with a therapist stretching her leg during the day.",
+            "imagePrompt": "A tall 9:16 photo in a bright villa room in the late afternoon, soft shade with no direct sunlight. A woman lies on her back on a floor mattress in loose cotton clothes, a towel over her eyes. A female therapist kneels beside, stretching one bent leg, a hand on the knee and one on the foot. Tropical greenery visible through a"
           }
         ]
       },
@@ -389,67 +427,33 @@
         "posts": [
           {
             "type": "offer",
-            "topic": "Vietnamese Traditional Massage offer",
-            "scene": "the room with the treatment in it",
-            "caption": "10% off our 90-minute Vietnamese Traditional Massage, until Sunday 1 November. 🌸\n\nCan a massage therapist come to my hotel room tonight? Our trained local therapists bring fresh linens, towels and warm oil directly to your Da Nang room. 🪷\n\nTrained local therapists",
+            "topic": "Laptop days and neck tension",
+            "scene": "detail",
+            "caption": "10% off our 90-minute Vietnamese Traditional Massage, until Sunday 1 November. 🌸\n\nStiff neck after days of work on your laptop in your An Thuong apartment? A therapist comes to your room, and the tension in your shoulders eases for the rest of your evening.\n\nFree travel in our core areas. 🪷",
             "hashtags": [
               "danang",
-              "vietnamesetraditionalmassage",
-              "massageindanang",
-              "mykhebeach"
+              "vietnamesemassage",
+              "spadanang",
+              "massageindanang"
             ],
-            "altText": "A therapist's hands working with warm golden oil on a man's back on a massage bed at night.",
-            "imagePrompt": "Vertical 9:16 photo of a man lying on a massage bed in a warm hotel room at night, with a therapist's hands working on his back using golden massage oil from a clear glass bottle. Soft indoor lamps glow, looking out onto a dark balcony under a deep blue sky. Clean white linens, no text or logos, no visible faces.",
-            "storyText": "10% off our 90-minute Vietnamese Traditional Massage, until Sunday 1 November. 🌸"
+            "altText": "A close view of a therapist's hands working with warm golden oil on a man's back on a massage bed at night.",
+            "imagePrompt": "A tall 9:16 photo in a boutique hotel room at night, warm lamps giving a golden glow. A man is face down on a massage bed. A female therapist's hands work with warm golden oil on his upper back and shoulders. A closed laptop sits far in the background on a wooden desk, out of focus. No text, logos or labels.",
+            "storyText": "10% off Vietnamese Traditional Massage 🌸"
           },
           {
             "type": "offer",
-            "topic": "Thai Massage offer",
-            "scene": "treatment, from the side",
-            "caption": "10% off our 90-minute Thai Massage, until Sunday 1 November. 🌸\n\nAre your legs tired after exploring the Marble Mountains today? We use rhythmic palm pressure and assisted stretches to open stiff hips and legs. 🪷\n\nLinens, towels and oils included",
+            "topic": "Legs after climbing Marble Mountains",
+            "scene": "place",
+            "caption": "10% off our 90-minute Thai Massage, until Sunday 1 November. 🌺\n\nTired legs after climbing the Marble Mountains today? A therapist comes to your Non Nuoc villa, and your legs feel light for the rest of your afternoon.\n\nLinens, towels and oils included. 🌼",
             "hashtags": [
               "danang",
               "thaimassage",
-              "massageindanang",
-              "marblemountains"
+              "marblemountains",
+              "spadanang"
             ],
-            "altText": "A therapist stretching a woman's leg on a floor mattress in loose cotton clothes during the day.",
-            "imagePrompt": "Vertical 9:16 photo of a woman in loose cotton clothes lying on a floor mattress in a bright hotel room during late afternoon, with a female therapist's hands gently stretching her leg. Open doors show green plants outside in soft shade. Clean room, no text or logos, no visible faces.",
-            "storyText": "10% off our 9"
-          }
-        ]
-      },
-      {
-        "posts": [
-          {
-            "type": "offer",
-            "topic": "Vietnamese Traditional Massage offer",
-            "scene": "the room with the treatment in it",
-            "caption": "10% off our 90-minute Vietnamese Traditional Massage, until Sunday 1 November. 🌸\n\nCan a massage therapist come to my hotel room tonight? Our trained local therapists bring fresh linens, towels and warm oil directly to your Da Nang room. 🪷\n\nTrained local therapists",
-            "hashtags": [
-              "danang",
-              "vietnamesetraditionalmassage",
-              "massageindanang",
-              "mykhebeach"
-            ],
-            "altText": "A therapist's hands working with warm golden oil on a man's back on a massage bed at night.",
-            "imagePrompt": "Vertical 9:16 photo of a man lying on a massage bed in a warm hotel room at night, with a therapist's hands working on his back using golden massage oil from a clear glass bottle. Soft indoor lamps glow, looking out onto a dark balcony under a deep blue sky. Clean white linens, no text or logos, no visible faces.",
-            "storyText": "10% off our 90-minute Vietnamese Traditional Massage, until Sunday 1 November. 🌸"
-          },
-          {
-            "type": "offer",
-            "topic": "Thai Massage offer",
-            "scene": "treatment, from the side",
-            "caption": "10% off our 90-minute Thai Massage, until Sunday 1 November. 🌸\n\nAre your legs tired after exploring the Marble Mountains today? We use rhythmic palm pressure and assisted stretches to open stiff hips and legs. 🪷\n\nLinens, towels and oils included",
-            "hashtags": [
-              "danang",
-              "thaimassage",
-              "massageindanang",
-              "marblemountains"
-            ],
-            "altText": "A therapist stretching a woman's leg on a floor mattress in loose cotton clothes during the day.",
-            "imagePrompt": "Vertical 9:16 photo of a woman in loose cotton clothes lying on a floor mattress in a bright hotel room during late afternoon, with a female therapist's hands gently stretching her leg. Open doors show green plants outside in soft shade. Clean room, no text or logos, no visible faces.",
-            "storyText": "10% off our 90-minute Thai Massage, until Sunday 1 November. 🌸"
+            "altText": "A woman lying on a floor mattress in a bright room, with a therapist stretching her leg during the day.",
+            "imagePrompt": "A tall 9:16 photo in a bright villa room in the late afternoon, soft shade with no direct sunlight. A woman lies on her back on a floor mattress in loose cotton clothes, a towel over her eyes. A female therapist kneels beside, stretching one bent leg, a hand on the knee and one on the foot. Tropical greenery visible through a wide open window. No text, logos or labels.",
+            "storyText": "10% off Thai Massage 🌺"
           }
         ]
       }
@@ -458,33 +462,33 @@
       "posts": [
         {
           "type": "offer",
-          "topic": "Vietnamese Traditional Massage offer",
-          "scene": "the room with the treatment in it",
-          "caption": "10% off our 90-minute Vietnamese Traditional Massage, until Sunday 1 November. 🌸\n\nCan a massage therapist come to my hotel room tonight? Our trained local therapists bring fresh linens, towels and warm oil directly to your Da Nang room. 🪷\n\nTrained local therapists",
+          "topic": "Laptop days and neck tension",
+          "scene": "detail",
+          "caption": "10% off our 90-minute Vietnamese Traditional Massage, until Sunday 1 November. 🌸\n\nStiff neck after days of work on your laptop in your An Thuong apartment? A therapist comes to your room, and the tension in your shoulders eases for the rest of your evening.\n\nFree travel in our core areas. 🪷",
           "hashtags": [
             "danang",
-            "vietnamesetraditionalmassage",
-            "massageindanang",
-            "mykhebeach"
+            "vietnamesemassage",
+            "spadanang",
+            "massageindanang"
           ],
-          "altText": "A therapist's hands working with warm golden oil on a man's back on a massage bed at night.",
-          "imagePrompt": "Vertical 9:16 photo of a man lying on a massage bed in a warm hotel room at night, with a therapist's hands working on his back using golden massage oil from a clear glass bottle. Soft indoor lamps glow, looking out onto a dark balcony under a deep blue sky. Clean white linens, no text or logos, no visible faces.",
-          "storyText": "10% off our 90-minute Vietnamese Traditional Massage, until Sunday 1 November. 🌸"
+          "altText": "A close view of a therapist's hands working with warm golden oil on a man's back on a massage bed at night.",
+          "imagePrompt": "A tall 9:16 photo in a boutique hotel room at night, warm lamps giving a golden glow. A man is face down on a massage bed. A female therapist's hands work with warm golden oil on his upper back and shoulders. A closed laptop sits far in the background on a wooden desk, out of focus. No text, logos or labels.",
+          "storyText": "10% off Vietnamese Traditional Massage 🌸"
         },
         {
           "type": "offer",
-          "topic": "Thai Massage offer",
-          "scene": "treatment, from the side",
-          "caption": "10% off our 90-minute Thai Massage, until Sunday 1 November. 🌸\n\nAre your legs tired after exploring the Marble Mountains today? We use rhythmic palm pressure and assisted stretches to open stiff hips and legs. 🪷\n\nLinens, towels and oils included",
+          "topic": "Legs after climbing Marble Mountains",
+          "scene": "place",
+          "caption": "10% off our 90-minute Thai Massage, until Sunday 1 November. 🌺\n\nTired legs after climbing the Marble Mountains today? A therapist comes to your Non Nuoc villa, and your legs feel light for the rest of your afternoon.\n\nLinens, towels and oils included. 🌼",
           "hashtags": [
             "danang",
             "thaimassage",
-            "massageindanang",
-            "marblemountains"
+            "marblemountains",
+            "spadanang"
           ],
-          "altText": "A therapist stretching a woman's leg on a floor mattress in loose cotton clothes during the day.",
-          "imagePrompt": "Vertical 9:16 photo of a woman in loose cotton clothes lying on a floor mattress in a bright hotel room during late afternoon, with a female therapist's hands gently stretching her leg. Open doors show green plants outside in soft shade. Clean room, no text or logos, no visible faces.",
-          "storyText": "10% off our 90-minute Thai Massage, until Sunday 1 November. 🌸"
+          "altText": "A woman lying on a floor mattress in a bright room, with a therapist stretching her leg during the day.",
+          "imagePrompt": "A tall 9:16 photo in a bright villa room in the late afternoon, soft shade with no direct sunlight. A woman lies on her back on a floor mattress in loose cotton clothes, a towel over her eyes. A female therapist kneels beside, stretching one bent leg, a hand on the knee and one on the foot. Tropical greenery visible through a wide open window. No text, logos or labels.",
+          "storyText": "10% off Thai Massage 🌺"
         }
       ]
     }

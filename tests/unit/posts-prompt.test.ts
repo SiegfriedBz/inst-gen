@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import { BANNED_WORDS } from '@/lib/posts/banned';
 import { POST_TYPES, SCENES } from '@/lib/posts/batch';
-import { postsModelInput } from '@/lib/posts/input';
+import { hashText, postsModelInput } from '@/lib/posts/input';
 import type { Offer } from '@/lib/posts/offer';
 import {
   newTextsPrompt,
@@ -736,5 +736,37 @@ describe('two kinds of question', () => {
     expect(posts[0].question).toBe('ask');
     expect('question' in posts[1]).toBe(false);
     expect('question' in posts[2]).toBe(false);
+  });
+});
+
+// Every other business keeps posts-18's words byte for byte
+// (docs/specs/posts/reasons-to-book, "What doesn't change"): the hash of each
+// prompt, taken before the reasons prompt was added.
+describe('posts-18, pinned', () => {
+  const PINNED: Record<string, string> = {
+    'plan:false:false': '73975291',
+    'plan:false:true': '5e1296e3',
+    'plan:true:false': '68eeed14',
+    'plan:true:true': '620c92ca',
+    'rewrite:false:false': '84e28fe9',
+    'rewrite:false:true': '5a8b066f',
+    'rewrite:true:false': '7bbf67c7',
+    'rewrite:true:true': '5db2c099',
+    'newTexts:false:false': '28054439',
+    'newTexts:false:true': 'ddaff6bf',
+    'newTexts:true:false': 'c772a437',
+    'newTexts:true:true': '45573b49',
+  };
+  const PROMPTS = { plan: planPrompt, rewrite: rewritePrompt, newTexts: newTextsPrompt };
+
+  it('each of the 12 prompts is as it was', () => {
+    const now: Record<string, string> = {};
+    for (const [name, prompt] of Object.entries(PROMPTS)) {
+      for (const offer of [false, true]) {
+        for (const spa of [false, true])
+          now[`${name}:${offer}:${spa}`] = hashText(prompt(offer, spa));
+      }
+    }
+    expect(now).toEqual(PINNED);
   });
 });
