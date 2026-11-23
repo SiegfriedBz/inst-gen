@@ -230,3 +230,25 @@ describe('the recordings, steered', () => {
     expect(fixtureRecent('karsa-spa', false)).toEqual([]);
   });
 });
+
+// The merge with normal bodies (plan Task 14): Thai fixes two parts, a leg
+// stretch and a palm press on the back, and the reason picks between them.
+describe('a look with two fixed parts', () => {
+  it('a Thai set-up takes the part its reason fits', () => {
+    const thai = guestsProfile(['Thai Massage']);
+    let laptops = 0;
+    for (let i = 0; i < 60; i++) {
+      for (const setup of dealt(thai, `${i}`)) {
+        expect(setup.look).toBe('thai');
+        if (setup.reason === 'laptop') {
+          laptops += 1;
+          expect(setup.bodyPart).toBe('back');
+        }
+        if (setup.reason === 'dayOut' || setup.reason === 'firstNight') {
+          expect(['legs', 'back']).toContain(setup.bodyPart);
+        }
+      }
+    }
+    expect(laptops).toBeGreaterThan(0);
+  });
+});

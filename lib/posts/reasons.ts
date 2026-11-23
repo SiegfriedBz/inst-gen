@@ -126,7 +126,15 @@ export function dealReasonSetups(
 
   const usedParts = new Map<BodyPart, number>();
   const bodyParts = picks.map(({ look, reason }) => {
-    const choices = FIXED_PARTS[look] ?? FREE_PARTS.filter((p) => REASON_PARTS[reason].includes(p));
+    // A look's fixed parts that fit the reason come first: Thai's leg stretch
+    // or palm press (docs/specs/posts/normal-bodies), the back on a laptop post.
+    const fits = (p: BodyPart) => REASON_PARTS[reason].includes(p);
+    const fixed = FIXED_PARTS[look];
+    const choices = fixed
+      ? fixed.some(fits)
+        ? fixed.filter(fits)
+        : fixed
+      : FREE_PARTS.filter(fits);
     const part = leastUsed(choices, (p) => usedParts.get(p) ?? 0, random);
     usedParts.set(part, (usedParts.get(part) ?? 0) + 1);
     return part;
