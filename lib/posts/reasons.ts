@@ -1,6 +1,7 @@
 import type { Profile } from '@/lib/brand/profile';
 import type { RecentPost } from './batch';
 import { isSpa } from './emoji';
+import { dealFacts } from './facts';
 import type { Offer } from './offer';
 import {
   type BodyPart,
@@ -141,15 +142,18 @@ export function dealReasonSetups(
       : picks.map((_, i) => (i === night ? 'night' : 'day'));
   const locals = localsOf(profile);
 
-  return picks.map(({ treatment, look, reason }, i) => ({
+  const setups = picks.map(({ treatment, look, reason }, i) => ({
     ...(treatment ? { treatment } : {}),
     look,
     guests: guests[i],
-    therapists: look === 'fourHands' || look === 'couple' ? 2 : 1,
+    therapists: look === 'fourHands' || look === 'couple' ? (2 as const) : (1 as const),
     bodyPart: bodyParts[i],
     scene: scenes[i],
     locals,
     light: lights[i],
     reason,
   }));
+  // The facts come last (docs/specs/posts/reasons-to-book, "The fact, dealt
+  // by code").
+  return dealFacts(profile, setups, random);
 }

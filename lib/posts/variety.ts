@@ -113,7 +113,7 @@ function escapeRegex(text: string): string {
 }
 
 // Whole words: "feeling" doesn't hold "feel".
-function holdsWords(text: string, words: string): boolean {
+export function holdsWords(text: string, words: string): boolean {
   return new RegExp(`(?:^|[^\\p{L}\\p{N}])${escapeRegex(words)}(?:$|[^\\p{L}\\p{N}])`, 'u').test(
     text,
   );

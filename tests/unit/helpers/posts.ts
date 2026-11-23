@@ -1,4 +1,5 @@
 import type { Post } from '@/lib/posts/batch';
+import type { Light, Setup } from '@/lib/posts/setup';
 
 export function post(overrides: Partial<Post> = {}): Post {
   return {
@@ -40,5 +41,21 @@ export function planRecording(count = 6) {
     promptVersion: 'posts-1',
     partials: posts.map((_, i) => ({ posts: posts.slice(0, i + 1) })),
     final: { posts },
+  };
+}
+
+// A set-up with a reason, for the facts and the reasons' records
+// (docs/specs/posts/reasons-to-book).
+export function setupAt(light: Light, overrides: Partial<Setup> = {}): Setup {
+  return {
+    look: 'plain',
+    guests: 'man',
+    therapists: 1,
+    bodyPart: 'back',
+    scene: 'treatment',
+    locals: 'Vietnamese',
+    reason: 'stayIn',
+    light,
+    ...overrides,
   };
 }

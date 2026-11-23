@@ -181,3 +181,21 @@ describe('reasonFor', () => {
     }
   });
 });
+
+describe('the facts of a reasons deal', () => {
+  it('every set-up carries a fact, never one that turns a request away', () => {
+    const highlights = [
+      'Trained local Vietnamese therapists',
+      'Free travel in our core areas',
+      'Professional therapeutic massage only',
+      'No upfront deposit required',
+    ].map((value) => ({ value, source: BASE.siteUrl }));
+    const profile = { ...MIX, highlights };
+    for (const seed of SEEDS) {
+      for (const setup of dealt(profile, seed)) {
+        expect(setup.fact).toBeDefined();
+        expect(setup.fact).not.toBe('Professional therapeutic massage only');
+      }
+    }
+  });
+});
