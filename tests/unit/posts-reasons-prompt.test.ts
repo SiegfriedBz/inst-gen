@@ -208,3 +208,32 @@ describe("the prompts show only the other reasons' samples", () => {
     }
   });
 });
+
+// Amended 2026-11-23, after the second recordings: the caption names only
+// what its image shows, the hours come in words, and twoOfYou names a moment.
+describe("the second amendment's rules", () => {
+  const TWO_OF_YOU =
+    "- twoOfYou: two guests, a couple or friends, both massaged at the same time, side by side, each with their own therapist. Its question asks the two of them about a moment they share today: a day out together, one of the essence's moments or one of the business's real places, or an evening in.";
+  const onlyWhatItShows = (people: string) =>
+    `- The caption names only what its image shows: the treatment its set-up or image prompt names, never another of the business's; as many therapists as ${people} says, "two therapists" only when it says two, otherwise "a therapist", "your therapist" or "she"; and for dayOut and laptop, its part of the body.`;
+  const prompts = [
+    ['plan', reasonsPlanPrompt(false, true), 'its line under "### Reasons"'],
+    ['rewrite', reasonsRewritePrompt(false, true), 'its "therapists"'],
+    ['new texts', reasonsNewTextsPrompt(false, true), 'its "therapists"'],
+  ] as const;
+  for (const [name, prompt, people] of prompts) {
+    it(`the ${name} prompt: twoOfYou's moment, only what the image shows, the fact as given`, () => {
+      expect(prompt).toContain(TWO_OF_YOU);
+      expect(prompt).toContain(onlyWhatItShows(people));
+      expect(prompt).toContain('in one short sentence, as given.');
+      expect(prompt).not.toContain('Hours: …');
+      expect(prompt).not.toContain('until when the business comes');
+    });
+  }
+
+  it('new texts ask after another moment for twoOfYou', () => {
+    expect(reasonsNewTextsPrompt(false, true)).toContain(
+      'For twoOfYou, ask after another moment the two share.',
+    );
+  });
+});
