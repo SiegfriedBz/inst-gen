@@ -1,8 +1,7 @@
 ---
 title: "Two days of suggestions"
-description: "The suggestions of the current day and of the day before stay on the phone and on the screen, with their post and story images, captions, story texts and translations: the current day's on top under 'Today', the day before's under 'Yesterday', each day numbering its own attempts; at the reset only the day before yesterday's go; review replies and answers still go at the reset; the owner guide says so in three languages."
-status: approved
-approved: { by: siegfried.bozza@protonmail.com, at: 2026-11-23T11:23:48Z }
+description: "The suggestions of the current day and of the day before stay on the phone and on the screen, with their post and story images, captions, story texts and translations: the current day's on top under 'Today', the day before's under 'Yesterday', each day numbering its own attempts; at the reset only the day before yesterday's go; review replies and answers still go at the reset; the owner guide says so in three languages; a suggestion whose special offer has ended says so, on its tile and in its sheet."
+status: draft
 date: "2026-11-23"
 ---
 
@@ -71,6 +70,25 @@ in their language. Each uses the current day's limits, as today.
 - Images that were still being made when the app closed are picked up again
   for both days' attempts, as they are for today's now.
 
+### A suggestion whose offer has ended
+
+Amended 2026-11-23, at the maintainer's word ("Do this task here: Flag
+posts whose special offer has ended"). With the day before's suggestions
+on the screen, one can carry a special offer whose last day is over: the
+offer ends at midnight at the end of its last day, on the phone's clock
+(2.11), while the suggestion stays until the reset after next. An attempt
+made on the evening of the offer's last day is still the current day's
+after midnight, and its offer is over too.
+
+- Its tile shows "Offer ended" in place of the offer's badge, in grey
+  rather than the offer's colour, and its name for screen readers says so.
+- Its sheet shows "Offer ended" and "last day {date}" in place of the
+  badge and "until {date}".
+- Nothing else changes: the owner can still open it, save its images, copy
+  its text, edit it and write new texts. Its caption still holds the offer,
+  for the owner to edit before posting.
+- A suggestion whose offer isn't over shows its badge, as today.
+
 ### The owner guide
 
 `guide.allowance.reset`, in English, Indonesian and Vietnamese, says that at
@@ -94,7 +112,10 @@ The PDF guide follows when the maintainer next runs `pnpm guide:pdf`
 
 New, in `messages/en.json`, `id.json` and `vi.json`: `posts.today` ("Today",
 "Hari ini", "Hôm nay") and `posts.yesterday` ("Yesterday", "Kemarin", "Hôm
-qua"). Changed: `guide.allowance.reset` (above).
+qua"); amended 2026-11-23, `posts.offer.badgeEnded` ("Offer ended", "Promo
+berakhir", "Ưu đãi đã kết thúc") and `posts.offer.lastDayDate` ("last day
+{date}", "hari terakhir {date}", "ngày cuối {date}"). Changed:
+`guide.allowance.reset` (above).
 
 ### Tests
 
@@ -106,7 +127,11 @@ Unit tests (Vitest):
 - the screen's days: a function that splits the stored attempts into the
   current day's and the day before's, newest first, and numbers each day's
   attempts from 1, oldest first; the day before yesterday's never show;
-- the strings in three languages.
+- the strings in three languages;
+- an offer that has ended (amended 2026-11-23): the tile and the sheet of a
+  suggestion whose offer's last day is over show "Offer ended", the sheet
+  with "last day {date}"; on the offer's last day, its badge and "until
+  {date}", as today.
 
 Phone tests (Playwright), in `tests/e2e/suggestions.spec.ts`: an attempt made
 at 10:00 is still there after a reload at 13:55, as today; past the reset at
@@ -143,6 +168,12 @@ Scenario: Reviews and answers still go
   Given a review reply and an answer to a guest's question from the day before
   When the reset passes
   Then neither shows on the screen
+
+Scenario: An offer that has ended (amended 2026-11-23)
+  Given yesterday's attempt carries a 10% offer whose last day was yesterday
+  When the owner opens the app today
+  Then its tiles show "Offer ended" in place of "10% off"
+  And its sheet shows "Offer ended" and "last day" with yesterday's date
 ```
 
 ## Known limits
@@ -152,9 +183,13 @@ Scenario: Reviews and answers still go
   owner guide says so).
 - A suggestion made just before a reset stays about a day; one made just
   after it, about two.
+- An app left open across midnight shows "Offer ended" once it next draws
+  the suggestions: on reopening, or with a new attempt.
 
 ## Out of scope
 
 - Keeping more than two days, or a gallery of past posts.
 - Moving the reset to the owner's midnight.
 - Review replies and answers, which still go at the reset.
+- Taking the offer out of an ended offer's caption, or new texts without
+  it: the owner edits the text.

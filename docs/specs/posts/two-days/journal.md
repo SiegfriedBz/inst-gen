@@ -36,6 +36,10 @@
   posts now stay on the screen about a day longer, with no flag; an app left
   open across the reset keeps the old labels until the next attempt; the day
   and attempt headings are both level 2; a few boundary tests.
+- 2026-11-23, after the branch was pushed: the maintainer chose "Do this
+  task here: Flag posts whose special offer has ended", the review's minor
+  about an ended offer. The spec is amended ("A suggestion whose offer has
+  ended") and back to draft, for approval.
 
 ## RED
 

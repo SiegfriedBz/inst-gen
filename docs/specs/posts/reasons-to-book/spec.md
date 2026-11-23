@@ -1,8 +1,7 @@
 ---
 title: "Reasons to book"
-description: "For a spa that comes to its guests, every post sells one of five reasons to book today, dealt by code so the two posts of an attempt never share one and the next attempts move on to others: a day out in the guest's body, staying in, two of you, the first night after a long flight, laptop days; each caption asks about that moment, said to the guest, says what the guest gets and how easy it is, and ends on a fact code deals that removes a doubt, never one that turns a request away; each story text names the moment and says the business comes to the guest; the prompt shows five sample posts of a made-up business in Lisbon; code records a question in the first person, a question that misses its reason, a copied sample and a caption for two guests on an image of one; other businesses keep today's posts."
-status: approved
-approved: { by: siegfried.bozza@protonmail.com, at: 2026-11-23T11:23:48Z }
+description: "For a spa that comes to its guests, every post sells one of five reasons to book today, dealt by code so the two posts of an attempt never share one and the next attempts move on to others: a day out in the guest's body, staying in, two of you, the first night after a long flight, laptop days; each caption asks about that moment, said to the guest, says what the guest gets and how easy it is, and ends on a fact code deals that removes a doubt, never one that turns a request away; each story text names the moment and says the business comes to the guest; the prompt shows five sample posts of a made-up business in Lisbon; code records a question in the first person, a question that misses its reason, a copied sample, a caption for two guests on an image of one and one that names two therapists on an image of one; each caption names only what its image shows, and code writes the opening hours in words; other businesses keep today's posts."
+status: draft
 date: "2026-11-23"
 ---
 
@@ -111,7 +110,7 @@ set-up, in place of 2.18's kind of question, and the prompt gives it under
 |---|---|---|
 | `dayOut` | the guest's body after a day out: a walk, a climb, a hike, a surf | the part of the body, and the day out it comes from: one of the essence's moments, or one of the business's real places |
 | `stayIn` | the guest would rather not go out: it's late, it's raining, or the kids are asleep | that moment, and that they don't have to go anywhere |
-| `twoOfYou` | two guests, a couple or friends | both of them massaged at the same time, side by side |
+| `twoOfYou` | two guests, a couple or friends | the two of them and a moment they share: a day out together (one of the essence's moments, or one of the business's real places) or an evening in; both massaged at the same time, side by side (amended 2026-11-23, after the second recordings) |
 | `firstNight` | the guest has just landed after a long flight | the flight in their body: a stiff back, neck or legs |
 | `laptop` | days of work on a laptop (the maintainer's "laptop working days") | the screen days in their neck, shoulders or back |
 
@@ -189,6 +188,13 @@ a therapist; one guest is massaged alone. A `stayIn` post on a couple massage
 may sell it to both of them, as the second sample does (the maintainer's
 word, 2026-11-23); a `stayIn` post with one guest speaks to that guest.
 
+The caption names only what its image shows (amended 2026-11-23, after the
+second recordings): the set-up's treatment, never another of the
+business's; as many therapists as the set-up has, "two therapists" only on
+a couple massage or a four-hands massage, otherwise "a therapist", "your
+therapist" or "she"; and for `dayOut` and `laptop`, the set-up's part of
+the body.
+
 The guest's body and plans may be named again, as the samples do; the room,
 the light, the calm and the spa clichés still may not (2.18). The rule
 "Feelings and place symbols are yours to use, in a few words" becomes "The
@@ -211,6 +217,17 @@ em dash.
 - A night post may get the opening hours instead, when the profile gives
   them: a late close removes the doubt that it's too late to book. For a
   night post, the hours are one more fact to draw.
+- Code writes the hours fact in words, and the caption copies it like any
+  other fact (amended 2026-11-23, after the second recordings: the model
+  copied Sen's "Hours: Mo-Su 08:30-23:00" as it was). Hours open every day
+  with one closing time give "Open every day until 11 pm"; a closing time
+  with minutes, "until 10:30 pm"; one after midnight, "until 1 am";
+  midnight, "until midnight"; open from midnight to midnight, "Open 24
+  hours, every day". The days may come as one range ("Mo-Su", "Monday to
+  Sunday", "daily", "every day") or as several that cover the week with
+  the same closing time ("Mo-Fr 09:00-22:00; Sa-Su 10:00-22:00"). Hours
+  that skip a day, close at different times on different days, or that
+  code can't read give no hours fact: the night post draws a highlight.
 - Two kinds of highlight are never dealt:
   - one that turns a request away: it holds "only", "strictly", "sexual",
     "sex", "erotic", "extra service" or "happy ending", whole words, case
@@ -375,8 +392,10 @@ with them.
 
 - "Write new texts" (2.20) keeps the post's reason and asks for new words for
   it: another question about the same reason (for `dayOut`, another day out
-  that fits its part of the body), and a new fact dealt by code, neither the
-  post's own nor the other post's when another is left.
+  that fits its part of the body; for `twoOfYou`, another moment the two
+  share, amended 2026-11-23), and a new fact dealt by code, neither the
+  post's own nor the other post's when another is left. The new words name
+  only what its image shows, as the caption's rule says.
 - A caption update after a business edit (2.2) keeps each post's reason and
   its fact, while the profile still holds that fact; code deals another when
   it doesn't.
@@ -406,11 +425,15 @@ A batch records `posts-19` for a business that comes to its guests, and
 `posts-18` for any other, whose prompt doesn't change.
 
 In the plan's user text, after `### Image set-ups`: `### Reasons`, one line
-per post (`1. laptop`), and `### Facts`, one line per post with its fact as
-the profile writes it (`1. No upfront deposit required`) or the hours
-(`2. Hours: 08:30-23:00 daily`); a post with no fact has no line. A caption
-update's and new texts' user text give each post its `reason` and its `fact`
-next to its `light`.
+per post with its guests and therapists (`1. laptop: one guest, one
+therapist`; `2. twoOfYou: two guests, two therapists`; a four-hands massage,
+`one guest, two therapists`), and `### Facts`, one line per post with its
+fact as the profile writes it (`1. No upfront deposit required`) or the
+hours as code writes them (`2. Open every day until 11 pm`); a post with no
+fact has no line. A caption update's and new texts' user text give each
+post its `reason`, its `fact` and its `therapists` (1 or 2) next to its
+`light`. (The guests and therapists, and the hours in words, amended
+2026-11-23, after the second recordings.)
 
 The rest of `posts-18`'s prompt goes for these businesses: the type jobs, the
 two kinds of question and their description, and "Never a question about how
@@ -454,12 +477,45 @@ leaves them, in the plan, caption updates and new texts:
    caption or story text that holds "both of you", "the two of you", "each
    of you", "you both", "side by side" or "couple", whole words, case
    ignored: `{ field: 'mix', reason: 'post-2: caption for two guests, image
-   of one' }`. "Two therapists" isn't on the list: a four-hands massage has
-   them, for one guest. The list may grow.
+   of one' }`. "Two therapists" isn't on this list: a four-hands massage has
+   them, for one guest; record 6 checks them. The list may grow.
+6. **Two therapists on an image of one** (amended 2026-11-23, after the
+   second recordings). On a set-up with one therapist, a caption or story
+   text that holds "two therapists", "both therapists", "four hands" or
+   "four-hands", case ignored: `{ field: 'mix', reason: 'post-1: caption for
+   two therapists, image of one' }`. A couple massage and a four-hands
+   massage have two therapists, and may say so.
 
 2.18's other records stay. Its `sore` record ("question names no part of the
 body") becomes the `dayOut` line of record 2 for these businesses, and stays
 for the others.
+
+### Amended after the second recordings
+
+Amended 2026-11-23, after the second `posts-19` recordings (the journal).
+The maintainer read three of their faults and asked "Did you fix this?":
+
+- Sen's laptop post with the offer said "Two therapists come to your room"
+  on an image of one therapist. Two of the samples say "two therapists",
+  and nothing told the model how many each post has. Each post's line
+  under `### Reasons` now says its guests and therapists, the caption
+  names only what its image shows, and code records two therapists on an
+  image of one (record 6). Svarga's new texts, which named Foot
+  Reflexology and tired feet on an image of a leg massage, fall under the
+  same rule.
+- Sen's first-night post ended on "Hours: Mo-Su 08:30-23:00", the line as
+  code dealt it, though the prompt asked for it in words. Code now writes
+  the hours in words ("Open every day until 11 pm"), and the prompt drops
+  its special case for "Hours: …".
+- Sen's new texts opened on "Both tired of resting alone when you could
+  share this afternoon?": `twoOfYou` was the one reason whose question
+  named no moment. Its question now names a moment the two share, as
+  `dayOut`'s names a day out.
+
+`posts-19` never shipped, so it stays `posts-19`, as with the first
+amendment. Sen's and Svarga's plans, with and without an offer, and their
+new texts are recorded again: 6 Flash-Lite requests, with the maintainer's
+go-ahead.
 
 ### What doesn't change
 
@@ -505,12 +561,21 @@ Unit tests (Vitest) for:
   you tonight" never recorded as a copy; "two therapists" on a four-hands
   massage for one guest never recorded as a caption for two; the samples
   themselves, the second and third with two guests, passing every other
-  record and every rule above.
+  record and every rule above;
+- the second amendment (2026-11-23): the hours in words, from "Mo-Su
+  08:30-23:00" to "Open every day until 11 pm", with minutes, midnight, a
+  close after midnight, 24 hours, and ranges that cover the week with one
+  closing time; no hours fact for hours that skip a day, close at
+  different times, or that code can't read; `### Reasons` lines with each
+  post's guests and therapists; a caption update's and new texts'
+  `therapists`; the rule on what the image shows; `twoOfYou`'s moment; no
+  "Hours: …" rule; record 6, never on a couple or four-hands massage.
 
 The replay test checks the new `posts-19` recordings, Sen's and Svarga's,
 with and without an offer: every question ends in "?" and holds no first
 person; no caption or story text holds a highlight that turns a request
-away, a copied sample or a price, or speaks to two guests on an image of one;
+away, a copied sample or a price, or speaks to two guests or names two
+therapists on an image of one;
 every caption has three paragraphs at most;
 an offer post's first paragraph is its offer line.
 
@@ -637,6 +702,26 @@ Scenario: A recorded plan
   When the replay test runs it
   Then every question ends with "?" and holds no first person
   And no caption or story text holds "therapeutic massage only", a copied sample or a price
+
+Scenario: The hours in words (amended 2026-11-23)
+  Given Sen's hours "Mo-Su 08:30-23:00"
+  When code deals a night post the hours
+  Then its fact is "Open every day until 11 pm"
+
+Scenario: Hours code can't say in words
+  Given the hours "Mo-Fr 09:00-18:00; Sa 10:00-14:00"
+  When code deals a night post its fact
+  Then the hours are never its fact
+
+Scenario: Each post's guests and therapists
+  Given Sen's post 1 is a laptop post with one guest and one therapist
+  When code writes the plan's user text
+  Then "### Reasons" holds "1. laptop: one guest, one therapist"
+
+Scenario: Two therapists on an image of one
+  Given Sen's post 1 has one guest and one therapist
+  When its caption says "Two therapists come to your room"
+  Then the batch's dropped list holds 'post-1: caption for two therapists, image of one'
 ```
 
 ## Known limits
@@ -663,6 +748,11 @@ Scenario: A recorded plan
 - Svarga's "Massage at your villa or hotel" is left out as a fact by its
   words; a longer highlight that only says where the massage happens is
   still dealt, and repeats the answer.
+- Code reads hours written as schema.org writes them, or with "daily",
+  "every day" or a range of days and one time range; other hours give no
+  fact.
+- Only the prompt asks a caption to name its own treatment and part of the
+  body: no record checks them.
 
 ## Out of scope
 

@@ -37,6 +37,10 @@
   prompts no longer ask to keep a type or a topic. Fixed: new texts never
   take the other post's fact, as the plan says. Ten minor findings are
   deferred and listed in the PR.
+- 2026-11-23, after the branch was pushed: the maintainer's verdict on the
+  second recordings (below). The spec is amended ("Amended after the second
+  recordings") and back to draft, for approval; `posts-19` keeps its name,
+  as with the first amendment, since it never shipped.
 
 ## RED
 
@@ -189,4 +193,10 @@ assertion out, for the maintainer to decide. Seen besides: one post names two
 therapists where its image has one, the hours fact is the raw line, four
 answers have a sentence of 16 to 20 words, and one new-texts hook reads
 awkwardly. The maintainer's verdict follows.
+
+**The maintainer's verdict** (2026-11-23), on the three faults listed with
+the second run (two therapists on an image of one, the raw hours line, the
+awkward new-texts hook): "Did you fix this ?". Not as they are: the
+second amendment answers them, and the plans and new texts are recorded
+again.
 
