@@ -308,14 +308,16 @@ describe('what clears saved and copied', () => {
 
   // The reason and the fact code gave a post land with its words
   // (docs/specs/posts/reasons-to-book).
-  test("a rewrite stores the answer's reason and fact, and keeps the rest of the set-up", () => {
+  test("a rewrite stores the answer's reason and fact in place of the kind of question", () => {
     const asked = { ...setupAt('day', { fact: 'Old fact' }), question: 'ask' as const };
     delete asked.reason;
     const stored = post({ id: 'p1', setup: asked });
     const fresh = setupAt('day', { reason: 'laptop', fact: 'No upfront deposit required' });
     const merged = mergeRewrite(batch([stored]), result(answer({ setup: fresh })), ['p1']);
+    // A reason takes the kind of question's place (the review of 2026-11-23).
+    const { question: _kind, ...rest } = asked;
     expect(merged.posts[0].setup).toEqual({
-      ...asked,
+      ...rest,
       reason: 'laptop',
       fact: 'No upfront deposit required',
     });

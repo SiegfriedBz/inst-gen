@@ -126,7 +126,8 @@ export function autoRewrite(
 // reason leaves the set-up as it is.
 function mergedSetup(stored: Post['setup'], answer: Post['setup']): Post['setup'] {
   if (!stored || !answer?.reason) return stored;
-  const { fact: _old, ...rest } = stored;
+  // The reason takes the kind of question's place (the review of 2026-11-23).
+  const { fact: _old, question: _kind, hook: _style, ...rest } = stored;
   return { ...rest, reason: answer.reason, ...(answer.fact ? { fact: answer.fact } : {}) };
 }
 

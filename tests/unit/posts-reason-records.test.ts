@@ -4,6 +4,7 @@ import type { Post } from '@/lib/posts/batch';
 import { reasonRecords } from '@/lib/posts/reason-records';
 import { SAMPLES } from '@/lib/posts/samples';
 import type { Reason, Setup } from '@/lib/posts/setup';
+import { copyRecords } from '@/lib/posts/variety';
 import { SITE, svargaProfile } from './helpers/brand';
 import { post, setupAt } from './helpers/posts';
 
@@ -169,6 +170,20 @@ describe('the records run only on posts with a reason', () => {
       setup: { ...setupAt('night'), reason: undefined, question: 'ask' },
     });
     expect(reasons([asked])).toEqual([]);
+  });
+
+  it("2.18's sore record never runs on a post with a reason", () => {
+    const leftover = reasonPost(
+      'stayIn',
+      'Late tonight in Canggu? 🌸\n\nWe come to you.',
+      undefined,
+      {
+        question: 'sore',
+      },
+    );
+    expect(copyRecords([leftover], sen).map((d) => d.reason)).not.toContain(
+      'post-1: question names no part of the body',
+    );
   });
 
   it('the samples pass every record but the copy', () => {

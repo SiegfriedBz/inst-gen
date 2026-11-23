@@ -83,7 +83,7 @@ export function dealFacts(profile: Profile, setups: Setup[], random: () => numbe
 }
 
 // New words, a new fact: neither the post's own nor the other post's while
-// another is left; then only not the other's; then any.
+// another is left; then its own again; never the other post's.
 export function newFact(
   profile: Profile,
   setup: Setup,
@@ -93,8 +93,7 @@ export function newFact(
   const light = setup.light ?? 'day';
   return (
     pickFact(profile, light, [setup.fact, other?.fact], random) ??
-    pickFact(profile, light, [other?.fact], random) ??
-    pickFact(profile, light, [], random)
+    pickFact(profile, light, [other?.fact], random)
   );
 }
 

@@ -218,8 +218,10 @@ export function rewriteUserText(input: PostsModelInput, posts: Post[], offer?: O
   const kept = posts.map(
     ({ id, type, topic, scene, setup, caption, imagePrompt, offer: carries }) => ({
       id,
-      type,
-      topic,
+      // A post with a reason sells it: its posts-18 type and topic would steer
+      // the model back to them (docs/specs/posts/reasons-to-book, the review
+      // of 2026-11-23).
+      ...(setup?.reason ? {} : { type, topic }),
       scene,
       // A post saved without a set-up, or a set-up without a light, is a day.
       light: setup?.light ?? 'day',
@@ -271,8 +273,7 @@ export function newTextsUserText(
   const carries = offer !== undefined && post.offer === true;
   const sent = {
     id,
-    type,
-    topic,
+    ...(setup?.reason ? {} : { type, topic }),
     scene,
     // A post saved without a set-up, or a set-up without a light, is a day.
     light: setup?.light ?? 'day',

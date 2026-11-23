@@ -377,7 +377,9 @@ const CLICHES = [
 const EM_DASH = '—';
 
 function bodyRecords(post: Post): Dropped[] {
-  if (post.setup?.question !== 'sore') return [];
+  // A post with a reason gets reason-records' day-out line instead
+  // (docs/specs/posts/reasons-to-book, "Code's records").
+  if (post.setup?.question !== 'sore' || post.setup.reason) return [];
   const question = folded(questionOf(post) ?? '');
   return BODY_WORDS.some((word) => holdsWords(question, word))
     ? []

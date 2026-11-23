@@ -725,6 +725,59 @@ describe('reasons to book in the runs', () => {
     expect(result.posts[0].setup).toBeUndefined();
   });
 
+  // The review of 2026-11-23: a post saved before reasons reaches posts-19
+  // without posts-18's type, topic or kind of question.
+  const sentPosts = (text: string, heading: string) => {
+    const start = text.indexOf(`${heading}\n`) + heading.length + 1;
+    const end = text.indexOf('\n\n###', start);
+    return JSON.parse(text.slice(start, end === -1 ? undefined : end));
+  };
+
+  test('an old tip post goes to a caption update with its reason, not its type, topic or kind', async () => {
+    const [asked] = dealSetups(atTheSpa(), undefined, seededRandom('t'));
+    const old = post({
+      id: 'a',
+      type: 'tip',
+      topic: 'Drink water after your massage',
+      setup: { ...asked, question: 'sore' },
+    });
+    const { model, seen } = spying(
+      answerOf([{ id: 'a', caption: 'New a.', hashtags: [], altText: 'x' }]),
+    );
+    const result = await finalOf(
+      streamRewrite({ profile: svargaProfile(), posts: [old] }, deps(model), signal()),
+    );
+    const [sent] = sentPosts(seen[0].text, '### Posts');
+    expect(sent.reason).toBeDefined();
+    for (const key of ['type', 'topic', 'question']) expect(key in sent).toBe(false);
+    expect(seen[0].text).not.toContain('Drink water');
+    expect(result.posts[0].setup?.question).toBeUndefined();
+  });
+
+  test("new texts for a post saved with a kind of question: a reason its look takes, never the other's", async () => {
+    const [asked, second] = dealSetups(atTheSpa(), undefined, seededRandom('t'));
+    const mine = post({ id: 'a', type: 'local', topic: 'Old topic', setup: asked });
+    const other = post({
+      id: 'b',
+      caption: 'The other caption.',
+      setup: { ...second, question: undefined, reason: 'laptop' },
+    });
+    const { model, seen } = spying(
+      answerOf([
+        { id: 'a', caption: 'New caption.', hashtags: [], altText: '', storyText: 'New story.' },
+      ]),
+    );
+    const result = await finalOf(
+      streamNewTexts({ profile: svargaProfile(), post: mine, other }, deps(model), signal()),
+    );
+    const sent = sentPosts(seen[0].text, '### Post');
+    expect(LOOK_REASONS[asked.look]).toContain(sent.reason);
+    expect(sent.reason).not.toBe('laptop');
+    for (const key of ['type', 'topic', 'question']) expect(key in sent).toBe(false);
+    expect(result.posts[0].setup?.reason).toBe(sent.reason);
+    expect(result.posts[0].setup?.question).toBeUndefined();
+  });
+
   test("new texts keep the reason, and take a fact neither theirs nor the other post's", async () => {
     const profile = withHighlights([
       'Free travel in Canggu',

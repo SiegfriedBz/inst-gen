@@ -83,6 +83,17 @@ describe('reasonsRewritePrompt and reasonsNewTextsPrompt', () => {
     });
   }
 
+  it('neither asks the model to keep a type or a topic: the reason decides', () => {
+    expect(reasonsRewritePrompt(false, true)).toContain(
+      "Keep each post's scene and image prompt: they don't change.",
+    );
+    expect(reasonsNewTextsPrompt(false, true)).toContain(
+      "Keep its scene, light and image prompt: they don't change.",
+    );
+    expect(reasonsRewritePrompt(false, true)).not.toContain('type, topic');
+    expect(reasonsNewTextsPrompt(false, true)).not.toContain('type, topic');
+  });
+
   it('new texts ask a different question for the same reason', () => {
     expect(reasonsNewTextsPrompt(false, true)).toContain('a different question for its reason');
   });

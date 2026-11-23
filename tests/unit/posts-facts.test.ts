@@ -111,6 +111,20 @@ describe('a fact for new words, or kept', () => {
     ).toBe('No upfront deposit required');
   });
 
+  // The plan's "then nothing" (the review of 2026-11-23): never the same fact
+  // in both posts.
+  it("no fact rather than the other post's", () => {
+    const one = withHighlights(['No upfront deposit required']);
+    expect(
+      newFact(
+        one,
+        setupAt('day'),
+        setupAt('night', { fact: 'No upfront deposit required' }),
+        seededRandom('x'),
+      ),
+    ).toBeUndefined();
+  });
+
   it('a kept fact while the profile still holds it', () => {
     const fact = 'Free travel in our core areas';
     expect(keptFact(withHighlights(SEN), setupAt('day', { fact }))).toBe(fact);

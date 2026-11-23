@@ -87,7 +87,7 @@ ${IMAGE_RULES}`;
 }
 
 export function reasonsRewritePrompt(withOffer = false, spa = false): string {
-  return `The owner changed their business's brand profile. You rewrite the captions, story texts, hashtags and alt text of their Instagram posts so they fit the new profile. Keep each post's type, topic, scene and image prompt: they don't change. Answer every post, with its id.
+  return `The owner changed their business's brand profile. You rewrite the captions, story texts, hashtags and alt text of their Instagram posts so they fit the new profile. Keep each post's scene and image prompt: they don't change. Answer every post, with its id.
 
 ${GOAL}
 
@@ -99,7 +99,7 @@ ${samplesText()}${withOffer ? rewriteOfferRules(spa) : ''}`;
 }
 
 export function reasonsNewTextsPrompt(withOffer = false, spa = false): string {
-  return `The owner of a small business wants new words for one of their Instagram posts, for the same image. You write a new caption and a new story text for the post under "### Post", as its owner would, to guests nearby. Keep its type, topic, scene, light and image prompt: they don't change. Answer that post, with its id. Give "hashtags" as [] and "altText" as "": the post keeps its own.
+  return `The owner of a small business wants new words for one of their Instagram posts, for the same image. You write a new caption and a new story text for the post under "### Post", as its owner would, to guests nearby. Keep its scene, light and image prompt: they don't change. Answer that post, with its id. Give "hashtags" as [] and "altText" as "": the post keeps its own.
 
 Something different: "captionNow" and "storyTextNow" are its words now, which the owner wants replaced. Open on a different question for its reason, and reuse no sentence of its caption now, nor of its story text now. An answer that repeats its question is refused. For dayOut, the part of the body stays the one its image prompt shows: ask after another day out, or in other words. Its "fact" is new: use it. Never the fact, the opening or the ending of the post under "### Other post": it goes out beside this one.
 

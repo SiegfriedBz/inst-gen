@@ -158,10 +158,11 @@ export function dealReasonSetups(
   return dealFacts(profile, setups, random);
 }
 
-// A post's set-up with its reason and its fact, the old fact gone.
+// A post's set-up with its reason and its fact: the old fact, and posts-18's
+// kind of question and hook style, go (the review of 2026-11-23).
 function withSetup(post: Post, reason: Reason, fact: string | undefined): Post {
   if (!post.setup) return post;
-  const { fact: _old, ...setup } = post.setup;
+  const { fact: _old, question: _kind, hook: _style, ...setup } = post.setup;
   return { ...post, setup: { ...setup, reason, ...(fact ? { fact } : {}) } };
 }
 
